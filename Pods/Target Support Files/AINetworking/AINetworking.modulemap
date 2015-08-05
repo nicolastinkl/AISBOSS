@@ -1,0 +1,6 @@
+framework module AINetworking {
+  umbrella header "AINetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

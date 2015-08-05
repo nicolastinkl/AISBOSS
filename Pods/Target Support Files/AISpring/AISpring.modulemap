@@ -1,0 +1,6 @@
+framework module AISpring {
+  umbrella header "AISpring-umbrella.h"
+
+  export *
+  module * { export * }
+}

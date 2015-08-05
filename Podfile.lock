@@ -1,0 +1,32 @@
+PODS:
+  - AIAlertView (1.0.6)
+  - AINetworking (1.0.3)
+  - AISpring (1.0.4)
+  - AISwiftyJSON (1.0.6)
+  - Cartography (0.5.0)
+
+DEPENDENCIES:
+  - AIAlertView (~> 1.0.6)
+  - AINetworking (~> 1.0.3)
+  - AISpring (~> 1.0.4)
+  - AISwiftyJSON (~> 1.0.6)
+  - Cartography (from `https://github.com/robb/Cartography.git`, branch `swift-2.0`)
+
+EXTERNAL SOURCES:
+  Cartography:
+    :branch: swift-2.0
+    :git: https://github.com/robb/Cartography.git
+
+CHECKOUT OPTIONS:
+  Cartography:
+    :commit: 36eeb22dbf7db7eff066389e9dc19e47a7266071
+    :git: https://github.com/robb/Cartography.git
+
+SPEC CHECKSUMS:
+  AIAlertView: 453783745789a34fafc8c01fb9a3c25ad111bf01
+  AINetworking: eef629fe3a691d08575184cecf9c28584de73dd9
+  AISpring: 3d8fed91bc7db9f54c1d6e32a24f88c40ebbf977
+  AISwiftyJSON: 4eb8f72a69ee1a811532ef1758ab652bb43acfbe
+  Cartography: 314f5ed1495995760487161eeb7a8a0940d88ad3
+
+COCOAPODS: 0.38.2
