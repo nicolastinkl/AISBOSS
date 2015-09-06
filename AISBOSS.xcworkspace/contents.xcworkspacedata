@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AISBOSS.xcodeproj">
+      location = "group:/Users/tinkl/Documents/project-xcode/AI2020OS/AISBOSS/AIVeris.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
