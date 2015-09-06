@@ -97,10 +97,8 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         // println("\(self.frame.size.width)")
         self.initCardView()
         
-        var dot = self.viewWithTag(200) as UIView!
-        var split = self.viewWithTag(300) as UIView!
-        
-        
+        let dot = self.viewWithTag(200) as UIView!
+        let split = self.viewWithTag(300) as UIView!
         
         tableViewOriginalY = tableViewOriginalY == 0 ? dot.frame.origin.y : tableViewOriginalY
         tableViewOriginalW = tableViewOriginalW == 0 ? self.frame.size.width : tableViewOriginalW
@@ -122,7 +120,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = "hello"
+        cell.textLabel!.text = "hello"
         cell.detailTextLabel?.text = "hello2"
         return cell
     }
