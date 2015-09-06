@@ -17,7 +17,7 @@ struct AICatalogListModel : JSONJoy {
     
     init(_ decoder: JSONDecoder) {
         
-        if var jsonArray = decoder["catalog_list"].array {
+        if let jsonArray = decoder["catalog_list"].array {
             catalogArray = Array<AICatalogItemModel>()
             for subDecoder in jsonArray {
                 catalogArray.append(AICatalogItemModel(subDecoder))

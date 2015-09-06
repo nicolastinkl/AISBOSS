@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="customerSwipeView" customClass="AICustomerSwipeView" customModule="AITrans" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="98" height="107"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaL-uq-fzD" userLabel="HandlerBar">
+                    <rect key="frame" x="75" y="9" width="20" height="112"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="cust_scroll_bar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onBarClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="0kG-KD-8yN"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQk-mz-aOl" userLabel="Panel">
+                    <rect key="frame" x="0.0" y="0.0" width="92" height="107"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="scrollball_button" translatesAutoresizingMaskIntoConstraints="NO" id="Ix7-gO-7kU">
+                            <rect key="frame" x="41" y="36" width="52" height="35"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hH-tW-Mk8" userLabel="index">
+                            <rect key="frame" x="37" y="43" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-vD-0id" userLabel="timer" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="46" y="4" width="24" height="24"/>
+                            <state key="normal" image="cust_timer_filter_s">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="cust_timer_filter"/>
+                            <state key="highlighted" image="cust_timer_filter"/>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="gyI-UR-sT6"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="sJA-VX-eCt"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="exG-5X-VZ0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Yw-VW-36L" userLabel="favorite" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="5" y="42" width="24" height="24"/>
+                            <state key="normal" image="cust_favorite_small">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="cust_favorite_big"/>
+                            <state key="highlighted" image="cust_favorite_big"/>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="2SR-gY-1Tx"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="dfr-fO-k88"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ple-VY-cV7"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ip-JY-N51" userLabel="comService" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="46" y="79" width="24" height="24"/>
+                            <state key="normal" image="comp_service_small">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="comp_service_big"/>
+                            <state key="highlighted" image="comp_service_big"/>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="uwl-Tg-2pO"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="KTZ-NP-oQr"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ed5-Ac-eDK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="compServiceBtn" destination="7ip-JY-N51" id="Giq-YA-smK"/>
+                <outlet property="favoriteBtn" destination="1Yw-VW-36L" id="VHw-vc-zMD"/>
+                <outlet property="handlerBar" destination="JaL-uq-fzD" id="qN1-Rc-8VL"/>
+                <outlet property="label_number" destination="7hH-tW-Mk8" id="7EV-Aq-o8K"/>
+                <outlet property="panel" destination="tQk-mz-aOl" id="Uhc-d6-g8B"/>
+                <outlet property="timerBtn" destination="K2f-vD-0id" id="I8Z-h7-0P1"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="comp_service_big" width="67" height="67"/>
+        <image name="comp_service_small" width="54" height="54"/>
+        <image name="cust_favorite_big" width="67" height="67"/>
+        <image name="cust_favorite_small" width="54" height="54"/>
+        <image name="cust_scroll_bar" width="5" height="112"/>
+        <image name="cust_timer_filter" width="67" height="67"/>
+        <image name="cust_timer_filter_s" width="54" height="54"/>
+        <image name="scrollball_button" width="60" height="40"/>
+    </resources>
+</document>

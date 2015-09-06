@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" placeholderIntrinsicWidth="98" placeholderIntrinsicHeight="107" id="iN0-l3-epB" customClass="AISwipeView" customModule="AITrans" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="98" height="107"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LcW-W0-6Yi" userLabel="HandlerBar">
+                    <rect key="frame" x="75.000000022351728" y="-2" width="20" height="112"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="cust_scroll_bar">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onBarClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="7DP-L9-0d7"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" id="qdY-V8-M8C" userLabel="Panel">
+                    <rect key="frame" x="0.0" y="0.0" width="92" height="107"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scrollball_button" id="G7r-Pl-dUG">
+                            <rect key="frame" x="41" y="36" width="52" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vf6-Fg-gmr" userLabel="index">
+                            <rect key="frame" x="37" y="43" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Ce-RW-uBW" userLabel="Red" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="61" y="7" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_1">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="FOS-Uz-WK9"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="MzO-f4-Npd"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="N0N-nU-3EC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uog-y7-OBo" userLabel="Cyan" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="11" y="28" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_3">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="IUK-mC-zAJ"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="4pi-E7-Pqk"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="iFC-xB-AAs"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bTW-kS-vz2" userLabel="Green" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="11" y="57" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_4">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="2K5-A5-OSO"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="7zz-Nc-8Vf"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="GBe-oT-ZBV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hem-qY-JpF" userLabel="Blue" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="32" y="76" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_5">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="aRw-kl-Iir"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="3PM-eX-X54"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="vkS-lu-Mt1"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HI4-uB-iBb" userLabel="Favorite" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="61" y="76" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_6">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="KOO-es-ltV"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="wQr-3h-7kw"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="ETM-dl-kli"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FM0-B4-wqx" userLabel="Orange" customClass="DesignableButton" customModule="Spring">
+                            <rect key="frame" x="32" y="8" width="24" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="scrollball_2">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ballDragExit:" destination="iN0-l3-epB" eventType="touchDragExit" id="7tg-av-epE"/>
+                                <action selector="ballTouchDown:" destination="iN0-l3-epB" eventType="touchDown" id="Bu2-l4-m81"/>
+                                <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="JyC-ZH-ZiA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="blueBtn" destination="Hem-qY-JpF" id="a7V-uh-Tyw"/>
+                <outlet property="cyanBtn" destination="uog-y7-OBo" id="Sid-QU-SUN"/>
+                <outlet property="favoBtn" destination="HI4-uB-iBb" id="Ftj-S0-tha"/>
+                <outlet property="greenBtn" destination="bTW-kS-vz2" id="y3O-IF-cci"/>
+                <outlet property="handlerBar" destination="LcW-W0-6Yi" id="Phu-ZJ-0jk"/>
+                <outlet property="label_number" destination="Vf6-Fg-gmr" id="4Fk-xP-XRh"/>
+                <outlet property="orangeBtn" destination="FM0-B4-wqx" id="aKQ-2t-Kbp"/>
+                <outlet property="panel" destination="qdY-V8-M8C" id="oNq-UB-aQP"/>
+                <outlet property="redBtn" destination="8Ce-RW-uBW" id="7AX-cZ-nhh"/>
+            </connections>
+            <point key="canvasLocation" x="462" y="390.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cust_scroll_bar" width="5" height="112"/>
+        <image name="scrollball_1" width="27" height="27"/>
+        <image name="scrollball_2" width="27" height="27"/>
+        <image name="scrollball_3" width="27" height="27"/>
+        <image name="scrollball_4" width="27" height="27"/>
+        <image name="scrollball_5" width="27" height="27"/>
+        <image name="scrollball_6" width="55" height="53"/>
+        <image name="scrollball_button" width="60" height="40"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

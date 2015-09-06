@@ -101,6 +101,51 @@
 		93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1DF21B9C306E009965C8 /* AITSLocation.swift */; };
 		93FA1E041B9C306E009965C8 /* SearchHistoryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1DF41B9C306E009965C8 /* SearchHistoryRecord.swift */; };
 		93FA1E051B9C306E009965C8 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1DF51B9C306E009965C8 /* ServiceModel.swift */; };
+		93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E071B9C375A009965C8 /* AIImageView.swift */; };
+		93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E091B9C375A009965C8 /* AIUINavigationController.m */; };
+		93FA1E141B9C375A009965C8 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E0A1B9C375A009965C8 /* Async.swift */; };
+		93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E0B1B9C375A009965C8 /* ENSideMenu.swift */; };
+		93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E0C1B9C375A009965C8 /* ENSideMenuNavigationController.swift */; };
+		93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E0D1B9C375A009965C8 /* RAReorderableLayout.swift */; };
+		93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E0F1B9C375A009965C8 /* UICollectionViewWaterfallLayout.m */; };
+		93FA1E191B9C375A009965C8 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E111B9C375A009965C8 /* UINavigationBar+Awesome.m */; };
+		93FA1E451B9C3E12009965C8 /* AICalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */; };
+		93FA1E461B9C3E12009965C8 /* AICollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E1B1B9C3E12009965C8 /* AICollectionTableViewCell.swift */; };
+		93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E1C1B9C3E12009965C8 /* AICollectionTableViewCell.xib */; };
+		93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E1D1B9C3E12009965C8 /* AIContentView.swift */; };
+		93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E1E1B9C3E12009965C8 /* AIContentView.xib */; };
+		93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */; };
+		93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */; };
+		93FA1E4C1B9C3E12009965C8 /* AICustomerSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E211B9C3E12009965C8 /* AICustomerSwipeView.swift */; };
+		93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E221B9C3E12009965C8 /* AICustomerSwipeView.xib */; };
+		93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */; };
+		93FA1E4F1B9C3E12009965C8 /* AIMediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E241B9C3E12009965C8 /* AIMediaView.swift */; };
+		93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E251B9C3E12009965C8 /* AIMediaView.xib */; };
+		93FA1E511B9C3E12009965C8 /* AIMenuActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E261B9C3E12009965C8 /* AIMenuActionView.swift */; };
+		93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E271B9C3E12009965C8 /* AIMenuActionView.xib */; };
+		93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E281B9C3E12009965C8 /* AIMenuTopView.swift */; };
+		93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E291B9C3E12009965C8 /* AIMenuTopView.xib */; };
+		93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */; };
+		93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */; };
+		93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */; };
+		93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */; };
+		93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */; };
+		93FA1E5A1B9C3E12009965C8 /* AISwipeViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */; };
+		93FA1E5B1B9C3E12009965C8 /* AITopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E311B9C3E12009965C8 /* AITopInfoView.swift */; };
+		93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E321B9C3E12009965C8 /* AITopInfoView.xib */; };
+		93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E331B9C3E12009965C8 /* AITopMsgView.swift */; };
+		93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FA1E341B9C3E12009965C8 /* AITopMsgView.xib */; };
+		93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */; };
+		93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E381B9C3E12009965C8 /* AISellerCell.m */; };
+		93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3A1B9C3E12009965C8 /* AISellerModel.m */; };
+		93FA1E621B9C3E12009965C8 /* AISellerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3C1B9C3E12009965C8 /* AISellerViewController.m */; };
+		93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3E1B9C3E12009965C8 /* AISellingProgressBar.m */; };
+		93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */; };
+		93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */; };
+		93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */; };
+		93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */; };
+		93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E431B9C3E12009965C8 /* UITransViewController.swift */; };
+		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -240,6 +285,59 @@
 		93FA1DF21B9C306E009965C8 /* AITSLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITSLocation.swift; sourceTree = "<group>"; };
 		93FA1DF41B9C306E009965C8 /* SearchHistoryRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryRecord.swift; sourceTree = "<group>"; };
 		93FA1DF51B9C306E009965C8 /* ServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
+		93FA1E071B9C375A009965C8 /* AIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIImageView.swift; sourceTree = "<group>"; };
+		93FA1E081B9C375A009965C8 /* AIUINavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIUINavigationController.h; sourceTree = "<group>"; };
+		93FA1E091B9C375A009965C8 /* AIUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIUINavigationController.m; sourceTree = "<group>"; };
+		93FA1E0A1B9C375A009965C8 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		93FA1E0B1B9C375A009965C8 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
+		93FA1E0C1B9C375A009965C8 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		93FA1E0D1B9C375A009965C8 /* RAReorderableLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAReorderableLayout.swift; sourceTree = "<group>"; };
+		93FA1E0E1B9C375A009965C8 /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		93FA1E0F1B9C375A009965C8 /* UICollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		93FA1E101B9C375A009965C8 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		93FA1E111B9C375A009965C8 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICalendarViewController.swift; sourceTree = "<group>"; };
+		93FA1E1B1B9C3E12009965C8 /* AICollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICollectionTableViewCell.swift; sourceTree = "<group>"; };
+		93FA1E1C1B9C3E12009965C8 /* AICollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICollectionTableViewCell.xib; sourceTree = "<group>"; };
+		93FA1E1D1B9C3E12009965C8 /* AIContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIContentView.swift; sourceTree = "<group>"; };
+		93FA1E1E1B9C3E12009965C8 /* AIContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIContentView.xib; sourceTree = "<group>"; };
+		93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomerCollectionCellView.swift; sourceTree = "<group>"; };
+		93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomerCollectionCellView.xib; sourceTree = "<group>"; };
+		93FA1E211B9C3E12009965C8 /* AICustomerSwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomerSwipeView.swift; sourceTree = "<group>"; };
+		93FA1E221B9C3E12009965C8 /* AICustomerSwipeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomerSwipeView.xib; sourceTree = "<group>"; };
+		93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomHomeViewController.swift; sourceTree = "<group>"; };
+		93FA1E241B9C3E12009965C8 /* AIMediaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIMediaView.swift; sourceTree = "<group>"; };
+		93FA1E251B9C3E12009965C8 /* AIMediaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIMediaView.xib; sourceTree = "<group>"; };
+		93FA1E261B9C3E12009965C8 /* AIMenuActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIMenuActionView.swift; sourceTree = "<group>"; };
+		93FA1E271B9C3E12009965C8 /* AIMenuActionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIMenuActionView.xib; sourceTree = "<group>"; };
+		93FA1E281B9C3E12009965C8 /* AIMenuTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIMenuTopView.swift; sourceTree = "<group>"; };
+		93FA1E291B9C3E12009965C8 /* AIMenuTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIMenuTopView.xib; sourceTree = "<group>"; };
+		93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRootViewController.h; sourceTree = "<group>"; };
+		93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRootViewController.m; sourceTree = "<group>"; };
+		93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIScanViewController.swift; sourceTree = "<group>"; };
+		93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServerDetailViewController.swift; sourceTree = "<group>"; };
+		93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISwipeView.swift; sourceTree = "<group>"; };
+		93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AISwipeView.xib; sourceTree = "<group>"; };
+		93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISwipeViewUtil.swift; sourceTree = "<group>"; };
+		93FA1E311B9C3E12009965C8 /* AITopInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITopInfoView.swift; sourceTree = "<group>"; };
+		93FA1E321B9C3E12009965C8 /* AITopInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITopInfoView.xib; sourceTree = "<group>"; };
+		93FA1E331B9C3E12009965C8 /* AITopMsgView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITopMsgView.swift; sourceTree = "<group>"; };
+		93FA1E341B9C3E12009965C8 /* AITopMsgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITopMsgView.xib; sourceTree = "<group>"; };
+		93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIWebViewController.swift; sourceTree = "<group>"; };
+		93FA1E371B9C3E12009965C8 /* AISellerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellerCell.h; sourceTree = "<group>"; };
+		93FA1E381B9C3E12009965C8 /* AISellerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellerCell.m; sourceTree = "<group>"; };
+		93FA1E391B9C3E12009965C8 /* AISellerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellerModel.h; sourceTree = "<group>"; };
+		93FA1E3A1B9C3E12009965C8 /* AISellerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellerModel.m; sourceTree = "<group>"; };
+		93FA1E3B1B9C3E12009965C8 /* AISellerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellerViewController.h; sourceTree = "<group>"; };
+		93FA1E3C1B9C3E12009965C8 /* AISellerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellerViewController.m; sourceTree = "<group>"; };
+		93FA1E3D1B9C3E12009965C8 /* AISellingProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellingProgressBar.h; sourceTree = "<group>"; };
+		93FA1E3E1B9C3E12009965C8 /* AISellingProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellingProgressBar.m; sourceTree = "<group>"; };
+		93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
+		93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICellMultiStyle.swift; sourceTree = "<group>"; };
+		93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHomeViewController.swift; sourceTree = "<group>"; };
+		93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINewTransViewController.swift; sourceTree = "<group>"; };
+		93FA1E431B9C3E12009965C8 /* UITransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewController.swift; sourceTree = "<group>"; };
+		93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewControllerExtention.swift; sourceTree = "<group>"; };
 		F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,16 +383,20 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		93A5A5961B9BD5E1001DE36D /* Bridging */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Bridging;
-			sourceTree = "<group>";
-		};
 		93A5A5971B9BD5E1001DE36D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				93FA1E071B9C375A009965C8 /* AIImageView.swift */,
+				93FA1E081B9C375A009965C8 /* AIUINavigationController.h */,
+				93FA1E091B9C375A009965C8 /* AIUINavigationController.m */,
+				93FA1E0A1B9C375A009965C8 /* Async.swift */,
+				93FA1E0B1B9C375A009965C8 /* ENSideMenu.swift */,
+				93FA1E0C1B9C375A009965C8 /* ENSideMenuNavigationController.swift */,
+				93FA1E0D1B9C375A009965C8 /* RAReorderableLayout.swift */,
+				93FA1E0E1B9C375A009965C8 /* UICollectionViewWaterfallLayout.h */,
+				93FA1E0F1B9C375A009965C8 /* UICollectionViewWaterfallLayout.m */,
+				93FA1E101B9C375A009965C8 /* UINavigationBar+Awesome.h */,
+				93FA1E111B9C375A009965C8 /* UINavigationBar+Awesome.m */,
 				93C33EEA1B9BEA75007BF506 /* CoreText */,
 			);
 			path = Libs;
@@ -372,6 +474,41 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */,
+				93FA1E1B1B9C3E12009965C8 /* AICollectionTableViewCell.swift */,
+				93FA1E1C1B9C3E12009965C8 /* AICollectionTableViewCell.xib */,
+				93FA1E1D1B9C3E12009965C8 /* AIContentView.swift */,
+				93FA1E1E1B9C3E12009965C8 /* AIContentView.xib */,
+				93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */,
+				93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */,
+				93FA1E211B9C3E12009965C8 /* AICustomerSwipeView.swift */,
+				93FA1E221B9C3E12009965C8 /* AICustomerSwipeView.xib */,
+				93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */,
+				93FA1E241B9C3E12009965C8 /* AIMediaView.swift */,
+				93FA1E251B9C3E12009965C8 /* AIMediaView.xib */,
+				93FA1E261B9C3E12009965C8 /* AIMenuActionView.swift */,
+				93FA1E271B9C3E12009965C8 /* AIMenuActionView.xib */,
+				93FA1E281B9C3E12009965C8 /* AIMenuTopView.swift */,
+				93FA1E291B9C3E12009965C8 /* AIMenuTopView.xib */,
+				93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */,
+				93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */,
+				93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */,
+				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
+				93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */,
+				93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */,
+				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
+				93FA1E311B9C3E12009965C8 /* AITopInfoView.swift */,
+				93FA1E321B9C3E12009965C8 /* AITopInfoView.xib */,
+				93FA1E331B9C3E12009965C8 /* AITopMsgView.swift */,
+				93FA1E341B9C3E12009965C8 /* AITopMsgView.xib */,
+				93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */,
+				93FA1E361B9C3E12009965C8 /* Seller */,
+				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
+				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
+				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
+				93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */,
+				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
+				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -481,7 +618,6 @@
 			children = (
 				93C33EFD1B9BEAFE007BF506 /* Utils */,
 				93A5A5951B9BD5E1001DE36D /* Application */,
-				93A5A5961B9BD5E1001DE36D /* Bridging */,
 				93A5A5971B9BD5E1001DE36D /* Libs */,
 				93A5A5981B9BD5E1001DE36D /* Models */,
 				93A5A5991B9BD5E1001DE36D /* Services */,
@@ -594,6 +730,21 @@
 			path = buyerCard;
 			sourceTree = "<group>";
 		};
+		93FA1E361B9C3E12009965C8 /* Seller */ = {
+			isa = PBXGroup;
+			children = (
+				93FA1E371B9C3E12009965C8 /* AISellerCell.h */,
+				93FA1E381B9C3E12009965C8 /* AISellerCell.m */,
+				93FA1E391B9C3E12009965C8 /* AISellerModel.h */,
+				93FA1E3A1B9C3E12009965C8 /* AISellerModel.m */,
+				93FA1E3B1B9C3E12009965C8 /* AISellerViewController.h */,
+				93FA1E3C1B9C3E12009965C8 /* AISellerViewController.m */,
+				93FA1E3D1B9C3E12009965C8 /* AISellingProgressBar.h */,
+				93FA1E3E1B9C3E12009965C8 /* AISellingProgressBar.m */,
+			);
+			path = Seller;
+			sourceTree = "<group>";
+		};
 		9EBD244A350E2B6E580DEF64 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,22 +824,32 @@
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
+				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
+				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
+				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
+				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
+				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
 				93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */,
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
+				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				93FA1D761B9C2DBE009965C8 /* UICustomerStoryboard.storyboard in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
 				93FA1D771B9C2DBE009965C8 /* UIHomeStoryboard.storyboard in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
+				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
+				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
+				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				93FA1D781B9C2DBE009965C8 /* UIMainStoryboard.storyboard in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				93C33EE71B9BDFC6007BF506 /* Storyboard.storyboard in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
+				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +909,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
+				93FA1E621B9C3E12009965C8 /* AISellerViewController.m in Sources */,
 				93FA1D9D1B9C2EA9009965C8 /* DSLCalendarDayView.m in Sources */,
 				93FA1E011B9C306E009965C8 /* AITagModel.swift in Sources */,
 				93C33F271B9C0F46007BF506 /* AIApplication.swift in Sources */,
@@ -755,14 +917,19 @@
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
+				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
+				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
+				93FA1E5B1B9C3E12009965C8 /* AITopInfoView.swift in Sources */,
 				93FA1DC61B9C2F0F009965C8 /* CurveModel.m in Sources */,
+				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
+				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
@@ -770,28 +937,44 @@
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
+				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
 				93C33F1D1B9BEAFE007BF506 /* KMDetailsPageView.m in Sources */,
 				93FA1DE31B9C302A009965C8 /* AIOrderDetailService.swift in Sources */,
+				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
+				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,
 				93FA1E001B9C306E009965C8 /* AITagFilterModel.swift in Sources */,
 				93C33F171B9BEAFE007BF506 /* AIButtonUtils.swift in Sources */,
+				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
+				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
+				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
+				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				93C33F1A1B9BEAFE007BF506 /* AITools.m in Sources */,
 				93FA1DC81B9C2F0F009965C8 /* UPLabel.m in Sources */,
 				93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */,
 				93FA1DE51B9C302A009965C8 /* AIServicesRequester.swift in Sources */,
 				93FA1DC41B9C2F0F009965C8 /* AIViews.m in Sources */,
+				93FA1E461B9C3E12009965C8 /* AICollectionTableViewCell.swift in Sources */,
+				93FA1E141B9C375A009965C8 /* Async.swift in Sources */,
 				93FA1DA01B9C2EA9009965C8 /* DSLCalendarMonthView.m in Sources */,
 				93C33F161B9BEAFE007BF506 /* AIAssignUtils.swift in Sources */,
 				93FA1D9E1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.m in Sources */,
 				93FA1DF81B9C306E009965C8 /* AIConnectToolModel.swift in Sources */,
+				93FA1E511B9C3E12009965C8 /* AIMenuActionView.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
+				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
+				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				93FA1E041B9C306E009965C8 /* SearchHistoryRecord.swift in Sources */,
+				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
 				93FA1DFB1B9C306E009965C8 /* AIFavoritesServicesModel.swift in Sources */,
+				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
+				93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */,
+				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93C33F1E1B9BEAFE007BF506 /* UIView+MaterialDesign.m in Sources */,
@@ -801,16 +984,29 @@
 				93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */,
 				93C33F201B9BEAFE007BF506 /* Player.swift in Sources */,
 				93C33F1B1B9BEAFE007BF506 /* AIUIViewUtils.swift in Sources */,
+				93FA1E5A1B9C3E12009965C8 /* AISwipeViewUtil.swift in Sources */,
+				93FA1E451B9C3E12009965C8 /* AICalendarViewController.swift in Sources */,
 				93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */,
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				93FA1DFC1B9C306E009965C8 /* AIModels.swift in Sources */,
 				93FA1DD51B9C2F4F009965C8 /* AICardView.m in Sources */,
+				93FA1E4C1B9C3E12009965C8 /* AICustomerSwipeView.swift in Sources */,
+				93FA1E191B9C375A009965C8 /* UINavigationBar+Awesome.m in Sources */,
+				93FA1E4F1B9C3E12009965C8 /* AIMediaView.swift in Sources */,
 				93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */,
+				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
+				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
+				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
 				93FA1DCB1B9C2F26009965C8 /* AOTag.m in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
+				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
 				93FA1DD91B9C3001009965C8 /* ContentsCellView.swift in Sources */,
+				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
+				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
+				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
+				93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,

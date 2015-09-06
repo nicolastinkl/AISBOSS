@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIMenuActionView" customModule="AITrans" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPZ-zl-WFQ" userLabel="Delete">
+                    <rect key="frame" x="538" y="14" width="53" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="WHp-W8-zoo"/>
+                        <constraint firstAttribute="width" constant="53" id="sZX-qd-KW2"/>
+                    </constraints>
+                    <state key="normal" image="item_button_delete">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="AaF-EB-Ymc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-Un-Lf6" userLabel="Expend">
+                    <rect key="frame" x="18" y="15" width="68" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="cui-Hd-cNe"/>
+                        <constraint firstAttribute="width" constant="68" id="jVz-Tj-gGQ"/>
+                    </constraints>
+                    <state key="normal" image="white-arrow">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="ktN-iK-xJl"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00M-oP-lDs" userLabel="Browse">
+                    <rect key="frame" x="438" y="14" width="53" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2he-vo-zQw"/>
+                        <constraint firstAttribute="width" constant="53" id="qUw-ch-EJd"/>
+                    </constraints>
+                    <state key="normal" image="item_button_book">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Z4U-Uk-dEa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-UD-8Kl" userLabel="Favorite">
+                    <rect key="frame" x="490" y="14" width="53" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Du1-hg-CHg"/>
+                        <constraint firstAttribute="width" constant="53" id="GJc-hK-ZFK"/>
+                    </constraints>
+                    <state key="normal" image="item_button_star">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="W38-ns-Xg1"/>
+                    </connections>
+                </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-z7-sxS" customClass="DesignableLabel" customModule="Spring">
+                    <rect key="frame" x="17" y="8" width="566" height="1"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="s8V-ru-AJM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_Line_bg" translatesAutoresizingMaskIntoConstraints="NO" id="H31-PK-zFo">
+                    <rect key="frame" x="10" y="8" width="580" height="1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="o8c-57-tKG"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="NPZ-zl-WFQ" firstAttribute="leading" secondItem="zEQ-UD-8Kl" secondAttribute="trailing" constant="-5" id="1Mz-gb-heK"/>
+                <constraint firstItem="t3A-z7-sxS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="1nq-93-tXk"/>
+                <constraint firstItem="zEQ-UD-8Kl" firstAttribute="top" secondItem="00M-oP-lDs" secondAttribute="top" id="2kg-bb-Z1F"/>
+                <constraint firstAttribute="trailing" secondItem="H31-PK-zFo" secondAttribute="trailing" constant="10" id="F1x-M4-dVy"/>
+                <constraint firstItem="WyI-Un-Lf6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="FJj-Nl-Kgs"/>
+                <constraint firstItem="zEQ-UD-8Kl" firstAttribute="top" secondItem="NPZ-zl-WFQ" secondAttribute="top" id="HK0-6I-bHC"/>
+                <constraint firstItem="zEQ-UD-8Kl" firstAttribute="leading" secondItem="00M-oP-lDs" secondAttribute="trailing" constant="-1" id="KLo-KA-WjP"/>
+                <constraint firstAttribute="trailing" secondItem="NPZ-zl-WFQ" secondAttribute="trailing" constant="9" id="NRp-yr-30O"/>
+                <constraint firstItem="H31-PK-zFo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="R8C-5U-A8W"/>
+                <constraint firstItem="t3A-z7-sxS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="VoB-Ad-Ojp"/>
+                <constraint firstItem="H31-PK-zFo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="n5j-2G-hh8"/>
+                <constraint firstItem="WyI-Un-Lf6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="nEi-JT-1vO"/>
+                <constraint firstAttribute="trailing" secondItem="t3A-z7-sxS" secondAttribute="trailing" constant="17" id="neZ-DN-Vpn"/>
+                <constraint firstItem="NPZ-zl-WFQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="zcj-hd-0dR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="btnBrowse" destination="00M-oP-lDs" id="TC9-FV-Oxv"/>
+                <outlet property="btnDelete" destination="NPZ-zl-WFQ" id="YMU-Cw-FbP"/>
+                <outlet property="btnExpend" destination="WyI-Un-Lf6" id="cYY-vR-q9b"/>
+                <outlet property="btnFavirote" destination="zEQ-UD-8Kl" id="OXo-N3-XJH"/>
+            </connections>
+            <point key="canvasLocation" x="432" y="360"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="item_Line_bg" width="1" height="1"/>
+        <image name="item_button_book" width="28" height="28"/>
+        <image name="item_button_delete" width="24" height="29"/>
+        <image name="item_button_star" width="30" height="29"/>
+        <image name="white-arrow" width="31" height="18"/>
+    </resources>
+</document>
