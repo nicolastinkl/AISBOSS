@@ -72,10 +72,6 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         }
     }
     
-    override init() {
-        super.init()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

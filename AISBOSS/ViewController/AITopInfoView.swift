@@ -12,7 +12,7 @@ import AISpring
 class AITopInfoView: SpringView {
     
     class func currentView()->AITopInfoView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AITopInfoView", owner: self, options: nil).first  as AITopInfoView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AITopInfoView", owner: self, options: nil).first  as! AITopInfoView
         selfView.Label_number.transform = CGAffineTransformMakeRotation(CGFloat(M_PI*0.03))
         return selfView
     }

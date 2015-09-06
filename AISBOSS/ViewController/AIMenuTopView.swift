@@ -32,17 +32,12 @@ class AIMenuTopView: UIView {
         delegate?.linkAction()
     }
     
-    override init() {
-        super.init()
-        //selector有冒号代表有参数
-        
-    }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         let cSelector : Selector = "closeMenuAction:"
-        var swipeGuesture = UISwipeGestureRecognizer(target: self, action: cSelector)
+        let swipeGuesture = UISwipeGestureRecognizer(target: self, action: cSelector)
         swipeGuesture.direction = UISwipeGestureRecognizerDirection.Up
         self.addGestureRecognizer(swipeGuesture)
     }
@@ -50,7 +45,7 @@ class AIMenuTopView: UIView {
 
     func closeMenuAction(sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.Up {
-            spring(0.5, {
+            spring(0.5, animations: {
                 //TODO: 以后要加height变化
                 //self.setTop(-self.height)
                 self.alpha = 0
@@ -62,7 +57,7 @@ class AIMenuTopView: UIView {
     
 
     class func currentView() ->AIMenuTopView {
-        var view = NSBundle.mainBundle().loadNibNamed("AIMenuTopView", owner: self, options: nil).last as AIMenuTopView
+        var view = NSBundle.mainBundle().loadNibNamed("AIMenuTopView", owner: self, options: nil).last as! AIMenuTopView
         
         return view
     }

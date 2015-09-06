@@ -46,7 +46,7 @@ class AICellIdentityCell:SwipeableCell {
     }
     
     @IBAction func tagAction(sender: AnyObject) {
-        let button =   sender as UIButton
+        _ =   sender as! UIButton
         signDelegate?.signTag(sender, parent: self)
     }
     
@@ -71,7 +71,7 @@ class UICellMultiStyle: UITableViewCell {
         if cellDisplayType ==  CommonCellBackgroundViewType.GroupLast{
             newFrame =  CGRectMake(10, 0, frame.width-20, 10)
         }
-        let bgView = AIEffectView(frame: newFrame, type: cellDisplayType,row:row)
+        //let bgView = AIEffectView(frame: newFrame, type: cellDisplayType,row:row)
         
         //self.backgroundView = bgView
         
@@ -100,7 +100,7 @@ class UICellMultiStyle: UITableViewCell {
     
     override func layoutSubviews() {
         
-        if var subView = self.backgroundView{
+        if let subView = self.backgroundView{
             
             let newFrame = CGRectMake(10, 0, self.contentView.frame.width-20, self.contentView.frame.height)
             subView.frame = newFrame
@@ -173,7 +173,7 @@ class UIActionTableViewCell: UICellMultiStyle {
     @IBAction func buttonClick(sender: AnyObject) {
         if delegate != nil {
             var type = ActionType.Unkonw
-            let element = sender as NSObject
+            let element = sender as! NSObject
             if element == btnExpend {
                 type = .Expend
             } else if element == btnDelete {

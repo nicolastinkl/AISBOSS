@@ -89,11 +89,11 @@ class AICustomerSwipeView: AIBaseSwipeView {
     }
     
     class func current() -> AICustomerSwipeView {
-        return NSBundle.mainBundle().loadNibNamed("AICustomerSwipeView", owner: self, options: nil).last as AICustomerSwipeView
+        return NSBundle.mainBundle().loadNibNamed("AICustomerSwipeView", owner: self, options: nil).last as! AICustomerSwipeView
         
     }
     
-    required override init(coder aDecoder: NSCoder) {
+    required  init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         initialSizeOfInfoPanel = size
@@ -156,7 +156,7 @@ class AICustomerSwipeView: AIBaseSwipeView {
         if scrollViewHeight < superHeight / 2.0 {
             barpoint = CGPointMake(0, scrollView.superview!.frame.midY)
         } else {
-            var bar: UIView = scrollView.subviews.last as UIView
+            var bar: UIView = scrollView.subviews.last as! UIView
             barpoint = CGPointMake(CGRectGetMidX(bar.frame), CGRectGetMidY(bar.frame))
             barpoint = scrollView.convertPoint(barpoint, toView: scrollView.superview)
         }
@@ -171,11 +171,11 @@ class AICustomerSwipeView: AIBaseSwipeView {
     }
     
     // MARK: Touch event
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         cancelAnimatedDistanceToDisapear()
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?)  {
         scheduleAnimatedDistanceToDisapear()
         
         if selectedBall != nil {
@@ -187,8 +187,8 @@ class AICustomerSwipeView: AIBaseSwipeView {
         }
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if event.allTouches() != nil {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)  {
+        if event!.allTouches() != nil {
             for touch in event.allTouches()! {
                 var touchCenter = touch.locationInView(panel)
                 
@@ -260,10 +260,10 @@ class AICustomerSwipeView: AIBaseSwipeView {
     }
     
     private func setupEvent() {
-        var longGesture = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        let longGesture = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         
         panel.addGestureRecognizer(longGesture)
-        var panGuest = UIPanGestureRecognizer(target: self, action: "handlePanGuest:")
+        let panGuest = UIPanGestureRecognizer(target: self, action: "handlePanGuest:")
         panel.addGestureRecognizer(panGuest)
     }
     
@@ -299,8 +299,8 @@ class AICustomerSwipeView: AIBaseSwipeView {
         underlyingRect.origin.y = contentOffset.y + ((contentOffset.y + contentInset.top) * ratio) + indicatorInsets.top
         
         if (underlyingRect.size.height < JTSScrollIndicator_MinIndicatorHeightWhenScrolling) {
-            var contentHeightWithoutLastFrame = contentHeightWithInsets - frameHeight;
-            var percentageScrolled = (contentOffset.y+contentInset.top) / contentHeightWithoutLastFrame;
+            let contentHeightWithoutLastFrame = contentHeightWithInsets - frameHeight;
+            let percentageScrolled = (contentOffset.y+contentInset.top) / contentHeightWithoutLastFrame;
             underlyingRect.origin.y -= (JTSScrollIndicator_MinIndicatorHeightWhenScrolling - underlyingRect.size.height) * percentageScrolled;
             underlyingRect.size.height = JTSScrollIndicator_MinIndicatorHeightWhenScrolling;
         }
