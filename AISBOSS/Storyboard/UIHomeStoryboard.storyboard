@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VbC-qu-GPi">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Snv-uv-O4w">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="VbC-qu-GPi" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gHW-lY-RJv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3HF-30-klf" kind="relationship" relationship="rootViewController" id="9Gv-mX-Rgf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3uM-UB-ODM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="501"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="5Lg-qQ-cjJ">
+            <objects>
+                <viewController storyboardIdentifier="UIHomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3HF-30-klf" customClass="UIHomeViewController" customModule="AITrans" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0fH-ok-xid"/>
+                        <viewControllerLayoutGuide type="bottom" id="GZs-Y9-UxE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mCx-hd-UTx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZp-hF-Fft" customClass="GBSlideOutToUnlockView">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerCircleRadius">
+                                        <real key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerCircleRadius">
+                                        <real key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerCircleColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerCircleColor">
+                                        <color key="value" white="0.66666666666666663" alpha="0.23000000000000001" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="draggableButtonBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="draggableImageTintColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="3HF-30-klf" id="poT-e3-k0p"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="rZp-hF-Fft" secondAttribute="centerY" id="8vS-rB-Yrc"/>
+                            <constraint firstItem="GZs-Y9-UxE" firstAttribute="top" secondItem="rZp-hF-Fft" secondAttribute="bottom" id="H3L-nE-kq2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rZp-hF-Fft" secondAttribute="trailing" id="J87-Sg-dVN"/>
+                            <constraint firstItem="GZs-Y9-UxE" firstAttribute="top" secondItem="rZp-hF-Fft" secondAttribute="bottom" id="Tfe-Ag-LQB"/>
+                            <constraint firstAttribute="centerX" secondItem="rZp-hF-Fft" secondAttribute="centerX" id="d3e-Ly-LmL"/>
+                            <constraint firstItem="rZp-hF-Fft" firstAttribute="leading" secondItem="mCx-hd-UTx" secondAttribute="leadingMargin" id="qf8-9Z-Rg1"/>
+                            <constraint firstItem="rZp-hF-Fft" firstAttribute="top" secondItem="0fH-ok-xid" secondAttribute="bottom" id="tNP-wP-I7A"/>
+                            <constraint firstItem="rZp-hF-Fft" firstAttribute="top" secondItem="0fH-ok-xid" secondAttribute="bottom" id="zz6-jH-KRi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="zz6-jH-KRi"/>
+                                <exclude reference="H3L-nE-kq2"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="xK1-nu-5Cz"/>
+                    <connections>
+                        <outlet property="unlockView" destination="rZp-hF-Fft" id="Zom-kd-bwh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HTt-Ei-Y1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="501"/>
+        </scene>
+    </scenes>
+</document>
