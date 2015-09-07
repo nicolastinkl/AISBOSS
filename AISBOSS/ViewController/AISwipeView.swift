@@ -38,7 +38,7 @@ class AISwipeView: AIBaseSwipeView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setSuperScrollView(self.scrollView)
+        
     }
     
     
@@ -109,6 +109,7 @@ class AISwipeView: AIBaseSwipeView {
         super.init(coder: aDecoder)
         initialSizeOfInfoPanel = size
         layer.cornerRadius = 2
+        //setSuperScrollView(self.scrollView)
     }
     
     func setSuperScrollView(scrollView: UIScrollView) {

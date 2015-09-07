@@ -37,7 +37,7 @@ class BallMoveRange {
         originFrame = ball.frame
         
         if leftBallFrame != nil {
-            var midPoint1 = midPoint(CGPointMake(ball.frame.midX, ball.frame.midY), point2: CGPointMake(leftBallFrame!.midX, leftBallFrame!.midY))
+            let midPoint1 = midPoint(CGPointMake(ball.frame.midX, ball.frame.midY), point2: CGPointMake(leftBallFrame!.midX, leftBallFrame!.midY))
             
             leftLine = Line(point1: circleOrigin, point2: midPoint1)
         } else {
@@ -45,7 +45,7 @@ class BallMoveRange {
         }
         
         if rightBallFrame != nil {
-            var midPoint2 = midPoint(CGPointMake(ball.frame.midX, ball.frame.midY), point2: CGPointMake(rightBallFrame!.midX, rightBallFrame!.midY))
+            let midPoint2 = midPoint(CGPointMake(ball.frame.midX, ball.frame.midY), point2: CGPointMake(rightBallFrame!.midX, rightBallFrame!.midY))
             
             rightLine = Line(point1: circleOrigin, point2: midPoint2)
         } else {
@@ -77,8 +77,8 @@ class BallMoveRange {
             tempIsIn = false
         }
         
-        var leftDis = leftLine.distanceToLine(touchPoint)
-        var rightDis = rightLine.distanceToLine(touchPoint)
+        _ = leftLine.distanceToLine(touchPoint)
+        _ = rightLine.distanceToLine(touchPoint)
         
         var leftEdgePoint: CGPoint?
         var rightEdgePoint: CGPoint?

@@ -22,7 +22,7 @@ class AIMediaView: SpringView {
     }
      
     class func currentView()->AIMediaView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AIMediaView", owner: self, options: nil).first  as! AIMediaView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AIMediaView", owner: self, options: nil).first  as! AIMediaView
         return selfView
     }
     

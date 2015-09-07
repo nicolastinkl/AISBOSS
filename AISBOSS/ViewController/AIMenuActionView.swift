@@ -19,7 +19,7 @@ class AIMenuActionView: SpringView {
     @IBOutlet weak var btnFavirote: UIButton!
     
     class func currentView()->AIMenuActionView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AIMenuActionView", owner: self, options: nil).first  as! AIMenuActionView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AIMenuActionView", owner: self, options: nil).first  as! AIMenuActionView
         return selfView
     }
     

@@ -10,7 +10,6 @@
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */; };
-		93C33EE71B9BDFC6007BF506 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C33EE61B9BDFC6007BF506 /* Storyboard.storyboard */; };
 		93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */; };
 		93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EEC1B9BEA75007BF506 /* CustomMethod.m */; };
 		93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EEE1B9BEA75007BF506 /* MarkupParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -152,9 +151,10 @@
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
+		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
 		93C33EE31B9BDF3D007BF506 /* AIVeris-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AIVeris-Bridging-Header.h"; sourceTree = "<group>"; };
 		93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93C33EE61B9BDFC6007BF506 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHttpEngine.swift; sourceTree = "<group>"; };
 		93C33EEB1B9BEA75007BF506 /* CustomMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMethod.h; sourceTree = "<group>"; };
 		93C33EEC1B9BEA75007BF506 /* CustomMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMethod.m; sourceTree = "<group>"; };
@@ -447,6 +447,8 @@
 		93A5A59B1B9BD5E1001DE36D /* Videos */ = {
 			isa = PBXGroup;
 			children = (
+				93B25A261B9D3C2200CD1FEB /* loading.mp4 */,
+				93B25A271B9D3C2200CD1FEB /* start.mp4 */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -455,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */,
-				93C33EE61B9BDFC6007BF506 /* Storyboard.storyboard */,
 				93FA1D731B9C2DBE009965C8 /* UICustomerStoryboard.storyboard */,
 				93FA1D741B9C2DBE009965C8 /* UIHomeStoryboard.storyboard */,
 				93FA1D751B9C2DBE009965C8 /* UIMainStoryboard.storyboard */,
@@ -847,7 +848,6 @@
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				93FA1D781B9C2DBE009965C8 /* UIMainStoryboard.storyboard in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
-				93C33EE71B9BDFC6007BF506 /* Storyboard.storyboard in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 			);

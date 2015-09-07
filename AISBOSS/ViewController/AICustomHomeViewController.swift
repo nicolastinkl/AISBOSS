@@ -108,11 +108,11 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
                 solution.service_cells = serviceDictinary["service_cells"] as? NSArray
                 
                 let serviceItemsDictinarys:NSArray = serviceDictinary["service_items"] as! NSArray
-                let serviceItems = [AICustomerServiceSolutionItemModel]()
+                var serviceItems = [AICustomerServiceSolutionItemModel]()
                 
                 for serviceItemDictionary in serviceItemsDictinarys {
                     
-                    let serviceItem = AICustomerServiceSolutionItemModel()
+                    var serviceItem = AICustomerServiceSolutionItemModel()
                     serviceItem.status = serviceItemDictionary["status"] as? Int
                     serviceItem.service_content = serviceItemDictionary["service_content"] as? String
                     serviceItem.provider_portrait_url = serviceItemDictionary["provider_portrait_url"] as? String

@@ -57,7 +57,7 @@ class AIMenuTopView: UIView {
     
 
     class func currentView() ->AIMenuTopView {
-        var view = NSBundle.mainBundle().loadNibNamed("AIMenuTopView", owner: self, options: nil).last as! AIMenuTopView
+        let view = NSBundle.mainBundle().loadNibNamed("AIMenuTopView", owner: self, options: nil).last as! AIMenuTopView
         
         return view
     }
