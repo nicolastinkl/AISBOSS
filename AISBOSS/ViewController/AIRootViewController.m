@@ -7,7 +7,7 @@
 //
 
 #import "AIRootViewController.h"
-
+#import "AISellerViewController.h"
 
 @interface AIRootViewController ()
 {
@@ -23,13 +23,13 @@
 @end
 
 @implementation AIRootViewController
- 
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self makeChildViewControllers];
-    //[self startOpenningAnimation];
+//    [self startOpenningAnimation];
     
 }
 
@@ -39,14 +39,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - Method
 
@@ -74,15 +74,29 @@
     [self.upDirectionViewController didMoveToParentViewController:self];
     
     
+    // down
+    AISellerViewController *sellerViewController = [[AISellerViewController alloc] init];
+    [self addChildViewController:sellerViewController];
+    self.downDirectionViewController = sellerViewController;
+    [sellerViewController didMoveToParentViewController:self];
+    
+    // left
+    
+    storyBoard=[UIStoryboard storyboardWithName:@"UITimeLineStoryboard" bundle:nil];
+    self.leftDirectionViewController = [storyBoard instantiateInitialViewController];
+    [self addChildViewController:self.leftDirectionViewController];
+    [self.leftDirectionViewController didMoveToParentViewController:self];
+    
+    // default
     [self.view addSubview:self.centerTapViewController.view];
     _currentViewController = self.centerTapViewController;
 }
 
 - (void)didOperatedWithDirection:(NSInteger)direction// 0:center 1:up 2:down 3:lef 4:right
 {
-
+    
     switch (direction) {
-        case 0:
+        case 0: //0:center
         {
             if (_currentViewController == self.centerTapViewController) {
                 return;
@@ -92,7 +106,7 @@
             }];
         }
             break;
-        case 1:
+        case 1: // 1:up
         {
             if (_currentViewController == self.upDirectionViewController) {
                 return;
@@ -102,14 +116,28 @@
             }];
         }
             break;
-        case 2:
-            
+        case 2: // 2:down
+        {
+            if (_currentViewController == self.downDirectionViewController) {
+                return;
+            }
+            [self transitionFromViewController:_currentViewController toViewController:self.downDirectionViewController duration:0 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:^(BOOL finished) {
+                _currentViewController = self.downDirectionViewController;
+            }];
+        }
             break;
-        case 3:
-            
+        case 3: // 3:lef
+        {
+            if (_currentViewController == self.leftDirectionViewController) {
+                return;
+            }
+            [self transitionFromViewController:_currentViewController toViewController:self.leftDirectionViewController duration:0 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:^(BOOL finished) {
+                _currentViewController = self.leftDirectionViewController;
+            }];
+        }
             break;
-        case 4:
-            
+        case 4: // 4:right
+            //时间轴
             break;
             
         default:

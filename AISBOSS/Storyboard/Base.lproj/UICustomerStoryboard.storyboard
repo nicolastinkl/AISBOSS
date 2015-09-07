@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nhB-3Q-p0m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nhB-3Q-p0m">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,13 +20,23 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholebackground" translatesAutoresizingMaskIntoConstraints="NO" id="sxs-Zi-Pgm">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="bg_top_3" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-1B-CrD">
-                                <rect key="frame" x="-4" y="20" width="608" height="56"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="bg_top_3" translatesAutoresizingMaskIntoConstraints="NO" id="Hkq-1B-CrD">
+                                <rect key="frame" x="0.0" y="20" width="608" height="56"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="73t-FZ-dDw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4nv-MZ-sQh">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="ezU-RH-6xy"/>
+                                <cells/>
+                            </collectionView>
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="73t-FZ-dDw">
                                 <rect key="frame" x="-4" y="76" width="608" height="44"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
@@ -34,8 +45,9 @@
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yym-Fx-UDC" userLabel="searchButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yym-Fx-UDC" userLabel="searchButton">
                                 <rect key="frame" x="46" y="32" width="35" height="32"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="2LQ-VU-TYV"/>
@@ -46,8 +58,9 @@
                                 </state>
                                 <state key="highlighted" image="top_search_icon_click"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfO-xM-Bjk" userLabel="addButton">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfO-xM-Bjk" userLabel="addButton">
                                 <rect key="frame" x="519" y="32" width="35" height="32"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="ABE-6E-lj8"/>
                                     <constraint firstAttribute="height" constant="32" id="tre-LP-vmW"/>
@@ -62,6 +75,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-Pr-tXb" userLabel="logoButton">
                                 <rect key="frame" x="252" y="8" width="95" height="92"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="At8-gb-hC1"/>
                                     <constraint firstAttribute="width" constant="95" id="MeN-1v-2oI"/>
@@ -74,13 +88,8 @@
                                     <action selector="logoAction:" destination="nhB-3Q-p0m" eventType="touchUpInside" id="gQg-iN-LQJ"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4nv-MZ-sQh">
-                                <rect key="frame" x="1" y="120" width="598" height="480"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="O7Z-oa-UCT"/>
-                                <cells/>
-                            </collectionView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.078431372549019607" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="kfO-xM-Bjk" secondAttribute="trailing" constant="30" id="2FZ-yW-71l"/>
@@ -96,7 +105,7 @@
                             <constraint firstItem="mCc-Hp-9z5" firstAttribute="top" secondItem="4nv-MZ-sQh" secondAttribute="bottom" id="Rkc-Il-aDl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hkq-1B-CrD" secondAttribute="trailing" constant="-20" id="UaU-1B-YgV"/>
                             <constraint firstItem="sxs-Zi-Pgm" firstAttribute="width" secondItem="opi-Gy-Vm6" secondAttribute="width" id="VAg-Lc-vRG"/>
-                            <constraint firstItem="4nv-MZ-sQh" firstAttribute="leading" secondItem="opi-Gy-Vm6" secondAttribute="leadingMargin" constant="-15" id="XeU-15-7Sl"/>
+                            <constraint firstItem="4nv-MZ-sQh" firstAttribute="leading" secondItem="opi-Gy-Vm6" secondAttribute="leadingMargin" id="XeU-15-7Sl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="73t-FZ-dDw" secondAttribute="trailing" constant="-20" id="Yu3-p9-QWS"/>
                             <constraint firstItem="l9N-Pr-tXb" firstAttribute="top" secondItem="9U9-xi-XeE" secondAttribute="bottom" constant="-12" id="ZZz-Ef-EYf"/>
                             <constraint firstItem="l9N-Pr-tXb" firstAttribute="top" secondItem="9U9-xi-XeE" secondAttribute="bottom" id="a2F-Qp-tOl"/>
@@ -104,7 +113,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sxs-Zi-Pgm" secondAttribute="trailing" constant="-16" id="cG6-uQ-lLK"/>
                             <constraint firstAttribute="centerY" secondItem="sxs-Zi-Pgm" secondAttribute="centerY" id="dOI-ZS-2bj"/>
                             <constraint firstItem="kfO-xM-Bjk" firstAttribute="top" secondItem="9U9-xi-XeE" secondAttribute="bottom" constant="12" id="dVl-uC-oNa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4nv-MZ-sQh" secondAttribute="trailing" constant="-15" id="fmJ-DA-5UX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4nv-MZ-sQh" secondAttribute="trailing" constant="-16" id="ePH-I5-3mN"/>
+                            <constraint firstItem="4nv-MZ-sQh" firstAttribute="leading" secondItem="opi-Gy-Vm6" secondAttribute="leadingMargin" constant="-16" id="fe6-GT-uo2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4nv-MZ-sQh" secondAttribute="trailing" id="fmJ-DA-5UX"/>
                             <constraint firstAttribute="centerY" secondItem="kfO-xM-Bjk" secondAttribute="centerY" constant="266" id="gjX-bD-XQQ"/>
                             <constraint firstItem="73t-FZ-dDw" firstAttribute="top" secondItem="Hkq-1B-CrD" secondAttribute="bottom" id="nKB-Kk-Von"/>
                             <constraint firstItem="Yym-Fx-UDC" firstAttribute="leading" secondItem="opi-Gy-Vm6" secondAttribute="leadingMargin" constant="30" id="rdN-ty-fzw"/>
@@ -119,6 +130,8 @@
                                 <exclude reference="cG6-uQ-lLK"/>
                                 <exclude reference="srN-Or-CTI"/>
                                 <exclude reference="COI-lY-hWi"/>
+                                <exclude reference="XeU-15-7Sl"/>
+                                <exclude reference="fmJ-DA-5UX"/>
                                 <exclude reference="2eF-fO-v6v"/>
                                 <exclude reference="a2F-Qp-tOl"/>
                                 <exclude reference="gjX-bD-XQQ"/>
