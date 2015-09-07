@@ -16,7 +16,7 @@ import Cartography
 *  AI2020OS Application Paramters
 */
 struct AIApplication{
-
+    
     // MARK: LEANCLOUD APPKEY
     internal static let AVOSCLOUDID  = "xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk"
     
@@ -42,6 +42,7 @@ struct AIApplication{
             static let AIConnectMeunStoryboard      = "AIConnectMeunStoryboard"
             static let AITagFilterStoryboard        = "AITagFilterStoryboard"
             static let AIVideoStoryboard            = "AIVideoStoryboard"
+            static let UIMainStoryboard             = "UIMainStoryboard"
         }
         
         // MARK: View
@@ -53,7 +54,7 @@ struct AIApplication{
             static let AICalendarViewController     = "AICalendarViewController"
             static let AIComponentChoseViewController   = "AIComponentChoseViewController"
             static let AISearchServiceCollectionViewController = "AISearchServiceCollectionViewController"
-
+            
         }
         
         struct CellIdentifiers {
@@ -71,7 +72,11 @@ struct AIApplication{
             static let AISDSubDetailCell    = "AISDSubDetailCell"
             static let AISDFightCell        = "AISDFightCell"
             static let AISDParamsCell       = "AISDParamsCell"
-          
+            
+            // MARK: TIME LINE
+            static let AITIMELINESDTimesViewCell        = "AITIMELINESDTimesViewCell"
+            static let AITIMELINESDContentViewCell      = "AITIMELINESDContentViewCell"
+            
             
         }
         
@@ -91,7 +96,7 @@ struct AIApplication{
             static let AITabelViewMenuView  = "AITabelViewMenuView"
             static let AICalendarViewController =   "AICalendarViewController"
             static let AIScanViewController = "AIScanViewController"
-
+            
         }
     }
     
@@ -135,7 +140,7 @@ struct AIApplication{
         static let AIFUWUTUIJISNID = "556c0acce4b0941996254a49"     //服务推荐
         static let AITUIKUAN = "556c0b8fe4b0941996254f8f"           //退款通知
         static let AIXITONG = "556c0c06e4b0941996255223"            //系统通知
-    }    
+    }
     
     // MARK: The Application preferorm
     internal func SendAction(functionName:String,ownerName:AnyObject){
@@ -143,13 +148,13 @@ struct AIApplication{
         *  @author tinkl, 15-04-22 16:04:07
         *
         *   how to use it ?
-            SendAction("minimizeView:", ownerName: self)
+        SendAction("minimizeView:", ownerName: self)
         */
         UIApplication.sharedApplication().sendAction(Selector(functionName), to: nil, from: ownerName, forEvent: nil)
     }
     
     /*!
-        Application hook viewdidload
+    Application hook viewdidload
     */
     static func hookViewDidLoad(){
         swizzlingMethod(UIViewController.self,
@@ -158,7 +163,7 @@ struct AIApplication{
     }
     
     /*!
-        Application hookViewDesLoad
+    Application hookViewDesLoad
     */
     static func hookViewWillAppear(){
         swizzlingMethod(UIViewController.self,
@@ -185,15 +190,15 @@ struct AIApplication{
             loadingXibView.hidden = false
         }else
         {
-//            let unreadView = AIMessageUnReadView.currentView() as AIMessageUnReadView
-//            UIApplication.sharedApplication().keyWindow!.addSubview(unreadView)
-//            unreadView.tag = AIApplication.AIViewTags.AIMessageUnReadViewTag            
-//            layout(unreadView) { view in
-//                view.width  == 80
-//                view.height == 74
-//                view.top >= view.superview!.top
-//                view.right >= view.superview!.right+10
-//            }
+            //            let unreadView = AIMessageUnReadView.currentView() as AIMessageUnReadView
+            //            UIApplication.sharedApplication().keyWindow!.addSubview(unreadView)
+            //            unreadView.tag = AIApplication.AIViewTags.AIMessageUnReadViewTag
+            //            layout(unreadView) { view in
+            //                view.width  == 80
+            //                view.height == 74
+            //                view.top >= view.superview!.top
+            //                view.right >= view.superview!.right+10
+            //            }
         }
         
     }
@@ -205,11 +210,11 @@ struct AIApplication{
     }
     
     static func pushViewController(view:UIViewController){
-        //let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        if let rootViewController = appDelegate.rootNavigationController{
-//            rootViewController.pushViewController(view, animated: true)
-//        }
-
+        //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //        if let rootViewController = appDelegate.rootNavigationController{
+        //            rootViewController.pushViewController(view, animated: true)
+        //        }
+        
     }
     
     static func shareAction(url:String){

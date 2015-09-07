@@ -58,6 +58,8 @@ struct AIHttpEngine{
         case DelContentFromFavorite
         // 修改收藏内容星表
         case ModifyFavoriteFlag
+        // 提交订单
+        case SubmitOrder
 
         var description: String {
             switch self {
@@ -75,6 +77,7 @@ struct AIHttpEngine{
             case .QueryCollectedContents: return "/sboss/queryCollectedContents"
             case .DelContentFromFavorite: return "/sboss/delContentFromFavorite"
             case .ModifyFavoriteFlag: return "/sboss/modifyFavoriteFlag"
+            case .SubmitOrder: return "/sboss/submitOrder"
             }
         }
     }
@@ -83,7 +86,7 @@ struct AIHttpEngine{
         print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
 
         let encoding = AINetworking.ParameterEncoding.JSON
-        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["":""]).responseJSON { (_, _, JSON) -> Void in
+        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (_, _, JSON) -> Void in
             
             let JSONResult:Result<AnyObject> = JSON
             

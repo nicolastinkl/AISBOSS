@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Amy Copper</string>
+		<key>MessageNum</key>
+		<string>3</string>
+		<key>GoodsPrice</key>
+		<string>$80</string>
+		<key>Timestamp</key>
+		<string>15:30,Aug 8th</string>
+		<key>Location</key>
+		<string>65 Main Street,Room 302 Edmonton</string>
+		<key>ButtonType</key>
+		<string>0</string>
+		<key>Progress</key>
+		<dict>
+			<key>Schedule</key>
+			<string>Contect Customer</string>
+			<key>Indicator</key>
+			<string>Seller_Warning</string>
+			<key>Percent</key>
+			<string>30</string>
+		</dict>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Yuka</string>
+			<key>GoodsClass</key>
+			<string>Fitness Plan - </string>
+			<key>GoodsName</key>
+			<string>Heat Yoga Class</string>
+		</dict>
+		<key>ColorType</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Tate Walker</string>
+		<key>GoodsPrice</key>
+		<string>$199</string>
+		<key>Timestamp</key>
+		<string>09:00,Aug 9th</string>
+		<key>Location</key>
+		<string>Red Horse Club</string>
+		<key>ButtonType</key>
+		<string>4</string>
+		<key>Progress</key>
+		<dict>
+			<key>Schedule</key>
+			<string>Purchase Tack &amp; Equipment</string>
+			<key>Percent</key>
+			<string>15</string>
+		</dict>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Horse</string>
+			<key>GoodsClass</key>
+			<string>Equestrian Coaching - </string>
+			<key>GoodsName</key>
+			<string>Partner Training</string>
+		</dict>
+		<key>ColorType</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Alison Lee</string>
+		<key>MessageNum</key>
+		<string>1</string>
+		<key>GoodsPrice</key>
+		<string>$65</string>
+		<key>Timestamp</key>
+		<string>19:00,Aug 5th</string>
+		<key>Location</key>
+		<string>To be confirmed</string>
+		<key>ButtonType</key>
+		<string>1</string>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Yuka</string>
+			<key>GoodsClass</key>
+			<string>Fitness Plan - </string>
+			<key>GoodsName</key>
+			<string>Pilates</string>
+		</dict>
+		<key>ColorType</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Mary Clark</string>
+		<key>GoodsPrice</key>
+		<string>$148</string>
+		<key>Timestamp</key>
+		<string>To be confirmed</string>
+		<key>Location</key>
+		<string>To be confirmed</string>
+		<key>ButtonType</key>
+		<string>1</string>
+		<key>Progress</key>
+		<dict>
+			<key>Schedule</key>
+			<string>Contect Customer</string>
+			<key>Indicator</key>
+			<string>Seller_Warning</string>
+			<key>Percent</key>
+			<string>80</string>
+		</dict>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Fitness</string>
+			<key>GoodsClass</key>
+			<string>Fitness Plan - </string>
+			<key>GoodsName</key>
+			<string>Fitness Plan Making</string>
+		</dict>
+		<key>ColorType</key>
+		<string>2</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Podcast</string>
+		<key>GoodsPrice</key>
+		<string>Free</string>
+		<key>SellerIcons</key>
+		<array>
+			<string>Seller_Image1</string>
+			<string>Seller_Image2</string>
+		</array>
+		<key>Timestamp</key>
+		<string>2nd - Aug 4th</string>
+		<key>Location</key>
+		<string>To be confirmed</string>
+		<key>ButtonType</key>
+		<string>3</string>
+		<key>Progress</key>
+		<dict>
+			<key>Schedule</key>
+			<string>Start Recording</string>
+			<key>Percent</key>
+			<string>10</string>
+		</dict>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Mic</string>
+			<key>GoodsClass</key>
+			<string>Seminar</string>
+			<key>GoodsName</key>
+			<string>Nutrition,Mentality &amp; Excercise</string>
+		</dict>
+		<key>ColorType</key>
+		<string>0</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Jimmy Falon</string>
+		<key>MessageNum</key>
+		<string>6</string>
+		<key>GoodsPrice</key>
+		<string>$148</string>
+		<key>SellerIcons</key>
+		<array>
+			<string>Seller_Image3</string>
+			<string>Seller_Image4</string>
+			<string>Seller_Image5</string>
+		</array>
+		<key>Timestamp</key>
+		<string>14:00,Aug 2th</string>
+		<key>Location</key>
+		<string>Fifth Avenue</string>
+		<key>ButtonType</key>
+		<string>2</string>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Fitness</string>
+			<key>GoodsClass</key>
+			<string>Bodybuilding - </string>
+			<key>GoodsName</key>
+			<string>Semi-pro Program</string>
+		</dict>
+		<key>ColorType</key>
+		<string>1</string>
+	</dict>
+	<dict>
+		<key>SellerIcon</key>
+		<string>Seller_Icon</string>
+		<key>SellerName</key>
+		<string>Amy Copper</string>
+		<key>MessageNum</key>
+		<string>3</string>
+		<key>GoodsPrice</key>
+		<string>$80</string>
+		<key>SellerIcons</key>
+		<array>
+			<string>Seller_Image1</string>
+			<string>Seller_Image2</string>
+		</array>
+		<key>Timestamp</key>
+		<string>15:30,Aug 8th</string>
+		<key>Location</key>
+		<string>65 Main Street,Room 302 Edmonton</string>
+		<key>ButtonType</key>
+		<string>0</string>
+		<key>Progress</key>
+		<dict>
+			<key>Schedule</key>
+			<string>Contect Customer</string>
+			<key>Indicator</key>
+			<string>Seller_Warning</string>
+			<key>Percent</key>
+			<string>60</string>
+		</dict>
+		<key>Goods</key>
+		<dict>
+			<key>GoodsIcon</key>
+			<string>Seller_Yuka</string>
+			<key>GoodsClass</key>
+			<string>Fitness Plan - </string>
+			<key>GoodsName</key>
+			<string>Heat Yoga Class</string>
+		</dict>
+		<key>ColorType</key>
+		<string>1</string>
+	</dict>
+</array>
+</plist>

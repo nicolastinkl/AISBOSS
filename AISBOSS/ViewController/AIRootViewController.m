@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     [self makeChildViewControllers];
-    [self startOpenningAnimation];
+    //[self startOpenningAnimation];
     
 }
 

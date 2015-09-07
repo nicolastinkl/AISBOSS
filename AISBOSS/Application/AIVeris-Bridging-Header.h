@@ -46,3 +46,17 @@
 #import "AICardView.h"
 
 
+#import "WeiboSDK.h"
+
+#import "AIViews.h"
+
+#import "AIShareViewController.h"
+
+
+#import "AIWeiboData.h"
+
+#import "AIMessage.h"
+
+#import "AIMessageWrapper.h"
+
+#import "AINetEngine.h"
