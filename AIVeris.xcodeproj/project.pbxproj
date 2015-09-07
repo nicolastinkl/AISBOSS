@@ -14,6 +14,7 @@
 		930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */; };
 		930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A261B9D3C2200CD1FEB /* loading.mp4 */; };
 		930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A271B9D3C2200CD1FEB /* start.mp4 */; };
+		930B27291B9D94CB0011EE73 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 930B27281B9D94CB0011EE73 /* README.md */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -198,6 +199,7 @@
 		930B271D1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271F1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIMainStoryboard.storyboard; sourceTree = "<group>"; };
 		930B27211B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UITimeLineStoryboard.storyboard; sourceTree = "<group>"; };
+		930B27281B9D94CB0011EE73 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
 		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 		93A5A59A1B9BD5E1001DE36D /* Soureces */ = {
 			isa = PBXGroup;
 			children = (
+				930B27281B9D94CB0011EE73 /* README.md */,
 				93B25A281B9D78B000CD1FEB /* Resources */,
 				93A5A59B1B9BD5E1001DE36D /* Videos */,
 			);
@@ -1241,6 +1244,7 @@
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
+				930B27291B9D94CB0011EE73 /* README.md in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
