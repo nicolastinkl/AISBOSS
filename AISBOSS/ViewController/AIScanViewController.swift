@@ -35,7 +35,11 @@ class AIScanViewController: UIViewController {
     
     private var curveView: CurveView?
     
+    
     @IBOutlet weak var delButton: UIButton!
+    @IBOutlet weak var revocationButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     
     private var _editting:Bool = false
     
@@ -222,7 +226,7 @@ class AIScanViewController: UIViewController {
             
             let stringHereInt = (stringHere as! String).toInt() ?? 0
             
-            let content = self.tagString[stringHereInt]
+            _ = self.tagString[stringHereInt]
             let pointImageView = self.currentPointImageView?.objectAtIndex(stringHereInt) as! UIImageView
             
             let hideLabel =  currentLabelArray![stringHereInt]

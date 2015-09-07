@@ -420,7 +420,7 @@ extension UITransViewController: SwipeableCellDelegate{
             
             let veiwTagsMore = (cell as! AICellIdentityCell).view_Content.viewWithTag(5)
             
-            let button = veiwTagsMore?.viewWithTag(viewtag) as! DesignableButton
+            let button = veiwTagsMore?.viewWithTag(viewtag) as! UIButton
             
             tagPreButton = button //Cache ..
             
