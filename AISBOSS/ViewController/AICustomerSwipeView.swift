@@ -98,9 +98,10 @@ class AICustomerSwipeView: AIBaseSwipeView {
         
         initialSizeOfInfoPanel = size
         layer.cornerRadius = 2
+        self.setSspScrollView(self.scrollView)
     }
     
-    func setScrollView(scrollView: UIScrollView) {
+    func setSspScrollView(scrollView: UIScrollView) {
         
         
         let windowFrame = scrollView.superview!.frame
@@ -156,7 +157,7 @@ class AICustomerSwipeView: AIBaseSwipeView {
         if scrollViewHeight < superHeight / 2.0 {
             barpoint = CGPointMake(0, scrollView.superview!.frame.midY)
         } else {
-            var bar: UIView = scrollView.subviews.last as! UIView
+            let bar: UIView = scrollView.subviews.last!
             barpoint = CGPointMake(CGRectGetMidX(bar.frame), CGRectGetMidY(bar.frame))
             barpoint = scrollView.convertPoint(barpoint, toView: scrollView.superview)
         }
@@ -188,9 +189,10 @@ class AICustomerSwipeView: AIBaseSwipeView {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?)  {
-        if event!.allTouches() != nil {
-            for touch in event.allTouches()! {
-                var touchCenter = touch.locationInView(panel)
+        
+        if let eventArray = event!.allTouches(){
+            for touch in eventArray{
+                let touchCenter = touch.locationInView(panel)
                 
                 selectedBall = nil
                 

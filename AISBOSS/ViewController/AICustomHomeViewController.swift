@@ -55,7 +55,7 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
 
         swipeView = AICustomerSwipeView.current()
         swipeView.delegate = self
-        swipeView.setScrollView(collectionView)
+        swipeView.setSspScrollView(collectionView)
         
 //        collectionView.registerClass(AICustomerCollectionCellView.self, forCellWithReuseIdentifier: cellIdentify)
 
@@ -63,12 +63,12 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
         tempCollectionData = buildFakeData()
         
         
-        var searchBackImageDefault = UIImage(named: "search_field_default")
-        var searchBackImageClicked = UIImage(named: "search_field_clicked")
+//        let searchBackImageDefault = UIImage(named: "search_field_default")
+//        let searchBackImageClicked = UIImage(named: "search_field_clicked")
         
         //set searchbar textfield
-        var string = "_searchField"
-        var txfSearchField = searchBar.valueForKey(string) as UITextField
+        let string = "_searchField"
+        let txfSearchField = searchBar.valueForKey(string) as! UITextField
         txfSearchField.backgroundColor = UIColor.lightGrayColor()
         
 
@@ -82,7 +82,7 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewWaterfallLayout!, heightForItemAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         let cellData = tempCollectionData![indexPath.item]
         
-        var cardView:AICardView = AICardView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2 - 12, 0), cards: cellData.service_cells);
+        let cardView:AICardView = AICardView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2 - 12, 0), cards: cellData.service_cells! as [AnyObject]);
         
         let cellHeight:CGFloat = cardView.frame.size.height + self.collectionFixHeight
         return cellHeight
@@ -91,8 +91,8 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
     func buildFakeData() -> [AICustomerServiceSolutionModel] {
         
         if collectionData == nil {
-            var url = NSBundle.mainBundle().URLForResource("collectionData", withExtension: "plist")
-            var serviceDictionariesArray = NSArray(contentsOfURL: url!)
+            let url = NSBundle.mainBundle().URLForResource("collectionData", withExtension: "plist")
+            let serviceDictionariesArray = NSArray(contentsOfURL: url!)
             collectionData = [AICustomerServiceSolutionModel]()
             
             for serviceDictinary in serviceDictionariesArray! {
@@ -107,12 +107,12 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
                 solution.service_flag = serviceDictinary["service_flag"] as? Int
                 solution.service_cells = serviceDictinary["service_cells"] as? NSArray
                 
-                var serviceItemsDictinarys:NSArray = serviceDictinary["service_items"] as NSArray
-                var serviceItems = [AICustomerServiceSolutionItemModel]()
+                let serviceItemsDictinarys:NSArray = serviceDictinary["service_items"] as! NSArray
+                let serviceItems = [AICustomerServiceSolutionItemModel]()
                 
                 for serviceItemDictionary in serviceItemsDictinarys {
                     
-                    var serviceItem = AICustomerServiceSolutionItemModel()
+                    let serviceItem = AICustomerServiceSolutionItemModel()
                     serviceItem.status = serviceItemDictionary["status"] as? Int
                     serviceItem.service_content = serviceItemDictionary["service_content"] as? String
                     serviceItem.provider_portrait_url = serviceItemDictionary["provider_portrait_url"] as? String
@@ -143,7 +143,7 @@ extension AICustomHomeViewController: UICollectionViewDataSource,UICollectionVie
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentify, forIndexPath: indexPath) as AICustomerCollectionCellView
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentify, forIndexPath: indexPath) as! AICustomerCollectionCellView
         let cellData = tempCollectionData[indexPath.item]
         //bind data
         cell.serviceName.text = cellData.service_name

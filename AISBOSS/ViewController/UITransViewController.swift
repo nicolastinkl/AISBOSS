@@ -34,8 +34,8 @@ class UITransViewController: UIViewController {
     // MARK: - viewController variables
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var swipeView: SpringView!
-     
+//    @IBOutlet weak var swipeView: SpringView!
+    
     @IBOutlet weak var closeImage: UIImageView!
 
     @IBOutlet weak var videoView: SpringView!
@@ -78,6 +78,10 @@ class UITransViewController: UIViewController {
     private var tagPreButton:UIButton?
     
     // MARK: VAR
+    var swipeView:AISwipeView = {
+        return  AISwipeView.current()
+        }()
+    
     var topMenuDiyView:AIMenuTopView = {
             return AIMenuTopView.currentView()
         }()
@@ -92,14 +96,13 @@ class UITransViewController: UIViewController {
         tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        swipeView = AISwipeView.current()
-        swipeView.delegate = self
-        
+        //self.swipeView = AISwipeView.current()
+        self.swipeView.delegate = self
 //        indicator = JTSScrollIndicator(scrollView: tableView)
 //        indicator.userInteractionEnabled = true
 //        indicator.backgroundColor = UIColor.clearColor()
         
-        swipeView.setScrollView(tableView)
+        self.swipeView.setSuperScrollView(tableView)
 
         loadContentData()
         
@@ -122,11 +125,11 @@ class UITransViewController: UIViewController {
         
         
         localCode({
-            let labelBg = self.tableView.tableHeaderView?.viewWithTag(1) as UILabel
+            let labelBg = self.tableView.tableHeaderView?.viewWithTag(1) as! UILabel
             labelBg.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             
         
-            let labelBg2 = self.tableView.tableFooterView?.viewWithTag(1) as UILabel
+            let labelBg2 = self.tableView.tableFooterView?.viewWithTag(1) as! UILabel
             labelBg2.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             
         })
@@ -157,7 +160,7 @@ class UITransViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.interactivePopGestureRecognizer.delegate = nil
+        self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
         
     }
     
@@ -173,7 +176,7 @@ class UITransViewController: UIViewController {
     
     private func showNextViewController()
     {
-        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as AIScanViewController
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
         self.showViewController(viewController, sender: self)
     }
     
@@ -284,7 +287,8 @@ class UITransViewController: UIViewController {
             
         } else if result.err != nil {
             view.showErrorView()
-            SCLAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
+
+            AIAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
         }
     }
     
@@ -309,7 +313,7 @@ class UITransViewController: UIViewController {
             
         } else if result.err != nil {
             view.showErrorView()
-            SCLAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
         }
     }
     
@@ -371,9 +375,9 @@ extension UITransViewController: UIScrollViewDelegate {
     
     // MARK: - Helper methods
     func setIndexNumber() {
-        var bar: UIView = tableView.subviews.last as UIView
+        let bar: UIView = tableView.subviews.last!
         
-        var point = CGPointMake(CGRectGetMidX(bar.frame), CGRectGetMidY(bar.frame))
+        let point = CGPointMake(CGRectGetMidX(bar.frame), CGRectGetMidY(bar.frame))
         
         if let indexPath = self.tableView.indexPathForRowAtPoint(point) {
             swipeView.label_number.text = "\(indexPath.section + 1)"
@@ -386,7 +390,7 @@ extension UITransViewController: SwipeableCellDelegate{
     
     func cellDidAimationFrame(position: CGFloat, cell: UITableViewCell!) {
         
-        let superCell =  cell as AICellIdentityCell
+        let superCell =  cell as! AICellIdentityCell
         if superCell.view_Content.left == 8.0 {
             superCell.backgroundColor = UIColor.clearColor()
         }else{
@@ -414,13 +418,13 @@ extension UITransViewController: SwipeableCellDelegate{
                 
             }
             
-            let veiwTagsMore = (cell as AICellIdentityCell).view_Content.viewWithTag(5) as UIView?
+            let veiwTagsMore = (cell as! AICellIdentityCell).view_Content.viewWithTag(5)
             
-            let button = veiwTagsMore?.viewWithTag(viewtag) as DesignableButton
+            let button = veiwTagsMore?.viewWithTag(viewtag) as! DesignableButton
             
             tagPreButton = button //Cache ..
             
-            spring(0.3, {
+            spring(0.3, animations: {
                 button.setBackgroundImage(UIImage(named: "tags_select"), forState: UIControlState.Normal)
             })
         }
@@ -433,13 +437,13 @@ extension UITransViewController: SwipeableCellDelegate{
     
     func cellDidOpen(cell: UITableViewCell!) {
         //self.tableView.scrollEnabled = false
-        let superCell =  cell as AICellIdentityCell
+        let superCell =  cell as! AICellIdentityCell
         
         superCell.view_Tags.alpha = 0
-        spring(0.7, {
+        spring(0.7,animations: {
             superCell.view_Tags.alpha = 1
             superCell.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
-            for subButton in superCell.view_Tags.subviews as [DesignableButton] {
+            for subButton in superCell.view_Tags.subviews as! [DesignableButton] {
                 subButton.animation = "zoomIn"
                 subButton.duration = 1.0
                 subButton.animate()
@@ -448,7 +452,7 @@ extension UITransViewController: SwipeableCellDelegate{
     }
     
     func cellDidCloseCell(cell: UITableViewCell!) {
-        let superCell =  cell as AICellIdentityCell
+        let superCell =  cell as! AICellIdentityCell
         superCell.backgroundColor = UIColor.clearColor()
         
 //        superCell.view_Tags.alpha = 1
@@ -461,7 +465,7 @@ extension UITransViewController: SwipeableCellDelegate{
     
     func cellDidClose(cell: UITableViewCell!) {
         //self.tableView.scrollEnabled = true
-        let superCell =  cell as AICellIdentityCell
+        let superCell =  cell as! AICellIdentityCell
         self.tableView.scrollEnabled = true
         // button.tag self
         let indexPath =  self.tableView.indexPathForCell(cell)
@@ -495,8 +499,8 @@ extension UITransViewController: SwipeableCellDelegate{
         }
         
         // Get Show Cell Button tags...
-        let veiwTagsMore = (cell as AICellIdentityCell).view_Content.viewWithTag(5) as UIView?
-        for itemView in veiwTagsMore?.subviews as [DesignableButton] {
+        let veiwTagsMore = (cell as! AICellIdentityCell).view_Content.viewWithTag(5)
+        for itemView in veiwTagsMore?.subviews as! [DesignableButton] {
             let image:UIImage? =  itemView.backgroundImageForState(UIControlState.Normal)
             if let itemImage = image {
                 if  itemImage == UIImage(named: "tags_select") {
@@ -537,7 +541,7 @@ extension UITransViewController: SwipeableCellDelegate{
                         for  subview in superCell.view_Content.subviews as [UIView]{
                             if subview is AITopInfoView {
                                 
-                                let views =  subview as AITopInfoView
+                                let views =  subview as! AITopInfoView
                                 fillAITopInfoView(model, topView: views, indexPath: indexPath!)
                             }
                         }
@@ -553,7 +557,7 @@ extension UITransViewController: SwipeableCellDelegate{
 
 extension UITransViewController:tagCellDelegate{
     func signTag(sender: AnyObject, parent: AICellIdentityCell?) {
-        let button = sender as UIButton
+        let button = sender as! UIButton
         let tag = button.tag
         
         // button.tag self
@@ -610,10 +614,12 @@ extension UITransViewController:tagCellDelegate{
             model.colors?.append(getAIColorFlagValue(tag))
         }
         
-        for  subview in parent?.view_Content.subviews as [UIView]{
+        let arrayViews = parent?.view_Content.subviews
+        
+        for  subview in arrayViews! {
             if subview is AITopInfoView {
 
-                let views =  subview as AITopInfoView
+                let views =  subview as! AITopInfoView
                 fillAITopInfoView(model, topView: views, indexPath: indexPath!)
             }
         } 
@@ -626,7 +632,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: New instance ..
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
             
-        let cell =  tableView.dequeueReusableCellWithIdentifier("AICellIdentity") as AICellIdentityCell
+        let cell =  tableView.dequeueReusableCellWithIdentifier("AICellIdentity") as! AICellIdentityCell
         cell.delegate = self
         cell.signDelegate = self
         for subview in cell.view_Content.subviews as [UIView] {
@@ -873,7 +879,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         actionView.associatedName = "\(indexPath.section)"
         actionView.delegate = self
          var favoImg = "item_button_star"
-        if model.isFavorite? == AIFavoriteStatu.Favorite {
+        if model.isFavorite == AIFavoriteStatu.Favorite {
             favoImg = "ds_star"
         }
         
@@ -938,16 +944,14 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         topView.ImageView_Type.image = UIImage(named: getTypeImage(model.favoriteType ?? 0))
         
         for subview in topView.View_MarkTags.subviews{
-            if let sView = subview as? UIView {
-                sView.removeFromSuperview()
-            }
+            subview.removeFromSuperview()
         }
         
         if model.colors?.count > 0 {
             var x:CGFloat = 188
             for colorss in model.colors! {
                 if let imgName = colorBallImgName(colorss) {
-                    var imgView = UIImageView(image: UIImage(named: imgName))
+                    let imgView = UIImageView(image: UIImage(named: imgName))
                     imgView.frame = CGRectMake(x, 2, 10, 10)
                     topView.View_MarkTags.addSubview(imgView)
                     x -= 15
@@ -1295,10 +1299,9 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     ExpendCell from AIAPPliction
     */
     func expendCell(sender: AnyObject){
-        let topView:AITopInfoView = sender as AITopInfoView
+        let topView:AITopInfoView = sender as! AITopInfoView
         let section = topView.associatedName?.toInt()
         cellExpendOrCollapse(section ?? 0)
-        
         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section ?? 0), atScrollPosition: UITableViewScrollPosition.None, animated: true)
     }
     
@@ -1358,7 +1361,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         } else {
             if err != nil {
-                SCLAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "关闭", duration: 3)
+                AIAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "关闭", duration: 3)
             }
         }
     }
@@ -1383,7 +1386,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             //tableView.reloadData()
         } else {
             if err != nil {
-                SCLAlertView().showError("修改失败", subTitle: err!.message, closeButtonTitle: "关闭", duration: 3)
+                AIAlertView().showError("修改失败", subTitle: err!.message, closeButtonTitle: "关闭", duration: 3)
             }
         }
     }
@@ -1436,7 +1439,7 @@ extension UITransViewController: ActionCellDelegate {
             
             switch actionType {
             case ActionType.Browse:
-                let webView =  self.storyboard?.instantiateViewControllerWithIdentifier("AIWebViewController") as AIWebViewController
+                let webView =  self.storyboard?.instantiateViewControllerWithIdentifier("AIWebViewController") as! AIWebViewController
                 webView.currentUrl = NSURL(string: "\(model.favoriteFromWhereURL)")
                 
                 break
@@ -1447,7 +1450,7 @@ extension UITransViewController: ActionCellDelegate {
                 deleteContent(indexPath.section)
                 break
             case ActionType.Favorite:
-                var toFavoFlag = (dataSource![indexPath.section].isFavorite!) == AIFavoriteStatu.Favorite ? AIFavoriteStatu.Unfavorite : AIFavoriteStatu.Favorite
+                let toFavoFlag = (dataSource![indexPath.section].isFavorite!) == AIFavoriteStatu.Favorite ? AIFavoriteStatu.Unfavorite : AIFavoriteStatu.Favorite
 
                 modifyFavoriteFlag(indexPath.section, favoriteFlag: toFavoFlag)
                 break
@@ -1462,7 +1465,7 @@ extension UITransViewController: ActionCellDelegate {
         
         switch actionType {
         case ActionType.Browse:
-            let webView =  self.storyboard?.instantiateViewControllerWithIdentifier("AIWebViewController") as AIWebViewController
+            let webView =  self.storyboard?.instantiateViewControllerWithIdentifier("AIWebViewController") as! AIWebViewController
             
             if let url = model.favoriteFromWhereURL {
                  webView.currentUrl = NSURL(string: url)
@@ -1480,7 +1483,7 @@ extension UITransViewController: ActionCellDelegate {
             break
         case ActionType.Favorite:
             
-                var toFavoFlag = (dataSource![section].isFavorite!) == AIFavoriteStatu.Favorite ? AIFavoriteStatu.Unfavorite : AIFavoriteStatu.Favorite
+                let toFavoFlag = (dataSource![section].isFavorite!) == AIFavoriteStatu.Favorite ? AIFavoriteStatu.Unfavorite : AIFavoriteStatu.Favorite
             
                 modifyFavoriteFlag(section, favoriteFlag: toFavoFlag)
                 
@@ -1584,7 +1587,7 @@ extension UITransViewController: ColorIndicatorDelegate {
     }
     
     func changeMesageView(show:Bool){
-        spring(0.3, { () -> Void in
+        spring(0.3, animations: { () -> Void in
             
             if show {
                 self.tableView.setTop(75)

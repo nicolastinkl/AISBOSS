@@ -19,7 +19,7 @@ class TopMenuViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let width = self.view.frame.size.width
-        println("topMenu Frame \(width)")
+        print("topMenu Frame \(width)")
     }
 
     override func didReceiveMemoryWarning() {

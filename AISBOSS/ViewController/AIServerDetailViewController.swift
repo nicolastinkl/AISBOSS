@@ -68,7 +68,7 @@ class AIServerDetailViewController: UIViewController {
         
         if let arrrays = titleArray {
             for item in arrrays {
-                var data =  dataModel()
+                let data =  dataModel()
                 data.title = item
                 data.type = cellType.cellTypeCoverflow
                 self.dataSource.insertObject(data, atIndex: 1)
@@ -119,11 +119,11 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func addAction(sender: AnyObject) {
         
         if tags?.tags.count >= 10 {
-            SCLAlertView().showError("提示", subTitle: "不能超过10个颜色气泡", closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("提示", subTitle: "不能超过10个颜色气泡", closeButtonTitle: "关闭", duration: 3)
             return
         }
         
-        spring(0.7, {
+        spring(0.7, animations: {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
         })
@@ -150,7 +150,7 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
                 return false
             })
             if newAry?.count > 0 {
-                 SCLAlertView().showError("提示", subTitle: "不能添加重复便签", closeButtonTitle: "关闭", duration: 3)
+                 AIAlertView().showError("提示", subTitle: "不能添加重复便签", closeButtonTitle: "关闭", duration: 3)
                 return
             }
             
@@ -158,7 +158,7 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
-            var data =  dataModel()
+            let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
@@ -173,7 +173,7 @@ extension AIServerDetailViewController : AOTagDelegate{
         let titl = tag.tTitle
         
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-            let fitlerModel = object as dataModel
+            let fitlerModel = object as! dataModel
             
             if fitlerModel.title == titl {
                 NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
@@ -217,14 +217,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if dataSource.count > indexPath.row{
             
-            let model =  dataSource.objectAtIndex(indexPath.row) as dataModel
+            let model =  dataSource.objectAtIndex(indexPath.row) as! dataModel
             
             if model.type == cellType.cellTypeDate {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as AISDDateCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
                 cell.title.text = model.title ?? ""
                 
                 let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-                let path = arrayPath.first as String
+                let path = arrayPath.first ?? ""
                 let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
                 
                 let image = UIImage(contentsOfFile: componentPath)
@@ -237,21 +237,21 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
             
             if  model.type == cellType.cellTypeCoverflow {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as AISDSubDetailCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                 cell.carousel.type = .CoverFlow2
                 cell.title.text = model.title ?? ""
                 return cell
             }
             
             if  model.type == cellType.cellTypeFilght {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as AISDFightCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
                 cell.title.text = model.title ?? ""
                 return cell
             }
             
             if  model.type == cellType.cellTypeparames {
                 
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as AISDParamsCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as! AISDParamsCell
                 cell.title.text = "Flight Some Sosd"
                 cell.descri.text = "Parson Accident insoure has incloud the project"
                 cell.price.text = "$20"
@@ -269,7 +269,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        if  //Day
         if indexPath.row == 0 {
-            let menuViewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICalendarViewController) as AICalendarViewController
+            let menuViewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICalendarViewController) as! AICalendarViewController
             menuViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
             menuViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
             self.showDetailViewController(menuViewController, sender: self)
@@ -312,7 +312,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
                 index = 1
             }
             view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
-            (view as UIImageView!).image = UIImage(named: "testHolder\(index)")
+            (view as! UIImageView!).image = UIImage(named: "testHolder\(index)")
             view.contentMode = UIViewContentMode.ScaleAspectFill
             
         }
@@ -350,7 +350,7 @@ class AISDParamsCell: UITableViewCell
     @IBOutlet weak var line: UILabel!
     
     @IBAction func exchangeButton(sender: AnyObject) {
-        let button = sender as UIButton
+        let button = sender as! UIButton
         if let som = button.associatedName {
             //有值
             if som == "1"{

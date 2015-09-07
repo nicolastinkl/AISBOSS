@@ -88,7 +88,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         {
             cardView?.removeFromSuperview()
         }
-        cardView = AICardView(frame: CGRectMake(0, 0, self.frame.size.width, 0), cards: cards)
+        cardView = AICardView(frame: CGRectMake(0, 0, self.frame.size.width, 0), cards: cards! as [AnyObject])
     }
     
     
@@ -98,7 +98,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         self.initCardView()
         
         let dot = self.viewWithTag(200) as UIView!
-        let split = self.viewWithTag(300) as UIView!
+        _ = self.viewWithTag(300) as UIView!
         
         tableViewOriginalY = tableViewOriginalY == 0 ? dot.frame.origin.y : tableViewOriginalY
         tableViewOriginalW = tableViewOriginalW == 0 ? self.frame.size.width : tableViewOriginalW
@@ -134,7 +134,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     }
     
     class func currentView()->AICustomerCollectionCellView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as AICustomerCollectionCellView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as! AICustomerCollectionCellView
         return selfView
     }
 

@@ -53,7 +53,7 @@ public class AIWebViewController: UIViewController,UIWebViewDelegate {
         }
     }    
 
-    public func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    public func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         
     }
     

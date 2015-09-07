@@ -25,7 +25,7 @@ class UIHomeViewController: UIViewController,GBSlideOutToUnlockViewDelegate {
         unlockView.layoutSubviews()
         unlockView.fixCenter()
         
-        spring(0.3, { () -> Void in
+        spring(0.3, animations: { () -> Void in
             self.unlockView.hidden = false
         })
     }
@@ -49,13 +49,13 @@ class UIHomeViewController: UIViewController,GBSlideOutToUnlockViewDelegate {
         
         let point =  slideOutToUnlockView.frame.origin
         
-        let center = self.view.center
+        //let center = self.view.center
         
         if point.x > 0  && point.y > 0 {
             
         }
         
-        showViewController(UIStoryboard(name: "UIMainStoryboard", bundle: nil).instantiateInitialViewController() as UIViewController, sender: self)
+        showViewController(UIStoryboard(name: "UIMainStoryboard", bundle: nil).instantiateInitialViewController()!, sender: self)
 //        showViewController(UIStoryboard(name: "UICustomerStoryboard", bundle: nil).instantiateInitialViewController() as UIViewController, sender: self)
     }
     

@@ -19,7 +19,7 @@ class AIMenuActionView: SpringView {
     @IBOutlet weak var btnFavirote: UIButton!
     
     class func currentView()->AIMenuActionView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AIMenuActionView", owner: self, options: nil).first  as AIMenuActionView
+        var selfView = NSBundle.mainBundle().loadNibNamed("AIMenuActionView", owner: self, options: nil).first  as! AIMenuActionView
         return selfView
     }
     
@@ -27,7 +27,7 @@ class AIMenuActionView: SpringView {
         
         if delegate != nil {
             var type = ActionType.Unkonw
-            let element = sender as NSObject
+            let element = sender as! NSObject
             if element == btnExpend {
                 type = .Expend
             } else if element == btnDelete {

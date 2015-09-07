@@ -49,7 +49,7 @@ class UINewTransViewController: UIViewController {
             
         } else if result.err != nil {
             view.showErrorView()
-            SCLAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
         }
     }
 
@@ -59,7 +59,7 @@ class UINewTransViewController: UIViewController {
 
 extension UINewTransViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ContentCell") as ContentsCellView
+        let cell = tableView.dequeueReusableCellWithIdentifier("ContentCell") as! ContentsCellView
         
         return cell
     }

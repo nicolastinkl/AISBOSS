@@ -35,9 +35,10 @@ class AISwipeView: AIBaseSwipeView {
     private let JTSScrollIndicator_IndicatorRightMargin: CGFloat = 2.5
     private let JTSScrollIndicator_MinIndicatorHeightWhenScrolling: CGFloat = 37
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setSuperScrollView(self.scrollView)
     }
     
     
@@ -79,7 +80,7 @@ class AISwipeView: AIBaseSwipeView {
 //    }
 //    
     @IBAction func ballDragExit(sender: AnyObject) {
-        println("ballDragExit")
+        print("ballDragExit")
         scheduleAnimatedDistanceToDisapear()
     }
 //
@@ -100,18 +101,17 @@ class AISwipeView: AIBaseSwipeView {
     }
     
     class func current() -> AISwipeView {
-        return NSBundle.mainBundle().loadNibNamed("AISwipeView", owner: self, options: nil).last as AISwipeView
+        return NSBundle.mainBundle().loadNibNamed("AISwipeView", owner: self, options: nil).last as! AISwipeView
         
     }
 
-    required override init(coder aDecoder: NSCoder) {
+    required  init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         initialSizeOfInfoPanel = size
         layer.cornerRadius = 2
     }
     
-    func setScrollView(scrollView: UIScrollView) {
+    func setSuperScrollView(scrollView: UIScrollView) {
         
         let windowFrame = scrollView.superview!.frame
         
@@ -153,7 +153,7 @@ class AISwipeView: AIBaseSwipeView {
         if scrollViewHeight < superHeight / 2.0 {
             barpoint = CGPointMake(0, scrollView.superview!.frame.midY)
         } else {
-            var bar: UIView = scrollView.subviews.last as UIView
+            let bar: UIView = scrollView.subviews.last!
             barpoint = CGPointMake(CGRectGetMidX(bar.frame), CGRectGetMidY(bar.frame))
             barpoint = scrollView.convertPoint(barpoint, toView: scrollView.superview)
         }
@@ -169,12 +169,13 @@ class AISwipeView: AIBaseSwipeView {
  //       removeFromSuperview()
     }
     
+    
     // MARK: Touch event
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         cancelAnimatedDistanceToDisapear()
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         scheduleAnimatedDistanceToDisapear()
         
         if selectedBall != nil {
@@ -186,17 +187,17 @@ class AISwipeView: AIBaseSwipeView {
         }
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        if event.allTouches() != nil {
-            for touch in event.allTouches()! {
-                var touchCenter = touch.locationInView(panel)
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touchs = event!.allTouches() {
+            for touch in touchs {
+                let touchCenter = touch.locationInView(panel)
                 
                 selectedBall = nil
                 
                 for range in ballRanges {
                     if range.isIn(touchCenter) {
                         setBallSelected(range.ball)
-
+                        
                         range.moveTo(range.calculateBallPosition(touchCenter))
                         
                         selectedBall = range.ball
@@ -259,15 +260,15 @@ class AISwipeView: AIBaseSwipeView {
     }
     
     private func setupEvent() {
-        var longGesture = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
+        let longGesture = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
 
         panel.addGestureRecognizer(longGesture)
-        var panGuest = UIPanGestureRecognizer(target: self, action: "handlePanGuest:")
+        let panGuest = UIPanGestureRecognizer(target: self, action: "handlePanGuest:")
         panel.addGestureRecognizer(panGuest)
     }
     
     @objc func handleLongPress(guesture: UILongPressGestureRecognizer) {
-        println("handleLongPress")
+        print("handleLongPress")
     }
     
     func handlePanGuest(guest: UIPanGestureRecognizer) {
@@ -299,8 +300,8 @@ class AISwipeView: AIBaseSwipeView {
         underlyingRect.origin.y = contentOffset.y + ((contentOffset.y + contentInset.top) * ratio) + indicatorInsets.top
         
         if (underlyingRect.size.height < JTSScrollIndicator_MinIndicatorHeightWhenScrolling) {
-            var contentHeightWithoutLastFrame = contentHeightWithInsets - frameHeight;
-            var percentageScrolled = (contentOffset.y+contentInset.top) / contentHeightWithoutLastFrame;
+            let contentHeightWithoutLastFrame = contentHeightWithInsets - frameHeight
+            let percentageScrolled = (contentOffset.y+contentInset.top) / contentHeightWithoutLastFrame
             underlyingRect.origin.y -= (JTSScrollIndicator_MinIndicatorHeightWhenScrolling - underlyingRect.size.height) * percentageScrolled;
             underlyingRect.size.height = JTSScrollIndicator_MinIndicatorHeightWhenScrolling;
         }
@@ -378,7 +379,7 @@ class AISwipeView: AIBaseSwipeView {
     
 }
 
-//split class to reuse by liux
+//split class to reuse by linux
 class AIBaseSwipeView : UIView{
     
     //var delegate: ColorIndicatorDelegate?

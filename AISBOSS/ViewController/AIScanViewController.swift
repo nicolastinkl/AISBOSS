@@ -108,14 +108,14 @@ class AIScanViewController: UIViewController {
     }
     
     func openAddViewNotification(notify: NSNotification) {
-        if let value = notify.object as String?{
+        if let value = notify.object as! String?{
             addModel(value)
         }
         
     }
     
     func openRemoveViewNotification(notify: NSNotification) {
-        if let value = notify.object as String?{
+        if let value = notify.object as! String?{
             // remove
             
             self.curveView?.undoAddWithTitle(value)
@@ -203,32 +203,30 @@ class AIScanViewController: UIViewController {
         model.endY = pointImageView.top - mapping
         }*/
 
-        
-        
-        
         var modelArray = [CurveModel]()
         //这里是根据文字
         
         let tempArray = NSMutableArray(array: self.temp)
-        var resultArray = NSMutableArray()
+        let resultArray = NSMutableArray()
         let count = self.temp.count
         for i in 0...(count - 1) {
             
             let tempN = count - i
             
-            var index = Int(arc4random()%(tempN + 0))
+            //var index = Int(arc4random()%(UInt(tempN)))
+            let index = Int(arc4random())%tempN
             //println("index: \(index)")
             resultArray.addObject(tempArray.objectAtIndex(index))
-            var stringHere: AnyObject = tempArray.objectAtIndex(index)
+            let stringHere: AnyObject = tempArray.objectAtIndex(index)
             tempArray.removeObjectAtIndex(index)
             
-            let stringHereInt = (stringHere as String).toInt() ?? 0
+            let stringHereInt = (stringHere as! String).toInt() ?? 0
             
             let content = self.tagString[stringHereInt]
-            let pointImageView = self.currentPointImageView?.objectAtIndex(stringHereInt) as UIImageView
+            let pointImageView = self.currentPointImageView?.objectAtIndex(stringHereInt) as! UIImageView
             
             let hideLabel =  currentLabelArray![stringHereInt]
-            var model = CurveModel()
+            let model = CurveModel()
             model.startX = pointImageView.left
             model.startY = pointImageView.top
             
@@ -247,7 +245,7 @@ class AIScanViewController: UIViewController {
             
         }
         
-        var index:Int = 0
+        let index:Int = 0
         /*
         //这里是根据控件
         for pointImageView in arrayImageView as [UIImageView] {
@@ -291,7 +289,7 @@ class AIScanViewController: UIViewController {
 
         var newViews = views
         if let label = newViews.first {
-            springWithCompletion(0.6, { () -> Void in
+            springWithCompletion(0.6, animations: { () -> Void in
                 label.alpha = 1
 //                label.scaleX = 1.8
 //                label.scaleY = 1.8
@@ -319,12 +317,12 @@ class AIScanViewController: UIViewController {
     // MARK: - Actions
     @IBAction func addAction(sender: AnyObject) {
         
-        println(self.curveView?.bubbleCompareModels.allKeys.count)
+        print(self.curveView?.bubbleCompareModels.allKeys.count)
         if self.curveView?.bubbleCompareModels.allKeys.count >= 10 {
-            SCLAlertView().showError("提示", subTitle: "不能超过10个颜色气泡", closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("提示", subTitle: "不能超过10个颜色气泡", closeButtonTitle: "关闭", duration: 3)
             return
         }
-        spring(0.7, {
+        spring(0.7, animations: {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
             })
@@ -345,7 +343,7 @@ class AIScanViewController: UIViewController {
     {
         // modelen
         
-        let buttonDel = sender as UIButton
+        let buttonDel = sender as! UIButton
         
         _editting = !_editting
         
@@ -362,7 +360,7 @@ class AIScanViewController: UIViewController {
         
        let newAry = curveView?.bubbleCompareModels.allKeys.filter({ (value) -> Bool in
             
-                        if (value as String) == titleS{
+                        if (value as! String) == titleS{
                             return true
                         }
                         return false
@@ -372,16 +370,16 @@ class AIScanViewController: UIViewController {
         }
         
         
-        let index =  self.temp.count
+        //let index =  self.temp.count
         
         let numberObj: AnyObject = self.tempHolderArray.objectAtIndex(self.temp.count)
         self.temp.addObject(numberObj)
-        let stringHereInt = (numberObj as String).toInt() ?? 0
+        let stringHereInt = (numberObj as! String).toInt() ?? 0
         
-        let pointImageView = self.currentPointImageView?.objectAtIndex(stringHereInt) as UIImageView
+        let pointImageView = self.currentPointImageView?.objectAtIndex(stringHereInt) as! UIImageView
         
         let hideLabel =  currentLabelArray![stringHereInt]
-        var model = CurveModel()
+        let model = CurveModel()
         model.startX = pointImageView.left
         model.startY = pointImageView.top
         
@@ -404,13 +402,13 @@ class AIScanViewController: UIViewController {
     private func removeModel(){
         self.curveView?.endEdit()
         
-        if  let modelLast: NSDictionary = _operationQueue?.lastObject as NSDictionary?  {
+        if  let modelLast: NSDictionary = _operationQueue?.lastObject as! NSDictionary?  {
             
-            if let modelContent = modelLast.objectForKey(add) as CurveModel? {
+            if let modelContent = modelLast.objectForKey(add) as! CurveModel? {
                 curveView?.undoAddWithModel(modelContent)
             }
             
-            if let modelContent = modelLast.objectForKey(delete) as CurveModel? {
+            if let modelContent = modelLast.objectForKey(delete) as! CurveModel? {
                 curveView?.undoDeleteWithModel(modelContent)
                 
             }
@@ -425,9 +423,9 @@ class AIScanViewController: UIViewController {
         
         let arrayKeys = self.curveView?.bubbleCompareModels.allKeys
         if segue.identifier == "SeeDetails" {
-            let viewControoler = segue.destinationViewController as AIServerDetailViewController
+            let viewControoler = segue.destinationViewController as!AIServerDetailViewController
             viewControoler.titleString = self.label_Title.text
-            viewControoler.titleArray = arrayKeys as [String]?
+            viewControoler.titleArray = arrayKeys as! [String]?
             
         }
     }

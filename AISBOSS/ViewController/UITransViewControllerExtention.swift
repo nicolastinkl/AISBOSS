@@ -60,7 +60,7 @@ extension UITransViewController{
 //        })
         
         
-        spring(0.7, {
+        spring(0.7, animations: {
             if showIt {
                 // show
                 self.topMessageView.alpha = 1
@@ -145,7 +145,7 @@ extension UITransViewController{
                 lastScrollPosition = offsetY
                 lastScrollDirection = curScrollDirection
                 topMenuDiyView.alpha = 0
-                spring(0.3,{
+                spring(0.3,animations: {
                     //self.tableView.setTop(0)
                    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
                 })
@@ -156,7 +156,7 @@ extension UITransViewController{
                 lastScrollDirection = curScrollDirection
                 topMenuDiyView.alpha = 1
                 //println("update status when down scroll")
-                spring(0.3,{
+                spring(0.3,animations: {
                     //self.tableView.setTop(20)
                     
                     self.tableView.contentInset = UIEdgeInsetsMake(40, 0, 150, 0)

@@ -67,9 +67,9 @@ class UICellMultiStyle: UITableViewCell {
     
     func setCellBackgroundByPosition(cellStyleForRowAtIndexPath cellDisplayType:CommonCellBackgroundViewType,row:Int){
         
-        var newFrame = CGRectMake(10, 0, frame.width-20, frame.height)
+        //var newFrame = CGRectMake(10, 0, frame.width-20, frame.height)
         if cellDisplayType ==  CommonCellBackgroundViewType.GroupLast{
-            newFrame =  CGRectMake(10, 0, frame.width-20, 10)
+            //newFrame =  CGRectMake(10, 0, frame.width-20, 10)
         }
         //let bgView = AIEffectView(frame: newFrame, type: cellDisplayType,row:row)
         

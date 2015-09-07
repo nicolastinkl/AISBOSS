@@ -24,6 +24,13 @@ extension String{
         return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
     }
     
+    public func toInt() -> Int? {
+        if self != "" && self.length > 0{
+            return Int(self)
+        }
+        return 0
+    }
+    
     func stringHeightWith(fontSize:CGFloat,width:CGFloat)->CGFloat
         
     {
