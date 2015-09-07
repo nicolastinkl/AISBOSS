@@ -12,6 +12,8 @@
 		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
 		930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */; };
 		930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */; };
+		930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A261B9D3C2200CD1FEB /* loading.mp4 */; };
+		930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A271B9D3C2200CD1FEB /* start.mp4 */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -1114,6 +1116,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
+				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
 				93B25A601B9D7A1D00CD1FEB /* sdk_weibo_logo.png in Resources */,
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,

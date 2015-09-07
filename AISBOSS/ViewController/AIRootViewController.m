@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     [self makeChildViewControllers];
-//    [self startOpenningAnimation];
+    [self startOpenningAnimation];
     
 }
 
@@ -49,15 +49,6 @@
  */
 
 #pragma mark - Method
-
-- (void)startOpenningAnimation
-{
-    [AIOpeningView instance].delegate = self;
-    [AIOpeningView instance].rootView = self.view;
-    [AIOpeningView instance].centerTappedView = self.centerTapViewController.view;
-    [AIOpeningView instance].upDirectionView = self.upDirectionViewController.view;
-    [[AIOpeningView instance] show];
-}
 
 - (void)makeChildViewControllers
 {
@@ -143,6 +134,20 @@
         default:
             break;
     }
+}
+
+/*!
+ *  @author tinkl, 15-09-07 17:09:53
+ *
+ *  设置初始化状态
+ */
+- (void)startOpenningAnimation
+{
+    [AIOpeningView instance].delegate = self;
+    [AIOpeningView instance].rootView = self.view;
+    [AIOpeningView instance].centerTappedView = self.centerTapViewController.view;
+    //[AIOpeningView instance].upDirectionView = self.upDirectionViewController.view;
+        [[AIOpeningView instance] show];
 }
 
 @end

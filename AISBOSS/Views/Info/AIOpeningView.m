@@ -103,7 +103,6 @@
 - (void)hide
 {
     [self hideWithDirection:0];
-    NSLog(@"0");
 }
 
 
