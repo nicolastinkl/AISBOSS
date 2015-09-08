@@ -500,7 +500,7 @@ extension UITransViewController: SwipeableCellDelegate{
         
         // Get Show Cell Button tags...
         let veiwTagsMore = (cell as! AICellIdentityCell).view_Content.viewWithTag(5)
-        for itemView in veiwTagsMore?.subviews as! [DesignableButton] {
+        for itemView in veiwTagsMore?.subviews as! [UIButton] {
             let image:UIImage? =  itemView.backgroundImageForState(UIControlState.Normal)
             if let itemImage = image {
                 if  itemImage == UIImage(named: "tags_select") {

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="346" id="Hcx-Mj-cUA" customClass="ContentsCellView" customModule="AITrans" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="346" id="Hcx-Mj-cUA" customClass="ContentsCellView" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="515" height="346"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hcx-Mj-cUA" id="tfw-64-UIq" userLabel="CellContainer">
+                <rect key="frame" x="0.0" y="0.0" width="515" height="345.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnj-id-tyt" userLabel="Top">
@@ -18,6 +20,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pe5-uS-XGu" userLabel="Index">
                                 <rect key="frame" x="15" y="1" width="55" height="55"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="YGp-fR-9on"/>
                                 </constraints>
@@ -27,12 +30,14 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Realize yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQg-J7-4qR" userLabel="Title">
                                 <rect key="frame" x="21" y="1" width="333" height="55"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_card_small_picture" translatesAutoresizingMaskIntoConstraints="NO" id="Va8-kd-S9e" userLabel="item_type_1">
                                 <rect key="frame" x="480" y="24" width="10" height="10"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="NKW-Fl-IIU"/>
                                     <constraint firstAttribute="height" constant="10" id="jXu-4Y-eYf"/>
@@ -40,6 +45,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXo-Tl-dRx" userLabel="source">
                                 <rect key="frame" x="364" y="18" width="110" height="21"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="f3n-MP-qfq"/>
                                     <constraint firstAttribute="width" constant="110" id="fyz-dh-df1"/>
@@ -53,12 +59,14 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colorball_orange" translatesAutoresizingMaskIntoConstraints="NO" id="oI6-kZ-eXF" userLabel="ColorBall_1">
                                         <rect key="frame" x="188" y="4" width="10" height="10"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="3eL-58-lil"/>
                                             <constraint firstAttribute="height" constant="10" id="hO4-iS-1mL"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="oI6-kZ-eXF" firstAttribute="centerY" secondItem="Bqd-0i-8fM" secondAttribute="centerY" constant="1.5" id="6as-PT-mWF"/>
@@ -68,6 +76,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pe5-uS-XGu" firstAttribute="height" secondItem="qnj-id-tyt" secondAttribute="height" id="5yo-I9-vZk"/>
@@ -91,9 +100,11 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="al9-Tt-aNl">
                                 <rect key="frame" x="15" y="11" width="485" height="150"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.14509803921568629" green="0.11764705882352941" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="al9-Tt-aNl" firstAttribute="leading" secondItem="pXD-dc-Ohs" secondAttribute="leading" constant="15" id="1eG-Ta-OrT"/>
@@ -109,6 +120,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FW9-WE-QbC">
                                 <rect key="frame" x="15" y="10" width="485" height="24"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Yna-1j-owf"/>
                                 </constraints>
@@ -121,6 +133,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPF-An-E70" userLabel="Expand">
                                         <rect key="frame" x="10" y="8" width="40" height="40"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="54c-E2-sb0"/>
                                             <constraint firstAttribute="height" constant="40" id="EXy-MT-OMd"/>
@@ -134,6 +147,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfM-Oe-sVN" userLabel="Browse">
                                         <rect key="frame" x="355" y="8" width="40" height="40"/>
+                                        <animations/>
                                         <state key="normal" image="item_button_book">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -143,6 +157,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPE-UJ-wqF" userLabel="Favorite">
                                         <rect key="frame" x="397" y="8" width="40" height="40"/>
+                                        <animations/>
                                         <state key="normal" image="item_button_star">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -152,6 +167,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQx-bR-oTG" userLabel="Delete">
                                         <rect key="frame" x="439" y="8" width="40" height="40"/>
+                                        <animations/>
                                         <state key="normal" image="item_button_delete">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -160,6 +176,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" red="0.50036896939999997" green="0.53582326719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="cPF-An-E70" secondAttribute="centerY" constant="-0.5" id="3tg-kG-A7W"/>
@@ -180,6 +197,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FW9-WE-QbC" secondAttribute="trailing" constant="15" id="A2P-vt-BRa"/>
@@ -191,6 +209,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <animations/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="jAt-vP-xqq" secondAttribute="bottom" constant="8" id="Csg-gw-CIC"/>
                     <constraint firstItem="qnj-id-tyt" firstAttribute="leading" secondItem="jAt-vP-xqq" secondAttribute="leading" id="Jt1-gP-80a"/>
@@ -204,6 +223,7 @@
                     <constraint firstItem="pXD-dc-Ohs" firstAttribute="leading" secondItem="qnj-id-tyt" secondAttribute="leading" id="zNB-u7-0dl"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="contentImage" destination="al9-Tt-aNl" id="kDL-kj-MnC"/>
@@ -216,10 +236,10 @@
     </objects>
     <resources>
         <image name="colorball_orange" width="10" height="10"/>
-        <image name="item_button_book" width="28" height="28"/>
-        <image name="item_button_delete" width="24" height="29"/>
-        <image name="item_button_star" width="30" height="29"/>
+        <image name="item_button_book" width="20" height="20"/>
+        <image name="item_button_delete" width="17" height="21"/>
+        <image name="item_button_star" width="22" height="21"/>
         <image name="item_card_small_picture" width="13" height="13"/>
-        <image name="white-arrow" width="31" height="18"/>
+        <image name="white-arrow" width="25" height="15"/>
     </resources>
 </document>

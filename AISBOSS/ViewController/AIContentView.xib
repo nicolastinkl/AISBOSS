@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MyriadProRegular.ttf">
@@ -11,18 +12,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIContentView" customModule="AITrans" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIContentView" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_dont_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Gof-Le-uWU">
                     <rect key="frame" x="20" y="0.0" width="560" height="1"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="wbH-TW-7L7"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注意: 自从自定义 URL 的引入，本文始终是我博客中阅读量最大的文章。虽然大多数都相同，但仍然有一些细微差别的变化。本文是原帖的" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4g-Ep-VHQ">
                     <rect key="frame" x="18" y="0.0" width="564" height="100"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="140" id="RNz-CP-9Te"/>
                     </constraints>
@@ -36,6 +39,7 @@
                     </variation>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="d4g-Ep-VHQ" secondAttribute="trailing" constant="18" id="3MD-ZO-M3w"/>
