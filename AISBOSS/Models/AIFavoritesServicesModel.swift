@@ -33,7 +33,7 @@ class AIFavoritesServiceTagsResult: JSONJoy {
     }
     
     required init(_ decoder: JSONDecoder) {
-        if var jsonArray = decoder["service_tags"].array {
+        if let jsonArray = decoder["service_tags"].array {
             for subDecoder in jsonArray {
                 if let tag = subDecoder["tag_name"].string {
                     tags.append(tag)

@@ -591,7 +591,7 @@ private class RACellFakeView: UIView {
             self.center = self.originalCenter!
             self.transform = CGAffineTransformMakeScale(1.1, 1.1)
             self.cellFakeHightedView!.alpha = 0;
-            var shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+            let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
             shadowAnimation.fromValue = 0
             shadowAnimation.toValue = 0.7
             shadowAnimation.removedOnCompletion = false
@@ -606,7 +606,7 @@ private class RACellFakeView: UIView {
         UIView.animateWithDuration(0.3, delay: 0, options:UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.transform = CGAffineTransformIdentity
             self.frame = self.cellFrame!
-            var shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+            let shadowAnimation = CABasicAnimation(keyPath: "shadowOpacity")
             shadowAnimation.fromValue = 0.7
             shadowAnimation.toValue = 0
             shadowAnimation.removedOnCompletion = false

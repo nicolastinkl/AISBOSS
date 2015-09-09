@@ -248,8 +248,7 @@ class AIScanViewController: UIViewController {
             modelArray.append(model)
             
         }
-        
-        let index:Int = 0
+         
         /*
         //这里是根据控件
         for pointImageView in arrayImageView as [UIImageView] {
