@@ -906,7 +906,7 @@
 		93D5A3401B709C1C00DDB158 = {
 			isa = PBXGroup;
 			children = (
-				93D5A34B1B709C1C00DDB158 /* AISBOSS */,
+				93D5A34B1B709C1C00DDB158 /* AIVeris */,
 				93D5A3601B709C1D00DDB158 /* AISBOSSTests */,
 				93D5A36B1B709C1D00DDB158 /* AISBOSSUITests */,
 				93D5A34A1B709C1C00DDB158 /* Products */,
@@ -923,7 +923,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		93D5A34B1B709C1C00DDB158 /* AISBOSS */ = {
+		93D5A34B1B709C1C00DDB158 /* AIVeris */ = {
 			isa = PBXGroup;
 			children = (
 				93B25A641B9D7A6F00CD1FEB /* 3rdLib */,
@@ -941,6 +941,7 @@
 				93D5A3531B709C1C00DDB158 /* Assets.xcassets */,
 				93D5A3581B709C1C00DDB158 /* Info.plist */,
 			);
+			name = AIVeris;
 			path = AISBOSS;
 			sourceTree = "<group>";
 		};
