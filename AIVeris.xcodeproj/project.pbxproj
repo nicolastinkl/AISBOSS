@@ -208,6 +208,7 @@
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
+		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
 		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
@@ -519,6 +520,14 @@
 				503E6327D0C6936333F981D4 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9370FCF21BA00EF500957361 /* Playgorund */ = {
+			isa = PBXGroup;
+			children = (
+				9370FCF31BA00F0600957361 /* MyPlayground.playground */,
+			);
+			path = Playgorund;
 			sourceTree = "<group>";
 		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
@@ -926,6 +935,7 @@
 		93D5A34B1B709C1C00DDB158 /* AIVeris */ = {
 			isa = PBXGroup;
 			children = (
+				9370FCF21BA00EF500957361 /* Playgorund */,
 				93B25A641B9D7A6F00CD1FEB /* 3rdLib */,
 				93B25A401B9D799600CD1FEB /* Objective-C */,
 				93C33EFD1B9BEAFE007BF506 /* Utils */,

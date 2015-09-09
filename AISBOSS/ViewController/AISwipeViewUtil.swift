@@ -168,7 +168,7 @@ class BallMoveRange {
         let newX = point.x - circleOrigin.x
         let newY = point.y - circleOrigin.y
         
-        let d = atan2(Float(newY), Float(newX))
+        _ = atan2(Float(newY), Float(newX))
         
         return atan2f(Float(newY), Float(newX))
     }
@@ -177,7 +177,7 @@ class BallMoveRange {
     // 根据点击点计算小球的位置,这点是小球的中心点所在位置
     func calculateBallPosition(touchPoint: CGPoint) -> CGPoint {
         // 触摸点到圆心的距离
-        var disT = distance(touchPoint, point2: circleOrigin)
+        let disT = distance(touchPoint, point2: circleOrigin)
         let disB = originDistanceToCircleOrigin
         let K: CGFloat = 0.3
         // 新的小球中心到圆心的距离
@@ -233,19 +233,19 @@ class Line {
         let x = point.x
         let y = point.y
         
-        var cross: CGFloat = (x2 - x1) * (x - x1) + (y2 - y1) * (y - y1)
+        let cross: CGFloat = (x2 - x1) * (x - x1) + (y2 - y1) * (y - y1)
         if cross <= 0 {
             return sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1))
         }
         
-        var d2: CGFloat = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)
+        let d2: CGFloat = (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)
         if cross >= d2 {
             return sqrt((x - x2) * (x - x2) + (y - y2) * (y - y2))
         }
         
-        var r: CGFloat = cross / d2
-        var px: CGFloat = x1 + (x2 - x1) * r
-        var py: CGFloat = y1 + (y2 - y1) * r
+        let r: CGFloat = cross / d2
+        let px: CGFloat = x1 + (x2 - x1) * r
+        let py: CGFloat = y1 + (y2 - y1) * r
         
         return sqrt((x - px) * (x - px) + (py - y1) * (py - y1))
     }

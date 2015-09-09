@@ -214,7 +214,7 @@ class AIHttpFavorServicesManager : AIMockFavorServicesManager {
                 listModel = AIFavoritesServicesResult()
             }
             
-            completion((listModel!.services, error))
+            completion((listModel!.services, responseError))
         }
 
     }
@@ -242,7 +242,7 @@ class AIHttpFavorServicesManager : AIMockFavorServicesManager {
                 listModel = AIFavoritesServiceTagsResult()
             }
             
-            completion((listModel!.tags, error))
+            completion((listModel!.tags, responseError))
         }
     }
 }

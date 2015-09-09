@@ -240,7 +240,7 @@ class AIHttpTransformManager: AIMockTransformManager {
                 listModel = AIFavoritesContentsResult()
             }
             
-            completion((listModel!.contents, error))
+            completion((listModel!.contents, responseError))
         }
     }
     
@@ -270,7 +270,7 @@ class AIHttpTransformManager: AIMockTransformManager {
                 strongSelf.isLoading = false
             }
             
-            completion(error)
+            completion(responseError)
         }
     }
 
@@ -299,7 +299,7 @@ class AIHttpTransformManager: AIMockTransformManager {
                 strongSelf.isLoading = false
             }
             
-            completion(error)
+            completion(responseError)
         }
     }
 }

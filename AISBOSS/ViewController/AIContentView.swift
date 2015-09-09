@@ -15,7 +15,7 @@ class AIContentView: SpringView {
     
     @IBOutlet weak var Image_Line: UIImageView!
     class func currentView()->AIContentView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AIContentView", owner: self, options: nil).first  as! AIContentView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AIContentView", owner: self, options: nil).first  as! AIContentView
         return selfView
     }
     

@@ -41,17 +41,17 @@ extension UITransViewController{
     
     func setupAnimation(showIt:Bool,animationComplete : AnimationComplete?){
         
-        var alphaY:CGFloat = 0
-        var animateY:CGFloat = 0
-        if self.topMessageView.height == 0 {
-            // hide
-            alphaY = 0
-            animateY = -60
-        }else{
-            //show
-            alphaY = 1
-            animateY = 0
-        }
+//        var alphaY:CGFloat = 0
+//        var animateY:CGFloat = 0
+//        if self.topMessageView.height == 0 {
+//            // hide
+//            alphaY = 0
+//            animateY = -60
+//        }else{
+//            //show
+//            alphaY = 1
+//            animateY = 0
+//        }
 
 
 //        UIView.animateWithDuration(0.5, animations: { () -> Void in

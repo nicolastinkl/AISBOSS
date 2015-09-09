@@ -36,10 +36,7 @@ enum FavoriteTypeEnum: Int{
             case .music:
                 return 4
             
-            default:
-                break
         }
-        return 0
     }
     
     

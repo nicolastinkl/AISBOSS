@@ -47,8 +47,6 @@ class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognizerDelega
                 value = speedValue
             case .stay:
                 return 0
-            default:
-                return 0
             }
             
             let proofedPercentage: CGFloat = max(min(1.0, percentage), 0)
