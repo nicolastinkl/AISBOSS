@@ -202,17 +202,14 @@ class UITransViewController: UIViewController {
             
             weak var weakSelf = self
             UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                
                 if let blockSelf = weakSelf {
                     blockSelf.player?.view.alpha = 0;
                 }
-                
                 }, completion: {(Bool) -> Void in
                     if let blockSelf = weakSelf {
                         blockSelf.player?.view.removeFromSuperview()
                         blockSelf.showNextViewController()
                     }
-                    
             })
         }
         else {
