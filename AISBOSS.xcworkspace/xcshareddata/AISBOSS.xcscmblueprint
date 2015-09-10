@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3373EF6700A44E5BFCDFE128505396B62BB9EBE4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3373EF6700A44E5BFCDFE128505396B62BB9EBE4" : 0,
+    "88218B3E6AC9BE23B9415C199DDB4591CB70AC3D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5AA69E72-716D-4F8F-BB67-9ABF50FC8D8D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3373EF6700A44E5BFCDFE128505396B62BB9EBE4" : "AISBOSS\/",
+    "88218B3E6AC9BE23B9415C199DDB4591CB70AC3D" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AISBOSS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AISBOSS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nicolastinkl\/AISBOSS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3373EF6700A44E5BFCDFE128505396B62BB9EBE4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nicolastinkl\/AI2020OS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "88218B3E6AC9BE23B9415C199DDB4591CB70AC3D"
+    }
+  ]
+}
