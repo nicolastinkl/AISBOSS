@@ -22,7 +22,12 @@ enum Cell_Identifier:Int{
     case Cell_CONTENT = 2
     case Cell_ACTION = 3
 }
-
+enum View_Tag:Int{
+    case View_TOP = 11
+    case View_MEDIA = 12
+    case View_CONTENT = 13
+    case View_ACTION = 14
+}
 
 /*!
 *  @author tinkl, 15-06-23 17:06:16
@@ -104,7 +109,7 @@ class UITransViewController: UIViewController {
         
         self.swipeView.setSuperScrollView(tableView)
 
-        loadContentData()
+        //loadContentData()
         
         //add by liux 
         setupLayer()

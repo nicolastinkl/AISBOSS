@@ -28,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /*!
+     *  @author tinkl, 15-09-09 17:09:59
+     *
+     *  初始化处理
+     */
     [self makeChildViewControllers];
     [self startOpenningAnimation];
     
@@ -129,10 +134,15 @@
             break;
         case 4: // 4:right
             //时间轴
+            
+            if (_currentViewController == self.rightDirectionViewController) {
+                return;
+            }
+            [self transitionFromViewController:_currentViewController toViewController:self.rightDirectionViewController duration:0 options:UIViewAnimationOptionCurveEaseInOut animations:nil completion:^(BOOL finished) {
+                _currentViewController = self.rightDirectionViewController;
+            }];
             break;
             
-        default:
-            break;
     }
 }
 

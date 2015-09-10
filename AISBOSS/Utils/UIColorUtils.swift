@@ -96,8 +96,7 @@ extension UIColor {
     // theme Color
     class func applicationMainColor() -> UIColor {
         return UIColor(rgba: AIApplication.AIColor.MainTextColor)
-    }
-    
+    }    
     
     func imageWithColor() -> UIImage {
         let rect:CGRect = CGRectMake(0, 0, 1, 1)

@@ -522,6 +522,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9364FA4D1BA12120005EFB0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93FA1E1B1B9C3E12009965C8 /* AICollectionTableViewCell.swift */,
+				93FA1E1C1B9C3E12009965C8 /* AICollectionTableViewCell.xib */,
+				93FA1E1D1B9C3E12009965C8 /* AIContentView.swift */,
+				93FA1E1E1B9C3E12009965C8 /* AIContentView.xib */,
+				93FA1E211B9C3E12009965C8 /* AICustomerSwipeView.swift */,
+				93FA1E221B9C3E12009965C8 /* AICustomerSwipeView.xib */,
+				93FA1E241B9C3E12009965C8 /* AIMediaView.swift */,
+				93FA1E251B9C3E12009965C8 /* AIMediaView.xib */,
+				93FA1E261B9C3E12009965C8 /* AIMenuActionView.swift */,
+				93FA1E271B9C3E12009965C8 /* AIMenuActionView.xib */,
+				93FA1E281B9C3E12009965C8 /* AIMenuTopView.swift */,
+				93FA1E291B9C3E12009965C8 /* AIMenuTopView.xib */,
+				93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */,
+				93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */,
+				93FA1E311B9C3E12009965C8 /* AITopInfoView.swift */,
+				93FA1E321B9C3E12009965C8 /* AITopInfoView.xib */,
+				93FA1E331B9C3E12009965C8 /* AITopMsgView.swift */,
+				93FA1E341B9C3E12009965C8 /* AITopMsgView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		9370FCF21BA00EF500957361 /* Playgorund */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,34 +660,17 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9364FA4D1BA12120005EFB0F /* Views */,
 				93B25A551B9D7A1D00CD1FEB /* WeiboShare */,
 				93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */,
-				93FA1E1B1B9C3E12009965C8 /* AICollectionTableViewCell.swift */,
-				93FA1E1C1B9C3E12009965C8 /* AICollectionTableViewCell.xib */,
-				93FA1E1D1B9C3E12009965C8 /* AIContentView.swift */,
-				93FA1E1E1B9C3E12009965C8 /* AIContentView.xib */,
 				93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */,
 				93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */,
-				93FA1E211B9C3E12009965C8 /* AICustomerSwipeView.swift */,
-				93FA1E221B9C3E12009965C8 /* AICustomerSwipeView.xib */,
 				93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */,
-				93FA1E241B9C3E12009965C8 /* AIMediaView.swift */,
-				93FA1E251B9C3E12009965C8 /* AIMediaView.xib */,
-				93FA1E261B9C3E12009965C8 /* AIMenuActionView.swift */,
-				93FA1E271B9C3E12009965C8 /* AIMenuActionView.xib */,
-				93FA1E281B9C3E12009965C8 /* AIMenuTopView.swift */,
-				93FA1E291B9C3E12009965C8 /* AIMenuTopView.xib */,
 				93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */,
 				93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */,
 				93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */,
 				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
-				93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */,
-				93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */,
 				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
-				93FA1E311B9C3E12009965C8 /* AITopInfoView.swift */,
-				93FA1E321B9C3E12009965C8 /* AITopInfoView.xib */,
-				93FA1E331B9C3E12009965C8 /* AITopMsgView.swift */,
-				93FA1E341B9C3E12009965C8 /* AITopMsgView.xib */,
 				930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */,
 				930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */,
 				930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */,

@@ -31,7 +31,86 @@ class AICellIdentityCell:SwipeableCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+    }    
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        let imageView = self.view_Content.viewWithTag(2) as! UIImageView
+        let imageViewLeft = self.view_Content.viewWithTag(3) as! UIImageView
+        let imageViewRight = self.view_Content.viewWithTag(4) as! UIImageView
+        if selected {
+            imageView.image = UIImage(named: "card_select")
+            imageViewLeft.image = UIImage(named: "left_bulge_shadow_select")
+            imageViewRight.image = UIImage(named: "right_bulge_shadow_select")
+            
+            if let infoView = self.view_Content.viewWithTag(View_Tag.View_TOP.rawValue) as! AITopInfoView? {
+                infoView.Label_Title.textColor = UIColor.blackColor()
+                infoView.Label_Type.textColor = UIColor.blackColor()
+                
+            }
+            
+            if let contentView = self.view_Content.viewWithTag(View_Tag.View_CONTENT.rawValue) as! AIContentView? {
+                contentView.Label_Content.textColor = UIColor.blackColor()
+            }
+        }else{
+            imageView.image = UIImage(named: "item_card_bg")
+            imageViewLeft.image = UIImage(named: "left_bulge_shadow")
+            imageViewRight.image = UIImage(named: "right_bulge_shadow")
+            
+            
+            if let infoView = self.view_Content.viewWithTag(View_Tag.View_TOP.rawValue) as! AITopInfoView? {
+                infoView.Label_Title.textColor = UIColor.whiteColor()
+                infoView.Label_Type.textColor = UIColor.whiteColor()
+            }
+            
+            if let contentView = self.view_Content.viewWithTag(View_Tag.View_CONTENT.rawValue) as! AIContentView? {
+                contentView.Label_Content.textColor = UIColor.whiteColor()
+            }
+            
+        }
     }
+    
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        let imageView = self.view_Content.viewWithTag(2) as! UIImageView
+        let imageViewLeft = self.view_Content.viewWithTag(3) as! UIImageView
+        let imageViewRight = self.view_Content.viewWithTag(4) as! UIImageView
+        
+        if highlighted {
+            imageView.image = UIImage(named: "card_select")
+            imageViewLeft.image = UIImage(named: "left_bulge_shadow_select")
+            imageViewRight.image = UIImage(named: "right_bulge_shadow_select")
+            
+            if let infoView = self.view_Content.viewWithTag(View_Tag.View_TOP.rawValue) as! AITopInfoView? {
+                infoView.Label_Title.textColor = UIColor.blackColor()
+                infoView.Label_Type.textColor = UIColor.blackColor()
+                
+            }
+            
+            if let contentView = self.view_Content.viewWithTag(View_Tag.View_CONTENT.rawValue) as! AIContentView? {
+                contentView.Label_Content.textColor = UIColor.blackColor()
+            }
+            
+        }else{
+            imageView.image = UIImage(named: "item_card_bg")
+            imageViewLeft.image = UIImage(named: "left_bulge_shadow")
+            imageViewRight.image = UIImage(named: "right_bulge_shadow")
+            
+            if let infoView = self.view_Content.viewWithTag(View_Tag.View_TOP.rawValue) as! AITopInfoView? {
+                infoView.Label_Title.textColor = UIColor.whiteColor()
+                infoView.Label_Type.textColor = UIColor.whiteColor()
+            }
+            
+            if let contentView = self.view_Content.viewWithTag(View_Tag.View_CONTENT.rawValue) as! AIContentView? {
+                contentView.Label_Content.textColor = UIColor.whiteColor()
+            }
+        }
+        
+        // Settings text color to black or white
+        
+    }
+    
+    
     
     func layoutMask(){
         

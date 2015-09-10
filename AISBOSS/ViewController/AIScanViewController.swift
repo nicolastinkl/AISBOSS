@@ -348,7 +348,13 @@ class AIScanViewController: UIViewController {
         
         let buttonDel = sender as! UIButton
         
+        self.backButton.enabled = _editting
+        self.revocationButton.enabled = _editting
+        self.addButton.enabled = _editting
+        
+        
         _editting = !_editting
+        
         
         if _editting {
             self.curveView?.startEdit()

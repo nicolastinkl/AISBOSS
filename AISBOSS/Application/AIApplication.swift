@@ -57,6 +57,11 @@ struct AIApplication{
             
         }
         
+        /*!
+        *  @author tinkl, 15-09-09 15:09:38
+        *
+        *  Cell ID
+        */
         struct CellIdentifiers {
             
             // MARK: HOME
@@ -80,6 +85,11 @@ struct AIApplication{
             
         }
         
+        /*!
+        *  @author tinkl, 15-09-09 15:09:44
+        *
+        *  DIY View ID
+        */
         struct ViewIdentifiers {
             static let AIOrderBuyView           = "AIOrderBuyView"
             static let AILoginViewController    = "AILoginViewController"
@@ -203,6 +213,9 @@ struct AIApplication{
         
     }
     
+    /*!
+        隐藏消息按钮
+    */
     static func hideMessageUnreadView(){
         if let loadingXibView = UIApplication.sharedApplication().keyWindow!.viewWithTag(AIApplication.AIViewTags.AIMessageUnReadViewTag) {
             loadingXibView.hidden = true
@@ -217,6 +230,11 @@ struct AIApplication{
         
     }
     
+    /*!
+    全局分享按钮
+    
+    :param: url URL
+    */
     static func shareAction(url:String){
         if let viewcontroller =  UIApplication.sharedApplication().keyWindow?.rootViewController{
             let textToShare = "Swift is awesome!  Check out this website about it!"

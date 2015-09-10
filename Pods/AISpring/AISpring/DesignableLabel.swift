@@ -39,5 +39,22 @@ import UIKit
             self.attributedText = attributedString
         }
     }
+    @IBInspectable public var borderColor: UIColor = UIColor.clearColor() {
+        didSet {
+            layer.borderColor = borderColor.CGColor
+        }
+    }
+    
+    @IBInspectable public var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable public var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
+    }
 
 }
