@@ -70,9 +70,9 @@ var AILogDateFormatter: NSDateFormatter = {
 #if DEBUG
     var AILogFunc: (format: String) -> Void = println
     var AILogUsingNSLog: Bool = false
-    #else
-var AILogFunc: (format: String, args: CVarArgType...) -> Void = NSLog
-var AILogUsingNSLog: Bool = true
+#else
+    var AILogFunc: (format: String, args: CVarArgType...) -> Void = NSLog
+    var AILogUsingNSLog: Bool = true
 #endif
 
 func logVerbose(logText: String = "",

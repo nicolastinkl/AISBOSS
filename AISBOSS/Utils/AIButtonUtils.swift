@@ -12,7 +12,6 @@ import UIKit
 
 extension UIButton{
     
-    
     func getTouchLocation() -> CGPoint{
                 
         return CGPoint(x: 0, y: 0)

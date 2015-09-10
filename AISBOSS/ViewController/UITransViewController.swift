@@ -98,18 +98,22 @@ class UITransViewController: UIViewController {
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
         
+        /*!
+        Settings TableView
+        */
         tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        //self.swipeView = AISwipeView.current()
+        /*!
+        init swipeView
+        */
         self.swipeView.delegate = self
-//        indicator = JTSScrollIndicator(scrollView: tableView)
-//        indicator.userInteractionEnabled = true
-//        indicator.backgroundColor = UIColor.clearColor()
-        
         self.swipeView.setSuperScrollView(tableView)
 
-        //loadContentData()
+        /*!
+        init data
+        */
+        loadContentData()
         
         //add by liux 
         setupLayer()
@@ -128,7 +132,11 @@ class UITransViewController: UIViewController {
 
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
         
-        
+        /*!
+        *  @author tinkl, 15-09-10 14:09:51
+        *
+        *  settings label bg.
+        */
         localCode({
             let labelBg = self.tableView.tableHeaderView?.viewWithTag(1) as! UILabel
             labelBg.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
@@ -218,38 +226,13 @@ class UITransViewController: UIViewController {
     }
     
     @IBAction func targetSeverParseAction(sender: AnyObject) {
-        //showNextViewController()
-        self.startLoading()
-        /*
-        weak var weakSelf = self
-
-        let delay = 3.1 * Double(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        //
-        dispatch_after(time, dispatch_get_main_queue(), {
-            
-            if let blockSelf = weakSelf {
-                blockSelf.player?.pause()
-            }
-  
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                
-                if let blockSelf = weakSelf {
-                    blockSelf.player?.view.alpha = 0;
-                }
-                
-                
-                }, completion: {(Bool) -> Void in
-                    if let blockSelf = weakSelf {
-                        blockSelf.player?.view.removeFromSuperview()
-                        blockSelf.showNextViewController()
-                    }
-                    
-            })
-
-            
-        })
-*/
+        
+        #if DEBUG
+            showNextViewController()
+        #else
+            startLoading()
+        #endif
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -268,7 +251,6 @@ class UITransViewController: UIViewController {
         view.showProgressViewLoading()
         //transformManager = AIHttpTransformManager()
         transformManager = AIMockTransformManager()
-        
         transformManager?.queryCollectedContents(1, pageSize: 10, tags: nil, origin: nil, favoriteFlag: nil, colorFlags: nil, completion: loadDataFrist)
     }
     

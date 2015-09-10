@@ -15,3 +15,25 @@ extension String {
 }
 
 let bananaName = "Jimmy".banana		// "Jimmy Jimmy Bo Bimmy Banana Fana Fo Fimmy"
+
+
+var string:String? = "s"
+
+if let s = string{
+    s
+}else{
+    print("nil....")
+}
+
+
+//func myMethod() throw{
+//    guard let s =  string else {
+//        print("sd")
+//    }
+//}
+//
+//myMethod()
+
+"sd".uppercaseString
+
+
