@@ -75,7 +75,6 @@ class AIServerDetailViewController: UIViewController {
             }
         }
         
-        
         //init searchView
         serviceSearchView = AIServiceSearchView.currentView()
         serviceSearchView.setWidth(self.view.width)
@@ -87,7 +86,7 @@ class AIServerDetailViewController: UIViewController {
     
         self.tableView.reloadData()
         
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
         tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
@@ -96,6 +95,7 @@ class AIServerDetailViewController: UIViewController {
     func ChangeDateViewNotification(){
         self.tableView.reloadData()
     }
+    
     deinit{
          NSNotificationCenter.defaultCenter().removeObserver(self, name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     }
