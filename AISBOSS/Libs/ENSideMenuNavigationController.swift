@@ -13,7 +13,6 @@ public class ENSideMenuNavigationController: UINavigationController, ENSideMenuP
     public var sideMenu : ENSideMenu?
     public var sideMenuAnimationType : ENSideMenuAnimation = .Default
     
-    
     // MARK: - Life cycle
     public override func viewDidLoad() {
         super.viewDidLoad()

@@ -50,7 +50,7 @@ class AIScanViewController: UIViewController {
         }()
     
     private var temp:NSMutableArray = {
-        NSMutableArray(objects: "1","3","5","7")
+        NSMutableArray(objects: "1","3","5","7","9","2","4","6","8","0")
         }()
     
     private let tempHolderArray:NSMutableArray = NSMutableArray(objects: "1","3","5","7","9","2","4","6","8","0")

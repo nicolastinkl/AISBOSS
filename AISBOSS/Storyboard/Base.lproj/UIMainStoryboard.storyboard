@@ -1448,7 +1448,7 @@
                                     <constraint firstAttribute="width" constant="45" id="cAE-an-THk"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="16F-fP-3Lr" customClass="SpringImageView" customModule="AISpring">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="16F-fP-3Lr" customClass="SpringImageView" customModule="AISpring">
                                 <rect key="frame" x="225" y="225" width="150" height="150"/>
                                 <animations/>
                                 <constraints>
@@ -1736,6 +1736,14 @@
                                     <constraint firstAttribute="height" constant="12" id="9Y1-Ze-tGH"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_logo" translatesAutoresizingMaskIntoConstraints="NO" id="E53-cw-luW">
+                                <rect key="frame" x="225" y="265" width="150" height="150"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="U7l-km-Lem"/>
+                                    <constraint firstAttribute="height" constant="150" id="tSg-yM-Zxq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1743,6 +1751,7 @@
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="top" secondItem="Nea-wq-HCj" secondAttribute="bottom" constant="17" id="1tv-cx-VGL"/>
                             <constraint firstItem="g7i-TM-Xfw" firstAttribute="leading" secondItem="16F-fP-3Lr" secondAttribute="trailing" constant="-61" id="2e0-o7-4hc"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="leading" secondItem="3du-LB-qRU" secondAttribute="trailing" constant="-33" id="2j1-fx-QM6"/>
+                            <constraint firstItem="E53-cw-luW" firstAttribute="centerX" secondItem="mSH-ao-nQA" secondAttribute="centerX" id="3Pg-KV-OsS"/>
                             <constraint firstItem="oPk-uD-aA2" firstAttribute="top" secondItem="B6r-OG-2hb" secondAttribute="bottom" constant="-20" id="5Vs-aK-hvH"/>
                             <constraint firstAttribute="centerX" secondItem="16F-fP-3Lr" secondAttribute="centerX" id="5gm-yd-eQU"/>
                             <constraint firstItem="FaJ-1S-mjd" firstAttribute="leading" secondItem="16F-fP-3Lr" secondAttribute="trailing" constant="8" id="5gu-4C-Fh9"/>
@@ -1753,6 +1762,7 @@
                             <constraint firstItem="gGi-Sp-z1W" firstAttribute="top" secondItem="6n2-ES-0Ks" secondAttribute="bottom" constant="1" id="9J9-O8-5qa"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="top" secondItem="FaJ-1S-mjd" secondAttribute="bottom" constant="-89" id="9ja-UK-5nv"/>
                             <constraint firstItem="7Wi-bf-Saq" firstAttribute="leading" secondItem="mSH-ao-nQA" secondAttribute="leadingMargin" constant="-25" id="AaF-qj-bcs"/>
+                            <constraint firstItem="E53-cw-luW" firstAttribute="centerY" secondItem="mSH-ao-nQA" secondAttribute="centerY" constant="40" id="B7h-Oo-JVK"/>
                             <constraint firstItem="cY7-30-iSv" firstAttribute="top" secondItem="16F-fP-3Lr" secondAttribute="bottom" constant="-45" id="CUz-ef-XhD"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="top" secondItem="5DZ-q6-Hvt" secondAttribute="bottom" constant="7" id="Ev5-GP-K76"/>
                             <constraint firstItem="6n2-ES-0Ks" firstAttribute="trailing" secondItem="mSH-ao-nQA" secondAttribute="trailingMargin" id="FAC-Ho-cC9"/>
