@@ -45,8 +45,7 @@ class AITimelineViewController: UIViewController {
             view.leading == view.superview!.leading + 42
         }
         label.addDashedBorder()
-     
-        
+
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "hh:mm"
         dateString = dateFormatter.stringFromDate(NSDate())
