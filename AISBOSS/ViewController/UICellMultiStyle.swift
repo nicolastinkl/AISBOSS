@@ -110,8 +110,6 @@ class AICellIdentityCell:SwipeableCell {
         
     }
     
-    
-    
     func layoutMask(){
         
         let maskPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8)
@@ -125,7 +123,7 @@ class AICellIdentityCell:SwipeableCell {
     }
     
     @IBAction func tagAction(sender: AnyObject) {
-        _ =   sender as! UIButton
+        _ = sender as! UIButton
         signDelegate?.signTag(sender, parent: self)
     }
     
@@ -283,7 +281,6 @@ protocol ActionCellDelegate {
     
     func onAction(section:Int, actionType: ActionType)
 }
-
 
 protocol playCellDelegate {
     func playVideo(sender: AnyObject, parent: UIMediaTableViewCell?)

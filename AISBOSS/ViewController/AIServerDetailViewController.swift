@@ -64,7 +64,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = "Parser"
+        self.labelView.text = titleString ?? ""
         
         if let arrrays = titleArray {
             for item in arrrays {

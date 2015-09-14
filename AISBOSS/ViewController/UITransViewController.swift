@@ -82,6 +82,8 @@ class UITransViewController: UIViewController {
     
     private var tagPreButton:UIButton?
     
+    private var selectIndex:Int?
+    
     // MARK: VAR
     var swipeView:AISwipeView = {
         return  AISwipeView.current()
@@ -189,7 +191,9 @@ class UITransViewController: UIViewController {
     
     private func showNextViewController()
     {
+        let model = self.dataSource![selectIndex ?? 0]
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
+        viewController.varTitle = model.favoriteTitle ?? ""
         self.showViewController(viewController, sender: self)
     }
     
@@ -1276,8 +1280,14 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
+     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectIndex = indexPath.section
+    }
     
-   
+    
     
     /**
     ExpendCell from AIAPPliction

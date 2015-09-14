@@ -18,6 +18,7 @@ private let EstimatedProgressKeyPath = "AIestimatedProgress"
 
 public class AIWebViewController: UIViewController,UIWebViewDelegate {
     
+    /// MARK: Variables
     
     var currentUrl:NSURL?
     

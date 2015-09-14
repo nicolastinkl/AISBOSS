@@ -35,6 +35,7 @@ class AIScanViewController: UIViewController {
     
     private var curveView: CurveView?
     
+    var varTitle:String?
     
     @IBOutlet weak var delButton: UIButton!
     @IBOutlet weak var revocationButton: UIButton!
@@ -59,7 +60,7 @@ class AIScanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.label_Title.text = "Parser"
+        self.label_Title.text  = varTitle ?? ""
         
         _operationQueue = NSMutableArray()
         
