@@ -21,4 +21,9 @@
 
 + (UIColor*)colorWithHexString:(NSString*)hex;
 
+// CGRect
+
++ (void)resetWidth:(CGFloat)width forView:(UIView *)view;
+
++ (void)resetOriginalX:(CGFloat)x forView:(UIView *)view;
 @end

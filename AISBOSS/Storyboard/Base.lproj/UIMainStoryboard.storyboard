@@ -1937,7 +1937,7 @@
                                 </variation>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-gU-gAm">
-                                <rect key="frame" x="-25" y="79" width="596" height="60"/>
+                                <rect key="frame" x="-10" y="79" width="590" height="60"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="XqG-WD-UT1"/>
@@ -2394,7 +2394,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="tbe-gU-gAm" secondAttribute="trailing" constant="9" id="1nI-rt-65o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tbe-gU-gAm" secondAttribute="trailing" id="1nI-rt-65o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Ji-yg-URE" secondAttribute="trailing" constant="-20" id="2AU-h7-Fcl"/>
                             <constraint firstItem="q6B-xj-qgk" firstAttribute="leading" secondItem="1hf-xh-bPU" secondAttribute="trailing" constant="80" id="3Aj-Ct-rJR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j96-im-k9b" secondAttribute="trailing" constant="-16" id="3F1-Mp-KNZ"/>
@@ -2418,7 +2418,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="0KU-RH-3xG" secondAttribute="trailing" constant="-20" id="eVY-aw-eI2"/>
                             <constraint firstItem="j96-im-k9b" firstAttribute="top" secondItem="0KU-RH-3xG" secondAttribute="bottom" id="evC-KZ-UQd"/>
                             <constraint firstItem="q6B-xj-qgk" firstAttribute="top" secondItem="A3G-50-AH5" secondAttribute="bottom" constant="-1" id="gXO-cp-DOw"/>
-                            <constraint firstItem="tbe-gU-gAm" firstAttribute="leading" secondItem="HDT-l6-xZC" secondAttribute="leadingMargin" constant="-45" id="ghs-NQ-dIH"/>
+                            <constraint firstItem="tbe-gU-gAm" firstAttribute="leading" secondItem="HDT-l6-xZC" secondAttribute="leadingMargin" constant="-30" id="ghs-NQ-dIH"/>
                             <constraint firstItem="Lq3-Yt-Icc" firstAttribute="top" secondItem="A3G-50-AH5" secondAttribute="bottom" id="hgk-17-Cmy"/>
                             <constraint firstItem="1hf-xh-bPU" firstAttribute="top" secondItem="A3G-50-AH5" secondAttribute="bottom" id="idK-MX-wn4"/>
                             <constraint firstItem="1hf-xh-bPU" firstAttribute="leading" secondItem="HDT-l6-xZC" secondAttribute="leadingMargin" constant="-25" id="kvw-Jy-mVH"/>

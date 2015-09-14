@@ -31,16 +31,17 @@
 
 - (void)parseContent:(NSDictionary *)content
 {
-    self.sellerIcon = [content objectForKey:kSeller_SellerIcon];
+    self.sellerIcon = [UIImage imageNamed:[content objectForKey:kSeller_SellerIcon]];
     self.sellerName = [content objectForKey:kSeller_SellerName];
     self.messageNum = [content objectForKey:kSeller_MessageNum];
     self.goodsPrice = [content objectForKey:kSeller_GoodsPrice];
-    self.goodsIcons = [content objectForKey:kSeller_GoodsIcon];
+    self.sellerIcons = [content objectForKey:kSeller_SellerIcons];
     self.timestamp  = [content objectForKey:kSeller_Timestamp];
     self.location   = [content objectForKey:kSeller_Location];
-    self.button     = [content objectForKey:kSeller_Button];
+    self.buttonType     = [[content objectForKey:kSeller_ButtonType] integerValue];
     self.progress   = [content objectForKey:kSeller_Progress];
     self.goods      = [content objectForKey:kSeller_Goods];
+    self.colorType = [[content objectForKey:kSeller_ColorType] integerValue];
 }
 
 @end

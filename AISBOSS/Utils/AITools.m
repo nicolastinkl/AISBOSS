@@ -82,4 +82,22 @@
 }
 
 
+#pragma mark - 重置View的宽度
+
++ (void)resetWidth:(CGFloat)width forView:(UIView *)view
+{
+    CGRect frame = view.frame;
+    frame.size.width = width;
+    view.frame = frame;
+}
+
+#pragma mark - 重置View的X
++ (void)resetOriginalX:(CGFloat)x forView:(UIView *)view
+{
+    CGRect frame = view.frame;
+    frame.origin.x = x;
+    view.frame = frame;
+}
+
+
 @end

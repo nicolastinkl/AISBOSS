@@ -660,6 +660,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				93FA1E361B9C3E12009965C8 /* Seller */,
 				9364FA4D1BA12120005EFB0F /* Views */,
 				93B25A551B9D7A1D00CD1FEB /* WeiboShare */,
 				93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */,
@@ -677,7 +678,6 @@
 				930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */,
 				930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */,
 				93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */,
-				93FA1E361B9C3E12009965C8 /* Seller */,
 				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
 				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
 				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,

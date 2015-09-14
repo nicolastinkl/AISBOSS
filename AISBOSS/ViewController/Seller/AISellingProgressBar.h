@@ -10,4 +10,14 @@
 
 @interface AISellingProgressBar : UIView
 
+@property (nonatomic, readonly) UILabel *progressLabel;
+
+@property (nonatomic, readonly) UIImageView *progressIndicator;
+
+@property (nonatomic, assign) NSInteger progressPercent;
+
+
+- (void)setProgressContent:(NSDictionary *)content;
+
+
 @end

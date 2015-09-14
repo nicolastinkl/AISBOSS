@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AISellerViewController : UIViewController
+@interface AISellerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

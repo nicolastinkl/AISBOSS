@@ -82,6 +82,9 @@
     [self addChildViewController:self.leftDirectionViewController];
     [self.leftDirectionViewController didMoveToParentViewController:self];
     
+    // RIGHT
+    self.rightDirectionViewController = self.centerTapViewController;
+    
     // default
     [self.view addSubview:self.centerTapViewController.view];
     _currentViewController = self.centerTapViewController;
