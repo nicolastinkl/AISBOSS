@@ -98,7 +98,7 @@ class AICustomerSwipeView: AIBaseSwipeView {
         
         initialSizeOfInfoPanel = size
         layer.cornerRadius = 2
-        self.setSspScrollView(self.scrollView)
+        
     }
     
     func setSspScrollView(scrollView: UIScrollView) {

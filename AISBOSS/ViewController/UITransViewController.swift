@@ -103,8 +103,8 @@ class UITransViewController: UIViewController {
         /*!
         Settings TableView
         */
-        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
+//        tableView.rowHeight = UITableViewAutomaticDimension
         
         /*!
         init swipeView
@@ -617,7 +617,47 @@ extension UITransViewController:tagCellDelegate{
 // MARK: UITableViewDataSource Delegate
 extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
 
-    // MARK: New instance ..
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let model =  dataSource![indexPath.section]
+        //  音乐类型
+        if model.favoriteType == FavoriteTypeEnum.music.value() {
+            if model.ctExpand == .Collapsed {
+                return 75
+            }else{
+                return 145
+            }
+        }
+        
+        // 多媒体类型
+        if model.favoriteType == FavoriteTypeEnum.image.value() || model.favoriteType == FavoriteTypeEnum.video.value() {
+            // Default
+            if model.ctExpand == .Collapsed {
+                return 205
+            }else{
+                let height = self.heightForContent(model.favoriteDes)
+                return 195 + 70 + height
+            }
+
+        }
+        
+        //   文本类型
+        
+        if model.favoriteType == FavoriteTypeEnum.web.value() {
+            
+            if model.ctExpand == .Collapsed {
+                return 125
+            }else{
+                let height = self.heightForContent(model.favoriteDes)
+                return 135 + height
+            }
+            
+        }
+        
+        return 0
+    }
+    
+    // MARK: cellForRowAtIndexPath..
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
             
         let cell =  tableView.dequeueReusableCellWithIdentifier("AICellIdentity") as! AICellIdentityCell
@@ -666,7 +706,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view.height == 65
                     view.left == view.superview!.left
                     view.top == view.superview!.top + 10
-                    view.bottom == view.superview!.bottom
+                    //view.bottom == view.superview!.bottom
                 }
                 
             }else{
@@ -691,7 +731,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     actionView.height == 70
                     actionView.left == actionView.superview!.left
                     
-                    actionView.bottom == actionView.superview!.bottom
+                    //actionView.bottom == actionView.superview!.bottom
                     
                 }
             }
@@ -721,7 +761,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     viewMedia.height == 140
                     viewMedia.left == viewMedia.superview!.left
                     
-                    viewMedia.bottom == viewMedia.superview!.bottom
+                    //viewMedia.bottom == viewMedia.superview!.bottom
                     
                     
                 }
@@ -771,7 +811,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view4.width == view4.superview!.width
                     view4.height == 70
                     
-                    view4.bottom == view4.superview!.bottom
+                    //view4.bottom == view4.superview!.bottom
                 }
                 
             } 
@@ -804,7 +844,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view2.top == view1.bottom
                     view2.height == 60
                     view2.left == view1.left
-                    view2.bottom == view2.superview!.bottom
+                   // view2.bottom == view2.superview!.bottom
                      
                 }
                 
@@ -846,7 +886,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view3.height == 70
                     view3.left == view3.superview!.left
                     
-                    view3.bottom == view3.superview!.bottom
+                    //view3.bottom == view3.superview!.bottom
                 }
             }
         }
@@ -1220,6 +1260,8 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         return CommonCellBackgroundViewType.GroupMiddle
     }
     
+  
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
@@ -1322,11 +1364,11 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         
         isEnable = false
         
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
 
-//        self.tableView.beginUpdates()
-//        self.tableView.reloadSections(NSIndexSet(index: cellIndex), withRowAnimation: UITableViewRowAnimation.Fade)
-//        self.tableView.endUpdates()
+        self.tableView.beginUpdates()
+        self.tableView.reloadSections(NSIndexSet(index: cellIndex), withRowAnimation: UITableViewRowAnimation.Fade)
+        self.tableView.endUpdates()
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             //Basically maintain your logic to get the indexpath

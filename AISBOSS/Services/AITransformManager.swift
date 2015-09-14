@@ -73,10 +73,9 @@ class AIMockTransformManager: AITransformManager {
         content.colors?.append(AIColorFlag.Red)
         content.colors?.append(AIColorFlag.Orange)
         content.favoriteDes = "The calendar of saints is a traditional Christian method of organizing a liturgical year by associating each day with one or more saints and referring to the day as the feast day or feast of said saint. (The word \"feast\" in this context does not mean \"a large meal, typically a celebratory one\", but instead \"an annual religious celebration, a day dedicated to a particular saint\"."
-        contentList.append(content)        
-
+        contentList.append(content)
          
- content = AITransformContentModel()
+        content = AITransformContentModel()
         content.id = 5
         content.favoriteAvator = "http://photocdn.sohu.com/20110809/Img315878985.jpg"
         content.favoriteTitle = "Badminton sport"

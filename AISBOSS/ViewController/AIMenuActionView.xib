@@ -67,7 +67,7 @@
                         <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="W38-ns-Xg1"/>
                     </connections>
                 </button>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-z7-sxS" customClass="DesignableLabel" customModule="Spring">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-z7-sxS" customClass="DesignableLabel" customModule="AISpring">
                     <rect key="frame" x="17" y="8" width="566" height="1"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
@@ -75,7 +75,7 @@
                         <constraint firstAttribute="height" constant="1" id="s8V-ru-AJM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_Line_bg" translatesAutoresizingMaskIntoConstraints="NO" id="H31-PK-zFo">

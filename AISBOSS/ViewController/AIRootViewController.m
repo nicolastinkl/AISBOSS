@@ -77,7 +77,6 @@
     [sellerViewController didMoveToParentViewController:self];
     
     // left
-    
     storyBoard=[UIStoryboard storyboardWithName:@"UITimeLineStoryboard" bundle:nil];
     self.leftDirectionViewController = [storyBoard instantiateInitialViewController];
     [self addChildViewController:self.leftDirectionViewController];

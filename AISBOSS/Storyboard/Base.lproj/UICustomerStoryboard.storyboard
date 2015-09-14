@@ -9,7 +9,7 @@
         <!--Custom Home View Controller-->
         <scene sceneID="0Wl-xT-5xa">
             <objects>
-                <viewController storyboardIdentifier="CustomHomeViewController" id="nhB-3Q-p0m" customClass="AICustomHomeViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomHomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nhB-3Q-p0m" customClass="AICustomHomeViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9U9-xi-XeE"/>
                         <viewControllerLayoutGuide type="bottom" id="mCc-Hp-9z5"/>
