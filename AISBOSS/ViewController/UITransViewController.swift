@@ -778,6 +778,10 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 let contentView = AIContentView.currentView()
                 cell.view_Content.addSubview(contentView)
                 contentView.Image_Line.hidden = true
+                contentView.Label_Content.text = model.favoriteDes
+                contentView.Label_Content.numberOfLines = 0
+                contentView.Label_Content.sizeToFit()
+                
                 let actionView = AIMenuActionView.currentView()
                 cell.view_Content.addSubview(actionView)
                 fillAIActionView(model, actionView: actionView, indexPath: indexPath)
@@ -798,7 +802,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     
                     view3.top == view2.bottom
                     view3.left == view3.superview!.left
-                    view2.height == height
+                    view3.height == height
                     view3.width == view3.superview!.width
                     
                 }
@@ -897,9 +901,9 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     private func heightForContent(content:String?) -> CGFloat{
         let size = CGSizeMake(self.view.width - 60,2000)
         let s:NSString = "\(content)"
-        let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:UIFont.systemFontOfSize(16)], context: nil)
+        let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:UIFont.systemFontOfSize(14)], context: nil)
         
-        return contentSize.height + 50
+        return contentSize.height + 10
     }
     
     // Fill Actin view ..
@@ -1364,11 +1368,11 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         
         isEnable = false
         
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
 
-        self.tableView.beginUpdates()
-        self.tableView.reloadSections(NSIndexSet(index: cellIndex), withRowAnimation: UITableViewRowAnimation.Fade)
-        self.tableView.endUpdates()
+//        self.tableView.beginUpdates()
+//        self.tableView.reloadSections(NSIndexSet(index: cellIndex), withRowAnimation: UITableViewRowAnimation.Fade)
+//        self.tableView.endUpdates()
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             //Basically maintain your logic to get the indexpath
