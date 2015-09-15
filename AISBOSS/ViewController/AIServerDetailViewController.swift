@@ -306,14 +306,10 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
         {
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
-            //recycled and used with other index values later
-            var index = index + 1
-            if index > 3{
-                index = 1
-            }
-            view = UIImageView(frame:CGRectMake(0, 0, 200, 200))
-            (view as! UIImageView!).image = UIImage(named: "testHolder\(index)")
-            view.contentMode = UIViewContentMode.ScaleAspectFill
+            //recycled and used with other index values later           
+            let coverView = UICoverFlowView.currentView()
+            //coverView.fillDataWithModel()
+            view = coverView
             
         }
         

@@ -10,6 +10,8 @@
 #import "AICardCell.h"
 #import "AITools.h"
 
+#define kMarginOffset 4
+
 @interface AICardView ()
 {
     NSMutableArray *_cellHeights;
@@ -22,12 +24,12 @@
 @implementation AICardView
 @synthesize heights = _cellHeights;
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (id)initWithFrame:(CGRect)frame cards:(NSArray *)cards
 {
@@ -60,7 +62,7 @@
         }
         
         [self resetFrames];
-    
+        
     }
     
     return self;
@@ -70,7 +72,7 @@
 {
     NSArray *cells = self.subviews;
     
-    CGFloat y = 0;
+    CGFloat y = kMarginOffset;
     CGFloat height = 0;
     
     for (AICardCell *cell in cells) {
@@ -87,7 +89,7 @@
     }
     
     CGRect newFrame = self.frame;
-    newFrame.size.height = y;
+    newFrame.size.height = y + kMarginOffset;
     self.frame = newFrame;
 }
 

@@ -60,3 +60,5 @@
 #import "AIMessageWrapper.h"
 
 #import "AINetEngine.h"
+
+#import "CWStarRateView.h"

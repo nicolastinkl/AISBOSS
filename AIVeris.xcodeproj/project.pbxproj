@@ -22,6 +22,9 @@
 		930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */; };
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
+		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
+		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
+		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -214,6 +217,10 @@
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
+		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
+		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
+		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
+		934C41B91BA7FFCE00002853 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
@@ -538,6 +545,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		934C41B21BA7F13500002853 /* ServiceDetail */ = {
+			isa = PBXGroup;
+			children = (
+				934C41B31BA7F16C00002853 /* UICoverFlowView.swift */,
+				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
+			);
+			path = ServiceDetail;
+			sourceTree = "<group>";
+		};
+		934C41B71BA7FFC600002853 /* stars */ = {
+			isa = PBXGroup;
+			children = (
+				934C41B81BA7FFCE00002853 /* CWStarRateView.h */,
+				934C41B91BA7FFCE00002853 /* CWStarRateView.m */,
+			);
+			name = stars;
+			sourceTree = "<group>";
+		};
 		9364FA4D1BA12120005EFB0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +701,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				934C41B21BA7F13500002853 /* ServiceDetail */,
 				93FA1E361B9C3E12009965C8 /* Seller */,
 				9364FA4D1BA12120005EFB0F /* Views */,
 				93B25A551B9D7A1D00CD1FEB /* WeiboShare */,
@@ -708,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				12D794F81BA80A5500586011 /* HorizontalCard */,
+				934C41B71BA7FFC600002853 /* stars */,
 				93FA1DCE1B9C2F4F009965C8 /* buyerCard */,
 				93FA1DB61B9C2F0F009965C8 /* Info */,
 				93FA1D801B9C2EA9009965C8 /* DSLCalendarView */,
@@ -1170,6 +1197,7 @@
 				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
+				934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */,
 				93B25A601B9D7A1D00CD1FEB /* sdk_weibo_logo.png in Resources */,
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
@@ -1297,6 +1325,7 @@
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
+				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
@@ -1354,6 +1383,7 @@
 				93FA1DFB1B9C306E009965C8 /* AIFavoritesServicesModel.swift in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
 				93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */,
+				934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */,
 				93B25A9C1B9D7A7B00CD1FEB /* AFURLConnectionOperation.m in Sources */,
 				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
