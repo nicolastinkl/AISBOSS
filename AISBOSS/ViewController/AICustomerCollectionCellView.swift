@@ -155,7 +155,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     }
     
     class func currentView()->AICustomerCollectionCellView{
-        var selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as! AICustomerCollectionCellView
+        let selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as! AICustomerCollectionCellView
         return selfView
     }
     
