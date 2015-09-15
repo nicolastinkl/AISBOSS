@@ -69,7 +69,6 @@
     [self addChildViewController:self.upDirectionViewController];
     [self.upDirectionViewController didMoveToParentViewController:self];
     
-    
     // down
     AISellerViewController *sellerViewController = [[AISellerViewController alloc] init];
     [self addChildViewController:sellerViewController];

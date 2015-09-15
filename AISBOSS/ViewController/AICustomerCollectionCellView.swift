@@ -13,12 +13,12 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    /* 
+    
+    /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+    // Drawing code
     }
     */
     @IBOutlet weak var serviceName: UILabel!
@@ -31,6 +31,12 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     @IBOutlet weak var cellBg: UIImageView!
     @IBOutlet weak var splitLine1: UIImageView!
     @IBOutlet weak var splitLine2: UIImageView!
+    
+    var itemCardBlackBg: UIImageView = UIImageView(frame: CGRectZero)
+    @IBOutlet weak var timerBtn: UIButton!
+    @IBOutlet weak var settingsBtn: UIButton!
+    @IBOutlet weak var shareBtn: UIButton!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
     var cards:NSArray?
     
@@ -45,11 +51,13 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
             sender.selected = false
             cellBg.image = UIImage(named: "service_item_default_bg")
             splitLine1.image = UIImage(named: "customer_split_line_default")
+            splitLine2.image = UIImage(named: "customer_split_line_default")
         }
         else{
             sender.selected = true
             cellBg.image = UIImage(named: "service_item_star_bg")
             splitLine1.image = UIImage(named: "customer_split_line_star")
+            splitLine2.image = UIImage(named: "customer_split_line_star")
         }
     }
     @IBAction func shareAction(sender: UIButton) {
@@ -64,23 +72,28 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
             sender.selected = false
             cellBg.image = UIImage(named: "service_item_default_bg")
             splitLine1.image = UIImage(named: "customer_split_line_default")
+            splitLine2.image = UIImage(named: "customer_split_line_default")
         }
         else{
             sender.selected = true
             cellBg.image = UIImage(named: "service_item_time_bg")
             splitLine1.image = UIImage(named: "customer_split_line_timer")
+            splitLine2.image = UIImage(named: "customer_split_line_timer")
         }
     }
-    
+     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        var cornerImage = UIImage(named: "item_card_black_bg_2")
         
+        cornerImage = cornerImage?.resizableImageWithCapInsets(UIEdgeInsetsMake(25/2, 25/2 , 25/2, 25/2), resizingMode: UIImageResizingMode.Stretch)
+        itemCardBlackBg.image = cornerImage
+        self.addSubview(itemCardBlackBg)
     }
-    
     
     func initCardView()
     {
@@ -88,17 +101,19 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         {
             cardView?.removeFromSuperview()
         }
-        cardView = AICardView(frame: CGRectMake(0, 0, self.frame.size.width, 0), cards: cards! as [AnyObject])
+        cardView = AICardView(frame:  CGRectMake(0, 0, self.frame.size.width, 0), cards: cards! as [AnyObject])
     }
-    
     
     func prepare(){
         
-        // println("\(self.frame.size.width)")
         self.initCardView()
-        
-        let dot = self.viewWithTag(200) as UIView!
-        _ = self.viewWithTag(300) as UIView!
+        self.setCardView()
+        self.setBorder()
+    }
+    
+    func setCardView()
+    {
+        let dot = self.viewWithTag(200)!
         
         tableViewOriginalY = tableViewOriginalY == 0 ? dot.frame.origin.y : tableViewOriginalY
         tableViewOriginalW = tableViewOriginalW == 0 ? self.frame.size.width : tableViewOriginalW
@@ -106,8 +121,14 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.addSubview(cardView!)
         self.tableView.scrollEnabled = false
-        self.layer.cornerRadius = 5
-        //self.layer.masksToBounds = true
+    }
+    
+    func setBorder()
+    {
+        self.clipsToBounds = false
+        let blackBgFrame = CGRectMake(-1, 0, self.bounds.width+1.5, self.bounds.height)
+        itemCardBlackBg.frame = blackBgFrame
+        self.bringSubviewToFront(itemCardBlackBg)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,12 +151,12 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         super.layoutSubviews()
         
         prepare()
-
+        
     }
     
     class func currentView()->AICustomerCollectionCellView{
-        let selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as! AICustomerCollectionCellView
+        var selfView = NSBundle.mainBundle().loadNibNamed("AICustomerCollectionCellView", owner: self, options: nil).first  as! AICustomerCollectionCellView
         return selfView
     }
-
+    
 }
