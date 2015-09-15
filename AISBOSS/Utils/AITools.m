@@ -99,5 +99,25 @@
     view.frame = frame;
 }
 
-
+#pragma mark - 读取json文件返回string
++ (NSString *)readJsonWithFileName:(NSString *)fileName fileType:(NSString *)fileType
+{
+    NSString *fileString = nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileType];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSData *data = [fileManager contentsAtPath:path];
+        if (data) {
+            fileString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        }
+    }
+    
+    // 去除空格和换行符
+    NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *finalStr = [fileString stringByTrimmingCharactersInSet:whitespace];
+    finalStr = [finalStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
+    return finalStr;
+}
 @end

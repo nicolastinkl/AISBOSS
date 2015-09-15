@@ -26,4 +26,6 @@
 + (void)resetWidth:(CGFloat)width forView:(UIView *)view;
 
 + (void)resetOriginalX:(CGFloat)x forView:(UIView *)view;
+
++ (NSString *)readJsonWithFileName:(NSString *)fileName fileType:(NSString *)fileType;
 @end
