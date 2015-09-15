@@ -71,7 +71,7 @@ class AIServerDetailViewController: UIViewController {
                 let data =  dataModel()
                 data.title = item
                 data.type = cellType.cellTypeCoverflow
-                self.dataSource.insertObject(data, atIndex: 1)
+                //self.dataSource.insertObject(data, atIndex: 1)
             }
         }
         
@@ -210,55 +210,69 @@ extension AIServerDetailViewController : AOTagDelegate{
 }
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return dataSource.count
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if dataSource.count > indexPath.row{
-            
-            let model =  dataSource.objectAtIndex(indexPath.row) as! dataModel
-            
-            if model.type == cellType.cellTypeDate {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
+        //
+        if dataSource.count > indexPath.section{
+            let model =  dataSource.objectAtIndex(indexPath.section) as! dataModel
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITitleServiceDetailCell) as! AITitleServiceDetailCell
                 cell.title.text = model.title ?? ""
+                return cell
+            }else{
                 
-                let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-                let path = arrayPath.first ?? ""
-                let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
-                
-                let image = UIImage(contentsOfFile: componentPath)
-                if let im = image{
-                    cell.dateImageView.image = im
-                }else{
-                    cell.dateImageView.image = UIImage(named: "CalendarImage")
+                if model.type == cellType.cellTypeDate {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
+                    
+                    
+                    let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+                    let path = arrayPath.first ?? ""
+                    let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
+                    
+                    let image = UIImage(contentsOfFile: componentPath)
+                    if let im = image{
+                        cell.dateImageView.image = im
+                    }else{
+                        cell.dateImageView.image = UIImage(named: "CalendarImage")
+                    }
+                    return cell
                 }
-                return cell
-            }
-            
-            if  model.type == cellType.cellTypeCoverflow {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
-                cell.carousel.type = .CoverFlow2
-                cell.title.text = model.title ?? ""
-                return cell
-            }
-            
-            if  model.type == cellType.cellTypeFilght {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
-                cell.title.text = model.title ?? ""
-                return cell
-            }
-            
-            if  model.type == cellType.cellTypeparames {
                 
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as! AISDParamsCell
-                cell.title.text = "Flight Some Sosd"
-                cell.descri.text = "Parson Accident insoure has incloud the project"
-                cell.price.text = "$20"
-                cell.line.setHeight(0.5)
-                return cell
+                if  model.type == cellType.cellTypeCoverflow {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                    cell.carousel.type = .CoverFlow2
+                    return cell
+                }
                 
+                if  model.type == cellType.cellTypeFilght {
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
+                   
+                    return cell
+                }
+                
+                if  model.type == cellType.cellTypeparames {
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as! AISDParamsCell
+                    cell.title.text = "Flight Some Sosd"
+                    cell.descri.text = "Parson Accident insoure has incloud the project"
+                    cell.price.text = "$20"
+                    cell.line.setHeight(0.5)
+                    return cell
+                    
+                }
+
             }
+            
+            
             
         }
         
@@ -281,6 +295,15 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
 }
 
 // MARK: CELL
+
+class AITitleServiceDetailCell: UITableViewCell {
+    
+    @IBOutlet weak var title: UILabel!
+    
+    @IBOutlet weak var closeButton: UIButton!
+    @IBAction func closeAction(sender: AnyObject) {
+    }
+}
 
 class AISDDateCell: UITableViewCell {
     

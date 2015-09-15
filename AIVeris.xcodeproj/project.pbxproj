@@ -455,7 +455,7 @@
 		93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRootViewController.h; sourceTree = "<group>"; };
 		93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRootViewController.m; sourceTree = "<group>"; };
 		93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIScanViewController.swift; sourceTree = "<group>"; };
-		93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServerDetailViewController.swift; sourceTree = "<group>"; };
+		93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServerDetailViewController.swift; path = ../AIServerDetailViewController.swift; sourceTree = "<group>"; };
 		93FA1E2E1B9C3E12009965C8 /* AISwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISwipeView.swift; sourceTree = "<group>"; };
 		93FA1E2F1B9C3E12009965C8 /* AISwipeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AISwipeView.xib; sourceTree = "<group>"; };
 		93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISwipeViewUtil.swift; sourceTree = "<group>"; };
@@ -534,6 +534,7 @@
 			children = (
 				934C41B31BA7F16C00002853 /* UICoverFlowView.swift */,
 				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
+				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
 			);
 			path = ServiceDetail;
 			sourceTree = "<group>";
@@ -696,7 +697,6 @@
 				93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */,
 				93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */,
 				93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */,
-				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
 				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
 				930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */,
 				930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */,
