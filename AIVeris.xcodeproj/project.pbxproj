@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
+		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
+		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
 		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
@@ -200,6 +203,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
+		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
+		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -506,6 +512,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12D794F81BA80A5500586011 /* HorizontalCard */ = {
+			isa = PBXGroup;
+			children = (
+				12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */,
+				12D794FD1BA80B6000586011 /* CardCellView.xib */,
+				12D794FF1BA80B8100586011 /* CardCellView.swift */,
+			);
+			name = HorizontalCard;
+			sourceTree = "<group>";
+		};
 		61647BAFC7200B01794A2E67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +733,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				12D794F81BA80A5500586011 /* HorizontalCard */,
 				934C41B71BA7FFC600002853 /* stars */,
 				93FA1DCE1B9C2F4F009965C8 /* buyerCard */,
 				93FA1DB61B9C2F0F009965C8 /* Info */,
@@ -1186,6 +1203,7 @@
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
+				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
@@ -1311,6 +1329,7 @@
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
+				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
@@ -1357,6 +1376,7 @@
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
+				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
 				93FA1E041B9C306E009965C8 /* SearchHistoryRecord.swift in Sources */,
 				93B25A9B1B9D7A7B00CD1FEB /* AFSecurityPolicy.m in Sources */,
 				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
