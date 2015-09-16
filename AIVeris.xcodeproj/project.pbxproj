@@ -10,6 +10,7 @@
 		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
+		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
@@ -209,6 +210,8 @@
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
+		12D795021BA9597400586011 /* AIScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIScrollLabel.h; sourceTree = "<group>"; };
+		12D795031BA9597400586011 /* AIScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIScrollLabel.m; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
@@ -529,6 +532,15 @@
 			name = HorizontalCard;
 			sourceTree = "<group>";
 		};
+		12D795011BA9595B00586011 /* AIScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				12D795021BA9597400586011 /* AIScrollLabel.h */,
+				12D795031BA9597400586011 /* AIScrollLabel.m */,
+			);
+			name = AIScrollLabel;
+			sourceTree = "<group>";
+		};
 		61647BAFC7200B01794A2E67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +771,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				12D795011BA9595B00586011 /* AIScrollLabel */,
 				84CB0B3C1BA90524005F16D0 /* Switch */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				934C41B71BA7FFC600002853 /* stars */,
@@ -1384,6 +1397,7 @@
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				93C33F1A1B9BEAFE007BF506 /* AITools.m in Sources */,
+				12D795041BA9597400586011 /* AIScrollLabel.m in Sources */,
 				93FA1DC81B9C2F0F009965C8 /* UPLabel.m in Sources */,
 				93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */,
 				93FA1DE51B9C302A009965C8 /* AIServicesRequester.swift in Sources */,
