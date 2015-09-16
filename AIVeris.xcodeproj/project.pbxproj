@@ -103,6 +103,7 @@
 		93C33F371B9C2813007BF506 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F361B9C2813007BF506 /* QuartzCore.framework */; };
 		93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F381B9C2825007BF506 /* SystemConfiguration.framework */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
+		93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
 		93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D821B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m */; };
@@ -363,6 +364,7 @@
 		93D5A3631B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93D5A36C1B709C1D00DDB158 /* AISBOSSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISBOSSUITests.swift; sourceTree = "<group>"; };
 		93D5A36E1B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowViewDataSoureAndDelegate.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		93FA1D7D1B9C2E9D009965C8 /* JTSScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSScrollIndicator.h; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				934C41B31BA7F16C00002853 /* UICoverFlowView.swift */,
 				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
 				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
+				93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */,
 			);
 			path = ServiceDetail;
 			sourceTree = "<group>";
@@ -1396,6 +1399,7 @@
 				93FA1E511B9C3E12009965C8 /* AIMenuActionView.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
+				93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
