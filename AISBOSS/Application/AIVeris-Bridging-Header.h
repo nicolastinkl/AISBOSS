@@ -62,3 +62,5 @@
 #import "AINetEngine.h"
 
 #import "CWStarRateView.h"
+
+#import "AIServiceSchemeModel.h"

@@ -90,6 +90,7 @@ class AIServerDetailViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+        
     }
     
     func ChangeDateViewNotification(){
