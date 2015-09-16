@@ -10,12 +10,12 @@ import UIKit
 
 class CardCellView: UIView {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+    // MARK: - uiview variables
 
+    @IBOutlet weak var serviceNameLabel: UILabel!
+    @IBOutlet weak var serviceDescLabel: UILabel!
+    @IBOutlet weak var serviceRatingLabel: CWStarRateView!
+    
+    @IBOutlet weak var servicePriceLabel: UILabel!
+    
 }
