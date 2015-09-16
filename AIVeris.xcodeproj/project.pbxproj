@@ -11,6 +11,8 @@
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
+		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
 		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
 		930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */; };
@@ -208,6 +210,8 @@
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
+		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271D1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271F1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIMainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -546,6 +550,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84CB0B3C1BA90524005F16D0 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */,
+				84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +756,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84CB0B3C1BA90524005F16D0 /* Switch */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				934C41B71BA7FFC600002853 /* stars */,
 				93FA1DCE1B9C2F4F009965C8 /* buyerCard */,
@@ -1323,6 +1337,7 @@
 				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
+				84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */,
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
@@ -1382,6 +1397,7 @@
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
+				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
