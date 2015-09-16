@@ -11,6 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AILogo" translatesAutoresizingMaskIntoConstraints="NO" id="duK-rg-hWq" userLabel="backgroundImg" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
+                    <animations/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CB1 Student Apt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQN-2U-Oyl" userLabel="serviceName">
                     <rect key="frame" x="5" y="8" width="94" height="21"/>
                     <animations/>
@@ -31,10 +35,9 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView" customClass="CWStarRateView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView">
                     <rect key="frame" x="5" y="54" width="50" height="20"/>
                     <animations/>
-                    <color key="backgroundColor" red="1" green="1" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="AMt-PQ-w6t"/>
                         <constraint firstAttribute="width" constant="50" id="gAO-vt-itT"/>
@@ -51,27 +54,35 @@
             <animations/>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="duK-rg-hWq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2bt-Qi-0bK"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o1G-rA-Qk9" secondAttribute="trailing" constant="1" id="37b-4C-ndm"/>
                 <constraint firstItem="o1G-rA-Qk9" firstAttribute="top" secondItem="DQN-2U-Oyl" secondAttribute="bottom" constant="2" id="4Q1-ak-j8g"/>
                 <constraint firstItem="b6b-Y7-8w1" firstAttribute="top" secondItem="7dT-1F-f3L" secondAttribute="bottom" constant="5" id="6V4-kD-0H2"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DQN-2U-Oyl" secondAttribute="trailing" constant="1" id="JZM-iI-5N9"/>
+                <constraint firstAttribute="bottom" secondItem="duK-rg-hWq" secondAttribute="bottom" id="XE8-f0-sl0"/>
                 <constraint firstAttribute="bottom" secondItem="b6b-Y7-8w1" secondAttribute="bottom" id="ZCO-kY-CVj"/>
                 <constraint firstItem="7dT-1F-f3L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="iAb-G7-2qp"/>
                 <constraint firstItem="DQN-2U-Oyl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ihY-Fd-53D"/>
                 <constraint firstItem="7dT-1F-f3L" firstAttribute="top" secondItem="o1G-rA-Qk9" secondAttribute="bottom" constant="2" id="oAg-KJ-DB3"/>
                 <constraint firstItem="o1G-rA-Qk9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="p82-Kl-Abb"/>
+                <constraint firstItem="duK-rg-hWq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r7M-9q-2hu"/>
                 <constraint firstItem="DQN-2U-Oyl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="tjt-iI-by9"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b6b-Y7-8w1" secondAttribute="trailing" constant="1" id="y0p-gC-54h"/>
+                <constraint firstAttribute="trailing" secondItem="duK-rg-hWq" secondAttribute="trailing" id="zni-up-mS0"/>
                 <constraint firstItem="b6b-Y7-8w1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="ztx-DD-l7e"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="serviceDescLabel" destination="o1G-rA-Qk9" id="2w8-ah-wjP"/>
+                <outlet property="serviceImg" destination="duK-rg-hWq" id="ojI-rY-efR"/>
                 <outlet property="serviceNameLabel" destination="DQN-2U-Oyl" id="g52-2i-kfp"/>
                 <outlet property="servicePriceLabel" destination="b6b-Y7-8w1" id="PTU-h5-Nuo"/>
-                <outlet property="serviceRatingLabel" destination="7dT-1F-f3L" id="zBz-n5-gMH"/>
+                <outlet property="serviceRatingView" destination="7dT-1F-f3L" id="gL9-UU-pOc"/>
             </connections>
             <point key="canvasLocation" x="135.5" y="433"/>
         </view>
     </objects>
+    <resources>
+        <image name="AILogo" width="142" height="142"/>
+    </resources>
 </document>

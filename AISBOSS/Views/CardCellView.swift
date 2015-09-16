@@ -14,8 +14,29 @@ class CardCellView: UIView {
 
     @IBOutlet weak var serviceNameLabel: UILabel!
     @IBOutlet weak var serviceDescLabel: UILabel!
-    @IBOutlet weak var serviceRatingLabel: CWStarRateView!
-    
     @IBOutlet weak var servicePriceLabel: UILabel!
+    @IBOutlet weak var serviceRatingView: UIView!
+    @IBOutlet weak var serviceImg: AIImageView!
+    
+    // MARK: - init method
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    // MARK: - utils
+    
+    func buildViewData(serviceListModel : ServiceList){
+        serviceNameLabel.text = serviceListModel.service_name
+        serviceDescLabel.text = serviceListModel.service_intro ?? ""
+        servicePriceLabel.text = serviceListModel.service_price
+        let starRateView : UIView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
+        serviceRatingView.addSubview(starRateView)
+        //serviceImg
+        serviceImg.setURL(NSURL(string: serviceListModel.service_img), placeholderImage: UIImage(named: "Placeholder"))
+    }
     
 }
