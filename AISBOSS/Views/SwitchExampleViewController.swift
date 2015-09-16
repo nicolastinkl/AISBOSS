@@ -4,11 +4,12 @@
 //
 //  Created by Benjamin Vogelzang on 6/21/14.
 //  Copyright (c) 2014 Ben Vogelzang. All rights reserved.
+//  Modify by Rocky on 9/16/15
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class SwitchExampleViewController: UIViewController {
     @IBOutlet var ibSwitch: SevenSwitch!
     
     override func viewDidLoad() {
