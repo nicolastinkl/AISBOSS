@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AILogo" translatesAutoresizingMaskIntoConstraints="NO" id="duK-rg-hWq" userLabel="backgroundImg" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cust_favorite_big" translatesAutoresizingMaskIntoConstraints="NO" id="duK-rg-hWq" userLabel="backgroundImg" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
                     <animations/>
                 </imageView>
@@ -52,7 +52,7 @@
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="duK-rg-hWq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2bt-Qi-0bK"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o1G-rA-Qk9" secondAttribute="trailing" constant="1" id="37b-4C-ndm"/>
@@ -83,6 +83,6 @@
         </view>
     </objects>
     <resources>
-        <image name="AILogo" width="142" height="142"/>
+        <image name="cust_favorite_big" width="67" height="67"/>
     </resources>
 </document>

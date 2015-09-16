@@ -10,6 +10,8 @@ import UIKit
 
 class CardCellView: UIView {
 
+    var selected = false
+    var index : Int!
     // MARK: - uiview variables
 
     @IBOutlet weak var serviceNameLabel: UILabel!
@@ -37,6 +39,15 @@ class CardCellView: UIView {
         serviceRatingView.addSubview(starRateView)
         //serviceImg
         serviceImg.setURL(NSURL(string: serviceListModel.service_img), placeholderImage: UIImage(named: "Placeholder"))
+        
     }
     
+    func selectAction(selected : Bool){
+        if selected{
+            
+        }
+        else{
+            
+        }
+    }
 }

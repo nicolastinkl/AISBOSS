@@ -8,9 +8,15 @@
 
 import UIKit
 
+@objc
+protocol HorizontalCardViewDelegate {
+    optional func didSelectCell(cardView : HorizontalCardView,cellIndex : Int)
+}
+
 class HorizontalCardView: UIView {
     
     var serviceListModelList : [ServiceList]!
+    var delegate : HorizontalCardViewDelegate?
     
     let viewPadding : CGFloat = 5
     let cellPadding : CGFloat = 5
@@ -32,6 +38,7 @@ class HorizontalCardView: UIView {
     func buildLayout(){
         var isFirst = false
         var cellX : CGFloat = viewPadding
+        var index = 0
         
         let cellWidth = (self.bounds.size.width - (viewPadding * 2)) / CGFloat(serviceListModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
@@ -47,9 +54,23 @@ class HorizontalCardView: UIView {
             }
             let cardCellView : CardCellView = CardCellView(frame: cellFrame)
             cardCellView.buildViewData(serviceListModel)
+            cardCellView.index = index
             self.addSubview(cardCellView)
             cellX = cellX + cellWidth + cellPadding
+            index++
         }
     }
     
+    func bindCellEvent(cardCellView : CardCellView){
+        let tapGuesture = UITapGestureRecognizer(target: self, action: "viewSelectAction:")
+        cardCellView.addGestureRecognizer(tapGuesture)
+    }
+    
+    // MARK: - delegate
+    func viewSelectAction(target : UITapGestureRecognizer){
+        if let cardCellView : CardCellView = target.view as? CardCellView{
+            delegate?.didSelectCell!(self, cellIndex: cardCellView.index)
+        }
+        
+    }
 }
