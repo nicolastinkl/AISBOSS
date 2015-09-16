@@ -1342,31 +1342,33 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         let topView:AITopInfoView = sender as! AITopInfoView
         let section = topView.associatedName?.toInt()
         cellExpendOrCollapse(section ?? 0)
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section ?? 0), atScrollPosition: UITableViewScrollPosition.None, animated: true)
+        //self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section ?? 0), atScrollPosition: UITableViewScrollPosition.None, animated: true)
     }
     
     private func cellExpendOrCollapse(cellIndex: Int) {
   
+        
         let model =  dataSource![cellIndex]
         
         if model.ctExpand == .Collapsed {
-            model.ctExpand = .Expanded
-
-            if lastExpandedCell != -1  && lastExpandedCell != cellIndex {
-                dataSource![lastExpandedCell].ctExpand = .Collapsed
-            }
-            
-            lastExpandedCell = cellIndex
+        model.ctExpand = .Expanded
+        
+        if lastExpandedCell != -1  && lastExpandedCell != cellIndex {
+        dataSource![lastExpandedCell].ctExpand = .Collapsed
+        }
+        
+        lastExpandedCell = cellIndex
         } else {
-            model.ctExpand = .Collapsed
-            if lastExpandedCell == cellIndex {
-                lastExpandedCell = -1
-            }
+        model.ctExpand = .Collapsed
+        if lastExpandedCell == cellIndex {
+        lastExpandedCell = -1
+        }
         }
         
         dataSource![cellIndex] = model
         
         isEnable = false
+        
         
         self.tableView.reloadData()
 

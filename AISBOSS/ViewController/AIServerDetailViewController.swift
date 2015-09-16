@@ -276,7 +276,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if model.type == cellType.cellTypeDate {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
                     
-                    
                     let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
                     let path = arrayPath.first ?? ""
                     let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
