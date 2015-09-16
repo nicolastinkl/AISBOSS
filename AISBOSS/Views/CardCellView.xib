@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CB1 Student Apt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQN-2U-Oyl" userLabel="serviceName">
-                    <rect key="frame" x="5" y="8" width="93.5" height="21"/>
+                    <rect key="frame" x="5" y="8" width="94" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="eQg-xT-7sO"/>
@@ -31,7 +31,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView" customClass="CWStarRateView">
                     <rect key="frame" x="5" y="54" width="50" height="20"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,6 +65,12 @@
                 <constraint firstItem="b6b-Y7-8w1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="ztx-DD-l7e"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="serviceDescLabel" destination="o1G-rA-Qk9" id="2w8-ah-wjP"/>
+                <outlet property="serviceNameLabel" destination="DQN-2U-Oyl" id="g52-2i-kfp"/>
+                <outlet property="servicePriceLabel" destination="b6b-Y7-8w1" id="PTU-h5-Nuo"/>
+                <outlet property="serviceRatingLabel" destination="7dT-1F-f3L" id="zBz-n5-gMH"/>
+            </connections>
             <point key="canvasLocation" x="135.5" y="433"/>
         </view>
     </objects>
