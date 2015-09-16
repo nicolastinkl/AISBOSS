@@ -11,6 +11,8 @@
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
+		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
 		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
 		930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */; };
@@ -25,6 +27,7 @@
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
+		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -197,7 +200,6 @@
 		93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */; };
 		93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */; };
 		93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */; };
-		93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */; };
 		93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E431B9C3E12009965C8 /* UITransViewController.swift */; };
 		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
 /* End PBXBuildFile section */
@@ -208,6 +210,8 @@
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
+		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271D1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271F1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIMainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		934C41B91BA7FFCE00002853 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
+		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
 		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
@@ -481,7 +487,6 @@
 		93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
 		93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICellMultiStyle.swift; sourceTree = "<group>"; };
 		93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHomeViewController.swift; sourceTree = "<group>"; };
-		93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINewTransViewController.swift; sourceTree = "<group>"; };
 		93FA1E431B9C3E12009965C8 /* UITransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewController.swift; sourceTree = "<group>"; };
 		93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewControllerExtention.swift; sourceTree = "<group>"; };
 		F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -545,6 +550,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84CB0B3C1BA90524005F16D0 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */,
+				84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +611,15 @@
 			path = Playgorund;
 			sourceTree = "<group>";
 		};
+		937954AA1BA90B870057A99E /* ocModel */ = {
+			isa = PBXGroup;
+			children = (
+				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
+				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
+			);
+			name = ocModel;
+			sourceTree = "<group>";
+		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +652,7 @@
 		93A5A5981B9BD5E1001DE36D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				937954AA1BA90B870057A99E /* ocModel */,
 				93FA1DE71B9C306E009965C8 /* AICatalogServicesModel.swift */,
 				93FA1DE81B9C306E009965C8 /* AIConnectToolModel.swift */,
 				93FA1DE91B9C306E009965C8 /* AICustomerModels.swift */,
@@ -723,7 +747,6 @@
 				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
 				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
 				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
-				93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */,
 				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
 				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
 			);
@@ -733,6 +756,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84CB0B3C1BA90524005F16D0 /* Switch */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				934C41B71BA7FFC600002853 /* stars */,
 				93FA1DCE1B9C2F4F009965C8 /* buyerCard */,
@@ -1313,6 +1337,7 @@
 				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
+				84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */,
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
@@ -1372,6 +1397,7 @@
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
+				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
@@ -1387,6 +1413,7 @@
 				93B25A9C1B9D7A7B00CD1FEB /* AFURLConnectionOperation.m in Sources */,
 				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
+				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93C33F1E1B9BEAFE007BF506 /* UIView+MaterialDesign.m in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
@@ -1426,7 +1453,6 @@
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
-				93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,

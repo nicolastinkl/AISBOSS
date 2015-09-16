@@ -52,8 +52,7 @@ extension UITransViewController{
 //            alphaY = 1
 //            animateY = 0
 //        }
-
-
+ 
 //        UIView.animateWithDuration(0.5, animations: { () -> Void in
 //            self.topMessageView.alpha = alphaY
 //            self.topMessageView.setTop(animateY)
