@@ -310,7 +310,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.price.text = "$20"
                     cell.line.setHeight(0.5)
                     return cell
-                    
                 }
             }
         }
@@ -399,7 +398,6 @@ class AISDParamsCell: UITableViewCell
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var descri: UILabel!
     @IBOutlet weak var button: UIButton!
-    
     @IBOutlet weak var line: UILabel!
     
     @IBAction func exchangeButton(sender: AnyObject) {
