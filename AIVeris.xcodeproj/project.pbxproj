@@ -25,6 +25,7 @@
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
+		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -197,7 +198,6 @@
 		93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */; };
 		93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */; };
 		93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */; };
-		93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */; };
 		93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E431B9C3E12009965C8 /* UITransViewController.swift */; };
 		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
 /* End PBXBuildFile section */
@@ -222,6 +222,8 @@
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		934C41B91BA7FFCE00002853 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
+		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
 		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
@@ -481,7 +483,6 @@
 		93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMenuViewController.swift; sourceTree = "<group>"; };
 		93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICellMultiStyle.swift; sourceTree = "<group>"; };
 		93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHomeViewController.swift; sourceTree = "<group>"; };
-		93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINewTransViewController.swift; sourceTree = "<group>"; };
 		93FA1E431B9C3E12009965C8 /* UITransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewController.swift; sourceTree = "<group>"; };
 		93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewControllerExtention.swift; sourceTree = "<group>"; };
 		F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -597,6 +598,15 @@
 			path = Playgorund;
 			sourceTree = "<group>";
 		};
+		937954AA1BA90B870057A99E /* ocModel */ = {
+			isa = PBXGroup;
+			children = (
+				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
+				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
+			);
+			name = ocModel;
+			sourceTree = "<group>";
+		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +639,7 @@
 		93A5A5981B9BD5E1001DE36D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				937954AA1BA90B870057A99E /* ocModel */,
 				93FA1DE71B9C306E009965C8 /* AICatalogServicesModel.swift */,
 				93FA1DE81B9C306E009965C8 /* AIConnectToolModel.swift */,
 				93FA1DE91B9C306E009965C8 /* AICustomerModels.swift */,
@@ -723,7 +734,6 @@
 				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
 				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
 				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
-				93FA1E421B9C3E12009965C8 /* UINewTransViewController.swift */,
 				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
 				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
 			);
@@ -1387,6 +1397,7 @@
 				93B25A9C1B9D7A7B00CD1FEB /* AFURLConnectionOperation.m in Sources */,
 				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
+				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93C33F1E1B9BEAFE007BF506 /* UIView+MaterialDesign.m in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
@@ -1426,7 +1437,6 @@
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
-				93FA1E671B9C3E12009965C8 /* UINewTransViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,

@@ -46,8 +46,6 @@ struct AICustomerServiceCoverFlowModel : JSONJoy {
     var provider_icon : String?
     var service_img : String?
     
-    
-    
     init(){
         
     }
