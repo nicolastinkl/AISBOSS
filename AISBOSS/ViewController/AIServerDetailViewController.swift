@@ -136,6 +136,36 @@ class AIServerDetailViewController: UIViewController {
         //self.navigationController?.popViewControllerAnimated(true)
     }
     
+    @IBAction func closeAction(sender: AnyObject) {
+        //处理删除当前section的问题
+        
+        let button = sender as! UIButton
+        let cell = button.superview?.superview as! UITableViewCell
+        let sectionss = self.tableView.indexPathForCell(cell)?.section
+        if let s = sectionss {
+            self.dataSource.removeObjectAtIndex(s)
+            self.tableView.reloadData()
+        }
+     
+        /*
+        let titl = tag.tTitle
+        
+        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
+        let fitlerModel = object as! dataModel
+        
+        if fitlerModel.title == titl {
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
+        
+        self.dataSource.removeObjectAtIndex(index)
+        self.tableView.reloadData()
+        return
+        }
+        }
+        */
+        
+    }
+    
+    
 }
 
 extension AIServerDetailViewController : serviceSearchViewDelegate {
@@ -208,6 +238,7 @@ extension AIServerDetailViewController : AOTagDelegate{
         
     }
     
+   
 }
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
@@ -219,15 +250,26 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return 2
     }
     
-    
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //
+
         if dataSource.count > indexPath.section{
             let model =  dataSource.objectAtIndex(indexPath.section) as! dataModel
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITitleServiceDetailCell) as! AITitleServiceDetailCell
                 cell.title.text = model.title ?? ""
+                
+                switch model.type! {
+                case cellType.cellTypeDate:
+                    cell.closeButton.hidden = true
+                case cellType.cellTypeCoverflow:
+                    cell.closeButton.hidden = false
+                case cellType.cellTypeFilght:
+                    cell.closeButton.hidden = true
+                case cellType.cellTypeparames:
+                    cell.closeButton.hidden = true
+                    
+                }
+               
                 return cell
             }else{
                 
@@ -270,11 +312,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                     
                 }
-
             }
-            
-            
-            
         }
         
         return UITableViewCell()
@@ -283,14 +321,12 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        if  //Day
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             let menuViewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICalendarViewController) as! AICalendarViewController
             menuViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
             menuViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
             self.showDetailViewController(menuViewController, sender: self)
         }
-        
-        
     }
     
 }
@@ -300,10 +336,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
 class AITitleServiceDetailCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
-    
     @IBOutlet weak var closeButton: UIButton!
-    @IBAction func closeAction(sender: AnyObject) {
-    }
+    
 }
 
 class AISDDateCell: UITableViewCell {
@@ -351,7 +385,6 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
         }
         return value
     }
-
     
 }
 

@@ -35,8 +35,7 @@ class AICalendarViewController: UIViewController,DSLCalendarViewDelegate {
         let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let path = arrayPath.first ?? ""
         let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
-                 
-         UIImagePNGRepresentation(image)?.writeToFile(componentPath, atomically: true)
+        UIImagePNGRepresentation(image)?.writeToFile(componentPath, atomically: true)
     }
     
     func calendarView(calendarView: DSLCalendarView!, didDragToDay day: NSDateComponents!, selectingRange range: DSLCalendarRange!) -> DSLCalendarRange! {
