@@ -12,6 +12,7 @@
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		840FD4101BABD2F5000C6033 /* FlickerNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840FD40F1BABD2F5000C6033 /* FlickerNumberLabel.m */; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -214,6 +215,8 @@
 		12D795031BA9597400586011 /* AIScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIScrollLabel.m; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840FD40E1BABD2F5000C6033 /* FlickerNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickerNumberLabel.h; sourceTree = "<group>"; };
+		840FD40F1BABD2F5000C6033 /* FlickerNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickerNumberLabel.m; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -564,6 +567,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		840FD40D1BABD2B8000C6033 /* FlickNumberLabel */ = {
+			isa = PBXGroup;
+			children = (
+				840FD40E1BABD2F5000C6033 /* FlickerNumberLabel.h */,
+				840FD40F1BABD2F5000C6033 /* FlickerNumberLabel.m */,
+			);
+			name = FlickNumberLabel;
+			sourceTree = "<group>";
+		};
 		84CB0B3C1BA90524005F16D0 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,6 +784,7 @@
 			isa = PBXGroup;
 			children = (
 				12D795011BA9595B00586011 /* AIScrollLabel */,
+				840FD40D1BABD2B8000C6033 /* FlickNumberLabel */,
 				84CB0B3C1BA90524005F16D0 /* Switch */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				934C41B71BA7FFC600002853 /* stars */,
@@ -1461,6 +1474,7 @@
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
 				93B25A3D1B9D796F00CD1FEB /* AIMessage.m in Sources */,
+				840FD4101BABD2F5000C6033 /* FlickerNumberLabel.m in Sources */,
 				93B25AA51B9D7A7B00CD1FEB /* JSONKeyMapper.m in Sources */,
 				93FA1DD91B9C3001009965C8 /* ContentsCellView.swift in Sources */,
 				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
