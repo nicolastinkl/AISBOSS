@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 DDKit. All rights reserved.
 //
 
-#import "UILabel+FlickerNumber.h"
+#import "FlickerNumberLabel.h"
 #import <objc/runtime.h>
 // 每次变化的数量
 #define OnceChangedNumberKey @"RangeKey"
