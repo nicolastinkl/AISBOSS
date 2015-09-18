@@ -22,25 +22,23 @@ class CardCellView: UIView {
     @IBOutlet weak var serviceRatingView: UIView!
     @IBOutlet weak var serviceImg: AIImageView!
     
-    // MARK: - init method
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: currentView
+    class func currentView()->CardCellView{
+        let selfView = NSBundle.mainBundle().loadNibNamed("CardCellView", owner: self, options: nil).first  as! CardCellView
+        return selfView
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     // MARK: - utils
     
     func buildViewData(serviceListModel : ServiceList){
-        serviceNameLabel.text = serviceListModel.service_name
+        serviceNameLabel.text = serviceListModel.service_name ?? ""
         serviceDescLabel.text = serviceListModel.service_intro ?? ""
-        servicePriceLabel.text = serviceListModel.service_price
+        servicePriceLabel.text = serviceListModel.service_price ?? ""
         let starRateView : UIView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView)
         //serviceImg
-        serviceImg.setURL(NSURL(string: serviceListModel.service_img), placeholderImage: UIImage(named: "Placeholder"))
+        serviceImg.setURL(NSURL(string: serviceListModel.service_img ?? ""), placeholderImage: UIImage(named: "Placeholder"))
         
     }
     

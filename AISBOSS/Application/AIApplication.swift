@@ -78,6 +78,7 @@ struct AIApplication{
             static let AISDFightCell        = "AISDFightCell"
             static let AISDParamsCell       = "AISDParamsCell"
             static let AITitleServiceDetailCell = "AITitleServiceDetailCell"
+            static let AITableCellHolder    = "AITableCellHolder"
             
             // MARK: TIME LINE
             static let AITIMELINESDTimesViewCell        = "AITIMELINESDTimesViewCell"

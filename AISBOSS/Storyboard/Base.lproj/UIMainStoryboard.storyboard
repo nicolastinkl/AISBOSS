@@ -2341,6 +2341,16 @@
                                             <outlet property="title" destination="vu4-9H-It8" id="PJk-rq-1pt"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolder" id="30K-SZ-b2I">
+                                        <rect key="frame" x="0.0" y="942" width="600" height="142"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="30K-SZ-b2I" id="P3q-fk-8xQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="gMp-mY-f82" id="W0F-KX-f5r"/>

@@ -21,11 +21,11 @@
 
 @interface ServiceList : JSONModel
 
-@property (assign, nonatomic) int * service_id;
+@property (assign, nonatomic) int  service_id;
 @property (strong, nonatomic) NSString<Optional> * service_name;
 @property (strong, nonatomic) NSString<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_intro;
-@property (assign, nonatomic) int * provider_id;
+@property (assign, nonatomic) int provider_id;
 @property (strong, nonatomic) NSString<Optional> * provider_name;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
 @property (strong, nonatomic) NSString<Optional> * provider_icon;

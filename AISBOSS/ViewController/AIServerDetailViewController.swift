@@ -17,6 +17,7 @@ enum cellType:Int{
     case cellTypeCoverflow = 1
     case cellTypeFilght = 2
     case cellTypeparames = 3
+    case cellTypeMutiChoose = 4
 }
 
 class dataModel : NSObject{
@@ -58,7 +59,13 @@ class AIServerDetailViewController: UIViewController {
         var data4 =  dataModel()
         data4.title = "Pararmes"
         data4.type = cellType.cellTypeparames
-        return NSMutableArray(array: [data,data3,data4])
+        
+        
+        var data5 =  dataModel()
+        data5.title = "PararmesMuti"
+        data5.type = cellType.cellTypeMutiChoose
+        
+        return NSMutableArray(array: [data,data3,data4,data5])
         }()
     
     override func viewDidLoad() {
@@ -86,8 +93,8 @@ class AIServerDetailViewController: UIViewController {
     
         self.tableView.reloadData()
         
-        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
+//        tableView.rowHeight = UITableViewAutomaticDimension
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
@@ -242,6 +249,30 @@ extension AIServerDetailViewController : AOTagDelegate{
 }
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let model =  dataSource.objectAtIndex(indexPath.section) as! dataModel
+        if indexPath.row == 0 {
+            return 50
+        }
+        
+        if indexPath.row == 1 {
+            switch model.type! {
+            case cellType.cellTypeDate:
+                return 300
+            case cellType.cellTypeCoverflow:
+                return 200
+            case cellType.cellTypeFilght:
+                return 200
+            case cellType.cellTypeparames:
+                return 100
+            case cellType.cellTypeMutiChoose:
+                return 200
+            }
+        }
+        
+        return 0
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return dataSource.count
     }
@@ -267,7 +298,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.closeButton.hidden = true
                 case cellType.cellTypeparames:
                     cell.closeButton.hidden = true
-                    
+                case cellType.cellTypeMutiChoose:
+                    cell.closeButton.hidden = false
                 }
                
                 return cell
@@ -309,6 +341,37 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.price.text = "$20"
                     cell.line.setHeight(0.5)
                     return cell
+                }
+                
+                if model.type == cellType.cellTypeMutiChoose {
+                    
+                        let p = SchemeParamList()
+                        p.param_key = 1
+                        p.param_value = "value"
+                        p.param_value_id = NSNumber(int: 1)
+                    
+                        let ser = ServiceList()
+                        ser.service_id = 1
+                        ser.service_img = ""
+                        ser.service_intro = "introeslkdf"
+                        ser.service_name = "SomeTimes"
+                        ser.service_price = "12.0"
+                        ser.service_rating = NSNumber(int: 12)
+                        ser.service_param_list = [p]
+                        ser.provider_id = 12
+                        ser.provider_name = "tinkle"
+                        ser.provider_icon = ""
+                        
+                        let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 100), serviceListModelList: [ser])
+                        
+                        let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                        if cell?.contentView.subviews.count == 0 {
+                            cell?.contentView.addSubview(hori)
+                        }
+                        return cell!
+                   
+                    
+                    
                 }
             }
         }

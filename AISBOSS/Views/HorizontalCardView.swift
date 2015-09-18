@@ -53,7 +53,9 @@ class HorizontalCardView: UIView {
             else{
                 cellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
             }
-            let cardCellView : CardCellView = CardCellView(frame: cellFrame)
+            let cardCellView : CardCellView = CardCellView.currentView()
+            cardCellView.frame = cellFrame
+            
             cardCellView.buildViewData(serviceListModel)
             cardCellView.index = index
             cardCellViewList.append(cardCellView)
