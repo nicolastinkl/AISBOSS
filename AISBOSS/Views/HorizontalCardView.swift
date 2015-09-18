@@ -16,6 +16,7 @@ protocol HorizontalCardViewDelegate {
 class HorizontalCardView: UIView {
     
     var serviceListModelList : [ServiceList]!
+    var cardCellViewList = Array<CardCellView>()
     var delegate : HorizontalCardViewDelegate?
     
     let viewPadding : CGFloat = 5
@@ -55,6 +56,8 @@ class HorizontalCardView: UIView {
             let cardCellView : CardCellView = CardCellView(frame: cellFrame)
             cardCellView.buildViewData(serviceListModel)
             cardCellView.index = index
+            cardCellViewList.append(cardCellView)
+            
             self.addSubview(cardCellView)
             cellX = cellX + cellWidth + cellPadding
             index++
@@ -68,8 +71,17 @@ class HorizontalCardView: UIView {
     
     // MARK: - delegate
     func viewSelectAction(target : UITapGestureRecognizer){
-        if let cardCellView : CardCellView = target.view as? CardCellView{
-            delegate?.didSelectCell!(self, cellIndex: cardCellView.index)
+        if let selCardCellView : CardCellView = target.view as? CardCellView{
+            for cardCellView : CardCellView in cardCellViewList{
+                if cardCellView.index == selCardCellView.index{
+                    cardCellView.selectAction(true)
+                }
+                else{
+                    cardCellView.selectAction(false)
+                }
+            }
+            
+            delegate?.didSelectCell!(self, cellIndex: selCardCellView.index)
         }
         
     }

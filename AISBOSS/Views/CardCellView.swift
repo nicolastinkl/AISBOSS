@@ -12,6 +12,8 @@ class CardCellView: UIView {
 
     var selected = false
     var index : Int!
+    var grayBackgroundImg : UIImage?
+    var originBackgroundImg : UIImage?
     // MARK: - uiview variables
 
     @IBOutlet weak var serviceNameLabel: UILabel!
@@ -43,11 +45,21 @@ class CardCellView: UIView {
     }
     
     func selectAction(selected : Bool){
+        originBackgroundImg = serviceImg.image
+        
         if selected{
-            
+            serviceImg.image = originBackgroundImg
         }
         else{
-            
+            if let image = grayBackgroundImg{
+                serviceImg.image = image
+            }
+            else{
+                let originImg = serviceImg.image
+                let grayImg = AITools.convertImageToGrayScale(originImg)
+                grayBackgroundImg = grayImg
+                serviceImg.image = grayImg
+            }
         }
     }
 }

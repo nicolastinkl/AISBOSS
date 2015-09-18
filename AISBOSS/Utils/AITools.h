@@ -28,4 +28,7 @@
 + (void)resetOriginalX:(CGFloat)x forView:(UIView *)view;
 
 + (NSString *)readJsonWithFileName:(NSString *)fileName fileType:(NSString *)fileType;
+
+// UIImage
++ (UIImage *) convertImageToGrayScale: (UIImage *) image;
 @end
