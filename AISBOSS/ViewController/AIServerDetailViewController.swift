@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AISpring
 import AIAlertView
-
+import Cartography
 
 enum cellType:Int{
     case cellTypeDate = 0
@@ -270,7 +270,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case cellType.cellTypeCoverflow:
                 return 220
             case cellType.cellTypeFilght:
-                return 200
+                return 280
             case cellType.cellTypeparames:
                 return 100
             case cellType.cellTypeMutiChoose:
@@ -303,7 +303,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeCoverflow:
                     cell.closeButton.hidden = false
                 case cellType.cellTypeFilght:
-                    cell.closeButton.hidden = true
+                    cell.closeButton.hidden = false
                 case cellType.cellTypeparames:
                     cell.closeButton.hidden = true
                 case cellType.cellTypeMutiChoose:
@@ -337,9 +337,29 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 if  model.type == cellType.cellTypeFilght {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
+                    /*let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
                    
                     return cell
+                    */
+                    
+                    let ticketGroupView = AirTicketGroupView()
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    if cell?.contentView.subviews.count == 0 {
+                        cell?.contentView.addSubview(ticketGroupView)
+                        
+                        layout(ticketGroupView) { viewTic in
+                            viewTic.left == viewTic.superview!.left + 9
+                            viewTic.top == viewTic.superview!.top
+                            viewTic.right == viewTic.superview!.right - 9
+                            viewTic.height == 280
+                        }
+                        
+                        ticketGroupView.setTicketsData()
+                    }
+                    
+                    return cell!
+                    
                 }
                 
                 if  model.type == cellType.cellTypeparames {
