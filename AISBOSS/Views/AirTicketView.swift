@@ -2,13 +2,16 @@
 //  AirTicketView.swift
 //  AIVeris
 //
-//  Created by admin on 15/9/21.
+//  Created by Rocky on 15/9/21.
 //  Copyright © 2015年 ___ASIAINFO___. All rights reserved.
 //
 
 import UIKit
 
 class AirTicketView: UIView {
+    
+    static let TICKET_HEAD_HEIGHT: CGFloat = 85
+    static let TICKET_HEIGHT: CGFloat = 140
 
     @IBOutlet weak var flightNumber: UILabel!
     @IBOutlet weak var startAirport: UILabel!
