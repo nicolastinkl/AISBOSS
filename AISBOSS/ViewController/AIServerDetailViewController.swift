@@ -342,21 +342,26 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                     */
                     
-                    let ticketGroupView = AirTicketGroupView()
+                   
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    var ticketGroupView:AirTicketGroupView
                     if cell?.contentView.subviews.count == 0 {
+                        ticketGroupView = AirTicketGroupView()
+                        ticketGroupView.tag = 3
                         cell?.contentView.addSubview(ticketGroupView)
-                        
                         layout(ticketGroupView) { viewTic in
                             viewTic.left == viewTic.superview!.left + 9
                             viewTic.top == viewTic.superview!.top
                             viewTic.right == viewTic.superview!.right - 9
                             viewTic.height == 280
                         }
-                        
                         ticketGroupView.setTicketsData()
+                    }else{
+                        ticketGroupView = cell?.contentView.viewWithTag(3) as! AirTicketGroupView
                     }
+                    
+                    ticketGroupView.layoutIfNeeded()
                     
                     return cell!
                     
