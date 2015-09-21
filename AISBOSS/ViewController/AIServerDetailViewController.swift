@@ -47,6 +47,9 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
+    /// cell 里面内容左右间距
+    private var cellPadding:Float = 14.0
+    
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
         data.title = "DAY"
