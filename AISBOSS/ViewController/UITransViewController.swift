@@ -179,12 +179,12 @@ class UITransViewController: UIViewController {
         
     } 
     
-//    override func viewDidAppear(animated: Bool) {
-//        
-//        super.viewDidAppear(animated)
-//        self.tableView.reloadData()
-//        
-//    }
+    override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
+        
+    }
     
     // MARK: - Actions
 

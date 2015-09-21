@@ -336,13 +336,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
-                if  model.type == cellType.cellTypeFilght {
-                    /*let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
-                   
-                    return cell
-                    */
-                    
-                   
+                if  model.type == cellType.cellTypeFilght { 
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                     var ticketGroupView:AirTicketGroupView
@@ -369,12 +363,23 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 if  model.type == cellType.cellTypeparames {
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as! AISDParamsCell
-                    cell.title.text = "Flight Some Sosd"
-                    cell.descri.text = "Parson Accident insoure has incloud the project"
-                    cell.price.text = "$20"
-                    cell.line.setHeight(0.5)
-                    return cell
+                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    
+                    let switchView = SwitchServiceView.createSwitchServiceView()
+                    
+                    if cell?.contentView.subviews.count == 0 {
+                        cell?.contentView.addSubview(switchView)
+                        
+                        layout(switchView) { switchView in
+                            switchView.left == switchView.superview!.left
+                            switchView.top == switchView.superview!.top
+                            switchView.right == switchView.superview!.right
+                            switchView.height == SwitchServiceView.HEIGHT
+                        }
+                    }
+                    
+                    return cell!
+                    
                 }
                 
                 if model.type == cellType.cellTypeMutiChoose {
