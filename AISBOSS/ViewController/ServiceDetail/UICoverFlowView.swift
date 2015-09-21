@@ -22,12 +22,14 @@ class UICoverFlowView: UIView {
     
     // MARK: currentView
     class func currentView()->UICoverFlowView{
+        //230 182
         let selfView = NSBundle.mainBundle().loadNibNamed("UICoverFlowView", owner: self, options: nil).first  as! UICoverFlowView
         return selfView
     }
     
     func fillDataWithModel(model: AICustomerServiceCoverFlowModel){
-        let starRateView = CWStarRateView(frame: CGRectMake(0, 0, 100, 20), numberOfStars: 5)
+        
+        let starRateView = CWStarRateView(frame: CGRectMake(22, 0, AIApplication.AIStarViewFrame.width, AIApplication.AIStarViewFrame.height), numberOfStars: 5)
         if starView.subviews.count <= 0 {
             starView.addSubview(starRateView)
         }

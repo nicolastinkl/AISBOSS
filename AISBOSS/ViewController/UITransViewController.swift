@@ -657,6 +657,10 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.layoutIfNeeded()
+    }
+    
     // MARK: cellForRowAtIndexPath..
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
             
