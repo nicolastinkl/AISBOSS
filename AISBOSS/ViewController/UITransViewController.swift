@@ -177,14 +177,14 @@ class UITransViewController: UIViewController {
         
         self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
         
-    }
+    } 
     
-    override func viewDidAppear(animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        self.tableView.reloadData()
-        
-    }
+//    override func viewDidAppear(animated: Bool) {
+//        
+//        super.viewDidAppear(animated)
+//        self.tableView.reloadData()
+//        
+//    }
     
     // MARK: - Actions
 
@@ -658,7 +658,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layoutIfNeeded()
+        cell.layoutSubviews()
     }
     
     // MARK: cellForRowAtIndexPath..
