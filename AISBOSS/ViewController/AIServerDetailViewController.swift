@@ -393,7 +393,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         ser.service_id = 1
                         ser.service_img = "http://img1.gtimg.com/news/pics/hv1/40/169/1927/125346310_small.jpg"
                         ser.service_intro = "(100% Refund)"
-                        ser.service_name = "ChinaTravel"
+                        ser.service_name = "ChinaTravelChinaTravelChinaTravelChinaTravelChinaTravel"
                         ser.service_price = "$220"
                         ser.service_rating = NSNumber(int: 12)
                         ser.service_param_list = [p]
@@ -401,7 +401,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         ser.provider_name = "tinkle"
                         ser.provider_icon = ""
                         
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser,ser],multiSelect : false)
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser],multiSelect : false)
                         
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                         if cell?.contentView.subviews.count == 0 {

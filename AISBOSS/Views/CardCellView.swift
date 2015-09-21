@@ -15,10 +15,15 @@ class CardCellView: UIView {
     var grayBackgroundImg : UIImage?
     var originBackgroundImg : UIImage?
     var starRateView : UIView?
+    var serviceNameScrollLabel : AIScrollLabel?
+    var serviceDescScrollLabel : AIScrollLabel?
+    var serviceListModel : ServiceList!
+    var firstLayout = true
     // MARK: - uiview variables
 
-    @IBOutlet weak var serviceNameLabel: UILabel!
-    @IBOutlet weak var serviceDescLabel: UILabel!
+
+    @IBOutlet weak var serviceDescView: UIView!
+    @IBOutlet weak var serviceNameView: UIView!
     @IBOutlet weak var servicePriceLabel: UILabel!
     @IBOutlet weak var serviceRatingView: UIView!
     @IBOutlet weak var serviceImg: AIImageView!
@@ -34,21 +39,41 @@ class CardCellView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         starRateView?.frame = serviceRatingView.bounds
+        if firstLayout{
+            let serviceName : String = serviceListModel.service_name ?? ""
+            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+            serviceNameView.addSubview(serviceNameScrollLabel!)
+            let serviceDesc : String = serviceListModel.service_intro ?? ""
+            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+            serviceDescView.addSubview(serviceDescScrollLabel!)
+            
+            firstLayout = false
+        }
+        
     }
     
     
     // MARK: - utils
     
     func buildViewData(serviceListModel : ServiceList){
-        serviceNameLabel.text = serviceListModel.service_name ?? ""
-        serviceDescLabel.text = serviceListModel.service_intro ?? ""
+        self.serviceListModel = serviceListModel
+        
         servicePriceLabel.text = serviceListModel.service_price ?? ""
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
         serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
-            self.originBackgroundImg = image
+            if imageURL == ""{
+                self.originBackgroundImg = UIImage(named: "Placehold")
+                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
+
+            }
+            else{
+                self.originBackgroundImg = image
+                self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
+            }
+            
         })
         //serviceImg
         //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
@@ -63,25 +88,27 @@ class CardCellView: UIView {
     }
     
     func selectAction(){
-        
-        
         if selected{
             serviceImg.image = originBackgroundImg
             backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
             selectFlagImage.hidden = false
+            if let scrollLabel1 = serviceNameScrollLabel{
+                scrollLabel1.startScroll()
+            }
+            if let scrollLabel2 = serviceDescScrollLabel{
+                scrollLabel2.startScroll()
+            }
         }
         else{
-            if let image = grayBackgroundImg{
-                serviceImg.image = image
-            }
-            else{
-                let originImg = serviceImg.image
-                let grayImg = AITools.convertImageToGrayScale(originImg)
-                grayBackgroundImg = grayImg
-                serviceImg.image = grayImg
-            }
+            serviceImg.image = grayBackgroundImg
             backGroundColorView.backgroundColor = UIColor(hex: "#444242")
             selectFlagImage.hidden = true
+            if let scrollLabel1 = serviceNameScrollLabel{
+                scrollLabel1.stopScroll()
+            }
+            if let scrollLabel2 = serviceDescScrollLabel{
+                scrollLabel2.stopScroll()
+            }
         }
     }
 }

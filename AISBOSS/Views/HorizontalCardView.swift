@@ -45,7 +45,7 @@ class HorizontalCardView: UIView {
     
     // MARK: - build method
     func buildLayout(){
-        var isFirst = false
+        var isFirst = true
         var cellX : CGFloat = viewPadding
         var index = 0
         let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
@@ -54,22 +54,27 @@ class HorizontalCardView: UIView {
         
         for serviceListModel : ServiceList in serviceListModelList{
             var cellFrame:CGRect!
+            
+            let cardCellView : CardCellView = CardCellView.currentView()
             if isFirst{
                 cellFrame = firstCellFrame
+                cardCellView.selected = true
                 isFirst = false
             }
             else{
                 cellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
+                cardCellView.selected = false
             }
-            let cardCellView : CardCellView = CardCellView.currentView()
+            
             cardCellView.frame = cellFrame
             
             cardCellView.buildViewData(serviceListModel)
             cardCellView.index = index
             bindCellEvent(cardCellView)
             cardCellViewList.append(cardCellView)
-            
             self.addSubview(cardCellView)
+            //init select status
+            cardCellView.selectAction()
             cellX = cellX + cellWidth + cellPadding
             index++
         }
