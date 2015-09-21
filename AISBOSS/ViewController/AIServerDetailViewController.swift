@@ -146,7 +146,7 @@ class AIServerDetailViewController: UIViewController {
         //self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func closeAction(sender: AnyObject) {
+    func closeCurrentSectionAction(sender: AnyObject) {
         //处理删除当前section的问题
         
         let button = sender as! UIButton
@@ -304,6 +304,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
                 }
+                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchDragInside)
                
                 return cell
             }else{
