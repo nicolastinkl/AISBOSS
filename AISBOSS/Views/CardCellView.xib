@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
@@ -11,9 +11,15 @@
             <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cust_favorite_big" translatesAutoresizingMaskIntoConstraints="NO" id="duK-rg-hWq" userLabel="backgroundImg" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardCell2" translatesAutoresizingMaskIntoConstraints="NO" id="duK-rg-hWq" userLabel="backgroundImg" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
                     <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c3t-7A-rf1" userLabel="backgroundColor">
+                    <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.55294117649999996" green="0.50980392159999999" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CB1 Student Apt" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQN-2U-Oyl" userLabel="serviceName">
                     <rect key="frame" x="5" y="8" width="94" height="21"/>
@@ -22,7 +28,7 @@
                         <constraint firstAttribute="height" constant="21" id="eQg-xT-7sO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(100% Refund)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1G-rA-Qk9" userLabel="serviceDesc">
@@ -32,7 +38,7 @@
                         <constraint firstAttribute="height" constant="21" id="TWy-OS-rdM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView">
@@ -58,9 +64,13 @@
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o1G-rA-Qk9" secondAttribute="trailing" constant="1" id="37b-4C-ndm"/>
                 <constraint firstItem="o1G-rA-Qk9" firstAttribute="top" secondItem="DQN-2U-Oyl" secondAttribute="bottom" constant="2" id="4Q1-ak-j8g"/>
                 <constraint firstItem="b6b-Y7-8w1" firstAttribute="top" secondItem="7dT-1F-f3L" secondAttribute="bottom" constant="5" id="6V4-kD-0H2"/>
+                <constraint firstItem="c3t-7A-rf1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7CJ-mw-7g9"/>
+                <constraint firstAttribute="trailing" secondItem="c3t-7A-rf1" secondAttribute="trailing" id="C0q-On-0s7"/>
+                <constraint firstItem="c3t-7A-rf1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ERF-Fr-Lf0"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DQN-2U-Oyl" secondAttribute="trailing" constant="1" id="JZM-iI-5N9"/>
                 <constraint firstAttribute="bottom" secondItem="duK-rg-hWq" secondAttribute="bottom" id="XE8-f0-sl0"/>
                 <constraint firstAttribute="bottom" secondItem="b6b-Y7-8w1" secondAttribute="bottom" id="ZCO-kY-CVj"/>
+                <constraint firstAttribute="bottom" secondItem="c3t-7A-rf1" secondAttribute="bottom" id="daT-5H-a36"/>
                 <constraint firstItem="7dT-1F-f3L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="iAb-G7-2qp"/>
                 <constraint firstItem="DQN-2U-Oyl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ihY-Fd-53D"/>
                 <constraint firstItem="7dT-1F-f3L" firstAttribute="top" secondItem="o1G-rA-Qk9" secondAttribute="bottom" constant="2" id="oAg-KJ-DB3"/>
@@ -73,8 +83,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="backGroundColorView" destination="c3t-7A-rf1" id="3d4-h9-kaS"/>
                 <outlet property="serviceDescLabel" destination="o1G-rA-Qk9" id="2w8-ah-wjP"/>
-                <outlet property="serviceImg" destination="duK-rg-hWq" id="ojI-rY-efR"/>
+                <outlet property="serviceImg" destination="duK-rg-hWq" id="ndN-G9-Jev"/>
                 <outlet property="serviceNameLabel" destination="DQN-2U-Oyl" id="g52-2i-kfp"/>
                 <outlet property="servicePriceLabel" destination="b6b-Y7-8w1" id="PTU-h5-Nuo"/>
                 <outlet property="serviceRatingView" destination="7dT-1F-f3L" id="gL9-UU-pOc"/>
@@ -83,6 +94,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cust_favorite_big" width="67" height="67"/>
+        <image name="cardCell2" width="167" height="101"/>
     </resources>
 </document>
