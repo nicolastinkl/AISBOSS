@@ -338,7 +338,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 if  model.type == cellType.cellTypeFilght { 
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
                     var ticketGroupView:AirTicketGroupView
                     if cell?.contentView.subviews.count == 0 {
                         ticketGroupView = AirTicketGroupView()

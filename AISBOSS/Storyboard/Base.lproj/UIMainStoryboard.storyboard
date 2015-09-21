@@ -533,7 +533,7 @@
                                                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-uj-G6i" customClass="SpringView" customModule="AISpring">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" image="item_card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="klj-ET-WSQ">
+                                                        <imageView multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" image="item_card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="klj-ET-WSQ">
                                                             <rect key="frame" x="10" y="10" width="580" height="180"/>
                                                             <animations/>
                                                             <rect key="contentStretch" x="0.49999999999999994" y="0.59999999999999998" width="0.0" height="0.0"/>
@@ -2345,8 +2345,18 @@
                                             <outlet property="title" destination="vu4-9H-It8" id="PJk-rq-1pt"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolder" id="30K-SZ-b2I">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolderParms" id="IyV-R3-L3l">
                                         <rect key="frame" x="0.0" y="942" width="600" height="142"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IyV-R3-L3l" id="Kq3-1A-m2q">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolder" id="30K-SZ-b2I">
+                                        <rect key="frame" x="0.0" y="1084" width="600" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="30K-SZ-b2I" id="P3q-fk-8xQ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
