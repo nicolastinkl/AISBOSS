@@ -177,7 +177,7 @@ class UITransViewController: UIViewController {
         
         self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
         
-    }
+    } 
     
     override func viewDidAppear(animated: Bool) {
         
@@ -658,7 +658,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.layoutIfNeeded()
+        cell.layoutSubviews()
     }
     
     // MARK: cellForRowAtIndexPath..

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
@@ -50,19 +50,19 @@
                     <color key="textColor" red="0.78823529410000004" green="0.7843137255" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-Gb-dRC" userLabel="Start">
-                    <rect key="frame" x="195" y="27" width="56" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA1-Gb-dRC" userLabel="Start">
+                    <rect key="frame" x="181" y="27" width="70" height="35"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="jjA-T7-I1a"/>
-                        <constraint firstAttribute="width" constant="56" id="o16-6W-LMP"/>
+                        <constraint firstAttribute="width" constant="70" id="o16-6W-LMP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LHR" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNh-64-8Rq" userLabel="Finish">
-                    <rect key="frame" x="345" y="27" width="56" height="35"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LHR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNh-64-8Rq" userLabel="Finish">
+                    <rect key="frame" x="345" y="27" width="70" height="35"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,7 +88,7 @@
                     </variation>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18/03,01:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-Mh-sut" userLabel="StartDate">
-                    <rect key="frame" x="177" y="60" width="91" height="21"/>
+                    <rect key="frame" x="170" y="60" width="91" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1l0-Lf-BaN"/>
@@ -99,7 +99,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18/03,21:50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIo-Sh-B9C" userLabel="ArriveDate">
-                    <rect key="frame" x="328" y="60" width="91" height="21"/>
+                    <rect key="frame" x="335" y="60" width="91" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="91" id="42Q-db-VZq"/>
@@ -179,7 +179,7 @@
                 <outlet property="startDate" destination="j5E-Mh-sut" id="XSW-lV-fjX"/>
                 <outlet property="ticketType" destination="yER-cT-MJa" id="qxa-xh-ApI"/>
             </connections>
-            <point key="canvasLocation" x="172" y="412"/>
+            <point key="canvasLocation" x="227" y="429"/>
         </view>
     </objects>
     <resources>

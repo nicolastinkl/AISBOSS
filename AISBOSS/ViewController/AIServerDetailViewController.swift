@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AISpring
 import AIAlertView
-
+import Cartography
 
 enum cellType:Int{
     case cellTypeDate = 0
@@ -270,7 +270,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case cellType.cellTypeCoverflow:
                 return 220
             case cellType.cellTypeFilght:
-                return 200
+                return 280
             case cellType.cellTypeparames:
                 return 100
             case cellType.cellTypeMutiChoose:
@@ -303,7 +303,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeCoverflow:
                     cell.closeButton.hidden = false
                 case cellType.cellTypeFilght:
-                    cell.closeButton.hidden = true
+                    cell.closeButton.hidden = false
                 case cellType.cellTypeparames:
                     cell.closeButton.hidden = true
                 case cellType.cellTypeMutiChoose:
@@ -336,20 +336,50 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
-                if  model.type == cellType.cellTypeFilght {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDFightCell) as! AISDFightCell
-                   
-                    return cell
+                if  model.type == cellType.cellTypeFilght { 
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    var ticketGroupView:AirTicketGroupView
+                    if cell?.contentView.subviews.count == 0 {
+                        ticketGroupView = AirTicketGroupView()
+                        ticketGroupView.tag = 3
+                        cell?.contentView.addSubview(ticketGroupView)
+                        layout(ticketGroupView) { viewTic in
+                            viewTic.left == viewTic.superview!.left + 9
+                            viewTic.top == viewTic.superview!.top
+                            viewTic.right == viewTic.superview!.right - 9
+                            viewTic.height == 280
+                        }
+                        ticketGroupView.setTicketsData()
+                    }else{
+                        ticketGroupView = cell?.contentView.viewWithTag(3) as! AirTicketGroupView
+                    }
+                    
+                    ticketGroupView.layoutIfNeeded()
+                    
+                    return cell!
+                    
                 }
                 
                 if  model.type == cellType.cellTypeparames {
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDParamsCell) as! AISDParamsCell
-                    cell.title.text = "Flight Some Sosd"
-                    cell.descri.text = "Parson Accident insoure has incloud the project"
-                    cell.price.text = "$20"
-                    cell.line.setHeight(0.5)
-                    return cell
+                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    
+                    let switchView = SwitchServiceView.createSwitchServiceView()
+                    
+                    if cell?.contentView.subviews.count == 0 {
+                        cell?.contentView.addSubview(switchView)
+                        
+                        layout(switchView) { switchView in
+                            switchView.left == switchView.superview!.left
+                            switchView.top == switchView.superview!.top
+                            switchView.right == switchView.superview!.right
+                            switchView.height == SwitchServiceView.HEIGHT
+                        }
+                    }
+                    
+                    return cell!
+                    
                 }
                 
                 if model.type == cellType.cellTypeMutiChoose {

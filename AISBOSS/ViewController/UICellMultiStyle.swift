@@ -28,10 +28,10 @@ class AICellIdentityCell:SwipeableCell {
     @IBOutlet weak var view_Content: SpringView!
     var signDelegate: tagCellDelegate?
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-    }    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        
+//    }    
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -77,7 +77,7 @@ class AICellIdentityCell:SwipeableCell {
         let imageViewRight = self.view_Content.viewWithTag(4) as! UIImageView
         
         if highlighted {
-            imageView.image = UIImage(named: "card_select")
+           // imageView.image = UIImage(named: "card_select")
             imageViewLeft.image = UIImage(named: "left_bulge_shadow_select")
             imageViewRight.image = UIImage(named: "right_bulge_shadow_select")
             

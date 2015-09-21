@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mAV-Tw-0Dr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mAV-Tw-0Dr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="444" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="slf-5q-6gn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="444" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="slf-5q-6gn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -533,7 +533,7 @@
                                                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-uj-G6i" customClass="SpringView" customModule="AISpring">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" image="item_card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="klj-ET-WSQ">
+                                                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" image="item_card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="klj-ET-WSQ">
                                                             <rect key="frame" x="10" y="10" width="580" height="180"/>
                                                             <animations/>
                                                             <rect key="contentStretch" x="0.49999999999999994" y="0.59999999999999998" width="0.0" height="0.0"/>
@@ -955,7 +955,7 @@
                                     <outlet property="delegate" destination="gQm-QN-pQz" id="UtN-Oy-ef8"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" tag="111" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="bottomView" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-ZC-GwL" userLabel="bottomView">
+                            <containerView opaque="NO" tag="111" contentMode="scaleToFill" restorationIdentifier="bottomView" translatesAutoresizingMaskIntoConstraints="NO" id="d8y-ZC-GwL" userLabel="bottomView">
                                 <rect key="frame" x="0.0" y="451" width="600" height="150"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1113,7 +1113,7 @@
                             <constraint firstItem="cAP-Lr-VL0" firstAttribute="top" secondItem="iYK-Oh-MXu" secondAttribute="bottom" constant="-100" id="12l-Ee-ecU"/>
                             <constraint firstItem="byJ-Iq-b1f" firstAttribute="leading" secondItem="k7r-MQ-Gr8" secondAttribute="leadingMargin" constant="-16" id="26o-5e-zAL"/>
                             <constraint firstAttribute="centerX" secondItem="d8y-ZC-GwL" secondAttribute="centerX" id="300-ku-4iW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="slf-5q-6gn" secondAttribute="trailing" constant="-16" id="31v-31-vlI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="slf-5q-6gn" secondAttribute="trailing" constant="-20" id="31v-31-vlI"/>
                             <constraint firstItem="cAP-Lr-VL0" firstAttribute="leading" secondItem="slf-5q-6gn" secondAttribute="leading" id="3Cn-hc-9Z1"/>
                             <constraint firstItem="fpB-7M-DNB" firstAttribute="top" secondItem="eyI-GB-2R8" secondAttribute="bottom" id="54V-9A-uOT"/>
                             <constraint firstItem="cAP-Lr-VL0" firstAttribute="top" secondItem="k7r-MQ-Gr8" secondAttribute="topMargin" constant="-75" id="9RM-1b-VYD"/>
@@ -1127,7 +1127,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="byJ-Iq-b1f" secondAttribute="trailing" constant="-16" id="PdW-OA-Zdo"/>
                             <constraint firstItem="fpB-7M-DNB" firstAttribute="top" secondItem="slf-5q-6gn" secondAttribute="bottom" id="Q1g-vs-1SW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KZo-Ch-erg" secondAttribute="trailing" constant="-16" id="T7Y-ec-gTP"/>
-                            <constraint firstItem="slf-5q-6gn" firstAttribute="leading" secondItem="k7r-MQ-Gr8" secondAttribute="leadingMargin" constant="-16" id="TNA-BC-B1d"/>
+                            <constraint firstItem="slf-5q-6gn" firstAttribute="leading" secondItem="k7r-MQ-Gr8" secondAttribute="leadingMargin" constant="-20" id="TNA-BC-B1d"/>
                             <constraint firstItem="fpB-7M-DNB" firstAttribute="top" secondItem="d8y-ZC-GwL" secondAttribute="bottom" constant="-1" id="Tj0-wv-TfQ"/>
                             <constraint firstItem="slf-5q-6gn" firstAttribute="top" secondItem="cAP-Lr-VL0" secondAttribute="bottom" constant="10" id="agO-yM-eC3"/>
                             <constraint firstItem="KZo-Ch-erg" firstAttribute="top" secondItem="iYK-Oh-MXu" secondAttribute="bottom" constant="-20" id="ejK-pP-b03"/>
