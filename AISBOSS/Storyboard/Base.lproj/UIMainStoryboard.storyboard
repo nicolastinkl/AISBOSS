@@ -1954,18 +1954,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sd_title_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-89-wtJ">
-                                                    <rect key="frame" x="16" y="9" width="568" height="33"/>
+                                                    <rect key="frame" x="14" y="9" width="572" height="33"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="33" id="vPU-AX-0V2"/>
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szC-vh-2I8">
-                                                    <rect key="frame" x="557" y="18" width="15" height="15"/>
+                                                    <rect key="frame" x="565" y="19" width="12" height="12"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="33G-5B-Q9H"/>
-                                                        <constraint firstAttribute="height" constant="15" id="Jcy-WK-CCb"/>
+                                                        <constraint firstAttribute="width" constant="12" id="33G-5B-Q9H"/>
+                                                        <constraint firstAttribute="height" constant="12" id="Jcy-WK-CCb"/>
                                                     </constraints>
                                                     <state key="normal" image="close-btn"/>
                                                 </button>
@@ -1989,22 +1989,26 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Dht-89-wtJ" secondAttribute="trailing" constant="8" id="22k-tw-Whz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Dht-89-wtJ" secondAttribute="trailing" constant="6" id="22k-tw-Whz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="15" id="2Db-Kb-4ZW"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="20" id="7F8-P8-EHS"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="-388" id="E2m-HS-Aes"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="7" id="IRh-Cu-gtC"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="20" id="Kix-IH-lXE"/>
-                                                <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="8" id="PgE-OS-6ds"/>
+                                                <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="6" id="PgE-OS-6ds"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Dht-89-wtJ" secondAttribute="bottom" id="QwW-zH-gDH"/>
+                                                <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="11" id="SMh-6V-aFC"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="Dht-89-wtJ" secondAttribute="bottom" constant="-27" id="Tpq-vj-UTO"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="1" id="c2X-0N-AeR"/>
-                                                <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="10" id="hjz-uS-cvh"/>
+                                                <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="13" id="hjz-uS-cvh"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="E2m-HS-Aes"/>
                                                     <exclude reference="QwW-zH-gDH"/>
                                                     <exclude reference="Tpq-vj-UTO"/>
+                                                    <exclude reference="7F8-P8-EHS"/>
+                                                    <exclude reference="hjz-uS-cvh"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2472,7 +2476,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ja-cx-N8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Afb-ai-Tsr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="591"/>
+            <point key="canvasLocation" x="2357" y="579"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="Ai2-Ti-OyT">

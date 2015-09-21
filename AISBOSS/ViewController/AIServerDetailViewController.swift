@@ -47,6 +47,9 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
+    /// cell 里面内容左右间距
+    private var cellPadding:Float = 14.0
+    
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
         data.title = "DAY"
@@ -143,7 +146,7 @@ class AIServerDetailViewController: UIViewController {
         //self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func closeAction(sender: AnyObject) {
+    func closeCurrentSectionAction(sender: AnyObject) {
         //处理删除当前section的问题
         
         let button = sender as! UIButton
@@ -301,6 +304,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
                 }
+                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchDragInside)
                
                 return cell
             }else{
