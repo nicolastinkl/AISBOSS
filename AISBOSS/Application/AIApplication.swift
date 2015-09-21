@@ -146,6 +146,13 @@ struct AIApplication{
         static let AIMessageUnReadViewTag   = 103
     }
     
+    struct AIStarViewFrame {
+        static let width:CGFloat            = 60.0
+        static let height:CGFloat           = 9.0
+    }
+    
+    
+    
     // MARK: IM ObjectIDS
     struct AIIMOBJECTS {
         static let AIYUJINGID = "556c0a2ae4b09419962544b7"          //预警通知

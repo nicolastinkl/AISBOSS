@@ -48,7 +48,7 @@ class AIServerDetailViewController: UIViewController {
     private var tags:AOTagList?
     
     /// cell 里面内容左右间距
-    private var cellPadding:Float = 14.0
+    private var cellPadding:Float = 9.0
     
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
@@ -68,7 +68,12 @@ class AIServerDetailViewController: UIViewController {
         data5.title = "PararmesMuti"
         data5.type = cellType.cellTypeMutiChoose
         
-        return NSMutableArray(array: [data,data3,data4,data5])
+        
+        var data6 =  dataModel()
+        data6.title = "CTypeCoverflow"
+        data6.type = cellType.cellTypeCoverflow
+        
+        return NSMutableArray(array: [data,data3,data6,data4,data5])
         }()
     
     override func viewDidLoad() {
@@ -263,7 +268,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case cellType.cellTypeDate:
                 return 300
             case cellType.cellTypeCoverflow:
-                return 200
+                return 220
             case cellType.cellTypeFilght:
                 return 200
             case cellType.cellTypeparames:
@@ -373,9 +378,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             cell?.contentView.addSubview(hori)
                         }
                         return cell!
-                   
-                    
-                    
                 }
             }
         }
@@ -431,7 +433,19 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
-            //coverView.fillDataWithModel()
+            var costomModel = AICustomerServiceCoverFlowModel()
+            costomModel.service_id = 1
+            costomModel.provider_name = "Timmy Jones"
+            costomModel.provider_icon = "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg"
+            costomModel.provider_id = 1
+            
+            costomModel.service_img = "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg"
+            costomModel.service_name = "Great fishing exprience."
+            costomModel.service_intro = "Fishing is the Best all yourself can be  expred on th brench."
+            costomModel.service_price = "123.0"
+            costomModel.service_rating = 2
+            
+            coverView.fillDataWithModel(costomModel)
             view = coverView
             
         }

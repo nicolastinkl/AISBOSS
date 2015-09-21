@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(100% Refund)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1G-rA-Qk9" userLabel="serviceDesc">
-                    <rect key="frame" x="5" y="31" width="83" height="21"/>
+                    <rect key="frame" x="5" y="29" width="83" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="TWy-OS-rdM"/>
@@ -42,7 +42,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dT-1F-f3L" userLabel="serviceLevelView">
-                    <rect key="frame" x="5" y="54" width="50" height="20"/>
+                    <rect key="frame" x="5" y="50" width="50" height="20"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="AMt-PQ-w6t"/>
@@ -50,30 +50,40 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$220" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-Y7-8w1" userLabel="servicePrice">
-                    <rect key="frame" x="5" y="79" width="30" height="21"/>
+                    <rect key="frame" x="5" y="75" width="30" height="17"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="1" green="1" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_select" translatesAutoresizingMaskIntoConstraints="NO" id="kSX-AK-n24" userLabel="selectFlag">
+                    <rect key="frame" x="95" y="70" width="25" height="25"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="BH1-R8-EJB"/>
+                        <constraint firstAttribute="width" constant="25" id="htq-4y-Org"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="duK-rg-hWq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="2bt-Qi-0bK"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o1G-rA-Qk9" secondAttribute="trailing" constant="1" id="37b-4C-ndm"/>
-                <constraint firstItem="o1G-rA-Qk9" firstAttribute="top" secondItem="DQN-2U-Oyl" secondAttribute="bottom" constant="2" id="4Q1-ak-j8g"/>
+                <constraint firstItem="o1G-rA-Qk9" firstAttribute="top" secondItem="DQN-2U-Oyl" secondAttribute="bottom" id="4Q1-ak-j8g"/>
                 <constraint firstItem="b6b-Y7-8w1" firstAttribute="top" secondItem="7dT-1F-f3L" secondAttribute="bottom" constant="5" id="6V4-kD-0H2"/>
                 <constraint firstItem="c3t-7A-rf1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7CJ-mw-7g9"/>
+                <constraint firstAttribute="bottom" secondItem="kSX-AK-n24" secondAttribute="bottom" constant="5" id="AJg-aE-KOv"/>
                 <constraint firstAttribute="trailing" secondItem="c3t-7A-rf1" secondAttribute="trailing" id="C0q-On-0s7"/>
                 <constraint firstItem="c3t-7A-rf1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ERF-Fr-Lf0"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DQN-2U-Oyl" secondAttribute="trailing" constant="1" id="JZM-iI-5N9"/>
                 <constraint firstAttribute="bottom" secondItem="duK-rg-hWq" secondAttribute="bottom" id="XE8-f0-sl0"/>
-                <constraint firstAttribute="bottom" secondItem="b6b-Y7-8w1" secondAttribute="bottom" id="ZCO-kY-CVj"/>
+                <constraint firstAttribute="bottom" secondItem="b6b-Y7-8w1" secondAttribute="bottom" constant="8" id="ZCO-kY-CVj"/>
                 <constraint firstAttribute="bottom" secondItem="c3t-7A-rf1" secondAttribute="bottom" id="daT-5H-a36"/>
+                <constraint firstAttribute="trailing" secondItem="kSX-AK-n24" secondAttribute="trailing" constant="5" id="dwC-Xk-rYE"/>
                 <constraint firstItem="7dT-1F-f3L" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="iAb-G7-2qp"/>
                 <constraint firstItem="DQN-2U-Oyl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ihY-Fd-53D"/>
-                <constraint firstItem="7dT-1F-f3L" firstAttribute="top" secondItem="o1G-rA-Qk9" secondAttribute="bottom" constant="2" id="oAg-KJ-DB3"/>
+                <constraint firstItem="7dT-1F-f3L" firstAttribute="top" secondItem="o1G-rA-Qk9" secondAttribute="bottom" id="oAg-KJ-DB3"/>
                 <constraint firstItem="o1G-rA-Qk9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="p82-Kl-Abb"/>
                 <constraint firstItem="duK-rg-hWq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r7M-9q-2hu"/>
                 <constraint firstItem="DQN-2U-Oyl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="tjt-iI-by9"/>
@@ -84,6 +94,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backGroundColorView" destination="c3t-7A-rf1" id="3d4-h9-kaS"/>
+                <outlet property="selectFlagImage" destination="kSX-AK-n24" id="tD6-fZ-C2y"/>
                 <outlet property="serviceDescLabel" destination="o1G-rA-Qk9" id="2w8-ah-wjP"/>
                 <outlet property="serviceImg" destination="duK-rg-hWq" id="ndN-G9-Jev"/>
                 <outlet property="serviceNameLabel" destination="DQN-2U-Oyl" id="g52-2i-kfp"/>
@@ -95,5 +106,6 @@
     </objects>
     <resources>
         <image name="cardCell2" width="167" height="101"/>
+        <image name="icon_select" width="25" height="26"/>
     </resources>
 </document>
