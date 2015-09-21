@@ -29,6 +29,8 @@
 		81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C0927E1BAFAC0D003FFF35 /* UIImageView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
 		81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */; settings = {ASSET_TAGS = (); }; };
 		840FD4101BABD2F5000C6033 /* FlickerNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840FD40F1BABD2F5000C6033 /* FlickerNumberLabel.m */; };
+		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
+		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -266,6 +268,8 @@
 		81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		840FD40E1BABD2F5000C6033 /* FlickerNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickerNumberLabel.h; sourceTree = "<group>"; };
 		840FD40F1BABD2F5000C6033 /* FlickerNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickerNumberLabel.m; sourceTree = "<group>"; };
+		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
+		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -665,6 +669,15 @@
 			name = FlickNumberLabel;
 			sourceTree = "<group>";
 		};
+		847D93721BAF93C4000FAE69 /* Flight */ = {
+			isa = PBXGroup;
+			children = (
+				847D93731BAF9438000FAE69 /* AirTicketView.xib */,
+				847D93751BAF9488000FAE69 /* AirTicketView.swift */,
+			);
+			name = Flight;
+			sourceTree = "<group>";
+		};
 		84CB0B3C1BA90524005F16D0 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +886,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				847D93721BAF93C4000FAE69 /* Flight */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
 				840FD40D1BABD2B8000C6033 /* FlickNumberLabel */,
 				84CB0B3C1BA90524005F16D0 /* Switch */,
@@ -1360,6 +1374,7 @@
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
+				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
@@ -1493,6 +1508,7 @@
 				93B25A981B9D7A7B00CD1FEB /* AFHTTPRequestOperationManager.m in Sources */,
 				93FA1E001B9C306E009965C8 /* AITagFilterModel.swift in Sources */,
 				93C33F171B9BEAFE007BF506 /* AIButtonUtils.swift in Sources */,
+				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
