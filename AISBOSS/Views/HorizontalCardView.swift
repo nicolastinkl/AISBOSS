@@ -19,7 +19,7 @@ class HorizontalCardView: UIView {
     var cardCellViewList = Array<CardCellView>()
     var delegate : HorizontalCardViewDelegate?
     
-    let viewPadding : CGFloat = 5
+    let viewPadding : CGFloat = 15
     let cellPadding : CGFloat = 5
     let cellHeight : CGFloat = 100
     let cellY : CGFloat = 0
@@ -40,8 +40,8 @@ class HorizontalCardView: UIView {
         var isFirst = false
         var cellX : CGFloat = viewPadding
         var index = 0
-        
-        let cellWidth = (self.bounds.size.width - (viewPadding * 2)) / CGFloat(serviceListModelList.count)
+        let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
+        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         
         for serviceListModel : ServiceList in serviceListModelList{
@@ -58,6 +58,7 @@ class HorizontalCardView: UIView {
             
             cardCellView.buildViewData(serviceListModel)
             cardCellView.index = index
+            bindCellEvent(cardCellView)
             cardCellViewList.append(cardCellView)
             
             self.addSubview(cardCellView)
@@ -67,6 +68,7 @@ class HorizontalCardView: UIView {
     }
     
     func bindCellEvent(cardCellView : CardCellView){
+        self.userInteractionEnabled = true
         let tapGuesture = UITapGestureRecognizer(target: self, action: "viewSelectAction:")
         cardCellView.addGestureRecognizer(tapGuesture)
     }

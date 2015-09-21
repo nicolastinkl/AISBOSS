@@ -201,7 +201,7 @@ class UITransViewController: UIViewController {
     {
         self.player = AITools.playMovieNamed("loading", type: "mp4", onView: self.view);
         playedCount = 0
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayBackDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: self.player)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayBackDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
     }
     
     

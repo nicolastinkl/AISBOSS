@@ -21,6 +21,7 @@ class CardCellView: UIView {
     @IBOutlet weak var servicePriceLabel: UILabel!
     @IBOutlet weak var serviceRatingView: UIView!
     @IBOutlet weak var serviceImg: AIImageView!
+    @IBOutlet weak var backGroundColorView: UIImageView!
     
     // MARK: currentView
     class func currentView()->CardCellView{
@@ -38,15 +39,23 @@ class CardCellView: UIView {
         let starRateView : UIView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView)
         //serviceImg
-        serviceImg.setURL(NSURL(string: serviceListModel.service_img ?? ""), placeholderImage: UIImage(named: "Placeholder"))
-        
+        //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
+        self.originBackgroundImg = serviceImg.image
+        buildLayout()
+    }
+    
+    func buildLayout(){
+        self.layer.cornerRadius = 5
+        self.layer.masksToBounds = true
+        self.userInteractionEnabled = true
     }
     
     func selectAction(selected : Bool){
-        originBackgroundImg = serviceImg.image
+        
         
         if selected{
             serviceImg.image = originBackgroundImg
+            backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
         }
         else{
             if let image = grayBackgroundImg{
@@ -58,6 +67,7 @@ class CardCellView: UIView {
                 grayBackgroundImg = grayImg
                 serviceImg.image = grayImg
             }
+            backGroundColorView.backgroundColor = UIColor(hex: "#444242")
         }
     }
 }
