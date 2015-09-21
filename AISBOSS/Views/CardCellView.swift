@@ -14,6 +14,7 @@ class CardCellView: UIView {
     var index : Int!
     var grayBackgroundImg : UIImage?
     var originBackgroundImg : UIImage?
+    var starRateView : UIView?
     // MARK: - uiview variables
 
     @IBOutlet weak var serviceNameLabel: UILabel!
@@ -30,6 +31,11 @@ class CardCellView: UIView {
         return selfView
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        starRateView?.frame = serviceRatingView.bounds
+    }
+    
     
     // MARK: - utils
     
@@ -37,8 +43,8 @@ class CardCellView: UIView {
         serviceNameLabel.text = serviceListModel.service_name ?? ""
         serviceDescLabel.text = serviceListModel.service_intro ?? ""
         servicePriceLabel.text = serviceListModel.service_price ?? ""
-        let starRateView : UIView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
-        serviceRatingView.addSubview(starRateView)
+        starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
+        serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
         serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
