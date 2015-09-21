@@ -101,6 +101,10 @@ class AIServerDetailViewController: UIViewController {
     
         self.tableView.reloadData()
         
+        
+        AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
+              print(asSchemeModel)
+        }
 //        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
 //        tableView.rowHeight = UITableViewAutomaticDimension
         
