@@ -20,14 +20,21 @@ class HorizontalCardView: UIView {
     var delegate : HorizontalCardViewDelegate?
     var multiSelect = false
     
-    let viewPadding : CGFloat = 15
+    let viewPadding : CGFloat = 10
     let cellPadding : CGFloat = 5
-    let cellHeight : CGFloat = 100
+    let cellHeight : CGFloat = 75
     let cellY : CGFloat = 0
 
     // MARK: - init method
     init(frame: CGRect,serviceListModelList : [ServiceList]) {
         super.init(frame: frame)
+        self.serviceListModelList = serviceListModelList
+        buildLayout()
+    }
+    
+    init(frame: CGRect,serviceListModelList : [ServiceList],multiSelect : Bool) {
+        super.init(frame: frame)
+        self.multiSelect = multiSelect
         self.serviceListModelList = serviceListModelList
         buildLayout()
     }

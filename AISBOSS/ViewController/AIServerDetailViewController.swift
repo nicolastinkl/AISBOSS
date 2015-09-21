@@ -362,16 +362,16 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         let ser = ServiceList()
                         ser.service_id = 1
                         ser.service_img = "http://img1.gtimg.com/news/pics/hv1/40/169/1927/125346310_small.jpg"
-                        ser.service_intro = "introeslkdf"
-                        ser.service_name = "SomeTimes"
-                        ser.service_price = "12.0"
+                        ser.service_intro = "(100% Refund)"
+                        ser.service_name = "ChinaTravel"
+                        ser.service_price = "$220"
                         ser.service_rating = NSNumber(int: 12)
                         ser.service_param_list = [p]
                         ser.provider_id = 12
                         ser.provider_name = "tinkle"
                         ser.provider_icon = ""
                         
-                        let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 100), serviceListModelList: [ser,ser])
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser,ser],multiSelect : false)
                         
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                         if cell?.contentView.subviews.count == 0 {
