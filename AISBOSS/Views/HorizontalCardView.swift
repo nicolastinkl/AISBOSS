@@ -18,6 +18,7 @@ class HorizontalCardView: UIView {
     var serviceListModelList : [ServiceList]!
     var cardCellViewList = Array<CardCellView>()
     var delegate : HorizontalCardViewDelegate?
+    var multiSelect = false
     
     let viewPadding : CGFloat = 15
     let cellPadding : CGFloat = 5
@@ -77,12 +78,25 @@ class HorizontalCardView: UIView {
     func viewSelectAction(target : UITapGestureRecognizer){
         if let selCardCellView : CardCellView = target.view as? CardCellView{
             for cardCellView : CardCellView in cardCellViewList{
-                if cardCellView.index == selCardCellView.index{
-                    cardCellView.selectAction(true)
+                //支持多选的情况，只需要把selected取反
+                if multiSelect{
+                    if cardCellView.index == selCardCellView.index{
+                        cardCellView.selected = !cardCellView.selected
+                        cardCellView.selectAction()
+                    }
                 }
+                //单选情况，要把其它所有都改为selected=false再置true选中的那个
                 else{
-                    cardCellView.selectAction(false)
+                    if cardCellView.index == selCardCellView.index{
+                        cardCellView.selected = true
+                        cardCellView.selectAction()
+                    }
+                    else{
+                        cardCellView.selected = false
+                        cardCellView.selectAction()
+                    }
                 }
+                
             }
             
             delegate?.didSelectCell!(self, cellIndex: selCardCellView.index)

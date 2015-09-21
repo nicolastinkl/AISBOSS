@@ -22,6 +22,7 @@ class CardCellView: UIView {
     @IBOutlet weak var serviceRatingView: UIView!
     @IBOutlet weak var serviceImg: AIImageView!
     @IBOutlet weak var backGroundColorView: UIImageView!
+    @IBOutlet weak var selectFlagImage: UIImageView!
     
     // MARK: currentView
     class func currentView()->CardCellView{
@@ -38,9 +39,14 @@ class CardCellView: UIView {
         servicePriceLabel.text = serviceListModel.service_price ?? ""
         let starRateView : UIView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView)
+       //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
+        serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
+            (image,error,cacheType,imageURL) -> Void in
+            self.originBackgroundImg = image
+        })
         //serviceImg
         //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
-        self.originBackgroundImg = serviceImg.image
+        
         buildLayout()
     }
     
@@ -50,12 +56,13 @@ class CardCellView: UIView {
         self.userInteractionEnabled = true
     }
     
-    func selectAction(selected : Bool){
+    func selectAction(){
         
         
         if selected{
             serviceImg.image = originBackgroundImg
             backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
+            selectFlagImage.hidden = false
         }
         else{
             if let image = grayBackgroundImg{
@@ -68,6 +75,7 @@ class CardCellView: UIView {
                 serviceImg.image = grayImg
             }
             backGroundColorView.backgroundColor = UIColor(hex: "#444242")
+            selectFlagImage.hidden = true
         }
     }
 }
