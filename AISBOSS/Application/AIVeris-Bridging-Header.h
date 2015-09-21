@@ -66,7 +66,6 @@
 //oc models
 #import "AIServiceSchemeModel.h"
 
-#import "FlickerNumberLabel.h"
 
 // SDWebImage
 
