@@ -65,5 +65,9 @@ class AirTicketGroupView: UIView {
             ticket2.right == ticket1.superview!.right
         }
     }
+    
+    func getViewHeight() -> CGFloat {
+        return AirTicketView.TICKET_HEAD_HEIGHT + AirTicketView.TICKET_HEIGHT
+    }
 
 }
