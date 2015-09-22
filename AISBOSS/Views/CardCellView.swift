@@ -14,7 +14,7 @@ class CardCellView: UIView {
     var index : Int!
     var grayBackgroundImg : UIImage?
     var originBackgroundImg : UIImage?
-    var starRateView : UIView?
+    var starRateView : CWStarRateView?
     var serviceNameScrollLabel : AIScrollLabel?
     var serviceDescScrollLabel : AIScrollLabel?
     var serviceListModel : ServiceList!
@@ -79,6 +79,25 @@ class CardCellView: UIView {
         //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
         
         buildLayout()
+    }
+    
+    func reloadData(serviceListModel : ServiceList){
+        self.serviceListModel = serviceListModel
+        servicePriceLabel.text = serviceListModel.service_price ?? ""
+        starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
+        serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
+            (image,error,cacheType,imageURL) -> Void in
+            if imageURL == ""{
+                self.originBackgroundImg = UIImage(named: "Placehold")
+                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
+                
+            }
+            else{
+                self.originBackgroundImg = image
+                self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
+            }
+            
+        })
     }
     
     func buildLayout(){

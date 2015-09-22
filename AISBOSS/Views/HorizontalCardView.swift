@@ -19,6 +19,7 @@ class HorizontalCardView: UIView {
     var cardCellViewList = Array<CardCellView>()
     var delegate : HorizontalCardViewDelegate?
     var multiSelect = false
+    var maxCellNumber = 4
     
     let viewPadding : CGFloat = 10
     let cellPadding : CGFloat = 5
@@ -28,6 +29,7 @@ class HorizontalCardView: UIView {
     // MARK: - init method
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initEmptyCell()
     }
     
     init(frame: CGRect,serviceListModelList : [ServiceList]) {
@@ -49,9 +51,10 @@ class HorizontalCardView: UIView {
     
     // MARK: - build method
     func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
-        self.serviceListModelList = serviceListModelList        
+        self.serviceListModelList = serviceListModelList
         self.multiSelect = multiSelect
-        buildLayout()
+        //buildLayout()
+        buildReuseLayout()
     }
     
     func buildLayout(){
@@ -91,6 +94,60 @@ class HorizontalCardView: UIView {
             //init select status
             cardCellView.selectAction()
             cellX = cellX + cellWidth + cellPadding
+            index++
+        }
+    }
+    
+    //试验性服用cell方式尝试,先创建最多数量的cell，然后每次loadData时拿出来服用，再修改frame
+    func buildReuseLayout(){
+        var isFirst = true
+        var cellX : CGFloat = viewPadding
+        var index = 0
+        let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
+        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
+        let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
+        
+        //build cell
+        for serviceListModel : ServiceList in serviceListModelList{
+            var cellFrame:CGRect!
+            let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
+            cardCellView.hidden = false
+            if isFirst{
+                cellFrame = firstCellFrame
+                cardCellView.selected = true
+                isFirst = false
+            }
+            else{
+                cellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
+                cardCellView.selected = false
+            }
+            cardCellView.frame = cellFrame
+            cardCellView.reloadData(serviceListModel)
+            //init select status
+            cardCellView.selectAction()
+            cellX = cellX + cellWidth + cellPadding
+            index++
+        }
+        
+        for _ in index ..< maxCellNumber {
+            let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
+            cardCellView.hidden = true
+        }
+    }
+    
+    func initEmptyCell(){
+        let cellFrame : CGRect = CGRectMake(0, 0, 10, 10)
+        var index = 0
+        for _ in 1 ... maxCellNumber{
+            let cardCellView : CardCellView = CardCellView.currentView()
+            cardCellView.frame = cellFrame
+            cardCellView.buildViewData(ServiceList())
+            
+            cardCellView.index = index
+            bindCellEvent(cardCellView)
+            cardCellViewList.append(cardCellView)
+            self.addSubview(cardCellView)
+            cardCellView.hidden = true
             index++
         }
     }
