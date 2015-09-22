@@ -24,6 +24,7 @@ class dataModel : NSObject{
     var title:String?
     var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
     var content:String?
+    var placeHolderModel:AnyObject?
 }
 
 // MARK: UITBALEVIEW
@@ -54,27 +55,10 @@ class AIServerDetailViewController: UIViewController {
         var data =  dataModel()
         data.title = "DAY"
         data.type = cellType.cellTypeDate
-        
-        var data3 =  dataModel()
-        data3.title = "FLIGHT"
-        data3.type = cellType.cellTypeFilght
-        
-        var data4 =  dataModel()
-        data4.title = "Pararmes"
-        data4.type = cellType.cellTypeparames
-        
-        
-        var data5 =  dataModel()
-        data5.title = "PararmesMuti"
-        data5.type = cellType.cellTypeMutiChoose
-        
-        
-        var data6 =  dataModel()
-        data6.title = "CTypeCoverflow"
-        data6.type = cellType.cellTypeCoverflow
-        
-        return NSMutableArray(array: [data,data3,data6,data4,data5])
+        return NSMutableArray(array: [data])
         }()
+    
+    private var schemeModel:AIServiceSchemeModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,14 +82,61 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.alpha = 0
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
-    
-        self.tableView.reloadData()
         
-//        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        
+        Async.background {
+            AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
+                self.schemeModel = asSchemeModel
+                self.reloadInputData()
+            }
+        }
+ 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
+    }
+    
+    func reloadInputData() {
+        
+        if let scheme = self.schemeModel {
+            NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
+                /// 1-轮播 2-平铺 3-开关 4-单个（机票）
+                
+                do {
+                    
+                    let catalog:CatalogList = try CatalogList(dictionary: dataObject as! [NSObject : AnyObject])
+                    let data =  dataModel()
+                    data.title = catalog.catalog_name
+                    switch catalog.service_level.integerValue {
+                    case 1:
+                        data.type = cellType.cellTypeCoverflow
+                        break
+                    case 2:
+                        data.type = cellType.cellTypeMutiChoose
+                        break
+                    case 3:
+                        data.type = cellType.cellTypeparames
+                        break
+                    case 4:
+                        data.type = cellType.cellTypeFilght
+                        break
+                    default:
+                        break
+                    }
+                    data.placeHolderModel = catalog.service_list
+                    self.dataSource.addObject(data)
+                }
+                catch{
+                }
+                
+            })
+            
+//            let arrayList = scheme.catalog_list as [CatalogList]
+//            for catalog in arrayList {
+//                
+//            }
+        }
+        
+        
+        self.tableView.reloadData()
     }
     
     func ChangeDateViewNotification(){
@@ -266,15 +297,15 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         if indexPath.row == 1 {
             switch model.type! {
             case cellType.cellTypeDate:
-                return 300
+                return 270
             case cellType.cellTypeCoverflow:
                 return 220
             case cellType.cellTypeFilght:
-                return 280
+                return 260
             case cellType.cellTypeparames:
                 return 100
             case cellType.cellTypeMutiChoose:
-                return 200
+                return 80
             }
         }
         
@@ -333,29 +364,40 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.carousel.type = .CoverFlow2
+                    
+                    let list = NSMutableArray()
+                    let modelArray = model.placeHolderModel as! NSMutableArray
+                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                        do{
+                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                            list.addObject(model)
+                            
+                        }catch{
+                        }
+                    })
+                    
+                    let ls = NSArray(array: list) as! [ServiceList]
+                    cell.dataSource = ls
+                    cell.carousel.reloadData()
                     return cell
                 }
                 
                 if  model.type == cellType.cellTypeFilght { 
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                    var ticketGroupView:AirTicketGroupView
-                    if cell?.contentView.subviews.count == 0 {
-                        ticketGroupView = AirTicketGroupView()
-                        ticketGroupView.tag = 3
-                        cell?.contentView.addSubview(ticketGroupView)
-                        layout(ticketGroupView) { viewTic in
-                            viewTic.left == viewTic.superview!.left + 9
-                            viewTic.top == viewTic.superview!.top
-                            viewTic.right == viewTic.superview!.right - 9
-                            viewTic.height == 280
-                        }
-                        ticketGroupView.setTicketsData()
-                    }else{
-                        ticketGroupView = cell?.contentView.viewWithTag(3) as! AirTicketGroupView
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
+                    for subview in cell?.contentView.subviews as [UIView]! {
+                        subview.removeFromSuperview()
                     }
                     
-                    ticketGroupView.layoutIfNeeded()
+                    let ticketGroupView = AirTicketGroupView()
+                    cell?.contentView.addSubview(ticketGroupView)
+                    layout(ticketGroupView) { viewTic in
+                        viewTic.left == viewTic.superview!.left + 9
+                        viewTic.top == viewTic.superview!.top
+                        viewTic.right == viewTic.superview!.right - 9
+                        viewTic.height == 280
+                    }
+                    ticketGroupView.setTicketsData()
                     
                     return cell!
                     
@@ -367,46 +409,42 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let switchView = SwitchServiceView.createSwitchServiceView()
                     
-                    if cell?.contentView.subviews.count == 0 {
-                        cell?.contentView.addSubview(switchView)
-                        
-                        layout(switchView) { switchView in
-                            switchView.left == switchView.superview!.left
-                            switchView.top == switchView.superview!.top
-                            switchView.right == switchView.superview!.right
-                            switchView.height == SwitchServiceView.HEIGHT
-                        }
+                    for subview in cell?.contentView.subviews as [UIView]! {
+                        subview.removeFromSuperview()
                     }
                     
+                    cell?.contentView.addSubview(switchView)
+                    
+                    layout(switchView) { switchView in
+                        switchView.left == switchView.superview!.left
+                        switchView.top == switchView.superview!.top
+                        switchView.right == switchView.superview!.right
+                        switchView.height == SwitchServiceView.HEIGHT
+                    }
                     return cell!
                     
                 }
                 
                 if model.type == cellType.cellTypeMutiChoose {
-                    
-                        let p = SchemeParamList()
-                        p.param_key = 1
-                        p.param_value = "value"
-                        p.param_value_id = NSNumber(int: 1)
-                    
-                        let ser = ServiceList()
-                        ser.service_id = 1
-                        ser.service_img = "http://img1.gtimg.com/news/pics/hv1/40/169/1927/125346310_small.jpg"
-                        ser.service_intro = "(100% Refund)"
-                        ser.service_name = "ChinaTravelChinaTravelChinaTravelChinaTravelChinaTravel"
-                        ser.service_price = "$220"
-                        ser.service_rating = NSNumber(int: 12)
-                        ser.service_param_list = [p]
-                        ser.provider_id = 12
-                        ser.provider_name = "tinkle"
-                        ser.provider_icon = ""
-                        
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser],multiSelect : false)
-                        
-                        let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                        if cell?.contentView.subviews.count == 0 {
-                            cell?.contentView.addSubview(hori)
+                    let list = NSMutableArray()
+                    let modelArray = model.placeHolderModel as! NSMutableArray
+                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                        do{
+                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                            list.addObject(model)
+                            
+                        }catch{
                         }
+                    })
+
+                    let ls = NSArray(array: list) as! [ServiceList]
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: ls,multiSelect : false)
+                        let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    
+                        for subview in cell?.contentView.subviews as [UIView]! {
+                            subview.removeFromSuperview()
+                        }
+                        cell?.contentView.addSubview(hori)
                         return cell!
                 }
             }
@@ -448,9 +486,15 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     @IBOutlet weak var carousel: iCarousel!
     
     @IBOutlet weak var title: UILabel!
+    
+    var dataSource:[ServiceList]?
+    
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
     {
-        return 5
+        if let daSource = dataSource {
+            return daSource.count
+        }
+        return 0
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
@@ -463,19 +507,8 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
-            var costomModel = AICustomerServiceCoverFlowModel()
-            costomModel.service_id = 1
-            costomModel.provider_name = "Timmy Jones"
-            costomModel.provider_icon = "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg"
-            costomModel.provider_id = 1
-            
-            costomModel.service_img = "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg"
-            costomModel.service_name = "Great fishing exprience."
-            costomModel.service_intro = "Fishing is the Best all yourself can be  expred on th brench."
-            costomModel.service_price = "123.0"
-            costomModel.service_rating = 2
-            
-            coverView.fillDataWithModel(costomModel)
+            let costom:ServiceList = dataSource![index]
+            coverView.fillDataWithModel(costom)
             view = coverView
             
         }

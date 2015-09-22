@@ -38,7 +38,7 @@
 
 @property (strong, nonatomic) NSNumber<Optional> * relevant_level;
 @property (strong, nonatomic) NSString<Optional> * catalog_name;
-@property (strong, nonatomic) NSNumber<Optional> * service_level;
+@property (strong, nonatomic) NSNumber<Optional> * service_level; //1-轮播 2-平铺 3-开关 4-单个（机票）
 @property (strong, nonatomic) NSNumber<Optional> * binding_flag;
 @property (strong, nonatomic) NSArray<ServiceList *> * service_list;
 

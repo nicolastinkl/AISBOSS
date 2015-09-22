@@ -669,7 +669,8 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         cell.signDelegate = self
         for subview in cell.view_Content.subviews as [UIView] {
             if subview.tag >= 1 && subview.tag <= 5{}else {
-                subview.removeFromSuperview()
+                subview.hidden = true
+//                subview.removeFromSuperview()
             }
         }
         
@@ -703,7 +704,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 let tView =  AITopInfoView.currentView()
                 fillAITopInfoView(model, topView: tView, indexPath: indexPath)
                 cell.view_Content.addSubview(tView)
-
+                
                 layout(tView){ view in
                     
                     view.width == view.superview!.width
