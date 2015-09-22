@@ -52,7 +52,7 @@
         return;
     }
     
-    self.text = text;
+    _text = [text copy];
     
     if (_isScrolling) {
         [self makeScrollLabel];
