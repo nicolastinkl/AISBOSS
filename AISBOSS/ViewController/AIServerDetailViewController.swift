@@ -242,11 +242,13 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
+          /*
             let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
             self.tableView.reloadData()
+            */
         }
     }
 }
@@ -254,8 +256,10 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
 extension AIServerDetailViewController : AOTagDelegate{
 
     func tagDidRemoveTag(tag: AOTag!) {
-        let titl = tag.tTitle
         
+        
+        /*
+        let titl = tag.tTitle
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
             let fitlerModel = object as! dataModel
             
@@ -267,6 +271,7 @@ extension AIServerDetailViewController : AOTagDelegate{
                 return
             }
         }
+*/
         
         /*
         let newArray = dataSource.filter { (fitlerModel) -> Bool in
@@ -446,14 +451,18 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     })
 
                     let ls = NSArray(array: list) as! [ServiceList]
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: ls,multiSelect : false)
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    if cell?.contentView.subviews.count > 0{
                     
-                        for subview in cell?.contentView.subviews as [UIView]! {
-                            subview.removeFromSuperview()
-                        }
+                    }else{
                         cell?.contentView.addSubview(hori)
-                        return cell!
+                    }
+//                    cell?.contentView.subviews.map({
+//                        $0.hidden = true
+//                    })
+                    hori.loadData(ls, multiSelect: false)
+                    return cell!
                 }
             }
         }

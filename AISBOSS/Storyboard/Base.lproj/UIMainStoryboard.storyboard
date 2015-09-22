@@ -1344,7 +1344,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="scanbg" translatesAutoresizingMaskIntoConstraints="NO" id="oPk-uD-aA2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanbg" translatesAutoresizingMaskIntoConstraints="NO" id="oPk-uD-aA2">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
@@ -1796,13 +1796,13 @@
                             <constraint firstItem="mQz-XT-vdI" firstAttribute="top" secondItem="16F-fP-3Lr" secondAttribute="bottom" constant="100" id="eHE-J3-wXA"/>
                             <constraint firstItem="vJR-6n-o9S" firstAttribute="leading" secondItem="16F-fP-3Lr" secondAttribute="trailing" constant="-27" id="ek4-g9-bPL"/>
                             <constraint firstItem="tNp-9g-vnc" firstAttribute="leading" secondItem="16F-fP-3Lr" secondAttribute="trailing" constant="-52" id="fGQ-lR-KUY"/>
-                            <constraint firstItem="oPk-uD-aA2" firstAttribute="leading" secondItem="mSH-ao-nQA" secondAttribute="leadingMargin" constant="-16" id="fpC-ql-5MT"/>
+                            <constraint firstItem="oPk-uD-aA2" firstAttribute="leading" secondItem="mSH-ao-nQA" secondAttribute="leadingMargin" constant="-20" id="fpC-ql-5MT"/>
                             <constraint firstItem="6n2-ES-0Ks" firstAttribute="leading" secondItem="mSH-ao-nQA" secondAttribute="leadingMargin" id="ggd-6d-KLL"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="leading" secondItem="AEs-zS-3ot" secondAttribute="trailing" constant="-6" id="grb-mf-rew"/>
                             <constraint firstItem="gGi-Sp-z1W" firstAttribute="top" secondItem="NdM-AA-QOC" secondAttribute="bottom" id="i02-G1-ZnN"/>
                             <constraint firstItem="gGi-Sp-z1W" firstAttribute="top" secondItem="zjE-K6-Tsa" secondAttribute="bottom" constant="71" id="iBb-fe-gMn"/>
                             <constraint firstItem="z2l-bl-UOK" firstAttribute="leading" secondItem="7Wi-bf-Saq" secondAttribute="trailing" constant="8" id="iOU-oc-vyL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="oPk-uD-aA2" secondAttribute="trailing" constant="-16" id="kBC-km-8dt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oPk-uD-aA2" secondAttribute="trailing" constant="-20" id="kBC-km-8dt"/>
                             <constraint firstItem="7Wi-bf-Saq" firstAttribute="top" secondItem="B6r-OG-2hb" secondAttribute="bottom" id="kWC-3l-VWt"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="top" secondItem="xkd-AR-Vgh" secondAttribute="bottom" constant="-3" id="lDe-2x-Vrs"/>
                             <constraint firstItem="16F-fP-3Lr" firstAttribute="leading" secondItem="5DZ-q6-Hvt" secondAttribute="trailing" constant="-55" id="lSG-SE-E0G"/>
@@ -2026,10 +2026,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yCQ-1p-S8I">
-                                                    <rect key="frame" x="16" y="5" width="568" height="290"/>
+                                                    <rect key="frame" x="16" y="5" width="568" height="300"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="290" id="al6-I0-mYQ"/>
+                                                        <constraint firstAttribute="height" constant="300" id="al6-I0-mYQ"/>
                                                         <constraint firstAttribute="width" constant="380" id="oDQ-Ls-txS"/>
                                                     </constraints>
                                                     <variation key="default">

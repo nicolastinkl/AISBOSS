@@ -51,9 +51,7 @@ class AirTicketGroupView: UIView {
             ticketView.top == ticketView.superview!.top
             ticketView.right == ticketView.superview!.right
         }
-        
-        
-        
+         
         let nib2 = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
         let ticket2: AirTicketView = nib2.first as! AirTicketView
         ticket2.setTop(ticket1.top + AirTicketView.TICKET_HEAD_HEIGHT)

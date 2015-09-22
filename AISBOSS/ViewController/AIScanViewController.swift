@@ -379,10 +379,7 @@ class AIScanViewController: UIViewController {
             return
         }
         
-        
-        //let index =  self.temp.count
-        
-        let numberObj: AnyObject = self.tempHolderArray.objectAtIndex(self.temp.count)
+        let numberObj: AnyObject = self.tempHolderArray.objectAtIndex((self.temp.count-1))
         self.temp.addObject(numberObj)
         let stringHereInt = (numberObj as! String).toInt() ?? 0
         
@@ -411,7 +408,7 @@ class AIScanViewController: UIViewController {
     
     private func removeModel(){
         self.curveView?.endEdit()
-        
+        self.temp.removeLastObject()
         if  let modelLast: NSDictionary = _operationQueue?.lastObject as! NSDictionary?  {
             
             if let modelContent = modelLast.objectForKey(add) as! CurveModel? {
