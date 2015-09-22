@@ -12,8 +12,11 @@
 
 @property (nonatomic, assign) BOOL scrollEnable;  //  控制是否能滚动
 
+@property (nonatomic, strong) NSString *text;
 
-/*说明:构造函数，窗体的高度将设置为Label的字体Size
+
+/*
+ *说明:构造函数，窗体的高度将设置为Label的字体Size
  *
  *text       滚动文本内容
  *enable     滚动开关
@@ -25,12 +28,13 @@
        scrollEnable:(BOOL)enable;
 
 
-
-/*说明:开始滚动
+/*
+ *说明:开始滚动
  */
 - (void)startScroll;
 
-/*说明:停止滚动
+/*
+ *说明:停止滚动
  */
 - (void)stopScroll;
 
