@@ -62,19 +62,23 @@ class CardCellView: UIView {
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
-        serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
-            (image,error,cacheType,imageURL) -> Void in
-            if imageURL == ""{
-                self.originBackgroundImg = UIImage(named: "Placehold")
-                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
-
-            }
-            else{
-                self.originBackgroundImg = image
-                self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
-            }
-            
-        })
+        
+        if let url = serviceListModel.service_img {
+            serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: UIImage(named: "Placehold"),completed:{
+                (image,error,cacheType,imageURL) -> Void in
+                if imageURL == ""{
+                    self.originBackgroundImg = UIImage(named: "Placehold")
+                    self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
+                    
+                }
+                else{
+                    self.originBackgroundImg = image
+                    self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
+                }
+                
+            })
+        }
+        
         //serviceImg
         //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
         

@@ -9,10 +9,10 @@
 import Foundation
 
 struct chooseItemModel{
-    var service_P_id : Int = 0
-    var service_id : Int = 0
-    var service_price : Float = 0.0
-
+    var scheme_id : Int = 0
+    var scheme_item_id : Int = 0
+    var scheme_item_price : Float = 0.0
+    var scheme_item_quantity : Int = 0
 }
 
 protocol AISecmeProtocol {
