@@ -370,23 +370,19 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if  model.type == cellType.cellTypeFilght { 
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
-                    var ticketGroupView:AirTicketGroupView
-                    if cell?.contentView.subviews.count == 0 {
-                        ticketGroupView = AirTicketGroupView()
-                        ticketGroupView.tag = 3
-                        cell?.contentView.addSubview(ticketGroupView)
-                        layout(ticketGroupView) { viewTic in
-                            viewTic.left == viewTic.superview!.left + 9
-                            viewTic.top == viewTic.superview!.top
-                            viewTic.right == viewTic.superview!.right - 9
-                            viewTic.height == 280
-                        }
-                        ticketGroupView.setTicketsData()
-                    }else{
-                        ticketGroupView = cell?.contentView.viewWithTag(3) as! AirTicketGroupView
+                    for subview in cell?.contentView.subviews as [UIView]! {
+                        subview.removeFromSuperview()
                     }
                     
-                    ticketGroupView.layoutIfNeeded()
+                    let ticketGroupView = AirTicketGroupView()
+                    cell?.contentView.addSubview(ticketGroupView)
+                    layout(ticketGroupView) { viewTic in
+                        viewTic.left == viewTic.superview!.left + 9
+                        viewTic.top == viewTic.superview!.top
+                        viewTic.right == viewTic.superview!.right - 9
+                        viewTic.height == 280
+                    }
+                    ticketGroupView.setTicketsData()
                     
                     return cell!
                     
@@ -398,17 +394,18 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let switchView = SwitchServiceView.createSwitchServiceView()
                     
-                    if cell?.contentView.subviews.count == 0 {
-                        cell?.contentView.addSubview(switchView)
-                        
-                        layout(switchView) { switchView in
-                            switchView.left == switchView.superview!.left
-                            switchView.top == switchView.superview!.top
-                            switchView.right == switchView.superview!.right
-                            switchView.height == SwitchServiceView.HEIGHT
-                        }
+                    for subview in cell?.contentView.subviews as [UIView]! {
+                        subview.removeFromSuperview()
                     }
                     
+                    cell?.contentView.addSubview(switchView)
+                    
+                    layout(switchView) { switchView in
+                        switchView.left == switchView.superview!.left
+                        switchView.top == switchView.superview!.top
+                        switchView.right == switchView.superview!.right
+                        switchView.height == SwitchServiceView.HEIGHT
+                    }
                     return cell!
                     
                 }
@@ -424,20 +421,21 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         ser.service_id = 1
                         ser.service_img = "http://img1.gtimg.com/news/pics/hv1/40/169/1927/125346310_small.jpg"
                         ser.service_intro = "(100% Refund)"
-                        ser.service_name = "ChinaTravel"
+                        ser.service_name = "ChinaTravelChinaTravelChinaTravelChinaTravelChinaTravel"
                         ser.service_price = "$220"
                         ser.service_rating = NSNumber(int: 12)
                         ser.service_param_list = [p]
                         ser.provider_id = 12
                         ser.provider_name = "tinkle"
                         ser.provider_icon = ""
-                    
+
                     let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser,ser],multiSelect : false)
-                        
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                        if cell?.contentView.subviews.count == 0 {
-                            cell?.contentView.addSubview(hori)
+                    
+                        for subview in cell?.contentView.subviews as [UIView]! {
+                            subview.removeFromSuperview()
                         }
+                        cell?.contentView.addSubview(hori)
                         return cell!
                 }
             }

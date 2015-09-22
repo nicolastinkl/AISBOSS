@@ -66,9 +66,10 @@
 //oc models
 #import "AIServiceSchemeModel.h"
 
-#import "FlickerNumberLabel.h"
 
 // SDWebImage
 #import "UIImageView+WebCache.h"
+
+#import "AIScrollLabel.h"
 
 
