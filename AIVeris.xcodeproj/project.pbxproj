@@ -29,6 +29,7 @@
 		81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C0927E1BAFAC0D003FFF35 /* UIImageView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
 		81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */; settings = {ASSET_TAGS = (); }; };
 		81C092921BAFE6A1003FFF35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C092911BAFE6A1003FFF35 /* CoreGraphics.framework */; };
+		81C092951BB0ED7C003FFF35 /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */; settings = {ASSET_TAGS = (); }; };
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
@@ -271,6 +272,8 @@
 		81C0927F1BAFAC0D003FFF35 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		81C092911BAFE6A1003FFF35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		81C092931BB0ED7C003FFF35 /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIOrderPreModel.h; path = ocmodel/AIOrderPreModel.h; sourceTree = "<group>"; };
+		81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIOrderPreModel.m; path = ocmodel/AIOrderPreModel.m; sourceTree = "<group>"; };
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
@@ -763,6 +766,8 @@
 			children = (
 				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
 				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
+				81C092931BB0ED7C003FFF35 /* AIOrderPreModel.h */,
+				81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -1556,6 +1561,7 @@
 				93FA1E511B9C3E12009965C8 /* AIMenuActionView.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
+				81C092951BB0ED7C003FFF35 /* AIOrderPreModel.m in Sources */,
 				93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
