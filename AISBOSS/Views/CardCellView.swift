@@ -40,13 +40,22 @@ class CardCellView: UIView {
         super.layoutSubviews()
         starRateView?.frame = serviceRatingView.bounds
         if firstLayout{
-            let serviceName : String = serviceListModel.service_name ?? ""
-            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceNameView.addSubview(serviceNameScrollLabel!)
-            let serviceDesc : String = serviceListModel.service_intro ?? ""
-            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceDescView.addSubview(serviceDescScrollLabel!)
-            
+            let serviceName : String = serviceListModel.service_name ?? "serviceName"
+            if let scrollLabel1 = serviceNameScrollLabel{
+                scrollLabel1.text = serviceName
+            }
+            else{
+                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceNameView.addSubview(serviceNameScrollLabel!)
+            }
+            let serviceDesc : String = serviceListModel.service_intro ?? "serviceDesc"
+            if let scrollLabel2 = serviceDescScrollLabel{
+                scrollLabel2.text = serviceDesc
+            }
+            else {
+                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceDescView.addSubview(serviceDescScrollLabel!)
+            }
             firstLayout = false
         }
         
@@ -102,6 +111,7 @@ class CardCellView: UIView {
             }
             
         })
+        firstLayout = true
     }
     
     func buildLayout(){

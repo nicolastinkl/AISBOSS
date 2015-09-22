@@ -410,7 +410,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         viewTic.right == viewTic.superview!.right - 9
                         viewTic.height == 280
                     }
-                    ticketGroupView.setTicketsData()
+                    
+                    var tickets = [ServiceList]()
+                    tickets.append(ServiceList())
+                    tickets.append(ServiceList())
+                    ticketGroupView.setTicketsData(tickets)
                     
                     return cell!
                     

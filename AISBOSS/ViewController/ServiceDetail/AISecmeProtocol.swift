@@ -15,7 +15,7 @@ struct chooseItemModel{
     var scheme_item_quantity : Int = 0
 }
 
-protocol AISecmeProtocol {
+protocol AISchemeProtocol {
     
     func chooseItem(model:chooseItemModel)
     
