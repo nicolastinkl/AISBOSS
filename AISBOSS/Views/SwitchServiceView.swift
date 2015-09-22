@@ -44,6 +44,10 @@ class SwitchServiceView: UIView {
     }
     */
     
+    func reloadData(){
+        
+    }
+    
     override func awakeFromNib() {
         switchController = SevenSwitch(frame: CGRectMake(0, switchHolder.top, switchHolder.width, switchHolder.height))
         
@@ -83,6 +87,7 @@ class SwitchServiceView: UIView {
     }
     
     static func createSwitchServiceView() -> SwitchServiceView {
+        
         let nib = NSBundle.mainBundle().loadNibNamed("SwitchServiceView", owner: self, options: nil)
         
         return nib.first as! SwitchServiceView

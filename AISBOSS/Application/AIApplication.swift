@@ -80,6 +80,7 @@ struct AIApplication{
             static let AITitleServiceDetailCell = "AITitleServiceDetailCell"
             static let AITableCellHolder    = "AITableCellHolder"
             static let AITableCellHolderParms   = "AITableCellHolderParms"
+            static let AITableCellHolderParmsModel    = "AITableCellHolderParmsModel"
             
             // MARK: TIME LINE
             static let AITIMELINESDTimesViewCell        = "AITIMELINESDTimesViewCell"

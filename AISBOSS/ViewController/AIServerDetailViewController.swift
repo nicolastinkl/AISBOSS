@@ -418,22 +418,29 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 if  model.type == cellType.cellTypeparames {
                     
-                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                    
-                    let switchView = SwitchServiceView.createSwitchServiceView()
-                    
-                    for subview in cell?.contentView.subviews as [UIView]! {
-                        subview.removeFromSuperview()
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
+                     
+                    if cell?.contentView.subviews.count > 0{
+                        
+                        let switchView = cell?.contentView.subviews.last as! SwitchServiceView                        
+                        switchView.reloadData()
+                        
+                    }else{
+                        let switchView = SwitchServiceView.createSwitchServiceView()
+                        
+                        cell?.contentView.addSubview(switchView)
+                        
+                        layout(switchView) { switchView in
+                            switchView.left == switchView.superview!.left
+                            switchView.top == switchView.superview!.top
+                            switchView.right == switchView.superview!.right
+                            switchView.height == SwitchServiceView.HEIGHT
+                        }
+                        switchView.reloadData()
                     }
                     
-                    cell?.contentView.addSubview(switchView)
                     
-                    layout(switchView) { switchView in
-                        switchView.left == switchView.superview!.left
-                        switchView.top == switchView.superview!.top
-                        switchView.right == switchView.superview!.right
-                        switchView.height == SwitchServiceView.HEIGHT
-                    }
+                    
                     return cell!
                     
                 }
