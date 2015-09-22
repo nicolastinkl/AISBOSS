@@ -40,13 +40,22 @@ class CardCellView: UIView {
         super.layoutSubviews()
         starRateView?.frame = serviceRatingView.bounds
         if firstLayout{
-            let serviceName : String = serviceListModel.service_name ?? ""
-            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceNameView.addSubview(serviceNameScrollLabel!)
-            let serviceDesc : String = serviceListModel.service_intro ?? ""
-            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceDescView.addSubview(serviceDescScrollLabel!)
-            
+            let serviceName : String = serviceListModel.service_name ?? "serviceName"
+            if let scrollLabel1 = serviceNameScrollLabel{
+                scrollLabel1.text = serviceName
+            }
+            else{
+                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceNameView.addSubview(serviceNameScrollLabel!)
+            }
+            let serviceDesc : String = serviceListModel.service_intro ?? "serviceDesc"
+            if let scrollLabel2 = serviceDescScrollLabel{
+                scrollLabel2.text = serviceDesc
+            }
+            else {
+                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceDescView.addSubview(serviceDescScrollLabel!)
+            }
             firstLayout = false
         }
         
@@ -64,14 +73,16 @@ class CardCellView: UIView {
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
         serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
-            if imageURL == ""{
-                self.originBackgroundImg = UIImage(named: "Placehold")
-                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
-
-            }
-            else{
+            
+            
+            if let _ = imageURL as NSURL?{                
                 self.originBackgroundImg = image
                 self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
+            }
+            else{
+                self.originBackgroundImg = UIImage(named: "Placehold")
+                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
+                
             }
             
         })
@@ -98,6 +109,7 @@ class CardCellView: UIView {
             }
             
         })
+        firstLayout = true
     }
     
     func buildLayout(){

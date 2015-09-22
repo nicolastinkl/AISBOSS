@@ -136,7 +136,7 @@ class HorizontalCardView: UIView {
     }
     
     func initEmptyCell(){
-        let cellFrame : CGRect = CGRectMake(0, 0, 10, 10)
+        let cellFrame : CGRect = CGRectMake(0, 0, 120, 80)
         var index = 0
         for _ in 1 ... maxCellNumber{
             let cardCellView : CardCellView = CardCellView.currentView()
