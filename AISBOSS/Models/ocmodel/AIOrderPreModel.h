@@ -64,6 +64,9 @@
 
 // 服务
 
+@protocol AIOrderPreModel
+@end
+
 @interface AIOrderPreModel : JSONModel
 
 @property (nonatomic, strong) NSString<Optional> *order_id;
@@ -79,6 +82,14 @@
 @property (nonatomic, strong) AIServiceModel<Optional> *service;
 
 
+@end
 
+
+
+@interface AIOrderPreListModel : JSONModel
+
+@property (nonatomic, strong) NSArray<AIOrderPreModel> *order_list;
 
 @end
+
+
