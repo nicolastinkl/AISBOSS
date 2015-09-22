@@ -8,13 +8,12 @@
 
 import Foundation
 
-class chooseItemModel{
-    var service_P_id : Int
-    var service_id : Int
-    var service_price : Float
+struct chooseItemModel{
+    var service_P_id : Int = 0
+    var service_id : Int = 0
+    var service_price : Float = 0.0
 
 }
-
 
 protocol AISecmeProtocol {
     
