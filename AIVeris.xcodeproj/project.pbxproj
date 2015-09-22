@@ -130,6 +130,7 @@
 		93C33F371B9C2813007BF506 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F361B9C2813007BF506 /* QuartzCore.framework */; };
 		93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F381B9C2825007BF506 /* SystemConfiguration.framework */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
+		93EAC36C1BB107FE00483205 /* AISecmeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */; };
 		93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
@@ -437,6 +438,7 @@
 		93D5A3631B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93D5A36C1B709C1D00DDB158 /* AISBOSSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISBOSSUITests.swift; sourceTree = "<group>"; };
 		93D5A36E1B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISecmeProtocol.swift; sourceTree = "<group>"; };
 		93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowViewDataSoureAndDelegate.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
 				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
 				93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */,
+				93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */,
 			);
 			path = ServiceDetail;
 			sourceTree = "<group>";
@@ -1513,6 +1516,7 @@
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
+				93EAC36C1BB107FE00483205 /* AISecmeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,

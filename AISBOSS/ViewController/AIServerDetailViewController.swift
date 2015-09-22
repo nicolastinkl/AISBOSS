@@ -293,6 +293,7 @@ extension AIServerDetailViewController : AOTagDelegate{
     
    
 }
+
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
