@@ -2044,11 +2044,13 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="13" id="6Df-D0-aOK"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="13" id="6gw-FZ-IF6"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="-3" id="BhQ-UN-bj8"/>
+                                                <constraint firstItem="yCQ-1p-S8I" firstAttribute="top" secondItem="efF-b7-fNl" secondAttribute="topMargin" constant="-3" id="JbR-Rw-0um"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="-47" id="L2H-fV-IjH"/>
                                                 <constraint firstItem="yCQ-1p-S8I" firstAttribute="leading" secondItem="efF-b7-fNl" secondAttribute="leadingMargin" constant="8" id="Ojq-QU-og5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="9" id="VwE-yi-djq"/>
                                                 <constraint firstAttribute="centerX" secondItem="yCQ-1p-S8I" secondAttribute="centerX" id="c29-IJ-PMc"/>
                                                 <constraint firstItem="yCQ-1p-S8I" firstAttribute="centerY" secondItem="efF-b7-fNl" secondAttribute="centerY" id="d9t-a9-o1m"/>
+                                                <constraint firstItem="yCQ-1p-S8I" firstAttribute="top" secondItem="efF-b7-fNl" secondAttribute="topMargin" constant="-3" id="e2w-Wj-8Dh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="23" id="fOD-aG-LHJ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yCQ-1p-S8I" secondAttribute="bottom" constant="13" id="gIY-UM-lnS"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="yCQ-1p-S8I" secondAttribute="trailing" constant="8" id="z48-A2-rYS"/>
@@ -2057,8 +2059,12 @@
                                                 <mask key="constraints">
                                                     <exclude reference="6Df-D0-aOK"/>
                                                     <exclude reference="6gw-FZ-IF6"/>
+                                                    <exclude reference="BhQ-UN-bj8"/>
+                                                    <exclude reference="JbR-Rw-0um"/>
                                                     <exclude reference="L2H-fV-IjH"/>
                                                     <exclude reference="VwE-yi-djq"/>
+                                                    <exclude reference="c29-IJ-PMc"/>
+                                                    <exclude reference="d9t-a9-o1m"/>
                                                     <exclude reference="fOD-aG-LHJ"/>
                                                     <exclude reference="gIY-UM-lnS"/>
                                                 </mask>

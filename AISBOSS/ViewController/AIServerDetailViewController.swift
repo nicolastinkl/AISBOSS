@@ -24,6 +24,7 @@ class dataModel : NSObject{
     var title:String?
     var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
     var content:String?
+    var placeHolderModel:AnyObject?
 }
 
 // MARK: UITBALEVIEW
@@ -54,27 +55,10 @@ class AIServerDetailViewController: UIViewController {
         var data =  dataModel()
         data.title = "DAY"
         data.type = cellType.cellTypeDate
-        
-        var data3 =  dataModel()
-        data3.title = "FLIGHT"
-        data3.type = cellType.cellTypeFilght
-        
-        var data4 =  dataModel()
-        data4.title = "Pararmes"
-        data4.type = cellType.cellTypeparames
-        
-        
-        var data5 =  dataModel()
-        data5.title = "PararmesMuti"
-        data5.type = cellType.cellTypeMutiChoose
-        
-        
-        var data6 =  dataModel()
-        data6.title = "CTypeCoverflow"
-        data6.type = cellType.cellTypeCoverflow
-        
-        return NSMutableArray(array: [data,data3,data6,data4,data5])
+        return NSMutableArray(array: [data])
         }()
+    
+    private var schemeModel:AIServiceSchemeModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,18 +82,61 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.alpha = 0
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
-    
-        self.tableView.reloadData()
         
-        
-        AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
-              print(asSchemeModel)
+        Async.background {
+            AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
+                self.schemeModel = asSchemeModel
+                self.reloadInputData()
+            }
         }
-//        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        
+ 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
+    }
+    
+    func reloadInputData() {
+        
+        if let scheme = self.schemeModel {
+            NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
+                /// 1-轮播 2-平铺 3-开关 4-单个（机票）
+                
+                do {
+                    
+                    let catalog:CatalogList = try CatalogList(dictionary: dataObject as! [NSObject : AnyObject])
+                    let data =  dataModel()
+                    data.title = catalog.catalog_name
+                    switch catalog.service_level.integerValue {
+                    case 1:
+                        data.type = cellType.cellTypeCoverflow
+                        break
+                    case 2:
+                        data.type = cellType.cellTypeMutiChoose
+                        break
+                    case 3:
+                        data.type = cellType.cellTypeparames
+                        break
+                    case 4:
+                        data.type = cellType.cellTypeFilght
+                        break
+                    default:
+                        break
+                    }
+                    data.placeHolderModel = catalog.service_list
+                    self.dataSource.addObject(data)
+                }
+                catch{
+                }
+                
+            })
+            
+//            let arrayList = scheme.catalog_list as [CatalogList]
+//            for catalog in arrayList {
+//                
+//            }
+        }
+        
+        
+        self.tableView.reloadData()
     }
     
     func ChangeDateViewNotification(){
@@ -270,15 +297,15 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         if indexPath.row == 1 {
             switch model.type! {
             case cellType.cellTypeDate:
-                return 300
+                return 270
             case cellType.cellTypeCoverflow:
                 return 220
             case cellType.cellTypeFilght:
-                return 280
+                return 260
             case cellType.cellTypeparames:
                 return 100
             case cellType.cellTypeMutiChoose:
-                return 200
+                return 80
             }
         }
         
@@ -404,7 +431,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         ser.provider_id = 12
                         ser.provider_name = "tinkle"
                         ser.provider_icon = ""
-                        
+                    
                     let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser,ser],multiSelect : false)
                         
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)

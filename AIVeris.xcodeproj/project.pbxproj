@@ -38,6 +38,7 @@
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
+		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
 		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
 		930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */; };
@@ -282,6 +283,7 @@
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
+		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271D1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
 		930B271F1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIMainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				93B25A2B1B9D78B000CD1FEB /* collectionData.plist */,
 				93B25A2D1B9D78B000CD1FEB /* MyriadProRegular.ttf */,
 				93B25A2E1B9D78B000CD1FEB /* Seller.plist */,
+				9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1408,6 +1411,7 @@
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
 				93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */,
+				9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */,
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
