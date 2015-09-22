@@ -14,7 +14,7 @@
  *  参数model
  */
 @interface SchemeParamList : JSONModel
-@property (assign, nonatomic) int param_key;
+@property (assign, nonatomic) NSInteger param_key;
 @property (strong, nonatomic) NSString<Optional> * param_value;
 @property (strong, nonatomic) NSNumber<Optional> * param_value_id;
 @end
@@ -32,10 +32,10 @@
 
 @interface ServiceList : JSONModel
 
-@property (assign, nonatomic) int  service_id;
+@property (assign, nonatomic) NSInteger service_id;
 @property (strong, nonatomic) NSString<Optional> * service_name;
 @property (strong, nonatomic) NSString<Optional> * service_intro;
-@property (assign, nonatomic) int provider_id;
+@property (assign, nonatomic) NSInteger provider_id;
 @property (strong, nonatomic) NSString<Optional> * provider_name;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
 @property (strong, nonatomic) NSString<Optional> * provider_icon;

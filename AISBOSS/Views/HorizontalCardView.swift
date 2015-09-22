@@ -17,7 +17,7 @@ class HorizontalCardView: UIView {
     
     var serviceListModelList : [ServiceList]!
     var cardCellViewList = Array<CardCellView>()
-    var delegate : HorizontalCardViewDelegate?
+    var delegate : AISchemeProtocol?
     var multiSelect = false
     var maxCellNumber = 4
     
@@ -194,8 +194,11 @@ class HorizontalCardView: UIView {
                 }
                 
             }
+            var model = chooseItemModel()
+            model.scheme_item_id = selCardCellView.serviceListModel.service_id
+            model.scheme_item_price = NSString(string: selCardCellView.serviceListModel.service_price).floatValue
             
-            delegate?.didSelectCell!(self, cellIndex: selCardCellView.index)
+            delegate?.chooseItem(model)
         }
         
     }
