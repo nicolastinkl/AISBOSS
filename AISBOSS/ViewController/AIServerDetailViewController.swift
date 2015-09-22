@@ -83,7 +83,7 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
         
-        Async.background {
+        Async.userInitiated {
             AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
                 self.schemeModel = asSchemeModel
                 self.reloadInputData()
@@ -159,8 +159,15 @@ class AIServerDetailViewController: UIViewController {
                 tags?.addTag(titleItem ?? "")
             }
         }
-        self.scrollView.addSubview(tags!) 
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
+//        self.scrollView.addSubview(tags!) 
+//        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
+    }
+    
+    /*!
+        提交订单
+    */
+    @IBAction func submitOrderAction(sender: AnyObject) {
+        
     }
     
     @IBAction func addAction(sender: AnyObject) {
@@ -286,6 +293,7 @@ extension AIServerDetailViewController : AOTagDelegate{
     
    
 }
+
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -340,7 +348,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
                 }
-                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchDragInside)
+                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
             }else{
