@@ -446,14 +446,18 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     })
 
                     let ls = NSArray(array: list) as! [ServiceList]
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: ls,multiSelect : false)
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    if cell?.contentView.subviews.count > 0{
                     
-                        for subview in cell?.contentView.subviews as [UIView]! {
-                            subview.removeFromSuperview()
-                        }
+                    }else{
                         cell?.contentView.addSubview(hori)
-                        return cell!
+                    }
+//                    cell?.contentView.subviews.map({
+//                        $0.hidden = true
+//                    })
+                    hori.loadData(ls, multiSelect: false)
+                    return cell!
                 }
             }
         }
