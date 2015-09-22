@@ -26,6 +26,10 @@ class HorizontalCardView: UIView {
     let cellY : CGFloat = 0
 
     // MARK: - init method
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     init(frame: CGRect,serviceListModelList : [ServiceList]) {
         super.init(frame: frame)
         self.serviceListModelList = serviceListModelList
@@ -44,6 +48,13 @@ class HorizontalCardView: UIView {
     }
     
     // MARK: - build method
+    func loadData(serviceListModelList : [ServiceList]){
+        self.serviceListModelList = serviceListModelList
+        
+        
+        buildLayout()
+    }
+    
     func buildLayout(){
         var isFirst = true
         var cellX : CGFloat = viewPadding
@@ -51,7 +62,12 @@ class HorizontalCardView: UIView {
         let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
         let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
-        
+        //clear data first
+        cardCellViewList.removeAll()
+        self.subviews.map({
+            $0.removeFromSuperview()
+        })
+        //build cell
         for serviceListModel : ServiceList in serviceListModelList{
             var cellFrame:CGRect!
             
@@ -84,6 +100,18 @@ class HorizontalCardView: UIView {
         self.userInteractionEnabled = true
         let tapGuesture = UITapGestureRecognizer(target: self, action: "viewSelectAction:")
         cardCellView.addGestureRecognizer(tapGuesture)
+    }
+    
+    //手工设定选中项目
+    func setSelectedCel(indexs : [Int]){
+        for cardCellView : CardCellView in cardCellViewList{
+            for index : Int in indexs{
+                if cardCellView.index == index{
+                    cardCellView.selected = !cardCellView.selected
+                    cardCellView.selectAction()
+                }
+            }
+        }
     }
     
     // MARK: - delegate
