@@ -41,27 +41,31 @@ class AirTicketGroupView: UIView {
     }
     */
     
-    func setTicketsData() {
-        let nib1 = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
-        let ticket1: AirTicketView = nib1.first as! AirTicketView
-        self.addSubview(ticket1)
+    func setTicketsData(ticket: [ServiceList]) {
+        var preTicket: AirTicketView?
         
-        layout(ticket1) { ticketView in
-            ticketView.left == ticketView.superview!.left
-            ticketView.top == ticketView.superview!.top
-            ticketView.right == ticketView.superview!.right
+        for var index = 0; index < ticket.count; ++index {
+            let nib = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
+            let ticket: AirTicketView = nib.first as! AirTicketView
+            self.addSubview(ticket)
+            
+            if index == 0 {
+                layout(ticket) { ticketView in
+                    ticketView.left == ticketView.superview!.left
+                    ticketView.top == ticketView.superview!.top
+                    ticketView.right == ticketView.superview!.right
+                }
+            } else if (preTicket != nil) {
+                layout(preTicket!, ticket) { preTicket, ticket in
+                    ticket.top == preTicket.top + AirTicketView.TICKET_HEAD_HEIGHT
+                    ticket.left == preTicket.superview!.left
+                    ticket.right == preTicket.superview!.right
+                }
+            }
+            
+            preTicket = ticket
         }
-         
-        let nib2 = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
-        let ticket2: AirTicketView = nib2.first as! AirTicketView
-        ticket2.setTop(ticket1.top + AirTicketView.TICKET_HEAD_HEIGHT)
-        addSubview(ticket2)
         
-        layout(ticket1, ticket2) { ticket1, ticket2 in
-            ticket2.top == ticket1.top + AirTicketView.TICKET_HEAD_HEIGHT
-            ticket2.left == ticket1.superview!.left
-            ticket2.right == ticket1.superview!.right
-        }
     }
     
     func getViewHeight() -> CGFloat {

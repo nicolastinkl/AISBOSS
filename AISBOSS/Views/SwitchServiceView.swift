@@ -54,7 +54,6 @@ class SwitchServiceView: UIView {
             switchView.left == holderView.left
             switchView.width == holderView.width
             switchView.height == holderView.height
-    //        switchController.bottom = switchHolder.bottom
         }
         
         switchController.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
@@ -86,5 +85,11 @@ class SwitchServiceView: UIView {
         let nib = NSBundle.mainBundle().loadNibNamed("SwitchServiceView", owner: self, options: nil)
         
         return nib.first as! SwitchServiceView
+    }
+    
+    func setService(service: ServiceList) {
+        serviceName.text = service.service_name
+        serviceDescription.text = service.service_intro
+        price.text = service.service_price
     }
 }
