@@ -6,6 +6,8 @@
 //  Copyright © 2015年 ___ASIAINFO___. All rights reserved.
 //
 
+
+#import <Foundation/Foundation.h>
 #import "JSONModel.h"
 
 
@@ -26,7 +28,7 @@
 
 @interface AIProgressModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *percentage;
+@property (nonatomic, assign) float percentage;
 
 @property (nonatomic, strong) NSString<Optional> *name;
 
