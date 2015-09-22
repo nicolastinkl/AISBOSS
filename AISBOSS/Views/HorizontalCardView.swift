@@ -48,10 +48,9 @@ class HorizontalCardView: UIView {
     }
     
     // MARK: - build method
-    func loadData(serviceListModelList : [ServiceList]){
-        self.serviceListModelList = serviceListModelList
-        
-        
+    func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
+        self.serviceListModelList = serviceListModelList        
+        self.multiSelect = multiSelect
         buildLayout()
     }
     
