@@ -29,10 +29,10 @@ class AIDetailNetService {
         
         AIHttpEngine.postRequestWithParameters(AIHttpEngine.ResourcePath.QueryCollectedServices, parameters: paras) {  [weak self] (response, error) -> () in
             
-            if let strongSelf = self{
-                let model =  AIServiceSchemeModel(string: strongSelf.JSON, error:nil)
-                completion(model)
-            }
+//            if let strongSelf = self{
+//                let model =  AIServiceSchemeModel(string: strongSelf.JSON, error:nil)
+//                completion(model)
+//            }
         }
         
         if let path = NSBundle.mainBundle().pathForResource("AIServiceSchemeModelTEST", ofType: "json") {

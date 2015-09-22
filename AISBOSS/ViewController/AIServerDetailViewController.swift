@@ -364,6 +364,21 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.carousel.type = .CoverFlow2
+                    
+                    let list = NSMutableArray()
+                    let modelArray = model.placeHolderModel as! NSMutableArray
+                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                        do{
+                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                            list.addObject(model)
+                            
+                        }catch{
+                        }
+                    })
+                    
+                    let ls = NSArray(array: list) as! [ServiceList]
+                    cell.dataSource = ls
+                    cell.carousel.reloadData()
                     return cell
                 }
                 
@@ -411,25 +426,19 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 if model.type == cellType.cellTypeMutiChoose {
-                    
-                        let p = SchemeParamList()
-                        p.param_key = 1
-                        p.param_value = "value"
-                        p.param_value_id = NSNumber(int: 1)
-                    
-                        let ser = ServiceList()
-                        ser.service_id = 1
-                        ser.service_img = "http://img1.gtimg.com/news/pics/hv1/40/169/1927/125346310_small.jpg"
-                        ser.service_intro = "(100% Refund)"
-                        ser.service_name = "ChinaTravelChinaTravelChinaTravelChinaTravelChinaTravel"
-                        ser.service_price = "$220"
-                        ser.service_rating = NSNumber(int: 12)
-                        ser.service_param_list = [p]
-                        ser.provider_id = 12
-                        ser.provider_name = "tinkle"
-                        ser.provider_icon = ""
+                    let list = NSMutableArray()
+                    let modelArray = model.placeHolderModel as! NSMutableArray
+                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                        do{
+                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                            list.addObject(model)
+                            
+                        }catch{
+                        }
+                    })
 
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: [ser,ser,ser,ser],multiSelect : false)
+                    let ls = NSArray(array: list) as! [ServiceList]
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: ls,multiSelect : false)
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                     
                         for subview in cell?.contentView.subviews as [UIView]! {
@@ -477,9 +486,15 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     @IBOutlet weak var carousel: iCarousel!
     
     @IBOutlet weak var title: UILabel!
+    
+    var dataSource:[ServiceList]?
+    
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
     {
-        return 5
+        if let daSource = dataSource {
+            return daSource.count
+        }
+        return 0
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
@@ -492,19 +507,8 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
-            var costomModel = AICustomerServiceCoverFlowModel()
-            costomModel.service_id = 1
-            costomModel.provider_name = "Timmy Jones"
-            costomModel.provider_icon = "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg"
-            costomModel.provider_id = 1
-            
-            costomModel.service_img = "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg"
-            costomModel.service_name = "Great fishing exprience."
-            costomModel.service_intro = "Fishing is the Best all yourself can be  expred on th brench."
-            costomModel.service_price = "123.0"
-            costomModel.service_rating = 2
-            
-            coverView.fillDataWithModel(costomModel)
+            let costom:ServiceList = dataSource![index]
+            coverView.fillDataWithModel(costom)
             view = coverView
             
         }
