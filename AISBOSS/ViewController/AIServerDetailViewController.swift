@@ -17,7 +17,8 @@ enum cellType:Int{
     case cellTypeCoverflow = 1
     case cellTypeFilght = 2
     case cellTypeparames = 3
-    case cellTypeMutiChoose = 4
+    case cellTypeSignleChoose = 4
+    case cellTypeMutiChoose = 5
 }
 
 class dataModel : NSObject{
@@ -110,13 +111,16 @@ class AIServerDetailViewController: UIViewController {
                         data.type = cellType.cellTypeCoverflow
                         break
                     case 2:
-                        data.type = cellType.cellTypeMutiChoose
+                        data.type = cellType.cellTypeSignleChoose
                         break
                     case 3:
                         data.type = cellType.cellTypeparames
                         break
                     case 4:
                         data.type = cellType.cellTypeFilght
+                        break
+                    case 5:
+                        data.type = cellType.cellTypeMutiChoose
                         break
                     default:
                         break
@@ -319,6 +323,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return 100
             case cellType.cellTypeMutiChoose:
                 return 80
+            case cellType.cellTypeSignleChoose:
+                return 80
             }
         }
         
@@ -352,12 +358,15 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.closeButton.hidden = true
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
+                case cellType.cellTypeSignleChoose:
+                    cell.closeButton.hidden = false
                 }
                 cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
             }else{
                 
+                // TODO: 日期
                 if model.type == cellType.cellTypeDate {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
                     
@@ -374,6 +383,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
+                // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.carousel.type = .CoverFlow2
@@ -395,6 +405,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
+                // TODO: 机票信息
                 if  model.type == cellType.cellTypeFilght { 
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
@@ -420,6 +431,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                 }
                 
+                // TODO: 开关信息
                 if  model.type == cellType.cellTypeparames {
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
@@ -449,7 +461,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                 }
                 
-                if model.type == cellType.cellTypeMutiChoose {
+                // TODO: 多选 or 单选
+                if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
                     let list = NSMutableArray()
                     let modelArray = model.placeHolderModel as! NSMutableArray
                     modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
@@ -472,9 +485,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
 //                    cell?.contentView.subviews.map({
 //                        $0.hidden = true
 //                    })
-                    hori.loadData(ls, multiSelect: false)
+                    hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                     return cell!
                 }
+                
             }
         }
         

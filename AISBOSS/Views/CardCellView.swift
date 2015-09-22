@@ -67,7 +67,7 @@ class CardCellView: UIView {
     func buildViewData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
         
-        servicePriceLabel.text = serviceListModel.service_price ?? ""
+        servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
@@ -96,7 +96,7 @@ class CardCellView: UIView {
     
     func reloadData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
-        servicePriceLabel.text = serviceListModel.service_price ?? ""
+        servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
         serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in

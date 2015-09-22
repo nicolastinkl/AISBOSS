@@ -95,6 +95,6 @@ class SwitchServiceView: UIView {
     func setService(service: ServiceList) {
         serviceName.text = service.service_name
         serviceDescription.text = service.service_intro
-        price.text = service.service_price
+        price.text = service.service_price.price_show
     }
 }
