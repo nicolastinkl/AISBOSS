@@ -83,7 +83,7 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
         
-        Async.background {
+        Async.userInitiated {
             AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
                 self.schemeModel = asSchemeModel
                 self.reloadInputData()
@@ -159,8 +159,15 @@ class AIServerDetailViewController: UIViewController {
                 tags?.addTag(titleItem ?? "")
             }
         }
-        self.scrollView.addSubview(tags!) 
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
+//        self.scrollView.addSubview(tags!) 
+//        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
+    }
+    
+    /*!
+        提交订单
+    */
+    @IBAction func submitOrderAction(sender: AnyObject) {
+        
     }
     
     @IBAction func addAction(sender: AnyObject) {
@@ -235,11 +242,13 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
+          /*
             let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
             self.tableView.reloadData()
+            */
         }
     }
 }
@@ -247,8 +256,10 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
 extension AIServerDetailViewController : AOTagDelegate{
 
     func tagDidRemoveTag(tag: AOTag!) {
-        let titl = tag.tTitle
         
+        
+        /*
+        let titl = tag.tTitle
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
             let fitlerModel = object as! dataModel
             
@@ -260,6 +271,7 @@ extension AIServerDetailViewController : AOTagDelegate{
                 return
             }
         }
+*/
         
         /*
         let newArray = dataSource.filter { (fitlerModel) -> Bool in
@@ -286,6 +298,7 @@ extension AIServerDetailViewController : AOTagDelegate{
     
    
 }
+
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -340,7 +353,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
                 }
-                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchDragInside)
+                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
             }else{
@@ -438,14 +451,18 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     })
 
                     let ls = NSArray(array: list) as! [ServiceList]
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80), serviceListModelList: ls,multiSelect : false)
+                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    if cell?.contentView.subviews.count > 0{
                     
-                        for subview in cell?.contentView.subviews as [UIView]! {
-                            subview.removeFromSuperview()
-                        }
+                    }else{
                         cell?.contentView.addSubview(hori)
-                        return cell!
+                    }
+//                    cell?.contentView.subviews.map({
+//                        $0.hidden = true
+//                    })
+                    hori.loadData(ls, multiSelect: false)
+                    return cell!
                 }
             }
         }

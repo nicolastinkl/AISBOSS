@@ -168,6 +168,102 @@
                                       }
                                       ]
                      },{
+                     "relevant_level": 2,
+                     "catalog_name": "Accomandation",
+                     "service_level": 2,
+                     "binding_flag": "1",
+                     "service_list": [
+                                      {
+                                      "service_id": 1,
+                                      "service_name": "Alex Tiller",
+                                      "service_price": "123.3",
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      }, {
+                                      "service_id": 1,
+                                      "service_name": "RC Wagon Rental",
+                                      "service_price": "123.3",
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      }, {
+                                      "service_id": 1,
+                                      "service_name": "RC Wagon Rental",
+                                      "service_price": "123.3",
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      }, {
+                                      "service_id": 1,
+                                      "service_name": "RC Wagon Rental",
+                                      "service_price": "123.3",
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "http://pic25.nipic.com/20121119/6835836_115116793000_2.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      }
+                                      ]
+                     },{
                      "relevant_level": 3,
                      "catalog_name": "Touriset Visa Switch",
                      "service_level": 3,
