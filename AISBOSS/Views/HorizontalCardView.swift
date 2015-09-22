@@ -196,7 +196,7 @@ class HorizontalCardView: UIView {
             }
             var model = chooseItemModel()
             model.scheme_item_id = selCardCellView.serviceListModel.service_id
-            model.scheme_item_price = NSString(string: selCardCellView.serviceListModel.service_price).floatValue
+            model.scheme_item_price = selCardCellView.serviceListModel.service_price.price.floatValue
             
             delegate?.chooseItem(model)
         }
