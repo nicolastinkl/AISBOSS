@@ -32,3 +32,8 @@
 @implementation AIOrderPreModel
 
 @end
+
+@implementation AIOrderPreListModel
+
+
+@end
