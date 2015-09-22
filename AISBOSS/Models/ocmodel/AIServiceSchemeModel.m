@@ -27,7 +27,7 @@
 
 @end
 
-@implementation CatalogList
+@implementation Catalog
 
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {

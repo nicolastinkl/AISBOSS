@@ -34,7 +34,7 @@
 
 @end
 
-@interface CatalogList : JSONModel
+@interface Catalog : JSONModel
 
 @property (strong, nonatomic) NSNumber<Optional> * relevant_level;
 @property (strong, nonatomic) NSString<Optional> * catalog_name;
@@ -52,7 +52,7 @@
 @interface AIServiceSchemeModel : JSONModel
 
 @property (strong, nonatomic) NSArray<SchemeParamList *> * scheme_param_list;
-@property (strong, nonatomic) NSArray<CatalogList *> * catalog_list;
+@property (strong, nonatomic) NSArray<Catalog *> * catalog_list;
 
 @end
 

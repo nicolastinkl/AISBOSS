@@ -102,7 +102,7 @@ class AIServerDetailViewController: UIViewController {
                 
                 do {
                     
-                    let catalog:CatalogList = try CatalogList(dictionary: dataObject as! [NSObject : AnyObject])
+                    let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
                     let data =  dataModel()
                     data.title = catalog.catalog_name
                     switch catalog.service_level.integerValue {
