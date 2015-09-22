@@ -242,11 +242,13 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
+          /*
             let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
             self.tableView.reloadData()
+            */
         }
     }
 }
@@ -254,8 +256,10 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
 extension AIServerDetailViewController : AOTagDelegate{
 
     func tagDidRemoveTag(tag: AOTag!) {
-        let titl = tag.tTitle
         
+        
+        /*
+        let titl = tag.tTitle
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
             let fitlerModel = object as! dataModel
             
@@ -267,6 +271,7 @@ extension AIServerDetailViewController : AOTagDelegate{
                 return
             }
         }
+*/
         
         /*
         let newArray = dataSource.filter { (fitlerModel) -> Bool in
