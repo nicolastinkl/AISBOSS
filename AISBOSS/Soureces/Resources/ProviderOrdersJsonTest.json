@@ -1,0 +1,51 @@
+//
+//  ProviderOrdersJsonTest.json
+//  AIVeris
+//  卖家订单测试数据
+//  Created by Rocky on 15/9/22.
+//  Copyright © 2015年 ___ASIAINFO___. All rights reserved.
+//
+
+{
+    "order_list":[
+                  {
+                  "order_id":123,
+                  "order_number":"4562345",
+                  "order_state":1,
+                  "order_state_name":"正常",
+                  "service":{
+                  "service_price":"100元",
+                  "service_id":754536,
+                  "service_name":"小钟烧烤",
+                  "service_progress":{
+                  "percentage":"0.53",
+                  "name":"进行中",
+                  "operation":1,
+                  "status":1,
+                  "param_list":[
+                                {
+                                "param_type":1,
+                                "param_id":34,
+                                "param_key":"price",
+                                "param_name":"保险价格"
+                                }
+                                ]
+                  },
+                  "service_category":{
+                  "category_name":"餐饮",
+                  "category_id":"675",
+                  "category_icon":"http://dfaf.com"
+                  }
+                  },
+                  "customer":{
+                  "user_id":452345,
+                  "user_portrait_icon":"http://dfasf.com",
+                  "user_name":"Jame",
+                  "user_phone":"15609384756",
+                  "user_address":"ChengDu"
+                  }
+                  }
+                  ]
+}
+
+

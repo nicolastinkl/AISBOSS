@@ -16,13 +16,14 @@
     CGFloat _fontSize;
 }
 
-@property (nonatomic, strong) NSString *scrollText;
+
 
 @property (nonatomic, strong) UIColor *textColor;
 
 @end
 
 @implementation AIScrollLabel
+
 
 #pragma mark - 构造函数
 - (id)initWithFrame:(CGRect)frame
@@ -33,7 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.scrollEnable = enable;
-        self.scrollText = text;
+        self.text = text;
         self.textColor = color;
         self.clipsToBounds = YES;
         _fontSize = CGRectGetHeight(frame);
@@ -43,11 +44,35 @@
     return self;
 }
 
+
+- (void)setText:(NSString *)text
+{
+    
+    if ([self.text isEqualToString:text]) {
+        return;
+    }
+    
+    _text = [text copy];
+    
+    if (_isScrolling) {
+        [self makeScrollLabel];
+        [self startScroll];
+    }
+    else
+    {
+        _scrollLabel.text = text;
+    }
+}
+
 - (void)makeScrollLabel
 {
     
+    if (_scrollLabel) {
+        [_scrollLabel removeFromSuperview];
+    }
+    
     _scrollLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    _scrollLabel.text = self.scrollText;
+    _scrollLabel.text = self.text;
     _scrollLabel.textAlignment = NSTextAlignmentLeft;
     _scrollLabel.font = [UIFont systemFontOfSize:_fontSize];
     _scrollLabel.textColor = self.textColor;
@@ -65,7 +90,7 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle};
-    CGRect frame = [self.scrollText boundingRectWithSize:CGSizeMake(INFINITY, CGRectGetHeight(self.bounds)) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    CGRect frame = [self.text boundingRectWithSize:CGSizeMake(INFINITY, CGRectGetHeight(self.bounds)) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
     size = frame.size;
     
     return size;
@@ -99,14 +124,14 @@
 - (void)startScroll
 {
     if (!self.scrollEnable || _isScrolling) return;
-    _isScrolling = YES;
+    
     // 设置Label的Frame
     CGSize size = [self textHorizontalSize];
-    
     if (size.width <= CGRectGetWidth(self.bounds)) {
         return;
     }
     
+    _isScrolling = YES;
     _scrollLabel.frame = CGRectMake(0, -2, size.width, size.height);
     
     // 开始动画
@@ -137,7 +162,7 @@
 {
     if (!self.scrollEnable || !_isScrolling) return;
     _isScrolling = NO;
-    [_scrollLabel removeFromSuperview];
+    
     [self makeScrollLabel];
     
 }
