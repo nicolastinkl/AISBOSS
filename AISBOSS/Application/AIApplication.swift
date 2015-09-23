@@ -73,18 +73,18 @@ struct AIApplication{
             static let AIUISigntureTagsCell         = "UISigntureTagsCell"
             
             // MARK: Detail
-            static let AISDDateCell         = "AISDDateCell"
-            static let AISDSubDetailCell    = "AISDSubDetailCell"
-            static let AISDFightCell        = "AISDFightCell"
-            static let AISDParamsCell       = "AISDParamsCell"
-            static let AITitleServiceDetailCell = "AITitleServiceDetailCell"
-            static let AITableCellHolder    = "AITableCellHolder"
-            static let AITableCellHolderParms   = "AITableCellHolderParms"
-            static let AITableCellHolderParmsModel    = "AITableCellHolderParmsModel"
+            static let AISDDateCell                 = "AISDDateCell"
+            static let AISDSubDetailCell            = "AISDSubDetailCell"
+            static let AISDFightCell                = "AISDFightCell"
+            static let AISDParamsCell               = "AISDParamsCell"
+            static let AITitleServiceDetailCell     = "AITitleServiceDetailCell"
+            static let AITableCellHolder            = "AITableCellHolder"
+            static let AITableCellHolderParms       = "AITableCellHolderParms"
+            static let AITableCellHolderParmsModel  = "AITableCellHolderParmsModel"
             
             // MARK: TIME LINE
-            static let AITIMELINESDTimesViewCell        = "AITIMELINESDTimesViewCell"
-            static let AITIMELINESDContentViewCell      = "AITIMELINESDContentViewCell"
+            static let AITIMELINESDTimesViewCell    = "AITIMELINESDTimesViewCell"
+            static let AITIMELINESDContentViewCell  = "AITIMELINESDContentViewCell"
             
             
         }

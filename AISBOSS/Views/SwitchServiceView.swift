@@ -27,6 +27,11 @@ return cell
 import UIKit
 import Cartography
 
+protocol ServiceSwitchDelegate {
+    func switchStateChanged(isOn: Bool,model: chooseItemModel)
+}
+
+
 class SwitchServiceView: UIView {
 
     static let HEIGHT: CGFloat = 100
@@ -35,8 +40,8 @@ class SwitchServiceView: UIView {
     @IBOutlet weak var serviceDescription: UILabel!
     @IBOutlet weak var price: UILabel!
     var switchController: SevenSwitch!
+    private var servicePre: ServiceList?
     @IBOutlet weak var switchHolder: UIView!
-    
     var switchDelegate: ServiceSwitchDelegate?
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -82,7 +87,14 @@ class SwitchServiceView: UIView {
             }
     
     func switchChanged(sender: SevenSwitch) {
-        switchDelegate?.switchStateChanged(sender.on)
+        if let ser = servicePre {
+            let model = chooseItemModel()
+            model.scheme_id = ser.service_id
+            model.scheme_item_price = ser.service_price.price.floatValue
+            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+            
+            switchDelegate?.switchStateChanged(sender.on, model: model)
+        }
     }
     
     static func createSwitchServiceView() -> SwitchServiceView {
@@ -93,14 +105,12 @@ class SwitchServiceView: UIView {
     }
     
     func setService(service: ServiceList) {
+        servicePre = service
         serviceName.text = service.service_name
         serviceDescription.text = service.service_intro
         price.text = service.service_price.price_show
     }
 }
 
-protocol ServiceSwitchDelegate {
-    func switchStateChanged(isOn: Bool)
-}
 
 

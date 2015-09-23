@@ -346,6 +346,19 @@ extension AIServerDetailViewController : AOTagDelegate{
    
 }
 
+extension AIServerDetailViewController: ServiceSwitchDelegate{
+    func switchStateChanged(isOn: Bool, model: chooseItemModel) {
+        if isOn {
+            self.changePriceToNew(model)
+            
+        }else{
+            model.scheme_item_price = 0
+            self.changePriceToNew(model)
+            
+        }
+    }
+}
+
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -379,6 +392,13 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let model =  dataSource.objectAtIndex(section) as! dataModel
+        if model.type! == cellType.cellTypeFilght{
+            let modelArray = model.placeHolderModel as! NSMutableArray
+            return 1 + modelArray.count
+        }
+        
         return 2
     }
     
@@ -426,24 +446,27 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
+                
+                let list = NSMutableArray()
+                let modelArray = model.placeHolderModel as! NSMutableArray
+                modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                    do{
+                        let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                        list.addObject(model)
+                        
+                    }catch{
+                    }
+                })
+                
+                let ls = NSArray(array: list) as! [ServiceList]
+                
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.delegate = self
                     cell.carousel.type = .CoverFlow2
                     
-                    let list = NSMutableArray()
-                    let modelArray = model.placeHolderModel as! NSMutableArray
-                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
-                        do{
-                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                            list.addObject(model)
-                            
-                        }catch{
-                        }
-                    })
                     
-                    let ls = NSArray(array: list) as! [ServiceList]
                     cell.dataSource = ls
                     cell.carousel.reloadData()
                     return cell
@@ -484,19 +507,23 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         
                         let switchView = cell?.contentView.subviews.last as! SwitchServiceView                        
                         switchView.reloadData()
-                        
+                        switchView.setService(ls[indexPath.row])
+                        switchView.switchDelegate = self
+
                     }else{
+                        
                         let switchView = SwitchServiceView.createSwitchServiceView()
-                        
                         cell?.contentView.addSubview(switchView)
-                        
                         layout(switchView) { switchView in
                             switchView.left == switchView.superview!.left
                             switchView.top == switchView.superview!.top
                             switchView.right == switchView.superview!.right
                             switchView.height == SwitchServiceView.HEIGHT
                         }
+                        
+                        switchView.setService(ls[indexPath.row])
                         switchView.reloadData()
+                        switchView.switchDelegate = self
                     }
                     
                     return cell!
