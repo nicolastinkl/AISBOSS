@@ -21,7 +21,7 @@ class HorizontalCardView: UIView {
     var multiSelect = false
     var maxCellNumber = 4
     
-    let viewPadding : CGFloat = 10
+    let viewPadding : CGFloat = 9
     let cellPadding : CGFloat = 5
     let cellHeight : CGFloat = 75
     let cellY : CGFloat = 0
@@ -104,7 +104,7 @@ class HorizontalCardView: UIView {
         var cellX : CGFloat = viewPadding
         var index = 0
         let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
-        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
+        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll) / CGFloat(serviceListModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         
         //build cell
@@ -192,7 +192,6 @@ class HorizontalCardView: UIView {
                         cardCellView.selectAction()
                     }
                 }
-                
             }
             let model = chooseItemModel()
             model.scheme_item_id = selCardCellView.serviceListModel.service_id

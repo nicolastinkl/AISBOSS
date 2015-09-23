@@ -625,7 +625,6 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             delegate?.chooseItem(model)
         }
         
-        
     }
     
 }

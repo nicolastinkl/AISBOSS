@@ -133,6 +133,7 @@
 		93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F381B9C2825007BF506 /* SystemConfiguration.framework */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93EAC36C1BB107FE00483205 /* AISecmeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */; };
+		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
 		93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
@@ -444,6 +445,8 @@
 		93D5A36C1B709C1D00DDB158 /* AISBOSSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISBOSSUITests.swift; sourceTree = "<group>"; };
 		93D5A36E1B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISecmeProtocol.swift; sourceTree = "<group>"; };
+		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
+		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
 		93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowViewDataSoureAndDelegate.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -1314,6 +1317,8 @@
 				93FA1E3C1B9C3E12009965C8 /* AISellerViewController.m */,
 				93FA1E3D1B9C3E12009965C8 /* AISellingProgressBar.h */,
 				93FA1E3E1B9C3E12009965C8 /* AISellingProgressBar.m */,
+				93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */,
+				93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */,
 			);
 			path = Seller;
 			sourceTree = "<group>";
@@ -1660,6 +1665,7 @@
 				81C092871BAFAC0D003FFF35 /* SDWebImageDownloaderOperation.m in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
+				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
