@@ -57,6 +57,7 @@
     [super viewWillAppear:animated];
     
     [AISellserAnimationView startAnimationOnSellerViewController:self];
+    
 }
 
 
