@@ -17,7 +17,8 @@ enum cellType:Int{
     case cellTypeCoverflow = 1
     case cellTypeFilght = 2
     case cellTypeparames = 3
-    case cellTypeMutiChoose = 4
+    case cellTypeSignleChoose = 4
+    case cellTypeMutiChoose = 5
 }
 
 class dataModel : NSObject{
@@ -39,6 +40,8 @@ class AIServerDetailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
 
+    @IBOutlet weak var priceView: UIView!
+    
     //search view by liux
     private var serviceSearchView:AIServiceSearchView!
     
@@ -48,8 +51,11 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
+    private let labelPrice = JumpNumberLabel(frame: CGRectMake(0, 0, 200, 40))
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
+    
+    private var priceDataSource = NSMutableArray()
     
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
@@ -92,6 +98,40 @@ class AIServerDetailViewController: UIViewController {
  
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
+        self.priceView.addSubview(labelPrice)
+        labelPrice.textColor = UIColor.whiteColor()
+        labelPrice.setLeft(self.view.width/2 - labelPrice.width/2)
+        labelPrice.textAlignment = NSTextAlignment.Center
+        labelPrice.setTop(8)
+        
+    }
+    
+    func changePriceToNew(model:chooseItemModel){
+        
+        var indexPre = 0
+        var replace = false
+        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
+            let preModel = modelPre as! chooseItemModel
+            if model.scheme_id == preModel.scheme_id {
+                //相同的类目下的单项选项,所以替换为主
+                indexPre = index
+                replace = true
+            }
+        }
+        
+        if replace {
+            priceDataSource.removeObjectAtIndex(indexPre)
+        }
+        priceDataSource.addObject(model)
+        
+        var priceTotal:Float = 0
+        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
+            
+            let preModel = modelPre as! chooseItemModel
+            priceTotal += preModel.scheme_item_price
+        }
+        
+        labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func reloadInputData() {
@@ -102,7 +142,7 @@ class AIServerDetailViewController: UIViewController {
                 
                 do {
                     
-                    let catalog:CatalogList = try CatalogList(dictionary: dataObject as! [NSObject : AnyObject])
+                    let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
                     let data =  dataModel()
                     data.title = catalog.catalog_name
                     switch catalog.service_level.integerValue {
@@ -110,13 +150,16 @@ class AIServerDetailViewController: UIViewController {
                         data.type = cellType.cellTypeCoverflow
                         break
                     case 2:
-                        data.type = cellType.cellTypeMutiChoose
+                        data.type = cellType.cellTypeSignleChoose
                         break
                     case 3:
                         data.type = cellType.cellTypeparames
                         break
                     case 4:
                         data.type = cellType.cellTypeFilght
+                        break
+                    case 5:
+                        data.type = cellType.cellTypeMutiChoose
                         break
                     default:
                         break
@@ -159,7 +202,7 @@ class AIServerDetailViewController: UIViewController {
                 tags?.addTag(titleItem ?? "")
             }
         }
-//        self.scrollView.addSubview(tags!) 
+//        self.scrollView.addSubview(tags!)
 //        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
     }
     
@@ -217,8 +260,12 @@ class AIServerDetailViewController: UIViewController {
         */
         
     }
-    
-    
+}
+
+extension AIServerDetailViewController:AISchemeProtocol{
+    func chooseItem(model: chooseItemModel) {
+        self.changePriceToNew(model)
+    }
 }
 
 extension AIServerDetailViewController : serviceSearchViewDelegate {
@@ -319,6 +366,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return 100
             case cellType.cellTypeMutiChoose:
                 return 80
+            case cellType.cellTypeSignleChoose:
+                return 80
             }
         }
         
@@ -352,12 +401,15 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.closeButton.hidden = true
                 case cellType.cellTypeMutiChoose:
                     cell.closeButton.hidden = false
+                case cellType.cellTypeSignleChoose:
+                    cell.closeButton.hidden = false
                 }
                 cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
             }else{
                 
+                // TODO: 日期
                 if model.type == cellType.cellTypeDate {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
                     
@@ -374,8 +426,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
+                // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                    cell.delegate = self
                     cell.carousel.type = .CoverFlow2
                     
                     let list = NSMutableArray()
@@ -395,6 +449,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return cell
                 }
                 
+                // TODO: 机票信息
                 if  model.type == cellType.cellTypeFilght { 
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
@@ -410,35 +465,45 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         viewTic.right == viewTic.superview!.right - 9
                         viewTic.height == 280
                     }
-                    ticketGroupView.setTicketsData()
+                    
+                    var tickets = [ServiceList]()
+                    tickets.append(ServiceList())
+                    tickets.append(ServiceList())
+                    ticketGroupView.setTicketsData(tickets)
                     
                     return cell!
                     
                 }
                 
+                // TODO: 开关信息
                 if  model.type == cellType.cellTypeparames {
                     
-                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                    
-                    let switchView = SwitchServiceView.createSwitchServiceView()
-                    
-                    for subview in cell?.contentView.subviews as [UIView]! {
-                        subview.removeFromSuperview()
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
+                     
+                    if cell?.contentView.subviews.count > 0{
+                        
+                        let switchView = cell?.contentView.subviews.last as! SwitchServiceView                        
+                        switchView.reloadData()
+                        
+                    }else{
+                        let switchView = SwitchServiceView.createSwitchServiceView()
+                        
+                        cell?.contentView.addSubview(switchView)
+                        
+                        layout(switchView) { switchView in
+                            switchView.left == switchView.superview!.left
+                            switchView.top == switchView.superview!.top
+                            switchView.right == switchView.superview!.right
+                            switchView.height == SwitchServiceView.HEIGHT
+                        }
+                        switchView.reloadData()
                     }
                     
-                    cell?.contentView.addSubview(switchView)
-                    
-                    layout(switchView) { switchView in
-                        switchView.left == switchView.superview!.left
-                        switchView.top == switchView.superview!.top
-                        switchView.right == switchView.superview!.right
-                        switchView.height == SwitchServiceView.HEIGHT
-                    }
                     return cell!
-                    
                 }
                 
-                if model.type == cellType.cellTypeMutiChoose {
+                // TODO: 多选 or 单选
+                if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
                     let list = NSMutableArray()
                     let modelArray = model.placeHolderModel as! NSMutableArray
                     modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
@@ -458,12 +523,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     }else{
                         cell?.contentView.addSubview(hori)
                     }
-//                    cell?.contentView.subviews.map({
-//                        $0.hidden = true
-//                    })
-                    hori.loadData(ls, multiSelect: false)
+                    hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                    hori.delegate = self
                     return cell!
                 }
+                
             }
         }
         
@@ -504,6 +568,8 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     @IBOutlet weak var title: UILabel!
     
+    var delegate : AISchemeProtocol?
+    
     var dataSource:[ServiceList]?
     
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
@@ -543,6 +609,23 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             return CGFloat(true)
         }
         return value
+    }
+    
+    /*!
+    选中当前Coverflow时的价格处理
+    */
+    func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+        if let dataSour = dataSource {
+            let ser:ServiceList = dataSour[carousel.currentItemIndex]
+            
+            let model = chooseItemModel()
+            model.scheme_id = ser.service_id
+            model.scheme_item_price = ser.service_price.price.floatValue
+            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+            delegate?.chooseItem(model)
+        }
+        
+        
     }
     
 }

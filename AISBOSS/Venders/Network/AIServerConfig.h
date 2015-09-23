@@ -10,7 +10,9 @@
 // 服务器地址
 
 #define kURL_GetServiceList     @"https://server.asiainfo.com/getservicelist"
+#define kURL_GetSchemeList     @"https://server.asiainfo.com/sbss/getServiceScheme"
 
 // 关键字(字段名)
 
 #define kKey_ServiceID     @"serviceID"
+#define kKey_SchemeID      @"sheme_id"

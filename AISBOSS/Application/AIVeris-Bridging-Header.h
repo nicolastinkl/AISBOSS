@@ -65,6 +65,7 @@
 
 //oc models
 #import "AIServiceSchemeModel.h"
+#import "AIOrderPreModel.h"
 
 
 // SDWebImage

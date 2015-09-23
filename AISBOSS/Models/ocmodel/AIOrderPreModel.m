@@ -32,3 +32,14 @@
 @implementation AIOrderPreModel
 
 @end
+
+@implementation AIOrderPreListModel
+
+
+@end
+
+@implementation AIServiceCategoryModel
+
+
+
+@end

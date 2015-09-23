@@ -2018,8 +2018,18 @@
                                             <outlet property="title" destination="RdN-DH-qjm" id="iRp-0j-dsL"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolderParmsModel" id="kAg-bB-KEz">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="142"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kAg-bB-KEz" id="ehr-tz-c8p">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AISDDateCell" rowHeight="300" id="GnP-2U-tvC" customClass="AISDDateCell" customModule="Veris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="214" width="600" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GnP-2U-tvC" id="efF-b7-fNl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
@@ -2076,7 +2086,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AISDSubDetailCell" rowHeight="260" id="sar-dy-Lti" customClass="AISDSubDetailCell" customModule="Veris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="372" width="600" height="260"/>
+                                        <rect key="frame" x="0.0" y="514" width="600" height="260"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sar-dy-Lti" id="mty-Fa-Oot">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
@@ -2128,7 +2138,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AISDFightCell" rowHeight="210" id="PgY-Sw-Fd9" customClass="AISDFightCell" customModule="Veris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="632" width="600" height="210"/>
+                                        <rect key="frame" x="0.0" y="774" width="600" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PgY-Sw-Fd9" id="ShE-ix-xyX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
@@ -2245,7 +2255,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AISDParamsCell" rowHeight="100" id="Qch-fm-CTb" customClass="AISDParamsCell" customModule="Veris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="842" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="984" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qch-fm-CTb" id="Vne-gD-X3D">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
@@ -2352,7 +2362,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolderParms" id="IyV-R3-L3l">
-                                        <rect key="frame" x="0.0" y="942" width="600" height="142"/>
+                                        <rect key="frame" x="0.0" y="1084" width="600" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IyV-R3-L3l" id="Kq3-1A-m2q">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
@@ -2362,7 +2372,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITableCellHolder" id="30K-SZ-b2I">
-                                        <rect key="frame" x="0.0" y="1084" width="600" height="142"/>
+                                        <rect key="frame" x="0.0" y="1226" width="600" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="30K-SZ-b2I" id="P3q-fk-8xQ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="142"/>
@@ -2387,7 +2397,7 @@
                                             <constraint firstAttribute="height" constant="48" id="ceH-td-xPb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="21"/>
-                                        <state key="normal" title="立即购买" backgroundImage="sd_footer_bg">
+                                        <state key="normal" backgroundImage="sd_footer_bg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="default">
@@ -2484,6 +2494,7 @@
                     </view>
                     <connections>
                         <outlet property="labelView" destination="q6B-xj-qgk" id="U7q-Kf-h66"/>
+                        <outlet property="priceView" destination="j96-im-k9b" id="RST-Bn-Oj4"/>
                         <outlet property="scrollView" destination="tbe-gU-gAm" id="4JV-1i-Pfp"/>
                         <outlet property="tableView" destination="0KU-RH-3xG" id="adp-l3-wEh"/>
                         <outlet property="viewTags" destination="ZOR-0A-cVl" id="xZE-Rb-B0i"/>

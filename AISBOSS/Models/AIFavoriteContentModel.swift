@@ -39,7 +39,6 @@ enum FavoriteTypeEnum: Int{
         }
     }
     
-    
 }
 
 enum AIFavoriteStatu: Int {

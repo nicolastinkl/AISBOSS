@@ -15,4 +15,12 @@
  */
 + (AIMessage *)getServiceListWithServiceID:(NSString *)serviceID;
 
+/*!
+ *  @author tinkl, 15-09-23 10:09:22
+ *
+ *  获取服务详情
+ */
++ (AIMessage *)getServiceSchemeWithServiceID:(NSString *)SchemeID;
+
+
 @end

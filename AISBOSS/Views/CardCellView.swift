@@ -40,13 +40,22 @@ class CardCellView: UIView {
         super.layoutSubviews()
         starRateView?.frame = serviceRatingView.bounds
         if firstLayout{
-            let serviceName : String = serviceListModel.service_name ?? ""
-            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceNameView.addSubview(serviceNameScrollLabel!)
-            let serviceDesc : String = serviceListModel.service_intro ?? ""
-            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceDescView.addSubview(serviceDescScrollLabel!)
-            
+            let serviceName : String = serviceListModel.service_name ?? "serviceName"
+            if let scrollLabel1 = serviceNameScrollLabel{
+                scrollLabel1.text = serviceName
+            }
+            else{
+                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceNameView.addSubview(serviceNameScrollLabel!)
+            }
+            let serviceDesc : String = serviceListModel.service_intro ?? "serviceDesc"
+            if let scrollLabel2 = serviceDescScrollLabel{
+                scrollLabel2.text = serviceDesc
+            }
+            else {
+                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+                serviceDescView.addSubview(serviceDescScrollLabel!)
+            }
             firstLayout = false
         }
         
@@ -58,23 +67,27 @@ class CardCellView: UIView {
     func buildViewData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
         
-        servicePriceLabel.text = serviceListModel.service_price ?? ""
+        servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
-        serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
-            (image,error,cacheType,imageURL) -> Void in
-            if imageURL == ""{
-                self.originBackgroundImg = UIImage(named: "Placehold")
-                self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
-
-            }
-            else{
-                self.originBackgroundImg = image
-                self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
-            }
-            
-        })
+        
+        if let url = serviceListModel.service_img {
+            serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: UIImage(named: "Placehold"),completed:{
+                (image,error,cacheType,imageURL) -> Void in
+                if imageURL == ""{
+                    self.originBackgroundImg = UIImage(named: "Placehold")
+                    self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
+                    
+                }
+                else{
+                    self.originBackgroundImg = image
+                    self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
+                }
+                
+            })
+        }
+        
         //serviceImg
         //serviceImg.setURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
         
@@ -83,7 +96,7 @@ class CardCellView: UIView {
     
     func reloadData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
-        servicePriceLabel.text = serviceListModel.service_price ?? ""
+        servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
         serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
@@ -98,6 +111,7 @@ class CardCellView: UIView {
             }
             
         })
+        firstLayout = true
     }
     
     func buildLayout(){

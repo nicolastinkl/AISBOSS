@@ -10,37 +10,33 @@
 
 @implementation SchemeParamList
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
+
+@end
+
+@implementation ServicePrice
+
+
 
 @end
 
 @implementation ServiceList
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
-
 
 @end
 
-@implementation CatalogList
+@implementation Catalog
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
 
 @end
 
 @implementation AIServiceSchemeModel
 
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
 
 @end
+
+
+//+(BOOL)propertyIsOptional:(NSString*)propertyName
+//{
+//    return YES;
+//}
+

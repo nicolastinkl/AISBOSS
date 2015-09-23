@@ -36,6 +36,8 @@ class SwitchServiceView: UIView {
     @IBOutlet weak var price: UILabel!
     var switchController: SevenSwitch!
     @IBOutlet weak var switchHolder: UIView!
+    
+    var switchDelegate: ServiceSwitchDelegate?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -43,6 +45,10 @@ class SwitchServiceView: UIView {
         // Drawing code
     }
     */
+    
+    func reloadData(){
+        
+    }
     
     override func awakeFromNib() {
         switchController = SevenSwitch(frame: CGRectMake(0, switchHolder.top, switchHolder.width, switchHolder.height))
@@ -54,7 +60,6 @@ class SwitchServiceView: UIView {
             switchView.left == holderView.left
             switchView.width == holderView.width
             switchView.height == holderView.height
-    //        switchController.bottom = switchHolder.bottom
         }
         
         switchController.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
@@ -69,8 +74,6 @@ class SwitchServiceView: UIView {
         // turn the switch on with animation
         switchController.setOn(true, animated: true)
         
-        
-
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -79,12 +82,25 @@ class SwitchServiceView: UIView {
             }
     
     func switchChanged(sender: SevenSwitch) {
-        
+        switchDelegate?.switchStateChanged(sender.on)
     }
     
     static func createSwitchServiceView() -> SwitchServiceView {
+        
         let nib = NSBundle.mainBundle().loadNibNamed("SwitchServiceView", owner: self, options: nil)
         
         return nib.first as! SwitchServiceView
     }
+    
+    func setService(service: ServiceList) {
+        serviceName.text = service.service_name
+        serviceDescription.text = service.service_intro
+        price.text = service.service_price.price_show
+    }
 }
+
+protocol ServiceSwitchDelegate {
+    func switchStateChanged(isOn: Bool)
+}
+
+

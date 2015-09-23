@@ -20,7 +20,7 @@
                                       {
                                       "service_id": 1,
                                       "service_name": "Great fishing exprience.",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -50,7 +50,7 @@
                                       {
                                       "service_id": 1,
                                       "service_name": "different Cambrigde Trip,",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle222",
@@ -72,7 +72,7 @@
                                       },{
                                       "service_id": 1,
                                       "service_name": "different Cambrigde Trip,",
-                                      "service_price": "123.3",
+                                      "service_price":{"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -94,7 +94,7 @@
                                       },{
                                       "service_id": 1,
                                       "service_name": "different Cambrigde Trip,",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -124,7 +124,7 @@
                                       {
                                       "service_id": 1,
                                       "service_name": "Alex Tiller",
-                                      "service_price": "123.3",
+                                      "service_price":{"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -146,7 +146,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "RC Wagon Rental",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -176,7 +176,7 @@
                                       {
                                       "service_id": 1,
                                       "service_name": "Alex Tiller",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -198,7 +198,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "RC Wagon Rental",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -220,7 +220,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "RC Wagon Rental",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -242,7 +242,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "RC Wagon Rental",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -294,7 +294,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "RC Wagon Rental",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -324,7 +324,7 @@
                                       {
                                       "service_id": 1,
                                       "service_name": "QR9988",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",
@@ -346,7 +346,7 @@
                                       }, {
                                       "service_id": 1,
                                       "service_name": "QR874",
-                                      "service_price": "123.3",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
                                       "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
                                       "provider_id": 1,
                                       "provider_name": "tinkle",

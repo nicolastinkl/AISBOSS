@@ -25,4 +25,13 @@
     return message;
 }
 
+
++ (AIMessage *)getServiceSchemeWithServiceID:(NSString *)SchemeID
+{
+    AIMessage *message = [AIMessage message];
+    [message.body setObject:SchemeID forKey:kKey_SchemeID];
+    message.url = kURL_GetSchemeList;
+    return message;
+    
+}
 @end
