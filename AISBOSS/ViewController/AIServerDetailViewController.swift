@@ -40,6 +40,8 @@ class AIServerDetailViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
 
+    @IBOutlet weak var priceView: UIView!
+    
     //search view by liux
     private var serviceSearchView:AIServiceSearchView!
     
@@ -49,10 +51,11 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
-    @IBOutlet weak var priceView: UIView!
     private let labelPrice = JumpNumberLabel(frame: CGRectMake(0, 0, 200, 40))
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
+    
+    private var priceDataSource = NSMutableArray()
     
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
@@ -97,15 +100,38 @@ class AIServerDetailViewController: UIViewController {
         
         self.priceView.addSubview(labelPrice)
         labelPrice.textColor = UIColor.whiteColor()
-        labelPrice.setLeft(self.priceView.center.x - labelPrice.width/2)
+        labelPrice.setLeft(self.view.width/2 - labelPrice.width/2)
+        labelPrice.textAlignment = NSTextAlignment.Center
         labelPrice.setTop(8)
         
-        changePriceToNew(120.0)
     }
     
-    func changePriceToNew(price:Float){
+    func changePriceToNew(model:chooseItemModel){
         
-        labelPrice.changeFloatNumberTo(price, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        var indexPre = 0
+        var replace = false
+        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
+            let preModel = modelPre as! chooseItemModel
+            if model.scheme_id == preModel.scheme_id {
+                //相同的类目下的单项选项,所以替换为主
+                indexPre = index
+                replace = true
+            }
+        }
+        
+        if replace {
+            priceDataSource.removeObjectAtIndex(indexPre)
+        }
+        priceDataSource.addObject(model)
+        
+        var priceTotal:Float = 0
+        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
+            
+            let preModel = modelPre as! chooseItemModel
+            priceTotal += preModel.scheme_item_price
+        }
+        
+        labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func reloadInputData() {
@@ -234,8 +260,12 @@ class AIServerDetailViewController: UIViewController {
         */
         
     }
-    
-    
+}
+
+extension AIServerDetailViewController:AISchemeProtocol{
+    func chooseItem(model: chooseItemModel) {
+        self.changePriceToNew(model)
+    }
 }
 
 extension AIServerDetailViewController : serviceSearchViewDelegate {
@@ -399,6 +429,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                    cell.delegate = self
                     cell.carousel.type = .CoverFlow2
                     
                     let list = NSMutableArray()
@@ -539,6 +570,8 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     @IBOutlet weak var title: UILabel!
     
+    var delegate : AISchemeProtocol?
+    
     var dataSource:[ServiceList]?
     
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
@@ -578,6 +611,23 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             return CGFloat(true)
         }
         return value
+    }
+    
+    /*!
+    选中当前Coverflow时的价格处理
+    */
+    func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+        if let dataSour = dataSource {
+            let ser:ServiceList = dataSour[carousel.currentItemIndex]
+            
+            let model = chooseItemModel()
+            model.scheme_id = ser.service_id
+            model.scheme_item_price = ser.service_price.price.floatValue
+            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+            delegate?.chooseItem(model)
+        }
+        
+        
     }
     
 }
