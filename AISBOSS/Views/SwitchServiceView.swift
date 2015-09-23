@@ -72,8 +72,6 @@ class SwitchServiceView: UIView {
         // turn the switch on with animation
         switchController.setOn(true, animated: true)
         
-        
-
     }
 
     required init(coder aDecoder: NSCoder) {
