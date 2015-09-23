@@ -523,10 +523,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     }else{
                         cell?.contentView.addSubview(hori)
                     }
-//                    cell?.contentView.subviews.map({
-//                        $0.hidden = true
-//                    })
                     hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                    hori.delegate = self
                     return cell!
                 }
                 

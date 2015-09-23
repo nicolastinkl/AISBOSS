@@ -194,7 +194,7 @@ class HorizontalCardView: UIView {
                 }
                 
             }
-            var model = chooseItemModel()
+            let model = chooseItemModel()
             model.scheme_item_id = selCardCellView.serviceListModel.service_id
             model.scheme_item_price = selCardCellView.serviceListModel.service_price.price.floatValue
             
