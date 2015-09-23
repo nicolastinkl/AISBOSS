@@ -15,7 +15,7 @@
 
 @interface AICustomerModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *user_id;               // 用户ID
+@property (nonatomic, assign) int user_id;               // 用户ID
 @property (nonatomic, strong) NSString<Optional> *user_portrait_icon;    // 用户头像
 @property (nonatomic, strong) NSString<Optional> *user_name;
 @property (nonatomic, strong) NSString<Optional> *user_phone;
@@ -28,16 +28,29 @@
 
 @interface AIProgressModel : JSONModel
 
-@property (nonatomic, assign) float percentage;
+@property (nonatomic, assign) NSString<Optional> *percentage;
 
 @property (nonatomic, strong) NSString<Optional> *name;
 
-@property (nonatomic, strong) NSString<Optional> *operation;
+@property (nonatomic, assign) int operation;
 
-@property (nonatomic, strong) NSString<Optional> *status;
+@property (nonatomic, assign) int status;
 
 @property (nonatomic, strong) NSString<Optional> *icon;
 
+@end
+
+
+
+@interface AIServiceCategoryModel : JSONModel
+
+@property (nonatomic, assign) int category_id;
+@property (nonatomic, strong) NSString<Optional> *category_name;             // 服务的类别名称
+@property (nonatomic, strong) NSString<Optional> *category_icon;             // 服务的类别图标
+
+@end
+
+@protocol AIServiceCategoryModel
 @end
 
 
@@ -45,20 +58,14 @@
 
 @interface AIServiceModel : JSONModel
 
+@property (nonatomic, assign) int service_id;
 @property (nonatomic, strong) NSString<Optional> *service_price;
-
 @property (nonatomic, strong) NSString<Optional> *service_name;
-
-@property (nonatomic, strong) NSString<Optional> *category_name;             // 服务的类别名称
-
-@property (nonatomic, strong) NSString<Optional> *category_icon;             // 服务的类别图标
-
+@property (nonatomic, strong) AIServiceCategoryModel<Optional> *service_category;
 @property (nonatomic, strong) AIProgressModel<Optional> *service_progress;   // 服务执行的进度
 
 
 @end
-
-
 
 
 
@@ -69,11 +76,11 @@
 
 @interface AIOrderPreModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *order_id;
+@property (nonatomic, assign) int order_id;
 
 @property (nonatomic, strong) NSString<Optional> *order_number;
 
-@property (nonatomic, strong) NSString<Optional> *order_state;
+@property (nonatomic, assign) int order_state;
 
 @property (nonatomic, strong) NSString<Optional> *order_state_name;
 
