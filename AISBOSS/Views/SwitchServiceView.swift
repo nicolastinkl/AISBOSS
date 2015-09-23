@@ -36,6 +36,8 @@ class SwitchServiceView: UIView {
     @IBOutlet weak var price: UILabel!
     var switchController: SevenSwitch!
     @IBOutlet weak var switchHolder: UIView!
+    
+    var switchDelegate: ServiceSwitchDelegate?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -80,7 +82,7 @@ class SwitchServiceView: UIView {
             }
     
     func switchChanged(sender: SevenSwitch) {
-        
+        switchDelegate?.switchStateChanged(sender.on)
     }
     
     static func createSwitchServiceView() -> SwitchServiceView {
@@ -96,3 +98,9 @@ class SwitchServiceView: UIView {
         price.text = service.service_price.price_show
     }
 }
+
+protocol ServiceSwitchDelegate {
+    func switchStateChanged(isOn: Bool)
+}
+
+
