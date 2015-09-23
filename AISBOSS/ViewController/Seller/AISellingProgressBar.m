@@ -62,6 +62,8 @@
         return;
     }
     
+    self.backgroundColor = [AITools colorWithR:0x4c g:0x56 b:0x7d];
+    
     [self setHidden:NO];
     self.content = content;
     NSString *indicator = [content objectForKey:kProgress_Indicator];
@@ -81,9 +83,7 @@
     CGFloat x = 0;
     width = CGRectGetWidth(self.frame);
     if (image) {
-        
-        
-        
+        self.backgroundColor = [AITools colorWithR:0x73 g:0x49 b:0x36];
         CGSize size = [schedule sizeWithFontSize:kFontSize forWidth:width-kIndicatorSize-kMaring2];
         x = (width - kIndicatorSize - kMaring2 - size.width)/2;
         [AITools resetOriginalX:x forView:_progressIndicator];
@@ -104,25 +104,24 @@
 
 - (void)makeProgress
 {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [AITools colorWithR:0x4c g:0x56 b:0x7d];
     self.layer.cornerRadius = CGRectGetHeight(self.frame) / 2;
     self.clipsToBounds = YES;
     
-    UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Seller_BarBG"]];
-    bgView.frame = self.bounds;
-    bgView.alpha = 0.5;
-    [self addSubview:bgView];
+//    UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Seller_BarBG"]];
+//    bgView.frame = self.bounds;
+//    bgView.alpha = 0.5;
+//    [self addSubview:bgView];
     
     _progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.progressPercent*CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
-    _progressView.backgroundColor = [UIColor greenColor];
-    _progressView.alpha = 0.5;
+    _progressView.backgroundColor = [AITools colorWithR:0x1a g:0xe0 b:00];
     
     [self addSubview:_progressView];
 }
 
 - (void)makeLabel
 {
-    _progressLabel = [AIViews normalLabelWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)) text:@"" fontSize:kFontSize color:[UIColor colorWithWhite:0.8 alpha:1]];
+    _progressLabel = [AIViews normalLabelWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)) text:@"" fontSize:kFontSize color:[UIColor colorWithWhite:0.9 alpha:1]];
     _progressLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     _progressLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_progressLabel];

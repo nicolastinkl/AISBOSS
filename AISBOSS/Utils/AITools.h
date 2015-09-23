@@ -27,8 +27,14 @@
 
 + (void)resetOriginalX:(CGFloat)x forView:(UIView *)view;
 
-+ (NSString *)readJsonWithFileName:(NSString *)fileName fileType:(NSString *)fileType;
++ (UIColor *)colorWithR:(CGFloat)r g:(CGFloat)g b:(CGFloat)b;
 
-// UIImage
-+ (UIImage *) convertImageToGrayScale: (UIImage *) image;
++ (UIImage*)imageFromView:(UIView*)view;
+
++ (UIImage *)imageFromView:(UIView *)view inRect:(CGRect)rect;
+
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
+
++ (void)animationDelay:(CGFloat)delay completion:(void(^)(void))completion;
+
 @end

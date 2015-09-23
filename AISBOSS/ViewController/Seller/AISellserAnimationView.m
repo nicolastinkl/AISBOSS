@@ -169,7 +169,7 @@
         }];
         
         count ++;
-        delay += 0.05;
+        delay += 0.1;
         y -= height;
     }
     
