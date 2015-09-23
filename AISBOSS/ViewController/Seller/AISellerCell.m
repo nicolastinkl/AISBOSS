@@ -12,6 +12,7 @@
 #import "UP_NSString+Size.h"
 #import "AITools.h"
 #import "AIScrollLabel.h"
+#import "UIImageView+WebCache.h"
 
 
 #define kMargin5    5
@@ -87,6 +88,8 @@
     AIScrollLabel *_scrollLabel;
     
     CGRect _defaultLayerBounds;
+    
+    UIWebView *_telWebView;
 }
 
 @property (nonatomic, strong) NSMutableArray *sellerImages;
@@ -146,7 +149,10 @@
         [self makeTimestamp];
         [self makeLocation];
         [self addBottomShadowView];
-
+        
+        
+        _telWebView =[[UIWebView alloc] init];
+        [self.contentView addSubview:_telWebView];
 //        _scrollLabel = [[AIScrollLabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20) text:@"asdadsad" color:[UIColor whiteColor] scrollEnable:YES];
 //        [self.contentView addSubview:_scrollLabel];
         
@@ -337,7 +343,9 @@
 
 - (void)buttonAction:(UIButton *)button
 {
-    
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"10086"]];
+    [_telWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
+
 }
 
 - (void)addTargetForButtonType:(SellerButtonType)buttonType

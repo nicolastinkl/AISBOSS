@@ -16,6 +16,7 @@
 #import "AIShareViewController.h"
 #import "AISellserAnimationView.h"
 #import "AINetEngine.h"
+#import "MJRefresh.h"
 
 #define kTablePadding      15
 
@@ -44,6 +45,7 @@
     [self makeBackGroundView];
     [self makeTableView];
     [self makeBottomBar];
+    [self addRefreshActions];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +59,6 @@
     [super viewWillAppear:animated];
     
     [AISellserAnimationView startAnimationOnSellerViewController:self];
-    
 }
 
 
@@ -70,6 +71,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (void)addRefreshActions
+{
+    __weak typeof(self) weakSelf = self;
+    [self.tableView addHeaderWithCallback:^{
+        [weakSelf.tableView headerEndRefreshing];
+    }];
+    
+    
+    [self.tableView addFooterWithCallback:^{
+        [weakSelf.tableView footerEndRefreshing];
+    }];
+}
 
 - (void)makeDatas
 {
@@ -331,7 +346,7 @@
     [cell setBackgroundColorType:model.colorType];
     [cell setButtonType:model.buttonType];
     [cell setProgressBarContent:model.progress];
-    [cell setImages:model.sellerIcons];
+    //[cell setImages:model.sellerIcons];
     [cell setMessageNumber:model.messageNum];
     
     return cell;
