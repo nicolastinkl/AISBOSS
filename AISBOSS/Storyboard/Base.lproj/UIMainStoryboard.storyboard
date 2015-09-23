@@ -1223,7 +1223,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="liD-Ua-kEF">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="liD-Ua-kEF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nIN-zI-XQy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
@@ -1311,8 +1311,8 @@
                             <constraint firstItem="mCK-B5-yK3" firstAttribute="top" secondItem="y4t-JH-At9" secondAttribute="bottom" constant="-20" id="atT-Aw-B5X"/>
                             <constraint firstItem="mCK-B5-yK3" firstAttribute="leading" secondItem="4c6-cK-hYc" secondAttribute="leadingMargin" constant="-16" id="c9P-Oj-Bch"/>
                             <constraint firstItem="fDW-Zi-xue" firstAttribute="leading" secondItem="4c6-cK-hYc" secondAttribute="leadingMargin" constant="-20" id="dek-Cf-GXX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="liD-Ua-kEF" secondAttribute="trailing" constant="-16" id="fTD-36-mMY"/>
-                            <constraint firstItem="liD-Ua-kEF" firstAttribute="leading" secondItem="4c6-cK-hYc" secondAttribute="leadingMargin" constant="-16" id="hyG-5h-ghd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="liD-Ua-kEF" secondAttribute="trailing" constant="-20" id="fTD-36-mMY"/>
+                            <constraint firstItem="liD-Ua-kEF" firstAttribute="leading" secondItem="4c6-cK-hYc" secondAttribute="leadingMargin" constant="-20" id="hyG-5h-ghd"/>
                             <constraint firstItem="b95-gG-3tg" firstAttribute="top" secondItem="hWU-4X-HgJ" secondAttribute="bottom" id="igr-vq-POp"/>
                             <constraint firstItem="liD-Ua-kEF" firstAttribute="top" secondItem="y4t-JH-At9" secondAttribute="bottom" constant="-20" id="lP3-Te-RH3"/>
                             <constraint firstItem="FO2-LD-grx" firstAttribute="top" secondItem="liD-Ua-kEF" secondAttribute="bottom" constant="-2" id="pad-NO-PN5"/>
