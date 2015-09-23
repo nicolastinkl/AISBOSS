@@ -37,4 +37,15 @@
 
 + (void)animationDelay:(CGFloat)delay completion:(void(^)(void))completion;
 
+
+//
+
+
++ (NSString *)readJsonWithFileName:(NSString *)fileName fileType:(NSString *)fileType;
+
+// UIImage
++ (UIImage *) convertImageToGrayScale: (UIImage *) image;
+
+
+
 @end
