@@ -41,6 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];;
+    
     [self makeDatas];
     [self makeBackGroundView];
     [self makeTableView];

@@ -77,7 +77,7 @@
     //
     UIVisualEffectView *_blurView;
     
-    UIImageView *_backgroundImageView;
+    UIView *_backgroundView;
     
     UIImageView *_lineView;
     
@@ -204,16 +204,16 @@
 - (void)resizeBackgroundView
 {
     CGFloat width = CGRectGetWidth(self.contentView.frame);
-    [AITools resetWidth:width forView:_backgroundImageView];
+    [AITools resetWidth:width forView:_backgroundView];
 }
 
 - (void)setBackgroundColorType:(SellerCellColorType)colorType
 {
-    if (!_backgroundImageView) {
-        _backgroundImageView = [[UIImageView alloc] initWithImage:nil];
-        _backgroundImageView.frame = _boardView.bounds;
-        _backgroundImageView.alpha = 0.8;
-        [_boardView insertSubview:_backgroundImageView atIndex:0];
+    if (!_backgroundView) {
+        _backgroundView = [[UIImageView alloc] initWithImage:nil];
+        _backgroundView.frame = _boardView.bounds;
+        _backgroundView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.3];
+        [_boardView insertSubview:_backgroundView atIndex:0];
     }
     
     _curColorType = colorType;
@@ -222,17 +222,20 @@
     switch (colorType) {
         case SellerCellColorTypeNormal:
         {
-            
+            _backgroundView.backgroundColor = [UIColor whiteColor];
+            _backgroundView.alpha = 0.3;
         }
             break;
         case SellerCellColorTypeGreen:
         {
-            [_backgroundImageView setImage:[UIImage imageNamed:@"Bg_Green"]];
+            _backgroundView.backgroundColor = [AITools colorWithR:0x58 g:0xc3 b:0x02];
+            _backgroundView.alpha = 0.5;
         }
             break;
         case SellerCellColorTypeBrown:
         {
-            [_backgroundImageView setImage:[UIImage imageNamed:@"Bg_Brawn"]];
+            _backgroundView.backgroundColor = [AITools colorWithR:0xff g:0x78 b:0x00];
+            _backgroundView.alpha = 0.5;
         }
             break;
             
@@ -513,10 +516,10 @@
     
     [self.contentView addSubview:_boardView];
     
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    _blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    _blurView.frame = _boardView.bounds;
-    [self.contentView insertSubview:_blurView atIndex:0];
+//    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    _blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//    _blurView.frame = _boardView.bounds;
+//    [self.contentView insertSubview:_blurView atIndex:0];
     
     
     UIView *view = [[UIView alloc] init];
