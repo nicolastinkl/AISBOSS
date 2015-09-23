@@ -14,19 +14,22 @@
 #import "AIViews.h"
 #import "AIOpeningView.h"
 #import "AIShareViewController.h"
-
+#import "AISellserAnimationView.h"
 #import "AINetEngine.h"
 
 #define kTablePadding      15
 
 #define kBarHeight         50
 
+#define kCommonCellHeight  95
+
 @interface AISellerViewController ()
 {
     UIColor *_normalBackgroundColor;
+    
 }
 
-@property (nonatomic, strong) UITableView *tableView;
+
 
 @property (nonatomic, strong) NSArray *sellerInfoList;
 
@@ -47,6 +50,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [AISellserAnimationView startAnimationOnSellerViewController:self];
+}
+
 
 /*
 #pragma mark - Navigation
@@ -69,35 +81,107 @@
     CGFloat maxWidth = CGRectGetWidth(self.view.frame);
     CGFloat maxHeight = CGRectGetHeight(self.view.frame);
     
+    _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, maxHeight-kBarHeight, maxWidth, kBarHeight)];
+    [self.view addSubview:_bottomView];
+    
+    
     // add shadow
     UIImage *shadowImage = [UIImage imageNamed:@"Seller_BarShadow"];
     UIImageView *shadow = [[UIImageView alloc] initWithImage:shadowImage];
-    shadow.frame = CGRectMake(0, maxHeight-kBarHeight-shadowImage.size.height, maxWidth, shadowImage.size.height);
-    [self.view addSubview:shadow];
+    shadow.frame = CGRectMake(0, -shadowImage.size.height, maxWidth, shadowImage.size.height);
+    [_bottomView addSubview:shadow];
     
     // add bar
     UIImageView *barView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"serller_bar"]];
-    barView.frame = CGRectMake(0, maxHeight-kBarHeight, maxWidth, kBarHeight);
+    barView.frame = CGRectMake(0, 0, maxWidth, kBarHeight);
     barView.userInteractionEnabled = YES;
     barView.layer.shadowColor = [UIColor blackColor].CGColor;
     barView.layer.shadowOffset = CGSizeMake(0, 0);
     barView.layer.shadowOpacity = 1;
-    [self.view addSubview:barView];
+    [_bottomView addSubview:barView];
     
     // add logo
     UIImage *image = [UIImage imageNamed:@"top_logo_default"];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 80, 80);
-    button.center = CGPointMake(maxWidth/2, CGRectGetHeight(barView.frame)/2-7);
-    [button setImage:image forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@"top_logo_click"] forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(gobackAction) forControlEvents:UIControlEventTouchUpInside];
-    [barView addSubview:button];
+    _logoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _logoButton.frame = CGRectMake(0, 0, 80, 80);
+    _logoButton.center = CGPointMake(maxWidth/2, CGRectGetHeight(barView.frame)/2-7);
+    [_logoButton setImage:image forState:UIControlStateNormal];
+    [_logoButton setImage:[UIImage imageNamed:@"top_logo_click"] forState:UIControlStateHighlighted];
+    [_logoButton addTarget:self action:@selector(gobackAction) forControlEvents:UIControlEventTouchUpInside];
+    [barView addSubview:_logoButton];
     
     
     
 }
 
+
+
+#pragma mark - 开场动画
+
+
+
+- (UIImage*)imageFromView:(UIView*)view
+{
+    UIGraphicsBeginImageContext([view bounds].size);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return image;
+}
+
+
+
+
+
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+- (void)startAnimations
+{
+    [self.tableView scrollsToTop];
+    
+    // make Background
+    UIView *background = [[UIView alloc] initWithFrame:self.view.bounds];
+    background.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:background];
+    
+    
+    // make ImageViews
+    
+    UIImage *image = [self imageFromView:self.tableView];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = self.tableView.frame;
+    [background addSubview:imageView];
+    
+    
+//    for (UITableViewCell *cell in self.tableView.visibleCells) {
+//        
+//        UIImage *image = [self imageFromView:cell];
+//        
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+//        imageView.frame = cell.frame;
+//        [background addSubview:imageView];
+//        
+//    }
+    
+    // make Animations
+    
+    
+    
+    
+}
+
+
+/////////////////
 
 - (void)gobackAction
 {
@@ -265,7 +349,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 95;
+    return kCommonCellHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

@@ -10,4 +10,10 @@
 
 @interface AISellerViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) UIView *bottomView;
+
+@property (nonatomic, strong) UIButton *logoButton;
+
 @end

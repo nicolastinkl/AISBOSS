@@ -11,6 +11,8 @@
 #import "AIViews.h"
 #import "UP_NSString+Size.h"
 #import "AITools.h"
+#import "AIScrollLabel.h"
+
 
 #define kMargin5    5
 
@@ -82,7 +84,9 @@
     
     SellerCellColorType _curColorType;
     
+    AIScrollLabel *_scrollLabel;
     
+    CGRect _defaultLayerBounds;
 }
 
 @property (nonatomic, strong) NSMutableArray *sellerImages;
@@ -128,6 +132,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.clipsToBounds = YES;
+        _defaultLayerBounds = CGRectZero;
         
         [self makeBackgroundView];
         [self makeSellerIcon];
@@ -141,9 +146,18 @@
         [self makeTimestamp];
         [self makeLocation];
         [self addBottomShadowView];
+
+//        _scrollLabel = [[AIScrollLabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20) text:@"asdadsad" color:[UIColor whiteColor] scrollEnable:YES];
+//        [self.contentView addSubview:_scrollLabel];
+        
     }
     
     return self;
+}
+
+- (void)stop
+{
+    [_scrollLabel stopScroll];
 }
 
 #pragma mark - 设置线条
@@ -396,6 +410,19 @@
     [self resizeImages];
     [self resizeGoodsInfo];
 }
+
+
+- (void)makeAnimations
+{
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.duration = 1.0;
+    animation.fromValue = @[@(self.bounds.origin.x),@(self.bounds.origin.y-100),@(self.bounds.size.width),@(self.bounds.size.height)];
+    animation.toValue = @[@(self.bounds.origin.x),@(self.bounds.origin.y),@(self.bounds.size.width),@(self.bounds.size.height)];
+    animation.repeatCount = 1;
+    animation.autoreverses = NO;
+    [self.layer addAnimation:animation forKey:@"bounds"];
+}
+
 
 - (void)resizeButton
 {
