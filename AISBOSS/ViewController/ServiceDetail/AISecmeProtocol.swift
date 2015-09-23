@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct chooseItemModel{
-    var scheme_id : Int = 0
-    var scheme_item_id : Int = 0
-    var scheme_item_price : Float = 0.0
-    var scheme_item_quantity : Int = 0
+class chooseItemModel{
+    var scheme_id : Int = 0 //方案ID
+    var scheme_item_id : Int = 0 //价格ID
+    var scheme_item_price : Float = 0.0 //价格
+    var scheme_item_quantity : Int = 0   //量化
 }
 
 protocol AISchemeProtocol {

@@ -37,3 +37,9 @@
 
 
 @end
+
+@implementation AIServiceCategoryModel
+
+
+
+@end
