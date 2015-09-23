@@ -49,6 +49,8 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
+    @IBOutlet weak var priceView: UIView!
+    private let labelPrice = JumpNumberLabel(frame: CGRectMake(0, 0, 200, 40))
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
     
@@ -93,6 +95,17 @@ class AIServerDetailViewController: UIViewController {
  
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
+        self.priceView.addSubview(labelPrice)
+        labelPrice.textColor = UIColor.whiteColor()
+        labelPrice.setLeft(self.priceView.center.x - labelPrice.width/2)
+        labelPrice.setTop(8)
+        
+        changePriceToNew(120.0)
+    }
+    
+    func changePriceToNew(price:Float){
+        
+        labelPrice.changeFloatNumberTo(price, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func reloadInputData() {
@@ -163,7 +176,7 @@ class AIServerDetailViewController: UIViewController {
                 tags?.addTag(titleItem ?? "")
             }
         }
-//        self.scrollView.addSubview(tags!) 
+//        self.scrollView.addSubview(tags!)
 //        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
     }
     
@@ -455,10 +468,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         switchView.reloadData()
                     }
                     
-                    
-                    
                     return cell!
-                    
                 }
                 
                 // TODO: 多选 or 单选

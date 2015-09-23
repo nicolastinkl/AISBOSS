@@ -2397,7 +2397,7 @@
                                             <constraint firstAttribute="height" constant="48" id="ceH-td-xPb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="21"/>
-                                        <state key="normal" title="立即购买" backgroundImage="sd_footer_bg">
+                                        <state key="normal" backgroundImage="sd_footer_bg">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="default">
@@ -2494,6 +2494,7 @@
                     </view>
                     <connections>
                         <outlet property="labelView" destination="q6B-xj-qgk" id="U7q-Kf-h66"/>
+                        <outlet property="priceView" destination="j96-im-k9b" id="RST-Bn-Oj4"/>
                         <outlet property="scrollView" destination="tbe-gU-gAm" id="4JV-1i-Pfp"/>
                         <outlet property="tableView" destination="0KU-RH-3xG" id="adp-l3-wEh"/>
                         <outlet property="viewTags" destination="ZOR-0A-cVl" id="xZE-Rb-B0i"/>
