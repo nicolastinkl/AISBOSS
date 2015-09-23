@@ -43,3 +43,10 @@
 
 
 @end
+
+
+@implementation AIParamModel
+
+
+
+@end
