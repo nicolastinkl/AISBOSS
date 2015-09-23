@@ -24,19 +24,19 @@
 @end
 
 
+@protocol AIParamModel
+@end
+
 // 进度
 
 @interface AIProgressModel : JSONModel
 
 @property (nonatomic, assign) NSString<Optional> *percentage;
-
 @property (nonatomic, strong) NSString<Optional> *name;
-
 @property (nonatomic, assign) int operation;
-
 @property (nonatomic, assign) int status;
-
 @property (nonatomic, strong) NSString<Optional> *icon;
+@property (nonatomic, strong) NSArray<AIParamModel> *param_list;
 
 @end
 
@@ -96,6 +96,20 @@
 @interface AIOrderPreListModel : JSONModel
 
 @property (nonatomic, strong) NSArray<AIOrderPreModel> *order_list;
+
+@end
+
+
+
+
+
+@interface AIParamModel : JSONModel
+
+@property (nonatomic, assign) int param_id;
+@property (nonatomic, strong) NSString<Optional> *param_key;
+@property (nonatomic, assign) int param_type;
+@property (nonatomic, strong) NSString<Optional> *param_name;
+@property (nonatomic, strong) NSString<Optional> *param_value;
 
 @end
 
