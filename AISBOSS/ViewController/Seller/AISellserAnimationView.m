@@ -141,9 +141,10 @@
     CGFloat yOffset = 60;
     
     __weak UIView *weakBackground = background;
-    __block NSInteger count = 1;
-    NSArray *delays = @[@(0.65),@(0.6),@(0.55),@(0.5),@(0.45),@(0.4),@(0.35),@(0.25),@(0.15)];
- 
+    
+    NSArray *delays = @[@(0.65),@(0.6),@(0.55),@(0.5),@(0.45),@(0.4),@(0.35),@(0.3),@(0.2),@(0)];
+    __block NSInteger count = delays.count - 1;
+    
     for ( NSInteger i = cells.count - 1; i >= 0; i--) {
 
         CGRect imageFrame = CGRectMake(0, y, width, height);
@@ -154,7 +155,7 @@
         imageView.alpha = 0;
         [background addSubview:imageView];
         
-        NSNumber *delayNumber = delays[i];
+        NSNumber *delayNumber = delays[count];
         
         [self animationDelay:delayNumber.floatValue completion:^{
             
@@ -170,7 +171,7 @@
             
         }];
         
-        count ++;
+        count --;
         y -= height;
     }
     
