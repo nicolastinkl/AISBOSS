@@ -621,14 +621,14 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             view = coverView
             
         }
-        
+        /*        
         //ONE:
         view.layer.shadowColor = UIColor.blackColor().CGColor
         view.layer.shadowOffset = CGSizeMake(0, 0)
         view.layer.shadowOpacity = 0.8
         view.layer.shadowRadius = 4
         // Settings shadow.
-        
+
         //TWO:
         let path = UIBezierPath()
         
@@ -659,7 +659,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
         
         //设置阴影路径
         view.layer.shadowPath = path.CGPath
-        
+        */
         return view
     }
     

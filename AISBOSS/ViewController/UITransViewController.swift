@@ -160,9 +160,7 @@ class UITransViewController: UIViewController {
         self.videoView.addSubview(moviePlayer!.view)
         moviePlayer?.play()
         
-
     }
-    
     
     func PlayerPlaybackDidFinish() {
         
@@ -187,7 +185,6 @@ class UITransViewController: UIViewController {
     }
     
     // MARK: - Actions
-
     
     private func showNextViewController()
     {
@@ -208,11 +205,10 @@ class UITransViewController: UIViewController {
     
     func startLoading()
     {
-        self.player = AITools.playMovieNamed("loading", type: "mp4", onView: self.view);
+        self.player = AITools.playMovieNamed("loading", type: "mp4", onView: self.view)
         playedCount = 0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayBackDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
     }
-    
     
     func moviePlayBackDidFinish(notification:NSNotification)
     {
