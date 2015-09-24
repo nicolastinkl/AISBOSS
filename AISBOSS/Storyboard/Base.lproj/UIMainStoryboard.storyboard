@@ -1970,7 +1970,7 @@
                                                     <state key="normal" image="close-btn"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-DH-qjm">
-                                                    <rect key="frame" x="18" y="15" width="228" height="21"/>
+                                                    <rect key="frame" x="24" y="15" width="228" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="228" id="0Zi-OG-lL3"/>
@@ -1994,7 +1994,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="20" id="7F8-P8-EHS"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="-388" id="E2m-HS-Aes"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="7" id="IRh-Cu-gtC"/>
-                                                <constraint firstItem="RdN-DH-qjm" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="10" id="Kix-IH-lXE"/>
+                                                <constraint firstItem="RdN-DH-qjm" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="16" id="Kix-IH-lXE"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="1" id="PgE-OS-6ds"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Dht-89-wtJ" secondAttribute="bottom" id="QwW-zH-gDH"/>
                                                 <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="11" id="SMh-6V-aFC"/>
