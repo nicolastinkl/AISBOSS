@@ -2093,11 +2093,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIJ-Ze-nNh" customClass="iCarousel">
-                                                    <rect key="frame" x="16" y="30" width="568" height="200"/>
+                                                    <rect key="frame" x="8" y="35" width="584" height="190"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="TBB-3p-MPr"/>
+                                                        <constraint firstAttribute="height" constant="190" id="TBB-3p-MPr"/>
                                                         <constraint firstAttribute="height" constant="200" id="Wea-SS-k7c"/>
                                                     </constraints>
                                                     <variation key="default">
@@ -2113,19 +2113,20 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TIJ-Ze-nNh" secondAttribute="trailing" constant="8" id="121-6S-3vI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TIJ-Ze-nNh" secondAttribute="trailing" id="121-6S-3vI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="TIJ-Ze-nNh" secondAttribute="trailing" constant="12" id="1Q9-VJ-M8H"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="TIJ-Ze-nNh" secondAttribute="bottom" constant="22" id="IFQ-nh-FHo"/>
                                                 <constraint firstItem="TIJ-Ze-nNh" firstAttribute="centerY" secondItem="mty-Fa-Oot" secondAttribute="centerY" id="Njq-63-eds"/>
                                                 <constraint firstItem="TIJ-Ze-nNh" firstAttribute="leading" secondItem="mty-Fa-Oot" secondAttribute="leadingMargin" constant="12" id="TtC-MK-hqX"/>
                                                 <constraint firstItem="TIJ-Ze-nNh" firstAttribute="bottom" secondItem="mty-Fa-Oot" secondAttribute="bottomMargin" id="Y7A-B4-aHU"/>
-                                                <constraint firstItem="TIJ-Ze-nNh" firstAttribute="leading" secondItem="mty-Fa-Oot" secondAttribute="leadingMargin" constant="8" id="f9E-jD-5YL"/>
+                                                <constraint firstItem="TIJ-Ze-nNh" firstAttribute="leading" secondItem="mty-Fa-Oot" secondAttribute="leadingMargin" id="f9E-jD-5YL"/>
                                                 <constraint firstItem="TIJ-Ze-nNh" firstAttribute="centerX" secondItem="mty-Fa-Oot" secondAttribute="centerX" id="vNi-Zr-37V"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="TIJ-Ze-nNh" secondAttribute="bottom" constant="9" id="xOj-Wq-6eO"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="1Q9-VJ-M8H"/>
+                                                    <exclude reference="IFQ-nh-FHo"/>
                                                     <exclude reference="TtC-MK-hqX"/>
                                                     <exclude reference="Y7A-B4-aHU"/>
                                                     <exclude reference="xOj-Wq-6eO"/>

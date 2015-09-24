@@ -70,6 +70,50 @@
                                                              }
                                                              ]
                                       },{
+                                      "service_id": 8,
+                                      "service_name": "different Cambrigde Trip,",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle222",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "https://img.alicdn.com/imgextra/i4/15878087683224016/TB2dIozcXXXXXaOXXXXXXXXXXXX_!!45525878-0-saturn_solar.jpg_200x200.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      },{
+                                      "service_id": 8,
+                                      "service_name": "different Cambrigde Trip,",
+                                      "service_price": {"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
+                                      "service_intro": "Fishing is the Best all yourself can be  expred on th brench.",
+                                      "provider_id": 1,
+                                      "provider_name": "tinkle222",
+                                      "service_rating": "12",
+                                      "provider_icon": "http://pic41.nipic.com/20140520/18505720_142810265175_2.jpg",
+                                      "service_img": "https://img.alicdn.com/imgextra/i4/15878087683224016/TB2dIozcXXXXXaOXXXXXXXXXXXX_!!45525878-0-saturn_solar.jpg_200x200.jpg",
+                                      "service_param_list": [
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             },
+                                                             {
+                                                             "param_key": 0,
+                                                             "param_value": "123",
+                                                             "param_value_id": 1
+                                                             }
+                                                             ]
+                                      },{
                                       "service_id": 9,
                                       "service_name": "different Cambrigde Trip,",
                                       "service_price":{"price":1299.9,"unit":1,"billing_mode":1,"price_show":"123.8"},
