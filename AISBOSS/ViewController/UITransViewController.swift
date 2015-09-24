@@ -191,10 +191,13 @@ class UITransViewController: UIViewController {
     
     private func showNextViewController()
     {
-        let model = self.dataSource![selectIndex ?? 0]
-        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
-        viewController.varTitle = model.favoriteTitle ?? ""
-        self.showViewController(viewController, sender: self)
+        if let data = self.dataSource {
+            let model = data[selectIndex ?? 0]
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
+            viewController.varTitle = model.favoriteTitle ?? ""
+            self.showViewController(viewController, sender: self)
+        }
+        
     }
     
     func startLoading()
@@ -253,8 +256,8 @@ class UITransViewController: UIViewController {
     private func loadContentData() {
 
         view.showProgressViewLoading()
-        //transformManager = AIHttpTransformManager()
-        transformManager = AIMockTransformManager()
+        transformManager = AIHttpTransformManager()
+        //transformManager = AIMockTransformManager()
         transformManager?.queryCollectedContents(1, pageSize: 10, tags: nil, origin: nil, favoriteFlag: nil, colorFlags: nil, completion: loadDataFrist)
     }
     

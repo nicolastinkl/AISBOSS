@@ -620,47 +620,45 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             coverView.fillDataWithModel(costom)
             view = coverView
             
-            // Settings shadow.
-            
-            //ONE:
-            view.layer.shadowColor = UIColor.blackColor().CGColor
-            view.layer.shadowOffset = CGSizeMake(0, 0)
-            view.layer.shadowOpacity = 0.8
-            view.layer.shadowRadius = 4
-            
-            //TWO:
-            let path = UIBezierPath()
-            
-            let width:CGFloat = view.bounds.size.width
-            let height:CGFloat = view.bounds.size.height
-            let x:CGFloat = view.bounds.origin.x
-            let y:CGFloat = view.bounds.origin.y
-            let addWH:CGFloat = 10
-            
-            
-            let topLeft      = view.bounds.origin
-            let topMiddle = CGPointMake(x+(width/2),y-addWH)
-            let topRight     = CGPointMake(x+width,y)
-            let rightMiddle = CGPointMake(x + width + addWH,y + (height/2))
-            
-            let bottomRight  = CGPointMake(x+width,y+height)
-            let bottomMiddle = CGPointMake(x+(width/2),y+height+addWH)
-            let bottomLeft   = CGPointMake(x,y+height)
-            let leftMiddle = CGPointMake(x - addWH,y + (height/2))
-            
-            path.moveToPoint(topLeft)
-            
-            //添加2个二元曲线
-            path.addQuadCurveToPoint(topRight, controlPoint: topMiddle)
-            path.addQuadCurveToPoint(bottomRight, controlPoint: rightMiddle)
-            path.addQuadCurveToPoint(bottomLeft, controlPoint: bottomMiddle)
-            path.addQuadCurveToPoint(topLeft, controlPoint: leftMiddle)
-            
-            //设置阴影路径
-            view.layer.shadowPath = path.CGPath
-            
-            
         }
+        
+        //ONE:
+        view.layer.shadowColor = UIColor.blackColor().CGColor
+        view.layer.shadowOffset = CGSizeMake(0, 0)
+        view.layer.shadowOpacity = 0.8
+        view.layer.shadowRadius = 4
+        // Settings shadow.
+        
+        //TWO:
+        let path = UIBezierPath()
+        
+        let width:CGFloat = view.bounds.size.width
+        let height:CGFloat = view.bounds.size.height
+        let x:CGFloat = view.bounds.origin.x
+        let y:CGFloat = view.bounds.origin.y
+        let addWH:CGFloat = 10
+        
+        
+        let topLeft      = view.bounds.origin
+        let topMiddle = CGPointMake(x+(width/2),y-addWH)
+        let topRight     = CGPointMake(x+width,y)
+        let rightMiddle = CGPointMake(x + width + addWH,y + (height/2))
+        
+        let bottomRight  = CGPointMake(x+width,y+height)
+        let bottomMiddle = CGPointMake(x+(width/2),y+height+addWH)
+        let bottomLeft   = CGPointMake(x,y+height)
+        let leftMiddle = CGPointMake(x - addWH,y + (height/2))
+        
+        path.moveToPoint(topLeft)
+        
+        //添加2个二元曲线
+        path.addQuadCurveToPoint(topRight, controlPoint: topMiddle)
+        path.addQuadCurveToPoint(bottomRight, controlPoint: rightMiddle)
+        path.addQuadCurveToPoint(bottomLeft, controlPoint: bottomMiddle)
+        path.addQuadCurveToPoint(topLeft, controlPoint: leftMiddle)
+        
+        //设置阴影路径
+        view.layer.shadowPath = path.CGPath
         
         return view
     }
