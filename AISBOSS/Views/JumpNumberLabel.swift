@@ -83,9 +83,14 @@ class JumpNumberLabel: UILabel {
         self.currentNumber = fromNumber
         self.destinationFloat = toNumber
         self.changeTimeInterval = changeTimeInterval
-        self.formatIntStr = format
         self.decimalFormat = numberFormat
         self.isFloat = isFloat
+        
+        if isFloat {
+            self.formatFloatStr = format
+        } else {
+            self.formatIntStr = format
+        }
     }
     
     static func createDefaultFloatCurrencyFormatter() -> NSNumberFormatter {
