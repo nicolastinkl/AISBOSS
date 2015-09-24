@@ -10,6 +10,8 @@
 #import "AIViews.h"
 #import "AITools.h"
 #import "UP_NSString+Size.h"
+#import "AIOrderPreModel.h"
+#import "UIImageView+WebCache.h"
 
 #define kIndicatorSize 10
 #define kMaring2       2
@@ -27,7 +29,7 @@
     UIView *_progressView;
 }
 
-@property (nonatomic, strong) NSDictionary *content;
+@property (nonatomic, strong) AIProgressModel *progressModel;
 
 @end
 
@@ -56,35 +58,38 @@
 
 
 
-- (void)setProgressContent:(NSDictionary *)content
+- (void)setProgressModel:(AIProgressModel *)model
 {
-    if (!content) {
+    
+    [self setHidden:model == nil];
+    if (!model) {
+        
         return;
     }
     
     self.backgroundColor = [AITools colorWithR:0x4c g:0x56 b:0x7d];
-    
     [self setHidden:NO];
-    self.content = content;
-    NSString *indicator = [content objectForKey:kProgress_Indicator];
-    NSString *schedule = [content objectForKey:kProgress_Schedule];
-    NSString *percentStr = [content objectForKey:kProgress_Percent];
     
-    CGFloat width = percentStr.integerValue * CGRectGetWidth(self.frame) / 100;
+    
+    CGFloat width = model.percentage * CGRectGetWidth(self.frame);
     [AITools resetWidth:width forView:_progressView];
     
-    UIImage *image = [UIImage imageNamed:indicator];
-    _progressIndicator.image = image;
-    _progressLabel.text = schedule;
+
+    
+    if (model.icon) {
+        [_progressIndicator sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+    }
+    
+    _progressLabel.text = model.name;
     CGRect frame = _progressIndicator.frame;
     frame.origin.y = (CGRectGetHeight(self.frame) - kIndicatorSize)/2;
     _progressIndicator.frame = frame;
     
     CGFloat x = 0;
     width = CGRectGetWidth(self.frame);
-    if (image) {
+    if (model.icon) {
         self.backgroundColor = [AITools colorWithR:0x73 g:0x49 b:0x36];
-        CGSize size = [schedule sizeWithFontSize:kFontSize forWidth:width-kIndicatorSize-kMaring2];
+        CGSize size = [model.name sizeWithFontSize:kFontSize forWidth:width-kIndicatorSize-kMaring2];
         x = (width - kIndicatorSize - kMaring2 - size.width)/2;
         [AITools resetOriginalX:x forView:_progressIndicator];
         x += kIndicatorSize + kMaring2;

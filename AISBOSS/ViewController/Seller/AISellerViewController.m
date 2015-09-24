@@ -17,6 +17,8 @@
 #import "AISellserAnimationView.h"
 #import "AINetEngine.h"
 #import "MJRefresh.h"
+#import "AIOrderPreModel.h"
+#import "UIImageView+WebCache.h"
 
 #define kTablePadding      15
 
@@ -34,6 +36,8 @@
 
 @property (nonatomic, strong) NSArray *sellerInfoList;
 
+@property (nonatomic, strong) AIOrderPreListModel *listModel;
+
 @end
 
 @implementation AISellerViewController
@@ -44,6 +48,7 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];;
     
+    [self makeFakeDatas];
     [self makeDatas];
     [self makeBackGroundView];
     [self makeTableView];
@@ -76,16 +81,70 @@
 */
 
 
+- (AIMessage *)getServiceListWithUserID:(NSInteger)userID role:(NSInteger)role
+{
+    AIMessage *message = [AIMessage message];
+    
+    message.url = @"http://ip:portget/sbss/ServiceCalendarMgr";
+    [message.body setObject:[NSNumber numberWithInteger:userID] forKey:@"user_id"];//order_role
+    [message.body setObject:[NSNumber numberWithInteger:role] forKey:@"order_role"];
+    
+    return message;
+}
+
+
+- (void)makeFakeDatas
+{
+    NSString *jsonString = [AITools readJsonWithFileName:@"sellerOrderList" fileType:@"json"];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+    
+    self.listModel = [[AIOrderPreListModel alloc] initWithDictionary:dic error:nil];
+
+    
+}
+
 - (void)addRefreshActions
 {
     __weak typeof(self) weakSelf = self;
     [self.tableView addHeaderWithCallback:^{
-        [weakSelf.tableView headerEndRefreshing];
+        
+        
+        /*
+        AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:1];
+        
+        [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
+            [weakSelf.tableView headerEndRefreshing];
+        } fail:^(AINetError error, NSString *errorDes) {
+            [weakSelf.tableView headerEndRefreshing];
+        }];
+         */
+        
+        // Fake Data
+        
+        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
+        
+        dispatch_after(time_t, dispatch_get_main_queue(), ^{
+            
+            
+            [weakSelf makeFakeDatas];
+            [weakSelf.tableView reloadData];
+            [weakSelf.tableView headerEndRefreshing];
+            
+        });
+        
     }];
     
     
     [self.tableView addFooterWithCallback:^{
-        [weakSelf.tableView footerEndRefreshing];
+        
+        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
+        
+        dispatch_after(time_t, dispatch_get_main_queue(), ^{
+            
+            [weakSelf.tableView footerEndRefreshing];
+            
+        });
+        
     }];
 }
 
@@ -326,7 +385,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sellerInfoList.count;
+    return self.listModel.order_list.count;
 }
 
 
@@ -340,17 +399,34 @@
         
     }
     
-    AISellerModel *model = [[AISellerModel alloc] initWithContent:[self.sellerInfoList objectAtIndex:indexPath.row]];
-    cell.sellerIcon.image = model.sellerIcon;
-    cell.sellerName.text = model.sellerName;
-    cell.price.text = model.goodsPrice;
-    cell.timestamp.text = model.timestamp;
-    cell.location.text = model.location;
-    [cell setBackgroundColorType:model.colorType];
-    [cell setButtonType:model.buttonType];
-    [cell setProgressBarContent:model.progress];
-    //[cell setImages:model.sellerIcons];
-    [cell setMessageNumber:model.messageNum];
+    AIOrderPreModel *model = [self.listModel.order_list objectAtIndex:indexPath.row];
+    [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+    cell.sellerName.text = model.customer.user_name;
+    cell.price.text = model.service.service_price;
+    
+    NSString *time = @"To Be Confrimed";
+    NSString *address = @"To Be Confrimed";
+    
+    NSArray *array = model.service_progress.param_list;
+    if (array) {
+        for (AIServiceParamModel *model in array) {
+            
+            if (model.param_type == 1) {
+                time = model.param_value ?: time;
+            }
+            else if (model.param_type == 2)
+            {
+                address = model.param_value ?: address;
+            }
+        }
+    }
+    
+    cell.timestamp.text = time;
+    cell.location.text = address;
+    [cell setBackgroundColorType:model.order_state];
+    [cell setButtonType:model.order_state];
+    [cell setProgressBarModel:model.service_progress];
+    [cell setServiceCategory:model];
     
     return cell;
 }
