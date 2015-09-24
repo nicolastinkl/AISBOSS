@@ -196,6 +196,12 @@ class UITransViewController: UIViewController {
             let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
             viewController.varTitle = model.favoriteTitle ?? ""
             self.showViewController(viewController, sender: self)
+        }else{
+            //TEST
+            
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
+            viewController.varTitle = ""
+            self.showViewController(viewController, sender: self)
         }
         
     }
