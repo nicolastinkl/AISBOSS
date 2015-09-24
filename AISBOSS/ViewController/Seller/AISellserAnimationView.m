@@ -141,9 +141,10 @@
     CGFloat yOffset = 60;
     
     __weak UIView *weakBackground = background;
-    __block NSInteger count = 1;
-    NSArray *delays = @[@(0.65),@(0.6),@(0.55),@(0.5),@(0.45),@(0.4),@(0.35),@(0.25),@(0.15)];
- 
+    
+    NSArray *delays = @[@(0.65),@(0.6),@(0.55),@(0.5),@(0.45),@(0.4),@(0.35),@(0.3),@(0.2),@(0.1)];
+    __block NSInteger count = delays.count - 1;
+    
     for ( NSInteger i = cells.count - 1; i >= 0; i--) {
 
         CGRect imageFrame = CGRectMake(0, y, width, height);
@@ -154,11 +155,11 @@
         imageView.alpha = 0;
         [background addSubview:imageView];
         
-        NSNumber *delayNumber = delays[i];
+        NSNumber *delayNumber = delays[count];
         
-        [self animationDelay:delayNumber.floatValue completion:^{
+        [self animationDelay:0 completion:^{
             
-            [UIView animateWithDuration:0.15 animations:^{
+            [UIView animateWithDuration:delayNumber.floatValue  animations:^{
                 cellFrame.origin.y = y;
                 imageView.frame = cellFrame;
                 imageView.alpha = 1;
@@ -170,16 +171,17 @@
             
         }];
         
-        count ++;
+        count --;
         y -= height;
+        yOffset += 40;
     }
     
     // Bottom Animation
     UIView *bottomView = [self bottomViewWithFrame:CGRectMake(0, CGRectGetHeight(background.frame), CGRectGetWidth(background.frame), 50)];
     [background addSubview:bottomView];
     
-    [self animationDelay:0.1 completion:^{
-        [UIView animateWithDuration:duration*1.5 animations:^{
+    [self animationDelay:0 completion:^{
+        [UIView animateWithDuration:duration animations:^{
             bottomView.frame = CGRectMake(0, CGRectGetHeight(background.frame) - 50, CGRectGetWidth(background.frame), 50);
         } completion:^(BOOL finished) {
             
@@ -197,8 +199,8 @@
     logoView.center = CGPointMake(logoCenter.x, logoCenter.y - CGRectGetHeight(sellerViewController.view.frame) / 2 + 100);
     
     
-    [self animationDelay:0.1 completion:^{
-        [UIView animateWithDuration:duration*1.5 animations:^{
+    [self animationDelay:0 completion:^{
+        [UIView animateWithDuration:duration animations:^{
             logoView.center = logoCenter;
             logoView.transform = CGAffineTransformMakeScale(1, 1);
         } completion:^(BOOL finished) {
