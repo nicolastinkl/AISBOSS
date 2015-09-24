@@ -17,7 +17,7 @@ class JumpNumberLabel: UILabel {
     private var oldFloat: Float = 0
     private var currentNumber: Float = 0
     private var destinationFloat: Float!
-    private var stepFloat: Float!
+    private var step: Float!
     private var oldNumber: NSNumber?
     private var flickerNumber: NSNumber!
     private var timer: NSTimer?
@@ -56,14 +56,10 @@ class JumpNumberLabel: UILabel {
     }
     
     func changeFloatNumberFrom(fromNumber: Float, toNumber: Float, duration: NSTimeInterval = DEFAULT_DURATION, format: String = DEFAULT_FLOAT_FORMAT, numberFormat: NSNumberFormatter? = nil) {
-        currentNumber = fromNumber
-        destinationFloat = toNumber
-        changeTimeInterval = duration / Double(defaultJumpCount)
-        formatFloatStr = format
-        decimalFormat = numberFormat
-        isFloat = true
         
-        stepFloat = calculateStepNumber(destinationFloat - currentNumber, jumpCount: defaultJumpCount)
+        setParas(fromNumber, toNumber: toNumber, changeTimeInterval: duration / Double(defaultJumpCount), format: format, numberFormat: numberFormat, isFloat: true)
+        
+        step = calculateStepNumber(destinationFloat - currentNumber, jumpCount: defaultJumpCount)
         
         startChangeFloat(duration)
     }
@@ -73,32 +69,44 @@ class JumpNumberLabel: UILabel {
     }
     
     func changeIntNumberFrom(fromNumber: Int, toNumber: Int, duration: NSTimeInterval = DEFAULT_DURATION, format: String = DEFAULT_INT_FORMAT, numberFormat: NSNumberFormatter? = nil) {
-        currentNumber = Float(fromNumber)
-        destinationFloat = Float(toNumber)
-        let realJumpCount = min(abs(toNumber - fromNumber), defaultJumpCount)
-        changeTimeInterval = duration / Double(realJumpCount)
-        formatIntStr = format
-        decimalFormat = numberFormat
-        isFloat = false
         
-        stepFloat = calculateStepNumber(destinationFloat - currentNumber, jumpCount: realJumpCount)
+        let realJumpCount = min(abs(toNumber - fromNumber), defaultJumpCount)
+        
+        setParas(Float(fromNumber), toNumber: Float(toNumber), changeTimeInterval: duration / Double(realJumpCount), format: format, numberFormat: numberFormat, isFloat: false)
+        
+        step = calculateStepNumber(destinationFloat - currentNumber, jumpCount: realJumpCount)
         
         startChangeFloat(duration)
     }
     
+    private func setParas(fromNumber: Float, toNumber: Float, changeTimeInterval: NSTimeInterval, format: String, numberFormat: NSNumberFormatter?, isFloat: Bool) {
+        self.currentNumber = fromNumber
+        self.destinationFloat = toNumber
+        self.changeTimeInterval = changeTimeInterval
+        self.decimalFormat = numberFormat
+        self.isFloat = isFloat
+        
+        if isFloat {
+            self.formatFloatStr = format
+        } else {
+            self.formatIntStr = format
+        }
+    }
+    
     static func createDefaultFloatCurrencyFormatter() -> NSNumberFormatter {
-        let formatter = NSNumberFormatter()
-        formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
-        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        formatter.positiveFormat = "###,##0.00"
-        return formatter
+        return createDefaultCurrencyFormatter("###,##0.00")
     }
     
     static func createDefaultIntCurrencyFormatter() -> NSNumberFormatter {
+        return createDefaultCurrencyFormatter("###,##0")
+
+    }
+    
+    private static func createDefaultCurrencyFormatter(positiveFormat: String) -> NSNumberFormatter {
         let formatter = NSNumberFormatter()
         formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        formatter.positiveFormat = "###,##0"
+        formatter.positiveFormat = positiveFormat
         return formatter
     }
     
@@ -111,7 +119,7 @@ class JumpNumberLabel: UILabel {
     }
     
     func decideNextStep(timer: NSTimer) {
-        currentNumber += stepFloat
+        currentNumber += step
         
         if (currentNumberIsBeyondRange()) {
             stopChange()
@@ -123,7 +131,7 @@ class JumpNumberLabel: UILabel {
     }
     
     private func currentNumberIsBeyondRange() -> Bool {
-        if (stepFloat > 0) {
+        if (step > 0) {
             return currentNumber > destinationFloat
         } else {
             return currentNumber < destinationFloat
