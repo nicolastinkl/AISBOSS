@@ -189,6 +189,8 @@
     NSCharacterSet *whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     NSString *finalStr = [fileString stringByTrimmingCharactersInSet:whitespace];
     finalStr = [finalStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    finalStr = [finalStr stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    finalStr = [finalStr stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     return finalStr;
 }

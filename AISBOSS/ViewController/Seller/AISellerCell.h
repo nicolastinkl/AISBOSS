@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSInteger, SellerCellColorType) {
     
-    SellerCellColorTypeNormal = 0,
+    SellerCellColorTypeNormal = 1,
     SellerCellColorTypeGreen,
     SellerCellColorTypeBrown,
     
@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, SellerButtonType) {
     SellerButtonTypeCapture,
 };
 
-
-
+@class AIOrderPreModel;
+@class AIProgressModel;
 @class AISellingProgressBar;
 
 @interface AISellerCell : UITableViewCell
@@ -48,27 +48,30 @@ typedef NS_ENUM(NSInteger, SellerButtonType) {
 
 @property (nonatomic, readonly) AISellingProgressBar *progressBar;
 
-@property (nonatomic, strong) NSDictionary *goods;
 
-@property (nonatomic, strong) NSArray *goodsIcons;
 
 + (CGFloat)expandHeight;
 
 + (CGFloat)unexpandHeight;
 
 // 1
-- (void)setBackgroundColorType:(SellerCellColorType)colorType;
+- (void)setProgressBarModel:(AIProgressModel *)model;
+
 
 // 2
 - (void)setButtonType:(SellerButtonType)buttonType;
 
 // 3
-- (void)setProgressBarContent:(NSDictionary *)content;
+- (void)setBackgroundColorType:(SellerCellColorType)colorType;
 
 // 4
 - (void)setImages:(NSArray *)images;
 
 // 5
 - (void)setMessageNumber:(NSString *)number;
+
+// 6
+
+- (void)setServiceCategory:(AIOrderPreModel *)model;
 
 @end
