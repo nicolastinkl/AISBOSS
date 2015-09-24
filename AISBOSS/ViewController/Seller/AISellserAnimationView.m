@@ -142,8 +142,8 @@
     
     __weak UIView *weakBackground = background;
     __block NSInteger count = 1;
-    //NSArray *delays = @[@(0.95),@(0.85),@(0.75),@(0.65),@(0.55),@(0.45),@(0.35),@(0.25),@(0.15)];
-    NSArray *delays = @[@(0.45),@(0.4),@(0.35),@(0.3),@(0.25),@(0.2),@(0.15),@(0.1),@(0.05)];
+    NSArray *delays = @[@(0.65),@(0.6),@(0.55),@(0.5),@(0.45),@(0.4),@(0.35),@(0.25),@(0.15)];
+ 
     for ( NSInteger i = cells.count - 1; i >= 0; i--) {
 
         CGRect imageFrame = CGRectMake(0, y, width, height);
@@ -158,7 +158,7 @@
         
         [self animationDelay:delayNumber.floatValue completion:^{
             
-            [UIView animateWithDuration:duration animations:^{
+            [UIView animateWithDuration:0.15 animations:^{
                 cellFrame.origin.y = y;
                 imageView.frame = cellFrame;
                 imageView.alpha = 1;
