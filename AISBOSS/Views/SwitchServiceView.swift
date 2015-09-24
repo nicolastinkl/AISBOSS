@@ -77,7 +77,7 @@ class SwitchServiceView: UIView {
         switchController.isRounded = false
         
         // turn the switch on with animation
-        switchController.setOn(true, animated: true)
+        switchController.setOn(false, animated: false)
         
     }
 
