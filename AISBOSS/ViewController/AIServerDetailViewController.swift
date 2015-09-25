@@ -193,7 +193,7 @@ class AIServerDetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-       
+        
         // TAGS
         tags = AOTagList(frame: CGRectMake(0, 0, self.scrollView.width, 180))
         tags?.delegateTag = self
@@ -225,6 +225,7 @@ class AIServerDetailViewController: UIViewController {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
         })
+        
         serviceSearchView.searchTextField.becomeFirstResponder()
         serviceSearchView.clearSearchResult()
         serviceSearchView.setInitViewAttr()
@@ -243,7 +244,7 @@ class AIServerDetailViewController: UIViewController {
             self.dataSource.removeObjectAtIndex(s)
             self.tableView.reloadData()
         }
-     
+        
         /*
         let titl = tag.tTitle
         
@@ -290,13 +291,14 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
-          /*
+            
+            /*
             let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
-            self.tableView.reloadData()
-            */
+            self.tableView.reloadData()*/
+            
         }
     }
 }
@@ -304,7 +306,6 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
 extension AIServerDetailViewController : AOTagDelegate{
 
     func tagDidRemoveTag(tag: AOTag!) {
-        
         
         /*
         let titl = tag.tTitle
@@ -344,7 +345,6 @@ extension AIServerDetailViewController : AOTagDelegate{
         
     }
     
-   
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
@@ -428,6 +428,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
+                
             }else{
                 
                 // TODO: 日期
@@ -454,7 +455,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     do{
                         let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
                         list.addObject(model)
-                        
                     }catch{
                     }
                 })
@@ -466,9 +466,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.delegate = self
                     cell.carousel.type = .CoverFlow2
-                    
                     cell.dataSource = ls
+                    
                     cell.carousel.reloadData()
+
                     return cell
                 }
                 
@@ -491,7 +492,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     var tickets = [ServiceList]()
                     tickets.append(ServiceList())
-                    tickets.append(ServiceList())
+//                    tickets.append(ServiceList())
                     ticketGroupView.setTicketsData(tickets)
                     
                     return cell!
@@ -509,7 +510,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         switchView.reloadData()
                         switchView.setService(ls[indexPath.row])
                         switchView.switchDelegate = self
-
+                        
                     }else{
                         
                         let switchView = SwitchServiceView.createSwitchServiceView()
@@ -536,17 +537,16 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
                         do{
                             let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                            list.addObject(model)
-                            
+                            list.addObject(model)                            
                         }catch{
                         }
                     })
-
+                    
                     let ls = NSArray(array: list) as! [ServiceList]
                     var hori : HorizontalCardView
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                     if cell?.contentView.subviews.count > 0{
-                        hori = cell?.contentView.subviews[0] as! HorizontalCardView
+                        hori = cell?.contentView.subviews.first as! HorizontalCardView
                     }else{
                         hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         cell?.contentView.addSubview(hori)
@@ -555,7 +555,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     hori.delegate = self
                     return cell!
                 }
-                
             }
         }
         
@@ -572,7 +571,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             self.showDetailViewController(menuViewController, sender: self)
         }
     }
-    
 }
 
 // MARK: CELL

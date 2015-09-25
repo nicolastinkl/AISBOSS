@@ -1449,7 +1449,7 @@
 					};
 					93D5A3481B709C1C00DDB158 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = T2362RFKT6;
+						DevelopmentTeam = 7674DAHWK4;
 					};
 				};
 			};
@@ -2024,6 +2024,7 @@
 				8423E5731BB4E4EE006DC73B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93D5A3441B709C1C00DDB158 /* Build configuration list for PBXProject "AIVeris" */ = {
 			isa = XCConfigurationList;

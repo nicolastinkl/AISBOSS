@@ -188,6 +188,8 @@ class UITransViewController: UIViewController {
     
     private func showNextViewController()
     {
+
+        self.view.userInteractionEnabled = true
         if let data = self.dataSource {
             let model = data[selectIndex ?? 0]
             let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewIdentifiers.AIScanViewController) as! AIScanViewController
@@ -205,6 +207,7 @@ class UITransViewController: UIViewController {
     
     func startLoading()
     {
+        self.view.userInteractionEnabled = false
         self.player = AITools.playMovieNamed("loading", type: "mp4", onView: self.view)
         playedCount = 0
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayBackDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
