@@ -1,14 +1,14 @@
 //
-//  AISBOSSTests.swift
-//  AISBOSSTests
+//  Veris_Tests.swift
+//  Veris Tests
 //
-//  Created by tinkl on 4/8/2015.
-//  Copyright © 2015 ___ASIAINFO___. All rights reserved.
+//  Created by admin on 15/9/25.
+//  Copyright © 2015年 ___ASIAINFO___. All rights reserved.
 //
 
 import XCTest
 
-class AISBOSSTests: XCTestCase {
+class Veris_Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()
