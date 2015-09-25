@@ -468,7 +468,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.carousel.type = .CoverFlow2
                     cell.dataSource = ls
                     
-                    //cell.carousel.reloadData()
+                    cell.carousel.reloadData()
 
                     return cell
                 }
