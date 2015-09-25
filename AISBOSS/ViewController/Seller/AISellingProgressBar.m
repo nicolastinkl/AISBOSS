@@ -76,7 +76,7 @@
     
 
     
-    if (model.icon) {
+    if (model.icon.length > 0) {
         [_progressIndicator sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
     }
     
@@ -87,7 +87,7 @@
     
     CGFloat x = 0;
     width = CGRectGetWidth(self.frame);
-    if (model.icon) {
+    if (model.icon.length > 0) {
         self.backgroundColor = [AITools colorWithR:0x73 g:0x49 b:0x36];
         CGSize size = [model.name sizeWithFontSize:kFontSize forWidth:width-kIndicatorSize-kMaring2];
         x = (width - kIndicatorSize - kMaring2 - size.width)/2;

@@ -194,72 +194,8 @@
 
 
 
-#pragma mark - 开场动画
+#pragma mark - Go Back
 
-
-
-- (UIImage*)imageFromView:(UIView*)view
-{
-    UIGraphicsBeginImageContext([view bounds].size);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return image;
-}
-
-
-
-
-
-- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
-{
-    UIGraphicsBeginImageContext(newSize);
-    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
-
-- (void)startAnimations
-{
-    [self.tableView scrollsToTop];
-    
-    // make Background
-    UIView *background = [[UIView alloc] initWithFrame:self.view.bounds];
-    background.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:background];
-    
-    
-    // make ImageViews
-    
-    UIImage *image = [self imageFromView:self.tableView];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = self.tableView.frame;
-    [background addSubview:imageView];
-    
-    
-//    for (UITableViewCell *cell in self.tableView.visibleCells) {
-//        
-//        UIImage *image = [self imageFromView:cell];
-//        
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-//        imageView.frame = cell.frame;
-//        [background addSubview:imageView];
-//        
-//    }
-    
-    // make Animations
-    
-    
-    
-    
-}
-
-
-/////////////////
 
 - (void)gobackAction
 {
@@ -395,7 +331,7 @@
     AISellerCell *cell = [tableView dequeueReusableCellWithIdentifier:resueID];
     if (!cell) {
         cell = [[AISellerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:resueID];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
     }
     
