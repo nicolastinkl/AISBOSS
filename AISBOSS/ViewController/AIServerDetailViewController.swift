@@ -225,12 +225,14 @@ class AIServerDetailViewController: UIViewController {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
         })
+        
         serviceSearchView.searchTextField.becomeFirstResponder()
         serviceSearchView.clearSearchResult()
         serviceSearchView.setInitViewAttr()
         
         //NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenAddViewNotification, object: nil)
         //self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
     func closeCurrentSectionAction(sender: AnyObject) {
@@ -454,7 +456,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     do{
                         let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
                         list.addObject(model)
-                        
                     }catch{
                     }
                 })
