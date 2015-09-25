@@ -468,7 +468,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.carousel.type = .CoverFlow2
                     
                     cell.dataSource = ls
+                    
                     cell.carousel.reloadData()
+                    
                     return cell
                 }
                 
@@ -536,12 +538,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
                         do{
                             let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                            list.addObject(model)
-                            
+                            list.addObject(model)                            
                         }catch{
                         }
                     })
-
+                    
                     let ls = NSArray(array: list) as! [ServiceList]
                     let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
