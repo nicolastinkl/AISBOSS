@@ -295,7 +295,7 @@ import QuartzCore
         
         UIView.animateWithDuration(0.3, delay: 0.0, options: [UIViewAnimationOptions.CurveEaseOut, UIViewAnimationOptions.BeginFromCurrentState], animations: {
                 if self.on {
-                    self.thumbView.frame = CGRectMake(self.bounds.size.width - (activeKnobWidth + 1), self.thumbView.frame.origin.y, activeKnobWidth, self.thumbView.frame.size.height)
+                    self.thumbView.frame = CGRectMake(self.bounds.size.width - (activeKnobWidth + 1), self.thumbView.frame.origin.y, activeKnobWidth, self.thumbView.frame.size.height) // touch down时滑块宽度变化
                     self.backgroundView.backgroundColor = self.onTintColor
                     self.thumbView.backgroundColor = self.onThumbTintColor
                 }

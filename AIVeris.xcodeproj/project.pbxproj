@@ -29,7 +29,6 @@
 		81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C0927E1BAFAC0D003FFF35 /* UIImageView+WebCache.m */; };
 		81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */; };
 		81C092921BAFE6A1003FFF35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C092911BAFE6A1003FFF35 /* CoreGraphics.framework */; };
-		81C092951BB0ED7C003FFF35 /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */; };
 		81D83AEB1BB29F7900BE2BA2 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81D83ADB1BB29F7900BE2BA2 /* MJRefresh.bundle */; };
 		81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83ADE1BB29F7900BE2BA2 /* MJRefreshBaseView.m */; };
 		81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE01BB29F7900BE2BA2 /* MJRefreshConst.m */; };
@@ -38,6 +37,9 @@
 		81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE61BB29F7900BE2BA2 /* UIScrollView+MJExtension.m */; };
 		81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */; };
 		81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */; };
+		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
+		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
+		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
@@ -244,6 +246,16 @@
 		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8423E56F1BB4E4EE006DC73B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93D5A3411B709C1C00DDB158 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93D5A3481B709C1C00DDB158;
+			remoteInfo = AIVeris;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
@@ -286,8 +298,6 @@
 		81C0927F1BAFAC0D003FFF35 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		81C092801BAFAC0D003FFF35 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		81C092911BAFE6A1003FFF35 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		81C092931BB0ED7C003FFF35 /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIOrderPreModel.h; path = ocmodel/AIOrderPreModel.h; sourceTree = "<group>"; };
-		81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIOrderPreModel.m; path = ocmodel/AIOrderPreModel.m; sourceTree = "<group>"; };
 		81D83ADB1BB29F7900BE2BA2 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		81D83ADC1BB29F7900BE2BA2 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		81D83ADD1BB29F7900BE2BA2 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
@@ -304,6 +314,12 @@
 		81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		81D83AE91BB29F7900BE2BA2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
+		8423E5631BB4E1A8006DC73B /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderPreModel.h; sourceTree = "<group>"; };
+		8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderPreModel.m; sourceTree = "<group>"; };
+		8423E56A1BB4E4EE006DC73B /* Veris Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Veris Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Veris_Tests.swift; sourceTree = "<group>"; };
+		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
@@ -314,7 +330,6 @@
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProviderOrdersJsonTest.json; sourceTree = "<group>"; };
 		84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderDataObtainer.swift; sourceTree = "<group>"; };
-		84D8ECDF1BB150660010E981 /* ProviderDataContainerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDataContainerTest.swift; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -464,10 +479,6 @@
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93D5A3611B709C1D00DDB158 /* AISBOSSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISBOSSTests.swift; sourceTree = "<group>"; };
-		93D5A3631B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93D5A36C1B709C1D00DDB158 /* AISBOSSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISBOSSUITests.swift; sourceTree = "<group>"; };
-		93D5A36E1B709C1D00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISecmeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
@@ -602,6 +613,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8423E5671BB4E4EE006DC73B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93D5A3461B709C1C00DDB158 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -741,6 +759,15 @@
 			name = JumpNumberLabel;
 			sourceTree = "<group>";
 		};
+		8423E56B1BB4E4EE006DC73B /* Veris Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */,
+				8423E56E1BB4E4EE006DC73B /* Info.plist */,
+			);
+			path = "Veris Tests";
+			sourceTree = "<group>";
+		};
 		8454E6F81BAFE9D800016AB3 /* SwitchService */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,8 +855,6 @@
 			children = (
 				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
 				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
-				81C092931BB0ED7C003FFF35 /* AIOrderPreModel.h */,
-				81C092941BB0ED7C003FFF35 /* AIOrderPreModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -1004,6 +1029,7 @@
 		93B25A281B9D78B000CD1FEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
 				93B25A291B9D78B000CD1FEB /* AINote.strings */,
 				93B25A2A1B9D78B000CD1FEB /* collectionData.json */,
 				93B25A2B1B9D78B000CD1FEB /* collectionData.plist */,
@@ -1216,8 +1242,7 @@
 			isa = PBXGroup;
 			children = (
 				93D5A34B1B709C1C00DDB158 /* AIVeris */,
-				93D5A3601B709C1D00DDB158 /* AISBOSSTests */,
-				93D5A36B1B709C1D00DDB158 /* AISBOSSUITests */,
+				8423E56B1BB4E4EE006DC73B /* Veris Tests */,
 				93D5A34A1B709C1C00DDB158 /* Products */,
 				9EBD244A350E2B6E580DEF64 /* Pods */,
 				61647BAFC7200B01794A2E67 /* Frameworks */,
@@ -1228,6 +1253,7 @@
 			isa = PBXGroup;
 			children = (
 				93D5A3491B709C1C00DDB158 /* Veris.app */,
+				8423E56A1BB4E4EE006DC73B /* Veris Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1253,25 +1279,6 @@
 			);
 			name = AIVeris;
 			path = AISBOSS;
-			sourceTree = "<group>";
-		};
-		93D5A3601B709C1D00DDB158 /* AISBOSSTests */ = {
-			isa = PBXGroup;
-			children = (
-				93D5A3611B709C1D00DDB158 /* AISBOSSTests.swift */,
-				93D5A3631B709C1D00DDB158 /* Info.plist */,
-				84D8ECDF1BB150660010E981 /* ProviderDataContainerTest.swift */,
-			);
-			path = AISBOSSTests;
-			sourceTree = "<group>";
-		};
-		93D5A36B1B709C1D00DDB158 /* AISBOSSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				93D5A36C1B709C1D00DDB158 /* AISBOSSUITests.swift */,
-				93D5A36E1B709C1D00DDB158 /* Info.plist */,
-			);
-			path = AISBOSSUITests;
 			sourceTree = "<group>";
 		};
 		93FA1D791B9C2E8D009965C8 /* iCarousel */ = {
@@ -1357,6 +1364,8 @@
 		93FA1E361B9C3E12009965C8 /* Seller */ = {
 			isa = PBXGroup;
 			children = (
+				8423E5631BB4E1A8006DC73B /* AIOrderPreModel.h */,
+				8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */,
 				93FA1E371B9C3E12009965C8 /* AISellerCell.h */,
 				93FA1E381B9C3E12009965C8 /* AISellerCell.m */,
 				93FA1E391B9C3E12009965C8 /* AISellerModel.h */,
@@ -1383,6 +1392,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8423E5691BB4E4EE006DC73B /* Veris Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8423E5711BB4E4EE006DC73B /* Build configuration list for PBXNativeTarget "Veris Tests" */;
+			buildPhases = (
+				8423E5661BB4E4EE006DC73B /* Sources */,
+				8423E5671BB4E4EE006DC73B /* Frameworks */,
+				8423E5681BB4E4EE006DC73B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8423E5701BB4E4EE006DC73B /* PBXTargetDependency */,
+			);
+			name = "Veris Tests";
+			productName = "Veris Tests";
+			productReference = 8423E56A1BB4E4EE006DC73B /* Veris Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		93D5A3481B709C1C00DDB158 /* AIVeris */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */;
@@ -1416,9 +1443,13 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "___ASIAINFO___";
 				TargetAttributes = {
+					8423E5691BB4E4EE006DC73B = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 93D5A3481B709C1C00DDB158;
+					};
 					93D5A3481B709C1C00DDB158 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 7674DAHWK4;
+						DevelopmentTeam = T2362RFKT6;
 					};
 				};
 			};
@@ -1436,11 +1467,19 @@
 			projectRoot = "";
 			targets = (
 				93D5A3481B709C1C00DDB158 /* AIVeris */,
+				8423E5691BB4E4EE006DC73B /* Veris Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8423E5681BB4E4EE006DC73B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93D5A3471B709C1C00DDB158 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1484,6 +1523,7 @@
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
+				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -1550,6 +1590,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8423E5661BB4E4EE006DC73B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93D5A3451B709C1C00DDB158 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1620,6 +1668,7 @@
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
+				8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */,
 				93C33F1A1B9BEAFE007BF506 /* AITools.m in Sources */,
 				12D795041BA9597400586011 /* AIScrollLabel.m in Sources */,
 				93FA1DC81B9C2F0F009965C8 /* UPLabel.m in Sources */,
@@ -1638,7 +1687,6 @@
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
-				81C092951BB0ED7C003FFF35 /* AIOrderPreModel.m in Sources */,
 				93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
@@ -1728,6 +1776,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8423E5701BB4E4EE006DC73B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93D5A3481B709C1C00DDB158 /* AIVeris */;
+			targetProxy = 8423E56F1BB4E4EE006DC73B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1772,6 +1828,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8423E5721BB4E4EE006DC73B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Veris Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AsiaInfo2020.Veris-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Veris.app/Veris";
+			};
+			name = Debug;
+		};
+		8423E5731BB4E4EE006DC73B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Veris Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AsiaInfo2020.Veris-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Veris.app/Veris";
+			};
+			name = Release;
+		};
 		93D5A36F1B709C1D00DDB158 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1937,6 +2017,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8423E5711BB4E4EE006DC73B /* Build configuration list for PBXNativeTarget "Veris Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8423E5721BB4E4EE006DC73B /* Debug */,
+				8423E5731BB4E4EE006DC73B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		93D5A3441B709C1C00DDB158 /* Build configuration list for PBXProject "AIVeris" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
