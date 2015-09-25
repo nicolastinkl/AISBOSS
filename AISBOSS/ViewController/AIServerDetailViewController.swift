@@ -57,6 +57,8 @@ class AIServerDetailViewController: UIViewController {
     
     private var priceDataSource = NSMutableArray()
     
+    private var coverflowDataSource = NSMutableArray()
+    
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
         data.title = "DAY"
@@ -232,6 +234,7 @@ class AIServerDetailViewController: UIViewController {
         
         //NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenAddViewNotification, object: nil)
         //self.navigationController?.popViewControllerAnimated(true)
+        
     }
     
     func closeCurrentSectionAction(sender: AnyObject) {
@@ -282,6 +285,7 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
                 }
                 return false
             })
+            
             if newAry?.count > 0 {
                  AIAlertView().showError("提示", subTitle: "不能添加重复便签", closeButtonTitle: "关闭", duration: 3)
                 return
@@ -319,8 +323,10 @@ extension AIServerDetailViewController : AOTagDelegate{
                 self.tableView.reloadData()
                 return
             }
-        }
-*/
+        }        
+        */
+        
+        
         
         /*
         let newArray = dataSource.filter { (fitlerModel) -> Bool in
@@ -469,7 +475,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.dataSource = ls
                     
                     cell.carousel.reloadData()
-
+                
+                    //let car = coverflowDataSource.objectAtIndex(indexPath.row)
+                    
                     return cell
                 }
                 

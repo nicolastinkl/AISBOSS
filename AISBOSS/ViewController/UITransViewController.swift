@@ -175,7 +175,7 @@ class UITransViewController: UIViewController {
         
         self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
         
-    } 
+    }
     
     override func viewDidAppear(animated: Bool) {
         
@@ -188,7 +188,6 @@ class UITransViewController: UIViewController {
     
     private func showNextViewController()
     {
-
         self.view.userInteractionEnabled = true
         if let data = self.dataSource {
             let model = data[selectIndex ?? 0]
@@ -350,8 +349,7 @@ extension UITransViewController: UIScrollViewDelegate {
             //show
             swipeView.setWidth(98.0)
             swipeView.setLeft(self.tableView.width - 98.0)
-        }         
- 
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
@@ -460,6 +458,7 @@ extension UITransViewController: SwipeableCellDelegate{
     }
     
     func cellDidClose(cell: UITableViewCell!) {
+        
         //self.tableView.scrollEnabled = true
         let superCell =  cell as! AICellIdentityCell
         self.tableView.scrollEnabled = true
