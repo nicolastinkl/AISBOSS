@@ -193,7 +193,7 @@ class AIServerDetailViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-       
+        
         // TAGS
         tags = AOTagList(frame: CGRectMake(0, 0, self.scrollView.width, 180))
         tags?.delegateTag = self
@@ -232,7 +232,6 @@ class AIServerDetailViewController: UIViewController {
         
         //NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenAddViewNotification, object: nil)
         //self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     func closeCurrentSectionAction(sender: AnyObject) {
@@ -245,7 +244,7 @@ class AIServerDetailViewController: UIViewController {
             self.dataSource.removeObjectAtIndex(s)
             self.tableView.reloadData()
         }
-     
+        
         /*
         let titl = tag.tTitle
         
@@ -292,13 +291,14 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
-          /*
+            
+            /*
             let data =  dataModel()
             data.title = value
             data.type = cellType.cellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
-            self.tableView.reloadData()
-            */
+            self.tableView.reloadData()*/
+            
         }
     }
 }
@@ -306,7 +306,6 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
 extension AIServerDetailViewController : AOTagDelegate{
 
     func tagDidRemoveTag(tag: AOTag!) {
-        
         
         /*
         let titl = tag.tTitle
@@ -346,7 +345,6 @@ extension AIServerDetailViewController : AOTagDelegate{
         
     }
     
-   
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
@@ -430,6 +428,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
                 return cell
+                
             }else{
                 
                 // TODO: 日期
@@ -493,7 +492,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     var tickets = [ServiceList]()
                     tickets.append(ServiceList())
-                    tickets.append(ServiceList())
+//                    tickets.append(ServiceList())
                     ticketGroupView.setTicketsData(tickets)
                     
                     return cell!
@@ -511,7 +510,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         switchView.reloadData()
                         switchView.setService(ls[indexPath.row])
                         switchView.switchDelegate = self
-
+                        
                     }else{
                         
                         let switchView = SwitchServiceView.createSwitchServiceView()
