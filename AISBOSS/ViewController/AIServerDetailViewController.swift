@@ -468,7 +468,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     cell.carousel.type = .CoverFlow2
                     cell.dataSource = ls
                     
-                    cell.carousel.reloadData()
+                    //cell.carousel.reloadData()
 
                     return cell
                 }
@@ -554,7 +554,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                     hori.delegate = self
                     return cell!
-                }                
+                }
             }
         }
         
