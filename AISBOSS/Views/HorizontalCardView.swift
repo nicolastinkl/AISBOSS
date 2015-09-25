@@ -29,7 +29,7 @@ class HorizontalCardView: UIView {
     // MARK: - init method
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //initEmptyCell()
+        initEmptyCell()
     }
     
     init(frame: CGRect,serviceListModelList : [ServiceList]) {
@@ -53,8 +53,8 @@ class HorizontalCardView: UIView {
     func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
         self.serviceListModelList = serviceListModelList
         self.multiSelect = multiSelect
-        buildLayout()
-        //buildReuseLayout()
+        //buildLayout()
+        buildReuseLayout()
     }
     
     func buildLayout(){

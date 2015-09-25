@@ -102,7 +102,8 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.textColor = UIColor.whiteColor()
         labelPrice.setLeft(self.view.width/2 - labelPrice.width/2)
         labelPrice.textAlignment = NSTextAlignment.Center
-        labelPrice.setTop(8)
+        labelPrice.font = UIFont.systemFontOfSize(23)
+        labelPrice.setTop(5)
         
     }
     
@@ -542,11 +543,12 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     })
 
                     let ls = NSArray(array: list) as! [ServiceList]
-                    let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                        let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                    var hori : HorizontalCardView
+                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                     if cell?.contentView.subviews.count > 0{
-                    
+                        hori = cell?.contentView.subviews[0] as! HorizontalCardView
                     }else{
+                        hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         cell?.contentView.addSubview(hori)
                     }
                     hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)

@@ -103,6 +103,32 @@
     
 }
 
+- (void)fakeHeaderPullRefreshAction
+{
+    dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
+    
+    dispatch_after(time_t, dispatch_get_main_queue(), ^{
+        
+        
+        [self makeFakeDatas];
+        [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
+        
+    });
+}
+
+- (void)fakeFooterPullRefreshAction
+{
+    dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
+    
+    dispatch_after(time_t, dispatch_get_main_queue(), ^{
+        
+        [self.tableView footerEndRefreshing];
+        
+    });
+}
+
+
 - (void)addRefreshActions
 {
     __weak typeof(self) weakSelf = self;
@@ -121,29 +147,14 @@
         
         // Fake Data
         
-        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
-        
-        dispatch_after(time_t, dispatch_get_main_queue(), ^{
-            
-            
-            [weakSelf makeFakeDatas];
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView headerEndRefreshing];
-            
-        });
+        [weakSelf fakeHeaderPullRefreshAction];
         
     }];
     
     
     [self.tableView addFooterWithCallback:^{
         
-        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
-        
-        dispatch_after(time_t, dispatch_get_main_queue(), ^{
-            
-            [weakSelf.tableView footerEndRefreshing];
-            
-        });
+        [weakSelf fakeFooterPullRefreshAction];
         
     }];
 }
