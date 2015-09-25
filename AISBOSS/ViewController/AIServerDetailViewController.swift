@@ -466,11 +466,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                     cell.delegate = self
                     cell.carousel.type = .CoverFlow2
-                    
                     cell.dataSource = ls
                     
                     cell.carousel.reloadData()
-                    
+
                     return cell
                 }
                 
@@ -547,7 +546,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     var hori : HorizontalCardView
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                     if cell?.contentView.subviews.count > 0{
-                        hori = cell?.contentView.subviews[0] as! HorizontalCardView
+                        hori = cell?.contentView.subviews.first as! HorizontalCardView
                     }else{
                         hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                         cell?.contentView.addSubview(hori)
@@ -555,8 +554,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                     hori.delegate = self
                     return cell!
-                }
-                
+                }                
             }
         }
         
@@ -573,7 +571,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             self.showDetailViewController(menuViewController, sender: self)
         }
     }
-    
 }
 
 // MARK: CELL
