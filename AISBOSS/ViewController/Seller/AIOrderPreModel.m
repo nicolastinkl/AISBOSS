@@ -23,6 +23,12 @@
 @end
 
 
+@implementation AIServiceParamModel
+
+
+
+@end
+
 @implementation AIProgressModel
 
 
@@ -39,13 +45,6 @@
 @end
 
 @implementation AIServiceCategoryModel
-
-
-
-@end
-
-
-@implementation AIParamModel
 
 
 

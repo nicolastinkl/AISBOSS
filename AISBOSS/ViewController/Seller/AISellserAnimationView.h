@@ -12,14 +12,13 @@
 
 @interface AISellserAnimationView : UIView
 
-/*!
- *  @author tinkl, 15-09-23 15:09:22
- */
 @property (nonatomic, weak) AISellerViewController *sellerViewController;
-
 /**
  * 说明：增加卖家主页开场动画
+ *
+ *
  */
+
 + (void)startAnimationOnSellerViewController:(AISellerViewController *)sellerViewController;
 
 

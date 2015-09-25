@@ -13,7 +13,7 @@
 #import "AITools.h"
 #import "AIScrollLabel.h"
 #import "UIImageView+WebCache.h"
-
+#import "AIOrderPreModel.h"
 
 #define kMargin5    5
 
@@ -281,13 +281,14 @@
     }
 }
 
-- (void)setProgressBarContent:(NSDictionary *)content
+- (void)setProgressBarModel:(AIProgressModel *)model
 {
-    if (!content) {
+    [_progressBar setHidden:model == nil];
+    if (!model) {
         return;
     }
     
-    [_progressBar setProgressContent:content];
+    [_progressBar setProgressModel:model];
     [self setLineWithColorType:_curColorType];
     
 }
@@ -577,8 +578,8 @@
 #pragma mark - 价格
 - (void)makePrice
 {
-    _price = [AIViews normalLabelWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:18 color:[UIColor whiteColor]];
-    _price.font = [UIFont boldSystemFontOfSize:18];
+    _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:22 color:[UIColor whiteColor]];
+    _price.font = [UIFont boldSystemFontOfSize:22];
     _price.textAlignment = NSTextAlignmentRight;
     [_boardView addSubview:_price];
 }
@@ -594,6 +595,32 @@
 }
 
 
+- (void)setServiceCategory:(AIOrderPreModel *)model
+{
+    if (model.service_category.category_icon) {
+        [_goodsIndicator sd_setImageWithURL:[NSURL URLWithString:model.service_category.category_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+    }
+    
+    
+    NSString *name = model.service_category.category_name ?: @"";
+    
+    NSString *service = model.service.service_name ?: @"";
+    
+    CGRect nameFrame = _goodsClass.frame;
+    CGRect serviceFrame = _goodsName.frame;
+    
+    name = [NSString stringWithFormat:@"%@ - ", name];
+    CGSize nameSize = [name sizeWithFontSize:kSmallFontSize forWidth:CGRectGetWidth(_boardView.frame)];
+    nameFrame.size.width = nameSize.width;
+    _goodsClass.frame = nameFrame;
+    _goodsClass.text = name;
+    
+    serviceFrame.origin.x = CGRectGetMaxX(_goodsClass.frame);
+    _goodsName.frame = serviceFrame;
+    _goodsName.text = service;
+    
+}
+
 - (void)makeGoodsInfoView
 {
     CGFloat containerHeight = CGRectGetHeight(_iconContainer.frame) / 2;
@@ -601,7 +628,7 @@
     CGFloat yoffset = 1.5;
     CGFloat width = CGRectGetWidth(_boardView.frame);
     // indicator
-    UIImage *indicator = [UIImage imageNamed:@"CardIndicator14"];
+    UIImage *indicator = [UIImage imageNamed:@"Placehold"];
     _goodsIndicator = [[UIImageView alloc] initWithImage:indicator];
     _goodsIndicator.frame = CGRectMake(x, containerHeight + (containerHeight-kSmallImageSize)/2 - yoffset, kSmallImageSize, kSmallImageSize);
     [_boardView addSubview:_goodsIndicator];

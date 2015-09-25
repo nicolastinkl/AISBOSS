@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class AIProgressModel;
+
 @interface AISellingProgressBar : UIView
 
 @property (nonatomic, readonly) UILabel *progressLabel;
@@ -17,7 +20,7 @@
 @property (nonatomic, assign) NSInteger progressPercent;
 
 
-- (void)setProgressContent:(NSDictionary *)content;
+- (void)setProgressModel:(AIProgressModel *)model;
 
 
 @end

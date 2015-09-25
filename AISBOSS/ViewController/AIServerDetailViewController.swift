@@ -102,7 +102,8 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.textColor = UIColor.whiteColor()
         labelPrice.setLeft(self.view.width/2 - labelPrice.width/2)
         labelPrice.textAlignment = NSTextAlignment.Center
-        labelPrice.setTop(8)
+        labelPrice.font = UIFont.systemFontOfSize(23)
+        labelPrice.setTop(5)
         
     }
     
