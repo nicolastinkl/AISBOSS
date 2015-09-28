@@ -18,11 +18,13 @@ typedef NS_ENUM(NSInteger, SellerCellColorType) {
 
 typedef NS_ENUM(NSInteger, SellerButtonType) {
     SellerButtonTypeNone = 0,
-    SellerButtonTypePhone,
-    SellerButtonTypeOpposite,
-    SellerButtonTypeLocate,
-    SellerButtonTypeCapture,
-};
+    SellerButtonTypePhone = 1,       //打电话
+    SellerButtonTypeCapture = 2,     //扫描
+    SellerButtonTypeRecord = 3,      //录音
+    SellerButtonTypeOpposite = 4,    //查看详情
+    SellerButtonTypeLocate = 8,      //定位
+    
+    };
 
 @class AIOrderPreModel;
 @class AIProgressModel;
