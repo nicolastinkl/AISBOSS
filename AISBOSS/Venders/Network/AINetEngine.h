@@ -15,11 +15,13 @@ typedef NS_ENUM(NSInteger, AINetError) {
     AINetErrorCancelled,                      // 网络请求取消
 };
 
-typedef void(^net_success_block)(NSDictionary *response);
+typedef void(^net_success_block)(id responseObject);
 typedef void(^net_fail_block)(AINetError error, NSString *errorDes);
 
 
 @interface AINetEngine : NSObject
+
+
 
 /*说明:获取网络单例
  */
@@ -41,5 +43,13 @@ typedef void(^net_fail_block)(AINetError error, NSString *errorDes);
 /*说明:取消所有请求
  */
 - (void)cancelAllMessages;
+
+/*说明:增加默认header
+ */
+- (void)configureCommonHeaders:(NSDictionary *)header;
+
+/*说明:删除默认header
+ */
+- (void)removeCommonHeaders;
 
 @end

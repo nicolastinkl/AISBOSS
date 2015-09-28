@@ -7,7 +7,6 @@
 //
 
 #import "AINetEngine.h"
-//#import "AITrans-Swift.h"
 #import "AFNetworking.h"
 
 #define kTimeoutIntervalForRequest     60
@@ -16,7 +15,7 @@
 #define kKeyForData                    @"data"
 #define kKeyForResultCode              @"result_code"
 #define kKeyForResultMsg               @"result_msg"
-#define kSuccessCode                   1
+#define kSuccessCode                   @"200"
 
 @interface AINetEngine ()
 {
@@ -25,6 +24,8 @@
     AFHTTPSessionManager *_sessionManager;
     
 }
+
+@property (nonatomic, strong) NSMutableDictionary *commonHeaders;
 
 @end
 
@@ -54,6 +55,7 @@
         
         _sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
         _sessionManager.responseSerializer = [[AFJSONResponseSerializer alloc] init];
+        self.commonHeaders = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -61,16 +63,19 @@
 
 - (void)addHeaders:(NSDictionary *)headers
 {
-    for (NSString *key in headers.allKeys) {
-        id value = [headers objectForKey:key];
+    NSMutableDictionary *allHeaders = [[NSMutableDictionary alloc] init];
+    [allHeaders addEntriesFromDictionary:self.commonHeaders];
+    [allHeaders addEntriesFromDictionary:headers];
+    
+    NSLog(@"allHeaders:%@\n", allHeaders);
+    
+    for (NSString *key in allHeaders.allKeys) {
+        id value = [allHeaders objectForKey:key];
         [_sessionManager.requestSerializer setValue:value forHTTPHeaderField:key];
     }
 }
 
-- (void)removeHeaders:(NSDictionary *)headers
-{
-    
-}
+
 
 #pragma mark - 发送POST请求
 
@@ -78,7 +83,7 @@
 {
     // 设置头部
     [self addHeaders:message.header];
-
+    
     __weak typeof(self) weakSelf = self;
     NSURLSessionDataTask *curTask = [_sessionManager POST:message.url parameters:message.body success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf parseSuccessResponseWithTask:task
@@ -94,7 +99,7 @@
     // 添加到task队列
     message.uniqueID = curTask.taskIdentifier;
     [_activitedTask addObject:curTask];
-
+    
 }
 
 #pragma mark - 发送GET请求
@@ -115,7 +120,7 @@
                                       error:error
                                     success:success
                                        fail:fail];
-
+        
     }];
     
     // 添加到task队列
@@ -149,6 +154,22 @@
     [_activitedTask removeAllObjects];
 }
 
+
+#pragma mark - 设置通用header
+
+#pragma mark - 增加默认header
+
+- (void)configureCommonHeaders:(NSDictionary *)header
+{
+    [self.commonHeaders addEntriesFromDictionary:header];
+}
+
+
+- (void)removeCommonHeaders
+{
+    [self.commonHeaders removeAllObjects];
+}
+
 #pragma mark - Member Method
 
 - (void)removeCompletedTask:(NSURLSessionDataTask *)task
@@ -167,12 +188,19 @@
         fail(AINetErrorFormat, @"报文格式错误");
     }
     
+#ifdef DEBUG
+    
+    NSLog(@"\n======HTTPResponse======\n%@\n============\n", response);
+    
+#endif
+    
     NSDictionary *des = [response objectForKey:kKeyForDesc];
+    id returnResponseObject = [response objectForKey:kKeyForData];
     
-    NSNumber *resultCode = [des objectForKey:kKeyForResultCode];
+    NSString *resultCode = [des objectForKey:kKeyForResultCode];
     
-    if ([resultCode isEqualToNumber:[NSNumber numberWithInteger:kSuccessCode]] && success) {
-        success(response);
+    if ([resultCode isEqualToString:kSuccessCode] && success) {
+        success(returnResponseObject);
     }
     else
     {

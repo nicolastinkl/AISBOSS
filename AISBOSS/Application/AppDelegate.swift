@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        initNetEngine()
         //创建Root
         let root = AIRootViewController()
         
@@ -34,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBarHidden = true
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
-        
+          
         return true
     }
 
@@ -58,6 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+    
+    private func initNetEngine() {
+        let timeStamp: Int = 0
+        let token = "0"
+        let RSA = "0"
+        
+        let headerContent = "\(timeStamp)&" + token + "&" + "0" + "&" + RSA
+        
+        let header = ["HttpQuery": headerContent]
+        AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
 
 

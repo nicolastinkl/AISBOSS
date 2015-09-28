@@ -42,16 +42,16 @@ class BDKProviderDataObtainer: MockProviderDataObtainer {
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
-                let model = try AIOrderPreListModel(dictionary: response)
+                let dic = response as! [NSObject : AnyObject]
+                let model = try AIOrderPreListModel(dictionary: dic)
                 success(responseData: model)
             } catch {
                 fail(errType: AINetError.Format, errDes: "AIOrderPreListModel JSON Parse error.")
             }
             
-            }) { (error:AINetError, errorDes:String!) -> Void in
-                
+            }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
-        
+ 
     }
 }

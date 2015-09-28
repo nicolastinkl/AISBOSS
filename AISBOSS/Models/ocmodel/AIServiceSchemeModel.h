@@ -24,8 +24,8 @@
 @interface ServicePrice : JSONModel
 
 @property (strong, nonatomic) NSNumber<Optional> * price;  //价格数值
-@property (assign, nonatomic) int unit;     //价格单位 1-人民币 2-美元
-@property (assign, nonatomic) int billing_mode; //计价方式 1.按次数2.按小时3.按天
+@property (strong, nonatomic) NSString<Optional> * unit;     //价格单位 1-人民币 2-美元
+@property (strong, nonatomic) NSString<Optional> * billing_mode; //计价方式 1.按次数2.按小时3.按天
 @property (strong, nonatomic) NSString<Optional> * price_show;   //显示用价格
 
 @end
@@ -47,10 +47,12 @@
 
 @interface Catalog : JSONModel
 
+@property (nonatomic, assign) NSInteger catalog_id;
+@property (nonatomic, assign) NSInteger select_flag;
+@property (nonatomic, assign) NSInteger binding_flag;
+@property (nonatomic, assign) NSInteger service_level; //1-轮播 2-平铺 3-开关 4-单个（机票）
 @property (strong, nonatomic) NSNumber<Optional> * relevant_level;
 @property (strong, nonatomic) NSString<Optional> * catalog_name;
-@property (strong, nonatomic) NSNumber<Optional> * service_level; //1-轮播 2-平铺 3-开关 4-单个（机票）
-@property (strong, nonatomic) NSNumber<Optional> * binding_flag;
 @property (strong, nonatomic) NSArray<ServiceList *> * service_list;
 
 @end
@@ -62,7 +64,7 @@
  */
 @interface AIServiceSchemeModel : JSONModel
 
-@property (strong, nonatomic) NSArray<SchemeParamList *> * scheme_param_list;
+@property (strong, nonatomic) NSArray<SchemeParamList *> * param_list;
 @property (strong, nonatomic) NSArray<Catalog *> * catalog_list;
 
 @end
