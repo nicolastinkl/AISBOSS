@@ -33,7 +33,7 @@ import Cartography
 
 class AirTicketGroupView: UIView {
     
-    
+    private var ticketCount: Int = 0
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -43,12 +43,19 @@ class AirTicketGroupView: UIView {
     }
     */
     
-    func setTicketsData(ticket: [ServiceList]) {
+    
+
+    
+    func setTicketsData(tickets: [ServiceList]) {
+        ticketCount = tickets.count
+        
         var preTicket: AirTicketView?
         
-        for var index = 0; index < ticket.count; ++index {
+        for var index = 0; index < tickets.count; ++index {
             let nib = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
             let ticket: AirTicketView = nib.first as! AirTicketView
+            
+            ticket.setTicketData(tickets[index])
             self.addSubview(ticket)
             
             if index == 0 {
@@ -71,7 +78,14 @@ class AirTicketGroupView: UIView {
     }
     
     func getViewHeight() -> CGFloat {
-        return AirTicketView.TICKET_HEAD_HEIGHT + AirTicketView.TICKET_HEIGHT
+        switch ticketCount {
+        case 0:
+            return 0
+        case 1:
+            return AirTicketView.TICKET_HEIGHT
+        default:
+            return AirTicketView.TICKET_HEAD_HEIGHT + AirTicketView.TICKET_HEIGHT * CGFloat(ticketCount - 1)
+        }
     }
 
 }
