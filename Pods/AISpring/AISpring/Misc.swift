@@ -26,7 +26,11 @@ public extension String {
     public var length: Int { return self.characters.count }
 
     public func toURL() -> NSURL? {
-        return NSURL(string: self)
+        if self.length > 5 {
+            return NSURL(string: self)
+        }
+        return  NSURL(string:"http://tinkl.qiniudn.com/tinklUpload_Placehold@2x.png")
+
     }
 }
 
