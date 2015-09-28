@@ -646,9 +646,13 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
-            let costom:ServiceList = dataSource![index]
-            coverView.fillDataWithModel(costom)
-            view = coverView
+            if let data = dataSource {
+                let costom = data[index] as ServiceList?
+                if let comt = costom {
+                    coverView.fillDataWithModel(comt)
+                    view = coverView
+                }
+            }
             
         }
         /*        

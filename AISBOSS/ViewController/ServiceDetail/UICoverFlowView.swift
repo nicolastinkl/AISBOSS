@@ -36,9 +36,9 @@ class UICoverFlowView: UIView {
         
         starRateView.scorePercent = CGFloat(model.service_rating!)
         avatorImageview.maskWithEllipse()
-        lableTitle.text = model.service_name
-        lableContent.text = model.service_intro
-        labelPrice.text = model.service_price.price_show
+        lableTitle.text = model.service_name ?? ""
+        lableContent.text = model.service_intro ?? ""
+        labelPrice.text = model.service_price.price_show ?? ""
         imageview.setURL(model.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))        
         avatorImageview.setURL(model.provider_icon?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
         labelNick.text = model.provider_name
