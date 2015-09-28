@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, SellerButtonType) {
 
 @property (nonatomic, readonly) AISellingProgressBar *progressBar;
 
-
+@property (nonatomic, strong) NSString *userPhone;
 
 + (CGFloat)expandHeight;
 

@@ -384,6 +384,7 @@
         }
     }
     
+    cell.userPhone = model.customer.user_phone;
     cell.timestamp.text = time;
     cell.location.text = address;
     [cell setBackgroundColorType:[self orderState:model.order_state]];

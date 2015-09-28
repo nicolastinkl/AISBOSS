@@ -347,7 +347,7 @@
 
 - (void)buttonAction:(UIButton *)button
 {
-    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"10086"]];
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.userPhone?:@"空号"]];
     [_telWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
 
 }
