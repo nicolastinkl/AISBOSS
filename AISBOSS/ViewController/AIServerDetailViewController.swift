@@ -497,8 +497,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             coverflowDataSource.setValue(cell, forKey: tit)
                             return cell
                         }
-                    }    
-                    
+                    }
                 }
                 
                 // TODO: 机票信息
