@@ -170,7 +170,7 @@ extension UIView {
         loadingXibView.frame = self.bounds
         loadingXibView.tag = AIApplication.AIViewTags.loadingProcessTag
         loadingXibView.backgroundColor = UIColor.clearColor()
-        loadingXibView.color = UIColor.whiteColor()//UIColor(rgba: AIApplication.AIColor.MainSystemBlueColor)
+        loadingXibView.color = UIColor(rgba: AIApplication.AIColor.MainSystemBlueColor)
         loadingXibView.hidesWhenStopped = true
         self.addSubview(loadingXibView)
 

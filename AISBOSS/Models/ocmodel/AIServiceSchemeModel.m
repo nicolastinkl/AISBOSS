@@ -10,26 +10,69 @@
 
 @implementation SchemeParamList
 
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 
 @end
 
 @implementation ServicePrice
 
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
 
 @end
 
 @implementation ServiceList
 
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
 
 @end
 
 @implementation Catalog
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
 
 
 @end
 
 @implementation AIServiceSchemeModel
+
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
 
 
 @end

@@ -60,12 +60,7 @@ class AIServerDetailViewController: UIViewController {
     private var coverflowDataSource = NSMutableDictionary()
     private var horiListDataSource = NSMutableDictionary()
     
-    private lazy var dataSource : NSMutableArray = {
-        var data =  dataModel()
-        data.title = "DAY"
-        data.type = cellType.cellTypeDate
-        return NSMutableArray(array: [data])
-        }()
+    private var dataSource : NSMutableArray = NSMutableArray()
     
     private var schemeModel:AIServiceSchemeModel?
     
@@ -73,15 +68,6 @@ class AIServerDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.labelView.text = titleString ?? ""
-        
-        if let arrrays = titleArray {
-            for item in arrrays {
-                let data =  dataModel()
-                data.title = item
-                data.type = cellType.cellTypeCoverflow
-                //self.dataSource.insertObject(data, atIndex: 1)
-            }
-        }
         
         //init searchView
         serviceSearchView = AIServiceSearchView.currentView()
@@ -92,17 +78,8 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
         
-        Async.userInitiated {
-            let dataObtainer: SchemeDataObtainer = MockchemeDataObtainer()
-            
-            dataObtainer.getServiceSchemes(123, success: { (responseData) -> Void in
-                self.schemeModel = responseData
-                self.reloadInputData()
-                }) { (errType, errDes) -> Void in
-                    
-            }
-        }
- 
+        retryNetworkingAction()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
         
         self.priceView.addSubview(labelPrice)
@@ -112,6 +89,26 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.font = UIFont.systemFontOfSize(23)
         labelPrice.setTop(5)
         
+    }
+    
+    func retryNetworkingAction(){
+
+        self.view.hideErrorView()
+        self.view.showProgressViewLoading()
+        Async.userInitiated {
+            let dataObtainer: SchemeDataObtainer = BDKSchemeDataObtainer()
+            dataObtainer.getServiceSchemes(223, success: { (responseData) -> Void in
+
+                self.view.hideProgressViewLoading()
+                self.schemeModel = responseData
+                self.reloadInputData()
+                
+                }) { (errType, errDes) -> Void in
+                    print(errDes)
+                    self.view.hideProgressViewLoading()
+                    self.view.showErrorView()
+            }
+        }
     }
     
     func changePriceToNew(model:chooseItemModel){
@@ -143,6 +140,25 @@ class AIServerDetailViewController: UIViewController {
     }
     
     func reloadInputData() {
+//        
+//        if let arrrays = titleArray {
+//            for item in arrrays {
+//                let data =  dataModel()
+//                data.title = item
+//                data.type = cellType.cellTypeCoverflow
+//                //self.dataSource.insertObject(data, atIndex: 1)
+//            }
+//        }
+//        
+        localCode { () -> () in
+            
+            let data =  dataModel()
+            data.title = "DAY"
+            data.type = cellType.cellTypeDate
+            self.dataSource.addObject(data)
+            
+        }
+        
         
         if let scheme = self.schemeModel {
             NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
@@ -460,17 +476,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 
-                let list = NSMutableArray()
+                /// Parser Json Object.
                 let modelArray = model.placeHolderModel as! NSMutableArray
-                modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
-                    do{
-                        let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                        list.addObject(model)
-                    }catch{
-                    }
-                })
                 
-                let ls = NSArray(array: list) as! [ServiceList]
+                let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
+                
                 
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
@@ -526,7 +536,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         
                         let switchView = cell?.contentView.subviews.last as! SwitchServiceView                        
                         switchView.reloadData()
-                        switchView.setService(ls[indexPath.row])
+                        if ls.count > 0 && ls.count > indexPath.row {
+                            switchView.setService(ls[indexPath.row])
+                        }
                         switchView.switchDelegate = self
                         
                     }else{
@@ -539,8 +551,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             switchView.right == switchView.superview!.right
                             switchView.height == SwitchServiceView.HEIGHT
                         }
+                        if ls.count > 0 && ls.count > indexPath.row {
+                            switchView.setService(ls[indexPath.row])
+                        }
                         
-                        switchView.setService(ls[indexPath.row])
                         switchView.reloadData()
                         switchView.switchDelegate = self
                     }
@@ -556,18 +570,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             return cacheCell
                         }else{
                             
-                            
-                            let list = NSMutableArray()
-                            let modelArray = model.placeHolderModel as! NSMutableArray
-                            modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
-                                do{
-                                    let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                                    list.addObject(model)
-                                }catch{
-                                }
-                            })
-                            
-                            let ls = NSArray(array: list) as! [ServiceList]
                             var hori : HorizontalCardView
                             let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                             if cell?.contentView.subviews.count > 0{

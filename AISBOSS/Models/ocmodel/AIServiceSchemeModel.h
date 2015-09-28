@@ -35,7 +35,7 @@
 @property (assign, nonatomic) NSInteger service_id;
 @property (strong, nonatomic) NSString<Optional> * service_name;
 @property (strong, nonatomic) NSString<Optional> * service_intro;
-@property (assign, nonatomic) NSInteger provider_id;
+@property (assign, nonatomic) NSInteger            provider_id;
 @property (strong, nonatomic) NSString<Optional> * provider_name;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
 @property (strong, nonatomic) NSString<Optional> * provider_icon;

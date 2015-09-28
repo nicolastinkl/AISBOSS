@@ -109,6 +109,11 @@ class HorizontalCardView: UIView {
         
         //build cell
         for serviceListModel : ServiceList in serviceListModelList{
+            
+            if cardCellViewList.count == index {
+                return
+            }
+            
             var cellFrame:CGRect!
             let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
             cardCellView.hidden = false
