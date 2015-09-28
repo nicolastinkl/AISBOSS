@@ -79,6 +79,11 @@
     if (model.icon.length > 0) {
         [_progressIndicator sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
     }
+    else
+    {
+        _progressIndicator.image = nil;
+    }
+    
     
     _progressLabel.text = model.name;
     CGRect frame = _progressIndicator.frame;

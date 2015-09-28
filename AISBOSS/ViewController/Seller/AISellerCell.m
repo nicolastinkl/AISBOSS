@@ -600,6 +600,10 @@
     if (model.service_category.category_icon) {
         [_goodsIndicator sd_setImageWithURL:[NSURL URLWithString:model.service_category.category_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
     }
+    else
+    {
+        _goodsIndicator.image = nil;
+    }
     
     
     NSString *name = model.service_category.category_name ?: @"";
