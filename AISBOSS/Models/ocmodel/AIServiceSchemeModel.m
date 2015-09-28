@@ -21,6 +21,22 @@
 
 @end
 
+@implementation ServiceProvider
+
+
+//Make all model properties optional (avoid if possible)
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
+
+-(instancetype)initWithDictionary:(NSDictionary*)dict {
+    return (self = [[super init] initWithDictionary:dict error:nil]);
+}
+
+
+@end
+
 @implementation ServicePrice
 
 //Make all model properties optional (avoid if possible)

@@ -80,7 +80,7 @@ class CardCellView: UIView {
         serviceRatingView.addSubview(starRateView!)
        //(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL);
         
-        if let url = serviceListModel.service_img {
+        if let url = serviceListModel.service_intro_img {
             serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: UIImage(named: "Placehold"),completed:{
                 (image,error,cacheType,imageURL) -> Void in
                 if let _ = image {
@@ -102,7 +102,7 @@ class CardCellView: UIView {
         self.serviceListModel = serviceListModel
         servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
-        serviceImg.sd_setImageWithURL(serviceListModel.service_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
+        serviceImg.sd_setImageWithURL(serviceListModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
             if let _ = image {
                 self.originBackgroundImg = image
