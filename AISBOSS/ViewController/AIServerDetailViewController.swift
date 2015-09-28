@@ -402,7 +402,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case cellType.cellTypeCoverflow:
                 return 190
             case cellType.cellTypeFilght:
-                return 260
+                return 150
             case cellType.cellTypeparames:
                 return 100
             case cellType.cellTypeMutiChoose:

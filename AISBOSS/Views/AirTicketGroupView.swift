@@ -32,6 +32,8 @@ import UIKit
 import Cartography
 
 class AirTicketGroupView: UIView {
+    
+    
 
     /*
     // Only override drawRect: if you perform custom drawing.
