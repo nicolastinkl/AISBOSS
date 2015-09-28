@@ -67,7 +67,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = titleString ?? ""
+        self.labelView.text = "Services to Your Linking"//titleString ?? ""
         
         //init searchView
         serviceSearchView = AIServiceSearchView.currentView()
@@ -157,8 +157,7 @@ class AIServerDetailViewController: UIViewController {
             data.type = cellType.cellTypeDate
             self.dataSource.addObject(data)
             
-        }
-        
+        }        
         
         if let scheme = self.schemeModel {
             NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
@@ -481,6 +480,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
                 
+                logInfo(args: ls)
                 
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {

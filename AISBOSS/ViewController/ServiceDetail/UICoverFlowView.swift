@@ -28,7 +28,7 @@ class UICoverFlowView: UIView {
     }
     
     func fillDataWithModel(model: ServiceList){
-        
+        print("fillDataWithModel : \(model)")
         let starRateView = CWStarRateView(frame: CGRectMake(22, 0, AIApplication.AIStarViewFrame.width, AIApplication.AIStarViewFrame.height), numberOfStars: 5)
         if starView.subviews.count <= 0 {
             starView.addSubview(starRateView)
