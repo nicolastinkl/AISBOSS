@@ -86,8 +86,8 @@
     AIMessage *message = [AIMessage message];
     
     message.url = @"http://ip:portget/sbss/ServiceCalendarMgr";
-    [message.body setObject:[NSNumber numberWithInteger:userID] forKey:@"user_id"];//order_role
-    [message.body setObject:[NSNumber numberWithInteger:role] forKey:@"order_role"];
+    //[message.body setObject:[NSNumber numberWithInteger:userID] forKey:@"user_id"];//order_role
+    //[message.body setObject:[NSNumber numberWithInteger:role] forKey:@"order_role"];
     
     return message;
 }
@@ -105,45 +105,48 @@
 
 - (void)addRefreshActions
 {
+    
+    
+    /**
+     
+     {
+     "data": {
+     "order_state": "0",
+     "order_role": "2"
+     },
+     "desc": {
+     "data_mode": "0",
+     "digest": ""
+     }
+     }
+     
+     */
+    
     __weak typeof(self) weakSelf = self;
     [self.tableView addHeaderWithCallback:^{
         
+        NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
+                              @"desc": @{@"data_mode": @"0",@"digest": @""}};
         
-        /*
-        AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:1];
+        AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
+        [message.body addEntriesFromDictionary:dic];
+        message.url = @"http://171.221.254.231:3000/querySellerOrderList";
         
         [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
+            NSLog(@"%@", response);
+            
+            weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
+            
             [weakSelf.tableView headerEndRefreshing];
         } fail:^(AINetError error, NSString *errorDes) {
             [weakSelf.tableView headerEndRefreshing];
         }];
-         */
-        
-        // Fake Data
-        
-        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
-        
-        dispatch_after(time_t, dispatch_get_main_queue(), ^{
-            
-            
-            [weakSelf makeFakeDatas];
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView headerEndRefreshing];
-            
-        });
-        
+    
     }];
     
     
     [self.tableView addFooterWithCallback:^{
-        
-        dispatch_time_t time_t = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2);
-        
-        dispatch_after(time_t, dispatch_get_main_queue(), ^{
-            
-            [weakSelf.tableView footerEndRefreshing];
-            
-        });
+        [weakSelf.tableView footerEndRefreshing];
         
     }];
 }
