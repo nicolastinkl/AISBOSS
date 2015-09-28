@@ -57,7 +57,8 @@ class AIServerDetailViewController: UIViewController {
     
     private var priceDataSource = NSMutableArray()
     
-    private var coverflowDataSource = NSMutableArray()
+    private var coverflowDataSource = NSMutableDictionary()
+    private var horiListDataSource = NSMutableDictionary()
     
     private lazy var dataSource : NSMutableArray = {
         var data =  dataModel()
@@ -469,16 +470,21 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
-                    cell.delegate = self
-                    cell.carousel.type = .CoverFlow2
-                    cell.dataSource = ls
                     
-                    cell.carousel.reloadData()
-                
-                    //let car = coverflowDataSource.objectAtIndex(indexPath.row)
+                    if let tit  = model.title {
+                        if let cacheCell = coverflowDataSource.valueForKey(tit) as! AISDSubDetailCell? {
+                            return cacheCell
+                        }else{
+                            let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                            cell.delegate = self
+                            cell.carousel.type = .CoverFlow2
+                            cell.dataSource = ls
+                            cell.carousel.reloadData()
+                            coverflowDataSource.setValue(cell, forKey: tit)
+                            return cell
+                        }
+                    }    
                     
-                    return cell
                 }
                 
                 // TODO: 机票信息
@@ -540,28 +546,44 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 // TODO: 多选 or 单选
                 if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
-                    let list = NSMutableArray()
-                    let modelArray = model.placeHolderModel as! NSMutableArray
-                    modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
-                        do{
-                            let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
-                            list.addObject(model)                            
-                        }catch{
-                        }
-                    })
                     
-                    let ls = NSArray(array: list) as! [ServiceList]
-                    var hori : HorizontalCardView
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                    if cell?.contentView.subviews.count > 0{
-                        hori = cell?.contentView.subviews.first as! HorizontalCardView
-                    }else{
-                        hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                        cell?.contentView.addSubview(hori)
+                    if let tit  = model.title {
+                        if let cacheCell = horiListDataSource.valueForKey(tit) as! UITableViewCell? {
+                            return cacheCell
+                        }else{
+                            
+                            
+                            let list = NSMutableArray()
+                            let modelArray = model.placeHolderModel as! NSMutableArray
+                            modelArray.enumerateObjectsUsingBlock({ (modelObj, index, bol) -> Void in
+                                do{
+                                    let model = try ServiceList(dictionary: modelObj as! [NSObject : AnyObject])
+                                    list.addObject(model)
+                                }catch{
+                                }
+                            })
+                            
+                            let ls = NSArray(array: list) as! [ServiceList]
+                            var hori : HorizontalCardView
+                            let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                            if cell?.contentView.subviews.count > 0{
+                                hori = cell?.contentView.subviews.first as! HorizontalCardView
+                            }else{
+                                hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
+                                cell?.contentView.addSubview(hori)
+                            }
+                            hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            hori.delegate = self
+                            
+                            horiListDataSource.setValue(cell, forKey: tit)
+                            
+                            return cell!
+                            
+                        }
+                    
                     }
-                    hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
-                    hori.delegate = self
-                    return cell!
+                    
+                    
                 }
             }
         }
