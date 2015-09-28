@@ -30,19 +30,31 @@
 
 @end
 
+
+@interface ServiceProvider : JSONModel
+
+@property (assign, nonatomic) NSInteger            provider_id;
+@property (strong, nonatomic) NSString<Optional> * provider_name;
+@property (strong, nonatomic) NSString<Optional> * provider_portrait_icon;
+
+@end
+
+
+
 @interface ServiceList : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
 @property (strong, nonatomic) NSString<Optional> * service_name;
 @property (strong, nonatomic) NSString<Optional> * service_intro;
-@property (assign, nonatomic) NSInteger provider_id;
-@property (strong, nonatomic) NSString<Optional> * provider_name;
+@property (assign, nonatomic) NSInteger            provider_id;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
-@property (strong, nonatomic) NSString<Optional> * provider_icon;
-@property (strong, nonatomic) NSString<Optional> * service_img;
+@property (strong, nonatomic) NSString<Optional> * service_intro_img;
 @property (strong, nonatomic) NSArray<SchemeParamList *> * service_param_list;
 @property (strong, nonatomic) ServicePrice<Optional> * service_price;
+@property (strong, nonatomic) ServiceProvider<Optional> * service_provider;
+
 @end
+
 
 
 @interface Catalog : JSONModel

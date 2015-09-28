@@ -15,7 +15,7 @@ protocol HorizontalCardViewDelegate {
 
 class HorizontalCardView: UIView {
     
-    var serviceListModelList : [ServiceList]!
+    var serviceListModelList : Array<ServiceList>!
     var cardCellViewList = Array<CardCellView>()
     var delegate : AISchemeProtocol?
     var multiSelect = false
@@ -52,6 +52,9 @@ class HorizontalCardView: UIView {
     // MARK: - build method
     func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
         self.serviceListModelList = serviceListModelList
+        if serviceListModelList.count > maxCellNumber{
+            self.serviceListModelList.removeRange(Range(start: maxCellNumber - 1,end: serviceListModelList.count - 1))
+        }
         self.multiSelect = multiSelect
         //buildLayout()
         buildReuseLayout()
@@ -109,6 +112,11 @@ class HorizontalCardView: UIView {
         
         //build cell
         for serviceListModel : ServiceList in serviceListModelList{
+            
+            if cardCellViewList.count == index {
+                return
+            }
+            
             var cellFrame:CGRect!
             let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
             cardCellView.hidden = false

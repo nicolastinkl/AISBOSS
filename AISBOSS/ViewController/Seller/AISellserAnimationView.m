@@ -126,6 +126,8 @@
     [sellerTableView setContentOffset:CGPointZero animated:NO];
     
     NSArray *cells = sellerTableView.visibleCells;
+    
+    
 
     // make Background
     UIView *background = [[UIView alloc] initWithFrame:sellerViewController.view.bounds];
@@ -204,7 +206,9 @@
             logoView.center = logoCenter;
             logoView.transform = CGAffineTransformMakeScale(1, 1);
         } completion:^(BOOL finished) {
-            
+            if (cells.count == 0) {
+                [weakBackground removeFromSuperview];
+            }
         }];
     }];
     
