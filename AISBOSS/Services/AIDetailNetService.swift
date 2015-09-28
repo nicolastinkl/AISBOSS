@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 class AIDetailNetService {
     
     /*!
@@ -44,3 +44,4 @@ class AIDetailNetService {
     }
     
 }
+*/

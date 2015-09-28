@@ -29,7 +29,11 @@
 + (AIMessage *)getServiceSchemeWithServiceID:(NSString *)SchemeID
 {
     AIMessage *message = [AIMessage message];
-    [message.body setObject:SchemeID forKey:kKey_SchemeID];
+    
+    NSDictionary *body = @{@"data":@{@"sheme_id":@(223)},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    
+    [message.body addEntriesFromDictionary:body];
+
     message.url = kURL_GetSchemeList;
     return message;
     

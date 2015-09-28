@@ -91,7 +91,7 @@ class SwitchServiceView: UIView {
             let model = chooseItemModel()
             model.scheme_id = ser.service_id
             model.scheme_item_price = ser.service_price.price.floatValue
-            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+       //     model.scheme_item_quantity = Int(ser.service_price.billing_mode)
             
             switchDelegate?.switchStateChanged(sender.on, model: model)
         }

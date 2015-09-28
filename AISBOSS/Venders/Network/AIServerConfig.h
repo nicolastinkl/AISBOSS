@@ -10,7 +10,7 @@
 // 服务器地址
 
 #define kURL_GetServiceList     @"https://server.asiainfo.com/getservicelist"
-#define kURL_GetSchemeList     @"https://server.asiainfo.com/sbss/getServiceScheme"
+#define kURL_GetSchemeList     @"http://171.221.254.231:3000/getServiceScheme"
 
 // 关键字(字段名)
 

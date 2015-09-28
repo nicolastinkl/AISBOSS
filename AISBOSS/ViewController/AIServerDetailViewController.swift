@@ -93,9 +93,13 @@ class AIServerDetailViewController: UIViewController {
         self.view.addSubview(serviceSearchView)
         
         Async.userInitiated {
-            AIDetailNetService().requestListServices(1) { (asSchemeModel) -> Void in
-                self.schemeModel = asSchemeModel
+            let dataObtainer: SchemeDataObtainer = MockchemeDataObtainer()
+            
+            dataObtainer.getServiceSchemes(123, success: { (responseData) -> Void in
+                self.schemeModel = responseData
                 self.reloadInputData()
+                }) { (errType, errDes) -> Void in
+                    
             }
         }
  
@@ -149,7 +153,7 @@ class AIServerDetailViewController: UIViewController {
                     let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
                     let data =  dataModel()
                     data.title = catalog.catalog_name
-                    switch catalog.service_level.integerValue {
+                    switch catalog.service_level {
                     case 1:
                         data.type = cellType.cellTypeCoverflow
                         break
@@ -715,7 +719,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             let model = chooseItemModel()
             model.scheme_id = ser.service_id
             model.scheme_item_price = ser.service_price.price.floatValue
-            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+      //      model.scheme_item_quantity = Int(ser.service_price.billing_mode)
             delegate?.chooseItem(model)
         }
         
