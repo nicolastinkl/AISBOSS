@@ -91,7 +91,10 @@ class CardCellView: UIView {
                     self.originBackgroundImg = UIImage(named: "Placehold")
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
                 }
-                
+                //
+                if !self.selected {
+                    self.serviceImg.image = self.grayBackgroundImg
+                }
             })
         }
         
@@ -112,7 +115,10 @@ class CardCellView: UIView {
                 self.originBackgroundImg = UIImage(named: "Placehold")
                 self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
             }
-            
+            //
+            if !self.selected {
+                self.serviceImg.image = self.grayBackgroundImg
+            }
         })
         firstLayout = true
     }
