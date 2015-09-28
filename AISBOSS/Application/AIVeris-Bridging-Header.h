@@ -3,6 +3,9 @@
 //
 
 
+// MARK: 引入AVOS 头文件
+#import <AVOSCloud/AVOSCloud.h>
+
 // MARK: operation navigationbar, while scrollview's
 #import "UINavigationBar+Awesome.h"
 #import "AIUINavigationController.h"
@@ -71,5 +74,8 @@
 #import "UIImageView+WebCache.h"
 
 #import "AIScrollLabel.h"
+
+//#import "PgyManager.h"
+//#import <PgyUpdate/PgyUpdateManager.h>
 
 
