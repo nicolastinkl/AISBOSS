@@ -500,8 +500,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     
-                    if let tit  = model.title {
-                        let key = "\(tit)_\(indexPath.row)"
+                    if let _  = model.title {
+                        let key = "coverflow_\(indexPath.section)"
                         if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
                             return cacheCell
                         }else{
