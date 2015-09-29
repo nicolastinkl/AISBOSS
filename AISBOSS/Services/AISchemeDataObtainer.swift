@@ -38,9 +38,9 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
-                let dic = response as! [NSObject : AnyObject]
-                let model = try AIServiceSchemeModel(dictionary: dic)
-                print(model)
+                let dic = response as! NSDictionary
+                let model = try AIServiceSchemeModel(dictionary: dic as [NSObject : AnyObject])
+                print(dic)
                 success(responseData: model)
             } catch {
                 fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")

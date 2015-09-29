@@ -166,7 +166,7 @@ class AIServerDetailViewController: UIViewController {
                 
                 do {
                     
-                    let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
+                    let catalog:Catalog = dataObject as! Catalog
                     let data =  dataModel()
                     data.title = catalog.catalog_name
                     switch catalog.service_level {
@@ -423,7 +423,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let model =  dataSource.objectAtIndex(section) as! dataModel
         if model.type! == cellType.cellTypeFilght{
-            let modelArray = model.placeHolderModel as! NSMutableArray
+            let modelArray = model.placeHolderModel as! NSArray
             return 1 + modelArray.count
         }
         
@@ -477,7 +477,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 
                 /// Parser Json Object.
-                let modelArray = model.placeHolderModel as! NSMutableArray
+                let modelArray = model.placeHolderModel as! NSArray
                 
                 let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
                 
@@ -510,8 +510,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let ticketGroupView = AirTicketGroupView()
                     
-                    var tickets = [ServiceList]()
-                    tickets.append(ServiceList())
+                    let tickets = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
+                    //tickets.append(ServiceList())
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
