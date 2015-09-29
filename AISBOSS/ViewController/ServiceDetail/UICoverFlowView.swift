@@ -22,7 +22,6 @@ class UICoverFlowView: UIView {
     
     // MARK: currentView
     class func currentView()->UICoverFlowView{
-        //230 182
         let selfView = NSBundle.mainBundle().loadNibNamed("UICoverFlowView", owner: self, options: nil).first  as! UICoverFlowView
         return selfView
     }
@@ -34,14 +33,14 @@ class UICoverFlowView: UIView {
             starView.addSubview(starRateView)
         }
         
-        starRateView.scorePercent = CGFloat(model.service_rating!)
+        starRateView.scorePercent = CGFloat(model.service_rating)
         avatorImageview.maskWithEllipse()
-        lableTitle.text = model.service_name ?? ""
-        lableContent.text = model.service_intro ?? ""
-        labelPrice.text = model.service_price.price_show ?? ""
+        lableTitle.text = model.service_name as String
+        lableContent.text = model.service_intro as String
+        labelPrice.text = model.service_price.price_show as String
         imageview.setURL(model.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
         avatorImageview.setURL(model.service_provider.provider_portrait_icon?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
-        labelNick.text = model.service_provider.provider_name ?? ""
+        labelNick.text = model.service_provider.provider_name as String
     }
     
 }

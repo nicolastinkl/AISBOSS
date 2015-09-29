@@ -137,7 +137,7 @@ struct AIApplication{
         
         static let AIVIEWLINEColor   = "#E4E3E4"
         
-        static let MainSystemBlueColor   = "#00CEC3"
+        static let MainSystemBlueColor   = "#625885"//"#00CEC3"
         static let MainSystemBlackColor  = "#848484"
         static let MainSystemGreenColor  = "#00cec0"
     }

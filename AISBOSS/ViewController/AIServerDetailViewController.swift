@@ -25,7 +25,7 @@ class dataModel : NSObject{
     var title:String?
     var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
     var content:String?
-    var placeHolderModel:AnyObject?
+    var placeHolderModel:[AnyObject]?
 }
 
 // MARK: UITBALEVIEW
@@ -67,7 +67,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = titleString ?? ""
+        self.labelView.text = "Services to Your Linking"//titleString ?? ""
         
         //init searchView
         serviceSearchView = AIServiceSearchView.currentView()
@@ -92,7 +92,7 @@ class AIServerDetailViewController: UIViewController {
     }
     
     func retryNetworkingAction(){
-
+        
         self.view.hideErrorView()
         self.view.showProgressViewLoading()
         Async.userInitiated {
@@ -157,49 +157,35 @@ class AIServerDetailViewController: UIViewController {
             data.type = cellType.cellTypeDate
             self.dataSource.addObject(data)
             
-        }
-        
+        }        
         
         if let scheme = self.schemeModel {
-            NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
-                /// 1-轮播 2-平铺 3-开关 4-单个（机票）
-                
-                do {
-                    
-                    let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
-                    let data =  dataModel()
-                    data.title = catalog.catalog_name
-                    switch catalog.service_level {
-                    case 1:
-                        data.type = cellType.cellTypeCoverflow
-                        break
-                    case 2:
-                        data.type = cellType.cellTypeSignleChoose
-                        break
-                    case 3:
-                        data.type = cellType.cellTypeparames
-                        break
-                    case 4:
-                        data.type = cellType.cellTypeFilght
-                        break
-                    case 5:
-                        data.type = cellType.cellTypeMutiChoose
-                        break
-                    default:
-                        break
-                    }
-                    data.placeHolderModel = catalog.service_list
-                    self.dataSource.addObject(data)
-                }
-                catch{
-                }
-                
-            })
             
-//            let arrayList = scheme.catalog_list as [CatalogList]
-//            for catalog in arrayList {
-//                
-//            }
+            for catalog in scheme.catalog_list as! [Catalog] {
+                let data =  dataModel()
+                data.title = catalog.catalog_name
+                switch catalog.service_level {
+                case 1:
+                    data.type = cellType.cellTypeCoverflow
+                    break
+                case 2:
+                    data.type = cellType.cellTypeSignleChoose
+                    break
+                case 3:
+                    data.type = cellType.cellTypeparames
+                    break
+                case 4:
+                    data.type = cellType.cellTypeFilght
+                    break
+                case 5:
+                    data.type = cellType.cellTypeMutiChoose
+                    break
+                default:
+                    break
+                }
+                data.placeHolderModel = catalog.service_list
+                self.dataSource.addObject(data)
+            }
         }
         
         
@@ -423,8 +409,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let model =  dataSource.objectAtIndex(section) as! dataModel
         if model.type! == cellType.cellTypeFilght{
-            let modelArray = model.placeHolderModel as! NSMutableArray
-            return 1 + modelArray.count
+            let modelArray = model.placeHolderModel
+            return 1 + modelArray!.count
         }
         
         return 2
@@ -476,17 +462,16 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 
-                /// Parser Json Object.
-                let modelArray = model.placeHolderModel as! NSMutableArray
+//                let modelArray = model.placeHolderModel as! NSArray
                 
-                let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
-                
+                let ls = model.placeHolderModel as! Array<ServiceList>
                 
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
                     
                     if let tit  = model.title {
-                        if let cacheCell = coverflowDataSource.valueForKey(tit) as! AISDSubDetailCell? {
+                        let key = "\(tit)_\(indexPath.row)"
+                        if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
                             return cacheCell
                         }else{
                             let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
@@ -494,7 +479,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             cell.carousel.type = .CoverFlow2
                             cell.dataSource = ls
                             cell.carousel.reloadData()
-                            coverflowDataSource.setValue(cell, forKey: tit)
+                            coverflowDataSource.setValue(cell, forKey: key)
                             return cell
                         }
                     }
@@ -510,8 +495,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let ticketGroupView = AirTicketGroupView()
                     
-                    var tickets = [ServiceList]()
-                    tickets.append(ServiceList())
+                    let tickets = ls // modelArray as! [ServiceList]
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
@@ -521,8 +505,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         viewTic.right == viewTic.superview!.right - 9
                         viewTic.height == ticketGroupView.getViewHeight()
                     }
-                    
-                    
                     
                     return cell!
                     
@@ -567,7 +549,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
                     
                     if let tit  = model.title {
-                        if let cacheCell = horiListDataSource.valueForKey(tit) as! UITableViewCell? {
+                        
+                        let key = "\(tit)_\(indexPath.row)"
+                                                                        
+                        if let cacheCell = horiListDataSource.valueForKey(key) as! UITableViewCell? {
                             return cacheCell
                         }else{
                             
@@ -579,10 +564,13 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                                 hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                                 cell?.contentView.addSubview(hori)
                             }
-                            hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            if ls.count > 0 {
+                                hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            }
+                            
                             hori.delegate = self
                             
-                            horiListDataSource.setValue(cell, forKey: tit)
+                            horiListDataSource.setValue(cell, forKey: key)
                             
                             return cell!
                             
@@ -644,8 +632,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
-    {
-        
+    {        
         //create new view if no view is available for recycling
         if (view == nil)
         {
@@ -653,12 +640,13 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
+            
+            
             if let data = dataSource {
-                let costom = data[index] as ServiceList?
-                if let comt = costom {
-                    coverView.fillDataWithModel(comt)
-                    view = coverView
-                }
+                
+                let comt:ServiceList = data[index] as ServiceList
+                coverView.fillDataWithModel(comt)
+                view = coverView
             }
             
         }
