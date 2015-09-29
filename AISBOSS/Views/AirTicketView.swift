@@ -56,7 +56,7 @@ class AirTicketView: UIView {
         flightNumber.text = ticket.service_name
         priceAndPassengerType.text = ticket.service_price.price_show
         
-        let ticketInfo = ticket.service_param_list
+        let ticketInfo = ticket.service_param_list as! [SchemeParamList]
         
         for para in ticketInfo {
             switch para.param_key {
