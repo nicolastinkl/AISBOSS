@@ -133,10 +133,7 @@
         message.url = @"http://171.221.254.231:3000/querySellerOrderList";
         [message.header setObject:@"0&0&200000001630&0" forKey:@"HttpQuery"];
         [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-            NSLog(@"%@", response);
-            
             weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
-            
             [weakSelf.tableView reloadData];
             [weakSelf.tableView headerEndRefreshing];
         } fail:^(AINetError error, NSString *errorDes) {
@@ -144,7 +141,6 @@
         }];
     
     }];
-    
     
     [self.tableView addFooterWithCallback:^{
         [weakSelf.tableView footerEndRefreshing];
@@ -205,59 +201,7 @@
 
 - (void)gobackAction
 {
-    /*
-    AIMessage *message = [AIMessage message];
-    
-    NSDictionary *dic = @{
-                      @"data": @{
-                          @"page_num": @"1",
-                          @"page_size": @"10",
-                          @"topic_id": @"1"
-                      },
-                      @"desc": @{
-                          @"data_mode": @"0",
-                          @"digest": @""
-                      }
-                      };
-    
-    
-
-    message.body = [NSMutableDictionary dictionaryWithDictionary:dic];
-    [message.header setObject:@"0&0&0&0" forKey:@"HttpQuery"];
-    message.url = @"http://171.221.254.231:8282/sboss/getServiceTopic";
-    
-    [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-        NSLog(@"success1");
-    } fail:^(AINetError error, NSString *errorDes) {
-        NSLog(@"errorDes1");
-    }];
-    
-    [message.header setObject:@"22222222" forKey:@"HttpQuery"];
-    [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-        NSLog(@"success2");
-    } fail:^(AINetError error, NSString *errorDes) {
-        NSLog(@"errorDes2");
-    }];
-    
-    [message.header setObject:@"33333333" forKey:@"HttpQuery"];
-    [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-        NSLog(@"success3");
-    } fail:^(AINetError error, NSString *errorDes) {
-        NSLog(@"errorDes3");
-    }];
-    [[AINetEngine defaultEngine] cancelMessage:message];
-    [message.header setObject:@"4444444444444" forKey:@"HttpQuery"];
-    [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-        NSLog(@"success4");
-    } fail:^(AINetError error, NSString *errorDes) {
-        NSLog(@"errorDes4");
-    }];
-     [[AINetEngine defaultEngine] cancelAllMessages];
-    */
-//    //
     [[AIOpeningView instance] show];
-//    AIShareViewController *shareVC = [AIShareViewController shareWithText:@"分享是一种快乐~"];
-//    [self presentViewController:shareVC animated:YES completion:nil];
 }
 
 - (void)makeBackGroundView

@@ -71,17 +71,17 @@ class HorizontalCardView: UIView {
         let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(maxCellNumber)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
-        cardCellViewList.removeAll()
-        self.subviews.map({
-            $0.removeFromSuperview()
-        })
+        //cardCellViewList.removeAll()
+        //self.subviews.map({
+            //$0.removeFromSuperview()
+        //})
         //build cell
         for var i = 0 ; i < maxCellNumber ; i++ {
         //for serviceListModel : ServiceList in serviceListModelList{
             let serviceListModel : ServiceList = serviceListModelList[i] as ServiceList
             var cellFrame:CGRect!
             
-            let cardCellView : CardCellView = CardCellView.currentView()
+            let cardCellView = CardCellView.currentView()
             if isFirst{
                 cellFrame = firstCellFrame
                 cardCellView.selected = true
@@ -94,11 +94,11 @@ class HorizontalCardView: UIView {
             
             cardCellView.frame = cellFrame
             
-            cardCellView.buildViewData(serviceListModel)
             cardCellView.index = index
             bindCellEvent(cardCellView)
-            cardCellViewList.append(cardCellView)
+            //cardCellViewList.append(cardCellView)
             self.addSubview(cardCellView)
+            cardCellView.buildViewData(serviceListModel)
             //init select status
             cardCellView.selectAction()
             cellX = cellX + cellWidth + cellPadding
@@ -123,7 +123,8 @@ class HorizontalCardView: UIView {
             }
             
             var cellFrame:CGRect!
-            let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
+            let cardCellView : CardCellView =  CardCellView.currentView()
+            // cardCellViewList[index] as CardCellView
             cardCellView.hidden = false
             if isFirst{
                 cellFrame = firstCellFrame
@@ -146,7 +147,7 @@ class HorizontalCardView: UIView {
             let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
             cardCellView.hidden = true
         }
-        //self.layoutIfNeeded()
+        self.layoutIfNeeded()
         
     }
     
@@ -156,7 +157,7 @@ class HorizontalCardView: UIView {
         for _ in 1 ... maxCellNumber{
             let cardCellView : CardCellView = CardCellView.currentView()
             cardCellView.frame = cellFrame
-            cardCellView.buildViewData(ServiceList())
+//            cardCellView.buildViewData()
             
             cardCellView.index = index
             bindCellEvent(cardCellView)

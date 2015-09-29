@@ -384,7 +384,7 @@
             [self addTargetForButtonType:SellerButtonTypeLocate];
         }
             break;
- 
+        
         case SellerButtonTypeCapture:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Capture"] forState:UIControlStateNormal];
@@ -392,6 +392,7 @@
             [self addTargetForButtonType:SellerButtonTypeCapture];
         }
             break;
+        case SellerButtonTypeLocate:
         case SellerButtonTypeNone:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Phone"] forState:UIControlStateNormal];
