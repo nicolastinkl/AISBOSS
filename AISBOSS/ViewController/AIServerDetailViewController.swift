@@ -92,7 +92,7 @@ class AIServerDetailViewController: UIViewController {
     }
     
     func retryNetworkingAction(){
-
+        
         self.view.hideErrorView()
         self.view.showProgressViewLoading()
         Async.userInitiated {
@@ -630,8 +630,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
-    {
-        
+    {        
         //create new view if no view is available for recycling
         if (view == nil)
         {
@@ -640,8 +639,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
             if let data = dataSource {
-                let costom = data[index] as ServiceList?
-                if let comt = costom {
+                if let comt = data[index] as ServiceList? {
                     coverView.fillDataWithModel(comt)
                     view = coverView
                 }
