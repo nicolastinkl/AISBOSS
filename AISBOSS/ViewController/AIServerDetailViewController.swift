@@ -188,7 +188,6 @@ class AIServerDetailViewController: UIViewController {
             }
         }
         
-        
         self.tableView.reloadData()
     }
     
@@ -254,9 +253,38 @@ class AIServerDetailViewController: UIViewController {
         let cell = button.superview?.superview as! UITableViewCell
         let sectionss = self.tableView.indexPathForCell(cell)?.section
         if let s = sectionss {
+            //删除对应的价格
+            
+            let model = self.dataSource.objectAtIndex(s) as! dataModel
+            for custom in model.placeHolderModel as! [ServiceList]{
+                
+                var indexPre:Int = 0
+                var replace = false
+
+                priceDataSource.enumerateObjectsUsingBlock({ (modelPre, index, error) -> Void in
+                    let preModel = modelPre as! chooseItemModel
+                    if custom.service_id == preModel.scheme_id {
+                        //相同的类目下的单项选项,所以替换为主
+                        indexPre = index
+                        replace = true
+                    }
+                    
+                })
+                
+                if replace {
+                    priceDataSource.removeObjectAtIndex(indexPre)
+                    let modelP = chooseItemModel()
+                    modelP.scheme_id = 0
+                    modelP.scheme_item_price = 0
+                    self.changePriceToNew(modelP)
+                }
+            }
+            
             self.dataSource.removeObjectAtIndex(s)
             self.tableView.reloadData()
         }
+        
+        
         
         /*
         let titl = tag.tTitle
