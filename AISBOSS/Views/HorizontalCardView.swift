@@ -52,8 +52,11 @@ class HorizontalCardView: UIView {
     // MARK: - build method
     func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
         self.serviceListModelList = serviceListModelList
-        if serviceListModelList.count > maxCellNumber{
-            self.serviceListModelList.removeRange(Range(start: maxCellNumber - 1,end: serviceListModelList.count - 1))
+//        if serviceListModelList.count > maxCellNumber{
+//            self.serviceListModelList.removeRange(Range(start: maxCellNumber - 1,end: serviceListModelList.count - 1))
+//        }
+        if maxCellNumber > self.serviceListModelList.count{
+            maxCellNumber = self.serviceListModelList.count
         }
         self.multiSelect = multiSelect
         buildLayout()
@@ -65,7 +68,7 @@ class HorizontalCardView: UIView {
         var cellX : CGFloat = viewPadding
         var index = 0
         let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
-        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
+        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(maxCellNumber)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
         cardCellViewList.removeAll()
@@ -73,7 +76,9 @@ class HorizontalCardView: UIView {
             $0.removeFromSuperview()
         })
         //build cell
-        for serviceListModel : ServiceList in serviceListModelList{
+        for var i = 0 ; i < maxCellNumber ; i++ {
+        //for serviceListModel : ServiceList in serviceListModelList{
+            let serviceListModel : ServiceList = serviceListModelList[i] as ServiceList
             var cellFrame:CGRect!
             
             let cardCellView : CardCellView = CardCellView.currentView()
