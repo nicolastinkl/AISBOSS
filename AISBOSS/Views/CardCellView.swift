@@ -41,9 +41,9 @@ class CardCellView: UIView {
 
         if firstLayout{
             
-//            let frame = serviceRatingView.bounds
-//            starRateView?.frame = frame
-            let serviceName  = serviceListModel.service_name  as String
+            let frame = serviceRatingView.bounds
+            starRateView?.frame = frame
+            let serviceName  = serviceListModel.service_name ?? "" as String
             if let scrollLabel1 = serviceNameScrollLabel{
                 scrollLabel1.text = serviceName
             }
@@ -52,7 +52,7 @@ class CardCellView: UIView {
                 serviceNameView.addSubview(serviceNameScrollLabel!)
             }
             
-            let serviceDesc : String = serviceListModel.service_intro  as String
+            let serviceDesc : String = serviceListModel.service_intro ?? "" as String 
             if let scrollLabel2 = serviceDescScrollLabel{
                 scrollLabel2.text = serviceDesc
             }

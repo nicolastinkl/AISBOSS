@@ -29,7 +29,7 @@ class HorizontalCardView: UIView {
     // MARK: - init method
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initEmptyCell()
+        //initEmptyCell()
     }
     
     init(frame: CGRect,serviceListModelList : [ServiceList]) {
@@ -56,8 +56,8 @@ class HorizontalCardView: UIView {
             self.serviceListModelList.removeRange(Range(start: maxCellNumber - 1,end: serviceListModelList.count - 1))
         }
         self.multiSelect = multiSelect
-        //buildLayout()
-        buildReuseLayout()
+        buildLayout()
+        //buildReuseLayout()
     }
     
     func buildLayout(){
