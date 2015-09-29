@@ -25,7 +25,7 @@
 #define kSellerIconHeight   55
 #define kStampHeight        40
 
-#define kSmallImageSize     10
+#define kSmallImageSize     15
 
 #define kBigImageSize       20
 
@@ -475,9 +475,9 @@
     CGFloat width = CGRectGetWidth(self.contentView.frame);
     [AITools resetWidth:width forView:_shadowView];
     
-    CGRect frame = _shadowLayer.frame;
+    CGRect frame = _shadowImageView.frame;
     frame.size.width = width;
-    _shadowLayer.frame = frame;
+    _shadowImageView.frame = frame;
     
 }
 
@@ -487,23 +487,7 @@
 - (void)addBottomShadowView
 {
     CGFloat height = [AISellerCell unexpandHeight];
-    _shadowLayer = [[CAGradientLayer alloc] init];
-    CGRect newShadowFrame = CGRectMake(0, -30, 220, 60);
-    _shadowLayer.frame = newShadowFrame;
-    //添加渐变的颜色组合
-    _shadowLayer.colors = [NSArray arrayWithObjects: (id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor,nil];
-    _shadowLayer.startPoint=CGPointMake(0.5, 1.0);
-    _shadowLayer.endPoint=CGPointMake(0.5, 0.0);
-    _shadowLayer.opacity = 0.9;
-    
-    _shadowView = [[UIView alloc] initWithFrame:CGRectMake(0, height, CGRectGetWidth(self.frame), 20)];
-    _shadowView.backgroundColor =[UIColor blackColor];
-    _shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _shadowView.layer.shadowOffset = CGSizeMake(0, 0);
-    _shadowView.layer.shadowOpacity = 1;
-    
-    [_shadowView.layer addSublayer:_shadowLayer];
-    
+
     UIImage *image = [UIImage imageNamed:@"seller_shadow"];
     _shadowImageView = [[UIImageView alloc] initWithImage:image];
     _shadowImageView.frame = CGRectMake(0, height-image.size.height, CGRectGetWidth(self.frame), image.size.height);
