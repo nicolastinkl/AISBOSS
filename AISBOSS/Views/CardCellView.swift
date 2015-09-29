@@ -41,7 +41,7 @@ class CardCellView: UIView {
         
         if firstLayout{
             starRateView?.frame = serviceRatingView.bounds
-            let serviceName : String = serviceListModel.service_name ?? "serviceName"
+            let serviceName  = serviceListModel.service_name  as String
             if let scrollLabel1 = serviceNameScrollLabel{
                 scrollLabel1.text = serviceName
             }
@@ -50,7 +50,7 @@ class CardCellView: UIView {
                 serviceNameView.addSubview(serviceNameScrollLabel!)
             }
             
-            let serviceDesc : String = serviceListModel.service_intro ?? "serviceDesc"
+            let serviceDesc : String = serviceListModel.service_intro  as String
             if let scrollLabel2 = serviceDescScrollLabel{
                 scrollLabel2.text = serviceDesc
             }
@@ -103,7 +103,7 @@ class CardCellView: UIView {
     
     func reloadData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
-        servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
+        servicePriceLabel.text = serviceListModel.service_price.price_show  as String
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
         serviceImg.sd_setImageWithURL(serviceListModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in

@@ -25,7 +25,7 @@ class dataModel : NSObject{
     var title:String?
     var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
     var content:String?
-    var placeHolderModel:AnyObject?
+    var placeHolderModel:[AnyObject]?
 }
 
 // MARK: UITBALEVIEW
@@ -409,8 +409,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let model =  dataSource.objectAtIndex(section) as! dataModel
         if model.type! == cellType.cellTypeFilght{
-            let modelArray = model.placeHolderModel as! Array<AnyObject>
-            return 1 + modelArray.count
+            let modelArray = model.placeHolderModel
+            return 1 + modelArray!.count
         }
         
         return 2
@@ -567,7 +567,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                                 hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                                 cell?.contentView.addSubview(hori)
                             }
-                            //hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                             hori.delegate = self
                             
                             horiListDataSource.setValue(cell, forKey: tit)
@@ -645,10 +645,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             if let data = dataSource {
                 
                 let comt:ServiceList = data[index] as ServiceList
-                let post = AVObject(className: "AIDebugClass")
-                post.setObject("\(comt)", forKey: "className")
-                post.saveInBackground()
-                //coverView.fillDataWithModel(comt)
+                coverView.fillDataWithModel(comt)
                 view = coverView
             }
             
