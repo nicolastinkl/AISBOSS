@@ -470,7 +470,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if  model.type == cellType.cellTypeCoverflow {
                     
                     if let tit  = model.title {
-                        if let cacheCell = coverflowDataSource.valueForKey(tit) as! AISDSubDetailCell? {
+                        let key = "\(tit)_\(indexPath.row)"
+                        if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
                             return cacheCell
                         }else{
                             let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
@@ -478,7 +479,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             cell.carousel.type = .CoverFlow2
                             cell.dataSource = ls
                             cell.carousel.reloadData()
-                            coverflowDataSource.setValue(cell, forKey: tit)
+                            coverflowDataSource.setValue(cell, forKey: key)
                             return cell
                         }
                     }
@@ -495,8 +496,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     let ticketGroupView = AirTicketGroupView()
                     
                     let tickets = ls // modelArray as! [ServiceList]
-//                    let tickets = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
-                    //tickets.append(ServiceList())
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
@@ -506,8 +505,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         viewTic.right == viewTic.superview!.right - 9
                         viewTic.height == ticketGroupView.getViewHeight()
                     }
-                    
-                    
                     
                     return cell!
                     
@@ -552,7 +549,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
                     
                     if let tit  = model.title {
-                        if let cacheCell = horiListDataSource.valueForKey(tit) as! UITableViewCell? {
+                        
+                        let key = "\(tit)_\(indexPath.row)"
+                                                                        
+                        if let cacheCell = horiListDataSource.valueForKey(key) as! UITableViewCell? {
                             return cacheCell
                         }else{
                             
@@ -564,10 +564,13 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                                 hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                                 cell?.contentView.addSubview(hori)
                             }
-                            hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            if ls.count > 0 {
+                                hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            }
+                            
                             hori.delegate = self
                             
-                            horiListDataSource.setValue(cell, forKey: tit)
+                            horiListDataSource.setValue(cell, forKey: key)
                             
                             return cell!
                             

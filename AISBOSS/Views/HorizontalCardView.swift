@@ -141,7 +141,7 @@ class HorizontalCardView: UIView {
             let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
             cardCellView.hidden = true
         }
-        self.layoutIfNeeded()
+        //self.layoutIfNeeded()
         
     }
     

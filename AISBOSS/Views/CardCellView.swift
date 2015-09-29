@@ -38,9 +38,11 @@ class CardCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if firstLayout{
-            starRateView?.frame = serviceRatingView.bounds
+            
+//            let frame = serviceRatingView.bounds
+//            starRateView?.frame = frame
             let serviceName  = serviceListModel.service_name  as String
             if let scrollLabel1 = serviceNameScrollLabel{
                 scrollLabel1.text = serviceName
@@ -68,13 +70,12 @@ class CardCellView: UIView {
         
     }
     
-    
     // MARK: - utils
     
     func buildViewData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
         if let _ = serviceListModel.service_price{
-            servicePriceLabel.text = serviceListModel.service_price.price_show ?? ""
+            servicePriceLabel.text = serviceListModel.service_price.price_show as String
         }        
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         serviceRatingView.addSubview(starRateView!)
