@@ -105,8 +105,7 @@ class CardCellView: UIView {
                 if let _ = image {
                     self.originBackgroundImg = image
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
-                }
-                else{
+                }else{
                     self.originBackgroundImg = UIImage(named: "Placehold")
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
                 }
