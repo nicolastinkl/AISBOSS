@@ -17,7 +17,7 @@ class CardCellView: UIView {
     var starRateView : CWStarRateView?
     var serviceNameScrollLabel : AIScrollLabel?
     var serviceDescScrollLabel : AIScrollLabel?
-    var serviceListModel : ServiceList!
+    var serviceListModel : ServiceList?
     var firstLayout = true
     // MARK: - uiview variables
 
@@ -46,31 +46,32 @@ class CardCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        return
-        if firstLayout{
-            let frame = serviceRatingView.bounds
-            starRateView?.frame = frame
-            let serviceName  = serviceListModel.service_name ?? "" as String
-            if let scrollLabel1 = serviceNameScrollLabel{
-                scrollLabel1.text = serviceName
+        //return
+        if firstLayout && serviceListModel != nil {
+            
+            if let starRateView = serviceRatingView.subviews.last as!
+                CWStarRateView? {
+                    let frame = serviceRatingView.bounds
+                    starRateView.frame = frame
             }
-            else{
-                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-                serviceNameView.addSubview(serviceNameScrollLabel!)
+            if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
+                if let nameLabelText = serviceListModel!.service_name {
+                    nameLabel.frame = serviceNameView.bounds
+                    nameLabel.text = nameLabelText as String
+                    if selected {
+                        nameLabel.startScroll()
+                    }
+                }
             }
             
-            let serviceDesc : String = serviceListModel.service_intro ?? "" as String
-            if let scrollLabel2 = serviceDescScrollLabel{
-                scrollLabel2.text = serviceDesc
-            }
-            else {
-                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-                serviceDescView.addSubview(serviceDescScrollLabel!)
-            }
-            //直接在这里启动滚动
-            if selected {
-                serviceNameScrollLabel?.startScroll()
-                serviceDescScrollLabel?.startScroll()
+            if let descLabel = serviceDescView.subviews.last as! AIScrollLabel?{
+                if let descLabelText = serviceListModel!.service_intro {
+                    descLabel.frame = serviceDescView.bounds
+                    descLabel.text = descLabelText as String
+                    if selected {
+                        descLabel.startScroll()
+                    }
+                }
             }
             firstLayout = false
         }
@@ -83,14 +84,19 @@ class CardCellView: UIView {
 
         self.serviceListModel = serviceListModel
         
-        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
-            nameLabel.text = serviceListModel.service_name as String
-            nameLabel.startScroll()
-        }
-
-//        if let nameLabel = serviceDescView.subviews.last as! AIScrollLabel? {
-//            nameLabel.text = serviceListModel.service_intro as String
-//            nameLabel.startScroll()
+//        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
+//            if let nameLabelText = serviceListModel.service_name {
+//                nameLabel.text = nameLabelText as String
+//                nameLabel.startScroll()
+//            }
+//        }
+//
+//        if let descLabel = serviceDescView.subviews.last as! AIScrollLabel? {
+//            if let descLabelText = serviceListModel.service_intro {
+//                descLabel.text = descLabelText as String
+//                descLabel.startScroll()
+//            }
+//            
 //        }
         
         if let sPriceModel = serviceListModel.service_price{
@@ -160,10 +166,10 @@ class CardCellView: UIView {
             serviceImg.image = originBackgroundImg
             backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
             selectFlagImage.hidden = false
-            if let scrollLabel1 = serviceNameScrollLabel{
+            if let scrollLabel1 = serviceNameView.subviews.last as! AIScrollLabel?{
                 scrollLabel1.startScroll()
             }
-            if let scrollLabel2 = serviceDescScrollLabel{
+            if let scrollLabel2 = serviceDescView.subviews.last as! AIScrollLabel?{
                 scrollLabel2.startScroll()
             }
         }
@@ -171,10 +177,10 @@ class CardCellView: UIView {
             serviceImg.image = grayBackgroundImg
             backGroundColorView.backgroundColor = UIColor(hex: "#444242")
             selectFlagImage.hidden = true
-            if let scrollLabel1 = serviceNameScrollLabel{
+            if let scrollLabel1 = serviceNameView.subviews.last as! AIScrollLabel?{
                 scrollLabel1.stopScroll()
             }
-            if let scrollLabel2 = serviceDescScrollLabel{
+            if let scrollLabel2 = serviceDescView.subviews.last as! AIScrollLabel?{
                 scrollLabel2.stopScroll()
             }
         }

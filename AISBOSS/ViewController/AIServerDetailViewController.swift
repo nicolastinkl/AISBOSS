@@ -549,9 +549,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 // TODO: 多选 or 单选
                 if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
                     
-                    if let tit  = model.title {
+                    if let _  = model.title {
                         
-                        let key = "\(tit)_\(indexPath.row)"
+                        let key = "cardView_\(indexPath.section)"
                                                                         
                         if let cacheCell = horiListDataSource.valueForKey(key) as! UITableViewCell? {
                             return cacheCell
