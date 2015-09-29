@@ -321,10 +321,10 @@
     if (array) {
         for (AIServiceParamModel *model in array) {
             
-            if (model.param_type == 1) {
+            if ([model.param_key isEqualToString:@"time"]) {
                 time = model.param_value ?: time;
             }
-            else if (model.param_type == 2)
+            else if ([model.param_key isEqualToString:@"location"])
             {
                 address = model.param_value ?: address;
             }
