@@ -22,7 +22,7 @@ var string:String? = "s"
 if let s = string{
     s
 }else{
-    print("nil....")
+    print("nil....", terminator: "")
 }
 
 
@@ -34,6 +34,4 @@ if let s = string{
 //
 //myMethod()
 
-"sd".uppercaseString
-
-
+"sd".up

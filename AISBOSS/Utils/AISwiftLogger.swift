@@ -77,7 +77,7 @@ var AILogDateFormatter: NSDateFormatter = {
 
 func logVerbose(logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -88,7 +88,7 @@ func logVerbose(logText: String = "",
 
 func logInfo(logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -99,7 +99,7 @@ func logInfo(logText: String = "",
 
 func logDebug(logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -110,7 +110,7 @@ func logDebug(logText: String = "",
 
 func logWarning(logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -121,7 +121,7 @@ func logWarning(logText: String = "",
 
 func logError(logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -134,7 +134,7 @@ func logWithLevel(level: AILogLevel,
     _
     logText: String = "",
     file: String = __FILE__,
-    line: UWord = __LINE__,
+    line: UInt = __LINE__,
     function: String = __FUNCTION__,
     args: CVarArgType...)
 {
@@ -143,12 +143,12 @@ func logWithLevel(level: AILogLevel,
     }
 }
 
-private func log(level: AILogLevel, file: String = __FILE__, var function: String = __FUNCTION__, line: UWord = __LINE__, format: String, args: CVaListPointer) {
+private func log(level: AILogLevel, file: String = __FILE__, var function: String = __FUNCTION__, line: UInt = __LINE__, format: String, args: CVaListPointer) {
     let time: String = AILogShowDateTime ? (AILogUsingNSLog ? "" : "\(AILogDateFormatter.stringFromDate(NSDate())) ") : ""
     let level: String = AILogShowLogLevel ? "[\(AILogLevel.logLevelString(level))] " : ""
     var fileLine: String = ""
     if AILogShowFileName {
-        fileLine += "[" + file.lastPathComponent
+        fileLine += "[" + file //lastPathComponent
         if AILogShowLineNumber {
             fileLine += ":\(line)"
         }

@@ -46,7 +46,7 @@ class CardCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        return
+        /*
         if firstLayout{
             let frame = serviceRatingView.bounds
             starRateView?.frame = frame
@@ -73,7 +73,7 @@ class CardCellView: UIView {
                 serviceDescScrollLabel?.startScroll()
             }
             firstLayout = false
-        }
+        }*/
         
     }
     
@@ -158,7 +158,7 @@ class CardCellView: UIView {
     func selectAction(){
         if selected{
             serviceImg.image = originBackgroundImg
-            backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
+            backGroundColorView.backgroundColor = UIColor(rgba: "#9f97c6")
             selectFlagImage.hidden = false
             if let scrollLabel1 = serviceNameScrollLabel{
                 scrollLabel1.startScroll()
@@ -169,7 +169,7 @@ class CardCellView: UIView {
         }
         else{
             serviceImg.image = grayBackgroundImg
-            backGroundColorView.backgroundColor = UIColor(hex: "#444242")
+            backGroundColorView.backgroundColor = UIColor(rgba: "#444242")
             selectFlagImage.hidden = true
             if let scrollLabel1 = serviceNameScrollLabel{
                 scrollLabel1.stopScroll()

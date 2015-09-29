@@ -106,7 +106,7 @@ class AISwipeView: AIBaseSwipeView {
     }
 
     required  init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         initialSizeOfInfoPanel = size
         layer.cornerRadius = 2
         //setSuperScrollView(self.scrollView)

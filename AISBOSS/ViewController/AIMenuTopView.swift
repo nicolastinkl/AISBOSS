@@ -34,7 +34,7 @@ class AIMenuTopView: UIView {
     
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         
         let cSelector : Selector = "closeMenuAction:"
         let swipeGuesture = UISwipeGestureRecognizer(target: self, action: cSelector)

@@ -34,7 +34,7 @@ class AICalendarViewController: UIViewController,DSLCalendarViewDelegate {
         
         let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let path = arrayPath.first ?? ""
-        let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
+        let componentPath = path.stringByAppendingString("CalendarImage.png")
         UIImagePNGRepresentation(image)?.writeToFile(componentPath, atomically: true)
     }
     

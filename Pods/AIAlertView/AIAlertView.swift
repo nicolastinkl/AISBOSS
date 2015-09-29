@@ -31,8 +31,8 @@ public class AITypeButton: UIButton {
         super.init(frame:frame)
     }
 
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder:aDecoder)
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)!
     }
 }
 
@@ -100,7 +100,7 @@ public class AIAlertView: UIViewController {
     private var buttons = [AITypeButton]()
     private var selfReference: AIAlertView?
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
 
@@ -283,7 +283,7 @@ public class AIAlertView: UIViewController {
             ctrl.sendAction(btn.selector, to:btn.target, forEvent:nil)
             return
         } else {
-            print("Unknow action type for button")
+            print("Unknow action type for button", terminator: "")
         }
         hideView()
     }
@@ -537,8 +537,8 @@ class AIAlertViewStyleKit : NSObject {
         crossShapePath.addLineToPoint(CGPointMake(70, 10))
         crossShapePath.moveToPoint(CGPointMake(10, 10))
         crossShapePath.addLineToPoint(CGPointMake(70, 70))
-        crossShapePath.lineCapStyle = kCGLineCapRound
-        crossShapePath.lineJoinStyle = kCGLineJoinRound
+        crossShapePath.lineCapStyle = CGLineCap.Round
+        crossShapePath.lineJoinStyle = CGLineJoin.Round
         UIColor.whiteColor().setStroke()
         crossShapePath.lineWidth = 14
         crossShapePath.stroke()

@@ -86,10 +86,17 @@ struct AIHttpEngine{
         print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
 
         let encoding = AINetworking.ParameterEncoding.JSON
-        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (_, _, JSON) -> Void in
+        
+        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
+            //Response<AnyObject, NSError>
             
-            let JSONResult:Result<AnyObject> = JSON
+        }
+        
+        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
             
+            let jsonre:Response<AnyObject, NSError> = JSON
+            
+            let JSONResult =  jsonre.result
             if JSONResult.isSuccess {
                 if let reponsess = JSONResult.value as? NSDictionary{
                     if let descValue = reponsess["desc"] as? NSDictionary {

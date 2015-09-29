@@ -187,7 +187,7 @@ public class Player: UIViewController {
     // MARK: object lifecycle
 
     public required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         
         self.player = AVPlayer()
         self.player.actionAtItemEnd = .Pause
@@ -381,8 +381,10 @@ public class Player: UIViewController {
         }
     }
 
+    
     // MARK: KVO
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+//  public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         switch (keyPath!, context) {
         case (PlayerRateKey, &PlayerObserverContext):
             true
@@ -500,7 +502,7 @@ internal class PlayerView: UIView {
     }
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
 
 }

@@ -87,7 +87,7 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         var cornerImage = UIImage(named: "item_card_black_bg_2")
         
         cornerImage = cornerImage?.resizableImageWithCapInsets(UIEdgeInsetsMake(25/2, 25/2 , 25/2, 25/2), resizingMode: UIImageResizingMode.Stretch)

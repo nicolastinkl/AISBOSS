@@ -170,14 +170,14 @@ public class JSONDecoder {
             for decoder in arr {
                 str += decoder.print() + ","
             }
-            str.removeAtIndex(advance(str.endIndex, -1))
+            //str.removeAtIndex(advance(str.endIndex, -1))
             return str + "]"
         } else if let dict = self.dictionary {
             var str = "{"
             for (key, decoder) in dict {
                 str += "\"\(key)\": \(decoder.print()),"
             }
-            str.removeAtIndex(advance(str.endIndex, -1))
+            //str.removeAtIndex(advance(str.endIndex, -1))
             return str + "}"
         }
         if value != nil {

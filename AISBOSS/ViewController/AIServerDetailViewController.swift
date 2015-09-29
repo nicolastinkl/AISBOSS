@@ -450,7 +450,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
                     let path = arrayPath.first ?? ""
-                    let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
+                    let componentPath = path.stringByAppendingString("CalendarImage.png")
                     
                     let image = UIImage(contentsOfFile: componentPath)
                     if let im = image{

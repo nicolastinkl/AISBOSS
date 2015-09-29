@@ -37,7 +37,7 @@ extension UIColor {
         var alpha: CGFloat = 1.0
         
         if rgba.hasPrefix("#") {
-            let index   = advance(rgba.startIndex, 1)
+            let index   = rgba.startIndex//advance(rgba.startIndex, 1)
             let hex     = rgba.substringFromIndex(index)
             let scanner = NSScanner(string: hex)
             var hexValue: CUnsignedLongLong = 0
@@ -82,7 +82,7 @@ extension UIColor {
         
         let rect:CGRect = CGRectMake(0, 0, 1, 1)
         UIGraphicsBeginImageContext(rect.size)
-        let context:CGContextRef = UIGraphicsGetCurrentContext()
+        let context:CGContextRef = UIGraphicsGetCurrentContext()!
         
         CGContextSetFillColorWithColor(context, self.CGColor)
         CGContextFillRect(context, rect)
@@ -101,7 +101,7 @@ extension UIColor {
     func imageWithColor() -> UIImage {
         let rect:CGRect = CGRectMake(0, 0, 1, 1)
         UIGraphicsBeginImageContext(rect.size)
-        let context:CGContextRef = UIGraphicsGetCurrentContext()
+        let context:CGContextRef = UIGraphicsGetCurrentContext()!
         
         CGContextSetFillColorWithColor(context, self.CGColor)
         CGContextFillRect(context, rect)

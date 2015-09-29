@@ -156,7 +156,7 @@ class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognizerDelega
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.configureObserver()
     }
     
@@ -210,7 +210,9 @@ class RAReorderableLayout: UICollectionViewFlowLayout, UIGestureRecognizerDelega
         return attributesArray
     }
 
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+    //override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "collectionView" {
             self.setUpGestureRecognizers()
         }else {
@@ -543,7 +545,7 @@ private class RACellFakeView: UIView {
     private var cellFrame: CGRect?
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     init(cell: UICollectionViewCell) {
