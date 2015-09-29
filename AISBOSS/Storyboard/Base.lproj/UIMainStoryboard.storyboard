@@ -1970,7 +1970,7 @@
                                                     <state key="normal" image="close-btn"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-DH-qjm">
-                                                    <rect key="frame" x="24" y="15" width="228" height="21"/>
+                                                    <rect key="frame" x="24" y="15" width="500" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="228" id="0Zi-OG-lL3"/>
@@ -1982,6 +1982,7 @@
                                                     <nil key="highlightedColor"/>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="0Zi-OG-lL3"/>
                                                             <exclude reference="tC0-0A-CAf"/>
                                                         </mask>
                                                     </variation>
@@ -2000,6 +2001,7 @@
                                                 <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="11" id="SMh-6V-aFC"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="Dht-89-wtJ" secondAttribute="bottom" constant="-27" id="Tpq-vj-UTO"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="1" id="c2X-0N-AeR"/>
+                                                <constraint firstItem="szC-vh-2I8" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="41" id="gFU-b3-caS"/>
                                                 <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="13" id="hjz-uS-cvh"/>
                                             </constraints>
                                             <variation key="default">

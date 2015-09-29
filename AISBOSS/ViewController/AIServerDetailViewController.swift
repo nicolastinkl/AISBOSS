@@ -160,45 +160,32 @@ class AIServerDetailViewController: UIViewController {
         }        
         
         if let scheme = self.schemeModel {
-            NSArray(array: scheme.catalog_list).enumerateObjectsUsingBlock({ (dataObject, index, bol) -> Void in
-                /// 1-轮播 2-平铺 3-开关 4-单个（机票）
-                
-                do {
-                    
-                    let catalog:Catalog = try Catalog(dictionary: dataObject as! [NSObject : AnyObject])
-                    let data =  dataModel()
-                    data.title = catalog.catalog_name
-                    switch catalog.service_level {
-                    case 1:
-                        data.type = cellType.cellTypeCoverflow
-                        break
-                    case 2:
-                        data.type = cellType.cellTypeSignleChoose
-                        break
-                    case 3:
-                        data.type = cellType.cellTypeparames
-                        break
-                    case 4:
-                        data.type = cellType.cellTypeFilght
-                        break
-                    case 5:
-                        data.type = cellType.cellTypeMutiChoose
-                        break
-                    default:
-                        break
-                    }
-                    data.placeHolderModel = catalog.service_list
-                    self.dataSource.addObject(data)
-                }
-                catch{
-                }
-                
-            })
             
-//            let arrayList = scheme.catalog_list as [CatalogList]
-//            for catalog in arrayList {
-//                
-//            }
+            for catalog in scheme.catalog_list as! [Catalog] {
+                let data =  dataModel()
+                data.title = catalog.catalog_name
+                switch catalog.service_level {
+                case 1:
+                    data.type = cellType.cellTypeCoverflow
+                    break
+                case 2:
+                    data.type = cellType.cellTypeSignleChoose
+                    break
+                case 3:
+                    data.type = cellType.cellTypeparames
+                    break
+                case 4:
+                    data.type = cellType.cellTypeFilght
+                    break
+                case 5:
+                    data.type = cellType.cellTypeMutiChoose
+                    break
+                default:
+                    break
+                }
+                data.placeHolderModel = catalog.service_list
+                self.dataSource.addObject(data)
+            }
         }
         
         
@@ -422,7 +409,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let model =  dataSource.objectAtIndex(section) as! dataModel
         if model.type! == cellType.cellTypeFilght{
-            let modelArray = model.placeHolderModel as! NSMutableArray
+            let modelArray = model.placeHolderModel as! Array<AnyObject>
             return 1 + modelArray.count
         }
         
@@ -476,11 +463,12 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 
                 
                 /// Parser Json Object.
-                let modelArray = model.placeHolderModel as! NSMutableArray
+                //let modelArray = model.placeHolderModel as! NSMutableArray
                 
-                let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
+                //let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
                 
-                logInfo(args: ls)
+                
+                let ls = model.placeHolderModel as! Array<ServiceList>
                 
                 // TODO: 卡片信息
                 if  model.type == cellType.cellTypeCoverflow {
