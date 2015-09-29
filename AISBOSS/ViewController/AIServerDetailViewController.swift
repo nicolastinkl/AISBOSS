@@ -462,11 +462,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 
-                /// Parser Json Object.
-                //let modelArray = model.placeHolderModel as! NSMutableArray
-                
-                //let ls = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
-                
+//                let modelArray = model.placeHolderModel as! NSArray
                 
                 let ls = model.placeHolderModel as! Array<ServiceList>
                 
@@ -498,8 +494,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     
                     let ticketGroupView = AirTicketGroupView()
                     
-                    var tickets = [ServiceList]()
-                    tickets.append(ServiceList())
+                    let tickets = ls // modelArray as! [ServiceList]
+//                    let tickets = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
+                    //tickets.append(ServiceList())
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
