@@ -72,9 +72,9 @@ class HorizontalCardView: UIView {
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
         cardCellViewList.removeAll()
-        //self.subviews.map({
-            //$0.removeFromSuperview()
-        //})
+        self.subviews.map({
+            $0.removeFromSuperview()
+        })
         //build cell
         for var i = 0 ; i < maxCellNumber ; i++ {
         //for serviceListModel : ServiceList in serviceListModelList{

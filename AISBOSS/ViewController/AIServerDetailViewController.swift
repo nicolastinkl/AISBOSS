@@ -197,6 +197,9 @@ class AIServerDetailViewController: UIViewController {
     }
     
     deinit{
+        coverflowDataSource.removeAllObjects()
+        horiListDataSource.removeAllObjects()
+        dataSource.removeAllObjects()
          NSNotificationCenter.defaultCenter().removeObserver(self, name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     }
     
