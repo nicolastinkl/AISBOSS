@@ -325,6 +325,27 @@
 #pragma mark - TableViewDataSource
 
 
+- (SellerCellColorType)orderState:(NSInteger)state
+{
+    SellerCellColorType type;
+    
+    if (state == 10 || state == 14)
+    {
+        type = SellerCellColorTypeNormal;
+    }
+    else if (state == 100)
+    {
+        type = SellerCellColorTypeGreen;
+    }
+    else
+    {
+        type = SellerCellColorTypeBrown;
+    }
+    
+    
+    return type;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.listModel.order_list.count;
@@ -363,10 +384,11 @@
         }
     }
     
+    cell.userPhone = model.customer.user_phone;
     cell.timestamp.text = time;
     cell.location.text = address;
-    [cell setBackgroundColorType:model.order_state];
-    [cell setButtonType:model.order_state];
+    [cell setBackgroundColorType:[self orderState:model.order_state]];
+    [cell setButtonType:model.service_progress.operation];
     [cell setProgressBarModel:model.service_progress];
     [cell setServiceCategory:model];
     

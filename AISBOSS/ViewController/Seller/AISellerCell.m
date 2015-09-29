@@ -347,7 +347,7 @@
 
 - (void)buttonAction:(UIButton *)button
 {
-    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"10086"]];
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.userPhone?:@"空号"]];
     [_telWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
 
 }
@@ -376,13 +376,15 @@
             [self addTargetForButtonType:SellerButtonTypeOpposite];
         }
             break;
-        case SellerButtonTypeLocate:
+            
+        case SellerButtonTypeRecord:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Locate"] forState:UIControlStateNormal];
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Hig_Locate"] forState:UIControlStateHighlighted];
             [self addTargetForButtonType:SellerButtonTypeLocate];
         }
             break;
+ 
         case SellerButtonTypeCapture:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Capture"] forState:UIControlStateNormal];

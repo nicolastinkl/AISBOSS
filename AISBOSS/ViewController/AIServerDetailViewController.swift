@@ -497,18 +497,20 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     }
                     
                     let ticketGroupView = AirTicketGroupView()
+                    
+                    var tickets = [ServiceList]()
+                    tickets.append(ServiceList())
+                    ticketGroupView.setTicketsData(tickets)
+                    
                     cell?.contentView.addSubview(ticketGroupView)
                     layout(ticketGroupView) { viewTic in
                         viewTic.left == viewTic.superview!.left + 9
                         viewTic.top == viewTic.superview!.top
                         viewTic.right == viewTic.superview!.right - 9
-                        viewTic.height == 280
+                        viewTic.height == ticketGroupView.getViewHeight()
                     }
                     
-                    var tickets = [ServiceList]()
-                    tickets.append(ServiceList())
-//                    tickets.append(ServiceList())
-                    ticketGroupView.setTicketsData(tickets)
+                    
                     
                     return cell!
                     

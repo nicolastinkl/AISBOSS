@@ -27,5 +27,55 @@ class AirTicketView: UIView {
         // Drawing code
     }
     */
+    
+    /*
+    
+    机票的航班名对应服务名service_name
+    
+    机票的价格对应服务价格对象
+    
+    机票起点
+    
+    param_key:
+    1: 出发地点
+    2: 到达地点
+    3：出发时间
+    4：到达时间
+    5：往返标志
+    
+    "param_list":[
+    {
+    "param_type":5,
+    "param_category":2,
+    "param_key":"1",
+    "param_name":"delivery_location",
+    "param_value":"PEK"
+    */
+    
+    func setTicketData(ticket: ServiceList) {
+        flightNumber.text = ticket.service_name
+        priceAndPassengerType.text = ticket.service_price.price_show
+        
+        let ticketInfo = ticket.service_param_list
+        
+        for para in ticketInfo {
+            switch para.param_key {
+            case 1:
+                startAirport.text = para.param_value
+            case 2:
+                finishAirport.text = para.param_value
+            case 3:
+                startDate.text = para.param_value
+            case 4:
+                arriveDate.text = para.param_value
+            case 5:
+                ticketType.text = para.param_value
+            default:
+                continue
+            }
+        }
+        
+        
+    }
 
 }
