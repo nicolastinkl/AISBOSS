@@ -49,6 +49,7 @@
     UIView *_colorBackgroundView;
     UIImageView *_sellerIcon;
     UIImageView *_borderCornerView;
+    UIImageView *_shadowImageView;
     
     CAGradientLayer *_shadowLayer;
     
@@ -384,7 +385,7 @@
             [self addTargetForButtonType:SellerButtonTypeLocate];
         }
             break;
- 
+        
         case SellerButtonTypeCapture:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Capture"] forState:UIControlStateNormal];
@@ -392,6 +393,7 @@
             [self addTargetForButtonType:SellerButtonTypeCapture];
         }
             break;
+        case SellerButtonTypeLocate:
         case SellerButtonTypeNone:
         {
             [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Phone"] forState:UIControlStateNormal];
@@ -502,8 +504,11 @@
     
     [_shadowView.layer addSublayer:_shadowLayer];
     
+    UIImage *image = [UIImage imageNamed:@"seller_shadow"];
+    _shadowImageView = [[UIImageView alloc] initWithImage:image];
+    _shadowImageView.frame = CGRectMake(0, height-image.size.height, CGRectGetWidth(self.frame), image.size.height);
     
-    [self.contentView addSubview:_shadowView];
+    [self.contentView addSubview:_shadowImageView];
 }
 
 

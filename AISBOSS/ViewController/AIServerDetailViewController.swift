@@ -496,6 +496,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     let ticketGroupView = AirTicketGroupView()
                     
                     let tickets = ls // modelArray as! [ServiceList]
+
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
