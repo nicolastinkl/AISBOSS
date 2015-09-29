@@ -567,7 +567,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                                 hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                                 cell?.contentView.addSubview(hori)
                             }
-                            hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                            //hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                             hori.delegate = self
                             
                             horiListDataSource.setValue(cell, forKey: tit)
@@ -640,11 +640,16 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later           
             let coverView = UICoverFlowView.currentView()
+            
+            
             if let data = dataSource {
-                if let comt = data[index] as ServiceList? {
-                    coverView.fillDataWithModel(comt)
-                    view = coverView
-                }
+                
+                let comt:ServiceList = data[index] as ServiceList
+                let post = AVObject(className: "AIDebugClass")
+                post.setObject("\(comt)", forKey: "className")
+                post.saveInBackground()
+                //coverView.fillDataWithModel(comt)
+                view = coverView
             }
             
         }

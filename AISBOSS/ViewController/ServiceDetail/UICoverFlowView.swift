@@ -33,7 +33,7 @@ class UICoverFlowView: UIView {
             starView.addSubview(starRateView)
         }
         
-        starRateView.scorePercent = CGFloat(model.service_rating!)
+        starRateView.scorePercent = CGFloat(model.service_rating)
         avatorImageview.maskWithEllipse()
         lableTitle.text = model.service_name ?? ""
         lableContent.text = model.service_intro ?? ""
