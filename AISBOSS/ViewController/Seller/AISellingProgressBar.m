@@ -141,6 +141,7 @@
 {
     UIImage *image = [UIImage imageNamed:@""];
     _progressIndicator = [[UIImageView alloc] initWithImage:image];
+    _progressIndicator.backgroundColor = [UIColor clearColor];
     _progressIndicator.frame = CGRectMake(0, 0, kIndicatorSize, kIndicatorSize);
     [self addSubview:_progressIndicator];
 }

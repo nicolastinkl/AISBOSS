@@ -1961,16 +1961,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szC-vh-2I8">
-                                                    <rect key="frame" x="565" y="19" width="12" height="12"/>
+                                                    <rect key="frame" x="557" y="14" width="24" height="24"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="12" id="33G-5B-Q9H"/>
-                                                        <constraint firstAttribute="height" constant="12" id="Jcy-WK-CCb"/>
+                                                        <constraint firstAttribute="width" constant="24" id="33G-5B-Q9H"/>
+                                                        <constraint firstAttribute="height" constant="24" id="Jcy-WK-CCb"/>
                                                     </constraints>
                                                     <state key="normal" image="close-btn"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdN-DH-qjm">
-                                                    <rect key="frame" x="24" y="15" width="500" height="21"/>
+                                                    <rect key="frame" x="24" y="15" width="488" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="228" id="0Zi-OG-lL3"/>
@@ -1994,14 +1994,16 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="15" id="2Db-Kb-4ZW"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="20" id="7F8-P8-EHS"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="-388" id="E2m-HS-Aes"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="szC-vh-2I8" secondAttribute="trailing" constant="11" id="I1q-ns-FKN"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="7" id="IRh-Cu-gtC"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="16" id="Kix-IH-lXE"/>
+                                                <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="6" id="PRe-Va-BHq"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="leading" secondItem="lCZ-Bm-zMe" secondAttribute="leadingMargin" constant="1" id="PgE-OS-6ds"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Dht-89-wtJ" secondAttribute="bottom" id="QwW-zH-gDH"/>
                                                 <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="11" id="SMh-6V-aFC"/>
                                                 <constraint firstItem="RdN-DH-qjm" firstAttribute="top" secondItem="Dht-89-wtJ" secondAttribute="bottom" constant="-27" id="Tpq-vj-UTO"/>
                                                 <constraint firstItem="Dht-89-wtJ" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="1" id="c2X-0N-AeR"/>
-                                                <constraint firstItem="szC-vh-2I8" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="41" id="gFU-b3-caS"/>
+                                                <constraint firstItem="szC-vh-2I8" firstAttribute="leading" secondItem="RdN-DH-qjm" secondAttribute="trailing" constant="45" id="gFU-b3-caS"/>
                                                 <constraint firstItem="szC-vh-2I8" firstAttribute="top" secondItem="lCZ-Bm-zMe" secondAttribute="topMargin" constant="13" id="hjz-uS-cvh"/>
                                             </constraints>
                                             <variation key="default">
@@ -2009,7 +2011,9 @@
                                                     <exclude reference="E2m-HS-Aes"/>
                                                     <exclude reference="QwW-zH-gDH"/>
                                                     <exclude reference="Tpq-vj-UTO"/>
+                                                    <exclude reference="2Db-Kb-4ZW"/>
                                                     <exclude reference="7F8-P8-EHS"/>
+                                                    <exclude reference="SMh-6V-aFC"/>
                                                     <exclude reference="hjz-uS-cvh"/>
                                                 </mask>
                                             </variation>
@@ -2655,7 +2659,7 @@
         <image name="bigplay_click" width="46" height="46"/>
         <image name="channel_introduction_separate_line" width="1" height="2"/>
         <image name="close" width="51" height="51"/>
-        <image name="close-btn" width="20" height="20"/>
+        <image name="close-btn" width="10" height="10"/>
         <image name="colorball_orange" width="10" height="10"/>
         <image name="dot_pink" width="19" height="19"/>
         <image name="dt_add" width="23" height="23"/>
