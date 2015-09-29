@@ -118,7 +118,8 @@ class HorizontalCardView: UIView {
             }
             
             var cellFrame:CGRect!
-            let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
+            let cardCellView : CardCellView =  CardCellView.currentView()
+            // cardCellViewList[index] as CardCellView
             cardCellView.hidden = false
             if isFirst{
                 cellFrame = firstCellFrame
@@ -141,7 +142,7 @@ class HorizontalCardView: UIView {
             let cardCellView : CardCellView = cardCellViewList[index] as CardCellView
             cardCellView.hidden = true
         }
-        //self.layoutIfNeeded()
+        self.layoutIfNeeded()
         
     }
     

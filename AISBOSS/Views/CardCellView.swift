@@ -36,39 +36,40 @@ class CardCellView: UIView {
         return selfView
     }
     
+    /*
     override func layoutSubviews() {
         super.layoutSubviews()
 
         if firstLayout{
-            
+            return
 //            let frame = serviceRatingView.bounds
 //            starRateView?.frame = frame
-            let serviceName  = serviceListModel.service_name  as String
-            if let scrollLabel1 = serviceNameScrollLabel{
-                scrollLabel1.text = serviceName
-            }
-            else{
-                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-                serviceNameView.addSubview(serviceNameScrollLabel!)
-            }
-            
-            let serviceDesc : String = serviceListModel.service_intro  as String
-            if let scrollLabel2 = serviceDescScrollLabel{
-                scrollLabel2.text = serviceDesc
-            }
-            else {
-                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-                serviceDescView.addSubview(serviceDescScrollLabel!)
-            }
-            //直接在这里启动滚动
-            if selected {
-                serviceNameScrollLabel?.startScroll()
-                serviceDescScrollLabel?.startScroll()
-            }
-            firstLayout = false
+//            let serviceName  = serviceListModel.service_name  as String
+//            if let scrollLabel1 = serviceNameScrollLabel{
+//                scrollLabel1.text = serviceName
+//            }
+//            else{
+//                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+//                serviceNameView.addSubview(serviceNameScrollLabel!)
+//            }
+//            
+//            let serviceDesc : String = serviceListModel.service_intro  as String
+//            if let scrollLabel2 = serviceDescScrollLabel{
+//                scrollLabel2.text = serviceDesc
+//            }
+//            else {
+//                serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+//                serviceDescView.addSubview(serviceDescScrollLabel!)
+//            }
+//            //直接在这里启动滚动
+//            if selected {
+//                serviceNameScrollLabel?.startScroll()
+//                serviceDescScrollLabel?.startScroll()
+//            }
+//            firstLayout = false
         }
         
-    }
+    }*/
     
     // MARK: - utils
     
@@ -104,7 +105,8 @@ class CardCellView: UIView {
     
     func reloadData(serviceListModel : ServiceList){
         self.serviceListModel = serviceListModel
-        servicePriceLabel.text = serviceListModel.service_price.price_show  as String
+        let price = serviceListModel.service_price.price_show as String
+        servicePriceLabel.text = price
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
         serviceImg.sd_setImageWithURL(serviceListModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
@@ -116,11 +118,34 @@ class CardCellView: UIView {
                 self.originBackgroundImg = UIImage(named: "Placehold")
                 self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
             }
-            //
             if !self.selected {
                 self.serviceImg.image = self.grayBackgroundImg
             }
         })
+        
+        let serviceName  = serviceListModel.service_name  as String
+        if let scrollLabel1 = serviceNameScrollLabel{
+            scrollLabel1.text = serviceName
+        }
+        else{
+            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
+            serviceNameView.addSubview(serviceNameScrollLabel!)
+        }
+        
+        let serviceDesc : String = serviceListModel.service_intro  as String
+        if let scrollLabel2 = serviceDescScrollLabel{
+            scrollLabel2.text = serviceDesc
+        }
+        else {
+            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
+            serviceDescView.addSubview(serviceDescScrollLabel!)
+        }
+        //直接在这里启动滚动
+        if selected {
+            serviceNameScrollLabel?.startScroll()
+            serviceDescScrollLabel?.startScroll()
+        }
+        
         firstLayout = true
     }
     
