@@ -33,10 +33,17 @@ class CardCellView: UIView {
     // MARK: currentView
     class func currentView()->CardCellView{
         let selfView = NSBundle.mainBundle().loadNibNamed("CardCellView", owner: self, options: nil).first  as! CardCellView
+        
+        let serviceNameScrollLabel = AIScrollLabel(frame:selfView.serviceNameView.bounds, text: "", color: UIColor.whiteColor(), scrollEnable: true)
+        selfView.serviceNameView.addSubview(serviceNameScrollLabel)
+        
+        let serviceDescScrollLabel = AIScrollLabel(frame: selfView.serviceDescView.bounds, text: "", color: UIColor.whiteColor(), scrollEnable: true)
+        selfView.serviceDescView.addSubview(serviceDescScrollLabel)
+        
         return selfView
     }
     
-    /*
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         return
@@ -69,12 +76,23 @@ class CardCellView: UIView {
         }
         
     }
-    */
+    
     // MARK: - utils
     
     func buildViewData(serviceListModel: ServiceList){
 
         self.serviceListModel = serviceListModel
+        
+        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
+            nameLabel.text = serviceListModel.service_name as String
+            nameLabel.startScroll()
+        }
+
+//        if let nameLabel = serviceDescView.subviews.last as! AIScrollLabel? {
+//            nameLabel.text = serviceListModel.service_intro as String
+//            nameLabel.startScroll()
+//        }
+        
         if let sPriceModel = serviceListModel.service_price{
             servicePriceLabel.text = sPriceModel.price_show as String
         }        
@@ -99,32 +117,11 @@ class CardCellView: UIView {
             })
         }
         
-//      let frame = serviceRatingView.bounds
-//      starRateView?.frame = frame
+//        let frame = serviceRatingView.bounds
+//        starRateView?.frame = frame
         
-        let serviceName  = serviceListModel.service_name as String
-        if let scrollLabel1 = serviceNameScrollLabel{
-            scrollLabel1.text = serviceName
-        }
-        else{
-            serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceNameView.addSubview(serviceNameScrollLabel!)
-        }
-        
-        let serviceDesc : String = serviceListModel.service_intro  as String
-        if let scrollLabel2 = serviceDescScrollLabel{
-            scrollLabel2.text = serviceDesc
-        }
-        else {
-            serviceDescScrollLabel = AIScrollLabel(frame: serviceDescView.bounds, text: serviceDesc, color: UIColor.whiteColor(), scrollEnable: true)
-            serviceDescView.addSubview(serviceDescScrollLabel!)
-        }
-        //直接在这里启动滚动
-        if selected {
-            serviceNameScrollLabel?.startScroll()
-            serviceDescScrollLabel?.startScroll()
-        }
         buildLayout()
+
     }
     
     func reloadData(serviceListModel : ServiceList){

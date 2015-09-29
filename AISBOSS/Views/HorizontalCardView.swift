@@ -68,7 +68,7 @@ class HorizontalCardView: UIView {
         let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(serviceListModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
-        //cardCellViewList.removeAll()
+        cardCellViewList.removeAll()
         //self.subviews.map({
             //$0.removeFromSuperview()
         //})
@@ -91,7 +91,7 @@ class HorizontalCardView: UIView {
             
             cardCellView.index = index
             bindCellEvent(cardCellView)
-            //cardCellViewList.append(cardCellView)
+            cardCellViewList.append(cardCellView)
             self.addSubview(cardCellView)
             cardCellView.buildViewData(serviceListModel)
             //init select status
@@ -118,20 +118,20 @@ class HorizontalCardView: UIView {
             }
             
             var cellFrame:CGRect!
-            let cardCellView : CardCellView =  CardCellView.currentView()
+            let cardCellView : CardCellView = CardCellView.currentView()
             // cardCellViewList[index] as CardCellView
             cardCellView.hidden = false
             if isFirst{
                 cellFrame = firstCellFrame
                 cardCellView.selected = true
                 isFirst = false
-            }
-            else{
+            }else{
                 cellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
                 cardCellView.selected = false
             }
             cardCellView.frame = cellFrame
             cardCellView.reloadData(serviceListModel)
+            
             //init select status
             cardCellView.selectAction()
             cellX = cellX + cellWidth + cellPadding
