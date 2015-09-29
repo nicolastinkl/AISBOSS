@@ -11,6 +11,34 @@
 #import "JSONModel.h"
 
 
+
+
+
+
+/**
+ "":"中国四川省",
+ "":"四川省成都市高朋大道3号东方希望大厦",
+ "":"104.047357",
+ "":"30.632648",
+ "":"610054"
+ */
+
+@protocol AIAddressModel
+
+@end
+
+
+@interface AIAddressModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *area;
+@property (nonatomic, strong) NSString<Optional> *address;
+@property (nonatomic, strong) NSString<Optional> *longitude;
+@property (nonatomic, strong) NSString<Optional> *latitude;
+@property (nonatomic, strong) NSString<Optional> *postcode;
+
+
+@end
+
 // 买家
 
 @protocol AICustomerModel
@@ -22,7 +50,7 @@
 @property (nonatomic, strong) NSString<Optional> *user_portrait_icon;    // 用户头像
 @property (nonatomic, strong) NSString<Optional> *user_name;
 @property (nonatomic, strong) NSString<Optional> *user_phone;
-@property (nonatomic, strong) NSString<Optional> *user_address;
+@property (nonatomic, strong) AIAddressModel<Optional> *user_address;
 
 @end
 

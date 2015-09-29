@@ -201,6 +201,9 @@
 
 - (void)gobackAction
 {
+    [self.tableView footerEndRefreshing];
+    [self.tableView headerEndRefreshing];
+    
     [[AIOpeningView instance] show];
 }
 
