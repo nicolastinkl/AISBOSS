@@ -45,10 +45,10 @@
 
 @end
 
-
 @protocol ServiceList
 
 @end
+
 
 @interface ServiceList : JSONModel
 
@@ -58,7 +58,7 @@
 @property (assign, nonatomic) NSInteger            provider_id;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
 @property (strong, nonatomic) NSString<Optional> * service_intro_img;
-@property (strong, nonatomic) NSArray<SchemeParamList,Optional> * service_param_list;
+@property (strong, nonatomic) NSArray<SchemeParamList, Optional> * service_param_list;
 @property (strong, nonatomic) ServicePrice<Optional> * service_price;
 @property (strong, nonatomic) ServiceProvider<Optional> * service_provider;
 
@@ -76,7 +76,8 @@
 @property (nonatomic, assign) NSInteger service_level; //1-轮播 2-平铺 3-开关 4-单个（机票）
 @property (strong, nonatomic) NSNumber<Optional> * relevant_level;
 @property (strong, nonatomic) NSString<Optional> * catalog_name;
-@property (strong, nonatomic) NSArray<ServiceList,Optional> * service_list;
+@property (strong, nonatomic) NSArray<ServiceList, Optional> * service_list;
+
 
 @end
 
@@ -87,9 +88,10 @@
  */
 @interface AIServiceSchemeModel : JSONModel
 
-@property (strong, nonatomic) NSArray<SchemeParamList,Optional> * param_list;
-@property (strong, nonatomic) NSArray<Catalog,Optional> * catalog_list;
+@property (strong, nonatomic) NSArray<SchemeParamList, Optional> * param_list;
+@property (strong, nonatomic) NSArray<Catalog, Optional> * catalog_list;
 
 @end
+
 
 

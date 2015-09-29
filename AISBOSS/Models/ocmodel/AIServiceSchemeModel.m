@@ -14,10 +14,10 @@
     return (self = [[super init] initWithDictionary:dict error:nil]);
 }
 //Make all model properties optional (avoid if possible)
-+(BOOL)propertyIsOptional:(NSString*)propertyName
-{
-    return YES;
-}
+//+(BOOL)propertyIsOptional:(NSString*)propertyName
+//{
+//    return YES;
+//}
 
 @end
 
@@ -98,4 +98,7 @@
 //{
 //    return YES;
 //}
+
+
+
 
