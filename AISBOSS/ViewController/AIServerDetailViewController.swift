@@ -497,8 +497,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     let ticketGroupView = AirTicketGroupView()
                     
                     let tickets = modelArray as! [ServiceList]
-//                    let tickets = ServiceList.arrayOfModelsFromDictionaries(modelArray as [AnyObject]).copy() as! Array<ServiceList>
-                    //tickets.append(ServiceList())
+
                     ticketGroupView.setTicketsData(tickets)
                     
                     cell?.contentView.addSubview(ticketGroupView)
