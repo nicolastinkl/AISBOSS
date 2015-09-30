@@ -609,18 +609,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     private func createSwitchViewCell(services: [ServiceList], indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
         
+        var switchView: SwitchServiceView!
+        
         if cell?.contentView.subviews.count > 0 {
-            
-            let switchView = cell?.contentView.subviews.last as! SwitchServiceView
-            switchView.reloadData()
-            if services.count > 0 && services.count > indexPath.row {
-                switchView.setService(services[indexPath.row])
-            }
-            switchView.switchDelegate = self
+            switchView = cell?.contentView.subviews.last as! SwitchServiceView
             
         }else{
             
-            let switchView = SwitchServiceView.createSwitchServiceView()
+            switchView = SwitchServiceView.createSwitchServiceView()
             cell?.contentView.addSubview(switchView)
             layout(switchView) { switchView in
                 switchView.left == switchView.superview!.left
@@ -628,13 +624,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 switchView.right == switchView.superview!.right
                 switchView.height == SwitchServiceView.HEIGHT
             }
-            if services.count > 0 && services.count > indexPath.row {
-                switchView.setService(services[indexPath.row])
-            }
-            
-            switchView.reloadData()
-            switchView.switchDelegate = self
         }
+        
+        if services.count > 0 && services.count > 0 {
+            switchView.setService(services[0])
+        }
+        switchView.reloadData()
+        switchView.switchDelegate = self
+
         
         return cell!
     }
