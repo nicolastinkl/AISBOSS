@@ -199,13 +199,13 @@ class HorizontalCardView: UIView {
                         //如果是选中变不选中
                         if cardCellView.selected{
                             cancelItemModel = chooseItemModel()
-                            cancelItemModel!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                            cancelItemModel!.scheme_id = selCardCellView.serviceListModel!.service_id
                             cancelItemModel!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
                         }
                         //如果是不选中变选中
                         else{
                             model = chooseItemModel()
-                            model!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                            model!.scheme_id = selCardCellView.serviceListModel!.service_id
                             model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
                         }
                         cardCellView.selected = !cardCellView.selected
@@ -217,7 +217,7 @@ class HorizontalCardView: UIView {
                     if cardCellView.selected {
                         lastSelectedCardCellView = cardCellView
                         cancelItemModel = chooseItemModel()
-                        cancelItemModel!.scheme_item_id = lastSelectedCardCellView.serviceListModel!.service_id
+                        cancelItemModel!.scheme_id = lastSelectedCardCellView.serviceListModel!.service_id
                         cancelItemModel!.scheme_item_price = lastSelectedCardCellView.serviceListModel!.service_price.price.floatValue
                     }
                     if cardCellView.index == selCardCellView.index{
@@ -233,7 +233,7 @@ class HorizontalCardView: UIView {
             //单选的时候为选中赋值
             if !multiSelect{
                 model = chooseItemModel()
-                model!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                model!.scheme_id = selCardCellView.serviceListModel!.service_id
                 model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
             }
             
