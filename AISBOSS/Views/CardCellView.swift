@@ -103,6 +103,8 @@ class CardCellView: UIView {
             servicePriceLabel.text = sPriceModel.price_show as String
         }        
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
+        starRateView?.allowIncompleteStar = true
+        starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
         serviceRatingView.addSubview(starRateView!)
         
         if let url = serviceListModel.service_intro_img {

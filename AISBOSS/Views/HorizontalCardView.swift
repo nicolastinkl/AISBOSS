@@ -22,7 +22,7 @@ class HorizontalCardView: UIView {
     var maxCellNumber = 4
     
     let viewPadding : CGFloat = 9
-    let cellPadding : CGFloat = 5
+    let cellPadding : CGFloat = 3
     let cellHeight : CGFloat = 75
     let cellY : CGFloat = 0
 
@@ -67,7 +67,7 @@ class HorizontalCardView: UIView {
         var isFirst = true
         var cellX : CGFloat = viewPadding
         var index = 0
-        let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
+        let cellPaddingAll = CGFloat(maxCellNumber - 1) * cellPadding
         let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(maxCellNumber)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first

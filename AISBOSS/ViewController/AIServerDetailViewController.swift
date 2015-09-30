@@ -140,7 +140,7 @@ class AIServerDetailViewController: UIViewController {
     }
     
     func reloadInputData() {
-//        
+//
 //        if let arrrays = titleArray {
 //            for item in arrrays {
 //                let data =  dataModel()
@@ -149,7 +149,7 @@ class AIServerDetailViewController: UIViewController {
 //                //self.dataSource.insertObject(data, atIndex: 1)
 //            }
 //        }
-//        
+//
         localCode { () -> () in
             
             let data =  dataModel()
@@ -157,7 +157,7 @@ class AIServerDetailViewController: UIViewController {
             data.type = cellType.cellTypeDate
             self.dataSource.addObject(data)
             
-        }        
+        }
         
         if let scheme = self.schemeModel {
             
@@ -361,7 +361,7 @@ extension AIServerDetailViewController : AOTagDelegate{
                 self.tableView.reloadData()
                 return
             }
-        }        
+        }
         */
         
         
@@ -517,7 +517,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 // TODO: 机票信息
-                if  model.type == cellType.cellTypeFilght { 
+                if  model.type == cellType.cellTypeFilght {
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
                     for subview in cell?.contentView.subviews as [UIView]! {
@@ -549,7 +549,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                      
                     if cell?.contentView.subviews.count > 0{
                         
-                        let switchView = cell?.contentView.subviews.last as! SwitchServiceView                        
+                        let switchView = cell?.contentView.subviews.last as! SwitchServiceView
                         switchView.reloadData()
                         if ls.count > 0 && ls.count > indexPath.row {
                             switchView.setService(ls[indexPath.row])
@@ -664,13 +664,13 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     }
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
-    {        
+    {
         //create new view if no view is available for recycling
         if (view == nil)
         {
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
-            //recycled and used with other index values later           
+            //recycled and used with other index values later
             let coverView = UICoverFlowView.currentView()
             
             
@@ -682,7 +682,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             }
             
         }
-        /*        
+        /*
         //ONE:
         view.layer.shadowColor = UIColor.blackColor().CGColor
         view.layer.shadowOffset = CGSizeMake(0, 0)
