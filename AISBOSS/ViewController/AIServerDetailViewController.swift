@@ -68,6 +68,7 @@ class AIServerDetailViewController: UIViewController {
     private var totalPrice: Float = 0
     // key/value : serviceId/chooseItemModel
     private var shoppingCard: [Int: chooseItemModel] = [Int: chooseItemModel]()
+    private var airTicketsViewHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,10 +133,12 @@ class AIServerDetailViewController: UIViewController {
             for catalog in scheme.catalog_list {
                 let data =  convertSchemeToCellModel(catalog as! Catalog)
                 self.dataSource.addObject(data)
+                caculateDefaultServicesTotalPrice(catalog as! Catalog)
             }
         }
         
         self.tableView.reloadData()
+        labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func insertDateModel() {
@@ -144,6 +147,23 @@ class AIServerDetailViewController: UIViewController {
         data.type = CellType.CellTypeDate
         self.dataSource.addObject(data)
         
+    }
+    
+    private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
+        
+        // TODO
+        if catalog.service_level == 3 {
+            return
+        }
+        
+        let ser: ServiceList = catalog.service_list[0] as! ServiceList
+
+        totalPrice += ser.service_price.price.floatValue
+        
+        let model = chooseItemModel()
+        model.scheme_id = ser.service_id
+        model.scheme_item_price = ser.service_price.price.floatValue
+        shoppingCard[model.scheme_id] = model
     }
     
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
@@ -399,13 +419,12 @@ extension AIServerDetailViewController : AOTagDelegate{
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
     func switchStateChanged(isOn: Bool, model: chooseItemModel) {
+        
         if isOn {
-            self.changePriceToNew(model)
+            changePrice(model, cancelModel: nil)
             
-        }else{
-            model.scheme_item_price = 0
-            self.changePriceToNew(model)
-            
+        } else {
+            changePrice(nil, cancelModel: model)
         }
     }
 }
@@ -425,7 +444,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case .CellTypeCoverflow:
                 return 190
             case .CellTypeFilght:
-                return 150
+                return airTicketsViewHeight
             case .CellTypeparames:
                 return 100
             case .CellTypeMutiChoose:
@@ -595,6 +614,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         if tickets != nil {
             ticketGroupView.setTicketsData(tickets!)
+            airTicketsViewHeight = ticketGroupView.getViewHeight()
             
             cell?.contentView.addSubview(ticketGroupView)
             layout(ticketGroupView) { viewTic in
@@ -614,18 +634,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     private func createSwitchViewCell(services: [ServiceList], indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
         
+        var switchView: SwitchServiceView!
+        
         if cell?.contentView.subviews.count > 0 {
-            
-            let switchView = cell?.contentView.subviews.last as! SwitchServiceView
-            switchView.reloadData()
-            if services.count > 0 && services.count > indexPath.row {
-                switchView.setService(services[indexPath.row])
-            }
-            switchView.switchDelegate = self
+            switchView = cell?.contentView.subviews.last as! SwitchServiceView
             
         }else{
             
-            let switchView = SwitchServiceView.createSwitchServiceView()
+            switchView = SwitchServiceView.createSwitchServiceView()
             cell?.contentView.addSubview(switchView)
             layout(switchView) { switchView in
                 switchView.left == switchView.superview!.left
@@ -633,13 +649,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 switchView.right == switchView.superview!.right
                 switchView.height == SwitchServiceView.HEIGHT
             }
-            if services.count > 0 && services.count > indexPath.row {
-                switchView.setService(services[indexPath.row])
-            }
-            
-            switchView.reloadData()
-            switchView.switchDelegate = self
         }
+        
+        if services.count > 0 && services.count > 0 {
+            switchView.setService(services[0])
+        }
+        switchView.reloadData()
+        switchView.switchDelegate = self
+
         
         return cell!
     }
