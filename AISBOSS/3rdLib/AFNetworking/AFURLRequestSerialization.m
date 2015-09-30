@@ -326,7 +326,13 @@ forHTTPHeaderField:(NSString *)field
         }
     }
 
+    
+    
+    
     mutableRequest = [[self requestBySerializingRequest:mutableRequest withParameters:parameters error:error] mutableCopy];
+    
+    
+    NSLog(@"\nheader=%@\nbody=%@\nurl=%@\n",mutableRequest.allHTTPHeaderFields, [[NSString alloc] initWithData:mutableRequest.HTTPBody encoding:NSUTF8StringEncoding], mutableRequest.URL.absoluteString);
 
 	return mutableRequest;
 }

@@ -30,7 +30,7 @@
 {
     AIMessage *message = [AIMessage message];
     
-    NSDictionary *body = @{@"data":@{@"sheme_id":@(223)},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    NSDictionary *body = @{@"data":@{@"sheme_id":@(401)},@"desc":@{@"data_mode":@"0",@"digest":@""}};
     
     [message.body addEntriesFromDictionary:body];
 

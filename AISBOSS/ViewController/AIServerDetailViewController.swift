@@ -149,24 +149,29 @@ class AIServerDetailViewController: UIViewController {
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
         let data =  DataModel()
         data.title = catalog.catalog_name
-        data.type = convertServiceLevelToCellType(catalog.service_level)
+        data.type = convertServiceLevelToCellType(catalog.service_level,selectFlag : catalog.select_flag)
         data.realModel = catalog.service_list
         
         return data
     }
     
-    private func convertServiceLevelToCellType(serviceLevel: Int) -> CellType {
+    private func convertServiceLevelToCellType(serviceLevel: Int,selectFlag : Int) -> CellType {
         switch serviceLevel {
         case 1:
             return .CellTypeCoverflow
         case 2:
-            return .CellTypeSignleChoose
+            if selectFlag == 1{
+                return .CellTypeSignleChoose
+            }
+            else{
+                return .CellTypeMutiChoose
+            }
         case 3:
             return .CellTypeparames
         case 4:
             return .CellTypeFilght
-        case 5:
-            return .CellTypeMutiChoose
+//        case 5:
+//            return .CellTypeMutiChoose
         default:
             return .CellDefault
         }
