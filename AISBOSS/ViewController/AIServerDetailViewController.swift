@@ -152,21 +152,13 @@ class AIServerDetailViewController: UIViewController {
     }
     
     private func convertServiceLevelToCellType(serviceLevel: Int) -> CellType {
-        switch serviceLevel {
-        case 1:
-            return .CellTypeCoverflow
-        case 2:
-            return .CellTypeSignleChoose
-        case 3:
-            return .CellTypeparames
-        case 4:
-            return .CellTypeFilght
-        case 5:
-            return .CellTypeMutiChoose
-        default:
+        let type =  CellType(rawValue: serviceLevel)
+        
+        if type != nil {
+            return type!
+        } else {
             return .CellDefault
         }
-        
     }
     
     func changePriceToNew(model:chooseItemModel){
@@ -220,8 +212,6 @@ class AIServerDetailViewController: UIViewController {
                 tags?.addTag(titleItem ?? "")
             }
         }
-//        self.scrollView.addSubview(tags!)
-//        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, 180)
     }
     
     /*!
@@ -289,25 +279,6 @@ class AIServerDetailViewController: UIViewController {
             self.dataSource.removeObjectAtIndex(s)
             self.tableView.reloadData()
         }
-        
-        
-        
-        /*
-        let titl = tag.tTitle
-        
-        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! DataModel
-        
-        if fitlerModel.title == titl {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
-        
-        self.dataSource.removeObjectAtIndex(index)
-        self.tableView.reloadData()
-        return
-        }
-        }
-        */
-        
     }
 }
 
@@ -339,13 +310,6 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             tags?.addTag(value)
             
             titleArray?.append(value)
-            
-            /*
-            let data =  DataModel()
-            data.title = value
-            data.type = CellType.CellTypeCoverflow
-            self.dataSource.insertObject(data, atIndex: 1)
-            self.tableView.reloadData()*/
             
         }
     }
@@ -420,17 +384,17 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         if indexPath.row == 1 {
             switch model.type! {
-            case CellType.CellTypeDate:
+            case .CellTypeDate:
                 return 270
-            case CellType.CellTypeCoverflow:
+            case .CellTypeCoverflow:
                 return 190
-            case CellType.CellTypeFilght:
+            case .CellTypeFilght:
                 return 150
-            case CellType.CellTypeparames:
+            case .CellTypeparames:
                 return 100
-            case CellType.CellTypeMutiChoose:
+            case .CellTypeMutiChoose:
                 return 80
-            case CellType.CellTypeSignleChoose:
+            case .CellTypeSignleChoose:
                 return 80
             default:
                 return 0
@@ -464,17 +428,17 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell.title.text = model.title ?? ""
                 
                 switch model.type! {
-                case CellType.CellTypeDate:
+                case .CellTypeDate:
                     cell.closeButton.hidden = true
-                case CellType.CellTypeCoverflow:
+                case .CellTypeCoverflow:
                     cell.closeButton.hidden = false
-                case CellType.CellTypeFilght:
+                case .CellTypeFilght:
                     cell.closeButton.hidden = false
-                case CellType.CellTypeparames:
+                case .CellTypeparames:
                     cell.closeButton.hidden = true
-                case CellType.CellTypeMutiChoose:
+                case .CellTypeMutiChoose:
                     cell.closeButton.hidden = false
-                case CellType.CellTypeSignleChoose:
+                case .CellTypeSignleChoose:
                     cell.closeButton.hidden = false
                 default:
                     break
@@ -769,8 +733,8 @@ class AISDFightCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
 }
 
-class AISDParamsCell: UITableViewCell
-{
+class AISDParamsCell: UITableViewCell {
+    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var descri: UILabel!
@@ -796,6 +760,4 @@ class AISDParamsCell: UITableViewCell
         
         
     }
-    
-    
 }
