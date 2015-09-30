@@ -68,6 +68,7 @@ class AIServerDetailViewController: UIViewController {
     private var totalPrice: Float = 0
     // key/value : serviceId/chooseItemModel
     private var shoppingCard: [Int: chooseItemModel] = [Int: chooseItemModel]()
+    private var airTicketsViewHeight: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +150,12 @@ class AIServerDetailViewController: UIViewController {
     }
     
     private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
+        
+        // TODO
+        if catalog.service_level == 3 {
+            return
+        }
+        
         let ser: ServiceList = catalog.service_list[0] as! ServiceList
 
         totalPrice += ser.service_price.price.floatValue
@@ -432,7 +439,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             case .CellTypeCoverflow:
                 return 190
             case .CellTypeFilght:
-                return 150
+                return airTicketsViewHeight
             case .CellTypeparames:
                 return 100
             case .CellTypeMutiChoose:
@@ -602,6 +609,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         if tickets != nil {
             ticketGroupView.setTicketsData(tickets!)
+            airTicketsViewHeight = ticketGroupView.getViewHeight()
             
             cell?.contentView.addSubview(ticketGroupView)
             layout(ticketGroupView) { viewTic in
