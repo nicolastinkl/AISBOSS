@@ -17,6 +17,6 @@ class chooseItemModel{
 
 protocol AISchemeProtocol {
     
-    func chooseItem(model:chooseItemModel)
+    func chooseItem(model: chooseItemModel?, cancelItem: chooseItemModel?)
     
 }

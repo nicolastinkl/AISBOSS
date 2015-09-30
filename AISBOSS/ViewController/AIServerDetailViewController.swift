@@ -65,6 +65,10 @@ class AIServerDetailViewController: UIViewController {
     
     private var schemeModel:AIServiceSchemeModel?
     
+    private var totalPrice: Float = 0
+    // key/value : serviceId/chooseItemModel
+    private var shoppingCard: [Int: chooseItemModel] = [Int: chooseItemModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -196,6 +200,25 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
+    private func changePrice(choosedModel:chooseItemModel?, cancelModel: chooseItemModel?){
+        
+        if choosedModel != nil {
+            if shoppingCard[choosedModel!.scheme_id] == nil {
+                totalPrice += choosedModel!.scheme_item_price
+                shoppingCard[choosedModel!.scheme_id] = choosedModel!
+            }
+        }
+        
+        if cancelModel != nil {
+            if shoppingCard[cancelModel!.scheme_id] != nil {
+                totalPrice -= cancelModel!.scheme_item_price
+                shoppingCard[cancelModel!.scheme_id] = nil
+            }
+        }
+        
+        labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+    }
+    
     func ChangeDateViewNotification(){
         self.tableView.reloadData()
     }
@@ -289,9 +312,10 @@ class AIServerDetailViewController: UIViewController {
     }
 }
 
-extension AIServerDetailViewController:AISchemeProtocol{
-    func chooseItem(model: chooseItemModel) {
-        self.changePriceToNew(model)
+// MARK: AISchemeProtocol
+extension AIServerDetailViewController: AISchemeProtocol {
+    func chooseItem(model: chooseItemModel?, cancelItem: chooseItemModel?) {
+        changePrice(model, cancelModel: cancelItem)
     }
 }
 
@@ -688,16 +712,16 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     var dataSource:[ServiceList]?
     
-    func numberOfItemsInCarousel(carousel: iCarousel!) -> Int
-    {
+    private var oldChoosedItem: chooseItemModel?
+    
+    func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
         if let daSource = dataSource {
             return daSource.count
         }
         return 0
     }
     
-    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
-    {
+    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
         //create new view if no view is available for recycling
         if (view == nil)
         {
@@ -779,8 +803,10 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             let model = chooseItemModel()
             model.scheme_id = ser.service_id
             model.scheme_item_price = ser.service_price.price.floatValue
-            //      model.scheme_item_quantity = Int(ser.service_price.billing_mode)
-            delegate?.chooseItem(model)
+            
+            delegate?.chooseItem(model, cancelItem: oldChoosedItem)
+            
+            oldChoosedItem = model
         }
         
     }

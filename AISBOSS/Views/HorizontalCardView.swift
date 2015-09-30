@@ -213,7 +213,7 @@ class HorizontalCardView: UIView {
             model.scheme_item_id = selCardCellView.serviceListModel!.service_id
             model.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
             
-            delegate?.chooseItem(model)
+            delegate?.chooseItem(model, cancelItem: nil)
         }
         
     }
