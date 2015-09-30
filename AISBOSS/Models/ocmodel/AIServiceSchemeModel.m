@@ -53,6 +53,14 @@
 
 @implementation ServiceList
 
+- (void)setService_rating:(NSNumber<Optional> *)service_rating
+{
+    _service_rating = [NSNumber numberWithFloat:service_rating.floatValue / 5];
+}
+
+
+
+
 //Make all model properties optional (avoid if possible)
 +(BOOL)propertyIsOptional:(NSString*)propertyName
 {
