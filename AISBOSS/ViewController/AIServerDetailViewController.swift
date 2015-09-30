@@ -12,20 +12,21 @@ import AISpring
 import AIAlertView
 import Cartography
 
-enum cellType:Int{
-    case cellTypeDate = 0
-    case cellTypeCoverflow = 1
-    case cellTypeFilght = 2
-    case cellTypeparames = 3
-    case cellTypeSignleChoose = 4
-    case cellTypeMutiChoose = 5
+enum CellType: Int {
+    case CellTypeDate
+    case CellTypeCoverflow
+    case CellTypeFilght
+    case CellTypeparames
+    case CellTypeSignleChoose
+    case CellTypeMutiChoose
+    case CellDefault
 }
 
-class dataModel : NSObject{
-    var title:String?
-    var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
-    var content:String?
-    var placeHolderModel:[AnyObject]?
+class DataModel : NSObject {
+    var title: String?
+    var type: CellType?
+    var content: String?
+    var realModel: [AnyObject]?
 }
 
 // MARK: UITBALEVIEW
@@ -51,7 +52,7 @@ class AIServerDetailViewController: UIViewController {
     
     private var tags:AOTagList?
     
-    private let labelPrice = JumpNumberLabel(frame: CGRectMake(0, 0, 200, 40))
+    private var labelPrice: JumpNumberLabel!
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
     
@@ -69,7 +70,15 @@ class AIServerDetailViewController: UIViewController {
         
         self.labelView.text = "Services to Your Linking"//titleString ?? ""
         
-        //init searchView
+        addSearchViewToParent()
+        addPriceLabel()
+        
+        retryNetworkingAction()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+    }
+    
+    private func addSearchViewToParent() {
         serviceSearchView = AIServiceSearchView.currentView()
         serviceSearchView.setWidth(self.view.width)
         serviceSearchView.setHeight(self.view.height)
@@ -77,10 +86,10 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.alpha = 0
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
-        
-        retryNetworkingAction()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+    }
+    
+    private func addPriceLabel() {
+        labelPrice = JumpNumberLabel(frame: CGRectMake(0, 0, 200, 40))
         
         self.priceView.addSubview(labelPrice)
         labelPrice.textColor = UIColor.whiteColor()
@@ -88,7 +97,6 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.textAlignment = NSTextAlignment.Center
         labelPrice.font = UIFont.systemFontOfSize(23)
         labelPrice.setTop(5)
-        
     }
     
     func retryNetworkingAction(){
@@ -98,7 +106,7 @@ class AIServerDetailViewController: UIViewController {
         Async.userInitiated {
             let dataObtainer: SchemeDataObtainer = BDKSchemeDataObtainer()
             dataObtainer.getServiceSchemes(223, success: { (responseData) -> Void in
-
+                
                 self.view.hideProgressViewLoading()
                 self.schemeModel = responseData
                 self.reloadInputData()
@@ -109,6 +117,56 @@ class AIServerDetailViewController: UIViewController {
                     self.view.showErrorView()
             }
         }
+    }
+    
+    func reloadInputData() {
+        
+        insertDateModel()
+        
+        if let scheme = self.schemeModel {
+            
+            for catalog in scheme.catalog_list {
+                let data =  convertSchemeToCellModel(catalog as! Catalog)
+                self.dataSource.addObject(data)
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func insertDateModel() {
+        let data =  DataModel()
+        data.title = "DAY"
+        data.type = CellType.CellTypeDate
+        self.dataSource.addObject(data)
+        
+    }
+    
+    private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
+        let data =  DataModel()
+        data.title = catalog.catalog_name
+        data.type = convertServiceLevelToCellType(catalog.service_level)
+        data.realModel = catalog.service_list
+        
+        return data
+    }
+    
+    private func convertServiceLevelToCellType(serviceLevel: Int) -> CellType {
+        switch serviceLevel {
+        case 1:
+            return .CellTypeCoverflow
+        case 2:
+            return .CellTypeSignleChoose
+        case 3:
+            return .CellTypeparames
+        case 4:
+            return .CellTypeFilght
+        case 5:
+            return .CellTypeMutiChoose
+        default:
+            return .CellDefault
+        }
+        
     }
     
     func changePriceToNew(model:chooseItemModel){
@@ -137,58 +195,6 @@ class AIServerDetailViewController: UIViewController {
         }
         
         labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
-    }
-    
-    func reloadInputData() {
-//        
-//        if let arrrays = titleArray {
-//            for item in arrrays {
-//                let data =  dataModel()
-//                data.title = item
-//                data.type = cellType.cellTypeCoverflow
-//                //self.dataSource.insertObject(data, atIndex: 1)
-//            }
-//        }
-//        
-        localCode { () -> () in
-            
-            let data =  dataModel()
-            data.title = "DAY"
-            data.type = cellType.cellTypeDate
-            self.dataSource.addObject(data)
-            
-        }        
-        
-        if let scheme = self.schemeModel {
-            
-            for catalog in scheme.catalog_list as! [Catalog] {
-                let data =  dataModel()
-                data.title = catalog.catalog_name
-                switch catalog.service_level {
-                case 1:
-                    data.type = cellType.cellTypeCoverflow
-                    break
-                case 2:
-                    data.type = cellType.cellTypeSignleChoose
-                    break
-                case 3:
-                    data.type = cellType.cellTypeparames
-                    break
-                case 4:
-                    data.type = cellType.cellTypeFilght
-                    break
-                case 5:
-                    data.type = cellType.cellTypeMutiChoose
-                    break
-                default:
-                    break
-                }
-                data.placeHolderModel = catalog.service_list
-                self.dataSource.addObject(data)
-            }
-        }
-        
-        self.tableView.reloadData()
     }
     
     func ChangeDateViewNotification(){
@@ -255,8 +261,8 @@ class AIServerDetailViewController: UIViewController {
         if let s = sectionss {
             //删除对应的价格
             
-            let model = self.dataSource.objectAtIndex(s) as! dataModel
-            for custom in model.placeHolderModel as! [ServiceList]{
+            let model = self.dataSource.objectAtIndex(s) as! DataModel
+            for custom in model.realModel as! [ServiceList]{
                 
                 var indexPre:Int = 0
                 var replace = false
@@ -290,7 +296,7 @@ class AIServerDetailViewController: UIViewController {
         let titl = tag.tTitle
         
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! dataModel
+        let fitlerModel = object as! DataModel
         
         if fitlerModel.title == titl {
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
@@ -335,9 +341,9 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
             titleArray?.append(value)
             
             /*
-            let data =  dataModel()
+            let data =  DataModel()
             data.title = value
-            data.type = cellType.cellTypeCoverflow
+            data.type = CellType.CellTypeCoverflow
             self.dataSource.insertObject(data, atIndex: 1)
             self.tableView.reloadData()*/
             
@@ -352,7 +358,7 @@ extension AIServerDetailViewController : AOTagDelegate{
         /*
         let titl = tag.tTitle
         dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-            let fitlerModel = object as! dataModel
+            let fitlerModel = object as! DataModel
             
             if fitlerModel.title == titl {
                 NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
@@ -407,29 +413,31 @@ extension AIServerDetailViewController: ServiceSwitchDelegate{
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let model =  dataSource.objectAtIndex(indexPath.section) as! dataModel
+        let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
         if indexPath.row == 0 {
             return 50
         }
         
         if indexPath.row == 1 {
             switch model.type! {
-            case cellType.cellTypeDate:
+            case CellType.CellTypeDate:
                 return 270
-            case cellType.cellTypeCoverflow:
+            case CellType.CellTypeCoverflow:
                 return 190
-            case cellType.cellTypeFilght:
+            case CellType.CellTypeFilght:
                 return 150
-            case cellType.cellTypeparames:
+            case CellType.CellTypeparames:
                 return 100
-            case cellType.cellTypeMutiChoose:
+            case CellType.CellTypeMutiChoose:
                 return 80
-            case cellType.cellTypeSignleChoose:
+            case CellType.CellTypeSignleChoose:
                 return 80
+            default:
+                return 0
             }
+        } else {
+            return 0
         }
-        
-        return 0
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -438,9 +446,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let model =  dataSource.objectAtIndex(section) as! dataModel
-        if model.type! == cellType.cellTypeFilght{
-            let modelArray = model.placeHolderModel
+        let model =  dataSource.objectAtIndex(section) as! DataModel
+        if model.type! == CellType.CellTypeFilght{
+            let modelArray = model.realModel
             return 1 + modelArray!.count
         }
         
@@ -450,24 +458,26 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         if dataSource.count > indexPath.section{
-            let model =  dataSource.objectAtIndex(indexPath.section) as! dataModel
+            let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITitleServiceDetailCell) as! AITitleServiceDetailCell
                 cell.title.text = model.title ?? ""
                 
                 switch model.type! {
-                case cellType.cellTypeDate:
+                case CellType.CellTypeDate:
                     cell.closeButton.hidden = true
-                case cellType.cellTypeCoverflow:
+                case CellType.CellTypeCoverflow:
                     cell.closeButton.hidden = false
-                case cellType.cellTypeFilght:
+                case CellType.CellTypeFilght:
                     cell.closeButton.hidden = false
-                case cellType.cellTypeparames:
+                case CellType.CellTypeparames:
                     cell.closeButton.hidden = true
-                case cellType.cellTypeMutiChoose:
+                case CellType.CellTypeMutiChoose:
                     cell.closeButton.hidden = false
-                case cellType.cellTypeSignleChoose:
+                case CellType.CellTypeSignleChoose:
                     cell.closeButton.hidden = false
+                default:
+                    break
                 }
                 cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
                
@@ -476,7 +486,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }else{
                 
                 // TODO: 日期
-                if model.type == cellType.cellTypeDate {
+                if model.type == CellType.CellTypeDate {
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
                     
                     let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
@@ -493,12 +503,12 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 
-//                let modelArray = model.placeHolderModel as! NSArray
+//                let modelArray = model.realModel as! NSArray
                 
-                let ls = model.placeHolderModel as! Array<ServiceList>
+                let ls = model.realModel as! Array<ServiceList>
                 
                 // TODO: 卡片信息
-                if  model.type == cellType.cellTypeCoverflow {
+                if  model.type == CellType.CellTypeCoverflow {
                     
                     if let tit  = model.title {
                         let key = "\(tit)_\(indexPath.row)"
@@ -517,7 +527,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 // TODO: 机票信息
-                if  model.type == cellType.cellTypeFilght { 
+                if  model.type == CellType.CellTypeFilght { 
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
                     for subview in cell?.contentView.subviews as [UIView]! {
@@ -543,7 +553,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 // TODO: 开关信息
-                if  model.type == cellType.cellTypeparames {
+                if  model.type == CellType.CellTypeparames {
                     
                     let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
                      
@@ -578,7 +588,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 // TODO: 多选 or 单选
-                if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
+                if model.type == CellType.CellTypeMutiChoose ||  model.type == CellType.CellTypeSignleChoose {
                     
                     if let _  = model.title {
                         
@@ -597,7 +607,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                                 cell?.contentView.addSubview(hori)
                             }
                             if ls.count > 0 {
-                                hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
+                                hori.loadData(ls, multiSelect: model.type == CellType.CellTypeMutiChoose)
                             }
                             
                             hori.delegate = self
