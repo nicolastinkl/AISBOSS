@@ -235,6 +235,13 @@ class AIServerDetailViewController: UIViewController {
             }
         }
         
+        if cancelModel != nil {
+            if shoppingCard[cancelModel!.scheme_id] != nil {
+                totalPrice -= cancelModel!.scheme_item_price
+                shoppingCard[cancelModel!.scheme_id] = nil
+            }
+        }
+        
         
         labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
