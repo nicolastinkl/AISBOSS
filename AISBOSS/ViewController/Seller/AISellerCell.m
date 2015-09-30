@@ -610,7 +610,10 @@
     _goodsClass.frame = nameFrame;
     _goodsClass.text = name;
     
+    //
+    CGSize serviceSize = [service sizeWithFontSize:kSmallFontSize+2 forWidth:CGRectGetWidth(_boardView.frame)];
     serviceFrame.origin.x = CGRectGetMaxX(_goodsClass.frame);
+    serviceFrame.size.width = serviceSize.width;
     _goodsName.frame = serviceFrame;
     _goodsName.text = service;
     
