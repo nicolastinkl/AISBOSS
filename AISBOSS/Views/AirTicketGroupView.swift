@@ -50,6 +50,7 @@ class AirTicketGroupView: UIView {
         ticketCount = tickets.count
         
         var preTicket: AirTicketView?
+        var totalPrice: Float = 0
         
         for var index = 0; index < tickets.count; ++index {
             let nib = NSBundle.mainBundle().loadNibNamed("AirTicketView", owner: self, options: nil)
@@ -70,6 +71,12 @@ class AirTicketGroupView: UIView {
                     ticket.left == preTicket.superview!.left
                     ticket.right == preTicket.superview!.right
                 }
+            }
+            
+            totalPrice += tickets[index].service_price.price.floatValue
+            
+            if index == tickets.count - 1 {
+                ticket.priceAndPassengerType.text = "$ \(totalPrice)"
             }
             
             preTicket = ticket

@@ -189,16 +189,37 @@ class HorizontalCardView: UIView {
     // MARK: - delegate
     func viewSelectAction(target : UITapGestureRecognizer){
         if let selCardCellView : CardCellView = target.view as? CardCellView{
+            var lastSelectedCardCellView : CardCellView
+            var cancelItemModel :chooseItemModel?
+            var model : chooseItemModel?
             for cardCellView : CardCellView in cardCellViewList{
                 //支持多选的情况，只需要把selected取反
                 if multiSelect{
                     if cardCellView.index == selCardCellView.index{
+                        //如果是选中变不选中
+                        if cardCellView.selected{
+                            cancelItemModel = chooseItemModel()
+                            cancelItemModel!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                            cancelItemModel!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                        }
+                        //如果是不选中变选中
+                        else{
+                            model = chooseItemModel()
+                            model!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                            model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                        }
                         cardCellView.selected = !cardCellView.selected
                         cardCellView.selectAction()
                     }
                 }
                 //单选情况，要把其它所有都改为selected=false再置true选中的那个
                 else{
+                    if cardCellView.selected {
+                        lastSelectedCardCellView = cardCellView
+                        cancelItemModel = chooseItemModel()
+                        cancelItemModel!.scheme_item_id = lastSelectedCardCellView.serviceListModel!.service_id
+                        cancelItemModel!.scheme_item_price = lastSelectedCardCellView.serviceListModel!.service_price.price.floatValue
+                    }
                     if cardCellView.index == selCardCellView.index{
                         cardCellView.selected = true
                         cardCellView.selectAction()
@@ -209,11 +230,15 @@ class HorizontalCardView: UIView {
                     }
                 }
             }
-            let model = chooseItemModel()
-            model.scheme_item_id = selCardCellView.serviceListModel!.service_id
-            model.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+            //单选的时候为选中赋值
+            if !multiSelect{
+                model = chooseItemModel()
+                model!.scheme_item_id = selCardCellView.serviceListModel!.service_id
+                model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+            }
             
-            delegate?.chooseItem(model)
+            
+            delegate?.chooseItem(model, cancelItem: cancelItemModel)
         }
         
     }

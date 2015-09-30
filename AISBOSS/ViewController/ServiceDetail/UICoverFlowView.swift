@@ -47,7 +47,6 @@ class UICoverFlowView: UIView {
         if model.service_provider.provider_name != nil {
             labelNick.text = model.service_provider.provider_name as String
         }
-        
     }
     
 }
