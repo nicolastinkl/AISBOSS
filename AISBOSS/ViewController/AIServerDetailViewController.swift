@@ -132,10 +132,12 @@ class AIServerDetailViewController: UIViewController {
             for catalog in scheme.catalog_list {
                 let data =  convertSchemeToCellModel(catalog as! Catalog)
                 self.dataSource.addObject(data)
+                caculateDefaultServicesTotalPrice(catalog as! Catalog)
             }
         }
         
         self.tableView.reloadData()
+        labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func insertDateModel() {
@@ -144,6 +146,17 @@ class AIServerDetailViewController: UIViewController {
         data.type = CellType.CellTypeDate
         self.dataSource.addObject(data)
         
+    }
+    
+    private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
+        let ser: ServiceList = catalog.service_list[0] as! ServiceList
+
+        totalPrice += ser.service_price.price.floatValue
+        
+        let model = chooseItemModel()
+        model.scheme_id = ser.service_id
+        model.scheme_item_price = ser.service_price.price.floatValue
+        shoppingCard[model.scheme_id] = model
     }
     
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
