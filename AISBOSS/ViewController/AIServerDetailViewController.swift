@@ -289,7 +289,7 @@ class AIServerDetailViewController: UIViewController {
     }
 }
 
-extension AIServerDetailViewController: AISchemeProtocol{
+extension AIServerDetailViewController:AISchemeProtocol{
     func chooseItem(model: chooseItemModel) {
         self.changePriceToNew(model)
     }
@@ -485,7 +485,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if model.type == CellType.CellTypeMutiChoose ||  model.type == CellType.CellTypeSignleChoose {
                     
                     return createHorizontalCardViewCell(model, indexPath: indexPath)
-        
+                    
                 }
             }
         }
