@@ -394,13 +394,12 @@ extension AIServerDetailViewController : AOTagDelegate{
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
     func switchStateChanged(isOn: Bool, model: chooseItemModel) {
+        
         if isOn {
-            self.changePriceToNew(model)
+            changePrice(model, cancelModel: nil)
             
-        }else{
-            model.scheme_item_price = 0
-            self.changePriceToNew(model)
-            
+        } else {
+            changePrice(nil, cancelModel: model)
         }
     }
 }
