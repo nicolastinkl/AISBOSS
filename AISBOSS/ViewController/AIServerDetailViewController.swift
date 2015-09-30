@@ -430,11 +430,9 @@ extension AIServerDetailViewController : AOTagDelegate{
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
-    func switchStateChanged(isOn: Bool, model: chooseItemModel) {
-        
+    func switchStateChanged(isOn: Bool, model: chooseItemModel) {        
         if isOn {
             changePrice(model, cancelModel: nil)
-            
         } else {
             changePrice(nil, cancelModel: model)
         }
@@ -490,17 +488,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return createTitleViewCell(model)
             } else {
                 
-//                switch model.type! {
-//                case .CellTypeDate:
-//                    return createDatePickerViewCell()
-//                case .CellTypeCoverflow:
-//                    createCoverFlowViewCell(model, indexPath: indexPath)
-//                case .CellTypeFilght:
-//                    return createAirTicketsViewCell(model)
-//                case .CellTypeparames:
-//                    return createSwitchViewCell(ls, indexPath: indexPath)
-//                }
-                
                 if model.type == .CellTypeDate {
                     return createDatePickerViewCell()
                 }
@@ -510,40 +497,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 // TODO: 卡片信息
                 if  model.type == CellType.CellTypeCoverflow {
                     
-<<<<<<< HEAD
-                    if let tit  = model.title {
-                        let key = "\(tit)_\(indexPath.row)"
-                        if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
-                            return cacheCell
-                        }else{
-                            
-                            let cell = AISDSubDetailCell.currentView()//tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
-                            cell.delegate = self
-                            cell.carousel.type = .CoverFlow2
-                            cell.dataSource = ls
-                            cell.carousel.reloadData()
-                            let newCell = cell
-                            coverflowDataSource.setValue(newCell, forKey: key)
-                            return cell
-                        }
-=======
                     return createCoverFlowViewCell(model, indexPath: indexPath)
-                    /*  if let _  = model.title {
-                    let key = "coverflow_\(indexPath.section)"
-                    if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
-                    return cacheCell
-                    }else{
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
-                    cell.delegate = self
-                    cell.carousel.type = .CoverFlow2
-                    cell.dataSource = ls
-                    cell.carousel.reloadData()
-                    coverflowDataSource.setValue(cell, forKey: key)
-                    return cell
-                    }
->>>>>>> 3f5108e314ed2ff913b3f5c4fa43e9579ef0f5e5
-                    }
-                    */
+                  
                 }
                 
                 // TODO: 机票信息
@@ -560,37 +515,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 }
                 
                 // TODO: 多选 or 单选
-<<<<<<< HEAD
-                if model.type == cellType.cellTypeMutiChoose ||  model.type == cellType.cellTypeSignleChoose {
-                    
-                    if let _  = model.title {
-                        
-                        let key = "cardView_\(indexPath.section)"
-                                                                        
-                        if let cacheCell = horiListDataSource.valueForKey(key) as! UITableViewCell? {
-                            return cacheCell
-                        }else{
-                            
-                           
-                            let cell = AITableCellHolder.currentView()// tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                            let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                            cell.contentView.addSubview(hori)
-                            if ls.count > 0 {
-                                hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
-                            }
-                            
-                            hori.delegate = self
-                            
-                            horiListDataSource.setValue(cell, forKey: key)
-                            
-                            return cell
-                            
-                        }
-                    
-                    }
-=======
                 if model.type == CellType.CellTypeMutiChoose ||  model.type == CellType.CellTypeSignleChoose {
->>>>>>> 3f5108e314ed2ff913b3f5c4fa43e9579ef0f5e5
                     
                     return createHorizontalCardViewCell(model, indexPath: indexPath)
                     
@@ -649,7 +574,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
                 return cacheCell
             } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                let cell = AISDSubDetailCell.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                 cell.delegate = self
                 cell.carousel.type = .CoverFlow2
                 cell.dataSource = model.realModel as? Array<ServiceList>
@@ -711,13 +636,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
         }
         
-        if services.count > 0 && services.count > 0 {
-            switchView.setService(services[0])
+        if let ser = services.last as ServiceList?{
+            switchView.setService(ser)
         }
         switchView.reloadData()
         switchView.switchDelegate = self
-
-        
         return cell!
     }
     
@@ -730,26 +653,18 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return cacheCell
             }else{
                 
-                var hori : HorizontalCardView
-                let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                if cell?.contentView.subviews.count > 0{
-                    hori = cell?.contentView.subviews.first as! HorizontalCardView
-                }else{
-                    hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                    cell?.contentView.addSubview(hori)
-                }
-                
+                let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
+                let cell = AITableCellHolder.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                cell.contentView.addSubview(hori)
                 let services = model.realModel as! Array<ServiceList>
                 
                 if services.count > 0 {
                     hori.loadData(services, multiSelect: model.type == CellType.CellTypeMutiChoose)
                 }
-                
                 hori.delegate = self
-                
                 horiListDataSource.setValue(cell, forKey: key)
                 
-                return cell!
+                return cell
                 
             }
             
@@ -890,15 +805,9 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             let model = chooseItemModel()
             model.scheme_id = ser.service_id
             model.scheme_item_price = ser.service_price.price.floatValue
-<<<<<<< HEAD
-//            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
-            delegate?.chooseItem(model)
-=======
-            
             delegate?.chooseItem(model, cancelItem: oldChoosedItem)
             
             oldChoosedItem = model
->>>>>>> 3f5108e314ed2ff913b3f5c4fa43e9579ef0f5e5
         }
     }
 }
@@ -907,8 +816,7 @@ class AISDFightCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
 }
-
-<<<<<<< HEAD
+ 
 class AITableCellHolder:UITableViewCell{
     // MARK: currentView
     class func currentView()->AITableCellHolder{
@@ -919,10 +827,6 @@ class AITableCellHolder:UITableViewCell{
 }
 class AISDParamsCell: UITableViewCell
 {
-=======
-class AISDParamsCell: UITableViewCell {
-    
->>>>>>> 3f5108e314ed2ff913b3f5c4fa43e9579ef0f5e5
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var descri: UILabel!
