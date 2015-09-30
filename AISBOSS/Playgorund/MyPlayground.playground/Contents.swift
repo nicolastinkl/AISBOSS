@@ -37,3 +37,16 @@ if let s = string{
 "sd".uppercaseString
 
 
+let s1 = "abc"
+
+s1
+
+var s2 = s1
+
+s2 = "123"
+
+s2
+
+
+
+

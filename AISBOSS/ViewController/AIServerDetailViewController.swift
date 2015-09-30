@@ -26,6 +26,7 @@ class dataModel : NSObject{
     var type:cellType?  //0 date / 1 conflow   2/filght  3/ parames
     var content:String?
     var placeHolderModel:[AnyObject]?
+    var sectionID:Int?
 }
 
 // MARK: UITBALEVIEW
@@ -184,6 +185,7 @@ class AIServerDetailViewController: UIViewController {
                     break
                 }
                 data.placeHolderModel = catalog.service_list
+                data.sectionID = catalog.catalog_id
                 self.dataSource.addObject(data)
             }
         }
@@ -283,7 +285,6 @@ class AIServerDetailViewController: UIViewController {
             self.dataSource.removeObjectAtIndex(s)
             self.tableView.reloadData()
         }
-        
         
         
         /*
@@ -505,12 +506,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                         if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
                             return cacheCell
                         }else{
-                            let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                            
+                            let cell = AISDSubDetailCell.currentView()//tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                             cell.delegate = self
                             cell.carousel.type = .CoverFlow2
                             cell.dataSource = ls
                             cell.carousel.reloadData()
-                            coverflowDataSource.setValue(cell, forKey: key)
+                            let newCell = cell
+                            coverflowDataSource.setValue(newCell, forKey: key)
                             return cell
                         }
                     }
@@ -588,14 +591,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             return cacheCell
                         }else{
                             
-                            var hori : HorizontalCardView
-                            let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
-                            if cell?.contentView.subviews.count > 0{
-                                hori = cell?.contentView.subviews.first as! HorizontalCardView
-                            }else{
-                                hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                                cell?.contentView.addSubview(hori)
-                            }
+                           
+                            let cell = AITableCellHolder.currentView()// tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                            let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
+                            cell.contentView.addSubview(hori)
                             if ls.count > 0 {
                                 hori.loadData(ls, multiSelect: model.type == cellType.cellTypeMutiChoose)
                             }
@@ -604,7 +603,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                             
                             horiListDataSource.setValue(cell, forKey: key)
                             
-                            return cell!
+                            return cell
                             
                         }
                     
@@ -646,6 +645,12 @@ class AISDDateCell: UITableViewCell {
 }
 
 class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate{
+    
+    // MARK: currentView
+    class func currentView()->AISDSubDetailCell{
+        let selfView = NSBundle.mainBundle().loadNibNamed("AISDSubDetailCell", owner: self, options: nil).first  as! AISDSubDetailCell
+        return selfView
+    }
     
     @IBOutlet weak var carousel: iCarousel!
     
@@ -742,16 +747,13 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
         if let dataSour = dataSource {
             let ser:ServiceList = dataSour[carousel.currentItemIndex]
-            
             let model = chooseItemModel()
             model.scheme_id = ser.service_id
             model.scheme_item_price = ser.service_price.price.floatValue
-      //      model.scheme_item_quantity = Int(ser.service_price.billing_mode)
+//            model.scheme_item_quantity = Int(ser.service_price.billing_mode)
             delegate?.chooseItem(model)
         }
-        
     }
-    
 }
 
 class AISDFightCell: UITableViewCell {
@@ -759,6 +761,14 @@ class AISDFightCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
 }
 
+class AITableCellHolder:UITableViewCell{
+    // MARK: currentView
+    class func currentView()->AITableCellHolder{
+        let selfView = NSBundle.mainBundle().loadNibNamed("AITableCellHolder", owner: self, options: nil).first  as! AITableCellHolder
+        return selfView
+    }
+    
+}
 class AISDParamsCell: UITableViewCell
 {
     @IBOutlet weak var title: UILabel!
