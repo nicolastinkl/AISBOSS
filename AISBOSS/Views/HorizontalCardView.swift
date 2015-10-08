@@ -22,7 +22,7 @@ class HorizontalCardView: UIView {
     var maxCellNumber = 4
     
     let viewPadding : CGFloat = 9
-    let cellPadding : CGFloat = 5
+    let cellPadding : CGFloat = 3
     let cellHeight : CGFloat = 75
     let cellY : CGFloat = 0
 
@@ -67,14 +67,14 @@ class HorizontalCardView: UIView {
         var isFirst = true
         var cellX : CGFloat = viewPadding
         var index = 0
-        let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
+        let cellPaddingAll = CGFloat(maxCellNumber - 1) * cellPadding
         let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll ) / CGFloat(maxCellNumber)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
         cardCellViewList.removeAll()
-        //self.subviews.map({
-            //$0.removeFromSuperview()
-        //})
+        self.subviews.map({
+            $0.removeFromSuperview()
+        })
         //build cell
         for var i = 0 ; i < maxCellNumber ; i++ {
         //for serviceListModel : ServiceList in serviceListModelList{
@@ -189,16 +189,37 @@ class HorizontalCardView: UIView {
     // MARK: - delegate
     func viewSelectAction(target : UITapGestureRecognizer){
         if let selCardCellView : CardCellView = target.view as? CardCellView{
+            var lastSelectedCardCellView : CardCellView
+            var cancelItemModel :chooseItemModel?
+            var model : chooseItemModel?
             for cardCellView : CardCellView in cardCellViewList{
                 //支持多选的情况，只需要把selected取反
                 if multiSelect{
                     if cardCellView.index == selCardCellView.index{
+                        //如果是选中变不选中
+                        if cardCellView.selected{
+                            cancelItemModel = chooseItemModel()
+                            cancelItemModel!.scheme_id = selCardCellView.serviceListModel!.service_id
+                            cancelItemModel!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                        }
+                        //如果是不选中变选中
+                        else{
+                            model = chooseItemModel()
+                            model!.scheme_id = selCardCellView.serviceListModel!.service_id
+                            model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                        }
                         cardCellView.selected = !cardCellView.selected
                         cardCellView.selectAction()
                     }
                 }
                 //单选情况，要把其它所有都改为selected=false再置true选中的那个
                 else{
+                    if cardCellView.selected {
+                        lastSelectedCardCellView = cardCellView
+                        cancelItemModel = chooseItemModel()
+                        cancelItemModel!.scheme_id = lastSelectedCardCellView.serviceListModel!.service_id
+                        cancelItemModel!.scheme_item_price = lastSelectedCardCellView.serviceListModel!.service_price.price.floatValue
+                    }
                     if cardCellView.index == selCardCellView.index{
                         cardCellView.selected = true
                         cardCellView.selectAction()
@@ -209,11 +230,15 @@ class HorizontalCardView: UIView {
                     }
                 }
             }
-            let model = chooseItemModel()
-            model.scheme_item_id = selCardCellView.serviceListModel.service_id
-            model.scheme_item_price = selCardCellView.serviceListModel.service_price.price.floatValue
+            //单选的时候为选中赋值
+            if !multiSelect{
+                model = chooseItemModel()
+                model!.scheme_id = selCardCellView.serviceListModel!.service_id
+                model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+            }
             
-            delegate?.chooseItem(model)
+            
+            delegate?.chooseItem(model, cancelItem: cancelItemModel)
         }
         
     }

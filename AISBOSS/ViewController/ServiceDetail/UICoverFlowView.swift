@@ -39,8 +39,13 @@ class UICoverFlowView: UIView {
         lableContent.text = model.service_intro as String
         labelPrice.text = model.service_price.price_show as String
         imageview.setURL(model.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
-        avatorImageview.setURL(model.service_provider.provider_portrait_icon?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
-        labelNick.text = model.service_provider.provider_name as String
+        let name = NSString(format: "%@", model.service_provider.provider_name)
+        labelNick.text = "\(name)"
+        
+        let url = NSString(format: "%@", model.service_provider.provider_portrait_icon)
+        
+        avatorImageview.setURL("\(url)".toURL(), placeholderImage: UIImage(named: "Placehold"))
+        
     }
     
 }
