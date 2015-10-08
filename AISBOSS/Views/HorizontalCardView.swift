@@ -72,7 +72,7 @@ class HorizontalCardView: UIView {
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         //clear data first
         cardCellViewList.removeAll()
-        self.subviews.map({
+        _ = self.subviews.map({
             $0.removeFromSuperview()
         })
         //build cell

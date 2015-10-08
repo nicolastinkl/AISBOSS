@@ -25,7 +25,6 @@ if let s = string{
     print("nil....", terminator: "")
 }
 
-
 //func myMethod() throw{
 //    guard let s =  string else {
 //        print("sd")
