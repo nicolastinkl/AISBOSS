@@ -494,44 +494,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             if indexPath.row == 0 {
                 return createTitleViewCell(model)
             } else {
-                
-
-                switch model.type! {
-                case cellType.cellTypeDate:
-                    cell.closeButton.hidden = true
-                case cellType.cellTypeCoverflow:
-                    cell.closeButton.hidden = false
-                case cellType.cellTypeFilght:
-                    cell.closeButton.hidden = false
-                case cellType.cellTypeparames:
-                    cell.closeButton.hidden = true
-                case cellType.cellTypeMutiChoose:
-                    cell.closeButton.hidden = false
-                case cellType.cellTypeSignleChoose:
-                    cell.closeButton.hidden = false
-                }
-                cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
-               
-                return cell
-                
-       
-                
                 // TODO: 日期
-                if model.type == cellType.cellTypeDate {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDDateCell) as! AISDDateCell
-                    
-                    let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-                    let path = arrayPath.first ?? ""
-                    let componentPath = path.stringByAppendingString("CalendarImage.png")
-                    
-                    let image = UIImage(contentsOfFile: componentPath)
-                    if let im = image{
-                        cell.dateImageView.image = im
-                    }else{
-                        cell.dateImageView.image = UIImage(named: "CalendarImage")
-                    }
-                    return cell
-
                 if model.type == .CellTypeDate {
                     return createDatePickerViewCell()
                 }
@@ -601,7 +564,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let arrayPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let path = arrayPath.first ?? ""
-        let componentPath = path.stringByAppendingPathComponent("CalendarImage.png")
+        let componentPath = path.stringByAppendingString("CalendarImage.png")
         
         let image = UIImage(contentsOfFile: componentPath)
         if let im = image{
