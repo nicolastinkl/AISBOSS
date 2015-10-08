@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -48,11 +48,11 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="vy7-tM-98z"/>
-                        <exclude reference="oga-cq-ETQ"/>
-                        <exclude reference="p4c-xL-VwU"/>
                         <exclude reference="6vQ-xb-yLQ"/>
                         <exclude reference="lJd-xC-P5i"/>
+                        <exclude reference="oga-cq-ETQ"/>
+                        <exclude reference="p4c-xL-VwU"/>
+                        <exclude reference="vy7-tM-98z"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
