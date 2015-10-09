@@ -14,7 +14,7 @@ import UIKit
 *  solve : The "hook" mechanism change NavigationBar's or tabbar's background.
 *  NOTICE:Changing this property’s value provides visual feedback in the user interface, including the running of any associated animations. The selected item displays the tab bar item’s selectedImage image, using the tab bar’s selectedImageTintColor value. To prevent system coloring of an item, provide images using the UIImageRenderingModeAlwaysOriginal rendering mode.
 */
-extension UIViewController {
+extension UIViewController {    
     
     func viewDidLoadForChangeTitleColor() {
         self.viewDidLoadForChangeTitleColor()

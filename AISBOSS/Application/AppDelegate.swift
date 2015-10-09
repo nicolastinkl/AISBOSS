@@ -29,6 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //创建Root
         let root = AIRootViewController()
         
+        // 设置状态栏隐藏
+        application.statusBarHidden = true
+        application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
+        // 设置状态栏高亮
+        application.statusBarStyle = UIStatusBarStyle.LightContent
+        application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         //创建导航控制器
         let nav = UINavigationController(rootViewController:root)
         nav.navigationBarHidden = true

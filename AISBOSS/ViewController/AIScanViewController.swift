@@ -318,6 +318,10 @@ class AIScanViewController: UIViewController {
         loopSpring(currentLabelArray!)
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     // MARK: - Actions
     @IBAction func addAction(sender: AnyObject) {
         

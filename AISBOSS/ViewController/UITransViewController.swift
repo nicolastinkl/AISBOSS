@@ -170,6 +170,7 @@ class UITransViewController: UIViewController {
         self.videoView.hidden = true
     }
     
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         

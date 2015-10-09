@@ -74,7 +74,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = "Services to Your Linking"//titleString ?? ""
+        self.labelView.text = "Services to Your Liking"//titleString ?? ""
         
         addSearchViewToParent()
 
@@ -83,6 +83,9 @@ class AIServerDetailViewController: UIViewController {
         retryNetworkingAction()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     private func addSearchViewToParent() {
