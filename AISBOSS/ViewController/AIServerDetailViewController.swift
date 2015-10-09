@@ -517,7 +517,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 if  model.type == CellType.CellTypeCoverflow {
                     
                     return createCoverFlowViewCell(model, indexPath: indexPath)
-                  
+                    
                 }
                 
                 // TODO: 机票信息
