@@ -9,7 +9,7 @@
 import UIKit
 
 class CardCellView: UIView {
-
+    
     var selected = false
     var index : Int!
     var grayBackgroundImg : UIImage?
@@ -20,8 +20,8 @@ class CardCellView: UIView {
     var serviceListModel : ServiceList?
     var firstLayout = true
     // MARK: - uiview variables
-
-
+    
+    
     @IBOutlet weak var serviceDescView: UIView!
     @IBOutlet weak var serviceNameView: UIView!
     @IBOutlet weak var servicePriceLabel: UILabel!
@@ -46,23 +46,8 @@ class CardCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        /*
-        if firstLayout{
-            let frame = serviceRatingView.bounds
-            starRateView?.frame = frame
-            let serviceName  = serviceListModel.service_name ?? "" as String
-            if let scrollLabel1 = serviceNameScrollLabel{
-                scrollLabel1.text = serviceName
-            }
-            else{
-                serviceNameScrollLabel = AIScrollLabel(frame: serviceNameView.bounds, text: serviceName, color: UIColor.whiteColor(), scrollEnable: true)
-                serviceNameView.addSubview(serviceNameScrollLabel!)
-            }
-=======
         //return
         if firstLayout && serviceListModel != nil {
->>>>>>> 3ae5e0046ebe6fc713ee1df434ebf4535ffdc33a
             
             if let starRateView = serviceRatingView.subviews.last as!
                 CWStarRateView? {
@@ -89,34 +74,34 @@ class CardCellView: UIView {
                 }
             }
             firstLayout = false
-        }*/
+        }
         
     }
     
     // MARK: - utils
     
     func buildViewData(serviceListModel: ServiceList){
-
+        
         self.serviceListModel = serviceListModel
         
-//        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
-//            if let nameLabelText = serviceListModel.service_name {
-//                nameLabel.text = nameLabelText as String
-//                nameLabel.startScroll()
-//            }
-//        }
-//
-//        if let descLabel = serviceDescView.subviews.last as! AIScrollLabel? {
-//            if let descLabelText = serviceListModel.service_intro {
-//                descLabel.text = descLabelText as String
-//                descLabel.startScroll()
-//            }
-//            
-//        }
+        //        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
+        //            if let nameLabelText = serviceListModel.service_name {
+        //                nameLabel.text = nameLabelText as String
+        //                nameLabel.startScroll()
+        //            }
+        //        }
+        //
+        //        if let descLabel = serviceDescView.subviews.last as! AIScrollLabel? {
+        //            if let descLabelText = serviceListModel.service_intro {
+        //                descLabel.text = descLabelText as String
+        //                descLabel.startScroll()
+        //            }
+        //
+        //        }
         
         if let sPriceModel = serviceListModel.service_price{
             servicePriceLabel.text = sPriceModel.price_show as String
-        }        
+        }
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         starRateView?.allowIncompleteStar = true
         starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
@@ -128,7 +113,8 @@ class CardCellView: UIView {
                 if let _ = image {
                     self.originBackgroundImg = image
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
-                }else{
+                }
+                else{
                     self.originBackgroundImg = UIImage(named: "Placehold")
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
                 }
@@ -139,11 +125,11 @@ class CardCellView: UIView {
             })
         }
         
-//        let frame = serviceRatingView.bounds
-//        starRateView?.frame = frame
+        //        let frame = serviceRatingView.bounds
+        //        starRateView?.frame = frame
         
         buildLayout()
-
+        
     }
     
     func reloadData(serviceListModel : ServiceList){
@@ -180,7 +166,7 @@ class CardCellView: UIView {
     func selectAction(){
         if selected{
             serviceImg.image = originBackgroundImg
-            backGroundColorView.backgroundColor = UIColor(rgba: "#9f97c6")
+            backGroundColorView.backgroundColor = UIColor(hex: "#9f97c6")
             selectFlagImage.hidden = false
             if let scrollLabel1 = serviceNameView.subviews.last as! AIScrollLabel?{
                 scrollLabel1.startScroll()
@@ -191,7 +177,7 @@ class CardCellView: UIView {
         }
         else{
             serviceImg.image = grayBackgroundImg
-            backGroundColorView.backgroundColor = UIColor(rgba: "#444242")
+            backGroundColorView.backgroundColor = UIColor(hex: "#444242")
             selectFlagImage.hidden = true
             if let scrollLabel1 = serviceNameView.subviews.last as! AIScrollLabel?{
                 scrollLabel1.stopScroll()
