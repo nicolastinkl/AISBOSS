@@ -37,6 +37,7 @@ extension UIColor {
         var alpha: CGFloat = 1.0
         
         if rgba.hasPrefix("#") {
+            let rgba = (rgba as NSString).substringFromIndex(1)
             let index   = rgba.startIndex//advance(rgba.startIndex, 1)
             let hex     = rgba.substringFromIndex(index)
             let scanner = NSScanner(string: hex)
@@ -67,7 +68,7 @@ extension UIColor {
                     print("Invalid RGB string, number of characters after '#' should be either 3, 4, 6 or 8")
                 }
             } else {
-                print("Scan hex error")
+                //print("Scan hex error")
             }
         } else {
             print("Invalid RGB string, missing '#' as prefix")
