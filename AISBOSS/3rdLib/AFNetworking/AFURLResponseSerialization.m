@@ -260,7 +260,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                 if ([data length] > 0) {
                     
                     NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                    NSLog(@"response=====\n%@========\n", str);
+                    //NSLog(@"response=====\n%@========\n", str);
                     responseObject = [NSJSONSerialization JSONObjectWithData:data options:self.readingOptions error:&serializationError];
                 } else {
                     return nil;

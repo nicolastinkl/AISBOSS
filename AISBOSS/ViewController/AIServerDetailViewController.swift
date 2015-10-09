@@ -77,6 +77,7 @@ class AIServerDetailViewController: UIViewController {
         self.labelView.text = "Services to Your Linking"//titleString ?? ""
         
         addSearchViewToParent()
+
         addPriceLabel()
         
         retryNetworkingAction()
@@ -130,11 +131,22 @@ class AIServerDetailViewController: UIViewController {
         insertDateModel()
         
         if let scheme = self.schemeModel {
-            
+            var section:Int = 1
             for catalog in scheme.catalog_list {
                 let data =  convertSchemeToCellModel(catalog as! Catalog)
                 self.dataSource.addObject(data)
                 caculateDefaultServicesTotalPrice(catalog as! Catalog)
+                
+                // TODO: Init the Coverflow Views.
+                // TODO: 卡片信息
+                if  data.type == CellType.CellTypeCoverflow {
+                    let cell = createCoverFlowViewCell(data, indexPath: NSIndexPath(forRow: 0, inSection: section))
+                    let key = "coverflow_\(section)"
+                    coverflowDataSource.setValue(cell, forKey: key)
+                    print(key)
+                }
+                
+                section = section + 1
             }
         }
         

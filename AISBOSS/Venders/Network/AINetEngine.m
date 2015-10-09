@@ -190,7 +190,7 @@
     
 #ifdef DEBUG
     
-    NSLog(@"\n======HTTPResponse======\n%@\n============\n", response);
+    //NSLog(@"\n======HTTPResponse======\n%@\n============\n", response);
     
 #endif
     
