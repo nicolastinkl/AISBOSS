@@ -185,7 +185,7 @@
     if (repeatCount == 0) return;
     
     __block NSInteger count = repeatCount;
-    
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:kAnimationDuration animations:^{
         view.alpha = 0.4;
     } completion:^(BOOL finished) {
@@ -196,19 +196,22 @@
             count--;
             if (count == 0) {
                 
-                [self startAboveImageViewAnimation];
+                [weakSelf startAboveImageViewAnimation];
                 
-                CGRect frame = [self getRectWithView:self.centerTappedView];
+                CGRect frame = [weakSelf getRectWithView:weakSelf.centerTappedView];
+                
+                weakSelf.centerTappedView.userInteractionEnabled = NO;
+            
                 [UIView animateWithDuration:kAnimationDuration*3 animations:^{
                     view.frame = frame;
                     _moviewPlayer.view.alpha = 0;
                 } completion:^(BOOL finished) {
-                    
+                    weakSelf.centerTappedView.userInteractionEnabled = YES;
                 }];
             }
             else
             {
-                [self startFlickerView:view repeatCount:count];
+                [weakSelf startFlickerView:view repeatCount:count];
             }
             
         }];
