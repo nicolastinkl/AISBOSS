@@ -316,10 +316,10 @@ class UITransViewController: UIViewController {
     }
     
     func retryNetworkingAction(){
-        view.hideErrorView()
-        Async.background(after: 0.5) { () -> Void in
-            self.loadContentData()
-        }
+        //view.hideErrorView()
+
+        self.loadContentData()
+
     }    
 }
 

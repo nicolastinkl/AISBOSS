@@ -14,7 +14,7 @@
  *  参数model
  */
 
-
+/*
 @protocol SchemeParamList
 
 @end
@@ -58,6 +58,7 @@
 @property (assign, nonatomic) NSInteger            provider_id;
 @property (strong, nonatomic) NSNumber<Optional> * service_rating;
 @property (strong, nonatomic) NSString<Optional> * service_intro_img;
+ 
 @property (strong, nonatomic) NSArray<SchemeParamList, Optional> * service_param_list;
 @property (strong, nonatomic) ServicePrice<Optional> * service_price;
 @property (strong, nonatomic) ServiceProvider<Optional> * service_provider;
@@ -81,17 +82,15 @@
 
 @end
 
-/*!
- *  @author tinkl, 15-09-16 10:09:25
- *
- *  服务方案model
- */
+
+ // 服务方案model
+
 @interface AIServiceSchemeModel : JSONModel
 
 @property (strong, nonatomic) NSArray<SchemeParamList, Optional> * param_list;
 @property (strong, nonatomic) NSArray<Catalog, Optional> * catalog_list;
 
 @end
-
+ */
 
 

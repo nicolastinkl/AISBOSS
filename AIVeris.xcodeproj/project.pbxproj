@@ -64,6 +64,7 @@
 		930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */; };
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
+		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; settings = {ASSET_TAGS = (); }; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -349,6 +350,7 @@
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
+		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -978,6 +980,7 @@
 				93FA1DF21B9C306E009965C8 /* AITSLocation.swift */,
 				93FA1DF41B9C306E009965C8 /* SearchHistoryRecord.swift */,
 				93FA1DF51B9C306E009965C8 /* ServiceModel.swift */,
+				932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1813,6 +1816,7 @@
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
+				932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
 				93FA1E5B1B9C3E12009965C8 /* AITopInfoView.swift in Sources */,
 				93FA1DC61B9C2F0F009965C8 /* CurveModel.m in Sources */,

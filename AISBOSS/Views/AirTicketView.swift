@@ -53,29 +53,29 @@ class AirTicketView: UIView {
     */
     
     func setTicketData(ticket: ServiceList) {
-        flightNumber.text = ticket.service_name as String
-        priceAndPassengerType.text = ticket.service_price.price_show  as String
+        flightNumber.text = ticket.service_name ?? ""
+        priceAndPassengerType.text = ticket.service_price?.price_show ?? ""
         
-        let ticketInfo = ticket.service_param_list as! [SchemeParamList]
-
-        for var index = 0; index < ticketInfo.count; index++ {
-            let para = ticketInfo[index] as SchemeParamList
-            let value = para.param_value as String
-            switch para.param_key {
-            case 1:
-                startAirport.text = value
-            case 2:
-                finishAirport.text = value
-            case 3:
-                startDate.text = value
-            case 4:
-                arriveDate.text = value
-            case 5:
-                ticketType.text = value
-            default:
-                continue
+        if let ticketInfo = ticket.service_param_list {
+            for var index = 0; index < ticketInfo.count; index++ {
+                let para = ticketInfo[index] as SchemeParamList
+                let value = para.param_value ?? ""
+                switch para.param_key! {
+                case 1:
+                    startAirport.text = value
+                case 2:
+                    finishAirport.text = value
+                case 3:
+                    startDate.text = value
+                case 4:
+                    arriveDate.text = value
+                case 5:
+                    ticketType.text = value
+                default:
+                    continue
+                }
+                
             }
-            
         }
         
     }

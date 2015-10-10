@@ -26,7 +26,7 @@ class DataModel : NSObject {
     var title: String?
     var type: CellType?
     var content: String?
-    var realModel: [AnyObject]?
+    var realModel: [ServiceList]?
     var sectionID:Int?
 }
 
@@ -111,7 +111,7 @@ class AIServerDetailViewController: UIViewController {
     
     func retryNetworkingAction(){
         
-        self.view.hideErrorView()
+//        self.view.hideErrorView()
         self.view.showProgressViewLoading()
         Async.userInitiated {
             let dataObtainer: SchemeDataObtainer = BDKSchemeDataObtainer()
@@ -135,10 +135,10 @@ class AIServerDetailViewController: UIViewController {
         
         if let scheme = self.schemeModel {
             var section:Int = 1
-            for catalog in scheme.catalog_list {
-                let data =  convertSchemeToCellModel(catalog as! Catalog)
+            for catalog in scheme.catalog_list ?? []{
+                let data =  convertSchemeToCellModel(catalog)
                 self.dataSource.addObject(data)
-                caculateDefaultServicesTotalPrice(catalog as! Catalog)
+                caculateDefaultServicesTotalPrice(catalog)
                 
                 // TODO: Init the Coverflow Views.
                 // TODO: 卡片信息
@@ -172,20 +172,22 @@ class AIServerDetailViewController: UIViewController {
             return
         }
         
-        let ser: ServiceList = catalog.service_list[0] as! ServiceList
+        if let ser = catalog.service_list?.first {
+            
+            totalPrice += Float(ser.service_price?.price ?? 0)
+            
+            let model = chooseItemModel()
+            model.scheme_id = ser.service_id ?? 0
+            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
+            shoppingCard[model.scheme_id] = model
+        }
 
-        totalPrice += ser.service_price.price.floatValue
-        
-        let model = chooseItemModel()
-        model.scheme_id = ser.service_id
-        model.scheme_item_price = ser.service_price.price.floatValue
-        shoppingCard[model.scheme_id] = model
     }
     
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
         let data =  DataModel()
-        data.title = catalog.catalog_name
-        data.type = convertServiceLevelToCellType(catalog.service_level,selectFlag : catalog.select_flag)
+        data.title = catalog.catalog_name ?? ""
+        data.type = convertServiceLevelToCellType(catalog.service_level ?? 0,selectFlag : catalog.select_flag ?? 0)
         data.realModel = catalog.service_list
         
         return data
@@ -323,7 +325,7 @@ class AIServerDetailViewController: UIViewController {
             //删除对应的价格
             
             let model = self.dataSource.objectAtIndex(s) as! DataModel
-            for custom in model.realModel as! [ServiceList]{
+            for custom in model.realModel! {
                 
                 var indexPre:Int = 0
                 var replace = false
@@ -514,8 +516,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     return createDatePickerViewCell()
                 }
                 
-                let ls = model.realModel as! Array<ServiceList>
-                
                 // TODO: 卡片信息
                 if  model.type == CellType.CellTypeCoverflow {
                     
@@ -533,6 +533,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 // TODO: 开关信息
                 if  model.type == CellType.CellTypeparames {
                     
+                    let ls = model.realModel!
                     return createSwitchViewCell(ls, indexPath: indexPath)
                 }
                 
@@ -599,7 +600,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 let cell = AISDSubDetailCell.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
                 cell.delegate = self
                 cell.carousel.type = .CoverFlow2
-                cell.dataSource = model.realModel as? Array<ServiceList>
+                cell.dataSource = model.realModel!
                 cell.carousel.reloadData()
                 coverflowDataSource.setValue(cell, forKey: key)
                 return cell
@@ -617,10 +618,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let ticketGroupView = AirTicketGroupView()
         
-        let tickets = model.realModel as? Array<ServiceList>
-        
-        if tickets != nil {
-            ticketGroupView.setTicketsData(tickets!)
+        if let tickets = model.realModel {
+            ticketGroupView.setTicketsData(tickets)
             airTicketsViewHeight = ticketGroupView.getViewHeight()
             
             cell?.contentView.addSubview(ticketGroupView)
@@ -633,6 +632,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             
             return cell!
         }
+        
         
         return UITableViewCell()
         
@@ -678,10 +678,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                 let cell = AITableCellHolder.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                 cell.contentView.addSubview(hori)
-                let services = model.realModel as! Array<ServiceList>
-                
-                if services.count > 0 {
-                    hori.loadData(services, multiSelect: model.type == CellType.CellTypeMutiChoose)
+                if let services = model.realModel{
+                    if services.count > 0 {
+                        hori.loadData(services, multiSelect: model.type == CellType.CellTypeMutiChoose)
+                    }
                 }
                 hori.delegate = self
                 horiListDataSource.setValue(cell, forKey: key)
@@ -825,8 +825,8 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
         if let dataSour = dataSource {
             let ser:ServiceList = dataSour[carousel.currentItemIndex]
             let model = chooseItemModel()
-            model.scheme_id = ser.service_id
-            model.scheme_item_price = ser.service_price.price.floatValue
+            model.scheme_id = ser.service_id ?? 0
+            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
             delegate?.chooseItem(model, cancelItem: oldChoosedItem)
             
             oldChoosedItem = model

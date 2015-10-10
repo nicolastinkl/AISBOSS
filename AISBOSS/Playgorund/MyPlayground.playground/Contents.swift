@@ -22,7 +22,7 @@ var string:String? = "s"
 if let s = string{
     s
 }else{
-    print("nil....", terminator: "")
+    print("nil....石加福", terminator: "")
 }
 
 //func myMethod() throw{
@@ -45,5 +45,7 @@ var s2 = s1
 s2 = "123"
 
 s2
+
+
 
 

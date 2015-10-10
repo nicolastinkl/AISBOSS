@@ -216,10 +216,10 @@ class AIHttpFavorServicesManager : AIMockFavorServicesManager {
             
             completion((listModel!.services, responseError))
         }
-
     }
 
     override func getServiceTags(completion: (([String], Error?)) -> Void) {
+
         if isLoading {
             return
         }

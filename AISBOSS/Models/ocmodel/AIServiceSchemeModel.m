@@ -6,8 +6,9 @@
 //  Copyright © 2015 ___ASIAINFO___. All rights reserved.
 //
 
-#import "AIServiceSchemeModel.h"
+//#import "AIServiceSchemeModel.h"
 
+/*
 @implementation SchemeParamList
 
 -(instancetype)initWithDictionary:(NSDictionary*)dict {
@@ -105,5 +106,5 @@
 //}
 
 
-
+*/
 

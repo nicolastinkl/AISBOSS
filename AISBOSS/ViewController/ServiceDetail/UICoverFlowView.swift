@@ -33,16 +33,16 @@ class UICoverFlowView: UIView {
             starView.addSubview(starRateView)
         }
         
-        starRateView.scorePercent = CGFloat(model.service_rating)
+        starRateView.scorePercent = CGFloat(model.service_rating ?? 0)
         avatorImageview.maskWithEllipse()
-        lableTitle.text = model.service_name as String
-        lableContent.text = model.service_intro as String
-        labelPrice.text = model.service_price.price_show as String
+        lableTitle.text = model.service_name ?? ""
+        lableContent.text = model.service_intro ?? ""
+        labelPrice.text = model.service_price?.price_show ?? ""
         imageview.setURL(model.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"))
-        let name = NSString(format: "%@", model.service_provider.provider_name)
+        let name = NSString(format: "%@", model.service_provider?.provider_name ?? "")
         labelNick.text = "\(name)"
         
-        let url = NSString(format: "%@", model.service_provider.provider_portrait_icon)
+        let url = NSString(format: "%@", model.service_provider?.provider_portrait_icon ?? "")
         
         avatorImageview.setURL("\(url)".toURL(), placeholderImage: UIImage(named: "Placehold"))
         

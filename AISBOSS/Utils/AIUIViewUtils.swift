@@ -160,7 +160,6 @@ extension UIView {
         处理加载展示
     */
     public func showProgressViewLoading() {
-        
         if let _ = self.viewWithTag(AIApplication.AIViewTags.loadingProcessTag) {
             // If loading view is already found in current view hierachy, do nothing
             return

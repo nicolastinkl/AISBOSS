@@ -89,8 +89,8 @@ class SwitchServiceView: UIView {
     func switchChanged(sender: SevenSwitch) {
         if let ser = servicePre {
             let model = chooseItemModel()
-            model.scheme_id = ser.service_id
-            model.scheme_item_price = ser.service_price.price.floatValue
+            model.scheme_id = ser.service_id ?? 0
+            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
        //     model.scheme_item_quantity = Int(ser.service_price.billing_mode)
             switchDelegate?.switchStateChanged(sender.on, model: model)
         }
@@ -105,9 +105,9 @@ class SwitchServiceView: UIView {
     
     func setService(service: ServiceList) {
         servicePre = service
-        serviceName.text = service.service_name as String
+        serviceName.text = service.service_name ?? ""
         //serviceDescription.text = service.service_intro as String
-        price.text = service.service_price.price_show as String
+        price.text = service.service_price?.price_show ?? ""
     }
 }
 

@@ -199,14 +199,14 @@ class HorizontalCardView: UIView {
                         //如果是选中变不选中
                         if cardCellView.selected{
                             cancelItemModel = chooseItemModel()
-                            cancelItemModel!.scheme_id = selCardCellView.serviceListModel!.service_id
-                            cancelItemModel!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                            cancelItemModel!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
+                            cancelItemModel!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
                         }
                         //如果是不选中变选中
                         else{
                             model = chooseItemModel()
-                            model!.scheme_id = selCardCellView.serviceListModel!.service_id
-                            model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                            model!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
+                            model!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
                         }
                         cardCellView.selected = !cardCellView.selected
                         cardCellView.selectAction()
@@ -217,8 +217,8 @@ class HorizontalCardView: UIView {
                     if cardCellView.selected {
                         lastSelectedCardCellView = cardCellView
                         cancelItemModel = chooseItemModel()
-                        cancelItemModel!.scheme_id = lastSelectedCardCellView.serviceListModel!.service_id
-                        cancelItemModel!.scheme_item_price = lastSelectedCardCellView.serviceListModel!.service_price.price.floatValue
+                        cancelItemModel!.scheme_id = lastSelectedCardCellView.serviceListModel?.service_id ?? 0
+                        cancelItemModel!.scheme_item_price = Float(lastSelectedCardCellView.serviceListModel?.service_price?.price ?? 0)
                     }
                     if cardCellView.index == selCardCellView.index{
                         cardCellView.selected = true
@@ -233,8 +233,8 @@ class HorizontalCardView: UIView {
             //单选的时候为选中赋值
             if !multiSelect{
                 model = chooseItemModel()
-                model!.scheme_id = selCardCellView.serviceListModel!.service_id
-                model!.scheme_item_price = selCardCellView.serviceListModel!.service_price.price.floatValue
+                model!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
+                model!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
             }
             
             

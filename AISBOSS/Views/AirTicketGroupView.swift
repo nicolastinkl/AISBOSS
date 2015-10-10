@@ -73,7 +73,7 @@ class AirTicketGroupView: UIView {
                 }
             }
             
-            totalPrice += tickets[index].service_price.price.floatValue
+            totalPrice += Float(tickets[index].service_price?.price ?? 0)
             
             if index == tickets.count - 1 {
                 ticket.priceAndPassengerType.text = "$ \(totalPrice)"

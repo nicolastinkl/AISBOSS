@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AISwiftyJSON
 
 protocol SchemeDataObtainer {
     func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
@@ -16,15 +17,8 @@ class MockchemeDataObtainer: SchemeDataObtainer {
     func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         if let path = NSBundle.mainBundle().pathForResource("AIServiceSchemeModelTEST", ofType: "json") {
-            let data: NSData? = NSData(contentsOfFile: path)
-            if let dataJSON = data {
-                do {
-                    let model = try AIServiceSchemeModel(data: dataJSON)
-                    success(responseData: model)
-                } catch{
-                    fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
-                }
-            }
+            _ = NSData(contentsOfFile: path)
+            
         }
         
     }
@@ -37,14 +31,11 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
         let message: AIMessage = AIMessageWrapper.getServiceSchemeWithServiceID("\(sheme_id)")
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
-            do {
-                
-                if let dict = response as? NSDictionary {
-                    let model = try AIServiceSchemeModel(dictionary: dict as [NSObject : AnyObject])
-                    success(responseData: model)                    
-                }                
-
-            } catch {
+            
+            if let responseJSON: AnyObject = response {
+                let model =  AIServiceSchemeModel(JSONDecoder(responseJSON))
+                success(responseData: model)
+            }else{
                 fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
             }
             
