@@ -2525,14 +2525,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="scanbg" translatesAutoresizingMaskIntoConstraints="NO" id="XGf-uq-FPD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanbg" translatesAutoresizingMaskIntoConstraints="NO" id="XGf-uq-FPD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="189-5J-YbV"/>
                                 </constraints>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qN0-0D-lqZ">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qN0-0D-lqZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LXl-rh-f6y">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
@@ -2557,8 +2557,8 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnd-Bh-6d7">
-                                <rect key="frame" x="-9" y="20" width="70" height="70"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnd-Bh-6d7">
+                                <rect key="frame" x="-5" y="20" width="70" height="70"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Jd2-wx-L1f"/>
@@ -2577,8 +2577,8 @@
                                     <action selector="closeAction:" destination="ooO-ao-jsr" eventType="touchUpInside" id="lHc-xf-Ucj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0j-9F-cSn">
-                                <rect key="frame" x="530" y="20" width="70" height="70"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0j-9F-cSn">
+                                <rect key="frame" x="526" y="20" width="70" height="70"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="8ap-Ui-FLz"/>
@@ -2606,22 +2606,22 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="XGf-uq-FPD" secondAttribute="trailing" constant="-16" id="15d-m2-Eui"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XGf-uq-FPD" secondAttribute="trailing" constant="-20" id="15d-m2-Eui"/>
                             <constraint firstItem="V0j-9F-cSn" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" id="4Qp-QN-wEb"/>
                             <constraint firstItem="Xif-ZI-NsN" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" id="59K-YT-4u4"/>
                             <constraint firstItem="Fnd-Bh-6d7" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="-25" id="CPf-Tf-s24"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xif-ZI-NsN" secondAttribute="trailing" constant="34" id="DWP-Tt-3X8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xif-ZI-NsN" secondAttribute="trailing" id="L1I-xH-Roe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qN0-0D-lqZ" secondAttribute="trailing" constant="-16" id="MVu-AB-aSX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qN0-0D-lqZ" secondAttribute="trailing" constant="-20" id="MVu-AB-aSX"/>
                             <constraint firstItem="V0j-9F-cSn" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" constant="12" id="OaE-IZ-z08"/>
                             <constraint firstItem="XGf-uq-FPD" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" constant="-20" id="Ouc-6t-bym"/>
                             <constraint firstItem="Xif-ZI-NsN" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="50" id="TmZ-XE-vlM"/>
                             <constraint firstItem="Fnd-Bh-6d7" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" id="UpP-XW-nRa"/>
                             <constraint firstItem="FEC-zj-3g0" firstAttribute="top" secondItem="Xif-ZI-NsN" secondAttribute="bottom" constant="95" id="UrE-69-wDM"/>
-                            <constraint firstItem="qN0-0D-lqZ" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="-16" id="ZjJ-gY-rCL"/>
+                            <constraint firstItem="qN0-0D-lqZ" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="-20" id="ZjJ-gY-rCL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V0j-9F-cSn" secondAttribute="trailing" constant="-16" id="aEa-LL-HRs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xif-ZI-NsN" secondAttribute="trailing" constant="50" id="dJB-Ep-PSi"/>
-                            <constraint firstItem="XGf-uq-FPD" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="-16" id="hkc-sU-Dua"/>
+                            <constraint firstItem="XGf-uq-FPD" firstAttribute="leading" secondItem="7Uy-er-2Fc" secondAttribute="leadingMargin" constant="-20" id="hkc-sU-Dua"/>
                             <constraint firstItem="V0j-9F-cSn" firstAttribute="trailing" secondItem="7Uy-er-2Fc" secondAttribute="trailingMargin" id="ieL-W1-9FY"/>
                             <constraint firstItem="Xif-ZI-NsN" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" constant="85" id="kZD-iu-UAu"/>
                             <constraint firstItem="qN0-0D-lqZ" firstAttribute="top" secondItem="3uD-nU-4Mk" secondAttribute="bottom" constant="-20" id="lfS-x9-J0c"/>
