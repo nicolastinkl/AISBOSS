@@ -121,7 +121,7 @@ class AITransformContentModel: AIFavoriteContentModel {
     
     override init() {
         super.init()
-        colors = []
+        
     }
     
     required init(_ decoder: JSONDecoder) {
@@ -139,6 +139,11 @@ class AITransformContentModel: AIFavoriteContentModel {
 
         decoder.getArray(&favoriteTags)
         decoder.getArray(&colors)
+        if colors?.count > 0 {
+            
+        }else{
+            colors = [AIColorFlag.Unknow]
+        }
 
     }
 }
