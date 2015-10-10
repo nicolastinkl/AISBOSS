@@ -2210,6 +2210,7 @@
 				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
