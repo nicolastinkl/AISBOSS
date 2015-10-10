@@ -216,11 +216,11 @@ class AISwipeView: AIBaseSwipeView {
     // MARK: Color balls Handle
     
     private func scheduleAnimatedDistanceToDisapear() {
-        dismissTask = Async.main(after: PANEL_SHWO_DURATION, block: disappear)
+        dismissTask = Async.userInitiated(after: PANEL_SHWO_DURATION, block: disappear)
     }
     
     private func cancelAnimatedDistanceToDisapear() {
-        dismissTask?.cancel()
+        //dismissTask?.cancel()
     }
     
     private func appear() {

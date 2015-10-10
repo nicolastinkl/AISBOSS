@@ -60,19 +60,22 @@ class AirTicketView: UIView {
             for var index = 0; index < ticketInfo.count; index++ {
                 let para = ticketInfo[index] as SchemeParamList
                 let value = para.param_value ?? ""
-                switch para.param_key! {
-                case 1:
-                    startAirport.text = value
-                case 2:
-                    finishAirport.text = value
-                case 3:
-                    startDate.text = value
-                case 4:
-                    arriveDate.text = value
-                case 5:
-                    ticketType.text = value
-                default:
-                    continue
+                if let key = para.param_key {
+                    
+                    switch key {
+                    case 1:
+                        startAirport.text = value
+                    case 2:
+                        finishAirport.text = value
+                    case 3:
+                        startDate.text = value
+                    case 4:
+                        arriveDate.text = value
+                    case 5:
+                        ticketType.text = value
+                    default:
+                        continue
+                    }
                 }
                 
             }
