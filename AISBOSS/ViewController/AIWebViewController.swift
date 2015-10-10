@@ -35,6 +35,10 @@ public class AIWebViewController: UIViewController,UIWebViewDelegate {
         webView.removeObserver(self, forKeyPath: EstimatedProgressKeyPath, context: nil)
     }
     
+    override public func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override public func viewDidLoad() {
         
         super.viewDidLoad()

@@ -667,9 +667,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.layoutSubviews()
-//    }
     
     // MARK: cellForRowAtIndexPath..
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -721,7 +718,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view.height == 65
                     view.left == view.superview!.left
                     view.top == view.superview!.top + 10
-                    //view.bottom == view.superview!.bottom
                 }
                 
             }else{
@@ -745,8 +741,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     actionView.width == actionView.superview!.width
                     actionView.height == 70
                     actionView.left == actionView.superview!.left
-                    
-                    //actionView.bottom == actionView.superview!.bottom
                     
                 }
             }
@@ -775,9 +769,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     viewMedia.width == viewMedia.superview!.width
                     viewMedia.height == 140
                     viewMedia.left == viewMedia.superview!.left
-                    
-                    //viewMedia.bottom == viewMedia.superview!.bottom
-                    
                     
                 }
             }else{
@@ -830,7 +821,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view4.width == view4.superview!.width
                     view4.height == 70
                     
-                    //view4.bottom == view4.superview!.bottom
                 }
                 
             } 
@@ -863,7 +853,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view2.top == view1.bottom
                     view2.height == 60
                     view2.left == view1.left
-                   // view2.bottom == view2.superview!.bottom
+                    
                      
                 }
                 
@@ -905,7 +895,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view3.height == 70
                     view3.left == view3.superview!.left
                     
-                    //view3.bottom == view3.superview!.bottom
                 }
             }
         }
