@@ -258,6 +258,7 @@
         tableView.dataSource = self;
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         tableView.showsVerticalScrollIndicator = NO;
+        tableView.backgroundColor = [UIColor clearColor];
         
         [self addBackgroundViewForTable:tableView];
         [self addTopAndBottomMaskForTable:tableView];

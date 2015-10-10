@@ -154,8 +154,6 @@
         
         _telWebView =[[UIWebView alloc] init];
         [self.contentView addSubview:_telWebView];
-//        _scrollLabel = [[AIScrollLabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20) text:@"asdadsad" color:[UIColor whiteColor] scrollEnable:YES];
-//        [self.contentView addSubview:_scrollLabel];
         
     }
     
