@@ -67,3 +67,27 @@ extension Int{
 //        return returnString
 //    }
 }
+
+extension Dictionary {
+    
+    func valuesForKeysMap(keys: [Key]) -> [Value?] {
+        return keys.map { self[$0] }
+    }
+    
+    func valuesForKeys(keys: [Key]) -> [Value?] {
+        var result = [Value?]()
+        result.reserveCapacity(keys.count)
+        for key in keys{
+            result.append(self[key])
+        }
+        return result
+    }
+    
+    func valuesForKeys(keys:[Key], notFoundMarker: Value)->[Value]{
+        
+        return self.valuesForKeys(keys).map{$0 ?? notFoundMarker}
+        
+    }
+}
+
+
