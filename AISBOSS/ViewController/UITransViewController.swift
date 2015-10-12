@@ -98,14 +98,6 @@ class UITransViewController: UIViewController {
         
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
-        
-        /*!
-        Settings TableView
-        */
-//        tableView.estimatedRowHeight = 44//UITableViewAutomaticDimension
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        
         /*!
         init swipeView
         */
@@ -117,7 +109,7 @@ class UITransViewController: UIViewController {
         */
         loadContentData()
         
-        //add by liux 
+        //add by liuxian
         setupLayer()
         bottomView.layer.addSublayer(gradientLayer)
         
@@ -128,29 +120,29 @@ class UITransViewController: UIViewController {
         topMenuDiyView.delegate = self
         topMenuDiyView.setWidth(self.view.width)
         
-        //initVideoAnimation()
+        // initVideoAnimation()
         self.videoView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "PlayerPlaybackDidFinish", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
 
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
         
-        /*!
-        *  @author tinkl, 15-09-10 14:09:51
-        *
-        *  settings label bg.
+        
+        /*
+        First of all, We have to setting self.tableView.tableHeaderView's View and self.tableView.tableFooterView backgroundImageView. So next step you can see in the self.view display.
         */
+        
         localCode({
             let labelBg = self.tableView.tableHeaderView?.viewWithTag(1) as! UILabel
             labelBg.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             
-        
             let labelBg2 = self.tableView.tableFooterView?.viewWithTag(1) as! UILabel
             labelBg2.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             
         })
-        
     }
     
+    
+    // init video controls.
     func initVideoAnimation(){
         
         let filePath = NSBundle.mainBundle().pathForResource("loading", ofType: "m4v")
@@ -162,6 +154,7 @@ class UITransViewController: UIViewController {
         
     }
     
+    // Play end.
     func PlayerPlaybackDidFinish() {
         
         for videoV in self.videoView.subviews as [UIView] {
@@ -170,17 +163,25 @@ class UITransViewController: UIViewController {
         self.videoView.hidden = true
     }
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        /*
+        The ViewwillAppear haved fixd bug: interactivePopGestureRecognizer not reponse to userInitiated.
+        */
         self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
-        
+
     }
-    
+        
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
+        
+        /*
+        Tell our TableView to reload, since items will now be
+        reorganized into sections (or not), and thus will be identified by
+        different NSIndexPaths.
+        */
         self.tableView.reloadData()
         
     }
@@ -205,6 +206,7 @@ class UITransViewController: UIViewController {
         
     }
     
+    // Loading and Fast video playing.
     func startLoading()
     {
         self.view.userInteractionEnabled = false
@@ -233,8 +235,8 @@ class UITransViewController: UIViewController {
                         blockSelf.showNextViewController()
                     }
             })
-        }
-        else {
+            
+        }else {
             self.player?.play()
         }
     }
@@ -1095,12 +1097,9 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
     }
      
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         //tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectIndex = indexPath.section
     }
-    
-    
     
     /**
     ExpendCell from AIAPPliction
@@ -1136,13 +1135,9 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         
         isEnable = false
         
-        
         self.tableView.reloadData()
-
-//        self.tableView.beginUpdates()
-//        self.tableView.reloadSections(NSIndexSet(index: cellIndex), withRowAnimation: UITableViewRowAnimation.Fade)
-//        self.tableView.endUpdates()
         
+        // DISPAYTCH ASYNC.
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             //Basically maintain your logic to get the indexpath
             self.isEnable = true
@@ -1199,7 +1194,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
     
     private func colorBallImgName(colorFlag: AIColorFlag) -> String? {
         switch colorFlag {
@@ -1296,10 +1290,7 @@ extension UITransViewController: ActionCellDelegate {
             
                 modifyFavoriteFlag(section, favoriteFlag: toFavoFlag)
                 
-                // Change Button backImage
-               
                 
-            
             break
         default:
             return
