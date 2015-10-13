@@ -57,8 +57,6 @@ class AIServerDetailViewController: UIViewController {
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
     
-    private var priceDataSource = NSMutableArray()
-    
     private var coverflowDataSource = NSMutableDictionary()
     private var horiListDataSource = NSMutableDictionary()
     
@@ -213,34 +211,6 @@ class AIServerDetailViewController: UIViewController {
         }
     }
     
-    func changePriceToNew(model:chooseItemModel){
-        
-        var indexPre = 0
-        var replace = false
-        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
-            let preModel = modelPre as! chooseItemModel
-            if model.scheme_id == preModel.scheme_id {
-                //相同的类目下的单项选项,所以替换为主
-                indexPre = index
-                replace = true
-            }
-        }
-        
-        if replace {
-            priceDataSource.removeObjectAtIndex(indexPre)
-        }
-        priceDataSource.addObject(model)
-        
-        var priceTotal:Float = 0
-        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
-            
-            let preModel = modelPre as! chooseItemModel
-            priceTotal += preModel.scheme_item_price
-        }
-        
-        labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
-    }
-    
     private func changePrice(choosedModel:chooseItemModel?, cancelModel: chooseItemModel?){
         
         if choosedModel != nil {
@@ -314,41 +284,25 @@ class AIServerDetailViewController: UIViewController {
         
     }
     
-    func closeCurrentSectionAction(sender: AnyObject) {
+    func cancelServiceSectionAction(sender: AnyObject) {
         //处理删除当前section的问题
         let button = sender as! UIButton
         let cell = button.superview?.superview as! UITableViewCell
-        let sectionss = self.tableView.indexPathForCell(cell)?.section
-        if let s = sectionss {
+        if let sectionss = self.tableView.indexPathForCell(cell)?.section {
             //删除对应的价格
-            
-            let model = self.dataSource.objectAtIndex(s) as! DataModel
-            for custom in model.realModel! {
+            let model = self.dataSource.objectAtIndex(sectionss) as! DataModel
+            for service in model.realModel! {
                 
-                var indexPre:Int = 0
-                var replace = false
+                let model = chooseItemModel()
+                model.scheme_id = service.service_id ?? 0
+                model.scheme_item_price = Float(service.service_price?.price ?? 0)
                 
-                priceDataSource.enumerateObjectsUsingBlock({ (modelPre, index, error) -> Void in
-                    let preModel = modelPre as! chooseItemModel
-                    if custom.service_id == preModel.scheme_id {
-                        //相同的类目下的单项选项,所以替换为主
-                        indexPre = index
-                        replace = true
-                    }
-                    
-                })
-                
-                if replace {
-                    priceDataSource.removeObjectAtIndex(indexPre)
-                    let modelP = chooseItemModel()
-                    modelP.scheme_id = 0
-                    modelP.scheme_item_price = 0
-                    self.changePriceToNew(modelP)
-                }
+                changePrice(nil, cancelModel: model)
             }
             
-            self.dataSource.removeObjectAtIndex(s)
+            self.dataSource.removeObjectAtIndex(sectionss)
             self.tableView.reloadData()
+
         }
         
     }
@@ -469,9 +423,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case .CellTypeFilght:
                     cell = createAirTicketsViewCell(model)
                 case .CellTypeparames:
-                    let ls = model.realModel!
-                    cell = createSwitchViewCell(ls, indexPath: indexPath)
-                case .CellTypeMutiChoose, .CellTypeSignleChoose:
+                    let realModel = model.realModel!
+                    cell = createSwitchViewCell(realModel, indexPath: indexPath)
+                case .CellTypeMutiChoose,
+                .CellTypeSignleChoose:
                     cell = createHorizontalCardViewCell(model, indexPath: indexPath)
                 default:
                     cell = UITableViewCell()
@@ -505,7 +460,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         default:
             break
         }
-        cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.closeButton.addTarget(self, action: "cancelServiceSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell
     }
