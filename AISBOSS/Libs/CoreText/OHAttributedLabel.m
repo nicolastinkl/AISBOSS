@@ -175,9 +175,9 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	self.highlightedLinkColor = [UIColor colorWithWhite:0.4 alpha:0.3];
 	self.underlineLinks = YES;
 	self.automaticallyAddLinksForType = NSTextCheckingTypeLink;
-	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:0"]]) {
-		self.automaticallyAddLinksForType |= NSTextCheckingTypePhoneNumber;
-	}
+//	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:0"]]) {
+//		self.automaticallyAddLinksForType |= NSTextCheckingTypePhoneNumber;
+//	}
 	self.onlyCatchTouchesOnLinks = YES;
 	self.userInteractionEnabled = YES;
 	self.contentMode = UIViewContentModeRedraw;

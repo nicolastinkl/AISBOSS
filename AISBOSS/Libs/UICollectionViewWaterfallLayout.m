@@ -7,12 +7,6 @@
 
 #import "UICollectionViewWaterfallLayout.h"
 
-@interface UICollectionViewWaterfallLayout()
-@property (nonatomic, assign) NSInteger itemCount;
-@property (nonatomic, assign) CGFloat interitemSpacing;
-@property (nonatomic, strong) NSMutableArray *columnHeights; // height for each column
-@property (nonatomic, strong) NSMutableArray *itemAttributes; // attributes for each item
-@end
 
 @implementation UICollectionViewWaterfallLayout
 

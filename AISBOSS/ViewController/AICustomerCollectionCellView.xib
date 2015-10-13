@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -57,8 +57,8 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="total_buy_times_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Xc-QhP">
-                        <rect key="frame" x="70" y="34" width="12" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="total_buy_times_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Xc-QhP">
+                        <rect key="frame" x="71" y="34" width="12" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="2fz-dM-Jra"/>
@@ -71,8 +71,8 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="209" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Us-6Z-SPN" userLabel="totalCostLabel">
-                        <rect key="frame" x="32" y="34" width="18" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="209" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Us-6Z-SPN" userLabel="totalCostLabel">
+                        <rect key="frame" x="32" y="34" width="19.5" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="I2t-x4-GQ7"/>
@@ -86,8 +86,8 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-6P-xxT" userLabel="totalTimeLabel">
-                        <rect key="frame" x="90" y="34" width="6" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-6P-xxT" userLabel="totalTimeLabel">
+                        <rect key="frame" x="91.5" y="34" width="6.5" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="YDe-60-egW"/>
@@ -362,12 +362,16 @@
             </variation>
             <connections>
                 <outlet property="cellBg" destination="EiT-6k-npN" id="8zO-pk-AgJ"/>
+                <outlet property="favoriteBtn" destination="Fhr-xm-97t" id="YFR-Nh-FNU"/>
                 <outlet property="serviceName" destination="R1t-Hy-Qqd" id="3Xa-Bi-Yx4"/>
                 <outlet property="servicePrice" destination="kZg-p9-Dlp" id="B1J-fA-XAC"/>
                 <outlet property="serviceSource" destination="WEt-QY-Zdu" id="HKX-0a-QH5"/>
+                <outlet property="settingsBtn" destination="4Do-zM-0Rt" id="Gnx-MN-YeO"/>
+                <outlet property="shareBtn" destination="bh3-F0-ZQg" id="Jpn-9U-vYW"/>
                 <outlet property="splitLine1" destination="arx-QM-Ayc" id="70f-Vd-P1v"/>
                 <outlet property="splitLine2" destination="g6U-rI-0XD" id="BhY-AN-Mdp"/>
                 <outlet property="tableView" destination="pFf-VM-wtD" id="I6j-cB-bOZ"/>
+                <outlet property="timerBtn" destination="UnZ-bW-7dE" id="X5B-YX-XuF"/>
                 <outlet property="totalCost" destination="6Us-6Z-SPN" id="zZH-9g-nei"/>
                 <outlet property="totalTimes" destination="ylz-6P-xxT" id="sa2-hm-uMU"/>
             </connections>

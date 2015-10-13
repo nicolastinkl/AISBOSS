@@ -223,11 +223,11 @@
 
 - (BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel shouldFollowLink:(NSTextCheckingResult *)linkInfo
 {
-    NSString *requestString = [linkInfo.URL absoluteString];
-    NSLog(@"%@",requestString);
-    if ([[UIApplication sharedApplication]canOpenURL:linkInfo.URL]) {
-        [[UIApplication sharedApplication]openURL:linkInfo.URL];
-    }
+//    NSString *requestString = [linkInfo.URL absoluteString];
+//    NSLog(@"%@",requestString);
+//    if ([[UIApplication sharedApplication]canOpenURL:linkInfo.URL]) {
+//        [[UIApplication sharedApplication]openURL:linkInfo.URL];
+//    }
     
     return NO;
 }

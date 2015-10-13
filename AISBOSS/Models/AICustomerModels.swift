@@ -18,7 +18,8 @@ struct AICustomerServiceSolutionModel : JSONJoy {
     var service_price : String?
     var service_items : [AICustomerServiceSolutionItemModel]?
     var service_flag : Int?
-    var service_cells : NSArray?
+    var service_cells : NSArray?    
+    var is_comp_service : Int?
     
     init(){
         

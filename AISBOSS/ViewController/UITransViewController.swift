@@ -235,7 +235,6 @@ class UITransViewController: UIViewController {
                         blockSelf.showNextViewController()
                     }
             })
-            
         }else {
             self.player?.play()
         }
