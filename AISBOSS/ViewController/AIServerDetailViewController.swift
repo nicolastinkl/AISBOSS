@@ -200,7 +200,7 @@ class AIServerDetailViewController: UIViewController {
             if selectFlag == 1{
                 return .SignleChoose
             }
-            else{
+            else {
                 return .MutiChoose
             }
         case 3:
@@ -475,10 +475,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     private func createCoverFlowViewCell(model: DataModel, indexPath: NSIndexPath) -> UITableViewCell {
         if let _  = model.title {
             let key = "coverflow_\(indexPath.section)"
-            if let cacheCell = coverflowDataSource.valueForKey(key) as! AISDSubDetailCell? {
+            if let cacheCell = coverflowDataSource.valueForKey(key) as! CoverFlowCell? {
                 return cacheCell
             } else {
-                let cell = AISDSubDetailCell.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AISDSubDetailCell) as! AISDSubDetailCell
+                let cell = CoverFlowCell.currentView()
                 cell.delegate = self
                 cell.carousel.type = .CoverFlow2
                 cell.dataSource = model.realModel!
@@ -487,7 +487,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return cell
             }
         }
-        // FIXME???
+
         return UITableViewCell()
     }
     
@@ -602,11 +602,10 @@ class AISDDateCell: UITableViewCell {
     @IBOutlet weak var dateImageView: UIImageView!
 }
 
-class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate{
+class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate{
     
-    // MARK: currentView
-    class func currentView()->AISDSubDetailCell{
-        let selfView = NSBundle.mainBundle().loadNibNamed("AISDSubDetailCell", owner: self, options: nil).first  as! AISDSubDetailCell
+    class func currentView()-> CoverFlowCell {
+        let selfView = NSBundle.mainBundle().loadNibNamed("CoverFlowCell", owner: self, options: nil).first  as! CoverFlowCell
         return selfView
     }
     
@@ -629,8 +628,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
         //create new view if no view is available for recycling
-        if (view == nil)
-        {
+        if (view == nil) {
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later
@@ -687,8 +685,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
         return view
     }
     
-    func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat
-    {
+    func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat{
         if (option == .Spacing){
             return value * 0.65
         }
@@ -712,11 +709,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     }
 }
 
-class AISDFightCell: UITableViewCell {
-    
-    @IBOutlet weak var title: UILabel!
-}
- 
+
 class AITableCellHolder:UITableViewCell {
     // MARK: currentView
     class func currentView()->AITableCellHolder{
@@ -724,29 +717,4 @@ class AITableCellHolder:UITableViewCell {
         return selfView
     }
     
-}
-class AISDParamsCell: UITableViewCell {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var descri: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var line: UILabel!
-    
-    @IBAction func exchangeButton(sender: AnyObject) {
-        let button = sender as! UIButton
-        if let som = button.associatedName {
-            //有值
-            if som == "1"{
-                button.associatedName = "0"
-                button.setImage(UIImage(named: "sd_on"), forState: UIControlState.Normal)
-            }else{
-                button.associatedName = "1"
-                button.setImage(UIImage(named: "sd_off"), forState: UIControlState.Normal)
-            }
-            
-        }else{
-            button.associatedName = "1"
-            button.setImage(UIImage(named: "sd_off"), forState: UIControlState.Normal)
-        }
-    }
 }
