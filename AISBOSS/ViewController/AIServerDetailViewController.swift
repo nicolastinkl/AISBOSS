@@ -44,6 +44,9 @@ class AIServerDetailViewController: UIViewController {
     
     @IBOutlet weak var priceView: UIView!
     
+    private let TITLE_ROW: Int = 0
+    private let CONTENT_ROW: Int = 1
+    
     //search view by liux
     private var serviceSearchView:AIServiceSearchView!
     
@@ -164,7 +167,7 @@ class AIServerDetailViewController: UIViewController {
     
     private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
         
-        if catalog.service_level == 3 {
+        if catalog.service_level == ServiceLevel.Switch {
             // switch choose type service, default is unselected
             return
         }
@@ -186,26 +189,26 @@ class AIServerDetailViewController: UIViewController {
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
         let data =  DataModel()
         data.title = catalog.catalog_name ?? ""
-        data.type = convertServiceLevelToCellType(catalog.service_level ?? 0,selectFlag : catalog.select_flag ?? 0)
+        data.type = convertServiceLevelToCellType(catalog.service_level ?? .Undefine, selectFlag : catalog.select_flag ?? 0)
         data.realModel = catalog.service_list
         
         return data
     }
     
-    private func convertServiceLevelToCellType(serviceLevel: Int,selectFlag : Int) -> CellType {
+    private func convertServiceLevelToCellType(serviceLevel: ServiceLevel, selectFlag : Int) -> CellType {
         switch serviceLevel {
-        case 1:
+        case .Coverflow:
             return .Coverflow
-        case 2:
+        case .Card:
             if selectFlag == 1{
                 return .SignleChoose
             }
             else {
                 return .MutiChoose
             }
-        case 3:
+        case .Switch:
             return .SwitchChoose
-        case 4:
+        case .FlightTicket:
             return .FilghtTicketsGroup
         default:
             return .Default
@@ -359,11 +362,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
-        if indexPath.row == 0 {
+        if indexPath.row == TITLE_ROW {
             return 50
         }
         
-        if indexPath.row == 1 {
+        if indexPath.row == CONTENT_ROW {
             switch model.type! {
             case .DatePicker:
                 return 270
@@ -396,7 +399,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let TITLE_ROW: Int = 0
+        
         
         var cell: UITableViewCell!
         

@@ -59,7 +59,7 @@ struct Catalog: JSONJoy {
     var catalog_id: Int?
     var select_flag: Int?
     var binding_flag: Int?
-    var service_level: Int?
+    var service_level: ServiceLevel?
     
     var relevant_level: Int?
     var catalog_name: String?
@@ -71,7 +71,7 @@ struct Catalog: JSONJoy {
         catalog_id = decoder["catalog_id"].integer
         select_flag = decoder["select_flag"].integer
         binding_flag = decoder["binding_flag"].integer
-        service_level = decoder["service_level"].integer
+        service_level = ServiceLevel(rawValue: decoder["service_level"].integer ?? 0)
         relevant_level = decoder["relevant_level"].integer
         
         catalog_name = decoder["catalog_name"].string
@@ -152,3 +152,12 @@ struct ServiceProvider : JSONJoy {
         provider_portrait_icon = decoder["provider_portrait_icon"].string
     }
 }
+
+enum ServiceLevel: Int {
+    case Undefine
+    case Coverflow = 1
+    case Card
+    case Switch
+    case FlightTicket
+}
+
