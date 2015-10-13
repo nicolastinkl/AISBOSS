@@ -451,50 +451,38 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let TITLE_ROW: Int = 0
         
-        if dataSource.count > indexPath.section{
-            let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
-            
-            if indexPath.row == 0 {
-                return createTitleViewCell(model)
-            } else {
-                // TODO: 日期
-                if model.type == .CellTypeDate {
-                    return createDatePickerViewCell()
-                }
-                
-                // TODO: 卡片信息
-                if  model.type == CellType.CellTypeCoverflow {
-                    
-                    return createCoverFlowViewCell(model, indexPath: indexPath)
-                    
-                }
-                
-                // TODO: 机票信息
-                if  model.type == CellType.CellTypeFilght {
-                    
-                    return createAirTicketsViewCell(model)
-                    
-                }
-                
-                // TODO: 开关信息
-                if  model.type == CellType.CellTypeparames {
-                    
+        var cell: UITableViewCell!
+        
+        let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
+        
+        if indexPath.row == TITLE_ROW {
+            cell = createTitleViewCell(model)
+        } else {
+            if let cellType = model.type {
+                switch cellType {
+                case .CellTypeDate:
+                    cell = createDatePickerViewCell()
+                case .CellTypeCoverflow:
+                    cell = createCoverFlowViewCell(model, indexPath: indexPath)
+                case .CellTypeFilght:
+                    cell = createAirTicketsViewCell(model)
+                case .CellTypeparames:
                     let ls = model.realModel!
-                    return createSwitchViewCell(ls, indexPath: indexPath)
-                }
-                
-                // TODO: 多选 or 单选
-                if model.type == CellType.CellTypeMutiChoose ||  model.type == CellType.CellTypeSignleChoose {
-                    
-                    return createHorizontalCardViewCell(model, indexPath: indexPath)
+                    cell = createSwitchViewCell(ls, indexPath: indexPath)
+                case .CellTypeMutiChoose, .CellTypeSignleChoose:
+                    cell = createHorizontalCardViewCell(model, indexPath: indexPath)
+                default:
+                    cell = UITableViewCell()
                     
                 }
+            } else {
+                cell = UITableViewCell()
             }
         }
         
-        return UITableViewCell()
-        
+        return cell        
     }
     
     func createTitleViewCell(titleModel: DataModel) -> UITableViewCell {
