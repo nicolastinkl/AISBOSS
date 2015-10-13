@@ -602,10 +602,10 @@ class AISDDateCell: UITableViewCell {
     @IBOutlet weak var dateImageView: UIImageView!
 }
 
-class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate{
+class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate {
     
     class func currentView()-> CoverFlowCell {
-        let selfView = NSBundle.mainBundle().loadNibNamed("CoverFlowCell", owner: self, options: nil).first  as! CoverFlowCell
+        let selfView = NSBundle.mainBundle().loadNibNamed("AICoverFlowCell", owner: self, options: nil).first  as! CoverFlowCell
         return selfView
     }
     
@@ -710,7 +710,7 @@ class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate{
 }
 
 
-class AITableCellHolder:UITableViewCell {
+class AITableCellHolder: UITableViewCell {
     // MARK: currentView
     class func currentView()->AITableCellHolder{
         let selfView = NSBundle.mainBundle().loadNibNamed("AITableCellHolder", owner: self, options: nil).first  as! AITableCellHolder

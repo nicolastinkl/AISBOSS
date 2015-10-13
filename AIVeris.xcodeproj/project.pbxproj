@@ -75,7 +75,7 @@
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; settings = {ASSET_TAGS = (); }; };
 		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
-		93B00EDB1BBBACCD000C402B /* AISDSubDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AISDSubDetailCell.xib */; };
+		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
 		93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A2A1B9D78B000CD1FEB /* collectionData.json */; };
@@ -367,7 +367,7 @@
 		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
 		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		93B00EDA1BBBACCD000C402B /* AISDSubDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AISDSubDetailCell.xib; sourceTree = "<group>"; };
+		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
 		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
@@ -1123,7 +1123,7 @@
 		93B00ED91BBBACBA000C402B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				93B00EDA1BBBACCD000C402B /* AISDSubDetailCell.xib */,
+				93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */,
 				93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */,
 			);
 			name = Cell;
@@ -1716,7 +1716,7 @@
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
 				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,
-				93B00EDB1BBBACCD000C402B /* AISDSubDetailCell.xib in Resources */,
+				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,

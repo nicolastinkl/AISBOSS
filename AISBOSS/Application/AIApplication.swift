@@ -74,7 +74,7 @@ struct AIApplication{
             
             // MARK: Detail
             static let AISDDateCell                 = "AISDDateCell"
-            static let AISDSubDetailCell            = "AISDSubDetailCell"
+            static let AICoverFlowCell              = "AICoverFlowCell"
             static let AISDFightCell                = "AISDFightCell"
             static let AISDParamsCell               = "AISDParamsCell"
             static let AITitleServiceDetailCell     = "AITitleServiceDetailCell"
