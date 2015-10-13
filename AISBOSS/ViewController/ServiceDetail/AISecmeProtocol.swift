@@ -10,6 +10,6 @@ import Foundation
 
 protocol AISchemeProtocol {
     
-    func chooseItem(model: ServiceList?, cancelItem: ServiceList?)
+    func chooseItem(model: Service?, cancelItem: Service?)
     
 }

@@ -15,7 +15,7 @@ protocol HorizontalCardViewDelegate {
 
 class HorizontalCardView: UIView {
     
-    var serviceListModelList : Array<ServiceList>!
+    var ServiceModelList : Array<Service>!
     var cardCellViewList = Array<CardCellView>()
     var delegate : AISchemeProtocol?
     var multiSelect = false
@@ -32,16 +32,16 @@ class HorizontalCardView: UIView {
         //initEmptyCell()
     }
     
-    init(frame: CGRect,serviceListModelList : [ServiceList]) {
+    init(frame: CGRect,ServiceModelList : [Service]) {
         super.init(frame: frame)
-        self.serviceListModelList = serviceListModelList
+        self.ServiceModelList = ServiceModelList
         buildLayout()
     }
     
-    init(frame: CGRect,serviceListModelList : [ServiceList],multiSelect : Bool) {
+    init(frame: CGRect,ServiceModelList : [Service],multiSelect : Bool) {
         super.init(frame: frame)
         self.multiSelect = multiSelect
-        self.serviceListModelList = serviceListModelList
+        self.ServiceModelList = ServiceModelList
         buildLayout()
     }
 
@@ -50,13 +50,13 @@ class HorizontalCardView: UIView {
     }
     
     // MARK: - build method
-    func loadData(serviceListModelList : [ServiceList],multiSelect : Bool){
-        self.serviceListModelList = serviceListModelList
-//        if serviceListModelList.count > maxCellNumber{
-//            self.serviceListModelList.removeRange(Range(start: maxCellNumber - 1,end: serviceListModelList.count - 1))
+    func loadData(ServiceModelList : [Service],multiSelect : Bool){
+        self.ServiceModelList = ServiceModelList
+//        if ServiceModelList.count > maxCellNumber{
+//            self.ServiceModelList.removeRange(Range(start: maxCellNumber - 1,end: ServiceModelList.count - 1))
 //        }
-        if maxCellNumber > self.serviceListModelList.count{
-            maxCellNumber = self.serviceListModelList.count
+        if maxCellNumber > self.ServiceModelList.count{
+            maxCellNumber = self.ServiceModelList.count
         }
         self.multiSelect = multiSelect
         buildLayout()
@@ -77,8 +77,8 @@ class HorizontalCardView: UIView {
         })
         //build cell
         for var i = 0 ; i < maxCellNumber ; i++ {
-        //for serviceListModel : ServiceList in serviceListModelList{
-            let serviceListModel : ServiceList = serviceListModelList[i] as ServiceList
+        //for ServiceModel : Service in ServiceModelList{
+            let ServiceModel : Service = ServiceModelList[i] as Service
             var cellFrame:CGRect!
             
             let cardCellView = CardCellView.currentView()
@@ -98,7 +98,7 @@ class HorizontalCardView: UIView {
             bindCellEvent(cardCellView)
             cardCellViewList.append(cardCellView)
             self.addSubview(cardCellView)
-            cardCellView.buildViewData(serviceListModel)
+            cardCellView.buildViewData(ServiceModel)
             //init select status
             cardCellView.selectAction()
             cellX = cellX + cellWidth + cellPadding
@@ -111,12 +111,12 @@ class HorizontalCardView: UIView {
         var isFirst = true
         var cellX : CGFloat = viewPadding
         var index = 0
-        let cellPaddingAll = CGFloat(serviceListModelList.count - 1) * cellPadding
-        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll) / CGFloat(serviceListModelList.count)
+        let cellPaddingAll = CGFloat(ServiceModelList.count - 1) * cellPadding
+        let cellWidth = (self.bounds.size.width - (viewPadding * 2) - cellPaddingAll) / CGFloat(ServiceModelList.count)
         let firstCellFrame = CGRectMake(cellX, cellY, cellWidth, cellHeight)
         
         //build cell
-        for serviceListModel : ServiceList in serviceListModelList{
+        for ServiceModel : Service in ServiceModelList{
             
             if cardCellViewList.count == index {
                 return
@@ -135,7 +135,7 @@ class HorizontalCardView: UIView {
                 cardCellView.selected = false
             }
             cardCellView.frame = cellFrame
-            cardCellView.reloadData(serviceListModel)
+            cardCellView.reloadData(ServiceModel)
             
             //init select status
             cardCellView.selectAction()
@@ -190,19 +190,19 @@ class HorizontalCardView: UIView {
     func viewSelectAction(target : UITapGestureRecognizer){
         if let selCardCellView : CardCellView = target.view as? CardCellView{
             var lastSelectedCardCellView : CardCellView
-            var canceledService :ServiceList?
-            var selectedService : ServiceList?
+            var canceledService :Service?
+            var selectedService : Service?
             for cardCellView : CardCellView in cardCellViewList{
                 //支持多选的情况，只需要把selected取反
                 if multiSelect{
                     if cardCellView.index == selCardCellView.index{
                         //如果是选中变不选中
                         if cardCellView.selected{
-                            canceledService = selCardCellView.serviceListModel
+                            canceledService = selCardCellView.serviceModel
                         }
                         //如果是不选中变选中
                         else{
-                            selectedService = selCardCellView.serviceListModel
+                            selectedService = selCardCellView.serviceModel
                         }
                         cardCellView.selected = !cardCellView.selected
                         cardCellView.selectAction()
@@ -212,7 +212,7 @@ class HorizontalCardView: UIView {
                 else{
                     if cardCellView.selected {
                         lastSelectedCardCellView = cardCellView
-                        canceledService = lastSelectedCardCellView.serviceListModel
+                        canceledService = lastSelectedCardCellView.serviceModel
                     }
                     if cardCellView.index == selCardCellView.index{
                         cardCellView.selected = true
@@ -226,7 +226,7 @@ class HorizontalCardView: UIView {
             }
             //单选的时候为选中赋值
             if !multiSelect{
-                selectedService = selCardCellView.serviceListModel
+                selectedService = selCardCellView.serviceModel
             }
             
             

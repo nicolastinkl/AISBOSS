@@ -28,7 +28,7 @@ import UIKit
 import Cartography
 
 protocol ServiceSwitchDelegate {
-    func switchStateChanged(isOn: Bool, operationService: ServiceList)
+    func switchStateChanged(isOn: Bool, operationService: Service)
 }
 
 
@@ -40,7 +40,7 @@ class SwitchServiceView: UIView {
     @IBOutlet weak var serviceDescription: UILabel!
     @IBOutlet weak var price: UILabel!
     var switchController: SevenSwitch!
-    private var servicePre: ServiceList?
+    private var operationService: Service?
     @IBOutlet weak var switchHolder: UIView!
     var switchDelegate: ServiceSwitchDelegate?
     /*
@@ -87,7 +87,7 @@ class SwitchServiceView: UIView {
             }
     
     func switchChanged(sender: SevenSwitch) {
-        if let ser = servicePre {
+        if let ser = operationService {
             switchDelegate?.switchStateChanged(sender.on, operationService: ser)
         }
     }
@@ -99,8 +99,8 @@ class SwitchServiceView: UIView {
         return nib.first as! SwitchServiceView
     }
     
-    func setService(service: ServiceList) {
-        servicePre = service
+    func setService(service: Service) {
+        operationService = service
         serviceName.text = service.service_name ?? ""
         //serviceDescription.text = service.service_intro as String
         price.text = service.service_price?.price_show ?? ""

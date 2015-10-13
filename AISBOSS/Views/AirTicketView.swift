@@ -52,7 +52,7 @@ class AirTicketView: UIView {
     "param_value":"PEK"
     */
     
-    func setTicketData(ticket: ServiceList) {
+    func setTicketData(ticket: Service) {
         flightNumber.text = ticket.service_name ?? ""
         priceAndPassengerType.text = ticket.service_price?.price_show ?? ""
         

@@ -46,7 +46,7 @@ class AirTicketGroupView: UIView {
     
 
     
-    func setTicketsData(tickets: [ServiceList]) {
+    func setTicketsData(tickets: [Service]) {
         ticketCount = tickets.count
         
         var preTicket: AirTicketView?

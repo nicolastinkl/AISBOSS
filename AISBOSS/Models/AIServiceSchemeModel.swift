@@ -64,7 +64,7 @@ struct Catalog: JSONJoy {
     var relevant_level: Int?
     var catalog_name: String?
     
-    var service_list: Array<ServiceList>?
+    var service_list: Array<Service>?
     
     init(_ decoder: JSONDecoder) {
         
@@ -78,15 +78,15 @@ struct Catalog: JSONJoy {
         
         
         if let addrs = decoder["service_list"].array {
-            service_list = Array<ServiceList>()
-            for decodecccr in addrs {
-                service_list?.append(ServiceList(decodecccr))
+            service_list = Array<Service>()
+            for decoder in addrs {
+                service_list?.append(Service(decoder))
             }
         }
     }
 }
 
-struct ServiceList: JSONJoy{
+struct Service: JSONJoy{
     
     var service_id: Int?
     var provider_id: Int?

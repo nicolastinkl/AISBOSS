@@ -17,7 +17,7 @@ class CardCellView: UIView {
     var starRateView : CWStarRateView?
     var serviceNameScrollLabel : AIScrollLabel?
     var serviceDescScrollLabel : AIScrollLabel?
-    var serviceListModel : ServiceList?
+    var serviceModel : Service?
     var firstLayout = true
     // MARK: - uiview variables
     
@@ -47,7 +47,7 @@ class CardCellView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         //return
-        if firstLayout && serviceListModel != nil {
+        if firstLayout && serviceModel != nil {
             
             if let starRateView = serviceRatingView.subviews.last as!
                 CWStarRateView? {
@@ -55,7 +55,7 @@ class CardCellView: UIView {
                     starRateView.frame = frame
             }
             if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
-                if let nameLabelText = serviceListModel!.service_name {
+                if let nameLabelText = serviceModel!.service_name {
                     nameLabel.frame = serviceNameView.bounds
                     nameLabel.text = nameLabelText as String
                     if selected {
@@ -65,7 +65,7 @@ class CardCellView: UIView {
             }
             
             if let descLabel = serviceDescView.subviews.last as! AIScrollLabel?{
-                if let descLabelText = serviceListModel!.service_intro {
+                if let descLabelText = serviceModel!.service_intro {
                     descLabel.frame = serviceDescView.bounds
                     descLabel.text = descLabelText as String
                     if selected {
@@ -80,34 +80,34 @@ class CardCellView: UIView {
     
     // MARK: - utils
     
-    func buildViewData(serviceListModel: ServiceList){
+    func buildViewData(serviceModel: Service){
         
-        self.serviceListModel = serviceListModel
+        self.serviceModel = serviceModel
         
         //        if let nameLabel = serviceNameView.subviews.last as! AIScrollLabel? {
-        //            if let nameLabelText = serviceListModel.service_name {
+        //            if let nameLabelText = serviceModel.service_name {
         //                nameLabel.text = nameLabelText as String
         //                nameLabel.startScroll()
         //            }
         //        }
         //
         //        if let descLabel = serviceDescView.subviews.last as! AIScrollLabel? {
-        //            if let descLabelText = serviceListModel.service_intro {
+        //            if let descLabelText = serviceModel.service_intro {
         //                descLabel.text = descLabelText as String
         //                descLabel.startScroll()
         //            }
         //
         //        }
         
-        if let sPriceModel = serviceListModel.service_price{
+        if let sPriceModel = serviceModel.service_price{
             servicePriceLabel.text = sPriceModel.price_show ?? ""
         }
         starRateView = CWStarRateView(frame: serviceRatingView.bounds, numberOfStars: 5)
         starRateView?.allowIncompleteStar = true
-        starRateView!.scorePercent = CGFloat(serviceListModel.service_rating!)
+        starRateView!.scorePercent = CGFloat(serviceModel.service_rating!)
         serviceRatingView.addSubview(starRateView!)
         
-        if let url = serviceListModel.service_intro_img {
+        if let url = serviceModel.service_intro_img {
             serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: UIImage(named: "Placehold"),completed:{
                 (image,error,cacheType,imageURL) -> Void in
                 if let _ = image {
@@ -132,12 +132,12 @@ class CardCellView: UIView {
         
     }
     
-    func reloadData(serviceListModel : ServiceList){
-        self.serviceListModel = serviceListModel
-        let price = serviceListModel.service_price?.price_show ?? ""
+    func reloadData(serviceModel : Service){
+        self.serviceModel = serviceModel
+        let price = serviceModel.service_price?.price_show ?? ""
         servicePriceLabel.text = price
-        starRateView!.scorePercent = CGFloat(serviceListModel.service_rating ?? 0)
-        serviceImg.sd_setImageWithURL(serviceListModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
+        starRateView!.scorePercent = CGFloat(serviceModel.service_rating ?? 0)
+        serviceImg.sd_setImageWithURL(serviceModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
             (image,error,cacheType,imageURL) -> Void in
             if let _ = image {
                 self.originBackgroundImg = image

@@ -26,7 +26,7 @@ class DataModel : NSObject {
     var title: String?
     var type: CellType?
     var content: String?
-    var realModel: [ServiceList]?
+    var realModel: [Service]?
     var sectionID:Int?
 }
 
@@ -175,7 +175,7 @@ class AIServerDetailViewController: UIViewController {
 
     }
     
-    private func convertChooseItemToPriceItem(item: ServiceList) -> PriceItem {
+    private func convertChooseItemToPriceItem(item: Service) -> PriceItem {
         let priceItem = PriceItem()
         priceItem.id = item.service_id ?? 0
         priceItem.priceValue = Float(item.service_price?.price ?? 0)
@@ -212,7 +212,7 @@ class AIServerDetailViewController: UIViewController {
         }
     }
     
-    private func changePrice(choosedService:ServiceList?, cancelService: ServiceList?){
+    private func changePrice(choosedService:Service?, cancelService: Service?){
         
         if choosedService != nil {
             priceAccount.inToAccount(convertChooseItemToPriceItem(choosedService!))
@@ -301,7 +301,7 @@ class AIServerDetailViewController: UIViewController {
 
 // MARK: AISchemeProtocol
 extension AIServerDetailViewController: AISchemeProtocol {
-    func chooseItem(model: ServiceList?, cancelItem: ServiceList?) {
+    func chooseItem(model: Service?, cancelItem: Service?) {
         changePrice(model, cancelService: cancelItem)
     }
 }
@@ -346,7 +346,7 @@ extension AIServerDetailViewController : AOTagDelegate{
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
-    func switchStateChanged(isOn: Bool, operationService: ServiceList) {
+    func switchStateChanged(isOn: Bool, operationService: Service) {
         if isOn {
             changePrice(operationService, cancelService: nil)
         } else {
@@ -519,7 +519,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
     }
     
-    private func createSwitchViewCell(services: [ServiceList], indexPath: NSIndexPath) -> UITableViewCell {
+    private func createSwitchViewCell(services: [Service], indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
         
         var switchView: SwitchServiceView!
@@ -539,7 +539,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
         }
         
-        if let ser = services.last as ServiceList?{
+        if let ser = services.last as Service?{
             switchView.setService(ser)
         }
         switchView.reloadData()
@@ -616,9 +616,9 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     var delegate : AISchemeProtocol?
     
-    var dataSource:[ServiceList]?
+    var dataSource:[Service]?
     
-    private var oldChoosedItem: ServiceList?
+    private var oldChoosedItem: Service?
     
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
         if let daSource = dataSource {
@@ -639,7 +639,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
             
             if let data = dataSource {
                 
-                let comt:ServiceList = data[index] as ServiceList
+                let comt:Service = data[index] as Service
                 coverView.fillDataWithModel(comt)
                 view = coverView
             }
@@ -704,7 +704,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     */
     func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
         if let dataSour = dataSource {
-            let ser:ServiceList = dataSour[carousel.currentItemIndex]
+            let ser:Service = dataSour[carousel.currentItemIndex]
             delegate?.chooseItem(ser, cancelItem: oldChoosedItem)
             
             oldChoosedItem = ser
