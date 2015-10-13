@@ -13,13 +13,13 @@ import AIAlertView
 import Cartography
 
 enum CellType: Int {
-    case CellTypeDate
+    case CellDefault
     case CellTypeCoverflow
+    case CellTypeDate
     case CellTypeFilght
     case CellTypeparames
     case CellTypeSignleChoose
     case CellTypeMutiChoose
-    case CellDefault
 }
 
 class DataModel : NSObject {
@@ -208,8 +208,6 @@ class AIServerDetailViewController: UIViewController {
             return .CellTypeparames
         case 4:
             return .CellTypeFilght
-//        case 5:
-//            return .CellTypeMutiChoose
         default:
             return .CellDefault
         }
@@ -353,23 +351,6 @@ class AIServerDetailViewController: UIViewController {
             self.tableView.reloadData()
         }
         
-        
-        /*
-        let titl = tag.tTitle
-        
-        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! dataModel
-        
-        if fitlerModel.title == titl {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
-        
-        self.dataSource.removeObjectAtIndex(index)
-        self.tableView.reloadData()
-        return
-        }
-        }
-        */
-        
     }
 }
 
@@ -411,40 +392,6 @@ extension AIServerDetailViewController : AOTagDelegate{
     
     func tagDidRemoveTag(tag: AOTag!) {
         
-        /*
-        let titl = tag.tTitle
-        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! DataModel
-        
-        if fitlerModel.title == titl {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
-        
-        self.dataSource.removeObjectAtIndex(index)
-        self.tableView.reloadData()
-        return
-        }
-        }
-        */
-        
-        
-        
-        /*
-        let newArray = dataSource.filter { (fitlerModel) -> Bool in
-        if fitlerModel.title == titl {
-        return true
-        }
-        return false
-        }
-        
-        if newArray.count > 0 {
-        
-        var newMuta = NSMutableArray(array: dataSource)
-        
-        self.dataSource.removeAtIndex(newMuta.indexOfObject(newArray.first!))
-        
-        self.tableView.reloadData()
-        }
-        */
     }
     
     func tagDidAddTag(tag: AOTag!) {
@@ -839,7 +786,7 @@ class AISDFightCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
 }
  
-class AITableCellHolder:UITableViewCell{
+class AITableCellHolder:UITableViewCell {
     // MARK: currentView
     class func currentView()->AITableCellHolder{
         let selfView = NSBundle.mainBundle().loadNibNamed("AITableCellHolder", owner: self, options: nil).first  as! AITableCellHolder
@@ -847,8 +794,7 @@ class AITableCellHolder:UITableViewCell{
     }
     
 }
-class AISDParamsCell: UITableViewCell
-{
+class AISDParamsCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var descri: UILabel!
@@ -871,7 +817,5 @@ class AISDParamsCell: UITableViewCell
             button.associatedName = "1"
             button.setImage(UIImage(named: "sd_off"), forState: UIControlState.Normal)
         }
-        
-        
     }
 }
