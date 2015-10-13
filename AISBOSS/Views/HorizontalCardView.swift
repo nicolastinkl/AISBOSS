@@ -190,23 +190,19 @@ class HorizontalCardView: UIView {
     func viewSelectAction(target : UITapGestureRecognizer){
         if let selCardCellView : CardCellView = target.view as? CardCellView{
             var lastSelectedCardCellView : CardCellView
-            var cancelItemModel :chooseItemModel?
-            var model : chooseItemModel?
+            var canceledService :ServiceList?
+            var selectedService : ServiceList?
             for cardCellView : CardCellView in cardCellViewList{
                 //支持多选的情况，只需要把selected取反
                 if multiSelect{
                     if cardCellView.index == selCardCellView.index{
                         //如果是选中变不选中
                         if cardCellView.selected{
-                            cancelItemModel = chooseItemModel()
-                            cancelItemModel!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
-                            cancelItemModel!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
+                            canceledService = selCardCellView.serviceListModel
                         }
                         //如果是不选中变选中
                         else{
-                            model = chooseItemModel()
-                            model!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
-                            model!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
+                            selectedService = selCardCellView.serviceListModel
                         }
                         cardCellView.selected = !cardCellView.selected
                         cardCellView.selectAction()
@@ -216,9 +212,7 @@ class HorizontalCardView: UIView {
                 else{
                     if cardCellView.selected {
                         lastSelectedCardCellView = cardCellView
-                        cancelItemModel = chooseItemModel()
-                        cancelItemModel!.scheme_id = lastSelectedCardCellView.serviceListModel?.service_id ?? 0
-                        cancelItemModel!.scheme_item_price = Float(lastSelectedCardCellView.serviceListModel?.service_price?.price ?? 0)
+                        canceledService = lastSelectedCardCellView.serviceListModel
                     }
                     if cardCellView.index == selCardCellView.index{
                         cardCellView.selected = true
@@ -232,13 +226,11 @@ class HorizontalCardView: UIView {
             }
             //单选的时候为选中赋值
             if !multiSelect{
-                model = chooseItemModel()
-                model!.scheme_id = selCardCellView.serviceListModel?.service_id ?? 0
-                model!.scheme_item_price = Float(selCardCellView.serviceListModel?.service_price?.price ?? 0)
+                selectedService = selCardCellView.serviceListModel
             }
             
             
-            delegate?.chooseItem(model, cancelItem: cancelItemModel)
+            delegate?.chooseItem(selectedService, cancelItem: canceledService)
         }
         
     }

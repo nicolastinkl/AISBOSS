@@ -170,20 +170,15 @@ class AIServerDetailViewController: UIViewController {
         }
         
         if let ser = catalog.service_list?.first {
-            
-            let model = chooseItemModel()
-            model.scheme_id = ser.service_id ?? 0
-            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
-            
-            priceAccount.inToAccount(convertChooseItemToPriceItem(model))
+            priceAccount.inToAccount(convertChooseItemToPriceItem(ser))
         }
 
     }
     
-    private func convertChooseItemToPriceItem(item: chooseItemModel) -> PriceItem {
+    private func convertChooseItemToPriceItem(item: ServiceList) -> PriceItem {
         let priceItem = PriceItem()
-        priceItem.id = item.scheme_id
-        priceItem.priceValue = item.scheme_item_price
+        priceItem.id = item.service_id ?? 0
+        priceItem.priceValue = Float(item.service_price?.price ?? 0)
         
         return priceItem
     }
@@ -217,14 +212,14 @@ class AIServerDetailViewController: UIViewController {
         }
     }
     
-    private func changePrice(choosedModel:chooseItemModel?, cancelModel: chooseItemModel?){
+    private func changePrice(choosedService:ServiceList?, cancelService: ServiceList?){
         
-        if choosedModel != nil {
-            priceAccount.inToAccount(convertChooseItemToPriceItem(choosedModel!))
+        if choosedService != nil {
+            priceAccount.inToAccount(convertChooseItemToPriceItem(choosedService!))
         }
         
-        if cancelModel != nil {
-            priceAccount.outOfAccount(convertChooseItemToPriceItem(cancelModel!))
+        if cancelService != nil {
+            priceAccount.outOfAccount(convertChooseItemToPriceItem(cancelService!))
         }
         
         
@@ -292,12 +287,8 @@ class AIServerDetailViewController: UIViewController {
             //删除对应的价格
             let model = self.dataSource.objectAtIndex(sectionss) as! DataModel
             for service in model.realModel! {
-                
-                let model = chooseItemModel()
-                model.scheme_id = service.service_id ?? 0
-                model.scheme_item_price = Float(service.service_price?.price ?? 0)
-                
-                changePrice(nil, cancelModel: model)
+      
+                changePrice(nil, cancelService: service)
             }
             
             self.dataSource.removeObjectAtIndex(sectionss)
@@ -310,8 +301,8 @@ class AIServerDetailViewController: UIViewController {
 
 // MARK: AISchemeProtocol
 extension AIServerDetailViewController: AISchemeProtocol {
-    func chooseItem(model: chooseItemModel?, cancelItem: chooseItemModel?) {
-        changePrice(model, cancelModel: cancelItem)
+    func chooseItem(model: ServiceList?, cancelItem: ServiceList?) {
+        changePrice(model, cancelService: cancelItem)
     }
 }
 
@@ -355,11 +346,11 @@ extension AIServerDetailViewController : AOTagDelegate{
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate{
-    func switchStateChanged(isOn: Bool, model: chooseItemModel) {
+    func switchStateChanged(isOn: Bool, operationService: ServiceList) {
         if isOn {
-            changePrice(model, cancelModel: nil)
+            changePrice(operationService, cancelService: nil)
         } else {
-            changePrice(nil, cancelModel: model)
+            changePrice(nil, cancelService: operationService)
         }
     }
 }
@@ -627,7 +618,7 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     
     var dataSource:[ServiceList]?
     
-    private var oldChoosedItem: chooseItemModel?
+    private var oldChoosedItem: ServiceList?
     
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
         if let daSource = dataSource {
@@ -714,12 +705,9 @@ class AISDSubDetailCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate
     func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
         if let dataSour = dataSource {
             let ser:ServiceList = dataSour[carousel.currentItemIndex]
-            let model = chooseItemModel()
-            model.scheme_id = ser.service_id ?? 0
-            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
-            delegate?.chooseItem(model, cancelItem: oldChoosedItem)
+            delegate?.chooseItem(ser, cancelItem: oldChoosedItem)
             
-            oldChoosedItem = model
+            oldChoosedItem = ser
         }
     }
 }

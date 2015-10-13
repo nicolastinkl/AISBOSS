@@ -28,7 +28,7 @@ import UIKit
 import Cartography
 
 protocol ServiceSwitchDelegate {
-    func switchStateChanged(isOn: Bool,model: chooseItemModel)
+    func switchStateChanged(isOn: Bool, operationService: ServiceList)
 }
 
 
@@ -88,11 +88,7 @@ class SwitchServiceView: UIView {
     
     func switchChanged(sender: SevenSwitch) {
         if let ser = servicePre {
-            let model = chooseItemModel()
-            model.scheme_id = ser.service_id ?? 0
-            model.scheme_item_price = Float(ser.service_price?.price ?? 0)
-       //     model.scheme_item_quantity = Int(ser.service_price.billing_mode)
-            switchDelegate?.switchStateChanged(sender.on, model: model)
+            switchDelegate?.switchStateChanged(sender.on, operationService: ser)
         }
     }
     
