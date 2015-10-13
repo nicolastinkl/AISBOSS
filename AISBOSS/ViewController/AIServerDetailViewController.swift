@@ -13,13 +13,13 @@ import AIAlertView
 import Cartography
 
 enum CellType: Int {
-    case CellTypeDate
+    case CellDefault
     case CellTypeCoverflow
+    case CellTypeDate
     case CellTypeFilght
     case CellTypeparames
     case CellTypeSignleChoose
     case CellTypeMutiChoose
-    case CellDefault
 }
 
 class DataModel : NSObject {
@@ -56,8 +56,6 @@ class AIServerDetailViewController: UIViewController {
     private var labelPrice: JumpNumberLabel!
     /// cell 里面内容左右间距
     private var cellPadding:Float = 9.0
-    
-    private var priceDataSource = NSMutableArray()
     
     private var coverflowDataSource = NSMutableDictionary()
     private var horiListDataSource = NSMutableDictionary()
@@ -208,39 +206,9 @@ class AIServerDetailViewController: UIViewController {
             return .CellTypeparames
         case 4:
             return .CellTypeFilght
-//        case 5:
-//            return .CellTypeMutiChoose
         default:
             return .CellDefault
         }
-    }
-    
-    func changePriceToNew(model:chooseItemModel){
-        
-        var indexPre = 0
-        var replace = false
-        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
-            let preModel = modelPre as! chooseItemModel
-            if model.scheme_id == preModel.scheme_id {
-                //相同的类目下的单项选项,所以替换为主
-                indexPre = index
-                replace = true
-            }
-        }
-        
-        if replace {
-            priceDataSource.removeObjectAtIndex(indexPre)
-        }
-        priceDataSource.addObject(model)
-        
-        var priceTotal:Float = 0
-        priceDataSource.enumerateObjectsUsingBlock { (modelPre, index, error) -> Void in
-            
-            let preModel = modelPre as! chooseItemModel
-            priceTotal += preModel.scheme_item_price
-        }
-        
-        labelPrice.changeFloatNumberTo(priceTotal, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func changePrice(choosedModel:chooseItemModel?, cancelModel: chooseItemModel?){
@@ -316,59 +284,26 @@ class AIServerDetailViewController: UIViewController {
         
     }
     
-    func closeCurrentSectionAction(sender: AnyObject) {
+    func cancelServiceSectionAction(sender: AnyObject) {
         //处理删除当前section的问题
         let button = sender as! UIButton
         let cell = button.superview?.superview as! UITableViewCell
-        let sectionss = self.tableView.indexPathForCell(cell)?.section
-        if let s = sectionss {
+        if let sectionss = self.tableView.indexPathForCell(cell)?.section {
             //删除对应的价格
-            
-            let model = self.dataSource.objectAtIndex(s) as! DataModel
-            for custom in model.realModel! {
+            let model = self.dataSource.objectAtIndex(sectionss) as! DataModel
+            for service in model.realModel! {
                 
-                var indexPre:Int = 0
-                var replace = false
+                let model = chooseItemModel()
+                model.scheme_id = service.service_id ?? 0
+                model.scheme_item_price = Float(service.service_price?.price ?? 0)
                 
-                priceDataSource.enumerateObjectsUsingBlock({ (modelPre, index, error) -> Void in
-                    let preModel = modelPre as! chooseItemModel
-                    if custom.service_id == preModel.scheme_id {
-                        //相同的类目下的单项选项,所以替换为主
-                        indexPre = index
-                        replace = true
-                    }
-                    
-                })
-                
-                if replace {
-                    priceDataSource.removeObjectAtIndex(indexPre)
-                    let modelP = chooseItemModel()
-                    modelP.scheme_id = 0
-                    modelP.scheme_item_price = 0
-                    self.changePriceToNew(modelP)
-                }
+                changePrice(nil, cancelModel: model)
             }
             
-            self.dataSource.removeObjectAtIndex(s)
+            self.dataSource.removeObjectAtIndex(sectionss)
             self.tableView.reloadData()
+
         }
-        
-        
-        /*
-        let titl = tag.tTitle
-        
-        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! dataModel
-        
-        if fitlerModel.title == titl {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
-        
-        self.dataSource.removeObjectAtIndex(index)
-        self.tableView.reloadData()
-        return
-        }
-        }
-        */
         
     }
 }
@@ -411,40 +346,6 @@ extension AIServerDetailViewController : AOTagDelegate{
     
     func tagDidRemoveTag(tag: AOTag!) {
         
-        /*
-        let titl = tag.tTitle
-        dataSource.enumerateObjectsUsingBlock { (object, index, sd) -> Void in
-        let fitlerModel = object as! DataModel
-        
-        if fitlerModel.title == titl {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFOOpenRemoveViewNotification, object: titl)
-        
-        self.dataSource.removeObjectAtIndex(index)
-        self.tableView.reloadData()
-        return
-        }
-        }
-        */
-        
-        
-        
-        /*
-        let newArray = dataSource.filter { (fitlerModel) -> Bool in
-        if fitlerModel.title == titl {
-        return true
-        }
-        return false
-        }
-        
-        if newArray.count > 0 {
-        
-        var newMuta = NSMutableArray(array: dataSource)
-        
-        self.dataSource.removeAtIndex(newMuta.indexOfObject(newArray.first!))
-        
-        self.tableView.reloadData()
-        }
-        */
     }
     
     func tagDidAddTag(tag: AOTag!) {
@@ -504,50 +405,39 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let TITLE_ROW: Int = 0
         
-        if dataSource.count > indexPath.section{
-            let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
-            
-            if indexPath.row == 0 {
-                return createTitleViewCell(model)
+        var cell: UITableViewCell!
+        
+        let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
+        
+        if indexPath.row == TITLE_ROW {
+            cell = createTitleViewCell(model)
+        } else {
+            if let cellType = model.type {
+                switch cellType {
+                case .CellTypeDate:
+                    cell = createDatePickerViewCell()
+                case .CellTypeCoverflow:
+                    cell = createCoverFlowViewCell(model, indexPath: indexPath)
+                case .CellTypeFilght:
+                    cell = createAirTicketsViewCell(model)
+                case .CellTypeparames:
+                    let realModel = model.realModel!
+                    cell = createSwitchViewCell(realModel, indexPath: indexPath)
+                case .CellTypeMutiChoose,
+                .CellTypeSignleChoose:
+                    cell = createHorizontalCardViewCell(model, indexPath: indexPath)
+                default:
+                    cell = UITableViewCell()
+                    
+                }
             } else {
-                // TODO: 日期
-                if model.type == .CellTypeDate {
-                    return createDatePickerViewCell()
-                }
-                
-                // TODO: 卡片信息
-                if  model.type == CellType.CellTypeCoverflow {
-                    
-                    return createCoverFlowViewCell(model, indexPath: indexPath)
-                    
-                }
-                
-                // TODO: 机票信息
-                if  model.type == CellType.CellTypeFilght {
-                    
-                    return createAirTicketsViewCell(model)
-                    
-                }
-                
-                // TODO: 开关信息
-                if  model.type == CellType.CellTypeparames {
-                    
-                    let ls = model.realModel!
-                    return createSwitchViewCell(ls, indexPath: indexPath)
-                }
-                
-                // TODO: 多选 or 单选
-                if model.type == CellType.CellTypeMutiChoose ||  model.type == CellType.CellTypeSignleChoose {
-                    
-                    return createHorizontalCardViewCell(model, indexPath: indexPath)
-                    
-                }
+                cell = UITableViewCell()
             }
         }
         
-        return UITableViewCell()
-        
+        return cell        
     }
     
     func createTitleViewCell(titleModel: DataModel) -> UITableViewCell {
@@ -570,7 +460,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         default:
             break
         }
-        cell.closeButton.addTarget(self, action: "closeCurrentSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.closeButton.addTarget(self, action: "cancelServiceSectionAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
         return cell
     }
@@ -839,7 +729,7 @@ class AISDFightCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
 }
  
-class AITableCellHolder:UITableViewCell{
+class AITableCellHolder:UITableViewCell {
     // MARK: currentView
     class func currentView()->AITableCellHolder{
         let selfView = NSBundle.mainBundle().loadNibNamed("AITableCellHolder", owner: self, options: nil).first  as! AITableCellHolder
@@ -847,8 +737,7 @@ class AITableCellHolder:UITableViewCell{
     }
     
 }
-class AISDParamsCell: UITableViewCell
-{
+class AISDParamsCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var descri: UILabel!
@@ -871,7 +760,5 @@ class AISDParamsCell: UITableViewCell
             button.associatedName = "1"
             button.setImage(UIImage(named: "sd_off"), forState: UIControlState.Normal)
         }
-        
-        
     }
 }
