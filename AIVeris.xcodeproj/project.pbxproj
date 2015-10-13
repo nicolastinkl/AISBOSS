@@ -45,6 +45,7 @@
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
+		847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847115FA1BCD02940032C210 /* AICoverFlowCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD31BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; settings = {ASSET_TAGS = (); }; };
@@ -155,9 +156,8 @@
 		93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F381B9C2825007BF506 /* SystemConfiguration.framework */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
-		93EAC36C1BB107FE00483205 /* AISecmeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */; };
+		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
-		93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
 		93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D821B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m */; };
@@ -338,6 +338,7 @@
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
+		847115FA1BCD02940032C210 /* AICoverFlowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICoverFlowCell.swift; sourceTree = "<group>"; };
 		8472CBD21BCCAC900084A926 /* PriceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceItem.swift; sourceTree = "<group>"; };
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
@@ -552,10 +553,9 @@
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
-		93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISecmeProtocol.swift; sourceTree = "<group>"; };
+		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
-		93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowViewDataSoureAndDelegate.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		93FA1D7D1B9C2E9D009965C8 /* JTSScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSScrollIndicator.h; sourceTree = "<group>"; };
@@ -890,11 +890,8 @@
 			isa = PBXGroup;
 			children = (
 				93B00ED91BBBACBA000C402B /* Cell */,
-				934C41B31BA7F16C00002853 /* UICoverFlowView.swift */,
-				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
 				93FA1E2D1B9C3E12009965C8 /* AIServerDetailViewController.swift */,
-				93EB5BA11BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift */,
-				93EAC36B1BB107FE00483205 /* AISecmeProtocol.swift */,
+				93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */,
 			);
 			path = ServiceDetail;
 			sourceTree = "<group>";
@@ -1123,8 +1120,11 @@
 		93B00ED91BBBACBA000C402B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				934C41B31BA7F16C00002853 /* UICoverFlowView.swift */,
+				934C41B51BA7F3D400002853 /* UICoverFlowView.xib */,
 				93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */,
 				93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */,
+				847115FA1BCD02940032C210 /* AICoverFlowCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1835,6 +1835,7 @@
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
 				84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */,
+				847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */,
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
@@ -1845,7 +1846,7 @@
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
-				93EAC36C1BB107FE00483205 /* AISecmeProtocol.swift in Sources */,
+				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
@@ -1904,7 +1905,6 @@
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
-				93EB5BA21BA967FD00C9450D /* UICoverFlowViewDataSoureAndDelegate.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
