@@ -13,13 +13,13 @@ import AIAlertView
 import Cartography
 
 enum CellType: Int {
-    case CellDefault
-    case CellTypeCoverflow
-    case CellTypeDate
-    case CellTypeFilght
-    case CellTypeparames
-    case CellTypeSignleChoose
-    case CellTypeMutiChoose
+    case Default
+    case Coverflow
+    case DatePicker
+    case FilghtTicketsGroup
+    case SwitchChoose
+    case SignleChoose
+    case MutiChoose
 }
 
 class DataModel : NSObject {
@@ -64,9 +64,8 @@ class AIServerDetailViewController: UIViewController {
     
     private var schemeModel:AIServiceSchemeModel?
     
-    private var totalPrice: Float = 0
-    // key/value : serviceId/chooseItemModel
-    private var shoppingCard: [Int: chooseItemModel] = [Int: chooseItemModel]()
+    private var priceAccount = SimpleAccumulativeAccount()
+
     private var airTicketsViewHeight: CGFloat = 0
     
     override func viewDidLoad() {
@@ -140,7 +139,7 @@ class AIServerDetailViewController: UIViewController {
                 
                 // TODO: Init the Coverflow Views.
                 // TODO: 卡片信息
-                if  data.type == CellType.CellTypeCoverflow {
+                if  data.type == CellType.Coverflow {
                     let cell = createCoverFlowViewCell(data, indexPath: NSIndexPath(forRow: 0, inSection: section))
                     let key = "coverflow_\(section)"
                     coverflowDataSource.setValue(cell, forKey: key)
@@ -152,34 +151,41 @@ class AIServerDetailViewController: UIViewController {
         }
         
         self.tableView.reloadData()
-        labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func insertDateModel() {
         let data =  DataModel()
         data.title = "DAY"
-        data.type = CellType.CellTypeDate
+        data.type = CellType.DatePicker
         self.dataSource.addObject(data)
         
     }
     
     private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
         
-        // TODO
         if catalog.service_level == 3 {
+            // switch choose type service, default is unselected
             return
         }
         
         if let ser = catalog.service_list?.first {
             
-            totalPrice += Float(ser.service_price?.price ?? 0)
-            
             let model = chooseItemModel()
             model.scheme_id = ser.service_id ?? 0
             model.scheme_item_price = Float(ser.service_price?.price ?? 0)
-            shoppingCard[model.scheme_id] = model
+            
+            priceAccount.inToAccount(convertChooseItemToPriceItem(model))
         }
 
+    }
+    
+    private func convertChooseItemToPriceItem(item: chooseItemModel) -> PriceItem {
+        let priceItem = PriceItem()
+        priceItem.id = item.scheme_id
+        priceItem.priceValue = item.scheme_item_price
+        
+        return priceItem
     }
     
     private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
@@ -194,41 +200,35 @@ class AIServerDetailViewController: UIViewController {
     private func convertServiceLevelToCellType(serviceLevel: Int,selectFlag : Int) -> CellType {
         switch serviceLevel {
         case 1:
-            return .CellTypeCoverflow
+            return .Coverflow
         case 2:
             if selectFlag == 1{
-                return .CellTypeSignleChoose
+                return .SignleChoose
             }
             else{
-                return .CellTypeMutiChoose
+                return .MutiChoose
             }
         case 3:
-            return .CellTypeparames
+            return .SwitchChoose
         case 4:
-            return .CellTypeFilght
+            return .FilghtTicketsGroup
         default:
-            return .CellDefault
+            return .Default
         }
     }
     
     private func changePrice(choosedModel:chooseItemModel?, cancelModel: chooseItemModel?){
         
         if choosedModel != nil {
-            if shoppingCard[choosedModel!.scheme_id] == nil {
-                totalPrice += choosedModel!.scheme_item_price
-                shoppingCard[choosedModel!.scheme_id] = choosedModel!
-            }
+            priceAccount.inToAccount(convertChooseItemToPriceItem(choosedModel!))
         }
         
         if cancelModel != nil {
-            if shoppingCard[cancelModel!.scheme_id] != nil {
-                totalPrice -= cancelModel!.scheme_item_price
-                shoppingCard[cancelModel!.scheme_id] = nil
-            }
+            priceAccount.outOfAccount(convertChooseItemToPriceItem(cancelModel!))
         }
         
         
-        labelPrice.changeFloatNumberTo(totalPrice, format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func ChangeDateViewNotification(){
@@ -374,17 +374,17 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         if indexPath.row == 1 {
             switch model.type! {
-            case .CellTypeDate:
+            case .DatePicker:
                 return 270
-            case .CellTypeCoverflow:
+            case .Coverflow:
                 return 190
-            case .CellTypeFilght:
+            case .FilghtTicketsGroup:
                 return airTicketsViewHeight
-            case .CellTypeparames:
+            case .SwitchChoose:
                 return 100
-            case .CellTypeMutiChoose:
+            case .MutiChoose:
                 return 80
-            case .CellTypeSignleChoose:
+            case .SignleChoose:
                 return 80
             default:
                 return 0
@@ -416,17 +416,17 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         } else {
             if let cellType = model.type {
                 switch cellType {
-                case .CellTypeDate:
+                case .DatePicker:
                     cell = createDatePickerViewCell()
-                case .CellTypeCoverflow:
+                case .Coverflow:
                     cell = createCoverFlowViewCell(model, indexPath: indexPath)
-                case .CellTypeFilght:
+                case .FilghtTicketsGroup:
                     cell = createAirTicketsViewCell(model)
-                case .CellTypeparames:
+                case .SwitchChoose:
                     let realModel = model.realModel!
                     cell = createSwitchViewCell(realModel, indexPath: indexPath)
-                case .CellTypeMutiChoose,
-                .CellTypeSignleChoose:
+                case .MutiChoose,
+                .SignleChoose:
                     cell = createHorizontalCardViewCell(model, indexPath: indexPath)
                 default:
                     cell = UITableViewCell()
@@ -445,17 +445,17 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         cell.title.text = titleModel.title ?? ""
         
         switch titleModel.type! {
-        case .CellTypeDate:
+        case .DatePicker:
             cell.closeButton.hidden = true
-        case .CellTypeCoverflow:
+        case .Coverflow:
             cell.closeButton.hidden = false
-        case .CellTypeFilght:
+        case .FilghtTicketsGroup:
             cell.closeButton.hidden = false
-        case .CellTypeparames:
+        case .SwitchChoose:
             cell.closeButton.hidden = true
-        case .CellTypeMutiChoose:
+        case .MutiChoose:
             cell.closeButton.hidden = false
-        case .CellTypeSignleChoose:
+        case .SignleChoose:
             cell.closeButton.hidden = false
         default:
             break
@@ -570,7 +570,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell.contentView.addSubview(hori)
                 if let services = model.realModel{
                     if services.count > 0 {
-                        hori.loadData(services, multiSelect: model.type == CellType.CellTypeMutiChoose)
+                        hori.loadData(services, multiSelect: model.type == CellType.MutiChoose)
                     }
                 }
                 hori.delegate = self
