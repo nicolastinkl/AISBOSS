@@ -22,11 +22,11 @@ enum CellType: Int {
     case MutiChoose
 }
 
-class DataModel : NSObject {
+class TableViewSourceModel : NSObject {
     var title: String?
     var type: CellType?
     var content: String?
-    var realModel: [Service]?
+    var services: [Service]?
     var sectionID:Int?
 }
 
@@ -59,7 +59,7 @@ class AIServerDetailViewController: UIViewController {
     private var labelPrice: JumpNumberLabel!
     
     private var coverflowCellCache = NSMutableDictionary()
-    private var horiListDataSource = NSMutableDictionary()
+    private var horizontalCardCellCache = NSMutableDictionary()
     
     private var dataSource : NSMutableArray = NSMutableArray()
     
@@ -138,7 +138,7 @@ class AIServerDetailViewController: UIViewController {
     }
     
     private func insertDateModel() {
-        let data =  DataModel()
+        let data = TableViewSourceModel()
         data.title = "DAY"
         data.type = CellType.DatePicker
         dataSource.addObject(data)
@@ -172,7 +172,7 @@ class AIServerDetailViewController: UIViewController {
         }
     }
     
-    private func addCoverFlowCellToCache(data: DataModel, section: Int) {
+    private func addCoverFlowCellToCache(data: TableViewSourceModel, section: Int) {
         if  data.type == CellType.Coverflow {
             createCoverFlowViewCellfNotExist(data, indexPath: NSIndexPath(forRow: 0, inSection: section))
         }
@@ -190,11 +190,11 @@ class AIServerDetailViewController: UIViewController {
         return priceItem
     }
     
-    private func convertSchemeToCellModel(catalog: Catalog) -> DataModel {
-        let data =  DataModel()
+    private func convertSchemeToCellModel(catalog: Catalog) -> TableViewSourceModel {
+        let data =  TableViewSourceModel()
         data.title = catalog.catalog_name ?? ""
         data.type = convertServiceLevelToCellType(catalog.service_level ?? .Undefine, selectFlag : catalog.select_flag ?? 0)
-        data.realModel = catalog.service_list
+        data.services = catalog.service_list
         
         return data
     }
@@ -239,7 +239,7 @@ class AIServerDetailViewController: UIViewController {
     
     deinit{
         coverflowCellCache.removeAllObjects()
-        horiListDataSource.removeAllObjects()
+        horizontalCardCellCache.removeAllObjects()
         dataSource.removeAllObjects()
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     }
@@ -292,8 +292,8 @@ class AIServerDetailViewController: UIViewController {
         let cell = button.superview?.superview as! UITableViewCell
         if let sectionss = self.tableView.indexPathForCell(cell)?.section {
             //删除对应的价格
-            let model = self.dataSource.objectAtIndex(sectionss) as! DataModel
-            for service in model.realModel! {
+            let model = self.dataSource.objectAtIndex(sectionss) as! TableViewSourceModel
+            for service in model.services! {
       
                 changePrice(nil, cancelService: service)
             }
@@ -365,7 +365,7 @@ extension AIServerDetailViewController: ServiceSwitchDelegate{
 extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
+        let model =  dataSource.objectAtIndex(indexPath.section) as! TableViewSourceModel
         if indexPath.row == TITLE_ROW {
             return 50
         }
@@ -407,7 +407,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         var cell: UITableViewCell!
         
-        let model =  dataSource.objectAtIndex(indexPath.section) as! DataModel
+        let model =  dataSource.objectAtIndex(indexPath.section) as! TableViewSourceModel
         
         if indexPath.row == TITLE_ROW {
             cell = createTitleViewCell(model)
@@ -421,8 +421,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case .FilghtTicketsGroup:
                     cell = createAirTicketsViewCell(model)
                 case .SwitchChoose:
-                    let realModel = model.realModel!
-                    cell = createSwitchViewCell(realModel, indexPath: indexPath)
+                    cell = createSwitchViewCell(model, indexPath: indexPath)
                 case .MutiChoose,
                 .SignleChoose:
                     cell = createHorizontalCardViewCell(model, indexPath: indexPath)
@@ -438,7 +437,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return cell        
     }
     
-    func createTitleViewCell(titleModel: DataModel) -> UITableViewCell {
+    func createTitleViewCell(titleModel: TableViewSourceModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITitleServiceDetailCell) as! AITitleServiceDetailCell
         cell.title.text = titleModel.title ?? ""
         
@@ -479,7 +478,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return cell
     }
     
-    private func createCoverFlowViewCellfNotExist(model: DataModel, indexPath: NSIndexPath) -> UITableViewCell {
+    private func createCoverFlowViewCellfNotExist(model: TableViewSourceModel, indexPath: NSIndexPath) -> UITableViewCell {
         if let _  = model.title {
             let key = generateCoverFlowCellCacheKey(indexPath.section)
             if let cacheCell = coverflowCellCache.valueForKey(key) as! CoverFlowCell? {
@@ -488,7 +487,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 let cell = CoverFlowCell.currentView()
                 cell.delegate = self
                 cell.carousel.type = .CoverFlow2
-                cell.dataSource = model.realModel!
+                cell.dataSource = model.services!
                 cell.carousel.reloadData()
                 coverflowCellCache.setValue(cell, forKey: key)
                 return cell
@@ -498,7 +497,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return UITableViewCell()
     }
     
-    private func createAirTicketsViewCell(model: DataModel) -> UITableViewCell {
+    private func createAirTicketsViewCell(model: TableViewSourceModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParms)
         for subview in cell?.contentView.subviews as [UIView]! {
             subview.removeFromSuperview()
@@ -506,7 +505,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         let ticketGroupView = AirTicketGroupView()
         
-        if let tickets = model.realModel {
+        if let tickets = model.services {
             ticketGroupView.setTicketsData(tickets)
             airTicketsViewHeight = ticketGroupView.getViewHeight()
             
@@ -526,7 +525,8 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
     }
     
-    private func createSwitchViewCell(services: [Service], indexPath: NSIndexPath) -> UITableViewCell {
+    private func createSwitchViewCell(model: TableViewSourceModel, indexPath: NSIndexPath) -> UITableViewCell {
+        let services = model.services!
         let cell = tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolderParmsModel)
         
         var switchView: SwitchServiceView!
@@ -554,25 +554,25 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return cell!
     }
     
-    private func createHorizontalCardViewCell(model: DataModel, indexPath: NSIndexPath) -> UITableViewCell {
+    private func createHorizontalCardViewCell(model: TableViewSourceModel, indexPath: NSIndexPath) -> UITableViewCell {
         if let _  = model.title {
             
             let key = "cardView_\(indexPath.section)"
             
-            if let cacheCell = horiListDataSource.valueForKey(key) as! UITableViewCell? {
+            if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
                 return cacheCell
             }else{
                 
                 let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
                 let cell = AITableCellHolder.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                 cell.contentView.addSubview(hori)
-                if let services = model.realModel{
+                if let services = model.services{
                     if services.count > 0 {
                         hori.loadData(services, multiSelect: model.type == CellType.MutiChoose)
                     }
                 }
                 hori.delegate = self
-                horiListDataSource.setValue(cell, forKey: key)
+                horizontalCardCellCache.setValue(cell, forKey: key)
                 
                 return cell
                 
