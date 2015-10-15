@@ -161,3 +161,8 @@ enum ServiceLevel: Int {
     case FlightTicket
 }
 
+enum ServiceSelectType: Int {
+    case Single = 1
+    case Mutiple
+}
+

@@ -202,10 +202,9 @@ class AIServerDetailViewController: UIViewController {
         case .Coverflow:
             return .Coverflow
         case .Card:
-            if selectFlag == 1{
+            if ServiceSelectType(rawValue: selectFlag) == .Single {
                 return .SignleChoose
-            }
-            else {
+            } else {
                 return .MutiChoose
             }
         case .Switch:
@@ -424,11 +423,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 .SignleChoose:
                     cell = createHorizontalCardViewCell(model, indexPath: indexPath)
                 default:
-                    cell = UITableViewCell()
+                    cell = createDefaultTableViewCell()
                     
                 }
             } else {
-                cell = UITableViewCell()
+                cell = createDefaultTableViewCell()
             }
         }
         
@@ -492,7 +491,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
         }
 
-        return UITableViewCell()
+        return createDefaultTableViewCell()
     }
     
     private func createAirTicketsViewCell(model: TableViewSourceModel) -> UITableViewCell {
@@ -520,7 +519,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         }
         
         
-        return UITableViewCell()
+        return createDefaultTableViewCell()
         
     }
     
@@ -578,6 +577,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             
         }
         
+        return createDefaultTableViewCell()
+    }
+    
+    private func createDefaultTableViewCell() -> UITableViewCell {
         return UITableViewCell()
     }
     
