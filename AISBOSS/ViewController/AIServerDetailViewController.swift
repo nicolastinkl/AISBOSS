@@ -25,9 +25,7 @@ enum CellType: Int {
 class TableViewSourceModel : NSObject {
     var title: String?
     var type: CellType?
-    var content: String?
     var services: [Service]?
-    var sectionID:Int?
 }
 
 // MARK: UITBALEVIEW
@@ -313,7 +311,7 @@ extension AIServerDetailViewController: AISchemeProtocol {
     }
 }
 
-extension AIServerDetailViewController : serviceSearchViewDelegate {
+extension AIServerDetailViewController : ServiceSearchViewDelegate {
     func complateWithTextView(text: String?) {
         
         if let value = text {
@@ -340,7 +338,7 @@ extension AIServerDetailViewController : serviceSearchViewDelegate {
     }
 }
 
-extension AIServerDetailViewController : AOTagDelegate{
+extension AIServerDetailViewController : AOTagDelegate {
     
     func tagDidRemoveTag(tag: AOTag!) {
         
@@ -352,7 +350,7 @@ extension AIServerDetailViewController : AOTagDelegate{
     
 }
 
-extension AIServerDetailViewController: ServiceSwitchDelegate{
+extension AIServerDetailViewController: ServiceSwitchDelegate {
     func switchStateChanged(isOn: Bool, operationService: Service) {
         if isOn {
             changePrice(operationService, cancelService: nil)
@@ -510,13 +508,14 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             airTicketsViewHeight = ticketGroupView.getViewHeight()
             
             cell?.contentView.addSubview(ticketGroupView)
-            layout(ticketGroupView) { viewTic in
-                viewTic.left == viewTic.superview!.left + 9
-                viewTic.top == viewTic.superview!.top
-                viewTic.right == viewTic.superview!.right - 9
-                viewTic.height == ticketGroupView.getViewHeight()
+            // add layout constrain to cell
+            layout(ticketGroupView) { viewTicketGroup in
+                viewTicketGroup.left == viewTicketGroup.superview!.left + 9
+                viewTicketGroup.top == viewTicketGroup.superview!.top
+                viewTicketGroup.right == viewTicketGroup.superview!.right - 9
+                viewTicketGroup.height == ticketGroupView.getViewHeight()
             }
-            
+
             return cell!
         }
         
@@ -532,10 +531,9 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         var switchView: SwitchServiceView!
         
         if cell?.contentView.subviews.count > 0 {
-            switchView = cell?.contentView.subviews.last as! SwitchServiceView
+            switchView = cell?.contentView.subviews.first as! SwitchServiceView
             
-        }else{
-            
+        } else {
             switchView = SwitchServiceView.createSwitchServiceView()
             cell?.contentView.addSubview(switchView)
             layout(switchView) { switchView in
@@ -546,10 +544,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
         }
         
-        if let ser = services.last as Service?{
+        if let ser = services.first as Service?{
             switchView.setService(ser)
         }
-        switchView.reloadData()
+
         switchView.switchDelegate = self
         return cell!
     }

@@ -9,7 +9,7 @@
 import UIKit
 import AISpring
 
-protocol serviceSearchViewDelegate : class{
+protocol ServiceSearchViewDelegate : class{
     func complateWithTextView(text:String?)
 }
 
@@ -25,7 +25,7 @@ class AIServiceSearchView: UIView,UITextFieldDelegate {
     
     var isSearching = false
     
-    weak var searchDelegate:serviceSearchViewDelegate?
+    weak var searchDelegate: ServiceSearchViewDelegate?
     
     /*
     // Only override drawRect: if you perform custom drawing.

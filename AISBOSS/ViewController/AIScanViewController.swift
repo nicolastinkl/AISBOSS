@@ -446,7 +446,7 @@ class AIScanViewController: UIViewController {
 
 
 
-extension AIScanViewController : serviceSearchViewDelegate,CurveViewDelegate {
+extension AIScanViewController : ServiceSearchViewDelegate, CurveViewDelegate {
     func complateWithTextView(text: String?) {
         if let modelTitle = text {
             addModel(modelTitle)

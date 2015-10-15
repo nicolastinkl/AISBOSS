@@ -51,10 +51,6 @@ class SwitchServiceView: UIView {
     }
     */
     
-    func reloadData(){
-        
-    }
-    
     override func awakeFromNib() {
         switchController = SevenSwitch(frame: CGRectMake(0, switchHolder.top, switchHolder.width, switchHolder.height))
         
