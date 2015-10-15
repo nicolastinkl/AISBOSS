@@ -48,7 +48,7 @@ class AIServerDetailViewController: UIViewController {
     private let CONTENT_ROW: Int = 1
     
     //search view by liux
-    private var serviceSearchView:AIServiceSearchView!
+    private var serviceSearchView: AIServiceSearchView!
     
     var titleArray:[String]?
     
@@ -57,15 +57,13 @@ class AIServerDetailViewController: UIViewController {
     private var tags:AOTagList?
     
     private var labelPrice: JumpNumberLabel!
-    /// cell 里面内容左右间距
-    private var cellPadding:Float = 9.0
     
-    private var coverflowDataSource = NSMutableDictionary()
+    private var coverflowCellCache = NSMutableDictionary()
     private var horiListDataSource = NSMutableDictionary()
     
     private var dataSource : NSMutableArray = NSMutableArray()
     
-    private var schemeModel:AIServiceSchemeModel?
+    private var schemeModel: AIServiceSchemeModel?
     
     private var priceAccount = SimpleAccumulativeAccount()
 
@@ -74,15 +72,15 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = "Services to Your Liking"//titleString ?? ""
+        self.labelView.text = "Services to Your Liking"
         
         addSearchViewToParent()
 
         addPriceLabel()
         
-        retryNetworkingAction()
+        loadSchemeData()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     }
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -109,9 +107,8 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.setTop(5)
     }
     
-    func retryNetworkingAction(){
+    func loadSchemeData(){
         
-//        self.view.hideErrorView()
         self.view.showProgressViewLoading()
         Async.userInitiated {
             let dataObtainer: SchemeDataObtainer = BDKSchemeDataObtainer()
@@ -133,27 +130,10 @@ class AIServerDetailViewController: UIViewController {
         
         insertDateModel()
         
-        if let scheme = self.schemeModel {
-            var section:Int = 1
-            for catalog in scheme.catalog_list ?? []{
-                let data =  convertSchemeToCellModel(catalog)
-                self.dataSource.addObject(data)
-                caculateDefaultServicesTotalPrice(catalog)
-                
-                // TODO: Init the Coverflow Views.
-                // TODO: 卡片信息
-                if  data.type == CellType.Coverflow {
-                    let cell = createCoverFlowViewCell(data, indexPath: NSIndexPath(forRow: 0, inSection: section))
-                    let key = "coverflow_\(section)"
-                    coverflowDataSource.setValue(cell, forKey: key)
-                    print(key)
-                }
-                
-                section = section + 1
-            }
-        }
+        buildServicesDataSource()
         
-        self.tableView.reloadData()
+        tableView.reloadData()
+        
         labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
@@ -161,11 +141,26 @@ class AIServerDetailViewController: UIViewController {
         let data =  DataModel()
         data.title = "DAY"
         data.type = CellType.DatePicker
-        self.dataSource.addObject(data)
-        
+        dataSource.addObject(data)
     }
     
-    private func caculateDefaultServicesTotalPrice(catalog: Catalog) {
+    private func buildServicesDataSource() {
+        if let scheme = self.schemeModel {
+            var section:Int = 1
+            for catalog in scheme.catalog_list ?? [] {
+                let data =  convertSchemeToCellModel(catalog)
+                
+                dataSource.addObject(data)
+                addPriceToAccount(catalog)
+                
+                addCoverFlowCellToCache(data, section: section)
+                
+                section = section + 1
+            }
+        }
+    }
+    
+    private func addPriceToAccount(catalog: Catalog) {
         
         if catalog.service_level == ServiceLevel.Switch {
             // switch choose type service, default is unselected
@@ -175,7 +170,16 @@ class AIServerDetailViewController: UIViewController {
         if let ser = catalog.service_list?.first {
             priceAccount.inToAccount(convertChooseItemToPriceItem(ser))
         }
-
+    }
+    
+    private func addCoverFlowCellToCache(data: DataModel, section: Int) {
+        if  data.type == CellType.Coverflow {
+            createCoverFlowViewCellfNotExist(data, indexPath: NSIndexPath(forRow: 0, inSection: section))
+        }
+    }
+    
+    private func generateCoverFlowCellCacheKey(section: Int) -> String {
+        return "coverflow_\(section)"
     }
     
     private func convertChooseItemToPriceItem(item: Service) -> PriceItem {
@@ -229,12 +233,12 @@ class AIServerDetailViewController: UIViewController {
         labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
-    func ChangeDateViewNotification(){
+    func changeDateViewNotification(){
         self.tableView.reloadData()
     }
     
     deinit{
-        coverflowDataSource.removeAllObjects()
+        coverflowCellCache.removeAllObjects()
         horiListDataSource.removeAllObjects()
         dataSource.removeAllObjects()
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
@@ -413,7 +417,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case .DatePicker:
                     cell = createDatePickerViewCell()
                 case .Coverflow:
-                    cell = createCoverFlowViewCell(model, indexPath: indexPath)
+                    cell = createCoverFlowViewCellfNotExist(model, indexPath: indexPath)
                 case .FilghtTicketsGroup:
                     cell = createAirTicketsViewCell(model)
                 case .SwitchChoose:
@@ -475,10 +479,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         return cell
     }
     
-    private func createCoverFlowViewCell(model: DataModel, indexPath: NSIndexPath) -> UITableViewCell {
+    private func createCoverFlowViewCellfNotExist(model: DataModel, indexPath: NSIndexPath) -> UITableViewCell {
         if let _  = model.title {
-            let key = "coverflow_\(indexPath.section)"
-            if let cacheCell = coverflowDataSource.valueForKey(key) as! CoverFlowCell? {
+            let key = generateCoverFlowCellCacheKey(indexPath.section)
+            if let cacheCell = coverflowCellCache.valueForKey(key) as! CoverFlowCell? {
                 return cacheCell
             } else {
                 let cell = CoverFlowCell.currentView()
@@ -486,7 +490,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell.carousel.type = .CoverFlow2
                 cell.dataSource = model.realModel!
                 cell.carousel.reloadData()
-                coverflowDataSource.setValue(cell, forKey: key)
+                coverflowCellCache.setValue(cell, forKey: key)
                 return cell
             }
         }
