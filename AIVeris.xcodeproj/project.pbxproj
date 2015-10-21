@@ -37,7 +37,6 @@
 		81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE61BB29F7900BE2BA2 /* UIScrollView+MJExtension.m */; };
 		81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */; };
 		81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */; };
-		81DC18DE1BD5D2AE0081D131 /* AIBuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		81DC18E31BD5EBA70081D131 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */; settings = {ASSET_TAGS = (); }; };
 		81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */; settings = {ASSET_TAGS = (); }; };
 		81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */; settings = {ASSET_TAGS = (); }; };
@@ -333,8 +332,6 @@
 		81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		81D83AE91BB29F7900BE2BA2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		81DC18DC1BD5D2AE0081D131 /* AIBuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerViewController.h; path = Buyer/AIBuyerViewController.h; sourceTree = "<group>"; };
-		81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerViewController.m; path = Buyer/AIBuyerViewController.m; sourceTree = "<group>"; };
 		81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
 		81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiCn.otf"; sourceTree = "<group>"; };
 		81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiExt.otf"; sourceTree = "<group>"; };
@@ -849,8 +846,6 @@
 		81DC18DB1BD5D2550081D131 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
-				81DC18DC1BD5D2AE0081D131 /* AIBuyerViewController.h */,
-				81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */,
 				81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */,
 			);
 			name = Buyer;
@@ -1895,7 +1890,6 @@
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
-				81DC18DE1BD5D2AE0081D131 /* AIBuyerViewController.m in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
