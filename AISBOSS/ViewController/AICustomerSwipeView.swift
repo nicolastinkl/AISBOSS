@@ -136,7 +136,7 @@ class AICustomerSwipeView: AIBaseSwipeView {
         panel.frame.origin.x = self.isVisibleOnScreen ? 0 : frame.width
         //handlerBar.alpha = BAR_NORMAL_ALPHA
         handlerBar.layer.cornerRadius = 2
-        //println("\(panel.frame)---\(self.frame)")
+        //print("\(panel.frame)---\(self.frame)")
     
         
     }

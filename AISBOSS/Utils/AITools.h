@@ -47,5 +47,14 @@
 + (UIImage *) convertImageToGrayScale: (UIImage *) image;
 
 
+// Fonts
+
++ (UIFont *) myriadBoldWithSize:(CGFloat)size;
+
++ (UIFont *) myriadLightSemiCondensedWithSize:(CGFloat)size;
+
++ (UIFont *) myriadLightSemiExtendedWithSize:(CGFloat)size;
+
+
 
 @end

@@ -37,6 +37,12 @@
 		81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE61BB29F7900BE2BA2 /* UIScrollView+MJExtension.m */; };
 		81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */; };
 		81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */; };
+		81DC18DE1BD5D2AE0081D131 /* AIBuyerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		81DC18E31BD5EBA70081D131 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */; settings = {ASSET_TAGS = (); }; };
+		81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */; settings = {ASSET_TAGS = (); }; };
+		81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */; settings = {ASSET_TAGS = (); }; };
+		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; settings = {ASSET_TAGS = (); }; };
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
@@ -327,6 +333,14 @@
 		81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		81D83AE91BB29F7900BE2BA2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		81DC18DC1BD5D2AE0081D131 /* AIBuyerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerViewController.h; path = Buyer/AIBuyerViewController.h; sourceTree = "<group>"; };
+		81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerViewController.m; path = Buyer/AIBuyerViewController.m; sourceTree = "<group>"; };
+		81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiCn.otf"; sourceTree = "<group>"; };
+		81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiExt.otf"; sourceTree = "<group>"; };
+		81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIBuyerViewController.swift; path = Buyer/AIBuyerViewController.swift; sourceTree = "<group>"; };
+		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
+		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
 		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
 		8423E5631BB4E1A8006DC73B /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderPreModel.h; sourceTree = "<group>"; };
 		8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderPreModel.m; sourceTree = "<group>"; };
@@ -832,6 +846,26 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		81DC18DB1BD5D2550081D131 /* Buyer */ = {
+			isa = PBXGroup;
+			children = (
+				81DC18DC1BD5D2AE0081D131 /* AIBuyerViewController.h */,
+				81DC18DD1BD5D2AE0081D131 /* AIBuyerViewController.m */,
+				81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */,
+			);
+			name = Buyer;
+			sourceTree = "<group>";
+		};
+		81DC18DF1BD5EBA70081D131 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */,
+				81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */,
+				81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		840FD40D1BABD2B8000C6033 /* JumpNumberLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1019,6 +1053,7 @@
 		93A5A59A1B9BD5E1001DE36D /* Soureces */ = {
 			isa = PBXGroup;
 			children = (
+				81DC18DF1BD5EBA70081D131 /* Fonts */,
 				93B25A281B9D78B000CD1FEB /* Resources */,
 				93A5A59B1B9BD5E1001DE36D /* Videos */,
 			);
@@ -1060,6 +1095,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				81DC18DB1BD5D2550081D131 /* Buyer */,
 				934C41B21BA7F13500002853 /* ServiceDetail */,
 				93FA1E361B9C3E12009965C8 /* Seller */,
 				9364FA4D1BA12120005EFB0F /* Views */,
@@ -1173,6 +1209,8 @@
 				93B25A431B9D799E00CD1FEB /* UP_NSString+Format.mm */,
 				93B25A441B9D799E00CD1FEB /* UP_NSString+Size.h */,
 				93B25A451B9D799E00CD1FEB /* UP_NSString+Size.m */,
+				81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */,
+				81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1722,6 +1760,7 @@
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
+				81DC18E31BD5EBA70081D131 /* MyriadPro-Bold.otf in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
@@ -1740,11 +1779,13 @@
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
+				81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */,
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
 				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				93B25A611B9D7A1D00CD1FEB /* sdk_weibo_logo@2x.png in Resources */,
+				81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
@@ -1854,6 +1895,7 @@
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
+				81DC18DE1BD5D2AE0081D131 /* AIBuyerViewController.m in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
@@ -1918,6 +1960,7 @@
 				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
 				8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */,
 				93FA1DFB1B9C306E009965C8 /* AIFavoritesServicesModel.swift in Sources */,
+				81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */,
 				84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */,
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
@@ -1959,6 +2002,7 @@
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
+				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,

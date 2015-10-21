@@ -78,4 +78,4 @@
 //#import "PgyManager.h"
 //#import <PgyUpdate/PgyUpdateManager.h>
 
-
+#import "UIIMage+Color.h"

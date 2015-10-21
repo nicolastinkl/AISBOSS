@@ -8,6 +8,7 @@
 
 #import "AIRootViewController.h"
 #import "AISellerViewController.h"
+#import "Veris-Swift.h"
 
 @interface AIRootViewController ()
 {
@@ -80,8 +81,8 @@
     [sellerViewController didMoveToParentViewController:self];
     
     // left
-    storyBoard=[UIStoryboard storyboardWithName:@"UITimeLineStoryboard" bundle:nil];
-    self.leftDirectionViewController = [storyBoard instantiateInitialViewController];
+    AIUINavigationController *leftNavi = [[AIUINavigationController alloc] initWithRootViewController:[[AIBuyerViewController alloc] init]];
+    self.leftDirectionViewController = leftNavi;
     [self addChildViewController:self.leftDirectionViewController];
     [self.leftDirectionViewController didMoveToParentViewController:self];
     

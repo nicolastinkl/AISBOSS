@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -57,7 +57,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="total_buy_times_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Xc-QhP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="total_buy_times_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wHf-Xc-QhP">
                         <rect key="frame" x="71" y="34" width="12" height="12"/>
                         <animations/>
                         <constraints>
@@ -72,7 +72,7 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="209" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Us-6Z-SPN" userLabel="totalCostLabel">
-                        <rect key="frame" x="32" y="34" width="19.5" height="12"/>
+                        <rect key="frame" x="32" y="34" width="20" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="I2t-x4-GQ7"/>
@@ -86,8 +86,8 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-6P-xxT" userLabel="totalTimeLabel">
-                        <rect key="frame" x="91.5" y="34" width="6.5" height="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-6P-xxT" userLabel="totalTimeLabel">
+                        <rect key="frame" x="92" y="34" width="6" height="12"/>
                         <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="YDe-60-egW"/>

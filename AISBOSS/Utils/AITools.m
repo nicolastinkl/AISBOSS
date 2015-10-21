@@ -227,4 +227,28 @@
 }
 
 
+#pragma mark - New Fonts
+
+
+
++ (UIFont *) myriadBoldWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Bold" size:size];
+}
+
++ (UIFont *) myriadLightSemiCondensedWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-LightSemiCn" size:size];
+}
+
++ (UIFont *) myriadLightSemiExtendedWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-LightSemiExt" size:size];
+}
+
+
+
+#pragma mark - Most Color
+
+
 @end
