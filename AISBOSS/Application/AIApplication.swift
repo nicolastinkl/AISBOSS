@@ -86,6 +86,10 @@ struct AIApplication{
             static let AITIMELINESDTimesViewCell    = "AITIMELINESDTimesViewCell"
             static let AITIMELINESDContentViewCell  = "AITIMELINESDContentViewCell"
             
+            // MARK: BUYER
+            static let AITableFoldedCellHolder = "AITableFoldedCellHolder"
+            static let AITableExpandedCellHolder = "AITableExpandedCellHolder"
+            
             
         }
         
