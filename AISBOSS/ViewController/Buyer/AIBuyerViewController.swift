@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Properties
@@ -19,11 +20,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: - Variable
-    var bubbleView : UIView?
+    var bubbleView : UIView!
     
-    var tableView : UITableView?
+    var tableView : UITableView!
     
-    var topBar : UIView?
+    var topBar : UIView!
     
     
     
@@ -84,6 +85,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bubbleView?.clipsToBounds = true
         
         tableView?.tableHeaderView = bubbleView
+        
+        // add bubbles
+  
+        let bubbles : AIBubblesView = AIBubblesView(frame: (bubbleView?.bounds)!, models: nil)
+        bubbleView?.addSubview(bubbles)
         
     }
     

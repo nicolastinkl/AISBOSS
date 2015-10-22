@@ -79,3 +79,5 @@
 //#import <PgyUpdate/PgyUpdateManager.h>
 
 #import "UIIMage+Color.h"
+
+#import "AIBubblesView.h"
