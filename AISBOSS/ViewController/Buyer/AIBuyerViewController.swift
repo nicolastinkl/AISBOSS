@@ -26,7 +26,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var topBar : UIView!
     
-    
+    var currentIndexPath : NSIndexPath?
     
     // MARK: - Life Cycle
 
@@ -200,11 +200,21 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             folderCellView.frame = cell.contentView.bounds
             folderCellView.tag = 1
             cell.contentView.addSubview(folderCellView)
-            let expandedCellFrame = CGRectMake(0, 0, tableView.size.width, 250)
-            let expandedCellView = AIExpandedCellView(frame: expandedCellFrame)
-            expandedCellView.hidden = true
+            
+            //let expandedCellFrame = CGRectMake(0, 0, tableView.size.width, 250)
+            //let expandedCellView = AIExpandedCellView(frame: expandedCellFrame)            
+            let expandedCellView = buildExpandCellView()
             expandedCellView.tag = 2
             cell.contentView.addSubview(expandedCellView)
+            
+            if dataSource[indexPath.row].isExpanded {
+                folderCellView.hidden = true
+                expandedCellView.hidden = false
+            }
+            else{
+                folderCellView.hidden = false
+                expandedCellView.hidden = true
+            }
         }
         else{
             let folderCellView = cell.contentView.subviews.first
@@ -224,14 +234,25 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AITableFoldedCellHolder
-        for var model:AIProposalOrderModel in dataSource {
-            model.isExpanded = false
+        //如果有，做比较
+        if let _ = currentIndexPath{
+            //如果点击了不同的cell
+            if currentIndexPath?.row != indexPath.row
+            {
+                dataSource[currentIndexPath!.row].isExpanded = !dataSource[currentIndexPath!.row].isExpanded
+                dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
+                tableView.reloadRowsAtIndexPaths([indexPath,currentIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+            else{
+                dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
         }
-        if cell.contentView.subviews.count == 2 {
+        else{
             dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
+        currentIndexPath = indexPath;
     }
     
     // MARK: - ScrollViewDelegate
@@ -263,4 +284,34 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func makeFakeData(){
         dataSource = [AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel()]
     }
+    
+    func buildExpandCellView() -> ProposalExpandedView {
+        let viewWidth = tableView.frame.size.width
+        let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
+        servicesViewContainer.dimentionListener = self
+        
+        let serviceView1 = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
+        
+        let expandContent1 = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
+        expandContent1.imgUrl = "http://www.ckocean.cn/images/image/20130603170978997899.jpg"
+        
+        serviceView1.addExpandView(expandContent1)
+        servicesViewContainer.addServiceView(serviceView1)
+        
+        let serviceView2 = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
+        
+        let expandContent2 = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
+        expandContent2.imgUrl = "http://www.ckocean.cn/images/image/20130603170978997899.jpg"
+        
+        serviceView2.addExpandView(expandContent2)
+        servicesViewContainer.addServiceView(serviceView2)
+        return servicesViewContainer
+    }
+}
+
+extension AIBuyerViewController : DimentionChangable{
+    func heightChanged(beforeHeight: CGFloat, afterHeight: CGFloat) {
+        //refreshCellHeight()
+    }
+    
 }
