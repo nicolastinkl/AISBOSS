@@ -148,6 +148,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.separatorStyle = .None
         tableView?.showsVerticalScrollIndicator = true
         tableView?.backgroundColor = UIColor.clearColor()
+        tableView?.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+        tableView?.registerClass(AITableExpandedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableExpandedCellHolder)
 
         self.view.addSubview(tableView!)
         
@@ -169,7 +171,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
    
-        return 82.0
+        return 96
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -179,17 +181,44 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
-        cell.backgroundColor = UIColor.grayColor()
+        let cell : AITableFoldedCellHolder = tableView.dequeueReusableCellWithIdentifier("AITableFoldedCellHolder") as! AITableFoldedCellHolder
+        
+        cell.selectionStyle = .None
+        cell.backgroundColor = UIColor.clearColor()
+        if cell.contentView.subviews.count == 0{
+            let folderCellView = AIFolderCellView.currentView()
+            folderCellView.frame = cell.contentView.bounds
+            folderCellView.tag = 1
+            cell.contentView.addSubview(folderCellView)
+            let expandedCellFrame = CGRectMake(0, 0, cell.contentView.width, 250)
+            let expandedCellView = AIExpandedCellView(frame: expandedCellFrame)
+            expandedCellView.hidden = true
+            expandedCellView.tag = 2
+            cell.contentView.addSubview(expandedCellView)
+        }
+        cell.contentView.layer.cornerRadius = 10
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! AITableFoldedCellHolder
+        if cell.contentView.subviews.count == 2 {
+            let folderCellView = cell.contentView.subviews.first
+            let expandedCellView = cell.contentView.subviews.last
+            if folderCellView?.hidden == false{
+                folderCellView?.hidden = true
+                expandedCellView?.hidden = false                
+            }
+            else{
+                folderCellView?.hidden = false
+                expandedCellView?.hidden = true
+            }
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
     
     // MARK: - ScrollViewDelegate
