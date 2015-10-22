@@ -11,7 +11,7 @@ import UIKit
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Properties
-    
+    var dataSource : [AIProposalOrderModel]!
    
     
     // MARK: - Constants
@@ -34,11 +34,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.makeFakeData()
         self.makeBaseProperties()
         self.makeTableView()
         self.makeBubbleView()
         self.makeTopBar()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -164,8 +166,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-   
-        return 96
+        if  dataSource[indexPath.row].isExpanded{
+            return 250
+        }
+        else {
+            return 96
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -188,11 +194,24 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             folderCellView.frame = cell.contentView.bounds
             folderCellView.tag = 1
             cell.contentView.addSubview(folderCellView)
-            let expandedCellFrame = CGRectMake(0, 0, cell.contentView.width, 250)
+            let expandedCellFrame = CGRectMake(0, 0, tableView.size.width, 250)
             let expandedCellView = AIExpandedCellView(frame: expandedCellFrame)
             expandedCellView.hidden = true
             expandedCellView.tag = 2
             cell.contentView.addSubview(expandedCellView)
+        }
+        else{
+            let folderCellView = cell.contentView.subviews.first
+            let expandedCellView = cell.contentView.subviews.last
+            if dataSource[indexPath.row].isExpanded {
+                folderCellView?.hidden = true
+                expandedCellView?.hidden = false
+                            }
+            else{
+                folderCellView?.hidden = false
+                expandedCellView?.hidden = true
+            }
+            
         }
         cell.contentView.layer.cornerRadius = 10
         return cell
@@ -200,17 +219,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! AITableFoldedCellHolder
+        for var model:AIProposalOrderModel in dataSource {
+            model.isExpanded = false
+        }
         if cell.contentView.subviews.count == 2 {
-            let folderCellView = cell.contentView.subviews.first
-            let expandedCellView = cell.contentView.subviews.last
-            if folderCellView?.hidden == false{
-                folderCellView?.hidden = true
-                expandedCellView?.hidden = false                
-            }
-            else{
-                folderCellView?.hidden = false
-                expandedCellView?.hidden = true
-            }
+            dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
             tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -240,4 +253,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
          self.handleScrollEventWithOffset(scrollView.contentOffset.y)
     }
 
+    // MARK: - MakeDemoData
+    func makeFakeData(){
+        dataSource = [AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel()]
+    }
 }
