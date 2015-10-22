@@ -61,7 +61,6 @@
 		846DAD901BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		846DAD911BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		846DAD931BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		846DAD941BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD971BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
@@ -1926,7 +1925,6 @@
 				8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				846DAD9D1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */,
 				846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */,
-				846DAD941BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */,
 				84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
