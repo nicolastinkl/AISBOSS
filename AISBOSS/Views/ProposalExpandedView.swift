@@ -13,6 +13,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private var serviceViews: [PurchasedServiceView] = []
     var dimentionListener: DimentionChangable?
+    var indexPath: NSIndexPath?
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -99,10 +100,10 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         self.frame = CGRect(x: 0, y: 0, width: oldFrame.width, height: oldFrame.height + insertedView.frame.height)
     }
     
-    func heightChanged(beforeHeight: CGFloat, afterHeight: CGFloat) {
+    func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         let oldFrame = frame
         recalculateFrame()
-        dimentionListener?.heightChanged(oldFrame.height, afterHeight: frame.height)
+        dimentionListener?.heightChanged(self, beforeHeight: oldFrame.height, afterHeight: frame.height)
     }
     
     private func recalculateFrame() {

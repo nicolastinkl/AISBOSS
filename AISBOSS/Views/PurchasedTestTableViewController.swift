@@ -86,7 +86,7 @@ class PurchasedTestTableViewController: UITableViewController, DimentionChangabl
     }
   
 
-    func heightChanged(beforeHeight: CGFloat, afterHeight: CGFloat) {
+    func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         refreshCellHeight()
         tableView.reloadData()
     }
