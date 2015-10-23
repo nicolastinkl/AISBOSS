@@ -53,7 +53,26 @@ class MockProposalService {
 
 class BDKProposalService {
     func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/queryCustomerOrderList"
         
+        let body = ["data":["order_role":2, "order_state": "0"],"desc":["data_mode":"0","digest":""]]
+        message.body = NSMutableDictionary(dictionary: body)
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            do {
+                let dic = response as! [NSObject : AnyObject]
+                let model = try ProposalListModel(dictionary: dic)
+                success(responseData: model)
+            } catch {
+                fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
+            }
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+
     }
 }
 
