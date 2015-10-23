@@ -61,7 +61,8 @@
     
     if (self) {
         _bubbleModel = [model copy];
-        CGFloat size = [self bubbleRadiusByModel:_bubbleModel];
+        CGFloat size = [self bubbleRadiusByModel:_bubbleModel] * 2;
+        _radius = size / 2;
         self.frame = CGRectMake(0, 0, size, size);
         self.center = center;
         self.layer.cornerRadius = size / 2;
@@ -83,7 +84,10 @@
     
     CGFloat size = maxSize * kBigBubbleRate / 2;
     
-    switch (model.bubbleSize) {
+    NSInteger i = arc4random() % 3;
+    
+    
+    switch (i) {
         case 1:
             size = maxSize * kSmallBubbleRate / 2;
             break;

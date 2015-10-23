@@ -12,6 +12,9 @@
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
 
+@property (nonatomic) CGFloat radius;
+
+
 + (CGFloat)bigBubbleRadius;
 
 + (CGFloat)midBubbleRadius;
