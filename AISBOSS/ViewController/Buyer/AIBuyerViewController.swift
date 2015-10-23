@@ -196,6 +196,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
+            print("cell height : \(dataSource[indexPath.row].expandHeight)")
             return dataSource[indexPath.row].expandHeight!
         }
         else {
@@ -223,6 +224,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else{
             cell = AITableFoldedCellHolder()
+            cell.tag = indexPath.row
             let folderCellView = AIFolderCellView.currentView()
             folderCellView.tag = 100
             folderCellView.frame = cell.contentView.bounds
@@ -256,8 +258,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
         //如果有，做比较
         if let _ = currentIndexPath{
             //如果点击了不同的cell
@@ -265,18 +265,22 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             {
                 dataSource[currentIndexPath!.row].isExpanded = !dataSource[currentIndexPath!.row].isExpanded
                 dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-                tableView.reloadRowsAtIndexPaths([indexPath,currentIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+                //tableView.reloadRowsAtIndexPaths([indexPath,currentIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+                currentIndexPath = indexPath;
             }
             else{
                 dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                currentIndexPath = nil
             }
         }
         else{
             dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            currentIndexPath = indexPath;
         }
-        currentIndexPath = indexPath;
+        tableView.reloadData()
+        
         
     }
     
@@ -344,8 +348,8 @@ extension AIBuyerViewController : DimentionChangable {
         let expandView = changedView as! ProposalExpandedView
         let indexPath = expandView.indexPath!
         dataSource[(indexPath.row)].expandHeight = afterHeight
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-
+        //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        tableView.reloadData()
     }
     
 }

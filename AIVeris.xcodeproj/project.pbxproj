@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */; settings = {ASSET_TAGS = (); }; };
+		12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */; settings = {ASSET_TAGS = (); }; };
 		126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 126B2A161BD7952200146BBE /* AIFoldedCellView.xib */; settings = {ASSET_TAGS = (); }; };
 		126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A171BD7952200146BBE /* AIFoldedCellView.swift */; settings = {ASSET_TAGS = (); }; };
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -304,6 +306,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
+		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
 		126B2A161BD7952200146BBE /* AIFoldedCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIFoldedCellView.xib; sourceTree = "<group>"; };
 		126B2A171BD7952200146BBE /* AIFoldedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFoldedCellView.swift; sourceTree = "<group>"; };
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
@@ -912,6 +916,8 @@
 				81A5BE541BD87D2900019802 /* AIBubble.m */,
 				126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */,
 				126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */,
+				12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */,
+				12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */,
 			);
 			name = Buyer;
 			sourceTree = "<group>";
@@ -1878,6 +1884,7 @@
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
+				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,
 				930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2116,6 +2123,7 @@
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
 				93FA1DCB1B9C2F26009965C8 /* AOTag.m in Sources */,
+				12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
