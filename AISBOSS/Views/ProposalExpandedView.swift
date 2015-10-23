@@ -11,17 +11,24 @@ import Cartography
 
 class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
+    private var title: UILabel!
     private var serviceViews: [PurchasedServiceView] = []
     var dimentionListener: DimentionChangable?
     var indexPath: NSIndexPath?
+    private var propodalModel: ProposalModel?
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    
+    var proposalOrder: ProposalModel? {
+        get {
+            return propodalModel
+        }
+        
+        set {
+            if let model = newValue {
+                title.text = model.proposal_name
+            }
+        }
     }
-    */
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,13 +48,13 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private func addHeadView() {
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: super.frame.width, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
-        let lable = UILabel(frame: CGRect(x: PurchasedViewDimention.PROPOSAL_PADDING_LEFT, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 200, height: PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT))
-        lable.font = PurchasedViewFont.TITLE
-        lable.textColor = PurchasedViewColor.TITLE
-        lable.text = "Shop-on-behalf Service"
-        headView.addSubview(lable)
+        title = UILabel(frame: CGRect(x: PurchasedViewDimention.PROPOSAL_PADDING_LEFT, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 200, height: PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT))
+        title.font = PurchasedViewFont.TITLE
+        title.textColor = PurchasedViewColor.TITLE
+        title.text = "Shop-on-behalf Service"
+        headView.addSubview(title)
         
-        let statu = UILabel(frame: CGRect(x: lable.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
+        let statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
         statu.backgroundColor = PurchasedViewColor.STATU_BACKGROUND
         statu.font = PurchasedViewFont.STATU

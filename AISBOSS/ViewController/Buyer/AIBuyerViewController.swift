@@ -12,7 +12,7 @@ import UIKit
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Properties
-    var dataSource : [AIProposalOrderModel]!
+    var dataSource  = [ProposalOrderModelWrap]()
     var tableViewCellCache = NSMutableDictionary()
     var cellList = NSMutableArray()
     
@@ -37,7 +37,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.makeFakeData()
+        self.makeData()
         self.makeBaseProperties()
         self.makeTableView()
         self.makeBubbleView()
@@ -211,7 +211,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 // 修改这个值的时候一并修改heightForFooterInSection中的数值
+        return dataSource.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -310,30 +310,45 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     // MARK: - MakeDemoData
-    func makeFakeData(){
-        dataSource = [AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel()]
+    func makeData() {
+        let bdk = BDKProposalService()
+        bdk.getProposalList({ (responseData) -> Void in
+            for proposal in responseData.proposal_order_list {
+                let wrapModel = self.proposalToProposalWrap(proposal as! ProposalModel)
+                self.dataSource.append(wrapModel)
+            }
+            
+            self.tableView?.reloadData()
+            }) { (errType, errDes) -> Void in
+                
+        }
+    }
+    
+    private func proposalToProposalWrap(model: ProposalModel) -> ProposalOrderModelWrap {
+        var p = ProposalOrderModelWrap()
+        p.model = model
+        return p
     }
     
     func buildExpandCellView(indexPath : NSIndexPath) -> ProposalExpandedView {
+        let proposalModel = dataSource[indexPath.row].model!
+        
         let viewWidth = tableView.frame.size.width
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
+        servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
         
-        let serviceView1 = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
         
-        let expandContent1 = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
-        expandContent1.imgUrl = "http://www.ckocean.cn/images/image/20130603170978997899.jpg"
+        for serviceModel in proposalModel.order_list {
+            let serviceOrder = serviceModel as! ServiceOrderModel
+            
+            let serviceView = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
+            serviceView.serviceOrderData = serviceOrder
+            
+            servicesViewContainer.addServiceView(serviceView)
+        }
         
-        serviceView1.addExpandView(expandContent1)
-        servicesViewContainer.addServiceView(serviceView1)
-        
-        let serviceView2 = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
-        
-        let expandContent2 = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
-        expandContent2.imgUrl = "http://www.ckocean.cn/images/image/20130603170978997899.jpg"
-        
-        serviceView2.addExpandView(expandContent2)
-        servicesViewContainer.addServiceView(serviceView2)
+
         //新建展开view时纪录高度
         servicesViewContainer.indexPath = indexPath
         dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
