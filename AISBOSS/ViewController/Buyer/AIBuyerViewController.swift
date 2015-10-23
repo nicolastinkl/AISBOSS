@@ -17,8 +17,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var cellList = NSMutableArray()
     
     // MARK: - Constants
-    var screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
+    let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
+    let tableCellRowHeight : CGFloat = 96
     
     // MARK: - Variable
     var bubbleView : UIView!
@@ -176,8 +177,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - TableView Delegate And Datasource
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        let height = CGRectGetHeight(tableView.frame) - 5 * tableCellRowHeight
+        
+        return height
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -186,12 +190,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         return  nil
     }
     
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
             return dataSource[indexPath.row].expandHeight!
         }
         else {
-            return 96
+            return tableCellRowHeight
         }
     }
     
@@ -202,7 +210,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 5 // 修改这个值的时候一并修改heightForFooterInSection中的数值
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
