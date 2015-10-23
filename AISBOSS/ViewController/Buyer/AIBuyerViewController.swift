@@ -77,6 +77,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - 构造气泡区域
     
     func makeBubbleView () {
+        
+        if let b = bubbleView {
+            b.removeFromSuperview()
+        }
+        
         let height = CGRectGetHeight(self.view.frame)
         bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
         bubbleView?.backgroundColor = UIColor.whiteColor()
@@ -133,9 +138,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         moreButton.frame = CGRectMake(screenWidth - 80, 0, buttonWidth, barHeight)
         moreButton.setImage(UIImage(named: "Buyer_More"), forState: UIControlState.Normal)
         moreButton.imageEdgeInsets = UIEdgeInsetsMake(top, buttonWidth - imageSize - top, top, top)
+        moreButton.addTarget(self, action: "moreButtonAction", forControlEvents: .TouchUpInside)
         topBar?.addSubview(moreButton)
     }
     
+    
+    func moreButtonAction() {
+        self.makeBubbleView()
+    }
     
     // MARK: - 构造列表区域
     

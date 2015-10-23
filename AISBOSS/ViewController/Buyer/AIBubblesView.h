@@ -14,6 +14,6 @@
 
 - (id) initWithFrame:(CGRect)frame models:(NSArray *)models;
 
-@property (nonatomic, strong) NSArray *bubbleModels;
+
 
 @end

@@ -9,14 +9,23 @@
 #import "AIBubblesView.h"
 #import "AIBuyerBubbleModel.h"
 #import "AIBubble.h"
-//#import <math.h>
+#import <math.h>
+
+
+#define kBubbleMargin 8
 
 @interface AIBubblesView ()
 {
     UIView *_testView;
 }
 
-@property(nonatomic,strong)UIDynamicAnimator *animator;
+@property (nonatomic,strong) UIDynamicAnimator *animator;
+
+@property (nonatomic, strong) NSMutableDictionary *hierarchyDic;
+
+@property (nonatomic, strong) NSMutableArray *bubbleModels;
+
+@property (nonatomic, strong) NSMutableArray *bubbles;
 
 @end
 
@@ -29,8 +38,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _bubbleModels = [models copy];
-        
+        _bubbleModels = [models mutableCopy];
+        [self parseBubbleDatas];
         [self makeBubbles];
         //[self makeCycleLayer];
     }
@@ -42,7 +51,9 @@
 
 - (void) parseBubbleDatas
 {
-    
+    self.hierarchyDic = [[NSMutableDictionary alloc] init];
+    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
+    self.bubbles = [[NSMutableArray alloc] init];
 }
 
 - (void)drawCycleWithPath:(CGPathRef )path
@@ -217,46 +228,165 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 }
 
 
+#pragma mark - 获取圆周上所有点
+
+- (NSArray *)allPointsOnCycleWithR:(CGFloat)r center:(CGPoint)center
+{
+    
+    NSMutableArray *points = [[NSMutableArray alloc] init];
+    
+    CGFloat anchorOffset = M_PI / 45;
+    CGFloat anchort = 0;
+    
+    while (anchort < 2 * M_PI) {
+        CGFloat x = center.x + r * cos(anchort);
+        CGFloat y = center.y + r * sin(anchort);
+        
+        NSValue *value = [NSValue valueWithCGPoint:CGPointMake(x, y)];
+        [points addObject:value];
+        
+        anchort += anchorOffset;
+    }
+    
+    return points;
+    
+}
+
+#pragma mark - 检查气泡是否超出边界
+
+- (BOOL)didBubbleOutOfRange:(AIBubble *)bubble
+{
+    BOOL isOut = NO;
+    
+    if (bubble.center.x - bubble.radius < 0) {
+        return YES;
+    }
+    
+    if (bubble.center.x + bubble.radius > CGRectGetWidth(self.frame)) {
+        return YES;
+    }
+    
+    if (bubble.center.y - bubble.radius < 0) {
+        return YES;
+    }
+    
+    if (bubble.center.y + bubble.radius > CGRectGetHeight(self.frame)) {
+        return YES;
+    }
+    
+    
+    return isOut;
+}
+
+
+#pragma mark - 检查是否与其他的气泡重合
+
+- (BOOL)didReclosingToOtherBubbleAtPoint:(CGPoint)point radius:(CGFloat)radius
+{
+    BOOL isReclosing = NO;
+    
+    for (AIBubble *bubble in self.bubbles) {
+
+        CGFloat distance = [self distanceFromPointA:point toPointB:bubble.center];
+        
+        if (distance < (bubble.radius + radius + kBubbleMargin)) {
+            isReclosing = YES;
+            break;
+        }
+    }
+    
+    return isReclosing;
+}
+
 #pragma mark - 构造气泡
+
+
+
+- (BOOL)placeBubble:(AIBubble *)bubble forCenterBubble:(AIBubble *)centerBubble
+{
+    BOOL didSuccess = NO;
+    CGFloat radius = bubble.radius + centerBubble.radius + kBubbleMargin;
+    
+    NSArray *points = [self allPointsOnCycleWithR:radius center:centerBubble.center];
+    
+    NSMutableArray *muPoints = [[NSMutableArray alloc] initWithArray:points];
+    
+    for (NSInteger i = 0; i < points.count; i++) {
+        
+        NSInteger index = arc4random() % [muPoints count];
+        NSValue *value = [muPoints objectAtIndex:index];
+        
+        CGPoint point = value.CGPointValue;
+        
+        if (![self didReclosingToOtherBubbleAtPoint:point radius:bubble.radius]) {
+            
+            bubble.center = point;
+            
+            if (![self didBubbleOutOfRange:bubble]) {
+                [self addSubview:bubble];
+                [self.bubbles addObject:bubble];
+                didSuccess = YES;
+                break;
+            }
+            
+        }
+        
+        [muPoints removeObjectAtIndex:index];
+        
+        
+        
+    }
+    
+    return didSuccess;
+}
+
 
 - (void) makeBubbles
 {
-    AIBubble *centerBubble = nil;
-    BOOL shouldBeCenter = NO;
-    _bubbleModels = @[@"1", @"2", @"3", @"4"];
-    
-    NSInteger count = 0;
+ 
+    CGPoint center = CGPointZero;
     
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
         //AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
         
-        // 计算bubble的center
         
-        CGPoint center = CGPointZero;
-        if (i == 0) {
-            center = [self randomPointWithCenterCycleR:1];
-            shouldBeCenter = YES;
-            count ++;
-        }
-        else
-        {
-            //
-          
-            
-            
-            
-        }
         
         // 构造bubble
         AIBubble *bubble = [[AIBubble alloc] initWithCenter:center model:nil];
         
-        // 记住中心圆
-        if (shouldBeCenter) {
-            centerBubble = bubble;
+        
+        // 计算bubble的center
+        if (i == 0) {
+            bubble.center = [self randomPointWithCenterCycleR:1];
+            bubble.backgroundColor = [UIColor blueColor];
+            [self.bubbles addObject:bubble];
+            [self addSubview:bubble];
+        }
+        else
+        {
+            //
+            
+            for (AIBubble *centerBubble in self.bubbles) {
+                BOOL ret = [self placeBubble:bubble forCenterBubble:centerBubble];
+                
+                if (ret) {
+                    
+                    [self.bubbles addObject:bubble];
+                    [self addSubview:bubble];
+                    break; // 从第一个开始放置新的气泡，直到成功就停止遍历
+                    
+                }
+            }
+            
         }
         
-        [self addSubview:bubble];
+        
+        
+        
+        
+        
+        
     }
     
     
