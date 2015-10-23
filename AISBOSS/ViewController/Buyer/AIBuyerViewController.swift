@@ -319,8 +319,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 }
 
-extension AIBuyerViewController : DimentionChangable{
-    func heightChanged(beforeHeight: CGFloat, afterHeight: CGFloat) {
+extension AIBuyerViewController : DimentionChangable {
+    func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         //refreshCellHeight()
     }
     
