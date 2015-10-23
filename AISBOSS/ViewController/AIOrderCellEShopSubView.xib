@@ -7,12 +7,72 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIOrderCellEShopSubView" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="104"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eshop_1" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-bB-t18" userLabel="offerIconImage">
+                    <rect key="frame" x="16" y="9" width="86" height="86"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="86" id="6ER-6q-4DD"/>
+                        <constraint firstAttribute="height" constant="86" id="oQc-P8-sRN"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AIR JORDAN IV US 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fxw-gz-PXn" userLabel="offerNameLabel">
+                    <rect key="frame" x="115" y="5" width="159" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$298" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKm-yJ-vDn" userLabel="offerPriceLabel">
+                    <rect key="frame" x="115" y="34" width="42" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipped" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du3-Fa-PYN" userLabel="statusLabel">
+                    <rect key="frame" x="115" y="63" width="64" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cKm-yJ-vDn" secondAttribute="trailing" constant="5" id="5sm-hH-KUx"/>
+                <constraint firstItem="LgN-bB-t18" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="GLT-Yq-nhn"/>
+                <constraint firstItem="Fxw-gz-PXn" firstAttribute="leading" secondItem="LgN-bB-t18" secondAttribute="trailing" constant="13" id="KDr-d8-XGR"/>
+                <constraint firstItem="LgN-bB-t18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="dEZ-di-fOz"/>
+                <constraint firstItem="Du3-Fa-PYN" firstAttribute="leading" secondItem="LgN-bB-t18" secondAttribute="trailing" constant="13" id="efc-WY-66B"/>
+                <constraint firstItem="Fxw-gz-PXn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="j4z-SZ-I3x"/>
+                <constraint firstItem="Du3-Fa-PYN" firstAttribute="centerX" secondItem="cKm-yJ-vDn" secondAttribute="centerX" id="qwi-qv-nf0"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fxw-gz-PXn" secondAttribute="trailing" constant="5" id="qy1-4U-TAl"/>
+                <constraint firstItem="cKm-yJ-vDn" firstAttribute="leading" secondItem="LgN-bB-t18" secondAttribute="trailing" constant="13" id="tdj-7e-7h2"/>
+                <constraint firstItem="Du3-Fa-PYN" firstAttribute="top" secondItem="cKm-yJ-vDn" secondAttribute="bottom" constant="8" id="uM4-XR-kJB"/>
+                <constraint firstAttribute="bottom" secondItem="LgN-bB-t18" secondAttribute="bottom" constant="9" id="wuf-Ml-mSf"/>
+                <constraint firstItem="cKm-yJ-vDn" firstAttribute="top" secondItem="Fxw-gz-PXn" secondAttribute="bottom" constant="8" id="yVt-jl-w5d"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="qwi-qv-nf0"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="offerIconImageView" destination="LgN-bB-t18" id="2EQ-GU-hvR"/>
+                <outlet property="offerNameLabel" destination="Fxw-gz-PXn" id="WQX-ul-spc"/>
+                <outlet property="offerPriceLabel" destination="cKm-yJ-vDn" id="E4d-Na-dSL"/>
+                <outlet property="statusLabel" destination="Du3-Fa-PYN" id="xhe-BU-oxm"/>
+            </connections>
+            <point key="canvasLocation" x="578" y="366"/>
         </view>
     </objects>
+    <resources>
+        <image name="eshop_1" width="108" height="108"/>
+    </resources>
 </document>
