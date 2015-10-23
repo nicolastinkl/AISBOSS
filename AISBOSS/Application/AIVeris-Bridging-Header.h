@@ -69,6 +69,8 @@
 //oc models
 #import "AIServiceSchemeModel.h"
 #import "AIOrderPreModel.h"
+#import "ProposalModel.h"
+#import "ServiceOrderDetailModel.h"
 
 // SDWebImage
 #import "UIImageView+WebCache.h"
