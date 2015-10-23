@@ -45,3 +45,8 @@ class AIFolderCellView: UIView {
     }
 
 }
+
+struct AIProposalOrderModel {
+    var proposalId:Int?
+    var isExpanded:Bool = false
+}

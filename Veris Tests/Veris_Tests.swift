@@ -21,6 +21,11 @@ class Veris_Tests: XCTestCase {
     }
     
     func testExample() {
+        let priceAccount = SimpleAccumulativeAccount()
+        let priceItem = PriceItem()
+        priceItem.priceValue = 20
+        priceAccount.inToAccount(priceItem)
+        XCTAssertEqual(20, priceAccount.getTotalAmount())
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
