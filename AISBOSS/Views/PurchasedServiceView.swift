@@ -24,9 +24,24 @@ class PurchasedServiceView: UIView, Measureable {
     private var expandContent: UIView?
     
     var dimentionListener: DimentionChangable?
+    private var serviceOrderModel: ServiceOrderModel?
     
     private let EYE_ENABLE_IMAGE = "eye_enable.png"
     private let EYE_DISABLE_IMAGE = "eye_disable.png"
+    
+    var serviceOrderData: ServiceOrderModel? {
+        get {
+            return serviceOrderModel
+        }
+        
+        set {
+            if let model = newValue {
+                logo.asyncLoadImage(model.service_thumbnail_icon)
+                title.text = model.service_name
+                serviceDescription.text = model.service_intro
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,11 +90,7 @@ class PurchasedServiceView: UIView, Measureable {
             logView.height == PurchasedViewDimention.LOGO_HEIGHT
         }
         
-        ImageLoader.sharedLoader.imageForUrl("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg") { (image, url) -> () in
-            if let img = image {
-                self.logo.image = img
-            }
-        }
+        logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
     }
     
     private func addTitle() {

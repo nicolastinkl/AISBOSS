@@ -53,6 +53,8 @@
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
+		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
@@ -66,7 +68,6 @@
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; settings = {ASSET_TAGS = (); }; };
-		846DAD9D1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		846DADA01BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847115FA1BCD02940032C210 /* AICoverFlowCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -378,6 +379,8 @@
 		8423E56A1BB4E4EE006DC73B /* Veris Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Veris Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Veris_Tests.swift; sourceTree = "<group>"; };
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailModel.m; sourceTree = "<group>"; };
+		842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailModel.h; sourceTree = "<group>"; };
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
@@ -1043,6 +1046,8 @@
 				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
 				84B62B1A1BD8E1290081ABDF /* ProposalModel.h */,
 				84B62B1B1BD8E1290081ABDF /* ProposalModel.m */,
+				842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */,
+				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -1921,9 +1926,9 @@
 				8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */,
 				846DAD971BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
 				8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */,
+				842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
 				84B62B191BD891670081ABDF /* ImageContent.swift in Sources */,
 				8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */,
-				846DAD9D1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */,
 				846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */,
 				84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */,
 			);
@@ -2033,6 +2038,7 @@
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */,
+				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
