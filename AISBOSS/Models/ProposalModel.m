@@ -8,7 +8,7 @@
 
 #import "ProposalModel.h"
 
-@implementation ParamModel : JSONModel
+@implementation ParamModel
 
 @end
 

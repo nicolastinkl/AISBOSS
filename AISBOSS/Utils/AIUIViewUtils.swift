@@ -387,3 +387,13 @@ extension UITableViewCell{
         }
     }
 }
+
+extension UIImageView {
+    func asyncLoadImage(imgUrl: String) {
+        ImageLoader.sharedLoader.imageForUrl(imgUrl) { (image, url) -> () in
+            if let img = image {
+                self.image = img
+            }
+        }
+    }
+}

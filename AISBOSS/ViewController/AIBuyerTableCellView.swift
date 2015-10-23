@@ -13,14 +13,18 @@ class AITableFoldedCellHolder: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let folderCellView = self.contentView.subviews.first
-        if (folderCellView?.hidden == false)  {
-            var frame = self.contentView.frame
-            frame.size.height += 10
-            self.contentView.frame = frame
-        
-        }
+//        if (folderCellView?.hidden == false)  {
+//            var frame = self.contentView.frame
+//            frame.size.height += 150
+//            self.contentView.frame = frame
+//            
+//        }
         self.clipsToBounds = true
         self.contentView.clipsToBounds = true
+        
+        print("contentView frame :\(self.contentView.frame)")
+        
+        
     }
     
 }

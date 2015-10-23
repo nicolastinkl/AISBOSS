@@ -30,6 +30,12 @@
 @property (nonatomic, strong) NSString<Optional> *service_name;
 @property (nonatomic, strong) NSString<Optional> *service_thumbnail_icon;
 @property (nonatomic, strong) NSString<Optional> *service_intro;
+// 1:可现实详情 0:不显示详情
+@property (nonatomic, assign) NSInteger detail_flag;
+// 1:可催单 0:不可催单
+@property (nonatomic, assign) NSInteger prompt_flag;
+// 1:可联系 0:不可联系
+@property (nonatomic, assign) NSInteger contact_flag;
 @property (nonatomic, strong) NSArray<ParamModel, Optional> *service_param_list;
 
 @end
@@ -45,7 +51,7 @@
 @property (nonatomic, assign) NSInteger proposal_id;
 @property (nonatomic, strong) NSString<Optional> *proposal_name;
 // 1:正常 0:异常
-@property (nonatomic, assign) NSInteger order_state;
+@property (nonatomic, assign) NSInteger alarm_state;
 @property (nonatomic, strong) NSArray<ServiceOrderModel, Optional> *order_list;
 
 @end

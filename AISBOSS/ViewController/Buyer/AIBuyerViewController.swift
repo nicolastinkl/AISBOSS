@@ -13,7 +13,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // MARK: - Properties
     var dataSource : [AIProposalOrderModel]!
-   
+    var tableViewCellCache = NSMutableDictionary()
+    var cellList = NSMutableArray()
     
     // MARK: - Constants
     var screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
@@ -47,6 +48,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit{
+        tableViewCellCache.removeAllObjects()
     }
     
 
@@ -183,7 +188,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
-            return 250
+            return dataSource[indexPath.row].expandHeight!
         }
         else {
             return 96
@@ -201,49 +206,50 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : AITableFoldedCellHolder = tableView.dequeueReusableCellWithIdentifier("AITableFoldedCellHolder") as! AITableFoldedCellHolder
         
-        cell.selectionStyle = .None
-        cell.backgroundColor = UIColor.clearColor()
-        if cell.contentView.subviews.count == 0{
-            let folderCellView = AIFolderCellView.currentView()
-            folderCellView.frame = cell.contentView.bounds
-            folderCellView.tag = 1
-            cell.contentView.addSubview(folderCellView)
-            
-            //let expandedCellFrame = CGRectMake(0, 0, tableView.size.width, 250)
-            //let expandedCellView = AIExpandedCellView(frame: expandedCellFrame)            
-            let expandedCellView = buildExpandCellView()
-            expandedCellView.tag = 2
-            cell.contentView.addSubview(expandedCellView)
-            
-            if dataSource[indexPath.row].isExpanded {
-                folderCellView.hidden = true
-                expandedCellView.hidden = false
-            }
-            else{
-                folderCellView.hidden = false
-                expandedCellView.hidden = true
-            }
+        var cell : AITableFoldedCellHolder!
+        
+        let key = "rows\(indexPath.row)"
+        if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder?{
+            cell = cacheCell
         }
         else{
-            let folderCellView = cell.contentView.subviews.first
-            let expandedCellView = cell.contentView.subviews.last
-            if dataSource[indexPath.row].isExpanded {
-                folderCellView?.hidden = true
-                expandedCellView?.hidden = false
-                            }
-            else{
-                folderCellView?.hidden = false
-                expandedCellView?.hidden = true
-            }
+            cell = AITableFoldedCellHolder()
+            let folderCellView = AIFolderCellView.currentView()
+            folderCellView.tag = 100
+            folderCellView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(folderCellView)
+            let expandedCellView = buildExpandCellView(indexPath)
+            expandedCellView.tag = 200
+            cell.contentView.addSubview(expandedCellView)
+            cell.selectionStyle = .None
+            cell.backgroundColor = UIColor.clearColor()
+            cell.contentView.layer.cornerRadius = 10
+            //add to cache
             
+            tableViewCellCache.setValue(cell, forKey: key)
         }
-        cell.contentView.layer.cornerRadius = 10
+        
+        
+        let folderCellView = cell.contentView.viewWithTag(100)
+        let expandedCellView = cell.contentView.viewWithTag(200)
+        if dataSource[indexPath.row].isExpanded {
+            folderCellView?.hidden = true
+            expandedCellView?.hidden = false
+            print("expandedCellView frame :\(expandedCellView?.frame)")
+        }
+        else{
+            folderCellView?.hidden = false
+            expandedCellView?.hidden = true
+        }
+        
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
         //如果有，做比较
         if let _ = currentIndexPath{
             //如果点击了不同的cell
@@ -251,18 +257,19 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             {
                 dataSource[currentIndexPath!.row].isExpanded = !dataSource[currentIndexPath!.row].isExpanded
                 dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-                tableView.reloadRowsAtIndexPaths([indexPath,currentIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.reloadRowsAtIndexPaths([indexPath,currentIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
             }
             else{
                 dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
             }
         }
         else{
             dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
         }
         currentIndexPath = indexPath;
+        
     }
     
     // MARK: - ScrollViewDelegate
@@ -295,7 +302,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         dataSource = [AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel(),AIProposalOrderModel()]
     }
     
-    func buildExpandCellView() -> ProposalExpandedView {
+    func buildExpandCellView(indexPath : NSIndexPath) -> ProposalExpandedView {
         let viewWidth = tableView.frame.size.width
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
         servicesViewContainer.dimentionListener = self
@@ -315,13 +322,22 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         serviceView2.addExpandView(expandContent2)
         servicesViewContainer.addServiceView(serviceView2)
+        //新建展开view时纪录高度
+        servicesViewContainer.indexPath = indexPath
+        dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
+        //servicesViewContainer.frame.size.height = servicesViewContainer.getHeight()
         return servicesViewContainer
     }
 }
 
-extension AIBuyerViewController : DimentionChangable{
-    func heightChanged(beforeHeight: CGFloat, afterHeight: CGFloat) {
-        //refreshCellHeight()
+
+extension AIBuyerViewController : DimentionChangable {
+    func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
+        let expandView = changedView as! ProposalExpandedView
+        let indexPath = expandView.indexPath!
+        dataSource[(indexPath.row)].expandHeight = afterHeight
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+
     }
     
 }
