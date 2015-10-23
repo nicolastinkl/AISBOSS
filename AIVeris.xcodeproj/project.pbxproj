@@ -55,6 +55,11 @@
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; settings = {ASSET_TAGS = (); }; };
 		842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; settings = {ASSET_TAGS = (); }; };
+		842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85F1BDA3E3B00A0517C /* ProposalService.swift */; settings = {ASSET_TAGS = (); }; };
+		842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 842FC8621BDA437C00A0517C /* customerOrderList.json */; settings = {ASSET_TAGS = (); }; };
+		842FC8651BDA437C00A0517C /* customerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 842FC8621BDA437C00A0517C /* customerOrderList.json */; settings = {ASSET_TAGS = (); }; };
+		842FC8661BDA437C00A0517C /* customerProposalList.json in Resources */ = {isa = PBXBuildFile; fileRef = 842FC8631BDA437C00A0517C /* customerProposalList.json */; settings = {ASSET_TAGS = (); }; };
+		842FC8671BDA437C00A0517C /* customerProposalList.json in Resources */ = {isa = PBXBuildFile; fileRef = 842FC8631BDA437C00A0517C /* customerProposalList.json */; settings = {ASSET_TAGS = (); }; };
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
@@ -381,6 +386,9 @@
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailModel.m; sourceTree = "<group>"; };
 		842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailModel.h; sourceTree = "<group>"; };
+		842FC85F1BDA3E3B00A0517C /* ProposalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalService.swift; sourceTree = "<group>"; };
+		842FC8621BDA437C00A0517C /* customerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customerOrderList.json; sourceTree = "<group>"; };
+		842FC8631BDA437C00A0517C /* customerProposalList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customerProposalList.json; sourceTree = "<group>"; };
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
@@ -1116,6 +1124,7 @@
 				9306F2621BB02C170092D827 /* AIDetailNetService.swift */,
 				84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */,
 				844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */,
+				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1244,6 +1253,8 @@
 				93B25A2A1B9D78B000CD1FEB /* collectionData.json */,
 				93B25A2B1B9D78B000CD1FEB /* collectionData.plist */,
 				93B25A2D1B9D78B000CD1FEB /* MyriadProRegular.ttf */,
+				842FC8621BDA437C00A0517C /* customerOrderList.json */,
+				842FC8631BDA437C00A0517C /* customerProposalList.json */,
 				93B25A2E1B9D78B000CD1FEB /* Seller.plist */,
 				9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */,
 				84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */,
@@ -1797,6 +1808,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842FC8671BDA437C00A0517C /* customerProposalList.json in Resources */,
+				842FC8651BDA437C00A0517C /* customerOrderList.json in Resources */,
 				846DAD911BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1809,6 +1822,7 @@
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
 				934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */,
+				842FC8661BDA437C00A0517C /* customerProposalList.json in Resources */,
 				93B25A601B9D7A1D00CD1FEB /* sdk_weibo_logo.png in Resources */,
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,
 				93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */,
@@ -1829,6 +1843,7 @@
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
+				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
@@ -2083,6 +2098,7 @@
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,
 				93FA1DFC1B9C306E009965C8 /* AIModels.swift in Sources */,
+				842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */,
 				93FA1DD51B9C2F4F009965C8 /* AICardView.m in Sources */,
 				93FA1E4C1B9C3E12009965C8 /* AICustomerSwipeView.swift in Sources */,
 				93B25AA21B9D7A7B00CD1FEB /* NSArray+JSONModel.m in Sources */,
