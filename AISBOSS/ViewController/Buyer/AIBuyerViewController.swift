@@ -344,6 +344,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             
             let serviceView = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
             serviceView.serviceOrderData = serviceOrder
+     
+            for paraModel in serviceOrder.service_param_list {
+                let param = paraModel as! ParamModel
+                    
+                if paraModel.param_key == "25043309" {
+                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
+                    expandContent.imgUrl = param.param_value
+
+                    serviceView.addExpandView(expandContent)
+                }
+            }
             
             servicesViewContainer.addServiceView(serviceView)
         }
