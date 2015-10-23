@@ -13,6 +13,9 @@ class ImageContent: UIView {
     
     private var imageUrl: String?
     private var imageView: UIImageView!
+    private let LEFT_MARGIN: CGFloat = 20 / 3
+    private let RIGHT_MARGIN: CGFloat = 20 / 3
+    private let BOTTOM_MARGIN: CGFloat = 26 / 3
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -32,7 +35,7 @@ class ImageContent: UIView {
     }
     
     private func initSelf() {
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height))
+        imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: bounds.width - LEFT_MARGIN - RIGHT_MARGIN, height: bounds.height - BOTTOM_MARGIN))
         addSubview(imageView)
     }
     

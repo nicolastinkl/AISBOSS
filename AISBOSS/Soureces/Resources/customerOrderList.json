@@ -1,0 +1,283 @@
+{
+    "proposal_order_list":[{
+                     "proposal_id": "0001",
+                     "proposal_name": "Weekend Road Trip",
+                     "alarm_state": "http://10.5.1.249:3000/upload/proposal/warn.png",
+                     "order_list": [{
+                                    "order_id":"2015102355499910",
+                                    "service_id":"55499910",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/ZkxAD2vcJc7K7.png",
+                                    "service_name":"Beijing Forest Park",
+                                    "service_intro":"The shuttle bus is delayed.Another new one will arrive at 02-19 9:10",
+                                    "detail_flag":0,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Delayed",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0002",
+                     "proposal_name": "Weekend Tennis",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102354971005",
+                                    "service_id":"54971005",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/SXuLsxgxIXgDq.png",
+                                    "service_name":"The National Stadium",
+                                    "service_intro":"The game will start at 10:00 in the National Stadium as scheduled.",
+                                    "detail_flag":1,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0003",
+                     "proposal_name": "Business Travel",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102352555451",
+                                    "service_id":"52555451",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/58h83OX8bYTuB.png",
+                                    "service_name":"T2-Beijing capital International Airport",
+                                    "service_intro":"Your flight will take off at 10:00 from T2-Beijing Capital Internal Airport.",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0004",
+                     "proposal_name": "Sunday Feast",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102356545710",
+                                    "service_id":"56545710",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/YDgVKvyvKvaXQ.png",
+                                    "service_name":"Delivery staff:Mike Liu",
+                                    "service_intro":"The delivery staff:Mike Liu will arrive in 10 mins.",
+                                    "detail_flag":0,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Ongoing",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0005",
+                     "proposal_name": "Regular Dental Visit",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102356994898",
+                                    "service_id":"56994898",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/2zuFafGvinmr6.png",
+                                    "service_name":"22 South Street,Zhongguancun",
+                                    "service_intro":"You have an appointment with Doctor Li at 08:30 in 22 South Street,Zhongguancun.",
+                                    "detail_flag":1,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0006",
+                     "proposal_name": "House Cleaning",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102354564855",
+                                    "service_id":"54564855",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/8jExWt69MFw7G.png",
+                                    "service_name":"The capital of Beijing T2",
+                                    "service_intro":"The Cleaner will arrive at the Capital of Beijing T2 on Gate 12 F10.",
+                                    "detail_flag":1,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0007",
+                     "proposal_name": "Shop-on-behalf Service",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{
+                                    "order_id":"2015102354564855",
+                                    "service_id":"54564855",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/WNUbAluTwhcbA.png",
+                                    "service_name":"Procurement",
+                                    "service_intro":"Your ordered items have been shipped.",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Completed",
+                                    "service_param_list":[{
+                                                          "param_key":"25043310",
+                                                          "param_value":"{\"item_list\":[{\"item_desc\":\"AIR JORDAN IV US 6\",\"item_price\":\"$298\",\"item_state\":\"shipped\",\"item_url\":\"http://10.5.1.249:3000/upload/proposal/FKByrmpYrI5kn.png\"},{\"item_desc\":\"Pampers baby dry diapers economy pack*3\",\"item_price\":\"$61\",\"item_state\":\"shipped\",\"item_url\":\"http://10.5.1.249:3000/upload/proposal/tuJIdW3KjYZEL.png\"},{\"item_desc\":\"Your ordered items have arrive at Shanghai storehouse,ready to be sent to Beijing.\",\"item_price\":\"\",\"item_state\":\"Ongoing\",\"item_url\":\"http://10.5.1.249:3000/upload/proposal/QJ0LyJcPU9kxa.png\"}]}"
+                                                          }]
+                                    },{
+                                    "order_id":"2015102348975551",
+                                    "service_id":"48975551",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/3orYvEHMz4F6n.png",
+                                    "service_name":"Home Delivery",
+                                    "service_intro":"Your ordered items have arrive at Shanghai storehouse,ready to be sent to Beijing.",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Ongoing",
+                                    "service_param_list":[{
+                                                          "param_key":"25043309",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/QJ0LyJcPU9kxa.png"
+                                                          }]
+                                    },{
+                                    "order_id":"2015102351100485",
+                                    "service_id":"51100485",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/xmPofA3iBSfoH.png",
+                                    "service_name":"Shipment Insurance",
+                                    "service_intro":"",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Within Policy Period",
+                                    "service_param_list":[{
+                                                          "param_key":"25043309",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/QJ0LyJcPU9kxa.png"
+                                                          }]
+                                    }]
+                     },{
+                     "proposal_id": "0008",
+                     "proposal_name": "Small-Scale Event Service",
+                     "alarm_state": "On Schedule",
+                     "order_list": [{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/ZirWNCPCHUNuz.png",
+                                    "service_name":"Special Performance",
+                                    "service_intro":"The Cat's Corner Swing Dance Studio is on standby.",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Ready",
+                                    "service_param_list":[{ 
+                                                          "param_key":"25043309",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/QJ0LyJcPU9kxa.png"
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/EpYVCh6nEl2ps.png",
+                                    "service_name":"Live House",
+                                    "service_intro":"77 Theater Gongshun Street, Dongcheng District,Beijing.Reserved from 14:00 to 16:00 today",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{ 
+                                                          "param_key":"25043309",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/oL8tgxsZyzq9U.png"
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/jS9WHSVMJ6non.png",
+                                    "service_name":"Shuttle Bus",
+                                    "service_intro":"The shuttle bus will arrive at 12:00 today as scheduled.",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{ 
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/5AzK3eBgfURS7.png",
+                                    "service_name":"Social Media Publicity",
+                                    "service_intro":"The total media coverage is 57,795 by 24:00,15/07,with an average hourly reach of 1,873 single users.",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Ongoing",
+                                    "service_param_list":[{ 
+                                                          "param_key":"25043309",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/QlsnEroJOxS9o.png"
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/qdKpOLiBSlcVa.png",
+                                    "service_name":"Network Support",
+                                    "service_intro":"The support team will arrive at 10:00 today as scheduled.",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{ 
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/dODGnopIB2tif.png",
+                                    "service_name":"Live Event Podcasting",
+                                    "service_intro":"The live stream starts at 12:00 today.",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Ready",
+                                    "service_param_list":[{ 
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/BSTYT0dkN0R4H.png",
+                                    "service_name":"Photography",
+                                    "service_intro":"The photography will arrive at 11:00 today as scheduled.",
+                                    "detail_flag":0,
+                                    "prompt_flag":0,
+                                    "contact_flag":1,
+                                    "order_state":"Scheduled",
+                                    "service_param_list":[{ 
+                                                          "param_key":"",
+                                                          "param_value":""
+                                                          }]
+                                    },{ 
+                                    "order_id":"2015102398495298",
+                                    "service_id":"98495298",
+                                    "service_thumbnail_icon":"http://10.5.1.249:3000/upload/proposal/2BId2pybGvEdS.png",
+                                    "service_name":"Tea Break Catering",
+                                    "service_intro":"Ready to be served at 12:00 today.",
+                                    "detail_flag":1,
+                                    "prompt_flag":1,
+                                    "contact_flag":1,
+                                    "order_state":"Ready",
+                                    "service_param_list":[{ 
+                                                          "param_key":"",
+                                                          "param_value":"http://10.5.1.249:3000/upload/proposal/o3urUDy1KrA7k.png"
+                                                          }]
+                                    }
+                                    ]
+                     }]
+}
+

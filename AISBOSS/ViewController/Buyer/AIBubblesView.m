@@ -47,14 +47,16 @@
     return self;
 }
 
-
+#pragma mark - 构造基础数据
 
 - (void) parseBubbleDatas
 {
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
-    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
+    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4"]];
     self.bubbles = [[NSMutableArray alloc] init];
 }
+
+#pragma mark - 画圆
 
 - (void)drawCycleWithPath:(CGPathRef )path
 {
@@ -80,6 +82,9 @@
 
 
 }
+
+
+#pragma mark - 查找给定path上的点
 
 - (void)makeCycleLayer
 {
@@ -141,6 +146,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 }
 
 
+#pragma mark - 判断给定点是否在制定区域里
 - (void)test
 {
     CGMutablePathRef pathRef=CGPathCreateMutable();
@@ -201,9 +207,15 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 - (CGPoint) randomPointWithCenterCycleR:(CGFloat)r
 {
-    CGPoint randomPoint = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2);
+    CGPoint center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2);
     
-    return randomPoint;
+    CGFloat randomR = arc4random() % (NSInteger)r ;    // 随机半径
+    CGFloat angle = (arc4random() % 360) * M_PI / 180; // 随机角度
+    
+    CGFloat x = center.x + randomR * cos(angle);
+    CGFloat y = center.y + randomR * sin(angle);
+    
+    return CGPointMake(x, y);
 }
 
 
@@ -298,7 +310,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     return isReclosing;
 }
 
-#pragma mark - 构造气泡
+#pragma mark - 寻找气泡合适的位置
 
 
 
@@ -339,7 +351,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     
     return didSuccess;
 }
-
+#pragma mark - 构造气泡
 
 - (void) makeBubbles
 {
@@ -349,24 +361,20 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
         //AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
-        
-        
-        
+
         // 构造bubble
         AIBubble *bubble = [[AIBubble alloc] initWithCenter:center model:nil];
         
-        
         // 计算bubble的center
         if (i == 0) {
-            bubble.center = [self randomPointWithCenterCycleR:1];
-            bubble.backgroundColor = [UIColor blueColor];
+            // 第一个圆在中心区域随机取一点
+            bubble.center = [self randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
             [self.bubbles addObject:bubble];
             [self addSubview:bubble];
         }
         else
         {
             //
-            
             for (AIBubble *centerBubble in self.bubbles) {
                 BOOL ret = [self placeBubble:bubble forCenterBubble:centerBubble];
                 
@@ -375,26 +383,13 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
                     [self.bubbles addObject:bubble];
                     [self addSubview:bubble];
                     break; // 从第一个开始放置新的气泡，直到成功就停止遍历
-                    
                 }
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
+   
     }
-    
-    
-    
-    
-    
-    
-    
+  
 }
 
 

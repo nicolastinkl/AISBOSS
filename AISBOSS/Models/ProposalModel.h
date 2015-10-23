@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSString<Optional> *service_name;
 @property (nonatomic, strong) NSString<Optional> *service_thumbnail_icon;
 @property (nonatomic, strong) NSString<Optional> *service_intro;
+@property (nonatomic, strong) NSString<Optional> *order_state;
 // 1:可现实详情 0:不显示详情
 @property (nonatomic, assign) NSInteger detail_flag;
 // 1:可催单 0:不可催单
