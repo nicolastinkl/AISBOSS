@@ -68,6 +68,7 @@ class AIOrderCellEShopView : UIView {
     }
     
     func adjustViewFrame(){
-        self.frame.size.height = dataSource.count * SUB_VIEW_HEIGHT
+        
+        self.frame.size.height = CGFloat(dataSource.count) * SUB_VIEW_HEIGHT
     }
 }
