@@ -22,16 +22,18 @@ class AIOrderCellEShopSubView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        //config statusLabel
-        statusLabel.layer.borderWidth = 1
-        statusLabel.layer.borderColor = UIColor.grayColor().CGColor
-        statusLabel.layer.cornerRadius = 3
-        statusLabel.layer.masksToBounds = true
+        
     }
     
     // MARK: currentView
     class func currentView()->AIOrderCellEShopSubView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIOrderCellEShopSubView", owner: self, options: nil).first  as! AIOrderCellEShopSubView
+        
+        //config statusLabel
+        selfView.statusLabel.layer.borderWidth = 1
+        selfView.statusLabel.layer.borderColor = UIColor.whiteColor().CGColor
+        selfView.statusLabel.layer.cornerRadius = 8
+        selfView.statusLabel.layer.masksToBounds = true
         return selfView
     }
 
@@ -46,6 +48,7 @@ class AIOrderCellEShopView : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        buildSubViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,7 +62,7 @@ class AIOrderCellEShopView : UIView {
         
         let subView2 = AIOrderCellEShopSubView.currentView()
         let frame2 = CGRectMake(0, SUB_VIEW_HEIGHT, self.frame.width, SUB_VIEW_HEIGHT)
-        subView1.frame = frame2
+        subView2.frame = frame2
         
         self.addSubview(subView1)
         self.addSubview(subView2)

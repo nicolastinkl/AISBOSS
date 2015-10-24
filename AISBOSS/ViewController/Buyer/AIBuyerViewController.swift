@@ -196,7 +196,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
-            print("cell height : \(dataSource[indexPath.row].expandHeight)")
+            //print("cell height : \(dataSource[indexPath.row].expandHeight)")
             return dataSource[indexPath.row].expandHeight!
         }
         else {
@@ -347,8 +347,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
      
             for paraModel in serviceOrder.service_param_list {
                 let param = paraModel as! ParamModel
-                    
-                if paraModel.param_key == "25043309" {
+                
+                if serviceOrder.service_name == "Procurement"{
+                    let eshopViewFrame = CGRectMake(0, 0, viewWidth, 104)
+                    let expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
+                    serviceView.addExpandView(expandContentView)
+                }
+                else if paraModel.param_key == "25043309" {
                     let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
                     expandContent.imgUrl = param.param_value
 
