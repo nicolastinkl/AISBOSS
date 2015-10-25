@@ -52,7 +52,7 @@
 - (void) parseBubbleDatas
 {
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
-    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
+    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
     self.bubbles = [[NSMutableArray alloc] init];
 }
 

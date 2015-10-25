@@ -69,9 +69,28 @@
         self.layer.borderWidth = 1;
         self.backgroundColor = [UIColor redColor];
         self.layer.masksToBounds = YES;
+        self.clipsToBounds = YES;
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[self randomImage]];
+        
+        imageView.frame = self.bounds;
+        [self addSubview:imageView];
+        
     }
     
     return self;
+}
+
+// fake image
+
+
+- (UIImage *)randomImage
+{
+    NSInteger random = arc4random() % 5 + 1;
+    
+    NSString *name = [NSString stringWithFormat:@"Bubble0%ld.png", (long)random];
+    
+    return [UIImage imageNamed:name];
+    
 }
 
 
