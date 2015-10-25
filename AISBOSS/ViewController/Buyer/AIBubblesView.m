@@ -52,7 +52,7 @@
 - (void) parseBubbleDatas
 {
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
-    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4"]];
+    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
     self.bubbles = [[NSMutableArray alloc] init];
 }
 
@@ -266,23 +266,23 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 #pragma mark - 检查气泡是否超出边界
 
-- (BOOL)didBubbleOutOfRange:(AIBubble *)bubble
+- (BOOL)didBubbleOutOfRangeWithCenter:(CGPoint)center radius:(CGFloat)radius
 {
     BOOL isOut = NO;
     
-    if (bubble.center.x - bubble.radius < 0) {
+    if (center.x - radius < 0) {
         return YES;
     }
     
-    if (bubble.center.x + bubble.radius > CGRectGetWidth(self.frame)) {
+    if (center.x + radius > CGRectGetWidth(self.frame)) {
         return YES;
     }
     
-    if (bubble.center.y - bubble.radius < 0) {
+    if (center.y - radius < 0) {
         return YES;
     }
     
-    if (bubble.center.y + bubble.radius > CGRectGetHeight(self.frame)) {
+    if (center.y + radius > CGRectGetHeight(self.frame)) {
         return YES;
     }
     
@@ -312,16 +312,21 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 #pragma mark - 寻找气泡合适的位置
 
-
-
-- (BOOL)placeBubble:(AIBubble *)bubble forCenterBubble:(AIBubble *)centerBubble
+- (CGPoint)searchCenterForBubble:(AIBubble *)bubble withCenterBubble:(AIBubble *)centerBubble
 {
-    BOOL didSuccess = NO;
+
+    CGPoint center = CGPointZero;
+    
+    // 计算圆心之间的合适距离
     CGFloat radius = bubble.radius + centerBubble.radius + kBubbleMargin;
     
+    // 获取中心点合适距离圆圈上的所有点
     NSArray *points = [self allPointsOnCycleWithR:radius center:centerBubble.center];
     
+    // 构造随机遍历数组
     NSMutableArray *muPoints = [[NSMutableArray alloc] initWithArray:points];
+    
+    NSMutableArray *rightPoints = [[NSMutableArray alloc] init];
     
     for (NSInteger i = 0; i < points.count; i++) {
         
@@ -331,63 +336,111 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         CGPoint point = value.CGPointValue;
         
         if (![self didReclosingToOtherBubbleAtPoint:point radius:bubble.radius]) {
-            
-            bubble.center = point;
-            
-            if (![self didBubbleOutOfRange:bubble]) {
-                [self addSubview:bubble];
-                [self.bubbles addObject:bubble];
-                didSuccess = YES;
-                break;
+
+            if (![self didBubbleOutOfRangeWithCenter:point radius:bubble.radius]) {
+                
+                NSValue *rightValue = [NSValue valueWithCGPoint:point];
+                [rightPoints addObject:rightValue];
             }
             
         }
         
         [muPoints removeObjectAtIndex:index];
-        
-        
-        
+
     }
     
-    return didSuccess;
+    
+    center = [self nearestPointInPoints:rightPoints];
+    
+    
+    return center;
 }
+
+
+#pragma mark - 从所有点中寻找距离圆心最近的点
+
+- (CGPoint)nearestPointInPoints:(NSArray *)points
+{
+    CGPoint nearestPoint = CGPointZero;
+    
+    if (points.count == 0) {
+        return nearestPoint;
+    }
+    
+    
+    CGFloat minDistance = CGFLOAT_MAX;
+    AIBubble *firstBubble = self.bubbles.firstObject;
+    
+    CGPoint center = firstBubble.center;
+    
+    for (NSInteger i = 0; i < points.count; i++) {
+        
+        NSValue *value = [points objectAtIndex:i];
+        CGPoint point = value.CGPointValue;
+        CGFloat distance = [self distanceFromPointA:point toPointB:center];
+        
+        if (distance < minDistance) {
+            nearestPoint = point;
+            minDistance = distance;
+        }
+  
+    }
+    
+    return nearestPoint;
+}
+
+
 #pragma mark - 构造气泡
 
 - (void) makeBubbles
 {
- 
-    CGPoint center = CGPointZero;
-    
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
         //AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
 
         // 构造bubble
-        AIBubble *bubble = [[AIBubble alloc] initWithCenter:center model:nil];
+        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:nil];
         
         // 计算bubble的center
+        
+        CGPoint center = CGPointZero;
+        
+        
+        NSMutableArray *rightPoints = [[NSMutableArray alloc] init];
+        
+        BOOL shouldAddBubble = NO;
+        
         if (i == 0) {
             // 第一个圆在中心区域随机取一点
-            bubble.center = [self randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
-            [self.bubbles addObject:bubble];
-            [self addSubview:bubble];
+            shouldAddBubble = YES;
+            center = [self randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
+            NSValue *rightValue = [NSValue valueWithCGPoint:center];
+            [rightPoints addObject:rightValue];
         }
         else
         {
             //
+            
+            
+            
             for (AIBubble *centerBubble in self.bubbles) {
-                BOOL ret = [self placeBubble:bubble forCenterBubble:centerBubble];
+               center = [self searchCenterForBubble:bubble withCenterBubble:centerBubble];
                 
-                if (ret) {
-                    
-                    [self.bubbles addObject:bubble];
-                    [self addSubview:bubble];
-                    break; // 从第一个开始放置新的气泡，直到成功就停止遍历
+                if (!CGPointEqualToPoint(center, CGPointZero)) {
+                    shouldAddBubble = YES;
+                    NSValue *rightValue = [NSValue valueWithCGPoint:center];
+                    [rightPoints addObject:rightValue];
                 }
             }
             
         }
-   
+        
+        if (shouldAddBubble) {
+            center = [self nearestPointInPoints:rightPoints];
+            bubble.center = center;
+            [self.bubbles addObject:bubble];
+            [self addSubview:bubble];
+        }
     }
   
 }
