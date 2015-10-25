@@ -15,6 +15,15 @@
 
 @end
 
+@interface GoodsDetailItemModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *item_desc;
+@property (nonatomic, strong) NSString<Optional> *item_price;
+@property (nonatomic, strong) NSString<Optional> *item_state;
+@property (nonatomic, strong) NSString<Optional> *item_url;
+
+@end
+
 @protocol GoodsList
 
 @end
@@ -27,13 +36,6 @@
 @end
 
 
-@interface GoodsDetailItemModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *item_desc;
-@property (nonatomic, strong) NSString<Optional> *item_price;
-@property (nonatomic, strong) NSString<Optional> *item_state;
-@property (nonatomic, strong) NSString<Optional> *item_url;
-
-@end
 
 #endif /* ServiceOrderDetailModel_h */
