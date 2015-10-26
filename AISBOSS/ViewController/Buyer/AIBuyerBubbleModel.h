@@ -10,7 +10,6 @@
 
 @interface AIBuyerBubbleModel : JSONModel
 
-
 @property (nonatomic) NSInteger bubbleSize;
 
 

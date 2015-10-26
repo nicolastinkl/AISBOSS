@@ -10,6 +10,20 @@
 
 @interface UIImage(Effect)
 
-- (UIImage *)blurryImagewithBlurLevel:(CGFloat)blur ;
+/**
+ *  @author tinkl, 15-10-26 11:10:27
+ *
+ *  @brief  图片模糊处理  模糊等级
+ *
+ */
+- (UIImage *)blurryImagewithBlurLevel:(CGFloat)blur;
+
+/**
+ *  @author tinkl, 15-10-26 11:10:27
+ *
+ *  @brief  提取图片主色调
+ *
+ */
+-(UIColor*)pickUpImageColor;
 
 @end

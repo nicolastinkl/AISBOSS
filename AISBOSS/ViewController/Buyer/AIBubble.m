@@ -28,18 +28,25 @@
 
 + (CGFloat)bigBubbleRadius
 {
-    return CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
+    return 438  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
 }
 
 + (CGFloat)midBubbleRadius
 {
-    return CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
+    return 292  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
 }
 
 + (CGFloat)smaBubbleRadius
 {
-    return CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
+    return 194  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
 }
+
+
++ (CGFloat)tinyBubbleRadius
+{
+    return 78  / 2.46 / 2;
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model
 {
@@ -110,14 +117,18 @@
     }
     
     switch (i) {
+            
+        case 0:
+            size = [AIBubble tinyBubbleRadius];//maxSize * kSmallBubbleRate / 2;
+            break;
         case 1:
-            size = maxSize * kSmallBubbleRate / 2;
+            size = [AIBubble smaBubbleRadius];//maxSize * kSmallBubbleRate / 2;
             break;
         case 2:
-            size = maxSize * kMiddleBubbleRate / 2;
+            size = [AIBubble midBubbleRadius];//maxSize * kMiddleBubbleRate / 2;
             break;
         case 3:
-            size = maxSize * kBigBubbleRate / 2;
+            size = [AIBubble bigBubbleRadius];//maxSize * kBigBubbleRate / 2;
             break;
             
         default:
@@ -128,6 +139,12 @@
 }
 
 
+#pragma mark - SubViews
+
+- (void)makeSubViews
+{
+    
+}
 
 
 

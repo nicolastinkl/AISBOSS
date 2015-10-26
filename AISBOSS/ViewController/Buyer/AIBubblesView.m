@@ -10,7 +10,7 @@
 #import "AIBuyerBubbleModel.h"
 #import "AIBubble.h"
 #import <math.h>
-
+#import "Veris-Swift.h"
 
 #define kBubbleMargin 8
 
@@ -55,6 +55,7 @@
     CGFloat big = [AIBubble bigBubbleRadius];
     CGFloat middle = [AIBubble midBubbleRadius];
     CGFloat small = [AIBubble smaBubbleRadius];
+    
     self.bubbleModels = [[NSMutableArray alloc] init];
     
     AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
@@ -463,12 +464,26 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 - (void) makeBubbles
 {
+    // 构造+气泡
+    if (_bubbleModels.count == 0) {
+        
+        
+        
+        
+        return;
+    }
+    
+    
+    
+    
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
         AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
 
         // 构造bubble
+        
         AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model];
+        
         
         // 计算bubble的center
         
@@ -489,10 +504,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         else
         {
-            //
-            
-            
-            
             for (AIBubble *centerBubble in self.bubbles) {
                center = [self searchCenterForBubble:bubble withCenterBubble:centerBubble];
                 
