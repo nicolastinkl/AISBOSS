@@ -22,7 +22,7 @@ class AITableFoldedCellHolder: UITableViewCell {
         self.clipsToBounds = true
         self.contentView.clipsToBounds = true
         
-        print("contentView frame \(self.tag):\(self.contentView.frame)")
+        //print("contentView frame \(self.tag):\(self.contentView.frame)")
         
     }
     

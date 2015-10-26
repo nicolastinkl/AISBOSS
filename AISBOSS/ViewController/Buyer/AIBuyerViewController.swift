@@ -163,7 +163,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func makeTableView () {
         
-        let frame = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -200,7 +199,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
-            print("cell height : \(dataSource[indexPath.row].expandHeight)")
+            //print("cell height : \(dataSource[indexPath.row].expandHeight)")
             return dataSource[indexPath.row].expandHeight!
         }
         else {
@@ -362,12 +361,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
      
             for paraModel in serviceOrder.service_param_list {
                 let param = paraModel as! ParamModel
-                    
-                if paraModel.param_key == "25043309" {
-                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
-                    expandContent.imgUrl = param.param_value
-
-                    serviceView.addExpandView(expandContent)
+                var expandContentView: UIView?
+                
+                expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
+                
+                if expandContentView != nil {
+                    expandContentView?.frame = CGRect(x: 0, y: 0, width: viewWidth, height: expandContentView!.frame.height)
+                    serviceView.addExpandView(expandContentView!)
                 }
             }
             

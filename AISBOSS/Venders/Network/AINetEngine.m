@@ -197,14 +197,11 @@
     NSDictionary *des = [response objectForKey:kKeyForDesc];
     id returnResponseObject = [response objectForKey:kKeyForData];
     
-    NSNumber *resultCode = [des objectForKey:kKeyForResultCode];
+    NSString *resultCode = [des objectForKey:kKeyForResultCode];
     
-    if (resultCode.intValue == 200) {
+    if ([resultCode isEqualToString:kSuccessCode] && success) {
         success(returnResponseObject);
     }
-//    if ([resultCode isEqualToString:kSuccessCode] && success) {
-//        success(returnResponseObject);
-//    }
     else
     {
         NSString *errorDes = [des objectForKey:kKeyForResultMsg];
