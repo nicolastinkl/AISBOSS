@@ -14,10 +14,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
     
-    var dataSourcePop = [AIPopPropsalModel]()
+//    var dataSourcePop = [AIPopPropsalModel]()
     
     var tableViewCellCache = NSMutableDictionary()
     var cellList = NSMutableArray()
+    
+    var dataSourcePop = NSMutableArray()
     
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
@@ -350,8 +352,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // 气泡数据 -> 本地JOSN文件
         bdk.getPoposalListProps({ (responseData) -> Void in
-            if let pop = responseData.proposal_list {
-                self.dataSourcePop = pop
+            if let pops = responseData.proposal_list {
+                let mapArray =  pops.map({$0})
+//                _ = NSArray(array: mapArray)
+//                self.dataSourcePop.addObjectsFromArray()
                 self.tableView?.reloadData()
             }
             
