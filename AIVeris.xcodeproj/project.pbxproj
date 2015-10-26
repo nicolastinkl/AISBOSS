@@ -111,6 +111,7 @@
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; settings = {ASSET_TAGS = (); }; };
 		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
+		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; settings = {ASSET_TAGS = (); }; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
@@ -436,6 +437,7 @@
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
 		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
+		939F49F41BDDD67E00D07598 /* UIPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPopView.swift; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 		81DC18DB1BD5D2550081D131 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				939F49F31BDDD66D00D07598 /* PopView */,
 				126B2A161BD7952200146BBE /* AIFoldedCellView.xib */,
 				126B2A171BD7952200146BBE /* AIFoldedCellView.swift */,
 				126B2A181BD7952200146BBE /* AIOrderDescView.swift */,
@@ -1064,6 +1067,14 @@
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
 			);
 			name = ocModel;
+			sourceTree = "<group>";
+		};
+		939F49F31BDDD66D00D07598 /* PopView */ = {
+			isa = PBXGroup;
+			children = (
+				939F49F41BDDD67E00D07598 /* UIPopView.swift */,
+			);
+			name = PopView;
 			sourceTree = "<group>";
 		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
@@ -1990,6 +2001,7 @@
 				93FA1DC61B9C2F0F009965C8 /* CurveModel.m in Sources */,
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
+				939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,

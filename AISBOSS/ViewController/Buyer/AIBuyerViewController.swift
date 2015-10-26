@@ -31,8 +31,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var currentIndexPath : NSIndexPath?
     
     // MARK: - Life Cycle
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,7 +41,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeTableView()
         self.makeBubbleView()
         self.makeTopBar()
-        
         
     }
 
@@ -250,7 +247,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         if dataSource[indexPath.row].isExpanded {
             folderCellView?.hidden = true
             expandedCellView?.hidden = false
-            print("expandedCellView frame :\(expandedCellView?.frame)")
+            //print("expandedCellView frame :\(expandedCellView?.frame)")
         }
         else{
             folderCellView?.hidden = false
