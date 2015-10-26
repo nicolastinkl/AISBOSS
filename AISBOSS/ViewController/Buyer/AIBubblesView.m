@@ -396,9 +396,10 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 {
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
-        //AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
+        // AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
 
         // 构造bubble
+        
         AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:nil];
         
         // 计算bubble的center

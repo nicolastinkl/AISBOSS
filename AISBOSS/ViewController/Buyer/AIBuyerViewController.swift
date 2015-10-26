@@ -9,10 +9,13 @@
 import UIKit
 
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBubblesViewDelegate{
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
+    
+    var dataSourcePop = [AIPopPropsalModel]()
+    
     var tableViewCellCache = NSMutableDictionary()
     var cellList = NSMutableArray()
     
@@ -79,6 +82,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    func sphereDidSelected(index: Int) {
+        print("\(index)")
+    }
+    
     
     // MARK: - 构造气泡区域
     
@@ -97,8 +104,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add bubbles
   
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: nil)
-        bubbleView?.addSubview(bubbles)
+//        self.dataSourcePop self.dataSourcePop
+//        let bubbles = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: self.dataSourcePop)
+//        bubbleView?.addSubview(bubbles)
+        
+        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
+        bubble.delegate = self
+        bubbleView?.addSubview(bubble)
+        bubble.startExpend()
+        bubble.fixPosition()
         
     }
     
@@ -160,7 +174,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func makeTableView () {
         
-        let frame = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
+        _ = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -324,6 +338,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - MakeDemoData
     func makeData() {
         let bdk = BDKProposalService()
+        // 列表数据
         bdk.getProposalList({ (responseData) -> Void in
             for proposal in responseData.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalModel)
@@ -332,8 +347,19 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             
             self.tableView?.reloadData()
             }) { (errType, errDes) -> Void in
+        }
+        
+        // 气泡数据 -> 本地JOSN文件
+        bdk.getPoposalListProps({ (responseData) -> Void in
+            if let pop = responseData.proposal_list {
+                self.dataSourcePop = pop
+                self.tableView?.reloadData()
+            }
+            
+            }) { (errType, errDes) -> Void in
                 
         }
+        
     }
     
     private func proposalToProposalWrap(model: ProposalModel) -> ProposalOrderModelWrap {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+import AISwiftyJSON
+
 protocol ProposalService {
     func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
 }
@@ -52,6 +54,38 @@ class MockProposalService {
 }
 
 class BDKProposalService {
+    
+    
+    /**
+    气泡数据
+    
+    - parameter success: <#success description#>
+    - parameter fail:    <#fail description#>
+    - parameter errDes:  <#errDes description#>
+    */
+    
+    func getPoposalListProps(success: (responseData: AIBuyServiceModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        
+        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
+            let data: NSData? = NSData(contentsOfFile: path)
+            
+            
+            if let responseJSON: AnyObject = data {
+                let model =  AIBuyServiceModel(JSONDecoder(responseJSON))
+                success(responseData: model)
+            }else{
+                fail(errType: AINetError.Format, errDes: "AIBuyServiceModel JSON Parse error.")
+            } 
+        }
+    }
+    
+    /**
+    列表数据
+    
+    - parameter success: <#success description#>
+    - parameter fail:    <#fail description#>
+    - parameter errDes:  <#errDes description#>
+    */
     func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/queryCustomerOrderList"
