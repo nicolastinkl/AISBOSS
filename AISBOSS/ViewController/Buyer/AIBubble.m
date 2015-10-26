@@ -8,6 +8,9 @@
 
 #import "AIBubble.h"
 #import "AIBuyerBubbleModel.h"
+#import "UIImageView+WebCache.h"
+#import "UIImageView+HighlightedWebCache.h"
+#import "Veris-Swift.h"
 
 #define kBigBubbleRate          0.4
 
@@ -77,10 +80,16 @@
         self.backgroundColor = [UIColor redColor];
         self.layer.masksToBounds = YES;
         self.clipsToBounds = YES;
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[self randomImage]];
+
         
-        imageView.frame = self.bounds;
-        [self addSubview:imageView];
+        UIPopView * popView = [UIPopView currentView];
+#error objc to swift??
+        [self addSubview:popView];
+        
+        
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[self randomImage]];
+//        imageView.frame = self.bounds;
+//        [self addSubview:imageView];
         
     }
     

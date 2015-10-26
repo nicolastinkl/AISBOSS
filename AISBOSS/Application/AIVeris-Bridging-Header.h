@@ -83,3 +83,4 @@
 #import "UIIMage+Color.h"
 
 #import "AIBubblesView.h"
+#import "AIBuyerBubbleModel.h"

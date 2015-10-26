@@ -52,10 +52,13 @@
 - (void) parseBubbleDatas
 {
     
-    CGFloat big = [AIBubble bigBubbleRadius];
-    CGFloat middle = [AIBubble midBubbleRadius];
-    CGFloat small = [AIBubble smaBubbleRadius];
     
+    /*
+     
+     CGFloat big = [AIBubble bigBubbleRadius];
+     CGFloat middle = [AIBubble midBubbleRadius];
+     CGFloat small = [AIBubble smaBubbleRadius];
+     
     self.bubbleModels = [[NSMutableArray alloc] init];
     
     AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
@@ -110,7 +113,7 @@
     model = [[AIBuyerBubbleModel alloc] init];
     model.bubbleSize = small;
     [self.bubbleModels addObject:model];
-    
+    */
     
     
     self.hierarchyDic = [[NSMutableDictionary alloc] init];

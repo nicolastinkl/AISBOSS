@@ -8,11 +8,10 @@
 
 import Foundation
 
-class UIPopView: UIView {
+@objc public class UIPopView: UIView {
     
     @IBOutlet weak var popTitle: UILabel!
-    @IBOutlet weak var popBackgroundView: AIImageView!
-    
+    @IBOutlet weak var popBackgroundView: AIImageView!    
     @IBOutlet weak var popPrice: UILabel!
     @IBOutlet weak var popBuyNumber: UILabel!
     
@@ -27,7 +26,7 @@ class UIPopView: UIView {
     
     - parameter model: MODEL
     */
-    func fillDataWithModel(model: AIPopPropsalModel){
+    @IBAction public func fillDataWithModel(model: AIBuyerBubbleModel){
         //self.fill data
         popTitle.text = model.proposal_name ?? ""
         popBackgroundView.image = UIColor.whiteColor().imageWithColor()
