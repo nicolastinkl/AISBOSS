@@ -26,7 +26,6 @@ class ServiceOrderExpandContentViewFactory {
             print(convertString)
             let itemList = GoodsListMode(string: convertString, error: nil)
             expandContent.goodsList = itemList
-            
             contentView = expandContent
         }
         
