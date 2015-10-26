@@ -38,6 +38,7 @@ class PurchasedServiceView: UIView, Measureable {
             if let model = newValue {
                 logo.asyncLoadImage(model.service_thumbnail_icon)
                 title.text = model.service_name
+                statu.text = model.order_state
                 serviceDescription.text = model.service_intro
             }
         }
