@@ -31,17 +31,29 @@ class AIFolderCellView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if isFirstLayout{
-            let descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
-            self.descView.addSubview(descContentView)
-            self.statusLabel.layer.cornerRadius = 5
-            self.statusLabel.clipsToBounds = true
-            isFirstLayout = false
+            setLayout()
         }
+    }
+    
+    func setLayout(){
+        let descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
+        self.descView.addSubview(descContentView)
+        self.statusLabel.layer.cornerRadius = 8
+        self.statusLabel.clipsToBounds = true
+        
+        //serviceNameLabel.font = AITools.myriadBoldWithSize(20)
+        statusLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+        isFirstLayout = false
     }
     
     func loadData(proposalModel : ProposalModel){
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
+        if let url = proposalModel.order_list[0].service_thumbnail_icon{
+            serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
+            
+        }
+        
         buildStatusData()
     }
     

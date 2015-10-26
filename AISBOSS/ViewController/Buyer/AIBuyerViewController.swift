@@ -239,7 +239,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.contentView.addSubview(expandedCellView)
             cell.selectionStyle = .None
             cell.backgroundColor = UIColor.clearColor()
-            cell.contentView.layer.cornerRadius = 10
+            cell.contentView.layer.cornerRadius = 15
             //add to cache
             
             tableViewCellCache.setValue(cell, forKey: key)
