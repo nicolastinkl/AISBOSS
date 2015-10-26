@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -33,9 +33,13 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Shipped  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du3-Fa-PYN" userLabel="statusLabel">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Shipped  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du3-Fa-PYN" userLabel="statusLabel">
                     <rect key="frame" x="115" y="63" width="65" height="16"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="AnZ-2g-ceZ"/>
+                        <constraint firstAttribute="width" constant="65" id="lh1-kb-xq2"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -61,20 +65,12 @@
                 <constraint firstItem="LgN-bB-t18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="dEZ-di-fOz"/>
                 <constraint firstItem="Du3-Fa-PYN" firstAttribute="leading" secondItem="LgN-bB-t18" secondAttribute="trailing" constant="13" id="efc-WY-66B"/>
                 <constraint firstItem="Fxw-gz-PXn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="j4z-SZ-I3x"/>
-                <constraint firstItem="Du3-Fa-PYN" firstAttribute="centerX" secondItem="cKm-yJ-vDn" secondAttribute="centerX" id="qwi-qv-nf0"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fxw-gz-PXn" secondAttribute="trailing" constant="5" id="qy1-4U-TAl"/>
                 <constraint firstItem="cKm-yJ-vDn" firstAttribute="leading" secondItem="LgN-bB-t18" secondAttribute="trailing" constant="13" id="tdj-7e-7h2"/>
                 <constraint firstItem="Du3-Fa-PYN" firstAttribute="top" secondItem="cKm-yJ-vDn" secondAttribute="bottom" constant="8" id="uM4-XR-kJB"/>
-                <constraint firstAttribute="bottom" secondItem="LgN-bB-t18" secondAttribute="bottom" constant="9" id="wuf-Ml-mSf"/>
                 <constraint firstItem="cKm-yJ-vDn" firstAttribute="top" secondItem="Fxw-gz-PXn" secondAttribute="bottom" constant="8" id="yVt-jl-w5d"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="wuf-Ml-mSf"/>
-                    <exclude reference="qwi-qv-nf0"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="offerIconImageView" destination="LgN-bB-t18" id="2EQ-GU-hvR"/>
                 <outlet property="offerNameLabel" destination="Fxw-gz-PXn" id="WQX-ul-spc"/>

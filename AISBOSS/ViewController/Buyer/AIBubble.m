@@ -105,6 +105,9 @@
     
     NSInteger i = arc4random() % 3;
     
+    if (model) {
+        i = 3;
+    }
     
     switch (i) {
         case 1:
@@ -121,7 +124,7 @@
             break;
     }
     
-    return size;
+    return model.bubbleSize;
 }
 
 
