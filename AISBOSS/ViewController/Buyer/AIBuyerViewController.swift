@@ -174,7 +174,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func makeTableView () {
         
-        _ = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -382,19 +381,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             let serviceView = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
             serviceView.serviceOrderData = serviceOrder
      
-            for paraModel in serviceOrder.service_param_list {
-                let param = paraModel as! ParamModel
-                
-                if serviceOrder.service_name == "Procurement"{
-                    let eshopViewFrame = CGRectMake(0, 0, viewWidth, 104)
-                    let expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
-                    serviceView.addExpandView(expandContentView)
-                }
-                else if paraModel.param_key == "25043309" {
-                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
-                    expandContent.imgUrl = param.param_value
-
-                    serviceView.addExpandView(expandContent)
+            if serviceOrder.param_list != nil && serviceOrder.param_list.count > 0 {
+                for paraModel in serviceOrder.param_list {
+                    let param = paraModel as! ParamModel
+                    var expandContentView: UIView?
+                    
+                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
+                    
+                    if expandContentView != nil {
+                        expandContentView?.frame = CGRect(x: 0, y: 0, width: viewWidth, height: expandContentView!.frame.height)
+                        serviceView.addExpandView(expandContentView!)
+                    }
                 }
             }
             

@@ -29,7 +29,7 @@ class MockProposalService {
                         for service in proposalModel.order_list {
                             let serviceOrderModel = service as! ServiceOrderModel
                             
-                            for para in serviceOrderModel.service_param_list {
+                            for para in serviceOrderModel.param_list {
                                 let paraModel = para as! ParamModel
                                 
                                 if paraModel.param_key == "25043310" {
