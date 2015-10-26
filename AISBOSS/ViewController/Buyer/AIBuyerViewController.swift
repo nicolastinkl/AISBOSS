@@ -163,7 +163,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func makeTableView () {
         
-        let frame = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -367,9 +366,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     let eshopViewFrame = CGRectMake(0, 0, viewWidth, 104)
                     let expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
                     serviceView.addExpandView(expandContentView)
-                }
-                else if paraModel.param_key == "25043309" {
-                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
+                } else if paraModel.param_key == "25043309" {
+                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 180))
+
                     expandContent.imgUrl = param.param_value
 
                     serviceView.addExpandView(expandContent)
