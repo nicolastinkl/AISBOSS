@@ -36,6 +36,7 @@ class ImageContent: UIView {
     
     private func initSelf() {
         imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: bounds.width - LEFT_MARGIN - RIGHT_MARGIN, height: bounds.height - BOTTOM_MARGIN))
+        imageView.contentMode = .ScaleAspectFill
         addSubview(imageView)
     }
     

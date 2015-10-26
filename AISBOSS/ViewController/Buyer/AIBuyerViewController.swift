@@ -364,7 +364,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 let param = paraModel as! ParamModel
                     
                 if paraModel.param_key == "25043309" {
-                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 140))
+                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 180))
                     expandContent.imgUrl = param.param_value
 
                     serviceView.addExpandView(expandContent)

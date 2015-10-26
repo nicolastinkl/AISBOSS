@@ -39,9 +39,9 @@ class PurchasedViewColor {
 
 class PurchasedViewFont {
     static let NORMAL_FONT_NAME = "Myriad Pro"
-    static let TITLE = UIFont(name: NORMAL_FONT_NAME, size: 56 / PurchasedViewDimention.CONVERT_FACTOR)
-    static let STATU = UIFont(name: NORMAL_FONT_NAME, size: 34 / PurchasedViewDimention.CONVERT_FACTOR)
-    static let SERVICE_TITLE = UIFont(name: NORMAL_FONT_NAME, size: 42 / PurchasedViewDimention.CONVERT_FACTOR)
-    static let SERVICE_STATU = UIFont(name: NORMAL_FONT_NAME, size: 34 / PurchasedViewDimention.CONVERT_FACTOR)
-    static let SERVICE_DESCRIPTION = UIFont(name: NORMAL_FONT_NAME, size: 38 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let TITLE = AITools.myriadLightSemiCondensedWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let SERVICE_TITLE = AITools.myriadLightSemiCondensedWithSize(42 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let SERVICE_STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let SERVICE_DESCRIPTION = AITools.myriadLightSemiCondensedWithSize(38 / PurchasedViewDimention.CONVERT_FACTOR)
 }
