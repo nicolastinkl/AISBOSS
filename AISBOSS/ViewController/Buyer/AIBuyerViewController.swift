@@ -235,6 +235,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell : AITableFoldedCellHolder!
+        let proposalModel = dataSource[indexPath.row].model!
         
         let key = "rows\(indexPath.row)"
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder?{
@@ -244,6 +245,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             cell = AITableFoldedCellHolder()
             cell.tag = indexPath.row
             let folderCellView = AIFolderCellView.currentView()
+            folderCellView.loadData(proposalModel)
             folderCellView.tag = 100
             folderCellView.frame = cell.contentView.bounds
             cell.contentView.addSubview(folderCellView)
@@ -374,15 +376,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             let serviceView = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
             serviceView.serviceOrderData = serviceOrder
      
-            for paraModel in serviceOrder.service_param_list {
-                let param = paraModel as! ParamModel
-                var expandContentView: UIView?
-                
-                expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
-                
-                if expandContentView != nil {
-                    expandContentView?.frame = CGRect(x: 0, y: 0, width: viewWidth, height: expandContentView!.frame.height)
-                    serviceView.addExpandView(expandContentView!)
+            if serviceOrder.param_list != nil && serviceOrder.param_list.count > 0 {
+                for paraModel in serviceOrder.param_list {
+                    let param = paraModel as! ParamModel
+                    var expandContentView: UIView?
+                    
+                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
+                    
+                    if expandContentView != nil {
+                        expandContentView?.frame = CGRect(x: 0, y: 0, width: viewWidth, height: expandContentView!.frame.height)
+                        serviceView.addExpandView(expandContentView!)
+                    }
                 }
             }
             
