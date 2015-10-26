@@ -37,7 +37,7 @@
 @property (nonatomic, assign) NSInteger prompt_flag;
 // 1:可联系 0:不可联系
 @property (nonatomic, assign) NSInteger contact_flag;
-@property (nonatomic, strong) NSArray<ParamModel, Optional> *service_param_list;
+@property (nonatomic, strong) NSArray<ParamModel, Optional> *param_list;
 
 @end
 
