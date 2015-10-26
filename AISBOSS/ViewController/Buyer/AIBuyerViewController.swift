@@ -22,7 +22,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     let tableCellRowHeight : CGFloat = 96
     
     
-    let topBarHeight : CGFloat = 138 / 2.46
+    let topBarHeight : CGFloat = 130 / 2.46
     
     // MARK: - Variable
     var bubbleView : UIView!
@@ -142,7 +142,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)
-        logoButton.imageEdgeInsets = UIEdgeInsetsMake(top, 0, barHeight - logoSie - top, 0)
+        //logoButton.imageEdgeInsets = UIEdgeInsetsMake(15, 0, barHeight - logoSie - 15, 0)
         logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2)
         logoButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
         
@@ -184,19 +184,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
         self.view.addSubview(tableView!)
         
-        
-        // 添加占位区
-        let count = dataSource.count as NSInteger
-        
-        let offset : CGFloat = CGRectGetHeight(self.view.bounds) - topBarHeight - (CGFloat(count)  *  tableCellRowHeight);
-        
-        if (offset > 0)
-        {
-            let view = UIView(frame: CGRectMake(0, 0, screenWidth, offset))
-            tableView.tableFooterView = view
-            
-        }
-
     }
     
     
@@ -344,13 +331,26 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func makeData() {
         let bdk = BDKProposalService()
         bdk.getProposalList({ (responseData) -> Void in
+            
             for proposal in responseData.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalModel)
                 self.dataSource.append(wrapModel)
             }
             
+            // 添加占位区
+            let offset : CGFloat = CGRectGetHeight(self.view.bounds) - self.topBarHeight - (CGFloat(self.dataSource.count)  *  self.tableCellRowHeight);
+            if (offset > 0)
+            {
+                let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
+                self.tableView.tableFooterView = view
+                
+            }
+            
+            
             self.tableView?.reloadData()
             }) { (errType, errDes) -> Void in
+                
+                
                 
         }
     }
