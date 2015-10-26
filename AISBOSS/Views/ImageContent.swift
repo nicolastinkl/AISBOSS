@@ -17,6 +17,17 @@ class ImageContent: UIView {
     private let RIGHT_MARGIN: CGFloat = 20 / 3
     private let BOTTOM_MARGIN: CGFloat = 26 / 3
     
+    override var frame: CGRect {
+        didSet {
+            let imgFrame = CGRect(x: LEFT_MARGIN, y: 0, width: frame.width - LEFT_MARGIN - RIGHT_MARGIN, height: frame.height - BOTTOM_MARGIN)
+            if imageView == nil {
+                imageView = UIImageView(frame: imgFrame)
+            } else {
+                imageView.frame = imgFrame
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSelf()
@@ -28,7 +39,10 @@ class ImageContent: UIView {
     }
     
     private func initSelf() {
-        imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: frame.width - LEFT_MARGIN - RIGHT_MARGIN, height: frame.height - BOTTOM_MARGIN))
+        if imageView == nil {
+            imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: frame.width - LEFT_MARGIN - RIGHT_MARGIN, height: frame.height - BOTTOM_MARGIN))
+        }
+        
         imageView.contentMode = .ScaleAspectFill
         addSubview(imageView)
     }

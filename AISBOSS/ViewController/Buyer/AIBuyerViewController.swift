@@ -363,14 +363,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 let param = paraModel as! ParamModel
                 var expandContentView: UIView?
                 
-                if serviceOrder.service_name == "Procurement"{
-                    let eshopViewFrame = CGRectMake(0, 0, viewWidth, 104)
-                    expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
-                } else if paraModel.param_key == "25043309" {
-                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param, contentViewFrame: CGRect(x: 0, y: 0, width: viewWidth, height: 180))
-                }
+                expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
                 
-                if expandContentView != nil {                
+                if expandContentView != nil {
+                    expandContentView?.frame = CGRect(x: 0, y: 0, width: viewWidth, height: expandContentView!.frame.height)
                     serviceView.addExpandView(expandContentView!)
                 }
             }
