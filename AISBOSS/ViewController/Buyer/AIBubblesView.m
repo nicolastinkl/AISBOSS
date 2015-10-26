@@ -464,6 +464,18 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 - (void) makeBubbles
 {
+    // 构造+气泡
+    if (_bubbleModels.count == 0) {
+        
+        
+        
+        
+        return;
+    }
+    
+    
+    
+    
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
         AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];

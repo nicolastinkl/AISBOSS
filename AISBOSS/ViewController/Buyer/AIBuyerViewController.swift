@@ -26,6 +26,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let tableCellRowHeight : CGFloat = 96
     
+    
+    let topBarHeight : CGFloat = 130 / 2.46
+    
     // MARK: - Variable
     var bubbleView : UIView!
     
@@ -105,9 +108,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.tableHeaderView = bubbleView
         
         // add bubbles
-  
-        //self.dataSourcePop self.dataSourcePop
-        let bubbles = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: nil)
+        let margin : CGFloat = 40 / 2.46
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: nil)
         bubbleView?.addSubview(bubbles)
         
 //        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
@@ -121,7 +123,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - 构造顶部Bar
     
     func makeTopBar () {
-        let barHeight : CGFloat = 44
+        let barHeight : CGFloat = topBarHeight;
         let buttonWidth : CGFloat = 80
         let imageSize : CGFloat = (UIImage(named: "Buyer_Search")?.size.width)! * 3 / 2.46
         
@@ -142,6 +144,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         searchButton.frame = CGRectMake(0, 0, buttonWidth, barHeight)
         searchButton.setImage(UIImage(named: "Buyer_Search"), forState: UIControlState.Normal)
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(top, top, top, buttonWidth - imageSize - top)
+        searchButton.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
         topBar?.addSubview(searchButton)
         
         // make logo
@@ -151,8 +154,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)
-        logoButton.imageEdgeInsets = UIEdgeInsetsMake(top, 0, 0, 0)
+        //logoButton.imageEdgeInsets = UIEdgeInsetsMake(15, 0, barHeight - logoSie - 15, 0)
         logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2)
+        logoButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
+        
         topBar?.addSubview(logoButton)
         
         
@@ -166,6 +171,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         topBar?.addSubview(moreButton)
     }
     
+    
+    func backToFirstPage () {
+        AIOpeningView.instance().show()
+    }
     
     func moreButtonAction() {
         self.makeBubbleView()
@@ -187,18 +196,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
         self.view.addSubview(tableView!)
         
-        
     }
     
     
     // MARK: - TableView Delegate And Datasource
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        let height = CGRectGetHeight(tableView.frame) - 5 * tableCellRowHeight
-        
-        return height
-    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -207,7 +208,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        return nil
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -233,6 +234,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell : AITableFoldedCellHolder!
+        let proposalModel = dataSource[indexPath.row].model!
         
         let key = "rows\(indexPath.row)"
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder?{
@@ -242,6 +244,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             cell = AITableFoldedCellHolder()
             cell.tag = indexPath.row
             let folderCellView = AIFolderCellView.currentView()
+            folderCellView.loadData(proposalModel)
             folderCellView.tag = 100
             folderCellView.frame = cell.contentView.bounds
             cell.contentView.addSubview(folderCellView)
@@ -305,7 +308,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func handleScrollEventWithOffset(offset:CGFloat) {
 
-        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - 44
+        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - topBarHeight
         
         if (offset > maxHeight / 2 && offset <= maxHeight) {
             tableView?.scrollRectToVisible(CGRectMake(0, maxHeight, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
@@ -341,10 +344,21 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let bdk = BDKProposalService()
         // 列表数据
         bdk.getProposalList({ (responseData) -> Void in
+            
             for proposal in responseData.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalModel)
                 self.dataSource.append(wrapModel)
             }
+            
+            // 添加占位区
+            let offset : CGFloat = CGRectGetHeight(self.view.bounds) - self.topBarHeight - (CGFloat(self.dataSource.count)  *  self.tableCellRowHeight);
+            if (offset > 0)
+            {
+                let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
+                self.tableView.tableFooterView = view
+                
+            }
+            
             
             self.tableView?.reloadData()
             }) { (errType, errDes) -> Void in
@@ -360,6 +374,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
             }) { (errType, errDes) -> Void in
+                
+                
                 
         }
         

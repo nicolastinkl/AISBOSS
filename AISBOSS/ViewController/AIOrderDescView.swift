@@ -31,6 +31,11 @@ class AIOrderDescView: UIView {
         super.init(coder: aDecoder)
     }
     
+    //load data
+    func loadData(serviceOrderModel : ServiceOrderModel){
+        
+    }
+    
     func buildView(){
         let timeValueText = "02-19 9:10"
         let timeTextSize = caculateContentSize(timeValueText, fontSize: 18)
