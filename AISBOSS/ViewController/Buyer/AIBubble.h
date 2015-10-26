@@ -21,6 +21,8 @@
 
 + (CGFloat)smaBubbleRadius;
 
++ (CGFloat)tinyBubbleRadius;
+
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model;
 
 - (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model;

@@ -21,6 +21,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let tableCellRowHeight : CGFloat = 96
     
+    
+    let topBarHeight : CGFloat = 138 / 2.46
+    
     // MARK: - Variable
     var bubbleView : UIView!
     
@@ -99,8 +102,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.tableHeaderView = bubbleView
         
         // add bubbles
-  
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: nil)
+        let margin : CGFloat = 40 / 2.46
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: nil)
         bubbleView?.addSubview(bubbles)
         
     }
@@ -108,7 +111,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - 构造顶部Bar
     
     func makeTopBar () {
-        let barHeight : CGFloat = 44
+        let barHeight : CGFloat = topBarHeight;
         let buttonWidth : CGFloat = 80
         let imageSize : CGFloat = (UIImage(named: "Buyer_Search")?.size.width)! * 3 / 2.46
         
@@ -129,6 +132,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         searchButton.frame = CGRectMake(0, 0, buttonWidth, barHeight)
         searchButton.setImage(UIImage(named: "Buyer_Search"), forState: UIControlState.Normal)
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(top, top, top, buttonWidth - imageSize - top)
+        searchButton.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
         topBar?.addSubview(searchButton)
         
         // make logo
@@ -138,8 +142,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)
-        logoButton.imageEdgeInsets = UIEdgeInsetsMake(top, 0, 0, 0)
+        logoButton.imageEdgeInsets = UIEdgeInsetsMake(top, 0, barHeight - logoSie - top, 0)
         logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2)
+        logoButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
+        
         topBar?.addSubview(logoButton)
         
         
@@ -153,6 +159,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         topBar?.addSubview(moreButton)
     }
     
+    
+    func backToFirstPage () {
+        AIOpeningView.instance().show()
+    }
     
     func moreButtonAction() {
         self.makeBubbleView()
@@ -175,17 +185,22 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.view.addSubview(tableView!)
         
         
+        // 添加占位区
+        let count = dataSource.count as NSInteger
+        
+        let offset : CGFloat = CGRectGetHeight(self.view.bounds) - topBarHeight - (CGFloat(count)  *  tableCellRowHeight);
+        
+        if (offset > 0)
+        {
+            let view = UIView(frame: CGRectMake(0, 0, screenWidth, offset))
+            tableView.tableFooterView = view
+            
+        }
+
     }
     
     
     // MARK: - TableView Delegate And Datasource
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        let height = CGRectGetHeight(tableView.frame) - 5 * tableCellRowHeight
-        
-        return height
-    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -194,7 +209,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        return nil
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -292,7 +307,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func handleScrollEventWithOffset(offset:CGFloat) {
 
-        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - 44
+        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - topBarHeight
         
         if (offset > maxHeight / 2 && offset <= maxHeight) {
             tableView?.scrollRectToVisible(CGRectMake(0, maxHeight, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
