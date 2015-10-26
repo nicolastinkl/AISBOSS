@@ -51,8 +51,69 @@
 
 - (void) parseBubbleDatas
 {
+    
+    CGFloat big = [AIBubble bigBubbleRadius];
+    CGFloat middle = [AIBubble midBubbleRadius];
+    CGFloat small = [AIBubble smaBubbleRadius];
+    self.bubbleModels = [[NSMutableArray alloc] init];
+    
+    AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = big;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = middle;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    model = [[AIBuyerBubbleModel alloc] init];
+    model.bubbleSize = small;
+    [self.bubbleModels addObject:model];
+    
+    
+    
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
-    self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
+    //self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
     self.bubbles = [[NSMutableArray alloc] init];
 }
 
@@ -390,16 +451,24 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 }
 
 
+#pragma mark - 寻找占比最高的方案
+
+- (void)makeMoreCompact
+{
+    
+}
+
+
 #pragma mark - 构造气泡
 
 - (void) makeBubbles
 {
     for (NSInteger i = 0; i < _bubbleModels.count; i++) {
         
-        //AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
+        AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
 
         // 构造bubble
-        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:nil];
+        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model];
         
         // 计算bubble的center
         
@@ -414,6 +483,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             // 第一个圆在中心区域随机取一点
             shouldAddBubble = YES;
             center = [self randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
+            //bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:[[AIBuyerBubbleModel alloc] init]];
             NSValue *rightValue = [NSValue valueWithCGPoint:center];
             [rightPoints addObject:rightValue];
         }
