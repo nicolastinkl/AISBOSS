@@ -104,15 +104,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add bubbles
   
-//        self.dataSourcePop self.dataSourcePop
-//        let bubbles = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: self.dataSourcePop)
-//        bubbleView?.addSubview(bubbles)
+        //self.dataSourcePop self.dataSourcePop
+        let bubbles = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: nil)
+        bubbleView?.addSubview(bubbles)
         
-        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
-        bubble.delegate = self
-        bubbleView?.addSubview(bubble)
-        bubble.startExpend()
-        bubble.fixPosition()
+//        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
+//        bubble.delegate = self
+//        bubbleView?.addSubview(bubble)
+//        bubble.startExpend()
+//        bubble.fixPosition()
         
     }
     
@@ -375,7 +375,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
         servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
-        
         
         for serviceModel in proposalModel.order_list {
             let serviceOrder = serviceModel as! ServiceOrderModel
