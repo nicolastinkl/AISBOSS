@@ -361,17 +361,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
      
             for paraModel in serviceOrder.service_param_list {
                 let param = paraModel as! ParamModel
+                var expandContentView: UIView?
                 
                 if serviceOrder.service_name == "Procurement"{
                     let eshopViewFrame = CGRectMake(0, 0, viewWidth, 104)
-                    let expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
-                    serviceView.addExpandView(expandContentView)
+                    expandContentView = AIOrderCellEShopView(frame: eshopViewFrame)
                 } else if paraModel.param_key == "25043309" {
-                    let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 180))
-
-                    expandContent.imgUrl = param.param_value
-
-                    serviceView.addExpandView(expandContent)
+                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param, contentViewFrame: CGRect(x: 0, y: 0, width: viewWidth, height: 180))
+                }
+                
+                if expandContentView != nil {                
+                    serviceView.addExpandView(expandContentView!)
                 }
             }
             

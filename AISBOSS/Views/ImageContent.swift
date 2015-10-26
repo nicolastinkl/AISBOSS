@@ -16,14 +16,7 @@ class ImageContent: UIView {
     private let LEFT_MARGIN: CGFloat = 20 / 3
     private let RIGHT_MARGIN: CGFloat = 20 / 3
     private let BOTTOM_MARGIN: CGFloat = 26 / 3
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSelf()
@@ -35,7 +28,7 @@ class ImageContent: UIView {
     }
     
     private func initSelf() {
-        imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: bounds.width - LEFT_MARGIN - RIGHT_MARGIN, height: bounds.height - BOTTOM_MARGIN))
+        imageView = UIImageView(frame: CGRect(x: LEFT_MARGIN, y: 0, width: frame.width - LEFT_MARGIN - RIGHT_MARGIN, height: frame.height - BOTTOM_MARGIN))
         imageView.contentMode = .ScaleAspectFill
         addSubview(imageView)
     }
