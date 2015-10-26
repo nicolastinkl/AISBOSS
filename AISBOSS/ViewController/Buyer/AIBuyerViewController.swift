@@ -39,6 +39,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         self.makeData()
         self.makeBaseProperties()
+        
         self.makeTableView()
         self.makeBubbleView()
         self.makeTopBar()
@@ -92,14 +93,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let height = CGRectGetHeight(self.view.frame)
         bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        bubbleView?.backgroundColor = UIColor.whiteColor()
+        ///bubbleView?.backgroundColor = UIColor.whiteColor()
         bubbleView?.clipsToBounds = true
         
         tableView?.tableHeaderView = bubbleView
         
         // add bubbles
   
-        let bubbles : AIBubblesView = AIBubblesView(frame: (bubbleView?.bounds)!, models: nil)
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(0, 44, screenWidth, height - 44), models: nil)
         bubbleView?.addSubview(bubbles)
         
     }
@@ -112,8 +113,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let imageSize : CGFloat = (UIImage(named: "Buyer_Search")?.size.width)! * 3 / 2.46
         
         topBar = UIView (frame: CGRectMake(0, 0, screenWidth, barHeight))
-        topBar?.backgroundColor = UIColor(white: 0.6, alpha: 0.6)
         self.view.addSubview(topBar!)
+    
+        let bgview = UIView(frame: topBar.bounds)
+        topBar.addSubview(bgview)
         
         
         // calculate
@@ -160,6 +163,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func makeTableView () {
         
+        let frame = CGRectMake(0, 44, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
@@ -289,7 +293,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func handleScrollEventWithOffset(offset:CGFloat) {
 
-        let maxHeight = CGRectGetHeight((bubbleView?.frame)!)
+        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - 44
         
         if (offset > maxHeight / 2 && offset <= maxHeight) {
             tableView?.scrollRectToVisible(CGRectMake(0, maxHeight, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
@@ -307,6 +311,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
          self.handleScrollEventWithOffset(scrollView.contentOffset.y)
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y > 0)
+        {
+            topBar.backgroundColor = UIColor(white: 0.6, alpha: 0.6)
+        }
+        else
+        {
+            topBar.backgroundColor = UIColor.clearColor()
+        }
     }
 
     // MARK: - MakeDemoData
