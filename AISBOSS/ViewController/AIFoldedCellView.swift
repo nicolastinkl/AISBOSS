@@ -11,6 +11,7 @@ import UIKit
 class AIFolderCellView: UIView {
     
     var isFirstLayout = true
+    var proposalModel : ProposalModel!
 
     // MARK: IBOutlets
     @IBOutlet weak var serviceNameLabel: UILabel!
@@ -35,6 +36,24 @@ class AIFolderCellView: UIView {
             self.statusLabel.layer.cornerRadius = 5
             self.statusLabel.clipsToBounds = true
             isFirstLayout = false
+        }
+    }
+    
+    func loadData(proposalModel : ProposalModel){
+        self.proposalModel = proposalModel
+        serviceNameLabel.text = proposalModel.proposal_name
+        buildStatusData()
+    }
+    
+    func buildStatusData(){
+        //1: 正常 0:异常
+        if proposalModel.alarm_state == 0{
+            alertIcon.hidden = false
+            statusLabel.hidden = true
+        }
+        else{
+            alertIcon.hidden = true
+            statusLabel.hidden = false
         }
     }
     

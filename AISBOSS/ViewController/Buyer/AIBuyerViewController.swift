@@ -221,6 +221,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell : AITableFoldedCellHolder!
+        let proposalModel = dataSource[indexPath.row].model!
         
         let key = "rows\(indexPath.row)"
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder?{
@@ -230,6 +231,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             cell = AITableFoldedCellHolder()
             cell.tag = indexPath.row
             let folderCellView = AIFolderCellView.currentView()
+            folderCellView.loadData(proposalModel)
             folderCellView.tag = 100
             folderCellView.frame = cell.contentView.bounds
             cell.contentView.addSubview(folderCellView)
