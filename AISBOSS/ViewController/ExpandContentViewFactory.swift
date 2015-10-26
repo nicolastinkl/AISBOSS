@@ -20,6 +20,13 @@ class ServiceOrderExpandContentViewFactory {
             contentView = expandContent
         } else if param.param_key == "25043310" {
             let expandContent = AIOrderCellEShopView(frame: CGRect(x: 0, y: 0, width: 0, height: 200))
+            
+            let s: NSString = param.param_value
+            let convertString = s.stringByReplacingOccurrencesOfString("\\", withString: "")
+            print(convertString)
+            let itemList = GoodsListMode(string: convertString, error: nil)
+            expandContent.goodsList = itemList
+            
             contentView = expandContent
         }
         
