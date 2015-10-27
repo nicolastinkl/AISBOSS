@@ -12,6 +12,7 @@ import Cartography
 class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private var title: UILabel!
+    private var statu: UILabel!
     private var serviceViews: [PurchasedServiceView] = []
     var dimentionListener: DimentionChangable?
     var indexPath: NSIndexPath?
@@ -54,7 +55,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         title.text = "Shop-on-behalf Service"
         headView.addSubview(title)
         
-        let statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
+        statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
         statu.backgroundColor = PurchasedViewColor.STATU_BACKGROUND
         statu.font = PurchasedViewFont.STATU
