@@ -79,13 +79,15 @@
         
         UIPopView * popView = [UIPopView currentView];
         [popView fillDataWithModel:_bubbleModel];
+        [self addSubview:popView];
+        double BridNum = size / popView.width;
+        popView.transform =  CGAffineTransformMakeScale(BridNum, BridNum);
 //        popView.frame = self.bounds;
         popView.center = CGPointMake(self.width/2, self.height/2);
-        [self addSubview:popView];
         self.backgroundColor = popView.firstImageView.image.pickImageDeepColor;
         self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
         self.layer.cornerRadius = size / 2;
-        self.layer.borderWidth = 1;
+        self.layer.borderWidth = 2;
         self.layer.masksToBounds = YES;
         self.clipsToBounds = YES;        
     }

@@ -44,7 +44,6 @@ import AISpring
             self.addSubview(imageView)
             firstImageView = imageView
             i++
-         
         }
         
         /*
@@ -75,17 +74,18 @@ import AISpring
         
     }
     
-    let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 5.5
-    let kSphereLength:CGFloat = 80
-    let kSphereDamping:Float = 0.3
+    let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 4.5
+    let kSphereLength:CGFloat = 60
+    let kSphereDamping:Float = 0.5
+    let kSphereFixPosition:CGFloat = 8
     
     // 图标 弧形排列
     func centerForIconAtIndex(index:Int) -> CGPoint{
-        let firstAngle:CGFloat = CGFloat(M_PI)*2 + (CGFloat(M_PI_2) - kAngleOffset) + CGFloat(index) * kAngleOffset
+        let firstAngle:CGFloat = CGFloat(M_PI)/1.4 + (CGFloat(M_PI_2) - kAngleOffset) + CGFloat(index) * kAngleOffset
         print(firstAngle)
         let startPoint = self.center
-        let x = startPoint.x + cos(firstAngle) * kSphereLength;
-        let y = startPoint.y + sin(firstAngle) * kSphereLength;
+        let x = startPoint.x - cos(firstAngle) * kSphereLength - kSphereFixPosition;
+        let y = startPoint.y - sin(firstAngle) * kSphereLength ;
         let position = CGPointMake(x, y);
         return position;
     }

@@ -480,8 +480,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     self.cacheBubble = [[NSMutableDictionary alloc ] init];
     
     [self.cacheBubble setValue:@1 forKey:big];
-    [self.cacheBubble setValue:@(5) forKey:small];
-    [self.cacheBubble setValue:@(self.bubbleModels.count-6) forKey:middle];
+    [self.cacheBubble setValue:@(4) forKey:small];
+    [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:middle];
     
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
