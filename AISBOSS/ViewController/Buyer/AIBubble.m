@@ -61,7 +61,9 @@ typedef enum  {
     self = [super init];
     
     if (self) {
+        
         _bubbleModel = [model copy];
+        _bubbleType = type;
         
         switch (type) {
             case typeToAdd:
