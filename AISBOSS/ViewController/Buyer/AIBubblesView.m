@@ -186,9 +186,7 @@
     {
         NSLog(@"outPoint out path!");
     }
-    
-    
-    
+
     NSMutableArray *thePoints = [[NSMutableArray alloc] init];
    
     CGPathApply(shapePath.CGPath, (__bridge void * _Nullable)(thePoints), MyCGPathApplierFunc);
@@ -372,6 +370,71 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     return isReclosing;
 }
 
+
+#pragma mark - 放置推荐小气泡
+
+- (CGPoint)inserTinyBubbleForBubble:(AIBubble *)bubble withPoints:(NSArray *)points
+{
+    CGPoint center = CGPointZero;
+    
+    CGPoint tcenter = CGPointZero;
+    
+    // 计算圆心之间的合适距离
+    CGFloat radius = [AIBubble tinyBubbleRadius] + bubble.radius + kBubbleMargin;
+    
+    // 遍历中心圆的圆心,依次寻找tiny气泡的位置
+    for (NSValue *value in points) {
+        CGPoint point = value.CGPointValue;
+        
+        // 获取中心点合适距离圆圈上的所有点
+        NSArray *tpoints = [self allPointsOnCycleWithR:radius center:point];
+        
+        // 构造随机遍历数组
+        NSMutableArray *muPoints = [[NSMutableArray alloc] initWithArray:tpoints];
+        
+        for (NSInteger i = 0; i < tpoints.count; i++) {
+            
+            NSInteger index = arc4random() % [muPoints count];
+            NSValue *tvalue = [muPoints objectAtIndex:index];
+            
+            CGPoint tpoint = tvalue.CGPointValue;
+            
+            if (![self didReclosingToOtherBubbleAtPoint:tpoint radius:[AIBubble tinyBubbleRadius]]) {
+                
+                if (![self didBubbleOutOfRangeWithCenter:tpoint radius:[AIBubble tinyBubbleRadius]]) {
+                    center = point;
+                    tcenter = tpoint;
+                    break;
+                }
+                
+            }
+            
+            [muPoints removeObjectAtIndex:index];
+            
+        }
+        
+        
+        if (!CGPointEqualToPoint(tcenter, CGPointZero)) {
+            
+            // 添加 tiny 气泡
+            AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
+            model.bubbleSize = [AIBubble tinyBubbleRadius];
+            AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:model];
+            [self.bubbles addObject:tinyBubble];
+            [self addSubview:tinyBubble];
+            break;
+        }
+        else
+        {
+            center = CGPointZero; // 如果找遍所有的点都无法放置tiny，说明这个气泡展示不了
+        }
+    }
+    
+    
+    return center;
+
+}
+
 #pragma mark - 寻找气泡合适的位置
 
 - (CGPoint)searchCenterForBubble:(AIBubble *)bubble withCenterBubble:(AIBubble *)centerBubble
@@ -400,7 +463,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         if (![self didReclosingToOtherBubbleAtPoint:point radius:bubble.radius]) {
 
             if (![self didBubbleOutOfRangeWithCenter:point radius:bubble.radius]) {
-                
+
                 NSValue *rightValue = [NSValue valueWithCGPoint:point];
                 [rightPoints addObject:rightValue];
             }
@@ -411,6 +474,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
     }
     
+    // 判断是否能放下推荐气泡
     
     center = [self nearestPointInPoints:rightPoints];
     
@@ -504,7 +568,17 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         else
         {
+            if (i == 8)
+            {
+                bubble.hadRecommend = YES;
+            }
+            
             for (AIBubble *centerBubble in self.bubbles) {
+                
+                if (centerBubble.radius == [AIBubble tinyBubbleRadius]) {
+                    continue;
+                }
+                
                center = [self searchCenterForBubble:bubble withCenterBubble:centerBubble];
                 
                 if (!CGPointEqualToPoint(center, CGPointZero)) {
@@ -517,7 +591,20 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         
         if (shouldAddBubble) {
-            center = [self nearestPointInPoints:rightPoints];
+            
+            if (bubble.hadRecommend) {
+                center = [self inserTinyBubbleForBubble:bubble withPoints:rightPoints];
+                if (CGPointEqualToPoint(center, CGPointZero)) {
+                    // 没找到合适点放tiny，重新寻找
+                }
+            }
+            else
+            {
+                center = [self nearestPointInPoints:rightPoints];
+            }
+            
+            //center = [self nearestPointInPoints:rightPoints];
+
             bubble.center = center;
             [self.bubbles addObject:bubble];
             [self addSubview:bubble];

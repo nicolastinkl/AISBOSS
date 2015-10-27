@@ -14,6 +14,8 @@
 
 @property (nonatomic) CGFloat radius;
 
+@property (nonatomic) BOOL hadRecommend;
+
 
 + (CGFloat)bigBubbleRadius;
 
