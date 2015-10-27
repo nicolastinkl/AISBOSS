@@ -47,8 +47,9 @@ import AISpring
          
         }
         
-        
+        /*
         if let someObject = model.service_list.first {
+
             let logoModel = someObject as! AIBuyerBubbleProportModel
             
             ImageLoader.sharedLoader.imageForUrl(logoModel.service_thumbnail_icon) { [weak self] image, url in
@@ -69,9 +70,8 @@ import AISpring
                 }
             }
         } /// someObject
-        
-        
-        
+        */
+         
         
     }
     
