@@ -238,6 +238,27 @@ extension UIView {
     }
     
     
+    // MARK: TINKL    
+    public func createShadow(shadowColor:UIColor) {
+        layer.shadowPath = createShadowPath().CGPath
+        layer.masksToBounds = false
+        layer.shadowColor = shadowColor.CGColor
+        layer.shadowOffset = CGSizeMake(0, 0)
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.5
+    }
+    
+    public func createShadowPath() -> UIBezierPath {
+        let myBezier = UIBezierPath()
+        myBezier.moveToPoint(CGPoint(x: -3, y: -3))
+        myBezier.addLineToPoint(CGPoint(x: frame.width + 3, y: -3))
+        myBezier.addLineToPoint(CGPoint(x: frame.width + 3, y: frame.height + 3))
+        myBezier.addLineToPoint(CGPoint(x: -3, y: frame.height + 3))
+        myBezier.closePath()
+        return myBezier
+    }
+    
+    
     
     
     // MARK: SYSTEM Extension
