@@ -47,7 +47,7 @@
         _bubbleModels = [models mutableCopy];
         [self parseBubbleDatas];
         [self makeBubbles];
-        //[self makeCycleLayer];
+        
     }
     
     return self;

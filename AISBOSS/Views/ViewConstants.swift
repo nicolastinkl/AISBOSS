@@ -16,6 +16,7 @@ class PurchasedViewDimention {
     static let PROPOSAL_HEAD_HEIGHT: CGFloat = 130 / CONVERT_FACTOR
     static let PROPOSAL_TITLE_HEIGHT = 56 / CONVERT_FACTOR
     static let PROPOSAL_TITLE_MARGIN_TOP = 43 / CONVERT_FACTOR
+    static let PROPOSAL_STATU_MARGIN_TOP = 46 / CONVERT_FACTOR
     static let PROPOSAL_STATU_HEIGHT = 46 / CONVERT_FACTOR
     static let PROPOSAL_STATU_TEXT_HEIGHT = 34 / CONVERT_FACTOR
     static let LOGO_MARGIN_TOP: CGFloat = 36 / CONVERT_FACTOR
@@ -39,7 +40,7 @@ class PurchasedViewColor {
 
 class PurchasedViewFont {
     static let NORMAL_FONT_NAME = "Myriad Pro"
-    static let TITLE = AITools.myriadLightSemiCondensedWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let TITLE = AITools.myriadBoldWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
     static let STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
     static let SERVICE_TITLE = AITools.myriadLightSemiCondensedWithSize(42 / PurchasedViewDimention.CONVERT_FACTOR)
     static let SERVICE_STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)

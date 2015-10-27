@@ -19,39 +19,63 @@ class AIFolderCellView: UIView {
     @IBOutlet weak var serviceIcon: UIImageView!
     @IBOutlet weak var descView: UIView!
     @IBOutlet weak var alertIcon: UIImageView!
+    var descContentView: AIOrderDescView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initSelf()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initSelf()
+    }
+    
+    private func initSelf() {
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         if isFirstLayout{
-            let descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
-            self.descView.addSubview(descContentView)
-            self.statusLabel.layer.cornerRadius = 5
-            self.statusLabel.clipsToBounds = true
-            isFirstLayout = false
+            setLayout()
         }
+    }
+    
+    func setLayout(){
+        serviceNameLabel.font = PurchasedViewFont.TITLE
+        statusLabel.font = PurchasedViewFont.STATU
+        statusLabel.layer.cornerRadius = 5
+        statusLabel.clipsToBounds = true
+        
+        descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
+        descView.addSubview(descContentView!)
+        
+        
+        isFirstLayout = false
     }
     
     func loadData(proposalModel : ProposalModel){
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
+        
+        let firstServiceOrder = proposalModel.order_list[0]
+        if let url = firstServiceOrder.service_thumbnail_icon{
+            serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
+            
+        }
+        
+        descContentView?.descLabel.text = firstServiceOrder.service_name
+        
         buildStatusData()
     }
     
     func buildStatusData(){
         //1: 正常 0:异常
-        if proposalModel.alarm_state == 0{
+        if proposalModel.alarm_state == 0 {
             alertIcon.hidden = false
             statusLabel.hidden = true
-        }
-        else{
+        } else {
             alertIcon.hidden = true
             statusLabel.hidden = false
         }

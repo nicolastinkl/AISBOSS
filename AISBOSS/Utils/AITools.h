@@ -49,6 +49,8 @@
 
 // Fonts
 
++ (UIFont *) myriadRegularWithSize:(CGFloat)size;
+
 + (UIFont *) myriadBoldWithSize:(CGFloat)size;
 
 + (UIFont *) myriadLightSemiCondensedWithSize:(CGFloat)size;

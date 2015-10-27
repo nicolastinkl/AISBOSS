@@ -17,10 +17,14 @@ enum DESC_SERVICE_TYPE : Int{
 
 class AIOrderDescView: UIView {
     
+    var descLabel: UILabel!
+    
     let TIME_TEXT = "Time"
     let NEW_TIME_TEXT = "New Time"
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
+    
+    var paramDictionary : NSDictionary?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,7 +37,14 @@ class AIOrderDescView: UIView {
     
     //load data
     func loadData(serviceOrderModel : ServiceOrderModel){
-        
+        if let paramModelArray = serviceOrderModel.param_list as? [ParamModel]{
+            for paramModel : ParamModel in paramModelArray{
+                if paramModel.param_key == "20151026" {
+                     let jsonData = paramModel.param_value.dataUsingEncoding(NSUTF8StringEncoding)
+                     paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                }
+            }
+        }
     }
     
     func buildView(){
@@ -44,17 +55,18 @@ class AIOrderDescView: UIView {
         let timeLabelFrame = CGRectMake(timeValueLabelFrame.origin.x - TEXT_PADDING - timeSize.size.width + 2, 0, timeSize.size.width, TEXT_HEIGHT)
         let descLabelFrame = CGRectMake(0, 0, timeLabelFrame.origin.x - TEXT_PADDING, 21)
         
-        let descLabel = UILabel(frame: descLabelFrame)
+        descLabel = UILabel(frame: descLabelFrame)
         descLabel.text = "Delivery staff:Mike Liu"
         descLabel.textColor = UIColor.whiteColor()
-        descLabel.font = UIFont.systemFontOfSize(14)
+        descLabel.font = PurchasedViewFont.SERVICE_TITLE
         let timeLabel = UILabel(frame: timeLabelFrame)
         timeLabel.text = TIME_TEXT
-        timeLabel.alpha = 0.4
-        timeLabel.textColor = UIColor.whiteColor()
-        timeLabel.font = UIFont.systemFontOfSize(13)
+        timeLabel.textColor = PurchasedViewColor.TITLE
+        timeLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+
         let timeValueLabel = UILabel(frame: timeValueLabelFrame)
-        timeValueLabel.font = UIFont.systemFontOfSize(18)
+        timeValueLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+
         timeValueLabel.text = timeValueText
         timeValueLabel.textColor = UIColor.whiteColor()
         
