@@ -130,6 +130,7 @@ typedef enum  {
     
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
+    imageview.alpha = 0.5;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
     
@@ -179,8 +180,22 @@ typedef enum  {
             
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
+            
+            
+            // Settings Shadow.
+            
+//            //Create the gradient and add it to our view's root layer
+//            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+//            gradientLayer.frame = CGRectMake(5.0, 5.0, self.width + 10, self.height + 10);
+//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor, nil]];
+//            [self.layer insertSublayer:gradientLayer atIndex:0];
         });
     }];
+    
+}
+
+-(void)drawRect:(CGRect)rect
+{
     
 }
 
