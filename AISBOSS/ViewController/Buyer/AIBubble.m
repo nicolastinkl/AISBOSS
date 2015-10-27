@@ -32,6 +32,7 @@ typedef enum  {
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
+
 @end
 
 
@@ -73,6 +74,13 @@ typedef enum  {
                 break;
             case typeToNormal:
             {
+                
+                colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+                
+                self.glowOffset = CGSizeMake(0.0, 0.0);
+                self.glowAmount = 0.0;
+                self.glowColor = [UIColor clearColor];
+                
                 [self initWithNormal:center model:model];
             }
                 break;
@@ -194,17 +202,23 @@ typedef enum  {
     
 }
 
--(void)drawRect:(CGRect)rect
-{
-    
-}
-
 
 - (void) refereshBackground:(UIColor *) color{
     self.backgroundColor = [UIColor colorWithCGColor:color.CGColor];
     
     //[self setNeedsDisplay];
 }
+
+#pragma mark - Glow..
+- (void)setGlowColor:(UIColor *)newGlowColor
+{
+    if (newGlowColor != glowColor) {
+        CGColorRelease(glowColorRef);
+        glowColor = newGlowColor;
+        glowColorRef = CGColorCreate(colorSpaceRef, CGColorGetComponents(glowColor.CGColor));
+    }
+}
+
 
 // fake image
 
@@ -337,8 +351,20 @@ typedef enum  {
     return 78  / 2.46 / 2;
 }
 
-
-
+/*
+-(void)drawRect:(CGRect)rect{
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    CGContextSetShadow(context, self.glowOffset, self.glowAmount);
+    CGContextSetShadowWithColor(context, self.glowOffset, self.glowAmount, glowColorRef);
+    
+    [super drawRect:rect];
+    
+    CGContextRestoreGState(context);
+}
+*/
 
 
 @end
