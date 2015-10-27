@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIImageView+HighlightedWebCache.h"
 #import "Veris-Swift.h"
+#import "TDImageColors.h"
 
 #define kBigBubbleRate          0.4
 
@@ -82,8 +83,6 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     CGContextDrawImage(context, drawRect, image.CGImage);
     CGColorSpaceRelease(colorSpace);
     
-    
-    
     //第二步 取每个点的像素值
     unsigned char* data = CGBitmapContextGetData (context);
     
@@ -122,7 +121,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
     }
     CGContextRelease(context);
     
-    return [UIColor colorWithRed:([MaxColor[0] intValue]/255.0f) green:([MaxColor[1] intValue]/255.0f) blue:([MaxColor[2] intValue]/255.0f) alpha:([MaxColor[3] intValue]/255.0f)];
+    return [UIColor colorWithRed:([MaxColor[0] intValue]/255.0f) green:([MaxColor[2] intValue]/255.0f) blue:([MaxColor[1] intValue]/255.0f) alpha:1];
 }
 
 
@@ -191,29 +190,43 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
         AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
         
         // NEW CREATE NEW IMAGEVIEW.
+        __weak typeof(self) weakSelf = self;
         UIImageView * imageview = [[UIImageView alloc] init];
         [imageview sd_setHighlightedImageWithURL:[NSURL URLWithString:modelChild.service_thumbnail_icon] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
-            __block UIColor * colorImage = [self mostColor:image];
+//  第一种解决方式:
+//            dispatch_group_t group = dispatch_group_create();
+//            
+//            dispatch_group_enter(group);
+//            
+//            TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:2];
+//            dispatch_group_leave(group);
+//            
+//            dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//                UIColor *color = imageColors.colors.lastObject;
+//                self.backgroundColor = color;
+//            });
             
+//  第二种解决方式:
             // UPDATE UI...
             dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self refereshBackground:colorImage];
-                
+                TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:3];
+                UIColor *color = imageColors.colors.lastObject;
+                self.backgroundColor = color;
+                //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
             });
         }];
-//        self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
-       
         
     }
     
     return self;
 }
 
+
 - (void) refereshBackground:(UIColor *) color{
-    self.backgroundColor = color;
-    [self setNeedsDisplay];
+    self.backgroundColor = [UIColor colorWithCGColor:color.CGColor];
+    
+    //[self setNeedsDisplay];
 }
 
 // fake image

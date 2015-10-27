@@ -29,7 +29,6 @@ import AISpring
     public func fillDataWithModel(model: AIBuyerBubbleModel) -> Void{
         //self.fill data
         popTitle.text = model.proposal_name ?? ""
-//        popBackgroundView.image = UIColor.whiteColor().imageWithColor()
         popPrice.text = model.proposal_price ?? ""
         popBuyNumber.text = "\(model.order_times ?? 0)"
         
@@ -46,33 +45,8 @@ import AISpring
             i++
         }
         
-        /*
-        if let someObject = model.service_list.first {
-
-            let logoModel = someObject as! AIBuyerBubbleProportModel
-            
-            ImageLoader.sharedLoader.imageForUrl(logoModel.service_thumbnail_icon) { [weak self] image, url in
-                if let strongSelf = self {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        
-                        strongSelf.popBackgroundView.alpha=0.2;
-                        strongSelf.popBackgroundView.image =  image?.getBgImageFromImage()
-                        strongSelf.backgroundColor = image?.pickImageDeepColor()
-                        UIView.beginAnimations(nil, context: nil)
-                        UIView.setAnimationDuration(0.5)
-                        strongSelf.popBackgroundView.setNeedsDisplay()
-                        strongSelf.popBackgroundView.alpha = 1;
-                        UIView.commitAnimations()
-                        
-                        
-                    })
-                }
-            }
-        } /// someObject
-        */
-         
-        
     }
+    
     
     let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 4.5
     let kSphereLength:CGFloat = 60

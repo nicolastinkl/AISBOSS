@@ -118,6 +118,9 @@
 		939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */; settings = {ASSET_TAGS = (); }; };
 		939F49FD1BDE07FD00D07598 /* AIBuyServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */; settings = {ASSET_TAGS = (); }; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
+		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; settings = {ASSET_TAGS = (); }; };
+		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; settings = {ASSET_TAGS = (); }; };
+		93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */; settings = {ASSET_TAGS = (); }; };
 		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
@@ -449,6 +452,12 @@
 		939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopHoldView.swift; sourceTree = "<group>"; };
 		939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyServiceModel.swift; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93A742C81BDF75FD001EF581 /* TDImageColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageColors.h; sourceTree = "<group>"; };
+		93A742C91BDF75FD001EF581 /* TDImageColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageColors.m; sourceTree = "<group>"; };
+		93A742CA1BDF75FD001EF581 /* UIColor+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TDAdditions.h"; sourceTree = "<group>"; };
+		93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TDAdditions.m"; sourceTree = "<group>"; };
+		93A742CC1BDF75FD001EF581 /* UIImage+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TDAdditions.h"; sourceTree = "<group>"; };
+		93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TDAdditions.m"; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
@@ -1264,6 +1273,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		93A742C71BDF75FD001EF581 /* TDImageColors */ = {
+			isa = PBXGroup;
+			children = (
+				93A742C81BDF75FD001EF581 /* TDImageColors.h */,
+				93A742C91BDF75FD001EF581 /* TDImageColors.m */,
+				93A742CA1BDF75FD001EF581 /* UIColor+TDAdditions.h */,
+				93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */,
+				93A742CC1BDF75FD001EF581 /* UIImage+TDAdditions.h */,
+				93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */,
+			);
+			path = TDImageColors;
+			sourceTree = "<group>";
+		};
 		93B00ED91BBBACBA000C402B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1577,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				93A742C71BDF75FD001EF581 /* TDImageColors */,
 				93C33EFE1B9BEAFE007BF506 /* AIAssignUtils.swift */,
 				93C33EFF1B9BEAFE007BF506 /* AIButtonUtils.swift */,
 				93C33F001B9BEAFE007BF506 /* AIKinectButton.swift */,
@@ -2036,6 +2059,7 @@
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
+				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
 				81C092881BAFAC0D003FFF35 /* SDWebImageManager.m in Sources */,
@@ -2118,6 +2142,7 @@
 				8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				93C33F211B9BEAFE007BF506 /* SwipeableCell.m in Sources */,
 				93C33EFC1B9BEA75007BF506 /* SCGIFImageView.m in Sources */,
+				93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */,
 				93FA1E051B9C306E009965C8 /* ServiceModel.swift in Sources */,
 				93B25A9D1B9D7A7B00CD1FEB /* AFURLRequestSerialization.m in Sources */,
 				93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */,
@@ -2145,6 +2170,7 @@
 				93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */,
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
+				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
