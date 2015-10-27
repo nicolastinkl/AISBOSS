@@ -60,7 +60,7 @@
                     </constraints>
                 </view>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LkY-ic-gU7" userLabel="AlertIcon">
-                    <rect key="frame" x="576" y="20" width="11" height="11"/>
+                    <rect key="frame" x="576" y="15" width="11" height="11"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="11" id="o1B-x5-rVf"/>
@@ -78,6 +78,7 @@
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="LkY-ic-gU7" secondAttribute="bottom" constant="21" id="Bxe-Iu-ciI"/>
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="leading" secondItem="2fw-UB-u5X" secondAttribute="trailing" constant="5" id="FAu-Rg-3Dh"/>
                 <constraint firstItem="2fw-UB-u5X" firstAttribute="top" secondItem="cvO-1B-1e4" secondAttribute="bottom" constant="21" id="IGl-TF-aZH"/>
+                <constraint firstItem="LkY-ic-gU7" firstAttribute="top" secondItem="kLf-bf-ITi" secondAttribute="top" id="O4A-re-F4o"/>
                 <constraint firstItem="2fw-UB-u5X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="21" id="QGz-ak-Nrg"/>
                 <constraint firstItem="cvO-1B-1e4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="UBo-Hy-GDe"/>
                 <constraint firstItem="PmP-1O-fI1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V94-qe-Uat"/>
@@ -100,6 +101,7 @@
                 <mask key="constraints">
                     <exclude reference="QGz-ak-Nrg"/>
                     <exclude reference="ntZ-VY-2E4"/>
+                    <exclude reference="9dm-u2-LHM"/>
                     <exclude reference="Bxe-Iu-ciI"/>
                     <exclude reference="dIH-rl-u46"/>
                     <exclude reference="icw-0R-L7I"/>
