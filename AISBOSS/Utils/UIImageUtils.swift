@@ -16,12 +16,14 @@ extension UIImage{
     func pickImageDeepColor() -> UIColor! {
         
         let selfColor = self.pickUpImageColor()
+        return selfColor;
+        /**
         let cs = CGColorGetComponents(selfColor.CGColor)
         let red = CGFloat(cs[0])
         let green = CGFloat(cs[1])
         let blue = CGFloat(cs[2])
         return UIColor(red: red+0.1, green: green, blue: blue, alpha: 1)
-        
+        */
     }
     
     /**

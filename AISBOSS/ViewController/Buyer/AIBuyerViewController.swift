@@ -14,18 +14,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
     
-//    var dataSourcePop = [AIPopPropsalModel]()
+    var dataSourcePop = [AIBuyerBubbleModel]()
     
     var tableViewCellCache = NSMutableDictionary()
     var cellList = NSMutableArray()
     
-    var dataSourcePop = NSMutableArray()
+//    var dataSourcePop = NSMutableArray()
     
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     let tableCellRowHeight : CGFloat = 96
-    
     
     let topBarHeight : CGFloat = 130 / 2.46
     
@@ -109,8 +108,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add bubbles
         let margin : CGFloat = 40 / 2.46
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: nil)
+        
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
+        
         
 //        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
 //        bubble.delegate = self
@@ -349,14 +350,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             
             // 添加占位区
-            let offset : CGFloat = CGRectGetHeight(self.view.bounds) - self.topBarHeight - (CGFloat(self.dataSource.count)  *  self.tableCellRowHeight);
+            let offset = CGRectGetHeight(self.view.bounds) - self.topBarHeight - (CGFloat(self.dataSource.count)  *  self.tableCellRowHeight);
             if (offset > 0)
             {
                 let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
                 self.tableView.tableFooterView = view
-                
             }
-            
             
             self.tableView?.reloadData()
             }) { (errType, errDes) -> Void in
@@ -365,18 +364,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // 气泡数据 -> 本地JOSN文件
         bdk.getPoposalListProps({ (responseData) -> Void in
             if let pops = responseData.proposal_list {
-                let mapArray =  pops.map({$0})
-//                _ = NSArray(array: mapArray)
-//                self.dataSourcePop.addObjectsFromArray()
-                self.tableView?.reloadData()
+                self.dataSourcePop = pops as! [AIBuyerBubbleModel]
             }
             
+            self.makeBubbleView()
+            self.tableView?.reloadData()
+            
             }) { (errType, errDes) -> Void in
-                
-                
-                
-        }
-        
+        }        
     }
     
     private func proposalToProposalWrap(model: ProposalModel) -> ProposalOrderModelWrap {
@@ -415,7 +410,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             
             servicesViewContainer.addServiceView(serviceView)
         }
-        
 
         //新建展开view时纪录高度
         servicesViewContainer.indexPath = indexPath

@@ -78,8 +78,8 @@ class AIPopHoldView:UIView, UICollisionBehaviorDelegate{
         // setup the items
         for (var i = 0; i < self.count; i++) {
             let item = UIPopView.currentView()
-            let model = self.images![i]
-            item.fillDataWithModel(model)
+            //let model = self.images![i]
+            //item.fillDataWithModel(model)
 //            item.layer.cornerRadius = item.width/2
 //            item.layer.masksToBounds = true
             //let item = UIImageView(image: self.images![i])
