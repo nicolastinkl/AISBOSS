@@ -32,34 +32,40 @@ import AISpring
         popPrice.text = model.proposal_price ?? ""
         popBuyNumber.text = "\(model.order_times ?? 0)"
         
+        popTitle.font = AITools.myriadLightSemiCondensedWithSize(20)
+        popPrice.font = AITools.myriadBoldWithSize(21)
+        popBuyNumber.font = AITools.myriadLightSemiExtendedWithSize(15)
+        
+        
         /// 添加logo小图标
         var i: Int = 0
-        for server in  model.service_list {
-            let logoModel = server as! AIBuyerBubbleProportModel
-            let position = centerForIconAtIndex(i)
-            let imageView = AIImageView()
-            imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage: UIImage(named: ""))
-            imageView.frame = CGRectMake(position.x, position.y, 36/2, 36/2)
-            self.addSubview(imageView)
-            firstImageView = imageView
-            i++
+        if let s = model.service_list {
+            for server in  model.service_list {
+                let logoModel = server as! AIBuyerBubbleProportModel
+                let position = centerForIconAtIndex(i)
+                let imageView = AIImageView()
+                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage: UIImage(named: ""))
+                imageView.frame = CGRectMake(position.x, position.y, 36/2, 36/2)
+                self.addSubview(imageView)
+                firstImageView = imageView
+                i++
+            }
         }
         
     }
     
-    
     let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 4.5
     let kSphereLength:CGFloat = 60
     let kSphereDamping:Float = 0.5
-    let kSphereFixPosition:CGFloat = 8
+    let kSphereFixPosition:CGFloat = 7
     
     // 图标 弧形排列
     func centerForIconAtIndex(index:Int) -> CGPoint{
-        let firstAngle:CGFloat = CGFloat(M_PI)/1.4 + (CGFloat(M_PI_2) - kAngleOffset) + CGFloat(index) * kAngleOffset
+        let firstAngle:CGFloat = CGFloat(M_PI)*0.5 + (CGFloat(M_PI_2) - kAngleOffset) - CGFloat(index) * kAngleOffset
         //print(firstAngle)
         let startPoint = self.center
-        let x = startPoint.x - cos(firstAngle) * kSphereLength - kSphereFixPosition;
-        let y = startPoint.y - sin(firstAngle) * kSphereLength - kSphereFixPosition;
+        let x = startPoint.x + cos(firstAngle) * kSphereLength - kSphereFixPosition - 2;
+        let y = startPoint.y + sin(firstAngle) * kSphereLength - kSphereFixPosition;
         let position = CGPointMake(x, y);
         return position;
     }

@@ -145,7 +145,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         searchButton.frame = CGRectMake(0, 0, buttonWidth, barHeight)
         searchButton.setImage(UIImage(named: "Buyer_Search"), forState: UIControlState.Normal)
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(top, top, top, buttonWidth - imageSize - top)
-        searchButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
+        searchButton.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
         topBar?.addSubview(searchButton)
         
         // make logo
@@ -364,11 +364,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // 气泡数据 -> 本地JOSN文件
         bdk.getPoposalListProps({ (responseData) -> Void in
             if let pops = responseData.proposal_list {
-                self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                if pops.count > 0 {
+                    self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                    
+                    self.makeBubbleView()
+                    self.tableView?.reloadData()
+                    
+                }
+                
             }
-            
-            self.makeBubbleView()
-            self.tableView?.reloadData()
             
             }) { (errType, errDes) -> Void in
         }        
