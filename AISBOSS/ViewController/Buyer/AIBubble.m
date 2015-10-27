@@ -149,7 +149,7 @@ typedef enum  {
     AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
     
     // NEW CREATE NEW IMAGEVIEW.
-    //__weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     
     [imageview sd_setHighlightedImageWithURL:[NSURL URLWithString:modelChild.service_thumbnail_icon] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
@@ -175,9 +175,9 @@ typedef enum  {
             //                [imageColors.colors.lastObject]
             UIColor *color = imageColors.colors.lastObject;
             //                self.backgroundColor = color;
-            self.layer.borderColor = color.CGColor;
+            weakSelf.layer.borderColor = color.CGColor;
             
-            imageview.image = [self buttonImageFromColors:array frame:imageview.frame];
+            imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
         });
     }];

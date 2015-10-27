@@ -145,7 +145,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         searchButton.frame = CGRectMake(0, 0, buttonWidth, barHeight)
         searchButton.setImage(UIImage(named: "Buyer_Search"), forState: UIControlState.Normal)
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(top, top, top, buttonWidth - imageSize - top)
-        searchButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
+        searchButton.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
         topBar?.addSubview(searchButton)
         
         // make logo

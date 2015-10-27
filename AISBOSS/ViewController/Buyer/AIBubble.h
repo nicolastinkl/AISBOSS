@@ -21,12 +21,14 @@ typedef enum  {
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
 
-//圆角
+@property (nonatomic) BOOL hadRecommend;
+
 @property (nonatomic) CGFloat radius;
 //类型
 @property (nonatomic) BubbleType bubbleType;
 //是否发光
 @property (nonatomic) CGFloat isLight;
+
 
 
 + (CGFloat)bigBubbleRadius;
