@@ -11,9 +11,6 @@
 @class AIBuyerBubbleModel;
 @interface AIBubblesView : UIView
 
-
 - (id) initWithFrame:(CGRect)frame models:(NSArray *)models;
-
-
 
 @end

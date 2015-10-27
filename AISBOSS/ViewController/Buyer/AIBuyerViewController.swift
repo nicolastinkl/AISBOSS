@@ -9,12 +9,17 @@
 import UIKit
 
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBubblesViewDelegate{
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
+    
+//    var dataSourcePop = [AIPopPropsalModel]()
+    
     var tableViewCellCache = NSMutableDictionary()
     var cellList = NSMutableArray()
+    
+    var dataSourcePop = NSMutableArray()
     
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
@@ -34,8 +39,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var currentIndexPath : NSIndexPath?
     
     // MARK: - Life Cycle
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +49,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeTableView()
         self.makeBubbleView()
         self.makeTopBar()
-        
         
     }
 
@@ -85,6 +87,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    func sphereDidSelected(index: Int) {
+        print("\(index)")
+    }
+    
     
     // MARK: - 构造气泡区域
     
@@ -105,6 +111,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let margin : CGFloat = 40 / 2.46
         let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: nil)
         bubbleView?.addSubview(bubbles)
+        
+//        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
+//        bubble.delegate = self
+//        bubbleView?.addSubview(bubble)
+//        bubble.startExpend()
+//        bubble.fixPosition()
         
     }
     
@@ -240,7 +252,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.contentView.addSubview(expandedCellView)
             cell.selectionStyle = .None
             cell.backgroundColor = UIColor.clearColor()
-            cell.contentView.layer.cornerRadius = 10
+            cell.contentView.layer.cornerRadius = 15
             //add to cache
             
             tableViewCellCache.setValue(cell, forKey: key)
@@ -252,7 +264,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         if dataSource[indexPath.row].isExpanded {
             folderCellView?.hidden = true
             expandedCellView?.hidden = false
-            print("expandedCellView frame :\(expandedCellView?.frame)")
+            //print("expandedCellView frame :\(expandedCellView?.frame)")
         }
         else{
             folderCellView?.hidden = false
@@ -329,6 +341,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - MakeDemoData
     func makeData() {
         let bdk = BDKProposalService()
+        // 列表数据
         bdk.getProposalList({ (responseData) -> Void in
             
             for proposal in responseData.proposal_order_list {
@@ -348,10 +361,23 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             
             self.tableView?.reloadData()
             }) { (errType, errDes) -> Void in
+        }
+        
+        // 气泡数据 -> 本地JOSN文件
+        bdk.getPoposalListProps({ (responseData) -> Void in
+            if let pops = responseData.proposal_list {
+                let mapArray =  pops.map({$0})
+//                _ = NSArray(array: mapArray)
+//                self.dataSourcePop.addObjectsFromArray()
+                self.tableView?.reloadData()
+            }
+            
+            }) { (errType, errDes) -> Void in
                 
                 
                 
         }
+        
     }
     
     private func proposalToProposalWrap(model: ProposalModel) -> ProposalOrderModelWrap {
@@ -367,7 +393,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
         servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
-        
         
         for serviceModel in proposalModel.order_list {
             let serviceOrder = serviceModel as! ServiceOrderModel

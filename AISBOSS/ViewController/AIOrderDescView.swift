@@ -47,14 +47,16 @@ class AIOrderDescView: UIView {
         let descLabel = UILabel(frame: descLabelFrame)
         descLabel.text = "Delivery staff:Mike Liu"
         descLabel.textColor = UIColor.whiteColor()
-        descLabel.font = UIFont.systemFontOfSize(14)
+        descLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
         let timeLabel = UILabel(frame: timeLabelFrame)
         timeLabel.text = TIME_TEXT
         timeLabel.alpha = 0.4
         timeLabel.textColor = UIColor.whiteColor()
-        timeLabel.font = UIFont.systemFontOfSize(13)
+        timeLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+
         let timeValueLabel = UILabel(frame: timeValueLabelFrame)
-        timeValueLabel.font = UIFont.systemFontOfSize(18)
+        timeValueLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+
         timeValueLabel.text = timeValueText
         timeValueLabel.textColor = UIColor.whiteColor()
         

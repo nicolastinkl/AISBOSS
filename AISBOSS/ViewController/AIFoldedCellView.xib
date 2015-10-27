@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MyriadProRegular.ttf">
+            <string>MyriadPro-Regular</string>
             <string>MyriadPro-Regular</string>
         </mutableArray>
     </customFonts>
@@ -21,29 +23,29 @@
                     <animations/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekend Road Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvO-1B-1e4" userLabel="serviceName">
-                    <rect key="frame" x="21" y="11" width="149" height="20"/>
+                    <rect key="frame" x="21" y="14" width="145" height="20"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="4dQ-HD-Wam"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLf-bf-ITi" userLabel="statusLabel">
-                    <rect key="frame" x="519" y="13" width="68" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" On Schedule  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLf-bf-ITi" userLabel="statusLabel">
+                    <rect key="frame" x="512" y="14" width="75" height="19"/>
                     <animations/>
                     <color key="backgroundColor" red="0.42352941179999998" green="0.41568627450000001" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="RcJ-Kp-QdV"/>
-                        <constraint firstAttribute="width" constant="68" id="sG4-cm-S0S"/>
+                        <constraint firstAttribute="height" constant="19" id="RcJ-Kp-QdV"/>
+                        <constraint firstAttribute="width" constant="75" id="sG4-cm-S0S"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="10"/>
+                    <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2fw-UB-u5X" userLabel="serviceIcon">
-                    <rect key="frame" x="21" y="52" width="25" height="25"/>
+                    <rect key="frame" x="21" y="55" width="25" height="25"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="cOv-Xq-vGW"/>
@@ -51,7 +53,7 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hl-s1x" userLabel="descView">
-                    <rect key="frame" x="51" y="52" width="536" height="23"/>
+                    <rect key="frame" x="51" y="55" width="536" height="23"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -59,7 +61,7 @@
                     </constraints>
                 </view>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlertIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LkY-ic-gU7" userLabel="AlertIcon">
-                    <rect key="frame" x="576" y="19" width="11" height="11"/>
+                    <rect key="frame" x="576" y="20" width="11" height="11"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="11" id="o1B-x5-rVf"/>
@@ -72,7 +74,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5dh-Hl-s1x" secondAttribute="trailing" constant="13" id="5WW-b0-4vQ"/>
                 <constraint firstItem="kLf-bf-ITi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cvO-1B-1e4" secondAttribute="trailing" constant="5" id="66b-ah-WY8"/>
-                <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="LkY-ic-gU7" secondAttribute="bottom" constant="22" id="9dm-u2-LHM"/>
+                <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="LkY-ic-gU7" secondAttribute="bottom" constant="24" id="9dm-u2-LHM"/>
                 <constraint firstItem="PmP-1O-fI1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AjC-RQ-ZlB"/>
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="LkY-ic-gU7" secondAttribute="bottom" constant="21" id="Bxe-Iu-ciI"/>
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="leading" secondItem="2fw-UB-u5X" secondAttribute="trailing" constant="5" id="FAu-Rg-3Dh"/>
@@ -85,7 +87,7 @@
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="cvO-1B-1e4" secondAttribute="bottom" constant="21" id="cGS-ZX-P9P"/>
                 <constraint firstAttribute="bottom" secondItem="5dh-Hl-s1x" secondAttribute="bottom" constant="30" id="dIH-rl-u46"/>
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="cvO-1B-1e4" secondAttribute="bottom" constant="2" id="icw-0R-L7I"/>
-                <constraint firstItem="cvO-1B-1e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="kAj-cA-htc"/>
+                <constraint firstItem="cvO-1B-1e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="kAj-cA-htc"/>
                 <constraint firstAttribute="bottom" secondItem="2fw-UB-u5X" secondAttribute="bottom" constant="40" id="ntZ-VY-2E4"/>
                 <constraint firstItem="kLf-bf-ITi" firstAttribute="centerY" secondItem="cvO-1B-1e4" secondAttribute="centerY" id="oV5-5a-XaL"/>
                 <constraint firstAttribute="trailing" secondItem="PmP-1O-fI1" secondAttribute="trailing" id="uIc-Ck-MhN"/>
