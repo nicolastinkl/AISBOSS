@@ -45,6 +45,15 @@
     }
 }
 
+/**
+ *  @author tinkl, 15-10-27 15:10:21
+ *
+ *  @brief  <#Description#>
+ *
+ *  @return <#return value description#>
+ *
+ *  @since <#version number#>
+ */
 -(UIColor*)pickUpImageColor{
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1

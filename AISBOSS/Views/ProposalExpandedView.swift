@@ -12,6 +12,8 @@ import Cartography
 class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private var title: UILabel!
+    private var statu: UILabel!
+    private var alertIcon: UIImageView!
     private var serviceViews: [PurchasedServiceView] = []
     var dimentionListener: DimentionChangable?
     var indexPath: NSIndexPath?
@@ -26,6 +28,16 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         set {
             if let model = newValue {
                 title.text = model.proposal_name
+                
+                if model.alarm_state == 1 {
+                    statu.hidden = false
+                    statu.text = "On Schedule"
+                    
+                    alertIcon.hidden = true
+                } else {
+                    statu.hidden = true
+                    alertIcon.hidden = false
+                }
             }
         }
     }
@@ -54,7 +66,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         title.text = "Shop-on-behalf Service"
         headView.addSubview(title)
         
-        let statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
+        statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
         statu.backgroundColor = PurchasedViewColor.STATU_BACKGROUND
         statu.font = PurchasedViewFont.STATU
@@ -71,6 +83,19 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
             statuView.width == 80
             statuView.height == PurchasedViewDimention.PROPOSAL_STATU_HEIGHT
         }
+        
+        
+        alertIcon = UIImageView(image: UIImage(named: "AlertIcon.png"))
+        headView.addSubview(alertIcon)
+        
+        layout(statu, alertIcon) { statu, alertIcon in
+            alertIcon.top == statu.top
+            alertIcon.right == statu.right
+            alertIcon.width == 11
+            alertIcon.height == 11
+        }
+        
+        
         
         addSubview(headView)
     }

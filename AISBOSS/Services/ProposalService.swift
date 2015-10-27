@@ -64,18 +64,27 @@ class BDKProposalService {
     - parameter errDes:  <#errDes description#>
     */
     
-    func getPoposalListProps(success: (responseData: AIBuyServiceModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func getPoposalListProps(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             
+            // AIProposalPopListModel
             
+            do {
+                let model = try AIProposalPopListModel(data: data)
+                success(responseData: model)
+            } catch {
+                fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
+            }
+            
+            /*
             if let responseJSON: AnyObject = data {
                 let model =  AIBuyServiceModel(JSONDecoder(responseJSON))
                 success(responseData: model)
             }else{
                 fail(errType: AINetError.Format, errDes: "AIBuyServiceModel JSON Parse error.")
-            } 
+            } */
         }
     }
     

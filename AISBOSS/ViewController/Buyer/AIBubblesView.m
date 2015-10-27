@@ -12,6 +12,10 @@
 #import <math.h>
 #import "Veris-Swift.h"
 
+
+#define big         @"big"
+#define middle      @"middle"
+#define small       @"small"
 #define kBubbleMargin 8
 
 @interface AIBubblesView ()
@@ -27,6 +31,8 @@
 
 @property (nonatomic, strong) NSMutableArray *bubbles;
 
+@property (nonatomic, strong) NSMutableDictionary *cacheBubble;
+
 @end
 
 
@@ -34,7 +40,7 @@
 @implementation AIBubblesView
 
 
-- (id) initWithFrame:(CGRect)frame models:(NSArray *)models
+- (id) initWithFrame:(CGRect)frame models:(NSMutableArray *)models
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -52,10 +58,13 @@
 - (void) parseBubbleDatas
 {
     
-    CGFloat big = [AIBubble bigBubbleRadius];
-    CGFloat middle = [AIBubble midBubbleRadius];
-    CGFloat small = [AIBubble smaBubbleRadius];
     
+    /*
+     
+     CGFloat big = [AIBubble bigBubbleRadius];
+     CGFloat middle = [AIBubble midBubbleRadius];
+     CGFloat small = [AIBubble smaBubbleRadius];
+     
     self.bubbleModels = [[NSMutableArray alloc] init];
     
     AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
@@ -110,7 +119,7 @@
     model = [[AIBuyerBubbleModel alloc] init];
     model.bubbleSize = small;
     [self.bubbleModels addObject:model];
-    
+    */
     
     
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
@@ -530,29 +539,47 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 {
     // 构造+气泡
     if (_bubbleModels.count == 0) {
-        
-        
-        
-        
         return;
     }
+    self.cacheBubble = [[NSMutableDictionary alloc ] init];
     
+    [self.cacheBubble setValue:@1 forKey:big];
+    [self.cacheBubble setValue:@(4) forKey:small];
+    [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:middle];
     
-    
-    
-    for (NSInteger i = 0; i < _bubbleModels.count; i++) {
+    [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        AIBuyerBubbleModel *model  = obj;
+        NSUInteger i = idx;
         
-        AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
+    //  for (int i = 0; i < _bubbleModels.count; i++) {
+    //  AIBuyerBubbleModel *model = _bubbleModels[i];//[_bubbleModels objectAtIndex:i];
 
         // 构造bubble
         
-        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model];
+        NSNumber * numberBig = [self.cacheBubble valueForKey:big];
+        NSNumber * numberMiddle = [self.cacheBubble valueForKey:middle];
+        NSNumber * numberSmall= [self.cacheBubble valueForKey:small];
+        if (numberBig.intValue > 0) {
+            model.bubbleSize = [AIBubble bigBubbleRadius];
+            [self.cacheBubble setValue:@0 forKey:big];
+        }else  if (numberMiddle.intValue > 0) {
+            model.bubbleSize = [AIBubble midBubbleRadius];
+            int newValue = numberMiddle.intValue - 1;
+            [self.cacheBubble setValue:@(newValue) forKey:middle];
+        }else if (numberSmall.intValue > 0) {
+            model.bubbleSize = [AIBubble smaBubbleRadius];
+            int newValue = numberSmall.intValue - 1;
+            [self.cacheBubble setValue:@(newValue) forKey:small];
+        }else{
+            model.bubbleSize = [AIBubble smaBubbleRadius];
+        }
+         
         
+        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model];
         
         // 计算bubble的center
         
-        CGPoint center = CGPointZero;
-        
+        CGPoint center = CGPointZero;        
         
         NSMutableArray *rightPoints = [[NSMutableArray alloc] init];
         
@@ -609,7 +636,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             [self.bubbles addObject:bubble];
             [self addSubview:bubble];
         }
-    }
+    }];
+//    }
   
 }
 

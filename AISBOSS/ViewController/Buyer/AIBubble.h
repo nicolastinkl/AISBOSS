@@ -12,9 +12,14 @@
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
 
-@property (nonatomic) CGFloat radius;
+
 
 @property (nonatomic) BOOL hadRecommend;
+
+@property (nonatomic) CGFloat radius;
+//类型
+//是否发光
+//
 
 
 + (CGFloat)bigBubbleRadius;
