@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
+
 @end
 
 
@@ -65,27 +66,30 @@
 
 - (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model
 {
-    
-    
     self = [super init];
     
     if (self) {
         _bubbleModel = [model copy];
-        CGFloat size = [self bubbleRadiusByModel:_bubbleModel] * 2;
+   
+        CGFloat size = model.bubbleSize*2;//[self bubbleRadiusByModel:_bubbleModel] * 2;
         _radius = size / 2;
+        NSLog(@"%f",size);
         self.frame = CGRectMake(0, 0, size, size);
         self.center = center;
         self.layer.cornerRadius = size / 2;
         self.layer.borderWidth = 1;
-        self.backgroundColor = [UIColor redColor];
+//        self.backgroundColor = [UIColor redColor];
         self.layer.masksToBounds = YES;
         self.clipsToBounds = YES;
-
+//        AIBuyerBubbleProportModel * iconModel =  _bubbleModel.service_list.firstObject;
+        
+        
         
         UIPopView * popView = [UIPopView currentView];
-#error objc to swift??
+        [popView fillDataWithModel:_bubbleModel];
+//        popView.frame = self.bounds;
+        popView.center = CGPointMake(self.width/2, self.height/2);
         [self addSubview:popView];
-        
         
 //        UIImageView *imageView = [[UIImageView alloc] initWithImage:[self randomImage]];
 //        imageView.frame = self.bounds;

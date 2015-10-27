@@ -108,8 +108,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add bubbles
         let margin : CGFloat = 40 / 2.46
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: self.dataSourcePop)
+        
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
+        
         
 //        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
 //        bubble.delegate = self
@@ -365,12 +367,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bdk.getPoposalListProps({ (responseData) -> Void in
             if let pops = responseData.proposal_list {
                 self.dataSourcePop = pops as! [AIBuyerBubbleModel]
-                self.tableView?.reloadData()
             }
+            
+            self.makeBubbleView()
+            self.tableView?.reloadData()
+            
             }) { (errType, errDes) -> Void in
-                
-                
-                
         }        
     }
     

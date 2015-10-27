@@ -54,17 +54,27 @@
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_50_alpha_holdView" translatesAutoresizingMaskIntoConstraints="NO" id="IGh-XQ-SVc">
+                    <rect key="frame" x="-1" y="86" width="147" height="60"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="MpZ-Nq-4v9"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="IGh-XQ-SVc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="1bQ-sC-buj"/>
                 <constraint firstItem="zZb-xh-cjC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="3vS-NN-mpb"/>
                 <constraint firstItem="cx7-O0-bhh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8a5-cT-aUy"/>
                 <constraint firstItem="kzj-t4-FKf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="86" id="Dia-wd-Xhi"/>
                 <constraint firstAttribute="trailing" secondItem="kzj-t4-FKf" secondAttribute="trailing" constant="25" id="GV1-fd-0fM"/>
                 <constraint firstItem="nLg-hX-My0" firstAttribute="leading" secondItem="kzj-t4-FKf" secondAttribute="trailing" constant="-4" id="Jbk-DK-1we"/>
+                <constraint firstAttribute="trailing" secondItem="IGh-XQ-SVc" secondAttribute="trailing" id="Vcp-0E-B0N"/>
                 <constraint firstItem="cx7-O0-bhh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="102" id="ac8-Fq-1wa"/>
                 <constraint firstAttribute="trailing" secondItem="gbB-a1-sMj" secondAttribute="trailing" id="bEU-MB-GXo"/>
+                <constraint firstItem="IGh-XQ-SVc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="86" id="dR7-Yb-DVS"/>
                 <constraint firstItem="gbB-a1-sMj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="heS-c4-eDa"/>
                 <constraint firstItem="nLg-hX-My0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="86" id="oV5-hF-Jpq"/>
                 <constraint firstItem="gbB-a1-sMj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pyd-4l-9aX"/>
@@ -83,5 +93,6 @@
     </objects>
     <resources>
         <image name="bugBoundbg" width="20" height="22"/>
+        <image name="white_50_alpha_holdView" width="209" height="80"/>
     </resources>
 </document>
