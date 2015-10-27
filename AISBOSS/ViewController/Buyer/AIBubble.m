@@ -212,7 +212,7 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
             dispatch_async(dispatch_get_main_queue(), ^{
                 TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:3];
                 UIColor *color = imageColors.colors.lastObject;
-                self.backgroundColor = color;
+                weakSelf.backgroundColor = color;
                 //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
             });
         }];

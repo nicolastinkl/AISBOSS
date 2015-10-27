@@ -433,10 +433,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             [self addSubview:tinyBubble];
             break;
         }
-        else
-        {
-            center = CGPointZero; // 如果找遍所有的点都无法放置tiny，说明这个气泡展示不了
-        }
+
     }
     
     
@@ -547,29 +544,27 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     [self.cacheBubble setValue:@(4) forKey:small];
     [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:middle];
     
+    __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
         NSUInteger i = idx;
         
-    //  for (int i = 0; i < _bubbleModels.count; i++) {
-    //  AIBuyerBubbleModel *model = _bubbleModels[i];//[_bubbleModels objectAtIndex:i];
-
         // 构造bubble
         
-        NSNumber * numberBig = [self.cacheBubble valueForKey:big];
-        NSNumber * numberMiddle = [self.cacheBubble valueForKey:middle];
-        NSNumber * numberSmall= [self.cacheBubble valueForKey:small];
+        NSNumber * numberBig = [weakSelf.cacheBubble valueForKey:big];
+        NSNumber * numberMiddle = [weakSelf.cacheBubble valueForKey:middle];
+        NSNumber * numberSmall= [weakSelf.cacheBubble valueForKey:small];
         if (numberBig.intValue > 0) {
             model.bubbleSize = [AIBubble bigBubbleRadius];
-            [self.cacheBubble setValue:@0 forKey:big];
+            [weakSelf.cacheBubble setValue:@0 forKey:big];
         }else  if (numberMiddle.intValue > 0) {
             model.bubbleSize = [AIBubble midBubbleRadius];
             int newValue = numberMiddle.intValue - 1;
-            [self.cacheBubble setValue:@(newValue) forKey:middle];
+            [weakSelf.cacheBubble setValue:@(newValue) forKey:middle];
         }else if (numberSmall.intValue > 0) {
             model.bubbleSize = [AIBubble smaBubbleRadius];
             int newValue = numberSmall.intValue - 1;
-            [self.cacheBubble setValue:@(newValue) forKey:small];
+            [weakSelf.cacheBubble setValue:@(newValue) forKey:small];
         }else{
             model.bubbleSize = [AIBubble smaBubbleRadius];
         }
@@ -588,25 +583,21 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         if (i == 0) {
             // 第一个圆在中心区域随机取一点
             shouldAddBubble = YES;
-            center = [self randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
+            center = [weakSelf randomPointWithCenterCycleR:[AIBubble smaBubbleRadius]];
             //bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:[[AIBuyerBubbleModel alloc] init]];
             NSValue *rightValue = [NSValue valueWithCGPoint:center];
             [rightPoints addObject:rightValue];
         }
         else
         {
-            if (i == 8)
-            {
-                bubble.hadRecommend = YES;
-            }
             
-            for (AIBubble *centerBubble in self.bubbles) {
+            for (AIBubble *centerBubble in weakSelf.bubbles) {
                 
                 if (centerBubble.radius == [AIBubble tinyBubbleRadius]) {
                     continue;
                 }
                 
-               center = [self searchCenterForBubble:bubble withCenterBubble:centerBubble];
+               center = [weakSelf searchCenterForBubble:bubble withCenterBubble:centerBubble];
                 
                 if (!CGPointEqualToPoint(center, CGPointZero)) {
                     shouldAddBubble = YES;
@@ -620,24 +611,22 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         if (shouldAddBubble) {
             
             if (bubble.hadRecommend) {
-                center = [self inserTinyBubbleForBubble:bubble withPoints:rightPoints];
+                center = [weakSelf inserTinyBubbleForBubble:bubble withPoints:rightPoints];
                 if (CGPointEqualToPoint(center, CGPointZero)) {
                     // 没找到合适点放tiny，重新寻找
                 }
             }
             else
             {
-                center = [self nearestPointInPoints:rightPoints];
+                center = [weakSelf nearestPointInPoints:rightPoints];
             }
-            
-            //center = [self nearestPointInPoints:rightPoints];
 
             bubble.center = center;
-            [self.bubbles addObject:bubble];
-            [self addSubview:bubble];
+            [weakSelf.bubbles addObject:bubble];
+            [weakSelf addSubview:bubble];
         }
     }];
-//    }
+
   
 }
 
