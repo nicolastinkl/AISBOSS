@@ -23,15 +23,19 @@ class AIOrderDescView: UIView {
     let NEW_TIME_TEXT = "New Time"
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
-    let VIEW_PADDING : CGFloat = 13
+    let VIEW_PADDING : CGFloat = 1
     let SATE_LABEL_WIDTH : CGFloat = 26
     let PARAM_KEY_OTHER : String = "20151026"
     let PARAM_KEY_DESC : String = "25042643"
+    
+    let DESC_TEXT_FONT = AITools.myriadLightSemiCondensedWithSize(18)
+    let LABEL_TITLE_FONT = AITools.myriadLightSemiCondensedWithSize(13)
     
     var paramDictionary : NSDictionary?
     var descText : String!
     var timeValueText = ""
     var timeLabelText = ""
+    var isDelayed = false
     
     
     override init(frame: CGRect) {
@@ -54,6 +58,10 @@ class AIOrderDescView: UIView {
                     descText = paramModel.param_value
                 }
             }
+        }
+        //判断延误标志
+        if serviceOrderModel.order_state == "Delayed"{
+            isDelayed = true
         }
         
         buildView()
@@ -95,12 +103,39 @@ class AIOrderDescView: UIView {
                 timeSize = CGRectMake(0, 0, 0, 0)
             }
         }
+        if let valueForOngoing = paramDictionary?.valueForKey("Ongoing") as? String{
+            if valueForOngoing != ""{
+                timeValueText = "Ongoing"
+                timeLabelText = ""
+                timeSize = CGRectMake(0, 0, 0, 0)
+            }
+        }
+        
+        
 
 
-        let timeTextSize = caculateContentSize(timeValueText, font: AITools.myriadLightSemiCondensedWithSize(18))
+        let timeTextSize = caculateContentSize(timeValueText, font: DESC_TEXT_FONT)
         let timeValueLabelFrame = CGRectMake(self.bounds.width - timeTextSize.size.width - VIEW_PADDING, 0, timeTextSize.size.width, TEXT_HEIGHT)
         let timeLabelFrame = CGRectMake(timeValueLabelFrame.origin.x - TEXT_PADDING - timeSize.size.width + 2, 0, timeSize.size.width, TEXT_HEIGHT)
-        let descLabelFrame = CGRectMake(0, 0, timeLabelFrame.origin.x - TEXT_PADDING, 21)
+        
+        var descLabelFrame : CGRect!
+        
+        if isDelayed{
+            let alertTextSize = caculateContentSize("Delayed", font: LABEL_TITLE_FONT)
+            let alertLabelFrame = CGRectMake(timeLabelFrame.origin.x - alertTextSize.width - 35, 0, alertTextSize.width, TEXT_HEIGHT)
+            let alertLabel = UILabel(frame: alertLabelFrame)
+            alertLabel.text = "Delayed"
+            alertLabel.font = LABEL_TITLE_FONT
+            alertLabel.textColor = UIColor(hex: "#dbb613")
+            alertLabel.alpha = 0.6
+            self.addSubview(alertLabel)
+            
+            descLabelFrame = CGRectMake(0, 0, alertLabelFrame.origin.x - TEXT_PADDING, 21)
+        }
+        else{
+            descLabelFrame = CGRectMake(0, 0, timeLabelFrame.origin.x - TEXT_PADDING, 21)
+        }
+        
         
         descLabel = UILabel(frame: descLabelFrame)
         descLabel.text = descText ?? "Delivery staff:Mike Liu"
@@ -109,11 +144,11 @@ class AIOrderDescView: UIView {
         let timeLabel = UILabel(frame: timeLabelFrame)
         timeLabel.text = timeLabelText
         timeLabel.textColor = PurchasedViewColor.TITLE
-        timeLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
-        timeLabel.alpha = 0.4
+        timeLabel.font = LABEL_TITLE_FONT
+        timeLabel.alpha = 0.6
 
         let timeValueLabel = UILabel(frame: timeValueLabelFrame)
-        timeValueLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+        timeValueLabel.font = DESC_TEXT_FONT
 
         timeValueLabel.text = timeValueText
         timeValueLabel.textColor = UIColor.whiteColor()
@@ -138,8 +173,8 @@ class AIOrderDescView: UIView {
             }
         }
         
-        let gateValueSize = caculateContentSize(gateText, fontSize: 18)
-        let sateValueSize = caculateContentSize(sateText, fontSize: 18)
+        let gateValueSize = caculateContentSize(gateText, font: DESC_TEXT_FONT)
+        let sateValueSize = caculateContentSize(sateText, font: DESC_TEXT_FONT)
         let sateValueLabelFrame = CGRectMake(self.bounds.width - sateValueSize.size.width - VIEW_PADDING, 0, sateValueSize.width, TEXT_HEIGHT)
         let sateLabelFrame = CGRectMake(sateValueLabelFrame.origin.x - SATE_LABEL_WIDTH - TEXT_PADDING, 0, SATE_LABEL_WIDTH, TEXT_HEIGHT)
         let gateValueLabelFrame = CGRectMake(sateLabelFrame.origin.x - TEXT_PADDING - gateValueSize.width, 0, gateValueSize.width, TEXT_HEIGHT)
@@ -154,24 +189,24 @@ class AIOrderDescView: UIView {
         let sateValueLabel = UILabel(frame: sateValueLabelFrame)
         sateValueLabel.text = sateText
         sateValueLabel.textColor = PurchasedViewColor.TITLE
-        sateValueLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+        sateValueLabel.font = DESC_TEXT_FONT
         
         let sateLabel = UILabel(frame: sateLabelFrame)
         sateLabel.textColor = PurchasedViewColor.TITLE
-        sateLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+        sateLabel.font = LABEL_TITLE_FONT
         sateLabel.text = "SATE"
-        sateLabel.alpha = 0.4
+        sateLabel.alpha = 0.6
         
         let gateValueLabel = UILabel(frame: gateValueLabelFrame)
         gateValueLabel.text = gateText
         gateValueLabel.textColor = PurchasedViewColor.TITLE
-        gateValueLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+        gateValueLabel.font = DESC_TEXT_FONT
         
         let gateLabel = UILabel(frame: gateLabelFrame)
         gateLabel.textColor = PurchasedViewColor.TITLE
-        gateLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+        gateLabel.font = LABEL_TITLE_FONT
         gateLabel.text = "GATE"
-        gateLabel.alpha = 0.4
+        gateLabel.alpha = 0.6
 
         self.addSubview(descLabel)
         self.addSubview(sateValueLabel)

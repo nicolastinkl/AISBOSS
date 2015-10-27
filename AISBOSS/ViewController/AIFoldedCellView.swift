@@ -49,8 +49,11 @@ class AIFolderCellView: UIView {
         statusLabel.clipsToBounds = true
         
         descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
-        if let serviceOrderModel = proposalModel.order_list[0] as? ServiceOrderModel{
-            descContentView?.loadData(serviceOrderModel)
+        for serviceOrderModel : ServiceOrderModel in proposalModel.order_list as! [ServiceOrderModel]{
+            if serviceOrderModel.order_state != "Completed" {
+                descContentView?.loadData(serviceOrderModel)
+            }
+            
         }
         
         descView.addSubview(descContentView!)
