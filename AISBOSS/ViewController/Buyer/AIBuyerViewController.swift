@@ -239,8 +239,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let key = "rows\(indexPath.row)"
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder?{
             cell = cacheCell
-        }
-        else{
+        } else {
             cell = AITableFoldedCellHolder()
             cell.tag = indexPath.row
             let folderCellView = AIFolderCellView.currentView()

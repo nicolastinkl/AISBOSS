@@ -17,6 +17,8 @@ enum DESC_SERVICE_TYPE : Int{
 
 class AIOrderDescView: UIView {
     
+    var descLabel: UILabel!
+    
     let TIME_TEXT = "Time"
     let NEW_TIME_TEXT = "New Time"
     let TEXT_HEIGHT : CGFloat = 21
@@ -44,14 +46,13 @@ class AIOrderDescView: UIView {
         let timeLabelFrame = CGRectMake(timeValueLabelFrame.origin.x - TEXT_PADDING - timeSize.size.width + 2, 0, timeSize.size.width, TEXT_HEIGHT)
         let descLabelFrame = CGRectMake(0, 0, timeLabelFrame.origin.x - TEXT_PADDING, 21)
         
-        let descLabel = UILabel(frame: descLabelFrame)
+        descLabel = UILabel(frame: descLabelFrame)
         descLabel.text = "Delivery staff:Mike Liu"
         descLabel.textColor = UIColor.whiteColor()
-        descLabel.font = AITools.myriadLightSemiCondensedWithSize(18)
+        descLabel.font = PurchasedViewFont.SERVICE_TITLE
         let timeLabel = UILabel(frame: timeLabelFrame)
         timeLabel.text = TIME_TEXT
-        timeLabel.alpha = 0.4
-        timeLabel.textColor = UIColor.whiteColor()
+        timeLabel.textColor = PurchasedViewColor.TITLE
         timeLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
 
         let timeValueLabel = UILabel(frame: timeValueLabelFrame)
