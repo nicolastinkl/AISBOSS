@@ -22,6 +22,8 @@ class AIOrderDescView: UIView {
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
     
+    var paramDictionary : NSDictionary?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildView()
@@ -33,7 +35,14 @@ class AIOrderDescView: UIView {
     
     //load data
     func loadData(serviceOrderModel : ServiceOrderModel){
-        
+        if let paramModelArray = serviceOrderModel.param_list as? [ParamModel]{
+            for paramModel : ParamModel in paramModelArray{
+                if paramModel.param_key == "20151026" {
+                     let jsonData = paramModel.param_value.dataUsingEncoding(NSUTF8StringEncoding)
+                     paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                }
+            }
+        }
     }
     
     func buildView(){
