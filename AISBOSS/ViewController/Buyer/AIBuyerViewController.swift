@@ -132,7 +132,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         searchButton.frame = CGRectMake(0, 0, buttonWidth, barHeight)
         searchButton.setImage(UIImage(named: "Buyer_Search"), forState: UIControlState.Normal)
         searchButton.imageEdgeInsets = UIEdgeInsetsMake(top, top, top, buttonWidth - imageSize - top)
-        searchButton.addTarget(self, action: nil, forControlEvents: .TouchUpInside)
+        searchButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
         topBar?.addSubview(searchButton)
         
         // make logo
@@ -142,7 +142,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)
-        //logoButton.imageEdgeInsets = UIEdgeInsetsMake(15, 0, barHeight - logoSie - 15, 0)
         logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2)
         logoButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
         
@@ -319,7 +318,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if (scrollView.contentOffset.y > 0)
         {
-            topBar.backgroundColor = UIColor(white: 0.6, alpha: 0.6)
+            topBar.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
         }
         else
         {

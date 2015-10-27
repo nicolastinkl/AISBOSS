@@ -229,7 +229,10 @@
 
 #pragma mark - New Fonts
 
-
++ (UIFont *) myriadRegularWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Regular" size:size];
+}
 
 + (UIFont *) myriadBoldWithSize:(CGFloat)size
 {
