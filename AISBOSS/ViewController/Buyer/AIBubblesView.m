@@ -483,6 +483,24 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     [self.cacheBubble setValue:@(4) forKey:small];
     [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:middle];
     
+    // Add AddButton
+    /**
+     typeToNormal = 0,
+     typeToSignIcon = 1,//
+     typeToAdd = 2//
+     */
+    AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
+    modelAdd.bubbleType = 2;
+    modelAdd.bubbleSize = 0;
+    modelAdd.proposal_id = 0;
+    modelAdd.proposal_id_new = 0;
+    modelAdd.proposal_name = @"";
+    modelAdd.proposal_price = @"";
+    modelAdd.service_thumbnail_icon= @"";
+    modelAdd.order_times = 0;
+    
+    [self.bubbleModels addObject:modelAdd];
+    
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
         NSUInteger i = idx;
@@ -508,10 +526,16 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             [self.cacheBubble setValue:@(newValue) forKey:small];
         }else{
             model.bubbleSize = [AIBubble smaBubbleRadius];
-        }
-         
+        } 
         
-        AIBubble *bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model];
+        AIBubble *bubble;
+        if (model.bubbleType == 2) {
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
+        }else  if (model.bubbleType == 1) {
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon];
+        }else {
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
+        }
         
         // 计算bubble的center
         

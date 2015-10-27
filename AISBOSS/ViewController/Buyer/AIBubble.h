@@ -9,14 +9,25 @@
 #import <UIKit/UIKit.h>
 
 
+
+typedef enum  {
+    
+    typeToNormal = 0,
+    typeToSignIcon = 1,//
+    typeToAdd = 2//
+    
+}BubbleType;
+
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
 
-
+//圆角
 @property (nonatomic) CGFloat radius;
 //类型
+@property (nonatomic) BubbleType bubbleType;
 //是否发光
-//
+@property (nonatomic) CGFloat isLight;
+
 
 + (CGFloat)bigBubbleRadius;
 
@@ -28,7 +39,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model;
 
-- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model;
+- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type;
 
 
 @end

@@ -24,6 +24,7 @@
 
 @interface AIBuyerBubbleModel : JSONModel
 
+@property (assign, nonatomic) int bubbleType;
 @property (assign, nonatomic) NSInteger bubbleSize;
 
 @property (assign, nonatomic) NSInteger proposal_id;

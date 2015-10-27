@@ -364,11 +364,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // 气泡数据 -> 本地JOSN文件
         bdk.getPoposalListProps({ (responseData) -> Void in
             if let pops = responseData.proposal_list {
-                self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                if pops.count > 0 {
+                    self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                    
+                    self.makeBubbleView()
+                    self.tableView?.reloadData()
+                    
+                }
+                
             }
-            
-            self.makeBubbleView()
-            self.tableView?.reloadData()
             
             }) { (errType, errDes) -> Void in
         }        
