@@ -59,4 +59,8 @@
 
 + (UIFont *) myriadSemiCondensedWithSize:(CGFloat)size;
 
++ (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size;
+
++ (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size;
+
 @end

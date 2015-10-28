@@ -25,6 +25,7 @@ class PurchasedServiceView: UIView, Measureable {
     
     var dimentionListener: DimentionChangable?
     private var serviceOrderModel: ServiceOrderModel?
+    var serviceOrderStateProtocal: ServiceOrderStateProtocal?
     
     private let EYE_ENABLE_IMAGE = "eye_enable.png"
     private let EYE_DISABLE_IMAGE = "eye_disable.png"
@@ -35,6 +36,8 @@ class PurchasedServiceView: UIView, Measureable {
         }
         
         set {
+            serviceOrderModel = newValue
+            
             if let model = newValue {
                 logo.asyncLoadImage(model.service_thumbnail_icon)
                 title.text = model.service_name
@@ -198,6 +201,10 @@ class PurchasedServiceView: UIView, Measureable {
     
     func eyeTap(sender: UITapGestureRecognizer) {
         if let contentView = expandContent {
+            if orderIsComplete() {
+                checkOrderAndChangeState()
+            }
+            
             if (contentView.hidden) {
                 adjustFrameToExpand()
                 
@@ -210,6 +217,17 @@ class PurchasedServiceView: UIView, Measureable {
             
            contentView.hidden = !contentView.hidden
         }    
+    }
+    
+    private func orderIsComplete() -> Bool {
+        let state = ServiceOrderState(rawValue: serviceOrderModel!.order_state)
+        return state == ServiceOrderState.Completed
+    }
+    
+    private func checkOrderAndChangeState() {
+        let oldState = ServiceOrderState(rawValue: serviceOrderModel!.order_state)
+        serviceOrderModel!.order_state = ServiceOrderState.CompletedAndChecked.rawValue
+        serviceOrderStateProtocal?.orderStateChanged(serviceOrderModel!, oldState: oldState!)
     }
     
     private func adjustFrameToExpand() {

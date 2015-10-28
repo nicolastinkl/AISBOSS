@@ -588,6 +588,11 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         } 
         
         AIBubble *bubble;
+        
+        if (model.service_id > 0) {
+            model.bubbleType = 1;
+        }
+        
         if (model.bubbleType == 2) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
         }else  if (model.bubbleType == 1) {
@@ -655,6 +660,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
     }];
 
+    for (AIBubble *bu in self.bubbles) {
+        NSLog(@"\nbubble size : %@ \n", [NSValue valueWithCGRect:bu.frame]);
+    }
   
 }
 

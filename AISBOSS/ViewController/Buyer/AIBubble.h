@@ -35,13 +35,14 @@ typedef enum  {
 @property (nonatomic) BubbleType bubbleType;
 //是否发光
 @property (nonatomic) CGFloat isLight;
+//是否周边有小气泡标识
+@property (nonatomic) BOOL hasSmallBubble;
 
+@property (nonatomic) CGSize glowOffset;
 
-@property (nonatomic, assign) CGSize glowOffset;
+@property (nonatomic) CGFloat glowAmount;
 
-@property (nonatomic, assign) CGFloat glowAmount;
-
-@property (nonatomic, retain) UIColor *glowColor;
+@property (nonatomic, strong) UIColor *glowColor;
 
 + (CGFloat)bigBubbleRadius;
 

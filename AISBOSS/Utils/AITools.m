@@ -254,6 +254,27 @@
     return [UIFont fontWithName:@"MyriadPro-SemiCn" size:size];
 }
 
++ (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size
+{
+    CGFloat displaySize;
+    UIScreen *screen = [UIScreen mainScreen];
+    displaySize = size * screen.bounds.size.width / 1080;
+    return displaySize;
+}
+
++ (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size
+{
+    
+    UIScreen *screen = [UIScreen mainScreen];
+    CGFloat horizontalPixel = screen.bounds.size.width * 3;
+    
+    CGFloat rate = horizontalPixel / 1080;
+    
+    CGSize displaySize = CGSizeMake(size.width * rate, size.height * rate);
+    
+    return displaySize;
+}
+
 #pragma mark - Most Color
 
 

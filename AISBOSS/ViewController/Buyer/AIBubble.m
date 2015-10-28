@@ -12,6 +12,9 @@
 #import "UIImageView+HighlightedWebCache.h"
 #import "Veris-Swift.h"
 #import "TDImageColors.h"
+#import "AITools.h"
+#import "MDCSpotlightView.h"
+
 
 #define kBigBubbleRate          0.4
 
@@ -37,6 +40,9 @@ typedef enum  {
 
 
 @implementation AIBubble
+@synthesize glowOffset = _glowOffset;
+@synthesize glowAmount = _glowAmount;
+@synthesize glowColor = _glowColor;
 
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model
@@ -65,6 +71,11 @@ typedef enum  {
         
         _bubbleModel = [model copy];
         _bubbleType = type;
+        if (model.service_id > 0) {
+            self.hasSmallBubble = YES;
+        }else{
+            self.hasSmallBubble = NO;
+        }
         
         switch (type) {
             case typeToAdd:
@@ -74,19 +85,13 @@ typedef enum  {
                 break;
             case typeToNormal:
             {
-                
-                colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-                
-                self.glowOffset = CGSizeMake(0.0, 0.0);
-                self.glowAmount = 0.0;
-                self.glowColor = [UIColor clearColor];
-                
                 [self initWithNormal:center model:model];
+                
             }
                 break;
             case typeToSignIcon:
             {
-                
+                [self initWithSignIcon:center model:model];
             }
                 break;
                 
@@ -99,6 +104,55 @@ typedef enum  {
     }
     
     return self;
+}
+
+
+- (void) initWithSignIcon:(CGPoint)center model:(AIBuyerBubbleModel *)model{
+    
+    int width = [AIBubble tinyBubbleRadius] * 2;
+    
+    self.frame = CGRectMake(0, 0, width, width);
+    self.center = center;
+    
+    _radius = width / 2;
+    //背景
+    UIImageView * imageview = [[UIImageView alloc] init];
+    imageview.frame = self.frame;
+    imageview.alpha = 0.5;
+    imageview.center =  CGPointMake(self.width/2, self.height/2);
+    [self addSubview:imageview];
+    
+    {
+        //图标
+        UIImageView * imageviewIcon = [[UIImageView alloc] init];
+        imageviewIcon.frame =CGRectMake(0, 0, 21, 21);
+        imageviewIcon.center =  CGPointMake(self.width/2, self.height/2);
+        [self addSubview:imageviewIcon];
+        imageviewIcon.image = [UIImage imageNamed:@"recommandIcon"];
+    }
+    
+    
+    self.layer.cornerRadius = _radius;
+    self.layer.borderWidth = 1;
+    self.layer.masksToBounds = YES;
+    self.clipsToBounds = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:[UIImage imageNamed:@"Bubble01"] count:3];
+        
+        NSArray * array = [NSArray arrayWithObjects:imageColors.colors.lastObject, imageColors.colors[1],nil];
+        UIColor *color = imageColors.colors[1];
+        weakSelf.layer.borderColor = color.CGColor;
+        
+        imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
+        
+        
+    });
+    
+    
+    
 }
 
 - (void) initWithAdd:(CGPoint)center{
@@ -117,6 +171,8 @@ typedef enum  {
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
     [self setNeedsDisplay];
+    
+    
 }
 
 - (IBAction)addAction:(id)sender{
@@ -136,6 +192,22 @@ typedef enum  {
     self.frame = CGRectMake(0, 0, size, size);
     self.center = center;
     
+    //根据发光效果添加图层
+    /*{
+        MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+        [self addSubview:focalPointView];
+        
+        focalPointView.bgColor= [UIColor groupTableViewBackgroundColor];
+        focalPointView.frame = CGRectMake(0, 0, size + 30, size + 30);
+        focalPointView.center = CGPointMake(self.width/2, self.height/2);
+        focalPointView.backgroundColor = [UIColor greenColor];
+        focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+        focalPointView.layer.masksToBounds  = YES;
+        [focalPointView setNeedsDisplay];
+        focalPointView.alpha = 0.1;
+    }*/
+    
+    //背景
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
     imageview.alpha = 0.5;
@@ -153,6 +225,7 @@ typedef enum  {
     self.layer.borderWidth = 2;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
+
     [self setNeedsDisplay];
     
     AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
@@ -189,14 +262,21 @@ typedef enum  {
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
             
-            
             // Settings Shadow.
             
-//            //Create the gradient and add it to our view's root layer
+            
+            //Create the gradient and add it to our view's root layer
+//            colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+//            self.glowOffset = CGSizeMake(0.0, 0.0);
+//            self.glowAmount = 0.0;
+//            self.glowColor = [UIColor clearColor];
+            
 //            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-//            gradientLayer.frame = CGRectMake(5.0, 5.0, self.width + 10, self.height + 10);
-//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor, nil]];
-//            [self.layer insertSublayer:gradientLayer atIndex:0];
+//            gradientLayer.frame =  (CGRect){CGPointZero, CGSizeMake(weakSelf.width, weakSelf.width)};
+//            gradientLayer.position = weakSelf.center;
+//            [weakSelf.layer addSublayer:gradientLayer];
+//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor,(id)[UIColor grayColor].CGColor, nil]];
+            
         });
     }];
     
@@ -332,23 +412,23 @@ typedef enum  {
 
 + (CGFloat)bigBubbleRadius
 {
-    return 438  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:438] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
 }
 
 + (CGFloat)midBubbleRadius
 {
-    return 292  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:292] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
 }
 
 + (CGFloat)smaBubbleRadius
 {
-    return 194  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:194] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
 }
 
 
 + (CGFloat)tinyBubbleRadius
 {
-    return 78  / 2.46 / 2;
+    return [AITools displaySizeFrom1080DesignSize:78] / 2;
 }
 
 /*
