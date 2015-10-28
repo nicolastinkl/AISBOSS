@@ -26,7 +26,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let tableCellRowHeight : CGFloat = 96
     
-    let topBarHeight : CGFloat = 130 / 2.46
+    let topBarHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(130)
     
     // MARK: - Variable
     var bubbleView : UIView!
@@ -107,7 +107,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.tableHeaderView = bubbleView
         
         // add bubbles
-        let margin : CGFloat = 40 / 2.46
+        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
         
         let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
@@ -126,7 +126,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func makeTopBar () {
         let barHeight : CGFloat = topBarHeight;
         let buttonWidth : CGFloat = 80
-        let imageSize : CGFloat = (UIImage(named: "Buyer_Search")?.size.width)! * 3 / 2.46
+        let imageSize : CGFloat = AITools.imageDisplaySizeFrom1080DesignSize((UIImage(named: "Buyer_Search")?.size)!).width
         
         topBar = UIView (frame: CGRectMake(0, 0, screenWidth, barHeight))
         self.view.addSubview(topBar!)
@@ -151,7 +151,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // make logo
         
         let logo = UIImage(named: "Buyer_Logo")
-        let logoSie = (logo?.size.width)! * 3 / 2.46
+        let logoSie = AITools.imageDisplaySizeFrom1080DesignSize((logo?.size)!).width
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)

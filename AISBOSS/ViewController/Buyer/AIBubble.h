@@ -37,11 +37,11 @@ typedef enum  {
 @property (nonatomic) CGFloat isLight;
 
 
-@property (nonatomic, assign) CGSize glowOffset;
+@property (nonatomic) CGSize glowOffset;
 
-@property (nonatomic, assign) CGFloat glowAmount;
+@property (nonatomic) CGFloat glowAmount;
 
-@property (nonatomic, retain) UIColor *glowColor;
+@property (nonatomic, strong) UIColor *glowColor;
 
 + (CGFloat)bigBubbleRadius;
 

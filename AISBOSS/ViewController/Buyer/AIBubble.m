@@ -12,6 +12,7 @@
 #import "UIImageView+HighlightedWebCache.h"
 #import "Veris-Swift.h"
 #import "TDImageColors.h"
+#import "AITools.h"
 
 #define kBigBubbleRate          0.4
 
@@ -332,23 +333,23 @@ typedef enum  {
 
 + (CGFloat)bigBubbleRadius
 {
-    return 438  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:438] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
 }
 
 + (CGFloat)midBubbleRadius
 {
-    return 292  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:292] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
 }
 
 + (CGFloat)smaBubbleRadius
 {
-    return 194  / 2.46 / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:194] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
 }
 
 
 + (CGFloat)tinyBubbleRadius
 {
-    return 78  / 2.46 / 2;
+    return [AITools displaySizeFrom1080DesignSize:78] / 2;
 }
 
 /*
