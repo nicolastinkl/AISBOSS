@@ -107,7 +107,6 @@ class PurchasedServiceView: UIView, Measureable {
         layout(logo, title) { logo, title in
             title.top == logo.top - 2
             title.left == logo.right + 10
-            title.width == 140
             title.height == 20
         }
     }
@@ -122,7 +121,7 @@ class PurchasedServiceView: UIView, Measureable {
         layout(title, statu) { title, statu in
             statu.top == title.bottom
             statu.left == title.left
-            statu.width == 60
+            statu.width == title.width
             statu.height == PurchasedViewDimention.SERVICE_STATU_HEIGHT
         }
     }
@@ -139,7 +138,7 @@ class PurchasedServiceView: UIView, Measureable {
             serviceDescription.top == statu.bottom
             serviceDescription.left == serviceDescription.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             serviceDescription.width == serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
-            serviceDescription.height == 30
+            serviceDescription.height >= 30
         }
     }
     
@@ -175,6 +174,10 @@ class PurchasedServiceView: UIView, Measureable {
             eye.right == bell.left - 4
             eye.width == bell.width
             eye.height == bell.height
+        }
+        
+        layout(bellIcon, title) { bellIcon, title in
+            title.right == bellIcon.left - 10
         }
 
     }

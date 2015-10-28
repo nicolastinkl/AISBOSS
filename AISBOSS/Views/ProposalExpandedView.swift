@@ -112,13 +112,8 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private func addHeadView() {
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: super.frame.width, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
-        title = UILabel(frame: CGRect(x: PurchasedViewDimention.PROPOSAL_PADDING_LEFT, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 200, height: PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT))
-        title.font = PurchasedViewFont.TITLE
-        title.textColor = PurchasedViewColor.TITLE
-        title.text = "Shop-on-behalf Service"
-        headView.addSubview(title)
-        
-        statu = UILabel(frame: CGRect(x: title.frame.width + 10, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
+ 
+        statu = UILabel(frame: CGRect(x: 0, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
         statu.backgroundColor = PurchasedViewColor.STATU_BACKGROUND
         statu.font = PurchasedViewFont.STATU
@@ -136,6 +131,19 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
             statuView.height == PurchasedViewDimention.PROPOSAL_STATU_HEIGHT
         }
         
+        
+        title = UILabel(frame: CGRect(x: PurchasedViewDimention.PROPOSAL_PADDING_LEFT, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 200, height: PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT))
+        title.font = PurchasedViewFont.TITLE
+        title.textColor = PurchasedViewColor.TITLE
+        title.text = "Shop-on-behalf Service"
+        headView.addSubview(title)
+        
+        layout(statu, title) { statuView, title in
+            title.top == title.superview!.top + PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP
+            title.left == title.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
+            title.right == statuView.left - 10
+            title.height == PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT
+        }
         
         alertIcon = UIImageView(image: UIImage(named: "AlertIcon.png"))
         headView.addSubview(alertIcon)
