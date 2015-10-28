@@ -34,6 +34,7 @@
 		<string>MyriadPro-Bold.otf</string>
 		<string>MyriadPro-LightSemiCn.otf</string>
 		<string>MyriadPro-LightSemiExt.otf</string>
+		<string>MyriadPro-SemiCn.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
