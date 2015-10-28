@@ -249,7 +249,10 @@
     return [UIFont fontWithName:@"MyriadPro-LightSemiExt" size:size];
 }
 
-
++ (UIFont *) myriadSemiCondensedWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-SemiCn" size:size];
+}
 
 #pragma mark - Most Color
 

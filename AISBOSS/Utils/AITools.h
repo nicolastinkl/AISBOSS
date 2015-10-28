@@ -57,6 +57,6 @@
 
 + (UIFont *) myriadLightSemiExtendedWithSize:(CGFloat)size;
 
-
++ (UIFont *) myriadSemiCondensedWithSize:(CGFloat)size;
 
 @end
