@@ -69,6 +69,11 @@ typedef enum  {
         
         _bubbleModel = [model copy];
         _bubbleType = type;
+        if (model.service_id > 0) {
+            self.hasSmallBubble = YES;
+        }else{
+            self.hasSmallBubble = NO;
+        }
         
         switch (type) {
             case typeToAdd:
