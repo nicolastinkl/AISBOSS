@@ -12,6 +12,7 @@
 #import "UIImageView+HighlightedWebCache.h"
 #import "Veris-Swift.h"
 #import "TDImageColors.h"
+#import "MDCSpotlightView.h"
 
 #define kBigBubbleRate          0.4
 
@@ -37,6 +38,9 @@ typedef enum  {
 
 
 @implementation AIBubble
+@synthesize glowOffset = _glowOffset;
+@synthesize glowAmount = _glowAmount;
+@synthesize glowColor = _glowColor;
 
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model
@@ -136,6 +140,22 @@ typedef enum  {
     self.frame = CGRectMake(0, 0, size, size);
     self.center = center;
     
+    //根据发光效果添加图层
+    /*{
+        MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+        [self addSubview:focalPointView];
+        
+        focalPointView.bgColor= [UIColor groupTableViewBackgroundColor];
+        focalPointView.frame = CGRectMake(0, 0, size + 30, size + 30);
+        focalPointView.center = CGPointMake(self.width/2, self.height/2);
+        focalPointView.backgroundColor = [UIColor greenColor];
+        focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+        focalPointView.layer.masksToBounds  = YES;
+        [focalPointView setNeedsDisplay];
+        focalPointView.alpha = 0.1;
+    }*/
+    
+    //背景
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
     imageview.alpha = 0.5;
@@ -153,6 +173,7 @@ typedef enum  {
     self.layer.borderWidth = 2;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
+
     [self setNeedsDisplay];
     
     AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
@@ -189,14 +210,15 @@ typedef enum  {
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
             
-            
             // Settings Shadow.
             
-//            //Create the gradient and add it to our view's root layer
+            //Create the gradient and add it to our view's root layer
 //            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-//            gradientLayer.frame = CGRectMake(5.0, 5.0, self.width + 10, self.height + 10);
-//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor, nil]];
-//            [self.layer insertSublayer:gradientLayer atIndex:0];
+//            gradientLayer.frame =  (CGRect){CGPointZero, CGSizeMake(weakSelf.width, weakSelf.width)};
+//            gradientLayer.position = weakSelf.center;
+//            [weakSelf.layer addSublayer:gradientLayer];
+//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor,(id)[UIColor grayColor].CGColor, nil]];
+            
         });
     }];
     
