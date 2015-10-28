@@ -56,7 +56,6 @@ typedef enum  {
     return self;
 }
 
-
 /**
  *  @author tinkl, 15-10-27 19:10:54
  *
@@ -121,21 +120,33 @@ typedef enum  {
     imageview.alpha = 0.5;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
+
     
+    CALayer* _contentLayer = [CALayer layer];
+    _contentLayer.frame = self.bounds;
+    _contentLayer.contents = (id)[UIImage imageNamed:@"recommandPlackholder"].CGImage;
+    imageview.layer.mask = _contentLayer;
+    imageview.layer.masksToBounds = YES;
+    imageview.clipsToBounds = YES;
+
+    {
+        // 不规则图
+        UIImageView * imageview2 = [[UIImageView alloc] init];
+        imageview2.frame = CGRectMake(0, 0, 96/3, 104/3);
+        imageview2.center =  CGPointMake(self.width/2, self.height/2);
+        [self addSubview:imageview2];
+        //imageview2.image = [UIImage imageNamed:@"recommandPlackholder"];
+    }
     {
         //图标
         UIImageView * imageviewIcon = [[UIImageView alloc] init];
-        imageviewIcon.frame =CGRectMake(0, 0, 21, 21);
+        imageviewIcon.frame = CGRectMake(0, 0, 42/3, 42/3);
         imageviewIcon.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageviewIcon];
         imageviewIcon.image = [UIImage imageNamed:@"recommandIcon"];
     }
     
     
-    self.layer.cornerRadius = _radius;
-    self.layer.borderWidth = 1;
-    self.layer.masksToBounds = YES;
-    self.clipsToBounds = YES;
     
     __weak typeof(self) weakSelf = self;
     

@@ -36,7 +36,6 @@ import AISpring
         popPrice.font = AITools.myriadBoldWithSize(21)
         popBuyNumber.font = AITools.myriadLightSemiExtendedWithSize(15)
         
-        
         /// 添加logo小图标
         var i: Int = 0
         if let _ = model.service_list {
@@ -45,7 +44,7 @@ import AISpring
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()
                 imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage:nil)
-                imageView.frame = CGRectMake(position.x, position.y, 36/2, 36/2)
+                imageView.frame = CGRectMake(position.x, position.y, 36/2.5, 36/2.5)
                 self.addSubview(imageView)
                 firstImageView = imageView
                 i++
@@ -56,7 +55,7 @@ import AISpring
     
     let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 4.5
     let kSphereLength:CGFloat = 60
-    let kSphereDamping:Float = 0.5
+    let kSphereDamping:Float = 0.7
     let kSphereFixPosition:CGFloat = 7
     
     // 图标 弧形排列
@@ -64,8 +63,8 @@ import AISpring
         let firstAngle:CGFloat = CGFloat(M_PI)*0.5 + (CGFloat(M_PI_2) - kAngleOffset) - CGFloat(index) * kAngleOffset
         //print(firstAngle)
         let startPoint = self.center
-        let x = startPoint.x + cos(firstAngle) * kSphereLength - kSphereFixPosition - 2;
-        let y = startPoint.y + sin(firstAngle) * kSphereLength - kSphereFixPosition;
+        let x = startPoint.x + cos(firstAngle) * kSphereLength - kSphereFixPosition;
+        let y = startPoint.y + sin(firstAngle) * kSphereLength - kSphereFixPosition + 2;
         let position = CGPointMake(x, y);
         return position;
     }
