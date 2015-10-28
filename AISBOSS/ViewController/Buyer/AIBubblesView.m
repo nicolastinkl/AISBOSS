@@ -550,18 +550,19 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
      typeToSignIcon = 1,//
      typeToAdd = 2//
      */
-    AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
-    modelAdd.bubbleType = 2;
-    modelAdd.bubbleSize = 0;
-    modelAdd.proposal_id = 0;
-    modelAdd.proposal_id_new = 0;
-    modelAdd.proposal_name = @"";
-    modelAdd.proposal_price = @"";
-    modelAdd.service_thumbnail_icon= @"";
-    modelAdd.order_times = 0;
+    {
+        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
+        modelAdd.bubbleType = 2;
+        [self.bubbleModels addObject:modelAdd];
+    }
     
-    [self.bubbleModels addObject:modelAdd];
     
+    //添加一个identity对象
+    {
+        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
+        modelAdd.bubbleType = 1;
+        [self.bubbleModels addObject:modelAdd];
+    }
     __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
@@ -590,7 +591,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         AIBubble *bubble;
         
         if (model.service_id > 0) {
-            model.bubbleType = 1;
+           
+            
         }
         
         if (model.bubbleType == 2) {
@@ -660,9 +662,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
     }];
 
-    for (AIBubble *bu in self.bubbles) {
-        NSLog(@"\nbubble size : %@ \n", [NSValue valueWithCGRect:bu.frame]);
-    }
+//    for (AIBubble *bu in self.bubbles) {
+//        //NSLog(@"\nbubble size : %@ \n", [NSValue valueWithCGRect:bu.frame]);
+//    }
   
 }
 
