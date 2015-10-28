@@ -32,11 +32,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" On Schedule  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLf-bf-ITi" userLabel="statusLabel">
-                    <rect key="frame" x="507" y="15" width="80" height="14"/>
+                    <rect key="frame" x="507" y="15" width="80" height="18"/>
                     <animations/>
                     <color key="backgroundColor" red="0.42352941179999998" green="0.41568627450000001" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="14" id="RcJ-Kp-QdV"/>
+                        <constraint firstAttribute="height" constant="18" id="RcJ-Kp-QdV"/>
                         <constraint firstAttribute="width" constant="80" id="sG4-cm-S0S"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
