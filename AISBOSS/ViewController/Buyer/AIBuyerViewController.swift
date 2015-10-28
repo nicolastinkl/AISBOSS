@@ -36,7 +36,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         self.makeData()
         self.makeBaseProperties()
         
@@ -44,11 +43,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeBubbleView()
         self.makeTopBar()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     deinit{
@@ -67,13 +61,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     */
     
     // MARK: - 构造属性
-    
-    
     func makeBaseProperties () {
         self.view.backgroundColor = UIColor.blackColor()
         self.navigationController?.navigationBarHidden = true
-        
-        // bg 
         
         let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
         bgImageView.frame = self.view.frame
@@ -96,7 +86,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let height = CGRectGetHeight(self.view.frame)
         bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        ///bubbleView?.backgroundColor = UIColor.whiteColor()
         bubbleView?.clipsToBounds = true
         
         tableView?.tableHeaderView = bubbleView
@@ -182,31 +171,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    
-    // MARK: - TableView Delegate And Datasource
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        
-        return  nil
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded{
             return dataSource[indexPath.row].expandHeight!
-        }
-        else {
+        } else {
             return tableCellRowHeight
         }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -231,8 +205,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         if dataSource[indexPath.row].isExpanded {
             folderCellView?.hidden = true
             expandedCellView?.hidden = false
-        }
-        else{
+        } else {
             folderCellView?.hidden = false
             expandedCellView?.hidden = true
         }
@@ -245,9 +218,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         var needRebuild = false
         
         if let expanedView = cell.expanedView {
-            if expanedView.serviceOrderNumberIsChanged {
-                needRebuild = true
-            }
+            needRebuild = expanedView.serviceOrderNumberIsChanged
         }
         
         return needRebuild
