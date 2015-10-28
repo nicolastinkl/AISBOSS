@@ -541,8 +541,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     self.cacheBubble = [[NSMutableDictionary alloc ] init];
     
     [self.cacheBubble setValue:@1 forKey:big];
-    [self.cacheBubble setValue:@(4) forKey:small];
-    [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:middle];
+    [self.cacheBubble setValue:@(4) forKey:middle];
+    [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:small];
     
     // Add AddButton
     /**
@@ -592,9 +592,13 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
         }else  if (model.bubbleType == 1) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon];
+           
         }else {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
+        bubble.glowColor = [UIColor grayColor];
+        bubble.glowOffset = CGSizeMake(0.0, 0.0);
+        bubble.glowAmount = 30.0;
         
         // 计算bubble的center
         

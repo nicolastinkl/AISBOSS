@@ -32,6 +32,7 @@ typedef enum  {
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
+
 @end
 
 
@@ -73,6 +74,13 @@ typedef enum  {
                 break;
             case typeToNormal:
             {
+                
+                colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+                
+                self.glowOffset = CGSizeMake(0.0, 0.0);
+                self.glowAmount = 0.0;
+                self.glowColor = [UIColor clearColor];
+                
                 [self initWithNormal:center model:model];
             }
                 break;
@@ -130,6 +138,7 @@ typedef enum  {
     
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
+    imageview.alpha = 0.5;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
     
@@ -179,6 +188,15 @@ typedef enum  {
             
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
+            
+            
+            // Settings Shadow.
+            
+//            //Create the gradient and add it to our view's root layer
+//            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+//            gradientLayer.frame = CGRectMake(5.0, 5.0, self.width + 10, self.height + 10);
+//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor, nil]];
+//            [self.layer insertSublayer:gradientLayer atIndex:0];
         });
     }];
     
@@ -190,6 +208,17 @@ typedef enum  {
     
     //[self setNeedsDisplay];
 }
+
+#pragma mark - Glow..
+- (void)setGlowColor:(UIColor *)newGlowColor
+{
+    if (newGlowColor != glowColor) {
+        CGColorRelease(glowColorRef);
+        glowColor = newGlowColor;
+        glowColorRef = CGColorCreate(colorSpaceRef, CGColorGetComponents(glowColor.CGColor));
+    }
+}
+
 
 // fake image
 
@@ -322,8 +351,20 @@ typedef enum  {
     return 78  / 2.46 / 2;
 }
 
-
-
+/*
+-(void)drawRect:(CGRect)rect{
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
+    
+    CGContextSetShadow(context, self.glowOffset, self.glowAmount);
+    CGContextSetShadowWithColor(context, self.glowOffset, self.glowAmount, glowColorRef);
+    
+    [super drawRect:rect];
+    
+    CGContextRestoreGState(context);
+}
+*/
 
 
 @end

@@ -32,8 +32,11 @@ class AIOrderCellEShopSubView: UIView {
         //config statusLabel
         selfView.statusLabel.layer.borderWidth = 1
         selfView.statusLabel.layer.borderColor = UIColor.whiteColor().CGColor
-        selfView.statusLabel.layer.cornerRadius = 8
+        selfView.statusLabel.layer.cornerRadius = 4
         selfView.statusLabel.layer.masksToBounds = true
+        selfView.statusLabel.font = PurchasedViewFont.STATU
+        selfView.offerNameLabel.font = PurchasedViewFont.SERVICE_TITLE
+        selfView.offerPriceLabel.font = AITools.myriadLightSemiCondensedWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
         return selfView
     }
     

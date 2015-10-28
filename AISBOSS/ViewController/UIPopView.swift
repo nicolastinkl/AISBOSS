@@ -39,12 +39,12 @@ import AISpring
         
         /// 添加logo小图标
         var i: Int = 0
-        if let s = model.service_list {
+        if let _ = model.service_list {
             for server in  model.service_list {
                 let logoModel = server as! AIBuyerBubbleProportModel
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()
-                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage: UIImage(named: ""))
+                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage:nil)
                 imageView.frame = CGRectMake(position.x, position.y, 36/2, 36/2)
                 self.addSubview(imageView)
                 firstImageView = imageView
