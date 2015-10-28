@@ -83,19 +83,13 @@ typedef enum  {
                 break;
             case typeToNormal:
             {
-                
-                colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-                
-                self.glowOffset = CGSizeMake(0.0, 0.0);
-                self.glowAmount = 0.0;
-                self.glowColor = [UIColor clearColor];
-                
                 [self initWithNormal:center model:model];
+                
             }
                 break;
             case typeToSignIcon:
             {
-                
+                [self initWithSignIcon:center model:model];
             }
                 break;
                 
@@ -108,6 +102,55 @@ typedef enum  {
     }
     
     return self;
+}
+
+
+- (void) initWithSignIcon:(CGPoint)center model:(AIBuyerBubbleModel *)model{
+    
+    int width = [AIBubble tinyBubbleRadius] * 2;
+    
+    self.frame = CGRectMake(0, 0, width, width);
+    self.center = center;
+    
+    _radius = width / 2;
+    //背景
+    UIImageView * imageview = [[UIImageView alloc] init];
+    imageview.frame = self.frame;
+    imageview.alpha = 0.5;
+    imageview.center =  CGPointMake(self.width/2, self.height/2);
+    [self addSubview:imageview];
+    
+    {
+        //图标
+        UIImageView * imageviewIcon = [[UIImageView alloc] init];
+        imageviewIcon.frame =CGRectMake(0, 0, 21, 21);
+        imageviewIcon.center =  CGPointMake(self.width/2, self.height/2);
+        [self addSubview:imageviewIcon];
+        imageviewIcon.image = [UIImage imageNamed:@"recommandIcon"];
+    }
+    
+    
+    self.layer.cornerRadius = _radius;
+    self.layer.borderWidth = 1;
+    self.layer.masksToBounds = YES;
+    self.clipsToBounds = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:[UIImage imageNamed:@"Bubble01"] count:3];
+        
+        NSArray * array = [NSArray arrayWithObjects:imageColors.colors.lastObject, imageColors.colors[1],nil];
+        UIColor *color = imageColors.colors[1];
+        weakSelf.layer.borderColor = color.CGColor;
+        
+        imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
+        
+        
+    });
+    
+    
+    
 }
 
 - (void) initWithAdd:(CGPoint)center{
@@ -126,6 +169,8 @@ typedef enum  {
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
     [self setNeedsDisplay];
+    
+    
 }
 
 - (IBAction)addAction:(id)sender{
@@ -217,7 +262,13 @@ typedef enum  {
             
             // Settings Shadow.
             
+            
             //Create the gradient and add it to our view's root layer
+//            colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+//            self.glowOffset = CGSizeMake(0.0, 0.0);
+//            self.glowAmount = 0.0;
+//            self.glowColor = [UIColor clearColor];
+            
 //            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
 //            gradientLayer.frame =  (CGRect){CGPointZero, CGSizeMake(weakSelf.width, weakSelf.width)};
 //            gradientLayer.position = weakSelf.center;

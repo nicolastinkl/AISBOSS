@@ -35,7 +35,7 @@ typedef enum  {
 @property (nonatomic) BubbleType bubbleType;
 //是否发光
 @property (nonatomic) CGFloat isLight;
-// 是否周边有小气泡标识
+//是否周边有小气泡标识
 @property (nonatomic) BOOL hasSmallBubble;
 
 @property (nonatomic, assign) CGSize glowOffset;
