@@ -10,6 +10,9 @@ import UIKit
 
 class AITableFoldedCellHolder: UITableViewCell {
     
+    var foldedView: UIView?
+    var expanedView: ProposalExpandedView?
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         let folderCellView = self.contentView.subviews.first
@@ -19,15 +22,9 @@ class AITableFoldedCellHolder: UITableViewCell {
             self.contentView.frame = frame
             
         }
+        
         self.clipsToBounds = true
         self.contentView.clipsToBounds = true
-        
-        //print("contentView frame \(self.tag):\(self.contentView.frame)")
-        
     }
-    
-}
-
-class AITableExpandedCellHolder : UITableViewCell{
     
 }

@@ -73,12 +73,10 @@
 		846DAD911BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
 		846DAD931BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
-		846DAD971BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		846DADA01BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847115FA1BCD02940032C210 /* AICoverFlowCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD31BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
@@ -86,6 +84,8 @@
 		8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; settings = {ASSET_TAGS = (); }; };
 		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
+		849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF11BE0632B0008949E /* ProposalEnum.swift */; settings = {ASSET_TAGS = (); }; };
+		849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF31BE070C60008949E /* ProposalProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		84B62B181BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; settings = {ASSET_TAGS = (); }; };
 		84B62B191BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; settings = {ASSET_TAGS = (); }; };
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -423,6 +423,8 @@
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
+		849D3EF11BE0632B0008949E /* ProposalEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalEnum.swift; sourceTree = "<group>"; };
+		849D3EF31BE070C60008949E /* ProposalProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalProtocal.swift; sourceTree = "<group>"; };
 		84B62B171BD891670081ABDF /* ImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
 		84B62B1A1BD8E1290081ABDF /* ProposalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalModel.h; sourceTree = "<group>"; };
 		84B62B1B1BD8E1290081ABDF /* ProposalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalModel.m; sourceTree = "<group>"; };
@@ -1094,6 +1096,8 @@
 				84B62B1B1BD8E1290081ABDF /* ProposalModel.m */,
 				842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */,
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
+				849D3EF11BE0632B0008949E /* ProposalEnum.swift */,
+				849D3EF31BE070C60008949E /* ProposalProtocal.swift */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -2008,9 +2012,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846DADA01BD736F70054F058 /* ViewConstants.swift in Sources */,
 				8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */,
-				846DAD971BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
 				8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */,
 				842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
 				84B62B191BD891670081ABDF /* ImageContent.swift in Sources */,
@@ -2058,6 +2060,7 @@
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
+				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
@@ -2138,6 +2141,7 @@
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
 				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
 				93FA1E041B9C306E009965C8 /* SearchHistoryRecord.swift in Sources */,
+				849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */,
 				93B25A9B1B9D7A7B00CD1FEB /* AFSecurityPolicy.m in Sources */,
 				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
 				8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */,

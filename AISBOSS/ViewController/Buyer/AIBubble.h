@@ -38,11 +38,11 @@ typedef enum  {
 //是否周边有小气泡标识
 @property (nonatomic) BOOL hasSmallBubble;
 
-@property (nonatomic, assign) CGSize glowOffset;
+@property (nonatomic) CGSize glowOffset;
 
-@property (nonatomic, assign) CGFloat glowAmount;
+@property (nonatomic) CGFloat glowAmount;
 
-@property (nonatomic, retain) UIColor *glowColor;
+@property (nonatomic, strong) UIColor *glowColor;
 
 + (CGFloat)bigBubbleRadius;
 

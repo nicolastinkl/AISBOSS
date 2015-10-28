@@ -660,6 +660,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
     }];
 
+    for (AIBubble *bu in self.bubbles) {
+        NSLog(@"\nbubble size : %@ \n", [NSValue valueWithCGRect:bu.frame]);
+    }
   
 }
 

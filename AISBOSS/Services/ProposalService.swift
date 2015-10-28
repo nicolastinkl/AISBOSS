@@ -12,6 +12,7 @@ import AISwiftyJSON
 
 protocol ProposalService {
     func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
+    func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
 }
 
 class MockProposalService {
@@ -51,6 +52,22 @@ class MockProposalService {
             }
         }
     }
+    
+    func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
+            let data: NSData? = NSData(contentsOfFile: path)
+            
+            // AIProposalPopListModel
+            
+            do {
+                let model = try AIProposalPopListModel(data: data)
+                success(responseData: model)
+            } catch {
+                fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
+            }
+            
+        }
+    }
 }
 
 class BDKProposalService {
@@ -64,7 +81,7 @@ class BDKProposalService {
     - parameter errDes:  <#errDes description#>
     */
     
-    func getPoposalListProps(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/queryCustomerProposalList"
@@ -85,25 +102,6 @@ class BDKProposalService {
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
-        
-        
-        /**
-        From localhost JSON
-        
-        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
-        let data: NSData? = NSData(contentsOfFile: path)
-        
-        // AIProposalPopListModel
-        
-        do {
-        let model = try AIProposalPopListModel(data: data)
-        success(responseData: model)
-        } catch {
-        fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
-        }
-        
-        }
-        */
     }
     
     /**
