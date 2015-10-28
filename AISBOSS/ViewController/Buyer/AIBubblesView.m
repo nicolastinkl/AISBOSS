@@ -553,14 +553,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     {
         AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
         modelAdd.bubbleType = 2;
-        modelAdd.bubbleSize = 0;
-        modelAdd.proposal_id = 0;
-        modelAdd.proposal_id_new = 0;
-        modelAdd.proposal_name = @"";
-        modelAdd.proposal_price = @"";
-        modelAdd.service_thumbnail_icon= @"";
-        modelAdd.order_times = 0;
-        
         [self.bubbleModels addObject:modelAdd];
     }
     
@@ -569,14 +561,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     {
         AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
         modelAdd.bubbleType = 1;
-        modelAdd.bubbleSize = 0;
-        modelAdd.proposal_id = 0;
-        modelAdd.proposal_id_new = 0;
-        modelAdd.proposal_name = @"";
-        modelAdd.proposal_price = @"";
-        modelAdd.service_thumbnail_icon= @"";
-        modelAdd.order_times = 0;
-        
         [self.bubbleModels addObject:modelAdd];
     }
     __weak typeof(self) weakSelf = self;
