@@ -15,33 +15,86 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     private var statu: UILabel!
     private var alertIcon: UIImageView!
     private var serviceViews: [PurchasedServiceView] = []
+    private var serviceModels: [ServiceOrderModel] = []
     var dimentionListener: DimentionChangable?
     var indexPath: NSIndexPath?
-    private var propodalModel: ProposalModel?
+    private var proposalModel: ProposalModel?
+    var serviceOrderNumberIsChanged: Bool = false
 
     
     var proposalOrder: ProposalModel? {
         get {
-            return propodalModel
+            return proposalModel
         }
         
         set {
+            proposalModel = newValue
+            
             if let model = newValue {
                 title.text = model.proposal_name
                 
-                if model.alarm_state == 1 {
-                    statu.hidden = false
-                    statu.text = "On Schedule"
-                    
-                    alertIcon.hidden = true
+                if orderIsNormal(model) {
+                    showNormalStatu()
                 } else {
-                    statu.hidden = true
-                    alertIcon.hidden = false
+                    showAlertStatu()
                 }
+                
+                appendServiceOrdersView()
             }
         }
     }
     
+    private func orderIsNormal(orderModel: ProposalModel) -> Bool {
+        return orderModel.alarm_state == 1
+    }
+    
+    private func showNormalStatu() {
+        statu.hidden = false
+        statu.text = "On Schedule"
+        
+        alertIcon.hidden = true
+    }
+    
+    private func showAlertStatu() {
+        statu.hidden = true
+        alertIcon.hidden = false
+    }
+    
+    private func appendServiceOrdersView() {
+        for serviceModel in proposalModel!.order_list {
+            let serviceOrder = serviceModel as! ServiceOrderModel
+            
+            if orderIsCompletedAndChecked(serviceOrder) {
+                continue
+            }
+            
+            let serviceView = PurchasedServiceView(frame: CGRect(x: 0, y: 0, width: frame.width, height: PurchasedViewDimention.SERVICE_COLLAPSED_HEIGHT))
+            serviceView.serviceOrderStateProtocal = self
+            serviceView.serviceOrderData = serviceOrder
+            
+            if serviceOrder.param_list != nil && serviceOrder.param_list.count > 0 {
+                for paraModel in serviceOrder.param_list {
+                    let param = paraModel as! ParamModel
+                    var expandContentView: UIView?
+                    
+                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
+                    
+                    if expandContentView != nil {
+                        expandContentView?.frame = CGRect(x: 0, y: 0, width: frame.width, height: expandContentView!.frame.height)
+                        serviceView.addExpandView(expandContentView!)
+                    }
+                }
+            }
+            
+            addServiceView(serviceView)
+        }
+    }
+    
+    private func orderIsCompletedAndChecked(serviceOrder: ServiceOrderModel) -> Bool {
+        let state = ServiceOrderState(rawValue: serviceOrder.order_state)
+        return state == ServiceOrderState.CompletedAndChecked
+    }
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSelf()
@@ -155,7 +208,11 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         let oldFrame = frame
         self.frame = CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: oldFrame.width, height: height)
     }
-    
-    
-
 }
+
+extension ProposalExpandedView: ServiceOrderStateProtocal {
+    func orderStateChanged(changedOrder: ServiceOrderModel, oldState: ServiceOrderState) {
+        serviceOrderNumberIsChanged = true
+    }
+}
+
