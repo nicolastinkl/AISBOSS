@@ -122,12 +122,15 @@ typedef enum  {
     [self addSubview:imageview];
 
     
+    //add it directly to our view's layer
     CALayer* _contentLayer = [CALayer layer];
-    _contentLayer.frame = self.bounds;
+    _contentLayer.frame = CGRectMake(0, 0, 78/3, 88/3);
     _contentLayer.contents = (id)[UIImage imageNamed:@"recommandPlackholder"].CGImage;
     imageview.layer.mask = _contentLayer;
-    imageview.layer.masksToBounds = YES;
-    imageview.clipsToBounds = YES;
+    //center the image
+    
+//    imageview.layer.masksToBounds = YES;
+//    imageview.clipsToBounds = YES;
 
     {
         // 不规则图
@@ -161,7 +164,7 @@ typedef enum  {
         
         
     });
-     
+    
 }
 
 - (void) initWithAdd:(CGPoint)center{
