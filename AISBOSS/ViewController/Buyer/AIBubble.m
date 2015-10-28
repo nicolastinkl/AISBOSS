@@ -161,14 +161,12 @@ typedef enum  {
         
         
     });
-    
-    
-    
+     
 }
 
 - (void) initWithAdd:(CGPoint)center{
     
-    int width = 56.0;
+    int width = [AIBubble smaBubbleRadius]*2;//56.0;
     
     self.frame = CGRectMake(0, 0, width, width);
     self.center = center;
@@ -233,7 +231,7 @@ typedef enum  {
     popView.transform =  CGAffineTransformMakeScale(BridNum, BridNum);
     popView.center = CGPointMake(self.width/2, self.height/2);
     self.layer.cornerRadius = size / 2;
-    self.layer.borderWidth = 2;
+    self.layer.borderWidth = 1.5;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
 

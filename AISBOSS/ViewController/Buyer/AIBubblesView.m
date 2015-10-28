@@ -538,8 +538,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     if (_bubbleModels.count == 0) {
         return;
     }
-    self.cacheBubble = [[NSMutableDictionary alloc ] init];
     
+    self.cacheBubble = [[NSMutableDictionary alloc ] init];
     [self.cacheBubble setValue:@1 forKey:big];
     [self.cacheBubble setValue:@(4) forKey:middle];
     [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:small];
