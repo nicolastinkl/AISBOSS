@@ -111,6 +111,8 @@
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
+		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; settings = {ASSET_TAGS = (); }; };
+		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; settings = {ASSET_TAGS = (); }; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; settings = {ASSET_TAGS = (); }; };
 		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -444,6 +446,10 @@
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		934C41B91BA7FFCE00002853 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
+		93508CAC1BE07C8200525512 /* MDCFocalPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCFocalPointView.h; sourceTree = "<group>"; };
+		93508CAD1BE07C8200525512 /* MDCFocalPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCFocalPointView.m; sourceTree = "<group>"; };
+		93508CAE1BE07C8200525512 /* MDCSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSpotlightView.h; sourceTree = "<group>"; };
+		93508CAF1BE07C8200525512 /* MDCSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSpotlightView.m; sourceTree = "<group>"; };
 		936EDC961BCB4C4100ED160F /* AITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITest.swift; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
@@ -1098,6 +1104,10 @@
 				939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */,
 				939F49F41BDDD67E00D07598 /* UIPopView.swift */,
 				939F49F81BDDFE0700D07598 /* UIPopView.xib */,
+				93508CAC1BE07C8200525512 /* MDCFocalPointView.h */,
+				93508CAD1BE07C8200525512 /* MDCFocalPointView.m */,
+				93508CAE1BE07C8200525512 /* MDCSpotlightView.h */,
+				93508CAF1BE07C8200525512 /* MDCSpotlightView.m */,
 			);
 			name = PopView;
 			sourceTree = "<group>";
@@ -2060,6 +2070,7 @@
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
+				93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */,
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
@@ -2090,6 +2101,7 @@
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */,
 				846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */,
+				93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */,
 				8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */,
 				93C33F1A1B9BEAFE007BF506 /* AITools.m in Sources */,
 				12D795041BA9597400586011 /* AIScrollLabel.m in Sources */,

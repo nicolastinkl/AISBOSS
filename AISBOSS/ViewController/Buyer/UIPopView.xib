@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="146" height="146"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbB-a1-sMj" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbB-a1-sMj" customClass="AIImageView" customModule="Veris" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="146" height="146"/>
                     <animations/>
                 </imageView>
