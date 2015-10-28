@@ -42,9 +42,11 @@ class PurchasedViewFont {
     static let NORMAL_FONT_NAME = "Myriad Pro"
     static let TITLE = AITools.myriadSemiCondensedWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
     static let STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
-    static let SERVICE_TITLE = AITools.myriadLightSemiCondensedWithSize(46 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let SERVICE_TITLE = AITools.myriadLightSemiCondensedWithSize(50 / PurchasedViewDimention.CONVERT_FACTOR)
     static let SERVICE_STATU = AITools.myriadLightSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
     static let SERVICE_DESCRIPTION = AITools.myriadLightSemiCondensedWithSize(38 / PurchasedViewDimention.CONVERT_FACTOR)
     static let ORDER_TIME_VALUE = AITools.myriadLightSemiCondensedWithSize(60 / PurchasedViewDimention.CONVERT_FACTOR)
     static let ORDER_ALERT_LABEL = AITools.myriadSemiCondensedWithSize(34 / PurchasedViewDimention.CONVERT_FACTOR)
+    static let ESHOP_OFFER_NAME = AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+
 }
