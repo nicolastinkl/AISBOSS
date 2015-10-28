@@ -66,26 +66,44 @@ class BDKProposalService {
     
     func getPoposalListProps(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
-        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
-            let data: NSData? = NSData(contentsOfFile: path)
-            
-            // AIProposalPopListModel
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/queryCustomerProposalList"
+        
+        let body = ["data":["user_id":"1", "role_type": "1"],"desc":["data_mode":"0","digest":""]]
+        message.body = NSMutableDictionary(dictionary: body)
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
-                let model = try AIProposalPopListModel(data: data)
+                let dic = response as! [NSObject : AnyObject]
+                let model = try AIProposalPopListModel(dictionary: dic)
                 success(responseData: model)
             } catch {
                 fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
             }
             
-            /*
-            if let responseJSON: AnyObject = data {
-                let model =  AIBuyServiceModel(JSONDecoder(responseJSON))
-                success(responseData: model)
-            }else{
-                fail(errType: AINetError.Format, errDes: "AIBuyServiceModel JSON Parse error.")
-            } */
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
         }
+        
+        
+        /**
+        From localhost JSON
+        
+        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
+        let data: NSData? = NSData(contentsOfFile: path)
+        
+        // AIProposalPopListModel
+        
+        do {
+        let model = try AIProposalPopListModel(data: data)
+        success(responseData: model)
+        } catch {
+        fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
+        }
+        
+        }
+        */
     }
     
     /**
