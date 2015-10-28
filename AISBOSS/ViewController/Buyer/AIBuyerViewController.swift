@@ -13,13 +13,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
-    
     var dataSourcePop = [AIBuyerBubbleModel]()
-    
-    var tableViewCellCache = NSMutableDictionary()
-    var cellList = NSMutableArray()
-    
-//    var dataSourcePop = NSMutableArray()
+    var tableViewCellCache = [Int: UIView]()
     
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
@@ -35,7 +30,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var topBar : UIView!
     
-    var currentIndexPath : NSIndexPath?
+    var lastSelectedIndexPath : NSIndexPath?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -57,7 +52,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     deinit{
-        tableViewCellCache.removeAllObjects()
+        tableViewCellCache.removeAll()
     }
     
 
@@ -111,14 +106,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
-        
-        
-//        let bubble = AIPopHoldView(startPoint:self.view.center,submenuImages:self.dataSourcePop)
-//        bubble.delegate = self
-//        bubbleView?.addSubview(bubble)
-//        bubble.startExpend()
-//        bubble.fixPosition()
-        
     }
     
     // MARK: - 构造顶部Bar
@@ -230,13 +217,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         var cell : AITableFoldedCellHolder!
         
-        let key = genKey(indexPath)
-        if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder? {
+        if let cacheCell : AITableFoldedCellHolder = tableViewCellCache[indexPath.row] as! AITableFoldedCellHolder? {
             cell = cacheCell
         } else {
             cell = buildTableViewCell(indexPath)
  
-            tableViewCellCache.setValue(cell, forKey: key)
+            tableViewCellCache[indexPath.row] = cell
         }
         
         let folderCellView = cell.foldedView
@@ -253,10 +239,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         return cell
-    }
-    
-    private func genKey(indexPath: NSIndexPath) -> String {
-        return "rows\(indexPath.row)"
     }
     
     private func cellNeedRebuild(cell: AITableFoldedCellHolder) -> Bool {
@@ -297,23 +279,21 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
         
         //如果有，做比较
-        if let _ = currentIndexPath {
+        if let _ = lastSelectedIndexPath {
             //如果点击了不同的cell
-            if currentIndexPath?.row != indexPath.row {
-                dataSource[currentIndexPath!.row].isExpanded = !dataSource[currentIndexPath!.row].isExpanded
-                currentIndexPath = indexPath;
+            if lastSelectedIndexPath?.row != indexPath.row {
+                dataSource[lastSelectedIndexPath!.row].isExpanded = !dataSource[lastSelectedIndexPath!.row].isExpanded
+                lastSelectedIndexPath = indexPath;
             } else {
-                currentIndexPath = nil
+                lastSelectedIndexPath = nil
             }
         } else {
-            currentIndexPath = indexPath;
+            lastSelectedIndexPath = indexPath;
         }
         
-        let key = genKey(indexPath)
-        if let cacheCell : AITableFoldedCellHolder = tableViewCellCache.valueForKey(key) as! AITableFoldedCellHolder? {
+        if let cacheCell : AITableFoldedCellHolder = tableViewCellCache[indexPath.row] as! AITableFoldedCellHolder? {
             if cellNeedRebuild(cacheCell) {
-                let cell = buildTableViewCell(indexPath)
-                tableViewCellCache.setValue(cell, forKey: key)
+                tableViewCellCache[indexPath.row] = buildTableViewCell(indexPath)
             }
         }   
         
@@ -351,7 +331,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    // MARK: - MakeDemoData
     func makeData() {
         let bdk = BDKProposalService()
         // 列表数据
@@ -373,8 +352,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             }) { (errType, errDes) -> Void in
         }
         
-        // 气泡数据 -> 本地JOSN文件
-        bdk.getPoposalListProps({ (responseData) -> Void in
+        bdk.getPoposalBubbles({ (responseData) -> Void in
             if let pops = responseData.proposal_list {
                 if pops.count > 0 {
                     self.dataSourcePop = pops as! [AIBuyerBubbleModel]
@@ -403,7 +381,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         servicesViewContainer.dimentionListener = self
 
         //新建展开view时纪录高度
-        servicesViewContainer.indexPath = indexPath
+        servicesViewContainer.tag = indexPath.row
         dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
         return servicesViewContainer
     }
@@ -413,8 +391,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 extension AIBuyerViewController : DimentionChangable {
     func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         let expandView = changedView as! ProposalExpandedView
-        let indexPath = expandView.indexPath!
-        dataSource[(indexPath.row)].expandHeight = afterHeight
+        let row = expandView.tag
+        dataSource[row].expandHeight = afterHeight
         tableView.reloadData()
     }
     

@@ -2,7 +2,7 @@
 //  ProposalExpandedView.swift
 //  AIVeris
 //
-//  Created by admin on 15/10/21.
+//  Created by Rocky on 15/10/21.
 //  Copyright © 2015年 ___ASIAINFO___. All rights reserved.
 //
 
@@ -17,7 +17,6 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     private var serviceViews: [PurchasedServiceView] = []
     private var serviceModels: [ServiceOrderModel] = []
     var dimentionListener: DimentionChangable?
-    var indexPath: NSIndexPath?
     private var proposalModel: ProposalModel?
     var serviceOrderNumberIsChanged: Bool = false
 
