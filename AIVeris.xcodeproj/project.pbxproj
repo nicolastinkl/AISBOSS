@@ -78,7 +78,6 @@
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		846DADA01BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847115FA1BCD02940032C210 /* AICoverFlowCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD31BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
 		8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; settings = {ASSET_TAGS = (); }; };
@@ -1998,7 +1997,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846DADA01BD736F70054F058 /* ViewConstants.swift in Sources */,
 				8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */,
 				846DAD971BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
 				8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */,
