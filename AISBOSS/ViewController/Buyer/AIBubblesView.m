@@ -645,9 +645,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }else {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
-        bubble.glowColor = [UIColor grayColor];
-        bubble.glowOffset = CGSizeMake(0.0, 0.0);
-        bubble.glowAmount = 30.0;
+//        bubble.glowColor = [UIColor grayColor];
+//        bubble.glowOffset = CGSizeMake(0.0, 0.0);
+//        bubble.glowAmount = 30.0;
         
         // 计算bubble的center
         
@@ -701,18 +701,28 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             {
                 center = [weakSelf nearestPointInPoints:rightPoints];
             }
-
+ 
             bubble.center = center;
             [weakSelf.bubbles addObject:bubble];
-            [weakSelf addSubview:bubble];
         }
     }];
-
-//    for (AIBubble *bu in self.bubbles) {
-//        //NSLog(@"\nbubble size : %@ \n", [NSValue valueWithCGRect:bu.frame]);
-//    }
-  
+ 
 }
 
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+
+    for (AIBubble *bubble in self.bubbles) {
+        UIView *newView = [[UIView alloc] init];
+        newView.frame = bubble.frame;
+        newView.backgroundColor = [UIColor clearColor];
+        newView.center = bubble.center;
+        [newView addSubview:bubble];
+        [self addSubview:newView];
+        bubble.center = CGPointMake(newView.width/2, newView.width/2);
+    }
+
+}
 
 @end
