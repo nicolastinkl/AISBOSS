@@ -35,7 +35,7 @@ typedef enum  {
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
-
+@property (strong, nonatomic) NSTimer *timer;
 @end
 
 
@@ -200,20 +200,6 @@ typedef enum  {
     self.frame = CGRectMake(0, 0, size, size);
     self.center = center;
     
-    //根据发光效果添加图层
-    /*{
-        MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
-        [self addSubview:focalPointView];
-        
-        focalPointView.bgColor= [UIColor groupTableViewBackgroundColor];
-        focalPointView.frame = CGRectMake(0, 0, size + 30, size + 30);
-        focalPointView.center = CGPointMake(self.width/2, self.height/2);
-        focalPointView.backgroundColor = [UIColor greenColor];
-        focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
-        focalPointView.layer.masksToBounds  = YES;
-        [focalPointView setNeedsDisplay];
-        focalPointView.alpha = 0.1;
-    }*/
     
     //背景
     UIImageView * imageview = [[UIImageView alloc] init];
@@ -272,6 +258,32 @@ typedef enum  {
             
             // Settings Shadow.
             
+            //根据发光效果添加图层
+            {
+//                weakSelf.hidden = YES;
+                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+                focalPointView.bgColor= color;
+                focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
+                focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
+                focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+                focalPointView.layer.masksToBounds  = YES;
+                [focalPointView setNeedsDisplay];
+                [weakSelf.superview insertSubview:focalPointView atIndex:0];
+                focalPointView.alpha = 0.5;
+                
+                
+                //定时器
+                /*
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2f
+                                                              target:self
+                                                            selector:@selector(TimerEvent)
+                                                            userInfo:@{@"focalPointView":focalPointView}
+                                                             repeats:YES];
+                
+                [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+                 */
+            }
+            
             
             //Create the gradient and add it to our view's root layer
 //            colorSpaceRef = CGColorSpaceCreateDeviceRGB();
@@ -289,6 +301,22 @@ typedef enum  {
     }];
     
 }
+
+- (void)TimerEvent
+{
+    MDCSpotlightView *focalPointView = self.timer.userInfo[@"focalPointView"];
+    if (focalPointView != nil) {
+        CGFloat alpha = focalPointView.alpha;
+        if ( alpha >= 0.5) {
+            alpha --;
+        }else{
+            alpha ++;
+        }
+        
+    }
+    
+}
+
 
 
 - (void) refereshBackground:(UIColor *) color{

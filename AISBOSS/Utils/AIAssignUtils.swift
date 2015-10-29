@@ -56,7 +56,6 @@ extension String{
         formatter.dateFormat = "yyyy年MM月dd日 HH:MM:ss"
         let date = NSDate(timeIntervalSince1970 : ts)
         return  formatter.stringFromDate(date)
-        
     }
     
 }
