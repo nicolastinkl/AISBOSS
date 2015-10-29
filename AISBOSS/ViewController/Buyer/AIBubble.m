@@ -179,20 +179,44 @@ typedef enum  {
 - (void) initWithAdd:(CGPoint)center{
     
     int width = [AIBubble smaBubbleRadius]*2;//56.0;
-    
+    int size =  width;
     self.frame = CGRectMake(0, 0, width, width);
     self.center = center;
-    
     _radius = width / 2;
     UIButton * button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, width)];
     [button setImage:[UIImage imageNamed:@"addbubble"] forState:UIControlStateNormal];
     button.center =  CGPointMake(self.width/2, self.height/2);
     [button addTarget:self action:@selector(addAction:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
-    self.layer.masksToBounds = YES;
-    self.clipsToBounds = YES;
-    [self setNeedsDisplay];
+//    self.layer.masksToBounds = YES;
+//    self.clipsToBounds = YES;
+//    [self setNeedsDisplay];
     
+    //处理发光效果
+    
+    {
+        MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+        focalPointView.bgColor= [UIColor whiteColor];
+        focalPointView.frame = CGRectMake(0, 0, size + 13, size + 13);
+        focalPointView.center = CGPointMake(self.width/2, self.height/2);
+        focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+        focalPointView.layer.masksToBounds  = YES;
+        [focalPointView setNeedsDisplay];
+        [self insertSubview:focalPointView atIndex:0];
+        focalPointView.alpha = 0.5;
+        
+        
+        //定时器
+        
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                      target:self
+                                                    selector:@selector(TimerEvent)
+                                                    userInfo:@{@"focalPointView":focalPointView}
+                                                     repeats:YES];
+        
+        [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+        
+    }
     
 }
 
@@ -308,7 +332,7 @@ typedef enum  {
         CGFloat alpha = focalPointView.alpha;
         if ( alpha == 0.5) {
             [UIView animateWithDuration:0.8 animations:^{
-                focalPointView.alpha = 0.1f;
+                focalPointView.alpha = 0.0f;
             } completion:^(BOOL finished) {
                 
             }];
