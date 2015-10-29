@@ -47,8 +47,6 @@ extension String{
         return rect.size.height
     }
     
-    
-    
     func dateStringFromTimestamp(timeStamp:NSString)->String
     {
         let ts = timeStamp.doubleValue

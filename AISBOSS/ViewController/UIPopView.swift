@@ -34,13 +34,13 @@ import AISpring
         popPrice.text = model.proposal_price ?? ""
         popBuyNumber.text = "\(model.order_times ?? 0)"
         
-        popTitle.font = AITools.myriadLightSemiCondensedWithSize(22)
+        popTitle.font = AITools.myriadLightSemiCondensedWithSize(22+3)
         
         let price =  model.proposal_price ?? ""
         if price.length > 9 {
             popPrice.font = AITools.myriadBoldWithSize(14)
         }else{
-            popPrice.font = AITools.myriadBoldWithSize(21)
+            popPrice.font = AITools.myriadBoldWithSize(21+3)
         }
         
         popBuyNumber.font = AITools.myriadLightSemiExtendedWithSize(15)
