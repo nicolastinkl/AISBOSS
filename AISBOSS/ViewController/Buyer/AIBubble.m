@@ -110,7 +110,7 @@ typedef enum  {
     //背景
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
-    imageview.alpha = 0.5;
+    imageview.alpha = 0.6;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     //[self addSubview:imageview];
     
