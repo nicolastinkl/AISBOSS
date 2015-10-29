@@ -63,6 +63,10 @@ class PurchasedServiceView: UIView, Measureable {
         
         eyeIcon.userInteractionEnabled = true
         eyeIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "eyeTap:"))
+        bellIcon.userInteractionEnabled = true
+        bellIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "bellTap:"))
+        contactIcon.userInteractionEnabled = true
+        contactIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "contactTap:"))
     }
     
     private func addTopDivider() {
@@ -220,6 +224,14 @@ class PurchasedServiceView: UIView, Measureable {
             
            contentView.hidden = !contentView.hidden
         }    
+    }
+    
+    func bellTap(sender: UITapGestureRecognizer) {
+        
+    }
+    
+    func contactTap(sender: UITapGestureRecognizer) {
+        
     }
     
     private func orderIsComplete() -> Bool {
