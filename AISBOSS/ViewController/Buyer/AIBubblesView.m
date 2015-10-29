@@ -427,10 +427,13 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             
             // 添加 tiny 气泡
             AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
-            model.bubbleSize = [AIBubble tinyBubbleRadius];
-            AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:model type:typeToSignIcon];
+            model.bubbleSize = [AIBubble tinyBubbleRadius] + 10;
+            AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:bubble.bubbleModel type:typeToSignIcon];
             [self.bubbles addObject:tinyBubble];
             [self addSubview:tinyBubble];
+            bubble.center = center;
+            [self rotateTinyBubble:tinyBubble forBubble:bubble];
+            
             break;
         }
 
@@ -440,6 +443,47 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     return center;
 
 }
+
+#pragma mark - 旋转小气泡
+
+- (void)rotateTinyBubble:(AIBubble *)tinyBubble forBubble:(AIBubble *)bubble
+{
+    
+    CGFloat dist = tinyBubble.radius + bubble.radius + kBubbleMargin;
+    
+    CGFloat xo = bubble.center.x - tinyBubble.center.x;
+    
+    CGFloat yo = bubble.center.y - tinyBubble.center.y;
+    
+    CGFloat angle = 0;
+
+    
+    //
+    
+    if (xo > 0 && yo > 0) { // 1
+        angle = asin(xo / dist) ;
+    }
+    else if (xo < 0 && yo > 0) { // 2
+        angle = - asin(xo / dist) ;
+    }
+    else if (xo > 0 && yo < 0) { // 3
+        angle = asin(xo / dist) - M_PI;
+    }
+    else if (xo <0 && yo < 0) { // 4
+        angle = asin(xo / dist) + M_PI ;
+    }
+    else if (xo == 0 && yo > 0) { // up
+        angle = 0;
+    }
+    else if (yo == 0 && yo < 0) { // down
+        angle = M_PI;
+    }
+    
+    CGAffineTransform transform = tinyBubble.transform;
+    tinyBubble.transform = CGAffineTransformRotate(transform,angle );
+
+}
+
 
 #pragma mark - 寻找气泡合适的位置
 
@@ -613,9 +657,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         
         if (model.bubbleType == 2) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
-        }else  if (model.bubbleType == 1) {
-            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon];
-           
+        
         }else {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
@@ -631,6 +673,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         
         BOOL shouldAddBubble = NO;
         
+        
         if (i == 0) {
             // 第一个圆在中心区域随机取一点
             shouldAddBubble = YES;
@@ -641,6 +684,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         else
         {
+            if (i == 4) {
+                bubble.hadRecommend = YES;
+            }
             
             for (AIBubble *centerBubble in weakSelf.bubbles) {
                 
