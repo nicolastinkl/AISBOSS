@@ -45,7 +45,7 @@ class AIFolderCellView: UIView {
     func setLayout(){
         serviceNameLabel.font = PurchasedViewFont.TITLE
         statusLabel.font = PurchasedViewFont.STATU
-        statusLabel.layer.cornerRadius = 5
+        statusLabel.layer.cornerRadius = 8
         statusLabel.clipsToBounds = true
         
         descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))

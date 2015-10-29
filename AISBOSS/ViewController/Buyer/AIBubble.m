@@ -95,10 +95,7 @@ typedef enum  {
                 
             default:
                 break;
-        }
-   
-        
-        
+        }      
     }
     
     return self;
@@ -128,13 +125,30 @@ typedef enum  {
     self.rotateImageView.layer.masksToBounds = YES;
     self.rotateImageView.clipsToBounds = YES;
 
+    UIImageView * imageview = [[UIImageView alloc] init];
+    imageview.frame = self.frame;
+    imageview.alpha = 0.5;
+    imageview.center =  CGPointMake(self.width/2, self.height/2);
+    //[self addSubview:imageview];
+    
+    //add it directly to our view's layer
+//    CALayer* _contentLayer = [CALayer layer];
+//    _contentLayer.frame = CGRectMake(-2, -2, 78/3+5, 88/3+3);
+//    _contentLayer.contents = (id)[UIImage imageNamed:@"recommandPlackholder"].CGImage;
+//    imageview.layer.mask = _contentLayer;
+    //center the image
+   
+//    imageview.layer.masksToBounds = YES;
+//    imageview.clipsToBounds = YES;
+
+
     {
         // 不规则图
         UIImageView * imageview2 = [[UIImageView alloc] init];
         imageview2.frame = CGRectMake(0, 0, 96/3, 104/3);
         imageview2.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageview2];
-        //imageview2.image = [UIImage imageNamed:@"recommandPlackholder"];
+        imageview2.image = [UIImage imageNamed:@"recommandPlackholder"];
     }
     {
         //图标
@@ -161,13 +175,11 @@ typedef enum  {
         
     });
     
-    
-    
 }
 
 - (void) initWithAdd:(CGPoint)center{
     
-    int width = 56.0;
+    int width = [AIBubble smaBubbleRadius]*2;//56.0;
     
     self.frame = CGRectMake(0, 0, width, width);
     self.center = center;
@@ -232,7 +244,7 @@ typedef enum  {
     popView.transform =  CGAffineTransformMakeScale(BridNum, BridNum);
     popView.center = CGPointMake(self.width/2, self.height/2);
     self.layer.cornerRadius = size / 2;
-    self.layer.borderWidth = 2;
+    self.layer.borderWidth = 1.5;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
 
@@ -438,7 +450,7 @@ typedef enum  {
 
 + (CGFloat)tinyBubbleRadius
 {
-    return [AITools displaySizeFrom1080DesignSize:78] / 2;
+    return [AITools displaySizeFrom1080DesignSize:88] / 2;
 }
 
 /*

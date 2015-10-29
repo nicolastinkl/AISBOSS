@@ -119,7 +119,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         statu.font = PurchasedViewFont.STATU
         statu.textColor = PurchasedViewColor.STATU
         statu.text = "On Schedule"
-        statu.layer.cornerRadius = 6
+        statu.layer.cornerRadius = 8
         statu.layer.masksToBounds = true
         statu.textAlignment = .Center
         headView.addSubview(statu)

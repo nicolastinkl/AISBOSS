@@ -427,7 +427,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             
             // 添加 tiny 气泡
             AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
-            model.bubbleSize = [AIBubble tinyBubbleRadius] + 10;
+            model.bubbleSize = [AIBubble tinyBubbleRadius];
             AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:bubble.bubbleModel type:typeToSignIcon];
             [self.bubbles addObject:tinyBubble];
             [self addSubview:tinyBubble];
@@ -582,8 +582,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     if (_bubbleModels.count == 0) {
         return;
     }
-    self.cacheBubble = [[NSMutableDictionary alloc ] init];
     
+    self.cacheBubble = [[NSMutableDictionary alloc ] init];
     [self.cacheBubble setValue:@1 forKey:big];
     [self.cacheBubble setValue:@(4) forKey:middle];
     [self.cacheBubble setValue:@(self.bubbleModels.count-5) forKey:small];
@@ -597,14 +597,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     {
         AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
         modelAdd.bubbleType = 2;
-        modelAdd.bubbleSize = 0;
-        modelAdd.proposal_id = 0;
-        modelAdd.proposal_id_new = 0;
-        modelAdd.proposal_name = @"";
-        modelAdd.proposal_price = @"";
-        modelAdd.service_thumbnail_icon= @"";
-        modelAdd.order_times = 0;
-        
         [self.bubbleModels addObject:modelAdd];
     }
     
@@ -613,14 +605,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     {
         AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
         modelAdd.bubbleType = 1;
-        modelAdd.bubbleSize = 0;
-        modelAdd.proposal_id = 0;
-        modelAdd.proposal_id_new = 0;
-        modelAdd.proposal_name = @"";
-        modelAdd.proposal_price = @"";
-        modelAdd.service_thumbnail_icon= @"";
-        modelAdd.order_times = 0;
-        
         [self.bubbleModels addObject:modelAdd];
     }
     __weak typeof(self) weakSelf = self;

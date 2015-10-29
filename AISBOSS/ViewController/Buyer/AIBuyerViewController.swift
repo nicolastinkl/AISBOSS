@@ -19,7 +19,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
-    let tableCellRowHeight : CGFloat = 96
+    let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
     
     let topBarHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(130)
     
@@ -185,7 +185,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if  dataSource[indexPath.row].isExpanded{
+        if  dataSource[indexPath.row].isExpanded {
             return dataSource[indexPath.row].expandHeight!
         } else {
             return tableCellRowHeight

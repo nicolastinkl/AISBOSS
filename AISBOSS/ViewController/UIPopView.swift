@@ -16,7 +16,9 @@ import AISpring
     @IBOutlet weak var popBackgroundView: AIImageView!    
     @IBOutlet weak var popPrice: UILabel!
     @IBOutlet weak var popBuyNumber: UILabel!
+    
     var firstImageView:AIImageView?
+    
     // MARK: currentView
     class func currentView()->UIPopView{
         let selfView = NSBundle.mainBundle().loadNibNamed("UIPopView", owner: self, options: nil).first  as! UIPopView
@@ -32,8 +34,15 @@ import AISpring
         popPrice.text = model.proposal_price ?? ""
         popBuyNumber.text = "\(model.order_times ?? 0)"
         
-        popTitle.font = AITools.myriadLightSemiCondensedWithSize(20)
-        popPrice.font = AITools.myriadBoldWithSize(21)
+        popTitle.font = AITools.myriadLightSemiCondensedWithSize(22)
+        
+        let price =  model.proposal_price ?? ""
+        if price.length > 9 {
+            popPrice.font = AITools.myriadBoldWithSize(14)
+        }else{
+            popPrice.font = AITools.myriadBoldWithSize(21)
+        }
+        
         popBuyNumber.font = AITools.myriadLightSemiExtendedWithSize(15)
         
         /// 添加logo小图标
@@ -50,17 +59,16 @@ import AISpring
                 i++
             }
         }
-        
     }
     
-    let kAngleOffset:CGFloat = CGFloat(M_PI_2) / 4.5
-    let kSphereLength:CGFloat = 60
+    let kAngleOffset:CGFloat = CGFloat(M_PI_2)/5.2 //CGFloat(M_PI_2) / 4.5
+    let kSphereLength:CGFloat = 61
     let kSphereDamping:Float = 0.7
     let kSphereFixPosition:CGFloat = 7
     
     // 图标 弧形排列
     func centerForIconAtIndex(index:Int) -> CGPoint{
-        let firstAngle:CGFloat = CGFloat(M_PI)*0.5 + (CGFloat(M_PI_2) - kAngleOffset) - CGFloat(index) * kAngleOffset
+        let firstAngle:CGFloat = CGFloat(M_PI)*0.48 + (CGFloat(M_PI_2) - kAngleOffset) - CGFloat(index) * kAngleOffset
         //print(firstAngle)
         let startPoint = self.center
         let x = startPoint.x + cos(firstAngle) * kSphereLength - kSphereFixPosition;
