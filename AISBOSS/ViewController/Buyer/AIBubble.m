@@ -40,10 +40,6 @@ typedef enum  {
 
 
 @implementation AIBubble
-@synthesize glowOffset = _glowOffset;
-@synthesize glowAmount = _glowAmount;
-@synthesize glowColor = _glowColor;
-
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model
 {
@@ -245,23 +241,18 @@ typedef enum  {
         //  第二种解决方式:
         // UPDATE UI...
         dispatch_async(dispatch_get_main_queue(), ^{
-            TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:3];
             
+            TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:3];
             NSArray * array = [NSArray arrayWithObjects:imageColors.colors.lastObject, imageColors.colors[1],nil];
-            //                [imageColors.colors.lastObject]
             UIColor *color = imageColors.colors.lastObject;
-            //                self.backgroundColor = color;
             weakSelf.layer.borderColor = color.CGColor;
             
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
-            //self.layer.borderColor = popView.firstImageView.image.pickImageEffectColor.CGColor;
-            
-            // Settings Shadow.
             
             //根据发光效果添加图层
             {
 //                weakSelf.hidden = YES;
-                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
                 focalPointView.bgColor= color;
                 focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
                 focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
@@ -282,20 +273,7 @@ typedef enum  {
                 
                 [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
                 
-            }
-            
-            
-            //Create the gradient and add it to our view's root layer
-//            colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-//            self.glowOffset = CGSizeMake(0.0, 0.0);
-//            self.glowAmount = 0.0;
-//            self.glowColor = [UIColor clearColor];
-            
-//            CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
-//            gradientLayer.frame =  (CGRect){CGPointZero, CGSizeMake(weakSelf.width, weakSelf.width)};
-//            gradientLayer.position = weakSelf.center;
-//            [weakSelf.layer addSublayer:gradientLayer];
-//            [gradientLayer setColors:[NSArray arrayWithObjects:(id)color.CGColor,(id)[UIColor grayColor].CGColor, nil]];
+            } 
             
         });
     }];
@@ -334,29 +312,6 @@ typedef enum  {
     //[self setNeedsDisplay];
 }
 
-#pragma mark - Glow..
-- (void)setGlowColor:(UIColor *)newGlowColor
-{
-    if (newGlowColor != glowColor) {
-        CGColorRelease(glowColorRef);
-        glowColor = newGlowColor;
-        glowColorRef = CGColorCreate(colorSpaceRef, CGColorGetComponents(glowColor.CGColor));
-    }
-}
-
-
-// fake image
-
-
-- (UIImage *)randomImage
-{
-    NSInteger random = arc4random() % 5 + 1;
-    
-    NSString *name = [NSString stringWithFormat:@"Bubble0%ld.png", (long)random];
-    
-    return [UIImage imageNamed:name];
-    
-}
 
 
 #pragma mark - Calculate Bubble Size 
@@ -457,17 +412,17 @@ typedef enum  {
 
 + (CGFloat)bigBubbleRadius
 {
-    return [AITools displaySizeFrom1080DesignSize:438] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kBigBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:438] / 2;
 }
 
 + (CGFloat)midBubbleRadius
 {
-    return [AITools displaySizeFrom1080DesignSize:292] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kMiddleBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:292] / 2;
 }
 
 + (CGFloat)smaBubbleRadius
 {
-    return [AITools displaySizeFrom1080DesignSize:194] / 2;//CGRectGetWidth([UIScreen mainScreen].bounds) * kSmallBubbleRate / 2;
+    return [AITools displaySizeFrom1080DesignSize:194] / 2;
 }
 
 
@@ -475,21 +430,5 @@ typedef enum  {
 {
     return [AITools displaySizeFrom1080DesignSize:78] / 2;
 }
-
-/*
--(void)drawRect:(CGRect)rect{
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSaveGState(context);
-    
-    CGContextSetShadow(context, self.glowOffset, self.glowAmount);
-    CGContextSetShadowWithColor(context, self.glowOffset, self.glowAmount, glowColorRef);
-    
-    [super drawRect:rect];
-    
-    CGContextRestoreGState(context);
-}
-*/
-
 
 @end

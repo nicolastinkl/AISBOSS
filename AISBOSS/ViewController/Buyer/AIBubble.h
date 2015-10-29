@@ -21,10 +21,6 @@ typedef enum  {
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
 {
-    CGSize glowOffset;
-    UIColor *glowColor;
-    CGFloat glowAmount;
-    
     CGColorSpaceRef colorSpaceRef;
     CGColorRef glowColorRef;
 }
@@ -37,12 +33,6 @@ typedef enum  {
 @property (nonatomic) CGFloat isLight;
 //是否周边有小气泡标识
 @property (nonatomic) BOOL hasSmallBubble;
-
-@property (nonatomic) CGSize glowOffset;
-
-@property (nonatomic) CGFloat glowAmount;
-
-@property (nonatomic, strong) UIColor *glowColor;
 
 + (CGFloat)bigBubbleRadius;
 

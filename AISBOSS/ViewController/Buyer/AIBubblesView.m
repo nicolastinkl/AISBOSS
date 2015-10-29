@@ -603,9 +603,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }else {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
-        bubble.glowColor = [UIColor grayColor];
-        bubble.glowOffset = CGSizeMake(0.0, 0.0);
-        bubble.glowAmount = 30.0;
+//        bubble.glowColor = [UIColor grayColor];
+//        bubble.glowOffset = CGSizeMake(0.0, 0.0);
+//        bubble.glowAmount = 30.0;
         
         // 计算bubble的center
         
