@@ -165,7 +165,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     }
     
     func headTap(sender: UITapGestureRecognizer) {
-        delegate?.headViewTapped()
+        delegate?.headViewTapped(self)
     }
     
     func getHeight() -> CGFloat {
@@ -232,6 +232,6 @@ extension ProposalExpandedView: ServiceOrderStateProtocal {
 }
 
 protocol ProposalExpandedDelegate {
-    func headViewTapped()
+    func headViewTapped(proposalView: ProposalExpandedView)
 }
 
