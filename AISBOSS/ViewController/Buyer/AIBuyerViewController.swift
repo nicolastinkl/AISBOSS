@@ -84,17 +84,29 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             b.removeFromSuperview()
         }
         
-        let height = CGRectGetHeight(self.view.frame)
+        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(240)
         bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        bubbleView?.clipsToBounds = true
-        
         tableView?.tableHeaderView = bubbleView
+        
+        
         
         // add bubbles
         let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
         
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - topBarHeight - 2 * margin), models: NSMutableArray(array: self.dataSourcePop))
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - AITools.displaySizeFrom1080DesignSize(96) - topBarHeight - 20), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
+        // 
+       
+        let y = height - AITools.displaySizeFrom1080DesignSize(96)
+        let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
+        label.textAlignment = .Right
+        
+        label.verticalAlignment = UPVerticalAlignmentMiddle
+        label.font = AITools.myriadRegularWithSize(20);
+        bubbleView.addSubview(label)
+        
+        
+        
     }
     
     // MARK: - 构造顶部Bar
@@ -131,7 +143,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let logoButton = UIButton(type: .Custom)
         logoButton.frame = CGRectMake(0, 0, logoSie, logoSie)
         logoButton.setImage(logo, forState: UIControlState.Normal)
-        logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2)
+        logoButton.center = CGPointMake(screenWidth / 2, barHeight / 2 + 5)
         logoButton.addTarget(self, action: "backToFirstPage", forControlEvents: .TouchUpInside)
         
         topBar?.addSubview(logoButton)
@@ -277,7 +289,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - topBarHeight
         
         if (offset > maxHeight / 2 && offset <= maxHeight) {
-            tableView?.scrollRectToVisible(CGRectMake(0, maxHeight, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
+            tableView?.scrollRectToVisible(CGRectMake(0, maxHeight - AITools.displaySizeFrom1080DesignSize(96), screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
         }
         else if (offset < maxHeight / 2)
         {

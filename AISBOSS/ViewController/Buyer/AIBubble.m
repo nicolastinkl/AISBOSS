@@ -33,7 +33,6 @@ typedef enum  {
 
 @interface AIBubble ()
 
-@property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
 @property (strong, nonatomic) NSTimer *timer;
 @end
@@ -108,6 +107,20 @@ typedef enum  {
     
     _radius = width / 2;
     //背景
+    self.rotateImageView = [[UIImageView alloc] init];
+    self.rotateImageView.frame = self.frame;
+    self.rotateImageView.alpha = 0.5;
+    self.rotateImageView.center =  CGPointMake(self.width/2, self.height/2);
+    [self addSubview:self.rotateImageView];
+
+    
+    CALayer* _contentLayer = [CALayer layer];
+    _contentLayer.frame = self.bounds;
+    _contentLayer.contents = (id)[UIImage imageNamed:@"recommandPlackholder"].CGImage;
+    self.rotateImageView.layer.mask = _contentLayer;
+    self.rotateImageView.layer.masksToBounds = YES;
+    self.rotateImageView.clipsToBounds = YES;
+
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
     imageview.alpha = 0.6;
@@ -124,6 +137,7 @@ typedef enum  {
    
 //    imageview.layer.masksToBounds = YES;
 //    imageview.clipsToBounds = YES;
+
 
     {
         // 不规则图
@@ -153,7 +167,7 @@ typedef enum  {
         UIColor *color = imageColors.colors[1];
         weakSelf.layer.borderColor = color.CGColor;
         
-        imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
+        weakSelf.rotateImageView.image = [weakSelf buttonImageFromColors:array frame:weakSelf.rotateImageView.frame];
         
         
     });
@@ -432,7 +446,7 @@ typedef enum  {
 
 + (CGFloat)tinyBubbleRadius
 {
-    return [AITools displaySizeFrom1080DesignSize:78] / 2;
+    return [AITools displaySizeFrom1080DesignSize:88] / 2;
 }
 
 @end
