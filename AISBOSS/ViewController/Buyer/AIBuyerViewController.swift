@@ -367,7 +367,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
         servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
-
+        servicesViewContainer.delegate = self
         //新建展开view时纪录高度
         servicesViewContainer.tag = indexPath.row
         dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
@@ -384,7 +384,8 @@ extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
         tableView.reloadData()
     }
     
-    func headViewTapped(){
-        
+    func headViewTapped(proposalView: ProposalExpandedView){
+        let indexPath = NSIndexPath(forRow: proposalView.tag, inSection: 0)
+        rowSelectAction(indexPath)
     }
 }
