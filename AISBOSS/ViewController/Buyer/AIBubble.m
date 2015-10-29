@@ -273,15 +273,15 @@ typedef enum  {
                 
                 
                 //定时器
-                /*
-                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2f
+                
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                               target:self
                                                             selector:@selector(TimerEvent)
                                                             userInfo:@{@"focalPointView":focalPointView}
                                                              repeats:YES];
                 
                 [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
-                 */
+                
             }
             
             
@@ -305,12 +305,21 @@ typedef enum  {
 - (void)TimerEvent
 {
     MDCSpotlightView *focalPointView = self.timer.userInfo[@"focalPointView"];
+    
     if (focalPointView != nil) {
         CGFloat alpha = focalPointView.alpha;
-        if ( alpha >= 0.5) {
-            alpha --;
+        if ( alpha == 0.5) {
+            [UIView animateWithDuration:0.8 animations:^{
+                focalPointView.alpha = 0.1f;
+            } completion:^(BOOL finished) {
+                
+            }];
         }else{
-            alpha ++;
+            [UIView animateWithDuration:0.8 animations:^{
+                focalPointView.alpha = 0.5f;
+            } completion:^(BOOL finished) {
+                
+            }];
         }
         
     }
