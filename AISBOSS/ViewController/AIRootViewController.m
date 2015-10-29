@@ -69,8 +69,8 @@
     [self.centerTapViewController didMoveToParentViewController:self];
     
     // up
-    storyBoard=[UIStoryboard storyboardWithName:@"UICustomerStoryboard" bundle:nil];
-    self.upDirectionViewController = [storyBoard instantiateViewControllerWithIdentifier:@"CustomHomeViewController"];
+    AIUINavigationController *upNavi = [[AIUINavigationController alloc] initWithRootViewController:[[AIBuyerViewController alloc] init]];
+    self.upDirectionViewController = upNavi;
     [self addChildViewController:self.upDirectionViewController];
     [self.upDirectionViewController didMoveToParentViewController:self];
     
@@ -81,8 +81,7 @@
     [sellerViewController didMoveToParentViewController:self];
     
     // left
-    AIUINavigationController *leftNavi = [[AIUINavigationController alloc] initWithRootViewController:[[AIBuyerViewController alloc] init]];
-    self.leftDirectionViewController = leftNavi;
+    self.leftDirectionViewController = self.centerTapViewController;
     [self addChildViewController:self.leftDirectionViewController];
     [self.leftDirectionViewController didMoveToParentViewController:self];
     
