@@ -20,7 +20,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     private var proposalModel: ProposalModel?
     var serviceOrderNumberIsChanged: Bool = false
     private var initHeight: CGFloat = 0
-
+    var delegate: ProposalExpandedDelegate?
     
     var proposalOrder: ProposalModel? {
         get {
@@ -114,6 +114,8 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private func addHeadView() {
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: super.frame.width, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
+        headView.userInteractionEnabled = true
+        headView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "headTap:"))
  
         statu = UILabel(frame: CGRect(x: 0, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
@@ -160,6 +162,10 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         
         
         addSubview(headView)
+    }
+    
+    func headTap(sender: UITapGestureRecognizer) {
+        delegate?.headViewTapped()
     }
     
     func getHeight() -> CGFloat {
@@ -223,5 +229,9 @@ extension ProposalExpandedView: ServiceOrderStateProtocal {
     func orderStateChanged(changedOrder: ServiceOrderModel, oldState: ServiceOrderState) {
         serviceOrderNumberIsChanged = true
     }
+}
+
+protocol ProposalExpandedDelegate {
+    func headViewTapped()
 }
 
