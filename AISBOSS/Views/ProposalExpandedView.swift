@@ -19,6 +19,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     var dimentionListener: DimentionChangable?
     private var proposalModel: ProposalModel?
     var serviceOrderNumberIsChanged: Bool = false
+    private var initHeight: CGFloat = 0
 
     
     var proposalOrder: ProposalModel? {
@@ -96,6 +97,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initHeight = frame.height
         initSelf()
         
         backgroundColor = PurchasedViewColor.BACKGROUND
@@ -161,7 +163,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     }
     
     func getHeight() -> CGFloat {
-        var height: CGFloat = PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT
+        var height: CGFloat = initHeight
         
         for serviceView in serviceViews {
             height += serviceView.frame.height
@@ -199,7 +201,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     }
     
     private func recalculateFrame() {
-        var height: CGFloat = PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT
+        var height: CGFloat = initHeight
         
         for var index = 0; index < serviceViews.count; index++ {
             height += serviceViews[index].frame.height

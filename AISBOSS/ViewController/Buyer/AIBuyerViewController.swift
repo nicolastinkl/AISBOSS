@@ -359,7 +359,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let proposalModel = dataSource[indexPath.row].model!
         
         let viewWidth = tableView.frame.size.width
-        let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
+        let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
         servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
 
