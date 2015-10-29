@@ -226,7 +226,6 @@
     return newImage;
 }
 
-
 #pragma mark - New Fonts
 
 + (UIFont *) myriadRegularWithSize:(CGFloat)size

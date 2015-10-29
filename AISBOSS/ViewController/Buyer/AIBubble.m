@@ -96,10 +96,7 @@ typedef enum  {
                 
             default:
                 break;
-        }
-   
-        
-        
+        }      
     }
     
     return self;
@@ -120,11 +117,10 @@ typedef enum  {
     imageview.alpha = 0.5;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
-
     
     //add it directly to our view's layer
     CALayer* _contentLayer = [CALayer layer];
-    _contentLayer.frame = CGRectMake(0, 0, 78/3, 88/3);
+    _contentLayer.frame = CGRectMake(-2, -2, 78/3+5, 88/3+3);
     _contentLayer.contents = (id)[UIImage imageNamed:@"recommandPlackholder"].CGImage;
     imageview.layer.mask = _contentLayer;
     //center the image

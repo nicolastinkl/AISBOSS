@@ -46,7 +46,6 @@
 // UIImage
 + (UIImage *) convertImageToGrayScale: (UIImage *) image;
 
-
 // Fonts
 
 + (UIFont *) myriadRegularWithSize:(CGFloat)size;
