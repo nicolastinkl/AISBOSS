@@ -112,6 +112,7 @@ typedef enum  {
     imageview.frame = self.frame;
     imageview.alpha = 0.6;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
+
     //[self addSubview:imageview];
     
     //add it directly to our view's layer
@@ -249,31 +250,34 @@ typedef enum  {
             
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             
-            //根据发光效果添加图层
-            {
-//                weakSelf.hidden = YES;
-                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
-                focalPointView.bgColor= color;
-                focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
-                focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
-                focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
-                focalPointView.layer.masksToBounds  = YES;
-                [focalPointView setNeedsDisplay];
-                [weakSelf.superview insertSubview:focalPointView atIndex:0];
-                focalPointView.alpha = 0.5;
-                
-                
-                //定时器
-                
-                self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                              target:self
-                                                            selector:@selector(TimerEvent)
-                                                            userInfo:@{@"focalPointView":focalPointView}
-                                                             repeats:YES];
-                
-                [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
-                
-            } 
+            if (model.proposal_id_new > 0){
+                //根据发光效果添加图层
+                {
+                    //                weakSelf.hidden = YES;
+                    MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
+                    focalPointView.bgColor= color;
+                    focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
+                    focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
+                    focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+                    focalPointView.layer.masksToBounds  = YES;
+                    [focalPointView setNeedsDisplay];
+                    [weakSelf.superview insertSubview:focalPointView atIndex:0];
+                    focalPointView.alpha = 0.5;
+                    
+                    
+                    //定时器
+                    
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                                  target:self
+                                                                selector:@selector(TimerEvent)
+                                                                userInfo:@{@"focalPointView":focalPointView}
+                                                                 repeats:YES];
+                    
+                    [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+                    
+                }
+            }
+            
             
         });
     }];
