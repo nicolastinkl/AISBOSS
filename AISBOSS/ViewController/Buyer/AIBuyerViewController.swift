@@ -172,7 +172,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if  dataSource[indexPath.row].isExpanded{
+        if  dataSource[indexPath.row].isExpanded {
             return dataSource[indexPath.row].expandHeight!
         } else {
             return tableCellRowHeight

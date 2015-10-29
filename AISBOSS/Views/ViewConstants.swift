@@ -25,7 +25,7 @@ class PurchasedViewDimention {
     static let SERVICE_STATU_HEIGHT = 40 / CONVERT_FACTOR
     static let ICON_WIDTH: CGFloat = 52 / CONVERT_FACTOR
     static let ICON_HEIGHT: CGFloat = 52 / CONVERT_FACTOR
-    static let SERVICE_COLLAPSED_HEIGHT: CGFloat = 80
+    static let SERVICE_COLLAPSED_HEIGHT: CGFloat = 90
 }
 
 class PurchasedViewColor {
