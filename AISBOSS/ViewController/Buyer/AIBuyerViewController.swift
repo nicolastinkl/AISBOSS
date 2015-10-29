@@ -84,20 +84,20 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             b.removeFromSuperview()
         }
         
-        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(240)
+        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
+        let bheight = AITools.displaySizeFrom1080DesignSize(1538)
+        
+        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
         bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
         tableView?.tableHeaderView = bubbleView
         
-        
-        
         // add bubbles
-        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
-        
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - AITools.displaySizeFrom1080DesignSize(96) - topBarHeight - 20), models: NSMutableArray(array: self.dataSourcePop))
+     
+        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
         // 
        
-        let y = height - AITools.displaySizeFrom1080DesignSize(96)
+        let y = CGRectGetMaxY(bubbles.frame)
         let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
         label.textAlignment = .Right
         
