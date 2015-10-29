@@ -15,6 +15,7 @@
 #import "AITools.h"
 #import "MDCSpotlightView.h"
 
+#define kDefaultAlpha           0.9
 
 #define kBigBubbleRate          0.4
 
@@ -106,12 +107,12 @@ typedef enum  {
     
     self.frame = CGRectMake(0, 0, width, width);
     self.center = center;
-    
+
     _radius = width / 2;
     //背景
     self.rotateImageView = [[UIImageView alloc] init];
     self.rotateImageView.frame = self.frame;
-    self.rotateImageView.alpha = 0.5;
+    self.rotateImageView.alpha = kDefaultAlpha;
     self.rotateImageView.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:self.rotateImageView];
 
@@ -125,7 +126,7 @@ typedef enum  {
 
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
-    imageview.alpha = 0.6;
+    imageview.alpha = kDefaultAlpha;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
 
     //[self addSubview:imageview];
@@ -203,7 +204,7 @@ typedef enum  {
         focalPointView.layer.masksToBounds  = YES;
         [focalPointView setNeedsDisplay];
         [self insertSubview:focalPointView atIndex:0];
-        focalPointView.alpha = 0.5;
+        focalPointView.alpha = kDefaultAlpha;
         
         
         //定时器
@@ -241,7 +242,7 @@ typedef enum  {
     //背景
     UIImageView * imageview = [[UIImageView alloc] init];
     imageview.frame = self.frame;
-    imageview.alpha = 0.5;
+    imageview.alpha = kDefaultAlpha;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
     
@@ -338,7 +339,7 @@ typedef enum  {
             }];
         }else{
             [UIView animateWithDuration:0.8 animations:^{
-                focalPointView.alpha = 0.5f;
+                focalPointView.alpha = 0.5;
             } completion:^(BOOL finished) {
                 
             }];
