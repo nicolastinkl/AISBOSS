@@ -22,7 +22,7 @@
                     <animations/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekend Road Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvO-1B-1e4" userLabel="serviceName">
-                    <rect key="frame" x="16" y="14" width="145" height="20"/>
+                    <rect key="frame" x="16" y="18" width="145" height="20"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="4dQ-HD-Wam"/>
@@ -44,15 +44,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2fw-UB-u5X" userLabel="serviceIcon">
-                    <rect key="frame" x="16" y="55" width="21" height="21"/>
+                    <rect key="frame" x="16" y="59" width="24" height="24"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="21" id="cOv-Xq-vGW"/>
-                        <constraint firstAttribute="height" constant="21" id="gGK-gP-yXa"/>
+                        <constraint firstAttribute="width" constant="24" id="cOv-Xq-vGW"/>
+                        <constraint firstAttribute="height" constant="24" id="gGK-gP-yXa"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hl-s1x" userLabel="descView">
-                    <rect key="frame" x="42" y="55" width="545" height="23"/>
+                    <rect key="frame" x="45" y="59" width="542" height="23"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -89,7 +89,7 @@
                 <constraint firstAttribute="bottom" secondItem="5dh-Hl-s1x" secondAttribute="bottom" constant="30" id="dIH-rl-u46"/>
                 <constraint firstItem="2fw-UB-u5X" firstAttribute="leading" secondItem="cvO-1B-1e4" secondAttribute="leading" id="dZh-39-gfh"/>
                 <constraint firstItem="5dh-Hl-s1x" firstAttribute="top" secondItem="cvO-1B-1e4" secondAttribute="bottom" constant="2" id="icw-0R-L7I"/>
-                <constraint firstItem="cvO-1B-1e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="kAj-cA-htc"/>
+                <constraint firstItem="cvO-1B-1e4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="kAj-cA-htc"/>
                 <constraint firstAttribute="bottom" secondItem="2fw-UB-u5X" secondAttribute="bottom" constant="40" id="ntZ-VY-2E4"/>
                 <constraint firstItem="kLf-bf-ITi" firstAttribute="centerY" secondItem="cvO-1B-1e4" secondAttribute="centerY" id="oV5-5a-XaL"/>
                 <constraint firstAttribute="trailing" secondItem="PmP-1O-fI1" secondAttribute="trailing" id="uIc-Ck-MhN"/>

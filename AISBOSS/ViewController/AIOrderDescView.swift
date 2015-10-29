@@ -127,7 +127,7 @@ class AIOrderDescView: UIView {
         
         if isDelayed{
             let alertTextSize = caculateContentSize("Delayed", font: ALERT_LABEL_FONT)
-            let alertLabelFrame = CGRectMake(timeLabelFrame.origin.x - alertTextSize.width - 30, 0, alertTextSize.width, TEXT_HEIGHT)
+            let alertLabelFrame = CGRectMake(timeLabelFrame.origin.x - alertTextSize.width - 25, 0, alertTextSize.width, TEXT_HEIGHT)
             let alertLabel = UILabel(frame: alertLabelFrame)
             alertLabel.text = "Delayed"
             alertLabel.font = ALERT_LABEL_FONT
