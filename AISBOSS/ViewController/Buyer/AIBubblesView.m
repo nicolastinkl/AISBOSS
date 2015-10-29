@@ -600,7 +600,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [self.bubbleModels addObject:modelAdd];
     }
     
-    
     //添加一个identity对象
     {
 //        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
