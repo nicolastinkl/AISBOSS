@@ -668,9 +668,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         else
         {
-            if (i == 4) {
-                bubble.hadRecommend = YES;
-            }
             
             for (AIBubble *centerBubble in weakSelf.bubbles) {
                 

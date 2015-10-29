@@ -95,7 +95,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, height - AITools.displaySizeFrom1080DesignSize(96) - topBarHeight - 20), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
-        bubbles.backgroundColor = UIColor.redColor();
         // 
        
         let y = height - AITools.displaySizeFrom1080DesignSize(96)
