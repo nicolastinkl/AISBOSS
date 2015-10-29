@@ -308,7 +308,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if (scrollView.contentOffset.y > 0) {
-            topBar.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
+            topBar.backgroundColor = UIColor(white: 0, alpha: 0.55)
         } else {
             topBar.backgroundColor = UIColor.clearColor()
         }
