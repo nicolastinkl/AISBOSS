@@ -19,7 +19,8 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     var dimentionListener: DimentionChangable?
     private var proposalModel: ProposalModel?
     var serviceOrderNumberIsChanged: Bool = false
-
+    private var initHeight: CGFloat = 0
+    var delegate: ProposalExpandedDelegate?
     
     var proposalOrder: ProposalModel? {
         get {
@@ -96,6 +97,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
   
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initHeight = frame.height
         initSelf()
         
         backgroundColor = PurchasedViewColor.BACKGROUND
@@ -112,6 +114,8 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     
     private func addHeadView() {
         let headView = UIView(frame: CGRect(x: 0, y: 0, width: super.frame.width, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
+        headView.userInteractionEnabled = true
+        headView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "headTap:"))
  
         statu = UILabel(frame: CGRect(x: 0, y: PurchasedViewDimention.PROPOSAL_STATU_MARGIN_TOP, width: 80, height: PurchasedViewDimention.PROPOSAL_STATU_HEIGHT))
         
@@ -160,8 +164,12 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         addSubview(headView)
     }
     
+    func headTap(sender: UITapGestureRecognizer) {
+        delegate?.headViewTapped(self)
+    }
+    
     func getHeight() -> CGFloat {
-        var height: CGFloat = PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT
+        var height: CGFloat = initHeight
         
         for serviceView in serviceViews {
             height += serviceView.frame.height
@@ -199,7 +207,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     }
     
     private func recalculateFrame() {
-        var height: CGFloat = PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT
+        var height: CGFloat = initHeight
         
         for var index = 0; index < serviceViews.count; index++ {
             height += serviceViews[index].frame.height
@@ -221,5 +229,9 @@ extension ProposalExpandedView: ServiceOrderStateProtocal {
     func orderStateChanged(changedOrder: ServiceOrderModel, oldState: ServiceOrderState) {
         serviceOrderNumberIsChanged = true
     }
+}
+
+protocol ProposalExpandedDelegate {
+    func headViewTapped(proposalView: ProposalExpandedView)
 }
 
