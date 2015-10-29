@@ -389,7 +389,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     CGPoint tcenter = CGPointZero;
     
     // 计算圆心之间的合适距离
-    CGFloat radius = [AIBubble tinyBubbleRadius] + bubble.radius + kBubbleMargin;
+    CGFloat radius = [AIBubble tinyBubbleRadius] + bubble.radius + kBubbleMargin - 6;
     
     // 遍历中心圆的圆心,依次寻找tiny气泡的位置
     for (NSValue *value in points) {
@@ -424,7 +424,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         
         
         if (!CGPointEqualToPoint(tcenter, CGPointZero)) {
-            
+            NSLog(@"Tiny Center : %@", [NSValue valueWithCGPoint:tcenter]);
             // 添加 tiny 气泡
             AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
             model.bubbleSize = [AIBubble tinyBubbleRadius];
