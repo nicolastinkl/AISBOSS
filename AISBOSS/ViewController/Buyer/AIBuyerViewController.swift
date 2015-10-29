@@ -258,9 +258,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if !dataSource[indexPath.row].isExpanded{
+            rowSelectAction(indexPath)
+        }
+    }
+    
+    //处理表格点击事件
+    func rowSelectAction(indexPath : NSIndexPath){
         dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-        
         //如果有，做比较
         if let _ = lastSelectedIndexPath {
             //如果点击了不同的cell
@@ -278,9 +283,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             if cellNeedRebuild(cacheCell) {
                 tableViewCellCache[indexPath.row] = buildTableViewCell(indexPath)
             }
-        }   
-        
+        }
         tableView.reloadData()
+
     }
     
     // MARK: - ScrollViewDelegate
@@ -371,7 +376,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 }
 
 
-extension AIBuyerViewController : DimentionChangable {
+extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
     func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         let expandView = changedView as! ProposalExpandedView
         let row = expandView.tag
@@ -379,4 +384,7 @@ extension AIBuyerViewController : DimentionChangable {
         tableView.reloadData()
     }
     
+    func headViewTapped(){
+        
+    }
 }
