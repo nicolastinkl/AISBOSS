@@ -19,7 +19,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Constants
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
-    let tableCellRowHeight : CGFloat = 96
+    let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
     
     let topBarHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(130)
     
