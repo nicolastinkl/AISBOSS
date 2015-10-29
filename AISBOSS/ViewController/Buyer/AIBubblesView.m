@@ -603,9 +603,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     
     //添加一个identity对象
     {
-        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
-        modelAdd.bubbleType = 1;
-        [self.bubbleModels addObject:modelAdd];
+//        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
+//        modelAdd.bubbleType = 1;
+//        [self.bubbleModels addObject:modelAdd];
     }
     __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -642,12 +642,12 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         if (model.bubbleType == 2) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
         
-        }else {
+        }else if (model.bubbleType == 1) {
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon];
+            
+        }else{
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
-//        bubble.glowColor = [UIColor grayColor];
-//        bubble.glowOffset = CGSizeMake(0.0, 0.0);
-//        bubble.glowAmount = 30.0;
         
         // 计算bubble的center
         
@@ -656,7 +656,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         NSMutableArray *rightPoints = [[NSMutableArray alloc] init];
         
         BOOL shouldAddBubble = NO;
-        
         
         if (i == 0) {
             // 第一个圆在中心区域随机取一点
