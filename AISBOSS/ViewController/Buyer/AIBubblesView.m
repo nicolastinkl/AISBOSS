@@ -461,7 +461,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     //
     
     if (xo > 0 && yo > 0) { // 1
-        angle = asin(xo / dist) ;
+        angle = 2*M_PI - asin(xo / dist) ;
     }
     else if (xo < 0 && yo > 0) { // 2
         angle = - asin(xo / dist) ;
@@ -480,7 +480,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     }
     
     CGAffineTransform transform = tinyBubble.transform;
-    tinyBubble.transform = CGAffineTransformRotate(transform,angle );
+    tinyBubble.transform = CGAffineTransformRotate(transform,angle);
 
 }
 
