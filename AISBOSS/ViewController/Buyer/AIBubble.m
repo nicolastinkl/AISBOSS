@@ -289,7 +289,14 @@ typedef enum  {
             UIColor *color = imageColors.colors.lastObject;
             weakSelf.layer.borderColor = color.CGColor;
             
+            
+            imageview.alpha=0.2;
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:(0.5)];
+            [imageview setNeedsDisplay];
+            imageview.alpha = 1;
+            [UIView commitAnimations];
             
             if (model.proposal_id_new > 0){
                 //根据发光效果添加图层
