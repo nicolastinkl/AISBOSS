@@ -316,7 +316,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     
     NSMutableArray *points = [[NSMutableArray alloc] init];
     
-    CGFloat anchorOffset = M_PI / 45;
+    CGFloat anchorOffset = M_PI / 45; // 角度4°
     CGFloat anchort = 0;
     
     while (anchort < 2 * M_PI) {
@@ -459,7 +459,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
     
     //
-    
     if (xo > 0 && yo > 0) { // 1
         angle = 2*M_PI - asin(xo / dist) ;
     }
@@ -524,7 +523,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
     }
     
-    // 判断是否能放下推荐气泡
+    // 选择距离中心圆最近的点
     
     center = [self nearestPointInPoints:rightPoints];
     
