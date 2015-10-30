@@ -258,9 +258,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if !dataSource[indexPath.row].isExpanded{
+            rowSelectAction(indexPath)
+        }
+    }
+    
+    //处理表格点击事件
+    func rowSelectAction(indexPath : NSIndexPath){
         dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
-        
         //如果有，做比较
         if let _ = lastSelectedIndexPath {
             //如果点击了不同的cell
@@ -278,9 +283,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             if cellNeedRebuild(cacheCell) {
                 tableViewCellCache[indexPath.row] = buildTableViewCell(indexPath)
             }
-        }   
-        
+        }
         tableView.reloadData()
+
     }
     
     // MARK: - ScrollViewDelegate
@@ -359,10 +364,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let proposalModel = dataSource[indexPath.row].model!
         
         let viewWidth = tableView.frame.size.width
-        let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 50))
+        let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
         servicesViewContainer.proposalOrder = proposalModel
         servicesViewContainer.dimentionListener = self
-
+        servicesViewContainer.delegate = self
         //新建展开view时纪录高度
         servicesViewContainer.tag = indexPath.row
         dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
@@ -371,7 +376,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 }
 
 
-extension AIBuyerViewController : DimentionChangable {
+extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
     func heightChanged(changedView: UIView, beforeHeight: CGFloat, afterHeight: CGFloat) {
         let expandView = changedView as! ProposalExpandedView
         let row = expandView.tag
@@ -379,4 +384,8 @@ extension AIBuyerViewController : DimentionChangable {
         tableView.reloadData()
     }
     
+    func headViewTapped(proposalView: ProposalExpandedView){
+        let indexPath = NSIndexPath(forRow: proposalView.tag, inSection: 0)
+        rowSelectAction(indexPath)
+    }
 }
