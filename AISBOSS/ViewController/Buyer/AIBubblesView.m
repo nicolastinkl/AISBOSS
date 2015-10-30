@@ -533,7 +533,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [self.bubbleModels addObject:modelAdd];
     }
     
-    
     //这里处理随机乱序
     /*NSUInteger count = _bubbleModels.count;
     

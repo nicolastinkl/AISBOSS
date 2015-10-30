@@ -287,7 +287,15 @@ typedef enum  {
             TDImageColors *imageColors = [[TDImageColors alloc] initWithImage:image count:3];
             NSArray * array = [NSArray arrayWithObjects:imageColors.colors.lastObject, imageColors.colors[1],nil];
             UIColor *color = imageColors.colors.lastObject;
-            weakSelf.layer.borderColor = color.CGColor;
+            //处理颜色 鲜艳度
+            
+            const CGFloat *cs = CGColorGetComponents(color.CGColor);
+            CGFloat red = cs[0] ;   //CGFloat(cs[0]);
+            CGFloat green = cs[1];  //CGFloat(cs[1]);
+            CGFloat blue =cs[2];    //CGFloat(cs[2]);
+            CGFloat colorHold = 0.2;
+            UIColor * newColor = [UIColor colorWithRed:red+colorHold green:green+colorHold blue:blue+colorHold alpha:1];
+            weakSelf.layer.borderColor = newColor.CGColor;
             
             imageview.alpha=0.1;
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];

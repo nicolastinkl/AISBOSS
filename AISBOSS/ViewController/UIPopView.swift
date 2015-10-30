@@ -30,11 +30,21 @@ import AISpring
     */
     public func fillDataWithModel(model: AIBuyerBubbleModel) -> Void{
         //self.fill data
-        popTitle.text = model.proposal_name ?? ""
         popPrice.text = model.proposal_price ?? ""
         popBuyNumber.text = "\(model.order_times ?? 0)"
-        
         popTitle.font = AITools.myriadLightSemiCondensedWithSize(22+3)
+
+        //这里处理换行
+        let stringTitle = NSString(string: model.proposal_name ?? "")
+        let strArray = stringTitle.componentsSeparatedByString(" ")
+        if let s = strArray.first {
+            let firstString = "\(s)\n"
+            let newArray = NSMutableArray(array: strArray)
+            newArray.removeObjectAtIndex(0)
+            let content = newArray.componentsJoinedByString(" ")
+           
+            popTitle.text = firstString + content
+        }
         
         let price =  model.proposal_price ?? ""
         if price.length > 9 {
