@@ -289,19 +289,18 @@ typedef enum  {
             UIColor *color = imageColors.colors.lastObject;
             weakSelf.layer.borderColor = color.CGColor;
             
-            
-            imageview.alpha=0.2;
+            imageview.alpha=0.1;
             imageview.image = [weakSelf buttonImageFromColors:array frame:imageview.frame];
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:(0.5)];
             [imageview setNeedsDisplay];
-            imageview.alpha = 1;
+            imageview.alpha = kDefaultAlpha;
             [UIView commitAnimations];
             
             if (model.proposal_id_new > 0){
                 //根据发光效果添加图层
                 {
-                    //                weakSelf.hidden = YES;
+                    //weakSelf.hidden = YES;
                     MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
                     focalPointView.bgColor= color;
                     focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
