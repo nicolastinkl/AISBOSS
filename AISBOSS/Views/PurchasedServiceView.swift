@@ -29,6 +29,9 @@ class PurchasedServiceView: UIView, Measureable {
     
     private let EYE_ENABLE_IMAGE = "eye_enable.png"
     private let EYE_DISABLE_IMAGE = "eye_disable.png"
+    private let CONTENT_TOP_MARGIN: CGFloat = 20 / PurchasedViewDimention.CONVERT_FACTOR
+    private let DESCRIPTION_HEIGHT: CGFloat = 30
+    private let BOTTOM_PADDING_MARGIN: CGFloat = 48 / PurchasedViewDimention.CONVERT_FACTOR
     
     var serviceOrderData: ServiceOrderModel? {
         get {
@@ -43,6 +46,10 @@ class PurchasedServiceView: UIView, Measureable {
                 title.text = model.service_name
                 statu.text = model.order_state
                 serviceDescription.text = model.service_intro
+                
+                if (model.service_intro == "") {
+                    frame.size.height = frame.size.height - DESCRIPTION_HEIGHT + BOTTOM_PADDING_MARGIN
+                }
             }
         }
     }
@@ -109,7 +116,7 @@ class PurchasedServiceView: UIView, Measureable {
         addSubview(title)
         
         layout(logo, title) { logo, title in
-            title.top == logo.top - 2
+            title.top == logo.top - 4
             title.left == logo.right + 10
             title.height == 20
         }
@@ -123,7 +130,7 @@ class PurchasedServiceView: UIView, Measureable {
         addSubview(statu)
         
         layout(title, statu) { title, statu in
-            statu.top == title.bottom
+            statu.top == title.bottom - 2
             statu.left == title.left
             statu.width == title.width
             statu.height == PurchasedViewDimention.SERVICE_STATU_HEIGHT
@@ -139,10 +146,10 @@ class PurchasedServiceView: UIView, Measureable {
         addSubview(serviceDescription)
         
         layout(statu, serviceDescription) { statu, serviceDescription in
-            serviceDescription.top == statu.bottom
+            serviceDescription.top == statu.bottom - 2
             serviceDescription.left == serviceDescription.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             serviceDescription.width == serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
-            serviceDescription.height >= 30
+            serviceDescription.height >= DESCRIPTION_HEIGHT
         }
     }
     
@@ -201,7 +208,7 @@ class PurchasedServiceView: UIView, Measureable {
     
     private func adjustAddedViewFrame(addedView: UIView) {
         let oldFrame = addedView.frame
-        addedView.frame = CGRect(x: frame.origin.x, y: frame.origin.y + frame.height, width: frame.width, height: oldFrame.height)
+        addedView.frame = CGRect(x: frame.origin.x, y: frame.origin.y + frame.height + CONTENT_TOP_MARGIN, width: frame.width, height: oldFrame.height)
     }
     
     
@@ -214,12 +221,8 @@ class PurchasedServiceView: UIView, Measureable {
             
             if (contentView.hidden) {
                 adjustFrameToExpand()
-                
-                eyeIcon.image = UIImage(named: EYE_DISABLE_IMAGE)
             } else {
                 adjustFrameToCollapse()
-                
-                eyeIcon.image = UIImage(named: EYE_ENABLE_IMAGE)
             }
             
            contentView.hidden = !contentView.hidden
