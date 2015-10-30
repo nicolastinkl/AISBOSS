@@ -536,7 +536,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     
     
     //这里处理随机乱序
-    NSUInteger count = _bubbleModels.count;
+    /*NSUInteger count = _bubbleModels.count;
     
     // 循环将倒数第n张牌中的随机一张放到整个扑克的最后
     for(int n=count;n>=0;n--){
@@ -544,7 +544,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         NSNumber *pokeMoveToEnd = [_bubbleModels objectAtIndex:rand];
         [_bubbleModels removeObjectAtIndex:rand];
         [_bubbleModels addObject:pokeMoveToEnd];
-    }
+    }*/
     
     __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
