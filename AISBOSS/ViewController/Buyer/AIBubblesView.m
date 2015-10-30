@@ -716,6 +716,22 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [newView addSubview:bubble];
         [self addSubview:newView];
         bubble.center = CGPointMake(newView.width/2, newView.width/2);
+        
+        /** 这里处理随机Pop动画*/
+        float force = 0.4f;
+        float duration = 1.0f;
+        float repeatCount = 1.0f;
+        float delay = 0.1;
+        CAKeyframeAnimation* animation = [[CAKeyframeAnimation alloc] init];
+        animation.keyPath = @"transform.scale";
+        animation.values = @[@0, @(0.2*force), @(-0.2*force), @(0.2*force),@(0)];
+        animation.keyTimes = @[@0, @(0.2), @(0.4), @(0.6), @(0.8), @1];
+        animation.timingFunction = [[CAMediaTimingFunction alloc]  initWithControlPoints:0.5 :(1.1+force/3):1 :1];
+        animation.duration = duration;
+        animation.additive = true;
+        animation.repeatCount = repeatCount;
+        animation.beginTime = CACurrentMediaTime() + delay;
+        [newView.layer addAnimation:animation forKey:@"pop"];
     }
 
 }
