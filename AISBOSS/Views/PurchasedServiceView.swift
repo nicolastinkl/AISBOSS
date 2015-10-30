@@ -168,20 +168,20 @@ class PurchasedServiceView: UIView, Measureable {
         
         layout(contactIcon, bellIcon) { contact, bell in
             bell.top == contact.top
-            bell.right == contact.left - 4
+            bell.right == contact.left - PurchasedViewDimention.ADDITIONAL_ICON_MARGIN
             bell.width == contact.width
             bell.height == contact.height
         }
         
         layout(bellIcon, eyeIcon) { bell, eye in
             eye.top == bell.top
-            eye.right == bell.left - 4
+            eye.right == bell.left - PurchasedViewDimention.ADDITIONAL_ICON_MARGIN
             eye.width == bell.width
             eye.height == bell.height
         }
         
-        layout(bellIcon, title) { bellIcon, title in
-            title.right == bellIcon.left - 10
+        layout(eyeIcon, title) { eyeIcon, title in
+            title.right == eyeIcon.left - 10
         }
 
     }

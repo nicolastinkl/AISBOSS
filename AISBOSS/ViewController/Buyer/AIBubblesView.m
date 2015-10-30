@@ -57,73 +57,7 @@
 
 - (void) parseBubbleDatas
 {
-    
-    
-    /*
-     
-     CGFloat big = [AIBubble bigBubbleRadius];
-     CGFloat middle = [AIBubble midBubbleRadius];
-     CGFloat small = [AIBubble smaBubbleRadius];
-     
-    self.bubbleModels = [[NSMutableArray alloc] init];
-    
-    AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = big;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = middle;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    
-    model = [[AIBuyerBubbleModel alloc] init];
-    model.bubbleSize = small;
-    [self.bubbleModels addObject:model];
-    */
-    
-    
     self.hierarchyDic = [[NSMutableDictionary alloc] init];
-    //self.bubbleModels = [[NSMutableArray alloc] initWithArray:@[@"1", @"2", @"3", @"4", @"2", @"3", @"4", @"2", @"3", @"4"]];
     self.bubbles = [[NSMutableArray alloc] init];
 }
 
@@ -599,12 +533,18 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [self.bubbleModels addObject:modelAdd];
     }
     
-    //添加一个identity对象
-    {
-//        AIBuyerBubbleModel* modelAdd = [[AIBuyerBubbleModel alloc] init];
-//        modelAdd.bubbleType = 1;
-//        [self.bubbleModels addObject:modelAdd];
+    
+    //这里处理随机乱序
+    NSUInteger count = _bubbleModels.count;
+    
+    // 循环将倒数第n张牌中的随机一张放到整个扑克的最后
+    for(int n=count;n>=0;n--){
+        int rand = (int)(random()/(float)RAND_MAX*n);
+        NSNumber *pokeMoveToEnd = [_bubbleModels objectAtIndex:rand];
+        [_bubbleModels removeObjectAtIndex:rand];
+        [_bubbleModels addObject:pokeMoveToEnd];
     }
+    
     __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
@@ -715,6 +655,22 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [newView addSubview:bubble];
         [self addSubview:newView];
         bubble.center = CGPointMake(newView.width/2, newView.width/2);
+        
+        /** 这里处理随机Pop动画*/
+        float force = 0.4f;
+        float duration = 1.0f;
+        float repeatCount = 1.0f;
+        float delay = 0.1;
+        CAKeyframeAnimation* animation = [[CAKeyframeAnimation alloc] init];
+        animation.keyPath = @"transform.scale";
+        animation.values = @[@0, @(0.2*force), @(-0.2*force), @(0.2*force),@(0)];
+        animation.keyTimes = @[@0, @(0.2), @(0.4), @(0.6), @(0.8), @1];
+        animation.timingFunction = [[CAMediaTimingFunction alloc]  initWithControlPoints:0.5 :(1.1+force/3):1 :1];
+        animation.duration = duration;
+        animation.additive = true;
+        animation.repeatCount = repeatCount;
+        animation.beginTime = CACurrentMediaTime() + delay;
+        [newView.layer addAnimation:animation forKey:@"pop"];
     }
 
 }

@@ -26,6 +26,7 @@ class PurchasedViewDimention {
     static let ICON_WIDTH: CGFloat = 52 / CONVERT_FACTOR
     static let ICON_HEIGHT: CGFloat = 52 / CONVERT_FACTOR
     static let SERVICE_COLLAPSED_HEIGHT: CGFloat = 90
+    static let ADDITIONAL_ICON_MARGIN: CGFloat = 43 / CONVERT_FACTOR
 }
 
 class PurchasedViewColor {
