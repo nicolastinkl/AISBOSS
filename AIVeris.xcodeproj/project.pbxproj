@@ -87,7 +87,6 @@
 		849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF11BE0632B0008949E /* ProposalEnum.swift */; settings = {ASSET_TAGS = (); }; };
 		849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF31BE070C60008949E /* ProposalProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		84B62B181BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; settings = {ASSET_TAGS = (); }; };
-		84B62B191BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; settings = {ASSET_TAGS = (); }; };
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; settings = {ASSET_TAGS = (); }; };
 		84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; settings = {ASSET_TAGS = (); }; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
@@ -2015,7 +2014,6 @@
 				8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */,
 				8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */,
 				842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
-				84B62B191BD891670081ABDF /* ImageContent.swift in Sources */,
 				8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */,
 				84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */,
