@@ -103,9 +103,7 @@ class PurchasedServiceView: UIView, Measureable {
             logView.left == logView.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             logView.width == PurchasedViewDimention.LOGO_WIDTH
             logView.height == PurchasedViewDimention.LOGO_HEIGHT
-        }
-        
-        logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
+        } 
     }
     
     private func addTitle() {

@@ -69,9 +69,12 @@
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
-		846DAD901BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
-		846DAD911BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
-		846DAD931BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; settings = {ASSET_TAGS = (); }; };
+		845BE00A1BE88F620001716A /* ProposalViewTestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE0091BE88F620001716A /* ProposalViewTestTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		845BE00C1BE891A10001716A /* ServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00B1BE891A10001716A /* ServiceViewContainer.swift */; settings = {ASSET_TAGS = (); }; };
+		845BE00E1BE8B1C90001716A /* FlightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00D1BE8B1C90001716A /* FlightService.swift */; settings = {ASSET_TAGS = (); }; };
+		845BE0101BE8CEC60001716A /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00F1BE8CEC60001716A /* TransportService.swift */; settings = {ASSET_TAGS = (); }; };
+		845BE0121BE8D7490001716A /* AccommodationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE0111BE8D7490001716A /* AccommodationService.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; settings = {ASSET_TAGS = (); }; };
@@ -413,8 +416,12 @@
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
-		846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PurchasedViewTestStoryboard.storyboard; sourceTree = "<group>"; };
-		846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedTestTableViewController.swift; sourceTree = "<group>"; };
+		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
+		845BE0091BE88F620001716A /* ProposalViewTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalViewTestTableViewController.swift; sourceTree = "<group>"; };
+		845BE00B1BE891A10001716A /* ServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewContainer.swift; sourceTree = "<group>"; };
+		845BE00D1BE8B1C90001716A /* FlightService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightService.swift; sourceTree = "<group>"; };
+		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportService.swift; sourceTree = "<group>"; };
+		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationService.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
@@ -995,11 +1002,22 @@
 			name = SwitchService;
 			sourceTree = "<group>";
 		};
+		845BE0061BE88DBF0001716A /* ProposalDetail */ = {
+			isa = PBXGroup;
+			children = (
+				845BE0071BE88E080001716A /* ProposalViewTest.storyboard */,
+				845BE0091BE88F620001716A /* ProposalViewTestTableViewController.swift */,
+				845BE00B1BE891A10001716A /* ServiceViewContainer.swift */,
+				845BE00D1BE8B1C90001716A /* FlightService.swift */,
+				845BE00F1BE8CEC60001716A /* TransportService.swift */,
+				845BE0111BE8D7490001716A /* AccommodationService.swift */,
+			);
+			name = ProposalDetail;
+			sourceTree = "<group>";
+		};
 		846DAD8E1BD661960054F058 /* PurchasedService */ = {
 			isa = PBXGroup;
 			children = (
-				846DAD8F1BD720410054F058 /* PurchasedViewTestStoryboard.storyboard */,
-				846DAD921BD720B90054F058 /* PurchasedTestTableViewController.swift */,
 				846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */,
 				846DAD981BD72FEB0054F058 /* ViewProtocal.swift */,
 				846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */,
@@ -1275,6 +1293,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				845BE0061BE88DBF0001716A /* ProposalDetail */,
 				846DAD8E1BD661960054F058 /* PurchasedService */,
 				8454E6F81BAFE9D800016AB3 /* SwitchService */,
 				847D93721BAF93C4000FAE69 /* Flight */,
@@ -1895,7 +1914,6 @@
 			files = (
 				842FC8671BDA437C00A0517C /* customerProposalList.json in Resources */,
 				842FC8651BDA437C00A0517C /* customerOrderList.json in Resources */,
-				846DAD911BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1942,6 +1960,7 @@
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
+				845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */,
 				81D83AEB1BB29F7900BE2BA2 /* MJRefresh.bundle in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
 				93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */,
@@ -1953,7 +1972,6 @@
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
-				846DAD901BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
 				81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */,
@@ -2043,7 +2061,6 @@
 				81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */,
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
-				846DAD931BD720B90054F058 /* PurchasedTestTableViewController.swift in Sources */,
 				93FA1E621B9C3E12009965C8 /* AISellerViewController.m in Sources */,
 				93FA1D9D1B9C2EA9009965C8 /* DSLCalendarDayView.m in Sources */,
 				93FA1E011B9C306E009965C8 /* AITagModel.swift in Sources */,
@@ -2080,9 +2097,11 @@
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
+				845BE0101BE8CEC60001716A /* TransportService.swift in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
+				845BE00E1BE8B1C90001716A /* FlightService.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
@@ -2091,6 +2110,7 @@
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
 				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
+				845BE00C1BE891A10001716A /* ServiceViewContainer.swift in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
 				81C092881BAFAC0D003FFF35 /* SDWebImageManager.m in Sources */,
@@ -2124,6 +2144,7 @@
 				126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */,
 				939F49FD1BDE07FD00D07598 /* AIBuyServiceModel.swift in Sources */,
 				93FA1DC81B9C2F0F009965C8 /* UPLabel.m in Sources */,
+				845BE0121BE8D7490001716A /* AccommodationService.swift in Sources */,
 				93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */,
 				93FA1DE51B9C302A009965C8 /* AIServicesRequester.swift in Sources */,
 				93B25AA41B9D7A7B00CD1FEB /* JSONModelError.m in Sources */,
@@ -2239,6 +2260,7 @@
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				81C092891BAFAC0D003FFF35 /* SDWebImagePrefetcher.m in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
+				845BE00A1BE88F620001716A /* ProposalViewTestTableViewController.swift in Sources */,
 				81C092871BAFAC0D003FFF35 /* SDWebImageDownloaderOperation.m in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,
 				81A5BE551BD87D2900019802 /* AIBubble.m in Sources */,
