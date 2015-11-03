@@ -325,7 +325,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bdk.getProposalList({ (responseData) -> Void in
             
             for proposal in responseData.proposal_order_list {
-                let wrapModel = self.proposalToProposalWrap(proposal as! ProposalModel)
+                let wrapModel = self.proposalToProposalWrap(proposal as! ProposalOrderModel)
                 self.dataSource.append(wrapModel)
             }
             
@@ -354,7 +354,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }        
     }
     
-    private func proposalToProposalWrap(model: ProposalModel) -> ProposalOrderModelWrap {
+    private func proposalToProposalWrap(model: ProposalOrderModel) -> ProposalOrderModelWrap {
         var p = ProposalOrderModelWrap()
         p.model = model
         return p

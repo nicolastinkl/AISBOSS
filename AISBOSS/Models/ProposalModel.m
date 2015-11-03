@@ -18,11 +18,11 @@
 @end
 
 
-@implementation ProposalListModel
+@implementation ProposalOrderListModel
 
 @end
 
 
-@implementation ProposalModel
+@implementation ProposalOrderModel
 
 @end
