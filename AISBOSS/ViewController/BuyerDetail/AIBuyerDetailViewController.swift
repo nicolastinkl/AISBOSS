@@ -12,8 +12,28 @@ import UIKit
 
 class AIBuyerDetailViewController : UIViewController {
     
+    
+    // MARK: life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    
+    // MARK: delegate
+    
+    // MARK: datesource
+    
+    // MARK: event response
+    
+    // MARK: private methods
+    
+    // MARK: getters and setters
+    
+    // MARK: swift controls
+    
+    // MARK: function extension
+    
+    // MARK: Priate Variable
     
 }
