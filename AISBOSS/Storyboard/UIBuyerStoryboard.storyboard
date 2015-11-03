@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tJk-sr-jJd">
+            <objects>
+                <viewController id="g9A-B2-IXI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h3I-Tt-qzy"/>
+                        <viewControllerLayoutGuide type="bottom" id="KoH-E7-fN6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BTh-No-Tv9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buyer_topBar_Bg" translatesAutoresizingMaskIntoConstraints="NO" id="p9V-lT-phy">
+                                <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
+                                <animations/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-qc-VsT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-0T-zUo">
+                                        <rect key="frame" x="8" y="23" width="46" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="&lt;&lt;"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bussiness Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNF-rB-uPb">
+                                        <rect key="frame" x="48" y="27" width="176" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kby-pV-MOa">
+                                        <rect key="frame" x="546" y="18" width="46" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="tou">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="hGg-Hm-gif"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mv0-83-Itj">
+                                <rect key="frame" x="0.0" y="67" width="600" height="105"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="1FP-x8-I28"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3EU-06-uKE">
+                                <rect key="frame" x="0.0" y="172" width="600" height="358"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="358" id="5yB-Co-cIV"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="796-Px-HdP">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="796-Px-HdP" id="b5V-ug-T1R">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-nq-FDD">
+                                <rect key="frame" x="0.0" y="495" width="600" height="105"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="dSg-XR-MLL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="p9V-lT-phy" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="23T-vV-9Vz"/>
+                            <constraint firstItem="3EU-06-uKE" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="7jC-7f-wlp"/>
+                            <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="p9V-lT-phy" secondAttribute="bottom" id="7uR-FS-1qr"/>
+                            <constraint firstItem="3EU-06-uKE" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="bottom" id="FJn-w7-Z8Q"/>
+                            <constraint firstItem="Mv0-83-Itj" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="FRs-bn-K9z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mv0-83-Itj" secondAttribute="trailing" constant="-20" id="Ff2-ZH-CqS"/>
+                            <constraint firstItem="dgC-qc-VsT" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" id="MHj-Kh-3eN"/>
+                            <constraint firstItem="Mv0-83-Itj" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="bottom" constant="1" id="UA3-dM-1EC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3EU-06-uKE" secondAttribute="trailing" constant="-20" id="USD-Mo-WgS"/>
+                            <constraint firstItem="dgC-qc-VsT" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="Uaq-UA-Oiv"/>
+                            <constraint firstItem="CPV-nq-FDD" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="WLq-dX-ztH"/>
+                            <constraint firstItem="p9V-lT-phy" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" constant="-20" id="ZI8-nV-Nge"/>
+                            <constraint firstItem="CPV-nq-FDD" firstAttribute="top" secondItem="3EU-06-uKE" secondAttribute="bottom" constant="-35" id="a3K-HB-ctT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CPV-nq-FDD" secondAttribute="trailing" constant="-20" id="dXY-wG-4Dv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p9V-lT-phy" secondAttribute="trailing" constant="-20" id="jWa-3p-Fu6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dgC-qc-VsT" secondAttribute="trailing" constant="-20" id="yf9-ZT-TiY"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wN8-Aa-D2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="466"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1wM-YY-fNb">
+            <objects>
+                <viewController id="Dej-I8-HZm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="otY-bV-xmr"/>
+                        <viewControllerLayoutGuide type="bottom" id="SIX-6h-cCX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9R9-dt-ptz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uO7-Ql-Zlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1273" y="466"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Buyer_topBar_Bg" width="1080" height="3848"/>
+    </resources>
+</document>

@@ -108,6 +108,8 @@
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; settings = {ASSET_TAGS = (); }; };
+		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; settings = {ASSET_TAGS = (); }; };
+		93306BD01BE85FE800F68FD8 /* UIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* UIBuyerDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -444,6 +446,8 @@
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
+		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
+		93306BCF1BE85FE800F68FD8 /* UIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -1034,6 +1038,14 @@
 			name = Switch;
 			sourceTree = "<group>";
 		};
+		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				93306BCF1BE85FE800F68FD8 /* UIBuyerDetailViewController.swift */,
+			);
+			path = BuyerDetail;
+			sourceTree = "<group>";
+		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,6 +1225,7 @@
 				930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */,
 				930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */,
 				930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */,
+				93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1231,6 +1244,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				93306BCE1BE85FD500F68FD8 /* BuyerDetail */,
 				81DC18DB1BD5D2550081D131 /* Buyer */,
 				934C41B21BA7F13500002853 /* ServiceDetail */,
 				93FA1E361B9C3E12009965C8 /* Seller */,
@@ -1939,6 +1953,7 @@
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
+				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
 				846DAD901BD720410054F058 /* PurchasedViewTestStoryboard.storyboard in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -2195,6 +2210,7 @@
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
+				93306BD01BE85FE800F68FD8 /* UIBuyerDetailViewController.swift in Sources */,
 				126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
