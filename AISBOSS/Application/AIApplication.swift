@@ -43,6 +43,8 @@ struct AIApplication{
             static let AITagFilterStoryboard        = "AITagFilterStoryboard"
             static let AIVideoStoryboard            = "AIVideoStoryboard"
             static let UIMainStoryboard             = "UIMainStoryboard"
+            static let UIBuyerStoryboard            = "UIBuyerStoryboard"
+            
         }
         
         // MARK: View
@@ -54,6 +56,7 @@ struct AIApplication{
             static let AICalendarViewController     = "AICalendarViewController"
             static let AIComponentChoseViewController   = "AIComponentChoseViewController"
             static let AISearchServiceCollectionViewController = "AISearchServiceCollectionViewController"
+            static let AIBuyerDetailViewController = "AIBuyerDetailViewController"
             
         }
         

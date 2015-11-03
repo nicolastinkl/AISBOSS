@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class UIBuyerDetailViewController : UIViewController {
+class AIBuyerDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

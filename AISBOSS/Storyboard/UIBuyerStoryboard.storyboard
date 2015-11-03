@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Buyer Detail View Controller-->
         <scene sceneID="tJk-sr-jJd">
             <objects>
-                <viewController id="g9A-B2-IXI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AIBuyerDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="g9A-B2-IXI" customClass="AIBuyerDetailViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h3I-Tt-qzy"/>
                         <viewControllerLayoutGuide type="bottom" id="KoH-E7-fN6"/>
