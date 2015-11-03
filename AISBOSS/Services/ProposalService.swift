@@ -11,21 +11,21 @@ import Foundation
 import AISwiftyJSON
 
 protocol ProposalService {
-    func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
+    func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
     func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
 }
 
 class MockProposalService {
-    func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("customerOrderList", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             if let dataJSON = data {
                 do {
-                    let model = try ProposalListModel(data: dataJSON)
+                    let model = try ProposalOrderListModel(data: dataJSON)
                     success(responseData: model)
                     
                     for proposal in model.proposal_order_list {
-                        let proposalModel = proposal as! ProposalModel
+                        let proposalModel = proposal as! ProposalOrderModel
                         
                         for service in proposalModel.order_list {
                             let serviceOrderModel = service as! ServiceOrderModel
@@ -111,7 +111,7 @@ class BDKProposalService {
     - parameter fail:    <#fail description#>
     - parameter errDes:  <#errDes description#>
     */
-    func getProposalList(success: (responseData: ProposalListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/queryCustomerOrderList"
         
@@ -122,7 +122,7 @@ class BDKProposalService {
             
             do {
                 let dic = response as! [NSObject : AnyObject]
-                let model = try ProposalListModel(dictionary: dic)
+                let model = try ProposalOrderListModel(dictionary: dic)
                 success(responseData: model)
             } catch {
                 fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")

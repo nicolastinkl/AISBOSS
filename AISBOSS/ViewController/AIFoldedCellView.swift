@@ -11,7 +11,7 @@ import UIKit
 class AIFolderCellView: UIView {
     
     var isFirstLayout = true
-    var proposalModel : ProposalModel!
+    var proposalModel : ProposalOrderModel!
 
     // MARK: IBOutlets
     @IBOutlet weak var serviceNameLabel: UILabel!
@@ -62,7 +62,7 @@ class AIFolderCellView: UIView {
         isFirstLayout = false
     }
     
-    func loadData(proposalModel : ProposalModel){
+    func loadData(proposalModel : ProposalOrderModel){
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
         
@@ -100,5 +100,5 @@ struct ProposalOrderModelWrap {
     var proposalId : Int?
     var isExpanded : Bool = false
     var expandHeight : CGFloat?
-    var model: ProposalModel?
+    var model: ProposalOrderModel?
 }

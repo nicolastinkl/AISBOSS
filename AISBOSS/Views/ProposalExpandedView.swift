@@ -17,12 +17,12 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     private var serviceViews: [PurchasedServiceView] = []
     private var serviceModels: [ServiceOrderModel] = []
     var dimentionListener: DimentionChangable?
-    private var proposalModel: ProposalModel?
+    private var proposalModel: ProposalOrderModel?
     var serviceOrderNumberIsChanged: Bool = false
     private var initHeight: CGFloat = 0
     var delegate: ProposalExpandedDelegate?
     
-    var proposalOrder: ProposalModel? {
+    var proposalOrder: ProposalOrderModel? {
         get {
             return proposalModel
         }
@@ -44,7 +44,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         }
     }
     
-    private func orderIsNormal(orderModel: ProposalModel) -> Bool {
+    private func orderIsNormal(orderModel: ProposalOrderModel) -> Bool {
         return orderModel.alarm_state == 1
     }
     

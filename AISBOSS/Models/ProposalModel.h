@@ -43,11 +43,11 @@
 
 
 
-@protocol ProposalModel
+@protocol ProposalOrderModel
 
 @end
 
-@interface ProposalModel : JSONModel
+@interface ProposalOrderModel : JSONModel
 
 @property (nonatomic, assign) NSInteger proposal_id;
 @property (nonatomic, strong) NSString<Optional> *proposal_name;
@@ -59,7 +59,7 @@
 
 
 
-@interface ProposalListModel : JSONModel
+@interface ProposalOrderListModel : JSONModel
 
-@property (nonatomic, strong) NSArray<ProposalModel, Optional> *proposal_order_list;
+@property (nonatomic, strong) NSArray<ProposalOrderModel, Optional> *proposal_order_list;
 @end
