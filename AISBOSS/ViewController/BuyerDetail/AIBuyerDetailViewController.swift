@@ -12,13 +12,12 @@ import UIKit
 
 class AIBuyerDetailViewController : UIViewController {
     
-    
     // MARK: life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
-    
     
     // MARK: delegate
     

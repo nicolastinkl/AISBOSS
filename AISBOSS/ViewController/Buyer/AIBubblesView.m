@@ -33,6 +33,9 @@
 
 @property (nonatomic, strong) NSMutableDictionary *cacheBubble;
 
+@property (nonatomic, copy) BubbleBlock selfBlock;
+
+
 @end
 
 
@@ -51,6 +54,10 @@
     }
     
     return self;
+}
+
+- (void) addGestureBubbleAction:(BubbleBlock) block{
+    self.selfBlock = block;
 }
 
 #pragma mark - 构造基础数据
@@ -586,6 +593,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
         }
         
+       
         // 计算bubble的center
         
         CGPoint center = CGPointZero;        
@@ -637,9 +645,20 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
  
             bubble.center = center;
             [weakSelf.bubbles addObject:bubble];
+            
+            
         }
     }];
  
+}
+
+- (void)targetCurrentProposalAction:(UITapGestureRecognizer *)gestureRecogner{
+    AIBubble *bubble = (AIBubble*)gestureRecogner.view;
+    AIBuyerBubbleModel * buModel =  bubble.bubbleModel;
+    if (buModel != nil) {
+        self.selfBlock(buModel);
+    }
+    
 }
 
 - (void) layoutSubviews
@@ -647,6 +666,11 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     [super layoutSubviews];
 
     for (AIBubble *bubble in self.bubbles) {
+        
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetCurrentProposalAction:)];
+        [bubble addGestureRecognizer:tap];
+        bubble.userInteractionEnabled = YES;
+        
         UIView *newView = [[UIView alloc] init];
         newView.frame = bubble.frame;
         newView.backgroundColor = [UIColor clearColor];

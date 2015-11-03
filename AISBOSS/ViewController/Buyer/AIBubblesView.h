@@ -11,6 +11,11 @@
 @class AIBuyerBubbleModel;
 @interface AIBubblesView : UIView
 
+typedef void (^BubbleBlock)(AIBuyerBubbleModel*);
+
 - (id) initWithFrame:(CGRect)frame models:(NSMutableArray *)models;
+
+- (void) addGestureBubbleAction:(BubbleBlock) block;
+
 
 @end

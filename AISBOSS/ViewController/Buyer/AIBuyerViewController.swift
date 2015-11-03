@@ -95,7 +95,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
      
         let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
-        // 
        
         let y = CGRectGetMaxY(bubbles.frame)
         let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
@@ -105,8 +104,20 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         label.font = AITools.myriadRegularWithSize(20);
         bubbleView.addSubview(label)
         
+        bubbles.addGestureBubbleAction {  [weak self]   (bubleModel) -> Void in
+            if let strongSelf = self{
+                strongSelf.showBuyerDetailAction()
+            }
+        }
+         
+    }
+    
+    func  showBuyerDetailAction() {
         
-        
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        self.showDetailViewController(viewController, sender: self)
     }
     
     // MARK: - 构造顶部Bar
@@ -362,7 +373,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func buildExpandCellView(indexPath : NSIndexPath) -> ProposalExpandedView {
         let proposalModel = dataSource[indexPath.row].model!
-        
         let viewWidth = tableView.frame.size.width
         let servicesViewContainer = ProposalExpandedView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: PurchasedViewDimention.PROPOSAL_HEAD_HEIGHT))
         servicesViewContainer.proposalOrder = proposalModel
@@ -373,6 +383,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         dataSource[indexPath.row].expandHeight = servicesViewContainer.getHeight()
         return servicesViewContainer
     }
+    
+   
+    
 }
 
 
