@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIOrderCellEShopSubView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="104"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eshop_1" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-bB-t18" userLabel="offerIconImage">
@@ -33,11 +33,11 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="  Shipped  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du3-Fa-PYN" userLabel="statusLabel">
-                    <rect key="frame" x="115" y="78" width="50" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Shipped  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du3-Fa-PYN" userLabel="statusLabel">
+                    <rect key="frame" x="115" y="78" width="50" height="18"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="16" id="AnZ-2g-ceZ"/>
+                        <constraint firstAttribute="height" constant="18" id="AnZ-2g-ceZ"/>
                         <constraint firstAttribute="width" constant="50" id="lh1-kb-xq2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>

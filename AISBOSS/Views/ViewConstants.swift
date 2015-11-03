@@ -25,7 +25,7 @@ class PurchasedViewDimention {
     static let SERVICE_STATU_HEIGHT = 40 / CONVERT_FACTOR
     static let ICON_WIDTH: CGFloat = 52 / CONVERT_FACTOR
     static let ICON_HEIGHT: CGFloat = 52 / CONVERT_FACTOR
-    static let SERVICE_COLLAPSED_HEIGHT: CGFloat = 90
+    static let SERVICE_COLLAPSED_HEIGHT: CGFloat = 184 / CONVERT_FACTOR
     static let ADDITIONAL_ICON_MARGIN: CGFloat = 43 / CONVERT_FACTOR
 }
 
@@ -35,7 +35,7 @@ class PurchasedViewColor {
     static let TITLE = UIColor.whiteColor()
     static let STATU = UIColor.whiteColor()
     static let STATU_BACKGROUND = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
-    static let DIVIDER = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+    static let DIVIDER = UIColor(red: 1, green: 1, blue: 1, alpha: 0.4)
     static let SERVICE_STATU = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
 }
 

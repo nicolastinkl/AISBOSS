@@ -13,9 +13,9 @@ class ImageContent: UIView {
     
     private var imageUrl: String?
     private var imageView: UIImageView!
-    private let LEFT_MARGIN: CGFloat = 20 / 3
-    private let RIGHT_MARGIN: CGFloat = 20 / 3
-    private let BOTTOM_MARGIN: CGFloat = 26 / 3
+    private let LEFT_MARGIN: CGFloat = 20 / PurchasedViewDimention.CONVERT_FACTOR
+    private let RIGHT_MARGIN: CGFloat = 20 / PurchasedViewDimention.CONVERT_FACTOR
+    private let BOTTOM_MARGIN: CGFloat = 30 / PurchasedViewDimention.CONVERT_FACTOR
     
     override var frame: CGRect {
         didSet {
