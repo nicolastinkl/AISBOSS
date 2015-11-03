@@ -19,10 +19,7 @@ class AIBuyerDetailViewController : UIViewController {
         super.viewDidLoad()
         
     }
-    
-    // MARK: delegate
-    
-    // MARK: datesource
+   
     
     // MARK: event response
     
@@ -36,4 +33,24 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: Priate Variable
     
+}
+
+
+// MARK: delegate
+
+// MARK: datesource
+
+extension AIBuyerDetailViewController:UITableViewDataSource,UITableViewDelegate {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        return UITableViewCell()
+    }
 }
