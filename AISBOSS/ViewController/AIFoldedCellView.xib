@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
                     <animations/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Weekend Road Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvO-1B-1e4" userLabel="serviceName">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekend Road Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvO-1B-1e4" userLabel="serviceName">
                     <rect key="frame" x="16" y="18" width="145" height="20"/>
                     <animations/>
                     <constraints>

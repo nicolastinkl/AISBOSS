@@ -53,7 +53,6 @@ class AIFolderCellView: UIView {
             if serviceOrderModel.order_state != "Completed" {
                 descContentView?.loadData(serviceOrderModel)
             }
-            
         }
         
         descView.addSubview(descContentView!)

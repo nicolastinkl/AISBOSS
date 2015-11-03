@@ -109,7 +109,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 strongSelf.showBuyerDetailAction()
             }
         }
-         
     }
     
     func  showBuyerDetailAction() {
