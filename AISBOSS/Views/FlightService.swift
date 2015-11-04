@@ -30,6 +30,7 @@ class FlightService: UIView {
     }
     
     private func initSelf() {
+        frame.size.height = 160
         addTime()
         addLocation()
         addAirport()
@@ -38,8 +39,10 @@ class FlightService: UIView {
     
     private func addTime() {
         takeOffTime = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width / 3, height: 20))
+        takeOffTime.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
         takeOffTime.textColor = UIColor.whiteColor()
         arriveTime = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        arriveTime.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
         arriveTime.textColor = UIColor.whiteColor()
         addSubview(takeOffTime)
         addSubview(arriveTime)
@@ -57,7 +60,11 @@ class FlightService: UIView {
     
     private func addLocation() {
         from = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        from.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        from.textColor = UIColor(hex: "#FEE300")
         to = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        to.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        to.textColor = UIColor(hex: "#FEE300")
         addSubview(from)
         addSubview(to)
         
@@ -79,8 +86,10 @@ class FlightService: UIView {
     
     private func addAirport() {
         fromAirport = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        fromAirport.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         fromAirport.textColor = UIColor.whiteColor()
         toAirport = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        toAirport.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         toAirport.textColor = UIColor.whiteColor()
         addSubview(fromAirport)
         addSubview(toAirport)
@@ -105,16 +114,18 @@ class FlightService: UIView {
     
     private func addPlane() {
         let plane = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        let planeImg = UIImage(named: "airplane_white")
+        let planeSize = AITools.imageDisplaySizeFrom1080DesignSize(planeImg!.size)
         addSubview(plane)
         
         layout(to, plane) {to, plane in
-            plane.height == 15
-            plane.width == 30
+            plane.height == planeSize.height
+            plane.width == planeSize.width
             plane.top == to.top + 5
             plane.right == to.left - 10
         }
         
-        plane.image = UIImage(named: "airplane_white.png")
+        plane.image = planeImg
     }
 
 }
