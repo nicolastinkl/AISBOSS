@@ -82,11 +82,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         switch indexPath.row {
         case 0:
-            serviceView.rightServiceView.contentView = FlightService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 100))
+            serviceView.data = 0
         case 1:
-            serviceView.rightServiceView.contentView = TransportService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 80))
+            serviceView.data = 1
         case 2:
-            serviceView.rightServiceView.contentView = AccommodationService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 80))
+            serviceView.data = 2
         default:
             break
         }

@@ -26,23 +26,26 @@ class AccommodationService: UIView {
     }
     
     private func initSelf() {
+        frame.size.height = 120
         addPeriod()
         addAdditionDescription()
     }
 
     private func addPeriod() {
-        period = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 30))
+        period = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: AITools.displaySizeFrom1080DesignSize(66)))
+        period.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
         period.textColor = UIColor.whiteColor()
         addSubview(period)
         
         dayCount = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dayCount.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(40))
         dayCount.textColor = UIColor.whiteColor()
         addSubview(dayCount)
 
         layout(dayCount, period) {dayCount, period in
             dayCount.left == period.right
-            dayCount.bottom == period.bottom
-            dayCount.height == 25
+            dayCount.bottom == period.bottom - 3
+            dayCount.height == AITools.displaySizeFrom1080DesignSize(40)
             dayCount.width >= 100
         }
         
@@ -52,12 +55,13 @@ class AccommodationService: UIView {
     
     private func addAdditionDescription() {
         additionDes = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        additionDes.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         additionDes.textColor = UIColor.whiteColor()
         addSubview(additionDes)
         
         layout(additionDes, period) {additionDes, period in
             additionDes.left == period.left
-            additionDes.top == period.bottom + 10
+            additionDes.top == period.bottom + AITools.displaySizeFrom1080DesignSize(10)
             additionDes.height >= 25
             additionDes.right == additionDes.superview!.right
         }
