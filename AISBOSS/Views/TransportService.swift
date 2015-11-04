@@ -33,10 +33,12 @@ class TransportService: UIView {
     
     private func addTime() {
         timeTitle = UILabel(frame: CGRect(x: 0, y: 10, width: 40, height: 15))
+        timeTitle.textColor = UIColor.whiteColor()
         timeTitle.text = "Time"
         addSubview(timeTitle)
         
         time = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 20))
+        time.textColor = UIColor.whiteColor()
         addSubview(time)
         layout(timeTitle, time) {title, time in
             time.left == title.right + 5
@@ -49,23 +51,25 @@ class TransportService: UIView {
     
     private func addLocation() {
         let fromIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        fromIcon.image = UIImage(named: "CardIndicator7.png")
+        fromIcon.image = UIImage(named: "location_from.png")
         addSubview(fromIcon)
         
         let toIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        toIcon.image = UIImage(named: "CardIndicator6.png")
+        toIcon.image = UIImage(named: "location_to.png")
         addSubview(toIcon)
         
         from = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        from.textColor = UIColor.whiteColor()
         to = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        to.textColor = UIColor.whiteColor()
         addSubview(from)
         addSubview(to)
         
         layout(fromIcon, from, timeTitle) {fromIcon, from, timeTitle in
             fromIcon.left == timeTitle.left
             fromIcon.top == timeTitle.bottom + 10
-            fromIcon.width == 20
-            fromIcon.height == 20
+            fromIcon.width == 10
+            fromIcon.height == 15
             
             from.top == fromIcon.top
             from.left == fromIcon.right + 2
