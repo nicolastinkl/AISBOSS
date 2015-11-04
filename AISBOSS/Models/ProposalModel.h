@@ -63,3 +63,52 @@
 
 @property (nonatomic, strong) NSArray<ProposalOrderModel, Optional> *proposal_order_list;
 @end
+
+//气泡详情页使用
+@protocol AIProposalServiceModel
+
+@end
+
+@interface AIProposalServiceModel : JSONModel
+
+@property (assign, nonatomic) NSInteger service_id;
+@property (strong, nonatomic) NSString<Optional> * service_desc;
+@property (strong, nonatomic) NSString<Optional> * service_price;
+@property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
+@property (strong, nonatomic) NSString<Optional> * service_rating;
+@property (nonatomic, strong) NSArray<ParamModel,Optional> * param_list;
+
+@end
+
+@protocol AIProposalProvider
+
+@end
+
+@interface AIProposalProvider : JSONModel
+
+@property (assign, nonatomic) NSInteger            provider_id;
+@property (strong, nonatomic) NSString<Optional> * provider_phone;
+
+@end
+
+@protocol AIProposalInstModel
+
+@end
+
+@interface AIProposalInstModel : JSONModel
+
+@property (assign, nonatomic) NSInteger proposal_id;
+@property (assign, nonatomic) NSInteger order_times;
+@property (strong, nonatomic) NSString<Optional> * proposal_name;
+@property (strong, nonatomic) NSString<Optional> * proposal_price;
+@property (strong, nonatomic) NSString<Optional> * order_total_price;
+@property (strong, nonatomic) NSString<Optional> * proposal_origin;
+@property (strong, nonatomic) NSString<Optional> * proposal_desc;
+@property (nonatomic, strong) AIProposalProvider<Optional> * proposal_provider;
+@property (nonatomic, strong) NSArray<AIProposalServiceModel,Optional> *service_list;
+
+@end
+
+
+
+

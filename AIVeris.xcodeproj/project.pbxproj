@@ -330,6 +330,7 @@
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
 		126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerTableCellView.swift; sourceTree = "<group>"; };
 		126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIExpandedCellView.swift; sourceTree = "<group>"; };
+		12A962591BE9F02C00732E23 /* proposalDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = proposalDetail.json; sourceTree = "<group>"; };
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -1373,6 +1374,7 @@
 				93B25A2E1B9D78B000CD1FEB /* Seller.plist */,
 				9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */,
 				84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */,
+				12A962591BE9F02C00732E23 /* proposalDetail.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
