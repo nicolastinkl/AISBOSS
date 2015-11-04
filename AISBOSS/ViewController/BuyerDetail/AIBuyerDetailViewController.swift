@@ -12,6 +12,8 @@ import UIKit
 
 class AIBuyerDetailViewController : UIViewController {
     
+    // MARK: Priate Variable
+    
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     
     // MARK: swift controls
@@ -23,16 +25,21 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var OrderFromLabel: UILabel!
     @IBOutlet weak var totalMoneyLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    // MARK: getters and setters
     
     // MARK: life cycle
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         // Init Label Font
         InitLabelFont()
+        
+        // Init Data
         
     }
     
@@ -43,18 +50,12 @@ class AIBuyerDetailViewController : UIViewController {
         self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
         
+        self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
        
     // MARK: event response
     
     // MARK: private methods
-    
-    // MARK: getters and setters
-    
-    
-    // MARK: function extension
-    
-    // MARK: Priate Variable
     
 }
 
@@ -63,6 +64,7 @@ class AIBuyerDetailViewController : UIViewController {
 
 // MARK: datesource
 
+// MARK: function extension
 extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
