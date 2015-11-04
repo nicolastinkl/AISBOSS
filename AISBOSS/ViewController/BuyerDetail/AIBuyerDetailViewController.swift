@@ -40,7 +40,7 @@ class AIBuyerDetailViewController : UIViewController {
         InitLabelFont()
         
         // Init Data
-        
+        initData()  
     }
     
     func InitLabelFont(){
@@ -107,6 +107,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             return 1
         }
+    }
+    
+    func initData(){
+        var dataSource : AIProposalInstModel!
+        MockProposalService().queryCustomerProposalDetail(1, success: {
+             (responseData) -> Void in
+                dataSource = responseData
+            },fail : {
+            (errType, errDes) -> Void in
+                
+        })
     }
 
 }

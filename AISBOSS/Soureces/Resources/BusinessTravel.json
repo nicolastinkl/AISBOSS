@@ -1,0 +1,47 @@
+{
+  "proposal_name": "Business Travel",
+  "order_times": 67,
+  "order_total_price": "2,956",
+  "proposal_price": "$600-1,034",
+  "proposal_origin": "From Order",
+  "proposal_desc": "According to the Beijing young girl service the whole pregnacy assistant,including parenting activities.",
+  "proposal_provider": {
+    "provider_id": 1001,
+    "provider_phone": "13881899141"
+  },
+  "service_list": [
+    {
+      "service_id": 1,
+      "service_desc": "Mu576",
+      "service_price": "$500",
+      "service_rating_icon": "",
+      "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/A18rg98bANwPe.png",
+      "service_param": {
+        "param_key": 1,
+        "param_value": "{\"departure_time\":\"2020-10-10 9:30\",\"departure_place\":\"Beijing\",\"departure_desc\":\"Capital Airport T3\",\"arrival_time\":\"2020-10-10 10:40\",\"arrival_place\":\"Shanghai\",\"arrival_desc\":\"Pudong Airport T2\"}"
+      }
+    },
+    {
+      "service_id": 2,
+      "service_desc": "Shuttle Transportation",
+      "service_price": "$45",
+      "service_rating_icon": "",
+      "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png",
+      "service_param": {
+        "param_key": 2,
+        "param_value": "{\"pickup_location\":\"Pudong Airport T2\",\"pickup_time\":\"2020-10-10 10:30\",\"destination\":\"Yanan Jingan District road 1218\"}"
+      }
+    },
+    {
+      "service_id": 3,
+      "service_desc": "Shangri-la Hotel Beijing",
+      "service_price": "$500",
+      "service_rating_icon": "",
+      "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/FQZ8fUvWNgv6h.png",
+      "service_param": {
+        "param_key": 3,
+        "param_value": "{\"checkin_time\":\"2020-10-10 14:00\",\"checkout_time\":\"2020-10-12 11:40\",\"facility_desc\":[{\"desc\":\"resident room\"},{\"desc\":\"free breakfast\"},{\"desc\":\"free wifi\"}]}"
+      }
+    }
+  ]
+}

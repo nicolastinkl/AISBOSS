@@ -14,6 +14,7 @@
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; };
 		126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */; };
 		126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */; };
+		12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A9625A1BEA0A5000732E23 /* BusinessTravel.json */; settings = {ASSET_TAGS = (); }; };
 		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
@@ -330,7 +331,7 @@
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
 		126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerTableCellView.swift; sourceTree = "<group>"; };
 		126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIExpandedCellView.swift; sourceTree = "<group>"; };
-		12A962591BE9F02C00732E23 /* proposalDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = proposalDetail.json; sourceTree = "<group>"; };
+		12A9625A1BEA0A5000732E23 /* BusinessTravel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusinessTravel.json; sourceTree = "<group>"; };
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -1364,6 +1365,7 @@
 		93B25A281B9D78B000CD1FEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12A9625A1BEA0A5000732E23 /* BusinessTravel.json */,
 				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
 				93B25A291B9D78B000CD1FEB /* AINote.strings */,
 				93B25A2A1B9D78B000CD1FEB /* collectionData.json */,
@@ -1374,7 +1376,6 @@
 				93B25A2E1B9D78B000CD1FEB /* Seller.plist */,
 				9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */,
 				84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */,
-				12A962591BE9F02C00732E23 /* proposalDetail.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1953,6 +1954,7 @@
 				81A79C011BE068AE00E05F58 /* MyriadPro-SemiCn.otf in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
+				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
 				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
