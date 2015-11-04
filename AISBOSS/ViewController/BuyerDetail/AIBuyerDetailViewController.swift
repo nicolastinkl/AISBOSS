@@ -22,8 +22,7 @@ class AIBuyerDetailViewController : UIViewController {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-   
-    
+       
     // MARK: event response
     
     // MARK: private methods
