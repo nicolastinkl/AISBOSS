@@ -11,11 +11,15 @@ import Foundation
 import AISwiftyJSON
 
 protocol ProposalService {
+    //获取通过proposal订购的订单实例列表
     func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
+    //获取proposal气泡列表
     func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
+    //获取proposal详情
+    func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
 }
 
-class MockProposalService {
+class MockProposalService : ProposalService{
     func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("customerOrderList", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
@@ -68,9 +72,25 @@ class MockProposalService {
             
         }
     }
+    
+    func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        if let path = NSBundle.mainBundle().pathForResource("proposalDetail", ofType: "json") {
+            let data: NSData? = NSData(contentsOfFile: path)
+            
+            // AIProposalPopListModel
+            
+            do {
+                let model = try AIProposalInstModel(data: data)
+                success(responseData: model)
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalInstModel JSON Parse error.")
+            }
+            
+        }
+    }
 }
 
-class BDKProposalService {
+class BDKProposalService : MockProposalService{
     
     
     /**
@@ -81,7 +101,7 @@ class BDKProposalService {
     - parameter errDes:  <#errDes description#>
     */
     
-    func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    override func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/queryCustomerProposalList"
@@ -111,7 +131,7 @@ class BDKProposalService {
     - parameter fail:    <#fail description#>
     - parameter errDes:  <#errDes description#>
     */
-    func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    override func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/queryCustomerOrderList"
         
@@ -132,6 +152,36 @@ class BDKProposalService {
                 fail(errType: error, errDes: errorDes)
         }
 
+    }
+    
+    /**
+    proposal详情数据
+    
+    - parameter success: <#success description#>
+    - parameter fail:    <#fail description#>
+    - parameter errDes:  <#errDes description#>
+    */
+    override func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/queryCustomerProposalDetail"
+        
+        let body = ["data":["proposal_id": proposalId],"desc":["data_mode":"0","digest":""]]
+        message.body = NSMutableDictionary(dictionary: body)
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            do {
+                let dic = response as! [NSObject : AnyObject]
+                let model = try AIProposalInstModel(dictionary: dic)
+                success(responseData: model)
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalInstModel JSON Parse error.")
+            }
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+        
     }
 }
 
