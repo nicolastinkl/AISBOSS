@@ -55,8 +55,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 50))
+        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
         
         switch indexPath.row {
         case 0:
@@ -68,12 +69,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         default:
             break
         }
-        
-        cell.contentView.addSubview(serviceView)
+        if cell.contentView.subviews.count == 0 {
+            cell.contentView.addSubview(serviceView)
+        }
         cellHeights[indexPath.row] = serviceView.frame.height
         
-        
-        // Configure the cell...
         
         return cell
     }
