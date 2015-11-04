@@ -32,10 +32,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var lastSelectedIndexPath : NSIndexPath?
     
+    private var selfViewPoint:CGPoint?
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        selfViewPoint = self.view.center
         self.makeData()
         self.makeBaseProperties()
         
@@ -43,12 +45,32 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeBubbleView()
         self.makeTopBar()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "NSNotiryAricToNomalStatus", name: AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
     deinit{
         tableViewCellCache.removeAll()
     }
     
+    func NSNotiryAricToNomalStatus(){
+        
+        UIView.animateWithDuration(
+            1.2,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: [],
+            animations: {
+                [weak self] () -> Void in
+                if let strongSelf = self{
+                    strongSelf.view.transform = CGAffineTransformMakeScale(1, 1)
+                    strongSelf.view.center = strongSelf.selfViewPoint!
+                }
+                
+            }, completion: { finished in
+        })
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -105,14 +127,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bubbleView.addSubview(label)
         bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubbleView) -> Void in
             if let strongSelf = self{
-                /**
+
                 let bView:UIView = bubbleView
                 let newPoint = bView.convertPoint(bView.center, toView: strongSelf.view)
                 
-                spring(1) { () -> Void in
-                strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
-                strongSelf.view.center = newPoint
-                }*/
+                spring(1.2) { () -> Void in
+                    strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
+                    strongSelf.view.center = newPoint
+                }
                 
                 strongSelf.showBuyerDetailAction()
             }

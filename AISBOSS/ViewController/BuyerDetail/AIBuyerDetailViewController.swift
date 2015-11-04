@@ -31,6 +31,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: life cycle
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +42,11 @@ class AIBuyerDetailViewController : UIViewController {
         
         // Init Data
         
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
     func InitLabelFont(){
