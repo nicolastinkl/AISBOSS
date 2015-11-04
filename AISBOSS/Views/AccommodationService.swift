@@ -32,9 +32,11 @@ class AccommodationService: UIView {
 
     private func addPeriod() {
         period = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: 30))
+        period.textColor = UIColor.whiteColor()
         addSubview(period)
         
         dayCount = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dayCount.textColor = UIColor.whiteColor()
         addSubview(dayCount)
 
         layout(dayCount, period) {dayCount, period in
@@ -50,6 +52,7 @@ class AccommodationService: UIView {
     
     private func addAdditionDescription() {
         additionDes = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        additionDes.textColor = UIColor.whiteColor()
         addSubview(additionDes)
         
         layout(additionDes, period) {additionDes, period in

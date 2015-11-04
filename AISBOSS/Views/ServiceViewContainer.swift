@@ -11,7 +11,7 @@ import Cartography
 
 class ServiceViewContainer: UIView {
     
-    private static let INDICATOR_WIDTH: CGFloat = 10
+    private static let INDICATOR_WIDTH: CGFloat = 20
     private static let SERVICE_HEIGHT: CGFloat = 200
     private var leftIndicator: LeftIndicator!
     var rightServiceView: RightServiceView!
@@ -30,22 +30,66 @@ class ServiceViewContainer: UIView {
         
         leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: ServiceViewContainer.SERVICE_HEIGHT))
         rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        rightServiceView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
         
         addSubview(leftIndicator)
         addSubview(rightServiceView)
         
         layout(leftIndicator, rightServiceView) {indicator, service in
-            service.top == indicator.top
-            service.left == indicator.right
+            service.top == indicator.top + ServiceViewContainer.INDICATOR_WIDTH / 2
+            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 5
             service.right == service.superview!.right
-            service.height == ServiceViewContainer.SERVICE_HEIGHT
+            service.height == ServiceViewContainer.SERVICE_HEIGHT - ServiceViewContainer.INDICATOR_WIDTH
         }
         
         frame.size.height = leftIndicator.frame.height
     }
     
     class LeftIndicator: UIView {
+        private var topBall: UIImageView!
+        private var bottomBall: UIImageView!
+        private var linkLine: UIImageView!
         
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            initSelf()
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            super.init(coder: aDecoder)
+            initSelf()
+        }
+        
+        private func initSelf() {
+            topBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            bottomBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            linkLine = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+
+            topBall.image = UIImage(named: "white_ball.png")
+            bottomBall.image = UIImage(named: "hollow_ball.png")
+            linkLine.image = UIImage(named: "link_line_vertical.png")
+            
+            addSubview(topBall)
+            addSubview(bottomBall)
+            addSubview(linkLine)
+            
+            layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
+                topBall.top == topBall.superview!.top
+                topBall.left == topBall.superview!.left
+                topBall.width == ServiceViewContainer.INDICATOR_WIDTH
+                topBall.height == topBall.width
+                
+                bottomBall.bottom == bottomBall.superview!.bottom
+                bottomBall.centerX == topBall.centerX
+                bottomBall.height == 15
+                bottomBall.width == bottomBall.height
+                
+                linkLine.top == topBall.bottom
+                linkLine.centerX == topBall.centerX
+                linkLine.width == 2
+                linkLine.bottom == bottomBall.top
+            }
+        }
     }
     
     class RightServiceView: UIView {
@@ -87,6 +131,9 @@ class ServiceViewContainer: UIView {
         }
         
         private func initSelf() {
+            layer.cornerRadius = 8
+            layer.masksToBounds = true
+
             addLogo()
             addGrade()
             addPrice()
@@ -127,6 +174,7 @@ class ServiceViewContainer: UIView {
         
         private func addPrice() {
             price = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            price.textColor = UIColor.whiteColor()
             price.textAlignment = .Right
             addSubview(price)
             

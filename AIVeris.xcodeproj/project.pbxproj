@@ -421,10 +421,10 @@
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
 		845BE0091BE88F620001716A /* ProposalViewTestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalViewTestTableViewController.swift; sourceTree = "<group>"; };
-		845BE00B1BE891A10001716A /* ServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewContainer.swift; sourceTree = "<group>"; };
-		845BE00D1BE8B1C90001716A /* FlightService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightService.swift; sourceTree = "<group>"; };
-		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportService.swift; sourceTree = "<group>"; };
-		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccommodationService.swift; sourceTree = "<group>"; };
+		845BE00B1BE891A10001716A /* ServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceViewContainer.swift; path = ../../Views/ServiceViewContainer.swift; sourceTree = "<group>"; };
+		845BE00D1BE8B1C90001716A /* FlightService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlightService.swift; path = ../../Views/FlightService.swift; sourceTree = "<group>"; };
+		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransportService.swift; path = ../../Views/TransportService.swift; sourceTree = "<group>"; };
+		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccommodationService.swift; path = ../../Views/AccommodationService.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
@@ -1010,10 +1010,6 @@
 			children = (
 				845BE0071BE88E080001716A /* ProposalViewTest.storyboard */,
 				845BE0091BE88F620001716A /* ProposalViewTestTableViewController.swift */,
-				845BE00B1BE891A10001716A /* ServiceViewContainer.swift */,
-				845BE00D1BE8B1C90001716A /* FlightService.swift */,
-				845BE00F1BE8CEC60001716A /* TransportService.swift */,
-				845BE0111BE8D7490001716A /* AccommodationService.swift */,
 			);
 			name = ProposalDetail;
 			sourceTree = "<group>";
@@ -1058,9 +1054,21 @@
 			name = Switch;
 			sourceTree = "<group>";
 		};
+		84DDA9421BE9951300CA5C83 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				845BE00B1BE891A10001716A /* ServiceViewContainer.swift */,
+				845BE00D1BE8B1C90001716A /* FlightService.swift */,
+				845BE00F1BE8CEC60001716A /* TransportService.swift */,
+				845BE0111BE8D7490001716A /* AccommodationService.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				84DDA9421BE9951300CA5C83 /* views */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
 			);
 			path = BuyerDetail;

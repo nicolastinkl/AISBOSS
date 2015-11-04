@@ -38,7 +38,9 @@ class FlightService: UIView {
     
     private func addTime() {
         takeOffTime = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width / 3, height: 20))
+        takeOffTime.textColor = UIColor.whiteColor()
         arriveTime = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        arriveTime.textColor = UIColor.whiteColor()
         addSubview(takeOffTime)
         addSubview(arriveTime)
         
@@ -77,7 +79,9 @@ class FlightService: UIView {
     
     private func addAirport() {
         fromAirport = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        fromAirport.textColor = UIColor.whiteColor()
         toAirport = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        toAirport.textColor = UIColor.whiteColor()
         addSubview(fromAirport)
         addSubview(toAirport)
         
@@ -110,7 +114,7 @@ class FlightService: UIView {
             plane.right == to.left - 10
         }
         
-        plane.image = UIImage(named: "airplane.png")
+        plane.image = UIImage(named: "airplane_white.png")
     }
 
 }
