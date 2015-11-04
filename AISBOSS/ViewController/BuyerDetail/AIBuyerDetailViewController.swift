@@ -15,6 +15,7 @@ class AIBuyerDetailViewController : UIViewController {
     // MARK: Priate Variable
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
+    private var dataSource : AIProposalInstModel!
     
     // MARK: swift controls
     
@@ -110,10 +111,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func initData(){
-        var dataSource : AIProposalInstModel!
         MockProposalService().queryCustomerProposalDetail(1, success: {
              (responseData) -> Void in
-                dataSource = responseData
+                self.dataSource = responseData
             },fail : {
             (errType, errDes) -> Void in
                 
