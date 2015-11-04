@@ -35,18 +35,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgC-qc-VsT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-0T-zUo">
-                                        <rect key="frame" x="20" y="19" width="171" height="28"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="LuI-Y5-pDh"/>
-                                            <constraint firstAttribute="width" constant="171" id="oPJ-90-0gx"/>
-                                        </constraints>
-                                        <state key="normal" title=" Bussiness Trip" image="backIcon"/>
-                                        <connections>
-                                            <segue destination="0Q9-Di-cJr" kind="unwind" unwindAction="unwindToViewController:" id="JBV-WL-DKk"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kby-pV-MOa">
                                         <rect key="frame" x="556" y="22" width="23" height="23"/>
                                         <animations/>
@@ -66,7 +54,7 @@
                                             <constraint firstAttribute="width" constant="19" id="M2Y-DO-rvW"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyCount" translatesAutoresizingMaskIntoConstraints="NO" id="Ksj-KL-fh2">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="buyCount" translatesAutoresizingMaskIntoConstraints="NO" id="Ksj-KL-fh2">
                                         <rect key="frame" x="90.5" y="55" width="16" height="19"/>
                                         <animations/>
                                         <constraints>
@@ -74,7 +62,7 @@
                                             <constraint firstAttribute="width" constant="16" id="znm-tW-NuP"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkb-ag-P9a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkb-ag-P9a">
                                         <rect key="frame" x="47" y="55" width="42" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -84,7 +72,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqa-G4-So3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1233" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wqa-G4-So3">
                                         <rect key="frame" x="115.5" y="55" width="102" height="21"/>
                                         <animations/>
                                         <constraints>
@@ -107,16 +95,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Order" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-J2-MTd">
-                                        <rect key="frame" x="448" y="79" width="144" height="21"/>
+                                        <rect key="frame" x="412" y="79" width="180" height="25"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="144" id="8bc-JW-Bz4"/>
-                                            <constraint firstAttribute="height" constant="21" id="KIg-5J-2nQ"/>
+                                            <constraint firstAttribute="width" constant="180" id="8bc-JW-Bz4"/>
+                                            <constraint firstAttribute="height" constant="25" id="KIg-5J-2nQ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-0T-zUo">
+                                        <rect key="frame" x="20" y="19" width="249" height="28"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="LuI-Y5-pDh"/>
+                                            <constraint firstAttribute="width" constant="249" id="oPJ-90-0gx"/>
+                                        </constraints>
+                                        <state key="normal" title=" Bussiness Trip" image="backIcon"/>
+                                        <connections>
+                                            <segue destination="0Q9-Di-cJr" kind="unwind" unwindAction="unwindToViewController:" id="JBV-WL-DKk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -267,7 +267,13 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="OrderFromLabel" destination="H8s-Ef-iLH" id="0QQ-FA-vVY"/>
+                        <outlet property="backButton" destination="As3-0T-zUo" id="eUL-so-0HG"/>
+                        <outlet property="moneyLabel" destination="mkb-ag-P9a" id="Sc3-DR-tA5"/>
+                        <outlet property="numberLabel" destination="Wqa-G4-So3" id="CEa-P6-fRt"/>
                         <outlet property="tableView" destination="3EU-06-uKE" id="kpl-9p-mgM"/>
+                        <outlet property="totalMoneyLabel" destination="lJU-J2-MTd" id="6z2-Sn-iaX"/>
+                        <outlet property="videoButton" destination="kby-pV-MOa" id="YFl-St-eFY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wN8-Aa-D2U" userLabel="First Responder" sceneMemberID="firstResponder"/>

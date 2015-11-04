@@ -14,13 +14,35 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     
+    // MARK: swift controls
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var videoButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var OrderFromLabel: UILabel!
+    @IBOutlet weak var totalMoneyLabel: UILabel!
+    
     // MARK: life cycle
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        // Init Label Font
+        InitLabelFont()
+        
+    }
+    
+    func InitLabelFont(){
+        self.backButton.titleLabel?.font =  AITools.myriadSemiCondensedWithSize(80 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.moneyLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
+        
     }
        
     // MARK: event response
@@ -29,7 +51,6 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: getters and setters
     
-    // MARK: swift controls
     
     // MARK: function extension
     
