@@ -76,7 +76,6 @@ class AIOrderCellEShopView : UIView {
         
         set {
             goodsListModel = newValue
-            
             if let models = goodsListModel {
                 for subView in subviews {
                     subView.removeFromSuperview()
@@ -95,7 +94,6 @@ class AIOrderCellEShopView : UIView {
             }
         }
     }
-
     
     func buildSubViews(){
         let subView1 = AIOrderCellEShopSubView.currentView()

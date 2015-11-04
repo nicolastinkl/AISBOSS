@@ -19,8 +19,7 @@ class AIBuyerDetailViewController : UIViewController {
         super.viewDidLoad()
         
     }
-   
-    
+       
     // MARK: event response
     
     // MARK: private methods

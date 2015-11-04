@@ -646,7 +646,6 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             bubble.center = center;
             [weakSelf.bubbles addObject:bubble];
             
-            
         }
     }];
  
@@ -654,11 +653,11 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 - (void)targetCurrentProposalAction:(UITapGestureRecognizer *)gestureRecogner{
     AIBubble *bubble = (AIBubble*)gestureRecogner.view;
-    AIBuyerBubbleModel * buModel =  bubble.bubbleModel;
+    AIBuyerBubbleModel * buModel =  bubble.bubbleModel;     
+    // 处理界面过渡
     if (buModel != nil) {
-        self.selfBlock(buModel);
+        self.selfBlock(buModel,bubble);
     }
-    
 }
 
 - (void) layoutSubviews

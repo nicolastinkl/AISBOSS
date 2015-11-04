@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AISpring
 
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBubblesViewDelegate{
 
@@ -93,7 +93,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // add bubbles
      
-        let bubbles : AIBubblesView = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight), models: NSMutableArray(array: self.dataSourcePop))
+        let bubbles = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight), models: NSMutableArray(array: self.dataSourcePop))
         bubbleView?.addSubview(bubbles)
        
         let y = CGRectGetMaxY(bubbles.frame)
@@ -103,9 +103,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         label.verticalAlignment = UPVerticalAlignmentMiddle
         label.font = AITools.myriadRegularWithSize(20);
         bubbleView.addSubview(label)
-        
-        bubbles.addGestureBubbleAction {  [weak self]   (bubleModel) -> Void in
+        bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubbleView) -> Void in
             if let strongSelf = self{
+                /**
+                let bView:UIView = bubbleView
+                let newPoint = bView.convertPoint(bView.center, toView: strongSelf.view)
+                
+                spring(1) { () -> Void in
+                strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
+                strongSelf.view.center = newPoint
+                }*/
+                
                 strongSelf.showBuyerDetailAction()
             }
         }
