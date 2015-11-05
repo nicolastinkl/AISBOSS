@@ -11,6 +11,10 @@ import Foundation
 import UIKit
 import AISpring
 
+@objc protocol AIBuyerDetailDelegate{
+    func closeAIBDetailViewController()
+}
+
 class AIBuyerDetailViewController : UIViewController {
     
     // MARK: Priate Variable
@@ -18,6 +22,7 @@ class AIBuyerDetailViewController : UIViewController {
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
     var bubleModel : AIBuyerBubbleModel?
+    private var delegate: AIBuyerDetailDelegate?
     
     // MARK: swift controls
     
@@ -87,6 +92,7 @@ class AIBuyerDetailViewController : UIViewController {
     // MARK: event response
     
     @IBAction func closeThisViewController(){
+        delegate?.closeAIBDetailViewController()
         self.dismissViewControllerAnimated(true) { () -> Void in
             
         }

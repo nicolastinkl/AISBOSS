@@ -11,6 +11,7 @@ import AINetworking
 import AISwiftyJSON
 
 struct Error {
+    
     enum ResultCode: Int {
         case fail = 0, success
     }
