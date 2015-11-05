@@ -227,19 +227,24 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         weak var detailViewController = self.showBuyerDetailAction(model)
         detailViewController?.view.alpha = 0
-        let detailScale : CGFloat = 0.2
+        let detailScale : CGFloat = bubble.radius * 2 / CGRectGetWidth(self.view.frame)
         
         self.presentViewController(detailViewController!, animated: false) { () -> Void in
             
             detailViewController?.view.alpha = 1
             detailViewController?.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
-            
+            detailViewController?.view.center = realPoint
             // 开始动画
             UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+                
+                //
+                detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
+                detailViewController?.view.center = self.originalViewCenter!
+                
+                //
                 self.view.transform =  CGAffineTransformMakeScale(self.curBubbleScale!, self.curBubbleScale!)
                 self.view.center = self.curBubbleCenter!
                 
-                detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
                 
                 
                 }) { (Bool) -> Void in
