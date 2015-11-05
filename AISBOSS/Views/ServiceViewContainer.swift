@@ -15,31 +15,52 @@ class ServiceViewContainer: UIView {
   //  private static let SERVICE_HEIGHT: CGFloat = 200
     private var leftIndicator: LeftIndicator!
     var rightServiceView: RightServiceView!
-    private var dataModel: Int?
     
-    var data: Int? {
-        get {
-            return dataModel
-        }
-        set {
-            dataModel = newValue
-            if dataModel != nil {
-                if let serviceView = createServiceView(dataModel!) {
+    private var dataModel: AIProposalServiceModel?
+    
+//    var data: Int? {
+//        get {
+//            return
+//        }
+//        set {
+//            dataModel = newValue
+//            if dataModel != nil {
+//                if let serviceView = createServiceView(dataModel!) {
+//                    rightServiceView.contentView = serviceView
+//                    frame.size.height += serviceView.frame.height
+//                }
+//            }
+//        }
+//    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    //加载数据
+    func loadData(dataModel : AIProposalServiceModel){
+        self.dataModel = dataModel
+        initSelf()
+        if dataModel.service_param != nil {
+            let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(dataModel.service_param.param_key)!)
+            if let paramValueString = dataModel.service_param.param_value{
+                let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
+                //获取到参数的dictionary
+                let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                
+                if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
                     rightServiceView.contentView = serviceView
                     frame.size.height += serviceView.frame.height
                 }
             }
+            
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initSelf()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initSelf()
     }
     
     private func initSelf() {
@@ -47,7 +68,7 @@ class ServiceViewContainer: UIView {
         leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
         rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
   //      rightServiceView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
-        
+        rightServiceView.loadData(dataModel!)
         addSubview(leftIndicator)
         addSubview(rightServiceView)
         
@@ -67,16 +88,16 @@ class ServiceViewContainer: UIView {
         frame.size.height = RightServiceView.getHeadHeight() + ServiceViewContainer.INDICATOR_WIDTH
     }
     
-    private func createServiceView(data: Int) -> View? {
-        switch data {
-        case 0:
+    private func createServiceView(viewTemplate : ProposalServiceViewTemplate,paramDictionary : NSDictionary) -> View? {
+        switch viewTemplate {
+        case ProposalServiceViewTemplate.PlaneTicket:
             return FlightService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        case 1:
+        case ProposalServiceViewTemplate.Taxi:
             return TransportService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        case 2:
+        case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        default:
-            return nil
+//        default:
+//            return nil
         }
     }   
 }
@@ -145,6 +166,8 @@ class RightServiceView: UIView {
     private var grade: UIImageView!
     
     private var content: UIView?
+    private var dataModel : AIProposalServiceModel!
+    
     
     var contentView: UIView? {
         get {
@@ -163,11 +186,16 @@ class RightServiceView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        //initSelf()
+    }
+    
+    func loadData(dataModel : AIProposalServiceModel){
+        self.dataModel = dataModel
         initSelf()
     }
     
@@ -216,8 +244,8 @@ class RightServiceView: UIView {
             logView.width == RightServiceView.LOGO_WIDTH
             logView.height == RightServiceView.LOGO_HEIGHT
         }
-        
-        logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
+        logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
+        //logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
     }
     
     private func addGrade() {
@@ -230,8 +258,8 @@ class RightServiceView: UIView {
             grade.height == AITools.displaySizeFrom1080DesignSize(40)
             grade.width == AITools.displaySizeFrom1080DesignSize(64)
         }
-        
-        grade.asyncLoadImage("http://pic.baike.soso.com/p/20100114/bki-20100114182657-1449988150.jpg")
+        logo.asyncLoadImage(dataModel.service_rating ?? "")
+        //grade.asyncLoadImage("http://pic.baike.soso.com/p/20100114/bki-20100114182657-1449988150.jpg")
     }
     
     private func addPrice() {
@@ -247,8 +275,8 @@ class RightServiceView: UIView {
             price.height == AITools.displaySizeFrom1080DesignSize(56)
             price.width == 60
         }
-        
-        price.text = "$500"
+        price.text = dataModel.service_price ?? "$0"
+        //price.text = "$500"
     }
     
     private func addTitle() {
@@ -264,8 +292,8 @@ class RightServiceView: UIView {
             name.height == RightServiceView.LOGO_HEIGHT
             name.right == price.left - 30
         }
-        
-        name.text = "Mu576"
+        name.text = dataModel.service_desc ?? ""
+        //name.text = "Mu576"
     }
     
     private func setFrameToHeadSize() {

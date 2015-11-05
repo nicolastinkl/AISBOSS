@@ -97,7 +97,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataSource.service_list.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -106,18 +106,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
         
-        switch indexPath.row {
-        case 0:
-            serviceView.data = 0
-        case 1:
-            serviceView.data = 1
-        case 2:
-            serviceView.data = 2
-        default:
-            break
-        }
+        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        serviceView.loadData(serviceDataModel)
+
         if cell.contentView.subviews.count == 0 {
             cell.contentView.addSubview(serviceView)
         }
@@ -139,6 +132,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         MockProposalService().queryCustomerProposalDetail(1, success: {
              (responseData) -> Void in
                 self.dataSource = responseData
+                self.tableView.reloadData()
             },fail : {
             (errType, errDes) -> Void in
                 
