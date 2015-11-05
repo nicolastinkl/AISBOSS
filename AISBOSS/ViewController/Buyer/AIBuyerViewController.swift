@@ -17,6 +17,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var tableViewCellCache = [Int: UIView]()
     
     // MARK: - Constants
+    
+    
+    
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
@@ -33,6 +36,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var lastSelectedIndexPath : NSIndexPath?
     
     private var selfViewPoint:CGPoint?
+    var maxBubbleViewController : UIViewController?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -136,6 +140,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     strongSelf.view.center = newPoint
                 }*/
                 
+                
+                
+                
+                
                 strongSelf.showBuyerDetailAction()
             }
         }
@@ -147,6 +155,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         self.showDetailViewController(viewController, sender: self)
+        
+        //
+        
+        
+        
+        
+        
     }
     
     // MARK: - 构造顶部Bar

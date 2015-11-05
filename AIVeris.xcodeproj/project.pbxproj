@@ -14,12 +14,14 @@
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; };
 		126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */; };
 		126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */; };
+		12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A9625A1BEA0A5000732E23 /* BusinessTravel.json */; };
 		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F21841BE9B22F002EB473 /* UPUnderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F21831BE9B22F002EB473 /* UPUnderLineButton.m */; };
+		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -97,6 +99,7 @@
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */; };
 		84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */; };
+		84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -191,7 +194,6 @@
 		93C33F1B1B9BEAFE007BF506 /* AIUIViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F041B9BEAFE007BF506 /* AIUIViewUtils.swift */; };
 		93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F061B9BEAFE007BF506 /* KMActivityIndicator.m */; };
 		93C33F1D1B9BEAFE007BF506 /* KMDetailsPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F081B9BEAFE007BF506 /* KMDetailsPageView.m */; };
-		93C33F1E1B9BEAFE007BF506 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F0B1B9BEAFE007BF506 /* UIView+MaterialDesign.m */; };
 		93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F0C1B9BEAFE007BF506 /* NSObjcetUtils.swift */; };
 		93C33F201B9BEAFE007BF506 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F0D1B9BEAFE007BF506 /* Player.swift */; };
 		93C33F211B9BEAFE007BF506 /* SwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33F0F1B9BEAFE007BF506 /* SwipeableCell.m */; };
@@ -330,7 +332,7 @@
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
 		126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerTableCellView.swift; sourceTree = "<group>"; };
 		126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIExpandedCellView.swift; sourceTree = "<group>"; };
-		12A962591BE9F02C00732E23 /* proposalDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = proposalDetail.json; sourceTree = "<group>"; };
+		12A9625A1BEA0A5000732E23 /* BusinessTravel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusinessTravel.json; sourceTree = "<group>"; };
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
 		12D794FD1BA80B6000586011 /* CardCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardCellView.xib; sourceTree = "<group>"; };
 		12D794FF1BA80B8100586011 /* CardCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCellView.swift; sourceTree = "<group>"; };
@@ -340,6 +342,8 @@
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815F21821BE9B22F002EB473 /* UPUnderLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPUnderLineButton.h; sourceTree = "<group>"; };
 		815F21831BE9B22F002EB473 /* UPUnderLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPUnderLineButton.m; sourceTree = "<group>"; };
+		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
+		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProviderOrdersJsonTest.json; sourceTree = "<group>"; };
 		84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderDataObtainer.swift; sourceTree = "<group>"; };
+		84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -640,8 +645,6 @@
 		93C33F061B9BEAFE007BF506 /* KMActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMActivityIndicator.m; sourceTree = "<group>"; };
 		93C33F071B9BEAFE007BF506 /* KMDetailsPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMDetailsPageView.h; sourceTree = "<group>"; };
 		93C33F081B9BEAFE007BF506 /* KMDetailsPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMDetailsPageView.m; sourceTree = "<group>"; };
-		93C33F0A1B9BEAFE007BF506 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
-		93C33F0B1B9BEAFE007BF506 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		93C33F0C1B9BEAFE007BF506 /* NSObjcetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjcetUtils.swift; sourceTree = "<group>"; };
 		93C33F0D1B9BEAFE007BF506 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		93C33F0E1B9BEAFE007BF506 /* SwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeableCell.h; sourceTree = "<group>"; };
@@ -881,6 +884,15 @@
 				503E6327D0C6936333F981D4 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		815F21891BEAF386002EB473 /* MaterialDesign */ = {
+			isa = PBXGroup;
+			children = (
+				815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */,
+				815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */,
+			);
+			path = MaterialDesign;
 			sourceTree = "<group>";
 		};
 		81C0925F1BAFAC0D003FFF35 /* SDWebImage */ = {
@@ -1262,6 +1274,7 @@
 		93A5A59D1B9BD5E1001DE36D /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				815F21891BEAF386002EB473 /* MaterialDesign */,
 				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
 				81C0925F1BAFAC0D003FFF35 /* SDWebImage */,
 				93B25A351B9D796F00CD1FEB /* Network */,
@@ -1332,6 +1345,7 @@
 				93FA1DD81B9C3001009965C8 /* ContentsCellView.xib */,
 				93FA1DC91B9C2F26009965C8 /* AOTag.h */,
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
+				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1364,6 +1378,7 @@
 		93B25A281B9D78B000CD1FEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12A9625A1BEA0A5000732E23 /* BusinessTravel.json */,
 				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
 				93B25A291B9D78B000CD1FEB /* AINote.strings */,
 				93B25A2A1B9D78B000CD1FEB /* collectionData.json */,
@@ -1374,7 +1389,6 @@
 				93B25A2E1B9D78B000CD1FEB /* Seller.plist */,
 				9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */,
 				84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */,
-				12A962591BE9F02C00732E23 /* proposalDetail.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1653,7 +1667,6 @@
 				93C33F061B9BEAFE007BF506 /* KMActivityIndicator.m */,
 				93C33F071B9BEAFE007BF506 /* KMDetailsPageView.h */,
 				93C33F081B9BEAFE007BF506 /* KMDetailsPageView.m */,
-				93C33F091B9BEAFE007BF506 /* MaterialDesign */,
 				93C33F0C1B9BEAFE007BF506 /* NSObjcetUtils.swift */,
 				93C33F0D1B9BEAFE007BF506 /* Player.swift */,
 				93C33F0E1B9BEAFE007BF506 /* SwipeableCell.h */,
@@ -1667,15 +1680,6 @@
 				939F49F61BDDD92600D07598 /* UIImageUtils.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		93C33F091B9BEAFE007BF506 /* MaterialDesign */ = {
-			isa = PBXGroup;
-			children = (
-				93C33F0A1B9BEAFE007BF506 /* UIView+MaterialDesign.h */,
-				93C33F0B1B9BEAFE007BF506 /* UIView+MaterialDesign.m */,
-			);
-			path = MaterialDesign;
 			sourceTree = "<group>";
 		};
 		93D5A3401B709C1C00DDB158 = {
@@ -1953,6 +1957,7 @@
 				81A79C011BE068AE00E05F58 /* MyriadPro-SemiCn.otf in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
+				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
 				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
@@ -2113,6 +2118,7 @@
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
 				815F21841BE9B22F002EB473 /* UPUnderLineButton.m in Sources */,
 				93FA1DC31B9C2F0F009965C8 /* AIOpeningView.m in Sources */,
+				815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */,
 				845BE0101BE8CEC60001716A /* TransportService.swift in Sources */,
 				93FA1DFE1B9C306E009965C8 /* AIOrderModel.swift in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
@@ -2181,6 +2187,7 @@
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
+				84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */,
 				84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */,
 				81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */,
 				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
@@ -2207,7 +2214,6 @@
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
 				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
-				93C33F1E1B9BEAFE007BF506 /* UIView+MaterialDesign.m in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				93C33F211B9BEAFE007BF506 /* SwipeableCell.m in Sources */,

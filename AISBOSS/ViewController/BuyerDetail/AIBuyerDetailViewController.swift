@@ -15,6 +15,7 @@ class AIBuyerDetailViewController : UIViewController {
     // MARK: Priate Variable
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
+    private var dataSource : AIProposalInstModel!
     
     // MARK: swift controls
     
@@ -42,7 +43,7 @@ class AIBuyerDetailViewController : UIViewController {
         InitLabelFont()
         
         // Init Data
-        
+        initData()  
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -120,6 +121,16 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             return 1
         }
+    }
+    
+    func initData(){
+        MockProposalService().queryCustomerProposalDetail(1, success: {
+             (responseData) -> Void in
+                self.dataSource = responseData
+            },fail : {
+            (errType, errDes) -> Void in
+                
+        })
     }
 
 }

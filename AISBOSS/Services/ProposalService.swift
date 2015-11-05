@@ -74,7 +74,7 @@ class MockProposalService : ProposalService{
     }
     
     func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
-        if let path = NSBundle.mainBundle().pathForResource("proposalDetail", ofType: "json") {
+        if let path = NSBundle.mainBundle().pathForResource("BusinessTravel", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             
             // AIProposalPopListModel

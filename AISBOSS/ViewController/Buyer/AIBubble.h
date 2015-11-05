@@ -18,14 +18,6 @@ typedef enum  {
     
 }BubbleType;
 
-@class AIBubble;
-@protocol AIBubbleDelegate <NSObject>
-
-- (void)didSelectedBubble:(AIBubble *)bubble;
-
-@end
-
-
 
 @class AIBuyerBubbleModel;
 @interface AIBubble : UIView
@@ -53,7 +45,6 @@ typedef enum  {
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
-@property (nonatomic, weak) id<AIBubbleDelegate> delegate;
 
 + (CGFloat)bigBubbleRadius;
 
