@@ -12,28 +12,51 @@ import UIKit
 
 class AIBuyerDetailViewController : UIViewController {
     
+    // MARK: Priate Variable
+    
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
+    private var dataSource : AIProposalInstModel!
+    
+    // MARK: swift controls
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var videoButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var OrderFromLabel: UILabel!
+    @IBOutlet weak var totalMoneyLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    // MARK: getters and setters
+    
     // MARK: life cycle
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        // Init Label Font
+        InitLabelFont()
+        
+        // Init Data
+        initData()  
+    }
+    
+    func InitLabelFont(){
+        self.backButton.titleLabel?.font =  AITools.myriadSemiCondensedWithSize(80 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.moneyLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
+        
+        self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
        
     // MARK: event response
     
     // MARK: private methods
-    
-    // MARK: getters and setters
-    
-    // MARK: swift controls
-    
-    // MARK: function extension
-    
-    // MARK: Priate Variable
     
 }
 
@@ -42,6 +65,7 @@ class AIBuyerDetailViewController : UIViewController {
 
 // MARK: datesource
 
+// MARK: function extension
 extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -55,25 +79,25 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 50))
+        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
         
         switch indexPath.row {
         case 0:
-            serviceView.rightServiceView.contentView = FlightService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 100))
+            serviceView.data = 0
         case 1:
-            serviceView.rightServiceView.contentView = TransportService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 80))
+            serviceView.data = 1
         case 2:
-            serviceView.rightServiceView.contentView = AccommodationService(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: 80))
+            serviceView.data = 2
         default:
             break
         }
-        
-        cell.contentView.addSubview(serviceView)
+        if cell.contentView.subviews.count == 0 {
+            cell.contentView.addSubview(serviceView)
+        }
         cellHeights[indexPath.row] = serviceView.frame.height
         
-        
-        // Configure the cell...
         
         return cell
     }
@@ -84,6 +108,16 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             return 1
         }
+    }
+    
+    func initData(){
+        MockProposalService().queryCustomerProposalDetail(1, success: {
+             (responseData) -> Void in
+                self.dataSource = responseData
+            },fail : {
+            (errType, errDes) -> Void in
+                
+        })
     }
 
 }

@@ -26,3 +26,15 @@
 @implementation ProposalOrderModel
 
 @end
+
+@implementation AIProposalServiceModel
+
+@end
+
+@implementation AIProposalProvider
+
+@end
+
+@implementation AIProposalInstModel
+
+@end
