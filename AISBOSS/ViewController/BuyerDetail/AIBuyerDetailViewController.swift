@@ -44,9 +44,9 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Label Font
         InitLabelFont()
         
-        
         // Init Data
-        initData()  
+        initData()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,7 +61,6 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
-    
     }
     
     func InitController(){
@@ -77,12 +76,12 @@ class AIBuyerDetailViewController : UIViewController {
     
     func InitLabelFont(){
         self.backButton.titleLabel?.font =  AITools.myriadSemiCondensedWithSize(80 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.moneyLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.moneyLabel.font =  AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.numberLabel.font =  AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.OrderFromLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.whereLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.whereLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.contentLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
     
     // MARK: event response

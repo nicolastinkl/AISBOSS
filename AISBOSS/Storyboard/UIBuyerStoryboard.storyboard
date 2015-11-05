@@ -131,7 +131,6 @@
                                         <state key="normal" title=" Business Trip" image="backIcon"/>
                                         <connections>
                                             <action selector="closeThisViewController" destination="g9A-B2-IXI" eventType="touchUpInside" id="ENA-ZW-Vad"/>
-                                            <segue destination="0Q9-Di-cJr" kind="unwind" unwindAction="unwindToViewController:" id="JBV-WL-DKk"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ios-QE-FUq">
@@ -320,7 +319,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wN8-Aa-D2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="0Q9-Di-cJr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="589" y="466"/>
         </scene>
