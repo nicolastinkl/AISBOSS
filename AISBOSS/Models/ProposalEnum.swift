@@ -12,3 +12,9 @@ enum ServiceOrderState: String {
     case Completed = "Completed"
     case CompletedAndChecked = "CompletedAndChecked"
 }
+
+enum ProposalServiceViewTemplate : Int {
+    case PlaneTicket = 1
+    case Taxi
+    case Hotel
+}
