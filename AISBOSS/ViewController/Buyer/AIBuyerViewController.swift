@@ -9,7 +9,7 @@
 import UIKit
 import AISpring
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBubblesViewDelegate{
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBuyerDetailDelegate{
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
@@ -17,8 +17,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var tableViewCellCache = [Int: UIView]()
     
     var bubbles : AIBubblesView!
+    
+    var curBubbleCenter : CGPoint?
+    
+    var curBubbleScale : CGFloat?
+    
+    var originalViewCenter : CGPoint?
 
     // MARK: - Constants
+    
+    
     
     let bubblesTag : NSInteger = 9999
 
@@ -106,6 +114,21 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - 构造气泡区域
     
+    // 回调
+    func closeAIBDetailViewController() {
+        
+        self.view.userInteractionEnabled = false
+        self.view.transform = CGAffineTransformMakeScale(curBubbleScale!, curBubbleScale!)
+        self.view.center = curBubbleCenter!
+        
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+            self.view.transform = CGAffineTransformMakeScale(1, 1)
+            self.view.center = self.originalViewCenter!
+            }) { (Bool) -> Void in
+                self.view.userInteractionEnabled = true
+        }
+    }
+    
     
     func makeBubblesWithFrame(frame:CGRect) -> AIBubblesView{
 
@@ -118,16 +141,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             if let strongSelf = self{
                 
                 strongSelf.showBuyerDetailWithBubble(bubble, model: bubleModel)
-                
-                /*
-                let bView:UIView = bubbleView
-                let newPoint = bView.convertPoint(bView.center, toView: strongSelf.view)
-                
-                spring(1.2) { () -> Void in
-                    strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
-                    strongSelf.view.center = newPoint
-                }*/
-
+    
             }
         }
         
@@ -184,71 +198,73 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func showBuyerDetailWithBubble(bubble : AIBubble, model : AIBuyerBubbleModel) {
         
         // 获取原始中心点
-        let originalCenter = self.view.center
+        originalViewCenter = self.view.center
         
         // 获取放大后的半径 和 中心点
         let maxRadius = AITools.displaySizeFrom1080DesignSize(1384)
         let maxCenter = CGPointMake(CGRectGetWidth(self.view.frame) / 2, AITools.displaySizeFrom1080DesignSize(256))
         
         // 获取放大倍数
-        let scale : CGFloat =  maxRadius / bubble.radius
+        curBubbleScale =  maxRadius / bubble.radius
 
         // 获取bubble在self.view的正确位置
         let realPoint : CGPoint  = bubble.superview!.convertPoint(bubble.center, toView: self.view)
         
         // 获取bubble放大以后再view中的坐标
-        let scaledPoint = self.convertPointToScaledPoint(realPoint, scale: scale, baseRect: self.view.frame)
+        let scaledPoint = self.convertPointToScaledPoint(realPoint, scale: curBubbleScale!, baseRect: self.view.frame)
         
         // 计算中心点要移动的距离
         let xOffset = maxCenter.x - scaledPoint.x
         let yOffset = maxCenter.y - scaledPoint.y
         
         // 计算移动后的中心点
-        let realViewCenter = CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset)
+        curBubbleCenter = CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset)
         
         // 动画过程中禁止响应用户的手势
         self.view.userInteractionEnabled = false
         
-        // 开始动画
-        UIView.animateWithDuration(0.4, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
-            self.view.transform =  CGAffineTransformMakeScale(scale, scale)
-            self.view.center = realViewCenter
-            }) { (Bool) -> Void in
+        // 处理detailViewController
+        
+        weak var detailViewController = self.showBuyerDetailAction(model)
+        detailViewController?.view.alpha = 0
+        let detailScale : CGFloat = 0.2
+        
+        self.presentViewController(detailViewController!, animated: false) { () -> Void in
+            
+            detailViewController?.view.alpha = 1
+            detailViewController?.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
+            
+            // 开始动画
+            UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+                self.view.transform =  CGAffineTransformMakeScale(self.curBubbleScale!, self.curBubbleScale!)
+                self.view.center = self.curBubbleCenter!
                 
-                self.showBuyerDetailAction(model)
-                self.view.transform =  CGAffineTransformMakeScale(1, 1)
-                self.view.center = originalCenter
-                self.view.userInteractionEnabled = true
-                UIView.animateWithDuration(0.4, delay: 1, options: .CurveEaseOut, animations: { () -> Void in
+                detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
+                
+                
+                }) { (Bool) -> Void in
                     
-                    }) { (Bool) -> Void in
-                        
-                        
-                }
+                    self.view.transform =  CGAffineTransformMakeScale(1, 1)
+                    self.view.center = self.originalViewCenter!
+                    self.view.userInteractionEnabled = true
+            }
+            
         }
-        
-        
-//        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
-//        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-//        viewController.view.tram
-//        self.addChildViewController(viewController)
-//        self.transitionFromViewController(self, toViewController: viewController, duration: 0.6, options: .CurveEaseInOut, animations: { () -> Void in
-//            
-//            }) { (Bool) -> Void in
-//                
-//        }
         
     }
     
 
-    func  showBuyerDetailAction(model: AIBuyerBubbleModel) {
+    func  showBuyerDetailAction(model: AIBuyerBubbleModel) -> UIViewController {
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         viewController.bubleModel = model
-        self.showDetailViewController(viewController, sender: self)
+        viewController.delegate = self
+        
+        //self.showDetailViewController(viewController, sender: self)
+        
+        return viewController
     }
     
     // MARK: - 构造顶部Bar
