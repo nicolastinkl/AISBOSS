@@ -26,7 +26,6 @@ class ServiceViewContainer: UIView {
             if dataModel != nil {
                 if let serviceView = createServiceView(dataModel!) {
                     rightServiceView.contentView = serviceView
-                    let height = serviceView.frame.height
                     frame.size.height += serviceView.frame.height
                 }
             }
@@ -53,13 +52,19 @@ class ServiceViewContainer: UIView {
         addSubview(rightServiceView)
         
         layout(leftIndicator, rightServiceView) {indicator, service in
+            
+            indicator.top == indicator.superview!.top
+            indicator.left == indicator.superview!.left
+            indicator.height == indicator.superview!.height
+            indicator.width == ServiceViewContainer.INDICATOR_WIDTH
+            
             service.top == indicator.top + ServiceViewContainer.INDICATOR_WIDTH / 2
             service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 5
             service.right == service.superview!.right
             service.height == service.superview!.height - ServiceViewContainer.INDICATOR_WIDTH
         }
         
-        frame.size.height = leftIndicator.frame.height
+      //  frame.size.height = leftIndicator.frame.height
     }
     
     private func createServiceView(data: Int) -> View? {

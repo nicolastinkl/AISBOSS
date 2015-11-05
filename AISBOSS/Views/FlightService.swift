@@ -30,7 +30,7 @@ class FlightService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 160
+        frame.size.height = 110
         addTime()
         addLocation()
         addAirport()
