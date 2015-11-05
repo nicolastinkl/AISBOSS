@@ -26,7 +26,7 @@ class AccommodationService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 120
+        frame.size.height = 80
         addPeriod()
         addAdditionDescription()
     }

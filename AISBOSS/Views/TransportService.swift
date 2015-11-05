@@ -27,7 +27,7 @@ class TransportService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 140
+        frame.size.height = 90
         addTime()
         addLocation()
     }
