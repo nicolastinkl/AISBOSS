@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+
 @interface AITools : NSObject
 
 /*说明：播放bundle里的视频文件
