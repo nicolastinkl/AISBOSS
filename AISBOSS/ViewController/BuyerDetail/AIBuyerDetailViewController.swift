@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import AISpring
 
-@objc protocol AIBuyerDetailDelegate{
+@objc protocol AIBuyerDetailDelegate:class{
     func closeAIBDetailViewController()
 }
 
