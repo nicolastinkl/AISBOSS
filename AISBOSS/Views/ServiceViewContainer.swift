@@ -47,6 +47,7 @@ class ServiceViewContainer: UIView {
                 if let serviceView = createServiceView(dataModel!) {
                     rightServiceView.contentView = serviceView
                     frame.size.height += serviceView.frame.height
+                    leftIndicator.refreshLayout()
                 }
             }
         }
@@ -136,7 +137,7 @@ class LeftIndicator: UIView {
         addSubview(topBall)
         addSubview(bottomBall)
         addSubview(linkLine)
-        
+
         layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
             topBall.top == topBall.superview!.top
             topBall.left == topBall.superview!.left
@@ -147,20 +148,25 @@ class LeftIndicator: UIView {
             bottomBall.centerX == topBall.centerX
             bottomBall.width == AITools.displaySizeFrom1080DesignSize(46)
             bottomBall.height == bottomBall.width / 2
-            
-            linkLine.top == topBall.bottom
-            linkLine.centerX == topBall.centerX
-            linkLine.width == 2
-            linkLine.bottom == bottomBall.top
         }
     }
     
     func setIndicatorIsPrime() {
         topBall.image = UIImage(named: "white_ball")
         
-        layout(topBall) {topBall in
-            topBall.width == LeftIndicator.BIG_BALL_WIDTH
-            topBall.height == topBall.width
+        constrain(topBall, replace: ConstraintGroup()) { topBall in
+            topBall.width == LeftIndicator.BIG_BALL_WIDTH ~ UILayoutPriorityFittingSizeLevel
+            topBall.height == topBall.width ~ UILayoutPriorityFittingSizeLevel
+        }
+    }
+    
+    func refreshLayout() {
+        layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
+            
+            linkLine.top == topBall.bottom
+            linkLine.centerX == topBall.centerX
+            linkLine.width == 2
+            linkLine.bottom == bottomBall.top
         }
     }
 }
@@ -209,10 +215,6 @@ class RightServiceView: UIView {
     }
     
     private func initSelf() {
-        //      layer.cornerRadius = 8
-        //      layer.masksToBounds = true
-        
-        //     addBackground()
         addLogo()
         addGrade()
         addPrice()
@@ -291,14 +293,14 @@ class RightServiceView: UIView {
         name = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
         name.textColor = UIColor(hex: "#FEE300")
-        
+
         addSubview(name)
         
         layout(price, logo, name) {price, logo, name in
             name.top == logo.top
             name.left == logo.right + 5
             name.height == RightServiceView.LOGO_HEIGHT
-            name.right == price.left - 30
+            name.width == 200
         }
         
         name.text = "Mu576"
