@@ -20,6 +20,7 @@
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F21841BE9B22F002EB473 /* UPUnderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F21831BE9B22F002EB473 /* UPUnderLineButton.m */; };
+		815F21881BEAF0A1002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F21871BEAF0A1002EB473 /* UIView+MaterialDesign.m */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -339,6 +340,8 @@
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815F21821BE9B22F002EB473 /* UPUnderLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPUnderLineButton.h; sourceTree = "<group>"; };
 		815F21831BE9B22F002EB473 /* UPUnderLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPUnderLineButton.m; sourceTree = "<group>"; };
+		815F21861BEAF0A1002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
+		815F21871BEAF0A1002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -882,6 +885,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		815F21851BEAF0A1002EB473 /* MaterialDesign */ = {
+			isa = PBXGroup;
+			children = (
+				815F21861BEAF0A1002EB473 /* UIView+MaterialDesign.h */,
+				815F21871BEAF0A1002EB473 /* UIView+MaterialDesign.m */,
+			);
+			path = MaterialDesign;
+			sourceTree = "<group>";
+		};
 		81C0925F1BAFAC0D003FFF35 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1261,6 +1273,7 @@
 		93A5A59D1B9BD5E1001DE36D /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				815F21851BEAF0A1002EB473 /* MaterialDesign */,
 				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
 				81C0925F1BAFAC0D003FFF35 /* SDWebImage */,
 				93B25A351B9D796F00CD1FEB /* Network */,
@@ -2253,6 +2266,7 @@
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
 				93B25A3D1B9D796F00CD1FEB /* AIMessage.m in Sources */,
+				815F21881BEAF0A1002EB473 /* UIView+MaterialDesign.m in Sources */,
 				93B25AA51B9D7A7B00CD1FEB /* JSONKeyMapper.m in Sources */,
 				846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
 				939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */,
