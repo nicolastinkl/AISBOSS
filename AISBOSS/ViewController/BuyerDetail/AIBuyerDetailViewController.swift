@@ -9,6 +9,7 @@
 import Foundation
 
 import UIKit
+import AISpring
 
 class AIBuyerDetailViewController : UIViewController {
     
@@ -20,6 +21,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: swift controls
     
+    @IBOutlet weak var bgLabel: DesignableLabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var videoButton: UIButton!
@@ -40,6 +42,7 @@ class AIBuyerDetailViewController : UIViewController {
 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        
         // Init Label Font
         InitLabelFont()
         
@@ -48,6 +51,15 @@ class AIBuyerDetailViewController : UIViewController {
         
         // Init Data
         initData()  
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.bgLabel.animation = "zoomOut"
+        self.bgLabel.duration = 0.5
+        self.bgLabel.animate()
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -72,7 +84,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.whereLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
-       
+    
     // MARK: event response
     
     @IBAction func closeThisViewController(){

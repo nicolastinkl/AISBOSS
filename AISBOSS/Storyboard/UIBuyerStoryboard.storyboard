@@ -18,14 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctB-5W-Nxf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVm-kg-Shb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d6i-dQ-Z3l">
@@ -36,6 +28,21 @@
                                 <animations/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctB-5W-Nxf" customClass="DesignableLabel" customModule="AISpring">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animation" value="fadeIn"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p9V-lT-phy">
                                 <rect key="frame" x="0.0" y="-20" width="600" height="620"/>
                                 <animations/>
@@ -115,11 +122,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-0T-zUo">
-                                        <rect key="frame" x="15" y="20" width="249" height="28"/>
+                                        <rect key="frame" x="15" y="20" width="280" height="28"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="LuI-Y5-pDh"/>
-                                            <constraint firstAttribute="width" constant="249" id="oPJ-90-0gx"/>
+                                            <constraint firstAttribute="width" constant="280" id="oPJ-90-0gx"/>
                                         </constraints>
                                         <state key="normal" title=" Business Trip" image="backIcon"/>
                                         <connections>
@@ -214,7 +221,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3EU-06-uKE">
-                                <rect key="frame" x="0.0" y="201" width="600" height="358"/>
+                                <rect key="frame" x="0.0" y="201" width="600" height="299"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -232,6 +239,11 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5yB-Co-cIV"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="g9A-B2-IXI" id="8hv-cm-g9d"/>
                                     <outlet property="delegate" destination="g9A-B2-IXI" id="Fwa-3R-3IV"/>
@@ -273,6 +285,7 @@
                             <constraint firstItem="Mv0-83-Itj" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="bottom" constant="1" id="UA3-dM-1EC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3EU-06-uKE" secondAttribute="trailing" constant="-20" id="USD-Mo-WgS"/>
                             <constraint firstItem="dgC-qc-VsT" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="Uaq-UA-Oiv"/>
+                            <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="3EU-06-uKE" secondAttribute="bottom" constant="100" id="VqY-06-aec"/>
                             <constraint firstItem="CPV-nq-FDD" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="WLq-dX-ztH"/>
                             <constraint firstItem="p9V-lT-phy" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" constant="-20" id="ZI8-nV-Nge"/>
                             <constraint firstItem="dVm-kg-Shb" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="ZSl-q4-MSP"/>
@@ -296,6 +309,7 @@
                     <connections>
                         <outlet property="OrderFromLabel" destination="H8s-Ef-iLH" id="0QQ-FA-vVY"/>
                         <outlet property="backButton" destination="As3-0T-zUo" id="eUL-so-0HG"/>
+                        <outlet property="bgLabel" destination="ctB-5W-Nxf" id="S2g-LU-elk"/>
                         <outlet property="contentLabel" destination="ALy-Am-rau" id="a8H-44-asd"/>
                         <outlet property="moneyLabel" destination="mkb-ag-P9a" id="Sc3-DR-tA5"/>
                         <outlet property="numberLabel" destination="Wqa-G4-So3" id="CEa-P6-fRt"/>

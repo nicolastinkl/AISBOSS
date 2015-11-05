@@ -19,7 +19,6 @@ struct Error {
     let code : Int
 }
 
-
 /*!
  *  @author tinkl, 15-04-02 15:04:53
  *
