@@ -16,6 +16,26 @@ class ServiceViewContainer: UIView {
     private var leftIndicator: LeftIndicator!
     var rightServiceView: RightServiceView!
     private var dataModel: Int?
+    private var primeFlag = false
+    
+    var isPrimeService: Bool {
+        get {
+            return primeFlag
+        }
+        set {
+            primeFlag = newValue
+            
+            if primeFlag == true {
+//                layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
+//                    service.top == topBall.centerY - 4
+//                    service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
+//                    service.right == service.superview!.right
+//                }
+                
+                leftIndicator.setIndicatorIsPrime()
+            }
+        }
+    }
     
     var data: Int? {
         get {
@@ -46,22 +66,24 @@ class ServiceViewContainer: UIView {
         
         leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
         rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-  //      rightServiceView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
         
         addSubview(leftIndicator)
         addSubview(rightServiceView)
         
-        layout(leftIndicator, rightServiceView) {indicator, service in
+        layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
             
             indicator.top == indicator.superview!.top
             indicator.left == indicator.superview!.left
-            indicator.height == indicator.superview!.height
+            indicator.height == indicator.superview!.height + 1
             indicator.width == ServiceViewContainer.INDICATOR_WIDTH
             
-            service.top == indicator.top + ServiceViewContainer.INDICATOR_WIDTH / 2
-            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 5
+            service.top == topBall.top + 4
+            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
             service.right == service.superview!.right
-            service.height == service.superview!.height - ServiceViewContainer.INDICATOR_WIDTH
+        }
+        
+        layout(leftIndicator.bottomBall, rightServiceView) {bottomBall, service in
+            service.bottom == bottomBall.centerY - 2
         }
         
         frame.size.height = RightServiceView.getHeadHeight() + ServiceViewContainer.INDICATOR_WIDTH
@@ -70,6 +92,7 @@ class ServiceViewContainer: UIView {
     private func createServiceView(data: Int) -> View? {
         switch data {
         case 0:
+            isPrimeService = true
             return FlightService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
         case 1:
             return TransportService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
@@ -82,9 +105,12 @@ class ServiceViewContainer: UIView {
 }
 
 class LeftIndicator: UIView {
-    private var topBall: UIImageView!
-    private var bottomBall: UIImageView!
+    var topBall: UIImageView!
+    var bottomBall: UIImageView!
     private var linkLine: UIImageView!
+    
+    static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(58)
+    static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(46)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,12 +124,14 @@ class LeftIndicator: UIView {
     
     private func initSelf() {
         topBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        topBall.contentMode = .Bottom
         bottomBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        bottomBall.contentMode = .Top
         linkLine = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
-        topBall.image = UIImage(named: "white_ball.png")
-        bottomBall.image = UIImage(named: "hollow_ball.png")
-        linkLine.image = UIImage(named: "link_line_vertical.png")
+        topBall.image = UIImage(named: "hollow_ball_half_bottom")
+        bottomBall.image = UIImage(named: "hollow_ball_half_top")
+        linkLine.image = UIImage(named: "link_line_vertical")
         
         addSubview(topBall)
         addSubview(bottomBall)
@@ -112,18 +140,27 @@ class LeftIndicator: UIView {
         layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
             topBall.top == topBall.superview!.top
             topBall.left == topBall.superview!.left
-            topBall.width == ServiceViewContainer.INDICATOR_WIDTH
-            topBall.height == topBall.width
+            topBall.width == LeftIndicator.SMALL_BALL_WIDTH
+            topBall.height == topBall.width / 2
             
             bottomBall.bottom == bottomBall.superview!.bottom
             bottomBall.centerX == topBall.centerX
-            bottomBall.height == 15
-            bottomBall.width == bottomBall.height
+            bottomBall.width == AITools.displaySizeFrom1080DesignSize(46)
+            bottomBall.height == bottomBall.width / 2
             
             linkLine.top == topBall.bottom
             linkLine.centerX == topBall.centerX
             linkLine.width == 2
             linkLine.bottom == bottomBall.top
+        }
+    }
+    
+    func setIndicatorIsPrime() {
+        topBall.image = UIImage(named: "white_ball")
+        
+        layout(topBall) {topBall in
+            topBall.width == LeftIndicator.BIG_BALL_WIDTH
+            topBall.height == topBall.width
         }
     }
 }
@@ -145,7 +182,7 @@ class RightServiceView: UIView {
     private var grade: UIImageView!
     
     private var content: UIView?
-    
+
     var contentView: UIView? {
         get {
             return content
@@ -187,19 +224,18 @@ class RightServiceView: UIView {
         background = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
         let bkImg = UIImage(named: "white_top_unfilled_corner")
-        let insets = UIEdgeInsetsMake(60, 70, 100, 100)
+        let insets = UIEdgeInsetsMake(60, 60, 60, 60)
         bkImg?.resizableImageWithCapInsets(insets)
         background.image = bkImg
         
         insertSubview(background, atIndex: 0)
-    //    addSubview(background)
         
-        //            layout(background) {background in
-        //                background.height == background.superview!.height
-        //                background.width == background.superview!.width
-        //                background.top == background.superview!.top
-        //                background.left == background.superview!.left
-        //            }
+        layout(background) {background in
+            background.top == background.superview!.top
+            background.left == background.superview!.left
+            background.bottom == background.superview!.bottom
+            background.right == background.superview!.right
+        }
     }
     
     private func addLogo() {
