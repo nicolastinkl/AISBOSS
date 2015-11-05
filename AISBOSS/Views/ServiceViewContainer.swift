@@ -27,13 +27,8 @@ class ServiceViewContainer: UIView {
             primeFlag = newValue
             
             if primeFlag == true {
-//                layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
-//                    service.top == topBall.centerY - 4
-//                    service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
-//                    service.right == service.superview!.right
-//                }
-                
                 leftIndicator.setIndicatorIsPrime()
+                frame.size.height += 10
             }
         }
     }
@@ -85,7 +80,7 @@ class ServiceViewContainer: UIView {
             indicator.width == ServiceViewContainer.INDICATOR_WIDTH
             
             service.top == topBall.top + 4
-            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
+            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 5
             service.right == service.superview!.right
         }
         
@@ -118,9 +113,10 @@ class LeftIndicator: UIView {
     var topBall: UIImageView!
     var bottomBall: UIImageView!
     private var linkLine: UIImageView!
+    private var group: ConstraintGroup!
     
-    static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(58)
-    static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(46)
+    static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(57)
+    static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(45)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -146,24 +142,33 @@ class LeftIndicator: UIView {
         addSubview(topBall)
         addSubview(bottomBall)
         addSubview(linkLine)
-
-        layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
+        
+        group = constrain(topBall) {topBall in
             topBall.top == topBall.superview!.top
-            topBall.left == topBall.superview!.left
+            topBall.centerX == topBall.superview!.centerX
             topBall.width == LeftIndicator.SMALL_BALL_WIDTH
             topBall.height == topBall.width / 2
+        }
+
+        constrain(topBall, bottomBall) {topBall, bottomBall in
+//            topBall.top == topBall.superview!.top
+//            topBall.left == topBall.superview!.left
+//            topBall.width == LeftIndicator.SMALL_BALL_WIDTH
+//            topBall.height == topBall.width / 2
             
             bottomBall.bottom == bottomBall.superview!.bottom
             bottomBall.centerX == topBall.centerX
-            bottomBall.width == AITools.displaySizeFrom1080DesignSize(46)
+            bottomBall.width == LeftIndicator.SMALL_BALL_WIDTH
             bottomBall.height == bottomBall.width / 2
         }
     }
     
     func setIndicatorIsPrime() {
         topBall.image = UIImage(named: "white_ball")
-        
-        constrain(topBall, replace: ConstraintGroup()) { topBall in
+        topBall.contentMode = .Top
+        constrain(topBall, replace: group) { topBall in
+            topBall.top == topBall.superview!.top
+            topBall.left == topBall.superview!.left
             topBall.width == LeftIndicator.BIG_BALL_WIDTH ~ UILayoutPriorityFittingSizeLevel
             topBall.height == topBall.width ~ UILayoutPriorityFittingSizeLevel
         }
@@ -177,6 +182,7 @@ class LeftIndicator: UIView {
             linkLine.width == 2
             linkLine.bottom == bottomBall.top
         }
+        
     }
 }
 
