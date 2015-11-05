@@ -69,8 +69,8 @@ class AIBuyerDetailViewController : UIViewController {
         self.moneyLabel.text = dataSource?.order_total_price
         self.totalMoneyLabel.text = dataSource?.proposal_price
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
-        self.OrderFromLabel.text = dataSource?.proposal_origin
-        self.whereLabel.text =  dataSource?.proposal_desc
+        self.whereLabel.text = dataSource?.proposal_origin
+        self.contentLabel.text =  dataSource?.proposal_desc
         
     }
     

@@ -307,7 +307,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="OrderFromLabel" destination="H8s-Ef-iLH" id="0QQ-FA-vVY"/>
+                        <outlet property="OrderFromLabel" destination="H8s-Ef-iLH" id="JWH-Ux-swG"/>
                         <outlet property="backButton" destination="As3-0T-zUo" id="eUL-so-0HG"/>
                         <outlet property="bgLabel" destination="ctB-5W-Nxf" id="S2g-LU-elk"/>
                         <outlet property="contentLabel" destination="ALy-Am-rau" id="a8H-44-asd"/>

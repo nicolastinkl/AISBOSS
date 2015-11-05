@@ -18,8 +18,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Constants
     
-    
-    
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
@@ -57,8 +55,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func NSNotiryAricToNomalStatus(){
-        return
-            
+        
+        /**
         UIView.animateWithDuration(
             1.2,
             delay: 0,
@@ -73,7 +71,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
             }, completion: { finished in
-        })
+        })*/
     }
 
     /*
