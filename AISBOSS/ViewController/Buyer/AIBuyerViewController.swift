@@ -53,7 +53,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func NSNotiryAricToNomalStatus(){
-        
+        return
+            
         UIView.animateWithDuration(
             1.2,
             delay: 0,
@@ -69,7 +70,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
             }, completion: { finished in
         })
-        
     }
 
     /*
@@ -127,14 +127,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bubbleView.addSubview(label)
         bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubbleView) -> Void in
             if let strongSelf = self{
-
+                /*
                 let bView:UIView = bubbleView
                 let newPoint = bView.convertPoint(bView.center, toView: strongSelf.view)
                 
                 spring(1.2) { () -> Void in
                     strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
                     strongSelf.view.center = newPoint
-                }
+                }*/
                 
                 strongSelf.showBuyerDetailAction()
             }

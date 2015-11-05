@@ -26,6 +26,7 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var OrderFromLabel: UILabel!
     @IBOutlet weak var totalMoneyLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
     
     // MARK: getters and setters
     
@@ -55,11 +56,17 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
         self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
-        
+        self.whereLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
        
     // MARK: event response
+    
+    @IBAction func closeThisViewController(){
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
+    }
     
     // MARK: private methods
     
