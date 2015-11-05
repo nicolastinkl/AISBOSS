@@ -9,6 +9,11 @@
 import Foundation
 
 import UIKit
+import AISpring
+
+@objc protocol AIBuyerDetailDelegate:class{
+    func closeAIBDetailViewController()
+}
 
 class AIBuyerDetailViewController : UIViewController {
     
@@ -16,9 +21,12 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
+    var bubleModel : AIBuyerBubbleModel?
+    private var delegate: AIBuyerDetailDelegate?
     
     // MARK: swift controls
     
+    @IBOutlet weak var bgLabel: DesignableLabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var videoButton: UIButton!
@@ -27,6 +35,7 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var OrderFromLabel: UILabel!
     @IBOutlet weak var totalMoneyLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
     
     // MARK: getters and setters
     
@@ -36,27 +45,87 @@ class AIBuyerDetailViewController : UIViewController {
         super.viewDidLoad()
 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+
         // Init Label Font
         InitLabelFont()
         
         // Init Data
-        initData()  
+        initData()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.bgLabel.animation = "zoomOut"
+        self.bgLabel.duration = 0.5
+        self.bgLabel.animate()
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
+    }
+    
+    func InitController(){
+        let name = dataSource?.proposal_name ?? ""
+        self.backButton.setTitle(" \(name)", forState: UIControlState.Normal)
+        self.moneyLabel.text = dataSource?.order_total_price
+        self.totalMoneyLabel.text = dataSource?.proposal_price
+        self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
+        self.whereLabel.text = dataSource?.proposal_origin
+        self.contentLabel.text =  dataSource?.proposal_desc
+        
     }
     
     func InitLabelFont(){
         self.backButton.titleLabel?.font =  AITools.myriadSemiCondensedWithSize(80 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.moneyLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.moneyLabel.font =  AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.numberLabel.font =  AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.OrderFromLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
-        
-        self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.whereLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.contentLabel.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
-       
+    
     // MARK: event response
     
+    @IBAction func closeThisViewController(){
+        delegate?.closeAIBDetailViewController()
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
+    }
+    
     // MARK: private methods
+    func refershData(){
+        
+    }
+    
+    
+    func initData(){
+        if let m = bubleModel {
+            
+            MockProposalService().queryCustomerProposalDetail(m.proposal_id, success:
+                {[weak self] (responseData) -> Void in
+                    
+                    if let strongSelf = self {
+                        strongSelf.dataSource = responseData
+                        
+                        //InitControl Data
+                        strongSelf.InitController()
+                        strongSelf.tableView.reloadData()
+                    }
+                    
+                },fail : {
+                    (errType, errDes) -> Void in
+                    
+            })
+            
+        }
+        
+    }
     
 }
 
@@ -77,6 +146,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let childModel = bubleModel?.service_list[indexPath.row]  as! AIBuyerBubbleProportModel
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -110,14 +180,5 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    func initData(){
-        MockProposalService().queryCustomerProposalDetail(1, success: {
-             (responseData) -> Void in
-                self.dataSource = responseData
-            },fail : {
-            (errType, errDes) -> Void in
-                
-        })
-    }
 
 }

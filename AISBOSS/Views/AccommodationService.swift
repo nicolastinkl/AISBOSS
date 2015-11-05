@@ -26,7 +26,7 @@ class AccommodationService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 80
+        frame.size.height = AITools.displaySizeFrom1080DesignSize(210)
         addPeriod()
         addAdditionDescription()
     }

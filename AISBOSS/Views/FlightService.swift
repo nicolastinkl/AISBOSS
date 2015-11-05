@@ -30,7 +30,7 @@ class FlightService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 110
+        frame.size.height = AITools.displaySizeFrom1080DesignSize(275)
         addTime()
         addLocation()
         addAirport()
