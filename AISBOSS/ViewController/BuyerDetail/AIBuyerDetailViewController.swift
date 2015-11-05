@@ -16,6 +16,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
+    var bubleModel : AIBuyerBubbleModel?
     
     // MARK: swift controls
     
@@ -27,10 +28,12 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var OrderFromLabel: UILabel!
     @IBOutlet weak var totalMoneyLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
     
     // MARK: getters and setters
     
     // MARK: life cycle
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +43,24 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Label Font
         InitLabelFont()
         
+        //InitControl Data
+        InitController()
+        
         // Init Data
         initData()  
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
+    
+    }
+    
+    func InitController(){
+        self.backButton.setTitle(bubleModel?.proposal_name, forState: UIControlState.Normal)
+        self.totalMoneyLabel.text = bubleModel?.proposal_price
+        self.numberLabel.text = "\(bubleModel?.order_times ?? 0)"
+        
     }
     
     func InitLabelFont(){
@@ -50,11 +69,17 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.font =  AITools.myriadLightSemiExtendedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR)
         self.OrderFromLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.totalMoneyLabel.font =  AITools.myriadSemiCondensedWithSize(70 / PurchasedViewDimention.CONVERT_FACTOR)
-        
+        self.whereLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         self.contentLabel.font = AITools.myriadLightSemiExtendedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
     }
        
     // MARK: event response
+    
+    @IBAction func closeThisViewController(){
+        self.dismissViewControllerAnimated(true) { () -> Void in
+            
+        }
+    }
     
     // MARK: private methods
     
