@@ -16,6 +16,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
+    var bubleModel : AIBuyerBubbleModel?
     
     // MARK: swift controls
     
@@ -42,6 +43,9 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Label Font
         InitLabelFont()
         
+        //InitControl Data
+        InitController()
+        
         // Init Data
         initData()  
     }
@@ -49,6 +53,14 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
+    
+    }
+    
+    func InitController(){
+        self.backButton.setTitle(bubleModel?.proposal_name, forState: UIControlState.Normal)
+        self.totalMoneyLabel.text = bubleModel?.proposal_price
+        self.numberLabel.text = "\(bubleModel?.order_times ?? 0)"
+        
     }
     
     func InitLabelFont(){

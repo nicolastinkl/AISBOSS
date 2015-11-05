@@ -140,27 +140,18 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     strongSelf.view.center = newPoint
                 }*/
                 
-                
-                
-                
-                
-                strongSelf.showBuyerDetailAction()
+                strongSelf.showBuyerDetailAction(bubleModel)
             }
         }
     }
     
-    func  showBuyerDetailAction() {
+    func  showBuyerDetailAction(model: AIBuyerBubbleModel) {
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        viewController.bubleModel = model
         self.showDetailViewController(viewController, sender: self)
-        
-        //
-        
-        
-        
-        
         
     }
     
