@@ -65,7 +65,8 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func InitController(){
-        self.backButton.setTitle(dataSource?.proposal_name, forState: UIControlState.Normal)
+        let name = dataSource?.proposal_name ?? ""
+        self.backButton.setTitle(" \(name)", forState: UIControlState.Normal)
         self.moneyLabel.text = dataSource?.order_total_price
         self.totalMoneyLabel.text = dataSource?.proposal_price
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
