@@ -59,10 +59,10 @@ class FlightService: UIView {
     }
     
     private func addLocation() {
-        from = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        from = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         from.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
         from.textColor = UIColor(hex: "#FEE300")
-        to = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        to = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         to.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
         to.textColor = UIColor(hex: "#FEE300")
         addSubview(from)

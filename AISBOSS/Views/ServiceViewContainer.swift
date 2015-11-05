@@ -226,7 +226,7 @@ class ServiceViewContainer: UIView {
         }
         
         private func addTitle() {
-            name = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            name = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
             name.textColor = UIColor(hex: "#FEE300")
             
@@ -238,7 +238,7 @@ class ServiceViewContainer: UIView {
                 name.height == RightServiceView.LOGO_HEIGHT
                 name.right == price.left - 30
             }
-            
+        
             name.text = "Mu576"
         }
         
