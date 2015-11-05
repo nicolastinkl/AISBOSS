@@ -27,7 +27,7 @@ class TransportService: UIView {
     }
     
     private func initSelf() {
-        frame.size.height = 90
+        frame.size.height = AITools.displaySizeFrom1080DesignSize(225)
         addTime()
         addLocation()
     }
