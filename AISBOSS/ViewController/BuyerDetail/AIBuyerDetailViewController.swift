@@ -36,18 +36,14 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: life cycle
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
+
         // Init Label Font
         InitLabelFont()
         
-        //InitControl Data
-        InitController()
         
         // Init Data
         initData()  
@@ -69,9 +65,12 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func InitController(){
-        self.backButton.setTitle(bubleModel?.proposal_name, forState: UIControlState.Normal)
-        self.totalMoneyLabel.text = bubleModel?.proposal_price
-        self.numberLabel.text = "\(bubleModel?.order_times ?? 0)"
+        self.backButton.setTitle(dataSource?.proposal_name, forState: UIControlState.Normal)
+        self.moneyLabel.text = dataSource?.order_total_price
+        self.totalMoneyLabel.text = dataSource?.proposal_price
+        self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
+        self.OrderFromLabel.text = dataSource?.proposal_origin
+        self.whereLabel.text =  dataSource?.proposal_desc
         
     }
     
@@ -94,6 +93,33 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     // MARK: private methods
+    func refershData(){
+        
+    }
+    
+    
+    func initData(){
+        if let m = bubleModel {
+            
+            MockProposalService().queryCustomerProposalDetail(m.proposal_id, success:
+                {[weak self] (responseData) -> Void in
+                    
+                    if let strongSelf = self {
+                        strongSelf.dataSource = responseData
+                        
+                        //InitControl Data
+                        strongSelf.InitController()
+                        strongSelf.tableView.reloadData()
+                    }
+                    
+                },fail : {
+                    (errType, errDes) -> Void in
+                    
+            })
+            
+        }
+        
+    }
     
 }
 
@@ -109,11 +135,12 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return bubleModel?.service_list.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let childModel = bubleModel?.service_list[indexPath.row]  as! AIBuyerBubbleProportModel
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -147,14 +174,5 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    func initData(){
-        MockProposalService().queryCustomerProposalDetail(1, success: {
-             (responseData) -> Void in
-                self.dataSource = responseData
-            },fail : {
-            (errType, errDes) -> Void in
-                
-        })
-    }
 
 }
