@@ -15,7 +15,8 @@ class ServiceViewContainer: UIView {
   //  private static let SERVICE_HEIGHT: CGFloat = 200
     private var leftIndicator: LeftIndicator!
     var rightServiceView: RightServiceView!
-    private var dataModel: Int?
+    
+    private var dataModel: AIProposalServiceModel?
     private var primeFlag = false
     
     var isPrimeService: Bool {
@@ -26,48 +27,48 @@ class ServiceViewContainer: UIView {
             primeFlag = newValue
             
             if primeFlag == true {
-//                layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
-//                    service.top == topBall.centerY - 4
-//                    service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
-//                    service.right == service.superview!.right
-//                }
-                
                 leftIndicator.setIndicatorIsPrime()
-            }
-        }
-    }
-    
-    var data: Int? {
-        get {
-            return dataModel
-        }
-        set {
-            dataModel = newValue
-            if dataModel != nil {
-                if let serviceView = createServiceView(dataModel!) {
-                    rightServiceView.contentView = serviceView
-                    frame.size.height += serviceView.frame.height
-                    leftIndicator.refreshLayout()
-                }
+                frame.size.height += 10
             }
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    //加载数据
+    func loadData(dataModel : AIProposalServiceModel){
+        self.dataModel = dataModel
         initSelf()
+        if dataModel.service_param != nil {
+            let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(dataModel.service_param.param_key)!)
+            if let paramValueString = dataModel.service_param.param_value{
+                let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
+                //获取到参数的dictionary
+                let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                
+                if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
+                    rightServiceView.contentView = serviceView
+                    frame.size.height += serviceView.frame.height
+                }
+            }
+            
+        }
     }
     
     private func initSelf() {
         
         leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
         rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        
+
+        rightServiceView.loadData(dataModel!)
         addSubview(leftIndicator)
         addSubview(rightServiceView)
         
@@ -79,7 +80,7 @@ class ServiceViewContainer: UIView {
             indicator.width == ServiceViewContainer.INDICATOR_WIDTH
             
             service.top == topBall.top + 4
-            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 3
+            service.left == indicator.right - ServiceViewContainer.INDICATOR_WIDTH / 2 + 5
             service.right == service.superview!.right
         }
         
@@ -90,17 +91,20 @@ class ServiceViewContainer: UIView {
         frame.size.height = RightServiceView.getHeadHeight() + ServiceViewContainer.INDICATOR_WIDTH
     }
     
-    private func createServiceView(data: Int) -> View? {
-        switch data {
-        case 0:
+    private func createServiceView(viewTemplate : ProposalServiceViewTemplate,paramDictionary : NSDictionary) -> View? {
+        
+        switch viewTemplate {
+        case ProposalServiceViewTemplate.PlaneTicket:
             isPrimeService = true
-            return FlightService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        case 1:
+            let serviceDetailView = FlightService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
+            serviceDetailView.loadData(paramDictionary)
+            return serviceDetailView
+        case ProposalServiceViewTemplate.Taxi:
             return TransportService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        case 2:
+        case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
-        default:
-            return nil
+//        default:
+//            return nil
         }
     }   
 }
@@ -109,9 +113,10 @@ class LeftIndicator: UIView {
     var topBall: UIImageView!
     var bottomBall: UIImageView!
     private var linkLine: UIImageView!
+    private var group: ConstraintGroup!
     
-    static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(58)
-    static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(46)
+    static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(57)
+    static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(45)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -137,24 +142,33 @@ class LeftIndicator: UIView {
         addSubview(topBall)
         addSubview(bottomBall)
         addSubview(linkLine)
-
-        layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
+        
+        group = constrain(topBall) {topBall in
             topBall.top == topBall.superview!.top
-            topBall.left == topBall.superview!.left
+            topBall.centerX == topBall.superview!.centerX
             topBall.width == LeftIndicator.SMALL_BALL_WIDTH
             topBall.height == topBall.width / 2
+        }
+
+        constrain(topBall, bottomBall) {topBall, bottomBall in
+//            topBall.top == topBall.superview!.top
+//            topBall.left == topBall.superview!.left
+//            topBall.width == LeftIndicator.SMALL_BALL_WIDTH
+//            topBall.height == topBall.width / 2
             
             bottomBall.bottom == bottomBall.superview!.bottom
             bottomBall.centerX == topBall.centerX
-            bottomBall.width == AITools.displaySizeFrom1080DesignSize(46)
+            bottomBall.width == LeftIndicator.SMALL_BALL_WIDTH
             bottomBall.height == bottomBall.width / 2
         }
     }
     
     func setIndicatorIsPrime() {
         topBall.image = UIImage(named: "white_ball")
-        
-        constrain(topBall, replace: ConstraintGroup()) { topBall in
+        topBall.contentMode = .Top
+        constrain(topBall, replace: group) { topBall in
+            topBall.top == topBall.superview!.top
+            topBall.left == topBall.superview!.left
             topBall.width == LeftIndicator.BIG_BALL_WIDTH ~ UILayoutPriorityFittingSizeLevel
             topBall.height == topBall.width ~ UILayoutPriorityFittingSizeLevel
         }
@@ -168,6 +182,7 @@ class LeftIndicator: UIView {
             linkLine.width == 2
             linkLine.bottom == bottomBall.top
         }
+        
     }
 }
 
@@ -188,6 +203,8 @@ class RightServiceView: UIView {
     private var grade: UIImageView!
     
     private var content: UIView?
+    private var dataModel : AIProposalServiceModel!
+    
 
     var contentView: UIView? {
         get {
@@ -206,11 +223,16 @@ class RightServiceView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        //initSelf()
+    }
+    
+    func loadData(dataModel : AIProposalServiceModel){
+        self.dataModel = dataModel
         initSelf()
     }
     
@@ -254,8 +276,8 @@ class RightServiceView: UIView {
             logView.width == RightServiceView.LOGO_WIDTH
             logView.height == RightServiceView.LOGO_HEIGHT
         }
-        
-        logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
+        logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
+        //logo.asyncLoadImage("http://static.wolongge.com/uploadfiles/company/8a0b0a107a1d3543fd22e9591ba4601f.jpg")
     }
     
     private func addGrade() {
@@ -268,8 +290,8 @@ class RightServiceView: UIView {
             grade.height == AITools.displaySizeFrom1080DesignSize(40)
             grade.width == AITools.displaySizeFrom1080DesignSize(64)
         }
-        
-        grade.asyncLoadImage("http://pic.baike.soso.com/p/20100114/bki-20100114182657-1449988150.jpg")
+        logo.asyncLoadImage(dataModel.service_rating ?? "")
+        //grade.asyncLoadImage("http://pic.baike.soso.com/p/20100114/bki-20100114182657-1449988150.jpg")
     }
     
     private func addPrice() {
@@ -285,8 +307,8 @@ class RightServiceView: UIView {
             price.height == AITools.displaySizeFrom1080DesignSize(56)
             price.width == 60
         }
-        
-        price.text = "$500"
+        price.text = dataModel.service_price ?? "$0"
+        //price.text = "$500"
     }
     
     private func addTitle() {
@@ -302,8 +324,8 @@ class RightServiceView: UIView {
             name.height == RightServiceView.LOGO_HEIGHT
             name.width == 200
         }
-        
-        name.text = "Mu576"
+        name.text = dataModel.service_desc ?? ""
+        //name.text = "Mu576"
     }
     
     private func setFrameToHeadSize() {
