@@ -49,10 +49,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         // Init Label Font
-        InitLabelFont()
-        
-        
-        
+        InitLabelFont() 
     }
     
     override func viewWillAppear(animated: Bool) {
