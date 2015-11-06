@@ -104,9 +104,7 @@
 		84DDA9461BEC3C2500CA5C83 /* TopServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9451BEC3C2500CA5C83 /* TopServiceViewContainer.swift */; };
 		84DDA9481BEC41C000CA5C83 /* MiddleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9471BEC41C000CA5C83 /* MiddleServiceViewContainer.swift */; };
 		84DDA94A1BEC45F900CA5C83 /* BottomServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9491BEC45F900CA5C83 /* BottomServiceViewContainer.swift */; };
-
 		84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94B1BEC67BB00CA5C83 /* ServiceDetailView.swift */; };
-
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -2532,7 +2530,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
