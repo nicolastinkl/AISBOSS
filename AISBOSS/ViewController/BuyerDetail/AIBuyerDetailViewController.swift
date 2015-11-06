@@ -152,7 +152,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.backgroundColor = UIColor.clearColor()
         
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        
+        var serviceView: ServiceViewContainer!
+        
+        if indexPath.row == 0 {
+            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else if indexPath.row == 2 {
+            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else {
+            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        }
+        
         serviceView.loadData(serviceDataModel)
 
         if cell.contentView.subviews.count == 0 {
