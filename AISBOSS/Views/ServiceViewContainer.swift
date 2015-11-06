@@ -11,9 +11,8 @@ import Cartography
 
 class ServiceViewContainer: UIView {
     
-    private static let INDICATOR_WIDTH: CGFloat = 20
-  //  private static let SERVICE_HEIGHT: CGFloat = 200
-    private var leftIndicator: LeftIndicator!
+    static let INDICATOR_WIDTH: CGFloat = 20
+    var leftIndicator: LeftIndicator!
     var rightServiceView: RightServiceView!
     
     private var dataModel: AIProposalServiceModel?
@@ -35,18 +34,30 @@ class ServiceViewContainer: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        buildSubviews()
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    func buildSubviews() {
+        leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
+        rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        
+        addSubview(leftIndicator)
+        addSubview(rightServiceView)
+    }
+    
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
-        initSelf()
+        
+        layoutView()
+        leftIndicator.refreshVerticalLineLayout()
+        
+        rightServiceView.loadData(self.dataModel!)
+        
         if dataModel.service_param != nil {
             if dataModel.service_param.param_key == nil {
                 return
@@ -66,15 +77,8 @@ class ServiceViewContainer: UIView {
         }
     }
     
-    private func initSelf() {
-        
-        leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
-        rightServiceView = RightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-
-        rightServiceView.loadData(dataModel!)
-        addSubview(leftIndicator)
-        addSubview(rightServiceView)
-        
+    func layoutView() {
+       
         layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
             
             indicator.top == indicator.superview!.top
@@ -98,7 +102,7 @@ class ServiceViewContainer: UIView {
         
         switch viewTemplate {
         case ProposalServiceViewTemplate.PlaneTicket:
-            isPrimeService = true
+         //   isPrimeService = true
             let serviceDetailView = FlightService(frame: CGRect(x: 0, y: 0, width: rightServiceView.frame.width, height: 0))
             serviceDetailView.loadData(paramDictionary)
             return serviceDetailView
@@ -115,23 +119,24 @@ class ServiceViewContainer: UIView {
 class LeftIndicator: UIView {
     var topBall: UIImageView!
     var bottomBall: UIImageView!
-    private var linkLine: UIImageView!
-    private var group: ConstraintGroup!
+    var linkLine: UIImageView!
+    var group: ConstraintGroup!
     
     static let BIG_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(57)
     static let SMALL_BALL_WIDTH = AITools.displaySizeFrom1080DesignSize(45)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
+        buildSbuViews()
+        layoutView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initSelf()
+        layoutView()
     }
     
-    private func initSelf() {
+    func buildSbuViews() {
         topBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         topBall.contentMode = .Bottom
         bottomBall = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -141,11 +146,16 @@ class LeftIndicator: UIView {
         topBall.image = UIImage(named: "hollow_ball_half_bottom")
         bottomBall.image = UIImage(named: "hollow_ball_half_top")
         linkLine.image = UIImage(named: "link_line_vertical")
+
         
         addSubview(topBall)
         addSubview(bottomBall)
         addSubview(linkLine)
+    }
+    
+    func layoutView() {
         
+     
         group = constrain(topBall) {topBall in
             topBall.top == topBall.superview!.top
             topBall.centerX == topBall.superview!.centerX
@@ -177,7 +187,7 @@ class LeftIndicator: UIView {
         }
     }
     
-    func refreshLayout() {
+    func refreshVerticalLineLayout() {
         layout(topBall, bottomBall, linkLine) {topBall, bottomBall, linkLine in
             
             linkLine.top == topBall.bottom
@@ -191,21 +201,21 @@ class LeftIndicator: UIView {
 
 
 class RightServiceView: UIView {
-    private static let LOGO_WIDTH: CGFloat = AITools.displaySizeFrom1080DesignSize(60)
-    private static let LOGO_HEIGHT: CGFloat = LOGO_WIDTH
-    private static let PADDING_TOP: CGFloat = AITools.displaySizeFrom1080DesignSize(34)
-    private static let PADDING_LEFT: CGFloat = AITools.displaySizeFrom1080DesignSize(34)
-    private static let PADDING_RIGHT: CGFloat = AITools.displaySizeFrom1080DesignSize(15)
-    private static let PADDING_BOTTOM: CGFloat = 20
-    private static let TITLE_MAGIN_BOTTOM: CGFloat = AITools.displaySizeFrom1080DesignSize(44)
+    static let LOGO_WIDTH: CGFloat = AITools.displaySizeFrom1080DesignSize(60)
+    static let LOGO_HEIGHT: CGFloat = LOGO_WIDTH
+    static let PADDING_TOP: CGFloat = AITools.displaySizeFrom1080DesignSize(34)
+    static let PADDING_LEFT: CGFloat = AITools.displaySizeFrom1080DesignSize(34)
+    static let PADDING_RIGHT: CGFloat = AITools.displaySizeFrom1080DesignSize(15)
+    static let PADDING_BOTTOM: CGFloat = 20
+    static let TITLE_MAGIN_BOTTOM: CGFloat = AITools.displaySizeFrom1080DesignSize(44)
     
-    private var background: UIImageView!
-    private var logo: UIImageView!
-    private var name: UILabel!
-    private var price: UILabel!
-    private var grade: UIImageView!
+    var background: UIImageView!
+    var logo: UIImageView!
+    var name: UILabel!
+    var price: UILabel!
+    var grade: UIImageView!
     
-    private var content: UIView?
+    var content: UIView?
     private var dataModel : AIProposalServiceModel!
     
 
@@ -226,20 +236,44 @@ class RightServiceView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        buildSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //initSelf()
+        //layoutView()
     }
     
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
-        initSelf()
+        layoutView()
     }
     
-    private func initSelf() {
+    func buildSubviews() {
+        logo = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        logo.layer.cornerRadius = RightServiceView.LOGO_WIDTH / 2
+        logo.layer.masksToBounds = true
+        addSubview(logo)
+        
+        grade = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        addSubview(grade)
+
+        price = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        price.textColor = UIColor.whiteColor()
+        price.textAlignment = .Right
+        addSubview(price)
+        
+        name = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        name.textColor = UIColor(hex: "#FEE300")
+        addSubview(name)
+        
+        
+        background = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+    }
+    
+    private func layoutView() {
         addLogo()
         addGrade()
         addPrice()
@@ -247,8 +281,7 @@ class RightServiceView: UIView {
         setFrameToHeadSize()
     }
     
-    private func addBackground() {
-        background = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+    func addBackground() {
         
         let bkImg = UIImage(named: "white_top_unfilled_corner")
         let insets = UIEdgeInsetsMake(60, 60, 60, 60)
@@ -266,12 +299,6 @@ class RightServiceView: UIView {
     }
     
     private func addLogo() {
-        logo = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        
-        logo.layer.cornerRadius = RightServiceView.LOGO_WIDTH / 2
-        logo.layer.masksToBounds = true
-        
-        addSubview(logo)
         
         layout(logo) { logView in
             logView.top == logView.superview!.top + RightServiceView.PADDING_TOP
@@ -284,8 +311,6 @@ class RightServiceView: UIView {
     }
     
     private func addGrade() {
-        grade = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        addSubview(grade)
         
         layout(logo, grade) {logo, grade in
             grade.top == grade.superview!.top + AITools.displaySizeFrom1080DesignSize(43)
@@ -298,11 +323,6 @@ class RightServiceView: UIView {
     }
     
     private func addPrice() {
-        price = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
-        price.textColor = UIColor.whiteColor()
-        price.textAlignment = .Right
-        addSubview(price)
         
         layout(grade, price) {grade, price in
             price.centerY == grade.centerY
@@ -315,11 +335,6 @@ class RightServiceView: UIView {
     }
     
     private func addTitle() {
-        name = UnderlineLabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
-        name.textColor = UIColor(hex: "#FEE300")
-
-        addSubview(name)
         
         layout(price, logo, name) {price, logo, name in
             name.top == logo.top
