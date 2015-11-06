@@ -163,7 +163,7 @@ class BDKProposalService : MockProposalService{
     */
     override func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/queryCustomerProposalDetail"
+        message.url = "http://171.221.254.231:3000/findCustomerProposalDetail"
         
         let body = ["data":["proposal_id": proposalId],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)

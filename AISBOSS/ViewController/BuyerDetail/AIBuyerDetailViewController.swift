@@ -44,13 +44,14 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Init Data
+        initData()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
         // Init Label Font
         InitLabelFont()
         
-        // Init Data
-        initData()
+        
         
     }
     
@@ -107,7 +108,7 @@ class AIBuyerDetailViewController : UIViewController {
     func initData(){
         if let m = bubleModel {
             
-            MockProposalService().queryCustomerProposalDetail(m.proposal_id, success:
+            BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
                     
                     if let strongSelf = self {
@@ -141,7 +142,12 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.service_list.count
+        if dataSource == nil{
+            return 0
+        }
+        else {
+            return dataSource.service_list.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

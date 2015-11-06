@@ -48,6 +48,9 @@ class ServiceViewContainer: UIView {
         self.dataModel = dataModel
         initSelf()
         if dataModel.service_param != nil {
+            if dataModel.service_param.param_key == nil {
+                return
+            }
             let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(dataModel.service_param.param_key)!)
             if let paramValueString = dataModel.service_param.param_value{
                 let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
