@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class AccommodationService: UIView {
+class AccommodationService: ServiceDetailView {
 
     private var period: UILabel!
     private var dayCount: UILabel!
@@ -29,6 +29,13 @@ class AccommodationService: UIView {
         frame.size.height = AITools.displaySizeFrom1080DesignSize(210)
         addPeriod()
         addAdditionDescription()
+    }
+    
+    override func loadData(paramData : NSDictionary) {
+        super.loadData(paramData)
+        
+        period.text = getStringContent("checkin_time") + " - " + getStringContent("checkout_time")
+    //    additionDes.text = getStringContent("destination")
     }
 
     private func addPeriod() {
