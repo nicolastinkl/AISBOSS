@@ -247,8 +247,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 }, completion: { (complate) -> Void in
                     
                     springEaseIn(0.2, animations: { () -> Void in
-                        self.view.transform =  CGAffineTransformMakeScale(1, 1)
-                        self.view.center = self.originalViewCenter!
+//                        self.view.transform =  CGAffineTransformMakeScale(1, 1)
+//                        self.view.center = self.originalViewCenter!
                     })
                     
                     self.view.userInteractionEnabled = true
