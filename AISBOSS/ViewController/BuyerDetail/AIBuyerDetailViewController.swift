@@ -47,7 +47,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Data
         initData()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         // Init Label Font
         InitLabelFont()
         
