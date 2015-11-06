@@ -194,7 +194,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         return scaledPoint
     }
     
-    
     func showBuyerDetailWithBubble(bubble : AIBubble, model : AIBuyerBubbleModel) {
         
         // 获取原始中心点
@@ -235,7 +234,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             detailViewController?.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
             detailViewController?.view.center = realPoint
             // 开始动画
-            UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+            
+            springWithCompletion(1.2, animations: {   () -> Void in
                 
                 //
                 detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
@@ -244,16 +244,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 //
                 self.view.transform =  CGAffineTransformMakeScale(self.curBubbleScale!, self.curBubbleScale!)
                 self.view.center = self.curBubbleCenter!
-                
-                
-                
-                }) { (Bool) -> Void in
+                }, completion: { (complate) -> Void in
                     
-                    self.view.transform =  CGAffineTransformMakeScale(1, 1)
-                    self.view.center = self.originalViewCenter!
+                    springEaseIn(0.2, animations: { () -> Void in
+                        self.view.transform =  CGAffineTransformMakeScale(1, 1)
+                        self.view.center = self.originalViewCenter!
+                    })
+                    
                     self.view.userInteractionEnabled = true
-            }
-            
+            })
+        
         }
         
     }
