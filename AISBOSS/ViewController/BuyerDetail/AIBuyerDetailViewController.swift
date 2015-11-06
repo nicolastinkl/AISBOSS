@@ -49,6 +49,7 @@ class AIBuyerDetailViewController : UIViewController {
         initData()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        
         // Init Label Font
         InitLabelFont() 
     }
@@ -153,6 +154,15 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let view = cell.contentView.viewWithTag(9999)
+//        
+//        view?.frame = CGRect(x: 20, y: 0, width: CGRectGetWidth(cell.contentView.frame) - 40, height: CGRectGetHeight(cell.contentView.frame))
+
+    }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
@@ -163,16 +173,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         var serviceView: ServiceViewContainer!
         
-        let offset:CGFloat = 40.0
-        
+        let offset:CGFloat = 20.0
+        let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
+        var frame = CGRectMake(offset, 0, width, 0)
         if indexPath.row == 0 {
-            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
+            serviceView = TopServiceViewContainer(frame: frame)
         } else if indexPath.row == dataSource.service_list.count - 1 {
-            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
+            serviceView = BottomServiceViewContainer(frame: frame)
         } else {
-            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
+            serviceView = MiddleServiceViewContainer(frame: frame)
         }
-
+        serviceView.tag = 9999
         serviceView.loadData(serviceDataModel)
 
         for subview in cell.contentView.subviews {
@@ -188,8 +199,10 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 //            view1.bottom == view1.superview!.bottom
 //            
 //        }
-        
+        frame.size.height = serviceView.frame.height
+        serviceView.frame = frame
         cellHeights[indexPath.row] = serviceView.frame.height
+        print("\(frame)")
         
         return cell
     }

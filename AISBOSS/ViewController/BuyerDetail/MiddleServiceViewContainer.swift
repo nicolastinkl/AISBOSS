@@ -13,7 +13,7 @@ class MiddleServiceViewContainer: ServiceViewContainer {
 
     override func buildSubviews() {
         leftIndicator = LeftIndicator(frame: CGRect(x: 0, y: 0, width: ServiceViewContainer.INDICATOR_WIDTH, height: 0))
-        rightServiceView = MiddleRightServiceView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        rightServiceView = MiddleRightServiceView(frame: CGRectZero)
         
         addSubview(leftIndicator)
         addSubview(rightServiceView)

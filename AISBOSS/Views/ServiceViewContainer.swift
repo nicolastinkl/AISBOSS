@@ -49,6 +49,29 @@ class ServiceViewContainer: UIView {
         addSubview(rightServiceView)
     }
     
+    
+    //
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        var aFrame = self.frame
+        
+        
+        if aFrame.size.height > 60 {
+            let height: CGFloat = frame.height
+            aFrame.size.height = height
+            print("height \(CGRectGetHeight(self.frame))")
+            self.frame = aFrame
+            
+        }
+        
+        
+        
+        
+    }
+    
+    
+
+    
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
@@ -70,7 +93,11 @@ class ServiceViewContainer: UIView {
                 
                 if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
                     rightServiceView.contentView = serviceView
-                    frame.size.height += serviceView.frame.height
+                    
+                    var aframe = frame
+                    aframe.size.height += serviceView.frame.height
+                    
+                    frame = aframe
                 }
             }
             
