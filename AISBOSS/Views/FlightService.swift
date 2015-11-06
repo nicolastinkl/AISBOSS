@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class FlightService: UIView {
+class FlightService: ServiceDetailView {
     
     private var takeOffTime: UILabel!
     private var arriveTime: UILabel!
@@ -18,21 +18,27 @@ class FlightService: UIView {
     private var fromAirport: UILabel!
     private var toAirport: UILabel!
     private var plane: UILabel!
-    
-    var paramData : NSDictionary?
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        initSelf()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initSelf()
     }
     
-    func loadData(paramData : NSDictionary){
-        self.paramData = paramData
-        initSelf()
+    override func loadData(paramData : NSDictionary) {
+        super.loadData(paramData)
+        
+        takeOffTime.text = getStringContent("departure_time")
+        from.text = getStringContent("departure_place")
+        fromAirport.text = getStringContent("departure_desc")
+        
+        arriveTime.text = getStringContent("departure_time")
+        to.text = getStringContent("arrival_place")
+        toAirport.text = getStringContent("arrival_desc")
     }
     
     private func initSelf() {
@@ -133,5 +139,4 @@ class FlightService: UIView {
         
         plane.image = planeImg
     }
-
 }
