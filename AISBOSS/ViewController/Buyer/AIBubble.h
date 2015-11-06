@@ -41,6 +41,8 @@ typedef enum  {
 
 @property (nonatomic, strong) UIColor *glowColor;
 
+@property (nonatomic, strong) UIImageView *rotateBubleImageView;
+
 @property (nonatomic, strong) UIImageView *rotateImageView;
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;

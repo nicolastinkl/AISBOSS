@@ -44,14 +44,12 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
-        // Init Label Font
-        InitLabelFont()
-        
         // Init Data
         initData()
-        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        // Init Label Font
+        InitLabelFont() 
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,7 +68,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     func InitController(){
         let name = dataSource?.proposal_name ?? ""
-        self.backButton.setTitle(" \(name)", forState: UIControlState.Normal)
+        self.backButton.setTitle(name, forState: UIControlState.Normal)
         self.moneyLabel.text = dataSource?.order_total_price
         self.totalMoneyLabel.text = dataSource?.proposal_price
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
@@ -99,15 +97,15 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     // MARK: private methods
+    
     func refershData(){
         
     }
     
-    
     func initData(){
         if let m = bubleModel {
             
-            MockProposalService().queryCustomerProposalDetail(m.proposal_id, success:
+            BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
                     
                     if let strongSelf = self {
@@ -129,7 +127,6 @@ class AIBuyerDetailViewController : UIViewController {
     
 }
 
-
 // MARK: delegate
 
 // MARK: datesource
@@ -141,26 +138,42 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.service_list.count
+        if dataSource == nil{
+            return 0
+        }
+        else {
+            return dataSource.service_list.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
         
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        
+        var serviceView: ServiceViewContainer!
+        
+        if indexPath.row == 0 {
+            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else if indexPath.row == dataSource.service_list.count - 1 {
+            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else {
+            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        }
+
         serviceView.loadData(serviceDataModel)
 
-        if cell.contentView.subviews.count == 0 {
-            cell.contentView.addSubview(serviceView)
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
         }
+        
+        cell.contentView.addSubview(serviceView)
+        
         cellHeights[indexPath.row] = serviceView.frame.height
-        
-        
+                
         return cell
     }
     
