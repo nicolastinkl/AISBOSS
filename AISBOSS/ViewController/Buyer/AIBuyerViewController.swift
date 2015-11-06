@@ -9,15 +9,27 @@
 import UIKit
 import AISpring
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBubblesViewDelegate{
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBuyerDetailDelegate{
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
     var dataSourcePop = [AIBuyerBubbleModel]()
     var tableViewCellCache = [Int: UIView]()
     
+    var bubbles : AIBubblesView!
+    
+    var curBubbleCenter : CGPoint?
+    
+    var curBubbleScale : CGFloat?
+    
+    var originalViewCenter : CGPoint?
+
     // MARK: - Constants
     
+    
+    
+    let bubblesTag : NSInteger = 9999
+
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
@@ -102,55 +114,162 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - 构造气泡区域
     
-    func makeBubbleView () {
+    // 回调
+    func closeAIBDetailViewController() {
         
-        if let b = bubbleView {
-            b.removeFromSuperview()
-        }
+        self.view.userInteractionEnabled = false
+        self.view.transform = CGAffineTransformMakeScale(curBubbleScale!, curBubbleScale!)
+        self.view.center = curBubbleCenter!
         
-        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
-        let bheight = AITools.displaySizeFrom1080DesignSize(1538)
-        
-        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
-        bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        tableView?.tableHeaderView = bubbleView
-        
-        // add bubbles
-     
-        let bubbles = AIBubblesView(frame: CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight), models: NSMutableArray(array: self.dataSourcePop))
-        bubbleView?.addSubview(bubbles)
-       
-        let y = CGRectGetMaxY(bubbles.frame)
-        let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
-        label.textAlignment = .Right
-        
-        label.verticalAlignment = UPVerticalAlignmentMiddle
-        label.font = AITools.myriadRegularWithSize(20);
-        bubbleView.addSubview(label)
-        bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubbleView) -> Void in
-            if let strongSelf = self{
-                /*
-                let bView:UIView = bubbleView
-                let newPoint = bView.convertPoint(bView.center, toView: strongSelf.view)
-                
-                spring(1.2) { () -> Void in
-                    strongSelf.view.transform = CGAffineTransformMakeScale(3.635, 3.635)
-                    strongSelf.view.center = newPoint
-                }*/
-                
-                strongSelf.showBuyerDetailAction(bubleModel)
-            }
+        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+            self.view.transform = CGAffineTransformMakeScale(1, 1)
+            self.view.center = self.originalViewCenter!
+            }) { (Bool) -> Void in
+                self.view.userInteractionEnabled = true
         }
     }
     
-    func  showBuyerDetailAction(model: AIBuyerBubbleModel) {
+    
+    func makeBubblesWithFrame(frame:CGRect) -> AIBubblesView{
+
+        // add bubbles
+        bubbles = AIBubblesView(frame: frame, models: NSMutableArray(array: self.dataSourcePop))
+        bubbles.tag = bubblesTag
+        bubbleView?.addSubview(bubbles)
+        
+        bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubble) -> Void in
+            if let strongSelf = self{
+                
+                strongSelf.showBuyerDetailWithBubble(bubble, model: bubleModel)
+    
+            }
+        }
+        
+        return bubbles
+    }
+    
+    
+    func makeBubbleView () {
+        
+        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
+        let bheight = AITools.displaySizeFrom1080DesignSize(1538)
+        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
+        
+        if let b = bubbles {
+            b.removeFromSuperview()
+            // add bubbles
+            
+            self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
+        }
+        else
+        {
+            bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
+            tableView?.tableHeaderView = bubbleView
+            
+            // add bubbles
+            
+            self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
+            
+            let y = CGRectGetMaxY(bubbles.frame)
+            let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
+            label.textAlignment = .Right
+            
+            label.verticalAlignment = UPVerticalAlignmentMiddle
+            label.font = AITools.myriadRegularWithSize(20);
+            bubbleView.addSubview(label)
+            
+        }
+        
+        
+
+    }
+    
+    func convertPointToScaledPoint(point:CGPoint, scale:CGFloat , baseRect : CGRect) -> CGPoint {
+        var scaledPoint : CGPoint = CGPointZero
+        let xOffset = CGRectGetWidth(baseRect) * (scale - 1) / 2
+        let yOffset = CGRectGetHeight(baseRect) * (scale - 1) / 2
+
+        scaledPoint = CGPointMake(CGRectGetMinX(baseRect) - xOffset + point.x * scale, CGRectGetMinY(baseRect) - yOffset + point.y * scale)
+        
+        return scaledPoint
+    }
+    
+    
+    func showBuyerDetailWithBubble(bubble : AIBubble, model : AIBuyerBubbleModel) {
+        
+        // 获取原始中心点
+        originalViewCenter = self.view.center
+        
+        // 获取放大后的半径 和 中心点
+        let maxRadius = AITools.displaySizeFrom1080DesignSize(1384)
+        let maxCenter = CGPointMake(CGRectGetWidth(self.view.frame) / 2, AITools.displaySizeFrom1080DesignSize(256))
+        
+        // 获取放大倍数
+        curBubbleScale =  maxRadius / bubble.radius
+
+        // 获取bubble在self.view的正确位置
+        let realPoint : CGPoint  = bubble.superview!.convertPoint(bubble.center, toView: self.view)
+        
+        // 获取bubble放大以后再view中的坐标
+        let scaledPoint = self.convertPointToScaledPoint(realPoint, scale: curBubbleScale!, baseRect: self.view.frame)
+        
+        // 计算中心点要移动的距离
+        let xOffset = maxCenter.x - scaledPoint.x
+        let yOffset = maxCenter.y - scaledPoint.y
+        
+        // 计算移动后的中心点
+        curBubbleCenter = CGPointMake(self.view.center.x + xOffset, self.view.center.y + yOffset)
+        
+        // 动画过程中禁止响应用户的手势
+        self.view.userInteractionEnabled = false
+        
+        // 处理detailViewController
+        
+        weak var detailViewController = self.showBuyerDetailAction(model)
+        detailViewController?.view.alpha = 0
+        let detailScale : CGFloat = bubble.radius * 2 / CGRectGetWidth(self.view.frame)
+        
+        self.presentViewController(detailViewController!, animated: false) { () -> Void in
+            
+            detailViewController?.view.alpha = 1
+            detailViewController?.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
+            detailViewController?.view.center = realPoint
+            // 开始动画
+            UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseOut, animations: { () -> Void in
+                
+                //
+                detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
+                detailViewController?.view.center = self.originalViewCenter!
+                
+                //
+                self.view.transform =  CGAffineTransformMakeScale(self.curBubbleScale!, self.curBubbleScale!)
+                self.view.center = self.curBubbleCenter!
+                
+                
+                
+                }) { (Bool) -> Void in
+                    
+                    self.view.transform =  CGAffineTransformMakeScale(1, 1)
+                    self.view.center = self.originalViewCenter!
+                    self.view.userInteractionEnabled = true
+            }
+            
+        }
+        
+    }
+    
+
+    func  showBuyerDetailAction(model: AIBuyerBubbleModel) -> UIViewController {
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         viewController.bubleModel = model
-        self.showDetailViewController(viewController, sender: self)
+        viewController.delegate = self
         
+        //self.showDetailViewController(viewController, sender: self)
+        
+        return viewController
     }
     
     // MARK: - 构造顶部Bar

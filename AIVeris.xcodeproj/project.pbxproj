@@ -22,6 +22,7 @@
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F21841BE9B22F002EB473 /* UPUnderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F21831BE9B22F002EB473 /* UPUnderLineButton.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
+		815F218E1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -344,6 +345,7 @@
 		815F21831BE9B22F002EB473 /* UPUnderLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPUnderLineButton.m; sourceTree = "<group>"; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
+		815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIBuyerContainerControllerViewController.swift; path = Buyer/AIBuyerContainerControllerViewController.swift; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 				12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */,
 				12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */,
 				842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */,
+				815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */,
 			);
 			name = Buyer;
 			sourceTree = "<group>";
@@ -2113,6 +2116,7 @@
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
+				815F218E1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,

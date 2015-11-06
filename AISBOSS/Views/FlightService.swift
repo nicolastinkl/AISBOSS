@@ -18,14 +18,20 @@ class FlightService: UIView {
     private var fromAirport: UILabel!
     private var toAirport: UILabel!
     private var plane: UILabel!
+    
+    var paramData : NSDictionary?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initSelf()
+    }
+    
+    func loadData(paramData : NSDictionary){
+        self.paramData = paramData
         initSelf()
     }
     
