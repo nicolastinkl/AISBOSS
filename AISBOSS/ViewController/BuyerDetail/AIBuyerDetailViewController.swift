@@ -47,7 +47,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Data
         initData()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         // Init Label Font
         InitLabelFont()
         
@@ -100,10 +100,10 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     // MARK: private methods
+    
     func refershData(){
         
     }
-    
     
     func initData(){
         if let m = bubleModel {
@@ -130,7 +130,6 @@ class AIBuyerDetailViewController : UIViewController {
     
 }
 
-
 // MARK: delegate
 
 // MARK: datesource
@@ -152,21 +151,32 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
         
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        let serviceView = ServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        
+        var serviceView: ServiceViewContainer!
+        
+        if indexPath.row == 0 {
+            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else if indexPath.row == dataSource.service_list.count - 1 {
+            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        } else {
+            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+        }
+
         serviceView.loadData(serviceDataModel)
 
-        if cell.contentView.subviews.count == 0 {
-            cell.contentView.addSubview(serviceView)
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
         }
+        
+        cell.contentView.addSubview(serviceView)
+        
         cellHeights[indexPath.row] = serviceView.frame.height
-        
-        
+                
         return cell
     }
     

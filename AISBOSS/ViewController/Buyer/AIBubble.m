@@ -149,6 +149,7 @@ typedef enum  {
         imageview2.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageview2];
         imageview2.image = [UIImage imageNamed:@"recommandPlackholder"];
+        self.rotateBubleImageView = imageview2;
     }
     {
         //图标

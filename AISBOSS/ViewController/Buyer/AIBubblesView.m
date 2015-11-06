@@ -420,7 +420,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     }
     
     CGAffineTransform transform = tinyBubble.transform;
-    tinyBubble.transform = CGAffineTransformRotate(transform,angle);
+//    tinyBubble.transform = CGAffineTransformRotate(transform,angle);
+    tinyBubble.rotateBubleImageView.transform = CGAffineTransformRotate(transform,angle);
 
 }
 
