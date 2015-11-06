@@ -318,7 +318,7 @@ class RightServiceView: UIView {
             grade.height == AITools.displaySizeFrom1080DesignSize(40)
             grade.width == AITools.displaySizeFrom1080DesignSize(64)
         }
-        logo.asyncLoadImage(dataModel.service_rating ?? "")
+        grade.asyncLoadImage(dataModel.service_rating_icon ?? "")
         //grade.asyncLoadImage("http://pic.baike.soso.com/p/20100114/bki-20100114182657-1449988150.jpg")
     }
     

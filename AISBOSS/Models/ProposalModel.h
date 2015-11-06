@@ -75,7 +75,7 @@
 @property (strong, nonatomic) NSString<Optional> * service_desc;
 @property (strong, nonatomic) NSString<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
-@property (strong, nonatomic) NSString<Optional> * service_rating;
+@property (strong, nonatomic) NSString<Optional> * service_rating_icon;
 @property (nonatomic, strong) ParamModel<Optional> * service_param;
 
 @end
