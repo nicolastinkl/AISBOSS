@@ -10,6 +10,7 @@ import Foundation
 
 import UIKit
 import AISpring
+import Cartography
 
 protocol AIBuyerDetailDelegate:class{
     func closeAIBDetailViewController()
@@ -59,6 +60,12 @@ class AIBuyerDetailViewController : UIViewController {
         self.bgLabel.duration = 0.5
         self.bgLabel.animate()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tableView.layoutSubviews()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -156,12 +163,14 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         var serviceView: ServiceViewContainer!
         
+        let offset:CGFloat = 40.0
+        
         if indexPath.row == 0 {
-            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+            serviceView = TopServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
         } else if indexPath.row == dataSource.service_list.count - 1 {
-            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+            serviceView = BottomServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
         } else {
-            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - 40, height: 50))
+            serviceView = MiddleServiceViewContainer(frame: CGRect(x: 20, y: 0, width: cell.frame.width - offset, height: 50))
         }
 
         serviceView.loadData(serviceDataModel)
@@ -172,8 +181,16 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         cell.contentView.addSubview(serviceView)
         
+//        layout(serviceView) { (view1) -> () in
+//            view1.top == view1.superview!.top
+//            view1.left == view1.superview!.left + 20
+//            view1.right == view1.superview!.right - offset
+//            view1.bottom == view1.superview!.bottom
+//            
+//        }
+        
         cellHeights[indexPath.row] = serviceView.frame.height
-                
+        
         return cell
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class TransportService: UIView {
+class TransportService: ServiceDetailView {
     
     private var time: UILabel!
     private var from: UILabel!
@@ -30,6 +30,14 @@ class TransportService: UIView {
         frame.size.height = AITools.displaySizeFrom1080DesignSize(225)
         addTime()
         addLocation()
+    }
+    
+    override func loadData(paramData : NSDictionary) {
+        super.loadData(paramData)
+        
+        time.text = getStringContent("pickup_time")
+        from.text = getStringContent("pickup_location")
+        to.text = getStringContent("destination")
     }
     
     private func addTime() {
