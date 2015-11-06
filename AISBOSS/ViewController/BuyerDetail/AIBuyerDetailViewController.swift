@@ -51,7 +51,9 @@ class AIBuyerDetailViewController : UIViewController {
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         
         // Init Label Font
-        InitLabelFont() 
+        InitLabelFont()
+        
+        makeBuyButton()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -63,6 +65,11 @@ class AIBuyerDetailViewController : UIViewController {
         
     }
     
+    
+    
+    
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -72,6 +79,19 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
+    }
+    
+    
+    func makeBuyButton () {
+        let button = UIButton(type: .Custom)
+        button.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - 100, CGRectGetWidth(self.view.frame), 100)
+        button.addTarget(self, action: "showNextViewController", forControlEvents: .TouchUpInside)
+        self.view.addSubview(button)
+    }
+    
+    func showNextViewController () {
+        self.showViewController(AIServiceContentViewController(), sender: self)
+            
     }
     
     func InitController(){

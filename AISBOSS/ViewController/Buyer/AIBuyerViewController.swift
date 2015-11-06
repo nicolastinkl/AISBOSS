@@ -262,12 +262,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func  showBuyerDetailAction(model: AIBuyerBubbleModel) -> UIViewController {
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
-        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
         viewController.bubleModel = model
         viewController.delegate = self
         
-        //self.showDetailViewController(viewController, sender: self)
+        let naviController = UINavigationController(rootViewController: viewController)
+        naviController.navigationBarHidden = true
+        
+        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
         
         return viewController
     }

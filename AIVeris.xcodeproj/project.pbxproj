@@ -23,6 +23,7 @@
 		815F21841BE9B22F002EB473 /* UPUnderLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F21831BE9B22F002EB473 /* UPUnderLineButton.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		815F218E1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */; };
+		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -350,6 +351,7 @@
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIBuyerContainerControllerViewController.swift; path = Buyer/AIBuyerContainerControllerViewController.swift; sourceTree = "<group>"; };
+		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -988,6 +990,7 @@
 				12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */,
 				842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */,
 				815F218D1BEB7337002EB473 /* AIBuyerContainerControllerViewController.swift */,
+				818811771BECF09A001C162B /* AIServiceContentViewController.swift */,
 			);
 			name = Buyer;
 			sourceTree = "<group>";
@@ -2142,6 +2145,7 @@
 				845BE00E1BE8B1C90001716A /* FlightService.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				84DDA9481BEC41C000CA5C83 /* MiddleServiceViewContainer.swift in Sources */,
+				818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
 				93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */,
