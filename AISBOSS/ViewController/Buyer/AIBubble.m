@@ -66,9 +66,9 @@ typedef enum  {
 {
     self = [super init];
     
-    _deepColor = @[@"c37d1d",@"ad2063",@"7e3d60",@"438091",@"936d4c",@"574d71" ,@"5f257d",@" 162c18",@"6b4a1d",@"4a5679",@"1b1a3a",@"6c8796",@"6a8e5c",@"",@""];
-    _undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3747a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"a08136" ,@"7e6479",@"81476a",@"ca9e6a", @"93a44b",@"",@""];
-    _borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"7db8d5", @"8986c2",@"cd53e1", @"528319", @"e6a44", @"8986c2" ,@"c272ac" ,@"9bd6f2" ,@"93bd78", @"93bd78",@"",@""];
+    _deepColor = @[@"c37d1d",@"ad2063",@"7e3d60",@"438091",@"936d4c",@"574d71" ,@"5f257d",@" 162c18",@"6b4a1d",@"4a5679",@"1b1a3a",@"6c8796",@"6a8e5c",@"",@"",@"",@""];
+    _undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3746a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"a08136" ,@"7e6479",@"81476a",@"ca9e82", @"93a44b",@"",@"",@"",@""];
+    _borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"6db8d5",@"f8b989", @"8986c2",@"cd53e1", @"528319", @"e6ad44", @"8986c2" ,@"c474ac" ,@"9bd6f2" ,@"93bd78", @"f88d8e",@"",@"",@"",@""];
     _index = indexModel;
     if (self) {
         
@@ -255,6 +255,19 @@ typedef enum  {
     imageview.center =  CGPointMake(self.width/2, self.height/2);
     [self addSubview:imageview];
     
+    
+    //黑色背景遮罩
+    {
+    
+        UIImageView * imageviewBlackBG = [[UIImageView alloc] init];
+        imageviewBlackBG.frame = self.frame;
+        imageviewBlackBG.alpha = 0.15;
+        imageviewBlackBG.backgroundColor = [UIColor blackColor];
+        imageviewBlackBG.center =  CGPointMake(self.width/2, self.height/2);
+        [self addSubview:imageviewBlackBG];
+    }
+    
+    
     UIPopView * popView = [UIPopView currentView];
     [popView fillDataWithModel:_bubbleModel];
     [self addSubview:popView];
@@ -300,7 +313,6 @@ typedef enum  {
                 [focalPointView setNeedsDisplay];
                 [self.superview insertSubview:focalPointView atIndex:0];
                 focalPointView.alpha = 0.5;
-                
                 
                 //定时器
                 
