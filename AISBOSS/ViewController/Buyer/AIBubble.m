@@ -34,8 +34,11 @@ typedef enum  {
 
 @interface AIBubble ()
 
-
 @property (strong, nonatomic) NSTimer *timer;
+@property (strong,nonatomic) NSArray *deepColor;
+@property (strong,nonatomic) NSArray *undertoneColor;
+@property (strong,nonatomic) NSArray *borderColor;
+
 @end
 
 
@@ -46,6 +49,7 @@ typedef enum  {
     self = [super initWithFrame:frame];
     
     if (self) {
+        
         _bubbleModel = [model copy];
     }
     
@@ -58,10 +62,14 @@ typedef enum  {
  *  @brief  INIT
  *
  */
-- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type
+- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(int) indexModel
 {
     self = [super init];
     
+    _deepColor = @[@"c37d1d",@"ad2063",@"7e3d60",@"438091",@"936d4c",@"574d71" ,@"5f257d",@" 162c18",@"6b4a1d",@"4a5679",@"1b1a3a",@"6c8796",@"6a8e5c",@"",@""];
+    _undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3747a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"a08136" ,@"7e6479",@"81476a",@"ca9e6a", @"93a44b",@"",@""];
+    _borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"7db8d5", @"8986c2",@"cd53e1", @"528319", @"e6a44", @"8986c2" ,@"c272ac" ,@"9bd6f2" ,@"93bd78", @"93bd78",@"",@""];
+    _index = indexModel;
     if (self) {
         
         _bubbleModel = [model copy];
@@ -261,6 +269,55 @@ typedef enum  {
 
     [self setNeedsDisplay];
     
+    
+    /** 这里是算法取颜色值*/
+    {
+        NSLog(@"self.index :%d",self.index);
+        NSString * colorDeep =  _deepColor[self.index];
+        NSString * colorUnderOne =  _undertoneColor[self.index];
+        NSString * colorBorder =  _borderColor[self.index];
+        
+        self.layer.borderColor = [UIColor colorWithHexString:colorBorder].CGColor;
+        
+        imageview.alpha=0.1;
+        imageview.image = [self buttonImageFromColors:@[[UIColor colorWithHexString:colorUnderOne],[UIColor colorWithHexString:colorDeep]] frame:imageview.frame];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:(0.5)];
+        [imageview setNeedsDisplay];
+        imageview.alpha = kDefaultAlpha;
+        [UIView commitAnimations];
+        
+        if (model.proposal_id_new > 0){
+            //根据发光效果添加图层
+            {
+                //weakSelf.hidden = YES;
+                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+                focalPointView.bgColor= [UIColor colorWithHexString:@"#e2898a"];
+                focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
+                focalPointView.center = CGPointMake(self.width/2, self.height/2);
+                focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+                focalPointView.layer.masksToBounds  = YES;
+                [focalPointView setNeedsDisplay];
+                [self.superview insertSubview:focalPointView atIndex:0];
+                focalPointView.alpha = 0.5;
+                
+                
+                //定时器
+                
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                              target:self
+                                                            selector:@selector(TimerEvent)
+                                                            userInfo:@{@"focalPointView":focalPointView}
+                                                             repeats:YES];
+                
+                [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+                
+            }
+        }
+        
+    }
+    
+    /**
     AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
     
     // NEW CREATE NEW IMAGEVIEW.
@@ -336,7 +393,7 @@ typedef enum  {
             
             
         });
-    }];
+    }];*/
     
 }
 

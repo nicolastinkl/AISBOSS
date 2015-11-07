@@ -19,7 +19,9 @@ class TopServiceViewContainer: ServiceViewContainer {
         addSubview(rightServiceView)
     }
     
+    /*
     override func layoutView() {
+        
         layout(leftIndicator, leftIndicator.topBall, rightServiceView) {indicator, topBall, service in
             
             indicator.top == indicator.superview!.top
@@ -38,6 +40,7 @@ class TopServiceViewContainer: ServiceViewContainer {
         
         frame.size.height = RightServiceView.getHeadHeight() + ServiceViewContainer.INDICATOR_WIDTH
     }
+*/
 }
 
 class TopLeftIndicator: LeftIndicator {

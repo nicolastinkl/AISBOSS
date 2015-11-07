@@ -369,7 +369,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             // 添加 tiny 气泡
             AIBuyerBubbleModel *model = [[AIBuyerBubbleModel alloc] init];
             model.bubbleSize = [AIBubble tinyBubbleRadius];
-            AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:bubble.bubbleModel type:typeToSignIcon];
+            AIBubble *tinyBubble = [[AIBubble alloc] initWithCenter:tcenter model:bubble.bubbleModel type:typeToSignIcon Index:self.bubbles.count];
             [self.bubbles addObject:tinyBubble];
             [self addSubview:tinyBubble];
             bubble.center = center;
@@ -552,6 +552,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [_bubbleModels addObject:pokeMoveToEnd];
     }*/
     
+    __block int indexView = 0;
     __weak typeof(self) weakSelf = self;
     [_bubbleModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         AIBuyerBubbleModel *model  = obj;
@@ -585,16 +586,16 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         }
         
         if (model.bubbleType == 2) {
-            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd];
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToAdd Index:indexView];
         
         }else if (model.bubbleType == 1) {
-            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon];
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToSignIcon Index:indexView];
             
         }else{
-            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal];
+            bubble = [[AIBubble alloc] initWithCenter:CGPointZero model:model type:typeToNormal Index:indexView];
         }
         
-       
+        indexView += 1;
         // 计算bubble的center
         
         CGPoint center = CGPointZero;        
@@ -665,8 +666,9 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 {
     [super layoutSubviews];
 
+    int indexView = 0;
     for (AIBubble *bubble in self.bubbles) {
-        
+        bubble.index = indexView;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(targetCurrentProposalAction:)];
         [bubble addGestureRecognizer:tap];
         bubble.userInteractionEnabled = YES;
@@ -694,6 +696,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         animation.repeatCount = repeatCount;
         animation.beginTime = CACurrentMediaTime() + delay;
         [newView.layer addAnimation:animation forKey:@"pop"];
+        indexView += 1;
     }
 
 }
