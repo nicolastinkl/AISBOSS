@@ -61,10 +61,11 @@ class AIBuyerDetailViewController : UIViewController {
     
     func AddImageView(){
         let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
-        imageview.frame = CGRectMake(0, 0, self.view.width, 1348)
+        imageview.contentMode = .ScaleAspectFit
+        imageview.frame = CGRectMake(0, 0, self.view.width, 1400)
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
-        self.scrollview.contentSize = CGSizeMake(self.view.width, 1300)
+        self.scrollview.contentSize = CGSizeMake(self.view.width, 1400)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -188,18 +189,18 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             return 0
         }
         else {
+            
             return dataSource.service_list.count
         }
     }
     
-    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let view = cell.contentView.viewWithTag(9999)
-//        
-//        view?.frame = CGRect(x: 20, y: 0, width: CGRectGetWidth(cell.contentView.frame) - 40, height: CGRectGetHeight(cell.contentView.frame))
-
+        if let height = cellHeights[indexPath.row] {
+            cell.contentView.subviews.first?.frame.size.height = height
+        }
+        
     }
-    
+  
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -209,38 +210,31 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
         
-        var serviceView: ServiceViewContainer!
-        
         let offset:CGFloat = 20.0
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
-        var frame = CGRectMake(offset, 0, width, 0)
-        if indexPath.row == 0 {
-            serviceView = TopServiceViewContainer(frame: frame)
-        } else if indexPath.row == dataSource.service_list.count - 1 {
-            serviceView = BottomServiceViewContainer(frame: frame)
+        var serviceView: ServiceContainerView!
+        
+        if dataSource.service_list.count == 1 {
+            serviceView = NSBundle.mainBundle().loadNibNamed("SingleServiceContainer", owner: self, options: nil).first  as! SingleServiceContainerView
         } else {
-            serviceView = MiddleServiceViewContainer(frame: frame)
-        }
-        serviceView.tag = 9999
-        serviceView.loadData(serviceDataModel)
+            if indexPath.row == 0 {
+                serviceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first  as! TopServiceContainerView
+            } else if indexPath.row == dataSource.service_list.count - 1 {
+                serviceView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
+            } else {
+                serviceView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
+            }
 
+        }
+        
+        serviceView.frame = CGRectMake(offset, 0, width, 200)
+        serviceView.loadData(serviceDataModel)
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
         
         cell.contentView.addSubview(serviceView)
-        
-//        layout(serviceView) { (view1) -> () in
-//            view1.top == view1.superview!.top
-//            view1.left == view1.superview!.left + 20
-//            view1.right == view1.superview!.right - offset
-//            view1.bottom == view1.superview!.bottom
-//            
-//        }
-        frame.size.height = serviceView.frame.height
-        serviceView.frame = frame
         cellHeights[indexPath.row] = serviceView.frame.height
-        print("\(frame)")
         
         return cell
     }
