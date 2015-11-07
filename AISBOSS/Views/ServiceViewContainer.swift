@@ -82,23 +82,20 @@ class ServiceViewContainer: UIView {
         rightServiceView.loadData(self.dataModel!)
         
         if dataModel.service_param != nil {
-            if dataModel.service_param.param_key == nil {
-                return
-            }
-            let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(dataModel.service_param.param_key)!)
-            if let paramValueString = dataModel.service_param.param_value{
-                let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
-                //获取到参数的dictionary
-                let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                
-                if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
-                    rightServiceView.contentView = serviceView
+
+            if let key = dataModel.service_param.param_key {
+                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
+                if let paramValueString = dataModel.service_param.param_value{
+                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
+                    //获取到参数的dictionary
+                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     
-                    var aframe = frame
-                    aframe.size.height += serviceView.frame.height
-                    
-                    frame = aframe
+                    if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
+                        rightServiceView.contentView = serviceView
+                        frame.size.height += serviceView.frame.height
+                    }
                 }
+
             }
             
         }
@@ -314,7 +311,6 @@ class RightServiceView: UIView {
         let insets = UIEdgeInsetsMake(60, 60, 60, 60)
         bkImg?.resizableImageWithCapInsets(insets)
         background.image = bkImg
-        
         insertSubview(background, atIndex: 0)
         
         layout(background) {background in
