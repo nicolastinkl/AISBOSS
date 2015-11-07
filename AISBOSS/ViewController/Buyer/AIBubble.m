@@ -15,7 +15,7 @@
 #import "AITools.h"
 #import "MDCSpotlightView.h"
 
-#define kDefaultAlpha           0.9
+#define kDefaultAlpha           0.8
 
 #define kBigBubbleRate          0.4
 
@@ -260,7 +260,7 @@ typedef enum  {
     
         UIImageView * imageviewBlackBG = [[UIImageView alloc] init];
         imageviewBlackBG.frame = self.frame;
-        imageviewBlackBG.alpha = 0.1;
+        imageviewBlackBG.alpha = 0.05;
         imageviewBlackBG.backgroundColor = [UIColor blackColor];
         imageviewBlackBG.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageviewBlackBG];

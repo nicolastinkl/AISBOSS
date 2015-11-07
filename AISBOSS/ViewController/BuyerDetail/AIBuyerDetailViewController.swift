@@ -149,8 +149,6 @@ class AIBuyerDetailViewController : UIViewController {
                 self.tableView.hidden = true
             }
         
-            
-            
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
                     
