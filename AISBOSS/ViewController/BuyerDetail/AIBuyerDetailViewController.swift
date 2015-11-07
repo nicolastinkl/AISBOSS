@@ -37,6 +37,7 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var totalMoneyLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var whereLabel: UILabel!
+    @IBOutlet weak var scrollview: UIScrollView!
     
     // MARK: getters and setters
     
@@ -53,7 +54,17 @@ class AIBuyerDetailViewController : UIViewController {
         // Init Label Font
         InitLabelFont()
         
+        // Make
         makeBuyButton()
+        
+    }
+    
+    func AddImageView(){
+        let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
+        imageview.frame = CGRectMake(0, 0, self.view.width, 1348)
+        self.scrollview.addSubview(imageview)
+        self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        self.scrollview.contentSize = CGSizeMake(self.view.width, 1300)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -63,12 +74,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.bgLabel.duration = 0.5
         self.bgLabel.animate()
         
-    }
-    
-    
-    
-    
-    
+    }    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -132,6 +138,18 @@ class AIBuyerDetailViewController : UIViewController {
     
     func initData(){
         if let m = bubleModel {
+            
+            //test
+            
+            let name = m.proposal_name ?? ""
+            
+            if NSString(string: name).containsString("Pregnancy") {
+                //INIT
+                AddImageView()
+                self.tableView.hidden = true
+            }
+        
+            
             
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
