@@ -253,15 +253,14 @@ typedef enum  {
     imageview.frame = self.frame;
     imageview.alpha = kDefaultAlpha;
     imageview.center =  CGPointMake(self.width/2, self.height/2);
-    [self addSubview:imageview];
-    
+    [self addSubview:imageview];    
     
     //黑色背景遮罩
     {
     
         UIImageView * imageviewBlackBG = [[UIImageView alloc] init];
         imageviewBlackBG.frame = self.frame;
-        imageviewBlackBG.alpha = 0.15;
+        imageviewBlackBG.alpha = 0.1;
         imageviewBlackBG.backgroundColor = [UIColor blackColor];
         imageviewBlackBG.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageviewBlackBG];
