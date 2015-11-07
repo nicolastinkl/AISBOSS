@@ -106,6 +106,15 @@
 		84DDA9481BEC41C000CA5C83 /* MiddleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9471BEC41C000CA5C83 /* MiddleServiceViewContainer.swift */; };
 		84DDA94A1BEC45F900CA5C83 /* BottomServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9491BEC45F900CA5C83 /* BottomServiceViewContainer.swift */; };
 		84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94B1BEC67BB00CA5C83 /* ServiceDetailView.swift */; };
+		84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
+		84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
+		84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
+		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
+		84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -461,6 +470,15 @@
 		84DDA9471BEC41C000CA5C83 /* MiddleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceViewContainer.swift; sourceTree = "<group>"; };
 		84DDA9491BEC45F900CA5C83 /* BottomServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceViewContainer.swift; sourceTree = "<group>"; };
 		84DDA94B1BEC67BB00CA5C83 /* ServiceDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceDetailView.swift; sourceTree = "<group>"; };
+		84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceContainerView.swift; sourceTree = "<group>"; };
+		84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopServiceContainerView.swift; sourceTree = "<group>"; };
+		84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopServiceContainer.xib; sourceTree = "<group>"; };
+		84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MiddleServiceContainer.xib; sourceTree = "<group>"; };
+		84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceContainerView.swift; sourceTree = "<group>"; };
+		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
+		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
+		84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleServiceContainer.xib; sourceTree = "<group>"; };
+		84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleServiceContainerView.swift; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1096,9 +1114,26 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		84DDA94D1BEDD56900CA5C83 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */,
+				84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */,
+				84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */,
+				84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */,
+				84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */,
+				84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */,
+				84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */,
+				84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */,
+				84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				84DDA94D1BEDD56900CA5C83 /* cell */,
 				84DDA9421BE9951300CA5C83 /* views */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
 			);
@@ -1972,11 +2007,14 @@
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
+				84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */,
 				81A79C011BE068AE00E05F58 /* MyriadPro-SemiCn.otf in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
+				84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
 				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
+				84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */,
 				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
@@ -2020,6 +2058,7 @@
 				93B25A611B9D7A1D00CD1FEB /* sdk_weibo_logo@2x.png in Resources */,
 				81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
+				84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,
@@ -2107,8 +2146,10 @@
 				93FA1DFF1B9C306E009965C8 /* AIServiceCatalogModel.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
+				84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
 				930B272E1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift in Sources */,
+				84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */,
 				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
@@ -2169,6 +2210,7 @@
 				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
+				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
@@ -2215,6 +2257,7 @@
 				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
+				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
@@ -2237,6 +2280,7 @@
 				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
+				84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */,
 				8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				93C33F211B9BEAFE007BF506 /* SwipeableCell.m in Sources */,
 				93C33EFC1B9BEA75007BF506 /* SCGIFImageView.m in Sources */,
