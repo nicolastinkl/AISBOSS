@@ -40,17 +40,19 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var infoButton: UIButton!
     
+    @IBOutlet weak var contentView: UIView!
     // MARK: getters and setters
     
     // MARK: life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Init Data
-        initData()
+        
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        
+        // Init Data
+        initData()
         
         // Init Label Font
         InitLabelFont()
@@ -68,8 +70,9 @@ class AIBuyerDetailViewController : UIViewController {
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
+        
     }
-    
+      
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -82,7 +85,7 @@ class AIBuyerDetailViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tableView.layoutSubviews()
+        //self.tableView.layoutSubviews()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -150,6 +153,17 @@ class AIBuyerDetailViewController : UIViewController {
                 //INIT
                 AddImageView()
                 self.tableView.hidden = true
+                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 150)
+                
+                self.contentView.addConstraints([newlayout])
+                
+                self.contentView.updateConstraints()
+            }else{
+                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
+                
+                self.contentView.addConstraints([newlayout])
+                
+                self.contentView.updateConstraints()
             }
         
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
