@@ -38,6 +38,7 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var whereLabel: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var infoButton: UIButton!
     
     // MARK: getters and setters
     
@@ -60,12 +61,13 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func AddImageView(){
+        self.infoButton.hidden = false
         let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
         imageview.contentMode = .ScaleAspectFit
         imageview.frame = CGRectMake(0, 0, self.view.width, 1400)
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
-        self.scrollview.contentSize = CGSizeMake(self.view.width, 1400)
+        self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
     }
     
     override func viewWillAppear(animated: Bool) {

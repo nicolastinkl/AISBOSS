@@ -31,6 +31,7 @@ import AISpring
     public func fillDataWithModel(model: AIBuyerBubbleModel) -> Void{
         //self.fill data
         popPrice.text = model.proposal_price ?? ""
+        popPrice.textColor = UIColor(hex: "272727")
         popBuyNumber.text = "\(model.order_times ?? 0)"
         popTitle.font = AITools.myriadLightSemiCondensedWithSize(22+3)
 

@@ -26,6 +26,16 @@
                                     <animations/>
                                 </view>
                                 <animations/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dh-Wj-Y5q">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Odq-6S-mgf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <animations/>
+                                </view>
+                                <animations/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctB-5W-Nxf" customClass="DesignableLabel" customModule="AISpring">
@@ -58,6 +68,17 @@
                                             <constraint firstAttribute="height" constant="46" id="ebD-TJ-Gd3"/>
                                         </constraints>
                                         <state key="normal" image="viocephonebutton">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCN-P4-SJd">
+                                        <rect key="frame" x="490" y="11" width="46" height="46"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="CZX-kV-DuA"/>
+                                            <constraint firstAttribute="height" constant="46" id="yIS-99-S4a"/>
+                                        </constraints>
+                                        <state key="normal" image="serviceDetailInfo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -122,11 +143,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="As3-0T-zUo">
-                                        <rect key="frame" x="17" y="20" width="280" height="28"/>
+                                        <rect key="frame" x="17" y="20" width="320" height="28"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="LuI-Y5-pDh"/>
-                                            <constraint firstAttribute="width" constant="280" id="oPJ-90-0gx"/>
+                                            <constraint firstAttribute="width" constant="320" id="oPJ-90-0gx"/>
                                         </constraints>
                                         <state key="normal" title=" Business Trip" image="backIcon"/>
                                         <connections>
@@ -167,7 +188,9 @@
                                     <constraint firstItem="Wqa-G4-So3" firstAttribute="top" secondItem="Ksj-KL-fh2" secondAttribute="top" constant="-1" id="nwD-e9-V7M"/>
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="leading" secondItem="dgC-qc-VsT" secondAttribute="leading" constant="34" id="nyU-kL-emv"/>
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="top" secondItem="As3-0T-zUo" secondAttribute="bottom" constant="13" id="sAi-GK-9oS"/>
+                                    <constraint firstItem="qCN-P4-SJd" firstAttribute="top" secondItem="kby-pV-MOa" secondAttribute="top" id="tAc-sN-pLO"/>
                                     <constraint firstAttribute="trailing" secondItem="kby-pV-MOa" secondAttribute="trailing" constant="13" id="vPd-1Z-AuB"/>
+                                    <constraint firstItem="kby-pV-MOa" firstAttribute="leading" secondItem="qCN-P4-SJd" secondAttribute="trailing" constant="5" id="w5A-qp-qMe"/>
                                     <constraint firstItem="Ksj-KL-fh2" firstAttribute="top" secondItem="85O-6e-yvW" secondAttribute="top" id="y1z-m6-eaE"/>
                                 </constraints>
                                 <variation key="default">
@@ -279,6 +302,7 @@
                             <constraint firstItem="3EU-06-uKE" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="7jC-7f-wlp"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="p9V-lT-phy" secondAttribute="bottom" id="7uR-FS-1qr"/>
                             <constraint firstItem="Qsv-QU-qJ7" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="bottom" id="8LO-b8-QKT"/>
+                            <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="6Dh-Wj-Y5q" secondAttribute="bottom" id="B9K-dM-BtP"/>
                             <constraint firstItem="3EU-06-uKE" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="bottom" id="FJn-w7-Z8Q"/>
                             <constraint firstItem="Mv0-83-Itj" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="FRs-bn-K9z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mv0-83-Itj" secondAttribute="trailing" constant="-20" id="Ff2-ZH-CqS"/>
@@ -286,6 +310,7 @@
                             <constraint firstItem="dgC-qc-VsT" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" id="MHj-Kh-3eN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ctB-5W-Nxf" secondAttribute="trailing" constant="-20" id="MVW-6l-WoF"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="Qsv-QU-qJ7" secondAttribute="bottom" constant="100" id="NWs-1I-BrV"/>
+                            <constraint firstItem="6Dh-Wj-Y5q" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="OAy-QM-KqQ"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="CPV-nq-FDD" secondAttribute="bottom" id="Qtp-nT-6RU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qsv-QU-qJ7" secondAttribute="trailing" constant="-20" id="RKo-sw-Z7E"/>
                             <constraint firstItem="Mv0-83-Itj" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="bottom" constant="1" id="UA3-dM-1EC"/>
@@ -297,7 +322,9 @@
                             <constraint firstItem="dVm-kg-Shb" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="ZSl-q4-MSP"/>
                             <constraint firstItem="CPV-nq-FDD" firstAttribute="top" secondItem="3EU-06-uKE" secondAttribute="bottom" constant="-35" id="a3K-HB-ctT"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="dVm-kg-Shb" secondAttribute="bottom" id="a8w-wM-9ct"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Dh-Wj-Y5q" secondAttribute="trailing" constant="-20" id="b9P-98-KD8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CPV-nq-FDD" secondAttribute="trailing" constant="-20" id="dXY-wG-4Dv"/>
+                            <constraint firstItem="6Dh-Wj-Y5q" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" id="i2y-wR-MGn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p9V-lT-phy" secondAttribute="trailing" constant="-20" id="jWa-3p-Fu6"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="ctB-5W-Nxf" secondAttribute="bottom" id="mkx-03-Y9x"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dVm-kg-Shb" secondAttribute="trailing" constant="-20" id="ogX-BG-zFF"/>
@@ -318,6 +345,7 @@
                         <outlet property="backButton" destination="As3-0T-zUo" id="eUL-so-0HG"/>
                         <outlet property="bgLabel" destination="ctB-5W-Nxf" id="S2g-LU-elk"/>
                         <outlet property="contentLabel" destination="ALy-Am-rau" id="a8H-44-asd"/>
+                        <outlet property="infoButton" destination="qCN-P4-SJd" id="BRv-KZ-ymZ"/>
                         <outlet property="moneyLabel" destination="mkb-ag-P9a" id="Sc3-DR-tA5"/>
                         <outlet property="numberLabel" destination="Wqa-G4-So3" id="CEa-P6-fRt"/>
                         <outlet property="scrollview" destination="Qsv-QU-qJ7" id="6Yg-H0-FBR"/>
@@ -337,6 +365,7 @@
         <image name="buyCount" width="16" height="19"/>
         <image name="buyerBottom" width="360" height="129"/>
         <image name="moneyCount" width="19" height="19"/>
+        <image name="serviceDetailInfo" width="36" height="36"/>
         <image name="viocephonebutton" width="36" height="36"/>
         <image name="yinhaoDown" width="19" height="17"/>
         <image name="yinhaoUp" width="20" height="16"/>
