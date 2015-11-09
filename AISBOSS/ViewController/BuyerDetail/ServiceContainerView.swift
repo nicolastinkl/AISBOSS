@@ -48,6 +48,17 @@ class ServiceContainerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        name.textColor = UIColor(hex: "#FEE300")
+        
+        price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        price.textColor = UIColor.whiteColor()
+
     }
     
     func buildSubviews() {
