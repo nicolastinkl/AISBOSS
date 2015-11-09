@@ -94,10 +94,11 @@ class AIServiceContentViewController: UIViewController {
         // make contentSize
         
         let image = UIImage(named: "Fake_Content")
+        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
         let contentImageView = UIImageView(image: image)
-        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), (image?.size.height)!)
+        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
         scrollView.addSubview(contentImageView)
-        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), (image?.size.height)!)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
 
         
         
