@@ -61,29 +61,30 @@ class AIServiceContentViewController: UIViewController {
     
     func scrollAction () {
         let image = UIImage(named: "Fake_Content")
-        let frame = CGRectMake(0, (image?.size.height)! - 10, CGRectGetWidth(scrollView.frame), 10)
+        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
         scrollView.scrollRectToVisible(frame, animated: true)
     }
     
     func makeTopView () {
         
         let image = UIImage(named: "Fake_Top")
-        
-        topView = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), (image?.size.height)!))
+        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        topView = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height))
         self.view.addSubview(topView)
         
         let topImageView = UIImageView(image: image)
-        topImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), (image?.size.height)!)
+        topImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
         topView.addSubview(topImageView)
         
         // add back action 
         
-        let backFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), (image?.size.height)! / 2)
+        let backFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(backFrame, action: "backAction"))
         
         
         // add scroll action
-        let scrollFrame = CGRectMake(CGRectGetWidth(self.view.frame) * 2 / 3, CGRectGetHeight(backFrame), CGRectGetWidth(self.view.frame) / 3, (image?.size.height)! / 2)
+        let scrollFrame = CGRectMake(CGRectGetWidth(self.view.frame) * 2 / 3, CGRectGetHeight(backFrame), CGRectGetWidth(self.view.frame) / 3, size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(scrollFrame, action: "scrollAction"))
     }
     
