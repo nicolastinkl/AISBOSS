@@ -77,6 +77,7 @@ class ServiceContainerView: UIView {
                     let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     
                     if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
+                        frame.size.height = detail.frame.origin.y + serviceView.frame.height
                         detail.addSubview(serviceView)
                     }
                 }
