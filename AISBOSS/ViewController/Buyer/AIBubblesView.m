@@ -559,7 +559,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         NSUInteger i = idx;
         
         // 构造bubble
-        
+        /*
         NSNumber * numberBig = [weakSelf.cacheBubble valueForKey:big];
         NSNumber * numberMiddle = [weakSelf.cacheBubble valueForKey:middle];
         NSNumber * numberSmall= [weakSelf.cacheBubble valueForKey:small];
@@ -576,7 +576,15 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
             [weakSelf.cacheBubble setValue:@(newValue) forKey:small];
         }else{
             model.bubbleSize = [AIBubble smaBubbleRadius];
-        } 
+        }*/
+        
+        if (model.service_list.count >= 6){
+            model.bubbleSize = [AIBubble bigBubbleRadius];
+        }else if (model.service_list.count >= 3 && model.service_list.count <= 5){
+            model.bubbleSize = [AIBubble midBubbleRadius];
+        }else {
+            model.bubbleSize = [AIBubble smaBubbleRadius];
+        }
         
         AIBubble *bubble;
         
