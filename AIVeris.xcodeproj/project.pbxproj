@@ -113,8 +113,6 @@
 		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
-		84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
-		84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -477,8 +475,6 @@
 		84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceContainerView.swift; sourceTree = "<group>"; };
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
-		84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleServiceContainer.xib; sourceTree = "<group>"; };
-		84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleServiceContainerView.swift; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1119,13 +1115,11 @@
 			children = (
 				84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */,
 				84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */,
-				84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */,
 				84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */,
 				84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */,
 				84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */,
 				84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */,
 				84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */,
-				84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -2014,7 +2008,6 @@
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
 				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
-				84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */,
 				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
@@ -2146,7 +2139,6 @@
 				93FA1DFF1B9C306E009965C8 /* AIServiceCatalogModel.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
-				84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
 				930B272E1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift in Sources */,
 				84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */,

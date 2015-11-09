@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,29 +12,45 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_ball" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-YT-pgw" userLabel="top_ball">
-                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBp-Vd-TnC" userLabel="indicatorContainer">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="200"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_ball" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-YT-pgw" userLabel="top_ball">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="uVX-hs-xjW"/>
+                                <constraint firstAttribute="width" secondItem="e3k-YT-pgw" secondAttribute="height" multiplier="1:1" id="vcf-Zh-YGR"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hollow_ball_half_top" translatesAutoresizingMaskIntoConstraints="NO" id="k25-5s-iwp" userLabel="bottom_half_ball">
+                            <rect key="frame" x="2" y="193" width="16" height="8"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="Rhi-se-u0m"/>
+                                <constraint firstAttribute="width" secondItem="k25-5s-iwp" secondAttribute="height" multiplier="2:1" id="cMx-3B-MpL"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link_line_vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-9D-k9T">
+                            <rect key="frame" x="9" y="20" width="1" height="173"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="640-Qs-gPx"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="20" id="exG-24-9mh"/>
-                        <constraint firstAttribute="height" constant="20" id="uVX-hs-xjW"/>
+                        <constraint firstAttribute="width" constant="20" id="DWB-Oj-2h0"/>
+                        <constraint firstItem="hwq-9D-k9T" firstAttribute="top" secondItem="e3k-YT-pgw" secondAttribute="bottom" id="Dx8-2T-qSb"/>
+                        <constraint firstItem="k25-5s-iwp" firstAttribute="centerX" secondItem="IBp-Vd-TnC" secondAttribute="centerX" id="Iiz-6l-48f"/>
+                        <constraint firstItem="hwq-9D-k9T" firstAttribute="centerX" secondItem="IBp-Vd-TnC" secondAttribute="centerX" id="bhU-do-G0d"/>
+                        <constraint firstAttribute="bottom" secondItem="k25-5s-iwp" secondAttribute="bottom" constant="-1" id="cVO-md-1xk"/>
+                        <constraint firstItem="e3k-YT-pgw" firstAttribute="top" secondItem="IBp-Vd-TnC" secondAttribute="top" id="ecc-Gb-Rko"/>
+                        <constraint firstItem="hwq-9D-k9T" firstAttribute="bottom" secondItem="k25-5s-iwp" secondAttribute="top" id="lwb-xA-eXf"/>
+                        <constraint firstItem="e3k-YT-pgw" firstAttribute="centerX" secondItem="IBp-Vd-TnC" secondAttribute="centerX" id="qQN-lU-92Q"/>
                     </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hollow_ball_half_top" translatesAutoresizingMaskIntoConstraints="NO" id="k25-5s-iwp" userLabel="bottom_half_ball">
-                    <rect key="frame" x="2" y="193" width="16" height="8"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="Rhi-se-u0m"/>
-                        <constraint firstAttribute="width" constant="16" id="qBh-fV-o1E"/>
-                    </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link_line_vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-9D-k9T">
-                    <rect key="frame" x="10" y="20" width="1" height="173"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="1" id="640-Qs-gPx"/>
-                    </constraints>
-                </imageView>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-ez-eSS" userLabel="logo">
                     <rect key="frame" x="27" y="16" width="21" height="21"/>
                     <animations/>
@@ -90,29 +107,26 @@
                 <constraint firstItem="uFG-Bp-2hS" firstAttribute="centerY" secondItem="fqp-ez-eSS" secondAttribute="centerY" id="4yr-qR-AiJ"/>
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="top" secondItem="Qml-Aa-K5V" secondAttribute="top" constant="4" id="9C8-K6-NgS"/>
                 <constraint firstAttribute="bottom" secondItem="NZa-GD-6SJ" secondAttribute="bottom" constant="8" id="DOf-fH-bOY"/>
-                <constraint firstItem="hwq-9D-k9T" firstAttribute="top" secondItem="e3k-YT-pgw" secondAttribute="bottom" id="FYe-pS-6mu"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="leading" secondItem="fqp-ez-eSS" secondAttribute="trailing" constant="4" id="FgD-nR-ZrE"/>
                 <constraint firstItem="Qml-Aa-K5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="H8K-Js-pH1"/>
                 <constraint firstItem="uFG-Bp-2hS" firstAttribute="trailing" secondItem="Qml-Aa-K5V" secondAttribute="trailing" constant="-5" id="Ioo-qF-ezb"/>
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="leading" secondItem="Qml-Aa-K5V" secondAttribute="leading" constant="12" id="KAw-8c-LH0"/>
+                <constraint firstItem="IBp-Vd-TnC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RZb-PR-qq6"/>
                 <constraint firstItem="IQk-De-tk1" firstAttribute="bottom" secondItem="fqp-ez-eSS" secondAttribute="bottom" constant="2" id="UTr-KN-GHs"/>
                 <constraint firstAttribute="bottom" secondItem="Qml-Aa-K5V" secondAttribute="bottom" constant="8" id="VWr-cu-OSu"/>
-                <constraint firstItem="k25-5s-iwp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="Vuv-xw-9GN"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="bottom" secondItem="fqp-ez-eSS" secondAttribute="bottom" constant="2" id="XeL-yh-OJS"/>
                 <constraint firstAttribute="trailing" secondItem="Qml-Aa-K5V" secondAttribute="trailing" id="Xjc-h5-Bnb"/>
-                <constraint firstItem="e3k-YT-pgw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YIh-0E-JrH"/>
+                <constraint firstAttribute="bottom" secondItem="IBp-Vd-TnC" secondAttribute="bottom" id="ZTM-dS-J4I"/>
                 <constraint firstItem="NZa-GD-6SJ" firstAttribute="leading" secondItem="fqp-ez-eSS" secondAttribute="leading" id="bIA-y5-29y"/>
-                <constraint firstItem="hwq-9D-k9T" firstAttribute="bottom" secondItem="k25-5s-iwp" secondAttribute="top" id="cEU-8L-2Gb"/>
-                <constraint firstItem="e3k-YT-pgw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ias-dx-sKT"/>
-                <constraint firstItem="hwq-9D-k9T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="j1c-zF-oUk"/>
+                <constraint firstItem="IBp-Vd-TnC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hSD-dC-qdc"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="trailing" secondItem="IQk-De-tk1" secondAttribute="leading" id="lfZ-Uf-v8W"/>
-                <constraint firstAttribute="bottom" secondItem="k25-5s-iwp" secondAttribute="bottom" constant="-1" id="t6e-ZB-IHh"/>
                 <constraint firstItem="Qml-Aa-K5V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ysr-01-hHX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="background" destination="Qml-Aa-K5V" id="cFM-8F-T6b"/>
                 <outlet property="bottomBall" destination="k25-5s-iwp" id="m8g-Nj-ZJD"/>
+                <outlet property="bottomBallHeightConstraint" destination="Rhi-se-u0m" id="6Fw-yT-TJG"/>
                 <outlet property="detail" destination="NZa-GD-6SJ" id="qVM-pi-DQG"/>
                 <outlet property="grade" destination="uFG-Bp-2hS" id="0vP-TZ-0Da"/>
                 <outlet property="linkLine" destination="hwq-9D-k9T" id="zcL-sp-2JH"/>
@@ -120,6 +134,7 @@
                 <outlet property="name" destination="ZHS-16-fuM" id="8ET-g6-eqy"/>
                 <outlet property="price" destination="IQk-De-tk1" id="D1e-Pr-WMP"/>
                 <outlet property="topBall" destination="e3k-YT-pgw" id="oQa-CN-luw"/>
+                <outlet property="topBallHeightConstraint" destination="uVX-hs-xjW" id="CLt-tE-IMF"/>
             </connections>
         </view>
     </objects>

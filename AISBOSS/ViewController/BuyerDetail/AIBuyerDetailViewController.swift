@@ -177,8 +177,8 @@ class AIBuyerDetailViewController : UIViewController {
                 self.contentView.addConstraints([newlayout])
                 
                 self.contentView.updateConstraints()
-                
-            }else{
+
+            } else {
                 let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
                 
                 self.contentView.addConstraints([newlayout])
@@ -249,14 +249,22 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         var serviceView: ServiceContainerView!
         
         if dataSource.service_list.count == 1 {
-            serviceView = NSBundle.mainBundle().loadNibNamed("SingleServiceContainer", owner: self, options: nil).first  as! SingleServiceContainerView
+            let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+            singleServiceView.isSingle = true
+            singleServiceView.isPrimeService(true)
+            serviceView = singleServiceView
         } else {
             if indexPath.row == 0 {
-                serviceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first  as! TopServiceContainerView
+                let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+                topServiceView.isPrimeService(true)
+                serviceView = topServiceView
             } else if indexPath.row == dataSource.service_list.count - 1 {
-                serviceView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
+                let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
+                serviceView = bottomView
+
             } else {
-                serviceView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
+                let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
+                serviceView = middleView
             }
 
         }

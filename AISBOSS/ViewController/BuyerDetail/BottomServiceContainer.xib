@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,23 +12,37 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hollow_ball_half_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-YT-pgw" userLabel="top_ball">
-                    <rect key="frame" x="2" y="0.0" width="16" height="8"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EIy-aY-alc" userLabel="indicatorContainer">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="200"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link_line_vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-9D-k9T">
+                            <rect key="frame" x="9" y="8" width="1" height="184"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="640-Qs-gPx"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hollow_ball_half_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-YT-pgw" userLabel="top_ball">
+                            <rect key="frame" x="2" y="0.0" width="16" height="8"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="e3k-YT-pgw" secondAttribute="height" multiplier="2:1" id="n72-Xf-opz"/>
+                                <constraint firstAttribute="height" constant="8" id="uVX-hs-xjW"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="16" id="exG-24-9mh"/>
-                        <constraint firstAttribute="height" constant="8" id="uVX-hs-xjW"/>
+                        <constraint firstItem="hwq-9D-k9T" firstAttribute="centerX" secondItem="EIy-aY-alc" secondAttribute="centerX" id="54n-Gu-IP6"/>
+                        <constraint firstAttribute="bottom" secondItem="hwq-9D-k9T" secondAttribute="bottom" constant="8" id="PIm-wV-7Wl"/>
+                        <constraint firstItem="e3k-YT-pgw" firstAttribute="centerX" secondItem="EIy-aY-alc" secondAttribute="centerX" id="RKR-8B-jbP"/>
+                        <constraint firstItem="hwq-9D-k9T" firstAttribute="top" secondItem="e3k-YT-pgw" secondAttribute="bottom" id="ZZf-PL-l2s"/>
+                        <constraint firstItem="e3k-YT-pgw" firstAttribute="top" secondItem="EIy-aY-alc" secondAttribute="top" id="vDM-ml-MSO"/>
+                        <constraint firstAttribute="width" constant="20" id="ybc-tH-dI6"/>
                     </constraints>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link_line_vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hwq-9D-k9T">
-                    <rect key="frame" x="10" y="8" width="1" height="184"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="1" id="640-Qs-gPx"/>
-                    </constraints>
-                </imageView>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-ez-eSS" userLabel="logo">
-                    <rect key="frame" x="27" y="16" width="21" height="21"/>
+                    <rect key="frame" x="27" y="11" width="21" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="UJv-rc-8fZ"/>
@@ -35,12 +50,12 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_corner_bk" translatesAutoresizingMaskIntoConstraints="NO" id="Qml-Aa-K5V" userLabel="bk">
-                    <rect key="frame" x="15" y="12" width="485" height="180"/>
+                    <rect key="frame" x="15" y="7" width="485" height="185"/>
                     <animations/>
                     <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="0.0" height="0.0"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-Bp-2hS" userLabel="grade">
-                    <rect key="frame" x="474" y="20" width="21" height="14"/>
+                    <rect key="frame" x="474" y="15" width="21" height="14"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="952-ak-NOR"/>
@@ -48,7 +63,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQk-De-tk1" userLabel="price">
-                    <rect key="frame" x="405" y="18" width="65" height="21"/>
+                    <rect key="frame" x="405" y="13" width="65" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="L95-SG-kBn"/>
@@ -59,7 +74,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-16-fuM" userLabel="title" customClass="UnderlineLabel" customModule="Veris" customModuleProvider="target">
-                    <rect key="frame" x="52" y="18" width="353" height="21"/>
+                    <rect key="frame" x="52" y="13" width="353" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="VdB-1K-AUo"/>
@@ -69,7 +84,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-GD-6SJ" userLabel="detail">
-                    <rect key="frame" x="27" y="49" width="465" height="143"/>
+                    <rect key="frame" x="27" y="44" width="465" height="148"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -82,22 +97,20 @@
                 <constraint firstItem="uFG-Bp-2hS" firstAttribute="centerY" secondItem="fqp-ez-eSS" secondAttribute="centerY" id="4yr-qR-AiJ"/>
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="top" secondItem="Qml-Aa-K5V" secondAttribute="top" constant="4" id="9C8-K6-NgS"/>
                 <constraint firstAttribute="bottom" secondItem="NZa-GD-6SJ" secondAttribute="bottom" constant="8" id="DOf-fH-bOY"/>
-                <constraint firstItem="hwq-9D-k9T" firstAttribute="top" secondItem="e3k-YT-pgw" secondAttribute="bottom" id="FYe-pS-6mu"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="leading" secondItem="fqp-ez-eSS" secondAttribute="trailing" constant="4" id="FgD-nR-ZrE"/>
-                <constraint firstAttribute="bottom" secondItem="hwq-9D-k9T" secondAttribute="bottom" constant="8" id="GOF-qC-rAV"/>
-                <constraint firstItem="Qml-Aa-K5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="H8K-Js-pH1"/>
+                <constraint firstItem="Qml-Aa-K5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="H8K-Js-pH1"/>
                 <constraint firstItem="uFG-Bp-2hS" firstAttribute="trailing" secondItem="Qml-Aa-K5V" secondAttribute="trailing" constant="-5" id="Ioo-qF-ezb"/>
+                <constraint firstItem="EIy-aY-alc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jwh-CZ-yKZ"/>
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="leading" secondItem="Qml-Aa-K5V" secondAttribute="leading" constant="12" id="KAw-8c-LH0"/>
                 <constraint firstItem="IQk-De-tk1" firstAttribute="bottom" secondItem="fqp-ez-eSS" secondAttribute="bottom" constant="2" id="UTr-KN-GHs"/>
                 <constraint firstAttribute="bottom" secondItem="Qml-Aa-K5V" secondAttribute="bottom" constant="8" id="VWr-cu-OSu"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="bottom" secondItem="fqp-ez-eSS" secondAttribute="bottom" constant="2" id="XeL-yh-OJS"/>
                 <constraint firstAttribute="trailing" secondItem="Qml-Aa-K5V" secondAttribute="trailing" id="Xjc-h5-Bnb"/>
-                <constraint firstItem="e3k-YT-pgw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YIh-0E-JrH"/>
                 <constraint firstItem="NZa-GD-6SJ" firstAttribute="leading" secondItem="fqp-ez-eSS" secondAttribute="leading" id="bIA-y5-29y"/>
-                <constraint firstItem="e3k-YT-pgw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="ias-dx-sKT"/>
-                <constraint firstItem="hwq-9D-k9T" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="j1c-zF-oUk"/>
+                <constraint firstAttribute="bottom" secondItem="EIy-aY-alc" secondAttribute="bottom" id="feQ-vB-H6H"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="trailing" secondItem="IQk-De-tk1" secondAttribute="leading" id="lfZ-Uf-v8W"/>
                 <constraint firstItem="Qml-Aa-K5V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="ysr-01-hHX"/>
+                <constraint firstItem="EIy-aY-alc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zaP-L0-Yte"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -109,6 +122,7 @@
                 <outlet property="name" destination="ZHS-16-fuM" id="8ET-g6-eqy"/>
                 <outlet property="price" destination="IQk-De-tk1" id="D1e-Pr-WMP"/>
                 <outlet property="topBall" destination="e3k-YT-pgw" id="oQa-CN-luw"/>
+                <outlet property="topBallHeightConstraint" destination="uVX-hs-xjW" id="t5S-LN-HvE"/>
             </connections>
         </view>
     </objects>
