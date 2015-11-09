@@ -93,7 +93,7 @@ extension UIColor {
         
         return image
     }     
-     
+    
     // theme Color
     class func applicationMainColor() -> UIColor {
         return UIColor(rgba: AIApplication.AIColor.MainTextColor)
