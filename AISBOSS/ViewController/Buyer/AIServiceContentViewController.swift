@@ -101,11 +101,6 @@ class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(contentImageView)
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
 
-        
-        
-        
-        
-        
     }
     
     
