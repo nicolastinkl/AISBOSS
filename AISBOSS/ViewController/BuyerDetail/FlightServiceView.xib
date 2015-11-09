@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FlightServiceView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKy-Wv-zIt" userLabel="takeOffTime">
+                    <rect key="frame" x="0.0" y="0.0" width="270" height="20"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="udB-2b-LOg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgw-TT-j3p" userLabel="fromAirport">
+                    <rect key="frame" x="0.0" y="56" width="270" height="13"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="Nrh-9E-jbH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nif-jg-6mz" userLabel="from" customClass="UnderlineLabel" customModule="Veris" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="28" width="270" height="20"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="9az-Lp-VC3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.99607843137254903" green="0.8901960784313725" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEh-db-hhN" userLabel="to" customClass="UnderlineLabel" customModule="Veris" customModuleProvider="target">
+                    <rect key="frame" x="330" y="28" width="270" height="20"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.99607843137254903" green="0.8901960784313725" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlo-cb-5Ii" userLabel="arriveTime">
+                    <rect key="frame" x="330" y="0.0" width="270" height="20"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane_white" translatesAutoresizingMaskIntoConstraints="NO" id="ZA6-iD-M8Q">
+                    <rect key="frame" x="285" y="36" width="30" height="15"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ZA6-iD-M8Q" secondAttribute="height" multiplier="41:20" id="ARy-e8-bkS"/>
+                        <constraint firstAttribute="width" constant="30" id="wTO-VS-num"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7f-R1-1qe" userLabel="toAirport">
+                    <rect key="frame" x="330" y="56" width="270" height="13"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13" id="cWt-sM-ROP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <constraints>
+                <constraint firstItem="vEh-db-hhN" firstAttribute="top" secondItem="Nif-jg-6mz" secondAttribute="top" id="1S1-Tf-BkF"/>
+                <constraint firstItem="Q7f-R1-1qe" firstAttribute="width" secondItem="vEh-db-hhN" secondAttribute="width" id="25z-4z-8Mf"/>
+                <constraint firstItem="qlo-cb-5Ii" firstAttribute="top" secondItem="wKy-Wv-zIt" secondAttribute="top" id="B07-yt-YxD"/>
+                <constraint firstItem="vEh-db-hhN" firstAttribute="height" secondItem="Nif-jg-6mz" secondAttribute="height" id="B4o-pD-Rjf"/>
+                <constraint firstItem="Nif-jg-6mz" firstAttribute="width" secondItem="wKy-Wv-zIt" secondAttribute="width" id="CXT-jR-cko"/>
+                <constraint firstItem="ZA6-iD-M8Q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DPe-aW-7xd"/>
+                <constraint firstItem="ZA6-iD-M8Q" firstAttribute="leading" secondItem="Nif-jg-6mz" secondAttribute="trailing" constant="10" id="Fa4-H1-1d1"/>
+                <constraint firstItem="wKy-Wv-zIt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KeR-hv-BH8"/>
+                <constraint firstItem="vEh-db-hhN" firstAttribute="leading" secondItem="qlo-cb-5Ii" secondAttribute="leading" id="ROE-9l-Fyy"/>
+                <constraint firstItem="Q7f-R1-1qe" firstAttribute="top" secondItem="xgw-TT-j3p" secondAttribute="top" id="UgY-gl-LOq"/>
+                <constraint firstItem="vEh-db-hhN" firstAttribute="leading" secondItem="ZA6-iD-M8Q" secondAttribute="trailing" constant="15" id="Wxw-f9-3E3"/>
+                <constraint firstItem="xgw-TT-j3p" firstAttribute="top" secondItem="Nif-jg-6mz" secondAttribute="bottom" constant="8" id="beB-EM-Gz4"/>
+                <constraint firstItem="Q7f-R1-1qe" firstAttribute="leading" secondItem="vEh-db-hhN" secondAttribute="leading" id="dRD-8P-r2s"/>
+                <constraint firstItem="qlo-cb-5Ii" firstAttribute="height" secondItem="wKy-Wv-zIt" secondAttribute="height" id="efp-SM-cTU"/>
+                <constraint firstItem="ZA6-iD-M8Q" firstAttribute="top" secondItem="Nif-jg-6mz" secondAttribute="top" constant="8" id="eye-94-vqb"/>
+                <constraint firstItem="Nif-jg-6mz" firstAttribute="leading" secondItem="wKy-Wv-zIt" secondAttribute="leading" id="fbH-rG-rfC"/>
+                <constraint firstItem="vEh-db-hhN" firstAttribute="width" secondItem="qlo-cb-5Ii" secondAttribute="width" id="jqC-T4-zT2"/>
+                <constraint firstItem="Nif-jg-6mz" firstAttribute="top" secondItem="wKy-Wv-zIt" secondAttribute="bottom" constant="8" id="khZ-97-jaZ"/>
+                <constraint firstItem="wKy-Wv-zIt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pym-CY-23g"/>
+                <constraint firstItem="qlo-cb-5Ii" firstAttribute="width" secondItem="wKy-Wv-zIt" secondAttribute="width" id="rM9-qj-g5d"/>
+                <constraint firstItem="xgw-TT-j3p" firstAttribute="leading" secondItem="wKy-Wv-zIt" secondAttribute="leading" id="tj8-v9-Q7q"/>
+                <constraint firstAttribute="trailing" secondItem="qlo-cb-5Ii" secondAttribute="trailing" id="ubb-Ju-AOv"/>
+                <constraint firstItem="xgw-TT-j3p" firstAttribute="width" secondItem="wKy-Wv-zIt" secondAttribute="width" id="xDs-Ba-iyW"/>
+                <constraint firstItem="wKy-Wv-zIt" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="9:20" id="xrL-qV-20h"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="DPe-aW-7xd"/>
+                    <exclude reference="Fa4-H1-1d1"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="arriveTime" destination="qlo-cb-5Ii" id="puh-jC-hr1"/>
+                <outlet property="from" destination="Nif-jg-6mz" id="vIL-WQ-q42"/>
+                <outlet property="fromAirport" destination="xgw-TT-j3p" id="hui-ep-9iy"/>
+                <outlet property="takeOffTime" destination="wKy-Wv-zIt" id="J4G-fI-T0P"/>
+                <outlet property="to" destination="vEh-db-hhN" id="ViQ-2V-HHC"/>
+                <outlet property="toAirport" destination="Q7f-R1-1qe" id="Djf-sQ-1Y5"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="airplane_white" width="36" height="15"/>
+    </resources>
+</document>

@@ -101,6 +101,13 @@ class ServiceContainerView: UIView {
                     if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
                         frame.size.height = detail.frame.origin.y + serviceView.frame.height
                         detail.addSubview(serviceView)
+                        
+                        layout(detail, serviceView) {detail, serviceView in
+                            serviceView.left == detail.left
+                            serviceView.top == detail.top
+                            serviceView.bottom == detail.bottom
+                            serviceView.right == detail.right
+                        }
                     }
                 }          
             }
@@ -112,8 +119,8 @@ class ServiceContainerView: UIView {
         
         switch viewTemplate {
         case ProposalServiceViewTemplate.PlaneTicket:
-            //   isPrimeService = true
-            let serviceDetailView = FlightService(frame: CGRect(x: 0, y: 0, width: detail.frame.width, height: 0))
+            let serviceDetailView = FlightServiceView.createInstance()
+         //   let serviceDetailView = FlightService(frame: CGRect(x: 0, y: 0, width: detail.frame.width, height: 0))
             serviceDetailView.loadData(paramDictionary)
             return serviceDetailView
         case ProposalServiceViewTemplate.Taxi:
