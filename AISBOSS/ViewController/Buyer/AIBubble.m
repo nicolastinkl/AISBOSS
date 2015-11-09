@@ -203,7 +203,7 @@ typedef enum  {
 //    [self setNeedsDisplay];
     
     //处理发光效果
-    
+    /*
     {
         MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
         focalPointView.bgColor= [UIColor whiteColor];
@@ -225,8 +225,8 @@ typedef enum  {
                                                      repeats:YES];
         
         [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
-        
-    }
+     
+    }*/
     
 }
 

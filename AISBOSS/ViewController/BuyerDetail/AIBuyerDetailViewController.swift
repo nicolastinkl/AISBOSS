@@ -67,10 +67,17 @@ class AIBuyerDetailViewController : UIViewController {
         let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
         imageview.contentMode = .ScaleAspectFit
         imageview.frame = CGRectMake(0, 0, self.view.width, 1400)
+        imageview.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: "targetDetail")
+        imageview.addGestureRecognizer(tap)
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
         
+    }
+    
+    func targetDetail(){
+        self.showViewController(AIServiceContentViewController(), sender: self)
     }
       
     override func viewWillAppear(animated: Bool) {
