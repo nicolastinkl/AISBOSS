@@ -156,16 +156,18 @@ typedef enum  {
         imageview2.frame = CGRectMake(0, 0, 96/3, 104/3);
         imageview2.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageview2];
-        imageview2.image = [UIImage imageNamed:@"recommandPlackholder"];
+        UIImage * im = [UIImage imageNamed:@"recommandPlackholder"];
+        imageview2.image = [im imageWithColor:[UIColor colorWithHexString:@"6c929f"]];
         self.rotateBubleImageView = imageview2;
     }
     {
         //图标
         UIImageView * imageviewIcon = [[UIImageView alloc] init];
-        imageviewIcon.frame = CGRectMake(0, 0, 42/3, 42/3);
+        imageviewIcon.frame = CGRectMake(-4, 0, 42/3, 42/3);
         imageviewIcon.center =  CGPointMake(self.width/2, self.height/2);
         [self addSubview:imageviewIcon];
         imageviewIcon.image = [UIImage imageNamed:@"recommandIcon"];
+        
     }
     
     

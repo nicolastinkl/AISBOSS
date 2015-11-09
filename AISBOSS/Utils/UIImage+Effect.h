@@ -26,4 +26,6 @@
  */
 -(UIColor*)pickUpImageColor;
 
+/// 改变图片着色颜色
+- (UIImage *)imageWithColor:(UIColor *)color;
 @end
