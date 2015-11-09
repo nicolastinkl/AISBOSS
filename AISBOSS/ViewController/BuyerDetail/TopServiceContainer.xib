@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-ez-eSS" userLabel="logo">
-                    <rect key="frame" x="27" y="16" width="21" height="21"/>
+                    <rect key="frame" x="27" y="21" width="21" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="UJv-rc-8fZ"/>
@@ -60,12 +60,12 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_top_unfilled_corner" translatesAutoresizingMaskIntoConstraints="NO" id="Qml-Aa-K5V" userLabel="bk">
-                    <rect key="frame" x="15" y="12" width="485" height="180"/>
+                    <rect key="frame" x="15" y="17" width="485" height="175"/>
                     <animations/>
                     <rect key="contentStretch" x="0.10000000000000001" y="0.10000000000000001" width="0.0" height="0.0"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-Bp-2hS" userLabel="grade">
-                    <rect key="frame" x="474" y="20" width="21" height="14"/>
+                    <rect key="frame" x="474" y="25" width="21" height="14"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="952-ak-NOR"/>
@@ -73,7 +73,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQk-De-tk1" userLabel="price">
-                    <rect key="frame" x="405" y="18" width="65" height="21"/>
+                    <rect key="frame" x="405" y="23" width="65" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="L95-SG-kBn"/>
@@ -84,7 +84,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHS-16-fuM" userLabel="title" customClass="UnderlineLabel" customModule="Veris" customModuleProvider="target">
-                    <rect key="frame" x="52" y="18" width="353" height="21"/>
+                    <rect key="frame" x="52" y="23" width="353" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="VdB-1K-AUo"/>
@@ -94,7 +94,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZa-GD-6SJ" userLabel="detail">
-                    <rect key="frame" x="27" y="49" width="465" height="143"/>
+                    <rect key="frame" x="27" y="54" width="465" height="138"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -108,7 +108,7 @@
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="top" secondItem="Qml-Aa-K5V" secondAttribute="top" constant="4" id="9C8-K6-NgS"/>
                 <constraint firstAttribute="bottom" secondItem="NZa-GD-6SJ" secondAttribute="bottom" constant="8" id="DOf-fH-bOY"/>
                 <constraint firstItem="ZHS-16-fuM" firstAttribute="leading" secondItem="fqp-ez-eSS" secondAttribute="trailing" constant="4" id="FgD-nR-ZrE"/>
-                <constraint firstItem="Qml-Aa-K5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="H8K-Js-pH1"/>
+                <constraint firstItem="Qml-Aa-K5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="H8K-Js-pH1"/>
                 <constraint firstItem="uFG-Bp-2hS" firstAttribute="trailing" secondItem="Qml-Aa-K5V" secondAttribute="trailing" constant="-5" id="Ioo-qF-ezb"/>
                 <constraint firstItem="fqp-ez-eSS" firstAttribute="leading" secondItem="Qml-Aa-K5V" secondAttribute="leading" constant="12" id="KAw-8c-LH0"/>
                 <constraint firstItem="IBp-Vd-TnC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RZb-PR-qq6"/>
