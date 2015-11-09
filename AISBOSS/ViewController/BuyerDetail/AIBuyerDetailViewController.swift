@@ -56,7 +56,7 @@ class AIBuyerDetailViewController : UIViewController {
         
         // Init Label Font
         InitLabelFont()
-        
+         
         // Make
         //makeBuyButton()
         
