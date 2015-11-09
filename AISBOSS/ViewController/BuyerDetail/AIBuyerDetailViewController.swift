@@ -71,7 +71,6 @@ class AIBuyerDetailViewController : UIViewController {
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
         
-        
         let label = UILabel(frame: CGRectMake(0, 0, self.view.width, 200))
         self.scrollview.addSubview(label)
         label.userInteractionEnabled = true

@@ -22,7 +22,7 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_50_alpha_holdView" translatesAutoresizingMaskIntoConstraints="NO" id="IGh-XQ-SVc">
+                <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="white_50_alpha_holdView" translatesAutoresizingMaskIntoConstraints="NO" id="IGh-XQ-SVc">
                     <rect key="frame" x="-1" y="86" width="147" height="60"/>
                     <animations/>
                 </imageView>

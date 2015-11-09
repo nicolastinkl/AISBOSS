@@ -64,7 +64,8 @@ import AISpring
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()
                 imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage:nil)
-                imageView.frame = CGRectMake(position.x, position.y, 36/2.5, 36/2.5)
+                //36^
+                imageView.frame = CGRectMake(position.x, position.y, 31/2.5, 31/2.5)
                 self.addSubview(imageView)
                 firstImageView = imageView
                 i++
