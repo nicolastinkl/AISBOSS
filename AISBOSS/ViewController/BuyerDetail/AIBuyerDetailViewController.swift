@@ -103,7 +103,6 @@ class AIBuyerDetailViewController : UIViewController {
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
-    
     func makeBuyButton () {
         let button = UIButton(type: .Custom)
         button.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - 100, CGRectGetWidth(self.view.frame), 100)
@@ -112,6 +111,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func showNextViewController () {
+     
         self.showViewController(AIServiceContentViewController(), sender: self)
             
     }
@@ -120,10 +120,20 @@ class AIBuyerDetailViewController : UIViewController {
         let name = dataSource?.proposal_name ?? ""
         self.backButton.setTitle(name, forState: UIControlState.Normal)
         self.moneyLabel.text = dataSource?.order_total_price
-        self.totalMoneyLabel.text = dataSource?.proposal_price
+        
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text =  dataSource?.proposal_desc
+        
+        if NSString(string: name).containsString("Pregnancy") {
+            // 处理字体
+            let price = dataSource?.proposal_price
+            let richText = NSMutableAttributedString(string: (price)!)
+            richText.addAttribute(NSFontAttributeName, value:AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price!.length - 6, 6)) //设置字体大小
+            self.totalMoneyLabel.attributedText = richText
+        }else{
+            self.totalMoneyLabel.text = dataSource?.proposal_price
+        }
         
     }
     
@@ -158,7 +168,6 @@ class AIBuyerDetailViewController : UIViewController {
             //test
             
             let name = m.proposal_name ?? ""
-            
             if NSString(string: name).containsString("Pregnancy") {
                 //INIT
                 AddImageView()
@@ -168,6 +177,8 @@ class AIBuyerDetailViewController : UIViewController {
                 self.contentView.addConstraints([newlayout])
                 
                 self.contentView.updateConstraints()
+                
+                
             }else{
                 let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
                 

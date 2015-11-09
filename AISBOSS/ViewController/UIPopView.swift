@@ -35,6 +35,7 @@ import AISpring
         popBuyNumber.text = "\(model.order_times ?? 0)"
         popTitle.font = AITools.myriadLightSemiCondensedWithSize(22+3)
 
+        /**
         //这里处理换行
         let stringTitle = NSString(string: model.proposal_name ?? "")
         let strArray = stringTitle.componentsSeparatedByString(" ")
@@ -46,7 +47,9 @@ import AISpring
            
             popTitle.text = firstString + content
         }
+        */
         
+        popTitle.text = model.proposal_name ?? ""
         let price =  model.proposal_price ?? ""
         if price.length > 9 {
             popPrice.font = AITools.myriadBoldWithSize(14)
@@ -65,7 +68,7 @@ import AISpring
                 let imageView = AIImageView()
                 imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage:nil)
                 //36^
-                imageView.frame = CGRectMake(position.x, position.y, 31/2.5, 31/2.5)
+                imageView.frame = CGRectMake(position.x, position.y, 29/2.5, 29/2.5)
                 self.addSubview(imageView)
                 firstImageView = imageView
                 i++
@@ -73,7 +76,7 @@ import AISpring
         }
     }
     
-    let kAngleOffset:CGFloat = CGFloat(M_PI_2)/5.2 //CGFloat(M_PI_2) / 4.5
+    let kAngleOffset:CGFloat = CGFloat(M_PI_2)/5.6 //5.2 //CGFloat(M_PI_2) / 4.5
     let kSphereLength:CGFloat = 61
     let kSphereDamping:Float = 0.7
     let kSphereFixPosition:CGFloat = 7
