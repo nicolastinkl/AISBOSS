@@ -280,9 +280,7 @@ typedef enum  {
     self.layer.borderWidth = 1.5;
     self.layer.masksToBounds = YES;
     self.clipsToBounds = YES;
-
-    [self setNeedsDisplay];
-    
+ 
     
     /** 这里是算法取颜色值*/
     {
@@ -303,10 +301,11 @@ typedef enum  {
         
         if (model.proposal_id_new > 0){
             //根据发光效果添加图层
-            {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
                 //weakSelf.hidden = YES;
                 MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
-                focalPointView.bgColor= [UIColor colorWithHexString:@"#e2898a"];
+                focalPointView.bgColor = [UIColor colorWithHexString:@"e2898a"];
                 focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
                 focalPointView.center = CGPointMake(self.width/2, self.height/2);
                 focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
@@ -324,9 +323,13 @@ typedef enum  {
                                                              repeats:YES];
                 
                 [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+            });
+            
                 
-            }
+            
         }
+        
+        [self setNeedsDisplay];
         
     }
     

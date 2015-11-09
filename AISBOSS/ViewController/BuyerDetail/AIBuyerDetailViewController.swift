@@ -178,7 +178,6 @@ class AIBuyerDetailViewController : UIViewController {
                 
                 self.contentView.updateConstraints()
                 
-                
             }else{
                 let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
                 
