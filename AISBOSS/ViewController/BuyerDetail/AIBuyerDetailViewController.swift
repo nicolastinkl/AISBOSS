@@ -172,7 +172,7 @@ class AIBuyerDetailViewController : UIViewController {
                 //INIT
                 AddImageView()
                 self.tableView.hidden = true
-                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 150)
+                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
                 
                 self.contentView.addConstraints([newlayout])
                 
