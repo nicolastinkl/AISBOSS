@@ -58,6 +58,7 @@
 		81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */; };
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
+		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
@@ -106,15 +107,15 @@
 		84DDA9481BEC41C000CA5C83 /* MiddleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9471BEC41C000CA5C83 /* MiddleServiceViewContainer.swift */; };
 		84DDA94A1BEC45F900CA5C83 /* BottomServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9491BEC45F900CA5C83 /* BottomServiceViewContainer.swift */; };
 		84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94B1BEC67BB00CA5C83 /* ServiceDetailView.swift */; };
-		84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
-		84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
-		84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
-		84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
-		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
-		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
-		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
-		84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
-		84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */; settings = {ASSET_TAGS = (); }; };
+		84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */; };
+		84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */; };
+		84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9521BEDDC9500CA5C83 /* TopServiceContainer.xib */; };
+		84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA9541BEE0EDA00CA5C83 /* MiddleServiceContainer.xib */; };
+		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; };
+		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
+		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
+		84DDA95F1BEE137900CA5C83 /* SingleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95E1BEE137900CA5C83 /* SingleServiceContainer.xib */; };
+		84DDA9611BEE13AC00CA5C83 /* SingleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9601BEE13AC00CA5C83 /* SingleServiceContainerView.swift */; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -424,6 +425,7 @@
 		81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIBuyerViewController.swift; path = Buyer/AIBuyerViewController.swift; sourceTree = "<group>"; };
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
+		81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AITimeLineMainViewController.swift; path = TimeLine/AITimeLineMainViewController.swift; sourceTree = "<group>"; };
 		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
 		8423E5631BB4E1A8006DC73B /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderPreModel.h; sourceTree = "<group>"; };
 		8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderPreModel.m; sourceTree = "<group>"; };
@@ -1024,6 +1026,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		81F0002F1BF08F4600EE66F3 /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */,
+			);
+			name = TimeLine;
+			sourceTree = "<group>";
+		};
 		840FD40D1BABD2B8000C6033 /* JumpNumberLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1339,6 +1349,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				81F0002F1BF08F4600EE66F3 /* TimeLine */,
 				93306BCE1BE85FD500F68FD8 /* BuyerDetail */,
 				81DC18DB1BD5D2550081D131 /* Buyer */,
 				934C41B21BA7F13500002853 /* ServiceDetail */,
@@ -2336,6 +2347,7 @@
 				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
 				81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
+				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,

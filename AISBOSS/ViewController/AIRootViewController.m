@@ -81,7 +81,7 @@
     [sellerViewController didMoveToParentViewController:self];
     
     // left
-    self.leftDirectionViewController = self.centerTapViewController;
+    self.leftDirectionViewController = [[AITimeLineMainViewController alloc] init];
     [self addChildViewController:self.leftDirectionViewController];
     [self.leftDirectionViewController didMoveToParentViewController:self];
     
