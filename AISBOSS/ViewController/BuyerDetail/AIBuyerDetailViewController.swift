@@ -71,16 +71,31 @@ class AIBuyerDetailViewController : UIViewController {
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
         
-        let label = UILabel(frame: CGRectMake(0, 0, self.view.width, 200))
+        ///  action 1
+        var label = UILabel(frame: CGRectMake(0, 0, self.view.width, 200))
         self.scrollview.addSubview(label)
         label.userInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: "targetDetail")
+        var tap = UITapGestureRecognizer(target: self, action: "targetDetail")
         label.addGestureRecognizer(tap)
         
+        /// action 2
+        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1390), self.view.width, AITools.displaySizeFrom1080DesignSize(510)))
+        self.scrollview.addSubview(label)
+        label.userInteractionEnabled = true
+        tap = UITapGestureRecognizer(target: self, action: "targetDetail2")
+        label.addGestureRecognizer(tap)
     }
     
     func targetDetail(){
-        self.showViewController(AIServiceContentViewController(), sender: self)
+        let vc = AIServiceContentViewController()
+        vc.serviceContentType = AIServiceContentType.MusicTherapy
+        self.showViewController(vc, sender: self)
+    }
+    
+    func targetDetail2(){
+        let vc = AIServiceContentViewController()
+        vc.serviceContentType = AIServiceContentType.Escort
+        self.showViewController(vc, sender: self)
     }
       
     override func viewWillAppear(animated: Bool) {
@@ -112,7 +127,9 @@ class AIBuyerDetailViewController : UIViewController {
     
     func showNextViewController () {
      
-        self.showViewController(AIServiceContentViewController(), sender: self)
+        let vc = AIServiceContentViewController()
+        vc.serviceContentType = AIServiceContentType.MusicTherapy
+        self.showViewController(vc, sender: self)
             
     }
     

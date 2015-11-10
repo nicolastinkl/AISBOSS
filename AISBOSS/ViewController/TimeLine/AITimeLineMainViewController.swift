@@ -36,7 +36,10 @@ class AITimeLineMainViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        scrollView.scrollRectToVisible(CGRectMake(0, 0, CGRectGetWidth(scrollView.frame), 10), animated: false);
+        let image = UIImage(named: "TimeLine_Bottom")
+        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
+        scrollView.scrollRectToVisible(frame, animated: true)
     }
 
     /*
