@@ -107,14 +107,14 @@
     
     // 1.获得年月日
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit |NSMinuteCalendarUnit;
+    NSUInteger unitFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour |NSCalendarUnitMinute;
     NSDateComponents *cmp1 = [calendar components:unitFlags fromDate:_lastUpdateTime];
     NSDateComponents *cmp2 = [calendar components:unitFlags fromDate:[NSDate date]];
     
     // 2.格式化日期
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     if ([cmp1 day] == [cmp2 day]) { // 今天
-        formatter.dateFormat = @"今天 HH:mm";
+        formatter.dateFormat = @"HH:mm";
     } else if ([cmp1 year] == [cmp2 year]) { // 今年
         formatter.dateFormat = @"MM-dd HH:mm";
     } else {
@@ -123,7 +123,7 @@
     NSString *time = [formatter stringFromDate:self.lastUpdateTime];
     
     // 3.显示日期
-    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"最后更新：%@", time];
+    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"Latest：%@", time];
 }
 
 #pragma mark - 监听UIScrollView的contentOffset属性

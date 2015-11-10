@@ -79,7 +79,8 @@ class AIBuyerDetailViewController : UIViewController {
         label.addGestureRecognizer(tap)
         
         /// action 2
-        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1390), self.view.width, AITools.displaySizeFrom1080DesignSize(510)))
+        
+        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1240), self.view.width, AITools.displaySizeFrom1080DesignSize(510)))
         self.scrollview.addSubview(label)
         label.userInteractionEnabled = true
         tap = UITapGestureRecognizer(target: self, action: "targetDetail2")
