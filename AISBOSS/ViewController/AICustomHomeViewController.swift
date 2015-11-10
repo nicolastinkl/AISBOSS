@@ -145,7 +145,7 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
         
         let cellData = tempCollectionData![indexPath.item]
         
-        var cardView:AICardView = AICardView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2 - 15, 0), cards: cellData.service_cells! as [AnyObject]);
+        let cardView:AICardView = AICardView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width / 2 - 15, 0), cards: cellData.service_cells! as [AnyObject]);
         
         let cellHeight:CGFloat = cardView.frame.size.height + self.collectionFixHeight
         
@@ -271,7 +271,7 @@ extension AICustomHomeViewController : CustomerIndicatorDelegate{
         
         loadData(selectedColor)
         
-        let resultCnt = loadData(selectedColor)
+        _ = loadData(selectedColor)
         //topMsgView.updateLabelData(resultCnt, colorId: selectedColor.intValue())
         //setupTopMsgAnimate(true,nil)
         
@@ -344,7 +344,7 @@ extension AICustomHomeViewController : CustomerIndicatorDelegate{
         if let oldView2 = self.view.viewWithTag(1002) {
             oldView2.removeFromSuperview()
         }
-        var view1:UIView = UIView(frame: CGRectMake(0, -500, 1000, 500))
+        let view1:UIView = UIView(frame: CGRectMake(0, -500, 1000, 500))
         view1.backgroundColor = UIColor(rgba: "#1e1b38")
         view1.tag = 1001
         collectionView.addSubview(view1)
@@ -353,7 +353,7 @@ extension AICustomHomeViewController : CustomerIndicatorDelegate{
         let lastItemAttribute = layout.itemAttributes.lastObject as! UICollectionViewLayoutAttributes
         
         let y = lastItemAttribute.frame.origin.y + lastItemAttribute.frame.size.height
-        var view2:UIView = UIView(frame: CGRectMake(0, y, 1000, 500))
+        let view2:UIView = UIView(frame: CGRectMake(0, y, 1000, 500))
         view2.backgroundColor = UIColor(rgba: "#1e1b38")
         view2.tag = 1002
         collectionView.addSubview(view2)
