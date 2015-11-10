@@ -8,11 +8,22 @@
 
 import UIKit
 
+
+
+
+public enum AIServiceContentType : Int {
+    
+    case MusicTherapy = 100 ,Escort
+}
+
+
+
 class AIServiceContentViewController: UIViewController {
 
-    var topView :UIView!
+    var topView : UIView!
     var scrollView : UIScrollView!
     
+    var serviceContentType : AIServiceContentType!
     
     
     override func viewDidLoad() {
@@ -45,6 +56,36 @@ class AIServiceContentViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func bottomImage() -> UIImage {
+        
+        var name = "Fake_Content"
+        let type : AIServiceContentType = serviceContentType
+        switch type {
+        case  .MusicTherapy:
+            name = "Fake_Content"
+        case .Escort:
+            name = "Fake_Escort_Bottom"
+        }
+
+        return UIImage(named: name)!
+    }
+    
+    
+    func topImage() -> UIImage {
+        var name = "Fake_Top"
+        let type : AIServiceContentType = serviceContentType
+        switch type {
+        case  .MusicTherapy:
+            name = "Fake_Top"
+        case .Escort:
+            name = "Fake_Escort_Top"
+            
+        }
+        
+        return UIImage(named: name)!
+    }
 
     func makeButtonWithFrame(frame:CGRect, action:Selector) -> UIButton {
         let button = UIButton(type: .Custom)
@@ -60,16 +101,16 @@ class AIServiceContentViewController: UIViewController {
     }
     
     func scrollAction () {
-        let image = UIImage(named: "Fake_Content")
-        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        let image = bottomImage()
+        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
         let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
         scrollView.scrollRectToVisible(frame, animated: true)
     }
     
     func makeTopView () {
         
-        let image = UIImage(named: "Fake_Top")
-        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        let image = topImage()
+        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
         topView = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height))
         self.view.addSubview(topView)
         
@@ -94,8 +135,8 @@ class AIServiceContentViewController: UIViewController {
         
         // make contentSize
         
-        let image = UIImage(named: "Fake_Content")
-        let size = AITools.imageDisplaySizeFrom1080DesignSize((image?.size)!) as CGSize
+        let image = bottomImage()
+        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
         let contentImageView = UIImageView(image: image)
         contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
         scrollView.addSubview(contentImageView)
