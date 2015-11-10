@@ -287,7 +287,7 @@ class UITransViewController: UIViewController {
         } else if result.err != nil {
             view.showErrorView()
 
-            AIAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("Loading Failed", subTitle: result.err!.message, closeButtonTitle: "Close", duration: 3)
         }
     }
     
@@ -312,7 +312,7 @@ class UITransViewController: UIViewController {
             
         } else if result.err != nil {
             view.showErrorView()
-            AIAlertView().showError("加载失败", subTitle: result.err!.message, closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("Loading Failed", subTitle: result.err!.message, closeButtonTitle: "Close", duration: 3)
         }
     }
     
@@ -1164,7 +1164,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         } else {
             if err != nil {
-                AIAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "关闭", duration: 3)
+                AIAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "Close", duration: 3)
             }
         }
     }
@@ -1189,7 +1189,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             //tableView.reloadData()
         } else {
             if err != nil {
-                AIAlertView().showError("修改失败", subTitle: err!.message, closeButtonTitle: "关闭", duration: 3)
+                AIAlertView().showError("Change Failed", subTitle: err!.message, closeButtonTitle: "Close", duration: 3)
             }
         }
     }

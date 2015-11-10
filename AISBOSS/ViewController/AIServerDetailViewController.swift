@@ -265,7 +265,7 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func addAction(sender: AnyObject) {
         
         if tags?.tags.count >= 10 {
-            AIAlertView().showError("提示", subTitle: "不能超过10个颜色气泡", closeButtonTitle: "关闭", duration: 3)
+            AIAlertView().showError("Couldn't more than 10", subTitle: "", closeButtonTitle: "Close", duration: 3)
             return
         }
         
@@ -324,7 +324,7 @@ extension AIServerDetailViewController : ServiceSearchViewDelegate {
             })
             
             if newAry?.count > 0 {
-                AIAlertView().showError("提示", subTitle: "不能添加重复便签", closeButtonTitle: "关闭", duration: 3)
+                AIAlertView().showError("Cannot add duplicate notes", subTitle: "", closeButtonTitle: "Close", duration: 3)
                 return
             }
             
