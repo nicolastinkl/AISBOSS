@@ -17,7 +17,6 @@ public enum AIServiceContentType : Int {
 }
 
 
-
 class AIServiceContentViewController: UIViewController {
 
     var topView : UIView!
@@ -29,11 +28,11 @@ class AIServiceContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view. EffectBg@2x Buyer_topBar_Bg
         let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
-        
+         
         
         self.makeTopView()
         

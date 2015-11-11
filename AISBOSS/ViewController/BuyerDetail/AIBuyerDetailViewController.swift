@@ -69,7 +69,7 @@ class AIBuyerDetailViewController : UIViewController {
         imageview.frame = CGRectMake(0, 0, self.view.width, 1400)
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
-        self.scrollview.contentSize = CGSizeMake(self.view.width, 1360)
+        self.scrollview.contentSize = CGSizeMake(self.view.width, 1380)
         
         ///  action 1
         var label = UILabel(frame: CGRectMake(0, 0, self.view.width, 200))
@@ -135,6 +135,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func InitController(){
+        
         let name = dataSource?.proposal_name ?? ""
         self.backButton.setTitle(name, forState: UIControlState.Normal)
         self.moneyLabel.text = dataSource?.order_total_price
