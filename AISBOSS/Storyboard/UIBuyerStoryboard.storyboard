@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -370,8 +370,8 @@
     <resources>
         <image name="backIcon" width="13" height="22"/>
         <image name="buyCount" width="16" height="19"/>
-        <image name="buyerBottom" width="360" height="129"/>
-        <image name="moneyCount" width="19" height="19"/>
+        <image name="buyerBottom" width="360" height="120"/>
+        <image name="moneyCount" width="22" height="18"/>
         <image name="serviceDetailInfo" width="36" height="36"/>
         <image name="viocephonebutton" width="36" height="36"/>
         <image name="yinhaoDown" width="19" height="17"/>
