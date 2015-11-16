@@ -66,13 +66,17 @@ class AIBuyerDetailViewController : UIViewController {
         self.infoButton.hidden = false
         let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
         imageview.contentMode = .ScaleAspectFit
-        imageview.frame = CGRectMake(0, 0, self.view.width, 1400)
+        
+        let width = CGRectGetWidth(self.view.frame)
+        let height = AITools.displaySizeFrom1080DesignSize(3819)
+        
+        imageview.frame = CGRectMake(0, 0, width, height)
         self.scrollview.addSubview(imageview)
         self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
-        self.scrollview.contentSize = CGSizeMake(self.view.width, 1380)
+        self.scrollview.contentSize = CGSizeMake(width, height)
         
         ///  action 1
-        var label = UILabel(frame: CGRectMake(0, 0, self.view.width, 200))
+        var label = UILabel(frame: CGRectMake(0, 0, width, 200))
         self.scrollview.addSubview(label)
         label.userInteractionEnabled = true
         var tap = UITapGestureRecognizer(target: self, action: "targetDetail")
@@ -80,7 +84,7 @@ class AIBuyerDetailViewController : UIViewController {
         
         /// action 2
         
-        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1240), self.view.width, AITools.displaySizeFrom1080DesignSize(510)))
+        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1240), self.view.width, AITools.displaySizeFrom1080DesignSize(700)))
         self.scrollview.addSubview(label)
         label.userInteractionEnabled = true
         tap = UITapGestureRecognizer(target: self, action: "targetDetail2")
@@ -150,10 +154,12 @@ class AIBuyerDetailViewController : UIViewController {
             let richText = NSMutableAttributedString(string: (price)!)
             richText.addAttribute(NSFontAttributeName, value:AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price!.length - 6, 6)) //设置字体大小
             self.totalMoneyLabel.attributedText = richText
+            
         }else{
             self.totalMoneyLabel.text = dataSource?.proposal_price
         }
         
+        self.totalMoneyLabel.textColor = AITools.colorWithR(253, g: 225, b: 50)
     }
     
     func InitLabelFont(){
