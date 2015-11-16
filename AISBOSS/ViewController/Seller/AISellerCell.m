@@ -528,7 +528,7 @@
 #pragma mark - 头像
 - (void)makeSellerIcon
 {
-    CGFloat width = sqrt(2*50*50);
+    CGFloat width = 50;////sqrt(2*50*50);
     _iconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*3/4, 50)];
     _iconContainer.clipsToBounds = YES;
     [_boardView addSubview:_iconContainer];
@@ -537,16 +537,16 @@
     _sellerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
     _sellerIcon.image = [UIImage imageNamed:@"testHolder1"];
 //    _sellerIcon.layer.cornerRadius = width/2;
-    _sellerIcon.center = CGPointMake(width/4, 25);
+    _sellerIcon.center = CGPointMake(width/2, 25);
     _sellerIcon.layer.masksToBounds = YES;
-    _sellerIcon.contentMode = UIViewContentModeScaleAspectFit;
-    [_iconContainer addSubview:_sellerIcon];
+    _sellerIcon.contentMode = UIViewContentModeScaleAspectFill;
+    [_boardView addSubview:_sellerIcon];
 }
 
 #pragma mark - 姓名
 - (void)makeSellerName
 {
-    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
+    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10 * 2, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
     _sellerName.font = [AITools myriadBoldWithSize:50/2.5];
     [_boardView addSubview:_sellerName];
     
@@ -612,7 +612,7 @@
     //
     CGSize serviceSize = [service sizeWithFontSize:kSmallFontSize+2 forWidth:CGRectGetWidth(_boardView.frame)];
     serviceFrame.origin.x = CGRectGetMaxX(_goodsClass.frame);
-    serviceFrame.size.width = serviceSize.width;
+    serviceFrame.size.width = serviceSize.width + 300;
     _goodsName.frame = serviceFrame;
     _goodsName.text = service;
     
@@ -621,7 +621,7 @@
 - (void)makeGoodsInfoView
 {
     CGFloat containerHeight = CGRectGetHeight(_iconContainer.frame) / 2;
-    CGFloat x = CGRectGetMaxX(_iconContainer.frame) + kMargin10;
+    CGFloat x = CGRectGetMaxX(_iconContainer.frame) + kMargin10*2;
     CGFloat yoffset = 1.5;
     CGFloat width = CGRectGetWidth(_boardView.frame);
     // indicator
