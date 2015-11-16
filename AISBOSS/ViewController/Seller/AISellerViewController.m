@@ -48,8 +48,8 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];;
     
-    //[self makeFakeDatas];
-    [self makeDatas];
+//    [self makeFakeDatas];
+//    [self makeDatas];
     [self makeBackGroundView];
     [self makeTableView];
     [self makeBottomBar];
@@ -342,12 +342,6 @@
     
     return cell;
 }
-
-
-
-
-
-
 
 #pragma mark - TableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

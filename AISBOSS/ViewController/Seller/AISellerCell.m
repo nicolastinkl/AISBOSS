@@ -14,7 +14,7 @@
 #import "AIScrollLabel.h"
 #import "UIImageView+WebCache.h"
 #import "AIOrderPreModel.h"
-
+#import "AITools.h"
 #define kMargin5    5
 
 #define kMargin10    10
@@ -536,7 +536,7 @@
     
     _sellerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
     _sellerIcon.image = [UIImage imageNamed:@"testHolder1"];
-    _sellerIcon.layer.cornerRadius = width/2;
+//    _sellerIcon.layer.cornerRadius = width/2;
     _sellerIcon.center = CGPointMake(width/4, 25);
     _sellerIcon.layer.masksToBounds = YES;
     _sellerIcon.contentMode = UIViewContentModeScaleAspectFit;
@@ -547,8 +547,9 @@
 - (void)makeSellerName
 {
     _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
-    _sellerName.font = [UIFont boldSystemFontOfSize:16];
+    _sellerName.font = [AITools myriadBoldWithSize:50/2.5];
     [_boardView addSubview:_sellerName];
+    
 }
 
 #pragma mark - 未读消息
@@ -568,7 +569,7 @@
 - (void)makePrice
 {
     _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:22 color:[UIColor whiteColor]];
-    _price.font = [UIFont boldSystemFontOfSize:22];
+    _price.font = [AITools myriadBoldWithSize:66/2.5];
     _price.textAlignment = NSTextAlignmentRight;
     [_boardView addSubview:_price];
 }
@@ -629,22 +630,26 @@
     _goodsIndicator.frame = CGRectMake(x, containerHeight + (containerHeight-kSmallImageSize)/2 - yoffset, kSmallImageSize, kSmallImageSize);
     [_boardView addSubview:_goodsIndicator];
     x += kSmallImageSize +kMargin5;
+    
     // class
-    NSString *class = @"Fitness Plan - ";
+    NSString *class = @"Fitness Plan -";
     CGSize classSize = [class sizeWithFontSize:kSmallFontSize forWidth:width];
     CGFloat y = containerHeight - yoffset;
     CGRect classFrame = CGRectMake(x, y, classSize.width, containerHeight);
-    _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:0.8 alpha:1]];
+    _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:1 alpha:1]];
     [_boardView addSubview:_goodsClass];
     x += classSize.width;
+    
     // name
     NSString *name = @"Fitness Plan Making";
     CGSize nameSize = [name sizeWithFont:[UIFont boldSystemFontOfSize:kSmallFontSize] forWidth:width];
+    
     CGRect nameFrame = CGRectMake(x, y, nameSize.width, containerHeight);
     _goodsName = [AIViews normalLabelWithFrame:nameFrame text:name fontSize:kSmallFontSize color:[UIColor whiteColor]];
-    _goodsName.font = [UIFont boldSystemFontOfSize:kSmallFontSize];
+    _goodsName.font = [AITools myriadBoldWithSize:33/2.5];
+    //[UIFont boldSystemFontOfSize:kSmallFontSize];
     [_boardView addSubview:_goodsName];
-
+    
 }
 
 

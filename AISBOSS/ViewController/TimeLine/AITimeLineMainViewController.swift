@@ -22,7 +22,6 @@ class AITimeLineMainViewController: UIViewController {
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
         
-        
         self.makeTopView()
         self.makeScrollView()
     }
