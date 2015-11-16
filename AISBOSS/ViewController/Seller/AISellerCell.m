@@ -637,7 +637,7 @@
     CGFloat y = containerHeight - yoffset;
     CGRect classFrame = CGRectMake(x, y, classSize.width, containerHeight);
     _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:1 alpha:1]];
-    [_boardView addSubview:_goodsClass]; 
+    [_boardView addSubview:_goodsClass];
     x += classSize.width;
     
     // name
@@ -666,6 +666,7 @@
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kStampHeight/2);
     _timestamp = [AIViews normalLabelWithFrame:frame text:@"14:00 Aug 2nd" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_timestamp];
+    _timestamp.font = [AITools myriadCondWithSize:33/2.5];
 }
 
 #pragma mark - 地点
@@ -681,6 +682,7 @@
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kSmallImageSize);
     _location = [AIViews normalLabelWithFrame:frame text:@"Fifth Avenue" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_location];
+    _location.font = [AITools myriadCondWithSize:33/2.5];
 }
 
 #pragma mark - 按钮
