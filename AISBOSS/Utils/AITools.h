@@ -62,6 +62,10 @@
 + (UIFont *) myriadSemiCondensedWithSize:(CGFloat)size;
 
 + (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size;
++ (UIFont *) myriadCondWithSize:(CGFloat)size;
++ (UIFont *) myriadBlackWithSize:(CGFloat)size;
++ (UIFont *) myriadLightWithSize:(CGFloat)size;
++ (UIFont *) myriadSemiboldSemiCnWithSize:(CGFloat)size;
 
 + (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size;
 

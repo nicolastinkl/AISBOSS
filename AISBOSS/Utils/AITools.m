@@ -253,6 +253,23 @@
     return [UIFont fontWithName:@"MyriadPro-SemiCn" size:size];
 }
 
++ (UIFont *) myriadBlackWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Black" size:size];
+}
++ (UIFont *) myriadLightWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Light" size:size];
+}
++ (UIFont *) myriadSemiboldSemiCnWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-SemiboldSemiCn" size:size];
+}
+
++ (UIFont *) myriadCondWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Cond" size:size];
+}
 + (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size
 {
     CGFloat displaySize;

@@ -547,7 +547,7 @@
 - (void)makeSellerName
 {
     _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10 * 2, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
-    _sellerName.font = [AITools myriadBoldWithSize:50/2.5];
+    _sellerName.font = [AITools myriadSemiboldSemiCnWithSize:50/2.5];
     [_boardView addSubview:_sellerName];
     
 }
@@ -569,7 +569,7 @@
 - (void)makePrice
 {
     _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:22 color:[UIColor whiteColor]];
-    _price.font = [AITools myriadBoldWithSize:66/2.5];
+    _price.font = [AITools myriadBlackWithSize:66/2.5];
     _price.textAlignment = NSTextAlignmentRight;
     [_boardView addSubview:_price];
 }
@@ -637,7 +637,7 @@
     CGFloat y = containerHeight - yoffset;
     CGRect classFrame = CGRectMake(x, y, classSize.width, containerHeight);
     _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:1 alpha:1]];
-    [_boardView addSubview:_goodsClass];
+    [_boardView addSubview:_goodsClass]; 
     x += classSize.width;
     
     // name
