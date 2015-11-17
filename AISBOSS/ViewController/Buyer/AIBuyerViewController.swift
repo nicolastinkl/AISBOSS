@@ -24,6 +24,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var originalViewCenter : CGPoint?
 
+    var didShow : Bool = false
     // MARK: - Constants
     
     
@@ -64,6 +65,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        if didShow {
+            return
+        }
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -74,7 +78,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         if (listData != nil && proposalData != nil) {
             self.parseListData(listData)
             self.parseProposalData(proposalData)
-            
+            didShow = true
         }
     }
     
