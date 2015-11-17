@@ -33,8 +33,6 @@
     
 }
 
-
-
 @property (nonatomic, strong) NSArray *sellerInfoList;
 
 @property (nonatomic, strong) AIOrderPreListModel *listModel;

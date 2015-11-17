@@ -54,7 +54,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         selfViewPoint = self.view.center
         self.makeBaseProperties()
         self.makeTableView()
-        self.makeBubbleView()
+        //self.makeBubbleView()
         self.makeTopBar()
         self.makeData()
         
@@ -252,8 +252,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             detailViewController?.view.center = realPoint
             // 开始动画
             
-            springWithCompletion(1.2, animations: {   () -> Void in
-                
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 //
                 detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
                 detailViewController?.view.center = self.originalViewCenter!
@@ -270,8 +269,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     
                     self.view.userInteractionEnabled = true
             })
-        
-        }
+            }
+//            springWithCompletion(1.2, animations: {   () -> Void in            }
         
     }
     

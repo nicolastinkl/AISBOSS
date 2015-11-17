@@ -222,6 +222,7 @@
 		93CB8D831BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7C1BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf */; };
 		93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */; };
 		93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */; };
+		93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D871BFB098600C41DDE /* AITestUI.xib */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
@@ -691,6 +692,7 @@
 		93CB8D7C1BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiboldSemiCn.otf"; sourceTree = "<group>"; };
 		93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiCn.otf"; sourceTree = "<group>"; };
 		93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
+		93CB8D871BFB098600C41DDE /* AITestUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITestUI.xib; sourceTree = "<group>"; };
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1182,6 +1184,7 @@
 			children = (
 				9370FCF31BA00F0600957361 /* MyPlayground.playground */,
 				936EDC961BCB4C4100ED160F /* AITest.swift */,
+				93CB8D871BFB098600C41DDE /* AITestUI.xib */,
 			);
 			path = Playgorund;
 			sourceTree = "<group>";
@@ -2013,6 +2016,7 @@
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
+				93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
 				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
 				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,

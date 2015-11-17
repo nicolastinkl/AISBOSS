@@ -49,9 +49,6 @@
 
 }
 
-
-
-
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
 {
     UIGraphicsBeginImageContext(newSize);
@@ -69,7 +66,6 @@
         if (completion) {
             completion();
         }
-        
     });
 }
 
