@@ -224,6 +224,7 @@
 		93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */; };
 		93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */; };
 		93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D871BFB098600C41DDE /* AITestUI.xib */; };
+		93CB8D8A1BFB23A900C41DDE /* UIBezierPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
@@ -695,6 +696,7 @@
 		93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiCn.otf"; sourceTree = "<group>"; };
 		93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
 		93CB8D871BFB098600C41DDE /* AITestUI.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITestUI.xib; sourceTree = "<group>"; };
+		93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBezierPageView.swift; sourceTree = "<group>"; };
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 			children = (
 				84DDA94D1BEDD56900CA5C83 /* cell */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
+				93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -2266,6 +2269,7 @@
 				849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */,
 				93B25A9B1B9D7A7B00CD1FEB /* AFSecurityPolicy.m in Sources */,
 				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
+				93CB8D8A1BFB23A900C41DDE /* UIBezierPageView.swift in Sources */,
 				8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */,
 				93FA1DFB1B9C306E009965C8 /* AIFavoritesServicesModel.swift in Sources */,
 				81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */,

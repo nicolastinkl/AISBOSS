@@ -349,6 +349,7 @@
                         <outlet property="OrderFromLabel" destination="H8s-Ef-iLH" id="JWH-Ux-swG"/>
                         <outlet property="backButton" destination="As3-0T-zUo" id="eUL-so-0HG"/>
                         <outlet property="bgLabel" destination="ctB-5W-Nxf" id="S2g-LU-elk"/>
+                        <outlet property="bottomView" destination="CPV-nq-FDD" id="ehp-Hm-3Bg"/>
                         <outlet property="contentLabel" destination="ALy-Am-rau" id="a8H-44-asd"/>
                         <outlet property="contentView" destination="Mv0-83-Itj" id="iwS-90-u3S"/>
                         <outlet property="infoButton" destination="qCN-P4-SJd" id="BRv-KZ-ymZ"/>

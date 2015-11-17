@@ -41,6 +41,7 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var infoButton: UIButton!
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var bottomView: UIView!
     // MARK: getters and setters
     
     // MARK: life cycle
@@ -59,7 +60,9 @@ class AIBuyerDetailViewController : UIViewController {
         
         // Make
         //makeBuyButton()
-        
+     
+        // Init Bottom Page white area
+//        InitBottomView()
     }
     
     func AddImageView(){
@@ -130,6 +133,16 @@ class AIBuyerDetailViewController : UIViewController {
         self.view.addSubview(button)
     }
     
+    func InitBottomView () {
+        let bzView = UIBezierPageView(frame: CGRectMake(0,0,200,50))
+        bzView.backgroundColor = UIColor.grayColor()
+        bzView.refershView(6)
+        //bzView.center = (self.bottomView.subviews.first as! UIImageView).center
+        self.bottomView.addSubview(bzView)
+        
+    }
+    
+    
     func showNextViewController () {
      
         let vc = AIServiceContentViewController()
@@ -147,6 +160,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text =  dataSource?.proposal_desc
+        self.OrderFromLabel.text = "From"
         
         if NSString(string: name).containsString("Pregnancy") {
             // 处理字体
@@ -291,6 +305,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
                 let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
                 serviceView = middleView
             }
+            
         }
         
         serviceView.frame = CGRectMake(offset, 0, width, 200)
