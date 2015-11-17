@@ -285,6 +285,7 @@
     [_progressBar setHidden:model == nil];
     if (model.percentage <= 0){
         [_progressBar setHidden:YES];
+        return;
     }
     
     if (!model) {
