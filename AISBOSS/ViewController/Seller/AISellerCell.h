@@ -20,8 +20,8 @@ typedef NS_ENUM(NSInteger, SellerButtonType) {
     SellerButtonTypeNone = 0,
     SellerButtonTypePhone = 1,       //打电话
     SellerButtonTypeCapture = 2,     //扫描
-    SellerButtonTypeRecord = 3,      //录音
-    SellerButtonTypeOpposite = 4,    //查看详情
+    SellerButtonTypeOpposite = 3,    //查看详情
+    SellerButtonTypeRecord = 4,      //录音
     SellerButtonTypeLocate = 8,      //定位
     
     };
