@@ -285,10 +285,6 @@
 
     // 设置仅有参数的情况下，就不显示进度条
     [_progressBar setHidden:model.percentage <= 0];
-
-    if (model.percentage <= 0){
-        [_progressBar setHidden:YES];
-    }
     
     if (!model) {
         return;
