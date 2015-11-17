@@ -61,9 +61,8 @@
 - (void)setProgressModel:(AIProgressModel *)model
 {
     
-    [self setHidden:model == nil];
-    if (!model) {
-        
+    [self setHidden:model.percentage <= 0];
+    if (!model || model.percentage <= 0) {
         return;
     }
     
