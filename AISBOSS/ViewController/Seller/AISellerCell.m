@@ -283,6 +283,10 @@
 - (void)setProgressBarModel:(AIProgressModel *)model
 {
     [_progressBar setHidden:model == nil];
+    if (model.percentage <= 0){
+        [_progressBar setHidden:YES];
+    }
+    
     if (!model) {
         return;
     }
@@ -562,6 +566,7 @@
     _messageNum.clipsToBounds = YES;
     _messageNum.backgroundColor = [UIColor redColor];
     [_boardView addSubview:_messageNum];
+#warning hidden unread message number.
     [_messageNum setHidden:YES];
 }
 
