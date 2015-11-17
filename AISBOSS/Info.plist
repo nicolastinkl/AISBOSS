@@ -35,6 +35,10 @@
 		<string>MyriadPro-LightSemiCn.otf</string>
 		<string>MyriadPro-LightSemiExt.otf</string>
 		<string>MyriadPro-SemiCn.otf</string>
+		<string>MyriadPro-Black.otf</string>
+		<string>MyriadPro-Cond.otf</string>
+		<string>MyriadPro-SemiboldSemiCn.otf</string>
+		<string>MyriadPro-Light.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

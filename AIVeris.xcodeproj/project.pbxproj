@@ -26,7 +26,6 @@
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
-		81A79C011BE068AE00E05F58 /* MyriadPro-SemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81A79C001BE068AE00E05F58 /* MyriadPro-SemiCn.otf */; };
 		81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092611BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m */; };
 		81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092631BAFAC0D003FFF35 /* NSData+ImageContentType.m */; };
 		81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092651BAFAC0D003FFF35 /* SDImageCache.m */; };
@@ -52,9 +51,6 @@
 		81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE61BB29F7900BE2BA2 /* UIScrollView+MJExtension.m */; };
 		81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */; };
 		81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */; };
-		81DC18E31BD5EBA70081D131 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */; };
-		81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */; };
-		81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */; };
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
 		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
@@ -218,6 +214,14 @@
 		93C33F331B9C27B1007BF506 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F321B9C27B1007BF506 /* CoreText.framework */; };
 		93C33F371B9C2813007BF506 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F361B9C2813007BF506 /* QuartzCore.framework */; };
 		93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C33F381B9C2825007BF506 /* SystemConfiguration.framework */; };
+		93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D771BF9F41C00C41DDE /* MyriadPro-Black.otf */; };
+		93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D781BF9F41C00C41DDE /* MyriadPro-Bold.otf */; };
+		93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D791BF9F41C00C41DDE /* MyriadPro-Light.otf */; };
+		93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7A1BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf */; };
+		93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7B1BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf */; };
+		93CB8D831BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7C1BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf */; };
+		93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */; };
+		93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
@@ -360,7 +364,6 @@
 		81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerBubbleModel.m; path = Buyer/AIBuyerBubbleModel.m; sourceTree = "<group>"; };
 		81A5BE531BD87D2900019802 /* AIBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubble.h; path = Buyer/AIBubble.h; sourceTree = "<group>"; };
 		81A5BE541BD87D2900019802 /* AIBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubble.m; path = Buyer/AIBubble.m; sourceTree = "<group>"; };
-		81A79C001BE068AE00E05F58 /* MyriadPro-SemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiCn.otf"; sourceTree = "<group>"; };
 		81C092601BAFAC0D003FFF35 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81C092611BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81C092621BAFAC0D003FFF35 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -411,9 +414,6 @@
 		81D83AE81BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		81D83AE91BB29F7900BE2BA2 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
-		81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiCn.otf"; sourceTree = "<group>"; };
-		81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiExt.otf"; sourceTree = "<group>"; };
 		81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIBuyerViewController.swift; path = Buyer/AIBuyerViewController.swift; sourceTree = "<group>"; };
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
@@ -683,6 +683,14 @@
 		93C33F341B9C27BA007BF506 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = text; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		93C33F361B9C2813007BF506 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		93C33F381B9C2825007BF506 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		93CB8D771BF9F41C00C41DDE /* MyriadPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Black.otf"; sourceTree = "<group>"; };
+		93CB8D781BF9F41C00C41DDE /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		93CB8D791BF9F41C00C41DDE /* MyriadPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Light.otf"; sourceTree = "<group>"; };
+		93CB8D7A1BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiCn.otf"; sourceTree = "<group>"; };
+		93CB8D7B1BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-LightSemiExt.otf"; sourceTree = "<group>"; };
+		93CB8D7C1BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiboldSemiCn.otf"; sourceTree = "<group>"; };
+		93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiCn.otf"; sourceTree = "<group>"; };
+		93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1003,10 +1011,14 @@
 		81DC18DF1BD5EBA70081D131 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				81A79C001BE068AE00E05F58 /* MyriadPro-SemiCn.otf */,
-				81DC18E01BD5EBA70081D131 /* MyriadPro-Bold.otf */,
-				81DC18E11BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf */,
-				81DC18E21BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf */,
+				93CB8D771BF9F41C00C41DDE /* MyriadPro-Black.otf */,
+				93CB8D781BF9F41C00C41DDE /* MyriadPro-Bold.otf */,
+				93CB8D791BF9F41C00C41DDE /* MyriadPro-Light.otf */,
+				93CB8D7A1BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf */,
+				93CB8D7B1BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf */,
+				93CB8D7C1BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf */,
+				93CB8D7D1BF9F41C00C41DDE /* MyriadPro-SemiCn.otf */,
+				93CB8D851BF9F57300C41DDE /* MyriadPro-Cond.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1977,6 +1989,7 @@
 			files = (
 				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
+				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
 				934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */,
 				842FC8661BDA437C00A0517C /* customerProposalList.json in Resources */,
@@ -1984,13 +1997,13 @@
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,
 				93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */,
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
+				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
 				84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */,
-				81A79C011BE068AE00E05F58 /* MyriadPro-SemiCn.otf in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
@@ -1999,16 +2012,18 @@
 				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
+				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
+				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
 				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
+				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
-				81DC18E31BD5EBA70081D131 /* MyriadPro-Bold.otf in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
@@ -2018,6 +2033,7 @@
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
 				845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */,
+				93CB8D831BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf in Resources */,
 				81D83AEB1BB29F7900BE2BA2 /* MJRefresh.bundle in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
 				93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */,
@@ -2025,20 +2041,20 @@
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
+				93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */,
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
+				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
 				843F890E1BF0B88700BFC57E /* FlightServiceView.xib in Resources */,
-				81DC18E51BD5EBA70081D131 /* MyriadPro-LightSemiExt.otf in Resources */,
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
 				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				93B25A611B9D7A1D00CD1FEB /* sdk_weibo_logo@2x.png in Resources */,
-				81DC18E41BD5EBA70081D131 /* MyriadPro-LightSemiCn.otf in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,

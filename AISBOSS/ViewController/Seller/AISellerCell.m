@@ -14,7 +14,7 @@
 #import "AIScrollLabel.h"
 #import "UIImageView+WebCache.h"
 #import "AIOrderPreModel.h"
-
+#import "AITools.h"
 #define kMargin5    5
 
 #define kMargin10    10
@@ -282,8 +282,14 @@
 
 - (void)setProgressBarModel:(AIProgressModel *)model
 {
+
     // 设置仅有参数的情况下，就不显示进度条
     [_progressBar setHidden:model.percentage <= 0];
+
+    if (model.percentage <= 0){
+        [_progressBar setHidden:YES];
+    }
+    
     if (!model) {
         return;
     }
@@ -529,7 +535,7 @@
 #pragma mark - 头像
 - (void)makeSellerIcon
 {
-    CGFloat width = sqrt(2*50*50);
+    CGFloat width = 50;////sqrt(2*50*50);
     _iconContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width*3/4, 50)];
     _iconContainer.clipsToBounds = YES;
     [_boardView addSubview:_iconContainer];
@@ -537,19 +543,20 @@
     
     _sellerIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
     _sellerIcon.image = [UIImage imageNamed:@"testHolder1"];
-    _sellerIcon.layer.cornerRadius = width/2;
-    _sellerIcon.center = CGPointMake(width/4, 25);
+//    _sellerIcon.layer.cornerRadius = width/2;
+    _sellerIcon.center = CGPointMake(width/2, 25);
     _sellerIcon.layer.masksToBounds = YES;
-    _sellerIcon.contentMode = UIViewContentModeScaleAspectFit;
-    [_iconContainer addSubview:_sellerIcon];
+    _sellerIcon.contentMode = UIViewContentModeScaleAspectFill;
+    [_boardView addSubview:_sellerIcon];
 }
 
 #pragma mark - 姓名
 - (void)makeSellerName
 {
-    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
-    _sellerName.font = [UIFont boldSystemFontOfSize:16];
+    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10 * 2, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
+    _sellerName.font = [AITools myriadSemiboldSemiCnWithSize:50/2.5];
     [_boardView addSubview:_sellerName];
+    
 }
 
 #pragma mark - 未读消息
@@ -562,6 +569,7 @@
     _messageNum.clipsToBounds = YES;
     _messageNum.backgroundColor = [UIColor redColor];
     [_boardView addSubview:_messageNum];
+#warning hidden unread message number.
     [_messageNum setHidden:YES];
 }
 
@@ -569,7 +577,7 @@
 - (void)makePrice
 {
     _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:22 color:[UIColor whiteColor]];
-    _price.font = [UIFont boldSystemFontOfSize:22];
+    _price.font = [AITools myriadBlackWithSize:66/2.5];
     _price.textAlignment = NSTextAlignmentRight;
     [_boardView addSubview:_price];
 }
@@ -612,7 +620,7 @@
     //
     CGSize serviceSize = [service sizeWithFontSize:kSmallFontSize+2 forWidth:CGRectGetWidth(_boardView.frame)];
     serviceFrame.origin.x = CGRectGetMaxX(_goodsClass.frame);
-    serviceFrame.size.width = serviceSize.width;
+    serviceFrame.size.width = serviceSize.width + 300;
     _goodsName.frame = serviceFrame;
     _goodsName.text = service;
     
@@ -621,7 +629,7 @@
 - (void)makeGoodsInfoView
 {
     CGFloat containerHeight = CGRectGetHeight(_iconContainer.frame) / 2;
-    CGFloat x = CGRectGetMaxX(_iconContainer.frame) + kMargin10;
+    CGFloat x = CGRectGetMaxX(_iconContainer.frame) + kMargin10*2;
     CGFloat yoffset = 1.5;
     CGFloat width = CGRectGetWidth(_boardView.frame);
     // indicator
@@ -630,22 +638,26 @@
     _goodsIndicator.frame = CGRectMake(x, containerHeight + (containerHeight-kSmallImageSize)/2 - yoffset, kSmallImageSize, kSmallImageSize);
     [_boardView addSubview:_goodsIndicator];
     x += kSmallImageSize +kMargin5;
+    
     // class
-    NSString *class = @"Fitness Plan - ";
+    NSString *class = @"Fitness Plan -";
     CGSize classSize = [class sizeWithFontSize:kSmallFontSize forWidth:width];
     CGFloat y = containerHeight - yoffset;
     CGRect classFrame = CGRectMake(x, y, classSize.width, containerHeight);
-    _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:0.8 alpha:1]];
+    _goodsClass = [AIViews normalLabelWithFrame:classFrame text:class fontSize:kSmallFontSize color:[UIColor colorWithWhite:1 alpha:1]];
     [_boardView addSubview:_goodsClass];
     x += classSize.width;
+    
     // name
     NSString *name = @"Fitness Plan Making";
     CGSize nameSize = [name sizeWithFont:[UIFont boldSystemFontOfSize:kSmallFontSize] forWidth:width];
+    
     CGRect nameFrame = CGRectMake(x, y, nameSize.width, containerHeight);
     _goodsName = [AIViews normalLabelWithFrame:nameFrame text:name fontSize:kSmallFontSize color:[UIColor whiteColor]];
-    _goodsName.font = [UIFont boldSystemFontOfSize:kSmallFontSize];
+    _goodsName.font = [AITools myriadBoldWithSize:33/2.5];
+    //[UIFont boldSystemFontOfSize:kSmallFontSize];
     [_boardView addSubview:_goodsName];
-
+    
 }
 
 
@@ -662,6 +674,7 @@
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kStampHeight/2);
     _timestamp = [AIViews normalLabelWithFrame:frame text:@"14:00 Aug 2nd" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_timestamp];
+    _timestamp.font = [AITools myriadCondWithSize:33/2.5];
 }
 
 #pragma mark - 地点
@@ -677,6 +690,7 @@
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kSmallImageSize);
     _location = [AIViews normalLabelWithFrame:frame text:@"Fifth Avenue" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_location];
+    _location.font = [AITools myriadCondWithSize:33/2.5];
 }
 
 #pragma mark - 按钮

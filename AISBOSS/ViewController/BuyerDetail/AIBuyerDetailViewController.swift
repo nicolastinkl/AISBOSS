@@ -291,7 +291,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
                 let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
                 serviceView = middleView
             }
-
         }
         
         serviceView.frame = CGRectMake(offset, 0, width, 200)
