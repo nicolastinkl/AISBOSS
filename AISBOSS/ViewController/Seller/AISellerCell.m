@@ -283,13 +283,13 @@
 - (void)setProgressBarModel:(AIProgressModel *)model
 {
     [_progressBar setHidden:model == nil];
-    if (model.percentage <= 0){
+    /**if (model.percentage <= 0){
         [_progressBar setHidden:YES];
         return;
-    }
+    }*/
 
     // 设置仅有参数的情况下，就不显示进度条
-    //[_progressBar setHidden:model.percentage <= 0];
+    [_progressBar setHidden:model.percentage <= 0];
     
     if (!model) {
         return;
@@ -386,8 +386,8 @@
             
         case SellerButtonTypeRecord:
         {
-            [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_Locate"] forState:UIControlStateNormal];
-            [_actionButton setImage:[UIImage imageNamed:@"Btn_Hig_Locate"] forState:UIControlStateHighlighted];
+            [_actionButton setImage:[UIImage imageNamed:@"Btn_Nor_locate_1"] forState:UIControlStateNormal];
+            [_actionButton setImage:[UIImage imageNamed:@"Btn_Hig_locate_1"] forState:UIControlStateHighlighted];
             [self addTargetForButtonType:SellerButtonTypeLocate];
         }
             break;
