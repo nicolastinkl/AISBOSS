@@ -689,6 +689,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         [self addSubview:newView];
         bubble.center = CGPointMake(newView.width/2, newView.width/2);
         
+        
         /** 这里处理随机Pop动画*/
         float force = 0.4f;
         float duration = 1.0f;
