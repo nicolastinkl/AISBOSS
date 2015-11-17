@@ -52,14 +52,32 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         selfViewPoint = self.view.center
-        self.makeData()
         self.makeBaseProperties()
         self.makeTableView()
         //self.makeBubbleView()
         self.makeTopBar()
+        self.makeData()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "NSNotiryAricToNomalStatus", name: AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let listData : ProposalOrderListModel? = appDelegate.buyerListData
+        
+        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
+        
+        if (listData != nil && proposalData != nil) {
+            self.parseListData(listData)
+            self.parseProposalData(proposalData)
+            
+        }
+    }
+    
     
     deinit{
         tableViewCellCache.removeAll()
@@ -164,7 +182,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         {
             bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
             tableView?.tableHeaderView = bubbleView
-            
+        
             // add bubbles
             
             self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
@@ -483,13 +501,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             topBar.backgroundColor = UIColor.clearColor()
         }
     }
-
-    func makeData() {
-        let bdk = BDKProposalService()
-        // 列表数据
-        bdk.getProposalList({ (responseData) -> Void in
-            
-            for proposal in responseData.proposal_order_list {
+    
+    
+    func parseListData(listData : ProposalOrderListModel?) {
+        
+        if let data = listData {
+            for proposal in data.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalOrderModel)
                 self.dataSource.append(wrapModel)
             }
@@ -501,19 +518,41 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.tableFooterView = view
             }
             
-            self.tableView?.reloadData()
+            self.tableView.reloadData()
+        }
+    }
+    
+    
+    func parseProposalData(proposalData : AIProposalPopListModel?) {
+        if let pops = proposalData!.proposal_list {
+            if pops.count > 0 {
+                self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                
+                self.makeBubbleView()
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func makeData() {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let listData : ProposalOrderListModel? = appDelegate.buyerListData
+        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
+        if (listData != nil && proposalData != nil) {
+            return
+        }
+
+        let bdk = BDKProposalService()
+        // 列表数据
+        bdk.getProposalList({ (responseData) -> Void in
+            
+            self.parseListData(responseData)
             }) { (errType, errDes) -> Void in
         }
         
         bdk.getPoposalBubbles({ (responseData) -> Void in
-            if let pops = responseData.proposal_list {
-                if pops.count > 0 {
-                    self.dataSourcePop = pops as! [AIBuyerBubbleModel]
-                    
-                    self.makeBubbleView()
-                    self.tableView?.reloadData()
-                }
-            }
+            self.parseProposalData(responseData)
             
             }) { (errType, errDes) -> Void in
         }        

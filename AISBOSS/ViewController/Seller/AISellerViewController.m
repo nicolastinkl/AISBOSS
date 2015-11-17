@@ -19,6 +19,7 @@
 #import "MJRefresh.h"
 #import "AIOrderPreModel.h"
 #import "UIImageView+WebCache.h"
+#import "Veris-Swift.h"
 
 #define kTablePadding      15
 
@@ -52,6 +53,7 @@
     [self makeTableView];
     [self makeBottomBar];
     [self addRefreshActions];
+    [self preProcess];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +80,21 @@
 }
 */
 
+- (void)preProcess
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (delegate.sellerData) {
+        self.listModel = [[AIOrderPreListModel alloc] initWithDictionary:delegate.sellerData error:nil];
+        [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
+    }
+    else
+    {
+        [self.tableView headerBeginRefreshing];
+    }
+    
+}
 
 - (AIMessage *)getServiceListWithUserID:(NSInteger)userID role:(NSInteger)role
 {
@@ -145,7 +162,7 @@
         
     }];
     
-    [self.tableView headerBeginRefreshing];
+    
 }
 
 - (void)makeDatas

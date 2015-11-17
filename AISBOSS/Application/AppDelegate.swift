@@ -11,7 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? 
+    var window: UIWindow?
+    //
+    var didFinishGetSellerData : Bool = false
+    var didFinishGetBuyerListData : Bool = false
+    var didFinishGetBuyerProposalData : Bool = false
+    
+    //
+    
+    var sellerData : NSDictionary?
+    var buyerListData : ProposalOrderListModel?
+    var buyerProposalData : AIProposalPopListModel?
+    //
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -26,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         initNetEngine()
-        //创建Root
-        let root = AIRootViewController()
+        
         
         // 设置状态栏隐藏
         application.statusBarHidden = true
@@ -35,11 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置状态栏高亮
         application.statusBarStyle = UIStatusBarStyle.LightContent
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        //创建导航控制器
-        let nav = UINavigationController(rootViewController:root)
-        nav.navigationBarHidden = true
-        self.window?.rootViewController = nav
-        self.window?.makeKeyAndVisible()
+        
+        
+        fetchPreSellerAndBuyerData()
           
         return true
 
@@ -79,6 +87,93 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
 
+    func showRootViewController() {
+        //创建Root
+        let root = AIRootViewController()
+        //创建导航控制器
+        let nav = UINavigationController(rootViewController:root)
+        nav.navigationBarHidden = true
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+    }
+    
+    
+    func fetchBuyerData() {
+        let bdk = BDKProposalService()
+        // 列表数据
+        bdk.getProposalList({ (responseData) -> Void in
+            self.didFinishGetBuyerListData = true
+            self.buyerListData = responseData
+            
+            if (self.didFinishGetSellerData && self.didFinishGetBuyerProposalData) {
+                self.showRootViewController()
+            }
+            
+            }) { (errType, errDes) -> Void in
+                
+                self.didFinishGetBuyerListData = true
+                self.buyerListData = nil
+                if (self.didFinishGetSellerData && self.didFinishGetBuyerProposalData) {
+                    self.showRootViewController()
+                }
+        }
+        
+        bdk.getPoposalBubbles({ (responseData) -> Void in
+            self.didFinishGetBuyerProposalData = true
+            self.buyerProposalData = responseData
+            
+            if (self.didFinishGetSellerData && self.didFinishGetBuyerListData) {
+                self.showRootViewController()
+            }
+            
+            }) { (errType, errDes) -> Void in
+                
+                self.didFinishGetBuyerProposalData = true
+                self.buyerProposalData = nil
+                if (self.didFinishGetSellerData && self.didFinishGetBuyerListData) {
+                    self.showRootViewController()
+                }
+        }
+    }
+    
+    
+    func fetchSellerData () {
+        let dic = ["data": ["order_state": "0","order_role": "2"],
+            "desc": ["data_mode": "0","digest": ""]]
+        
+        let message : AIMessage = AIMessage()
+        message.url = "http://171.221.254.231:3000/querySellerOrderList"
+        message.body.addEntriesFromDictionary(dic)
+        message.header.setObject("0&0&200000001630&0", forKey: "HttpQuery")
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            self.didFinishGetSellerData = true
+            self.sellerData = response as? NSDictionary
+            
+            if (self.didFinishGetBuyerListData && self.didFinishGetBuyerProposalData) {
+                self.showRootViewController()
+            }
+            
+            }) { (AINetError, String) -> Void in
+                self.didFinishGetSellerData = true
+                self.sellerData = nil
+                if (self.didFinishGetBuyerListData && self.didFinishGetBuyerProposalData) {
+                    self.showRootViewController()
+                }
+        }
+    }
+    
+    func fetchPreSellerAndBuyerData () {
+        
+        
+        
+        // Get Seller
+        fetchSellerData()
+
+        // Get Buyer
+        fetchBuyerData()
+        
+    }
+    
 
 }
 
