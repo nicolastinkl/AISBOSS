@@ -54,6 +54,10 @@
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
 		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
+		840C5A331BFB404B00C3AF95 /* SimpleServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840C5A321BFB404B00C3AF95 /* SimpleServiceContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		840C5A351BFB444100C3AF95 /* SimpleServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C5A341BFB444100C3AF95 /* SimpleServiceContainer.swift */; settings = {ASSET_TAGS = (); }; };
+		840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */; settings = {ASSET_TAGS = (); }; };
+		840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */; settings = {ASSET_TAGS = (); }; };
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
@@ -419,6 +423,10 @@
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
 		81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AITimeLineMainViewController.swift; path = TimeLine/AITimeLineMainViewController.swift; sourceTree = "<group>"; };
+		840C5A321BFB404B00C3AF95 /* SimpleServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceContainer.xib; sourceTree = "<group>"; };
+		840C5A341BFB444100C3AF95 /* SimpleServiceContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceContainer.swift; sourceTree = "<group>"; };
+		840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettingView.xib; sourceTree = "<group>"; };
+		840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSettingView.swift; sourceTree = "<group>"; };
 		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
 		8423E5631BB4E1A8006DC73B /* AIOrderPreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderPreModel.h; sourceTree = "<group>"; };
 		8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderPreModel.m; sourceTree = "<group>"; };
@@ -1110,6 +1118,8 @@
 		84DDA94D1BEDD56900CA5C83 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				840C5A321BFB404B00C3AF95 /* SimpleServiceContainer.xib */,
+				840C5A341BFB444100C3AF95 /* SimpleServiceContainer.swift */,
 				84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */,
 				84DDA94E1BEDD58300CA5C83 /* ServiceContainerView.swift */,
 				84DDA9501BEDD8A300CA5C83 /* TopServiceContainerView.swift */,
@@ -1122,6 +1132,8 @@
 				84DDA94B1BEC67BB00CA5C83 /* ServiceDetailView.swift */,
 				845BE00F1BE8CEC60001716A /* TransportService.swift */,
 				845BE0111BE8D7490001716A /* AccommodationService.swift */,
+				840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */,
+				840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -2007,6 +2019,8 @@
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
 				84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */,
+				840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */,
+				840C5A331BFB404B00C3AF95 /* SimpleServiceContainer.xib in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
@@ -2213,6 +2227,7 @@
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
+				840C5A351BFB444100C3AF95 /* SimpleServiceContainer.swift in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
@@ -2343,6 +2358,7 @@
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				81C092861BAFAC0D003FFF35 /* SDWebImageDownloader.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
+				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				81C092891BAFAC0D003FFF35 /* SDWebImagePrefetcher.m in Sources */,
