@@ -72,6 +72,8 @@
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
 		843F890E1BF0B88700BFC57E /* FlightServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843F890D1BF0B88700BFC57E /* FlightServiceView.xib */; };
 		843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */; };
+		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; settings = {ASSET_TAGS = (); }; };
+		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; settings = {ASSET_TAGS = (); }; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
@@ -443,6 +445,8 @@
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
 		843F890D1BF0B88700BFC57E /* FlightServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightServiceView.xib; sourceTree = "<group>"; };
 		843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightServiceView.swift; sourceTree = "<group>"; };
+		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
+		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
@@ -1136,6 +1140,8 @@
 				845BE0111BE8D7490001716A /* AccommodationService.swift */,
 				840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */,
 				840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */,
+				844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */,
+				844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -2035,6 +2041,7 @@
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
 				93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
+				844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */,
 				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
 				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
@@ -2303,6 +2310,7 @@
 				93FA1E051B9C306E009965C8 /* ServiceModel.swift in Sources */,
 				93B25A9D1B9D7A7B00CD1FEB /* AFURLRequestSerialization.m in Sources */,
 				93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */,
+				844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */,
 				81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */,
 				8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */,
 				93B25A3F1B9D796F00CD1FEB /* AINetEngine.m in Sources */,

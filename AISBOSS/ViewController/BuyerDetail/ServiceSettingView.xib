@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CwZ-dU-g1g" userLabel="msgIcon">
-                    <rect key="frame" x="8" y="8" width="20" height="20"/>
+                    <rect key="frame" x="0.0" y="8" width="20" height="20"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="Vnw-uy-qft"/>
@@ -20,7 +20,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ld-5Z-CXv" userLabel="message">
-                    <rect key="frame" x="36" y="8" width="456" height="21"/>
+                    <rect key="frame" x="28" y="8" width="464" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Zkt-Pg-aQX"/>
@@ -30,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h50-eb-6J9">
-                    <rect key="frame" x="36" y="37" width="418" height="32"/>
+                    <rect key="frame" x="28" y="37" width="464" height="32"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p8R-zM-1Lu">
@@ -40,34 +40,23 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWI-Ca-4ql" userLabel="state">
-                    <rect key="frame" x="462" y="38" width="30" height="30"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="1Jj-re-fgh"/>
-                        <constraint firstAttribute="width" constant="30" id="4y9-Wy-dPQ"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <animations/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="h50-eb-6J9" secondAttribute="trailing" constant="8" id="2qX-AN-626"/>
                 <constraint firstAttribute="bottom" secondItem="h50-eb-6J9" secondAttribute="bottom" constant="11" id="4IO-3O-lgy"/>
                 <constraint firstItem="h50-eb-6J9" firstAttribute="top" secondItem="2ld-5Z-CXv" secondAttribute="bottom" constant="8" id="9C8-xW-GJC"/>
-                <constraint firstItem="CwZ-dU-g1g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Idx-6I-MAn"/>
+                <constraint firstItem="CwZ-dU-g1g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Idx-6I-MAn"/>
                 <constraint firstAttribute="trailing" secondItem="2ld-5Z-CXv" secondAttribute="trailing" constant="8" id="Kqw-Yc-mRm"/>
                 <constraint firstItem="2ld-5Z-CXv" firstAttribute="leading" secondItem="CwZ-dU-g1g" secondAttribute="trailing" constant="8" id="Nmo-OS-ugy"/>
-                <constraint firstAttribute="trailing" secondItem="qWI-Ca-4ql" secondAttribute="trailing" constant="8" id="RSf-HJ-pVk"/>
                 <constraint firstItem="h50-eb-6J9" firstAttribute="leading" secondItem="2ld-5Z-CXv" secondAttribute="leading" id="Ufa-SH-BLR"/>
-                <constraint firstAttribute="bottom" secondItem="qWI-Ca-4ql" secondAttribute="bottom" constant="12" id="a9a-Jj-M0y"/>
                 <constraint firstItem="CwZ-dU-g1g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jMh-F1-MZF"/>
                 <constraint firstItem="2ld-5Z-CXv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="nIh-nF-AXU"/>
-                <constraint firstItem="qWI-Ca-4ql" firstAttribute="leading" secondItem="h50-eb-6J9" secondAttribute="trailing" constant="8" id="sT8-ga-nvb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="h50-eb-6J9" id="hue-TE-Tgg"/>
                 <outlet property="message" destination="2ld-5Z-CXv" id="7vQ-XC-Q5y"/>
-                <outlet property="state" destination="qWI-Ca-4ql" id="SyN-AS-z3D"/>
             </connections>
             <point key="canvasLocation" x="139" y="289"/>
         </view>

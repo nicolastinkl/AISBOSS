@@ -307,7 +307,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 //            }
 //        }
         
-        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceContainer", owner: self, options: nil).first as! SimpleServiceContainer
+        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         
         serviceView.frame = CGRectMake(offset, 0, width, 200)
         serviceView.loadData(serviceDataModel)
