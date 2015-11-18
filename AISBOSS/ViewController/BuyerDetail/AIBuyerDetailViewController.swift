@@ -285,28 +285,29 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         let offset:CGFloat = 20.0
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
-        var serviceView: ServiceContainerView!
+//        var serviceView: ServiceContainerView!
+//        
+//        if dataSource.service_list.count == 1 {
+//            let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+//            singleServiceView.isSingle = true
+//            singleServiceView.isPrimeService(true)
+//            serviceView = singleServiceView
+//        } else {
+//            if indexPath.row == 0 {
+//                let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+//                topServiceView.isPrimeService(true)
+//                serviceView = topServiceView
+//            } else if indexPath.row == dataSource.service_list.count - 1 {
+//                let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
+//                serviceView = bottomView
+//
+//            } else {
+//                let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
+//                serviceView = middleView
+//            }
+//        }
         
-        if dataSource.service_list.count == 1 {
-            let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-            singleServiceView.isSingle = true
-            singleServiceView.isPrimeService(true)
-            serviceView = singleServiceView
-        } else {
-            if indexPath.row == 0 {
-                let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-                topServiceView.isPrimeService(true)
-                serviceView = topServiceView
-            } else if indexPath.row == dataSource.service_list.count - 1 {
-                let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
-                serviceView = bottomView
-
-            } else {
-                let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
-                serviceView = middleView
-            }
-            
-        }
+        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceContainer", owner: self, options: nil).first as! SimpleServiceContainer
         
         serviceView.frame = CGRectMake(offset, 0, width, 200)
         serviceView.loadData(serviceDataModel)
