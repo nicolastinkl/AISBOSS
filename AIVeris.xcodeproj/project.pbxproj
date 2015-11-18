@@ -225,6 +225,8 @@
 		93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D871BFB098600C41DDE /* AITestUI.xib */; };
 		93CB8D8A1BFB23A900C41DDE /* UIBezierPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
+		93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */; };
+		93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
@@ -698,6 +700,8 @@
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGNAutoLayout.swift; sourceTree = "<group>"; };
+		93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPageBueryViewController.swift; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
@@ -1134,6 +1138,7 @@
 				84DDA94D1BEDD56900CA5C83 /* cell */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
 				93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */,
+				93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -1731,6 +1736,7 @@
 				93C33F141B9BEAFE007BF506 /* UIImage+Effect.m */,
 				93C33F151B9BEAFE007BF506 /* UIViewControllerUtils.swift */,
 				939F49F61BDDD92600D07598 /* UIImageUtils.swift */,
+				93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2170,6 +2176,7 @@
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
 				939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */,
+				93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
@@ -2217,6 +2224,7 @@
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
+				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,

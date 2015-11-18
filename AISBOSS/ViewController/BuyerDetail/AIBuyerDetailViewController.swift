@@ -95,9 +95,17 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func targetDetail(){
+        /**
         let vc = AIServiceContentViewController()
         vc.serviceContentType = AIServiceContentType.MusicTherapy
         self.showViewController(vc, sender: self)
+        */
+        
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+        
+        viewController.bubleModelArray = [bubleModel!,bubleModel!,bubleModel!]
+        self.showViewController(viewController, sender: self)
+        
     }
     
     func targetDetail2(){
