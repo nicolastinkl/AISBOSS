@@ -50,22 +50,34 @@
     return self;
 }
 
+- (instancetype)initWithFrameAndImage:(CGRect)frame numberOfStars:(NSInteger)numberOfStars foreground:(NSString *)foregroundImageName background:(NSString *)backgroundImageName {
+    if (self = [super initWithFrame:frame]) {
+        _numberOfStars = numberOfStars;
+        [self buildDataAndUI];
+    }
+    return self;
+}
+
 #pragma mark - Private Methods
 
 - (void)buildDataAndUI {
+    [self buildDataAndUIByForegroundImage:FOREGROUND_STAR_IMAGE_NAME background:BACKGROUND_STAR_IMAGE_NAME];
+}
+
+- (void)buildDataAndUIByForegroundImage:(NSString *)foregroundImageName background:(NSString *)backgroundImageName {
     _scorePercent = 1;
     _hasAnimation = YES;
     _allowIncompleteStar = YES;
-
-    self.foregroundStarView = [self createStarViewWithImage:FOREGROUND_STAR_IMAGE_NAME];
-    self.backgroundStarView = [self createStarViewWithImage:BACKGROUND_STAR_IMAGE_NAME];
+    
+    self.foregroundStarView = [self createStarViewWithImage:foregroundImageName];
+    self.backgroundStarView = [self createStarViewWithImage:backgroundImageName];
     
     [self addSubview:self.backgroundStarView];
     [self addSubview:self.foregroundStarView];
     
-//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTapRateView:)];
-//    tapGesture.numberOfTapsRequired = 1;
-//    [self addGestureRecognizer:tapGesture];
+    //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTapRateView:)];
+    //    tapGesture.numberOfTapsRequired = 1;
+    //    [self addGestureRecognizer:tapGesture];
 }
 
 - (void)userTapRateView:(UITapGestureRecognizer *)gesture {

@@ -323,7 +323,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let height = cellHeights[indexPath.row] {
-            return height
+            return height + 10
         } else {
             return 1
         }
