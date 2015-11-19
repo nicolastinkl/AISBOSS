@@ -15,22 +15,29 @@ class ServiceSettingView: UIView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var state: UIImageView!
 
-    var tags: [String] = [String]()
+    var tags: [String] = ["123", "msdfasfd"]
     
     override func awakeFromNib() {
+        
+        message.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
+        
+        setCollectionView()
+    }
+    
+    static func createInstance() -> ServiceSettingView {
+        return NSBundle.mainBundle().loadNibNamed("ServiceSettingView", owner: self, options: nil).first  as! ServiceSettingView
+    }
+    
+    private func setCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         
         let layout = collectionView.collectionViewLayout
         let flow = layout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        flow.sectionInset = UIEdgeInsetsMake(0, 0, 10, 10)
         
         collectionView.registerClass(AIMsgTagCell.self,
             forCellWithReuseIdentifier: "CONTENT")
-    }
-    
-    static func createInstance() -> ServiceSettingView {
-        return NSBundle.mainBundle().loadNibNamed("ServiceSettingView", owner: self, options: nil).first  as! ServiceSettingView
     }
 }
 
@@ -75,7 +82,7 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 class AIMsgTagCell: UICollectionViewCell {
-    static var defaultFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).fontWithSize(CGFloat(18.0))
+    static var defaultFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
     var label: UILabel!
     var text: String! {
         get {
@@ -87,8 +94,10 @@ class AIMsgTagCell: UICollectionViewCell {
             var newContentFrame = contentView.frame
             let textSize = AIMsgTagCell.sizeForContentString(newText,
                 forMaxWidth: maxWidth)
+            
             newLabelFrame.size = textSize
-            newContentFrame.size = textSize
+            newContentFrame.size = newLabelFrame.size
+            
             label.frame = newLabelFrame
             contentView.frame = newContentFrame
         }
@@ -103,7 +112,7 @@ class AIMsgTagCell: UICollectionViewCell {
         label.textColor = UIColor.whiteColor()
         label.layer.borderColor = UIColor.whiteColor().CGColor
         label.layer.borderWidth = 1
-        label.layer.cornerRadius = 2;
+        label.layer.cornerRadius = 8;
         label.textAlignment = .Center
         label.font = AIMsgTagCell.defaultFont
         contentView.addSubview(label)
@@ -127,6 +136,8 @@ class AIMsgTagCell: UICollectionViewCell {
             let rect = string.boundingRectWithSize(maxSize, options: opts,
                 attributes: attributes, context: nil)
             
-            return rect.size
+            let realRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width + 15, height: rect.height + 5)
+            
+            return realRect.size
     }
 }

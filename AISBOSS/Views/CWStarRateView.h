@@ -23,5 +23,6 @@
 @property (nonatomic, weak) id<CWStarRateViewDelegate>delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame numberOfStars:(NSInteger)numberOfStars;
+- (instancetype)initWithFrameAndImage:(CGRect)frame numberOfStars:(NSInteger)numberOfStars foreground:(NSString *)foregroundImageName background:(NSString *)backgroundImageName;
 
 @end
