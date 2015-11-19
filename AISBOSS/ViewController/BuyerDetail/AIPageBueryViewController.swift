@@ -9,13 +9,17 @@
 import Foundation
 import UIKit
 
-
 internal class AIPageBueryViewController: UIViewController {
     
-    
+    // MARK: -> Internal properties
     var bubleModelArray : [AIBuyerBubbleModel]?
+    
     var delegate: AIBuyerDetailDelegate?
     
+    // MARK: -> Internal static properties
+    
+    // MARK: -> Internal class methods
+
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = self.bubleModelArray?.count ?? 0
@@ -25,50 +29,32 @@ internal class AIPageBueryViewController: UIViewController {
         return pageControl
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
-        bgImageView.frame = self.view.frame
-        self.view.addSubview(bgImageView)
-        
+    private lazy var pageScrollView:UIScrollView = {
         // Setup the paging scroll view
         let pageScrollView = UIScrollView()
         pageScrollView.backgroundColor = UIColor.clearColor()
         pageScrollView.pagingEnabled = true
         pageScrollView.showsHorizontalScrollIndicator = false
-        pageScrollView.delegate = self
-        self.view.addSubview(pageScrollView)
-         pageScrollView.pinToEdgesOfSuperview()
+        return pageScrollView
+    }()
+    
+    
+    // MARK: -> Internal init methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.view.addSubview(pageControl)
-        pageControl.pinToTopEdgeOfSuperview(offset: -10)
-        pageControl.centerHorizontallyInSuperview()
+        //初始化背景
+        initBground()
         
-        // Add the album view controllers to the scroll view
-        var pageViews: [UIView] = []
-        var viewTag:Int = 0
-        for _ in bubleModelArray! {
-            let pageView = UIView()
-            pageView.tag = viewTag
-            pageScrollView.addSubview(pageView)
-            pageView.clipsToBounds = true
-            pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
-            pageViews.append(pageView)
-             
-            let viewController = AIServiceContentViewController()
-            viewController.serviceContentType = AIServiceContentType.Escort
-            
-            self.addSubViewController(viewController, toView: pageView)
-            viewTag = viewTag + 1
-        }
-        if #available(iOS 9, *) {
-            pageScrollView.boundHorizontally(pageViews)
-        } else {
-            // Fallback on earlier versions
-        }
+        //初始化组件
+        initControls()
+        
+        //处理数据
+        initGetingData()
     }
     
+    
+    // MARK: -> Internal methods
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil, belowSubview: UIView? = nil) {
         self.addChildViewController(viewController)
         var parentView = self.view
@@ -84,8 +70,56 @@ internal class AIPageBueryViewController: UIViewController {
         viewController.view.pinToEdgesOfSuperview()
     }
     
+    // MARK: -> Internal class
+    
+    func initBground(){
+        let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
+        bgImageView.frame = self.view.frame
+        self.view.addSubview(bgImageView)
+    }
+    
+    
+    func initControls(){
+        pageScrollView.delegate = self
+        self.view.addSubview(pageScrollView)
+        pageScrollView.pinToEdgesOfSuperview()
+        
+        self.view.addSubview(pageControl)
+        pageControl.pinToTopEdgeOfSuperview(offset: -10)
+        pageControl.centerHorizontallyInSuperview()
+        
+        // Add the album view controllers to the scroll view
+        var pageViews: [UIView] = []
+        var viewTag:Int = 0
+        for _ in bubleModelArray! {
+            let pageView = UIView()
+            pageView.tag = viewTag
+            pageScrollView.addSubview(pageView)
+            pageView.clipsToBounds = true
+            pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
+            pageViews.append(pageView)
+            
+            let viewController = AIServiceContentViewController()
+            viewController.serviceContentType = AIServiceContentType.Escort
+            
+            self.addSubViewController(viewController, toView: pageView)
+            viewTag = viewTag + 1
+        }
+        if #available(iOS 9, *) {
+            pageScrollView.boundHorizontally(pageViews)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    func initGetingData(){
+        
+    }
+    
+    
 }
 
+// MARK: -> Internal type alias
 extension AIPageBueryViewController:UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
