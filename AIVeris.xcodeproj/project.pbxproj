@@ -227,6 +227,7 @@
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */; };
 		93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */; };
+		93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
@@ -702,6 +703,7 @@
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGNAutoLayout.swift; sourceTree = "<group>"; };
 		93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPageBueryViewController.swift; sourceTree = "<group>"; };
+		93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewController.swift; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
 				93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */,
 				93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */,
+				93DA9C071BFD62D100E2DA3B /* AutoLayer */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -1785,6 +1788,14 @@
 			path = AISBOSS;
 			sourceTree = "<group>";
 		};
+		93DA9C071BFD62D100E2DA3B /* AutoLayer */ = {
+			isa = PBXGroup;
+			children = (
+				93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */,
+			);
+			path = AutoLayer;
+			sourceTree = "<group>";
+		};
 		93E890C81BB92A5D00A7BBEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2228,6 +2239,7 @@
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
+				93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */,
 				126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */,
 				846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */,
 				93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */,

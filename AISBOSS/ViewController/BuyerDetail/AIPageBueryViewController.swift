@@ -16,6 +16,15 @@ internal class AIPageBueryViewController: UIViewController {
     var bubleModelArray : [AIBuyerBubbleModel]?
     var delegate: AIBuyerDetailDelegate?
     
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = self.bubleModelArray?.count ?? 0
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
+        pageControl.transform = CGAffineTransformMakeScale(0.8, 0.8)
+        return pageControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,13 +37,20 @@ internal class AIPageBueryViewController: UIViewController {
         pageScrollView.backgroundColor = UIColor.clearColor()
         pageScrollView.pagingEnabled = true
         pageScrollView.showsHorizontalScrollIndicator = false
+        pageScrollView.delegate = self
         self.view.addSubview(pageScrollView)
-        pageScrollView.pinToEdgesOfSuperview()
+         pageScrollView.pinToEdgesOfSuperview()
+        
+        self.view.addSubview(pageControl)
+        pageControl.pinToTopEdgeOfSuperview(offset: -10)
+        pageControl.centerHorizontallyInSuperview()
         
         // Add the album view controllers to the scroll view
         var pageViews: [UIView] = []
+        var viewTag:Int = 0
         for _ in bubleModelArray! {
             let pageView = UIView()
+            pageView.tag = viewTag
             pageScrollView.addSubview(pageView)
             pageView.clipsToBounds = true
             pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
@@ -44,7 +60,7 @@ internal class AIPageBueryViewController: UIViewController {
             viewController.serviceContentType = AIServiceContentType.Escort
             
             self.addSubViewController(viewController, toView: pageView)
-            
+            viewTag = viewTag + 1
         }
         if #available(iOS 9, *) {
             pageScrollView.boundHorizontally(pageViews)
@@ -52,7 +68,6 @@ internal class AIPageBueryViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
-    
     
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil, belowSubview: UIView? = nil) {
         self.addChildViewController(viewController)
@@ -67,6 +82,15 @@ internal class AIPageBueryViewController: UIViewController {
         }
         viewController.didMoveToParentViewController(self)
         viewController.view.pinToEdgesOfSuperview()
+    }
+    
+}
+
+extension AIPageBueryViewController:UIScrollViewDelegate {
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
+        pageControl.currentPage = Int(index)
     }
     
 }
