@@ -233,6 +233,8 @@
 		93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */; };
 		93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0A1BFDAB2600E2DA3B /* AISwiftTemplete.swift */; };
 		93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */; };
+		93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */; };
+		93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
@@ -713,6 +715,8 @@
 		93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewController.swift; sourceTree = "<group>"; };
 		93DA9C0A1BFDAB2600E2DA3B /* AISwiftTemplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISwiftTemplete.swift; sourceTree = "<group>"; };
 		93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIGalleryView.swift; sourceTree = "<group>"; };
+		93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomsTags.swift; sourceTree = "<group>"; };
+		93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomsTags.xib; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
@@ -1813,6 +1817,8 @@
 			isa = PBXGroup;
 			children = (
 				93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */,
+				93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */,
+				93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2064,6 +2070,7 @@
 				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
 				93FA1E501B9C3E12009965C8 /* AIMediaView.xib in Resources */,
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
+				93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
@@ -2323,6 +2330,7 @@
 				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
+				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
 				84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */,
 				8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */,
 				93C33F211B9BEAFE007BF506 /* SwipeableCell.m in Sources */,

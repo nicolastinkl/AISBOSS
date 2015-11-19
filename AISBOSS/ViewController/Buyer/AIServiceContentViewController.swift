@@ -120,7 +120,6 @@ internal class AIServiceContentViewController: UIViewController {
         let backFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(backFrame, action: "backAction"))
         
-        
         // add scroll action
         let scrollFrame = CGRectMake(CGRectGetWidth(self.view.frame) * 2 / 3, CGRectGetHeight(backFrame), CGRectGetWidth(self.view.frame) / 3, size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(scrollFrame, action: "scrollAction"))
@@ -130,7 +129,6 @@ internal class AIServiceContentViewController: UIViewController {
     func makeContentView () {
         
         // Add gallery View
-        
         
 //        galleryView.pinToTopEdgeOfSuperview()
 //        galleryView.pinToSideEdgesOfSuperview()
@@ -144,16 +142,17 @@ internal class AIServiceContentViewController: UIViewController {
 //        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
 //        scrollView.addSubview(contentImageView)
 //        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
-        scrollView.backgroundColor = UIColor.grayColor()
-         
+        
         scrollView.addSubview(galleryView)
         galleryView.imageModelArray = ["","","",""]
         
-        
-        
-        
+        let tags = UICustomsTags.currentView()
+//        self.view.addSubview(tags)
+
+        tags.frame = CGRectMake(10, galleryView.top + galleryView.height + 10, 275, 50)
         
     }
     
     
 }
+

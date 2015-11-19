@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// 相册
 internal class AIGalleryView : UIView,UIScrollViewDelegate {
      
     // MARK: -> Internal class methods
@@ -91,7 +92,6 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
     
     init() {
         super.init(frame: CGRect.zero)
-        
         
         
     }
