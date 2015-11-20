@@ -37,7 +37,7 @@ class SimpleServiceViewContainer: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "star_rating_results_highlight", background: "star_rating_results_normal")
+        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
         topView.addSubview(starRateView)
         
         layout(starRateView, review) {star, review in
