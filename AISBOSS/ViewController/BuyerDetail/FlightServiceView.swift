@@ -13,8 +13,8 @@ class FlightServiceView: ServiceDetailView {
     @IBOutlet weak var takeOffTime: UILabel!
     @IBOutlet weak var fromAirport: UILabel!
     @IBOutlet weak var toAirport: UILabel!
-    @IBOutlet weak var from: UnderlineLabel!
-    @IBOutlet weak var to: UnderlineLabel!
+    @IBOutlet weak var from: UILabel!
+    @IBOutlet weak var to: UILabel!
     @IBOutlet weak var arriveTime: UILabel!
     
     static func createInstance() -> FlightServiceView {

@@ -75,6 +75,7 @@
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
+		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -452,6 +453,7 @@
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
+		8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHorizontalLineLabel.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
@@ -1072,6 +1074,15 @@
 			path = "Veris Tests";
 			sourceTree = "<group>";
 		};
+		8450D1161BFEB76000CD1D5B /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
+				8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
 		8454E6F81BAFE9D800016AB3 /* SwitchService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1414,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
 				846DAD8E1BD661960054F058 /* PurchasedService */,
 				8454E6F81BAFE9D800016AB3 /* SwitchService */,
@@ -1428,7 +1440,6 @@
 				93FA1DD81B9C3001009965C8 /* ContentsCellView.xib */,
 				93FA1DC91B9C2F26009965C8 /* AOTag.h */,
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
-				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2323,6 +2334,7 @@
 				8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */,
 				93FA1DFB1B9C306E009965C8 /* AIFavoritesServicesModel.swift in Sources */,
 				81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */,
+				8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */,
 				84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */,
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
