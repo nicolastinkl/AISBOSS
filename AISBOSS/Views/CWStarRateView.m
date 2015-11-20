@@ -53,7 +53,7 @@
 - (instancetype)initWithFrameAndImage:(CGRect)frame numberOfStars:(NSInteger)numberOfStars foreground:(NSString *)foregroundImageName background:(NSString *)backgroundImageName {
     if (self = [super initWithFrame:frame]) {
         _numberOfStars = numberOfStars;
-        [self buildDataAndUI];
+        [self buildDataAndUIByForegroundImage:foregroundImageName background:backgroundImageName];
     }
     return self;
 }
