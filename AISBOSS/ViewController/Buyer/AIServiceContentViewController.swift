@@ -170,13 +170,6 @@ internal class AIServiceContentViewController: UIViewController {
         
         //scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), tags.bottom + tags.height)
        
-        
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
         scrollView.addSubview(galleryView)
         galleryView.imageModelArray = ["","","",""]
         galleryView.setTop(0)
@@ -188,14 +181,13 @@ internal class AIServiceContentViewController: UIViewController {
         tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
         tagsHold.setTop(galleryView.top + galleryView.height + 5)
         
-        tagsHold.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
         let custView =  AICustomView.currentView()
         scrollView.addSubview(custView)
         custView.setTop(tagsHold.top + tagsHold.height + 5)
         custView.setWidth(self.view.width)
-       
-
+        
+        
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
@@ -216,7 +208,8 @@ internal class AIServiceContentViewController: UIViewController {
         
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), audioView.top + audioView.height)
         
+        
     }
-    
+     
 }
 
