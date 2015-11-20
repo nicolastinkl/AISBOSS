@@ -19,7 +19,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var paramsView: UIView!
-    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var originalPrice: AIHorizontalLineLabel!
     @IBOutlet weak var savedMoney: UILabel!
     @IBOutlet weak var review: UILabel!
     @IBOutlet weak var messageView: UIView!
@@ -53,6 +53,8 @@ class SimpleServiceViewContainer: UIView {
         layer.cornerRadius = 6
         layer.masksToBounds = true
         logo.layer.cornerRadius = logo.width / 2
+        
+        originalPrice.linePosition = .Middle
         
     }
     
