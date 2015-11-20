@@ -194,7 +194,7 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(custView)
         custView.setTop(tagsHold.top + tagsHold.height + 5)
         custView.setWidth(self.view.width)
-        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), custView.top + custView.height)
+       
 
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
@@ -210,6 +210,11 @@ internal class AIServiceContentViewController: UIViewController {
         
         custView.fillTags([model1,model2,model3], isNormal: true)
         
+        let audioView = AICustomAudioNotesView.currentView()
+        scrollView.addSubview(audioView)
+        audioView.setTop(custView.top + custView.height)
+        
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), audioView.top + audioView.height)
         
     }
     
