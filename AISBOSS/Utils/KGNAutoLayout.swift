@@ -823,7 +823,7 @@ extension UIView {
 
     - Returns: The constraint object.
     */
-    public func constrain(item: AnyObject, attribute itemAttribute: NSLayoutAttribute, toItem: AnyObject? = nil, attribute toAttribute: NSLayoutAttribute = .NotAnAttribute, relatedBy: NSLayoutRelation = .Equal, multiplier: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
+    public func constrainKGNAutolayout(item: AnyObject, attribute itemAttribute: NSLayoutAttribute, toItem: AnyObject? = nil, attribute toAttribute: NSLayoutAttribute = .NotAnAttribute, relatedBy: NSLayoutRelation = .Equal, multiplier: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
         if let view = item as? UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -843,7 +843,7 @@ extension UIView {
     // MARK: - Private
 
     private func constrainSizeAttribute(sizeAttribute: NSLayoutAttribute, size: CGFloat = 0, relatedBy: NSLayoutRelation = .Equal, priority: UILayoutPriority? = nil) -> NSLayoutConstraint {
-        return self.constrain(self, attribute: sizeAttribute, offset: size, relatedBy: relatedBy, priority: priority, multiplier: 0)
+        return self.constrainKGNAutolayout(self, attribute: sizeAttribute, offset: size, relatedBy: relatedBy, priority: priority, multiplier: 0)
     }
 
     private func constrainEdgeAttribute(edgeAttribute: NSLayoutAttribute, offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
@@ -852,7 +852,7 @@ extension UIView {
             return nil
         }
 
-        return superview.constrain(self, attribute: edgeAttribute, toItem: superview, attribute: edgeAttribute, offset: offset, priority: priority)
+        return superview.constrainKGNAutolayout(self, attribute: edgeAttribute, toItem: superview, attribute: edgeAttribute, offset: offset, priority: priority)
     }
 
     private func constrainAttribute(attribute: NSLayoutAttribute, toAttribute itemAttribute: NSLayoutAttribute, ofItem item: AnyObject, relatedBy: NSLayoutRelation = .Equal, multiplier: CGFloat = 1, offset: CGFloat = 0, priority: UILayoutPriority? = nil) -> NSLayoutConstraint? {
@@ -879,7 +879,7 @@ extension UIView {
             return nil
         }
         
-        return commonSuperview!.constrain(self, attribute: attribute, relatedBy: relatedBy, toItem: item, attribute: itemAttribute, multiplier: multiplier, offset: offset, priority: priority)
+        return commonSuperview!.constrainKGNAutolayout(self, attribute: attribute, relatedBy: relatedBy, toItem: item, attribute: itemAttribute, multiplier: multiplier, offset: offset, priority: priority)
     }
     
 }
