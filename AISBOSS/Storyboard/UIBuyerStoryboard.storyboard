@@ -366,6 +366,25 @@
             </objects>
             <point key="canvasLocation" x="401" y="372"/>
         </scene>
+        <!--Page Buery View Controller-->
+        <scene sceneID="F25-Ic-djb">
+            <objects>
+                <viewController storyboardIdentifier="AIPageBueryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sbt-kQ-1sV" customClass="AIPageBueryViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gyD-3X-2WJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="MKp-jL-c1n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C6M-qA-QTA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nt1-eZ-u42" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="372"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backIcon" width="13" height="22"/>

@@ -62,7 +62,7 @@ class AIBuyerDetailViewController : UIViewController {
         //makeBuyButton()
      
         // Init Bottom Page white area
-//        InitBottomView()
+        InitBottomView()
     }
     
     func AddImageView(){
@@ -95,9 +95,17 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func targetDetail(){
+        /**
         let vc = AIServiceContentViewController()
         vc.serviceContentType = AIServiceContentType.MusicTherapy
         self.showViewController(vc, sender: self)
+        */
+        
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+        
+        viewController.bubleModelArray = [bubleModel!,bubleModel!,bubleModel!]
+        self.showViewController(viewController, sender: self)
+        
     }
     
     func targetDetail2(){
@@ -134,9 +142,9 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func InitBottomView () {
-        let bzView = UIBezierPageView(frame: CGRectMake(0,0,200,50))
-        bzView.backgroundColor = UIColor.grayColor()
-        bzView.refershView(6)
+        let bzView = UIBezierPageView(frame: CGRectMake(0,38,200,50))
+        bzView.setX((self.view.width - bzView.width)/2)
+        bzView.refershView(8)
         //bzView.center = (self.bottomView.subviews.first as! UIImageView).center
         self.bottomView.addSubview(bzView)
         
@@ -285,28 +293,29 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         let offset:CGFloat = 20.0
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
-        var serviceView: ServiceContainerView!
+//        var serviceView: ServiceContainerView!
+//        
+//        if dataSource.service_list.count == 1 {
+//            let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+//            singleServiceView.isSingle = true
+//            singleServiceView.isPrimeService(true)
+//            serviceView = singleServiceView
+//        } else {
+//            if indexPath.row == 0 {
+//                let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
+//                topServiceView.isPrimeService(true)
+//                serviceView = topServiceView
+//            } else if indexPath.row == dataSource.service_list.count - 1 {
+//                let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
+//                serviceView = bottomView
+//
+//            } else {
+//                let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
+//                serviceView = middleView
+//            }
+//        }
         
-        if dataSource.service_list.count == 1 {
-            let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-            singleServiceView.isSingle = true
-            singleServiceView.isPrimeService(true)
-            serviceView = singleServiceView
-        } else {
-            if indexPath.row == 0 {
-                let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-                topServiceView.isPrimeService(true)
-                serviceView = topServiceView
-            } else if indexPath.row == dataSource.service_list.count - 1 {
-                let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
-                serviceView = bottomView
-
-            } else {
-                let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
-                serviceView = middleView
-            }
-            
-        }
+        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         
         serviceView.frame = CGRectMake(offset, 0, width, 200)
         serviceView.loadData(serviceDataModel)
@@ -322,7 +331,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let height = cellHeights[indexPath.row] {
-            return height
+            return height + 10
         } else {
             return 1
         }

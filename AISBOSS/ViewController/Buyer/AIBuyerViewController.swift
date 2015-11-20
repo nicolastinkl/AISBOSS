@@ -284,6 +284,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         
         viewController.bubleModel = model
+
+        
+        /**let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+        viewController.bubleModelArray = [model,model,model]*/
         viewController.delegate = self
         
         let naviController = UINavigationController(rootViewController: viewController)
