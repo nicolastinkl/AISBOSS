@@ -19,7 +19,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var paramsView: UIView!
-    @IBOutlet weak var originalPrice: UILabel!
+    @IBOutlet weak var originalPrice: AIHorizontalLineLabel!
     @IBOutlet weak var savedMoney: UILabel!
     @IBOutlet weak var review: UILabel!
     @IBOutlet weak var messageView: UIView!
@@ -37,8 +37,24 @@ class SimpleServiceViewContainer: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
+        topView.addSubview(starRateView)
+        
+        layout(starRateView, review) {star, review in
+            star.left == review.right - 2
+            star.height == starRateView.height
+            star.width == starRateView.width
+            star.top == review.top + 1
+        }
+        
+        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+        review.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
+        layer.cornerRadius = 6
+        layer.masksToBounds = true
+        logo.layer.cornerRadius = logo.width / 2
+        
+        originalPrice.linePosition = .Middle
         
     }
     
