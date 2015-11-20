@@ -75,6 +75,25 @@ struct AIPopServiceDetailModel : JSONJoy {
     }
 }
 
+
+/**
+ *  @author tinkl, 15-11-20 16:11:50
+ *
+ *  @brief  处理tag Model
+ *
+ *  @since <#version number#>
+ */
+struct AIBuerSomeTagModel : JSONJoy {
+    var unReadNumber : Int?
+    var tagName : String?
+    init(){
+    
+    }
+    
+    init(_ decoder: JSONDecoder) {
+        
+    }
+}
 /**
 {
 "proposal_id": 4,

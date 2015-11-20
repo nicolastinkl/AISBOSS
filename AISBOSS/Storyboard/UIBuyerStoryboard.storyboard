@@ -385,6 +385,25 @@
             </objects>
             <point key="canvasLocation" x="1043" y="372"/>
         </scene>
+        <!--Service Content View Controller-->
+        <scene sceneID="0Bj-hV-sCs">
+            <objects>
+                <viewController storyboardIdentifier="AIServiceContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wuc-Q1-dI8" customClass="AIServiceContentViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F39-Lg-r4t"/>
+                        <viewControllerLayoutGuide type="bottom" id="4WW-8L-S0M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UkT-7N-yWe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIk-ql-r1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="372"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backIcon" width="13" height="22"/>
