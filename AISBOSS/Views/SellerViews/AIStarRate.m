@@ -10,7 +10,8 @@
 
 @interface AIStarRate ()
 {
-    CGFloat _
+    CGFloat _starMargin;
+    NSMutableArray *stars;
 }
 
 

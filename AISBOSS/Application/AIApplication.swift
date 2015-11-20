@@ -57,7 +57,8 @@ struct AIApplication{
             static let AIComponentChoseViewController   = "AIComponentChoseViewController"
             static let AISearchServiceCollectionViewController = "AISearchServiceCollectionViewController"
             static let AIBuyerDetailViewController = "AIBuyerDetailViewController"
-            
+            static let AIPageBueryViewController    = "AIPageBueryViewController"
+            static let AIServiceContentViewController   = "AIServiceContentViewController"
         }
         
         /*!

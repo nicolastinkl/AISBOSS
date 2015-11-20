@@ -7,36 +7,43 @@
 //
 
 import UIKit
-
-
-
+import Cartography
 
 public enum AIServiceContentType : Int {
-    
     case MusicTherapy = 100 ,Escort
 }
 
+internal class AIServiceContentViewController: UIViewController {
 
-class AIServiceContentViewController: UIViewController {
-
-    var topView : UIView!
-    var scrollView : UIScrollView!
+    // MARK: -> Internal properties
+     
+    internal var serviceContentType : AIServiceContentType!
     
-    var serviceContentType : AIServiceContentType!
+    private let topView = UIView()
     
+    private lazy var scrollView:UIScrollView = {
+        // Setup the paging scroll view
+        let pageScrollView = UIScrollView()
+        pageScrollView.backgroundColor = UIColor.clearColor()
+        pageScrollView.pagingEnabled = false
+        pageScrollView.showsHorizontalScrollIndicator = false
+        pageScrollView.showsVerticalScrollIndicator = false
+        return pageScrollView
+    }()
     
+    private lazy var galleryView : AIGalleryView = {
+        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 120))
+        return gView
+    }()
+    
+    // MARK: -> Internal init methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view. EffectBg@2x Buyer_topBar_Bg
-        let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
-        bgImageView.frame = self.view.frame
-        self.view.addSubview(bgImageView)
-         
         
-        self.makeTopView()
+        makeTopView()
         
-        self.makeScrollView()
+        makeContentView()
+     
         
     }
 
@@ -44,18 +51,6 @@ class AIServiceContentViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     func bottomImage() -> UIImage {
         
@@ -110,8 +105,35 @@ class AIServiceContentViewController: UIViewController {
         
         let image = topImage()
         let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-        topView = UIView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height))
         self.view.addSubview(topView)
+        topView.sizeToHeight(size.height)
+        topView.pinToSideEdgesOfSuperview()
+        
+        /**
+        layout(topView) { (ticketView) -> () in
+        ticketView.left == ticketView.superview!.left
+        ticketView.top == ticketView.superview!.top
+        ticketView.right == ticketView.superview!.right
+        ticketView.height == size.height
+        }
+        */
+        
+        
+        self.view.addSubview(scrollView)
+//        scrollView.pinToTopEdgeOfSuperview(offset: size.height)
+//        scrollView.pinToSideEdgesOfSuperview()
+//        scrollView.pinToBottomEdgeOfSuperview()
+        
+        scrollView.frame = CGRectMake(0, size.height, self.view.width, self.view.height-size.height)
+        
+        /**layout(scrollView) { (ticketView) -> () in
+            ticketView.left == ticketView.superview!.left
+            ticketView.top == ticketView.superview!.top + size.height
+            ticketView.right == ticketView.superview!.right
+            ticketView.bottom ==  ticketView.superview!.bottom
+        }*/
+        
+        
         
         let topImageView = UIImageView(image: image)
         topImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
@@ -122,27 +144,79 @@ class AIServiceContentViewController: UIViewController {
         let backFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(backFrame, action: "backAction"))
         
-        
         // add scroll action
         let scrollFrame = CGRectMake(CGRectGetWidth(self.view.frame) * 2 / 3, CGRectGetHeight(backFrame), CGRectGetWidth(self.view.frame) / 3, size.height / 2)
         topView.addSubview(self.makeButtonWithFrame(scrollFrame, action: "scrollAction"))
     }
     
-    func makeScrollView () {
-        scrollView = UIScrollView(frame: CGRectMake(0, CGRectGetMaxY(topView.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame)-CGRectGetHeight(topView.frame)))
-        self.view.addSubview(scrollView)
+    func makeContentView () {
+        
+        // Add gallery View
+        
+//        galleryView.pinToTopEdgeOfSuperview()
+//        galleryView.pinToSideEdgesOfSuperview()
+//        galleryView.sizeToHeight(120)
         
         // make contentSize
         
-        let image = bottomImage()
-        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-        let contentImageView = UIImageView(image: image)
-        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
-        scrollView.addSubview(contentImageView)
-        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
-
+//        let image = bottomImage()
+//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
+//        let contentImageView = UIImageView(image: image)
+//        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
+//        scrollView.addSubview(contentImageView)
+//        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
+        
+      
+        
+        //scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), tags.bottom + tags.height)
+       
+        
+        
     }
     
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollView.addSubview(galleryView)
+        galleryView.imageModelArray = ["","","",""]
+        galleryView.setTop(0)
+        
+        let tagsHold = UIView()
+        
+        
+        scrollView.addSubview(tagsHold)
+        tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
+        tagsHold.setTop(galleryView.top + galleryView.height + 5)
+        
+        tagsHold.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        
+        let custView =  AICustomView.currentView()
+        scrollView.addSubview(custView)
+        custView.setTop(tagsHold.top + tagsHold.height + 5)
+        custView.setWidth(self.view.width)
+       
+
+        var model1 = AIBuerSomeTagModel()
+        model1.tagName = "irritated"
+        model1.unReadNumber = 2
+        
+        var model2 = AIBuerSomeTagModel()
+        model2.tagName = "fatigued"
+        model2.unReadNumber = 6
+        
+        var model3 = AIBuerSomeTagModel()
+        model3.tagName = "endorine disorders"
+        model3.unReadNumber = 731
+        
+        custView.fillTags([model1,model2,model3], isNormal: true)
+        
+        let audioView = AICustomAudioNotesView.currentView()
+        scrollView.addSubview(audioView)
+        audioView.setTop(custView.top + custView.height)
+        
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), audioView.top + audioView.height)
+        
+    }
     
 }
+

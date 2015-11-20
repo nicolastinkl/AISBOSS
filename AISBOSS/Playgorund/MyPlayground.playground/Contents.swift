@@ -46,6 +46,8 @@ s2 = "123"
 
 s2
 
+ let ramdWidth = 50 + random()%100
+ramdWidth
 
 
 

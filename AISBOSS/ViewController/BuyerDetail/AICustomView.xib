@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AICustomView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="410"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM9-Dw-aNC">
+                    <rect key="frame" x="0.0" y="100" width="600" height="310"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.79215686269999996" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XoN-dI-8D6">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="102"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.11764705882352941" green="0.10196078431372549" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="102" id="mMi-RA-jOI"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="49p-KV-ya0" customClass="DesignableImageView" customModule="AISpring">
+                    <rect key="frame" x="20" y="60" width="80" height="80"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Dlz-gx-Yhs"/>
+                        <constraint firstAttribute="height" constant="80" id="SVT-kt-EqR"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Custom Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugh-Zu-ZTB">
+                    <rect key="frame" x="108" y="73" width="476" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="PJ3-sE-GDk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Hold on the big tree,Please Hold on the big tree,Please Hold on the big tree" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7l-iO-ixp">
+                    <rect key="frame" x="108" y="99" width="476" height="48"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="3oX-VM-532"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.80392156862745101" green="0.4392156862745098" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="AISpring">
+                    <rect key="frame" x="8" y="155" width="584" height="120"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-e5-HX4" customClass="DesignableView" customModule="AISpring">
+                    <rect key="frame" x="8" y="283" width="584" height="120"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.61176470588235299" green="0.11764705882352941" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.80784313725490198" green="0.12156862745098039" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Y7l-iO-ixp" firstAttribute="leading" secondItem="Ugh-Zu-ZTB" secondAttribute="leading" id="0AY-gU-VUs"/>
+                <constraint firstItem="49p-KV-ya0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="1dD-Vy-HZ6"/>
+                <constraint firstItem="ise-OE-xtY" firstAttribute="top" secondItem="Y7l-iO-ixp" secondAttribute="bottom" constant="8" id="3nr-Sq-yQK"/>
+                <constraint firstItem="Ugh-Zu-ZTB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="108" id="6ba-T9-fEQ"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6lk-Ns-lsc"/>
+                <constraint firstAttribute="trailing" secondItem="SM9-Dw-aNC" secondAttribute="trailing" id="BVl-vU-eCZ"/>
+                <constraint firstItem="XoN-dI-8D6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BdD-Ft-eHa"/>
+                <constraint firstItem="XoN-dI-8D6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IRO-f3-qCH"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="283" id="J7z-OR-b5q"/>
+                <constraint firstAttribute="bottom" secondItem="SM9-Dw-aNC" secondAttribute="bottom" id="Rbz-de-ZgU"/>
+                <constraint firstAttribute="trailing" secondItem="XoN-dI-8D6" secondAttribute="trailing" id="XlW-QS-bHk"/>
+                <constraint firstItem="SM9-Dw-aNC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZhB-b1-Avo"/>
+                <constraint firstAttribute="trailing" secondItem="ise-OE-xtY" secondAttribute="trailing" constant="8" id="dVG-l1-xDb"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="283" id="dk6-gX-Pcl"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="ise-OE-xtY" secondAttribute="bottom" constant="8" id="g2V-U8-utc"/>
+                <constraint firstItem="SM9-Dw-aNC" firstAttribute="top" secondItem="XoN-dI-8D6" secondAttribute="bottom" constant="-2" id="h4u-3f-bG9"/>
+                <constraint firstItem="ise-OE-xtY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="hAH-Iq-akk"/>
+                <constraint firstItem="Ugh-Zu-ZTB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="73" id="kAj-Ud-NiC"/>
+                <constraint firstItem="49p-KV-ya0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="kYf-eL-yG3"/>
+                <constraint firstAttribute="bottom" secondItem="jzk-e5-HX4" secondAttribute="bottom" constant="7" id="m8W-4B-pmO"/>
+                <constraint firstAttribute="trailing" secondItem="jzk-e5-HX4" secondAttribute="trailing" constant="8" id="o1r-ne-8JS"/>
+                <constraint firstItem="Y7l-iO-ixp" firstAttribute="top" secondItem="Ugh-Zu-ZTB" secondAttribute="bottom" constant="5" id="oWr-eJ-taQ"/>
+                <constraint firstAttribute="trailing" secondItem="Ugh-Zu-ZTB" secondAttribute="trailing" constant="16" id="rYn-EZ-Tie"/>
+                <constraint firstItem="Y7l-iO-ixp" firstAttribute="trailing" secondItem="Ugh-Zu-ZTB" secondAttribute="trailing" id="sKM-fc-he4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="J7z-OR-b5q"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="avator" destination="49p-KV-ya0" id="Dyw-Zm-2bc"/>
+                <outlet property="content" destination="Y7l-iO-ixp" id="vbX-xW-mj6"/>
+                <outlet property="selectView" destination="jzk-e5-HX4" id="QWw-Up-gPh"/>
+                <outlet property="title" destination="Ugh-Zu-ZTB" id="P5u-3U-3nN"/>
+                <outlet property="unselectView" destination="ise-OE-xtY" id="RUD-bK-pqQ"/>
+            </connections>
+            <point key="canvasLocation" x="339" y="265"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Placehold" width="275" height="125"/>
+    </resources>
+</document>
