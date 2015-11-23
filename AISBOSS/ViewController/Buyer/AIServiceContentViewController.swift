@@ -13,6 +13,7 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
@@ -40,8 +41,14 @@ internal class AIServiceContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /**
+        导航栏
+        */
         makeTopView()
         
+        /**
+        ScrollView数据填充
+        */
         makeContentView()
      
         
@@ -109,15 +116,6 @@ internal class AIServiceContentViewController: UIViewController {
         topView.sizeToHeight(size.height)
         topView.pinToSideEdgesOfSuperview()
         
-        /**
-        layout(topView) { (ticketView) -> () in
-        ticketView.left == ticketView.superview!.left
-        ticketView.top == ticketView.superview!.top
-        ticketView.right == ticketView.superview!.right
-        ticketView.height == size.height
-        }
-        */
-        
         
         self.view.addSubview(scrollView)
 //        scrollView.pinToTopEdgeOfSuperview(offset: size.height)
@@ -125,15 +123,6 @@ internal class AIServiceContentViewController: UIViewController {
 //        scrollView.pinToBottomEdgeOfSuperview()
         
         scrollView.frame = CGRectMake(0, size.height, self.view.width, self.view.height-size.height)
-        
-        /**layout(scrollView) { (ticketView) -> () in
-            ticketView.left == ticketView.superview!.left
-            ticketView.top == ticketView.superview!.top + size.height
-            ticketView.right == ticketView.superview!.right
-            ticketView.bottom ==  ticketView.superview!.bottom
-        }*/
-        
-        
         
         let topImageView = UIImageView(image: image)
         topImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
@@ -157,26 +146,7 @@ internal class AIServiceContentViewController: UIViewController {
 //        galleryView.pinToSideEdgesOfSuperview()
 //        galleryView.sizeToHeight(120)
         
-        // make contentSize
-        
-//        let image = bottomImage()
-//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-//        let contentImageView = UIImageView(image: image)
-//        contentImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
-//        scrollView.addSubview(contentImageView)
-//        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), size.height)
-        
-      
-        
-        //scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), tags.bottom + tags.height)
        
-        
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
         scrollView.addSubview(galleryView)
         galleryView.imageModelArray = ["","","",""]
         galleryView.setTop(0)
@@ -188,14 +158,13 @@ internal class AIServiceContentViewController: UIViewController {
         tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
         tagsHold.setTop(galleryView.top + galleryView.height + 5)
         
-        tagsHold.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
         let custView =  AICustomView.currentView()
         scrollView.addSubview(custView)
         custView.setTop(tagsHold.top + tagsHold.height + 5)
         custView.setWidth(self.view.width)
-       
-
+        
+        
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2

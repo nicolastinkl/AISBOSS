@@ -19,13 +19,27 @@
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
+<<<<<<< HEAD
 		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; settings = {ASSET_TAGS = (); }; };
 		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; settings = {ASSET_TAGS = (); }; };
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; settings = {ASSET_TAGS = (); }; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; settings = {ASSET_TAGS = (); }; };
+
+		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; };
+		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; };
+		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
+		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
+		818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C11BFC24B700F968E7 /* AIDetailText.m */; };
+		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
+		818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CA1BFC26A700F968E7 /* AIStarRate.m */; };
+		818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */; };
+		818E67D11BFC275E00F968E7 /* AITabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D01BFC275E00F968E7 /* AITabView.m */; };
+		818E67D41BFC27D700F968E7 /* AICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D31BFC27D700F968E7 /* AICommentCell.m */; };
+		818E67D71BFC5F5F00F968E7 /* AIServiceCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */; };
+		818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D91BFC687100F968E7 /* AIServiceLabel.m */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -76,7 +90,7 @@
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
-		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -381,6 +395,24 @@
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
+		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
+		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
+		818E67C01BFC24B700F968E7 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
+		818E67C11BFC24B700F968E7 /* AIDetailText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIDetailText.m; sourceTree = "<group>"; };
+		818E67C61BFC267000F968E7 /* AIServiceTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceTypes.h; sourceTree = "<group>"; };
+		818E67C71BFC267000F968E7 /* AIServiceTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceTypes.m; sourceTree = "<group>"; };
+		818E67C91BFC26A700F968E7 /* AIStarRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStarRate.h; sourceTree = "<group>"; };
+		818E67CA1BFC26A700F968E7 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
+		818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHorizontalBarChart.h; sourceTree = "<group>"; };
+		818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHorizontalBarChart.m; sourceTree = "<group>"; };
+		818E67CF1BFC275E00F968E7 /* AITabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITabView.h; sourceTree = "<group>"; };
+		818E67D01BFC275E00F968E7 /* AITabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITabView.m; sourceTree = "<group>"; };
+		818E67D21BFC27D700F968E7 /* AICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICommentCell.h; sourceTree = "<group>"; };
+		818E67D31BFC27D700F968E7 /* AICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICommentCell.m; sourceTree = "<group>"; };
+		818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceCoverage.h; sourceTree = "<group>"; };
+		818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceCoverage.m; sourceTree = "<group>"; };
+		818E67D81BFC687100F968E7 /* AIServiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceLabel.h; sourceTree = "<group>"; };
+		818E67D91BFC687100F968E7 /* AIServiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceLabel.m; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -962,6 +994,38 @@
 			path = MaterialDesign;
 			sourceTree = "<group>";
 		};
+		818E67B81BFC1A2400F968E7 /* LoopView */ = {
+			isa = PBXGroup;
+			children = (
+				818E67B91BFC1A2400F968E7 /* WMLoopView.h */,
+				818E67BA1BFC1A2400F968E7 /* WMLoopView.m */,
+			);
+			path = LoopView;
+			sourceTree = "<group>";
+		};
+		818E67BF1BFC24B700F968E7 /* SellerViews */ = {
+			isa = PBXGroup;
+			children = (
+				818E67C01BFC24B700F968E7 /* AIDetailText.h */,
+				818E67C11BFC24B700F968E7 /* AIDetailText.m */,
+				818E67C61BFC267000F968E7 /* AIServiceTypes.h */,
+				818E67C71BFC267000F968E7 /* AIServiceTypes.m */,
+				818E67C91BFC26A700F968E7 /* AIStarRate.h */,
+				818E67CA1BFC26A700F968E7 /* AIStarRate.m */,
+				818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */,
+				818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */,
+				818E67CF1BFC275E00F968E7 /* AITabView.h */,
+				818E67D01BFC275E00F968E7 /* AITabView.m */,
+				818E67D21BFC27D700F968E7 /* AICommentCell.h */,
+				818E67D31BFC27D700F968E7 /* AICommentCell.m */,
+				818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */,
+				818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */,
+				818E67D81BFC687100F968E7 /* AIServiceLabel.h */,
+				818E67D91BFC687100F968E7 /* AIServiceLabel.m */,
+			);
+			path = SellerViews;
+			sourceTree = "<group>";
+		};
 		81C0925F1BAFAC0D003FFF35 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,6 +1278,47 @@
 			name = stars;
 			sourceTree = "<group>";
 		};
+		9350000E1BFF245C00B8386B /* AICustom */ = {
+			isa = PBXGroup;
+			children = (
+				93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */,
+				93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */,
+				93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */,
+				93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */,
+			);
+			name = AICustom;
+			sourceTree = "<group>";
+		};
+		9350000F1BFF247500B8386B /* AITimeAndHome */ = {
+			isa = PBXGroup;
+			children = (
+				93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */,
+				930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */,
+				930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */,
+				930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */,
+				930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */,
+				930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */,
+				93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */,
+				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
+				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
+				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
+				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
+				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
+			);
+			name = AITimeAndHome;
+			sourceTree = "<group>";
+		};
+		935000101BFF248B00B8386B /* AIRoot */ = {
+			isa = PBXGroup;
+			children = (
+				93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */,
+				93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */,
+				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
+				93DA9C0A1BFDAB2600E2DA3B /* AISwiftTemplete.swift */,
+			);
+			name = AIRoot;
+			sourceTree = "<group>";
+		};
 		9364FA4D1BA12120005EFB0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1383,6 +1488,7 @@
 		93A5A59D1B9BD5E1001DE36D /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				818E67B81BFC1A2400F968E7 /* LoopView */,
 				815F21891BEAF386002EB473 /* MaterialDesign */,
 				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
 				81C0925F1BAFAC0D003FFF35 /* SDWebImage */,
@@ -1395,6 +1501,9 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				935000101BFF248B00B8386B /* AIRoot */,
+				9350000F1BFF247500B8386B /* AITimeAndHome */,
+				9350000E1BFF245C00B8386B /* AICustom */,
 				81F0002F1BF08F4600EE66F3 /* TimeLine */,
 				93306BCE1BE85FD500F68FD8 /* BuyerDetail */,
 				81DC18DB1BD5D2550081D131 /* Buyer */,
@@ -1402,26 +1511,6 @@
 				93FA1E361B9C3E12009965C8 /* Seller */,
 				9364FA4D1BA12120005EFB0F /* Views */,
 				93B25A551B9D7A1D00CD1FEB /* WeiboShare */,
-				93FA1E1A1B9C3E12009965C8 /* AICalendarViewController.swift */,
-				93FA1E1F1B9C3E12009965C8 /* AICustomerCollectionCellView.swift */,
-				93FA1E201B9C3E12009965C8 /* AICustomerCollectionCellView.xib */,
-				93FA1E231B9C3E12009965C8 /* AICustomHomeViewController.swift */,
-				93FA1E2A1B9C3E12009965C8 /* AIRootViewController.h */,
-				93FA1E2B1B9C3E12009965C8 /* AIRootViewController.m */,
-				93FA1E2C1B9C3E12009965C8 /* AIScanViewController.swift */,
-				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
-				930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */,
-				930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */,
-				930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */,
-				930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */,
-				930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */,
-				93FA1E351B9C3E12009965C8 /* AIWebViewController.swift */,
-				93FA1E3F1B9C3E12009965C8 /* TopMenuViewController.swift */,
-				93FA1E401B9C3E12009965C8 /* UICellMultiStyle.swift */,
-				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
-				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
-				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
-				93DA9C0A1BFDAB2600E2DA3B /* AISwiftTemplete.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1429,6 +1518,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				818E67BF1BFC24B700F968E7 /* SellerViews */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
 				846DAD8E1BD661960054F058 /* PurchasedService */,
@@ -2249,6 +2339,7 @@
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */,
+				818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
 				932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
@@ -2279,6 +2370,7 @@
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
 				93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */,
+				818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */,
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
@@ -2304,6 +2396,7 @@
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
+				818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2340,6 +2433,7 @@
 				84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */,
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
+				818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */,
@@ -2364,6 +2458,7 @@
 				8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */,
 				84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */,
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
+				818E67D11BFC275E00F968E7 /* AITabView.m in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
 				93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */,
 				934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */,
@@ -2382,6 +2477,7 @@
 				93FA1E051B9C306E009965C8 /* ServiceModel.swift in Sources */,
 				93B25A9D1B9D7A7B00CD1FEB /* AFURLRequestSerialization.m in Sources */,
 				93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */,
+				818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */,
 				844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */,
 				81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */,
 				8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */,
@@ -2408,6 +2504,7 @@
 				84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */,
 				93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */,
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
+				818E67D41BFC27D700F968E7 /* AICommentCell.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
 				843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */,
@@ -2440,10 +2537,12 @@
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
+				818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */,
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				81C092861BAFAC0D003FFF35 /* SDWebImageDownloader.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
+				818E67D71BFC5F5F00F968E7 /* AIServiceCoverage.m in Sources */,
 				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,

@@ -45,7 +45,7 @@ static MPMoviePlayerController *_singalPlayer;
     label.backgroundColor = [UIColor clearColor];
     label.verticalAlignment = UPVerticalAlignmentMiddle;
     label.numberOfLines = 0;
-    label.lineBreakMode = NSLineBreakByCharWrapping;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
     
     return label;
 }
