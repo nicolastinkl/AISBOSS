@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AIBuyerModels.h"
+
 
 @interface AICommentCell : UIView
+
+
+- (id)initWithFrame:(CGRect)frame model:(AIMusicCommentsModel *)model;
+
 
 @end

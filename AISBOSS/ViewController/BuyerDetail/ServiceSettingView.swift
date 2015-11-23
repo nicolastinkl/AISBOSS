@@ -19,7 +19,7 @@ class ServiceSettingView: UIView {
     
     override func awakeFromNib() {
         
-        message.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
+        message.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
         
         setCollectionView()
     }
@@ -82,7 +82,7 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 class AIMsgTagCell: UICollectionViewCell {
-    static var defaultFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
+    static var defaultFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     var label: UILabel!
     var text: String! {
         get {
