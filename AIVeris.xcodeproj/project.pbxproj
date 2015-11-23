@@ -19,6 +19,11 @@
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
+		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; settings = {ASSET_TAGS = (); }; };
+		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; settings = {ASSET_TAGS = (); }; };
+		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; settings = {ASSET_TAGS = (); }; };
+		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; settings = {ASSET_TAGS = (); }; };
+
 		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; };
 		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; };
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
@@ -383,6 +388,7 @@
 		12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailFlag.swift; sourceTree = "<group>"; };
 		12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailIcon.swift; sourceTree = "<group>"; };
 		12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCardDetailIcon.xib; sourceTree = "<group>"; };
+		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
@@ -1233,6 +1239,7 @@
 				844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */,
 				844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */,
 				12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */,
+				12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -2365,6 +2372,7 @@
 				818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */,
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
+				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
 				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
 				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
