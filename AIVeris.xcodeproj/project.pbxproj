@@ -151,6 +151,15 @@
 		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; };
 		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
+		937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937EA3801C02BB2700AF776B /* AVFoundation.framework */; };
+		937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3821C03097500AF776B /* AIAudioMessageView.swift */; };
+		937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3841C03098700AF776B /* AIAudioMessageView.xib */; };
+		937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3861C030EA200AF776B /* AITextMessageView.xib */; };
+		937EA3891C030EAA00AF776B /* AITextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3881C030EAA00AF776B /* AITextMessageView.swift */; };
+		937EA38B1C0316D600AF776B /* AIDetailTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA38A1C0316D600AF776B /* AIDetailTopMenuView.swift */; };
+		937EA38D1C03172B00AF776B /* AIDetailTopMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */; };
+		937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */; };
+		937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3901C032E9400AF776B /* AINavigationBarView.xib */; };
 		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; };
 		939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F61BDDD92600D07598 /* UIImageUtils.swift */; };
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
@@ -558,6 +567,15 @@
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
 		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
+		937EA3801C02BB2700AF776B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		937EA3821C03097500AF776B /* AIAudioMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioMessageView.swift; sourceTree = "<group>"; };
+		937EA3841C03098700AF776B /* AIAudioMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioMessageView.xib; sourceTree = "<group>"; };
+		937EA3861C030EA200AF776B /* AITextMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITextMessageView.xib; sourceTree = "<group>"; };
+		937EA3881C030EAA00AF776B /* AITextMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITextMessageView.swift; sourceTree = "<group>"; };
+		937EA38A1C0316D600AF776B /* AIDetailTopMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailTopMenuView.swift; sourceTree = "<group>"; };
+		937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDetailTopMenuView.xib; sourceTree = "<group>"; };
+		937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AINavigationBarView.swift; sourceTree = "<group>"; };
+		937EA3901C032E9400AF776B /* AINavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AINavigationBarView.xib; sourceTree = "<group>"; };
 		939F49F41BDDD67E00D07598 /* UIPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPopView.swift; sourceTree = "<group>"; };
 		939F49F61BDDD92600D07598 /* UIImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIPopView.xib; path = Buyer/UIPopView.xib; sourceTree = "<group>"; };
@@ -916,6 +934,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */,
 				93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */,
 				93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */,
@@ -963,6 +982,7 @@
 		61647BAFC7200B01794A2E67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				937EA3801C02BB2700AF776B /* AVFoundation.framework */,
 				93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */,
 				93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */,
 				93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */,
@@ -1951,6 +1971,14 @@
 				93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */,
 				9350000A1BFF119500B8386B /* AICustomAudioNotesView.swift */,
 				9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */,
+				937EA3821C03097500AF776B /* AIAudioMessageView.swift */,
+				937EA3841C03098700AF776B /* AIAudioMessageView.xib */,
+				937EA3861C030EA200AF776B /* AITextMessageView.xib */,
+				937EA3881C030EAA00AF776B /* AITextMessageView.swift */,
+				937EA38A1C0316D600AF776B /* AIDetailTopMenuView.swift */,
+				937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */,
+				937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */,
+				937EA3901C032E9400AF776B /* AINavigationBarView.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2170,6 +2198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
+				937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */,
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
@@ -2179,6 +2208,7 @@
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,
 				93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */,
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
+				937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */,
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
@@ -2228,6 +2258,7 @@
 				9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */,
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
+				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
 				93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */,
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
@@ -2244,6 +2275,7 @@
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
 				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
+				937EA38D1C03172B00AF776B /* AIDetailTopMenuView.xib in Resources */,
 				93B25A611B9D7A1D00CD1FEB /* sdk_weibo_logo@2x.png in Resources */,
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */,
@@ -2404,6 +2436,7 @@
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
+				937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */,
 				818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
@@ -2506,6 +2539,7 @@
 				842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */,
 				93FA1DD51B9C2F4F009965C8 /* AICardView.m in Sources */,
 				93FA1E4C1B9C3E12009965C8 /* AICustomerSwipeView.swift in Sources */,
+				937EA3891C030EAA00AF776B /* AITextMessageView.swift in Sources */,
 				93B25AA21B9D7A7B00CD1FEB /* NSArray+JSONModel.m in Sources */,
 				844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */,
 				93FA1E191B9C375A009965C8 /* UINavigationBar+Awesome.m in Sources */,
@@ -2538,6 +2572,7 @@
 				93FA1DD91B9C3001009965C8 /* ContentsCellView.swift in Sources */,
 				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
 				81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */,
+				937EA38B1C0316D600AF776B /* AIDetailTopMenuView.swift in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
@@ -2545,6 +2580,7 @@
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
+				937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
 				818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */,
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,

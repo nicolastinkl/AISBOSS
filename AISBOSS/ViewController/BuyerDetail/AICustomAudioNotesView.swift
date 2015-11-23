@@ -8,64 +8,125 @@
 //
 
 import Foundation
+import AISpring
 
 // MARK: -
 // MARK: AICustomAudioNotesView
 // MARK: -
-internal class AICustomAudioNotesView : UIView{ // : <#base class#>, <#protocol name#> {
+internal class AICustomAudioNotesView : UIView{
   // MARK: -
   // MARK: Internal access (aka public for current module)
   // MARK: -
     
+    // MARK: -> Internal class
+    
+    @IBOutlet weak var audioButton: DesignableButton!
+    @IBOutlet weak var inputText: DesignableTextField!
+    @IBOutlet weak var changeButton: DesignableButton!
+    
+    // MARK: -> Internal property
+    private var recorder : AVAudioRecorder?
+    private var lowPassResults: Double = 0
+    private var timer: NSTimer?
+    private var currentAudioState: Bool = false
+    
+    func getAudioFileName() -> String{
+        let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last
+        let filename = Int(NSDate().timeIntervalSince1970)
+        if let p = path {
+            return "\(p)/\(filename).aac"
+        }
+        return ""
+    }
+    
+    func startRecording(){
+        do {
+            let recorderSettingsDict:[String:AnyObject] = [AVFormatIDKey:NSNumber(unsignedInt: kAudioFormatMPEG4AAC),AVSampleRateKey:NSNumber(float: 1000.0),AVNumberOfChannelsKey:NSNumber(int: 2),AVLinearPCMBitDepthKey:NSNumber(int: 8),AVLinearPCMIsBigEndianKey:NSNumber(bool: false),AVLinearPCMIsFloatKey:NSNumber(bool: false)]
+            let fileName = getAudioFileName()
+            recorder = try AVAudioRecorder(URL: NSURL(string: fileName)!, settings: recorderSettingsDict)
+            
+            print(fileName)
+            if let rder = recorder {
+                //开始录音..
+                rder.meteringEnabled = true
+                rder.prepareToRecord()
+                rder.record()
+                
+                timer = NSTimer(timeInterval: 0.1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
+                NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
+            }
+        } catch {
+            logInfo("startRecording error")
+        }
+    }
+    
+    func levelTimer(time : NSTimer){
+        if let rder = recorder {
+            ///call to refresh meter values刷新平均和峰值功率,此计数是以对数刻度计量的,-160表示完全安静，0表示最大输入值
+            rder.updateMeters()
+            let ALPHA : Double = 0.05
+            let peakPowerForChannel : Double = pow(10, Double(0.05 * rder.peakPowerForChannel(0)))
+            lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
+            
+            //logInfo("Average input Low pass results: \(lowPassResults)")
+        }
+    }
+    
     // MARK: currentView
-
+    
     class func currentView()->AICustomAudioNotesView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomAudioNotesView", owner: self, options: nil).first  as! AICustomAudioNotesView
         return selfView
-    }     
-  
-  // MARK: -> Internal enums
-  
-  // MARK: -> Internal structs
-  
-  // MARK: -> Internal class
-  
-  // MARK: -> Internal type alias 
-  
-  // MARK: -> Internal static properties
-  
-  // MARK: -> Internal properties
-  
-  // MARK: -> Internal class methods
-  
-  // MARK: -> Internal init methods
-  
-  // MARK: -> Internal methods
-  
-  // MARK: -> Internal class override <#class name#>
-  
-  // MARK: -> Internal protocol <#protocol name#>
-  
-  // MARK: -
-  // MARK: Private access
-  // MARK: -
-  
-  // MARK: -> Private enums
-  
-  // MARK: -> Private structs
-  
-  // MARK: -> Private class
-  
-  // MARK: -> Private type alias 
+    }
+    
+    // MARK: -> Internal methods
+    
+    @IBAction func touchDownAudio(sender: AnyObject) {
+        
+        startRecording()
+        
+        audioButton.setTitle("Release to Send", forState: UIControlState.Normal)
+    }
+    
+    @IBAction func changeAudioStatusAction(sender: AnyObject) {
+        currentAudioState = !currentAudioState
+        //切换状态
+        
+        let bgImage:UIImage?
+        if currentAudioState {
+            //语音模式
+            bgImage = UIImage(named: "ai_keyboard_button_change")
+            audioButton.hidden = false
+            inputText.hidden = true
+        }else{
+            //文字模式
+            bgImage = UIImage(named: "ai_audio_button_change")
+            audioButton.hidden = true
+            inputText.hidden = false
+        }
+        if let m = bgImage {
+            changeButton.setImage(m, forState: UIControlState.Normal)
+        }        
+    }
+    
+    // MARK: -
+    // MARK: Private access
+    // MARK: -
+    
+    // MARK: -> Private methods
 
-  // MARK: -> Private static properties
-
-  // MARK: -> Private properties
-  
-  // MARK: -> Private class methods
-  
-  // MARK: -> Private init methods
-  
-  // MARK: -> Private methods
-
+    @IBAction func touchUpAudioAction(sender: AnyObject) {
+        if let rder = recorder {
+            ///松开 结束录音
+            rder.stop()
+            recorder = nil
+            timer?.invalidate()
+            timer = nil
+            audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
+            
+            logInfo("松开 结束录音")
+        }
+        
+    }
+    
 }
