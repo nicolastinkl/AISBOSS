@@ -19,12 +19,13 @@
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
 		12D795001BA80B8100586011 /* CardCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FF1BA80B8100586011 /* CardCellView.swift */; };
 		12D795041BA9597400586011 /* AIScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D795031BA9597400586011 /* AIScrollLabel.m */; };
-		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; settings = {ASSET_TAGS = (); }; };
-		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; settings = {ASSET_TAGS = (); }; };
-		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; settings = {ASSET_TAGS = (); }; };
+		12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */; };
+		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; };
+		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
+		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
 		818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C11BFC24B700F968E7 /* AIDetailText.m */; };
 		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
@@ -84,7 +85,7 @@
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
-		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -387,7 +388,9 @@
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
-		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
+		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
+		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
+		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
 		818E67C01BFC24B700F968E7 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
@@ -406,8 +409,6 @@
 		818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceCoverage.m; sourceTree = "<group>"; };
 		818E67D81BFC687100F968E7 /* AIServiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceLabel.h; sourceTree = "<group>"; };
 		818E67D91BFC687100F968E7 /* AIServiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceLabel.m; sourceTree = "<group>"; };
-
-		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -1318,6 +1319,8 @@
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
 				849D3EF11BE0632B0008949E /* ProposalEnum.swift */,
 				849D3EF31BE070C60008949E /* ProposalProtocal.swift */,
+				818D8EA51C02F8B200006408 /* AIBuyerModels.h */,
+				818D8EA61C02F8B200006408 /* AIBuyerModels.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -1489,8 +1492,6 @@
 			isa = PBXGroup;
 			children = (
 				818E67BF1BFC24B700F968E7 /* SellerViews */,
-				815F21821BE9B22F002EB473 /* UPUnderLineButton.h */,
-				815F21831BE9B22F002EB473 /* UPUnderLineButton.m */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
 				846DAD8E1BD661960054F058 /* PurchasedService */,
@@ -2525,6 +2526,7 @@
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
+				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
