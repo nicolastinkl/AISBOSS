@@ -22,8 +22,6 @@ internal class AIServiceContentViewController: UIViewController {
     
     internal var serviceContentType : AIServiceContentType!
     
-    private let topView = AINavigationBarView.currentView()
-    
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
         let pageScrollView = UIScrollView()
@@ -114,15 +112,17 @@ internal class AIServiceContentViewController: UIViewController {
         
 //        let image = topImage()
 //        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-//        self.view.addSubview(topView)
         
+        let topView = AINavigationBarView.currentView()
         self.view.addSubview(topView)
-        topView.pinToSideEdgesOfSuperview()
         self.view.addSubview(scrollView)
-        
+        topView.setWidth(self.view.width)
         scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
         
+        topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        
     }
+    
     
     func makeContentView () {
         

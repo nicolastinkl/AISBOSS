@@ -14,9 +14,6 @@ internal class AINavigationBarView : UIView{
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var custView: UIView!
     
-    @IBAction func backAction(sender: AnyObject) {
-    
-    }
     
     class func currentView()->AINavigationBarView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AINavigationBarView", owner: self, options: nil).first  as! AINavigationBarView
