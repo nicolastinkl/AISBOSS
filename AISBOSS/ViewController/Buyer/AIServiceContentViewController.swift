@@ -182,6 +182,7 @@ internal class AIServiceContentViewController: UIViewController {
         let audioView = AICustomAudioNotesView.currentView()
         scrollView.addSubview(audioView)
         audioView.setTop(custView.top + custView.height)
+        audioView.setWidth(self.view.width)
         
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), audioView.top + audioView.height)
         

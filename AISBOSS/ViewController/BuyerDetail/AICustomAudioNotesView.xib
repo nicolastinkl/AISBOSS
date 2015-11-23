@@ -11,27 +11,138 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="262"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zh6-Gb-DNr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zh6-Gb-DNr">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="262"/>
                     <animations/>
                     <color key="backgroundColor" red="0.79215686269999996" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJ0-tA-fsd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJ0-tA-fsd">
                     <rect key="frame" x="21" y="14" width="115" height="21"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="ek8-3F-XaG"/>
+                        <constraint firstAttribute="height" constant="21" id="s7c-JH-dx8"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kC-Qv-AsC">
+                    <rect key="frame" x="10" y="49" width="580" height="43"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWs-Vc-vpm" customClass="DesignableButton" customModule="AISpring">
+                            <rect key="frame" x="8" y="8" width="26" height="26"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="5EB-df-879"/>
+                                <constraint firstAttribute="width" constant="26" id="ZGV-Kf-9qO"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="ai_audio_button_change"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="13"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="changeAudioStatusAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rtB-Cu-1qd"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkB-fh-bBP" customClass="DesignableTextField" customModule="AISpring">
+                            <rect key="frame" x="44" y="4" width="536" height="35"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="ae5-Xq-0Js"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-YQ-3K8" customClass="DesignableButton" customModule="AISpring">
+                            <rect key="frame" x="44" y="4" width="536" height="35"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="Ab4-wg-Vab"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="Hold to Talk">
+                                <color key="titleColor" red="0.79215686269999996" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="touchDownAudio:" destination="iN0-l3-epB" eventType="touchDown" id="KRV-Wa-hxK"/>
+                                <action selector="touchUpAudioAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="iPX-qJ-dA6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="CkB-fh-bBP" firstAttribute="centerY" secondItem="9kC-Qv-AsC" secondAttribute="centerY" id="828-01-ljc"/>
+                        <constraint firstItem="jWs-Vc-vpm" firstAttribute="leading" secondItem="9kC-Qv-AsC" secondAttribute="leading" constant="8" id="Dlk-qw-C3c"/>
+                        <constraint firstItem="CkB-fh-bBP" firstAttribute="leading" secondItem="jWs-Vc-vpm" secondAttribute="trailing" constant="10" id="HQO-H1-ALm"/>
+                        <constraint firstItem="jWs-Vc-vpm" firstAttribute="top" secondItem="dNl-YQ-3K8" secondAttribute="bottom" constant="-40" id="JLg-3H-Jf4"/>
+                        <constraint firstAttribute="trailing" secondItem="dNl-YQ-3K8" secondAttribute="trailing" id="UJo-rh-voI"/>
+                        <constraint firstAttribute="trailing" secondItem="CkB-fh-bBP" secondAttribute="trailing" id="X9L-L9-6wo"/>
+                        <constraint firstItem="dNl-YQ-3K8" firstAttribute="leading" secondItem="jWs-Vc-vpm" secondAttribute="trailing" constant="10" id="oVl-g9-XM0"/>
+                        <constraint firstItem="dNl-YQ-3K8" firstAttribute="centerY" secondItem="9kC-Qv-AsC" secondAttribute="centerY" id="r52-BJ-F5b"/>
+                        <constraint firstItem="jWs-Vc-vpm" firstAttribute="centerY" secondItem="9kC-Qv-AsC" secondAttribute="centerY" id="uhE-2v-OTS"/>
+                        <constraint firstAttribute="height" constant="43" id="xRj-wL-cOH"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="JLg-3H-Jf4"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="vJ0-tA-fsd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="86L-Wo-atw"/>
+                <constraint firstItem="vJ0-tA-fsd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="21" id="AN3-fF-EoP"/>
+                <constraint firstItem="Zh6-Gb-DNr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjJ-9x-0TP"/>
+                <constraint firstItem="9kC-Qv-AsC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B3a-P2-dnZ"/>
+                <constraint firstAttribute="trailing" secondItem="9kC-Qv-AsC" secondAttribute="trailing" constant="10" id="Iv7-Ul-5xe"/>
+                <constraint firstAttribute="trailing" secondItem="Zh6-Gb-DNr" secondAttribute="trailing" id="RKL-Zh-HaW"/>
+                <constraint firstAttribute="bottom" secondItem="Zh6-Gb-DNr" secondAttribute="bottom" id="T6k-uc-gEX"/>
+                <constraint firstItem="Zh6-Gb-DNr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="beC-Py-WLV"/>
+                <constraint firstItem="9kC-Qv-AsC" firstAttribute="top" secondItem="vJ0-tA-fsd" secondAttribute="bottom" constant="14" id="xh7-4b-UyV"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="audioButton" destination="dNl-YQ-3K8" id="Cd2-AM-zmr"/>
+                <outlet property="changeButton" destination="jWs-Vc-vpm" id="Bhr-Da-49w"/>
+                <outlet property="inputText" destination="CkB-fh-bBP" id="uLS-Fx-zAK"/>
+            </connections>
             <point key="canvasLocation" x="404" y="336"/>
         </view>
     </objects>
+    <resources>
+        <image name="ai_audio_button_change" width="39" height="39"/>
+    </resources>
 </document>

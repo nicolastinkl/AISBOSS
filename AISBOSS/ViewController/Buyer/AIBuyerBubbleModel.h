@@ -108,6 +108,7 @@
 /**
  *  @author tinkl, 15-11-23 10:11:32
  *
+ *  @viewcontroller AIBuyerDetailViewController
  *  @brief  child list 列表模型
  *
  */
