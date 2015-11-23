@@ -24,7 +24,7 @@ internal class AIPageBueryViewController: UIViewController {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = self.bubleModelArray?.count ?? 0
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = UIColor.blueColor()
+        pageControl.currentPageIndicatorTintColor = UIColor(hex: "0c93d9")
         pageControl.transform = CGAffineTransformMakeScale(0.8, 0.8)
         return pageControl
     }()

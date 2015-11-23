@@ -95,7 +95,7 @@ internal class AICustomAudioNotesView : UIView{
         let bgImage:UIImage?
         if currentAudioState {
             //语音模式
-            bgImage = UIImage(named: "ai_audio_button_change")
+            bgImage = UIImage(named: "ai_keyboard_button_change")
             audioButton.hidden = false
             inputText.hidden = true
         }else{
@@ -106,10 +106,7 @@ internal class AICustomAudioNotesView : UIView{
         }
         if let m = bgImage {
             changeButton.setImage(m, forState: UIControlState.Normal)
-        }
-        
-        
-        
+        }        
     }
     
     // MARK: -

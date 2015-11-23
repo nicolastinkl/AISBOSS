@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AITextMessageView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_text_bg" translatesAutoresizingMaskIntoConstraints="NO" id="v3D-2c-op1">
+                    <rect key="frame" x="8" y="7" width="584" height="32"/>
+                    <animations/>
+                    <rect key="contentStretch" x="0.29999999999999999" y="0.75" width="0.45000000000000001" height="0.0"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
+                    <rect key="frame" x="19" y="12" width="562" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="L6J-KC-MOs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="v3D-2c-op1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="1LX-mD-fMz"/>
+                <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="6" id="Hc5-av-JCf"/>
+                <constraint firstItem="PJO-oW-g6h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="Prc-Os-dNP"/>
+                <constraint firstAttribute="trailing" secondItem="v3D-2c-op1" secondAttribute="trailing" constant="8" id="W0u-UC-cVz"/>
+                <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="19" id="XLX-JG-yeH"/>
+                <constraint firstItem="PJO-oW-g6h" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ldr-oT-DeG"/>
+                <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="rde-aU-EBm"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="393" y="73.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ai_audio_text_bg" width="504" height="40"/>
+    </resources>
+</document>
