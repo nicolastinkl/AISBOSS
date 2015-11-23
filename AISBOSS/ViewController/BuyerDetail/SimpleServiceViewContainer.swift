@@ -47,9 +47,12 @@ class SimpleServiceViewContainer: UIView {
             star.top == review.top + 1
         }
         
-        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
-        price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
-        review.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
+        name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
+        price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+        review.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
+        savedMoney.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
+        originalPrice.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(26))
+        
         layer.cornerRadius = 6
         layer.masksToBounds = true
         logo.layer.cornerRadius = logo.width / 2
@@ -95,7 +98,7 @@ class SimpleServiceViewContainer: UIView {
             //serviceDetailView.loadData(paramDictionary)
             //return serviceDetailView
         case ProposalServiceViewTemplate.Taxi:
-            return TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            return AITwoIconAndTextView.createInstance()
         case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
         }
