@@ -52,7 +52,8 @@ internal class UICustomsTags : SpringView {
     
     func fillOfData(model: AIBuerSomeTagModel){
         selfModel = model
-        content.text = "  \(model.tagName ?? "")"
+        let contentText = model.tagName ?? ""
+        content.text = "  \(contentText)"
         
         unReadNumber.text = "\(model.unReadNumber ?? 0)"
     }
