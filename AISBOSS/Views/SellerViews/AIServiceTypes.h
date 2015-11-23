@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AIBuyerModels.h"
 
 @interface AIServiceTypes : UIView
+
+
 
 @end

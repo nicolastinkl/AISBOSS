@@ -26,6 +26,7 @@
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
+		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
 		818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C11BFC24B700F968E7 /* AIDetailText.m */; };
 		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
@@ -85,6 +86,7 @@
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
+		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; settings = {ASSET_TAGS = (); }; };
 		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -392,6 +394,8 @@
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
+		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
+		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
 		818E67C01BFC24B700F968E7 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
@@ -1364,6 +1368,8 @@
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
 				849D3EF11BE0632B0008949E /* ProposalEnum.swift */,
 				849D3EF31BE070C60008949E /* ProposalProtocal.swift */,
+				818D8EA51C02F8B200006408 /* AIBuyerModels.h */,
+				818D8EA61C02F8B200006408 /* AIBuyerModels.m */,
 				81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */,
 				81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */,
 			);
@@ -2557,6 +2563,7 @@
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
+				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

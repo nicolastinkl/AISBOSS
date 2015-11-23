@@ -112,10 +112,10 @@
 {
     UIImage *normalImage = [UIImage imageNamed:@""];
     UIImage *selectedImage = [UIImage imageNamed:@""];
-    CGSize size = [AITools imageDisplaySizeFrom1080DesignSize:normalImage.size];
+    //CGSize size = [AITools imageDisplaySizeFrom1080DesignSize:normalImage.size];
     CGFloat x = _textMargin * 2 + CGRectGetWidth(_titleLabel.frame);
     CGFloat height = CGRectGetHeight(self.frame) - _tinyMargin * 2;
-    CGRect frame = CGRectMake(x, _tinyMargin, size.width, height);
+    CGRect frame = CGRectMake(x, _tinyMargin, height, height);
     
     _checkView = [UIButton buttonWithType:UIButtonTypeCustom];
     

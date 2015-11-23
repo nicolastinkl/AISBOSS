@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AIBuyerModels.h"
 
 @interface AIHorizontalBarChart : UIView
+
+- (id)initWithFrame:(CGRect)frame model:(AIMusicChartModel *)model;
+
 
 @end
