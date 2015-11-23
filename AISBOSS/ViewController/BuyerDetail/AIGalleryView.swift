@@ -23,9 +23,9 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
             for url in imageArray {
 
                 let imageView = AIImageView()
-                imageView.image = UIImage(named: "Placehold")
+                //imageView.image = UIImage(named: "Placehold")
                 imageView.contentMode = .ScaleAspectFill
-                //imageView.setURL(NSURL(string: url), placeholderImage: UIImage(named: "Placehold"))
+                imageView.setURL(NSURL(string: url), placeholderImage: UIImage(named: "Placehold"))
                 imageView.clipsToBounds = true
                 self.pageScrollView.addSubview(imageView)
                 imageView.frame = pageScrollView.frame
@@ -87,12 +87,10 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
         if let g =  superScroll.gestureRecognizers?.last {
             g.requireGestureRecognizerToFail(ges!)
         }
-
     }
     
     init() {
         super.init(frame: CGRect.zero)
-        
         
     }
 

@@ -46,3 +46,27 @@
 }
 
 @end
+
+
+
+@implementation AIProposalListChildModel
+@end
+
+@implementation AIProposalCommentodel
+
+@end
+
+@implementation AIProposalListContentModel
+
+@end
+@implementation AIProposalListContentChildModel
+
+
+
+@end
+
+@implementation AIProposalListChildServiceProviderModel
+
+
+
+@end

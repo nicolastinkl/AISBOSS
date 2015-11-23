@@ -128,7 +128,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         // Add gallery View
         scrollView.addSubview(galleryView)
-        galleryView.imageModelArray = ["","","",""]
+        galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
         let tagsHold = UIView()
