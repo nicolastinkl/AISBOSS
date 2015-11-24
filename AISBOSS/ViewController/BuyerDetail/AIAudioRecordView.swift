@@ -10,6 +10,7 @@ import Foundation
 
 
 class AIAudioRecordView: UIView {
+    @IBOutlet weak var passImageView: UIImageView!
     class func currentView()->AIAudioRecordView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioRecordView", owner: self, options: nil).first  as! AIAudioRecordView
         return selfView

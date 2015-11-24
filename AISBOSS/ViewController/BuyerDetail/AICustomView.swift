@@ -25,6 +25,10 @@ internal class AICustomView : UIView{
     // MARK: currentView
     class func currentView()->AICustomView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
+        
+        selfView.title.font = AITools.myriadSemiCondensedWithSize(63/2.5)
+        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(42/2.5)
+        
         return selfView
     }
     
@@ -61,8 +65,8 @@ internal class AICustomView : UIView{
             tag.fillOfData(model) //处理数据  // add into whole array with key-value.
             
             tag.delegateNew = self
-            let ramdWidth = 80 + model.tagName!.length * 7
-            let ramdHeigth:CGFloat = 37
+            let ramdWidth = 30 + model.tagName!.length * 8
+            let ramdHeigth:CGFloat = 35
             
             if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin) {
                 n = 0
@@ -119,14 +123,11 @@ extension AICustomView:AIElasticDownTagStateDelegete{
             //remove this view from list
             
             let array = selectedTagsArray.filter { (oldModel) -> Bool in
-                return oldModel.tagName != viewModel.tagName
+                return oldModel.bsId != viewModel.bsId
             }
             
-            if array.count > 0 {
-                //remove
-                selectedTagsArray = array
-            }
-            
+            //remove
+            selectedTagsArray = array
 
             //refersh UI
             refershUI()

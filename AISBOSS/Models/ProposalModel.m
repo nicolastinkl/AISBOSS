@@ -38,3 +38,14 @@
 @implementation AIProposalInstModel
 
 @end
+
+@implementation AIProposalHopeModel
+
+@end
+
+@implementation AIProposalHopeAudioTextModel
+@end
+
+@implementation AIProposalNotesModel
+
+@end
