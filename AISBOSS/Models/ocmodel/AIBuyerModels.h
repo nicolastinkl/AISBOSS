@@ -57,6 +57,8 @@
 
 @property (nonatomic, strong) NSArray<Optional> *types;
 
+@property (nonatomic, assign) NSInteger defaultTypeIndex;
+
 
 @end
 

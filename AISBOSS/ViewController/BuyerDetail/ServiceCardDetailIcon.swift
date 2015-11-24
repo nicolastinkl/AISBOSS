@@ -26,15 +26,15 @@ class ServiceCardDetailIcon: UIView {
     //MARK: - Constants
     //sizes
     let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(62)
-    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(300)
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
-    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(10)
+    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(296)
+    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(100)
+    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(48)
     let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(68)
     let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(200)
     let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(64)
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(56/2.5)
-    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(48/2.5)
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     //MARK: - init
     override init(frame: CGRect) {
@@ -48,7 +48,6 @@ class ServiceCardDetailIcon: UIView {
     //MARK: - load data
     func loadData(){
         layoutView()
-        
         timeIconImageView.image = UIImage(named: "icon_time_big")
         priceIconImageView.image = UIImage(named: "icon_price_big")
         calendaIconImageView.image = UIImage(named: "icon_calenda_big")
@@ -77,9 +76,9 @@ class ServiceCardDetailIcon: UIView {
         self.addSubview(titleLabel)
         
         layout(titleLabel){titleLabel in
-            titleLabel.leadingMargin == titleLabel.superview!.leadingMargin
+            titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + VIEW_LEFT_MARGIN
             titleLabel.trailingMargin >= titleLabel.superview!.trailingMargin
-            titleLabel.topMargin == titleLabel.superview!.topMargin
+            titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
             titleLabel.height == 20
         }
     }

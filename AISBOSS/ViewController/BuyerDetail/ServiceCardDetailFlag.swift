@@ -20,7 +20,8 @@ class ServiceCardDetailFlag: UIView {
     let colorArray = [UIColor(hexString: "#1c789f"),UIColor(hexString: "#7b3990"),UIColor(hexString: "#619505"),UIColor(hexString: "#f79a00"),UIColor(hexString: "#d05126"),UIColor(hexString: "#b32b1d")]
     //MARK: - Constants
     //sizes
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(98)
+    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(100)
+    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(58)
     let CORNER_RADIOS_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(78/2)
     let FLAG_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
     let FLAG_HEIGHT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(34)
@@ -28,8 +29,8 @@ class ServiceCardDetailFlag: UIView {
     let FLAG_MAX_WIDTH : CGFloat = UIScreen.mainScreen().bounds.width - 20
     let TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(60)
     //fonts
-    let FLAG_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(40/3)
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(48/3)
+    let FLAG_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(34))
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
     
     //MARK: - init
     override init(frame: CGRect) {
@@ -55,7 +56,7 @@ class ServiceCardDetailFlag: UIView {
     //MARK: - build views
     func buildTitle(){
         let text = "Service Coverage"
-        let titleFrame = CGRectMake(VIEW_LEFT_MARGIN, 0, FLAG_MAX_WIDTH, TITLE_HEIGHT)
+        let titleFrame = CGRectMake(VIEW_LEFT_MARGIN, VIEW_TOP_MARGIN, FLAG_MAX_WIDTH, TITLE_HEIGHT)
         titleLabel = UILabel(frame: titleFrame)
         titleLabel.text = text
         titleLabel.font = TITLE_TEXT_FONT

@@ -29,7 +29,7 @@ class ServiceCardDetailShopping: UIView {
 
     
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(48/2.5)
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     func loadData(){
         shoppingListData = ["shoppingItem1","shoppingItem2"]

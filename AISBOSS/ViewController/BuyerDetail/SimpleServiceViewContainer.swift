@@ -34,6 +34,8 @@ class SimpleServiceViewContainer: UIView {
     
     private var dataModel: AIProposalServiceModel?
     
+    private var paramViewHeight: CGFloat = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -106,6 +108,7 @@ class SimpleServiceViewContainer: UIView {
     
     private func addParamsView(serviceParams: UIView) {
         frame.size.height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        paramViewHeight = serviceParams.frame.height
         paramsView.addSubview(serviceParams)
         
         layout(paramsView, serviceParams) {container, item in
@@ -144,6 +147,6 @@ class SimpleServiceViewContainer: UIView {
     }
     
     private func totalHeight()-> CGFloat {
-        return topHeight() + paramsViewTopMargin.constant + paramsView.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height + messageHeight.constant
+        return topHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height + messageHeight.constant
     }
 }
