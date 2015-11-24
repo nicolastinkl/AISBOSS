@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "AIBuyerModels.h"
 
+
+@protocol AIServiceTypesDelegate <NSObject>
+
+- (void)didSelectedAtIndex:(NSInteger)index;
+
+@end
+
+
 @interface AIServiceTypes : UIView
 
+@property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
 
+- (id)initWithFrame:(CGRect)frame model:(AIMusicServiceTypesModel *)model;
 
 @end

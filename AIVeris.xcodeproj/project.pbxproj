@@ -32,7 +32,6 @@
 		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
 		818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CA1BFC26A700F968E7 /* AIStarRate.m */; };
 		818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */; };
-		818E67D11BFC275E00F968E7 /* AITabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D01BFC275E00F968E7 /* AITabView.m */; };
 		818E67D41BFC27D700F968E7 /* AICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D31BFC27D700F968E7 /* AICommentCell.m */; };
 		818E67D71BFC5F5F00F968E7 /* AIServiceCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */; };
 		818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D91BFC687100F968E7 /* AIServiceLabel.m */; };
@@ -87,9 +86,8 @@
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
-		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; settings = {ASSET_TAGS = (); }; };
-		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; settings = {ASSET_TAGS = (); }; };
+		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; };
+		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -406,8 +404,6 @@
 		818E67CA1BFC26A700F968E7 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
 		818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHorizontalBarChart.h; sourceTree = "<group>"; };
 		818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHorizontalBarChart.m; sourceTree = "<group>"; };
-		818E67CF1BFC275E00F968E7 /* AITabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AITabView.h; sourceTree = "<group>"; };
-		818E67D01BFC275E00F968E7 /* AITabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITabView.m; sourceTree = "<group>"; };
 		818E67D21BFC27D700F968E7 /* AICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICommentCell.h; sourceTree = "<group>"; };
 		818E67D31BFC27D700F968E7 /* AICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICommentCell.m; sourceTree = "<group>"; };
 		818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceCoverage.h; sourceTree = "<group>"; };
@@ -1017,8 +1013,6 @@
 				818E67CA1BFC26A700F968E7 /* AIStarRate.m */,
 				818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */,
 				818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */,
-				818E67CF1BFC275E00F968E7 /* AITabView.h */,
-				818E67D01BFC275E00F968E7 /* AITabView.m */,
 				818E67D21BFC27D700F968E7 /* AICommentCell.h */,
 				818E67D31BFC27D700F968E7 /* AICommentCell.m */,
 				818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */,
@@ -2466,7 +2460,6 @@
 				8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */,
 				84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */,
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
-				818E67D11BFC275E00F968E7 /* AITabView.m in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
 				93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */,
 				934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */,
