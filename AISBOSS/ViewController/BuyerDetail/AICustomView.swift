@@ -119,7 +119,7 @@ extension AICustomView:AIElasticDownTagStateDelegete{
             //remove this view from list
             
             let array = selectedTagsArray.filter { (oldModel) -> Bool in
-                return oldModel.tagName != viewModel.tagName
+                return oldModel.bsId != viewModel.bsId
             }
             
             if array.count > 0 {

@@ -152,14 +152,17 @@ internal class AIServiceContentViewController: UIViewController {
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
+        model1.bsId = 12
         
         var model2 = AIBuerSomeTagModel()
         model2.tagName = "fatigued"
         model2.unReadNumber = 6
+        model2.bsId = 13
         
         var model3 = AIBuerSomeTagModel()
         model3.tagName = "endorine disorders"
         model3.unReadNumber = 731
+        model3.bsId = 15
         
         custView.fillTags([model1,model2,model3], isNormal: true)
         

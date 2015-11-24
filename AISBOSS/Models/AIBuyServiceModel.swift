@@ -84,6 +84,7 @@ struct AIPopServiceDetailModel : JSONJoy {
  *  @since <#version number#>
  */
 struct AIBuerSomeTagModel : JSONJoy {
+    var bsId : Int?
     var unReadNumber : Int?
     var tagName : String?
     init(){
