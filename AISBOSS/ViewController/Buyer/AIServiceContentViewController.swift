@@ -123,7 +123,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
         
-        
+        //init recording view
         audioView =  AIAudioRecordView.currentView()
         if let auView = audioView {
             self.view.addSubview(auView)
@@ -191,6 +191,12 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(text2, preView: text1)
     }
     
+    /**
+     添加定制的view到scrollview中
+     
+     - parameter cview:   被添加的view
+     - parameter preView: 上一个view
+     */
     func addNewSubView(cview:UIView,preView:UIView){
         scrollView.addSubview(cview)
         cview.setWidth(self.view.width)
@@ -204,10 +210,14 @@ internal class AIServiceContentViewController: UIViewController {
 
 extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
     
+    /**
+     开始录音处理
+     */
     func startRecording() {
         audioView?.hidden = false
     }
     
+    //更新Meters 图片处理
     func updateMetersImage(lowPass: Double) {
         var imageName:String = "RecordingSignal001"
         if lowPass >= 0.8 {
@@ -232,6 +242,8 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         
         audioView?.passImageView.image = UIImage(named: imageName)
     }
+    
+    //结束录音添加view到scrollview
     func endRecording(audioUrl: String) {
         audioView?.hidden = true
         // add a new View Model
