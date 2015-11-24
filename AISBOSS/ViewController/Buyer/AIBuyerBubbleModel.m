@@ -46,3 +46,29 @@
 }
 
 @end
+
+@implementation AIProposalListChildModel
+
+@end
+
+@implementation AIProposalListContentModel
+
+@end
+
+
+@implementation AIProposalListContentChildModel
+@end
+
+@implementation AIProposalListChildServiceProviderModel
+@end
+
+@implementation AIProposalHopeModel
+
+@end
+
+@implementation AIProposalHopeAudioTextModel
+@end
+
+@implementation AIProposalNotesModel
+
+@end

@@ -17,10 +17,10 @@ public enum AIServiceContentType : Int {
 internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
-     
-    internal var serviceContentType : AIServiceContentType!
     
-    private let topView = UIView()
+    private let redColor : String = "b32b1d"
+    
+    internal var serviceContentType : AIServiceContentType!
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -33,7 +33,7 @@ internal class AIServiceContentViewController: UIViewController {
     }()
     
     private lazy var galleryView : AIGalleryView = {
-        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 120))
+        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 192))
         return gView
     }()
     
@@ -110,45 +110,25 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeTopView () {
         
-        let image = topImage()
-        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
+//        let image = topImage()
+//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
+        
+        let topView = AINavigationBarView.currentView()
         self.view.addSubview(topView)
-        topView.sizeToHeight(size.height)
-        topView.pinToSideEdgesOfSuperview()
-        
-        
         self.view.addSubview(scrollView)
-//        scrollView.pinToTopEdgeOfSuperview(offset: size.height)
-//        scrollView.pinToSideEdgesOfSuperview()
-//        scrollView.pinToBottomEdgeOfSuperview()
+        topView.setWidth(self.view.width)
+        scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
         
-        scrollView.frame = CGRectMake(0, size.height, self.view.width, self.view.height-size.height)
+        topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
         
-        let topImageView = UIImageView(image: image)
-        topImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height)
-        topView.addSubview(topImageView)
-        
-        // add back action 
-        
-        let backFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), size.height / 2)
-        topView.addSubview(self.makeButtonWithFrame(backFrame, action: "backAction"))
-        
-        // add scroll action
-        let scrollFrame = CGRectMake(CGRectGetWidth(self.view.frame) * 2 / 3, CGRectGetHeight(backFrame), CGRectGetWidth(self.view.frame) / 3, size.height / 2)
-        topView.addSubview(self.makeButtonWithFrame(scrollFrame, action: "scrollAction"))
     }
+    
     
     func makeContentView () {
         
         // Add gallery View
-        
-//        galleryView.pinToTopEdgeOfSuperview()
-//        galleryView.pinToSideEdgesOfSuperview()
-//        galleryView.sizeToHeight(120)
-        
-       
         scrollView.addSubview(galleryView)
-        galleryView.imageModelArray = ["","","",""]
+        galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
         let tagsHold = UIView()
@@ -158,13 +138,8 @@ internal class AIServiceContentViewController: UIViewController {
         tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
         tagsHold.setTop(galleryView.top + galleryView.height + 5)
         
-        
         let custView =  AICustomView.currentView()
-        scrollView.addSubview(custView)
-        custView.setTop(tagsHold.top + tagsHold.height + 5)
-        custView.setWidth(self.view.width)
-        
-        
+        addNewSubView(custView, preView: tagsHold)
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
@@ -180,10 +155,25 @@ internal class AIServiceContentViewController: UIViewController {
         custView.fillTags([model1,model2,model3], isNormal: true)
         
         let audioView = AICustomAudioNotesView.currentView()
-        scrollView.addSubview(audioView)
-        audioView.setTop(custView.top + custView.height)
+        addNewSubView(audioView, preView: custView)
         
-        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), audioView.top + audioView.height)
+        let audio1 = AIAudioMessageView.currentView()
+        addNewSubView(audio1, preView: audioView)
+        
+        let text1 = AITextMessageView.currentView()
+        addNewSubView(text1, preView: audio1)
+        
+        let text2 = AITextMessageView.currentView()
+        addNewSubView(text2, preView: text1)
+    }
+    
+    func addNewSubView(cview:UIView,preView:UIView){
+        scrollView.addSubview(cview)
+        
+        cview.setWidth(self.view.width)
+        cview.setTop(preView.top + preView.height)
+        cview.backgroundColor = UIColor(hex: redColor)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
         
     }
     
