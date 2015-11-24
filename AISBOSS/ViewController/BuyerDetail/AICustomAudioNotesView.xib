@@ -20,7 +20,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJ0-tA-fsd">
-                    <rect key="frame" x="21" y="14" width="115" height="21"/>
+                    <rect key="frame" x="14" y="14" width="115" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="115" id="ek8-3F-XaG"/>
@@ -34,7 +34,7 @@
                     <rect key="frame" x="10" y="49" width="580" height="43"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWs-Vc-vpm" customClass="DesignableButton" customModule="AISpring">
-                            <rect key="frame" x="8" y="5" width="32" height="32"/>
+                            <rect key="frame" x="4" y="5" width="32" height="32"/>
                             <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -59,7 +59,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" alpha="0.81999999999999995" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkB-fh-bBP" customClass="DesignableTextField" customModule="AISpring">
-                            <rect key="frame" x="50" y="4" width="530" height="35"/>
+                            <rect key="frame" x="46" y="4" width="534" height="35"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -78,7 +78,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-YQ-3K8" customClass="DesignableButton" customModule="AISpring">
-                            <rect key="frame" x="50" y="4" width="530" height="35"/>
+                            <rect key="frame" x="46" y="4" width="534" height="35"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -103,7 +103,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="CkB-fh-bBP" firstAttribute="centerY" secondItem="9kC-Qv-AsC" secondAttribute="centerY" id="828-01-ljc"/>
-                        <constraint firstItem="jWs-Vc-vpm" firstAttribute="leading" secondItem="9kC-Qv-AsC" secondAttribute="leading" constant="8" id="Dlk-qw-C3c"/>
+                        <constraint firstItem="jWs-Vc-vpm" firstAttribute="leading" secondItem="9kC-Qv-AsC" secondAttribute="leading" constant="4" id="Dlk-qw-C3c"/>
                         <constraint firstItem="CkB-fh-bBP" firstAttribute="leading" secondItem="jWs-Vc-vpm" secondAttribute="trailing" constant="10" id="HQO-H1-ALm"/>
                         <constraint firstItem="jWs-Vc-vpm" firstAttribute="top" secondItem="dNl-YQ-3K8" secondAttribute="bottom" constant="-40" id="JLg-3H-Jf4"/>
                         <constraint firstAttribute="trailing" secondItem="dNl-YQ-3K8" secondAttribute="trailing" id="UJo-rh-voI"/>
@@ -124,7 +124,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="vJ0-tA-fsd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="86L-Wo-atw"/>
-                <constraint firstItem="vJ0-tA-fsd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="21" id="AN3-fF-EoP"/>
+                <constraint firstItem="vJ0-tA-fsd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="AN3-fF-EoP"/>
                 <constraint firstItem="Zh6-Gb-DNr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjJ-9x-0TP"/>
                 <constraint firstItem="9kC-Qv-AsC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B3a-P2-dnZ"/>
                 <constraint firstAttribute="trailing" secondItem="9kC-Qv-AsC" secondAttribute="trailing" constant="10" id="Iv7-Ul-5xe"/>

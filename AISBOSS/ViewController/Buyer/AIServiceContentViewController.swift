@@ -162,9 +162,20 @@ internal class AIServiceContentViewController: UIViewController {
         var model3 = AIBuerSomeTagModel()
         model3.tagName = "endorine disorders"
         model3.unReadNumber = 731
-        model3.bsId = 15
+        model3.bsId = 16
         
-        custView.fillTags([model1,model2,model3], isNormal: true)
+        
+        var model4 = AIBuerSomeTagModel()
+        model4.tagName = "disorders the"
+        model4.unReadNumber = 69
+        model4.bsId = 17
+        
+        
+        var model5 = AIBuerSomeTagModel()
+        model5.tagName = "depressed"
+        model5.unReadNumber = 18
+        model5.bsId = 18
+        custView.fillTags([model1,model2,model5,model3,model4], isNormal: true)
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)

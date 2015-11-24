@@ -126,11 +126,8 @@ extension AICustomView:AIElasticDownTagStateDelegete{
                 return oldModel.bsId != viewModel.bsId
             }
             
-            if array.count > 0 {
-                //remove
-                selectedTagsArray = array
-            }
-            
+            //remove
+            selectedTagsArray = array
 
             //refersh UI
             refershUI()
