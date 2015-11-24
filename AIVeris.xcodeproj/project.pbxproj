@@ -27,6 +27,8 @@
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
 		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
+		818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */; };
+		818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EAC1C040C8B00006408 /* AIParamedicView.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
 		818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C11BFC24B700F968E7 /* AIDetailText.m */; };
 		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
@@ -403,6 +405,10 @@
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
 		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
+		818D8EA81C040C2F00006408 /* AIMusicTherapyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIMusicTherapyView.h; sourceTree = "<group>"; };
+		818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIMusicTherapyView.m; sourceTree = "<group>"; };
+		818D8EAB1C040C8B00006408 /* AIParamedicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIParamedicView.h; sourceTree = "<group>"; };
+		818D8EAC1C040C8B00006408 /* AIParamedicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIParamedicView.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
 		818E67C01BFC24B700F968E7 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
@@ -1272,6 +1278,10 @@
 				93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */,
 				818811771BECF09A001C162B /* AIServiceContentViewController.swift */,
 				93DA9C071BFD62D100E2DA3B /* AutoLayer */,
+				818D8EA81C040C2F00006408 /* AIMusicTherapyView.h */,
+				818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */,
+				818D8EAB1C040C8B00006408 /* AIParamedicView.h */,
+				818D8EAC1C040C8B00006408 /* AIParamedicView.m */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -2418,6 +2428,7 @@
 				93FA1DE31B9C302A009965C8 /* AIOrderDetailService.swift in Sources */,
 				93B25A991B9D7A7B00CD1FEB /* AFHTTPSessionManager.m in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
+				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
 				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
 				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,
 				93B25A981B9D7A7B00CD1FEB /* AFHTTPRequestOperationManager.m in Sources */,
@@ -2558,6 +2569,7 @@
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
+				818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */,
 				93B25A3D1B9D796F00CD1FEB /* AIMessage.m in Sources */,
 				93B25AA51B9D7A7B00CD1FEB /* JSONKeyMapper.m in Sources */,
 				846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
