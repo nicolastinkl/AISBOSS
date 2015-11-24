@@ -76,22 +76,17 @@ internal class AIPageBueryViewController: UIViewController {
         let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
-    }
-    
+    }    
     
     func initControls(){
+        
+        // init layout
         pageScrollView.delegate = self
         self.view.addSubview(pageScrollView)
         pageScrollView.frame = self.view.frame
-        
-//        pageScrollView.pinToEdgesOfSuperview()
-        
         self.view.addSubview(pageControl)
         pageControl.setTop(8)
         pageControl.setX((self.view.width - pageControl.width)/2)
-//        auto layout
-//        pageControl.pinToTopEdgeOfSuperview(offset: -10)
-//        pageControl.centerHorizontallyInSuperview()
         
         // Add the album view controllers to the scroll view
         var pageViews: [UIView] = []
@@ -102,7 +97,7 @@ internal class AIPageBueryViewController: UIViewController {
             pageScrollView.addSubview(pageView)
             pageView.clipsToBounds = true
             pageView.frame = CGRectMake(CGFloat(viewTag) * self.view.width, 0, self.view.width, pageScrollView.height)
-//            pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
+            //pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
             pageViews.append(pageView)
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceContentViewController) as! AIServiceContentViewController
             viewController.serviceContentType = AIServiceContentType.Escort
@@ -111,13 +106,12 @@ internal class AIPageBueryViewController: UIViewController {
             viewTag = viewTag + 1
         }
         pageScrollView.contentSize = CGSizeMake(self.view.width * CGFloat(viewTag), self.view.height)
-        if #available(iOS 9, *) {
-            //pageScrollView.boundHorizontally(pageViews)
-        } else {
-            // Fallback on earlier versions
-        }
     }
     
+    /**
+     初始化数据
+     
+     */
     func initGetingData(){
         
     }

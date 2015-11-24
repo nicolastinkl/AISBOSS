@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kC-Qv-AsC">
-                    <rect key="frame" x="10" y="49" width="580" height="43"/>
+                    <rect key="frame" x="10" y="49" width="576" height="43"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWs-Vc-vpm" customClass="DesignableButton" customModule="AISpring">
                             <rect key="frame" x="4" y="5" width="32" height="32"/>
@@ -59,7 +59,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" alpha="0.81999999999999995" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CkB-fh-bBP" customClass="DesignableTextField" customModule="AISpring">
-                            <rect key="frame" x="46" y="4" width="534" height="35"/>
+                            <rect key="frame" x="46" y="4" width="530" height="35"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -78,7 +78,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-YQ-3K8" customClass="DesignableButton" customModule="AISpring">
-                            <rect key="frame" x="46" y="4" width="534" height="35"/>
+                            <rect key="frame" x="46" y="4" width="530" height="35"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -127,7 +127,7 @@
                 <constraint firstItem="vJ0-tA-fsd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="AN3-fF-EoP"/>
                 <constraint firstItem="Zh6-Gb-DNr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjJ-9x-0TP"/>
                 <constraint firstItem="9kC-Qv-AsC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B3a-P2-dnZ"/>
-                <constraint firstAttribute="trailing" secondItem="9kC-Qv-AsC" secondAttribute="trailing" constant="10" id="Iv7-Ul-5xe"/>
+                <constraint firstAttribute="trailing" secondItem="9kC-Qv-AsC" secondAttribute="trailing" constant="14" id="Iv7-Ul-5xe"/>
                 <constraint firstAttribute="trailing" secondItem="Zh6-Gb-DNr" secondAttribute="trailing" id="RKL-Zh-HaW"/>
                 <constraint firstAttribute="bottom" secondItem="Zh6-Gb-DNr" secondAttribute="bottom" id="T6k-uc-gEX"/>
                 <constraint firstItem="Zh6-Gb-DNr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="beC-Py-WLV"/>

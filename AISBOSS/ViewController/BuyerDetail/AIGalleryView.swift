@@ -64,6 +64,7 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
         pageScrollView.backgroundColor = UIColor.clearColor()
         pageScrollView.pagingEnabled = true
         pageScrollView.showsHorizontalScrollIndicator = false
+        pageScrollView.userInteractionEnabled = true
         pageScrollView.showsVerticalScrollIndicator = false
         pageScrollView.tag = 12
         return pageScrollView
@@ -71,6 +72,7 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.userInteractionEnabled = true
         
         self.addSubview(pageScrollView)
         pageScrollView.frame = frame
@@ -81,12 +83,14 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
         pageControl.setY(point.y)
         pageScrollView.delegate = self
         
+        /**
         guard let superScroll = scrollView() else { return }
-
+        
         let ges = self.pageScrollView.gestureRecognizers?.last!
         if let g =  superScroll.gestureRecognizers?.last {
-            g.requireGestureRecognizerToFail(ges!)
+        g.requireGestureRecognizerToFail(ges!)
         }
+        */
     }
     
     init() {
