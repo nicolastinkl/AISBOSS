@@ -34,6 +34,7 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
                 index = index + 1
             }
             self.pageControl.numberOfPages = imageArray.count
+            self.pageScrollView.contentSize = CGSizeMake(pageScrollView.width * CGFloat(imageArray.count), pageScrollView.height)
 
         }
     }
