@@ -127,8 +127,8 @@ class ServiceContainerView: UIView {
             return TransportService(frame: CGRect(x: 0, y: 0, width: detail.frame.width, height: 0))
         case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: detail.frame.width, height: 0))
-            //        default:
-            //            return nil
+        default:
+            return nil
         }
     }
 }

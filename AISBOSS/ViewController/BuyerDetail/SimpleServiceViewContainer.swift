@@ -103,6 +103,8 @@ class SimpleServiceViewContainer: UIView {
             return AITwoIconAndTextView.createInstance()
         case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+        default:
+            return nil
         }
     }
     
