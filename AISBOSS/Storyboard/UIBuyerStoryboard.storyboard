@@ -408,7 +408,7 @@
     <resources>
         <image name="backIcon" width="13" height="22"/>
         <image name="buyCount" width="16" height="19"/>
-        <image name="buyerBottom" width="360" height="120"/>
+        <image name="buyerBottom" width="360" height="118"/>
         <image name="moneyCount" width="22" height="18"/>
         <image name="serviceDetailInfo" width="36" height="36"/>
         <image name="viocephonebutton" width="36" height="36"/>
