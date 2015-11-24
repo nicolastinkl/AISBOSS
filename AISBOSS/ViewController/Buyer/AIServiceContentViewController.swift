@@ -140,15 +140,8 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
-        let tagsHold = UIView()
-        
-        
-        scrollView.addSubview(tagsHold)
-        tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
-        tagsHold.setTop(galleryView.top + galleryView.height + 5)
-        
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: tagsHold)
+        addNewSubView(custView, preView: galleryView)
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
