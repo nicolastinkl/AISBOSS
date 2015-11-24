@@ -90,6 +90,8 @@
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
 		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; };
 		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; };
+		8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */; settings = {ASSET_TAGS = (); }; };
+		8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */; settings = {ASSET_TAGS = (); }; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -510,6 +512,8 @@
 		8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHorizontalLineLabel.swift; sourceTree = "<group>"; };
 		8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITwoIconTextView.xib; sourceTree = "<group>"; };
 		8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITwoIconTextView.swift; sourceTree = "<group>"; };
+		8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITitleAndIconTextView.xib; sourceTree = "<group>"; };
+		8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITitleAndIconTextView.swift; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
@@ -1266,6 +1270,8 @@
 				844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */,
 				12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */,
 				12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */,
+				8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */,
+				8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */,
 				8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */,
 				8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */,
 			);
@@ -2210,6 +2216,7 @@
 				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
 				937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */,
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
+				8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */,
 				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
 				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
 				934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */,
@@ -2367,6 +2374,7 @@
 			files = (
 				8472CBD31BCCAC900084A926 /* PriceItem.swift in Sources */,
 				81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */,
+				8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */,
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
 				93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */,
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
