@@ -87,4 +87,11 @@
 
 #import "UIView+MaterialDesign.h"
 
+// Buyer Details
+
+#import "AIMusicTherapyView.h"
+#import "AIParamedicView.h"
+
+
+//
 

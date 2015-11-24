@@ -32,12 +32,16 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.titleString = title;
-        self.detailString = detail;
         
         _textMargin = 10;
         _titleFontSize = 20;
         _detailFontSize = 18;
+        
+        self.titleString = title;
+        self.detailString = detail;
+        
+        
+        [self resetFrame];
     }
     
     

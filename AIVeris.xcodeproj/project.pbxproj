@@ -29,14 +29,14 @@
 		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
 		818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */; };
 		818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EAC1C040C8B00006408 /* AIParamedicView.m */; };
+		818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EB01C040D4100006408 /* AICommentCell.m */; };
+		818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EB21C040D4100006408 /* AIDetailText.m */; };
+		818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EB41C040D4100006408 /* AIHorizontalBarChart.m */; };
+		818D8EC01C040D4100006408 /* AIServiceCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EB61C040D4100006408 /* AIServiceCoverage.m */; };
+		818D8EC11C040D4100006408 /* AIServiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EB81C040D4100006408 /* AIServiceLabel.m */; };
+		818D8EC21C040D4100006408 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBA1C040D4100006408 /* AIServiceTypes.m */; };
+		818D8EC31C040D4100006408 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBC1C040D4100006408 /* AIStarRate.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
-		818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C11BFC24B700F968E7 /* AIDetailText.m */; };
-		818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67C71BFC267000F968E7 /* AIServiceTypes.m */; };
-		818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CA1BFC26A700F968E7 /* AIStarRate.m */; };
-		818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */; };
-		818E67D41BFC27D700F968E7 /* AICommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D31BFC27D700F968E7 /* AICommentCell.m */; };
-		818E67D71BFC5F5F00F968E7 /* AIServiceCoverage.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */; };
-		818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67D91BFC687100F968E7 /* AIServiceLabel.m */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -411,22 +411,22 @@
 		818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIMusicTherapyView.m; sourceTree = "<group>"; };
 		818D8EAB1C040C8B00006408 /* AIParamedicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIParamedicView.h; sourceTree = "<group>"; };
 		818D8EAC1C040C8B00006408 /* AIParamedicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIParamedicView.m; sourceTree = "<group>"; };
+		818D8EAF1C040D4100006408 /* AICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICommentCell.h; sourceTree = "<group>"; };
+		818D8EB01C040D4100006408 /* AICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICommentCell.m; sourceTree = "<group>"; };
+		818D8EB11C040D4100006408 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
+		818D8EB21C040D4100006408 /* AIDetailText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIDetailText.m; sourceTree = "<group>"; };
+		818D8EB31C040D4100006408 /* AIHorizontalBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHorizontalBarChart.h; sourceTree = "<group>"; };
+		818D8EB41C040D4100006408 /* AIHorizontalBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHorizontalBarChart.m; sourceTree = "<group>"; };
+		818D8EB51C040D4100006408 /* AIServiceCoverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceCoverage.h; sourceTree = "<group>"; };
+		818D8EB61C040D4100006408 /* AIServiceCoverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceCoverage.m; sourceTree = "<group>"; };
+		818D8EB71C040D4100006408 /* AIServiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceLabel.h; sourceTree = "<group>"; };
+		818D8EB81C040D4100006408 /* AIServiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceLabel.m; sourceTree = "<group>"; };
+		818D8EB91C040D4100006408 /* AIServiceTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceTypes.h; sourceTree = "<group>"; };
+		818D8EBA1C040D4100006408 /* AIServiceTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceTypes.m; sourceTree = "<group>"; };
+		818D8EBB1C040D4100006408 /* AIStarRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStarRate.h; sourceTree = "<group>"; };
+		818D8EBC1C040D4100006408 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
-		818E67C01BFC24B700F968E7 /* AIDetailText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIDetailText.h; sourceTree = "<group>"; };
-		818E67C11BFC24B700F968E7 /* AIDetailText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIDetailText.m; sourceTree = "<group>"; };
-		818E67C61BFC267000F968E7 /* AIServiceTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceTypes.h; sourceTree = "<group>"; };
-		818E67C71BFC267000F968E7 /* AIServiceTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceTypes.m; sourceTree = "<group>"; };
-		818E67C91BFC26A700F968E7 /* AIStarRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIStarRate.h; sourceTree = "<group>"; };
-		818E67CA1BFC26A700F968E7 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
-		818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIHorizontalBarChart.h; sourceTree = "<group>"; };
-		818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIHorizontalBarChart.m; sourceTree = "<group>"; };
-		818E67D21BFC27D700F968E7 /* AICommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AICommentCell.h; sourceTree = "<group>"; };
-		818E67D31BFC27D700F968E7 /* AICommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AICommentCell.m; sourceTree = "<group>"; };
-		818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceCoverage.h; sourceTree = "<group>"; };
-		818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceCoverage.m; sourceTree = "<group>"; };
-		818E67D81BFC687100F968E7 /* AIServiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceLabel.h; sourceTree = "<group>"; };
-		818E67D91BFC687100F968E7 /* AIServiceLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceLabel.m; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = ../ViewController/Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -1023,6 +1023,27 @@
 			path = MaterialDesign;
 			sourceTree = "<group>";
 		};
+		818D8EAE1C040D4100006408 /* BuyerViews */ = {
+			isa = PBXGroup;
+			children = (
+				818D8EAF1C040D4100006408 /* AICommentCell.h */,
+				818D8EB01C040D4100006408 /* AICommentCell.m */,
+				818D8EB11C040D4100006408 /* AIDetailText.h */,
+				818D8EB21C040D4100006408 /* AIDetailText.m */,
+				818D8EB31C040D4100006408 /* AIHorizontalBarChart.h */,
+				818D8EB41C040D4100006408 /* AIHorizontalBarChart.m */,
+				818D8EB51C040D4100006408 /* AIServiceCoverage.h */,
+				818D8EB61C040D4100006408 /* AIServiceCoverage.m */,
+				818D8EB71C040D4100006408 /* AIServiceLabel.h */,
+				818D8EB81C040D4100006408 /* AIServiceLabel.m */,
+				818D8EB91C040D4100006408 /* AIServiceTypes.h */,
+				818D8EBA1C040D4100006408 /* AIServiceTypes.m */,
+				818D8EBB1C040D4100006408 /* AIStarRate.h */,
+				818D8EBC1C040D4100006408 /* AIStarRate.m */,
+			);
+			path = BuyerViews;
+			sourceTree = "<group>";
+		};
 		818E67B81BFC1A2400F968E7 /* LoopView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,27 +1051,6 @@
 				818E67BA1BFC1A2400F968E7 /* WMLoopView.m */,
 			);
 			path = LoopView;
-			sourceTree = "<group>";
-		};
-		818E67BF1BFC24B700F968E7 /* SellerViews */ = {
-			isa = PBXGroup;
-			children = (
-				818E67C01BFC24B700F968E7 /* AIDetailText.h */,
-				818E67C11BFC24B700F968E7 /* AIDetailText.m */,
-				818E67C61BFC267000F968E7 /* AIServiceTypes.h */,
-				818E67C71BFC267000F968E7 /* AIServiceTypes.m */,
-				818E67C91BFC26A700F968E7 /* AIStarRate.h */,
-				818E67CA1BFC26A700F968E7 /* AIStarRate.m */,
-				818E67CC1BFC273000F968E7 /* AIHorizontalBarChart.h */,
-				818E67CD1BFC273000F968E7 /* AIHorizontalBarChart.m */,
-				818E67D21BFC27D700F968E7 /* AICommentCell.h */,
-				818E67D31BFC27D700F968E7 /* AICommentCell.m */,
-				818E67D51BFC5F5F00F968E7 /* AIServiceCoverage.h */,
-				818E67D61BFC5F5F00F968E7 /* AIServiceCoverage.m */,
-				818E67D81BFC687100F968E7 /* AIServiceLabel.h */,
-				818E67D91BFC687100F968E7 /* AIServiceLabel.m */,
-			);
-			path = SellerViews;
 			sourceTree = "<group>";
 		};
 		81C0925F1BAFAC0D003FFF35 /* SDWebImage */ = {
@@ -1553,7 +1553,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				818E67BF1BFC24B700F968E7 /* SellerViews */,
+				818D8EAE1C040D4100006408 /* BuyerViews */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
 				846DAD8E1BD661960054F058 /* PurchasedService */,
@@ -2390,7 +2390,6 @@
 				93FA1E121B9C375A009965C8 /* AIImageView.swift in Sources */,
 				93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */,
 				846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */,
-				818E67C21BFC24B700F968E7 /* AIDetailText.m in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
 				932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
@@ -2421,7 +2420,6 @@
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
 				93FA1DE21B9C302A009965C8 /* AILocalStore.swift in Sources */,
 				93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */,
-				818E67DA1BFC687100F968E7 /* AIServiceLabel.m in Sources */,
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
@@ -2442,6 +2440,7 @@
 				93FA1E001B9C306E009965C8 /* AITagFilterModel.swift in Sources */,
 				93C33F171B9BEAFE007BF506 /* AIButtonUtils.swift in Sources */,
 				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
+				818D8EC01C040D4100006408 /* AIServiceCoverage.m in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
@@ -2449,9 +2448,9 @@
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
 				937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */,
-				818E67CE1BFC273000F968E7 /* AIHorizontalBarChart.m in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
+				818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
@@ -2481,12 +2480,12 @@
 				846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */,
 				93C33F161B9BEAFE007BF506 /* AIAssignUtils.swift in Sources */,
 				93FA1D9E1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.m in Sources */,
+				818D8EC21C040D4100006408 /* AIServiceTypes.m in Sources */,
 				93FA1DF81B9C306E009965C8 /* AIConnectToolModel.swift in Sources */,
 				93FA1E511B9C3E12009965C8 /* AIMenuActionView.swift in Sources */,
 				84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */,
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
-				818E67C81BFC267000F968E7 /* AIServiceTypes.m in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */,
@@ -2527,6 +2526,7 @@
 				93C33EFC1B9BEA75007BF506 /* SCGIFImageView.m in Sources */,
 				93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */,
 				93FA1E051B9C306E009965C8 /* ServiceModel.swift in Sources */,
+				818D8EC11C040D4100006408 /* AIServiceLabel.m in Sources */,
 				93B25A9D1B9D7A7B00CD1FEB /* AFURLRequestSerialization.m in Sources */,
 				93C33EF81B9BEA75007BF506 /* MarkupParser.m in Sources */,
 				818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */,
@@ -2558,13 +2558,13 @@
 				84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */,
 				93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */,
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
-				818E67D41BFC27D700F968E7 /* AICommentCell.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
 				843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
+				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */,
@@ -2575,6 +2575,7 @@
 				12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
+				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
 				818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */,
 				93B25A3D1B9D796F00CD1FEB /* AIMessage.m in Sources */,
@@ -2590,17 +2591,16 @@
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
+				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
 				937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
-				818E67CB1BFC26A700F968E7 /* AIStarRate.m in Sources */,
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				81C092861BAFAC0D003FFF35 /* SDWebImageDownloader.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
-				818E67D71BFC5F5F00F968E7 /* AIServiceCoverage.m in Sources */,
 				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,

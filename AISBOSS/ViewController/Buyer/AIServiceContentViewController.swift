@@ -139,15 +139,16 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
-        let tagsHold = UIView()
-        
-        
-        scrollView.addSubview(tagsHold)
-        tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
-        tagsHold.setTop(galleryView.top + galleryView.height + 5)
-        
+        //
+        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicView = AIMusicTherapyView(frame: musicFrame)
+        scrollView.addSubview(musicView)
+        addNewSubView(musicView, preView: galleryView)
+//
+        ///
+
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: tagsHold)
+        addNewSubView(custView, preView: musicView)
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2

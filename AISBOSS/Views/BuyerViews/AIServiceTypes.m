@@ -81,7 +81,7 @@
         [self addSubview:radioView];
         
         //
-        NSString *imageName = self.serviceTypesModel.defaultTypeIndex ? @"" : @"";
+        NSString *imageName = self.serviceTypesModel.defaultTypeIndex ? @"Type_On" : @"Type_Off";
         UIImage *image = [UIImage imageNamed:imageName];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         imageView.frame = CGRectMake(0, 0, _radioSize, _radioSize);
