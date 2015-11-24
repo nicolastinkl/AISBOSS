@@ -65,6 +65,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="ae5-Xq-0Js"/>
                             </constraints>
+                            <color key="textColor" red="0.3411764705882353" green="0.3411764705882353" blue="0.3411764705882353" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                             <userDefinedRuntimeAttributes>
@@ -138,6 +139,7 @@
                 <outlet property="audioButton" destination="dNl-YQ-3K8" id="Cd2-AM-zmr"/>
                 <outlet property="changeButton" destination="jWs-Vc-vpm" id="Bhr-Da-49w"/>
                 <outlet property="inputText" destination="CkB-fh-bBP" id="uLS-Fx-zAK"/>
+                <outlet property="note" destination="vJ0-tA-fsd" id="zva-Sd-Ahg"/>
             </connections>
             <point key="canvasLocation" x="404" y="256.5"/>
         </view>

@@ -10,9 +10,11 @@ import Foundation
 
 class AITextMessageView: UIView {
     
+    @IBOutlet weak var content: UILabel!
     
     class func currentView()->AITextMessageView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AITextMessageView", owner: self, options: nil).first  as! AITextMessageView
+        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(36/2.5)
         return selfView
     }
     

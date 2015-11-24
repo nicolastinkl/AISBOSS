@@ -26,6 +26,7 @@ internal class AICustomAudioNotesView : UIView{
     
     // MARK: -> Internal class
     
+    @IBOutlet weak var note: UILabel!
     @IBOutlet weak var audioButton: DesignableButton!
     @IBOutlet weak var inputText: DesignableTextField!
     @IBOutlet weak var changeButton: DesignableButton!
@@ -85,6 +86,8 @@ internal class AICustomAudioNotesView : UIView{
     
     class func currentView()->AICustomAudioNotesView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomAudioNotesView", owner: self, options: nil).first  as! AICustomAudioNotesView
+        selfView.note.font = AITools.myriadSemiCondensedWithSize(42/2.5)
+        selfView.inputText.font = AITools.myriadSemiCondensedWithSize(42/2.5)
         return selfView
     }
     

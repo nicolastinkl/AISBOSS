@@ -12,18 +12,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  anxious" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPx-NA-5hU" customClass="DesignableLabel" customModule="AISpring">
-                    <rect key="frame" x="4" y="2" width="119" height="32"/>
+                    <rect key="frame" x="4" y="4.5" width="119" height="27"/>
                     <animations/>
                     <color key="backgroundColor" red="0.97647058823529409" green="0.66666666666666663" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="tky-xC-dHA"/>
+                        <constraint firstAttribute="height" constant="27" id="tky-xC-dHA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.69411764705882351" green="0.23137254901960785" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="16"/>
+                            <real key="value" value="13"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="1"/>
@@ -37,19 +37,19 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehn-UI-grg" customClass="DesignableLabel" customModule="AISpring">
-                    <rect key="frame" x="87" y="4" width="33" height="28"/>
+                    <rect key="frame" x="94" y="6" width="27" height="24"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="0.85490196078431369" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="28" id="2gB-Tc-y5V"/>
-                        <constraint firstAttribute="width" constant="33" id="nfq-LI-XjS"/>
+                        <constraint firstAttribute="height" constant="24" id="2gB-Tc-y5V"/>
+                        <constraint firstAttribute="width" constant="27" id="nfq-LI-XjS"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.69411764710000001" green="0.23137254900000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="14"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -70,7 +70,7 @@
                 <constraint firstItem="ehn-UI-grg" firstAttribute="leading" secondItem="KPx-NA-5hU" secondAttribute="trailing" constant="-34" id="E0I-ui-O4d"/>
                 <constraint firstItem="ehn-UI-grg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FYn-rv-kFm"/>
                 <constraint firstItem="hgC-PD-d9W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="H6d-m6-0E2"/>
-                <constraint firstAttribute="trailing" secondItem="ehn-UI-grg" secondAttribute="trailing" constant="6.5" id="NOp-K8-cWH"/>
+                <constraint firstAttribute="trailing" secondItem="ehn-UI-grg" secondAttribute="trailing" constant="6" id="NOp-K8-cWH"/>
                 <constraint firstItem="KPx-NA-5hU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="RrE-By-Kr5"/>
                 <constraint firstItem="ehn-UI-grg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="110" id="ZK0-VE-KfV"/>
                 <constraint firstAttribute="trailing" secondItem="hgC-PD-d9W" secondAttribute="trailing" id="bNu-da-I2D"/>
@@ -92,7 +92,7 @@
                 <outlet property="content" destination="KPx-NA-5hU" id="GII-8G-6tb"/>
                 <outlet property="unReadNumber" destination="ehn-UI-grg" id="LoF-bG-BDc"/>
             </connections>
-            <point key="canvasLocation" x="322.5" y="726.5"/>
+            <point key="canvasLocation" x="585.5" y="730.5"/>
         </view>
     </objects>
 </document>
