@@ -14,8 +14,14 @@ class ServiceSettingView: UIView {
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var state: UIImageView!
+    
+    private static let HORIZAN_SPACE: CGFloat = 8
+    private static let MESSAGE_HEIGHT: CGFloat = 20
+    private static let TAG_HEIGHT: CGFloat = 28
+    private static let BOTTOM_PADDING: CGFloat = 3
+    private static let COLLECTION_WIDTH: CGFloat = 303
 
-    var tags: [String] = ["123", "msdfasfd"]
+    var tags: [String] = []
     
     override func awakeFromNib() {
         
@@ -28,16 +34,39 @@ class ServiceSettingView: UIView {
         return NSBundle.mainBundle().loadNibNamed("ServiceSettingView", owner: self, options: nil).first  as! ServiceSettingView
     }
     
+    func loadData(tags: [String]) {
+        self.tags = tags
+        
+        frame.size.height = ServiceSettingView.MESSAGE_HEIGHT + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
+        
+        collectionView.reloadData()
+    }
+    
     private func setCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+        collectionView.collectionViewLayout = FixedSpaceFlowLayout(space: ServiceSettingView.HORIZAN_SPACE)
         let layout = collectionView.collectionViewLayout
         let flow = layout as! UICollectionViewFlowLayout
-        flow.sectionInset = UIEdgeInsetsMake(0, 0, 10, 10)
+        flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         
         collectionView.registerClass(AIMsgTagCell.self,
             forCellWithReuseIdentifier: "CONTENT")
+    }
+    
+    private func estimateRowCount() -> Int {
+        var length: CGFloat = 0
+        
+        for tag in tags {
+            let size = AIMsgTagCell.sizeForContentString(tag, forMaxWidth: 1000)
+            length += (size.width + ServiceSettingView.HORIZAN_SPACE)
+        }
+        
+        if tags.count == 0 {
+            return 0
+        } else {
+            return Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
+        }
     }
 }
 
@@ -78,7 +107,48 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
             
             return size
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 0, 0, 0)
+    }
 
+}
+
+class FixedSpaceFlowLayout: UICollectionViewFlowLayout {
+    
+    var horizanSpace: CGFloat = 10
+    
+    init(space: CGFloat) {
+        super.init()
+        horizanSpace = space
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    private static let HORIZAN_SPACE: CGFloat = 9
+    
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        let attributes = super.layoutAttributesForElementsInRect(rect)
+        
+        if let atts = attributes {
+            for(var i = 1; i < atts.count; ++i) {
+                if i >= 1 {
+                    let currentLayoutAttributes = atts[i]
+                    let prevLayoutAttributes = atts[i - 1]
+                    
+                    let preRightX = CGRectGetMaxX(prevLayoutAttributes.frame)
+                    
+                    if(preRightX + horizanSpace + currentLayoutAttributes.frame.size.width < self.collectionViewContentSize().width) {
+                        currentLayoutAttributes.frame.origin.x = preRightX + horizanSpace
+                    }
+                }
+            }
+        }
+        
+        return attributes
+    }
 }
 
 class AIMsgTagCell: UICollectionViewCell {
@@ -102,6 +172,7 @@ class AIMsgTagCell: UICollectionViewCell {
             contentView.frame = newContentFrame
         }
     }
+    
     var maxWidth: CGFloat!
     
     override init(frame: CGRect) {
@@ -141,3 +212,5 @@ class AIMsgTagCell: UICollectionViewCell {
             return realRect.size
     }
 }
+
+

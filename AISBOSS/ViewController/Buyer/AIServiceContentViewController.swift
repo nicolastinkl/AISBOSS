@@ -21,6 +21,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     internal var serviceContentType : AIServiceContentType!
+    private var preCacheView:UIView?
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -122,7 +123,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
         
-        
+        //init recording view
         audioView =  AIAudioRecordView.currentView()
         if let auView = audioView {
             self.view.addSubview(auView)
@@ -139,31 +140,39 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
-        let tagsHold = UIView()
-        
-        
-        scrollView.addSubview(tagsHold)
-        tagsHold.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)
-        tagsHold.setTop(galleryView.top + galleryView.height + 5)
-        
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: tagsHold)
+        addNewSubView(custView, preView: galleryView)
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
+        model1.bsId = 12
         
         var model2 = AIBuerSomeTagModel()
         model2.tagName = "fatigued"
         model2.unReadNumber = 6
+        model2.bsId = 13
         
         var model3 = AIBuerSomeTagModel()
         model3.tagName = "endorine disorders"
         model3.unReadNumber = 731
+        model3.bsId = 16
         
-        custView.fillTags([model1,model2,model3], isNormal: true)
+        
+        var model4 = AIBuerSomeTagModel()
+        model4.tagName = "disorders the"
+        model4.unReadNumber = 69
+        model4.bsId = 17
+        
+        
+        var model5 = AIBuerSomeTagModel()
+        model5.tagName = "depressed"
+        model5.unReadNumber = 18
+        model5.bsId = 18
+        custView.fillTags([model1,model2,model5,model3,model4], isNormal: true)
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
+        audioView.delegateAudio = self
         
         let audio1 = AIAudioMessageView.currentView()
         addNewSubView(audio1, preView: audioView)
@@ -175,15 +184,68 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(text2, preView: text1)
     }
     
+    /**
+     添加定制的view到scrollview中
+     
+     - parameter cview:   被添加的view
+     - parameter preView: 上一个view
+     */
     func addNewSubView(cview:UIView,preView:UIView){
         scrollView.addSubview(cview)
-        
         cview.setWidth(self.view.width)
         cview.setTop(preView.top + preView.height)
         cview.backgroundColor = UIColor(hex: redColor)
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
+        preCacheView = cview
+        
+    }
+}
+
+extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
+    
+    /**
+     开始录音处理
+     */
+    func startRecording() {
+        audioView?.hidden = false
+    }
+    
+    //更新Meters 图片处理
+    func updateMetersImage(lowPass: Double) {
+        var imageName:String = "RecordingSignal001"
+        if lowPass >= 0.8 {
+            imageName = "RecordingSignal008"
+        }else if lowPass >= 0.7 {
+            imageName = "RecordingSignal007"
+        }else if lowPass >= 0.6 {
+            imageName = "RecordingSignal006"
+        }else if lowPass >= 0.5 {
+            imageName = "RecordingSignal005"
+        }else if lowPass >= 0.4 {
+            imageName = "RecordingSignal004"
+        }else if lowPass >= 0.3 {
+            imageName = "RecordingSignal003"
+        }else if lowPass >= 0.2 {
+            imageName = "RecordingSignal002"
+        }else if lowPass >= 0.1 {
+            imageName = "RecordingSignal001"
+        }else{
+            imageName = "RecordingSignal001"
+        }
+        
+        audioView?.passImageView.image = UIImage(named: imageName)
+    }
+    
+    //结束录音添加view到scrollview
+    func endRecording(audioUrl: String) {
+        audioView?.hidden = true
+        // add a new View Model
+        let audio1 = AIAudioMessageView.currentView()
+        if let cview = preCacheView {
+            addNewSubView(audio1, preView: cview)
+        }
         
     }
     
+    
 }
-

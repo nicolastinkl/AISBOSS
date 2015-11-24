@@ -47,13 +47,18 @@ internal class UICustomsTags : SpringView {
     // MARK: currentView
     class func currentView()->UICustomsTags{
         let selfView = NSBundle.mainBundle().loadNibNamed("UICustomsTags", owner: self, options: nil).first  as! UICustomsTags
+        
+        //Init Font...
+        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(35/2.5)
+        selfView.unReadNumber.font = AITools.myriadSemiCondensedWithSize(35/2.5)
+        
         return selfView
     }
     
     func fillOfData(model: AIBuerSomeTagModel){
         selfModel = model
         let contentText = model.tagName ?? ""
-        content.text = "  \(contentText)"
+        content.text = "    \(contentText)"
         
         unReadNumber.text = "\(model.unReadNumber ?? 0)"
     }
