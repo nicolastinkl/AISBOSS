@@ -52,7 +52,7 @@
 {
     _radioSize = [AITools displaySizeFrom1080DesignSize:46];
     _radioMargin = [AITools displaySizeFrom1080DesignSize:42];
-    _fontSize = [AITools displaySizeFrom1080DesignSize:28];
+    _fontSize = [AITools displaySizeFrom1080DesignSize:42];
     _topMargin = [AITools displaySizeFrom1080DesignSize:42];
 }
 
@@ -62,6 +62,7 @@
 {
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), _fontSize);
     _titleLabel = [AIViews normalLabelWithFrame:frame text:self.serviceTypesModel.title fontSize:_fontSize color:[UIColor whiteColor]];
+    _titleLabel.font = [AITools myriadSemiCondensedWithSize:_fontSize];
     [self addSubview:_titleLabel];
 }
 
@@ -81,7 +82,7 @@
         [self addSubview:radioView];
         
         //
-        NSString *imageName = self.serviceTypesModel.defaultTypeIndex ? @"" : @"";
+        NSString *imageName = self.serviceTypesModel.defaultTypeIndex ? @"Type_On" : @"Type_Off";
         UIImage *image = [UIImage imageNamed:imageName];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         imageView.frame = CGRectMake(0, 0, _radioSize, _radioSize);
@@ -98,6 +99,7 @@
         UPLabel *label = [AIViews normalLabelWithFrame:strFrame text:radio fontSize:_fontSize color:[UIColor whiteColor]];
         label.lineBreakMode = NSLineBreakByTruncatingTail;
         label.userInteractionEnabled = NO;
+        label.font = [AITools myriadLightSemiCondensedWithSize:_fontSize];
         [radioView addSubview:label];
         
         //
@@ -113,7 +115,7 @@
     
     
     // reset frame
-    y -= margin;
+    y -= _radioMargin;
     
     CGRect frame = self.frame;
     frame.size.height = y;

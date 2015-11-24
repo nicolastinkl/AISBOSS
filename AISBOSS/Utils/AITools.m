@@ -9,6 +9,12 @@
 #import "AITools.h"
 
 
+
+
+
+
+
+
 @implementation AITools
 
 + (MPMoviePlayerController *)playMovieNamed:(NSString *)name type:(NSString *)type onView:(UIView *)view
@@ -99,6 +105,14 @@
     view.frame = frame;
 }
 
++ (UIColor *)colorWithR:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a
+{
+    CGFloat sr = r/0xFF;
+    CGFloat sg = g/0xFF;
+    CGFloat sb = b/0xFF;
+    UIColor *color = [UIColor colorWithRed:sr green:sg blue:sb alpha:a];
+    return color;
+}
 
 + (UIColor *)colorWithR:(CGFloat)r g:(CGFloat)g b:(CGFloat)b
 {

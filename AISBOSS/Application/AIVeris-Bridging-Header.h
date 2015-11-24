@@ -88,3 +88,11 @@
 #import "UIView+MaterialDesign.h"
 
 #import "AIProposalServiceCellModel.h"
+// Buyer Details
+
+#import "AIMusicTherapyView.h"
+#import "AIParamedicView.h"
+
+
+//
+

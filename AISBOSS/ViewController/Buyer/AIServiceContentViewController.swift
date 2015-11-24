@@ -61,19 +61,6 @@ internal class AIServiceContentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func bottomImage() -> UIImage {
-        
-        var name = "Fake_Content"
-        let type : AIServiceContentType = serviceContentType
-        switch type {
-        case  .MusicTherapy:
-            name = "Fake_Content"
-        case .Escort:
-            name = "Fake_Escort_Bottom"
-        }
-
-        return UIImage(named: name)!
-    }
     
     
     func topImage() -> UIImage {
@@ -104,10 +91,10 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func scrollAction () {
-        let image = bottomImage()
-        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-        let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
-        scrollView.scrollRectToVisible(frame, animated: true)
+//        let image = bottomImage()
+//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
+//        let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
+//        scrollView.scrollRectToVisible(frame, animated: true)
     }
     
     func makeTopView () {
@@ -140,8 +127,18 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
+        //
+        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicView = AIMusicTherapyView(frame: musicFrame)
+        //scrollView.addSubview(musicView)
+        addNewSubView(musicView, preView: galleryView)
+        musicView.backgroundColor = UIColor.clearColor()
+//
+        ///
+
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: galleryView)
+        addNewSubView(custView, preView: musicView)
+     
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2

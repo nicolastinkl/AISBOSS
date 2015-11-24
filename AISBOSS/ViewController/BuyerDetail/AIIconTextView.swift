@@ -1,5 +1,5 @@
 //
-//  AITitleAndIconTextView.swift
+//  AIIconTextView.swift
 //  AIVeris
 //
 //  Created by Rocky on 15/11/24.
@@ -9,14 +9,11 @@
 import UIKit
 import Cartography
 
-class AITitleAndIconTextView: UIView {
-
-  
-    @IBOutlet weak var title: UILabel!
+class AIIconTextView: UIView {
+    
     @IBOutlet weak var firstIcon: UIImageView!
     @IBOutlet weak var firstText: UILabel!
     
-    @IBOutlet weak var titleMaginTop: NSLayoutConstraint!
     @IBOutlet weak var iconMaginTop: NSLayoutConstraint!
     @IBOutlet weak var textTopToIcon: NSLayoutConstraint!
     @IBOutlet weak var textMaginRight: NSLayoutConstraint!
@@ -26,12 +23,11 @@ class AITitleAndIconTextView: UIView {
     
     
     override func awakeFromNib() {
-        title.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         firstText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     }
     
-    static func createInstance() -> AITitleAndIconTextView {
-        return NSBundle.mainBundle().loadNibNamed("AITitleAndIconTextView", owner: self, options: nil).first  as! AITitleAndIconTextView
+    static func createInstance() -> AIIconTextView {
+        return NSBundle.mainBundle().loadNibNamed("AIIconTextView", owner: self, options: nil).first  as! AIIconTextView
     }
     
     func loadData(data: String) {
