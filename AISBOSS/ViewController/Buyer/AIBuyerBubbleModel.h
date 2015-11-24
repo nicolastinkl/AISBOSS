@@ -108,15 +108,13 @@
 @property (assign, nonatomic) NSInteger audio_length;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
 
-
 @end
 
-@protocol AIProposalHopeModel@end
+
 @interface AIProposalHopeModel : JSONModel
 
 @property (strong, nonatomic) NSArray<AIProposalNotesModel,Optional> * label_list;
 @property (strong, nonatomic) NSArray<AIProposalHopeAudioTextModel,Optional> * hope_list;
-
 
 @end
 
@@ -128,11 +126,11 @@
  *  @brief  child list 列表模型
  *
  */
+
 @protocol AIProposalListChildModel @end
 @interface AIProposalListChildModel : JSONModel
 
 @property (assign, nonatomic) NSInteger type;
-
 @property (strong,nonatomic) AIProposalListChildServiceProviderModel<Optional> *service_provider;   //服务提供者模型
 @property (strong,nonatomic) AIServiceModel<Optional> * service_price;//服务价格模型
 @property (strong,nonatomic) AIProposalListContentModel<Optional> * service_content; //服务通用数据模型

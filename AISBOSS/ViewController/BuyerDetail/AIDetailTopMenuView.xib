@@ -90,6 +90,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="custom" destination="yeb-cx-K47" id="g6A-yL-hYN"/>
+                <outlet property="like" destination="I3c-3d-szZ" id="4KN-xs-bEa"/>
+                <outlet property="share" destination="yLh-5D-jY5" id="TAC-fu-Q53"/>
+            </connections>
             <point key="canvasLocation" x="423" y="301"/>
         </view>
     </objects>

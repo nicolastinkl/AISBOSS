@@ -37,6 +37,8 @@ internal class AIServiceContentViewController: UIViewController {
         return gView
     }()
     
+    private var audioView:AIAudioRecordView?
+    
     // MARK: -> Internal init methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,6 @@ internal class AIServiceContentViewController: UIViewController {
         */
         makeContentView()
      
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,8 +122,15 @@ internal class AIServiceContentViewController: UIViewController {
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
         
-    }
-    
+        
+        audioView =  AIAudioRecordView.currentView()
+        if let auView = audioView {
+            self.view.addSubview(auView)
+            auView.hidden = true
+            auView.setWidth(self.view.width)
+            auView.setTop((self.view.height - auView.height)/2)
+        }
+    }    
     
     func makeContentView () {
         
