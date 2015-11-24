@@ -33,8 +33,8 @@ class ServiceCardDetailIcon: UIView {
     let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(200)
     let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(64)
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(56/2.5)
-    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(48/2.5)
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
+    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     //MARK: - init
     override init(frame: CGRect) {
@@ -48,7 +48,6 @@ class ServiceCardDetailIcon: UIView {
     //MARK: - load data
     func loadData(){
         layoutView()
-        self.backgroundColor = UIColor.greenColor()
         timeIconImageView.image = UIImage(named: "icon_time_big")
         priceIconImageView.image = UIImage(named: "icon_price_big")
         calendaIconImageView.image = UIImage(named: "icon_calenda_big")
