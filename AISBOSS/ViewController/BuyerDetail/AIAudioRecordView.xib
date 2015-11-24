@@ -44,6 +44,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="passImageView" destination="fKX-ET-5mO" id="FzT-km-zcC"/>
+            </connections>
             <point key="canvasLocation" x="354" y="280"/>
         </view>
     </objects>

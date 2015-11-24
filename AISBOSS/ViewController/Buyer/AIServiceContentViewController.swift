@@ -21,6 +21,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     internal var serviceContentType : AIServiceContentType!
+    private var preCacheView:UIView?
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -164,6 +165,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
+        audioView.delegateAudio = self
         
         let audio1 = AIAudioMessageView.currentView()
         addNewSubView(audio1, preView: audioView)
@@ -177,13 +179,54 @@ internal class AIServiceContentViewController: UIViewController {
     
     func addNewSubView(cview:UIView,preView:UIView){
         scrollView.addSubview(cview)
-        
         cview.setWidth(self.view.width)
         cview.setTop(preView.top + preView.height)
         cview.backgroundColor = UIColor(hex: redColor)
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
+        preCacheView = cview
+        
+    }
+}
+
+extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
+    
+    func startRecording() {
+        audioView?.hidden = false
+    }
+    
+    func updateMetersImage(lowPass: Double) {
+        var imageName:String = "RecordingSignal001"
+        if lowPass >= 0.8 {
+            imageName = "RecordingSignal008"
+        }else if lowPass >= 0.7 {
+            imageName = "RecordingSignal007"
+        }else if lowPass >= 0.6 {
+            imageName = "RecordingSignal006"
+        }else if lowPass >= 0.5 {
+            imageName = "RecordingSignal005"
+        }else if lowPass >= 0.4 {
+            imageName = "RecordingSignal004"
+        }else if lowPass >= 0.3 {
+            imageName = "RecordingSignal003"
+        }else if lowPass >= 0.2 {
+            imageName = "RecordingSignal002"
+        }else if lowPass >= 0.1 {
+            imageName = "RecordingSignal001"
+        }else{
+            imageName = "RecordingSignal001"
+        }
+        
+        audioView?.passImageView.image = UIImage(named: imageName)
+    }
+    func endRecording(audioUrl: String) {
+        audioView?.hidden = true
+        // add a new View Model
+        let audio1 = AIAudioMessageView.currentView()
+        if let cview = preCacheView {
+            addNewSubView(audio1, preView: cview)
+        }
         
     }
     
+    
 }
-

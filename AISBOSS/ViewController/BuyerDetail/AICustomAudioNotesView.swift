@@ -10,6 +10,12 @@
 import Foundation
 import AISpring
 
+
+protocol AICustomAudioNotesViewDelegate : class{
+    func startRecording()
+    func updateMetersImage(lowPass:Double)
+    func endRecording(audioUrl:String)
+}
 // MARK: -
 // MARK: AICustomAudioNotesView
 // MARK: -
@@ -29,6 +35,8 @@ internal class AICustomAudioNotesView : UIView{
     private var lowPassResults: Double = 0
     private var timer: NSTimer?
     private var currentAudioState: Bool = false
+    var delegateAudio:AICustomAudioNotesViewDelegate?
+    internal var currentAutioUrl:String = ""
     
     func getAudioFileName() -> String{
         let path = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).last
@@ -43,6 +51,7 @@ internal class AICustomAudioNotesView : UIView{
         do {
             let recorderSettingsDict:[String:AnyObject] = [AVFormatIDKey:NSNumber(unsignedInt: kAudioFormatMPEG4AAC),AVSampleRateKey:NSNumber(float: 1000.0),AVNumberOfChannelsKey:NSNumber(int: 2),AVLinearPCMBitDepthKey:NSNumber(int: 8),AVLinearPCMIsBigEndianKey:NSNumber(bool: false),AVLinearPCMIsFloatKey:NSNumber(bool: false)]
             let fileName = getAudioFileName()
+            currentAutioUrl = fileName
             recorder = try AVAudioRecorder(URL: NSURL(string: fileName)!, settings: recorderSettingsDict)
             
             print(fileName)
@@ -67,7 +76,7 @@ internal class AICustomAudioNotesView : UIView{
             let ALPHA : Double = 0.05
             let peakPowerForChannel : Double = pow(10, Double(0.05 * rder.peakPowerForChannel(0)))
             lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
-            
+            delegateAudio?.updateMetersImage(lowPassResults)
             //logInfo("Average input Low pass results: \(lowPassResults)")
         }
     }
@@ -84,7 +93,7 @@ internal class AICustomAudioNotesView : UIView{
     @IBAction func touchDownAudio(sender: AnyObject) {
         
         startRecording()
-        
+        delegateAudio?.startRecording()
         audioButton.setTitle("Release to Send", forState: UIControlState.Normal)
     }
     
@@ -117,6 +126,7 @@ internal class AICustomAudioNotesView : UIView{
 
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
+            delegateAudio?.endRecording(currentAutioUrl)
             ///松开 结束录音
             rder.stop()
             recorder = nil
