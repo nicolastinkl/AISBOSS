@@ -100,9 +100,13 @@ class SimpleServiceViewContainer: UIView {
             //serviceDetailView.loadData(paramDictionary)
             //return serviceDetailView
         case ProposalServiceViewTemplate.Taxi:
-            return AITwoIconAndTextView.createInstance()
+            let v = AIIconTextView.createInstance()
+            v.loadData("")
+            return v
         case ProposalServiceViewTemplate.Hotel:
             return AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+        default:
+            return nil
         }
     }
     

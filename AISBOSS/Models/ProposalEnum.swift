@@ -17,4 +17,8 @@ enum ProposalServiceViewTemplate : Int {
     case PlaneTicket = 1
     case Taxi
     case Hotel
+    case Shopping
+    case Coverage
+    case HomeCleaning
+    case Prenatal
 }
