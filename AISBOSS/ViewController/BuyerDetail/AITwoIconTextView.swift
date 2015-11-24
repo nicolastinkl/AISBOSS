@@ -53,5 +53,6 @@ class AITwoIconAndTextView: UIView {
     
     func showSecondIcon() {
         secondIcon.hidden = false
+        secondText.hidden = false
     }
 }
