@@ -27,8 +27,8 @@ internal class UIBezierPageView : UIView {
     // MARK: -> Internal class methods
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
+    
     // MARK: -> Internal init methods
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -39,10 +39,11 @@ internal class UIBezierPageView : UIView {
         let array = centerForCalculatePosition(number)
         for point in array {
             let position = point
-            let imageView = UIImageView(frame: CGRectMake(position.x, position.y, 15/2.5, 15/2.5))
-            imageView.image = UIImage(named: "card_select")
+            let imageView = UIImageView(frame: CGRectMake(position.x-10, position.y, 22/2.5, 22/2.5))
+            imageView.image = UIImage(named: "selectWhite")
             self.addSubview(imageView)
         }
+        
         /**
         for i in 0...number {
         let position = centerForIconAtIndex(i)
@@ -91,9 +92,7 @@ internal class UIBezierPageView : UIView {
             }
             let value = 0
             pointArray.append(CGPointMake(centerPoint.x +  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value-1)))) * kPointDamping ))
-            
         }
-        
         
         return pointArray
     }
