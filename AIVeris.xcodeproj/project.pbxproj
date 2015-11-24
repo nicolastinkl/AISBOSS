@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */; };
 		12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */; };
+		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; settings = {ASSET_TAGS = (); }; };
 		126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 126B2A161BD7952200146BBE /* AIFoldedCellView.xib */; };
 		126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A171BD7952200146BBE /* AIFoldedCellView.swift */; };
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; };
@@ -383,6 +384,8 @@
 /* Begin PBXFileReference section */
 		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
 		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
+		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
+		12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceCellModel.h; sourceTree = "<group>"; };
 		126B2A161BD7952200146BBE /* AIFoldedCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIFoldedCellView.xib; sourceTree = "<group>"; };
 		126B2A171BD7952200146BBE /* AIFoldedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFoldedCellView.swift; sourceTree = "<group>"; };
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
@@ -1390,6 +1393,8 @@
 				818D8EA61C02F8B200006408 /* AIBuyerModels.m */,
 				81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */,
 				81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */,
+				12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */,
+				12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -2385,6 +2390,7 @@
 				932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
 				93FA1E5B1B9C3E12009965C8 /* AITopInfoView.swift in Sources */,
+				12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */,
 				93FA1DC61B9C2F0F009965C8 /* CurveModel.m in Sources */,
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
