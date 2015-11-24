@@ -46,7 +46,7 @@ class ServiceCardDetailFlag: UIView {
     
     //MARK: - load data
     func loadData(){
-        let jsonString = "{\"product_name\":\"ServiceCoverage\",\"param_list\":[{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"MedicinePickup\"},{\"param_key\":\"2\",\"param_icon\":\"\",\"param_value\":\"Queuing\"},{\"param_key\":\"3\",\"param_icon\":\"\",\"param_value\":\"CallingforTaxi\"},{\"param_key\":\"4\",\"param_icon\":\"\",\"param_value\":\"Check-in\"},{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Paramedic\"},{\"param_key\":\"5\",\"param_icon\":\"\",\"param_value\":\"TestResultsPickup\"}]}"
+        let jsonString = "{\"product_name\":\"Service Coverage\",\"param_list\":[{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Medicine Pickup\"},{\"param_key\":\"2\",\"param_icon\":\"\",\"param_value\":\"Queuing\"},{\"param_key\":\"3\",\"param_icon\":\"\",\"param_value\":\"Calling for Taxi\"},{\"param_key\":\"4\",\"param_icon\":\"\",\"param_value\":\"Check-in\"},{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Paramedic\"},{\"param_key\":\"5\",\"param_icon\":\"\",\"param_value\":\"Test Results Pickup\"}]}"
         buildModel(jsonString)
         layoutView()
         

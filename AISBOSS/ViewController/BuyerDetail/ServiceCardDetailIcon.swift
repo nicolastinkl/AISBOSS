@@ -21,7 +21,7 @@ class ServiceCardDetailIcon: UIView {
     var calendaLabelView : UILabel!
     
     
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellProductParamModel?
 
     //MARK: - Constants
     //sizes
@@ -47,14 +47,31 @@ class ServiceCardDetailIcon: UIView {
     
     //MARK: - load data
     func loadData(){
-        layoutView()
-        timeIconImageView.image = UIImage(named: "icon_time_big")
-        priceIconImageView.image = UIImage(named: "icon_price_big")
-        calendaIconImageView.image = UIImage(named: "icon_calenda_big")
+        let jsonString = "{\"product_name\":\"Home cleaning\",\"param_list\":[{\"param_key\":\"time\",\"param_icon\":\"\",\"param_value\":\"64 hours\"},{\"param_key\":\"price\",\"param_icon\":\"\",\"param_value\":\"$ 27 / hour\"},{\"param_key\":\"calenda\",\"param_icon\":\"\",\"param_value\":\"every 2 weeks\"}]}"
+        buildModel(jsonString)
         
-        timeLabelView.text = "64 hours"
-        priceLabelView.text = "$99/hours"
-        calendaLabelView.text = "every 4 weeks"
+        layoutView()
+        
+        titleLabel.text = dataSource?.product_name
+        for var i = 0 ; i < dataSource?.param_list.count ; i++ {
+            let paramModel = dataSource?.param_list[i] as! ServiceCellStadandParamModel
+            if paramModel.param_key == "time" {
+                timeIconImageView.image = UIImage(named: "icon_time_big")
+                timeLabelView.text = paramModel.param_value
+            }
+            else if paramModel.param_key == "price" {
+                priceIconImageView.image = UIImage(named: "icon_price_big")
+                priceLabelView.text = paramModel.param_value
+            }
+            else if paramModel.param_key == "calenda" {
+                calendaIconImageView.image = UIImage(named: "icon_calenda_big")
+                calendaLabelView.text = paramModel.param_value
+            }
+        }
+    }
+    
+    func buildModel(jsonString : String){
+        dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
     }
     
     func layoutView(){
@@ -67,10 +84,8 @@ class ServiceCardDetailIcon: UIView {
     
     //MARK: - build views
     func buildTitle(){
-        let text = "Service Coverage"
         let titleFrame = CGRectMake(0, 0, 0, 21)
         titleLabel = UILabel(frame: titleFrame)
-        titleLabel.text = text
         titleLabel.font = TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
