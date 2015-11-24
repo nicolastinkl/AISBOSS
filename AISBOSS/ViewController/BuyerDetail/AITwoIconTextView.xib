@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="450" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="tJR-Kq-12A" userLabel="firstIcon">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="tJR-Kq-12A" userLabel="firstIcon">
                     <rect key="frame" x="35" y="22" width="0.0" height="16"/>
                     <animations/>
                     <constraints>
@@ -19,7 +19,7 @@
                         <constraint firstAttribute="height" constant="16" id="5wC-re-kdp"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-ZN-rMi" userLabel="secondIcon">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_icon_white" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-ZN-rMi" userLabel="secondIcon">
                     <rect key="frame" x="35" y="49" width="0.0" height="16"/>
                     <animations/>
                 </imageView>

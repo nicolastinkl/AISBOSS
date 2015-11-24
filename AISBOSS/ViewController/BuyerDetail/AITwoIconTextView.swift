@@ -25,6 +25,7 @@ class AITwoIconAndTextView: UIView {
     @IBOutlet weak var textMarginLeftToIcon: NSLayoutConstraint!
     
     override func awakeFromNib() {
+        title.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         firstText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         secondText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
     }
@@ -33,14 +34,14 @@ class AITwoIconAndTextView: UIView {
         return NSBundle.mainBundle().loadNibNamed("AITwoIconTextView", owner: self, options: nil).first  as! AITwoIconAndTextView
     }
     
-    private func showTitle() {
+    func showTitle() {
         firstIconMarginTop.constant = AITwoIconAndTextView.FIRST_ICON_MARGIN_TOP_HAS_TITLE
         firstIcon.setNeedsUpdateConstraints()
         
         title.hidden = false
     }
     
-    private func showFirstIcon() {
+    func showFirstIcon() {
         firstIcon.hidden = false
         textMarginLeftToIcon.constant = AITwoIconAndTextView.TEXT_MARGIN_TO_ICON
         firstText.setNeedsUpdateConstraints()
@@ -50,7 +51,7 @@ class AITwoIconAndTextView: UIView {
         
     }
     
-    private func showSecondIcon() {
+    func showSecondIcon() {
         secondIcon.hidden = false
     }
 }
