@@ -87,4 +87,4 @@
 
 #import "UIView+MaterialDesign.h"
 
-
+#import "AIProposalServiceCellModel.h"
