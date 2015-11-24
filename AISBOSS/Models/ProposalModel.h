@@ -8,6 +8,7 @@
 
 #import "JSONModel.h"
 
+
 @protocol ServiceOrderModel
 
 @end
@@ -43,9 +44,7 @@
 
 
 
-@protocol ProposalOrderModel
-
-@end
+@protocol ProposalOrderModel @end
 
 @interface ProposalOrderModel : JSONModel
 
@@ -64,11 +63,11 @@
 @property (nonatomic, strong) NSArray<ProposalOrderModel, Optional> *proposal_order_list;
 @end
 
+
 //气泡详情页使用
-@protocol AIProposalServiceModel
-
-@end
-
+@protocol AIProposalHopeModel @end
+@protocol AIProposalServiceModel @end
+@class AIProposalHopeModel;
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
@@ -76,14 +75,12 @@
 @property (strong, nonatomic) NSString<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
 @property (strong, nonatomic) NSString<Optional> * service_rating_icon;
-@property (nonatomic, strong) ParamModel<Optional> * service_param;
+@property (strong, nonatomic) ParamModel<Optional> * service_param;
+@property (strong, nonatomic) AIProposalHopeModel<Optional> * service_hope; //服务心愿单
 
 @end
 
-@protocol AIProposalProvider
-
-@end
-
+@protocol AIProposalProvider @end
 @interface AIProposalProvider : JSONModel
 
 @property (assign, nonatomic) NSInteger            provider_id;
@@ -91,9 +88,13 @@
 
 @end
 
-@protocol AIProposalInstModel
-
-@end
+/**
+ *  @author tinkl, 15-11-24 09:11:55
+ *
+ *  @brief  服务详情模型
+ *
+ */
+@protocol AIProposalInstModel @end
 
 @interface AIProposalInstModel : JSONModel
 

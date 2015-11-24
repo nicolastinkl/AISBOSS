@@ -18,7 +18,7 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
         didSet {
             guard let imageArray = imageModelArray else { return }
             
-            var pageViews: [UIView] = []
+            //var pageViews: [UIView] = []
             var index:Int = 0
             for url in imageArray {
 
@@ -29,8 +29,8 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
                 imageView.clipsToBounds = true
                 self.pageScrollView.addSubview(imageView)
                 imageView.frame = pageScrollView.frame
-                imageView.setX(CGFloat(index) * imageView.width)
-                pageViews.append(imageView)
+                imageView.setLeft(CGFloat(index) * imageView.width)
+                //pageViews.append(imageView)
                 index = index + 1
             }
             self.pageControl.numberOfPages = imageArray.count

@@ -51,7 +51,6 @@ internal class AIServiceContentViewController: UIViewController {
         */
         makeContentView()
      
-        
     }
 
     override func didReceiveMemoryWarning() {
