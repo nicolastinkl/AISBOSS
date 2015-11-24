@@ -143,15 +143,15 @@ internal class AIServiceContentViewController: UIViewController {
         //
         let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
         let musicView = AIMusicTherapyView(frame: musicFrame)
-        scrollView.addSubview(musicView)
+        //scrollView.addSubview(musicView)
         addNewSubView(musicView, preView: galleryView)
+        musicView.backgroundColor = UIColor.clearColor()
 //
         ///
 
         let custView =  AICustomView.currentView()
         addNewSubView(custView, preView: musicView)
-        let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: galleryView)
+     
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2

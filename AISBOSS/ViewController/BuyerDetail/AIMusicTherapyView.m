@@ -48,7 +48,7 @@
 - (void)addLineViewAtY:(CGFloat)y
 {
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 1)];
-    line.backgroundColor = [UIColor grayColor];
+    line.backgroundColor = [AITools colorWithR:0xa1 g:0xa4 b:0xba a:0.4];
     
     [self addSubview:line];
 }
@@ -80,27 +80,35 @@
     [self addSubview:serviceTypes];
     
     //
-    y += [AITools displaySizeFrom1080DesignSize:60];
+    y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(serviceTypes.frame);
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *image = [UIImage imageNamed:@"Wave_BG"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
     imageView.frame = CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight);
     [self addSubview:imageView];
+    //
+    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"$ 100 / session" fontSize:30 color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
+    amLabel.textAlignment = NSTextAlignmentCenter;
+    amLabel.font = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    
+    [self addSubview:amLabel];
+    
     
     //
-    y += [AITools displaySizeFrom1080DesignSize:14];
+    y += [AITools displaySizeFrom1080DesignSize:14] + imageHeight;
     [self addLineViewAtY:y];
     
     //
     y += [AITools displaySizeFrom1080DesignSize:37];
-    CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:34];
+    CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGRect evaluationRect = CGRectMake(_sideMargin, y, width, fontSize);
     UPLabel *evaluationLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"Service content evaluation" fontSize:fontSize color:[UIColor whiteColor]];
+    evaluationLabel.font = [AITools myriadSemiCondensedWithSize:fontSize];
     [self addSubview:evaluationLabel];
     
     //
-    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"178 More Reviews >" fontSize:fontSize color:[UIColor blueColor]];
+    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"178 More Reviews >" fontSize:fontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
     moreLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:moreLabel];
     
@@ -114,16 +122,18 @@
     
     //
     NSString *reviewStr = @"180 reviews";
+    CGFloat reFontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGFloat reviewX = CGRectGetMaxX(starRate.frame) + [AITools displaySizeFrom1080DesignSize:40];
-    CGSize reviewSize = [reviewStr sizeWithFontSize:fontSize forWidth:width];
+    CGSize reviewSize = [reviewStr sizeWithFont:[AITools myriadSemiCondensedWithSize:reFontSize] forWidth:width];
     
-    CGRect reviewFrame = CGRectMake(reviewX, y, reviewSize.width, starSize);
-    UPLabel *reviewLabel = [AIViews normalLabelWithFrame:reviewFrame text:reviewStr fontSize:fontSize color:[UIColor whiteColor]];
+    CGRect reviewFrame = CGRectMake(reviewX, y, reviewSize.width, reviewSize.height);
+    UPLabel *reviewLabel = [AIViews normalLabelWithFrame:reviewFrame text:reviewStr fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
+    reviewLabel.font = [AITools myriadSemiCondensedWithSize:reFontSize];
     [self addSubview:reviewLabel];
     
     //
     UIImage *zanImage = [UIImage imageNamed:@"Zan"];
-    CGRect zanFrame = CGRectMake(CGRectGetMaxX(reviewLabel.frame)+[AITools displaySizeFrom1080DesignSize:31], y, [AITools displaySizeFrom1080DesignSize:40], [AITools displaySizeFrom1080DesignSize:40]);
+    CGRect zanFrame = CGRectMake(CGRectGetMaxX(reviewLabel.frame)+[AITools displaySizeFrom1080DesignSize:31], y, [AITools displaySizeFrom1080DesignSize:42], [AITools displaySizeFrom1080DesignSize:42]);
     UIImageView *zanView = [[UIImageView alloc] initWithImage:zanImage];
     zanView.frame = zanFrame;
     
@@ -131,7 +141,8 @@
     
     //
     
-    UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, y, width, starSize) text:@"95%" fontSize:fontSize color:[UIColor whiteColor]];
+    UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, y, width, [AITools displaySizeFrom1080DesignSize:42]) text:@"95%" fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
+    perLabel.font = [AITools myriadSemiCondensedWithSize:reFontSize];
     [self addSubview:perLabel];
     
     //
@@ -172,8 +183,10 @@
         AICommentCell *cell = [[AICommentCell alloc] initWithFrame:frame model:comment];
         [self addSubview:cell];
         
-        y += CGRectGetMaxY(cell.frame) + [AITools displaySizeFrom1080DesignSize:22];
+        y += CGRectGetHeight(cell.frame) + [AITools displaySizeFrom1080DesignSize:22];
         [self addLineViewAtY:y];
+        
+        y +=  [AITools displaySizeFrom1080DesignSize:22];
         
     }
     
@@ -230,7 +243,7 @@
     
     AIMusicCommentsModel *model = [[AIMusicCommentsModel alloc] init];
     model.headIcon = @"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
-    model.name = @"";
+    model.name = @"Jenna";
     model.rate = 4.5;
     model.time = @"Sep 28th, 2015";
     model.comment = @"hiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.com";
@@ -238,7 +251,7 @@
     
     model = [[AIMusicCommentsModel alloc] init];
     model.headIcon = @"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
-    model.name = @"";
+    model.name = @"Haya";
     model.rate = 4.5;
     model.time = @"Sep 28th, 2015";
     model.comment = @"hiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.com";

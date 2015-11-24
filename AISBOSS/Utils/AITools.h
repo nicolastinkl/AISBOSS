@@ -11,6 +11,13 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
+#define Color_HighWhite        [AITools colorWithR:0xFF g:0xFF b:0xFF]
+
+#define Color_MiddleWhite      [AITools colorWithR:0xa1 g:0xa4 b:0xba]
+
+#define Color_LowWhite         [AITools colorWithR:0x96 g:0x93 b:0xb0]
+
+
 
 @interface AITools : NSObject
 
@@ -29,6 +36,8 @@
 + (void)resetWidth:(CGFloat)width forView:(UIView *)view;
 
 + (void)resetOriginalX:(CGFloat)x forView:(UIView *)view;
+
++ (UIColor *)colorWithR:(CGFloat)r g:(CGFloat)g b:(CGFloat)b a:(CGFloat)a;
 
 + (UIColor *)colorWithR:(CGFloat)r g:(CGFloat)g b:(CGFloat)b;
 

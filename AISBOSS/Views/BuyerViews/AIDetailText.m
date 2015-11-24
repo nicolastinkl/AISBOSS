@@ -33,15 +33,12 @@
     
     if (self) {
         
-        _textMargin = 10;
-        _titleFontSize = 20;
-        _detailFontSize = 18;
+        _textMargin = [AITools displaySizeFrom1080DesignSize:37];
+        _titleFontSize = [AITools displaySizeFrom1080DesignSize:46];
+        _detailFontSize = [AITools displaySizeFrom1080DesignSize:42];
         
         self.titleString = title;
         self.detailString = detail;
-        
-        
-        [self resetFrame];
     }
     
     
@@ -57,7 +54,7 @@
                  font:(UIFont *)font
              fontSize:(CGFloat)fontSize
 {
-    CGSize size = [text sizeWithFontSize:fontSize forWidth:frame.size.width];
+    CGSize size = [text sizeWithFont:font forWidth:frame.size.width];
     frame.size = size;
     
     UPLabel *label = [AIViews wrapLabelWithFrame:frame text:text fontSize:fontSize color:textColor];
@@ -85,7 +82,7 @@
         
         CGFloat width = CGRectGetWidth(self.frame);
         CGRect frame = CGRectMake(0, 0, width, _titleFontSize);
-        _titleLabel = [self labelWithFrame:frame text:titleString textColor:[UIColor whiteColor] font:[AITools myriadCondWithSize:_titleFontSize] fontSize:_titleFontSize];
+        _titleLabel = [self labelWithFrame:frame text:titleString textColor:[UIColor whiteColor] font:[AITools myriadSemiCondensedWithSize:_titleFontSize] fontSize:_titleFontSize];
         [self addSubview:_titleLabel];
     
     }
@@ -104,8 +101,9 @@
         
         CGFloat width = CGRectGetWidth(self.frame);
         CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _textMargin;
-        CGRect frame = CGRectMake(0, y, width, _titleFontSize);
-        _detailLabel = [self labelWithFrame:frame text:detailString textColor:[UIColor whiteColor] font:[AITools myriadCondWithSize:_titleFontSize] fontSize:_titleFontSize];
+        CGRect frame = CGRectMake(0, y, width, _detailFontSize);
+        _detailLabel = [self labelWithFrame:frame text:detailString textColor:[UIColor whiteColor] font:[AITools myriadLightSemiCondensedWithSize:_titleFontSize] fontSize:_detailFontSize];
+        
         [self addSubview:_detailLabel];
         
     }
