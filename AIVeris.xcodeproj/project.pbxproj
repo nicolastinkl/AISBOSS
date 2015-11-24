@@ -87,9 +87,8 @@
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
-		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; settings = {ASSET_TAGS = (); }; };
-		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; settings = {ASSET_TAGS = (); }; };
-		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; settings = {ASSET_TAGS = (); }; };
+		8450D11A1C02A8FC00CD1D5B /* AITwoIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1191C02A8FC00CD1D5B /* AITwoIconTextView.xib */; };
+		8450D11C1C02A94400CD1D5B /* AITwoIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11B1C02A94400CD1D5B /* AITwoIconTextView.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -160,6 +159,8 @@
 		937EA38D1C03172B00AF776B /* AIDetailTopMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */; };
 		937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */; };
 		937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3901C032E9400AF776B /* AINavigationBarView.xib */; };
+		937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3921C04076500AF776B /* AIAudioRecordView.xib */; };
+		937EA3951C04076D00AF776B /* AIAudioRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3941C04076D00AF776B /* AIAudioRecordView.swift */; };
 		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; };
 		939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F61BDDD92600D07598 /* UIImageUtils.swift */; };
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
@@ -576,6 +577,8 @@
 		937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDetailTopMenuView.xib; sourceTree = "<group>"; };
 		937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AINavigationBarView.swift; sourceTree = "<group>"; };
 		937EA3901C032E9400AF776B /* AINavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AINavigationBarView.xib; sourceTree = "<group>"; };
+		937EA3921C04076500AF776B /* AIAudioRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioRecordView.xib; sourceTree = "<group>"; };
+		937EA3941C04076D00AF776B /* AIAudioRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioRecordView.swift; sourceTree = "<group>"; };
 		939F49F41BDDD67E00D07598 /* UIPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPopView.swift; sourceTree = "<group>"; };
 		939F49F61BDDD92600D07598 /* UIImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIPopView.xib; path = Buyer/UIPopView.xib; sourceTree = "<group>"; };
@@ -1979,6 +1982,8 @@
 				937EA38C1C03172B00AF776B /* AIDetailTopMenuView.xib */,
 				937EA38E1C032E7B00AF776B /* AINavigationBarView.swift */,
 				937EA3901C032E9400AF776B /* AINavigationBarView.xib */,
+				937EA3921C04076500AF776B /* AIAudioRecordView.xib */,
+				937EA3941C04076D00AF776B /* AIAudioRecordView.swift */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2212,6 +2217,7 @@
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
+				937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
@@ -2572,6 +2578,7 @@
 				93FA1DD91B9C3001009965C8 /* ContentsCellView.swift in Sources */,
 				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
 				81C092901BAFAC0D003FFF35 /* UIView+WebCacheOperation.m in Sources */,
+				937EA3951C04076D00AF776B /* AIAudioRecordView.swift in Sources */,
 				937EA38B1C0316D600AF776B /* AIDetailTopMenuView.swift in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
