@@ -9,7 +9,6 @@
 import Foundation
 import AISpring
 
-
 class AIAudioMessageView: UIView {
     
     // MARK: currentView

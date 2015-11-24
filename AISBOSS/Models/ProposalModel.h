@@ -62,12 +62,46 @@
 
 @property (nonatomic, strong) NSArray<ProposalOrderModel, Optional> *proposal_order_list;
 @end
+ 
+
+//心愿标签
+@protocol AIProposalNotesModel @end
+@interface AIProposalNotesModel : JSONModel
+
+@property (assign, nonatomic) NSInteger h_id;
+@property (strong, nonatomic) NSString<Optional> * name;
+@property (assign, nonatomic) NSInteger type;
+@property (assign, nonatomic) NSInteger count;
+@property (strong, nonatomic) NSString<Optional> * color;
+
+@end
+
+//文本语音心愿
+@protocol AIProposalHopeAudioTextModel @end
+@interface AIProposalHopeAudioTextModel : JSONModel
+
+@property (assign, nonatomic) NSInteger at_id;
+@property (assign, nonatomic) NSInteger type; //类型:  语音 文本
+@property (strong, nonatomic) NSString<Optional> * text;
+@property (assign, nonatomic) NSInteger audio_length;
+@property (strong, nonatomic) NSString<Optional> * audio_url;
+
+@end
+
+
+@protocol AIProposalHopeModel @end
+@interface AIProposalHopeModel : JSONModel
+
+@property (strong, nonatomic) NSArray<AIProposalNotesModel,Optional> * label_list;
+@property (strong, nonatomic) NSArray<AIProposalHopeAudioTextModel,Optional> * hope_list;
+
+@end
 
 
 //气泡详情页使用
-@protocol AIProposalHopeModel @end
+
 @protocol AIProposalServiceModel @end
-@class AIProposalHopeModel;
+
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
