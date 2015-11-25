@@ -26,8 +26,8 @@ internal class AICustomView : UIView{
     class func currentView()->AICustomView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
         
-        selfView.title.font = AITools.myriadSemiCondensedWithSize(63/2.5)
-        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(42/2.5)
+        selfView.title.font = AITools.myriadSemiCondensedWithSize(63/PurchasedViewDimention.CONVERT_FACTOR)
+        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
         
         return selfView
     }

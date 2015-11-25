@@ -20,7 +20,7 @@ class AIAudioMessageView: UIView {
     
     class func currentView()->AIAudioMessageView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioMessageView", owner: self, options: nil).first  as! AIAudioMessageView
-        selfView.audioLength.font = AITools.myriadLightSemiCondensedWithSize(42/2.5)
+        selfView.audioLength.font = AITools.myriadLightSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
         return selfView
     }
     

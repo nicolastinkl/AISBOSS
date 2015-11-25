@@ -10,7 +10,6 @@
 import Foundation
 import AISpring
 
-
 protocol AICustomAudioNotesViewDelegate : class{
     func startRecording()
     func updateMetersImage(lowPass:Double)
@@ -86,8 +85,8 @@ internal class AICustomAudioNotesView : UIView{
     
     class func currentView()->AICustomAudioNotesView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomAudioNotesView", owner: self, options: nil).first  as! AICustomAudioNotesView
-        selfView.note.font = AITools.myriadSemiCondensedWithSize(42/2.5)
-        selfView.inputText.font = AITools.myriadSemiCondensedWithSize(42/2.5)
+        selfView.note.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
+        selfView.inputText.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
         return selfView
     }
     

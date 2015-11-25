@@ -51,4 +51,23 @@ ramdWidth
 
 
 
+//wei 
+
+let firstBits:Int = 0000_1111
+let secondBist:Int = 1000_1011
+
+
+var swap1 = 0b0011_1100
+
+var swap2 = 0b0010_1010
+
+swap1 = swap1 ^ swap2
+
+swap2 = swap1 ^ swap2
+
+swap1
+
+
+
+
 
