@@ -86,7 +86,12 @@ class ServiceContainerView: UIView {
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
         grade.asyncLoadImage(dataModel.service_rating_icon ?? "")
-        price.text = dataModel.service_price ?? "$0"
+        
+        if dataModel.service_price != nil {
+            price.text = dataModel.service_price.original ?? "$0"
+        }else{
+            price.text = "$0"
+        }
         name.text = dataModel.service_desc ?? ""
        
         if dataModel.service_param != nil {

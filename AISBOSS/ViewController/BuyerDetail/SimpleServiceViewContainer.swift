@@ -72,7 +72,12 @@ class SimpleServiceViewContainer: UIView {
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
-        price.text = dataModel.service_price ?? "$0"
+        if dataModel.service_price != nil {
+            price.text = dataModel.service_price.original ?? "$0"
+        }else{
+            price.text = "$0"
+        }
+        
         name.text = dataModel.service_desc ?? ""
         savedMoney.text = "16.73 saved"
         savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width

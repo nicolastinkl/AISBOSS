@@ -93,18 +93,24 @@
 
 
 //气泡详情页使用
+@protocol AIProposalServicePriceModel @end
+@interface AIProposalServicePriceModel : JSONModel
+@property (strong, nonatomic) NSString<Optional> * original;
+@property (strong, nonatomic) NSString<Optional> * discount;
+@property (strong, nonatomic) NSString<Optional> * saved;
+@end
 
 @protocol AIProposalServiceModel @end
-
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
+@property (assign, nonatomic) NSInteger is_main_flag;
 @property (strong, nonatomic) NSString<Optional> * service_desc;
-@property (strong, nonatomic) NSString<Optional> * service_price;
+@property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
 @property (strong, nonatomic) NSString<Optional> * service_rating_icon;
 @property (strong, nonatomic) ParamModel<Optional> * service_param;
-@property (strong, nonatomic) AIProposalHopeModel<Optional> * service_hope; //服务心愿单
+@property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
 
 @end
 
