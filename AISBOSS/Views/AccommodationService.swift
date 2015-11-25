@@ -17,12 +17,10 @@ class AccommodationService: ServiceDetailView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initSelf()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        initSelf()
     }
     
     private func initSelf() {
@@ -33,15 +31,20 @@ class AccommodationService: ServiceDetailView {
     
     override func loadData(paramData : NSDictionary) {
         super.loadData(paramData)
+        initSelf()
         
         period.text = getStringContent("checkin_time") + " - " + getStringContent("checkout_time")
     //    additionDes.text = getStringContent("destination")
+        
     }
 
     private func addPeriod() {
-        period = UILabel(frame: CGRect(x: 0, y: 0, width: 160, height: AITools.displaySizeFrom1080DesignSize(66)))
+        let periodStr = getStringContent("checkin_time") + " - " + getStringContent("checkout_time")
+        let size = periodStr.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66)), forWidth: 160)
+        period = UILabel(frame: CGRect(x: 35, y: 15, width: size.width, height: AITools.displaySizeFrom1080DesignSize(66)))
         period.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
         period.textColor = UIColor.whiteColor()
+        period.text = periodStr
         addSubview(period)
         
         dayCount = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -56,12 +59,11 @@ class AccommodationService: ServiceDetailView {
             dayCount.width >= 100
         }
         
-        period.text = "Oct.10th - Oct.12th"
         dayCount.text = "(two days)"
     }
     
     private func addAdditionDescription() {
-        additionDes = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        additionDes = UILabel(frame: CGRect(x: 35, y: 0, width: 0, height: 0))
         additionDes.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         additionDes.textColor = UIColor.whiteColor()
         addSubview(additionDes)

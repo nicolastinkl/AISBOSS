@@ -41,7 +41,7 @@ class TransportService: ServiceDetailView {
     }
     
     private func addTime() {
-        timeTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 25, height: 12))
+        timeTitle = UILabel(frame: CGRect(x: 35, y: 15, width: 25, height: 12))
         timeTitle.textColor = UIColor.whiteColor()
         timeTitle.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         timeTitle.text = "Time"
@@ -62,9 +62,7 @@ class TransportService: ServiceDetailView {
     }
     
     private func addLocation() {
-        
-        
-        
+    
         let fromIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         let fromIconImg = UIImage(named: "location_from")
         let fromIconSize = AITools.imageDisplaySizeFrom1080DesignSize(fromIconImg!.size)

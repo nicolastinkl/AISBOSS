@@ -96,15 +96,17 @@ class SimpleServiceViewContainer: UIView {
             let serviceDetailView = ServiceCardDetailShopping(frame: CGRectMake(0, 0, AITools.displaySizeFrom1080DesignSize(895), 0))
             serviceDetailView.loadData()
             return serviceDetailView
-            //let serviceDetailView = FlightServiceView.createInstance()
-            //serviceDetailView.loadData(paramDictionary)
-            //return serviceDetailView
+//            let serviceDetailView = FlightServiceView.createInstance()
+//            serviceDetailView.loadData(paramDictionary)
+//            return serviceDetailView
         case ProposalServiceViewTemplate.Taxi:
-            let v = AIIconTextView.createInstance()
-            v.loadData("")
+            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(paramDictionary)
             return v
         case ProposalServiceViewTemplate.Hotel:
-            return AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(paramDictionary)
+            return v
         default:
             return nil
         }
