@@ -27,6 +27,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var settingState: UIImageView!
     
     
+    @IBOutlet weak var savedMoneyWidth: NSLayoutConstraint!
     @IBOutlet weak var paramsViewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerBottomMargin: NSLayoutConstraint!
@@ -70,6 +71,9 @@ class SimpleServiceViewContainer: UIView {
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
         price.text = dataModel.service_price ?? "$0"
         name.text = dataModel.service_desc ?? ""
+        savedMoney.text = "16.73 saved"
+        savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
+        savedMoney.setNeedsUpdateConstraints()
         
         if dataModel.service_param != nil {
             
