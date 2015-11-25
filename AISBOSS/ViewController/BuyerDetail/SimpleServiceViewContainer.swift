@@ -103,29 +103,30 @@ class SimpleServiceViewContainer: UIView {
     
     
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
+        let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
         switch viewTemplate {
         case .PlaneTicket:
-            let v = FlightServiceView(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = FlightServiceView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
             //      v.loadData(paramDictionary)
             return v
         case .Taxi:
-            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
       //      v.loadData(paramDictionary)
             return v
         case .Hotel:
-            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
       //      v.loadData(paramDictionary)
             return v
         case .MutilParams:
-            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
             v.loadData(jsonData)
             return v
         case .MutilTextAndImage:
-            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
             v.loadData(jsonData)
             return v
         case .Shopping:
-            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
             v.loadData(jsonData)
             return v
         default:
