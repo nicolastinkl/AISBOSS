@@ -14,6 +14,7 @@ class AccommodationService: ServiceDetailView {
     private var period: UILabel!
     private var dayCount: UILabel!
     private var additionDes: UILabel!
+    private var model: HotelModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,9 +38,20 @@ class AccommodationService: ServiceDetailView {
     //    additionDes.text = getStringContent("destination")
         
     }
+    
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            model = try HotelModel(data: jsonData)
+            initSelf()
+        } catch {
+            
+        }
+        
+    }
 
     private func addPeriod() {
-        let periodStr = getStringContent("checkin_time") + " - " + getStringContent("checkout_time")
+        let periodStr = model.checkin_time + " - " + model.checkout_time
         let size = periodStr.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66)), forWidth: 160)
         period = UILabel(frame: CGRect(x: 35, y: 15, width: size.width, height: AITools.displaySizeFrom1080DesignSize(66)))
         period.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
@@ -63,6 +75,7 @@ class AccommodationService: ServiceDetailView {
     }
     
     private func addAdditionDescription() {
+        
         additionDes = UILabel(frame: CGRect(x: 35, y: 0, width: 0, height: 0))
         additionDes.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         additionDes.textColor = UIColor.whiteColor()
@@ -74,6 +87,17 @@ class AccommodationService: ServiceDetailView {
             additionDes.height >= 25
             additionDes.right == additionDes.superview!.right
         }
-        additionDes.text = "president room  free breakfast  free wifi"
+        
+        if model.facility_desc != nil {
+            var desc: String = ""
+            
+            for de in model.facility_desc {
+                let str = de.desc
+                desc.appendContentsOf(str + " ")
+            }
+            
+            additionDes.text = desc
+        }
+
     }
 }
