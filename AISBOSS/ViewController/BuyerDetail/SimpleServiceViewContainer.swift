@@ -32,6 +32,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var dividerTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var messageHeight: NSLayoutConstraint!
+    @IBOutlet weak var dividerHeight: NSLayoutConstraint!
     
     private var dataModel: AIProposalServiceModel?
     
@@ -49,6 +50,8 @@ class SimpleServiceViewContainer: UIView {
             star.width == starRateView.width
             star.top == review.top + 1
         }
+        
+
         
         name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
         price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
@@ -80,11 +83,11 @@ class SimpleServiceViewContainer: UIView {
             if let key = dataModel.service_param.param_key {
                 let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
                 if let paramValueString = dataModel.service_param.param_value{
-                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
+//                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
                     //获取到参数的dictionary
-                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     
-                    if let serviceView = createServiceView(viewTemplate!,paramDictionary : paramDictionary!) {
+                    if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
                         addParamsView(serviceView)
                         addMessageView()
                     }
@@ -94,22 +97,31 @@ class SimpleServiceViewContainer: UIView {
     }
     
     
-    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, paramDictionary : NSDictionary) -> View? {
+    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         switch viewTemplate {
-        case ProposalServiceViewTemplate.PlaneTicket:
+        case .PlaneTicket:
             let serviceDetailView = ServiceCardDetailShopping(frame: CGRectMake(0, 0, AITools.displaySizeFrom1080DesignSize(895), 0))
             serviceDetailView.loadData()
             return serviceDetailView
-//            let serviceDetailView = FlightServiceView.createInstance()
-//            serviceDetailView.loadData(paramDictionary)
-//            return serviceDetailView
-        case ProposalServiceViewTemplate.Taxi:
+        case .Taxi:
             let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
-            v.loadData(paramDictionary)
+      //      v.loadData(paramDictionary)
             return v
-        case ProposalServiceViewTemplate.Hotel:
+        case .Hotel:
             let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
-            v.loadData(paramDictionary)
+      //      v.loadData(paramDictionary)
+            return v
+        case .MutilParams:
+            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData()
+            return v
+        case .MutilTextAndImage:
+            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData()
+            return v
+        case .Shopping:
+            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData()
             return v
         default:
             return nil
@@ -149,6 +161,8 @@ class SimpleServiceViewContainer: UIView {
         }
         
         divider.hidden = false
+        dividerHeight.constant = 0.5
+        divider.setNeedsUpdateConstraints()
         frame.size.height = totalHeight()
     }
     
