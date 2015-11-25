@@ -100,9 +100,9 @@ class SimpleServiceViewContainer: UIView {
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         switch viewTemplate {
         case .PlaneTicket:
-            let serviceDetailView = ServiceCardDetailShopping(frame: CGRectMake(0, 0, AITools.displaySizeFrom1080DesignSize(895), 0))
-            serviceDetailView.loadData()
-            return serviceDetailView
+            let v = FlightServiceView(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            //      v.loadData(paramDictionary)
+            return v
         case .Taxi:
             let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
       //      v.loadData(paramDictionary)
@@ -113,15 +113,15 @@ class SimpleServiceViewContainer: UIView {
             return v
         case .MutilParams:
             let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
-            v.loadData()
+            v.loadData(jsonData)
             return v
         case .MutilTextAndImage:
             let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
-            v.loadData()
+            v.loadData(jsonData)
             return v
         case .Shopping:
             let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
-            v.loadData()
+            v.loadData(jsonData)
             return v
         default:
             return nil
