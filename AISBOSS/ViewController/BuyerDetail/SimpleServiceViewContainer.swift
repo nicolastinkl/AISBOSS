@@ -32,6 +32,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var dividerTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var messageHeight: NSLayoutConstraint!
+    @IBOutlet weak var dividerHeight: NSLayoutConstraint!
     
     private var dataModel: AIProposalServiceModel?
     
@@ -49,6 +50,8 @@ class SimpleServiceViewContainer: UIView {
             star.width == starRateView.width
             star.top == review.top + 1
         }
+        
+
         
         name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
         price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
@@ -149,6 +152,8 @@ class SimpleServiceViewContainer: UIView {
         }
         
         divider.hidden = false
+        dividerHeight.constant = 0.5
+        divider.setNeedsUpdateConstraints()
         frame.size.height = totalHeight()
     }
     
