@@ -249,6 +249,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         detailViewController?.view.alpha = 0
         let detailScale : CGFloat = bubble.radius * 2 / CGRectGetWidth(self.view.frame)
         
+        // self.presentViewController在真机iPhone5上会crash...
         self.presentViewController(detailViewController!, animated: false) { () -> Void in
             
             detailViewController?.view.alpha = 1
@@ -272,10 +273,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     })
                     
                     self.view.userInteractionEnabled = true
-            })
+                })
             }
-//            springWithCompletion(1.2, animations: {   () -> Void in            }
-        
+
+            // springWithCompletion(1.2, animations: { () -> Void in }
     }
     
 

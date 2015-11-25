@@ -12,7 +12,7 @@ import UIKit
 internal class AIPageBueryViewController: UIViewController {
     
     // MARK: -> Internal properties
-    var bubleModelArray : [AIBuyerBubbleModel]?
+    var bubleModelArray : [AIProposalServiceModel]?
     
     var delegate: AIBuyerDetailDelegate?
     
@@ -110,7 +110,6 @@ internal class AIPageBueryViewController: UIViewController {
     
     /**
      初始化数据
-     
      */
     func initGetingData(){
         

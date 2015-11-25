@@ -52,8 +52,6 @@
 
 @end
 
-
-
 @interface ProposalOrderListModel : JSONModel
 
 @property (nonatomic, strong) NSArray<ProposalOrderModel, Optional> *proposal_order_list;
