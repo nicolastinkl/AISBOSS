@@ -61,8 +61,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Make
         //makeBuyButton()
      
-        // Init Bottom Page white area
-        InitBottomView()
+        
     }
     
     func AddImageView(){
@@ -131,7 +130,7 @@ class AIBuyerDetailViewController : UIViewController {
     func InitBottomView () {
         let bzView = UIBezierPageView(frame: CGRectMake(0,38,200,50))
         bzView.setX((self.view.width - bzView.width)/2)
-        bzView.refershView(8)
+        bzView.refershView(self.dataSource.service_list.count)
         //bzView.center = (self.bottomView.subviews.first as! UIImageView).center
         self.bottomView.addSubview(bzView)
         
@@ -214,6 +213,9 @@ class AIBuyerDetailViewController : UIViewController {
                         //InitControl Data
                         strongSelf.InitController()
                         strongSelf.tableView.reloadData()
+                        
+                        // Init Bottom Page white area
+                        strongSelf.InitBottomView()
                     }
                     
                 },fail : {
