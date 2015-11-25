@@ -15,7 +15,7 @@ class ServiceCardDetailShopping: UIView {
     var titleLabel : UILabel!
     
     
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellShoppingModel?
     var shoppingListData : NSArray?
     
     //MARK: - Constants
@@ -32,13 +32,18 @@ class ServiceCardDetailShopping: UIView {
     let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     func loadData(){
-        shoppingListData = ["shoppingItem1","shoppingItem2"]
+        let jsonString = "{\"product_name\":\"Shopping list for 8 weeks of pregnancy\",\"product_sub_name\":\"Supplments package\",\"item_list\":[{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 220-Count\"},{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Nature Made Prenatal Multi Vitaminalue Size, Tablets, 250-Count\"}]}"
+        buildModel(jsonString)
         layoutView()
+    }
+    
+    func buildModel(jsonString : String){
+        dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
     }
     
     //MARK: - build views
     func buildTitle(){
-        let text = "Supplements package"
+        let text = dataSource?.product_sub_name
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.text = text
         titleLabel.font = TITLE_TEXT_FONT
@@ -57,10 +62,10 @@ class ServiceCardDetailShopping: UIView {
     func buildShoppingListContainer(){
         shoppingViewContainer = UIView(frame: CGRectZero)
         self.addSubview(shoppingViewContainer)
-        for var index = 0; index < shoppingListData?.count; index++ {
-            //let frame = CGRectMake(0, CGFloat(index) * SHOPPING_ITEM_HEIGHT, self.width, SHOPPING_ITEM_HEIGHT)
+        for var index = 0; index < dataSource?.item_list.count; index++ {
             let cellView : SCDShoppingListCellView = SCDShoppingListCellView(frame: CGRectZero)
-            cellView.loadData()
+            let serviceItemModel = dataSource?.item_list[index] as! ServiceCellShoppingItemModel
+            cellView.loadData(serviceItemModel)
             shoppingViewContainer.addSubview(cellView)
             
             layout(cellView){
@@ -72,7 +77,7 @@ class ServiceCardDetailShopping: UIView {
             }
         }
         
-        let containerHeight = CGFloat((shoppingListData?.count)!) * SHOPPING_ITEM_HEIGHT
+        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
         shoppingViewContainer.frame.size.height = containerHeight
         
         layout(shoppingViewContainer){
@@ -91,7 +96,7 @@ class ServiceCardDetailShopping: UIView {
     }
     
     func fixFrame(){
-        let containerHeight = CGFloat((shoppingListData?.count)!) * SHOPPING_ITEM_HEIGHT
+        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
         self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + 35
     }
     
@@ -111,7 +116,7 @@ class SCDShoppingListCellView : UIView {
     var descLabel : UILabel!
     
     
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellShoppingItemModel?
 
     //MARK: - Constants
     //sizes
@@ -125,14 +130,14 @@ class SCDShoppingListCellView : UIView {
     //fonts
     let LABEL_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(34/2.5)
     
-    func loadData(){
-        dataSource = ["url":"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png","text":"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 22-Count"]
+    func loadData(shoppingItemModel : ServiceCellShoppingItemModel){
+        dataSource = shoppingItemModel
         
         layoutView()
         
-        let url = dataSource?.valueForKey("url") as! String
-        imageView.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
-        let text = dataSource?.valueForKey("text") as! String
+        let url = dataSource?.item_icon
+        imageView.sd_setImageWithURL(url!.toURL(), placeholderImage: UIImage(named: "Placehold"))
+        let text = dataSource?.item_intro
         descLabel.text = text
         
         adjustRowMargin(descLabel,lineSpacing : LABEL_LINE_SPACING)

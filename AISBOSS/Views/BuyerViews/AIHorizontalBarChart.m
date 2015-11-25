@@ -70,10 +70,13 @@
 - (void)makeTitle
 {
     CGFloat width = _maxWidth *_titleRate;
+    CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:42];
     
-    CGRect frame = CGRectMake(0, 0, width, _maxHeight);
+    CGFloat y = (_maxHeight - fontSize) / 2;
     
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.title fontSize:_maxHeight color:[UIColor whiteColor]];
+    CGRect frame = CGRectMake(0, y, width, fontSize);
+    
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.title fontSize:fontSize color:Color_MiddleWhite];
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self addSubview:_titleLabel];
 }
@@ -88,15 +91,14 @@
     CGRect frame = CGRectMake(x, 0, width, _maxHeight);
     
     _backgroundView = [[UIView alloc] initWithFrame:frame];
-    _backgroundView.layer.borderColor = [UIColor blueColor].CGColor;
+    _backgroundView.layer.borderColor = [AITools colorWithR:0x29 g:0x4c b:0xe3].CGColor;
     _backgroundView.layer.borderWidth = 1;
-    
     [self addSubview:_backgroundView];
     
     //
     frame.size.width = width * self.chartModel.percentage;
     _charView = [[UIView alloc] initWithFrame:frame];
-    _charView.backgroundColor = [UIColor blueColor];
+    _charView.backgroundColor = [AITools colorWithR:0x29 g:0x4c b:0xe3];
     
     [self addSubview:_charView];
     
@@ -108,10 +110,12 @@
 {
     CGFloat width = _maxWidth * _numberRate;
     CGFloat x = CGRectGetMaxX(_backgroundView.frame) + _margin;
+    CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:42];
     
-    CGRect frame = CGRectMake(x, 0, width, _maxHeight);
+    CGFloat y = (_maxHeight - fontSize) / 2;
+    CGRect frame = CGRectMake(x, y, width, fontSize);
     
-    _numberLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.number fontSize:_maxHeight color:[UIColor whiteColor]];
+    _numberLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.number fontSize:fontSize color:Color_MiddleWhite];
     _numberLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self addSubview:_numberLabel];
 }

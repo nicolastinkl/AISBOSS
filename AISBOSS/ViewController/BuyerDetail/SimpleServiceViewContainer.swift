@@ -93,7 +93,7 @@ class SimpleServiceViewContainer: UIView {
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, paramDictionary : NSDictionary) -> View? {
         switch viewTemplate {
         case ProposalServiceViewTemplate.PlaneTicket:
-            let serviceDetailView = ServiceCardDetailIcon(frame: CGRectMake(0, 0, AITools.displaySizeFrom1080DesignSize(895), 0))
+            let serviceDetailView = ServiceCardDetailShopping(frame: CGRectMake(0, 0, AITools.displaySizeFrom1080DesignSize(895), 0))
             serviceDetailView.loadData()
             return serviceDetailView
             //let serviceDetailView = FlightServiceView.createInstance()

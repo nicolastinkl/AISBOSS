@@ -90,8 +90,9 @@
     CGFloat lr = _displayRate ;
     CGFloat x = _starMargin;
     
-    while (lr - 1 >= 1) {
+    while (lr >= 1) {
         x = [self addStarImageWithName:@"Yellow_Star" atX:x];
+        lr -= 1;
     }
     
     if (lr > 0) {
@@ -100,8 +101,9 @@
     
     CGFloat or = _maxRate - _displayRate;
     
-    while (or - 1 >= 1) {
+    while (or >= 1) {
         x = [self addStarImageWithName:@"Gray_Star" atX:x];
+        or -= 1;
     }
     
     CGRect frame = self.frame;

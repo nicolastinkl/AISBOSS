@@ -40,6 +40,7 @@
     if (self) {
         self.commentModel = model;
         [self makeProperties];
+        [self makeSubViews];
     }
     
     return self;
@@ -48,10 +49,10 @@
 #pragma mark - 构造基本属性
 - (void)makeProperties
 {
-    _commonMargin = 15;
-    _nameFontSize = 16;
-    _timeFontSize = 16;
-    _commentFontSize = 16;
+    _commonMargin = [AITools displaySizeFrom1080DesignSize:26];;
+    _nameFontSize = [AITools displaySizeFrom1080DesignSize:42];
+    _timeFontSize = [AITools displaySizeFrom1080DesignSize:42];
+    _commentFontSize = [AITools displaySizeFrom1080DesignSize:42];
 }
 
 #pragma mark - 构造Subview
@@ -70,10 +71,10 @@
 
 - (void)makeHeadIcon
 {
-    CGFloat size = [AITools displaySizeFrom1080DesignSize:210];
+    CGFloat size = [AITools displaySizeFrom1080DesignSize:114];
     CGRect frame = CGRectMake(0, 0, size, size);
     _headImageView = [[UIImageView alloc] initWithFrame:frame];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.commentModel.headIcon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.commentModel.headIcon] placeholderImage:[UIImage imageNamed:@"MusicHead1"]];
     [self addSubview:_headImageView];
 }
 
@@ -82,7 +83,7 @@
 - (void)makeName
 {
     CGFloat x = CGRectGetWidth(_headImageView.frame) + _commonMargin;
-    CGFloat y = _commonMargin;
+    CGFloat y = _commonMargin - 5;
     CGFloat width = CGRectGetWidth(self.frame) - x;
     CGFloat height = _nameFontSize;
     
@@ -90,6 +91,7 @@
     
     _nameLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.name fontSize:_nameFontSize color:[UIColor whiteColor]];
     _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    _nameLabel.font = [AITools myriadSemiCondensedWithSize:_nameFontSize];
     [self addSubview:_nameLabel];
     
 }
@@ -100,7 +102,7 @@
 {
     CGFloat x = CGRectGetWidth(_headImageView.frame) + _commonMargin;
     CGFloat y = CGRectGetHeight(_nameLabel.frame) + _commonMargin;
-    CGFloat height = _timeFontSize;
+    CGFloat height = [AITools displaySizeFrom1080DesignSize:25];
 
     CGRect frame = CGRectMake(x, y, 0, height);
     
@@ -112,8 +114,8 @@
 
 - (void)makeTime
 {
-    CGFloat x = CGRectGetWidth(_starRate.frame) + _commonMargin;
-    CGFloat y = CGRectGetMinY(_starRate.frame);
+    CGFloat x = CGRectGetMaxX(_starRate.frame) + _commonMargin;
+    CGFloat y = CGRectGetMinY(_starRate.frame) - 2;
     CGFloat width = CGRectGetWidth(self.frame) - x;
     CGFloat height = _timeFontSize;
     
@@ -128,9 +130,10 @@
 
 - (void)makeComment
 {
-    CGFloat y = CGRectGetMaxY(_starRate.frame) + _commonMargin;
+    CGFloat y = CGRectGetMaxY(_headImageView.frame) + [AITools displaySizeFrom1080DesignSize:25];
     CGFloat width = CGRectGetWidth(self.frame);
-    CGSize size = [self.commentModel.comment sizeWithFontSize:_commentFontSize forWidth:width];
+    UIFont *font = [AITools myriadLightSemiCondensedWithSize:_commentFontSize];;
+    CGSize size = [self.commentModel.comment sizeWithFont:font forWidth:width];
     
     CGRect frame = CGRectMake(0, y, width, size.height);
     
@@ -147,7 +150,9 @@
 {
     CGRect frame = self.frame;
     
-    frame.size.height = CGRectGetMaxY(_commentLabel.frame);
+    CGFloat height = CGRectGetMaxY(_commentLabel.frame);
+    
+    frame.size.height = height;
     
     self.frame = frame;
 }

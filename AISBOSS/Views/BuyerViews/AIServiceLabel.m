@@ -67,7 +67,7 @@
 
 - (void)makeTitle
 {
-    CGSize titleSize = [self.labelTitle sizeWithFontSize:_fontSize forWidth:300];
+    CGSize titleSize = [self.labelTitle sizeWithFont:[UIFont systemFontOfSize:_fontSize] forWidth:300];
     CGRect frame = CGRectMake(_textMargin, 0, titleSize.width, CGRectGetHeight(self.frame));
     _titleLabel = [AIViews normalLabelWithFrame:frame text:self.labelTitle fontSize:_fontSize color:[UIColor colorWithWhite:0.5 alpha:0.8]];
     [self addSubview:_titleLabel];
@@ -81,7 +81,7 @@
 {
     
     NSString *number = @"88";
-    CGSize size = [number sizeWithFontSize:_fontSize forWidth:300];
+    CGSize size = [number sizeWithFont:[UIFont systemFontOfSize:_fontSize] forWidth:300];
     CGFloat x = _textMargin * 2 + CGRectGetWidth(_titleLabel.frame);
     CGFloat height = CGRectGetHeight(self.frame) - _tinyMargin * 2;
     CGFloat standardWidth = height;

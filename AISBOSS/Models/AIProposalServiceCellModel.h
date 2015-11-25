@@ -8,6 +8,87 @@
 
 #import "JSONModel.h"
 
+/*
+ * 机票模型
+ */
+@protocol PlaneTicketModel
+
+@end
+
+@interface PlaneTicketModel : JSONModel
+
+// 到达时间
+@property (nonatomic, strong) NSString<Optional> *arrival_time;
+// 到达地点
+@property (nonatomic, strong) NSString<Optional> *arrival_place;
+// 到达机场名，航站楼，登机口描述
+@property (nonatomic, strong) NSString<Optional> *arrival_desc;
+// 出发时间
+@property (nonatomic, strong) NSString<Optional> *departure_time;
+// 出发地点
+@property (nonatomic, strong) NSString<Optional> *departure_place;
+// 出发机场名，航站楼，登机口描述
+@property (nonatomic, strong) NSString<Optional> *departure_desc;
+
+@end
+
+
+
+/*
+ * 打车模型
+ */
+@protocol TaxiModel
+
+@end
+
+@interface TaxiModel : JSONModel
+
+// 上车地点
+@property (nonatomic, strong) NSString<Optional> *pickup_location;
+// 上车时间
+@property (nonatomic, strong) NSString<Optional> *pickup_time;
+// 目的地点
+@property (nonatomic, strong) NSString<Optional> *destination;
+
+@end
+
+
+
+/*
+ * 纯文字描述模型
+ */
+@protocol TextDescModel
+
+@end
+
+@interface TextDescModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *desc;
+
+@end
+
+
+
+/*
+ * 酒店模型
+ */
+@protocol HotelModel
+
+@end
+
+@interface HotelModel : JSONModel
+
+// 入住时间
+@property (nonatomic, strong) NSString<Optional> *checkin_time;
+// 离店时间
+@property (nonatomic, strong) NSString<Optional> *checkout_time;
+// 服务设施描述
+@property (nonatomic, strong) NSArray<TextDescModel, Optional> *facility_desc;
+
+@end
+
+
+
 /**
  *  @author wantsor, 15-11-24 10:11:32
  *
