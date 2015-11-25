@@ -31,47 +31,57 @@ class AIIconTextView: UIView {
     }
     
     func loadData(data: String) {
-        createIconTextPair()
+        let model = ServiceCellStandardParamListModel(string: data, error: nil)
+        loadData(model: model)
     }
     
-    private func createIconTextPair() {
-        
-        if paramsCount < 2 {
-            return
+    func loadData(model data: ServiceCellStandardParamListModel) {
+        let list = data.param_list
+        if list != nil && list.count > 0 {
+            createIconTextPair(list)
         }
+    }
+    
+    private func createIconTextPair(paramList: [AnyObject]) {
         
         var preIcon = firstIcon
         var preLabel = firstText
         
-        for var index = 1; index < paramsCount; ++index {
-            let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-            icon.contentMode = firstIcon.contentMode
-            addSubview(icon)
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-            label.font = firstText.font
-            label.textColor = firstText.textColor
-            addSubview(label)
+        for var index = 0; index < paramList.count; ++index {
+            let model = paramList[index] as! ServiceCellStadandParamModel
             
-            layout(preIcon, icon) {preIcon, icon in
-                icon.width == preIcon.width
-                icon.height == preIcon.height
-                icon.leading == preIcon.leading
-                icon.top == preIcon.bottom + iconMaginTop.constant
+            if index == 0 {
+                preIcon.asyncLoadImage(model.param_icon)
+                preLabel.text = model.param_value
+            } else {
+                let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+                icon.contentMode = firstIcon.contentMode
+                addSubview(icon)
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+                label.font = firstText.font
+                label.textColor = firstText.textColor
+                addSubview(label)
+                
+                layout(preIcon, icon) {preIcon, icon in
+                    icon.width == preIcon.width
+                    icon.height == preIcon.height
+                    icon.leading == preIcon.leading
+                    icon.top == preIcon.bottom + iconMaginTop.constant
+                }
+                
+                layout(preLabel, icon, label) {preLabel, icon, label in
+                    label.width == preLabel.width
+                    label.height == preLabel.height
+                    label.leading == preLabel.leading
+                    label.top == icon.top + textTopToIcon.constant
+                }
+                
+                frame.size.height += (firstIcon.height + iconMaginTop.constant)
+                
+                preIcon = icon
+                preLabel = label
             }
-            
-            layout(preLabel, icon, label) {preLabel, icon, label in
-                label.width == preLabel.width
-                label.height == preLabel.height
-                label.leading == preLabel.leading
-                label.top == icon.top + textTopToIcon.constant
-            }
-            
-            icon.image = UIImage(named: "location_icon_white")
-            label.text = "1901A, Wanda Plaza, Haidian District"
-            frame.size.height += (firstIcon.height + iconMaginTop.constant)
-            
-            preIcon = icon
-            preLabel = label
         }
     }
+    
 }

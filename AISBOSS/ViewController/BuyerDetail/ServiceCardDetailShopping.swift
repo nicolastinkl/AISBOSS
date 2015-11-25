@@ -13,54 +13,100 @@ class ServiceCardDetailShopping: UIView {
     //MARK: - uiViews
     var shoppingViewContainer : UIView!
     var titleLabel : UILabel!
+    var subTitleLabel : UILabel!
+    var divideLineView : UIView!
     
     
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellShoppingModel?
     var shoppingListData : NSArray?
     
     //MARK: - Constants
     //sizes
+    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
+    let MAIN_TITLE_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
+    let DIVIDE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
+    let SUB_TITLE_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(96)
+    let MAIN_TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(113-24)
+    
     let TITLE_SHOPPING_MARGIN : CGFloat = 1
     let SHOPPING_LIST_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(50)
-    let TITLE_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
+    let TITLE_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
     let TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(60)
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(98)
+    
     let SHOPPING_ITEM_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(150)
 
     
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
+    let MAIN_TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     func loadData(){
-        shoppingListData = ["shoppingItem1","shoppingItem2"]
+        let jsonString = "{\"product_name\":\"Shopping list for 8 weeks of pregnancy\",\"product_sub_name\":\"Supplments package\",\"item_list\":[{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 220-Count\"},{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Nature Made Prenatal Multi Vitaminalue Size, Tablets, 250-Count\"}]}"
+        buildModel(jsonString)
         layoutView()
+    }
+    
+    func buildModel(jsonString : String){
+        dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
     }
     
     //MARK: - build views
     func buildTitle(){
-        let text = "Supplements package"
+        let text = dataSource?.product_name
         titleLabel = UILabel(frame: CGRectZero)
         titleLabel.text = text
-        titleLabel.font = TITLE_TEXT_FONT
+        titleLabel.font = MAIN_TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
         
-        layout(titleLabel){
-            titleLabel in
-            titleLabel.topMargin == titleLabel.superview!.topMargin + TITLE_TOP_MARGIN
-            titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + VIEW_LEFT_MARGIN
+        divideLineView = UIView(frame: CGRectZero)
+        divideLineView.alpha = 0.38
+        divideLineView.backgroundColor = UIColor.whiteColor()
+        self.addSubview(divideLineView)
+        
+        layout(titleLabel,divideLineView){
+            titleLabel,divideLineView in
+            titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
+            titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + MAIN_TITLE_LEFT_MARGIN
             titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
-            titleLabel.height == TITLE_HEIGHT
+            titleLabel.height == MAIN_TITLE_HEIGHT
+            
+            divideLineView.height == 1
+            divideLineView.leadingMargin == divideLineView.superview!.leadingMargin + DIVIDE_MARGIN
+            divideLineView.superview!.trailingMargin == divideLineView.trailingMargin + DIVIDE_MARGIN
+            distribute(by: 0,vertically : titleLabel,divideLineView)
+        }
+    }
+    
+    func buildSubTitle(){
+        let text = dataSource?.product_sub_name
+        subTitleLabel = UILabel(frame: CGRectZero)
+        subTitleLabel.text = text
+        subTitleLabel.font = TITLE_TEXT_FONT
+        subTitleLabel.textColor = UIColor.whiteColor()
+        self.addSubview(subTitleLabel)
+        
+        layout(subTitleLabel){
+            subTitleLabel in
+            //subTitleLabel.topMargin == subTitleLabel.superview!.topMargin + TITLE_TOP_MARGIN
+            subTitleLabel.leadingMargin == subTitleLabel.superview!.leadingMargin + SUB_TITLE_LEFT_MARGIN
+            subTitleLabel.superview!.trailingMargin >= subTitleLabel.trailingMargin
+            subTitleLabel.height == TITLE_HEIGHT
+        }
+        
+        constrain(titleLabel,subTitleLabel){
+            titleLabel,subTitleLabel in
+            distribute(by: TITLE_TOP_MARGIN,vertically : titleLabel,subTitleLabel)
         }
     }
     
     func buildShoppingListContainer(){
         shoppingViewContainer = UIView(frame: CGRectZero)
         self.addSubview(shoppingViewContainer)
-        for var index = 0; index < shoppingListData?.count; index++ {
-            //let frame = CGRectMake(0, CGFloat(index) * SHOPPING_ITEM_HEIGHT, self.width, SHOPPING_ITEM_HEIGHT)
+        for var index = 0; index < dataSource?.item_list.count; index++ {
             let cellView : SCDShoppingListCellView = SCDShoppingListCellView(frame: CGRectZero)
-            cellView.loadData()
+            let serviceItemModel = dataSource?.item_list[index] as! ServiceCellShoppingItemModel
+            cellView.loadData(serviceItemModel)
             shoppingViewContainer.addSubview(cellView)
             
             layout(cellView){
@@ -72,7 +118,7 @@ class ServiceCardDetailShopping: UIView {
             }
         }
         
-        let containerHeight = CGFloat((shoppingListData?.count)!) * SHOPPING_ITEM_HEIGHT
+        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
         shoppingViewContainer.frame.size.height = containerHeight
         
         layout(shoppingViewContainer){
@@ -83,20 +129,21 @@ class ServiceCardDetailShopping: UIView {
             shoppingViewContainer.bottomMargin == shoppingViewContainer.superview!.bottomMargin
         }
         
-        constrain(shoppingViewContainer,titleLabel){
-            shoppingViewContainer,titleLabel in
+        constrain(shoppingViewContainer,subTitleLabel){
+            shoppingViewContainer,subTitleLabel in
 
-            distribute(by: TITLE_SHOPPING_MARGIN,vertically : titleLabel,shoppingViewContainer)
+            distribute(by: TITLE_SHOPPING_MARGIN,vertically : subTitleLabel,shoppingViewContainer)
         }
     }
     
     func fixFrame(){
-        let containerHeight = CGFloat((shoppingListData?.count)!) * SHOPPING_ITEM_HEIGHT
-        self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + 35
+        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
+        self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + VIEW_TOP_MARGIN + MAIN_TITLE_HEIGHT + 10
     }
     
     func layoutView(){
         buildTitle()
+        buildSubTitle()
         buildShoppingListContainer()
         fixFrame()
     }
@@ -111,7 +158,7 @@ class SCDShoppingListCellView : UIView {
     var descLabel : UILabel!
     
     
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellShoppingItemModel?
 
     //MARK: - Constants
     //sizes
@@ -123,16 +170,16 @@ class SCDShoppingListCellView : UIView {
     let LABEL_LINE_SPACING : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
 
     //fonts
-    let LABEL_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(34/2.5)
+    let LABEL_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     
-    func loadData(){
-        dataSource = ["url":"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png","text":"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 22-Count"]
+    func loadData(shoppingItemModel : ServiceCellShoppingItemModel){
+        dataSource = shoppingItemModel
         
         layoutView()
         
-        let url = dataSource?.valueForKey("url") as! String
-        imageView.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
-        let text = dataSource?.valueForKey("text") as! String
+        let url = dataSource?.item_icon
+        imageView.sd_setImageWithURL(url!.toURL(), placeholderImage: UIImage(named: "Placehold"))
+        let text = dataSource?.item_intro
         descLabel.text = text
         
         adjustRowMargin(descLabel,lineSpacing : LABEL_LINE_SPACING)

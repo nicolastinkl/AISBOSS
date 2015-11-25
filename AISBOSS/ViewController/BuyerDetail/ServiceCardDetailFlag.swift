@@ -17,7 +17,7 @@ class ServiceCardDetailFlag: UIView {
     var flagContainer : UIView!
     
 
-    var dataSource : NSDictionary?
+    var dataSource : ServiceCellProductParamModel?
     var flags = ["Medicine Pickup","Queuing","Calling for Taxi","Check-in","Paramedic","Test Results Pickup"]
     let colorArray = [UIColor(hexString: "#1c789f"),UIColor(hexString: "#7b3990"),UIColor(hexString: "#619505"),UIColor(hexString: "#f79a00"),UIColor(hexString: "#d05126"),UIColor(hexString: "#b32b1d")]
     //MARK: - Constants
@@ -46,7 +46,15 @@ class ServiceCardDetailFlag: UIView {
     
     //MARK: - load data
     func loadData(){
+        let jsonString = "{\"product_name\":\"Service Coverage\",\"param_list\":[{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Medicine Pickup\"},{\"param_key\":\"2\",\"param_icon\":\"\",\"param_value\":\"Queuing\"},{\"param_key\":\"3\",\"param_icon\":\"\",\"param_value\":\"Calling for Taxi\"},{\"param_key\":\"4\",\"param_icon\":\"\",\"param_value\":\"Check-in\"},{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Paramedic\"},{\"param_key\":\"5\",\"param_icon\":\"\",\"param_value\":\"Test Results Pickup\"}]}"
+        buildModel(jsonString)
         layoutView()
+        
+        
+    }
+    
+    func buildModel(jsonString : String){
+        dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
     }
     
     func layoutView(){
@@ -57,12 +65,12 @@ class ServiceCardDetailFlag: UIView {
     
     //MARK: - build views
     func buildTitle(){
-        let text = "Service Coverage"
         let titleFrame = CGRectMake(VIEW_LEFT_MARGIN, VIEW_TOP_MARGIN, FLAG_MAX_WIDTH, TITLE_HEIGHT)
         titleLabel = UILabel(frame: titleFrame)
-        titleLabel.text = text
         titleLabel.font = TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()
+        
+        titleLabel.text = dataSource?.product_name
         self.addSubview(titleLabel)
     }
     
@@ -70,10 +78,11 @@ class ServiceCardDetailFlag: UIView {
         flagContainer = UIView(frame: CGRectMake(0, titleLabel.frame.maxY + FLAG_HEIGHT_MARGIN, self.bounds.width, 100))
         self.addSubview(flagContainer)
         var curFrame = CGRectMake(0, 0, 0, FLAG_LABEL_HEIGHT)
-        var i = 0
-        for text : String in flags {
+
+        for var i = 0 ; i < dataSource?.param_list.count ; i++ {
+            let stadandParam = dataSource?.param_list[i] as! ServiceCellStadandParamModel
+            let text = stadandParam.param_value
             curFrame = buildFlag(curFrame, text: text,number : i)
-            i++
         }
         //加载完subView后计算最后高度
         flagContainer.frame.size.height = curFrame.maxY + FLAG_HEIGHT_MARGIN * 2
