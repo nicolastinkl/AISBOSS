@@ -23,7 +23,6 @@ class AITitleAndIconTextView: UIView {
     
     private var iconTextDic: [[UIImageView: UILabel]]!
     
-    
     override func awakeFromNib() {
         title.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         firstText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
@@ -33,9 +32,16 @@ class AITitleAndIconTextView: UIView {
         return NSBundle.mainBundle().loadNibNamed("AITitleAndIconTextView", owner: self, options: nil).first  as! AITitleAndIconTextView
     }
     
-    func loadData(data: String) {
-        let model = ServiceCellProductParamModel(string: data, error: nil)
-        loadData(model: model)
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let model = try ServiceCellProductParamModel(data: jsonData)
+            
+            loadData(model: model)
+        } catch {
+            
+        }
+        
     }
     
     func loadData(model data: ServiceCellProductParamModel) {

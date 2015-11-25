@@ -34,16 +34,34 @@ class FlightServiceView: ServiceDetailView {
         toAirport.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
     }
     
-    override func loadData(paramData : NSDictionary) {
+    override func loadData(paramData: NSDictionary) {
         super.loadData(paramData)
         
         takeOffTime.text = getStringContent("departure_time")
         from.text = getStringContent("departure_place")
         fromAirport.text = getStringContent("departure_desc")
         
-        arriveTime.text = getStringContent("departure_time")
+        arriveTime.text = getStringContent("arrival_time")
         to.text = getStringContent("arrival_place")
         toAirport.text = getStringContent("arrival_desc")
+    }
+    
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let model = try PlaneTicketModel(data: jsonData)
+            
+            takeOffTime.text = model.departure_time
+            from.text = model.departure_place
+            fromAirport.text = model.departure_desc
+            
+            arriveTime.text = model.arrival_time
+            to.text = model.arrival_place
+            toAirport.text = model.arrival_desc
+        } catch {
+            
+        }
+        
     }
 
 }

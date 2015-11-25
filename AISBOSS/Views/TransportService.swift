@@ -40,6 +40,20 @@ class TransportService: ServiceDetailView {
         to.text = getStringContent("destination")
     }
     
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let model = try TaxiModel(data: jsonData)
+            
+            time.text = model.pickup_time
+            from.text = model.pickup_location
+            to.text = model.destination
+        } catch {
+            
+        }
+        
+    }
+    
     private func addTime() {
         timeTitle = UILabel(frame: CGRect(x: 35, y: 15, width: 25, height: 12))
         timeTitle.textColor = UIColor.whiteColor()

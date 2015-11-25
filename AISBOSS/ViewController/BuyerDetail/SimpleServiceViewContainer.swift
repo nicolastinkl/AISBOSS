@@ -77,16 +77,22 @@ class SimpleServiceViewContainer: UIView {
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
-        if dataModel.service_price != nil {
-            price.text = dataModel.service_price.original ?? "$0"
-        }else{
+        if let priceModel = dataModel.service_price {
+            price.text = priceModel.original ?? "$0"
+            if priceModel.saved != nil {
+                savedMoney.text = priceModel.saved
+                savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
+                savedMoney.setNeedsUpdateConstraints()
+                
+                originalPrice.text = priceModel.original ?? ""
+            }
+        } else {
             price.text = "$0"
         }
         
         name.text = dataModel.service_desc ?? ""
-        savedMoney.text = "16.73 saved"
-        savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
-        savedMoney.setNeedsUpdateConstraints()
+        
+        
         
         if dataModel.service_param != nil {
             
@@ -111,28 +117,32 @@ class SimpleServiceViewContainer: UIView {
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
         switch viewTemplate {
         case .PlaneTicket:
-            let v = FlightServiceView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            //      v.loadData(paramDictionary)
+            let v = FlightServiceView.createInstance()
+                v.loadData(json: jsonData)
             return v
         case .Taxi:
-            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-      //      v.loadData(paramDictionary)
+            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
             return v
         case .Hotel:
-            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-      //      v.loadData(paramDictionary)
+            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
+            return v
+        case .SingleParam:
+            let v = AIIconTextView.createInstance()
+            v.loadData(json: jsonData)
             return v
         case .MutilParams:
-            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(jsonData)
+            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
             return v
         case .MutilTextAndImage:
-            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(jsonData)
+            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
             return v
         case .Shopping:
-            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(jsonData)
+            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
             return v
         default:
             return nil

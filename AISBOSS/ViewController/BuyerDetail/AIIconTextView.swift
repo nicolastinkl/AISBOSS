@@ -30,9 +30,16 @@ class AIIconTextView: UIView {
         return NSBundle.mainBundle().loadNibNamed("AIIconTextView", owner: self, options: nil).first  as! AIIconTextView
     }
     
-    func loadData(data: String) {
-        let model = ServiceCellStandardParamListModel(string: data, error: nil)
-        loadData(model: model)
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let model = try ServiceCellStandardParamListModel(data: jsonData)
+            
+            loadData(model: model)
+        } catch {
+            
+        }
+        
     }
     
     func loadData(model data: ServiceCellStandardParamListModel) {
