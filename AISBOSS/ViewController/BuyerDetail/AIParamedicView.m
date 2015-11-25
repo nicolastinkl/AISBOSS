@@ -59,7 +59,7 @@
     y += CGRectGetHeight(detailText.frame) + [AITools displaySizeFrom1080DesignSize:34];
     [self addLineViewAtY:y];
     //
-    y += [AITools displaySizeFrom1080DesignSize:70];
+    y += [AITools displaySizeFrom1080DesignSize:38];
     
     CGRect coverageFrame = CGRectMake(_sideMargin, y, width, 0);
     AIParamedicCoverageModel *model = [[AIParamedicCoverageModel alloc] init];
@@ -70,7 +70,7 @@
     
     //
     //
-    y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(corverage.frame);
+    y += [AITools displaySizeFrom1080DesignSize:70] + CGRectGetHeight(corverage.frame);
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *image = [UIImage imageNamed:@"Wave_BG"];
