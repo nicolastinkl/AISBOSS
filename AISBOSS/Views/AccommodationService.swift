@@ -37,6 +37,29 @@ class AccommodationService: ServiceDetailView {
     //    additionDes.text = getStringContent("destination")
         
     }
+    
+    func loadData(json jonsStr: String) {
+        let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
+        do {
+            let model = try HotelModel(data: jsonData)
+            
+            period.text = model.checkin_time + " - " + model.checkout_time
+            
+            if model.facility_desc != nil {
+                var desc: String = ""
+                
+                for de in model.facility_desc {
+                    let str = de as! String
+                    desc.appendContentsOf(str + " ")
+                }
+                
+                additionDes.text = desc
+            }        
+        } catch {
+            
+        }
+        
+    }
 
     private func addPeriod() {
         let periodStr = getStringContent("checkin_time") + " - " + getStringContent("checkout_time")

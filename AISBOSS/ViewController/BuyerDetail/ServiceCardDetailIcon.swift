@@ -46,7 +46,7 @@ class ServiceCardDetailIcon: UIView {
     }
     
     //MARK: - load data
-    func loadData(jsonString : String){
+    func loadData(json jsonString : String){
         //let jsonString = "{\"product_name\":\"Home cleaning\",\"param_list\":[{\"param_key\":\"time\",\"param_icon\":\"\",\"param_value\":\"64 hours\"},{\"param_key\":\"price\",\"param_icon\":\"\",\"param_value\":\"$ 27 / hour\"},{\"param_key\":\"calendar\",\"param_icon\":\"\",\"param_value\":\"every 2 weeks\"}]}"
         buildModel(jsonString)
         
