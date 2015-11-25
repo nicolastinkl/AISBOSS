@@ -9,13 +9,9 @@
 #import "JSONModel.h"
 
 
-@protocol ServiceOrderModel
+@protocol ServiceOrderModel @end
 
-@end
-
-@protocol ParamModel
-
-@end
+@protocol ParamModel @end
 
 @interface ParamModel : JSONModel
 
@@ -85,7 +81,7 @@
 @property (strong, nonatomic) NSString<Optional> * text;
 @property (assign, nonatomic) NSInteger audio_length;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
-
+@property (assign, nonatomic) NSInteger timer;
 @end
 
 
