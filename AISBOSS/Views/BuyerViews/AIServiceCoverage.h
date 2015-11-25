@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AIBuyerModels.h"
 
 @protocol AIServiceCoverageDelegate <NSObject>
 
@@ -19,7 +19,7 @@
 @interface AIServiceCoverage : UIView
 @property (nonatomic, weak) id<AIServiceCoverageDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame labels:(NSArray *)labels;
 
+- (instancetype)initWithFrame:(CGRect)frame model:(AIParamedicCoverageModel *)model;
 
 @end

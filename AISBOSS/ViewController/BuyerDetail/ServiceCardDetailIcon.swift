@@ -15,26 +15,26 @@ class ServiceCardDetailIcon: UIView {
     var titleLabel : UILabel!
     var timeIconImageView : UIImageView!
     var priceIconImageView : UIImageView!
-    var calendaIconImageView : UIImageView!
+    var calendarIconImageView : UIImageView!
     var timeLabelView : UILabel!
     var priceLabelView : UILabel!
-    var calendaLabelView : UILabel!
+    var calendarLabelView : UILabel!
     
     
     var dataSource : ServiceCellProductParamModel?
 
     //MARK: - Constants
     //sizes
-    let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(62)
-    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(296)
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(100)
-    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(48)
-    let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(68)
-    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(200)
-    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(64)
+    let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
+    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(257)
+    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
+    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
+    let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
+    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(220)
+    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(25)
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
-    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
     
     //MARK: - init
     override init(frame: CGRect) {
@@ -46,8 +46,8 @@ class ServiceCardDetailIcon: UIView {
     }
     
     //MARK: - load data
-    func loadData(){
-        let jsonString = "{\"product_name\":\"Home cleaning\",\"param_list\":[{\"param_key\":\"time\",\"param_icon\":\"\",\"param_value\":\"64 hours\"},{\"param_key\":\"price\",\"param_icon\":\"\",\"param_value\":\"$ 27 / hour\"},{\"param_key\":\"calenda\",\"param_icon\":\"\",\"param_value\":\"every 2 weeks\"}]}"
+    func loadData(jsonString : String){
+        //let jsonString = "{\"product_name\":\"Home cleaning\",\"param_list\":[{\"param_key\":\"time\",\"param_icon\":\"\",\"param_value\":\"64 hours\"},{\"param_key\":\"price\",\"param_icon\":\"\",\"param_value\":\"$ 27 / hour\"},{\"param_key\":\"calendar\",\"param_icon\":\"\",\"param_value\":\"every 2 weeks\"}]}"
         buildModel(jsonString)
         
         layoutView()
@@ -63,9 +63,9 @@ class ServiceCardDetailIcon: UIView {
                 priceIconImageView.image = UIImage(named: "icon_price_big")
                 priceLabelView.text = paramModel.param_value
             }
-            else if paramModel.param_key == "calenda" {
-                calendaIconImageView.image = UIImage(named: "icon_calenda_big")
-                calendaLabelView.text = paramModel.param_value
+            else if paramModel.param_key == "calendar" {
+                calendarIconImageView.image = UIImage(named: "icon_calenda_big")
+                calendarLabelView.text = paramModel.param_value
             }
         }
     }
@@ -101,29 +101,29 @@ class ServiceCardDetailIcon: UIView {
     func buildIcon(){
         timeIconImageView = UIImageView(frame : CGRectZero)
         priceIconImageView = UIImageView(frame : CGRectZero)
-        calendaIconImageView = UIImageView(frame : CGRectZero)
+        calendarIconImageView = UIImageView(frame : CGRectZero)
         
         self.addSubview(timeIconImageView)
         self.addSubview(priceIconImageView)
-        self.addSubview(calendaIconImageView)
+        self.addSubview(calendarIconImageView)
         
         constrain(titleLabel,priceIconImageView){
             titleLabel,priceIconImageView in
-            priceIconImageView.topMargin == titleLabel.bottomMargin + ICON_TITLE_MARGIN
+            priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
         }
         
-        layout(timeIconImageView,priceIconImageView,calendaIconImageView){
-            timeIconImageView,priceIconImageView,calendaIconImageView in
+        layout(timeIconImageView,priceIconImageView,calendarIconImageView){
+            timeIconImageView,priceIconImageView,calendarIconImageView in
             priceIconImageView.centerX == priceIconImageView.superview!.centerX
             
             timeIconImageView.width == ICON_SIZE
             timeIconImageView.height == ICON_SIZE
             priceIconImageView.width == ICON_SIZE
             priceIconImageView.height == ICON_SIZE
-            calendaIconImageView.width == ICON_SIZE
-            calendaIconImageView.height == ICON_SIZE
-            distribute(by: ICONS_MARGIN, horizontally: timeIconImageView, priceIconImageView, calendaIconImageView)
-            align(top: timeIconImageView, priceIconImageView, calendaIconImageView)
+            calendarIconImageView.width == ICON_SIZE
+            calendarIconImageView.height == ICON_SIZE
+            distribute(by: ICONS_MARGIN, horizontally: timeIconImageView, priceIconImageView, calendarIconImageView)
+            align(top: timeIconImageView, priceIconImageView, calendarIconImageView)
         }
         
     }
@@ -131,40 +131,42 @@ class ServiceCardDetailIcon: UIView {
     func buildIconDesc(){
         timeLabelView = UILabel(frame: CGRectZero)
         priceLabelView = UILabel(frame: CGRectZero)
-        calendaLabelView = UILabel(frame: CGRectZero)
+        calendarLabelView = UILabel(frame: CGRectZero)
         
         timeLabelView.textColor = UIColor.whiteColor()
         priceLabelView.textColor = UIColor.whiteColor()
-        calendaLabelView.textColor = UIColor.whiteColor()
+        calendarLabelView.textColor = UIColor.whiteColor()
         
         timeLabelView.font = ICON_DESC_FONT
         priceLabelView.font = ICON_DESC_FONT
-        calendaLabelView.font = ICON_DESC_FONT
+        calendarLabelView.font = ICON_DESC_FONT
         
         self.addSubview(timeLabelView)
         self.addSubview(priceLabelView)
-        self.addSubview(calendaLabelView)
+        self.addSubview(calendarLabelView)
         
         
         layout(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
             timeLabelView.height == 21
-            timeLabelView.topMargin == timeIconImageView.bottomMargin + ICON_LABEL_MARGIN
+            //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
+            timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
         }
+        
         
         layout(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
             priceLabelView.height == 21
-            priceLabelView.topMargin == priceIconImageView.bottomMargin + ICON_LABEL_MARGIN
+            priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
         }
         
-        layout(calendaLabelView,calendaIconImageView){
-            calendaLabelView,calendaIconImageView in
-            calendaLabelView.height == 21
-            calendaLabelView.topMargin == calendaIconImageView.bottomMargin + ICON_LABEL_MARGIN
-            calendaLabelView.centerX == calendaIconImageView.centerX
+        layout(calendarLabelView,calendarIconImageView){
+            calendarLabelView,calendarIconImageView in
+            calendarLabelView.height == 21
+            calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
+            calendarLabelView.centerX == calendarIconImageView.centerX
         }
     }
     

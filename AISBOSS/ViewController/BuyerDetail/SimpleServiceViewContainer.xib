@@ -27,7 +27,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPi-f2-cNw" userLabel="title">
-                            <rect key="frame" x="36" y="10" width="305" height="17"/>
+                            <rect key="frame" x="36" y="10" width="355" height="17"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="ndA-r1-Kgq"/>
@@ -36,19 +36,19 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-k9-0Pc" userLabel="savedMoney">
-                            <rect key="frame" x="443" y="10" width="50" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16.73 saved" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-k9-0Pc" userLabel="savedMoney">
+                            <rect key="frame" x="493" y="10" width="0.0" height="14"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="kWU-L4-QZg"/>
-                                <constraint firstAttribute="width" constant="50" id="sTO-7C-kkF"/>
+                                <constraint firstAttribute="width" id="sTO-7C-kkF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.69803921568627447" green="0.68235294117647061" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVA-Oa-weA" userLabel="price">
-                            <rect key="frame" x="341" y="6" width="100" height="21"/>
+                            <rect key="frame" x="391" y="6" width="100" height="21"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="Eko-6y-oiV"/>
@@ -58,8 +58,8 @@
                             <color key="textColor" red="0.99607843139999996" green="0.89019607840000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-bh-Ump" userLabel="originalPrice" customClass="AIHorizontalLineLabel" customModule="Veris" customModuleProvider="target">
-                            <rect key="frame" x="443" y="24" width="50" height="14"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€101.83" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWr-bh-Ump" userLabel="originalPrice" customClass="AIHorizontalLineLabel" customModule="Veris" customModuleProvider="target">
+                            <rect key="frame" x="493" y="24" width="0.0" height="14"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="textColor" red="0.69803921568627447" green="0.68235294117647061" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,7 +102,7 @@
                     <rect key="frame" x="0.0" y="43" width="500" height="157"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFB-V2-G6T" userLabel="params">
-                            <rect key="frame" x="0.0" y="0.0" width="492" height="156"/>
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="156"/>
                             <animations/>
                         </view>
                         <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="19k-ls-gMA" userLabel="divider">
@@ -133,7 +133,7 @@
                     <color key="backgroundColor" red="0.8784313725490196" green="0.89411764705882346" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="leading" secondItem="19k-ls-gMA" secondAttribute="leading" id="3c3-6X-9N1"/>
-                        <constraint firstAttribute="trailing" secondItem="sFB-V2-G6T" secondAttribute="trailing" constant="8" id="4Br-SB-BLL"/>
+                        <constraint firstAttribute="trailing" secondItem="sFB-V2-G6T" secondAttribute="trailing" id="4Br-SB-BLL"/>
                         <constraint firstItem="19k-ls-gMA" firstAttribute="top" secondItem="sFB-V2-G6T" secondAttribute="bottom" id="4Cc-LC-U9r"/>
                         <constraint firstItem="19k-ls-gMA" firstAttribute="leading" secondItem="GEZ-92-Mww" secondAttribute="leading" id="Hqf-Tt-bJa"/>
                         <constraint firstItem="19k-ls-gMA" firstAttribute="width" secondItem="GEZ-92-Mww" secondAttribute="width" id="INL-y4-mUV"/>
@@ -189,6 +189,7 @@
             <connections>
                 <outlet property="divider" destination="19k-ls-gMA" id="Uuq-C7-b1t"/>
                 <outlet property="dividerBottomMargin" destination="Lts-2G-5rd" id="Sfz-se-jaY"/>
+                <outlet property="dividerHeight" destination="0FT-SZ-t55" id="A9t-9e-x4x"/>
                 <outlet property="dividerTopMargin" destination="4Cc-LC-U9r" id="H1N-Ow-yVw"/>
                 <outlet property="logo" destination="Nvq-VK-Sdk" id="19c-Fy-XrS"/>
                 <outlet property="messageHeight" destination="tWe-UB-bZY" id="kTe-RT-hTR"/>
@@ -200,6 +201,7 @@
                 <outlet property="price" destination="MVA-Oa-weA" id="7Ic-sf-ylf"/>
                 <outlet property="review" destination="UAb-LP-5Zl" id="7kF-zN-4xA"/>
                 <outlet property="savedMoney" destination="0NE-k9-0Pc" id="7bF-42-XzT"/>
+                <outlet property="savedMoneyWidth" destination="sTO-7C-kkF" id="gyH-Jg-aHR"/>
                 <outlet property="settingState" destination="378-hf-H9o" id="aij-V1-rE5"/>
                 <outlet property="topView" destination="ZQW-hO-nDs" id="ns4-P7-TtA"/>
             </connections>
