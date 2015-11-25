@@ -21,18 +21,20 @@
     CGFloat _titleFontSize;
 }
 
-@property (nonatomic, strong) NSArray *coverageLabels;
+
+@property (nonatomic, strong) AIParamedicCoverageModel *coverageModel;
 
 @end
 
 @implementation AIServiceCoverage
 
-- (instancetype)initWithFrame:(CGRect)frame labels:(NSArray *)labels
+
+- (instancetype)initWithFrame:(CGRect)frame model:(AIParamedicCoverageModel *)model
 {
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.coverageLabels = labels;
+        self.coverageModel = model;
         [self makeProperties];
         [self makeTitle];
         [self makeTags];
@@ -40,6 +42,7 @@
     
     return self;
 }
+
 #pragma mark - 构造基本属性，背景色、圆角等
 - (void)makeProperties
 {
@@ -53,7 +56,7 @@
 - (void)makeTitle
 {
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), _titleFontSize);
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:@"Service Coverage" fontSize:_titleFontSize color:[UIColor whiteColor]];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.coverageModel.title fontSize:_titleFontSize color:[UIColor whiteColor]];
     [self addSubview:_titleLabel];
 }
 
@@ -63,11 +66,11 @@
 {
     CGFloat x = 0;
     CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _titleMargin;
-    CGFloat height = 30;
+    CGFloat height = 26;
     
-    for (NSInteger i = 0; i < self.coverageLabels.count; i++) {
-        CGRect frame = CGRectMake(x, y, 100, 30);
-        NSString *title = [self.coverageLabels objectAtIndex:i];
+    for (NSInteger i = 0; i < self.coverageModel.labels.count; i++) {
+        CGRect frame = CGRectMake(x, y, 100, height);
+        NSString *title = [self.coverageModel.labels objectAtIndex:i];
         AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection];
         label.delegate = self;
         
@@ -76,11 +79,18 @@
         if (CGRectGetMaxX(label.frame) > CGRectGetWidth(self.frame)) {
             x = 0;
             y +=  _labelMargin + height;
-            frame = CGRectMake(x, y, CGRectGetWidth(frame), height);
+            frame = CGRectMake(x, y, CGRectGetWidth(label.frame), height);
             label.frame = frame;
         }
         
+        x += _titleMargin + CGRectGetWidth(label.frame);
+        
     }
+    
+    CGRect frame = self.frame;
+    frame.size.height = y + height;
+    
+    self.frame = frame;
 }
 
 
@@ -89,7 +99,7 @@
 
 - (void)serviceLabelDidSelected:(BOOL)selected
 {
-    
+    NSLog(@"selected label");
 }
 
 @end

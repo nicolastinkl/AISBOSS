@@ -133,6 +133,18 @@ internal class AIServiceContentViewController: UIViewController {
         //scrollView.addSubview(musicView)
         addNewSubView(musicView, preView: galleryView)
         musicView.backgroundColor = UIColor.clearColor()
+        
+        ///----
+        
+//        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+//        let paramedicView = AIParamedicView(frame: paramedicFrame)
+//        //scrollView.addSubview(musicView)
+//        addNewSubView(paramedicView, preView: galleryView)
+//        paramedicView.backgroundColor = UIColor.clearColor()
+        ///---
+        
+        
+        
 //
         ///
 

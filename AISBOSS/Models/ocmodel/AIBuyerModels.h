@@ -63,7 +63,16 @@
 @end
 
 
+#pragma mark - ServiceCoverage
 
+
+@interface AIParamedicCoverageModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *title;
+
+@property (nonatomic, strong) NSArray<Optional> *labels;
+
+@end
 
 
 

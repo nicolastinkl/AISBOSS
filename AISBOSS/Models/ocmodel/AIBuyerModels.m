@@ -36,3 +36,44 @@
 
 
 @end
+
+
+
+
+#pragma mark - ServiceCoverage
+
+@implementation AIParamedicCoverageModel
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
