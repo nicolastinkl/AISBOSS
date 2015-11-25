@@ -9,6 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "AIProposalServiceCellModel.h"
 
+@implementation PlaneTicketModel
+
+@end
+
+@implementation TaxiModel
+
+@end
+
+@implementation TextDescModel
+
+@end
+
+@implementation HotelModel
+
+@end
 
 @implementation ServiceCellStadandParamModel
 

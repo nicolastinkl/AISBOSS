@@ -72,16 +72,22 @@ class SimpleServiceViewContainer: UIView {
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
-        if dataModel.service_price != nil {
-            price.text = dataModel.service_price.original ?? "$0"
-        }else{
+        if let priceModel = dataModel.service_price {
+            price.text = priceModel.original ?? "$0"
+            if priceModel.saved != nil {
+                savedMoney.text = priceModel.saved
+                savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
+                savedMoney.setNeedsUpdateConstraints()
+                
+                originalPrice.text = priceModel.original ?? ""
+            }
+        } else {
             price.text = "$0"
         }
         
         name.text = dataModel.service_desc ?? ""
-        savedMoney.text = "16.73 saved"
-        savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
-        savedMoney.setNeedsUpdateConstraints()
+        
+        
         
         if dataModel.service_param != nil {
             
@@ -105,7 +111,7 @@ class SimpleServiceViewContainer: UIView {
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         switch viewTemplate {
         case .PlaneTicket:
-            let v = FlightServiceView(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            let v = FlightServiceView.createInstance()
                 v.loadData(json: jsonData)
             return v
         case .Taxi:
@@ -114,6 +120,10 @@ class SimpleServiceViewContainer: UIView {
             return v
         case .Hotel:
             let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramsView.frame.width, height: 0))
+            v.loadData(json: jsonData)
+            return v
+        case .SingleParam:
+            let v = AIIconTextView.createInstance()
             v.loadData(json: jsonData)
             return v
         case .MutilParams:
