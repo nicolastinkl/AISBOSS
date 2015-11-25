@@ -128,19 +128,19 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.setTop(0)
         
         //
-//        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-//        let musicView = AIMusicTherapyView(frame: musicFrame)
-//        //scrollView.addSubview(musicView)
-//        addNewSubView(musicView, preView: galleryView)
-//        musicView.backgroundColor = UIColor.clearColor()
+        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicView = AIMusicTherapyView(frame: musicFrame)
+        //scrollView.addSubview(musicView)
+        addNewSubView(musicView, preView: galleryView)
+        musicView.backgroundColor = UIColor.clearColor()
         
         ///----
         
-        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-        let paramedicView = AIParamedicView(frame: paramedicFrame)
-        //scrollView.addSubview(musicView)
-        addNewSubView(paramedicView, preView: galleryView)
-        paramedicView.backgroundColor = UIColor.clearColor()
+//        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+//        let paramedicView = AIParamedicView(frame: paramedicFrame)
+//        //scrollView.addSubview(musicView)
+//        addNewSubView(paramedicView, preView: galleryView)
+//        paramedicView.backgroundColor = UIColor.clearColor()
         ///---
         
         
@@ -149,7 +149,7 @@ internal class AIServiceContentViewController: UIViewController {
         ///
 
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: paramedicView)
+        addNewSubView(custView, preView: musicView)
      
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
