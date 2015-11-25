@@ -163,7 +163,7 @@ class SCDShoppingListCellView : UIView {
     //MARK: - Constants
     //sizes
     let IMAGE_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
-    let IMAGE_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(86)
+    let IMAGE_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(84)
     let LABEL_TRAILLING : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
     let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(110)
     let MAX_LABEL_TEXT_WIDTH : CGFloat = AITools.displaySizeFrom1080DesignSize(740)
