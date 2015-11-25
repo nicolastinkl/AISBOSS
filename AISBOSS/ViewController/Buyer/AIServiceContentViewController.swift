@@ -61,8 +61,6 @@ internal class AIServiceContentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     func topImage() -> UIImage {
         var name = "Fake_Top"
         let type : AIServiceContentType = serviceContentType

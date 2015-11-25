@@ -20,6 +20,8 @@ class ServiceSettingView: UIView {
     private static let TAG_HEIGHT: CGFloat = 28
     private static let BOTTOM_PADDING: CGFloat = 3
     private static let COLLECTION_WIDTH: CGFloat = 303
+    
+    var model: AIProposalHopeModel!
 
     var tags: [String] = []
     
@@ -40,6 +42,13 @@ class ServiceSettingView: UIView {
         frame.size.height = ServiceSettingView.MESSAGE_HEIGHT + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
         
         collectionView.reloadData()
+    }
+    
+    func loadData(model data: AIProposalHopeModel) {
+        if data.hope_list != nil && data.hope_list.count > 0 {
+            let hopeModel = data.hope_list.first as! AIProposalHopeAudioTextModel
+            message.text = hopeModel.text ?? ""
+        }     
     }
     
     private func setCollectionView() {
@@ -77,7 +86,11 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tags.count
+        if model != nil && model.label_list != nil {
+            return  model.label_list.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -86,10 +99,9 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.maxWidth = collectionView.bounds.size.width
         
+        let tag = model.label_list[indexPath.item] as! AIProposalNotesModel
         
-        let tagName = tags[indexPath.item]
-        
-        cell.text = tagName
+        cell.text = tag.name
         
         return cell
     }

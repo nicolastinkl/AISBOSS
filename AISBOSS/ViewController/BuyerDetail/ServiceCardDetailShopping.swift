@@ -29,19 +29,19 @@ class ServiceCardDetailShopping: UIView {
     let MAIN_TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(113-24)
     
     let TITLE_SHOPPING_MARGIN : CGFloat = 1
-    let SHOPPING_LIST_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(50)
+    let SHOPPING_LIST_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(34)
     let TITLE_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
     let TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(60)
     
-    let SHOPPING_ITEM_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(150)
+    let SHOPPING_ITEM_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(126)
 
     
     //fonts
     let TITLE_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
     let MAIN_TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
-    func loadData(){
-        let jsonString = "{\"product_name\":\"Shopping list for 8 weeks of pregnancy\",\"product_sub_name\":\"Supplments package\",\"item_list\":[{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 220-Count\"},{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Nature Made Prenatal Multi Vitaminalue Size, Tablets, 250-Count\"}]}"
+    func loadData(jsonString : String){
+        //let jsonString = "{\"product_name\":\"Shopping list for 8 weeks of pregnancy\",\"product_sub_name\":\"Supplments package\",\"item_list\":[{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 220-Count\"},{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Nature Made Prenatal Multi Vitaminalue Size, Tablets, 250-Count\"}]}"
         buildModel(jsonString)
         layoutView()
     }
@@ -71,7 +71,7 @@ class ServiceCardDetailShopping: UIView {
             titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
             titleLabel.height == MAIN_TITLE_HEIGHT
             
-            divideLineView.height == 1
+            divideLineView.height == 0.5
             divideLineView.leadingMargin == divideLineView.superview!.leadingMargin + DIVIDE_MARGIN
             divideLineView.superview!.trailingMargin == divideLineView.trailingMargin + DIVIDE_MARGIN
             distribute(by: 0,vertically : titleLabel,divideLineView)
@@ -163,11 +163,11 @@ class SCDShoppingListCellView : UIView {
     //MARK: - Constants
     //sizes
     let IMAGE_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
-    let IMAGE_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(98)
+    let IMAGE_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(84)
     let LABEL_TRAILLING : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
     let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(110)
     let MAX_LABEL_TEXT_WIDTH : CGFloat = AITools.displaySizeFrom1080DesignSize(740)
-    let LABEL_LINE_SPACING : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
+    let LABEL_LINE_SPACING : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
 
     //fonts
     let LABEL_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))

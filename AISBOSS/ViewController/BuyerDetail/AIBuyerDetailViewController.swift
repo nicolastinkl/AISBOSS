@@ -94,19 +94,6 @@ class AIBuyerDetailViewController : UIViewController {
         label.addGestureRecognizer(tap)
     }
     
-    func targetDetail(){
-        /**
-        let vc = AIServiceContentViewController()
-        vc.serviceContentType = AIServiceContentType.MusicTherapy
-        self.showViewController(vc, sender: self)
-        */
-        
-        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        
-        viewController.bubleModelArray = [bubleModel!,bubleModel!,bubleModel!]
-        self.showViewController(viewController, sender: self)
-        
-    }
     
     func targetDetail2(){
         let vc = AIServiceContentViewController()
@@ -212,26 +199,11 @@ class AIBuyerDetailViewController : UIViewController {
     func initData(){
         if let m = bubleModel {
             
-            //test
+            let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
             
-            let name = m.proposal_name ?? ""
-            if NSString(string: name).containsString("Pregnancy") {
-                //INIT
-                AddImageView()
-                self.tableView.hidden = true
-                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)//150
-                
-                self.contentView.addConstraints([newlayout])
-                
-                self.contentView.updateConstraints()
-
-            } else {
-                let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
-                
-                self.contentView.addConstraints([newlayout])
-                
-                self.contentView.updateConstraints()
-            }
+            self.contentView.addConstraints([newlayout])
+            
+            self.contentView.updateConstraints()
         
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
@@ -268,9 +240,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataSource == nil{
             return 0
-        }
-        else {
-            
+        }else {
             return dataSource.service_list.count
         }
     }
@@ -335,6 +305,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             return 1
         }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+       
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+        
+        viewController.bubleModelArray = [serviceDataModel]
+        self.showViewController(viewController, sender: self)
+        
     }
 
 

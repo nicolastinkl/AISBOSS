@@ -42,7 +42,9 @@
 @implementation AIProposalHopeModel
 
 @end
+@implementation AIProposalServicePriceModel
 
+@end
 @implementation AIProposalHopeAudioTextModel
 @end
 

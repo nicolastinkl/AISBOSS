@@ -446,7 +446,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     CGPoint pPoint=[[touches anyObject] previousLocationInView:self];
     
-    NSLog(@"point ---- %@", [NSValue valueWithCGPoint:cPoint]);
+    //NSLog(@"point ---- %@", [NSValue valueWithCGPoint:cPoint]);
     
     //
     CGFloat xoff = cPoint.x - _firstTouchPoint.x;
@@ -459,7 +459,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     if (didVerticalMove) {
         
-        NSLog(@"didVerticalMove");
+        // NSLog(@"didVerticalMove");
         // 判断方向
         
         if (cPoint.y > _originalLogoCenter.y) {
