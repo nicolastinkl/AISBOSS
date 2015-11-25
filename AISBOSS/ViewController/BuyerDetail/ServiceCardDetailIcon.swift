@@ -25,16 +25,16 @@ class ServiceCardDetailIcon: UIView {
 
     //MARK: - Constants
     //sizes
-    let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(62)
-    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(296)
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(100)
-    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(48)
-    let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(68)
-    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(200)
-    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(64)
+    let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
+    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(257)
+    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
+    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
+    let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
+    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(220)
+    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(25)
     //fonts
-    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
-    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
     
     //MARK: - init
     override init(frame: CGRect) {
@@ -109,7 +109,7 @@ class ServiceCardDetailIcon: UIView {
         
         constrain(titleLabel,priceIconImageView){
             titleLabel,priceIconImageView in
-            priceIconImageView.topMargin == titleLabel.bottomMargin + ICON_TITLE_MARGIN
+            priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
         }
         
         layout(timeIconImageView,priceIconImageView,calendaIconImageView){
@@ -149,21 +149,23 @@ class ServiceCardDetailIcon: UIView {
         layout(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
             timeLabelView.height == 21
-            timeLabelView.topMargin == timeIconImageView.bottomMargin + ICON_LABEL_MARGIN
+            //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
+            timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
         }
+        
         
         layout(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
             priceLabelView.height == 21
-            priceLabelView.topMargin == priceIconImageView.bottomMargin + ICON_LABEL_MARGIN
+            priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
         }
         
         layout(calendaLabelView,calendaIconImageView){
             calendaLabelView,calendaIconImageView in
             calendaLabelView.height == 21
-            calendaLabelView.topMargin == calendaIconImageView.bottomMargin + ICON_LABEL_MARGIN
+            calendaLabelView.top == calendaIconImageView.bottom + ICON_LABEL_MARGIN
             calendaLabelView.centerX == calendaIconImageView.centerX
         }
     }
