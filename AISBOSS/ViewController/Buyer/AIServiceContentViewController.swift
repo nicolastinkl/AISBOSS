@@ -54,6 +54,23 @@ internal class AIServiceContentViewController: UIViewController {
         */
         makeContentView()
      
+        /**
+        Notification Keyboard...
+        */
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShowNotification(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,6 +197,7 @@ internal class AIServiceContentViewController: UIViewController {
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
         audioView.delegateAudio = self
+        audioView.inputText.delegate = self
         
         let audio1 = AIAudioMessageView.currentView()
         addNewSubView(audio1, preView: audioView)
@@ -205,6 +223,22 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
         preCacheView = cview
         
+    }
+}
+
+// MARK : Delegate
+
+extension AIServiceContentViewController: UITextFieldDelegate{
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // add a new View Model
+        let audio1 = AITextMessageView.currentView()
+        if let cview = preCacheView {
+            addNewSubView(audio1, preView: cview)
+        }
+        textField.resignFirstResponder()
+        textField.text = ""
+        return true
     }
 }
 
