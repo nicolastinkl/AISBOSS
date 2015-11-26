@@ -271,7 +271,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        let offset:CGFloat = 20.0
+        
+        let offset:CGFloat = 15
+
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
         let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         
