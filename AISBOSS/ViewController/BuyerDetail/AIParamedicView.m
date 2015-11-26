@@ -44,6 +44,13 @@
 }
 
 
+- (NSAttributedString *)attrStrignWithString:(NSString *)string
+{
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:string];
+    
+    return attriString;
+}
+
 - (void)makeSubViews
 {
     CGFloat y = [AITools displaySizeFrom1080DesignSize:32];
