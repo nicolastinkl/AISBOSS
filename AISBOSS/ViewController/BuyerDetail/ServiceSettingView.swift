@@ -45,10 +45,14 @@ class ServiceSettingView: UIView {
     }
     
     func loadData(model data: AIProposalHopeModel) {
+        self.model = data
+        
         if data.hope_list != nil && data.hope_list.count > 0 {
             let hopeModel = data.hope_list.first as! AIProposalHopeAudioTextModel
             message.text = hopeModel.text ?? ""
-        }     
+        }
+        
+        collectionView.reloadData()
     }
     
     private func setCollectionView() {
@@ -112,9 +116,9 @@ extension ServiceSettingView: UICollectionViewDelegate, UICollectionViewDataSour
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
             indexPath.row
             
-            let tagName = tags[indexPath.item]
+            let tag = model.label_list[indexPath.item] as! AIProposalNotesModel
             
-            let size = AIMsgTagCell.sizeForContentString(tagName,
+            let size = AIMsgTagCell.sizeForContentString(tag.name,
                 forMaxWidth: collectionView.bounds.size.width / 2)
             
             return size
