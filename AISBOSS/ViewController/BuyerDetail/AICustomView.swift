@@ -54,10 +54,11 @@ internal class AICustomView : UIView{
             let tags = UIView()
             if isNormal {
                 unselectView.addSubview(tags)
+                tag.backButton.hidden = true
             }else{
                 selectView.addSubview(tags)
                 tag.closeIntoEnable()
-                
+                tag.backButton.hidden = false
             }
 
             tags.addSubview(tag)
@@ -101,24 +102,58 @@ internal class AICustomView : UIView{
 
 // MARK: - AIElasticDownTagStateDelegete
 extension AICustomView:AIElasticDownTagStateDelegete{
+    
+    /**
+     回调按钮处理
+     
+     - parameter newState:  newState description
+     - parameter viewModel: viewModel description
+     */
+    func releaseTagState(newState: tagState, viewModel: AIBuerSomeTagModel) {
+        
+        //处理已选按钮的释放
+        let array = selectedTagsArray.filter { (oldModel) -> Bool in
+            return oldModel.bsId != viewModel.bsId
+        }
+        
+        //remove
+        selectedTagsArray = array
+        
+        //refersh UI
+        refershUI()
+        
+        
+        //处理待选按钮的颜色切换
+        
+        _ = unselectView.subviews.filter { (childView) -> Bool in
+            let tags = childView.subviews.first as! UICustomsTags
+            if tags.selfModel?.bsId == viewModel.bsId {
+                // 切换状态
+                tags.updateStateLayout(newState)
+            }
+            return true
+        }
+        
+    }
+    
+    func refershUI(){
+        
+        _ = selectView.subviews.filter { (childView) -> Bool in
+            childView.removeFromSuperview()
+            return true
+        }
+        fillTags(selectedTagsArray, isNormal: false)
+        
+    }
+    
+    
     /**
      处理可变数组数据的处理
      
      - parameter newState: tag改变之后的状态
      */
     func changeTagState(newState: tagState, viewModel: AIBuerSomeTagModel) {
-
-        
-        func refershUI(){
-            
-            _ = selectView.subviews.filter { (childView) -> Bool in
-                childView.removeFromSuperview()
-                return true
-            }
-            fillTags(selectedTagsArray, isNormal: false)
-
-        }
-        
+    
         if newState == tagState.normal {
             //remove this view from list
             

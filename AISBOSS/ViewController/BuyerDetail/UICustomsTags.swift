@@ -11,6 +11,7 @@ import AISpring
 
 internal protocol AIElasticDownTagStateDelegete : class{
     func changeTagState(newState:tagState,viewModel:AIBuerSomeTagModel)
+    func releaseTagState(newState:tagState,viewModel:AIBuerSomeTagModel)
 }
 
 public enum tagState : Int {
@@ -41,8 +42,9 @@ internal class UICustomsTags : SpringView {
     @IBOutlet weak var content: DesignableLabel!
     @IBOutlet weak var unReadNumber: DesignableLabel!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
-    private var selfModel:AIBuerSomeTagModel?
+    var selfModel:AIBuerSomeTagModel?
     
     // MARK: currentView
     class func currentView()->UICustomsTags{
@@ -93,8 +95,6 @@ internal class UICustomsTags : SpringView {
      TODO: delegate是改变之后的状态
      */
     @IBAction func changeTagStats(sender: AnyObject) {
-//        let button = sender as! UIButton
-//        let viewSuper = button.superview?.superview
         
         if currentTagState == tagState.normal {
             currentTagState = tagState.selected
@@ -104,6 +104,12 @@ internal class UICustomsTags : SpringView {
         
         updateStateLayout(currentTagState)
         delegateNew?.changeTagState(currentTagState, viewModel: selfModel!)
+    }
+
+    @IBAction func backAction(sender: AnyObject) {
+//        let button = sender as! UIButton
+//        button.removeFromSuperview()
+        delegateNew?.releaseTagState(currentTagState, viewModel: selfModel!)
     }
     
 }

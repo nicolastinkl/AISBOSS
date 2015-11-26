@@ -63,6 +63,13 @@
                         <action selector="changeTagStats:" destination="iN0-l3-epB" eventType="touchDown" id="VEr-KZ-6ua"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDR-0r-zz6">
+                    <rect key="frame" x="0.0" y="0.0" width="127" height="37"/>
+                    <animations/>
+                    <connections>
+                        <action selector="backAction:" destination="iN0-l3-epB" eventType="touchDown" id="xYO-Dw-6EG"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -88,6 +95,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="backButton" destination="rDR-0r-zz6" id="Ka4-u0-mmN"/>
                 <outlet property="button" destination="hgC-PD-d9W" id="p09-Vs-p1w"/>
                 <outlet property="content" destination="KPx-NA-5hU" id="GII-8G-6tb"/>
                 <outlet property="unReadNumber" destination="ehn-UI-grg" id="LoF-bG-BDc"/>
