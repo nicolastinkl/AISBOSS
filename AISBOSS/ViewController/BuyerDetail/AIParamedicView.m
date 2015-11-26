@@ -56,15 +56,15 @@
     
     NSRange headRange = NSMakeRange(0, anchorRange.location - 1);
     
-    NSRange tailRange = NSMakeRange(anchorRange.location, amount.length - anchorRange.length);
+    NSRange tailRange = NSMakeRange(anchorRange.location, amount.length - anchorRange.location);
     
     UIFont *headFont = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
-    UIFont *tailFont = [AITools myriadLightSemiCondensedWithSize:[AITools displaySizeFrom1080DesignSize:12]];
+    UIFont *tailFont = [AITools myriadLightSemiCondensedWithSize:[AITools displaySizeFrom1080DesignSize:42]];
     
     NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:amount];
-//    [attriString addAttributes:@{NSFontAttributeName : headFont} range:headRange];
-//    [attriString addAttributes:@{NSFontAttributeName : tailFont} range:tailRange];
-#warning crash.....log...
+    [attriString addAttribute:NSFontAttributeName value:headFont range:headRange];
+    [attriString addAttribute:NSFontAttributeName value:tailFont range:tailRange];
+    
     
     return attriString;
 }
