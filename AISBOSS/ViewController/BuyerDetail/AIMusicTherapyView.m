@@ -54,6 +54,31 @@
 }
 
 
+- (NSAttributedString *)attrAmountWithAmount:(NSString *)amount
+{
+    // find range
+    
+    NSRange anchorRange = [amount rangeOfString:@"/"];
+    
+    if (anchorRange.location == NSNotFound) {
+        return nil;
+    }
+    
+    NSRange headRange = NSMakeRange(0, anchorRange.location - 1);
+    
+    NSRange tailRange = NSMakeRange(anchorRange.location, amount.length - anchorRange.location);
+    
+    UIFont *headFont = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    UIFont *tailFont = [AITools myriadLightSemiCondensedWithSize:[AITools displaySizeFrom1080DesignSize:42]];
+    
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:amount];
+    [attriString addAttribute:NSFontAttributeName value:headFont range:headRange];
+    [attriString addAttribute:NSFontAttributeName value:tailFont range:tailRange];
+    
+    
+    return attriString;
+}
+
 - (void)makeSubViews
 {
     CGFloat y = [AITools displaySizeFrom1080DesignSize:32];
@@ -61,7 +86,7 @@
     //
     CGRect textFrame = CGRectMake(_sideMargin, y, width, 0);
     NSString *title = @"Session include:";
-    NSString *detail = @"Session includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession include";
+    NSString *detail = @"These hourly sessions include bonding and communicating with your baby, guided imagery and visualization for birth and well being, therapeutic healing with the voice exercises and mandala drawing. Tailored sessions are provided to choose.";
     AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:title detail:detail];
     [self addSubview:detailText];
     
@@ -90,7 +115,8 @@
     //
     UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"€ 100 / session" fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     amLabel.textAlignment = NSTextAlignmentCenter;
-    amLabel.font = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    amLabel.attributedText = [self attrAmountWithAmount:@"€ 100 / session"];
+    
     
     [self addSubview:amLabel];
     
@@ -242,19 +268,19 @@
     NSMutableArray *fakeComments = [[NSMutableArray alloc] init];
     
     AIMusicCommentsModel *model = [[AIMusicCommentsModel alloc] init];
-    model.headIcon = @"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
+    model.headIcon = nil;//@"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
     model.name = @"Jenna";
     model.rate = 4.5;
     model.time = @"Sep 28th, 2015";
-    model.comment = @"hiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.com";
+    model.comment = @"Thank you, Grace Yang. You were such an important figure in my transition. You helped me immensely to keep my heart and mind open, at a time when I was quite unsure and afraid. Thank you very much ...";
     [fakeComments addObject:model];
     
     model = [[AIMusicCommentsModel alloc] init];
-    model.headIcon = @"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
+    model.headIcon = nil;//@"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
     model.name = @"Haya";
     model.rate = 4.5;
     model.time = @"Sep 28th, 2015";
-    model.comment = @"hiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.comhiphotos.baidu.com";
+    model.comment = @"Grace Yang enabled an amazing sense of calm, love, beauty and joy to our experience. I am not sure if it was her energy, or the music, or the wonderful aromatic oils she had brought. But it all blended so naturally...";
     [fakeComments addObject:model];
     
     
