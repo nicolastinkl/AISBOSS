@@ -62,9 +62,9 @@
     UIFont *tailFont = [AITools myriadLightSemiCondensedWithSize:[AITools displaySizeFrom1080DesignSize:12]];
     
     NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:amount];
-    [attriString addAttributes:@{NSFontAttributeName : headFont} range:headRange];
-    [attriString addAttributes:@{NSFontAttributeName : tailFont} range:tailRange];
-    
+//    [attriString addAttributes:@{NSFontAttributeName : headFont} range:headRange];
+//    [attriString addAttributes:@{NSFontAttributeName : tailFont} range:tailRange];
+#warning crash.....log...
     
     return attriString;
 }

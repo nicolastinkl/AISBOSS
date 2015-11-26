@@ -125,6 +125,9 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        if self.serviceContentType == AIServiceContentType.Escort {
+            topView.naviDetailBar?.backgroundColor = UIColor(hex: "")
+        }
         
         //init recording view
         audioView =  AIAudioRecordView.currentView()
