@@ -12,6 +12,7 @@ import Cartography
 class AITitleAndIconTextView: UIView {
 
     static let TITLE_HEIGHT: CGFloat = 17
+    static let ICON_VERTICAL_SPACE: CGFloat = 11
   
     @IBOutlet weak var firstTitle: UILabel!
     @IBOutlet weak var firstIcon: UIImageView!
@@ -63,10 +64,12 @@ class AITitleAndIconTextView: UIView {
             
             if index == 0 {
                 if model.product_name != nil && model.product_name != "" {
-                    titleHeight.constant = AITitleAndIconTextView.TITLE_HEIGHT
-                    firstTitle.setNeedsUpdateConstraints()
+              //      titleHeight.constant = AITitleAndIconTextView.TITLE_HEIGHT
+              //      firstTitle.setNeedsUpdateConstraints()
+                    firstTitle.hidden = false
                     firstTitle.text = model.product_name
-                    
+                    iconMaginTop.constant += AITitleAndIconTextView.TITLE_HEIGHT
+                    firstIcon.setNeedsUpdateConstraints()
                     frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
                 }
             } else {
@@ -82,9 +85,9 @@ class AITitleAndIconTextView: UIView {
                     icon.width == preIcon.width
                     icon.height == preIcon.height
                     icon.leading == preIcon.leading
-                    icon.top == preIcon.bottom + iconMaginTop.constant
+                    icon.top == preIcon.bottom + AITitleAndIconTextView.ICON_VERTICAL_SPACE
                 }
-                
+
                 layout(preLabel, icon, label) {preLabel, icon, label in
                     label.width == preLabel.width
                     label.height == preLabel.height

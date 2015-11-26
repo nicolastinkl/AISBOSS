@@ -112,6 +112,7 @@
 @property (strong, nonatomic) ParamModel<Optional> * service_param;
 @property (assign, nonatomic) NSInteger param_setting_flag;
 @property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
+@property (assign, nonatomic) NSInteger service_rating_level;
 
 @end
 

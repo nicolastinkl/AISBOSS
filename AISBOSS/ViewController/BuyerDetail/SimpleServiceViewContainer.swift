@@ -46,15 +46,15 @@ class SimpleServiceViewContainer: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
-        topView.addSubview(starRateView)
-        
-        layout(starRateView, review) {star, review in
-            star.left == review.right - 2
-            star.height == starRateView.height
-            star.width == starRateView.width
-            star.top == review.top + 1
-        }
+//        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
+//        topView.addSubview(starRateView)
+//        
+//        layout(starRateView, review) {star, review in
+//            star.left == review.right - 2
+//            star.height == starRateView.height
+//            star.width == starRateView.width
+//            star.top == review.top + 1
+//        }
         
 
         
@@ -93,7 +93,6 @@ class SimpleServiceViewContainer: UIView {
         name.text = dataModel.service_desc ?? ""
         
         
-        
         if dataModel.service_param != nil {
             
             if let key = dataModel.service_param.param_key {
@@ -117,6 +116,8 @@ class SimpleServiceViewContainer: UIView {
         if dataModel.param_setting_flag == 1 {
             settingState.image = UIImage(named: "gear_white")
         }
+        
+        createReviewView(dataModel.service_rating_level)
     }
     
     private func createHopeList(hopeModel: AIProposalHopeModel) {
@@ -179,42 +180,45 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
+    func selfHeight() -> CGFloat {
+        return  topHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+    }
+    
     private func addParamsView(serviceParams: UIView) {
-        frame.size.height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        let height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        self.frame.size.height = height
+        
         paramViewHeight = serviceParams.frame.height
         paramsView.addSubview(serviceParams)
         
         layout(paramsView, serviceParams) {container, item in
-            item.left == container.left
+            item.height == container.height
             item.top == container.top
-            item.bottom == container.bottom
+            item.width == container.width
             item.right == container.right
+            
         }
+         
+        
     }
     
-    private func addMessageView() {
-        
-        let msgContent = ServiceSettingView.createInstance()
-        
-        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
-        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
-        messageHeight.constant = msgContent.height
-        
-        messageView.setNeedsUpdateConstraints()
-        
-        messageView.addSubview(msgContent)
-        
-        layout(messageView, msgContent) {container, view in
-            view.left == container.left
-            view.top == container.top
-            view.bottom == container.bottom
-            view.right == container.right
+    private func createReviewView(rating: Int) {
+        if rating <= 0 || rating > 10 {
+            review.hidden = true
+            return
         }
         
-        divider.hidden = false
-        dividerHeight.constant = 0.5
-        divider.setNeedsUpdateConstraints()
-        frame.size.height = totalHeight()
+        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
+        topView.addSubview(starRateView)
+        let score: CGFloat = CGFloat(rating) / 10
+        starRateView.scorePercent = score
+        
+        layout(starRateView, review) {star, review in
+            star.left == review.right - 2
+            star.height == starRateView.height
+            star.width == starRateView.width
+            star.top == review.top + 1
+        }
     }
     
     private func topHeight() -> CGFloat {
