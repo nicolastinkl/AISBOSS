@@ -38,6 +38,11 @@ class SimpleServiceViewContainer: UIView {
     
     private var paramViewHeight: CGFloat = 0
     
+    class func currentView() -> SimpleServiceViewContainer{
+        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
+        return serviceView
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

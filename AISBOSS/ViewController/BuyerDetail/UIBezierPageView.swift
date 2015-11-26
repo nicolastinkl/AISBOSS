@@ -59,7 +59,9 @@ internal class UIBezierPageView : UIView {
     let kPointOffset:CGFloat = 15
     
     func centerForCalculatePosition(number: Int) -> [CGPoint]{
-        
+        if number < 1 {
+            return [CGPointMake(0, 0)]
+        }
         var pointArray:[CGPoint] = []
         if number % 2 == 0 {
             //偶数
@@ -83,13 +85,16 @@ internal class UIBezierPageView : UIView {
             let centerPoint = CGPointMake(CGRectGetWidth(self.frame)/2, 0)
             let centNumber = number/2
             let newValue = CGFloat(number/2)
-            for value in 1...centNumber {
-                
-                pointArray.append(CGPointMake(centerPoint.x -  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value)))) * kPointDamping ))
-                
-                pointArray.append(CGPointMake(centerPoint.x +  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value-1)))) * kPointDamping ))
-                
+            if centNumber >= 1 {
+                for value in 1...centNumber {
+                    
+                    pointArray.append(CGPointMake(centerPoint.x -  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value)))) * kPointDamping ))
+                    
+                    pointArray.append(CGPointMake(centerPoint.x +  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value-1)))) * kPointDamping ))
+                    
+                }
             }
+            
             let value = 0
             pointArray.append(CGPointMake(centerPoint.x +  CGFloat(value) * kPointOffset, centerPoint.y + (newValue - atan(CGFloat(newValue - CGFloat(value-1)))) * kPointDamping ))
         }

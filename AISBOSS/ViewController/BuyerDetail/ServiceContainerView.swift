@@ -114,7 +114,7 @@ class ServiceContainerView: UIView {
                             serviceView.right == detail.right
                         }
                     }
-                }          
+                }
             }
         }
     }

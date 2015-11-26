@@ -42,7 +42,10 @@ class AIBuyerDetailViewController : UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var bottomView: UIView!
+
     // MARK: getters and setters
+    
+    private var horizontalCardCellCache = NSMutableDictionary()
     
     // MARK: life cycle
     
@@ -61,8 +64,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Make
         //makeBuyButton()
      
-        // Init Bottom Page white area
-        InitBottomView()
+        
     }
     
     func AddImageView(){
@@ -131,7 +133,7 @@ class AIBuyerDetailViewController : UIViewController {
     func InitBottomView () {
         let bzView = UIBezierPageView(frame: CGRectMake(0,38,200,50))
         bzView.setX((self.view.width - bzView.width)/2)
-        bzView.refershView(8)
+        bzView.refershView(8) //self.dataSource.service_list.count
         //bzView.center = (self.bottomView.subviews.first as! UIImageView).center
         self.bottomView.addSubview(bzView)
         
@@ -214,6 +216,9 @@ class AIBuyerDetailViewController : UIViewController {
                         //InitControl Data
                         strongSelf.InitController()
                         strongSelf.tableView.reloadData()
+                        
+                        // Init Bottom Page white area
+                        strongSelf.InitBottomView()
                     }
                     
                 },fail : {
@@ -249,20 +254,40 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         if let height = cellHeights[indexPath.row] {
             cell.contentView.subviews.first?.frame.size.height = height
         }
-        
     }
   
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let key = "servicelist_\(indexPath.row)"
+        
+        if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
+            return cacheCell
+        }
+        
+        //let cell = AITableCellHolder.currentView()
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
-        
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        
         let offset:CGFloat = 20.0
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
+        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
+        
+        serviceView.frame = CGRectMake(offset, 0, width, 200)
+        serviceView.loadData(serviceDataModel)
+//        for subview in cell.contentView.subviews {
+//            subview.removeFromSuperview()
+//        }
+        
+        cell.contentView.addSubview(serviceView)
+        cellHeights[indexPath.row] = serviceView.frame.height
+        horizontalCardCellCache.setValue(cell, forKey: key)
+        return cell
+        
+        
+        
 //        var serviceView: ServiceContainerView!
 //        
 //        if dataSource.service_list.count == 1 {
@@ -285,18 +310,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 //            }
 //        }
         
-        let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         
-        serviceView.frame = CGRectMake(offset, 0, width, 200)
-        serviceView.loadData(serviceDataModel)
-        for subview in cell.contentView.subviews {
-            subview.removeFromSuperview()
-        }
-        
-        cell.contentView.addSubview(serviceView)
-        cellHeights[indexPath.row] = serviceView.frame.height
-        
-        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
