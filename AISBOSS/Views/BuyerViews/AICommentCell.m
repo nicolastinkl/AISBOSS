@@ -137,7 +137,7 @@
     
     CGRect frame = CGRectMake(0, y, width, size.height);
     
-    _commentLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.comment fontSize:_commentFontSize color:[UIColor whiteColor]];
+    _commentLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.comment fontSize:_commentFontSize color:Color_MiddleWhite];
     _commentLabel.numberOfLines = 0;
     _commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:_commentLabel];

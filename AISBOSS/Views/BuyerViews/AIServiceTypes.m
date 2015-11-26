@@ -21,7 +21,8 @@
     //
     UPLabel *_titleLabel;
     
-    
+    NSInteger _selectedIndex;
+    NSInteger _lastIndex;
 }
 
 @property (nonatomic, strong) AIMusicServiceTypesModel *serviceTypesModel;
@@ -82,12 +83,18 @@
         [self addSubview:radioView];
         
         //
-        NSString *imageName = self.serviceTypesModel.defaultTypeIndex ? @"Type_On" : @"Type_Off";
-        UIImage *image = [UIImage imageNamed:imageName];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-        imageView.frame = CGRectMake(0, 0, _radioSize, _radioSize);
         
-        [radioView addSubview:imageView];
+        _selectedIndex = self.serviceTypesModel.defaultTypeIndex;
+        
+        UIButton *radioButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [radioButton setImage:[UIImage imageNamed:@"Type_Off"] forState:UIControlStateNormal];
+        [radioButton setImage:[UIImage imageNamed:@"Type_On"] forState:UIControlStateSelected];
+        radioButton.frame = CGRectMake(0, 0, _radioSize, _radioSize);
+        radioButton.userInteractionEnabled = NO;
+        radioButton.tag = 999;
+        radioButton.selected = _selectedIndex == i;
+        
+        [radioView addSubview:radioButton];
         
         //
         
@@ -129,6 +136,21 @@
 - (void)action:(UITapGestureRecognizer *)gesture
 {
     UIView *view = gesture.view;
+    UIButton *button = [view viewWithTag:999];
+    button.selected = !button.selected;
+    BOOL select = button.selected;
+    
+    /////
+    
+    if (_selectedIndex != view.tag) {
+        UIView *preView = [self viewWithTag:_selectedIndex];
+        UIButton *preButton = [preView viewWithTag:999];
+        preButton.selected = !select;
+        
+    }
+    
+    _selectedIndex = view.tag;
+    
     
     if ([self.delegate respondsToSelector:@selector(didSelectedAtIndex:)]) {
         [self.delegate didSelectedAtIndex:view.tag];

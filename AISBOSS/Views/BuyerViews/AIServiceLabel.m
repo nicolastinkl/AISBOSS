@@ -75,7 +75,7 @@
 {
     CGSize titleSize = [self.labelTitle sizeWithFont:[AITools myriadLightSemiCondensedWithSize:_fontSize] forWidth:300];
     CGRect frame = CGRectMake(_textLeftMargin, 0, titleSize.width, CGRectGetHeight(self.frame));
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.labelTitle fontSize:_fontSize color:Color_MiddleWhite];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.labelTitle fontSize:_fontSize color:Color_HighWhite];
     [self addSubview:_titleLabel];
 
 }

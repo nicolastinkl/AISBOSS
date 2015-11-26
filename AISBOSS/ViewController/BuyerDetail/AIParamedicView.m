@@ -44,11 +44,26 @@
 }
 
 
-- (NSAttributedString *)attrStrignWithString:(NSString *)string
+- (NSAttributedString *)attrAmountWithAmount:(NSString *)amount
 {
-    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:string];
+    // find range
     
+    NSRange anchorRange = [amount rangeOfString:@"/"];
     
+    if (anchorRange.location == NSNotFound) {
+        return nil;
+    }
+    
+    NSRange headRange = NSMakeRange(0, anchorRange.location - 1);
+    
+    NSRange tailRange = NSMakeRange(anchorRange.location, amount.length - anchorRange.length);
+    
+    UIFont *headFont = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    UIFont *tailFont = [AITools myriadLightSemiCondensedWithSize:[AITools displaySizeFrom1080DesignSize:12]];
+    
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:amount];
+    [attriString addAttributes:@{NSFontAttributeName : headFont} range:headRange];
+    [attriString addAttributes:@{NSFontAttributeName : tailFont} range:tailRange];
     
     
     return attriString;
@@ -61,7 +76,7 @@
     //
     CGRect textFrame = CGRectMake(_sideMargin, y, width, 0);
     NSString *title = @"Session include:";
-    NSString *detail = @"Session includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession includeSession include";
+    NSString *detail = @"Handle all the trivial matters related to the hospital journey. Provide easier than ever see-a-doctor experience with every aspect of service that might ease the complex processes in the hospital.";
     AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:title detail:detail];
     [self addSubview:detailText];
     
@@ -90,7 +105,8 @@
     //
     UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"€ 100 / session" fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     amLabel.textAlignment = NSTextAlignmentCenter;
-    amLabel.font = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    amLabel.attributedText = [self attrAmountWithAmount:@"€ 100 / session"];
+    //amLabel.font = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
     
     [self addSubview:amLabel];
     
