@@ -91,7 +91,7 @@ internal class AIPageBueryViewController: UIViewController {
         // Add the album view controllers to the scroll view
         var pageViews: [UIView] = []
         var viewTag:Int = 0
-        for _ in bubleModelArray! {
+        for model in bubleModelArray! {
             let pageView = UIView()
             pageView.tag = viewTag
             pageScrollView.addSubview(pageView)
@@ -100,7 +100,11 @@ internal class AIPageBueryViewController: UIViewController {
             //pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
             pageViews.append(pageView)
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceContentViewController) as! AIServiceContentViewController
-            viewController.serviceContentType = AIServiceContentType.Escort
+            if model.service_id == 1 {
+                viewController.serviceContentType = AIServiceContentType.MusicTherapy
+            }else{
+                viewController.serviceContentType = AIServiceContentType.Escort
+            }
             
             self.addSubViewController(viewController, toView: pageView)
             viewTag = viewTag + 1

@@ -11,8 +11,9 @@ import Cartography
 
 class AITitleAndIconTextView: UIView {
 
+    static let TITLE_HEIGHT: CGFloat = 17
   
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var firstTitle: UILabel!
     @IBOutlet weak var firstIcon: UIImageView!
     @IBOutlet weak var firstText: UILabel!
     
@@ -20,11 +21,12 @@ class AITitleAndIconTextView: UIView {
     @IBOutlet weak var iconMaginTop: NSLayoutConstraint!
     @IBOutlet weak var textTopToIcon: NSLayoutConstraint!
     @IBOutlet weak var textMaginRight: NSLayoutConstraint!
+    @IBOutlet weak var titleHeight: NSLayoutConstraint!
     
     private var iconTextDic: [[UIImageView: UILabel]]!
     
     override func awakeFromNib() {
-        title.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+        firstTitle.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         firstText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     }
     
@@ -44,8 +46,7 @@ class AITitleAndIconTextView: UIView {
         
     }
     
-    func loadData(model data: ServiceCellProductParamModel) {
-        title.text = data.product_name
+    func loadData(model data: ServiceCellProductParamModel) {        
         
         if data.param_list != nil && data.param_list.count > 0 {
             createIconTextPair(data.param_list)
@@ -61,8 +62,13 @@ class AITitleAndIconTextView: UIView {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {
-                preIcon.asyncLoadImage(model.param_icon)
-                preLabel.text = model.param_value
+                if model.product_name != nil && model.product_name != "" {
+                    titleHeight.constant = AITitleAndIconTextView.TITLE_HEIGHT
+                    firstTitle.setNeedsUpdateConstraints()
+                    firstTitle.text = model.product_name
+                    
+                    frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
+                }
             } else {
                 let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
                 icon.contentMode = firstIcon.contentMode
@@ -90,6 +96,23 @@ class AITitleAndIconTextView: UIView {
                 
                 preIcon = icon
                 preLabel = label
+            }
+            
+            preIcon.asyncLoadImage(model.param_icon)
+
+            if model.param_name.hasPrefix("address") {
+                preLabel.text = model.param_value
+            } else {
+                preLabel.textColor = UIColor.whiteColor()
+                let str = model.param_name + " " + model.param_value
+                let attStr = NSMutableAttributedString(string: str)
+                
+                attStr.addAttribute(NSFontAttributeName, value: AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31)), range: NSMakeRange(0, model.param_name.length))
+                attStr.addAttribute(NSFontAttributeName, value: AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31)), range: NSMakeRange(model.param_name.length + 1, model.param_value.length))
+                
+                preLabel.attributedText = attStr
+                
+     //           preLabel.text = model.param_name + " " + model.param_value
             }
         }
     }

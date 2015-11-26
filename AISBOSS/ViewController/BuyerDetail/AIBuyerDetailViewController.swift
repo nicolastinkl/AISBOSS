@@ -37,10 +37,9 @@ class AIBuyerDetailViewController : UIViewController {
     @IBOutlet weak var totalMoneyLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var whereLabel: UILabel!
-    @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var infoButton: UIButton!
     
-    @IBOutlet weak var contentView: UIView!
+    private var contentView: UIView?
     @IBOutlet weak var bottomView: UIView!
 
     // MARK: getters and setters
@@ -55,6 +54,8 @@ class AIBuyerDetailViewController : UIViewController {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
         
+        contentView = self.tableView.tableHeaderView?.viewWithTag(1)
+        
         // Init Data
         initData()
         
@@ -65,37 +66,7 @@ class AIBuyerDetailViewController : UIViewController {
         //makeBuyButton()
      
         
-    }
-    
-    func AddImageView(){
-        self.infoButton.hidden = false
-        let imageview =  UIImageView(image: UIImage(named: "pregnancyCare"))
-        imageview.contentMode = .ScaleAspectFit
-        
-        let width = CGRectGetWidth(self.view.frame)
-        let height = AITools.displaySizeFrom1080DesignSize(3819)
-        
-        imageview.frame = CGRectMake(0, 0, width, height)
-        self.scrollview.addSubview(imageview)
-        self.scrollview.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
-        self.scrollview.contentSize = CGSizeMake(width, height)
-        
-        ///  action 1
-        var label = UILabel(frame: CGRectMake(0, 0, width, 200))
-        self.scrollview.addSubview(label)
-        label.userInteractionEnabled = true
-        var tap = UITapGestureRecognizer(target: self, action: "targetDetail")
-        label.addGestureRecognizer(tap)
-        
-        /// action 2
-        
-        label = UILabel(frame: CGRectMake(0, AITools.displaySizeFrom1080DesignSize(1240), self.view.width, AITools.displaySizeFrom1080DesignSize(700)))
-        self.scrollview.addSubview(label)
-        label.userInteractionEnabled = true
-        tap = UITapGestureRecognizer(target: self, action: "targetDetail2")
-        label.addGestureRecognizer(tap)
-    }
-    
+    }    
     
     func targetDetail2(){
         let vc = AIServiceContentViewController()
@@ -200,12 +171,14 @@ class AIBuyerDetailViewController : UIViewController {
     
     func initData(){
         if let m = bubleModel {
-            
-            let newlayout = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
-            
-            self.contentView.addConstraints([newlayout])
-            
-            self.contentView.updateConstraints()
+            if let cView = contentView {
+                
+                let newlayout = NSLayoutConstraint(item: cView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 77)
+                
+                cView.addConstraints([newlayout])
+                
+                cView.updateConstraints()
+            }
         
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
@@ -271,7 +244,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.backgroundColor = UIColor.clearColor()
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-        let offset:CGFloat = 20.0
+        
+        let offset:CGFloat = 15
+
         let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
         let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         

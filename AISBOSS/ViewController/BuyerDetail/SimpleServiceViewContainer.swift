@@ -105,11 +105,43 @@ class SimpleServiceViewContainer: UIView {
                     
                     if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
                         addParamsView(serviceView)
-                        addMessageView()
                     }
                 }
             }
         }
+        
+        if dataModel.wish_list != nil && dataModel.wish_list.hope_list != nil {
+            createHopeList(dataModel.wish_list)
+        }
+        
+        if dataModel.param_setting_flag == 1 {
+            settingState.image = UIImage(named: "gear_white")
+        }
+    }
+    
+    private func createHopeList(hopeModel: AIProposalHopeModel) {
+        let msgContent = ServiceSettingView.createInstance()
+        msgContent.loadData(model: hopeModel)
+        
+        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
+        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
+        messageHeight.constant = msgContent.height
+        
+        messageView.setNeedsUpdateConstraints()
+        
+        messageView.addSubview(msgContent)
+        
+        layout(messageView, msgContent) {container, view in
+            view.left == container.left
+            view.top == container.top
+            view.bottom == container.bottom
+            view.right == container.right
+        }
+        
+        divider.hidden = false
+        dividerHeight.constant = 0.5
+        divider.setNeedsUpdateConstraints()
+        frame.size.height = totalHeight()
     }
     
     
@@ -129,7 +161,7 @@ class SimpleServiceViewContainer: UIView {
             v.loadData(json: jsonData)
             return v
         case .SingleParam:
-            let v = AIIconTextView.createInstance()
+            let v = AITitleAndIconTextView.createInstance()
             v.loadData(json: jsonData)
             return v
         case .MutilParams:

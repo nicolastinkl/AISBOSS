@@ -129,6 +129,24 @@ internal class AICustomAudioNotesView : UIView{
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
             delegateAudio?.endRecording(currentAutioUrl)
+            let data = NSData(contentsOfURL: NSURL(string: currentAutioUrl)!)
+            let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+            videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
+                logWarning("file update OK")
+            })
+            
+            //处理文件存储
+//            let object = AVObject(className: "AIAudioFileClass")
+//            let file = AVFile.fileWithName("audioname", contentsAtPath: currentAutioUrl)
+//            file.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                 logWarning("file update OK")
+//            })
+//            object.setObject(file, forKey: "file")
+//            object.setObject(currentAutioUrl, forKey: "fileId")
+//            object.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                 logWarning("file assciate OK")
+//            })
+            
             ///松开 结束录音
             rder.stop()
             recorder = nil

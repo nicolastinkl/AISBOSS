@@ -21,6 +21,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     internal var serviceContentType : AIServiceContentType!
+
     private var preCacheView:UIView?
     
     private lazy var scrollView:UIScrollView = {
@@ -54,6 +55,23 @@ internal class AIServiceContentViewController: UIViewController {
         */
         makeContentView()
      
+        /**
+        Notification Keyboard...
+        */
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShowNotification(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,29 +143,28 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
-        //
-        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-        let musicView = AIMusicTherapyView(frame: musicFrame)
-        //scrollView.addSubview(musicView)
-        addNewSubView(musicView, preView: galleryView)
-        musicView.backgroundColor = UIColor.clearColor()
-        
-        ///----
-        
-//        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-//        let paramedicView = AIParamedicView(frame: paramedicFrame)
-//        //scrollView.addSubview(musicView)
-//        addNewSubView(paramedicView, preView: galleryView)
-//        paramedicView.backgroundColor = UIColor.clearColor()
-        ///---
-        
-        
-        
-//
-        ///
-
+        var holdView:UIView?
+        if self.serviceContentType == AIServiceContentType.Escort {
+            //陪护
+            let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+            let paramedicView = AIParamedicView(frame: paramedicFrame)
+            //scrollView.addSubview(musicView)
+            addNewSubView(paramedicView, preView: galleryView)
+            paramedicView.backgroundColor = UIColor.clearColor()
+            holdView = paramedicView
+        }else{
+            //音乐疗养
+            
+            let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+            let musicView = AIMusicTherapyView(frame: musicFrame)
+            //scrollView.addSubview(musicView)
+            addNewSubView(musicView, preView: galleryView)
+            musicView.backgroundColor = UIColor.clearColor()
+            holdView = musicView
+        }
+           
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: musicView)
+        addNewSubView(custView, preView: holdView!)
      
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
@@ -180,6 +197,7 @@ internal class AIServiceContentViewController: UIViewController {
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
         audioView.delegateAudio = self
+        audioView.inputText.delegate = self
         
         let audio1 = AIAudioMessageView.currentView()
         addNewSubView(audio1, preView: audioView)
@@ -189,6 +207,8 @@ internal class AIServiceContentViewController: UIViewController {
         
         let text2 = AITextMessageView.currentView()
         addNewSubView(text2, preView: text1)
+        
+        
     }
     
     /**
@@ -205,6 +225,22 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
         preCacheView = cview
         
+    }
+}
+
+// MARK : Delegate
+
+extension AIServiceContentViewController: UITextFieldDelegate{
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // add a new View Model
+        let audio1 = AITextMessageView.currentView()
+        if let cview = preCacheView {
+            addNewSubView(audio1, preView: cview)
+        }
+        textField.resignFirstResponder()
+        textField.text = ""
+        return true
     }
 }
 
@@ -251,7 +287,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         if let cview = preCacheView {
             addNewSubView(audio1, preView: cview)
         }
-        
     }
     
     
