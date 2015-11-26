@@ -17,6 +17,7 @@ class AIAudioMessageView: UIView {
     @IBOutlet weak var audioGifImageView: UIImageView!
     @IBOutlet weak var audioLength: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    private var currentModelss:AIProposalHopeAudioTextModel?
     
     class func currentView()->AIAudioMessageView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioMessageView", owner: self, options: nil).first  as! AIAudioMessageView
@@ -24,7 +25,21 @@ class AIAudioMessageView: UIView {
         return selfView
     }
     
+    func fillData(model:AIProposalHopeAudioTextModel){
+        self.audioLength.text = "\(model.audio_length)''"
+        currentModelss = model
+    }
+    
     @IBAction func playAction(sender: AnyObject) {
+        if let model = currentModelss{
+            do{
+                let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
+                player.play()
+            }catch{
+                
+            }
+            
+        }
         
     }
 }

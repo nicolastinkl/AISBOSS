@@ -206,9 +206,7 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(text1, preView: audio1)
         
         let text2 = AITextMessageView.currentView()
-        addNewSubView(text2, preView: text1)
-        
-        
+        addNewSubView(text2, preView: text1)        
     }
     
     /**
@@ -286,6 +284,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         let audio1 = AIAudioMessageView.currentView()
         if let cview = preCacheView {
             addNewSubView(audio1, preView: cview)
+            audio1.fillData(audioModel)
         }
     }
     
