@@ -100,7 +100,7 @@ class AITitleAndIconTextView: UIView {
             
             preIcon.asyncLoadImage(model.param_icon)
 
-            if model.param_name.hasSuffix("address") {
+            if model.param_name.hasPrefix("address") {
                 preLabel.text = model.param_value
             } else {
                 preLabel.textColor = UIColor.whiteColor()

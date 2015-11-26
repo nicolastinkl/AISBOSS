@@ -110,6 +110,7 @@
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
 @property (strong, nonatomic) NSString<Optional> * service_rating_icon;
 @property (strong, nonatomic) ParamModel<Optional> * service_param;
+@property (assign, nonatomic) NSInteger param_setting_flag;
 @property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
 
 @end
