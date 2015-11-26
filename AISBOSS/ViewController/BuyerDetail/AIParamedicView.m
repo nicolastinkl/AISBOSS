@@ -48,6 +48,9 @@
 {
     NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:string];
     
+    
+    
+    
     return attriString;
 }
 
