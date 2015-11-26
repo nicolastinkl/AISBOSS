@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger, AIServiceLabelType) {
 
 @property (nonatomic, strong) NSString *labelTitle;
 
+@property (nonatomic, readonly) UIImageView *selectionImageView;
+
 - (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title type:(AIServiceLabelType)type;
 
 

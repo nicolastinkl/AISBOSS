@@ -129,7 +129,7 @@ class SimpleServiceViewContainer: UIView {
             v.loadData(json: jsonData)
             return v
         case .SingleParam:
-            let v = AIIconTextView.createInstance()
+            let v = AITitleAndIconTextView.createInstance()
             v.loadData(json: jsonData)
             return v
         case .MutilParams:
