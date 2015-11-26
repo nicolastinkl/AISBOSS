@@ -280,7 +280,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
     }
     
     //结束录音添加view到scrollview
-    func endRecording(audioUrl: String) {
+    func endRecording(audioModel: AIProposalHopeAudioTextModel) {        
         audioView?.hidden = true
         // add a new View Model
         let audio1 = AIAudioMessageView.currentView()

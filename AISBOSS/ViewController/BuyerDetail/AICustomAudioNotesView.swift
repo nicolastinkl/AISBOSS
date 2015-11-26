@@ -13,7 +13,7 @@ import AISpring
 protocol AICustomAudioNotesViewDelegate : class{
     func startRecording()
     func updateMetersImage(lowPass:Double)
-    func endRecording(audioUrl:String)
+    func endRecording(audioModel:AIProposalHopeAudioTextModel)
 }
 // MARK: -
 // MARK: AICustomAudioNotesView
@@ -128,12 +128,7 @@ internal class AICustomAudioNotesView : UIView{
 
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
-            delegateAudio?.endRecording(currentAutioUrl)
-            let data = NSData(contentsOfURL: NSURL(string: currentAutioUrl)!)
-            let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
-            videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
-                logWarning("file update OK")
-            })
+            
             
             //处理文件存储
 //            let object = AVObject(className: "AIAudioFileClass")
@@ -149,11 +144,30 @@ internal class AICustomAudioNotesView : UIView{
             
             ///松开 结束录音
             rder.stop()
-            recorder = nil
+            
             timer?.invalidate()
             timer = nil
             audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
             
+            let data = NSData(contentsOfFile: currentAutioUrl) //NSURL(string: currentAutioUrl)!
+            if data != nil {
+                let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+                videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    
+                    let size = videoFile.metaData.valueForKey("size") as! Int
+                    let audioLength: Int = size/1024
+                    
+                    let model = AIProposalHopeAudioTextModel()
+                    model.audio_url = videoFile.url
+                    model.audio_length = audioLength
+                    model.type = 0
+                    self.delegateAudio?.endRecording(model)
+                    
+                })
+                
+            }
+            recorder = nil
+            AVFile.fileWithURL("")
             logInfo("松开 结束录音")
         }
         

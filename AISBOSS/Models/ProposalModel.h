@@ -75,7 +75,7 @@
 @interface AIProposalHopeAudioTextModel : JSONModel
 
 @property (assign, nonatomic) NSInteger at_id;
-@property (assign, nonatomic) NSInteger type; //类型:  语音 文本
+@property (assign, nonatomic) NSInteger type; //类型:  语音0 文本1
 @property (strong, nonatomic) NSString<Optional> * text;
 @property (assign, nonatomic) NSInteger audio_length;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
