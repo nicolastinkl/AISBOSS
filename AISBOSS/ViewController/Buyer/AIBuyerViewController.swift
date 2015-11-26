@@ -482,16 +482,18 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - ScrollViewDelegate
     func handleScrollEventWithOffset(offset:CGFloat) {
-
-        let maxHeight = CGRectGetHeight((bubbleView?.frame)!) - topBarHeight
+        if let bView = bubbleView {
+            let maxHeight = CGRectGetHeight(bView.frame) - topBarHeight
+            
+            if (offset > maxHeight / 2 && offset <= maxHeight) {
+                tableView?.scrollRectToVisible(CGRectMake(0, maxHeight - AITools.displaySizeFrom1080DesignSize(96), screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
+            }
+            else if (offset < maxHeight / 2)
+            {
+                tableView?.scrollRectToVisible(CGRectMake(0, 0, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
+            }
+        } 
         
-        if (offset > maxHeight / 2 && offset <= maxHeight) {
-            tableView?.scrollRectToVisible(CGRectMake(0, maxHeight - AITools.displaySizeFrom1080DesignSize(96), screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
-        }
-        else if (offset < maxHeight / 2)
-        {
-            tableView?.scrollRectToVisible(CGRectMake(0, 0, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
-        }
     }
     
     
