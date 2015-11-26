@@ -62,7 +62,7 @@ internal class AICustomView : UIView{
 
             tags.addSubview(tag)
             
-            tag.fillOfData(model) //处理数据  // add into whole array with key-value.
+            tag.fillOfData(model) //处理数据刷新  // add into whole array with key-value.
             
             tag.delegateNew = self
             let ramdWidth = 30 + model.tagName!.length * 8

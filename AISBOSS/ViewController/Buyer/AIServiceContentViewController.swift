@@ -21,6 +21,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     internal var serviceContentType : AIServiceContentType!
+
     private var preCacheView:UIView?
     
     private lazy var scrollView:UIScrollView = {
@@ -142,29 +143,28 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(0)
         
-        //
-        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-        let musicView = AIMusicTherapyView(frame: musicFrame)
-        //scrollView.addSubview(musicView)
-        addNewSubView(musicView, preView: galleryView)
-        musicView.backgroundColor = UIColor.clearColor()
-        
-        ///----
-        
-//        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-//        let paramedicView = AIParamedicView(frame: paramedicFrame)
-//        //scrollView.addSubview(musicView)
-//        addNewSubView(paramedicView, preView: galleryView)
-//        paramedicView.backgroundColor = UIColor.clearColor()
-        ///---
-        
-        
-        
-//
-        ///
-
+        var holdView:UIView?
+        if self.serviceContentType == AIServiceContentType.Escort {
+            //陪护
+            let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+            let paramedicView = AIParamedicView(frame: paramedicFrame)
+            //scrollView.addSubview(musicView)
+            addNewSubView(paramedicView, preView: galleryView)
+            paramedicView.backgroundColor = UIColor.clearColor()
+            holdView = paramedicView
+        }else{
+            //音乐疗养
+            
+            let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+            let musicView = AIMusicTherapyView(frame: musicFrame)
+            //scrollView.addSubview(musicView)
+            addNewSubView(musicView, preView: galleryView)
+            musicView.backgroundColor = UIColor.clearColor()
+            holdView = musicView
+        }
+           
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: musicView)
+        addNewSubView(custView, preView: holdView!)
      
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
@@ -207,6 +207,8 @@ internal class AIServiceContentViewController: UIViewController {
         
         let text2 = AITextMessageView.currentView()
         addNewSubView(text2, preView: text1)
+        
+        
     }
     
     /**
@@ -285,7 +287,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         if let cview = preCacheView {
             addNewSubView(audio1, preView: cview)
         }
-        
     }
     
     
