@@ -85,7 +85,6 @@ internal class UICustomsTags : SpringView {
             
             unReadNumber.backgroundColor = UIColor(hex: roundSelectedBgColor)
             unReadNumber.textColor = UIColor(hex: roundSelectedFontColor)
-            
         }
     }
     
@@ -94,6 +93,9 @@ internal class UICustomsTags : SpringView {
      TODO: delegate是改变之后的状态
      */
     @IBAction func changeTagStats(sender: AnyObject) {
+//        let button = sender as! UIButton
+//        let viewSuper = button.superview?.superview
+        
         if currentTagState == tagState.normal {
             currentTagState = tagState.selected
         }else{

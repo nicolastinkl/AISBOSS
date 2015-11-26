@@ -47,6 +47,9 @@ internal class AICustomAudioNotesView : UIView{
         return ""
     }
     
+    /**
+     开始录音
+     */
     func startRecording(){
         do {
             let recorderSettingsDict:[String:AnyObject] = [AVFormatIDKey:NSNumber(unsignedInt: kAudioFormatMPEG4AAC),AVSampleRateKey:NSNumber(float: 1000.0),AVNumberOfChannelsKey:NSNumber(int: 2),AVLinearPCMBitDepthKey:NSNumber(int: 8),AVLinearPCMIsBigEndianKey:NSNumber(bool: false),AVLinearPCMIsFloatKey:NSNumber(bool: false)]
@@ -69,6 +72,11 @@ internal class AICustomAudioNotesView : UIView{
         }
     }
     
+    /**
+     刷新峰值
+     
+     - parameter time: <#time description#>
+     */
     func levelTimer(time : NSTimer){
         if let rder = recorder {
             ///call to refresh meter values刷新平均和峰值功率,此计数是以对数刻度计量的,-160表示完全安静，0表示最大输入值
@@ -129,20 +137,9 @@ internal class AICustomAudioNotesView : UIView{
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
             
+            /// 处理文件存储
             
-            //处理文件存储
-//            let object = AVObject(className: "AIAudioFileClass")
-//            let file = AVFile.fileWithName("audioname", contentsAtPath: currentAutioUrl)
-//            file.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                 logWarning("file update OK")
-//            })
-//            object.setObject(file, forKey: "file")
-//            object.setObject(currentAutioUrl, forKey: "fileId")
-//            object.saveInBackgroundWithBlock({ (success, error) -> Void in
-//                 logWarning("file assciate OK")
-//            })
-            
-            ///松开 结束录音
+            /// 松开 结束录音
             rder.stop()
             
             timer?.invalidate()

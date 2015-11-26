@@ -126,7 +126,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
         if self.serviceContentType == AIServiceContentType.Escort {
-            topView.naviDetailBar?.backgroundColor = UIColor(hex: "")
+          //  topView.naviDetailBar?.backgroundColor = UIColor(hex: "")
         }
         
         //init recording view
