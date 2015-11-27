@@ -71,12 +71,10 @@
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraphStyle.lineSpacing = [AITools displaySizeFrom1080DesignSize:38];
-    
-    
-    
-    [attrStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, string.length - 1)];
-    [attrStr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:_titleFontSize] range:NSMakeRange(0, string.length - 1)];
+    paragraphStyle.lineSpacing = [AITools displaySizeFrom1080DesignSize:18];
+    [attrStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, string.length)];
+    [attrStr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:_titleFontSize] range:NSMakeRange(0, string.length)];
+    [attrStr addAttribute:NSForegroundColorAttributeName value:[AITools colorWithR:0xc7 g:0xcb b:0xe2 a:0.7] range:NSMakeRange(0, string.length)];
     
     return attrStr;
 }
@@ -119,13 +117,17 @@
         CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _textMargin;
         CGRect frame = CGRectMake(0, y, width, _detailFontSize);
         _detailLabel = [self labelWithFrame:frame text:detailString textColor:[UIColor whiteColor] font:[AITools myriadLightSemiCondensedWithSize:_titleFontSize] fontSize:_detailFontSize];
-        _detailLabel.attributedText = [self fixedString:detailString];
+        
         _detailLabel.textColor = [AITools colorWithR:0xc7 g:0xcb b:0xe2 a:0.7];
+        
         [self addSubview:_detailLabel];
         
     }
     
     _detailLabel.text = detailString;
+    
+    _detailLabel.attributedText = [self fixedString:detailString];
+    [_detailLabel sizeToFit];
     
     [self resetFrame];
 }
