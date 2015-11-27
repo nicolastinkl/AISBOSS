@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class TransportService: ServiceDetailView {
+class TransportService: ServiceParamlView {
     
     private var time: UILabel!
     private var from: UILabel!
@@ -40,7 +40,7 @@ class TransportService: ServiceDetailView {
         to.text = getStringContent("destination")
     }
     
-    func loadData(json jonsStr: String) {
+    override func loadData(json jonsStr: String) {
         let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let model = try TaxiModel(data: jsonData)

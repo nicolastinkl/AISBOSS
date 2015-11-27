@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class AITitleAndIconTextView: UIView {
+class AITitleAndIconTextView: ServiceParamlView {
 
     static let TITLE_HEIGHT: CGFloat = 17
     static let ICON_VERTICAL_SPACE: CGFloat = 11
@@ -35,7 +35,7 @@ class AITitleAndIconTextView: UIView {
         return NSBundle.mainBundle().loadNibNamed("AITitleAndIconTextView", owner: self, options: nil).first  as! AITitleAndIconTextView
     }
     
-    func loadData(json jonsStr: String) {
+    override func loadData(json jonsStr: String) {
         let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let model = try ServiceCellProductParamModel(data: jsonData)
