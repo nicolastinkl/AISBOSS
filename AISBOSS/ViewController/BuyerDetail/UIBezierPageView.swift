@@ -45,7 +45,7 @@ internal class UIBezierPageView : UIView {
             let imageView = UIImageView(frame: CGRectMake(position.x-10, position.y, 22/2.5, 22/2.5))
             if index < model.count {
                 let mod = model[index]
-                if mod.param_setting_flag == 0 {
+                if mod.param_setting_flag != 0 {
                     imageView.image = UIImage(named: "selectSettings")
                 }else{
                     imageView.image = UIImage(named: "selectwhiteSettings")

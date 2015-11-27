@@ -48,11 +48,8 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
             }catch{
                 logInfo("AVAudioPlayer play failed error .. ")
                 
-                AIAlertView().showInfo("Player Error.", subTitle: "", closeButtonTitle: "Info", duration: 3)
+                AIAlertView().showInfo("Player Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
             }
-
-            
-            
         }
     }
     
