@@ -104,9 +104,9 @@
     [self addSubview:imageView];
     //
     UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"€ 100 / session" fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
-    amLabel.textAlignment = NSTextAlignmentCenter;
+    
     amLabel.attributedText = [self attrAmountWithAmount:@"€ 100 / session"];
-    //amLabel.font = [AITools myriadSemiboldSemiCnWithSize:[AITools displaySizeFrom1080DesignSize:63]];
+    amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];
     
