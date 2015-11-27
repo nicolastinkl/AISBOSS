@@ -29,6 +29,17 @@
 
 @implementation AIProposalServiceModel
 
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _service_rating_level = -1;
+    }
+    
+    return self;
+}
+
 @end
 
 @implementation AIProposalProvider

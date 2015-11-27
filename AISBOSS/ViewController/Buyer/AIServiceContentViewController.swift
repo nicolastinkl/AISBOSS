@@ -20,6 +20,8 @@ internal class AIServiceContentViewController: UIViewController {
     
     private let redColor : String = "b32b1d"
     
+    var serviceContentModel:AIProposalServiceModel?
+    
     internal var serviceContentType : AIServiceContentType!
 
     private var preCacheView:UIView?
@@ -137,6 +139,10 @@ internal class AIServiceContentViewController: UIViewController {
             auView.setWidth(self.view.width)
             auView.setTop((self.view.height - auView.height)/2)
         }
+         
+        // 数据填充
+        topView.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
+        
     }    
     
     func makeContentView () {
@@ -283,12 +289,15 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
     //结束录音添加view到scrollview
     func endRecording(audioModel: AIProposalHopeAudioTextModel) {
         audioView?.hidden = true
-        // add a new View Model
-        let audio1 = AIAudioMessageView.currentView()
-        if let cview = preCacheView {
-            addNewSubView(audio1, preView: cview)
-            audio1.fillData(audioModel)
+        if audioModel.audio_length > 0 {
+            // add a new View Model
+            let audio1 = AIAudioMessageView.currentView()
+            if let cview = preCacheView {
+                addNewSubView(audio1, preView: cview)
+                audio1.fillData(audioModel)
+            }
         }
+        
     }
     
     

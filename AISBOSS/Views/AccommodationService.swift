@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class AccommodationService: ServiceDetailView {
+class AccommodationService: ServiceParamlView {
 
     private var period: UILabel!
     private var dayCount: UILabel!
@@ -39,7 +39,7 @@ class AccommodationService: ServiceDetailView {
         
     }
     
-    func loadData(json jonsStr: String) {
+    override func loadData(json jonsStr: String) {
         let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             model = try HotelModel(data: jsonData)

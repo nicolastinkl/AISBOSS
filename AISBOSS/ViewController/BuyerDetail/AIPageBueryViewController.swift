@@ -14,6 +14,8 @@ internal class AIPageBueryViewController: UIViewController {
     // MARK: -> Internal properties
     var bubleModelArray : [AIProposalServiceModel]?
     
+    var selectCurrentIndex:Int? = 0
+    
     var delegate: AIBuyerDetailDelegate?
     
     // MARK: -> Internal static properties
@@ -51,8 +53,17 @@ internal class AIPageBueryViewController: UIViewController {
         
         //处理数据
         initGetingData()
+        
+        //处理默认选中
+        initDefaultSelect()
     }
     
+    func initDefaultSelect(){
+        let index = (self.selectCurrentIndex ?? 0)
+        pageControl.currentPage  = index 
+        
+        pageScrollView.setContentOffset(CGPointMake(CGFloat(index) * self.view.width, 0), animated: false)
+    }
     
     // MARK: -> Internal methods
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil, belowSubview: UIView? = nil) {
@@ -105,6 +116,7 @@ internal class AIPageBueryViewController: UIViewController {
             }else{
                 viewController.serviceContentType = AIServiceContentType.Escort
             }
+            viewController.serviceContentModel = model
             
             self.addSubViewController(viewController, toView: pageView)
             viewTag = viewTag + 1

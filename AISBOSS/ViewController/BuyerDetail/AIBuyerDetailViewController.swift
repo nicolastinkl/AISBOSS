@@ -104,9 +104,11 @@ class AIBuyerDetailViewController : UIViewController {
     func InitBottomView () {
         let bzView = UIBezierPageView(frame: CGRectMake(0,38,200,50))
         bzView.setX((self.view.width - bzView.width)/2)
-        bzView.refershView(8) //self.dataSource.service_list.count
-        //bzView.center = (self.bottomView.subviews.first as! UIImageView).center
+        if let list = self.dataSource.service_list as? [AIProposalServiceModel] {
+             bzView.refershModelView(list)
+        }
         self.bottomView.addSubview(bzView)
+        // layout subviews
         
     }
     
@@ -298,11 +300,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+        //let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
        
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        
-        viewController.bubleModelArray = [serviceDataModel]
+        viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
+        viewController.selectCurrentIndex = indexPath.row
         self.showViewController(viewController, sender: self)
         
     }
