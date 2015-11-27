@@ -67,26 +67,7 @@ internal class UIBezierPageView : UIView {
             for i in 0...count {
                 newSubview[i].removeFromSuperview()
             }
-        }
-        
-       /** if model.count < holdNumber {
-            let count = holdNumber - model.count
-            if (count > 0) && (count%2 == 0) {
-                //偶数
-                let c = count/2
-                for _ in 0...c {
-                    self.subviews.first?.removeFromSuperview()
-                    self.subviews.last?.removeFromSuperview()
-                }
-            }else{
-                //基数
-                
-                let c = count/2
-                for _ in 0...c {
-                    self.subviews.first?.removeFromSuperview()
-                }
-            }
-        }*/
+        } 
         
     }
     
