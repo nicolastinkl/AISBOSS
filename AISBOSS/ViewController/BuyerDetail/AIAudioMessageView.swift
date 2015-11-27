@@ -33,18 +33,33 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBAction func playAction(sender: AnyObject) {
         if let model = currentModelss{
             do{
-                let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
-                player.delegate = self
-                player.play()
-                //start playing gif Images
+                let data = NSData(contentsOfFile: model.audio_url)
+                if let da = data {
+                    
+                    // MAIN ..
+                    //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                    
+                    let player = try AVAudioPlayer(data: da)
+                    player.delegate = self
+                    player.volume  = 1.0
+                    player.prepareToPlay()
+                    player.play()
+
+                    
+                    
+                    //start playing gif Images
+                    let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
+                    self.audioGifImageView.animationImages = images
+                    self.audioGifImageView.animationDuration = 0.8
+                    self.audioGifImageView.startAnimating()
+                    
+                }
                
             }catch{
-                logInfo("catah error")
+                logInfo("AVAudioPlayer play failed error .. ")
             }
-            let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
-            self.audioGifImageView.animationImages = images
-            self.audioGifImageView.animationDuration = 0.8
-            self.audioGifImageView.startAnimating()
+
+            
             
         }
     }

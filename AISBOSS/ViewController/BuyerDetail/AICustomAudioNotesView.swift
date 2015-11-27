@@ -18,7 +18,7 @@ protocol AICustomAudioNotesViewDelegate : class{
 // MARK: -
 // MARK: AICustomAudioNotesView
 // MARK: -
-internal class AICustomAudioNotesView : UIView{
+internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
   // MARK: -
   // MARK: Internal access (aka public for current module)
   // MARK: -
@@ -52,20 +52,41 @@ internal class AICustomAudioNotesView : UIView{
      */
     func startRecording(){
         do {
-            let recorderSettingsDict:[String:AnyObject] = [AVFormatIDKey:NSNumber(unsignedInt: kAudioFormatMPEG4AAC),AVSampleRateKey:NSNumber(float: 1000.0),AVNumberOfChannelsKey:NSNumber(int: 2),AVLinearPCMBitDepthKey:NSNumber(int: 8),AVLinearPCMIsBigEndianKey:NSNumber(bool: false),AVLinearPCMIsFloatKey:NSNumber(bool: false)]
+            let recorderSettingsDict = [
+                AVFormatIDKey:NSNumber(unsignedInt: kAudioFormatMPEG4AAC),
+                AVSampleRateKey:44100.0,
+                AVNumberOfChannelsKey:2,
+                AVLinearPCMBitDepthKey:8,
+                AVLinearPCMIsBigEndianKey:false,
+                AVLinearPCMIsFloatKey:false,
+                AVEncoderBitRateKey : 320000]
+            
+            
             let fileName = getAudioFileName()
             currentAutioUrl = fileName
             recorder = try AVAudioRecorder(URL: NSURL(string: fileName)!, settings: recorderSettingsDict)
             
             print(fileName)
-            if let rder = recorder {
-                //开始录音..
-                rder.meteringEnabled = true
-                rder.prepareToRecord()
-                rder.record()
+            if let _ = recorder {
                 
-                timer = NSTimer(timeInterval: 0.1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
-                NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSDefaultRunLoopMode)
+                AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
+                    
+                    print("录音权限查询结果： \(granted)")
+                    do{
+                        try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+                        try AVAudioSession.sharedInstance().setActive(true)
+                    }catch{
+                    }
+                    
+                    //开始录音..
+                    self.recorder!.delegate = self
+                    self.recorder!.meteringEnabled = true
+                    self.recorder!.prepareToRecord()
+                    self.recorder!.record()
+                    
+                    self.timer = NSTimer(timeInterval: 0.1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
+                    NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSDefaultRunLoopMode)
+                })
             }
         } catch {
             logInfo("startRecording error")
@@ -128,6 +149,33 @@ internal class AICustomAudioNotesView : UIView{
         }        
     }
     
+    /// MARK:  Finish Audio..
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        let data = NSData(contentsOfFile: currentAutioUrl) 
+        if data != nil {
+            
+            let audioLength: Int = data!.length/1024/25
+            let model = AIProposalHopeAudioTextModel()
+            model.audio_url = currentAutioUrl
+            model.audio_length = audioLength
+            model.type = 0
+            self.delegateAudio?.endRecording(model)
+            
+            /// 处理文件存储
+            
+            let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+            videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
+                print("saveInBackgroundWithBlock : \(videoFile.url)")
+                
+            })
+        }
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder,
+        error: NSError?) {
+            print("\(error!.localizedDescription)")
+    }
+    
     // MARK: -
     // MARK: Private access
     // MARK: -
@@ -137,8 +185,6 @@ internal class AICustomAudioNotesView : UIView{
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
             
-            /// 处理文件存储
-            
             /// 松开 结束录音
             rder.stop()
             
@@ -146,27 +192,6 @@ internal class AICustomAudioNotesView : UIView{
             timer = nil
             audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
             
-            let data = NSData(contentsOfFile: currentAutioUrl) //NSURL(string: currentAutioUrl)!
-            if data != nil {
-                
-                let audioLength: Int = data!.length/1024
-                let model = AIProposalHopeAudioTextModel()
-                model.audio_url = currentAutioUrl
-                model.audio_length = audioLength
-                model.type = 0
-                self.delegateAudio?.endRecording(model)
-                
-                
-                let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
-                videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    
-//                    let size = videoFile.metaData.valueForKey("size") as! Int
-                    
-                    
-                })
-                
-            }
-            recorder = nil
             logInfo("松开 结束录音")
         }else{
             
