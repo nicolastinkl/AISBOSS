@@ -198,7 +198,7 @@ class AIMsgTagCell: UICollectionViewCell {
         label.opaque = false
         label.textColor = UIColor.whiteColor()
         label.layer.borderColor = UIColor.whiteColor().CGColor
-        label.layer.borderWidth = 1
+        label.layer.borderWidth = 0.5
         label.layer.cornerRadius = 8;
         label.textAlignment = .Center
         label.font = AIMsgTagCell.defaultFont
