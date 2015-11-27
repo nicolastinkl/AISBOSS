@@ -128,6 +128,21 @@
 
 #pragma mark - 构造comment
 
+- (NSAttributedString *)fixedString:(NSString *)string
+{
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:string];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.lineSpacing = [AITools displaySizeFrom1080DesignSize:18];
+    [attrStr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, string.length)];
+    [attrStr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:_commentFontSize] range:NSMakeRange(0, string.length)];
+    [attrStr addAttribute:NSForegroundColorAttributeName value:Color_MiddleWhite range:NSMakeRange(0, string.length)];
+    
+    return attrStr;
+}
+
+
 - (void)makeComment
 {
     CGFloat y = CGRectGetMaxY(_headImageView.frame) + [AITools displaySizeFrom1080DesignSize:25];
@@ -140,6 +155,10 @@
     _commentLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.comment fontSize:_commentFontSize color:Color_MiddleWhite];
     _commentLabel.numberOfLines = 0;
     _commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    _commentLabel.attributedText = [self fixedString:self.commentModel.comment];
+    [_commentLabel sizeToFit];
+    
+    
     [self addSubview:_commentLabel];
 }
 
