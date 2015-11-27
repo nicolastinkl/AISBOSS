@@ -9,7 +9,7 @@
 import Foundation
 import AISpring
 
-class AIAudioMessageView: UIView {
+class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
     // MARK: currentView
     
@@ -34,12 +34,33 @@ class AIAudioMessageView: UIView {
         if let model = currentModelss{
             do{
                 let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
+                player.delegate = self
                 player.play()
+                //start playing gif Images
+               
             }catch{
-                
+                logInfo("catah error")
             }
+            let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
+            self.audioGifImageView.animationImages = images
+            self.audioGifImageView.animationDuration = 0.8
+            self.audioGifImageView.startAnimating()
             
         }
+    }
+    
+    // MARK: Delegate...
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         
+        self.audioGifImageView.stopAnimating()
+        self.audioGifImageView.image = UIImage(named: "ai_audio_bg")
+        logInfo("audioPlayerDidFinishPlaying")
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
+        self.audioGifImageView.stopAnimating()
+        self.audioGifImageView.image = UIImage(named: "ai_audio_bg")
+        logInfo("audioPlayerDecodeErrorDidOccur error\(error?.description)")
     }
 }

@@ -148,17 +148,20 @@ internal class AICustomAudioNotesView : UIView{
             
             let data = NSData(contentsOfFile: currentAutioUrl) //NSURL(string: currentAutioUrl)!
             if data != nil {
+                
+                let audioLength: Int = data!.length/1024
+                let model = AIProposalHopeAudioTextModel()
+                model.audio_url = currentAutioUrl
+                model.audio_length = audioLength
+                model.type = 0
+                self.delegateAudio?.endRecording(model)
+                
+                
                 let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
                 videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
                     
-                    let size = videoFile.metaData.valueForKey("size") as! Int
-                    let audioLength: Int = size/1024
+//                    let size = videoFile.metaData.valueForKey("size") as! Int
                     
-                    let model = AIProposalHopeAudioTextModel()
-                    model.audio_url = videoFile.url
-                    model.audio_length = audioLength
-                    model.type = 0
-                    self.delegateAudio?.endRecording(model)
                     
                 })
                 

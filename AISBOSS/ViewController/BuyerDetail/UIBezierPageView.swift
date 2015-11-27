@@ -67,7 +67,7 @@ internal class UIBezierPageView : UIView {
             for i in 0...count {
                 newSubview[i].removeFromSuperview()
             }
-        } 
+        }
         
     }
     

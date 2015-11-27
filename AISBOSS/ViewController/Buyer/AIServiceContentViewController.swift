@@ -243,7 +243,10 @@ extension AIServiceContentViewController: UITextFieldDelegate{
         // add a new View Model
         let audio1 = AITextMessageView.currentView()
         if let cview = preCacheView {
+
             addNewSubView(audio1, preView: cview)
+            audio1.content.text = textField.text
+            
         }
         textField.resignFirstResponder()
         textField.text = ""
