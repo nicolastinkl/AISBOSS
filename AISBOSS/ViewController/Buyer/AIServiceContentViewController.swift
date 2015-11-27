@@ -211,6 +211,14 @@ internal class AIServiceContentViewController: UIViewController {
         let audio1 = AIAudioMessageView.currentView()
         addNewSubView(audio1, preView: audioView)
         
+        let model = AIProposalHopeAudioTextModel()
+        model.audio_url = "Users/tinkl/Library/Developer/CoreSimulator/Devices/D6EAFFDE-A4C1-45F7-927F-8227CF1DC02F/data/Containers/Data/Application/5EAAA138-9CE8-41FD-A285-3645B23819D3/Documents/1448610413.aac"
+        model.audio_length = 8
+        model.type = 0
+        audio1.fillData(model)
+        
+        
+        
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)
         

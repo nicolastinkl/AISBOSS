@@ -8,6 +8,7 @@
 
 import Foundation
 import AISpring
+import AIAlertView
 
 class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
@@ -33,30 +34,21 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBAction func playAction(sender: AnyObject) {
         if let model = currentModelss{
             do{
-                let data = NSData(contentsOfFile: model.audio_url)
-                if let da = data {
-                    
-                    // MAIN ..
-                    //try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                    
-                    let player = try AVAudioPlayer(data: da)
-                    player.delegate = self
-                    player.volume  = 1.0
-                    player.prepareToPlay()
-                    player.play()
-
-                    
-                    
-                    //start playing gif Images
-                    let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
-                    self.audioGifImageView.animationImages = images
-                    self.audioGifImageView.animationDuration = 0.8
-                    self.audioGifImageView.startAnimating()
-                    
-                }
+               let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
+                player.delegate = self
+                player.prepareToPlay()
+                player.play()
+                
+                //start playing gif Images
+                let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
+                self.audioGifImageView.animationImages = images
+                self.audioGifImageView.animationDuration = 0.8
+                self.audioGifImageView.startAnimating()
                
             }catch{
                 logInfo("AVAudioPlayer play failed error .. ")
+                
+                AIAlertView().showInfo("Player Error.", subTitle: "", closeButtonTitle: "Info", duration: 3)
             }
 
             
