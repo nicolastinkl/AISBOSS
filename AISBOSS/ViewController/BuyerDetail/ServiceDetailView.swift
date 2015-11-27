@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceDetailView: UIView {
+class ServiceParamlView: UIView {
 
     var paramData : NSDictionary?
     
@@ -28,5 +28,10 @@ class ServiceDetailView: UIView {
         
         return str
     }
+    
+    func loadData(json jonsStr: String) {
+        
+    }
 
 }
+

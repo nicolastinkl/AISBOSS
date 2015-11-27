@@ -101,6 +101,15 @@
 @end
 
 @protocol AIProposalServiceModel @end
+
+
+// 服务参数设置标记
+typedef NS_ENUM(NSInteger, ParamSettingFlag) {
+    ParamSettingFlagUnset,
+    ParamSettingFlagSet
+};
+
+
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
@@ -112,6 +121,7 @@
 @property (strong, nonatomic) ParamModel<Optional> * service_param;
 @property (assign, nonatomic) NSInteger param_setting_flag;
 @property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
+@property (assign, nonatomic) NSInteger service_rating_level;
 
 @end
 

@@ -45,19 +45,7 @@ class SimpleServiceViewContainer: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
-        topView.addSubview(starRateView)
-        
-        layout(starRateView, review) {star, review in
-            star.left == review.right - 2
-            star.height == starRateView.height
-            star.width == starRateView.width
-            star.top == review.top + 1
-        }
-        
-
-        
+     
         name.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
         price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         review.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
@@ -77,7 +65,25 @@ class SimpleServiceViewContainer: UIView {
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
-        if let priceModel = dataModel.service_price {
+        name.text = dataModel.service_desc ?? ""
+        
+        setPrice()
+
+        setParamView()
+        
+        if hasHopeList() {
+            createHopeList()
+        }
+        
+        if isParamSetted() {
+            settingState.image = UIImage(named: "gear_white")
+        }
+        
+        createReviewView(dataModel.service_rating_level)
+    }
+    
+    private func setPrice() {
+        if let priceModel = dataModel!.service_price {
             price.text = priceModel.original ?? "$0"
             if priceModel.saved != nil {
                 savedMoney.text = priceModel.saved
@@ -89,19 +95,17 @@ class SimpleServiceViewContainer: UIView {
         } else {
             price.text = "$0"
         }
-        
-        name.text = dataModel.service_desc ?? ""
-        
-        
-        
-        if dataModel.service_param != nil {
+    }
+    
+    private func setParamView() {
+        if dataModel!.service_param != nil {
             
-            if let key = dataModel.service_param.param_key {
+            if let key = dataModel!.service_param.param_key {
                 let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
-                if let paramValueString = dataModel.service_param.param_value{
-//                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
+                if let paramValueString = dataModel!.service_param.param_value{
+                    //                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
                     //获取到参数的dictionary
-//                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    //                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     
                     if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
                         addParamsView(serviceView)
@@ -109,17 +113,14 @@ class SimpleServiceViewContainer: UIView {
                 }
             }
         }
-        
-        if dataModel.wish_list != nil && dataModel.wish_list.hope_list != nil {
-            createHopeList(dataModel.wish_list)
-        }
-        
-        if dataModel.param_setting_flag == 1 {
-            settingState.image = UIImage(named: "gear_white")
-        }
     }
     
-    private func createHopeList(hopeModel: AIProposalHopeModel) {
+    private func hasHopeList() -> Bool {
+        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil
+    }
+    
+    private func createHopeList() {
+        let hopeModel = dataModel!.wish_list
         let msgContent = ServiceSettingView.createInstance()
         msgContent.loadData(model: hopeModel)
         
@@ -144,77 +145,75 @@ class SimpleServiceViewContainer: UIView {
         frame.size.height = totalHeight()
     }
     
+    private func isParamSetted() -> Bool {
+        return dataModel!.param_setting_flag == ParamSettingFlag.Set.rawValue
+    }
     
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
+        var paramView: ServiceParamlView?
+        
         switch viewTemplate {
         case .PlaneTicket:
-            let v = FlightServiceView.createInstance()
-                v.loadData(json: jsonData)
-            return v
+            paramView = FlightServiceView.createInstance()
         case .Taxi:
-            let v = TransportService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(json: jsonData)
-            return v
+            paramView = TransportService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .Hotel:
-            let v = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(json: jsonData)
-            return v
+            paramView = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .SingleParam:
-            let v = AITitleAndIconTextView.createInstance()
-            v.loadData(json: jsonData)
-            return v
+            paramView = AITitleAndIconTextView.createInstance()
         case .MutilParams:
-            let v = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(json: jsonData)
-            return v
+            paramView = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .MutilTextAndImage:
-            let v = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(json: jsonData)
-            return v
+            paramView = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .Shopping:
-            let v = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            v.loadData(json: jsonData)
-            return v
+            paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
+        
+        paramView?.loadData(json: jsonData)
+        
+        return paramView
+    }
+    
+    func selfHeight() -> CGFloat {
+        return  topHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
     }
     
     private func addParamsView(serviceParams: UIView) {
-        frame.size.height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        let height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        self.frame.size.height = height
+        
         paramViewHeight = serviceParams.frame.height
         paramsView.addSubview(serviceParams)
         
         layout(paramsView, serviceParams) {container, item in
-            item.left == container.left
+            item.height == container.height
             item.top == container.top
-            item.bottom == container.bottom
+            item.width == container.width
             item.right == container.right
+            
         }
+         
+        
     }
     
-    private func addMessageView() {
-        
-        let msgContent = ServiceSettingView.createInstance()
-        
-        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
-        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
-        messageHeight.constant = msgContent.height
-        
-        messageView.setNeedsUpdateConstraints()
-        
-        messageView.addSubview(msgContent)
-        
-        layout(messageView, msgContent) {container, view in
-            view.left == container.left
-            view.top == container.top
-            view.bottom == container.bottom
-            view.right == container.right
+    private func createReviewView(rating: Int) {
+        if rating < 0  {
+            review.hidden = true
+            return
         }
         
-        divider.hidden = false
-        dividerHeight.constant = 0.5
-        divider.setNeedsUpdateConstraints()
-        frame.size.height = totalHeight()
+        let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")
+        topView.addSubview(starRateView)
+        let score: CGFloat = CGFloat(rating) / 10
+        starRateView.scorePercent = score
+        
+        layout(starRateView, review) {star, review in
+            star.left == review.right - 2
+            star.height == starRateView.height
+            star.width == starRateView.width
+            star.top == review.top + 1
+        }
     }
     
     private func topHeight() -> CGFloat {

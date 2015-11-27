@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FlightServiceView: ServiceDetailView {
+class FlightServiceView: ServiceParamlView {
 
     @IBOutlet weak var takeOffTime: UILabel!
     @IBOutlet weak var fromAirport: UILabel!
@@ -46,7 +46,7 @@ class FlightServiceView: ServiceDetailView {
         toAirport.text = getStringContent("arrival_desc")
     }
     
-    func loadData(json jonsStr: String) {
+    override func loadData(json jonsStr: String) {
         let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
         do {
             let model = try PlaneTicketModel(data: jsonData)
