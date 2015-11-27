@@ -12,7 +12,7 @@ import Cartography
 class AITitleAndIconTextView: ServiceParamlView {
 
     static let TITLE_HEIGHT: CGFloat = 17
-    static let ICON_VERTICAL_SPACE: CGFloat = 11
+    static let ICON_VERTICAL_SPACE: CGFloat = 8
   
     @IBOutlet weak var firstTitle: UILabel!
     @IBOutlet weak var firstIcon: UIImageView!
@@ -63,14 +63,13 @@ class AITitleAndIconTextView: ServiceParamlView {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {
+                frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
+                
                 if model.product_name != nil && model.product_name != "" {
-              //      titleHeight.constant = AITitleAndIconTextView.TITLE_HEIGHT
-              //      firstTitle.setNeedsUpdateConstraints()
                     firstTitle.hidden = false
                     firstTitle.text = model.product_name
-                    iconMaginTop.constant += AITitleAndIconTextView.TITLE_HEIGHT
+                    iconMaginTop.constant = AITitleAndIconTextView.ICON_VERTICAL_SPACE
                     firstIcon.setNeedsUpdateConstraints()
-                    frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
                 }
             } else {
                 let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
