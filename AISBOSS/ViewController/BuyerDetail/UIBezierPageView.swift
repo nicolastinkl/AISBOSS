@@ -51,11 +51,43 @@ internal class UIBezierPageView : UIView {
                     imageView.image = UIImage(named: "selectwhiteSettings")
                 }
             }else{
-                imageView.image = UIColor.clearColor().imageWithColor()
+                imageView.image = UIImage(named: "selectSettings")//UIColor.clearColor().imageWithColor()
             }
+            imageView.tag = index
             self.addSubview(imageView)
             index = index + 1
         }
+        
+        if model.count < holdNumber {
+            //筛选出最顶部的view
+            let newSubview = self.subviews.sort({$0.top > $1.top})
+            //移除剩余的view
+            let count = holdNumber - model.count - 1
+            
+            for i in 0...count {
+                newSubview[i].removeFromSuperview()
+            }
+        }
+        
+       /** if model.count < holdNumber {
+            let count = holdNumber - model.count
+            if (count > 0) && (count%2 == 0) {
+                //偶数
+                let c = count/2
+                for _ in 0...c {
+                    self.subviews.first?.removeFromSuperview()
+                    self.subviews.last?.removeFromSuperview()
+                }
+            }else{
+                //基数
+                
+                let c = count/2
+                for _ in 0...c {
+                    self.subviews.first?.removeFromSuperview()
+                }
+            }
+        }*/
+        
     }
     
     func refershView(number: Int = 0){
