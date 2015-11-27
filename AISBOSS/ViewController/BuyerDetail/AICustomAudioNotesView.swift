@@ -164,8 +164,16 @@ internal class AICustomAudioNotesView : UIView{
                 
             }
             recorder = nil
-            AVFile.fileWithURL("")
             logInfo("松开 结束录音")
+        }else{
+            
+            timer?.invalidate()
+            timer = nil
+            let model = AIProposalHopeAudioTextModel()
+            model.audio_url = ""
+            model.audio_length = 0
+            model.type = 0
+            self.delegateAudio?.endRecording(model)
         }
         
     }

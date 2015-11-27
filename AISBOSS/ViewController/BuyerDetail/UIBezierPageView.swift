@@ -24,6 +24,7 @@ internal class UIBezierPageView : UIView {
     let kSphereDamping:Float = 0.7
     let kSphereFixPosition:CGFloat = 0
     
+    var modelList:[AIProposalServiceModel]?
     // MARK: -> Internal class methods
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +33,29 @@ internal class UIBezierPageView : UIView {
     // MARK: -> Internal init methods
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func refershModelView(model: [AIProposalServiceModel]){
+        //let number = model.count
+        let holdNumber = 8
+        let array = centerForCalculatePosition(holdNumber)
+        var index:Int = 0
+        for point in array {
+            let position = point
+            let imageView = UIImageView(frame: CGRectMake(position.x-10, position.y, 22/2.5, 22/2.5))
+            if index < model.count {
+                let mod = model[index]
+                if mod.is_main_flag == 0 {
+                    imageView.image = UIImage(named: "selectSettings")
+                }else{
+                    imageView.image = UIImage(named: "selectwhiteSettings")
+                }
+            }else{
+                imageView.image = UIColor.clearColor().imageWithColor()
+            }
+            self.addSubview(imageView)
+            index = index + 1
+        }
     }
     
     func refershView(number: Int = 0){
