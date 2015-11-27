@@ -11,8 +11,8 @@ import Cartography
 
 class SimpleServiceViewContainer: UIView {
     
-    private static let DIVIDER_TOP_MARGIN: CGFloat = 8
-    private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 8
+    private static let DIVIDER_TOP_MARGIN: CGFloat = 1
+    private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var logo: UIImageView!

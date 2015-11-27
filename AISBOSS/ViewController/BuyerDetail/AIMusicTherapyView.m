@@ -187,10 +187,29 @@
     
     //
     
-    y += ([AITools displaySizeFrom1080DesignSize:50] - [AITools displaySizeFrom1080DesignSize:34]);
+    y += [AITools displaySizeFrom1080DesignSize:50];
     
-    UPLabel *commentLabel = [AIViews normalLabelWithFrame:CGRectMake(_sideMargin, y, width, [AITools displaySizeFrom1080DesignSize:73]) text:@"Helpful Reviews" fontSize:fontSize color:[UIColor whiteColor]];
-    [self addSubview:commentLabel];
+    
+    //
+    
+    NSString *ctitle = @"Helpful Reviews";
+    UIFont *cfont = [AITools myriadSemiCondensedWithSize:fontSize];
+    CGSize csize = [ctitle sizeWithFont:cfont forWidth:width];
+    
+    UIImage *cimage = [UIImage imageNamed:@"Comment_Title_BG"];
+    cimage = [cimage resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
+    UIImageView *cimageView = [[UIImageView alloc] initWithImage:cimage];
+    CGFloat cimageViewHeight = [AITools displaySizeFrom1080DesignSize:73];
+    cimageView.frame = CGRectMake(_sideMargin, y, 30 + csize.width, cimageViewHeight);
+    
+    [self addSubview:cimageView];
+    
+    
+    //
+    UPLabel *commentLabel = [AIViews normalLabelWithFrame:CGRectMake(0, 0, cimageView.frame.size.width, [AITools displaySizeFrom1080DesignSize:73]) text:ctitle fontSize:fontSize color:[UIColor whiteColor]];
+    commentLabel.font = cfont;
+    commentLabel.textAlignment = NSTextAlignmentCenter;
+    [cimageView addSubview:commentLabel];
     
     //
     y += [AITools displaySizeFrom1080DesignSize:73];
