@@ -155,10 +155,14 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(galleryView)
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
         galleryView.setTop(5)
-        
+
         var holdView:UIView?
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
+            galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png"]
+            galleryView.setTop(5)
+            
+            
             let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
             let paramedicView = AIParamedicView(frame: paramedicFrame)
             //scrollView.addSubview(musicView)

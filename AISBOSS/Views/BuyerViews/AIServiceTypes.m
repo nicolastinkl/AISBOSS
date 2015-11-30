@@ -73,7 +73,7 @@
 {
     CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _topMargin;
     CGFloat width = CGRectGetWidth(self.frame);
-    CGFloat margin = _radioSize + _radioMargin;
+    CGFloat margin = _radioSize + _radioMargin - 2;
     
     for (NSInteger i = 0; i < self.serviceTypesModel.types.count; i++) {
         
@@ -93,7 +93,7 @@
         radioButton.userInteractionEnabled = NO;
         radioButton.tag = 999;
         radioButton.selected = _selectedIndex == i;
-        
+
         [radioView addSubview:radioButton];
         
         //

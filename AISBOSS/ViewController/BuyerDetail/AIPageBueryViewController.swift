@@ -84,10 +84,13 @@ internal class AIPageBueryViewController: UIViewController {
     // MARK: -> Internal class
     
     func initBground(){
-        let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
-        bgImageView.frame = self.view.frame
-        self.view.addSubview(bgImageView)
-    }    
+        
+        self.view.backgroundColor = AITools.colorWithR(0x1e, g: 0x1b, b: 0x38);
+        
+//        let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
+//        bgImageView.frame = self.view.frame
+//        self.view.addSubview(bgImageView)
+    }
     
     func initControls(){
         
