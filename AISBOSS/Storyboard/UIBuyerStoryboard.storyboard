@@ -169,18 +169,18 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kby-pV-MOa">
-                                        <rect key="frame" x="541" y="11" width="46" height="46"/>
+                                        <rect key="frame" x="550" y="18" width="32" height="32"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="Kwk-Gw-l1e"/>
-                                            <constraint firstAttribute="height" constant="46" id="ebD-TJ-Gd3"/>
+                                            <constraint firstAttribute="width" constant="32" id="Kwk-Gw-l1e"/>
+                                            <constraint firstAttribute="height" constant="32" id="ebD-TJ-Gd3"/>
                                         </constraints>
                                         <state key="normal" image="viocephonebutton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCN-P4-SJd">
-                                        <rect key="frame" x="490" y="11" width="46" height="46"/>
+                                        <rect key="frame" x="499" y="18" width="46" height="46"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="CZX-kV-DuA"/>
@@ -280,7 +280,7 @@
                                 <constraints>
                                     <constraint firstItem="H8s-Ef-iLH" firstAttribute="top" secondItem="mkb-ag-P9a" secondAttribute="bottom" constant="8" id="020-2Y-KBN"/>
                                     <constraint firstAttribute="trailing" secondItem="lJU-J2-MTd" secondAttribute="trailing" constant="18" id="17w-wg-BOz"/>
-                                    <constraint firstItem="kby-pV-MOa" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="top" constant="11" id="8t5-Tl-oiu"/>
+                                    <constraint firstItem="kby-pV-MOa" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="top" constant="18" id="8t5-Tl-oiu"/>
                                     <constraint firstItem="ios-QE-FUq" firstAttribute="leading" secondItem="H8s-Ef-iLH" secondAttribute="trailing" constant="-9" id="Ac5-Z7-kft"/>
                                     <constraint firstItem="As3-0T-zUo" firstAttribute="leading" secondItem="dgC-qc-VsT" secondAttribute="leading" constant="17" id="BBD-Gt-LJD"/>
                                     <constraint firstItem="mkb-ag-P9a" firstAttribute="leading" secondItem="85O-6e-yvW" secondAttribute="trailing" constant="3" id="CXJ-hg-6ch"/>
@@ -298,7 +298,7 @@
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="leading" secondItem="dgC-qc-VsT" secondAttribute="leading" constant="34" id="nyU-kL-emv"/>
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="top" secondItem="As3-0T-zUo" secondAttribute="bottom" constant="13" id="sAi-GK-9oS"/>
                                     <constraint firstItem="qCN-P4-SJd" firstAttribute="top" secondItem="kby-pV-MOa" secondAttribute="top" id="tAc-sN-pLO"/>
-                                    <constraint firstAttribute="trailing" secondItem="kby-pV-MOa" secondAttribute="trailing" constant="13" id="vPd-1Z-AuB"/>
+                                    <constraint firstAttribute="trailing" secondItem="kby-pV-MOa" secondAttribute="trailing" constant="18" id="vPd-1Z-AuB"/>
                                     <constraint firstItem="kby-pV-MOa" firstAttribute="leading" secondItem="qCN-P4-SJd" secondAttribute="trailing" constant="5" id="w5A-qp-qMe"/>
                                     <constraint firstItem="Ksj-KL-fh2" firstAttribute="top" secondItem="85O-6e-yvW" secondAttribute="top" id="y1z-m6-eaE"/>
                                 </constraints>

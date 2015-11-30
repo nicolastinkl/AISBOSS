@@ -33,23 +33,30 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
     @IBAction func playAction(sender: AnyObject) {
         if let model = currentModelss{
-            do{
-               let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
-                player.delegate = self
-                player.prepareToPlay()
-                player.play()
+            
+            
+            Async.main(after: 0.1, block: { () -> Void in
                 
-                //start playing gif Images
-                let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
-                self.audioGifImageView.animationImages = images
-                self.audioGifImageView.animationDuration = 0.8
-                self.audioGifImageView.startAnimating()
-               
-            }catch{
-                logInfo("AVAudioPlayer play failed error .. ")
+                do{
+                    
+                    let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
+                    //player.delegate = self
+                    player.prepareToPlay()
+                    player.play()
+                    
+                    //start playing gif Images
+                    let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
+                    self.audioGifImageView.animationImages = images
+                    self.audioGifImageView.animationDuration = 0.8
+                    self.audioGifImageView.startAnimating()
+                    
+                }catch{
+                    logInfo("AVAudioPlayer play failed error .. ")
+                    
+                    AIAlertView().showInfo("Player Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
+                }
                 
-                AIAlertView().showInfo("Player Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
-            }
+            })
         }
     }
     
