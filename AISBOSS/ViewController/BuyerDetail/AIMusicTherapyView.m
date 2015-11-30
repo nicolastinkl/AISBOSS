@@ -134,7 +134,8 @@
     [self addSubview:evaluationLabel];
     
     //
-    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"178 More Reviews >" fontSize:fontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
+    CGFloat moreFontSize = [AITools displaySizeFrom1080DesignSize:31];
+    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"178 More Reviews >" fontSize:moreFontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
     moreLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:moreLabel];
     
@@ -176,18 +177,17 @@
     NSArray *models = [self fakeCharts];
     
     for (AIMusicChartModel *model in models) {
-        y += [AITools displaySizeFrom1080DesignSize:23];
         CGFloat height = [AITools displaySizeFrom1080DesignSize:34];
         CGRect frame = CGRectMake(_sideMargin, y, width, height);
         AIHorizontalBarChart *chart = [[AIHorizontalBarChart alloc] initWithFrame:frame model:model];
         [self addSubview:chart];
         
-        y += height;
+        y += height + [AITools displaySizeFrom1080DesignSize:23];
     }
     
     //
     
-    y += [AITools displaySizeFrom1080DesignSize:50];
+    y += [AITools displaySizeFrom1080DesignSize:50] - [AITools displaySizeFrom1080DesignSize:23];
     
     
     //
@@ -222,7 +222,6 @@
     NSMutableArray *mIcons = [[NSMutableArray alloc] initWithArray:@[[UIImage imageNamed:@"MusicHead1"], [UIImage imageNamed:@"MusicHead2"]]];
     
     for (AIMusicCommentsModel *comment in comments) {
-        
         
         CGRect frame = CGRectMake(_sideMargin, y, width, 0);
         

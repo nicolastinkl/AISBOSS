@@ -81,7 +81,7 @@
     [self addSubview:detailText];
     
     //
-    y += CGRectGetHeight(detailText.frame) + [AITools displaySizeFrom1080DesignSize:34];
+    y += CGRectGetHeight(detailText.frame) + [AITools displaySizeFrom1080DesignSize:34] - 4;
     [self addLineViewAtY:y];
     //
     y += [AITools displaySizeFrom1080DesignSize:38];

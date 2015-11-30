@@ -88,7 +88,7 @@
 - (void)makeStars
 {
     CGFloat lr = _displayRate ;
-    CGFloat x = _starMargin;
+    CGFloat x = 0;
     
     while (lr >= 1) {
         x = [self addStarImageWithName:@"Yellow_Star" atX:x];
