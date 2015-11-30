@@ -80,7 +80,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoDown" translatesAutoresizingMaskIntoConstraints="NO" id="Vv2-Zz-luE">
-                                                    <rect key="frame" x="566" y="64" width="16" height="13"/>
+                                                    <rect key="frame" x="566" y="59" width="16" height="13"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="MY0-k1-3C0"/>
@@ -99,7 +99,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="77" id="1FP-x8-I28"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vv2-Zz-luE" secondAttribute="bottom" id="DOh-hz-NK0"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vv2-Zz-luE" secondAttribute="bottom" constant="5" id="DOh-hz-NK0"/>
                                                 <constraint firstAttribute="trailing" secondItem="ALy-Am-rau" secondAttribute="trailing" constant="16" id="Qqh-Z0-weP"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" id="fgf-RO-3GM"/>
                                                 <constraint firstItem="ALy-Am-rau" firstAttribute="leading" secondItem="Mv0-83-Itj" secondAttribute="leading" constant="33" id="mfv-UG-ODK"/>

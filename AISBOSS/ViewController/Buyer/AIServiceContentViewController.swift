@@ -254,10 +254,11 @@ extension AIServiceContentViewController: UITextFieldDelegate{
 
             addNewSubView(audio1, preView: cview)
             audio1.content.text = textField.text
-            
+            scrollViewBottom()            
         }
         textField.resignFirstResponder()
         textField.text = ""
+
         return true
     }
 }
@@ -306,9 +307,16 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
                 audio1.fillData(audioModel)
+                
+                scrollViewBottom()
             }
         }
         
+    }
+    
+    func scrollViewBottom(){
+        let bottomPoint = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
+        self.scrollView.setContentOffset(bottomPoint, animated: true)
     }
     
     
