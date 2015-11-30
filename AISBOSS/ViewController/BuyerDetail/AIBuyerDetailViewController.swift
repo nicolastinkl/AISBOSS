@@ -296,10 +296,21 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        //let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
        
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
+        
+        let model1 = AIProposalServiceModel()
+        if serviceDataModel.service_id == 1 {
+            model1.service_id = 2
+        }else{
+            model1.service_id = 1
+        }
+        model1.service_desc = "Service"
+        
+        let array = [serviceDataModel,model1]
+        //viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
+        viewController.bubleModelArray = array
         viewController.selectCurrentIndex = indexPath.row
         self.showViewController(viewController, sender: self)
         

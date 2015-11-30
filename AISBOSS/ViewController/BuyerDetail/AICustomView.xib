@@ -8,11 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AICustomView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="358"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM9-Dw-aNC">
-                    <rect key="frame" x="0.0" y="78" width="600" height="280"/>
+                    <rect key="frame" x="0.0" y="78" width="600" height="240"/>
                     <animations/>
                     <color key="backgroundColor" red="0.70196078429999997" green="0.16862745100000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="AISpring">
-                    <rect key="frame" x="8" y="136" width="584" height="106"/>
+                    <rect key="frame" x="8" y="136" width="584" height="83"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
@@ -80,7 +80,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-e5-HX4" customClass="DesignableView" customModule="AISpring">
-                    <rect key="frame" x="14" y="250" width="572" height="101"/>
+                    <rect key="frame" x="14" y="227" width="572" height="84"/>
                     <animations/>
                     <color key="backgroundColor" red="0.61176470588235299" green="0.11764705882352941" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -109,7 +109,7 @@
                 <constraint firstAttribute="trailing" secondItem="XoN-dI-8D6" secondAttribute="trailing" id="XlW-QS-bHk"/>
                 <constraint firstItem="SM9-Dw-aNC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZhB-b1-Avo"/>
                 <constraint firstAttribute="trailing" secondItem="ise-OE-xtY" secondAttribute="trailing" constant="8" id="dVG-l1-xDb"/>
-                <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="250" id="dk6-gX-Pcl"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="227" id="dk6-gX-Pcl"/>
                 <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="ise-OE-xtY" secondAttribute="bottom" constant="8" id="g2V-U8-utc"/>
                 <constraint firstItem="SM9-Dw-aNC" firstAttribute="top" secondItem="XoN-dI-8D6" secondAttribute="bottom" constant="-2" id="h4u-3f-bG9"/>
                 <constraint firstItem="ise-OE-xtY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="hAH-Iq-akk"/>
@@ -134,7 +134,7 @@
                 <outlet property="title" destination="Ugh-Zu-ZTB" id="P5u-3U-3nN"/>
                 <outlet property="unselectView" destination="ise-OE-xtY" id="RUD-bK-pqQ"/>
             </connections>
-            <point key="canvasLocation" x="214" y="497"/>
+            <point key="canvasLocation" x="214" y="478"/>
         </view>
     </objects>
     <resources>
