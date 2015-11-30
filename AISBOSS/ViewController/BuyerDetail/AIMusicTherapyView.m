@@ -45,9 +45,18 @@
     _sideMargin = [AITools displaySizeFrom1080DesignSize:35];
 }
 
+- (void)addLineViewAtX:(CGFloat)x y:(CGFloat)y width:(CGFloat)width
+{
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, 0.5)];
+    line.backgroundColor = [AITools colorWithR:0xa1 g:0xa4 b:0xba a:0.4];
+    
+    [self addSubview:line];
+}
+
+
 - (void)addLineViewAtY:(CGFloat)y
 {
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 1)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 0.5)];
     line.backgroundColor = [AITools colorWithR:0xa1 g:0xa4 b:0xba a:0.4];
     
     [self addSubview:line];
@@ -221,15 +230,24 @@
     NSArray *comments = [self fakeComments];
     NSMutableArray *mIcons = [[NSMutableArray alloc] initWithArray:@[[UIImage imageNamed:@"MusicHead1"], [UIImage imageNamed:@"MusicHead2"]]];
     
-    for (AIMusicCommentsModel *comment in comments) {
+    for (int i = 0; i < comments.count; i++) {
         
+        
+        AIMusicCommentsModel *comment = [comments objectAtIndex:i];
         CGRect frame = CGRectMake(_sideMargin, y, width, 0);
         
         AICommentCell *cell = [[AICommentCell alloc] initWithFrame:frame model:comment];
         [self addSubview:cell];
         
         y += CGRectGetHeight(cell.frame) + [AITools displaySizeFrom1080DesignSize:22];
-        [self addLineViewAtY:y];
+        
+        if (i == comments.count - 1) {
+            [self addLineViewAtY:y];
+        }
+        else
+        {
+            [self addLineViewAtX:_sideMargin y:y width:CGRectGetWidth(self.frame) - _sideMargin*2];
+        }
         
         y +=  [AITools displaySizeFrom1080DesignSize:22];
         
@@ -239,6 +257,8 @@
         
     }
     
+    
+    y -= [AITools displaySizeFrom1080DesignSize:22] -0.5;
     // reset frame
     CGRect myFrame = self.frame;
     myFrame.size.height = y;
