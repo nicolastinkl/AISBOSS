@@ -31,7 +31,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
     let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
     let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(220)
-    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(25)
+    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(10)
     //fonts
     let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))

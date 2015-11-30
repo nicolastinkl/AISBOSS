@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAudioMessageView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
-                    <rect key="frame" x="14" y="5" width="138" height="30"/>
+                    <rect key="frame" x="14" y="2" width="138" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.074509803921568626" green="0.69019607843137254" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -25,7 +25,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="AISpring">
-                    <rect key="frame" x="14" y="5" width="138" height="30"/>
+                    <rect key="frame" x="14" y="2" width="138" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.074509803919999826" green="0.65430369618115503" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
@@ -38,11 +38,11 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ai_audio_bg" translatesAutoresizingMaskIntoConstraints="NO" id="typ-Nl-fJ8">
-                    <rect key="frame" x="23" y="12" width="12" height="15"/>
+                    <rect key="frame" x="23" y="9" width="12" height="15"/>
                     <animations/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="17''" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-jG-rsx">
-                    <rect key="frame" x="156" y="10" width="42" height="21"/>
+                    <rect key="frame" x="156" y="7" width="42" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,7 +59,7 @@
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
             </connections>
-            <point key="canvasLocation" x="200" y="271"/>
+            <point key="canvasLocation" x="-20" y="279"/>
         </view>
     </objects>
     <resources>

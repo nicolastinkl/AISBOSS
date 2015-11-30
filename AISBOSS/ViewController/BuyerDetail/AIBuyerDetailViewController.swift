@@ -247,18 +247,14 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.backgroundColor = UIColor.clearColor()
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
         
-        let offset:CGFloat = 15
-
-        let width = CGRectGetWidth(UIScreen.mainScreen().bounds) - offset * 2
+        let offset:CGFloat = 15.0
+        let fixOffset:CGFloat = 6.0
+        let width = CGRectGetWidth(self.view.frame) - offset - fixOffset
         let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
-        
+        cell.contentView.addSubview(serviceView)
         serviceView.frame = CGRectMake(offset, 0, width, 200)
         serviceView.loadData(serviceDataModel)
-//        for subview in cell.contentView.subviews {
-//            subview.removeFromSuperview()
-//        }
-        
-        cell.contentView.addSubview(serviceView)
+
         cellHeights[indexPath.row] = serviceView.frame.height
         horizontalCardCellCache.setValue(cell, forKey: key)
         return cell
