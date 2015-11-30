@@ -20,7 +20,6 @@
     CGFloat _timeFontSize;
     CGFloat _commentFontSize;
     
-    UIImageView *_headImageView;
     UPLabel *_nameLabel;
     AIStarRate *_starRate;
     UPLabel *_timeLabel;
@@ -73,16 +72,18 @@
 {
     CGFloat size = [AITools displaySizeFrom1080DesignSize:114];
     CGRect frame = CGRectMake(0, 0, size, size);
-    _headImageView = [[UIImageView alloc] initWithFrame:frame];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.commentModel.headIcon] placeholderImage:[UIImage imageNamed:@"MusicHead1"]];
-    [self addSubview:_headImageView];
+    self.defaultIcon = [[UIImageView alloc] initWithFrame:frame];
+    
+    UIImage *defaut = [UIImage imageNamed:@"MusicHead1"];
+    [self.defaultIcon sd_setImageWithURL:[NSURL URLWithString:self.commentModel.headIcon] placeholderImage:defaut];
+    [self addSubview:self.defaultIcon];
 }
 
 #pragma mark - 构造姓名
 
 - (void)makeName
 {
-    CGFloat x = CGRectGetWidth(_headImageView.frame) + _commonMargin;
+    CGFloat x = CGRectGetWidth(self.defaultIcon.frame) + _commonMargin;
     CGFloat y = _commonMargin - 5;
     CGFloat width = CGRectGetWidth(self.frame) - x;
     CGFloat height = _nameFontSize;
@@ -100,7 +101,7 @@
 
 - (void)makeRate
 {
-    CGFloat x = CGRectGetWidth(_headImageView.frame) + _commonMargin;
+    CGFloat x = CGRectGetWidth(self.defaultIcon.frame) + _commonMargin;
     CGFloat y = CGRectGetHeight(_nameLabel.frame) + _commonMargin;
     CGFloat height = [AITools displaySizeFrom1080DesignSize:25];
 
@@ -145,7 +146,7 @@
 
 - (void)makeComment
 {
-    CGFloat y = CGRectGetMaxY(_headImageView.frame) + [AITools displaySizeFrom1080DesignSize:25];
+    CGFloat y = CGRectGetMaxY(self.defaultIcon.frame) + [AITools displaySizeFrom1080DesignSize:25];
     CGFloat width = CGRectGetWidth(self.frame);
     UIFont *font = [AITools myriadLightSemiCondensedWithSize:_commentFontSize];;
     CGSize size = [self.commentModel.comment sizeWithFont:font forWidth:width];

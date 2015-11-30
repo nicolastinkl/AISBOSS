@@ -25,12 +25,12 @@ class ServiceCardDetailShopping: ServiceParamlView {
     let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
     let MAIN_TITLE_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
     let DIVIDE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
-    let SUB_TITLE_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(96)
-    let MAIN_TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(113-24)
+    let SUB_TITLE_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(90)
+    let MAIN_TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(113 - 24)
     
     let TITLE_SHOPPING_MARGIN : CGFloat = 1
     let SHOPPING_LIST_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(34)
-    let TITLE_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
+    let TITLE_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
     let TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(60)
     
     let SHOPPING_ITEM_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(126)
@@ -64,8 +64,8 @@ class ServiceCardDetailShopping: ServiceParamlView {
         divideLineView.backgroundColor = UIColor.whiteColor()
         self.addSubview(divideLineView)
         
-        layout(titleLabel,divideLineView){
-            titleLabel,divideLineView in
+        layout(titleLabel, divideLineView){
+            titleLabel, divideLineView in
             titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + MAIN_TITLE_LEFT_MARGIN
             titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
@@ -74,7 +74,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
             divideLineView.height == 0.5
             divideLineView.leadingMargin == divideLineView.superview!.leadingMargin + DIVIDE_MARGIN
             divideLineView.superview!.trailingMargin == divideLineView.trailingMargin + DIVIDE_MARGIN
-            distribute(by: 0,vertically : titleLabel,divideLineView)
+            distribute(by: 0, vertically : titleLabel, divideLineView)
         }
     }
     
@@ -96,7 +96,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
         
         constrain(titleLabel,subTitleLabel){
             titleLabel,subTitleLabel in
-            distribute(by: TITLE_TOP_MARGIN,vertically : titleLabel,subTitleLabel)
+            distribute(by: TITLE_TOP_MARGIN, vertically : titleLabel,subTitleLabel)
         }
     }
     
@@ -138,7 +138,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
     
     func fixFrame(){
         let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
-        self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + VIEW_TOP_MARGIN + MAIN_TITLE_HEIGHT + 10
+        self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + VIEW_TOP_MARGIN + MAIN_TITLE_HEIGHT + 15
     }
     
     func layoutView(){
@@ -165,7 +165,7 @@ class SCDShoppingListCellView : UIView {
     let IMAGE_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(24)
     let IMAGE_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(84)
     let LABEL_TRAILLING : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(110)
+    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(90)
     let MAX_LABEL_TEXT_WIDTH : CGFloat = AITools.displaySizeFrom1080DesignSize(740)
     let LABEL_LINE_SPACING : CGFloat = AITools.displaySizeFrom1080DesignSize(20)
 
@@ -182,7 +182,7 @@ class SCDShoppingListCellView : UIView {
         let text = dataSource?.item_intro
         descLabel.text = text
         
-        adjustRowMargin(descLabel,lineSpacing : LABEL_LINE_SPACING)
+  //      adjustRowMargin(descLabel,lineSpacing : LABEL_LINE_SPACING)
     }
     
     
@@ -199,8 +199,8 @@ class SCDShoppingListCellView : UIView {
         
         self.addSubview(descLabel)
         
-        layout(imageView,descLabel){
-            imageView,descLabel in
+        layout(imageView, descLabel) {
+            imageView, descLabel in
             imageView.width == IMAGE_SIZE
             imageView.height == IMAGE_SIZE
             imageView.centerY == imageView.superview!.centerY
@@ -208,11 +208,9 @@ class SCDShoppingListCellView : UIView {
             
             distribute(by: IMAGE_LABEL_MARGIN, horizontally: imageView, descLabel)
             
-            descLabel.centerY == imageView.centerY
+            descLabel.top == imageView.top + 5
             
             descLabel.superview!.trailingMargin == descLabel.trailingMargin + LABEL_TRAILLING
-            //descLabel.topMargin == descLabel.superview!.topMargin
-            //descLabel.bottomMargin == descLabel.superview!.bottomMargin
         }
     }
     

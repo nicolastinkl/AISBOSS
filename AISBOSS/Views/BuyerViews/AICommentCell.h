@@ -12,6 +12,7 @@
 
 @interface AICommentCell : UIView
 
+@property (nonatomic, strong) UIImageView *defaultIcon;
 
 - (id)initWithFrame:(CGRect)frame model:(AIMusicCommentsModel *)model;
 
