@@ -100,7 +100,7 @@ internal class AIPageBueryViewController: UIViewController {
         pageControl.setX((self.view.width - pageControl.width)/2)
         
         // Add the album view controllers to the scroll view
-        var pageViews: [UIView] = []
+        //var pageViews: [UIView] = []
         var viewTag:Int = 0
         for model in bubleModelArray! {
             let pageView = UIView()
@@ -109,7 +109,7 @@ internal class AIPageBueryViewController: UIViewController {
             pageView.clipsToBounds = true
             pageView.frame = CGRectMake(CGFloat(viewTag) * self.view.width, 0, self.view.width, pageScrollView.height)
             //pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
-            pageViews.append(pageView)
+            //pageViews.append(pageView)
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceContentViewController) as! AIServiceContentViewController
             if model.service_id == 1 {
                 viewController.serviceContentType = AIServiceContentType.MusicTherapy
@@ -124,6 +124,12 @@ internal class AIPageBueryViewController: UIViewController {
         pageScrollView.contentSize = CGSizeMake(self.view.width * CGFloat(viewTag), self.view.height)
     }
     
+    deinit{
+        _ = pageScrollView.subviews.filter { (viewss) -> Bool in
+            viewss.removeFromSuperview()
+            return true
+        }
+    }
     /**
      初始化数据
      */
