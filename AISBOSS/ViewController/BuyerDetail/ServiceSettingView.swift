@@ -197,9 +197,9 @@ class AIMsgTagCell: UICollectionViewCell {
         label = UILabel(frame: self.contentView.bounds)
         label.opaque = false
         label.textColor = UIColor.whiteColor()
-        label.layer.borderColor = UIColor.whiteColor().CGColor
+        label.layer.borderColor = UIColor(hexString: "#ffffff", alpha: 0.4).CGColor
         label.layer.borderWidth = 0.5
-        label.layer.cornerRadius = 8;
+        label.layer.cornerRadius = 10;
         label.textAlignment = .Center
         label.font = AIMsgTagCell.defaultFont
         contentView.addSubview(label)
@@ -223,7 +223,7 @@ class AIMsgTagCell: UICollectionViewCell {
             let rect = string.boundingRectWithSize(maxSize, options: opts,
                 attributes: attributes, context: nil)
             
-            let realRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width + 15, height: rect.height + 5)
+            let realRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width + 15, height: rect.height + 9)
             
             return realRect.size
     }
