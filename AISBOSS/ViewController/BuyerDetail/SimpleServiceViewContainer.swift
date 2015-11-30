@@ -33,6 +33,7 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var dividerBottomMargin: NSLayoutConstraint!
     @IBOutlet weak var messageHeight: NSLayoutConstraint!
     @IBOutlet weak var dividerHeight: NSLayoutConstraint!
+    @IBOutlet weak var topHeight: NSLayoutConstraint!
     
     private var dataModel: AIProposalServiceModel?
     
@@ -176,11 +177,11 @@ class SimpleServiceViewContainer: UIView {
     }
     
     func selfHeight() -> CGFloat {
-        return  topHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        return  getTopHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
     }
     
     private func addParamsView(serviceParams: UIView) {
-        let height = topHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        let height = getTopHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
         self.frame.size.height = height
         
         paramViewHeight = serviceParams.frame.height
@@ -200,6 +201,8 @@ class SimpleServiceViewContainer: UIView {
     private func createReviewView(rating: Int) {
         if rating < 0  {
             review.hidden = true
+            topHeight.constant = 34
+            topView.setNeedsUpdateConstraints()
             return
         }
         
@@ -216,11 +219,11 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
-    private func topHeight() -> CGFloat {
+    private func getTopHeight() -> CGFloat {
         return topView.height
     }
     
     private func totalHeight()-> CGFloat {
-        return topHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height + messageHeight.constant
+        return getTopHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height + messageHeight.constant
     }
 }
