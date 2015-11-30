@@ -108,7 +108,8 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func backAction () {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func scrollAction () {
