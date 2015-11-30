@@ -90,14 +90,8 @@
                         <constraint firstAttribute="trailing" secondItem="0NE-k9-0Pc" secondAttribute="trailing" constant="7" id="loS-p5-v2C"/>
                         <constraint firstItem="tWr-bh-Ump" firstAttribute="top" secondItem="0NE-k9-0Pc" secondAttribute="bottom" id="o3i-KX-F4T"/>
                         <constraint firstItem="UAb-LP-5Zl" firstAttribute="top" secondItem="iPi-f2-cNw" secondAttribute="bottom" constant="1" id="sfU-81-CtU"/>
-                        <constraint firstItem="iPi-f2-cNw" firstAttribute="leading" secondItem="Nvq-VK-Sdk" secondAttribute="trailing" constant="8" id="xYo-zd-iNt"/>
                         <constraint firstItem="tWr-bh-Ump" firstAttribute="leading" secondItem="0NE-k9-0Pc" secondAttribute="leading" id="ysB-jx-esM"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="xYo-zd-iNt"/>
-                        </mask>
-                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-DV-Xc4" userLabel="content">
                     <rect key="frame" x="0.0" y="42" width="500" height="158"/>
@@ -195,6 +189,7 @@
                 <outlet property="savedMoney" destination="0NE-k9-0Pc" id="7bF-42-XzT"/>
                 <outlet property="savedMoneyWidth" destination="sTO-7C-kkF" id="gyH-Jg-aHR"/>
                 <outlet property="settingState" destination="378-hf-H9o" id="aij-V1-rE5"/>
+                <outlet property="topHeight" destination="CXA-hr-bZ3" id="8eW-pc-6cs"/>
                 <outlet property="topView" destination="ZQW-hO-nDs" id="ns4-P7-TtA"/>
             </connections>
         </view>
