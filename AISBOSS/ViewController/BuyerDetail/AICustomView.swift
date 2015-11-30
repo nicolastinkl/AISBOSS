@@ -45,7 +45,7 @@ internal class AICustomView : UIView{
         if isNormal {
             
         }else{
-            y = 10
+            y = 2
         }
         
         for model in models{
