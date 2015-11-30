@@ -219,6 +219,7 @@
     y += 1 + [AITools displaySizeFrom1080DesignSize:22];
     //
     NSArray *comments = [self fakeComments];
+    NSMutableArray *mIcons = [[NSMutableArray alloc] initWithArray:@[[UIImage imageNamed:@"MusicHead1"], [UIImage imageNamed:@"MusicHead2"]]];
     
     for (AIMusicCommentsModel *comment in comments) {
         
@@ -232,6 +233,10 @@
         [self addLineViewAtY:y];
         
         y +=  [AITools displaySizeFrom1080DesignSize:22];
+        
+        //Fake Image
+        cell.defaultIcon.image = [mIcons firstObject];
+        [mIcons removeObjectAtIndex:0];
         
     }
     
