@@ -57,6 +57,8 @@ internal class AIServiceContentViewController: UIViewController {
         */
         makeContentView()
      
+        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
+        
         /**
         Notification Keyboard...
         */
@@ -80,6 +82,7 @@ internal class AIServiceContentViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     func topImage() -> UIImage {
@@ -90,7 +93,6 @@ internal class AIServiceContentViewController: UIViewController {
             name = "Fake_Top"
         case .Escort:
             name = "Fake_Escort_Top"
-            
         }
         
         return UIImage(named: name)!
