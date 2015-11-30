@@ -311,7 +311,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let array = [serviceDataModel,model1]
         //viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
         viewController.bubleModelArray = array
-        viewController.selectCurrentIndex = indexPath.row
+        viewController.selectCurrentIndex = 0 // fix here
         self.showViewController(viewController, sender: self)
         
     }

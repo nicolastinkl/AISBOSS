@@ -124,7 +124,7 @@
 
 - (void)addLineViewAtY:(CGFloat)y
 {
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 1)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 0.5)];
     line.backgroundColor = [AITools colorWithR:0xa1 g:0xa4 b:0xba a:0.4];
     
     [self addSubview:line];
