@@ -13,17 +13,14 @@ class ServiceSettingView: UIView {
 
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var state: UIImageView!
     
     private static let HORIZAN_SPACE: CGFloat = 8
     private static let MESSAGE_HEIGHT: CGFloat = 20
     private static let TAG_HEIGHT: CGFloat = 28
-    private static let BOTTOM_PADDING: CGFloat = 3
+    private static let BOTTOM_PADDING: CGFloat = 12
     private static let COLLECTION_WIDTH: CGFloat = 303
     
     var model: AIProposalHopeModel!
-
-    var tags: [String] = []
     
     override func awakeFromNib() {
         
@@ -36,16 +33,10 @@ class ServiceSettingView: UIView {
         return NSBundle.mainBundle().loadNibNamed("ServiceSettingView", owner: self, options: nil).first  as! ServiceSettingView
     }
     
-    func loadData(tags: [String]) {
-        self.tags = tags
-        
-        frame.size.height = ServiceSettingView.MESSAGE_HEIGHT + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
-        
-        collectionView.reloadData()
-    }
-    
     func loadData(model data: AIProposalHopeModel) {
         self.model = data
+        
+        frame.size.height = ServiceSettingView.MESSAGE_HEIGHT + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
         
         if data.hope_list != nil && data.hope_list.count > 0 {
             let hopeModel = data.hope_list.first as! AIProposalHopeAudioTextModel
@@ -70,12 +61,13 @@ class ServiceSettingView: UIView {
     private func estimateRowCount() -> Int {
         var length: CGFloat = 0
         
-        for tag in tags {
-            let size = AIMsgTagCell.sizeForContentString(tag, forMaxWidth: 1000)
+        for item in model.label_list {
+            let tag = item as! AIProposalNotesModel
+            let size = AIMsgTagCell.sizeForContentString(tag.name, forMaxWidth: 1000)
             length += (size.width + ServiceSettingView.HORIZAN_SPACE)
         }
         
-        if tags.count == 0 {
+        if model.label_list.count == 0 {
             return 0
         } else {
             return Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
