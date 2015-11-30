@@ -254,7 +254,7 @@ extension AIServiceContentViewController: UITextFieldDelegate{
 
             addNewSubView(audio1, preView: cview)
             audio1.content.text = textField.text
-            scrollViewBottom()            
+            scrollViewBottom()
         }
         textField.resignFirstResponder()
         textField.text = ""
