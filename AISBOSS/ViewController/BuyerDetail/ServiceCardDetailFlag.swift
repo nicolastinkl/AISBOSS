@@ -22,7 +22,7 @@ class ServiceCardDetailFlag: ServiceParamlView {
     let colorArray = [UIColor(hexString: "#1c789f"),UIColor(hexString: "#7b3990"),UIColor(hexString: "#619505"),UIColor(hexString: "#f79a00"),UIColor(hexString: "#d05126"),UIColor(hexString: "#b32b1d")]
     //MARK: - Constants
     //sizes
-    let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
+    let VIEW_LEFT_MARGIN : CGFloat = 35
     let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(50)
     let CORNER_RADIOS_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(67/2)
     let FLAG_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(18)
