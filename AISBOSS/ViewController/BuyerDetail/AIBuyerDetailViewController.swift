@@ -230,7 +230,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             cell.contentView.subviews.first?.frame.size.height = height
         }
     }
-  
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
