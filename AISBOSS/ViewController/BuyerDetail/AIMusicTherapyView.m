@@ -165,6 +165,16 @@
     CGRect reviewFrame = CGRectMake(reviewX, y, reviewSize.width, reviewSize.height);
     UPLabel *reviewLabel = [AIViews normalLabelWithFrame:reviewFrame text:reviewStr fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
     reviewLabel.font = [AITools myriadSemiCondensedWithSize:reFontSize];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:reviewStr];
+    
+    NSRange range = NSMakeRange(4, 7);
+    
+    [attr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:fontSize] range:range];
+    reviewLabel.attributedText = attr;
+    
+    
+    
     [self addSubview:reviewLabel];
     
     //
