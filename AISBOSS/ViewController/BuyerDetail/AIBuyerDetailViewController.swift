@@ -248,8 +248,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
         
         let offset:CGFloat = 15.0
-        let fixOffset:CGFloat = 6.0
-        let width = CGRectGetWidth(self.view.frame) - offset - fixOffset
+//        let fixOffset:CGFloat = 6.0
+        let width = CGRectGetWidth(self.view.frame) - offset*2
         let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
         cell.contentView.addSubview(serviceView)
         serviceView.frame = CGRectMake(offset, 0, width, 200)
