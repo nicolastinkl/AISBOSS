@@ -37,7 +37,7 @@ internal class AIServiceContentViewController: UIViewController {
     }()
     
     private lazy var galleryView : AIGalleryView = {
-        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 192))
+        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200))
         return gView
     }()
     
@@ -62,6 +62,7 @@ internal class AIServiceContentViewController: UIViewController {
         */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+        
     }
     
     deinit {
@@ -150,7 +151,7 @@ internal class AIServiceContentViewController: UIViewController {
         // Add gallery View
         scrollView.addSubview(galleryView)
         galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
-        galleryView.setTop(0)
+        galleryView.setTop(5)
         
         var holdView:UIView?
         if self.serviceContentType == AIServiceContentType.Escort {
@@ -174,7 +175,7 @@ internal class AIServiceContentViewController: UIViewController {
            
         let custView =  AICustomView.currentView()
         addNewSubView(custView, preView: holdView!)
-     
+        
         var model1 = AIBuerSomeTagModel()
         model1.tagName = "irritated"
         model1.unReadNumber = 2
