@@ -59,6 +59,9 @@
                         <constraint firstAttribute="height" constant="28" id="nGX-Ar-Oo3"/>
                     </constraints>
                     <state key="normal" image="ai_custom_diy"/>
+                    <connections>
+                        <action selector="CustomAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="aMX-JF-a9t"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeb-cx-K47">
                     <rect key="frame" x="475" y="29" width="110" height="21"/>

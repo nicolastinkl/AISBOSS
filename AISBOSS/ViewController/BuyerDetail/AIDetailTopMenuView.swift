@@ -18,4 +18,7 @@ internal class AIDetailTopMenuView : UIView {
         return selfView
     }
     
+    @IBAction func CustomAction(sender: AnyObject) {
+        
+    }
 }
