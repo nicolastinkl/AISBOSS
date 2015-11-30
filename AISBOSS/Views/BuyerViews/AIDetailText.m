@@ -33,7 +33,7 @@
     
     if (self) {
         
-        _textMargin = [AITools displaySizeFrom1080DesignSize:37];
+        _textMargin = [AITools displaySizeFrom1080DesignSize:37] - 4;
         _titleFontSize = [AITools displaySizeFrom1080DesignSize:46];
         _detailFontSize = [AITools displaySizeFrom1080DesignSize:42];
         
@@ -98,7 +98,6 @@
         CGRect frame = CGRectMake(0, 0, width, _titleFontSize);
         _titleLabel = [self labelWithFrame:frame text:titleString textColor:[UIColor whiteColor] font:[AITools myriadSemiCondensedWithSize:_titleFontSize] fontSize:_titleFontSize];
         [self addSubview:_titleLabel];
-    
     }
     
     _titleLabel.text = titleString;
