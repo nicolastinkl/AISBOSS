@@ -184,6 +184,38 @@ class BDKProposalService : MockProposalService{
         }
         
     }
+    
+    
+    
+    /**
+     Service Detail详情数据
+     
+     - parameter success: <#success description#>
+     - parameter fail:    <#fail description#>
+     - parameter errDes:  <#errDes description#>
+     */
+    func queryCustosmerServiceDetail(serviceId : Int,success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/findServiceDetailFake"
+        
+        let body = ["data":["service_id": serviceId,"service_type":0],"desc":["data_mode":"0","digest":""]]
+        message.body = NSMutableDictionary(dictionary: body)
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            
+            do {
+                let dic = response as! [NSObject : AnyObject]
+                let model = try AIProposalServiceDetailModel(dictionary: dic)
+                success(responseData: model)
+            
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+            }
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+        
+    }
 }
 
 

@@ -155,6 +155,129 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @end
 
+//==================================== AIProposalServiceDetailModel =============================================
+
+//service_intro_img_list
+@protocol AIProposalServiceDetail_Intro_img_listModel @end
+@interface AIProposalServiceDetail_Intro_img_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * service_intro_img;
+
+@end
+
+//service_provider
+@protocol AIProposalServiceDetail_provider_listModel @end
+@interface AIProposalServiceDetail_provider_listModel : JSONModel
+
+@property (assign, nonatomic) NSInteger provider_id;
+@property (strong, nonatomic) NSString<Optional> * name;
+@property (strong, nonatomic) NSString<Optional> * portrait_icon;
+
+@end
+
+//service_param_list
+
+@protocol AIProposalServiceDetail_Param_Value_listModel @end
+@interface AIProposalServiceDetail_Param_Value_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * value_key;
+@property (strong, nonatomic) NSString<Optional> * value_display;
+
+@end
+
+@protocol AIProposalServiceDetail_Param_listModel @end
+@interface AIProposalServiceDetail_Param_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * param_key;
+@property (strong, nonatomic) NSString<Optional> * param_type;
+@property (strong, nonatomic) NSString<Optional> * param_name;
+@property (strong, nonatomic) NSString<Optional> * param_source;
+@property (strong, nonatomic) NSString<Optional> * param_product_id;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Param_Value_listModel,Optional> * param_value;
+
+@end
+
+// service_rating
+@protocol AIProposalServiceDetail_Rating_List_Item_listModel @end
+@interface AIProposalServiceDetail_Rating_List_Item_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * name;
+@property (assign, nonatomic) NSInteger number;
+@property (assign, nonatomic) NSInteger priority;
+@end
+
+//comment
+@protocol AIProposalServiceDetail_Rating_Comment_listModel @end
+@interface AIProposalServiceDetail_Rating_Comment_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * time;
+@property (strong, nonatomic) NSString<Optional> * content;
+@property (assign, nonatomic) NSInteger rating_level;
+@property (nonatomic, strong) AIProposalServiceDetail_provider_listModel<Optional> * service_customer;
+
+@end
+
+@protocol AIProposalServiceDetail_Rating_listModel @end
+@interface AIProposalServiceDetail_Rating_listModel : JSONModel
+
+@property (assign, nonatomic) NSInteger reviews;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Rating_List_Item_listModel,Optional> * rating_level_list;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Rating_Comment_listModel,Optional> * comment_list;
+@end
+
+//wish list
+
+@protocol AIProposalServiceDetail_label_list_listModel @end
+@interface AIProposalServiceDetail_label_list_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * content;
+@property (assign, nonatomic) NSInteger selected_num;
+@property (assign, nonatomic) NSInteger selected_flag;
+@property (assign, nonatomic) NSInteger label_id;
+
+@end
+
+@protocol AIProposalServiceDetail_hope_list_listModel @end
+@interface AIProposalServiceDetail_hope_list_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * text;
+@property (strong, nonatomic) NSString<Optional> * audio_url;
+@property (assign, nonatomic) NSInteger type;
+@property (assign, nonatomic) NSInteger time;
+@property (assign, nonatomic) NSInteger hope_id;
+
+@end
+
+@protocol AIProposalServiceDetail_wish_list_listModel @end
+@interface AIProposalServiceDetail_wish_list_listModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * intro;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_label_list_listModel,Optional> * label_list;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_hope_list_listModel,Optional> * hope_list;
+
+@end
+
+/**
+ *  @author tinkl, 15-12-01 10:12:26
+ *
+ *  @brief  心愿详情界面 url: http://171.221.254.231:3000/findServiceDetailFake
+ *  @ViewController AIServiceContentViewController
+ */
+@interface AIProposalServiceDetailModel : JSONModel
+
+@property (assign, nonatomic) NSInteger service_id;
+@property (strong, nonatomic) NSString<Optional> * service_name;
+@property (strong, nonatomic) NSString<Optional> * service_intro_title;
+@property (strong, nonatomic) NSString<Optional> * service_intro_content;
+
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Intro_img_listModel,Optional> *service_intro_img_list;
+@property (nonatomic, strong) AIProposalServicePriceModel<Optional> * service_price;
+@property (nonatomic, strong) AIProposalServiceDetail_provider_listModel<Optional> * service_provider;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Param_listModel,Optional> * service_param_list;
+@property (nonatomic, strong) AIProposalServiceDetail_Rating_listModel<Optional> * service_rating;
+@property (nonatomic, strong) AIProposalServiceDetail_wish_list_listModel<Optional> * wish_list;
+
+@end
 
 
 

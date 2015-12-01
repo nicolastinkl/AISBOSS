@@ -21,6 +21,8 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     var serviceContentModel:AIProposalServiceModel?
+
+    private var currentDatasource:AIProposalServiceDetailModel?
     
     internal var serviceContentType : AIServiceContentType!
 
@@ -47,16 +49,14 @@ internal class AIServiceContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /**
-        导航栏
-        */
+        /** 处理数据请求 */
+        initData()
+        /** 导航栏 */
         makeTopView()
-        
-        /**
-        ScrollView数据填充
-        */
+        /** ScrollView数据填充 */
         makeContentView()
      
+        //SCI
         makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
         
         /**
@@ -64,6 +64,28 @@ internal class AIServiceContentViewController: UIViewController {
         */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func initData(){
+        Async.userInitiated(after: 0.5) { () -> Void in
+            BDKProposalService().queryCustosmerServiceDetail(1, success:
+                {[weak self] (responseData) -> Void in
+                    
+                    if let strongSelf = self {
+                        strongSelf.currentDatasource = responseData
+                        logInfo("queryCustosmerServiceDetail OK")
+                        //InitControl Data
+                        //strongSelf.InitController()
+                        //strongSelf.tableView.reloadData()
+                        
+                    }
+                    
+                },fail : {
+                    (errType, errDes) -> Void in
+                    print(errDes)
+            })
+        }
         
     }
     
