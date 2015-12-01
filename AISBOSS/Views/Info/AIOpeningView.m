@@ -79,6 +79,34 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     return gInstance;
 }
 
+#pragma mark - 增加版本信息
+
+- (void)doubleTap
+{
+    NSString *version = @"当前版本号：1.2.0";
+    
+    NSString *content = @"更新功能：\n1、增加Proposal订单列表界面;\n2、增加服务详情界面;";
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:version message:content delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
+
+
+- (void)addVersionAction
+{
+    CGFloat size = 100;
+    CGFloat x = CGRectGetWidth(self.frame) - size;
+    CGRect frame = CGRectMake(x, 0, size, size);
+    UIView *versionView = [[UIView alloc] initWithFrame:frame];
+
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
+    [versionView addGestureRecognizer:gesture];
+    
+    
+    [self addSubview:versionView];
+}
+
+
 
 #pragma mark - Delegate Event
 
@@ -162,6 +190,10 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     UITapGestureRecognizer *tapGuesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerTapAction)];
     [_tapView addGestureRecognizer:tapGuesture];
+    
+    //
+    
+    [self addVersionAction];
 }
 
 - (void)centerTapAction
