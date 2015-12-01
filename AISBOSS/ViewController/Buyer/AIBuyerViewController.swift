@@ -25,9 +25,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     var originalViewCenter : CGPoint?
 
     var didShow : Bool = false
+
     // MARK: - Constants
-    
-    
     
     let bubblesTag : NSInteger = 9999
 
@@ -57,7 +56,19 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeTableView()
         //self.makeBubbleView()
         self.makeTopBar()
-        self.makeData()
+//        self.makeData()
+        
+        
+        // Add Pull To Referesh..
+        self.tableView.addHeaderWithCallback { [weak self]() -> Void in
+            if let strongSelf = self {
+                // Init Data
+                /** 处理数据请求 */
+                strongSelf.makeData()
+            }
+        }
+        
+        self.tableView.headerBeginRefreshing()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "NSNotiryAricToNomalStatus", name: AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
@@ -541,11 +552,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 self.makeBubbleView()
                 self.tableView.reloadData()
+                self.tableView.headerEndRefreshing()
             }
         }
     }
 
     func makeData() {
+        
+        self.tableView.hideErrorView()
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let listData : ProposalOrderListModel? = appDelegate.buyerListData
@@ -556,16 +570,29 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
         let bdk = BDKProposalService()
         // 列表数据
-        bdk.getProposalList({ (responseData) -> Void in
+        bdk.getProposalList({ [weak self](responseData) -> Void in
             
-            self.parseListData(responseData)
-            }) { (errType, errDes) -> Void in
+            if let strongSlef = self {
+                strongSlef.parseListData(responseData)
+                
+            }
+            
+            }) {  [weak self](errType, errDes) -> Void in
+                if let strongSlef = self {
+                    strongSlef.tableView.showErrorContentView()
+                    strongSlef.tableView.headerEndRefreshing()
+                }
         }
         
-        bdk.getPoposalBubbles({ (responseData) -> Void in
-            self.parseProposalData(responseData)
-            
-            }) { (errType, errDes) -> Void in
+        bdk.getPoposalBubbles({ [weak self] (responseData) -> Void in
+            if let strongSlef = self {
+                strongSlef.parseProposalData(responseData)
+            }
+            }) {  [weak self](errType, errDes) -> Void in
+                if let strongSlef = self {
+                    strongSlef.tableView.showErrorContentView()
+                    strongSlef.tableView.headerEndRefreshing()
+                }
         }        
     }
     
