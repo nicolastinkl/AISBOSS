@@ -79,12 +79,12 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     return gInstance;
 }
 
+
 #pragma mark - 增加版本信息
 
 - (void)doubleTap
 {
     NSString *version = @"当前版本号：1.2.0";
-    
     NSString *content = @"更新功能：\n1、增加Proposal订单列表界面;\n2、增加服务详情界面;";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:version message:content delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -101,7 +101,6 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
     [versionView addGestureRecognizer:gesture];
-    
     
     [self addSubview:versionView];
 }
