@@ -31,11 +31,11 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     @IBOutlet weak var changeButton: DesignableButton!
     
     // MARK: -> Internal property
-    private var recorder : AVAudioRecorder?
+    private weak var recorder : AVAudioRecorder?
     private var lowPassResults: Double = 0
     private var timer: NSTimer?
     private var currentAudioState: Bool = false
-    var delegateAudio:AICustomAudioNotesViewDelegate?
+    weak var delegateAudio:AICustomAudioNotesViewDelegate?
     internal var currentAutioUrl:String = ""
     
     func getAudioFileName() -> String{
