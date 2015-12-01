@@ -74,25 +74,18 @@
 
 // SDWebImage
 #import "UIImageView+WebCache.h"
-
 #import "AIScrollLabel.h"
 
-//#import "PgyManager.h"
-//#import <PgyUpdate/PgyUpdateManager.h>
-
 #import "UIIMage+Color.h"
-
 #import "AIBubblesView.h"
 #import "AIBuyerBubbleModel.h"
-
 #import "UIView+MaterialDesign.h"
-
 #import "AIProposalServiceCellModel.h"
+
 // Buyer Details
 
 #import "AIMusicTherapyView.h"
 #import "AIParamedicView.h"
+#import "UIScrollView+MJRefresh.h"
 
-
-//
 

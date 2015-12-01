@@ -49,13 +49,25 @@ internal class AIServiceContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /** 处理数据请求 */
-        initData()
+       
         /** 导航栏 */
         makeTopView()
      
         //SCI
-        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
+        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")        
+        
+        // Add Pull To Referesh..
+        self.scrollView.addHeaderWithCallback { [weak self]() -> Void in
+            if let strongSelf = self {
+                // Init Data
+                /** 处理数据请求 */
+                strongSelf.initData()
+                
+            }
+        }
+        
+        self.scrollView.headerBeginRefreshing()
+        
         
         /**
         Notification Keyboard...
@@ -66,6 +78,9 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func initData(){
+        
+        self.scrollView.hideErrorView()
+        
         Async.userInitiated(after: 0.5) {[weak self]  () -> Void in
             if let strongSelfss = self {
                 BDKProposalService().queryCustosmerServiceDetail(strongSelfss.serviceContentModel?.service_id ?? 0, success:
@@ -78,12 +93,23 @@ internal class AIServiceContentViewController: UIViewController {
                             
                             /** ScrollView数据填充 */
                             strongSelf.makeContentView()
+
+                            strongSelf.scrollView.headerEndRefreshing()
+                        }
+                        
+                    },fail : {[weak self]
+                        (errType, errDes) -> Void in
+                        print(errDes)
+                        
+                        if let strongSelf = self {
+                            
+                            strongSelf.scrollView.headerEndRefreshing()
+                            //处理错误警告
+                            
+                            strongSelf.scrollView.showErrorContentView()
                             
                         }
                         
-                    },fail : {
-                        (errType, errDes) -> Void in
-                        print(errDes)
                 })
             }
             
@@ -222,7 +248,6 @@ internal class AIServiceContentViewController: UIViewController {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
-            
         }
         
         let audioView = AICustomAudioNotesView.currentView()
@@ -234,12 +259,10 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(audio1, preView: audioView)
         
         let model = AIProposalHopeAudioTextModel()
-        model.audio_url = "Users/tinkl/Library/Developer/CoreSimulator/Devices/D6EAFFDE-A4C1-45F7-927F-8227CF1DC02F/data/Containers/Data/Application/5EAAA138-9CE8-41FD-A285-3645B23819D3/Documents/1448610413.aac"
+        model.audio_url = ""
         model.audio_length = 8
         model.type = 0
         audio1.fillData(model)
-        
-        
         
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)

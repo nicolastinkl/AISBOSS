@@ -13,6 +13,8 @@ import AISpring
 
 class AIErrorRetryView: SpringView {
 
+    @IBOutlet weak var toast: UILabel!
+    @IBOutlet weak var retryButton: UIButton!
     /**
     Current View's Self Content Objective.
     

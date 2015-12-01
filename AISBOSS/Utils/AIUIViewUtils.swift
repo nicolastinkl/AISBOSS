@@ -220,6 +220,27 @@ extension UIView {
         })
         
     }
+    /*!
+    显示错误视图
+    */
+    public func showErrorContentView(){
+        if let _ = self.viewWithTag(AIApplication.AIViewTags.errorviewTag) {
+            // If loading view is already found in current view hierachy, do nothing
+            return
+        }
+        
+        let errorview = AIErrorRetryView.currentView()
+        errorview.tag = AIApplication.AIViewTags.errorviewTag
+        errorview.center = self.center
+        errorview.retryButton.hidden = true
+        self.addSubview(errorview)
+        
+        errorview.alpha = 0
+        spring(0.7, animations: {
+            errorview.alpha = 1
+        })
+    }
+    
         
     /*!
         隐藏错误视图

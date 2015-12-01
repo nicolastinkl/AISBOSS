@@ -52,6 +52,10 @@
                 <constraint firstAttribute="centerY" secondItem="Zra-1S-QJU" secondAttribute="centerY" id="Qkl-yp-MHa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="retryButton" destination="Zra-1S-QJU" id="Msn-Ad-nJw"/>
+                <outlet property="toast" destination="cJa-1y-wcl" id="fNY-2b-bPw"/>
+            </connections>
             <point key="canvasLocation" x="117" y="279.5"/>
         </view>
     </objects>

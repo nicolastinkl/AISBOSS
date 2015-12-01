@@ -56,15 +56,22 @@ class AIBuyerDetailViewController : UIViewController {
         
         contentView = self.tableView.tableHeaderView?.viewWithTag(1)
         
-        // Init Data
-        initData()
-        
         // Init Label Font
         InitLabelFont()
         
         // Make
         //makeBuyButton()
-     
+        
+        // Add Pull To Referesh..
+        self.tableView.addHeaderWithCallback { [weak self]() -> Void in
+            if let strongSelf = self {
+                // Init Data
+                strongSelf.initData()
+                
+            }
+        }
+        
+        self.tableView.headerBeginRefreshing()
         
     }    
     
@@ -172,6 +179,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func initData(){
+        self.tableView.hideErrorView()
         if let m = bubleModel {
             if let cView = contentView {
                 
@@ -194,10 +202,20 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         // Init Bottom Page white area
                         strongSelf.InitBottomView()
+
+                        strongSelf.tableView.headerEndRefreshing()
                     }
                     
-                },fail : {
+                },fail : { [weak self]
                     (errType, errDes) -> Void in
+                    if let strongSelf = self {
+                    
+                        strongSelf.tableView.headerEndRefreshing()
+                        //处理错误警告
+                        
+                        strongSelf.tableView.showErrorContentView()
+                        
+                    }
                     
             })
             
