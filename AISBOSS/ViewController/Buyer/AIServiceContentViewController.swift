@@ -53,8 +53,6 @@ internal class AIServiceContentViewController: UIViewController {
         initData()
         /** 导航栏 */
         makeTopView()
-        /** ScrollView数据填充 */
-        makeContentView()
      
         //SCI
         makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
@@ -68,23 +66,27 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func initData(){
-        Async.userInitiated(after: 0.5) { () -> Void in
-            BDKProposalService().queryCustosmerServiceDetail(1, success:
-                {[weak self] (responseData) -> Void in
-                    
-                    if let strongSelf = self {
-                        strongSelf.currentDatasource = responseData
-                        logInfo("queryCustosmerServiceDetail OK")
-                        //InitControl Data
-                        //strongSelf.InitController()
-                        //strongSelf.tableView.reloadData()
+        Async.userInitiated(after: 0.5) {[weak self]  () -> Void in
+            if let strongSelfss = self {
+                BDKProposalService().queryCustosmerServiceDetail(strongSelfss.serviceContentModel?.service_id ?? 0, success:
+                    {[weak self] (responseData) -> Void in
                         
-                    }
-                    
-                },fail : {
-                    (errType, errDes) -> Void in
-                    print(errDes)
-            })
+                        if let strongSelf = self {
+                            strongSelf.currentDatasource = responseData
+                            
+                            //InitControl Data
+                            
+                            /** ScrollView数据填充 */
+                            strongSelf.makeContentView()
+                            
+                        }
+                        
+                    },fail : {
+                        (errType, errDes) -> Void in
+                        print(errDes)
+                })
+            }
+            
         }
         
     }
@@ -175,14 +177,20 @@ internal class AIServiceContentViewController: UIViewController {
         
         // Add gallery View
         scrollView.addSubview(galleryView)
-        galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png","http://tinkl.qiniudn.com/tinklUpload_DSHJKFLDJSLF.png"]
+        
+        var imageArray = [String]()
+        _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
+            let imageModel = imgModel as! AIProposalServiceDetail_Intro_img_listModel
+            imageArray.append(imageModel.service_intro_img ?? "")
+            return true
+        })
+        galleryView.imageModelArray = imageArray
         galleryView.setTop(5)
 
         var holdView:UIView?
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
-            galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png"]
-            galleryView.setTop(5)
+//            galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png"]
             
             
             let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
@@ -205,33 +213,17 @@ internal class AIServiceContentViewController: UIViewController {
         let custView =  AICustomView.currentView()
         addNewSubView(custView, preView: holdView!)
         
-        var model1 = AIBuerSomeTagModel()
-        model1.tagName = "irritated"
-        model1.unReadNumber = 2
-        model1.bsId = 12
-        
-        var model2 = AIBuerSomeTagModel()
-        model2.tagName = "fatigued"
-        model2.unReadNumber = 6
-        model2.bsId = 13
-        
-        var model3 = AIBuerSomeTagModel()
-        model3.tagName = "endorine disorders"
-        model3.unReadNumber = 731
-        model3.bsId = 16
-        
-        
-//        var model4 = AIBuerSomeTagModel()
-//        model4.tagName = "disorders the"
-//        model4.unReadNumber = 69
-//        model4.bsId = 17
-        
-        
-        var model5 = AIBuerSomeTagModel()
-        model5.tagName = "depressed"
-        model5.unReadNumber = 18
-        model5.bsId = 18
-        custView.fillTags([model1,model2,model5,model3], isNormal: true)
+        //处理数据填充
+        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
+            if var labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
+                if labelList.count > 5 {
+                    labelList.removeLast()
+                }
+                custView.fillTags(labelList, isNormal: true)
+            }
+            custView.content.text = wish.intro ?? ""
+            
+        }
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)

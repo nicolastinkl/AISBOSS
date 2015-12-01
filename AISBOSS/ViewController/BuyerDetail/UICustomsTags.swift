@@ -10,8 +10,8 @@ import Foundation
 import AISpring
 
 internal protocol AIElasticDownTagStateDelegete : class{
-    func changeTagState(newState:tagState,viewModel:AIBuerSomeTagModel)
-    func releaseTagState(newState:tagState,viewModel:AIBuerSomeTagModel)
+    func changeTagState(newState:tagState,viewModel:AIProposalServiceDetail_label_list_listModel)
+    func releaseTagState(newState:tagState,viewModel:AIProposalServiceDetail_label_list_listModel)
 }
 
 public enum tagState : Int {
@@ -44,7 +44,7 @@ internal class UICustomsTags : SpringView {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    var selfModel:AIBuerSomeTagModel?
+    var selfModel:AIProposalServiceDetail_label_list_listModel?
     
     // MARK: currentView
     class func currentView()->UICustomsTags{
@@ -57,12 +57,12 @@ internal class UICustomsTags : SpringView {
         return selfView
     }
     
-    func fillOfData(model: AIBuerSomeTagModel){
+    func fillOfData(model: AIProposalServiceDetail_label_list_listModel){
         selfModel = model
-        let contentText = model.tagName ?? ""
+        let contentText = model.content ?? ""
         content.text = "    \(contentText)"
         
-        unReadNumber.text = "\(model.unReadNumber ?? 0)"
+        unReadNumber.text = "\(model.selected_num ?? 0)"
     }
     
     func closeIntoEnable(){

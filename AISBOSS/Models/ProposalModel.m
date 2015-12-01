@@ -69,7 +69,7 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"provider_id": @"id"
+                                                       @"id": @"provider_id"
                                                        }];
 }
 
@@ -95,7 +95,7 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"label_id": @"id"
+                                                       @"id": @"label_id"
                                                        }];
 }
 
@@ -106,7 +106,7 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"hope_id": @"id"
+                                                       @"id": @"hope_id"
                                                        }];
 }
 

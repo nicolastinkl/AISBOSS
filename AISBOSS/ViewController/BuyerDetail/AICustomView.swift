@@ -20,8 +20,8 @@ internal class AICustomView : UIView{
     @IBOutlet weak var selectView: DesignableView!
     @IBOutlet weak var avator: DesignableImageView!
     
-    private lazy var allTagsArray  = [AIBuerSomeTagModel]()
-    private lazy var selectedTagsArray  = [AIBuerSomeTagModel]()
+    private lazy var allTagsArray  = [AIProposalServiceDetail_label_list_listModel]()
+    private lazy var selectedTagsArray  = [AIProposalServiceDetail_label_list_listModel]()
     // MARK: currentView
     class func currentView()->AICustomView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
@@ -35,7 +35,7 @@ internal class AICustomView : UIView{
     /**
      TODO: 处理数据填充和标签初始化
      */
-    func fillTags(models:[AIBuerSomeTagModel],isNormal:Bool){
+    func fillTags(models:[AIProposalServiceDetail_label_list_listModel],isNormal:Bool){
         allTagsArray = models //fill data..
         
         var x:CGFloat = tagMargin
@@ -66,7 +66,7 @@ internal class AICustomView : UIView{
             tag.fillOfData(model) //处理数据刷新  // add into whole array with key-value.
             
             tag.delegateNew = self
-            let ramdWidth = 30 + model.tagName!.length * 8
+            let ramdWidth = 30 + model.content!.length * 8
             let ramdHeigth:CGFloat = 35
             
             if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin) {
@@ -109,11 +109,11 @@ extension AICustomView:AIElasticDownTagStateDelegete{
      - parameter newState:  newState description
      - parameter viewModel: viewModel description
      */
-    func releaseTagState(newState: tagState, viewModel: AIBuerSomeTagModel) {
+    func releaseTagState(newState: tagState, viewModel: AIProposalServiceDetail_label_list_listModel) {
         
         //处理已选按钮的释放
         let array = selectedTagsArray.filter { (oldModel) -> Bool in
-            return oldModel.bsId != viewModel.bsId
+            return oldModel.label_id != viewModel.label_id
         }
         
         //remove
@@ -127,7 +127,7 @@ extension AICustomView:AIElasticDownTagStateDelegete{
         
         _ = unselectView.subviews.filter { (childView) -> Bool in
             let tags = childView.subviews.first as! UICustomsTags
-            if tags.selfModel?.bsId == viewModel.bsId {
+            if tags.selfModel?.label_id == viewModel.label_id {
                 // 切换状态
                 tags.updateStateLayout(newState)
             }
@@ -152,13 +152,13 @@ extension AICustomView:AIElasticDownTagStateDelegete{
      
      - parameter newState: tag改变之后的状态
      */
-    func changeTagState(newState: tagState, viewModel: AIBuerSomeTagModel) {
+    func changeTagState(newState: tagState, viewModel: AIProposalServiceDetail_label_list_listModel) {
     
         if newState == tagState.normal {
             //remove this view from list
             
             let array = selectedTagsArray.filter { (oldModel) -> Bool in
-                return oldModel.bsId != viewModel.bsId
+                return oldModel.label_id != viewModel.label_id
             }
             
             //remove

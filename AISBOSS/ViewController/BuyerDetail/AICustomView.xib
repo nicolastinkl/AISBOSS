@@ -134,7 +134,7 @@
                 <outlet property="title" destination="Ugh-Zu-ZTB" id="P5u-3U-3nN"/>
                 <outlet property="unselectView" destination="ise-OE-xtY" id="RUD-bK-pqQ"/>
             </connections>
-            <point key="canvasLocation" x="214" y="478"/>
+            <point key="canvasLocation" x="-23" y="451"/>
         </view>
     </objects>
     <resources>
