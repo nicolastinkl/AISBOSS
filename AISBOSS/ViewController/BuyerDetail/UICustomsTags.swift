@@ -36,7 +36,7 @@ internal class UICustomsTags : SpringView {
     
     private var currentTagState = tagState.normal
     
-    internal var delegateNew:AIElasticDownTagStateDelegete?
+    internal weak var delegateNew:AIElasticDownTagStateDelegete?
     
     // MARK: variables
     @IBOutlet weak var content: DesignableLabel!

@@ -23,7 +23,7 @@ class AIBuyerDetailViewController : UIViewController {
     private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
     var bubleModel : AIBuyerBubbleModel?
-    var delegate: AIBuyerDetailDelegate?
+    weak var delegate: AIBuyerDetailDelegate?
     
     // MARK: swift controls
     
