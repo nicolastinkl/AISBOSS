@@ -11,7 +11,6 @@ import AISwiftyJSON
 
 class AIConnectToolModel : JSONJoy{
     
-    
     var ctType : Int?   // 0 text, 1 image , 2 video , 3  radio
     var ctTitle : String?
     var ctTypeName : String?

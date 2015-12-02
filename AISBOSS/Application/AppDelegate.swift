@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initNetEngine()
         
-        
         // 设置状态栏隐藏
         application.statusBarHidden = true
         application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
