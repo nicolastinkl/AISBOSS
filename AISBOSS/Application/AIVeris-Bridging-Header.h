@@ -89,3 +89,6 @@
 #import "UIScrollView+MJRefresh.h"
 
 
+#if DEBUG
+#import "FLEXManager.h"
+#endif
