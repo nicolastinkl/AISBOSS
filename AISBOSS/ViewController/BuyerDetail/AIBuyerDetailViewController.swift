@@ -130,7 +130,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     func InitController(){
         
-        let name = dataSource?.proposal_name ?? ""
+        let name = bubleModel?.proposal_name ?? ""
         self.backButton.setTitle(name, forState: UIControlState.Normal)
         self.moneyLabel.text = dataSource?.order_total_price
         
