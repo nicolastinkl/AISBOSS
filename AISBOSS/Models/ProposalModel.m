@@ -12,7 +12,15 @@
 @end
 
 @implementation ServiceOrderModel
+@end
 
+@implementation KeypointModel
+@end
+
+@implementation InfoDetailModel
+@end
+
+@implementation ArrangeScriptModel
 @end
 
 @implementation ProposalOrderListModel

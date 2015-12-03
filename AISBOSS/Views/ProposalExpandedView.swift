@@ -72,17 +72,15 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
             serviceView.serviceOrderStateProtocal = self
             serviceView.serviceOrderData = serviceOrder
             
-            if serviceOrder.param_list != nil && serviceOrder.param_list.count > 0 {
-                for paraModel in serviceOrder.param_list {
-                    let param = paraModel as! ParamModel
-                    var expandContentView: UIView?
-                    
-                    expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(param)
-                    
-                    if expandContentView != nil {
-                        expandContentView?.frame = CGRect(x: 0, y: 0, width: frame.width, height: expandContentView!.frame.height)
-                        serviceView.addExpandView(expandContentView!)
-                    }
+            if serviceOrder.arrange_script_info != nil && serviceOrder.arrange_script_info.info_detail != nil {
+                
+                var expandContentView: UIView?
+                
+                expandContentView = ServiceOrderExpandContentViewFactory.createExpandContentView(serviceOrder.arrange_script_info.info_detail)
+                
+                if expandContentView != nil {
+                    expandContentView?.frame = CGRect(x: 0, y: 0, width: frame.width, height: expandContentView!.frame.height)
+                    serviceView.addExpandView(expandContentView!)
                 }
             }
             

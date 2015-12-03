@@ -27,28 +27,7 @@ class MockProposalService : ProposalService{
                 do {
                     let model = try ProposalOrderListModel(data: dataJSON)
                     success(responseData: model)
-                    
-                    for proposal in model.proposal_order_list {
-                        let proposalModel = proposal as! ProposalOrderModel
-                        
-                        for service in proposalModel.order_list {
-                            let serviceOrderModel = service as! ServiceOrderModel
-                            
-                            for para in serviceOrderModel.param_list {
-                                let paraModel = para as! ParamModel
-                                
-                                if paraModel.param_key == "25043310" {
-                                    let s: NSString = paraModel.param_value
-                                    let convertString = s.stringByReplacingOccurrencesOfString("\\", withString: "")
-                                    print(convertString)
-                                    let itemList = GoodsListMode(string: convertString, error: nil)
-                                    let model = itemList.item_list.first as! GoodsDetailItemModel
-                                    print("list: \(model.item_url)")
-                                }
-                            }
-                            
-                        }
-                    }
+
                 } catch {
                     print("ProposalListModel JSON Parse err.")
                     fail(errType: AINetError.Format, errDes: "AIOrderPreListModel JSON Parse error.")
