@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AIBuyerModels.h"
-
+#import "ProposalModel.h"
 
 @interface AICommentCell : UIView
 
 @property (nonatomic, strong) UIImageView *defaultIcon;
 
-- (id)initWithFrame:(CGRect)frame model:(AIMusicCommentsModel *)model;
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Rating_Comment_listModel *)model;
 
 
 @end

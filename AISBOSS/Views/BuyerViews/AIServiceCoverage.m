@@ -25,14 +25,14 @@
 }
 
 
-@property (nonatomic, strong) AIParamedicCoverageModel *coverageModel;
+@property (nonatomic, strong) AIProposalServiceDetail_Param_listModel *coverageModel;
 
 @end
 
 @implementation AIServiceCoverage
 
 
-- (instancetype)initWithFrame:(CGRect)frame model:(AIParamedicCoverageModel *)model
+- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Param_listModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -59,9 +59,9 @@
 - (void)makeTitle
 {
     UIFont *font = [AITools myriadSemiCondensedWithSize:_titleFontSize];
-    CGSize size = [self.coverageModel.title sizeWithFont:font forWidth:300];
+    CGSize size = [_coverageModel.param_name sizeWithFont:font forWidth:300];
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), size.height);
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.coverageModel.title fontSize:_titleFontSize color:Color_HighWhite];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:_coverageModel.param_name fontSize:_titleFontSize color:Color_HighWhite];
     _titleLabel.font = font;
     [self addSubview:_titleLabel];
 }
@@ -90,9 +90,13 @@
     NSArray *colors = [self makeColors];
     
     
-    for (NSInteger i = 0; i < self.coverageModel.labels.count; i++) {
+    for (NSInteger i = 0; i < self.coverageModel.param_value.count; i++) {
+        
+        AIProposalServiceDetail_Param_Value_listModel *model = [self.coverageModel.param_value objectAtIndex:i];
+        
+        
         CGRect frame = CGRectMake(x, y, 100, height);
-        NSString *title = [self.coverageModel.labels objectAtIndex:i];
+        NSString *title = model.value_display;
         AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection];
         label.delegate = self;
         label.backgroundColor = [colors objectAtIndex:i];

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProposalModel.h"
 
 @interface AIMusicTherapyView : UIView
+
+
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
+
 
 @end

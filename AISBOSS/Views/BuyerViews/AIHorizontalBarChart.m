@@ -26,21 +26,27 @@
     UIView *_backgroundView;
     UIView *_charView;
     
-    
+    //
+    NSString *_name;
+    NSInteger _number;
+    CGFloat _rate;
 }
 
-@property (nonatomic, strong) AIMusicChartModel *chartModel;
 
 @end
 
 @implementation AIHorizontalBarChart
 
-- (id)initWithFrame:(CGRect)frame model:(AIMusicChartModel *)model
+- (id)initWithFrame:(CGRect)frame name:(NSString *)name number:(NSInteger)number rate:(CGFloat)rate
 {
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.chartModel = model;
+
+        _name = [name copy];
+        _number = number;
+        _rate = [self modifyRate:rate];
+        
         [self makeProperties];
         [self makeTitle];
         [self makeChart];
@@ -51,7 +57,19 @@
 }
 
 
+
 #pragma mark - 基本属性
+
+- (CGFloat)modifyRate:(CGFloat)rate
+{
+    CGFloat mRate = rate;
+    
+    if (mRate<0.01 && mRate > 0) {
+        mRate = 0.01;
+    }
+    
+    return mRate;
+}
 
 - (void)makeProperties
 {
@@ -76,7 +94,7 @@
     
     CGRect frame = CGRectMake(0, y, width, fontSize);
     
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.title fontSize:fontSize color:Color_MiddleWhite];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:_name fontSize:fontSize color:Color_MiddleWhite];
     _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self addSubview:_titleLabel];
 }
@@ -96,7 +114,7 @@
     [self addSubview:_backgroundView];
     
     //
-    frame.size.width = width * self.chartModel.percentage;
+    frame.size.width = width * _rate;
     _charView = [[UIView alloc] initWithFrame:frame];
     _charView.backgroundColor = [AITools colorWithR:0x29 g:0x4c b:0xe3];
     
@@ -115,7 +133,7 @@
     CGFloat y = (_maxHeight - fontSize) / 2;
     CGRect frame = CGRectMake(x, y, width, fontSize);
     
-    _numberLabel = [AIViews normalLabelWithFrame:frame text:self.chartModel.number fontSize:fontSize color:Color_MiddleWhite];
+    _numberLabel = [AIViews normalLabelWithFrame:frame text:[NSString stringWithFormat:@"%ld", _number] fontSize:fontSize color:Color_MiddleWhite];
     _numberLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self addSubview:_numberLabel];
 }
