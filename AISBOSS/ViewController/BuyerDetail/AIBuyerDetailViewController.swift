@@ -121,11 +121,11 @@ class AIBuyerDetailViewController : UIViewController {
     
     
     func showNextViewController () {
-     
+        
         let vc = AIServiceContentViewController()
         vc.serviceContentType = AIServiceContentType.MusicTherapy
         self.showViewController(vc, sender: self)
-            
+        
     }
     
     func InitController(){

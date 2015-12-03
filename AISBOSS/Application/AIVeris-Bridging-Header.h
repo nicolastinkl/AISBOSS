@@ -88,6 +88,7 @@
 #import "AIParamedicView.h"
 #import "UIScrollView+MJRefresh.h"
 
+#import <AudioToolbox/AudioToolbox.h>
 
 #if DEBUG
 #import "FLEXManager.h"

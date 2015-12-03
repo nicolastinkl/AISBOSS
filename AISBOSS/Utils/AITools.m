@@ -8,14 +8,44 @@
 
 #import "AITools.h"
 
-
-
-
-
-
-
-
 @implementation AITools
+
+
++ (AVAudioPlayer *)playAccAudio:(NSURL*) filename{
+    //初始化播放器的时候如下设置
+    UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
+                            sizeof(sessionCategory),
+                            &sessionCategory);
+    
+    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
+                             sizeof (audioRouteOverride),
+                             &audioRouteOverride);
+    
+    
+//    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,sizeof (audioRouteOverride),&audioRouteOverride);
+    
+//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+//    //默认情况下扬声器播放
+//    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+//    [audioSession setActive:YES error:nil];
+    
+    NSError *playerError;
+    AVAudioPlayer*  myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:filename error:&playerError];
+    myPlayer.meteringEnabled = YES;
+    //myPlayer.delegate = self;
+    
+    if (myPlayer == nil)
+    {
+        NSLog(@"ERror creating player: %@", [playerError description]);
+    }
+    
+    // [self handleNotification:YES];
+    [myPlayer prepareToPlay];
+    [myPlayer play];
+    return myPlayer;
+}
 
 + (MPMoviePlayerController *)playMovieNamed:(NSString *)name type:(NSString *)type onView:(UIView *)view
 {
@@ -364,5 +394,6 @@
 {
     return [self colorWithHexString:color alpha:1.0f];
 }
+
 
 @end

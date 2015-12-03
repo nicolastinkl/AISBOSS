@@ -56,8 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 try AVAudioSession.sharedInstance().setActive(true)
             }catch{
             }
-            
-        })
+        }) 
         
         return true
 
