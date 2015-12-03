@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initNetEngine()
         
-        
         // 设置状态栏隐藏
         application.statusBarHidden = true
         application.setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
@@ -185,6 +184,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        #if !DEBUG
+            if (motion == UIEventSubtype.MotionShake) {
+                FLEXManager.sharedManager().showExplorer()
+            }
+        #endif
+    }
 
 }
 

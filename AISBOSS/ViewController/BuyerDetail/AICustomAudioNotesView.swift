@@ -31,7 +31,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     @IBOutlet weak var changeButton: DesignableButton!
     
     // MARK: -> Internal property
-    private weak var recorder : AVAudioRecorder?
+    private var recorder : AVAudioRecorder? //这里不能够weak
     private var lowPassResults: Double = 0
     private var timer: NSTimer?
     private var currentAudioState: Bool = false
