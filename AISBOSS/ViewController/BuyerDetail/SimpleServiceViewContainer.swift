@@ -86,12 +86,15 @@ class SimpleServiceViewContainer: UIView {
     private func setPrice() {
         if let priceModel = dataModel!.service_price {
             price.text = priceModel.original ?? "$0"
-            if priceModel.saved != nil {
+            
+            if priceModel.saved != nil && priceModel.saved != "" {
                 savedMoney.text = priceModel.saved
                 savedMoneyWidth.constant = savedMoney.text!.sizeWithFont(savedMoney.font, forWidth: 75).width
                 savedMoney.setNeedsUpdateConstraints()
                 
                 originalPrice.text = priceModel.original ?? ""
+                
+                price.text = priceModel.discount
             }
         } else {
             price.text = "$0"
