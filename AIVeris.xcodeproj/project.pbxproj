@@ -14,7 +14,6 @@
 		126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A171BD7952200146BBE /* AIFoldedCellView.swift */; };
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; };
 		126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */; };
-		126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */; };
 		12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A9625A1BEA0A5000732E23 /* BusinessTravel.json */; };
 		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
@@ -215,6 +214,7 @@
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
+		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -240,6 +240,7 @@
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
 		939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */; };
 		939F49FD1BDE07FD00D07598 /* AIBuyServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */; };
+		93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; };
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
@@ -339,6 +340,7 @@
 		93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */; };
 		93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */; };
 		93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */; };
+		93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */; };
 		93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E7BFB11BFEBA3F00A6C906 /* AICustomView.swift */; };
 		93E7BFB41BFEBA5300A6C906 /* AICustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
@@ -464,7 +466,6 @@
 		126B2A171BD7952200146BBE /* AIFoldedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFoldedCellView.swift; sourceTree = "<group>"; };
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
 		126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerTableCellView.swift; sourceTree = "<group>"; };
-		126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIExpandedCellView.swift; sourceTree = "<group>"; };
 		1299023E1C083B0D00316580 /* Veris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veris.entitlements; sourceTree = SOURCE_ROOT; };
 		12A9625A1BEA0A5000732E23 /* BusinessTravel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusinessTravel.json; sourceTree = "<group>"; };
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
@@ -773,6 +774,7 @@
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
+		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -803,6 +805,7 @@
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIPopView.xib; path = Buyer/UIPopView.xib; sourceTree = "<group>"; };
 		939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopHoldView.swift; sourceTree = "<group>"; };
 		939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyServiceModel.swift; sourceTree = "<group>"; };
+		93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBueryDetailCell.swift; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93A742C81BDF75FD001EF581 /* TDImageColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageColors.h; sourceTree = "<group>"; };
 		93A742C91BDF75FD001EF581 /* TDImageColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageColors.m; sourceTree = "<group>"; };
@@ -1008,6 +1011,8 @@
 		93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIGalleryView.swift; sourceTree = "<group>"; };
 		93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomsTags.swift; sourceTree = "<group>"; };
 		93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomsTags.xib; sourceTree = "<group>"; };
+		93DF036C1C10384000C797C4 /* AISuperSwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISuperSwipeableCell.h; sourceTree = "<group>"; };
+		93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISuperSwipeableCell.m; sourceTree = "<group>"; };
 		93E7BFB11BFEBA3F00A6C906 /* AICustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomView.swift; sourceTree = "<group>"; };
 		93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomView.xib; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
@@ -1156,8 +1161,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */,
+				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */,
 				93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */,
 				81C092921BAFE6A1003FFF35 /* CoreGraphics.framework in Frameworks */,
@@ -1335,6 +1340,7 @@
 		81DC18DB1BD5D2550081D131 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				846DAD8E1BD661960054F058 /* PurchasedService */,
 				939F49F31BDDD66D00D07598 /* PopView */,
 				126B2A161BD7952200146BBE /* AIFoldedCellView.xib */,
 				126B2A171BD7952200146BBE /* AIFoldedCellView.swift */,
@@ -1345,7 +1351,6 @@
 				81A5BE531BD87D2900019802 /* AIBubble.h */,
 				81A5BE541BD87D2900019802 /* AIBubble.m */,
 				126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */,
-				126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */,
 				12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */,
 				12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */,
 				842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */,
@@ -1429,6 +1434,7 @@
 				84B62B171BD891670081ABDF /* ImageContent.swift */,
 			);
 			name = PurchasedService;
+			path = ../Views;
 			sourceTree = "<group>";
 		};
 		8472CBD11BCCAC2F0084A926 /* Price */ = {
@@ -1716,6 +1722,7 @@
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				93A3B1841C1033E700DE7EBB /* interfaceCell */,
 				93DA9C0C1BFDB66700E2DA3B /* subView */,
 				84DDA94D1BEDD56900CA5C83 /* cell */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
@@ -1861,6 +1868,15 @@
 			name = PopView;
 			sourceTree = "<group>";
 		};
+		93A3B1841C1033E700DE7EBB /* interfaceCell */ = {
+			isa = PBXGroup;
+			children = (
+				93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */,
+				933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */,
+			);
+			name = interfaceCell;
+			sourceTree = "<group>";
+		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -2000,7 +2016,6 @@
 				818D8EAE1C040D4100006408 /* BuyerViews */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
-				846DAD8E1BD661960054F058 /* PurchasedService */,
 				8454E6F81BAFE9D800016AB3 /* SwitchService */,
 				847D93721BAF93C4000FAE69 /* Flight */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
@@ -2347,6 +2362,8 @@
 				93C33F081B9BEAFE007BF506 /* KMDetailsPageView.m */,
 				93C33F0C1B9BEAFE007BF506 /* NSObjcetUtils.swift */,
 				93C33F0D1B9BEAFE007BF506 /* Player.swift */,
+				93DF036C1C10384000C797C4 /* AISuperSwipeableCell.h */,
+				93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */,
 				93C33F0E1B9BEAFE007BF506 /* SwipeableCell.h */,
 				93C33F0F1B9BEAFE007BF506 /* SwipeableCell.m */,
 				93C33F101B9BEAFE007BF506 /* TableViewCellBackgroundView.h */,
@@ -2703,6 +2720,7 @@
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
+				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
@@ -3034,6 +3052,7 @@
 				844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */,
 				849B4B581C0EDFE300BEC179 /* FLEXViewControllerExplorerViewController.m in Sources */,
 				81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */,
+				93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */,
 				8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */,
 				93B25A3F1B9D796F00CD1FEB /* AINetEngine.m in Sources */,
 				81C092851BAFAC0D003FFF35 /* SDWebImageDecoder.m in Sources */,
@@ -3077,7 +3096,6 @@
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
-				126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				849B4B601C0EDFE300BEC179 /* FLEXUtility.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
@@ -3135,6 +3153,7 @@
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
+				93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */,
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 				849B4B5D1C0EDFE300BEC179 /* FLEXMultilineTableViewCell.m in Sources */,
 				849B4B3E1C0EDFE300BEC179 /* FLEXInstancesTableViewController.m in Sources */,
@@ -3262,6 +3281,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -3300,6 +3320,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "";
 				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -3361,7 +3382,7 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3408,7 +3429,7 @@
 				8423E5731BB4E4EE006DC73B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		93D5A3441B709C1C00DDB158 /* Build configuration list for PBXProject "AIVeris" */ = {
 			isa = XCConfigurationList;
@@ -3417,7 +3438,7 @@
 				93D5A3701B709C1D00DDB158 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */ = {
 			isa = XCConfigurationList;
@@ -3426,7 +3447,7 @@
 				93D5A3731B709C1D00DDB158 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

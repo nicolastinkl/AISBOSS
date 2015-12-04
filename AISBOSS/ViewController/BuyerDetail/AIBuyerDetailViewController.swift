@@ -53,7 +53,7 @@ class AIBuyerDetailViewController : UIViewController, ServiceRestoreToolBarDeleg
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+		self.tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
 		self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
 
 		contentView = self.tableView.tableHeaderView?.viewWithTag(1)
@@ -175,20 +175,21 @@ class AIBuyerDetailViewController : UIViewController, ServiceRestoreToolBarDeleg
 		self.contentLabel.font = AITools.myriadLightSemiCondensedWithSize(42 / PurchasedViewDimention.CONVERT_FACTOR)
 	}
 
-    // MARK: - ServiceRestoreToolBarDataSource
-    func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> UIImage? {
-        return nil;
-    }
-    
-    // MARK: - ServiceRestoreToolBarDelegate
-    func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int) {
-        
-    }
-    
-    func serviceRestoreToolBarDidClickBlankArea(serviceRestoreToolBar: ServiceRestoreToolBar) {
-        
-    }
-    
+	// MARK: - ServiceRestoreToolBarDataSource
+	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> UIImage? {
+		return nil;
+
+	}
+
+	// MARK: - ServiceRestoreToolBarDelegate
+	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int) {
+
+	}
+
+	func serviceRestoreToolBarDidClickBlankArea(serviceRestoreToolBar: ServiceRestoreToolBar) {
+
+	}
+
 	// MARK: - 删除service
 
 	func logoMoveToServiceRestoreToolBar(logo: UIImageView, completion:(() -> Void)?) {
@@ -292,11 +293,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 		}
 	}
 
-	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		if let height = cellHeights[indexPath.row] {
-			cell.contentView.subviews.first?.frame.size.height = height
-		}
-	}
 
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
@@ -306,50 +302,29 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 			return cacheCell
 		}
 
-		// let cell = AITableCellHolder.currentView()
-
-		let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-		cell.selectionStyle = UITableViewCellSelectionStyle.None
-		cell.backgroundColor = UIColor.clearColor()
+		// Create Cell
+		let cell = AIBueryDetailCell.currentView()
 		let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
-
-		let offset: CGFloat = 15.0
-		// let fixOffset:CGFloat = 6.0
-		let width = CGRectGetWidth(self.view.frame) - offset * 2
-		let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
-		serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
-		cell.contentView.addSubview(serviceView)
-		serviceView.frame = CGRectMake(offset, 0, width, 200)
+		let serviceView = SimpleServiceViewContainer.currentView()
+        serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
 		serviceView.loadData(serviceDataModel)
+		cell.contentHoldView.addSubview(serviceView)
+		cell.currentModel = serviceDataModel
+		cell.removeDelegate = self
+		// Add constrain
+		constrain(serviceView, cell.contentHoldView) {(view, container) ->() in
+			view.left == container.left
+			view.top == container.top
+			view.bottom == container.bottom
+			view.right == container.right
+			container.height == serviceView.selfHeight()
+		}
 
-		cellHeights[indexPath.row] = serviceView.frame.height
+		// Cache Cell.
+		cellHeights[indexPath.row] = serviceView.selfHeight()
 		horizontalCardCellCache.setValue(cell, forKey: key)
+
 		return cell
-
-
-
-		// var serviceView: ServiceContainerView!
-		//
-		// if dataSource.service_list.count == 1 {
-		// let singleServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-		// singleServiceView.isSingle = true
-		// singleServiceView.isPrimeService(true)
-		// serviceView = singleServiceView
-		// } else {
-		// if indexPath.row == 0 {
-		// let topServiceView = NSBundle.mainBundle().loadNibNamed("TopServiceContainer", owner: self, options: nil).first as! TopServiceContainerView
-		// topServiceView.isPrimeService(true)
-		// serviceView = topServiceView
-		// } else if indexPath.row == dataSource.service_list.count - 1 {
-		// let bottomView = NSBundle.mainBundle().loadNibNamed("BottomServiceContainer", owner: self, options: nil).first  as! BottomServiceContainerView
-		// serviceView = bottomView
-		//
-		// } else {
-		// let middleView = NSBundle.mainBundle().loadNibNamed("MiddleServiceContainer", owner: self, options: nil).first  as! MiddleServiceContainerView
-		// serviceView = middleView
-		// }
-		// }
-
 
 	}
 
@@ -362,18 +337,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 	}
 
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-		#if !DEBUG
-		let key = "servicelist_\(indexPath.row)"
-
-		let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell?
-		let view: SimpleServiceViewContainer = cacheCell?.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
-		let logo = view.logo
-		logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
-
-			})
-		return
-		#endif
 
 		let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
 
@@ -395,5 +358,26 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 
 	}
 
+}
+
+
+
+// MARK: Extension.
+extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
+
+	func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
+		let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
+		let logo = view.logo
+        //TODO: delete from server
+        
+        
+		logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
+            
+            //TODO: delete row from tableview
+            
+            
+			})
+		return
+	}
 
 }

@@ -17,7 +17,7 @@ import AISpring
 *  =============     main cell class    ================
 */
 
-protocol tagCellDelegate {
+protocol tagCellDelegate:class {
     func signTag(sender: AnyObject, parent: AICellIdentityCell?)
 }
 
@@ -26,12 +26,8 @@ class AICellIdentityCell:SwipeableCell {
     @IBOutlet weak var view_Tags: SpringView!
 
     @IBOutlet weak var view_Content: SpringView!
-    var signDelegate: tagCellDelegate?
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//    }    
+    weak var signDelegate: tagCellDelegate?
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

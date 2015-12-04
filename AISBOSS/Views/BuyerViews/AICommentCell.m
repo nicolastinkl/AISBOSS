@@ -26,13 +26,13 @@
     UPLabel *_commentLabel;
 }
 
-@property (nonatomic, strong) AIMusicCommentsModel *commentModel;
+@property (nonatomic, strong) AIProposalServiceDetail_Rating_Comment_listModel *commentModel;
 
 @end
 
 @implementation AICommentCell
 
-- (id)initWithFrame:(CGRect)frame model:(AIMusicCommentsModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Rating_Comment_listModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -75,7 +75,7 @@
     self.defaultIcon = [[UIImageView alloc] initWithFrame:frame];
     
     UIImage *defaut = [UIImage imageNamed:@"MusicHead1"];
-    [self.defaultIcon sd_setImageWithURL:[NSURL URLWithString:self.commentModel.headIcon] placeholderImage:defaut];
+    [self.defaultIcon sd_setImageWithURL:[NSURL URLWithString:self.commentModel.service_customer.portrait_icon] placeholderImage:defaut];
     [self addSubview:self.defaultIcon];
 }
 
@@ -90,7 +90,7 @@
     
     CGRect frame = CGRectMake(x, y, width, height);
     
-    _nameLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.name fontSize:_nameFontSize color:[UIColor whiteColor]];
+    _nameLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.service_customer.name fontSize:_nameFontSize color:[UIColor whiteColor]];
     _nameLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     _nameLabel.font = [AITools myriadSemiCondensedWithSize:_nameFontSize];
     [self addSubview:_nameLabel];
@@ -107,7 +107,7 @@
 
     CGRect frame = CGRectMake(x, y, 0, height);
     
-    _starRate = [[AIStarRate alloc] initWithFrame:frame rate:self.commentModel.rate];
+    _starRate = [[AIStarRate alloc] initWithFrame:frame rate:self.commentModel.rating_level];
     [self addSubview:_starRate];
 }
 
@@ -149,14 +149,14 @@
     CGFloat y = CGRectGetMaxY(self.defaultIcon.frame) + [AITools displaySizeFrom1080DesignSize:25];
     CGFloat width = CGRectGetWidth(self.frame);
     UIFont *font = [AITools myriadLightSemiCondensedWithSize:_commentFontSize];;
-    CGSize size = [self.commentModel.comment sizeWithFont:font forWidth:width];
+    CGSize size = [self.commentModel.content sizeWithFont:font forWidth:width];
     
     CGRect frame = CGRectMake(0, y, width, size.height);
     
-    _commentLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.comment fontSize:_commentFontSize color:Color_MiddleWhite];
+    _commentLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.content fontSize:_commentFontSize color:Color_MiddleWhite];
     _commentLabel.numberOfLines = 0;
     _commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    _commentLabel.attributedText = [self fixedString:self.commentModel.comment];
+    _commentLabel.attributedText = [self fixedString:self.commentModel.content];
     [_commentLabel sizeToFit];
     
     

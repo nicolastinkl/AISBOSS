@@ -28,7 +28,7 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        _displayRate = rate;
+        _displayRate = rate / 2;
         [self makeProperties];
         [self makeStars];
     }

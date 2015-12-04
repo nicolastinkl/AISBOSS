@@ -67,6 +67,10 @@
 
 - (NSAttributedString *)fixedString:(NSString *)string
 {
+    if (string.length == 0 || string == nil) {
+        return nil;
+    }
+    
     NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:string];
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

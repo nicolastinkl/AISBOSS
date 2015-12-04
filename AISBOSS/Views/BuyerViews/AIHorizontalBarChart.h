@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AIBuyerModels.h"
+#import "ProposalModel.h"
 
 @interface AIHorizontalBarChart : UIView
 
-- (id)initWithFrame:(CGRect)frame model:(AIMusicChartModel *)model;
+
+- (id)initWithFrame:(CGRect)frame name:(NSString *)name number:(NSInteger)number rate:(CGFloat)rate;
+
 
 
 @end

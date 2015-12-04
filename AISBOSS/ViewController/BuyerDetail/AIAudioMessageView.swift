@@ -33,16 +33,20 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
     @IBAction func playAction(sender: AnyObject) {
         if let model = currentModelss{
-            
-            
             Async.main(after: 0.1, block: { () -> Void in
                 
                 do{
                     
-                    let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
-                    //player.delegate = self
+                    
+                    let player = AITools.playAccAudio(NSURL(string: model.audio_url)!)
+                    if player != nil {
+                        player.delegate = self
+                    }
+                    /*let player = try AVAudioPlayer(contentsOfURL: NSURL(string: model.audio_url)!)
+                    player.delegate = self
                     player.prepareToPlay()
                     player.play()
+                    */
                     
                     //start playing gif Images
                     let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
