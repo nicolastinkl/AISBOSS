@@ -20,10 +20,26 @@
     CGFloat _sideMargin;
 }
 
+@property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+
 @end
 
 
 @implementation AIParamedicView
+
+
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
+{
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        self.detailModel = model;
+        [self makeProperties];
+        [self makeSubViews];
+    }
+    
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,6 +62,10 @@
 
 - (NSAttributedString *)attrAmountWithAmount:(NSString *)amount
 {
+    
+    if (amount == nil || amount.length == 0) {
+        return nil;
+    }
     // find range
     
     NSRange anchorRange = [amount rangeOfString:@"/"];
@@ -75,9 +95,8 @@
     CGFloat width = CGRectGetWidth(self.frame) - _sideMargin * 2;
     //
     CGRect textFrame = CGRectMake(_sideMargin, y, width, 0);
-    NSString *title = @"Session include:";
-    NSString *detail = @"Handle all the trivial matters related to the hospital journey. Provide easier than ever see-a-doctor experience with every aspect of service that might ease the complex processes in the hospital.";
-    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:title detail:detail];
+
+    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:self.detailModel.service_intro_title detail:self.detailModel.service_intro_content];
     [self addSubview:detailText];
     
     //
@@ -87,10 +106,8 @@
     y += [AITools displaySizeFrom1080DesignSize:38];
     
     CGRect coverageFrame = CGRectMake(_sideMargin, y, width, 0);
-    AIParamedicCoverageModel *model = [[AIParamedicCoverageModel alloc] init];
-    model.title = @"Service Coverage";
-    model.labels = @[@"Medichine Pickup", @"Queuing", @"Calling For Taxi", @"Check-in", @"Paramedic", @"Test Result Pickup"];
-    AIServiceCoverage *corverage = [[AIServiceCoverage alloc] initWithFrame:coverageFrame model:model];
+
+    AIServiceCoverage *corverage = [[AIServiceCoverage alloc] initWithFrame:coverageFrame model:_detailModel.service_param_list.firstObject];
     [self addSubview:corverage];
     
     //
@@ -103,9 +120,9 @@
     imageView.frame = CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight);
     [self addSubview:imageView];
     //
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"€ 100 / session" fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
+    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:_detailModel.service_price.original fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     
-    amLabel.attributedText = [self attrAmountWithAmount:@"€ 100 / session"];
+    amLabel.attributedText = [self attrAmountWithAmount:_detailModel.service_price.original];
     amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];

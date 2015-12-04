@@ -14,7 +14,6 @@
 		126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A171BD7952200146BBE /* AIFoldedCellView.swift */; };
 		126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A181BD7952200146BBE /* AIOrderDescView.swift */; };
 		126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */; };
-		126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */; };
 		12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A9625A1BEA0A5000732E23 /* BusinessTravel.json */; };
 		12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */; };
 		12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12D794FD1BA80B6000586011 /* CardCellView.xib */; };
@@ -465,7 +464,6 @@
 		126B2A171BD7952200146BBE /* AIFoldedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIFoldedCellView.swift; sourceTree = "<group>"; };
 		126B2A181BD7952200146BBE /* AIOrderDescView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderDescView.swift; sourceTree = "<group>"; };
 		126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerTableCellView.swift; sourceTree = "<group>"; };
-		126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIExpandedCellView.swift; sourceTree = "<group>"; };
 		1299023E1C083B0D00316580 /* Veris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Veris.entitlements; sourceTree = SOURCE_ROOT; };
 		12A9625A1BEA0A5000732E23 /* BusinessTravel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusinessTravel.json; sourceTree = "<group>"; };
 		12D794FB1BA80B2E00586011 /* HorizontalCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCardView.swift; sourceTree = "<group>"; };
@@ -1338,6 +1336,7 @@
 		81DC18DB1BD5D2550081D131 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				846DAD8E1BD661960054F058 /* PurchasedService */,
 				939F49F31BDDD66D00D07598 /* PopView */,
 				126B2A161BD7952200146BBE /* AIFoldedCellView.xib */,
 				126B2A171BD7952200146BBE /* AIFoldedCellView.swift */,
@@ -1348,7 +1347,6 @@
 				81A5BE531BD87D2900019802 /* AIBubble.h */,
 				81A5BE541BD87D2900019802 /* AIBubble.m */,
 				126B2A1C1BD7956600146BBE /* AIBuyerTableCellView.swift */,
-				126B2A1E1BD7DBA900146BBE /* AIExpandedCellView.swift */,
 				12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */,
 				12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */,
 				842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */,
@@ -1432,6 +1430,7 @@
 				84B62B171BD891670081ABDF /* ImageContent.swift */,
 			);
 			name = PurchasedService;
+			path = ../Views;
 			sourceTree = "<group>";
 		};
 		8472CBD11BCCAC2F0084A926 /* Price */ = {
@@ -2013,7 +2012,6 @@
 				818D8EAE1C040D4100006408 /* BuyerViews */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
-				846DAD8E1BD661960054F058 /* PurchasedService */,
 				8454E6F81BAFE9D800016AB3 /* SwitchService */,
 				847D93721BAF93C4000FAE69 /* Flight */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
@@ -3090,7 +3088,6 @@
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
-				126B2A1F1BD7DBA900146BBE /* AIExpandedCellView.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				849B4B601C0EDFE300BEC179 /* FLEXUtility.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
@@ -3276,6 +3273,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -3314,6 +3312,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "";
 				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -3422,7 +3421,7 @@
 				8423E5731BB4E4EE006DC73B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		93D5A3441B709C1C00DDB158 /* Build configuration list for PBXProject "AIVeris" */ = {
 			isa = XCConfigurationList;
@@ -3431,7 +3430,7 @@
 				93D5A3701B709C1D00DDB158 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */ = {
 			isa = XCConfigurationList;
@@ -3440,7 +3439,7 @@
 				93D5A3731B709C1D00DDB158 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

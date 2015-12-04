@@ -21,17 +21,22 @@
     CGFloat _sideMargin;
 }
 
+
+@property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+
+
 @end
 
 
 @implementation AIMusicTherapyView
 
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
 {
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.detailModel = model;
         [self makeProperties];
         [self makeSubViews];
     }
@@ -94,9 +99,7 @@
     CGFloat width = CGRectGetWidth(self.frame) - _sideMargin * 2;
     //
     CGRect textFrame = CGRectMake(_sideMargin, y, width, 0);
-    NSString *title = @"Session include:";
-    NSString *detail = @"These hourly sessions include bonding and communicating with your baby, guided imagery and visualization for birth and well being, therapeutic healing with the voice exercises and mandala drawing. Tailored sessions are provided to choose.";
-    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:title detail:detail];
+    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:self.detailModel.service_intro_title detail:self.detailModel.service_intro_content];
     [self addSubview:detailText];
     
     //
@@ -106,11 +109,11 @@
     y += [AITools displaySizeFrom1080DesignSize:39];
     
     CGRect frame = CGRectMake(_sideMargin, y, width, 0);
-    AIMusicServiceTypesModel *serviceTypesModel = [[AIMusicServiceTypesModel alloc] init];
-    serviceTypesModel.title = @"Service Type";
-    serviceTypesModel.types = @[@"Individual Presental Music Session", @"Group Session By Trimester", @"Private Home/Hospital Session"];
     
-    AIServiceTypes *serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:serviceTypesModel];
+    
+    
+    
+    AIServiceTypes *serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:_detailModel.service_param_list.firstObject];
     [self addSubview:serviceTypes];
     
     //
@@ -122,9 +125,9 @@
     imageView.frame = CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight);
     [self addSubview:imageView];
     //
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:@"€ 100 / session" fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
+    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:_detailModel.service_price.original fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     
-    amLabel.attributedText = [self attrAmountWithAmount:@"€ 100 / session"];
+    amLabel.attributedText = [self attrAmountWithAmount:_detailModel.service_price.original];
     amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];
@@ -144,7 +147,8 @@
     
     //
     CGFloat moreFontSize = [AITools displaySizeFrom1080DesignSize:31];
-    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"178 More Reviews >" fontSize:moreFontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
+    NSString *moreString = [NSString stringWithFormat:@"%ld More Reviews >", _detailModel.service_rating.reviews - 2];
+    UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:moreString fontSize:moreFontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
     moreLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:moreLabel];
     
@@ -153,11 +157,11 @@
     CGFloat starSize = [AITools displaySizeFrom1080DesignSize:39];
     
     CGRect starFrame = CGRectMake(_sideMargin, y, 100, starSize);
-    AIStarRate *starRate = [[AIStarRate alloc] initWithFrame:starFrame rate:4.5];
+    AIStarRate *starRate = [[AIStarRate alloc] initWithFrame:starFrame rate:9];
     [self addSubview:starRate];
     
     //
-    NSString *reviewStr = @"180 reviews";
+    NSString *reviewStr = [NSString stringWithFormat:@"%ld reviews", _detailModel.service_rating.reviews];
     CGFloat reFontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGFloat reviewX = CGRectGetMaxX(starRate.frame) + [AITools displaySizeFrom1080DesignSize:40];
     CGSize reviewSize = [reviewStr sizeWithFont:[AITools myriadSemiCondensedWithSize:reFontSize] forWidth:width];
@@ -187,18 +191,23 @@
     
     //
     
-    UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, y, width, [AITools displaySizeFrom1080DesignSize:42]) text:@"95%" fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
+    NSArray *models = _detailModel.service_rating.rating_level_list;
+    AIProposalServiceDetail_Rating_List_Item_listModel *exmodel = models.firstObject;
+    CGFloat percentage = (CGFloat)exmodel.number / (CGFloat)_detailModel.service_rating.reviews * 100;
+    NSString *rateP = [NSString stringWithFormat:@"%.0f%@", percentage, @"%"];
+    UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, y, width, [AITools displaySizeFrom1080DesignSize:42]) text:rateP fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
     perLabel.font = [AITools myriadSemiCondensedWithSize:reFontSize];
     [self addSubview:perLabel];
     
     //
     y += starSize + [AITools displaySizeFrom1080DesignSize:50];
-    NSArray *models = [self fakeCharts];
     
-    for (AIMusicChartModel *model in models) {
+    
+    for (AIProposalServiceDetail_Rating_List_Item_listModel *model in models) {
         CGFloat height = [AITools displaySizeFrom1080DesignSize:34];
         CGRect frame = CGRectMake(_sideMargin, y, width, height);
-        AIHorizontalBarChart *chart = [[AIHorizontalBarChart alloc] initWithFrame:frame model:model];
+        CGFloat rate = (CGFloat)model.number / (CGFloat)_detailModel.service_rating.reviews;
+        AIHorizontalBarChart *chart = [[AIHorizontalBarChart alloc] initWithFrame:frame name:model.name number:model.number rate:rate];
         [self addSubview:chart];
         
         y += height + [AITools displaySizeFrom1080DesignSize:23];
@@ -237,13 +246,10 @@
     
     y += 1 + [AITools displaySizeFrom1080DesignSize:22];
     //
-    NSArray *comments = [self fakeComments];
-    NSMutableArray *mIcons = [[NSMutableArray alloc] initWithArray:@[[UIImage imageNamed:@"MusicHead1"], [UIImage imageNamed:@"MusicHead2"]]];
-    
-    for (int i = 0; i < comments.count; i++) {
+    for (int i = 0; i < _detailModel.service_rating.comment_list.count; i++) {
         
-        
-        AIMusicCommentsModel *comment = [comments objectAtIndex:i];
+        AIProposalServiceDetail_Rating_Comment_listModel *comment = [_detailModel.service_rating.comment_list objectAtIndex:i];
+
         CGRect frame = CGRectMake(_sideMargin, y, width, 0);
         
         AICommentCell *cell = [[AICommentCell alloc] initWithFrame:frame model:comment];
@@ -251,7 +257,7 @@
         
         y += CGRectGetHeight(cell.frame) + [AITools displaySizeFrom1080DesignSize:22];
         
-        if (i == comments.count - 1) {
+        if (i == _detailModel.service_rating.comment_list.count - 1) {
             [self addLineViewAtY:y];
         }
         else
@@ -260,11 +266,7 @@
         }
         
         y +=  [AITools displaySizeFrom1080DesignSize:22];
-        
-        //Fake Image
-        cell.defaultIcon.image = [mIcons firstObject];
-        [mIcons removeObjectAtIndex:0];
-        
+  
     }
     
     
@@ -276,68 +278,5 @@
     
 }
 
-
-- (NSArray *)fakeCharts
-{
-    NSMutableArray *fakeCharts = [[NSMutableArray alloc] init];
-    
-    AIMusicChartModel *model = [[AIMusicChartModel alloc] init];
-    model.title = @"excellent";
-    model.percentage = 0.9;
-    model.number = @"171";
-    [fakeCharts addObject:model];
-
-    model = [[AIMusicChartModel alloc] init];
-    model.title = @"good";
-    model.percentage = 0.1;
-    model.number = @"8";
-    [fakeCharts addObject:model];
-    
-    model = [[AIMusicChartModel alloc] init];
-    model.title = @"average";
-    model.percentage = 0.03;
-    model.number = @"1";
-    [fakeCharts addObject:model];
-    
-    model = [[AIMusicChartModel alloc] init];
-    model.title = @"poor";
-    model.percentage = 0;
-    model.number = @"0";
-    [fakeCharts addObject:model];
-    
-    model = [[AIMusicChartModel alloc] init];
-    model.title = @"terrible";
-    model.percentage = 0;
-    model.number = @"0";
-    [fakeCharts addObject:model];
-    
-    
-    
-    return fakeCharts;
-}
-
-- (NSArray *)fakeComments
-{
-    NSMutableArray *fakeComments = [[NSMutableArray alloc] init];
-    
-    AIMusicCommentsModel *model = [[AIMusicCommentsModel alloc] init];
-    model.headIcon = nil;//@"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
-    model.name = @"Jenna";
-    model.rate = 4.5;
-    model.time = @"Sep 28th, 2015";
-    model.comment = @"Thank you, Grace Yang. You were such an important figure in my transition. You helped me immensely to keep my heart and mind open, at a time when I was quite unsure and afraid. Thank you very much ...";
-    [fakeComments addObject:model];
-    
-    model = [[AIMusicCommentsModel alloc] init];
-    model.headIcon = nil;//@"http://b.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=b8640aff662762d09433acedc185639f/8d5494eef01f3a293c7d60129c25bc315d607cb0.jpg";
-    model.name = @"Haya";
-    model.rate = 4.5;
-    model.time = @"Sep 28th, 2015";
-    model.comment = @"Grace Yang enabled an amazing sense of calm, love, beauty and joy to our experience. I am not sure if it was her energy, or the music, or the wonderful aromatic oils she had brought. But it all blended so naturally...";
-    [fakeComments addObject:model];
-    
-    
-    return fakeComments;
-}
 
 @end

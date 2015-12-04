@@ -220,7 +220,7 @@ internal class AIServiceContentViewController: UIViewController {
             
             
             let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-            let paramedicView = AIParamedicView(frame: paramedicFrame)
+            let paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
             //scrollView.addSubview(musicView)
             addNewSubView(paramedicView, preView: galleryView)
             paramedicView.backgroundColor = UIColor.clearColor()
@@ -229,7 +229,7 @@ internal class AIServiceContentViewController: UIViewController {
             //音乐疗养
             
             let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-            let musicView = AIMusicTherapyView(frame: musicFrame)
+            let musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
             //scrollView.addSubview(musicView)
             addNewSubView(musicView, preView: galleryView)
             musicView.backgroundColor = UIColor.clearColor()

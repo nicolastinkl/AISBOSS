@@ -276,6 +276,9 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (nonatomic, strong) NSArray<AIProposalServiceDetail_Param_listModel,Optional> * service_param_list;
 @property (nonatomic, strong) AIProposalServiceDetail_Rating_listModel<Optional> * service_rating;
 @property (nonatomic, strong) AIProposalServiceDetail_wish_list_listModel<Optional> * wish_list;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetail_Rating_Comment_listModel, Optional> *comment_list;
+
+
 
 @end
 
