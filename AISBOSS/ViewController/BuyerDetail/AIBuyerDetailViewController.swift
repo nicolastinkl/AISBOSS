@@ -316,9 +316,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 
 }
 
-
 // MARK: Extension.
-extension AIBueryDetailCellDetegate{
+extension AIBuyerDetailViewController: AIBueryDetailCellDetegate{
 
     func removeCellFromSuperView(model:AIProposalServiceModel?){
         
