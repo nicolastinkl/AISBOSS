@@ -1,24 +1,25 @@
 //
-//  AIBueryDetailCell.swift
-//  AIVeris
+// AIBueryDetailCell.swift
+// AIVeris
 //
-//  Created by tinkl on 3/12/2015.
-//  Base on Tof Templates
-//  Copyright © 2015 ___ASIAINFO___. All rights reserved.
+// Created by tinkl on 3/12/2015.
+// Base on Tof Templates
+// Copyright © 2015 ___ASIAINFO___. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-//protocol
-protocol AIBueryDetailCellDetegate:class{
-    func removeCellFromSuperView(model:AIProposalServiceModel?)
+// protocol
+protocol AIBueryDetailCellDetegate: class {
+	func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?)
 }
 
 // MARK: -
 // MARK: AIBueryDetailCell
 // MARK: -
 internal class AIBueryDetailCell : AISuperSwipeableCell {//
+ 
     // MARK: -
     // MARK: Internal access (aka public for current module)
     // MARK: -
@@ -54,7 +55,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
         }
     }
     
-    internal weak var delegatedd:AIBueryDetailCellDetegate?
+    internal weak var removeDelegate:AIBueryDetailCellDetegate?
     
     // MARK: -> Internal structs
     
@@ -81,6 +82,6 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
 
     ///Delete Action for delegate
     @IBAction func removeAction(sender: AnyObject) {
-        delegatedd?.removeCellFromSuperView(self.currentModel)
+        removeDelegate?.removeCellFromSuperView(self, model: self.currentModel)
     }
 }

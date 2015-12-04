@@ -13,6 +13,7 @@ class SimpleServiceViewContainer: UIView {
     
     private static let DIVIDER_TOP_MARGIN: CGFloat = 1
     private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
+    static let simpleServiceViewContainerTag: Int = 233
 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomContentView: UIView!

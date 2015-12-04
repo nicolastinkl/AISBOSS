@@ -95,6 +95,8 @@
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
+		8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */; };
+		8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */; };
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
 		845BE0101BE8CEC60001716A /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00F1BE8CEC60001716A /* TransportService.swift */; };
 		845BE0121BE8D7490001716A /* AccommodationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE0111BE8D7490001716A /* AccommodationService.swift */; };
@@ -589,6 +591,8 @@
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
+		8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRestoreToolBar.swift; sourceTree = "<group>"; };
+		8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceRestoreToolBar.xib; sourceTree = "<group>"; };
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
 		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransportService.swift; path = ../../Views/TransportService.swift; sourceTree = "<group>"; };
 		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccommodationService.swift; path = ../../Views/AccommodationService.swift; sourceTree = "<group>"; };
@@ -2443,6 +2447,8 @@
 				937EA3901C032E9400AF776B /* AINavigationBarView.xib */,
 				937EA3921C04076500AF776B /* AIAudioRecordView.xib */,
 				937EA3941C04076D00AF776B /* AIAudioRecordView.swift */,
+				8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */,
+				8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2718,6 +2724,7 @@
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
+				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
 				849B4B451C0EDFE300BEC179 /* Info.plist in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
@@ -2938,6 +2945,7 @@
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */,
+				8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */,
 				849B4B4B1C0EDFE300BEC179 /* FLEXNetworkTransactionTableViewCell.m in Sources */,
 				849B4B2E1C0EDFE300BEC179 /* FLEXFieldEditorView.m in Sources */,
 				126B2A1D1BD7956600146BBE /* AIBuyerTableCellView.swift in Sources */,
