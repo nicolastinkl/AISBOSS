@@ -265,7 +265,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
         cell.currentModel = serviceDataModel
-        
+        cell.delegatedd = self
         // Add constrain
         constrain(serviceView, cell.contentHoldView) { (view, container) -> () in
             view.left == container.left
@@ -314,4 +314,14 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 
 
+}
+
+
+// MARK: Extension.
+extension AIBueryDetailCellDetegate{
+
+    func removeCellFromSuperView(model:AIProposalServiceModel?){
+        
+    }
+    
 }
