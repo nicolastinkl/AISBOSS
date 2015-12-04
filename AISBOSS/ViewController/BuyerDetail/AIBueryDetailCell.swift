@@ -32,7 +32,27 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     internal var recordPosition:CGPoint?
     
-    internal var currentModel:AIProposalServiceModel?
+    internal var currentModel:AIProposalServiceModel?{
+        didSet{
+            //TODO: Here is a holdPlace to show some value init.
+            
+            guard let modelInit = self.currentModel else {
+                return
+            }
+            
+            let simpleServiceView = self.contentHoldView.subviews.last as? SimpleServiceViewContainer
+            //Even if a delete property.
+            if modelInit.is_delemode == 1 {
+                // Set the content view to 'normal' MODE.
+                simpleServiceView?.displayDeleteMode = true
+            }else{
+                // Set the content view to 'delete' MODE.
+                simpleServiceView?.displayDeleteMode = false
+                
+            } 
+            
+        }
+    }
     
     internal weak var delegatedd:AIBueryDetailCellDetegate?
     

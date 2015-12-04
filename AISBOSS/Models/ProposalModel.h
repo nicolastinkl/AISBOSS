@@ -114,6 +114,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @property (assign, nonatomic) NSInteger service_id;
 @property (assign, nonatomic) NSInteger is_main_flag;
+@property (assign, nonatomic) NSInteger is_delemode;
 @property (strong, nonatomic) NSString<Optional> * service_desc;
 @property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;

@@ -252,8 +252,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        // Settings Cache IndexRow.
         let key = "servicelist_\(indexPath.row)"
-        
         if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
             return cacheCell
         }
@@ -264,9 +264,13 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let serviceView = SimpleServiceViewContainer.currentView()
         serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
-        cell.currentModel = serviceDataModel
+        
         cell.delegatedd = self  // Action delegate.
         cell.delegate = self    // Swipe delegate.
+        
+        // Settings
+        cell.currentModel = serviceDataModel
+        
         // Add constrain
         constrain(serviceView, cell.contentHoldView) { (cview, container) -> () in
             cview.left == container.left + 10
@@ -312,8 +316,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         self.showViewController(viewController, sender: self)
         
     }
-
-
 }
 
 // MARK: Extension.

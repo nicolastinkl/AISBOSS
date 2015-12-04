@@ -15,6 +15,7 @@ class SimpleServiceViewContainer: UIView {
     private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
 
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -34,6 +35,27 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet weak var topHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    internal var displayDeleteMode:Bool?{
+        didSet{
+            guard let dModel = self.displayDeleteMode else {
+                return
+            }
+
+            if dModel {
+                //Deleted MODE.
+                self.topView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
+                self.bottomContentView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
+                cancelButton.hidden = false
+            }else{
+                self.topView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
+                self.bottomContentView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
+                cancelButton.hidden = true
+            }
+            
+        }
+    }
     private var dataModel: AIProposalServiceModel?
     
     private var paramViewHeight: CGFloat = 0
@@ -221,6 +243,8 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
+    @IBAction func cancelAction(sender: AnyObject) {
+    }
     private func getTopHeight() -> CGFloat {
         return topView.height
     }
