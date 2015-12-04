@@ -20,7 +20,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     // MARK: Priate Variable
     
-    private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
+//    private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
     var bubbleModel : AIBuyerBubbleModel?
     weak var delegate: AIBuyerDetailDelegate?
@@ -45,12 +45,17 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var serviceRestoreToolbar : ServiceRestoreToolBar!
     
-    private var current_service_list = NSMutableArray()
-    private var deleted_service_list = NSMutableArray()
+    private var current_service_list: NSArray?{
+        get {
+            let result = dataSource?.service_list.filter (){
+                return ($0 as! AIProposalServiceModel).is_deleted_flag == 0
+            }
+            return result
+        }
+    }
+    private var deleted_service_list: NSMutableArray = NSMutableArray()
     
-    // MARK: getters and setters
-    
-    private var horizontalCardCellCache = NSMutableDictionary()
+//    private var horizontalCardCellCache = NSMutableDictionary()
     
     // MARK: life cycle
     
@@ -197,8 +202,9 @@ class AIBuyerDetailViewController : UIViewController {
         let window = UIApplication.sharedApplication().keyWindow;
         let fromFrameOnWindow = logo.convertRect(logo.bounds, toView: window)
         
-        let firstLogo = serviceRestoreToolbar.logos[2]
-        let toFrameOnWindow = firstLogo.convertRect(firstLogo.bounds, toView: window)
+        let index = min(deleted_service_list.count - 1, 5)
+        let fromeLogo = serviceRestoreToolbar.logos[index]
+        let toFrameOnWindow = fromeLogo.convertRect(fromeLogo.bounds, toView: window)
         
         let fakeLogo = UIImageView(image: logo.image)
         fakeLogo.frame = fromFrameOnWindow
@@ -247,7 +253,6 @@ class AIBuyerDetailViewController : UIViewController {
                     
                     if let strongSelf = self {
                         strongSelf.dataSource = responseData
-                        strongSelf.current_service_list.addObjectsFromArray(strongSelf.dataSource.service_list)
                         
                         // InitControl Data
                         strongSelf.InitController()
@@ -291,11 +296,24 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDataSource, ServiceR
     
     // MARK: - ServiceRestoreToolBarDelegate
     func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int) {
-        
+        //TODO: show alert 
+        if index < 5 {
+            let model = deleted_service_list[index] as! AIProposalServiceModel
+            model.is_deleted_flag = 0
+            deleted_service_list.removeObject(model)
+            let afterArray = current_service_list
+            let index = (afterArray as! [AIProposalServiceModel]).indexOf(model)
+            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Left)
+            
+            serviceRestoreToolbar.reloadLogos()
+            deletedTableView.reloadData();
+        } else {
+            //TODO: open deleted tableView
+        }
     }
     
     func serviceRestoreToolBarDidClickBlankArea(serviceRestoreToolBar: ServiceRestoreToolBar) {
-        
+            //TODO: open deleted tableView
     }
 }
 
@@ -306,33 +324,45 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var array: NSMutableArray?
+        var serviceList: NSArray?
         
         if (tableView == deletedTableView) {
-            array = deleted_service_list
+            serviceList = deleted_service_list
         }else {
-            array = current_service_list
+            serviceList = current_service_list
         }
         
         if dataSource == nil {
             return 0
         }else {
-            return array!.count
+            return serviceList!.count
         }
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let key = "servicelist_\(indexPath.row)"
-        
-        if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
-            return cacheCell
+//        let key = "servicelist_\(indexPath.row)"
+//        
+//        if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
+//            return cacheCell
+//        }
+//        
+        // Create Cell
+        var serviceList: NSArray?
+        if (tableView == deletedTableView) {
+            serviceList = deleted_service_list
+        }else {
+            serviceList = current_service_list
         }
         
-        // Create Cell
         let cell = AIBueryDetailCell.currentView()
-        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+        let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
+        
+        if let c = serviceDataModel.cell {
+            return c;
+        }
+        
         let serviceView = SimpleServiceViewContainer.currentView()
         serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
         serviceView.loadData(serviceDataModel)
@@ -348,16 +378,27 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             container.height == serviceView.selfHeight()
         }
         
+        cell.cellHeight = serviceView.selfHeight();
+        //TODO: cellHeights 需要修改
         // Cache Cell.
-        cellHeights[indexPath.row] = serviceView.selfHeight()
-        horizontalCardCellCache.setValue(cell, forKey: key)
+//        cellHeights[indexPath.row] = serviceView.selfHeight()
         
+        serviceDataModel.cell = cell;
         return cell
         
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let height = cellHeights[indexPath.row] {
+        var serviceList: NSArray?
+        if (tableView == deletedTableView) {
+            serviceList = deleted_service_list
+        }else {
+            serviceList = current_service_list
+        }
+        
+        let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
+        
+        if let height = serviceDataModel.cell?.cellHeight {
             return height + 10
         } else {
             return 1
@@ -366,8 +407,16 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let serviceDataModel = dataSource.service_list[indexPath.row] as! AIProposalServiceModel
+        var serviceList: NSArray?
+        if (tableView == deletedTableView) {
+            serviceList = deleted_service_list
+        }else {
+            serviceList = current_service_list
+        }
         
+        
+        let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
+
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
         
         let model1 = AIProposalServiceModel()
@@ -378,39 +427,53 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
         model1.service_desc = "Service"
         
-        let array = [serviceDataModel, model1]
-        // viewController.bubbleModelArray = dataSource.service_list as? [AIProposalServiceModel]
+
+        let array = [serviceDataModel,model1]
+        //viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
         viewController.bubbleModelArray = array
         viewController.selectCurrentIndex = 0 // fix here
         self.showViewController(viewController, sender: self)
         
     }
-    
 }
 
-// MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
-    
     func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
         let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
         let logo = view.logo
         // TODO: delete from server
         
         // TODO: delete row from table top
-        let index = current_service_list.indexOfObject(model!)
-        current_service_list.removeObject(model!)
+        let index = current_service_list!.indexOfObject(model!)
+        model?.is_deleted_flag = 1
         deleted_service_list.addObject(model!)
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Left)
         
-        
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
-            
-            // TODO: reload toolbar and bottom tableview
             self.serviceRestoreToolbar.reloadLogos();
             self.deletedTableView.reloadData();
-            
         })
-        return
     }
     
+}
+
+
+
+
+// MARK: Extension.
+extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate{
+    
+    
+    
+    func cellDidAimationFrame(position: CGFloat, cell: UITableViewCell!) {
+//        self.tableView.scrollEnabled = false
+    }
+    
+    func cellDidClose(cell: UITableViewCell!) {
+        
+    }
+    
+    func cellDidOpen(cell: UITableViewCell!) {
+//        self.tableView.scrollEnabled = false
+    }
 }
