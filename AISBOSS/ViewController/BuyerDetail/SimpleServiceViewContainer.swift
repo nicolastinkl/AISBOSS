@@ -128,8 +128,8 @@ class SimpleServiceViewContainer: UIView {
         let msgContent = ServiceSettingView.createInstance()
         msgContent.loadData(model: hopeModel)
         
-        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
-        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
+        dividerTopMargin.constant =  msgContent.height//SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
+        //dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
         messageHeight.constant = msgContent.height
         
         messageView.setNeedsUpdateConstraints()
@@ -141,7 +141,7 @@ class SimpleServiceViewContainer: UIView {
             view.top == container.top
             view.bottom == container.bottom
             view.right == container.right
-        }
+        } 
         
         divider.hidden = false
         dividerHeight.constant = 0.5

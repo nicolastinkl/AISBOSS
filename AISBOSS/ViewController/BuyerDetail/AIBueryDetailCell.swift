@@ -47,6 +47,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     }
     
     class func currentView()->AIBueryDetailCell{
+        
         return NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
     
     }

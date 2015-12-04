@@ -288,7 +288,6 @@
 		93B25AB81B9D7EB500CD1FEB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B25AB71B9D7EB500CD1FEB /* CoreTelephony.framework */; };
 		93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */; };
 		93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */; };
-		93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */; };
 		93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */; };
 		93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */; };
 		93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EEC1B9BEA75007BF506 /* CustomMethod.m */; };
@@ -940,7 +939,6 @@
 		93B523891BB8F0D200DFB1C9 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.1.dylib; sourceTree = "<group>"; };
 		93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		93C33EE31B9BDF3D007BF506 /* AIVeris-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AIVeris-Bridging-Header.h"; sourceTree = "<group>"; };
 		93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHttpEngine.swift; sourceTree = "<group>"; };
@@ -1157,7 +1155,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */,
 				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */,
 				93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */,
@@ -1206,7 +1203,6 @@
 			isa = PBXGroup;
 			children = (
 				937EA3801C02BB2700AF776B /* AVFoundation.framework */,
-				93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */,
 				93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */,
 				93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */,
 				93B523541BB8F0D200DFB1C9 /* 3rdLib */,
@@ -2631,7 +2627,7 @@
 						DevelopmentTeam = T2362RFKT6;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -3327,7 +3323,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -3357,7 +3352,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3373,7 +3368,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
@@ -3403,7 +3397,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

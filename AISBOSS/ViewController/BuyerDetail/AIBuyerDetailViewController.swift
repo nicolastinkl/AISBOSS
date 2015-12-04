@@ -267,12 +267,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.currentModel = serviceDataModel
         cell.delegatedd = self
         // Add constrain
-        constrain(serviceView, cell.contentHoldView) { (view, container) -> () in
-            view.left == container.left
-            view.top == container.top
-            view.bottom == container.bottom
-            view.right == container.right
-            container.height == serviceView.selfHeight()
+        constrain(serviceView, cell.contentHoldView) { (cview, container) -> () in
+            cview.left == container.left + 10
+            cview.top == container.top
+            cview.bottom == container.bottom
+            cview.right == container.right - 10
         }
         
         //Cache Cell.
