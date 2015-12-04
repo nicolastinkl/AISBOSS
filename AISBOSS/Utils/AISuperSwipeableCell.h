@@ -20,5 +20,6 @@
 @property (nonatomic, weak) id <AISuperSwipeableCellDelegate> delegate;
 
 - (void)openCell;
+- (void)closeCell;
 
 @end

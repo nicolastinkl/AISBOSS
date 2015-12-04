@@ -368,8 +368,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
-
-
 // MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
 
