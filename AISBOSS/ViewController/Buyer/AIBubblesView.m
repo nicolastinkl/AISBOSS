@@ -48,6 +48,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _bubbleModels = [models mutableCopy];
+        [self parserBubbleColors];
         [self parseBubbleDatas];
         [self makeBubbles];
         
@@ -61,6 +62,23 @@
 }
 
 #pragma mark - 构造基础数据
+
+- (void)parserBubbleColors
+{
+    
+    NSArray *deepColor = @[@"aa6e28",@"ad2063",@"7e3d60",@"438091",@"936d4c",@"574d71" , @"5f257d",@"162c18",@"6b4a1d",@"4a5679",@"1b1a3a",@"ca9e82",@"6a8e5c",@"",@"",@"",@""];
+    NSArray *undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3746a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"aa822a" ,@"7e6479",@"81476a",@"5198ac", @"93a44b",@"",@"",@"",@""];
+    NSArray *borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"6db8d5",@"f8b989", @"8986c2",@"cd53e1", @"528319", @"e6ad44", @"8986c2" ,@"c474ac" ,@"9bd6f2" ,@"93bd78", @"f88d8e",@"",@"",@"",@""];
+    
+    
+    for (int i = 0; i < _bubbleModels.count; i++) {
+        AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
+        model.deepColor = [deepColor objectAtIndex:i];
+        model.undertoneColor = [undertoneColor objectAtIndex:i];
+        model.borderColor = [borderColor objectAtIndex:i];
+    }
+}
+
 
 - (void) parseBubbleDatas
 {
@@ -517,12 +535,37 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
 
 #pragma mark - 构造气泡
 
+- (void)sortBubbleModels
+{
+    
+    NSMutableArray *sortModles = [[NSMutableArray alloc] init];
+    
+    NSInteger bigCount = 0;
+    
+    for (AIBuyerBubbleModel *model in _bubbleModels) {
+        if (model.service_list.count >= 6){
+            bigCount ++;
+            [sortModles insertObject:model atIndex:0];
+        }else if (model.service_list.count >= 3 && model.service_list.count <= 5){
+            [sortModles insertObject:model atIndex:bigCount];
+        }else {
+            [sortModles addObject:model];
+        }
+    }
+    
+    _bubbleModels = [NSMutableArray arrayWithArray:sortModles];
+
+}
+
 - (void) makeBubbles
 {
     // 构造+气泡
     if (_bubbleModels.count == 0) {
         return;
     }
+    
+    [self sortBubbleModels];
+    
     
     self.cacheBubble = [[NSMutableDictionary alloc ] init];
     [self.cacheBubble setValue:@1 forKey:big];

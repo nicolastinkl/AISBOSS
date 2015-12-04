@@ -40,6 +40,14 @@
 
 @property (strong, nonatomic) NSArray<AIBuyerBubbleProportModel,Optional> * service_list;
 
+
+@property (nonatomic, strong) NSString *deepColor;
+
+@property (nonatomic, strong) NSString *undertoneColor;
+
+@property (nonatomic, strong) NSString *borderColor;
+
+
 @end
 
 @protocol AIBuyerBubbleModel @end
