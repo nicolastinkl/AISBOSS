@@ -45,6 +45,11 @@ static CGFloat const kBounceValue = 20.0f;
 {
     [self setConstraintsToShowAllButtons:NO notifyDelegateDidOpen:NO];
 }
+
+- (void)closeCell
+{
+    [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:YES];
+}
   
 - (CGFloat)buttonTotalWidth
 {

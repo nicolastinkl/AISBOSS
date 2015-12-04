@@ -437,6 +437,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
+// MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
     func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
         let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
@@ -451,7 +452,8 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
             self.serviceRestoreToolbar.reloadLogos();
-            self.deletedTableView.reloadData();
+            cell.closeCell()
+            self.deletedTableView.reloadData()
         })
     }
     
