@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
@@ -26,6 +27,7 @@
  */
 + (MPMoviePlayerController *)playMovieNamed:(NSString *)name type:(NSString *)type onView:(UIView *)view;
 
++ (AVAudioPlayer *)playAccAudio:(NSURL*) filename;
 
 + (void)performBlock:(void(^)(void))block delay:(CGFloat)delay;
 

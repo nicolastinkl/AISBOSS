@@ -18,7 +18,6 @@
 
 @end
 
-
 @interface SwipeableCell : UITableViewCell
  @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 
