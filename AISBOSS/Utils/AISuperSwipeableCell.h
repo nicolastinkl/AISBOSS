@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @protocol AISuperSwipeableCellDelegate <NSObject>
-- (void)buttonOneAction;
+
 - (void)cellDidOpen:(UITableViewCell *)cell;
 - (void)cellDidClose:(UITableViewCell *)cell;
+- (void)cellDidAimationFrame:(CGFloat) position cell:(UITableViewCell *)cell;
 @end
 
 @interface AISuperSwipeableCell : UITableViewCell

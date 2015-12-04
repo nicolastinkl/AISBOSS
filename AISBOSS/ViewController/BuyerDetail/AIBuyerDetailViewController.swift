@@ -265,7 +265,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
         cell.currentModel = serviceDataModel
-        cell.delegatedd = self
+        cell.delegatedd = self  // Action delegate.
+        cell.delegate = self    // Swipe delegate.
         // Add constrain
         constrain(serviceView, cell.contentHoldView) { (cview, container) -> () in
             cview.left == container.left + 10
@@ -322,4 +323,20 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate{
         
     }
     
+}
+
+
+extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate{
+    
+    func cellDidAimationFrame(position: CGFloat, cell: UITableViewCell!) {
+//        self.tableView.scrollEnabled = false
+    }
+    
+    func cellDidClose(cell: UITableViewCell!) {
+//        self.tableView.scrollEnabled = true
+    }
+    
+    func cellDidOpen(cell: UITableViewCell!) {
+//        self.tableView.scrollEnabled = false
+    }
 }

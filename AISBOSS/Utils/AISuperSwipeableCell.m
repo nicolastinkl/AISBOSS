@@ -67,6 +67,11 @@ static CGFloat const kBounceValue = 20.0f;
                 panningLeft = YES;
             }
             
+            if (deltaX > 0) {
+                // open
+                [self.delegate cellDidAimationFrame:(deltaX + 20) cell:self];
+            }
+            
             if (self.startingRightLayoutConstraintConstant == 0) { //2
                 //The cell was closed and is now opening
                 if (!panningLeft) {

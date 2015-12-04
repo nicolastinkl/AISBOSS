@@ -26,7 +26,6 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var divider: UIImageView!
     @IBOutlet weak var settingState: UIImageView!
     
-    
     @IBOutlet weak var savedMoneyWidth: NSLayoutConstraint!
     @IBOutlet weak var paramsViewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerTopMargin: NSLayoutConstraint!
