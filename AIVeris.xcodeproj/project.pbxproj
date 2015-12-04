@@ -213,6 +213,7 @@
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
+		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -238,6 +239,7 @@
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
 		939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */; };
 		939F49FD1BDE07FD00D07598 /* AIBuyServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */; };
+		93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */; };
 		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; };
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
@@ -337,6 +339,7 @@
 		93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */; };
 		93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */; };
 		93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */; };
+		93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */; };
 		93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E7BFB11BFEBA3F00A6C906 /* AICustomView.swift */; };
 		93E7BFB41BFEBA5300A6C906 /* AICustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */; };
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
@@ -769,6 +772,7 @@
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
+		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -799,6 +803,7 @@
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIPopView.xib; path = Buyer/UIPopView.xib; sourceTree = "<group>"; };
 		939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopHoldView.swift; sourceTree = "<group>"; };
 		939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyServiceModel.swift; sourceTree = "<group>"; };
+		93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBueryDetailCell.swift; sourceTree = "<group>"; };
 		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93A742C81BDF75FD001EF581 /* TDImageColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageColors.h; sourceTree = "<group>"; };
 		93A742C91BDF75FD001EF581 /* TDImageColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageColors.m; sourceTree = "<group>"; };
@@ -1004,6 +1009,8 @@
 		93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIGalleryView.swift; sourceTree = "<group>"; };
 		93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomsTags.swift; sourceTree = "<group>"; };
 		93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICustomsTags.xib; sourceTree = "<group>"; };
+		93DF036C1C10384000C797C4 /* AISuperSwipeableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISuperSwipeableCell.h; sourceTree = "<group>"; };
+		93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISuperSwipeableCell.m; sourceTree = "<group>"; };
 		93E7BFB11BFEBA3F00A6C906 /* AICustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomView.swift; sourceTree = "<group>"; };
 		93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomView.xib; sourceTree = "<group>"; };
 		93E890C21BB923F700A7BBEF /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
@@ -1712,6 +1719,7 @@
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				93A3B1841C1033E700DE7EBB /* interfaceCell */,
 				93DA9C0C1BFDB66700E2DA3B /* subView */,
 				84DDA94D1BEDD56900CA5C83 /* cell */,
 				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
@@ -1855,6 +1863,15 @@
 				93508CAF1BE07C8200525512 /* MDCSpotlightView.m */,
 			);
 			name = PopView;
+			sourceTree = "<group>";
+		};
+		93A3B1841C1033E700DE7EBB /* interfaceCell */ = {
+			isa = PBXGroup;
+			children = (
+				93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */,
+				933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */,
+			);
+			name = interfaceCell;
 			sourceTree = "<group>";
 		};
 		93A5A5951B9BD5E1001DE36D /* Application */ = {
@@ -2343,6 +2360,8 @@
 				93C33F081B9BEAFE007BF506 /* KMDetailsPageView.m */,
 				93C33F0C1B9BEAFE007BF506 /* NSObjcetUtils.swift */,
 				93C33F0D1B9BEAFE007BF506 /* Player.swift */,
+				93DF036C1C10384000C797C4 /* AISuperSwipeableCell.h */,
+				93DF036D1C10384000C797C4 /* AISuperSwipeableCell.m */,
 				93C33F0E1B9BEAFE007BF506 /* SwipeableCell.h */,
 				93C33F0F1B9BEAFE007BF506 /* SwipeableCell.m */,
 				93C33F101B9BEAFE007BF506 /* TableViewCellBackgroundView.h */,
@@ -2697,6 +2716,7 @@
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
+				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
@@ -3026,6 +3046,7 @@
 				844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */,
 				849B4B581C0EDFE300BEC179 /* FLEXViewControllerExplorerViewController.m in Sources */,
 				81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */,
+				93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */,
 				8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */,
 				93B25A3F1B9D796F00CD1FEB /* AINetEngine.m in Sources */,
 				81C092851BAFAC0D003FFF35 /* SDWebImageDecoder.m in Sources */,
@@ -3127,6 +3148,7 @@
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
+				93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */,
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 				849B4B5D1C0EDFE300BEC179 /* FLEXMultilineTableViewCell.m in Sources */,
 				849B4B3E1C0EDFE300BEC179 /* FLEXInstancesTableViewController.m in Sources */,
@@ -3353,7 +3375,7 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;

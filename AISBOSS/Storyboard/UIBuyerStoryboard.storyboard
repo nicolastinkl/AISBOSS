@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -140,6 +140,49 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="s1q-Ff-gJs" customClass="AIBueryDetailCell" customModule="Veris" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="152" width="600" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1q-Ff-gJs" id="JGc-gM-WNP">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjM-rw-oLq">
+                                                    <rect key="frame" x="550" y="0.0" width="50" height="78"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="ck4-lg-WH9"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss2-WD-Wqt">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="78"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ss2-WD-Wqt" secondAttribute="trailing" id="2zb-0m-1Te"/>
+                                                <constraint firstItem="pjM-rw-oLq" firstAttribute="top" secondItem="JGc-gM-WNP" secondAttribute="topMargin" constant="-8" id="3vP-1c-Tcd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ss2-WD-Wqt" secondAttribute="bottom" constant="10" id="D7B-GJ-gqR"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="pjM-rw-oLq" secondAttribute="bottom" constant="10" id="R8p-hL-UuD"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pjM-rw-oLq" secondAttribute="trailing" constant="-8" id="ZhI-RI-Pjm"/>
+                                                <constraint firstItem="Ss2-WD-Wqt" firstAttribute="top" secondItem="JGc-gM-WNP" secondAttribute="topMargin" constant="-8" id="oRI-hn-H9X"/>
+                                                <constraint firstItem="Ss2-WD-Wqt" firstAttribute="leading" secondItem="JGc-gM-WNP" secondAttribute="leadingMargin" id="s1m-b7-DMd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="buttonView" destination="pjM-rw-oLq" id="gPD-xT-2iP"/>
+                                            <outlet property="contentHoldView" destination="Ss2-WD-Wqt" id="YpI-0F-3Zz"/>
+                                            <outlet property="contentViewLeftConstraint" destination="s1m-b7-DMd" id="4Qq-WD-FeJ"/>
+                                            <outlet property="contentViewRightConstraint" destination="2zb-0m-1Te" id="28O-uP-eGd"/>
+                                            <outlet property="myContentView" destination="Ss2-WD-Wqt" id="CPZ-OI-KeE"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <variation key="default">

@@ -83,7 +83,7 @@
 #import "AIProposalServiceCellModel.h"
 
 // Buyer Details
-
+#import "AISuperSwipeableCell.h"
 #import "AIMusicTherapyView.h"
 #import "AIParamedicView.h"
 #import "UIScrollView+MJRefresh.h"
