@@ -169,10 +169,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bubbles.tag = bubblesTag
         bubbleView?.addSubview(bubbles)
         
-        bubbles.addGestureBubbleAction  {  [weak self]   (bubleModel,bubble) -> Void in
+        bubbles.addGestureBubbleAction  {  [weak self]   (bubbleModel,bubble) -> Void in
             if let strongSelf = self{
                 
-                strongSelf.showBuyerDetailWithBubble(bubble, model: bubleModel)
+                strongSelf.showBuyerDetailWithBubble(bubble, model: bubbleModel)
     
             }
         }
@@ -295,11 +295,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         
-        viewController.bubleModel = model
+        viewController.bubbleModel = model
 
         
         /**let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        viewController.bubleModelArray = [model,model,model]*/
+        viewController.bubbleModelArray = [model,model,model]*/
         viewController.delegate = self
         
         let naviController = UINavigationController(rootViewController: viewController)

@@ -68,6 +68,7 @@
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
 		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
+		840B63481C11783D00C75051 /* AIAlertView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B63471C11783D00C75051 /* AIAlertView+Extension.swift */; };
 		840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */; };
 		840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */; };
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
@@ -564,6 +565,7 @@
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
 		81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AITimeLineMainViewController.swift; path = TimeLine/AITimeLineMainViewController.swift; sourceTree = "<group>"; };
+		840B63471C11783D00C75051 /* AIAlertView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AIAlertView+Extension.swift"; sourceTree = "<group>"; };
 		840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettingView.xib; sourceTree = "<group>"; };
 		840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSettingView.swift; sourceTree = "<group>"; };
 		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
@@ -2374,6 +2376,7 @@
 				93C33F151B9BEAFE007BF506 /* UIViewControllerUtils.swift */,
 				939F49F61BDDD92600D07598 /* UIImageUtils.swift */,
 				93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */,
+				840B63471C11783D00C75051 /* AIAlertView+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3092,6 +3095,7 @@
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				849B4B371C0EDFE300BEC179 /* FLEXWindow.m in Sources */,
+				840B63481C11783D00C75051 /* AIAlertView+Extension.swift in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,

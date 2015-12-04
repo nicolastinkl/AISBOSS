@@ -10,7 +10,7 @@ import Foundation
 import Cartography
 
 @objc protocol ServiceRestoreToolBarDataSource : NSObjectProtocol {
-	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> UIImage?
+	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> String?
 }
 
 @objc protocol ServiceRestoreToolBarDelegate: NSObjectProtocol {
@@ -58,7 +58,7 @@ class ServiceRestoreToolBar: UIView {
 	func reloadLogos() {
 		for (i, logo) in logos.enumerate() {
 			if let image = dataSource?.serviceRestoreToolBar(self, imageAtIndex: i) {
-				logo.image = image
+				logo.asyncLoadImage(image)
                 logo.hidden = false
 			}else {
                 logo.image = nil

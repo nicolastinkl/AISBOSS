@@ -12,7 +12,7 @@ import UIKit
 internal class AIPageBueryViewController: UIViewController {
     
     // MARK: -> Internal properties
-    var bubleModelArray : [AIProposalServiceModel]?
+    var bubbleModelArray : [AIProposalServiceModel]?
     
     var selectCurrentIndex:Int? = 0
     
@@ -24,7 +24,7 @@ internal class AIPageBueryViewController: UIViewController {
 
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.numberOfPages = self.bubleModelArray?.count ?? 0
+        pageControl.numberOfPages = self.bubbleModelArray?.count ?? 0
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = UIColor(hex: "0c93d9")
         pageControl.transform = CGAffineTransformMakeScale(0.8, 0.8)
@@ -105,7 +105,7 @@ internal class AIPageBueryViewController: UIViewController {
         // Add the album view controllers to the scroll view
         //var pageViews: [UIView] = []
         var viewTag:Int = 0
-        for model in bubleModelArray! {
+        for model in bubbleModelArray! {
             let pageView = UIView()
             pageView.tag = viewTag
             pageScrollView.addSubview(pageView)
