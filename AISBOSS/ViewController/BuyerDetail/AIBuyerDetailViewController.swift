@@ -364,7 +364,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
         
         let serviceView = SimpleServiceViewContainer.currentView()
-        serviceView.tag = indexPath.row
+        serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
+        serviceView.settingState.tag = indexPath.row
         serviceView.settingButtonDelegate = self
         
         serviceView.loadData(serviceDataModel)
@@ -442,7 +443,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 // MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
     func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
-        let view: SimpleServiceViewContainer = cell.contentView.subviews.first as! SimpleServiceViewContainer
+   //     let view: SimpleServiceViewContainer = cell.contentView.subviews.first as! SimpleServiceViewContainer
+        let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
+
         let logo = view.logo
         // TODO: delete from server
         
@@ -484,7 +487,7 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
 
 extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
-        let row = parentView.tag
+        let row = settingButton.tag
         let isSetted = parentView.isSetted
     }
 }
