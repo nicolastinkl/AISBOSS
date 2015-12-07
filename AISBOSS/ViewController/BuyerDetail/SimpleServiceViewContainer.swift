@@ -49,10 +49,14 @@ class SimpleServiceViewContainer: UIView {
                 self.topView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
                 self.bottomContentView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = false
+                
+                
+                
             }else{
                 self.topView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
                 self.bottomContentView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = true
+ 
             }
             
         }
