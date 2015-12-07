@@ -18,6 +18,7 @@
 @interface AISuperSwipeableCell : UITableViewCell
 
 @property (nonatomic, weak) id <AISuperSwipeableCellDelegate> delegate;
+@property (nonatomic, assign) BOOL canDelete;
 
 - (void)openCell;
 - (void)closeCell;

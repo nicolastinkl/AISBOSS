@@ -89,7 +89,7 @@
 #import "UIScrollView+MJRefresh.h"
 
 #import <AudioToolbox/AudioToolbox.h>
-
+#import "OBShapedButton.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif

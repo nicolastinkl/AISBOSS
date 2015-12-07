@@ -20,6 +20,7 @@ import Cartography
 
 class ServiceRestoreToolBar: UIView {
 
+    var isAnimating: Bool = false
 	@IBOutlet var logos: [UIImageView]!
 	weak var dataSource: ServiceRestoreToolBarDataSource?
 	weak var delegate: ServiceRestoreToolBarDelegate?
