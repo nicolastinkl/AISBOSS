@@ -2603,6 +2603,7 @@
 				93D5A3471B709C1C00DDB158 /* Resources */,
 				BE13F8A047272C818E183B81 /* Embed Pods Frameworks */,
 				7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */,
+				93EF55421C156EB30088B194 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2802,6 +2803,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		93EF55421C156EB30088B194 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "leancloud upload_symbol \\\n-f \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\" \\\n-i \"xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk\" \\\n-k \"qqcxwtjlx3ctw32buizjkaw5elwf0s41u4xf8ct7glbox171\"";
 		};
 		BE13F8A047272C818E183B81 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3337,6 +3351,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/AISBOSS/3rdLib/Frameworks";

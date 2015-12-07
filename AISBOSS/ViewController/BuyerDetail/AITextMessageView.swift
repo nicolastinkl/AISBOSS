@@ -38,6 +38,7 @@ class AITextMessageView: UIView {
         }
         
         let meunController = UIMenuController()
+        
         meunController.setTargetRect(self.bounds, inView: self)
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
