@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Qj-nIc" userLabel="logo_first">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Qj-nIc" userLabel="logo_first">
                     <rect key="frame" x="20" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
@@ -20,35 +20,35 @@
                         <constraint firstAttribute="width" constant="19" id="lcK-wS-anh"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="1k3-5V-Xcf" userLabel="logo">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1k3-5V-Xcf" userLabel="logo">
                     <rect key="frame" x="59" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="1k3-5V-Xcf" secondAttribute="height" multiplier="1:1" id="FoA-cw-S7P"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="8ls-f4-H0E" userLabel="logo">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ls-f4-H0E" userLabel="logo">
                     <rect key="frame" x="98" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="8ls-f4-H0E" secondAttribute="height" multiplier="1:1" id="9QY-fS-xh3"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="wMW-Mk-fUr" userLabel="logo">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wMW-Mk-fUr" userLabel="logo">
                     <rect key="frame" x="483" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="wMW-Mk-fUr" secondAttribute="height" multiplier="1:1" id="n18-lu-bDO"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="UDn-X8-jAG" userLabel="logo">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDn-X8-jAG" userLabel="logo">
                     <rect key="frame" x="522" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="UDn-X8-jAG" secondAttribute="height" multiplier="1:1" id="oRb-sg-VJe"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placehold" translatesAutoresizingMaskIntoConstraints="NO" id="Qwa-2T-R0r" userLabel="logo">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restore_toolbar_more" translatesAutoresizingMaskIntoConstraints="NO" id="Qwa-2T-R0r" userLabel="logo">
                     <rect key="frame" x="561" y="16" width="19" height="19"/>
                     <animations/>
                     <constraints>
@@ -147,6 +147,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Placehold" width="275" height="125"/>
+        <image name="restore_toolbar_more" width="60" height="59"/>
     </resources>
 </document>

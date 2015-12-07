@@ -238,6 +238,4 @@ static CGFloat const kBounceValue = 20.0f;
     return YES;
 }
 
-
-
 @end

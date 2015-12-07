@@ -24,6 +24,8 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     // MARK: Internal access (aka public for current module)
     // MARK: -
     
+    internal var cellHeight: CGFloat=0
+    
     // MARK: -> Internal enums
     internal var isNormal:Bool = true  //true: 正常  false :移除状态
     

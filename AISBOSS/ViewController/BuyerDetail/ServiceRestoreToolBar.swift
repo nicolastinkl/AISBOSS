@@ -10,7 +10,7 @@ import Foundation
 import Cartography
 
 @objc protocol ServiceRestoreToolBarDataSource : NSObjectProtocol {
-	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> UIImage?
+	func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> String?
 }
 
 @objc protocol ServiceRestoreToolBarDelegate: NSObjectProtocol {
@@ -31,7 +31,7 @@ class ServiceRestoreToolBar: UIView {
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-        //TODO: make logo click more easily
+		// TODO: make logo click more easily
 		for (i, logo) in logos.enumerate() {
 			logo.layer.cornerRadius = logo.width / 2
 			logo.clipsToBounds = true
@@ -58,11 +58,15 @@ class ServiceRestoreToolBar: UIView {
 	func reloadLogos() {
 		for (i, logo) in logos.enumerate() {
 			if let image = dataSource?.serviceRestoreToolBar(self, imageAtIndex: i) {
-				logo.image = image
-                logo.hidden = false
+				if i < 5 {
+					logo.asyncLoadImage(image)
+                } else {
+                    logo.image = UIImage(named: "restore_toolbar_more");
+                }
+				logo.hidden = false
 			}else {
-                logo.image = nil
-                logo.hidden = true
+				logo.image = nil
+				logo.hidden = true
 			}
 		}
 	}
