@@ -309,16 +309,20 @@ internal class AIServiceContentViewController: UIViewController {
 // MARK : Delegate
 
 extension AIServiceContentViewController: UITextFieldDelegate{
+    
+    
+    
+    
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // add a new View Model
-        let audio1 = AITextMessageView.currentView()
+        let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
 
-            addNewSubView(audio1, preView: cview)
-            audio1.content.text = textField.text
+            addNewSubView(newText, preView: cview)
+            newText.content.text = textField.text
             scrollViewBottom()
-            audio1.delegate = self
+            newText.delegate = self
         }
         textField.resignFirstResponder()
         textField.text = ""
