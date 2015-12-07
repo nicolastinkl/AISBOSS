@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -123,6 +123,18 @@
                                 <constraint firstAttribute="height" constant="20" id="FX3-SK-FFR"/>
                             </constraints>
                         </imageView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KW2-AT-EXj">
+                            <rect key="frame" x="433" y="119" width="68" height="33"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="33" id="8Nj-NC-EBl"/>
+                                <constraint firstAttribute="width" constant="68" id="EPd-mn-7hb"/>
+                            </constraints>
+                            <state key="normal" image="addcelltag"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="MkP-wv-Y7D"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" red="0.83921568627450982" green="0.83529411764705885" blue="0.96470588235294119" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
@@ -162,6 +174,7 @@
             <constraints>
                 <constraint firstItem="7sD-DV-Xc4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="0UN-Fd-7hr"/>
                 <constraint firstAttribute="trailing" secondItem="19k-ls-gMA" secondAttribute="trailing" constant="7" id="4b1-xW-pVm"/>
+                <constraint firstAttribute="trailing" secondItem="KW2-AT-EXj" secondAttribute="trailing" constant="-1" id="BuS-ha-C3X"/>
                 <constraint firstItem="ZQW-hO-nDs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CPg-VE-AIC"/>
                 <constraint firstItem="ZQW-hO-nDs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CdI-Ve-kzY"/>
                 <constraint firstItem="ZQW-hO-nDs" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="SVa-mE-06n"/>
@@ -169,10 +182,13 @@
                 <constraint firstAttribute="bottom" secondItem="7sD-DV-Xc4" secondAttribute="bottom" id="Ydk-P3-vyi"/>
                 <constraint firstItem="19k-ls-gMA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="ZLK-P8-AbZ"/>
                 <constraint firstItem="iPi-f2-cNw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="dBd-Ni-JWr"/>
+                <constraint firstAttribute="bottom" secondItem="KW2-AT-EXj" secondAttribute="bottom" constant="6" id="fmF-0U-SrF"/>
                 <constraint firstItem="7sD-DV-Xc4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ksN-Cl-nqc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bottomContentView" destination="7sD-DV-Xc4" id="cgd-oD-YEG"/>
+                <outlet property="cancelButton" destination="KW2-AT-EXj" id="O5X-SD-lpy"/>
                 <outlet property="divider" destination="19k-ls-gMA" id="Uuq-C7-b1t"/>
                 <outlet property="dividerBottomMargin" destination="Lts-2G-5rd" id="Sfz-se-jaY"/>
                 <outlet property="dividerHeight" destination="0FT-SZ-t55" id="A9t-9e-x4x"/>
@@ -192,9 +208,11 @@
                 <outlet property="topHeight" destination="CXA-hr-bZ3" id="8eW-pc-6cs"/>
                 <outlet property="topView" destination="ZQW-hO-nDs" id="ns4-P7-TtA"/>
             </connections>
+            <point key="canvasLocation" x="281" y="295"/>
         </view>
     </objects>
     <resources>
+        <image name="addcelltag" width="84" height="41"/>
         <image name="gear_black" width="21" height="21"/>
     </resources>
 </document>

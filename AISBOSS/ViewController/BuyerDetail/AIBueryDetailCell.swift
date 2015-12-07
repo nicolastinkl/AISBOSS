@@ -1,27 +1,30 @@
 //
-//  AIBueryDetailCell.swift
-//  AIVeris
+// AIBueryDetailCell.swift
+// AIVeris
 //
-//  Created by tinkl on 3/12/2015.
-//  Base on Tof Templates
-//  Copyright © 2015 ___ASIAINFO___. All rights reserved.
+// Created by tinkl on 3/12/2015.
+// Base on Tof Templates
+// Copyright © 2015 ___ASIAINFO___. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-//protocol
-protocol AIBueryDetailCellDetegate:class{
-    func removeCellFromSuperView(model:AIProposalServiceModel?)
+// protocol
+protocol AIBueryDetailCellDetegate: class {
+	func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?)
 }
 
 // MARK: -
 // MARK: AIBueryDetailCell
 // MARK: -
 internal class AIBueryDetailCell : AISuperSwipeableCell {//
+ 
     // MARK: -
     // MARK: Internal access (aka public for current module)
     // MARK: -
+    
+    internal var cellHeight: CGFloat=0
     
     // MARK: -> Internal enums
     internal var isNormal:Bool = true  //true: 正常  false :移除状态
@@ -32,9 +35,29 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     internal var recordPosition:CGPoint?
     
-    internal var currentModel:AIProposalServiceModel?
+    internal var currentModel:AIProposalServiceModel?{
+        didSet{
+            //TODO: Here is a holdPlace to show some value init.
+            
+            guard let modelInit = self.currentModel else {
+                return
+            }
+            
+            let simpleServiceView = self.contentHoldView.subviews.last as? SimpleServiceViewContainer
+            //Even if a delete property.
+            if modelInit.is_delemode == 1 {
+                // Set the content view to 'delete' MODE.
+                simpleServiceView?.displayDeleteMode = true
+            }else{
+                // Set the content view to 'normal' MODE.
+                simpleServiceView?.displayDeleteMode = false
+                
+            } 
+            
+        }
+    }
     
-    internal weak var delegatedd:AIBueryDetailCellDetegate?
+    internal weak var removeDelegate:AIBueryDetailCellDetegate?
     
     // MARK: -> Internal structs
     
@@ -47,6 +70,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     }
     
     class func currentView()->AIBueryDetailCell{
+        
         return NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
     
     }
@@ -60,6 +84,6 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
 
     ///Delete Action for delegate
     @IBAction func removeAction(sender: AnyObject) {
-        delegatedd?.removeCellFromSuperView(self.currentModel)
+        removeDelegate?.removeCellFromSuperView(self, model: self.currentModel)
     }
 }

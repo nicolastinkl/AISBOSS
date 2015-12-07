@@ -54,6 +54,7 @@ class AICustomerSwipeView: AIBaseSwipeView {
             } else if element == compServiceBtn {
                 tag = .CompService
             }
+
             //TODO: update delegate
             delegate?.onButtonClick(sender, filterFlag: tag)
         }

@@ -13,8 +13,10 @@ class SimpleServiceViewContainer: UIView {
     
     private static let DIVIDER_TOP_MARGIN: CGFloat = 1
     private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
+    static let simpleServiceViewContainerTag: Int = 233
 
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -26,7 +28,6 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var divider: UIImageView!
     @IBOutlet weak var settingState: UIImageView!
     
-    
     @IBOutlet weak var savedMoneyWidth: NSLayoutConstraint!
     @IBOutlet weak var paramsViewTopMargin: NSLayoutConstraint!
     @IBOutlet weak var dividerTopMargin: NSLayoutConstraint!
@@ -35,6 +36,27 @@ class SimpleServiceViewContainer: UIView {
     @IBOutlet weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet weak var topHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    internal var displayDeleteMode:Bool?{
+        didSet{
+            guard let dModel = self.displayDeleteMode else {
+                return
+            }
+
+            if dModel {
+                //Deleted MODE.
+                self.topView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
+                self.bottomContentView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
+                cancelButton.hidden = false
+            }else{
+                self.topView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
+                self.bottomContentView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
+                cancelButton.hidden = true
+            }
+            
+        }
+    }
     private var dataModel: AIProposalServiceModel?
     
     private var paramViewHeight: CGFloat = 0
@@ -128,8 +150,8 @@ class SimpleServiceViewContainer: UIView {
         let msgContent = ServiceSettingView.createInstance()
         msgContent.loadData(model: hopeModel)
         
-        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
-        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
+        dividerTopMargin.constant =  msgContent.height//SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
+        //dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
         messageHeight.constant = msgContent.height
         
         messageView.setNeedsUpdateConstraints()
@@ -141,7 +163,7 @@ class SimpleServiceViewContainer: UIView {
             view.top == container.top
             view.bottom == container.bottom
             view.right == container.right
-        }
+        } 
         
         divider.hidden = false
         dividerHeight.constant = 0.5
@@ -222,6 +244,8 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
+    @IBAction func cancelAction(sender: AnyObject) {
+    }
     private func getTopHeight() -> CGFloat {
         return topView.height
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import AISpring
 
 public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
@@ -277,12 +278,15 @@ internal class AIServiceContentViewController: UIViewController {
         model.audio_length = 8
         model.type = 0
         audio1.fillData(model)
+        audio1.delegate = self
         
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)
+        text1.delegate = self
         
         let text2 = AITextMessageView.currentView()
-        addNewSubView(text2, preView: text1)        
+        addNewSubView(text2, preView: text1)
+        text2.delegate = self
     }
     
     /**
@@ -314,6 +318,7 @@ extension AIServiceContentViewController: UITextFieldDelegate{
             addNewSubView(audio1, preView: cview)
             audio1.content.text = textField.text
             scrollViewBottom()
+            audio1.delegate = self
         }
         textField.resignFirstResponder()
         textField.text = ""
@@ -384,7 +389,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
                 audio1.fillData(audioModel)
-                
+                audio1.delegate = self
                 scrollViewBottom()
             }
         }
@@ -409,4 +414,17 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
     
+}
+
+extension AIServiceContentViewController : AIDeleteActionDelegate{
+    
+    func deleteAction(cell: UIView?) {
+        
+        springWithCompletion(0.3, animations: { () -> Void in
+             cell?.alpha = 0
+            }) { (complate) -> Void in
+                cell?.removeFromSuperview()
+        }
+        
+    }
 }

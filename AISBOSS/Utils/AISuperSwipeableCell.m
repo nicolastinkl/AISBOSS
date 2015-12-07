@@ -1,9 +1,9 @@
 //
-//  SwipeableCell.m
-//  SwipeableTableCell
+//  AISuperSwipeableCell.h
+//  AISuperSwipeableCell
 //
-//  Created by Ellen Shapiro on 1/5/14.
-//  Copyright (c) 2014 Designated Nerd Software. All rights reserved.
+//  Created by tinkl on 1/11/15.
+//  Copyright (c) 2015 Designated Nerd Software. All rights reserved.
 //
 
 #import "AISuperSwipeableCell.h"
@@ -45,6 +45,11 @@ static CGFloat const kBounceValue = 20.0f;
 {
     [self setConstraintsToShowAllButtons:NO notifyDelegateDidOpen:NO];
 }
+
+- (void)closeCell
+{
+    [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:YES];
+}
   
 - (CGFloat)buttonTotalWidth
 {
@@ -65,6 +70,11 @@ static CGFloat const kBounceValue = 20.0f;
             BOOL panningLeft = NO;
             if (currentPoint.x < self.panStartPoint.x) {  //1
                 panningLeft = YES;
+            }
+            
+            if (deltaX > 0) {
+                // open
+                [self.delegate cellDidAimationFrame:(deltaX + 20) cell:self];
             }
             
             if (self.startingRightLayoutConstraintConstant == 0) { //2
@@ -227,7 +237,5 @@ static CGFloat const kBounceValue = 20.0f;
 {
     return YES;
 }
-
-
 
 @end
