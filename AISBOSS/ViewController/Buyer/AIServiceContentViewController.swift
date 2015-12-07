@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import AISpring
 
 public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
@@ -17,6 +18,10 @@ public enum AIServiceContentType : Int {
 internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
+    
+    
+    var curAudioView : AIAudioMessageView?
+    
     
     private let redColor : String = "b32b1d"
     
@@ -46,6 +51,15 @@ internal class AIServiceContentViewController: UIViewController {
     private var audioView:AIAudioRecordView?
     
     // MARK: -> Internal init methods
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 切换视图的时候停止播放录音
+        curAudioView?.stopPlay()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -256,6 +270,7 @@ internal class AIServiceContentViewController: UIViewController {
         audioView.inputText.delegate = self
         
         let audio1 = AIAudioMessageView.currentView()
+        audio1.audioDelegate = self
         addNewSubView(audio1, preView: audioView)
         
         let model = AIProposalHopeAudioTextModel()
@@ -263,12 +278,15 @@ internal class AIServiceContentViewController: UIViewController {
         model.audio_length = 8
         model.type = 0
         audio1.fillData(model)
+        audio1.deleteDelegate = self
         
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)
+        text1.delegate = self
         
         let text2 = AITextMessageView.currentView()
-        addNewSubView(text2, preView: text1)        
+        addNewSubView(text2, preView: text1)
+        text2.delegate = self
     }
     
     /**
@@ -291,15 +309,20 @@ internal class AIServiceContentViewController: UIViewController {
 // MARK : Delegate
 
 extension AIServiceContentViewController: UITextFieldDelegate{
+    
+    
+    
+    
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // add a new View Model
-        let audio1 = AITextMessageView.currentView()
+        let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
 
-            addNewSubView(audio1, preView: cview)
-            audio1.content.text = textField.text
+            addNewSubView(newText, preView: cview)
+            newText.content.text = textField.text
             scrollViewBottom()
+            newText.delegate = self
         }
         textField.resignFirstResponder()
         textField.text = ""
@@ -308,12 +331,29 @@ extension AIServiceContentViewController: UITextFieldDelegate{
     }
 }
 
-extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
+extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
+    
+    
+    
+    // AIAudioMessageViewDelegate
+    func willPlayRecording(audioView :AIAudioMessageView) {
+        curAudioView?.stopPlay()
+        curAudioView = audioView;
+    }
+    
+    func didEndPlayRecording(audioView :AIAudioMessageView) {
+        curAudioView = nil
+    }
+    
+    
+    
+    
+    
     
     /**
      开始录音处理
      */
-    func startRecording() {
+    func willStartRecording() {
         audioView?.hidden = false
     }
     
@@ -349,13 +389,26 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         if audioModel.audio_length > 0 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
+            audio1.audioDelegate = self
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
                 audio1.fillData(audioModel)
-                
+                audio1.deleteDelegate = self
                 scrollViewBottom()
             }
         }
+        
+    }
+    
+    
+    // 即将结束录音
+    func willEndRecording() {
+        
+    }
+    
+    
+    // 录音发生错误
+    func endRecordingWithError(error: String) {
         
     }
     
@@ -365,4 +418,17 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
     }
     
     
+}
+
+extension AIServiceContentViewController : AIDeleteActionDelegate{
+    
+    func deleteAction(cell: UIView?) {
+        
+        springWithCompletion(0.3, animations: { () -> Void in
+             cell?.alpha = 0
+            }) { (complate) -> Void in
+                cell?.removeFromSuperview()
+        }
+        
+    }
 }

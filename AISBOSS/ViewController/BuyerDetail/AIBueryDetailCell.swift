@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import AISpring
 
 // protocol
 protocol AIBueryDetailCellDetegate: class {
@@ -32,6 +33,8 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     internal var isCanSwipeDelate:Bool = true
     
     internal var currentIndexPath:NSIndexPath?
+    
+    @IBOutlet weak var buttonView: SpringView!
     
     internal var recordPosition:CGPoint?
     
@@ -71,8 +74,10 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     class func currentView()->AIBueryDetailCell{
         
-        return NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
-    
+        let selfview =  NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
+        selfview.buttonView.layer.cornerRadius = 6
+        selfview.buttonView.layer.masksToBounds = true
+        return selfview
     }
     
     // MARK: -

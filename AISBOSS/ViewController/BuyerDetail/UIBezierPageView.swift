@@ -67,8 +67,39 @@ internal class UIBezierPageView : UIView {
             for i in 0...count {
                 newSubview[i].removeFromSuperview()
             }
+            
         }
         
+        //重新筛选 根据X位置
+        let leftArray = self.subviews.sort({$0.left < $1.left})
+        var indexItem:Int = 0
+        for item in model{
+            let img = leftArray[indexItem] as? UIImageView
+            if item.param_setting_flag != 0 {
+                img?.image = UIImage(named: "selectSettings")
+            }else{
+                img?.image = UIImage(named: "selectwhiteSettings")
+            }
+            img?.tag = 10 + indexItem
+            img?.associatedName = "\(item.service_id)"
+            indexItem = indexItem + 1
+        }
+        
+    }
+    
+    ///设置点亮图标函数
+    func showLightView(model:AIProposalServiceModel){
+        _ = self.subviews.filter { (imageview) -> Bool in
+            let img = imageview as!  UIImageView
+            if img.associatedName == "\(model.service_id)" {
+                if model.param_setting_flag != 0 {
+                    img.image = UIImage(named: "selectSettings")
+                }else{
+                    img.image = UIImage(named: "selectwhiteSettings")
+                }
+            }
+            return true
+        }
     }
     
     func refershView(number: Int = 0){

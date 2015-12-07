@@ -11,9 +11,10 @@ import Cartography
 
 class SimpleServiceViewContainer: UIView {
     
+    static let simpleServiceViewContainerTag: Int = 233
+    
     private static let DIVIDER_TOP_MARGIN: CGFloat = 1
     private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
-    static let simpleServiceViewContainerTag: Int = 233
 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomContentView: UIView!
@@ -38,7 +39,9 @@ class SimpleServiceViewContainer: UIView {
     
     @IBOutlet weak var cancelButton: UIButton!
     
-    internal var displayDeleteMode:Bool?{
+    var settingButtonDelegate: SettingClickDelegate?
+    
+    internal var displayDeleteMode: Bool? {
         didSet{
             guard let dModel = self.displayDeleteMode else {
                 return
@@ -49,17 +52,35 @@ class SimpleServiceViewContainer: UIView {
                 self.topView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
                 self.bottomContentView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = false
+                
             }else{
                 self.topView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
                 self.bottomContentView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = true
+ 
             }
             
         }
     }
-    private var dataModel: AIProposalServiceModel?
+    var dataModel: AIProposalServiceModel?
     
     private var paramViewHeight: CGFloat = 0
+    private var settingFlag = false
+    
+    var isSetted: Bool {
+        get {
+            return settingFlag
+        }
+        
+        set {
+            settingFlag = newValue
+            if newValue {
+                settingState.image = UIImage(named: "gear_white")
+            } else {
+                settingState.image = UIImage(named: "gear_black")
+            }
+        }
+    }
     
     class func currentView() -> SimpleServiceViewContainer{
         let serviceView = NSBundle.mainBundle().loadNibNamed("SimpleServiceViewContainer", owner: self, options: nil).first as! SimpleServiceViewContainer
@@ -81,6 +102,7 @@ class SimpleServiceViewContainer: UIView {
         
         originalPrice.linePosition = .Middle
         
+        settingState.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "settingClickHandle:"))
     }
     
     //加载数据
@@ -99,10 +121,14 @@ class SimpleServiceViewContainer: UIView {
         }
         
         if isParamSetted() {
-            settingState.image = UIImage(named: "gear_white")
+            isSetted = true
         }
         
         createReviewView(dataModel.service_rating_level)
+    }
+    
+    func settingClickHandle(sender: UITapGestureRecognizer) {
+        settingButtonDelegate?.settingButtonClicked(settingState, parentView: self)
     }
     
     private func setPrice() {
@@ -253,4 +279,8 @@ class SimpleServiceViewContainer: UIView {
     private func totalHeight()-> CGFloat {
         return getTopHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height + messageHeight.constant
     }
+}
+
+protocol SettingClickDelegate {
+    func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer)
 }

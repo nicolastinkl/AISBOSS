@@ -52,6 +52,8 @@ class AIBuyerDetailViewController : UIViewController {
    
     var overlayView: UIView!
     
+    private var menuLightView:UIBezierPageView?
+    
     private var serviceRestoreToolbar : ServiceRestoreToolBar!
     
     private var current_service_list: NSArray?{
@@ -175,6 +177,10 @@ class AIBuyerDetailViewController : UIViewController {
             bzView.refershModelView(list)
         }
         buyerBottom.addSubview(bzView)
+//        bottomView.addSubview(bzView)
+        // layout subviews
+        menuLightView = bzView
+
     }
     
     
@@ -453,6 +459,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         let serviceView = SimpleServiceViewContainer.currentView()
         serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
+        serviceView.settingState.tag = indexPath.row
+        serviceView.settingButtonDelegate = self
+        
         serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
         cell.currentModel = serviceDataModel
@@ -540,7 +549,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 // MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
     func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
+   //     let view: SimpleServiceViewContainer = cell.contentView.subviews.first as! SimpleServiceViewContainer
         let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
+
         let logo = view.logo
         // TODO: delete from server
         
@@ -562,7 +573,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
 
 
 // MARK: Extension.
-extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate{
+extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
     
     func cellDidAimationFrame(position: CGFloat, cell: UITableViewCell!) {
 //        self.tableView.scrollEnabled = false
@@ -574,5 +585,19 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate{
     
     func cellDidOpen(cell: UITableViewCell!) {
 //        self.tableView.scrollEnabled = false
+    }
+}
+
+extension AIBuyerDetailViewController: SettingClickDelegate {
+    func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
+        //let row = settingButton.tag
+        parentView.isSetted = !parentView.isSetted
+        
+        if let s = parentView.dataModel {
+            s.param_setting_flag = Int(parentView.isSetted)
+            menuLightView?.showLightView(s)
+        }
+        
+        
     }
 }
