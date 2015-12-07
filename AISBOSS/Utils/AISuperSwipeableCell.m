@@ -22,6 +22,7 @@
 @end
 
 static CGFloat const kBounceValue = 20.0f;
+static CGFloat const kOffsetValue = 15.0f;
 
 @implementation AISuperSwipeableCell
 
@@ -53,7 +54,7 @@ static CGFloat const kBounceValue = 20.0f;
   
 - (CGFloat)buttonTotalWidth
 {
-    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.buttonView.frame);
+    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.buttonView.frame) - kOffsetValue;
 }
 
 - (void)panThisCell:(UIPanGestureRecognizer *)recognizer
@@ -121,7 +122,7 @@ static CGFloat const kBounceValue = 20.0f;
         case UIGestureRecognizerStateEnded:
             if (self.startingRightLayoutConstraintConstant == 0) { //1
                 //We were opening
-                CGFloat halfOfButtonOne = CGRectGetWidth(self.buttonView.frame) / 2; //2
+                CGFloat halfOfButtonOne = CGRectGetWidth(self.buttonView.frame) / 2 - kOffsetValue/2; //2
                 if (self.contentViewRightConstraint.constant >= halfOfButtonOne) { //3
                     //Open all the way
                     [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];
@@ -132,7 +133,7 @@ static CGFloat const kBounceValue = 20.0f;
                 
             } else {
                 //We were closing CGRectGetWidth(self.button1.frame) ;//+
-                CGFloat buttonOnePlusHalfOfButton2 =  CGRectGetWidth(self.buttonView.frame) ;//(CGRectGetWidth(self.button1.frame) / 2); //4
+                CGFloat buttonOnePlusHalfOfButton2 =  CGRectGetWidth(self.buttonView.frame)  - kOffsetValue/2;//(CGRectGetWidth(self.button1.frame) / 2); //4
                 if (self.contentViewRightConstraint.constant >= buttonOnePlusHalfOfButton2) { //5
                     //Re-open all the way
                     [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];

@@ -41,6 +41,8 @@ internal class AICustomView : UIView{
         var x:CGFloat = tagMargin
         var y:CGFloat = 0
         var n = 0
+        var currentX:CGFloat = 0
+        var currentY:CGFloat = 0
         
         if isNormal {
             
@@ -60,7 +62,7 @@ internal class AICustomView : UIView{
                 tag.closeIntoEnable()
                 tag.backButton.hidden = false
             }
-
+            
             tags.addSubview(tag)
             
             tag.fillOfData(model) //处理数据刷新  // add into whole array with key-value.
@@ -68,8 +70,10 @@ internal class AICustomView : UIView{
             tag.delegateNew = self
             let ramdWidth = 30 + model.content!.length * 8
             let ramdHeigth:CGFloat = 35
+          
             
             if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin) {
+               
                 n = 0
                 x = tagMargin
                 y += ramdHeigth + tagMargin
@@ -79,10 +83,19 @@ internal class AICustomView : UIView{
                 }
             }
             
-            n = n + 1  //   Add 1
+            if  y < 10 && n < 3 {
+                currentX = x
+                currentY = 2
+            } 
             
+            if y > ramdHeigth*2 {
+                tags.setOrigin(CGPointMake(currentX + tagMargin + CGFloat(ramdWidth), currentY))
+            }else{
+                tags.setOrigin(CGPointMake(x, y))
+            }
+            n = n + 1  //   Add 1
             tags.setSize(CGSize(width: CGFloat(ramdWidth), height: ramdHeigth))
-            tags.setOrigin(CGPointMake(x, y))
+           
             //tag.frame = tags.frame
             
             layout(tag) { (ticketView) -> () in
