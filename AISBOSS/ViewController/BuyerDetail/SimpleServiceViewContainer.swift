@@ -62,7 +62,7 @@ class SimpleServiceViewContainer: UIView {
             
         }
     }
-    private var dataModel: AIProposalServiceModel?
+    var dataModel: AIProposalServiceModel?
     
     private var paramViewHeight: CGFloat = 0
     private var settingFlag = false

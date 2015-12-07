@@ -43,6 +43,8 @@ class AIBuyerDetailViewController : UIViewController {
     private var contentView: UIView?
     @IBOutlet weak var bottomView: UIView!
     
+    private var menuLightView:UIBezierPageView?
+    
     private var serviceRestoreToolbar : ServiceRestoreToolBar!
     
     private var current_service_list: NSArray?{
@@ -147,7 +149,7 @@ class AIBuyerDetailViewController : UIViewController {
         }
         self.bottomView.addSubview(bzView)
         // layout subviews
-        
+        menuLightView = bzView
     }
     
     
@@ -487,7 +489,14 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
 
 extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
-        let row = settingButton.tag
-        let isSetted = parentView.isSetted
+        //let row = settingButton.tag
+        parentView.isSetted = !parentView.isSetted
+        
+        if let s = parentView.dataModel {
+            s.param_setting_flag = Int(parentView.isSetted)
+            menuLightView?.showLightView(s)
+        }
+        
+        
     }
 }

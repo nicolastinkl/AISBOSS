@@ -26,7 +26,7 @@ class ServiceContainerView: UIView {
     @IBOutlet weak var topBallHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomBallHeightConstraint: NSLayoutConstraint!
     
-    private var dataModel: AIProposalServiceModel?
+    var dataModel: AIProposalServiceModel?
     private var isPrimeService = false
  
     func isPrimeService(isPrime: Bool) {
