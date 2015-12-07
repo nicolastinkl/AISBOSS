@@ -10,10 +10,15 @@
 import Foundation
 import AISpring
 
-protocol AICustomAudioNotesViewDelegate : class{
-    func startRecording()
+@objc protocol AICustomAudioNotesViewDelegate : class{
+    
     func updateMetersImage(lowPass:Double)
     func endRecording(audioModel:AIProposalHopeAudioTextModel)
+    func willStartRecording()
+    
+    func willEndRecording()
+    func endRecordingWithError(error : String)
+    
 }
 // MARK: -
 // MARK: AICustomAudioNotesView
@@ -124,7 +129,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     @IBAction func touchDownAudio(sender: AnyObject) {
         
         startRecording()
-        delegateAudio?.startRecording()
+        delegateAudio?.willStartRecording()
         audioButton.setTitle("Release to Send", forState: UIControlState.Normal)
     }
     
@@ -149,7 +154,23 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         }        
     }
     
+    
+    func notifyEndRecordWithUrl(url:String) {
+        // fake
+        let data = NSData(contentsOfFile: currentAutioUrl)
+        let audioLength: Int = data!.length/1024/25
+        let model = AIProposalHopeAudioTextModel()
+        model.audio_url = currentAutioUrl
+        model.audio_length = audioLength
+        model.type = 0
+        self.delegateAudio?.endRecording(model)
+    }
+    
+    
+    
     /// MARK:  Finish Audio..
+    
+    
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         let data = NSData(contentsOfFile: currentAutioUrl) 
         if data != nil {
@@ -162,17 +183,19 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             self.delegateAudio?.endRecording(model)
             
             /// 处理文件存储
-            
+            //weak var weakSelf = self
             let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
             videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
                 print("saveInBackgroundWithBlock : \(videoFile.url)")
-                
+                //weakSelf?.notifyEndRecordWithUrl(videoFile.url)
             })
         }
     }
     
     func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder,
         error: NSError?) {
+            
+            self.delegateAudio?.endRecordingWithError(error!.localizedDescription)
             print("\(error!.localizedDescription)")
     }
     
@@ -191,7 +214,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             timer?.invalidate()
             timer = nil
             audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
-            
+            self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
         }else{
             

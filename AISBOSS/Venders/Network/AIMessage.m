@@ -40,7 +40,7 @@
 {
     CFUUIDRef uuid = CFUUIDCreate(NULL);
     CFStringRef uuidStr = CFUUIDCreateString(NULL, uuid);
-    NSString *_uniqueID =[[NSString alloc] initWithString:CFBridgingRelease(uuidStr)];
+    
     CFRelease(uuidStr);
     CFRelease(uuid);
 }

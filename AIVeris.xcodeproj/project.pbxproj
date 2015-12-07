@@ -37,6 +37,7 @@
 		818D8EC21C040D4100006408 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBA1C040D4100006408 /* AIServiceTypes.m */; };
 		818D8EC31C040D4100006408 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBC1C040D4100006408 /* AIStarRate.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
+		81A0458F1C11675500296E56 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A0458E1C11675500296E56 /* CoreAudio.framework */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -150,7 +151,6 @@
 		849B4B421C0EDFE300BEC179 /* FLEXSystemLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADA1C0EDFE300BEC179 /* FLEXSystemLogMessage.m */; };
 		849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADC1C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m */; };
 		849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADE1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m */; };
-		849B4B451C0EDFE300BEC179 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 849B4ADF1C0EDFE300BEC179 /* Info.plist */; };
 		849B4B461C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE21C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m */; };
 		849B4B471C0EDFE300BEC179 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE41C0EDFE300BEC179 /* FLEXNetworkRecorder.m */; };
 		849B4B481C0EDFE300BEC179 /* FLEXNetworkSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE61C0EDFE300BEC179 /* FLEXNetworkSettingsTableViewController.m */; };
@@ -505,6 +505,7 @@
 		818D8EBC1C040D4100006408 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
+		81A0458E1C11675500296E56 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = ../ViewController/Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -684,7 +685,6 @@
 		849B4ADC1C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXSystemLogTableViewCell.m; sourceTree = "<group>"; };
 		849B4ADD1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXSystemLogTableViewController.h; sourceTree = "<group>"; };
 		849B4ADE1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXSystemLogTableViewController.m; sourceTree = "<group>"; };
-		849B4ADF1C0EDFE300BEC179 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849B4AE11C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkHistoryTableViewController.h; sourceTree = "<group>"; };
 		849B4AE21C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkHistoryTableViewController.m; sourceTree = "<group>"; };
 		849B4AE31C0EDFE300BEC179 /* FLEXNetworkRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkRecorder.h; sourceTree = "<group>"; };
@@ -1163,6 +1163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A0458F1C11675500296E56 /* CoreAudio.framework in Frameworks */,
 				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */,
 				93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */,
@@ -1210,6 +1211,7 @@
 		61647BAFC7200B01794A2E67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81A0458E1C11675500296E56 /* CoreAudio.framework */,
 				937EA3801C02BB2700AF776B /* AVFoundation.framework */,
 				93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */,
 				93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */,
@@ -1463,7 +1465,6 @@
 				849B4AB61C0EDFE300BEC179 /* ExplorerToolbar */,
 				849B4AC21C0EDFE300BEC179 /* FLEX.h */,
 				849B4AC31C0EDFE300BEC179 /* GlobalStateExplorers */,
-				849B4ADF1C0EDFE300BEC179 /* Info.plist */,
 				849B4AE01C0EDFE300BEC179 /* Network */,
 				849B4AF11C0EDFE300BEC179 /* ObjectExplorers */,
 				849B4B0A1C0EDFE300BEC179 /* Utility */,
@@ -2606,7 +2607,6 @@
 				93D5A3471B709C1C00DDB158 /* Resources */,
 				BE13F8A047272C818E183B81 /* Embed Pods Frameworks */,
 				7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */,
-				93EF55421C156EB30088B194 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2732,7 +2732,6 @@
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
-				849B4B451C0EDFE300BEC179 /* Info.plist in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
@@ -2806,19 +2805,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		93EF55421C156EB30088B194 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "leancloud upload_symbol \\\n-f \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\" \\\n-i \"xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk\" \\\n-k \"qqcxwtjlx3ctw32buizjkaw5elwf0s41u4xf8ct7glbox171\"";
 		};
 		BE13F8A047272C818E183B81 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3383,7 +3369,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
