@@ -31,6 +31,7 @@ static CGFloat const kBounceValue = 20.0f;
     
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
+    self.canDelete = NO;
     [self.myContentView addGestureRecognizer:self.panRecognizer];
     
 }
@@ -39,6 +40,11 @@ static CGFloat const kBounceValue = 20.0f;
 {
     [super prepareForReuse];
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
+}
+
+- (void)setCanDelete:(BOOL)canDelete {
+    _canDelete = canDelete;
+    self.panRecognizer.enabled = canDelete;
 }
 
 - (void)openCell
