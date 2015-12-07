@@ -43,7 +43,7 @@ class AITextMessageView: UIView {
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
         meunController.menuItems = [item]
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
         meunController.setMenuVisible(true, animated: true)
         
     }
@@ -74,6 +74,15 @@ class AITextMessageView: UIView {
         self.resignFirstResponder()
         
     }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        
+        if action == Selector("sendDeleteMenuItemPressed:") {
+            return true
+        }
+        return false
+    }
+    
     
     override func canBecomeFirstResponder() -> Bool {
         return true

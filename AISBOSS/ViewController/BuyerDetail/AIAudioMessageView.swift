@@ -64,7 +64,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
         meunController.menuItems = [item]
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
         meunController.setMenuVisible(true, animated: true)
         
     }
@@ -184,8 +184,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         audioPlayer.play()
     
     }
-    
-    
+     
     
     @IBAction func playAction(sender: AnyObject) {
         Async.main(after: 0.1, block: { () -> Void in
