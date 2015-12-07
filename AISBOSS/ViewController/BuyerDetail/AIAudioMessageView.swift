@@ -34,9 +34,9 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     private var currentModelss:AIProposalHopeAudioTextModel?
     
-    weak var delegate:AIAudioMessageViewDelegate?
+    weak var audioDelegate:AIAudioMessageViewDelegate?
 
-    weak var delegate:AIDeleteActionDelegate?
+    weak var deleteDelegate:AIDeleteActionDelegate?
 
     
     class func currentView()->AIAudioMessageView{
@@ -81,7 +81,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
     func sendDeleteMenuItemPressed(menuController: UIMenuController){
         self.resignFirstResponder()
-        delegate?.deleteAction(self)
+        deleteDelegate?.deleteAction(self)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -118,7 +118,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         audioGifImageView.stopAnimating()
         audioGifImageView.image = UIImage(named: "ai_audio_bg")
         
-        delegate?.didEndPlayRecording(self)
+        audioDelegate?.didEndPlayRecording(self)
     }
     
     // MARK: 配置
@@ -172,7 +172,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
             return
         }
         
-        delegate?.willPlayRecording(self)
+        audioDelegate?.willPlayRecording(self)
         
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()

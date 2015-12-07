@@ -270,7 +270,7 @@ internal class AIServiceContentViewController: UIViewController {
         audioView.inputText.delegate = self
         
         let audio1 = AIAudioMessageView.currentView()
-        audio1.delegate = self
+        audio1.audioDelegate = self
         addNewSubView(audio1, preView: audioView)
         
         let model = AIProposalHopeAudioTextModel()
@@ -278,7 +278,7 @@ internal class AIServiceContentViewController: UIViewController {
         model.audio_length = 8
         model.type = 0
         audio1.fillData(model)
-        audio1.delegate = self
+        audio1.deleteDelegate = self
         
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)
@@ -385,11 +385,11 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
         if audioModel.audio_length > 0 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
-            audio1.delegate = self
+            audio1.audioDelegate = self
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
                 audio1.fillData(audioModel)
-                audio1.delegate = self
+                audio1.deleteDelegate = self
                 scrollViewBottom()
             }
         }

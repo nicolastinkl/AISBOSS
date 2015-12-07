@@ -188,7 +188,7 @@ typedef enum  {
 - (void) initWithAdd:(CGPoint)center{
     
     int width = [AIBubble smaBubbleRadius]*2;//56.0;
-    int size =  width;
+
     self.frame = CGRectMake(0, 0, width, width);
     self.center = center;
     _radius = width / 2;

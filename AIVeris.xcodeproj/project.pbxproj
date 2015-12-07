@@ -2607,7 +2607,6 @@
 				93D5A3471B709C1C00DDB158 /* Resources */,
 				BE13F8A047272C818E183B81 /* Embed Pods Frameworks */,
 				7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */,
-				93EF55421C156EB30088B194 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2733,7 +2732,6 @@
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
-				849B4B451C0EDFE300BEC179 /* Info.plist in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
@@ -2807,19 +2805,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		93EF55421C156EB30088B194 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "leancloud upload_symbol \\\n-f \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\" \\\n-i \"xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk\" \\\n-k \"qqcxwtjlx3ctw32buizjkaw5elwf0s41u4xf8ct7glbox171\"";
 		};
 		BE13F8A047272C818E183B81 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
