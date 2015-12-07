@@ -37,6 +37,7 @@
 		818D8EC21C040D4100006408 /* AIServiceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBA1C040D4100006408 /* AIServiceTypes.m */; };
 		818D8EC31C040D4100006408 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBC1C040D4100006408 /* AIStarRate.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
+		81A0458F1C11675500296E56 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A0458E1C11675500296E56 /* CoreAudio.framework */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -147,7 +148,6 @@
 		849B4B421C0EDFE300BEC179 /* FLEXSystemLogMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADA1C0EDFE300BEC179 /* FLEXSystemLogMessage.m */; };
 		849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADC1C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m */; };
 		849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4ADE1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m */; };
-		849B4B451C0EDFE300BEC179 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 849B4ADF1C0EDFE300BEC179 /* Info.plist */; };
 		849B4B461C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE21C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m */; };
 		849B4B471C0EDFE300BEC179 /* FLEXNetworkRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE41C0EDFE300BEC179 /* FLEXNetworkRecorder.m */; };
 		849B4B481C0EDFE300BEC179 /* FLEXNetworkSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AE61C0EDFE300BEC179 /* FLEXNetworkSettingsTableViewController.m */; };
@@ -288,7 +288,6 @@
 		93B25AB81B9D7EB500CD1FEB /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B25AB71B9D7EB500CD1FEB /* CoreTelephony.framework */; };
 		93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B5238F1BB8F0EA00DFB1C9 /* OpenGLES.framework */; };
 		93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */; };
-		93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */; };
 		93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */; };
 		93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */; };
 		93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C33EEC1B9BEA75007BF506 /* CustomMethod.m */; };
@@ -502,6 +501,7 @@
 		818D8EBC1C040D4100006408 /* AIStarRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIStarRate.m; sourceTree = "<group>"; };
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
+		81A0458E1C11675500296E56 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = ../ViewController/Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -678,7 +678,6 @@
 		849B4ADC1C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXSystemLogTableViewCell.m; sourceTree = "<group>"; };
 		849B4ADD1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXSystemLogTableViewController.h; sourceTree = "<group>"; };
 		849B4ADE1C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXSystemLogTableViewController.m; sourceTree = "<group>"; };
-		849B4ADF1C0EDFE300BEC179 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		849B4AE11C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkHistoryTableViewController.h; sourceTree = "<group>"; };
 		849B4AE21C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXNetworkHistoryTableViewController.m; sourceTree = "<group>"; };
 		849B4AE31C0EDFE300BEC179 /* FLEXNetworkRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXNetworkRecorder.h; sourceTree = "<group>"; };
@@ -1157,7 +1156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93B523941BB8F0FB00DFB1C9 /* AudioToolbox.framework in Frameworks */,
+				81A0458F1C11675500296E56 /* CoreAudio.framework in Frameworks */,
 				937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */,
 				93B523921BB8F0F400DFB1C9 /* CoreMotion.framework in Frameworks */,
 				93B523901BB8F0EA00DFB1C9 /* OpenGLES.framework in Frameworks */,
@@ -1205,6 +1204,7 @@
 		61647BAFC7200B01794A2E67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81A0458E1C11675500296E56 /* CoreAudio.framework */,
 				937EA3801C02BB2700AF776B /* AVFoundation.framework */,
 				93B523931BB8F0FB00DFB1C9 /* AudioToolbox.framework */,
 				93B523911BB8F0F400DFB1C9 /* CoreMotion.framework */,
@@ -1459,7 +1459,6 @@
 				849B4AB61C0EDFE300BEC179 /* ExplorerToolbar */,
 				849B4AC21C0EDFE300BEC179 /* FLEX.h */,
 				849B4AC31C0EDFE300BEC179 /* GlobalStateExplorers */,
-				849B4ADF1C0EDFE300BEC179 /* Info.plist */,
 				849B4AE01C0EDFE300BEC179 /* Network */,
 				849B4AF11C0EDFE300BEC179 /* ObjectExplorers */,
 				849B4B0A1C0EDFE300BEC179 /* Utility */,
@@ -2722,7 +2721,6 @@
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
-				849B4B451C0EDFE300BEC179 /* Info.plist in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,

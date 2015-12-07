@@ -18,6 +18,10 @@ internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
     
+    
+    var curAudioView : AIAudioMessageView?
+    
+    
     private let redColor : String = "b32b1d"
     
     var serviceContentModel:AIProposalServiceModel?
@@ -46,6 +50,15 @@ internal class AIServiceContentViewController: UIViewController {
     private var audioView:AIAudioRecordView?
     
     // MARK: -> Internal init methods
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 切换视图的时候停止播放录音
+        curAudioView?.stopPlay()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -256,6 +269,7 @@ internal class AIServiceContentViewController: UIViewController {
         audioView.inputText.delegate = self
         
         let audio1 = AIAudioMessageView.currentView()
+        audio1.delegate = self
         addNewSubView(audio1, preView: audioView)
         
         let model = AIProposalHopeAudioTextModel()
@@ -308,12 +322,29 @@ extension AIServiceContentViewController: UITextFieldDelegate{
     }
 }
 
-extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
+extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
+    
+    
+    
+    // AIAudioMessageViewDelegate
+    func willPlayRecording(audioView :AIAudioMessageView) {
+        curAudioView?.stopPlay()
+        curAudioView = audioView;
+    }
+    
+    func didEndPlayRecording(audioView :AIAudioMessageView) {
+        curAudioView = nil
+    }
+    
+    
+    
+    
+    
     
     /**
      开始录音处理
      */
-    func startRecording() {
+    func willStartRecording() {
         audioView?.hidden = false
     }
     
@@ -349,6 +380,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
         if audioModel.audio_length > 0 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
+            audio1.delegate = self
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
                 audio1.fillData(audioModel)
@@ -356,6 +388,18 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate{
                 scrollViewBottom()
             }
         }
+        
+    }
+    
+    
+    // 即将结束录音
+    func willEndRecording() {
+        
+    }
+    
+    
+    // 录音发生错误
+    func endRecordingWithError(error: String) {
         
     }
     

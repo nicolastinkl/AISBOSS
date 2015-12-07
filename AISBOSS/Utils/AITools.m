@@ -11,7 +11,8 @@
 @implementation AITools
 
 
-+ (AVAudioPlayer *)playAccAudio:(NSURL*) filename{
++ (AVAudioPlayer *)playAccAudio:(NSURL*) filename
+{
     //初始化播放器的时候如下设置
     UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
     AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
@@ -32,7 +33,12 @@
 //    [audioSession setActive:YES error:nil];
     
     NSError *playerError;
-    AVAudioPlayer*  myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:filename error:&playerError];
+    
+    NSData* data = [NSData dataWithContentsOfURL:filename] ;
+    AVAudioPlayer* myPlayer = [[AVAudioPlayer alloc] initWithData:data error:&playerError];
+    
+    
+    //AVAudioPlayer*  myPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:filename error:&playerError];
     myPlayer.meteringEnabled = YES;
     //myPlayer.delegate = self;
     
