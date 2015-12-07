@@ -109,6 +109,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         self.audioLength.text = "\(model.audio_length)''"
         currentModelss = model
         self.configureAudio()
+        self.configureImages()
     }
     
     // MARK: 停止播放
@@ -160,7 +161,11 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     
     }
     
-    
+    func configureImages () {
+        let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
+        self.audioGifImageView.animationImages = images
+        self.audioGifImageView.animationDuration = 0.8
+    }
     
     func startPlay () {
         
@@ -185,21 +190,23 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBAction func playAction(sender: AnyObject) {
         Async.main(after: 0.1, block: { () -> Void in
             
-            self.startPlay()
             
             //start playing gif Images
-            let images = [UIImage(named: "ReceiverVoiceNodePlaying001")!,UIImage(named: "ReceiverVoiceNodePlaying002")!,UIImage(named: "ReceiverVoiceNodePlaying003")!]
-            self.audioGifImageView.animationImages = images
-            self.audioGifImageView.animationDuration = 0.8
-            
             if (self.audioPlayer != nil) {
-                self.audioGifImageView.startAnimating()
+                if self.audioPlayer.playing {
+                    self.stopPlay()
+                    
+                }
+                else {
+                    self.startPlay()
+                    self.audioGifImageView.startAnimating()
+                }
+                
             }else{
                 self.configureAudio()
                 AIAlertView().showInfo("Get Record Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
             }
 
-            
         })
 
     }
