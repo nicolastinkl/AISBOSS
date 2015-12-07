@@ -245,6 +245,7 @@
 		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; };
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
 		93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */; };
+		93AE1E441C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */; };
 		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
 		93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A291B9D78B000CD1FEB /* AINote.strings */; };
@@ -812,6 +813,7 @@
 		93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TDAdditions.m"; sourceTree = "<group>"; };
 		93A742CC1BDF75FD001EF581 /* UIImage+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TDAdditions.h"; sourceTree = "<group>"; };
 		93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TDAdditions.m"; sourceTree = "<group>"; };
+		93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDeleteActionDelegate.swift; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
 		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
@@ -1730,6 +1732,7 @@
 				818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */,
 				818D8EAB1C040C8B00006408 /* AIParamedicView.h */,
 				818D8EAC1C040C8B00006408 /* AIParamedicView.m */,
+				93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -2943,6 +2946,7 @@
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
+				93AE1E441C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */,
 				8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */,

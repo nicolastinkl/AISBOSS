@@ -20,11 +20,73 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBOutlet weak var playButton: UIButton!
     private var currentModelss:AIProposalHopeAudioTextModel?
     
+    weak var delegate:AIDeleteActionDelegate?
+    
     class func currentView()->AIAudioMessageView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioMessageView", owner: self, options: nil).first  as! AIAudioMessageView
         selfView.audioLength.font = AITools.myriadLightSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
+        let longPressGes = UILongPressGestureRecognizer(target: selfView, action: "handleLongPress:")
+        longPressGes.minimumPressDuration = 0.3
+        selfView.addGestureRecognizer(longPressGes)
+        
         return selfView
     }
+    
+    func handleLongPress(longPressRecognizer:UILongPressGestureRecognizer){
+        
+        if (longPressRecognizer.state != UIGestureRecognizerState.Began) {
+            return;
+        }
+        
+        if (becomeFirstResponder() == false) {
+            return;
+        }
+        
+        let meunController = UIMenuController()
+        meunController.setTargetRect(self.bounds, inView: self)
+        
+        let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
+        meunController.menuItems = [item]
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
+        meunController.setMenuVisible(true, animated: true)
+        
+    }
+    
+    func menuWillShow(notification:NSNotification){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIMenuControllerWillShowMenuNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillHide:", name: UIMenuControllerWillHideMenuNotification, object: nil)
+    }
+    
+    func menuWillHide(notification:NSNotification){
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIMenuControllerWillHideMenuNotification, object: nil)
+    }
+    
+    func sendDeleteMenuItemPressed(menuController: UIMenuController){
+        self.resignFirstResponder()
+        delegate?.deleteAction(self)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if self.resignFirstResponder() == false {
+            return
+        }
+        
+        let menu =  UIMenuController.sharedMenuController()
+        menu.setMenuVisible(false, animated: true)
+        menu.update()
+        self.resignFirstResponder()
+        
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func becomeFirstResponder()->Bool{
+        return super.becomeFirstResponder()
+    }
+    
     
     func fillData(model:AIProposalHopeAudioTextModel){
         self.audioLength.text = "\(model.audio_length)''"
@@ -36,8 +98,6 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
             Async.main(after: 0.1, block: { () -> Void in
                 
                 do{
-                    
-                    
                     let player = AITools.playAccAudio(NSURL(string: model.audio_url)!)
                     if player != nil {
                         player.delegate = self
