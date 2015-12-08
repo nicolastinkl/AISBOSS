@@ -14,6 +14,10 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+
+
+
+
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
@@ -56,9 +60,19 @@ internal class AIServiceContentViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        shouldHideKeyboard()
         // 切换视图的时候停止播放录音
         curAudioView?.stopPlay()
+    }
+    
+    // MARK: 取消键盘
+    
+    func shouldHideKeyboard ()
+    {
+        if curTextField != nil {
+            curTextField?.resignFirstResponder()
+            curTextField = nil
+        }
     }
     
     // MARK: 键盘事件
@@ -89,6 +103,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardDidShow(notification : NSNotification) {
+        scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
@@ -346,15 +361,13 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if curTextField != nil {
-            curTextField?.resignFirstResponder()
-            curTextField = nil
+            shouldHideKeyboard()
         }
     }
     
 
     func textFieldDidBeginEditing(textField: UITextField) {
         curTextField = textField
-        scrollView.userInteractionEnabled = true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {

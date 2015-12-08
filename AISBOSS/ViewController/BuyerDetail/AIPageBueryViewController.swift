@@ -146,6 +146,14 @@ internal class AIPageBueryViewController: UIViewController {
 // MARK: -> Internal type alias
 extension AIPageBueryViewController:UIScrollViewDelegate {
 
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        for  vc in self.childViewControllers {
+            let contentVC : AIServiceContentViewController = vc as! AIServiceContentViewController
+            contentVC.shouldHideKeyboard()
+        }
+    }
+    
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
         pageControl.currentPage = Int(index)
