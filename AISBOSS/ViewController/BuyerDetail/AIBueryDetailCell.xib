@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="449-BM-UZX" customClass="SpringView" customModule="AISpring">
-                        <rect key="frame" x="544" y="0.0" width="48" height="87.5"/>
+                        <rect key="frame" x="538" y="0.0" width="48" height="87.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-66-gd0">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="87.5"/>
@@ -30,7 +30,7 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.6705882352941176" green="0.13333333333333333" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZP0-66-gd0" secondAttribute="trailing" id="6LG-4q-buO"/>
                             <constraint firstAttribute="bottom" secondItem="ZP0-66-gd0" secondAttribute="bottom" id="bhy-wT-cnC"/>
@@ -48,7 +48,7 @@
                 <animations/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="449-BM-UZX" secondAttribute="trailing" id="35p-Jb-HaH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="449-BM-UZX" secondAttribute="trailing" constant="6" id="35p-Jb-HaH"/>
                     <constraint firstItem="IiE-Pa-mgS" firstAttribute="leading" secondItem="Ak0-PG-7Nl" secondAttribute="leadingMargin" id="DkH-Lf-3bz"/>
                     <constraint firstAttribute="bottomMargin" secondItem="449-BM-UZX" secondAttribute="bottom" id="I5r-FE-0Ao"/>
                     <constraint firstAttribute="bottomMargin" secondItem="IiE-Pa-mgS" secondAttribute="bottom" id="S99-eV-Gfw"/>
@@ -70,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="closeCell" width="20" height="20"/>
+        <image name="closeCell" width="13" height="13"/>
     </resources>
 </document>
