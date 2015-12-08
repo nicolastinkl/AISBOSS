@@ -462,7 +462,20 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
     func deleteAction(cell: UIView?) {
         
         springWithCompletion(0.3, animations: { () -> Void in
-             cell?.alpha = 0
+            
+            cell?.alpha = 0
+            //刷新UI
+            let height = cell?.height ?? 0
+            let top = cell?.top
+            
+            let newListSubViews = self.scrollView.subviews.filter({ (subview) -> Bool in
+                return subview.top > top
+            })
+            
+            for nsubView in newListSubViews {
+                nsubView.setTop(nsubView.top - height)
+            }
+            
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
         }
