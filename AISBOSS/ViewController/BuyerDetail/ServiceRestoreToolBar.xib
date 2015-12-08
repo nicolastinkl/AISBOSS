@@ -130,15 +130,15 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outletCollection property="logos" destination="2qY-Qj-nIc" collectionClass="NSMutableArray" id="VKR-fA-ozp"/>
-                <outletCollection property="logos" destination="1k3-5V-Xcf" collectionClass="NSMutableArray" id="EkY-w3-8em"/>
-                <outletCollection property="logos" destination="8ls-f4-H0E" collectionClass="NSMutableArray" id="eB6-SF-PAQ"/>
-                <outletCollection property="logos" destination="wMW-Mk-fUr" collectionClass="NSMutableArray" id="yMo-xj-zkD"/>
-                <outletCollection property="logos" destination="UDn-X8-jAG" collectionClass="NSMutableArray" id="mOb-0h-d25"/>
-                <outletCollection property="logos" destination="Qwa-2T-R0r" collectionClass="NSMutableArray" id="Q4A-t1-PzB"/>
+                <outletCollection property="invisbleLogos" destination="2qY-Qj-nIc" collectionClass="NSMutableArray" id="VKR-fA-ozp"/>
+                <outletCollection property="invisbleLogos" destination="1k3-5V-Xcf" collectionClass="NSMutableArray" id="EkY-w3-8em"/>
+                <outletCollection property="invisbleLogos" destination="8ls-f4-H0E" collectionClass="NSMutableArray" id="eB6-SF-PAQ"/>
+                <outletCollection property="invisbleLogos" destination="wMW-Mk-fUr" collectionClass="NSMutableArray" id="yMo-xj-zkD"/>
+                <outletCollection property="invisbleLogos" destination="UDn-X8-jAG" collectionClass="NSMutableArray" id="mOb-0h-d25"/>
+                <outletCollection property="invisbleLogos" destination="Qwa-2T-R0r" collectionClass="NSMutableArray" id="Q4A-t1-PzB"/>
                 <outletCollection property="gestureRecognizers" destination="UWe-CP-e1j" appends="YES" id="UcR-K1-yv7"/>
             </connections>
-            <point key="canvasLocation" x="432" y="268.5"/>
+            <point key="canvasLocation" x="426" y="193"/>
         </view>
         <tapGestureRecognizer id="UWe-CP-e1j">
             <connections>
