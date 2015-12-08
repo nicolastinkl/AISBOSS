@@ -274,6 +274,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func deletedTableView(isOpen:Bool, animated:Bool) {
+       
         let window = UIApplication.sharedApplication().keyWindow
         let contentLabelHeight = contentLabel.height
         let navigationBarMaxY = CGRectGetMaxY(navigationView.frame)
