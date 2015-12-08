@@ -37,7 +37,7 @@ class AITextMessageView: UIView {
             return;
         }
         
-        let meunController = UIMenuController()
+        let meunController = UIMenuController.sharedMenuController()
         
         meunController.setTargetRect(self.bounds, inView: self)
         
@@ -74,6 +74,15 @@ class AITextMessageView: UIView {
         self.resignFirstResponder()
         
     }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        
+        if action == Selector("sendDeleteMenuItemPressed:") {
+            return true
+        }
+        return false
+    }
+    
     
     override func canBecomeFirstResponder() -> Bool {
         return true

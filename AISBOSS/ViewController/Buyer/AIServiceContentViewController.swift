@@ -22,6 +22,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     var curAudioView : AIAudioMessageView?
     
+    var curTextField : UITextField?
     
     private let redColor : String = "b32b1d"
     
@@ -40,6 +41,7 @@ internal class AIServiceContentViewController: UIViewController {
         pageScrollView.pagingEnabled = false
         pageScrollView.showsHorizontalScrollIndicator = false
         pageScrollView.showsVerticalScrollIndicator = false
+        pageScrollView.delegate = self
         return pageScrollView
     }()
     
@@ -59,11 +61,54 @@ internal class AIServiceContentViewController: UIViewController {
         curAudioView?.stopPlay()
     }
     
+    // MARK: 键盘事件
+    
+    func addKeyboardNotifications () {
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+    }
+    
+    func keyboardWillChangeFrame(notification : NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            
+            // step 1: get keyboard height
+            let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+            let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
+            let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
+        
+            scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
+            scrollViewBottom()
+        }
+        
+        
+        
+    }
+    
+    func keyboardWillHide(notification : NSNotification) {
+ 
+        scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        scrollViewBottom()
+
+    }
+    
+    
+    func keyboardDidHide(notification : NSNotification) {
+        scrollView.userInteractionEnabled = true
+    }
+    
+
+    // MARK: Life Cricel..
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        addKeyboardNotifications()
         /** 导航栏 */
         makeTopView()
      
@@ -82,12 +127,6 @@ internal class AIServiceContentViewController: UIViewController {
         
         self.scrollView.headerBeginRefreshing()
         
-        
-        /**
-        Notification Keyboard...
-        */
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -135,13 +174,6 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func keyboardWillShowNotification(notification: NSNotification) {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
-    }
-    
-    func keyboardWillHideNotification(notification: NSNotification) {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -255,13 +287,11 @@ internal class AIServiceContentViewController: UIViewController {
         
         //处理数据填充
         if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
-            if var labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
-                if labelList.count > 5 {
-                    labelList.removeLast()
-                }
+            if let labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
+        
         }
         
         let audioView = AICustomAudioNotesView.currentView()
@@ -283,6 +313,7 @@ internal class AIServiceContentViewController: UIViewController {
         let text1 = AITextMessageView.currentView()
         addNewSubView(text1, preView: audio1)
         text1.delegate = self
+        
         
         let text2 = AITextMessageView.currentView()
         addNewSubView(text2, preView: text1)
@@ -308,19 +339,33 @@ internal class AIServiceContentViewController: UIViewController {
 
 // MARK : Delegate
 
-extension AIServiceContentViewController: UITextFieldDelegate{
+extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelegate{
     
     
-    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        if curTextField != nil {
+            curTextField?.resignFirstResponder()
+            curTextField = nil
+            scrollView.userInteractionEnabled = false
+        }
+    }
     
 
+    func textFieldDidBeginEditing(textField: UITextField) {
+        curTextField = textField
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // add a new View Model
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
-
+            
             addNewSubView(newText, preView: cview)
             newText.content.text = textField.text
+            
+            let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+            newText.setHeight(30 + newSize!.height)
+
             scrollViewBottom()
             newText.delegate = self
         }
@@ -344,11 +389,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     func didEndPlayRecording(audioView :AIAudioMessageView) {
         curAudioView = nil
     }
-    
-    
-    
-    
-    
     
     /**
      开始录音处理

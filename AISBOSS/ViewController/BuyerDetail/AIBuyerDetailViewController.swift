@@ -18,7 +18,8 @@ protocol AIBuyerDetailDelegate: class {
 
 class AIBuyerDetailViewController : UIViewController {
     
-    // MARK: Priate Variable
+    private let SIMPLE_SERVICE_VIEW_CONTAINER_TAG: Int = 233
+    private let CELL_VERTICAL_SPACE: CGFloat = 10
     
 //    private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
     private var dataSource : AIProposalInstModel!
@@ -64,6 +65,7 @@ class AIBuyerDetailViewController : UIViewController {
             return result
         }
     }
+    
     private var deleted_service_list: NSMutableArray = NSMutableArray()
     
 //    private var horizontalCardCellCache = NSMutableDictionary()
@@ -151,12 +153,6 @@ class AIBuyerDetailViewController : UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // self.tableView.layoutSubviews()
-    }
-    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
@@ -209,7 +205,7 @@ class AIBuyerDetailViewController : UIViewController {
             richText.addAttribute(NSFontAttributeName, value: AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price!.length - 6, 6)) // 设置字体大小
             self.totalMoneyLabel.attributedText = richText
             
-        }else {
+        } else {
             self.totalMoneyLabel.text = dataSource?.proposal_price
         }
         
@@ -257,17 +253,13 @@ class AIBuyerDetailViewController : UIViewController {
                 }
         }
     }
-    
-    // MARK: event response
+
     
     @IBAction func closeThisViewController() {
         delegate?.closeAIBDetailViewController()
-        self.dismissViewControllerAnimated(false) {() -> Void in
-            
-        }
+        dismissViewControllerAnimated(false, completion: nil)
     }
     
-    // MARK: private methods
     
     func refershData() {
         
@@ -352,30 +344,28 @@ class AIBuyerDetailViewController : UIViewController {
             BDKProposalService().queryCustomerProposalDetail(m.proposal_id, success:
                 {[weak self] (responseData) -> Void in
                     
-                    if let strongSelf = self {
-                        strongSelf.dataSource = responseData
+                    if let viewController = self {
+                        viewController.dataSource = responseData
                         
                         // InitControl Data
-                        strongSelf.InitController()
-                        strongSelf.tableView.reloadData()
+                        viewController.InitController()
+                        viewController.tableView.reloadData()
                         
                         // Init Bottom Page white area
-                        strongSelf.InitBottomView()
+                        viewController.InitBottomView()
                         
-                        strongSelf.tableView.headerEndRefreshing()
+                        viewController.tableView.headerEndRefreshing()
                     }
                     
                 }, fail : {[weak self]
                     (errType, errDes) -> Void in
-                    if let strongSelf = self {
+                    if let viewController = self {
                         
-                        strongSelf.tableView.headerEndRefreshing()
+                        viewController.tableView.headerEndRefreshing()
                         // 处理错误警告
                         
-                        strongSelf.tableView.showErrorContentView()
-                        
+                        viewController.tableView.showErrorContentView()
                     }
-                    
                 })
         }
     }
@@ -425,30 +415,24 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         if (tableView == deletedTableView) {
             serviceList = deleted_service_list
-        }else {
+        } else {
             serviceList = current_service_list
         }
         
         if dataSource == nil {
             return 0
-        }else {
+        } else {
             return serviceList!.count
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let key = "servicelist_\(indexPath.row)"
-//        
-//        if let cacheCell = horizontalCardCellCache.valueForKey(key) as! UITableViewCell? {
-//            return cacheCell
-//        }
-//        
-        // Create Cell
         var serviceList: NSArray?
+        
         if (tableView == deletedTableView) {
             serviceList = deleted_service_list
-        }else {
+        } else {
             serviceList = current_service_list
         }
         
@@ -468,7 +452,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let cell = AIBueryDetailCell.currentView()
         
         let serviceView = SimpleServiceViewContainer.currentView()
-        serviceView.tag = SimpleServiceViewContainer.simpleServiceViewContainerTag
+        serviceView.tag = SIMPLE_SERVICE_VIEW_CONTAINER_TAG
         serviceView.settingState.tag = indexPath.row
         serviceView.settingButtonDelegate = self
         
@@ -485,10 +469,10 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         // Add constrain
         constrain(serviceView, cell.contentHoldView) {(view, container) ->() in
-            view.left == container.left
+            view.left == container.left + 6
             view.top == container.top
             view.bottom == container.bottom
-            view.right == container.right
+            view.right == container.right  - 6
             container.height == serviceView.selfHeight()
         }
         
@@ -501,17 +485,19 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
         var serviceList: NSArray?
+        
         if (tableView == deletedTableView) {
             serviceList = deleted_service_list
-        }else {
+        } else {
             serviceList = current_service_list
         }
         
         let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
         
         if let height = serviceDataModel.cell?.cellHeight {
-            return height + 10
+            return height + CELL_VERTICAL_SPACE
         } else {
             return 1
         }
@@ -520,16 +506,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         var serviceList: NSArray?
+        
         if (tableView == deletedTableView) {
             serviceList = deleted_service_list
-            
+
             #if !DEBUG
                 let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
                 restoreService(serviceDataModel)
-                return
+                return;
             #endif
             
-        }else {
+        } else {
             serviceList = current_service_list
         }
         
@@ -541,14 +528,14 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let model1 = AIProposalServiceModel()
         if serviceDataModel.service_id == 1 {
             model1.service_id = 2
-        }else {
+        } else {
             model1.service_id = 1
         }
+        
         model1.service_desc = "Service"
         
 
         let array = [serviceDataModel,model1]
-        //viewController.bubleModelArray = dataSource.service_list as? [AIProposalServiceModel]
         viewController.bubbleModelArray = array
         viewController.selectCurrentIndex = 0 // fix here
         self.showViewController(viewController, sender: self)
@@ -559,8 +546,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
 // MARK: Extension.
 extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
     func removeCellFromSuperView(cell: AIBueryDetailCell, model: AIProposalServiceModel?) {
-   //     let view: SimpleServiceViewContainer = cell.contentView.subviews.first as! SimpleServiceViewContainer
-        let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SimpleServiceViewContainer.simpleServiceViewContainerTag) as! SimpleServiceViewContainer
+        
+        let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
 
         let logo = view.logo
         // TODO: delete from server

@@ -59,7 +59,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
             return;
         }
         
-        let meunController = UIMenuController()
+        let meunController = UIMenuController.sharedMenuController()
         meunController.setTargetRect(self.bounds, inView: self)
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
@@ -184,8 +184,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         audioPlayer.play()
     
     }
-    
-    
+     
     
     @IBAction func playAction(sender: AnyObject) {
         Async.main(after: 0.1, block: { () -> Void in
