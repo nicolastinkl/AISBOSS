@@ -64,11 +64,11 @@ internal class AIServiceContentViewController: UIViewController {
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
     }
     
     func keyboardWillChangeFrame(notification : NSNotification) {
@@ -84,8 +84,6 @@ internal class AIServiceContentViewController: UIViewController {
             scrollViewBottom()
         }
         
-        
-        
     }
     
     func keyboardWillHide(notification : NSNotification) {
@@ -97,7 +95,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     
     func keyboardDidHide(notification : NSNotification) {
-        scrollView.userInteractionEnabled = true
+        //scrollView.userInteractionEnabled = true
     }
     
 
@@ -346,7 +344,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         if curTextField != nil {
             curTextField?.resignFirstResponder()
             curTextField = nil
-            scrollView.userInteractionEnabled = false
+            //scrollView.userInteractionEnabled = false
         }
     }
     
@@ -360,12 +358,12 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
             
-            addNewSubView(newText, preView: cview)
+            
             newText.content.text = textField.text
             
             let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
-
+            addNewSubView(newText, preView: cview)
             scrollViewBottom()
             newText.delegate = self
         }
@@ -456,7 +454,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
         let bottomPoint = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
         self.scrollView.setContentOffset(bottomPoint, animated: true)
     }
-    
     
 }
 
