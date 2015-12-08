@@ -49,7 +49,7 @@ typedef enum  {
     self = [super initWithFrame:frame];
     
     if (self) {
-        
+
         _bubbleModel = [model copy];
     }
     

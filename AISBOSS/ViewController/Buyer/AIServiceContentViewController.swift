@@ -379,9 +379,13 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         // add a new View Model
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
-
+            
             addNewSubView(newText, preView: cview)
             newText.content.text = textField.text
+            
+            let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+            newText.setHeight(30 + newSize!.height)
+
             scrollViewBottom()
             newText.delegate = self
         }
@@ -405,11 +409,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     func didEndPlayRecording(audioView :AIAudioMessageView) {
         curAudioView = nil
     }
-    
-    
-    
-    
-    
     
     /**
      开始录音处理

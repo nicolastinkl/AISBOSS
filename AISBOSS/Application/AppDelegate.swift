@@ -182,14 +182,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchBuyerData()
         
     }
-    
-    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        #if !DEBUG
-            if (motion == UIEventSubtype.MotionShake) {
-                //FLEXManager.sharedManager().showExplorer()
-            }
-        #endif
-    }
-
 }
 
