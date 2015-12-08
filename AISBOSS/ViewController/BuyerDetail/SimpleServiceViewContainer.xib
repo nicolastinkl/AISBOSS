@@ -115,12 +115,12 @@
                                 <constraint firstAttribute="height" id="tWe-UB-bZY"/>
                             </constraints>
                         </view>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear_black" translatesAutoresizingMaskIntoConstraints="NO" id="378-hf-H9o" userLabel="settingState">
-                            <rect key="frame" x="472" y="127" width="20" height="20"/>
+                        <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear_black" translatesAutoresizingMaskIntoConstraints="NO" id="378-hf-H9o" userLabel="settingState">
+                            <rect key="frame" x="460" y="118" width="40" height="40"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="20" id="2pr-jN-gJY"/>
-                                <constraint firstAttribute="height" constant="20" id="FX3-SK-FFR"/>
+                                <constraint firstAttribute="width" constant="40" id="2pr-jN-gJY"/>
+                                <constraint firstAttribute="height" constant="40" id="FX3-SK-FFR"/>
                             </constraints>
                         </imageView>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KW2-AT-EXj">
@@ -153,9 +153,9 @@
                         <constraint firstAttribute="bottom" secondItem="GEZ-92-Mww" secondAttribute="bottom" id="ZwY-Ak-fQm"/>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="width" secondItem="GEZ-92-Mww" secondAttribute="width" id="d8m-Ar-nx1"/>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="leading" secondItem="7sD-DV-Xc4" secondAttribute="leading" id="fk2-rt-CXM"/>
-                        <constraint firstAttribute="trailing" secondItem="378-hf-H9o" secondAttribute="trailing" constant="8" id="jnp-yB-Ub5"/>
+                        <constraint firstAttribute="trailing" secondItem="378-hf-H9o" secondAttribute="trailing" id="jnp-yB-Ub5"/>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="width" secondItem="19k-ls-gMA" secondAttribute="width" id="saW-Wk-Adh"/>
-                        <constraint firstAttribute="bottom" secondItem="378-hf-H9o" secondAttribute="bottom" constant="11" id="yAB-th-2wZ"/>
+                        <constraint firstAttribute="bottom" secondItem="378-hf-H9o" secondAttribute="bottom" id="yAB-th-2wZ"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">

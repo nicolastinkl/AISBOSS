@@ -21,7 +21,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-66-gd0">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="87.5"/>
                                 <animations/>
-                                <state key="normal" image="close-btn">
+                                <state key="normal" image="closeCell">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -70,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="close-btn" width="10" height="10"/>
+        <image name="closeCell" width="20" height="20"/>
     </resources>
 </document>

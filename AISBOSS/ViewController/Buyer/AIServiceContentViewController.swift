@@ -71,8 +71,7 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
-        
-        
+
     }
     
     func keyboardWillShow(notification : NSNotification) {
@@ -373,12 +372,12 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
             
-            addNewSubView(newText, preView: cview)
+            
             newText.content.text = textField.text
             
             let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
-
+            addNewSubView(newText, preView: cview)
             scrollViewBottom()
             newText.delegate = self
         }
@@ -470,7 +469,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
         self.scrollView.setContentOffset(bottomPoint, animated: true)
     }
     
-    
 }
 
 extension AIServiceContentViewController : AIDeleteActionDelegate{
@@ -478,7 +476,20 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
     func deleteAction(cell: UIView?) {
         
         springWithCompletion(0.3, animations: { () -> Void in
-             cell?.alpha = 0
+            
+            cell?.alpha = 0
+            //刷新UI
+            let height = cell?.height ?? 0
+            let top = cell?.top
+            
+            let newListSubViews = self.scrollView.subviews.filter({ (subview) -> Bool in
+                return subview.top > top
+            })
+            
+            for nsubView in newListSubViews {
+                nsubView.setTop(nsubView.top - height)
+            }
+            
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
         }

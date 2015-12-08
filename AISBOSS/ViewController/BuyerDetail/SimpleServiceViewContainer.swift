@@ -47,13 +47,13 @@ class SimpleServiceViewContainer: UIView {
 
             if dModel {
                 //Deleted MODE.
-                self.topView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
-                self.bottomContentView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
+                self.bottomContentView.backgroundColor = UIColor(hex: "a09edd").colorWithAlphaComponent(0.35)
+                self.topView.backgroundColor = UIColor(hex: "dad9fa").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = false
                 
             }else{
-                self.topView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
-                self.bottomContentView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
+                self.bottomContentView.backgroundColor = UIColor(hex: "A09EDD").colorWithAlphaComponent(0.35)
+                self.topView.backgroundColor = UIColor(hex: "D6D5F6").colorWithAlphaComponent(0.15)
                 cancelButton.hidden = true
  
             }
@@ -183,10 +183,7 @@ class SimpleServiceViewContainer: UIView {
         messageView.addSubview(msgContent)
         
         layout(messageView, msgContent) {container, view in
-            view.left == container.left
-            view.top == container.top
-            view.bottom == container.bottom
-            view.right == container.right
+            view.edges == container.edges
         } 
         
         divider.hidden = false
@@ -237,14 +234,8 @@ class SimpleServiceViewContainer: UIView {
         paramsView.addSubview(serviceParams)
         
         layout(paramsView, serviceParams) {container, item in
-            item.height == container.height
-            item.top == container.top
-            item.width == container.width
-            item.right == container.right
-            
+            item.edges == container.edges
         }
-         
-        
     }
     
     private func createReviewView(rating: Int) {
