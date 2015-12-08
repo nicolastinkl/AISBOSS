@@ -475,10 +475,10 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         // Add constrain
         constrain(serviceView, cell.contentHoldView) {(view, container) ->() in
-            view.left == container.left
+            view.left == container.left + 6
             view.top == container.top
             view.bottom == container.bottom
-            view.right == container.right
+            view.right == container.right  - 6
             container.height == serviceView.selfHeight()
         }
         
