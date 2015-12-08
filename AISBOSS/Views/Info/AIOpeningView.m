@@ -84,8 +84,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 - (void)doubleTap
 {
-    NSString *version = @"当前版本号：1.2.0";
-    NSString *content = @"更新功能：\n1、增加Proposal订单列表界面;\n2、增加服务详情界面;";
+    NSString *version = @"V0.20151116.003";
+    NSString *content = @"需求内容:\n孕期助理购物车，及其子服务音乐疗养、医院全程陪护的功能需求开发\n更新内容:\n修复20151204BugList中的BUG";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:version message:content delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];

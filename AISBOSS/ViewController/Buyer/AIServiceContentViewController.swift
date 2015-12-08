@@ -14,6 +14,10 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+
+
+
+
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
@@ -56,22 +60,35 @@ internal class AIServiceContentViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        shouldHideKeyboard()
         // 切换视图的时候停止播放录音
         curAudioView?.stopPlay()
+    }
+    
+    // MARK: 取消键盘
+    
+    func shouldHideKeyboard ()
+    {
+        if curTextField != nil {
+            curTextField?.resignFirstResponder()
+            curTextField = nil
+        }
     }
     
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+
     }
     
-    func keyboardWillChangeFrame(notification : NSNotification) {
+    func keyboardWillShow(notification : NSNotification) {
         
         if let userInfo = notification.userInfo {
             
@@ -83,19 +100,21 @@ internal class AIServiceContentViewController: UIViewController {
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
             scrollViewBottom()
         }
-        
+    }
+    
+    func keyboardDidShow(notification : NSNotification) {
+        scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
-
     }
     
     
     func keyboardDidHide(notification : NSNotification) {
-        //scrollView.userInteractionEnabled = true
+        scrollView.userInteractionEnabled = true
     }
     
 
@@ -361,15 +380,23 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if curTextField != nil {
-            curTextField?.resignFirstResponder()
-            curTextField = nil
-            //scrollView.userInteractionEnabled = false
+            shouldHideKeyboard()
         }
     }
     
 
     func textFieldDidBeginEditing(textField: UITextField) {
         curTextField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        scrollView.userInteractionEnabled = false
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
