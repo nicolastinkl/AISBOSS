@@ -533,10 +533,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             model1.service_id = 1
         }
+        model1.service_desc = serviceDataModel.service_desc
         
-        model1.service_desc = "Service"
-        
-
         let array = [serviceDataModel,model1]
         viewController.bubbleModelArray = array
         viewController.selectCurrentIndex = 0 // fix here

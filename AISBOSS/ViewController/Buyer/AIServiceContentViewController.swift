@@ -35,6 +35,8 @@ internal class AIServiceContentViewController: UIViewController {
     private var currentDatasource:AIProposalServiceDetailModel?
     
     internal var serviceContentType : AIServiceContentType!
+    
+    private var topNaviView : AINavigationBarView?
 
     private var preCacheView:UIView?
     
@@ -256,13 +258,18 @@ internal class AIServiceContentViewController: UIViewController {
             auView.setWidth(self.view.width)
             auView.setTop((self.view.height - auView.height)/2)
         }
-         
-        // 数据填充
-        topView.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
         
+        topNaviView = topView
+        
+        // 数据填充
+        topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
     }    
     
     func makeContentView () {
+        
+        if self.currentDatasource?.service_name.length > 0 {
+             topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
+        } 
         
         // Add gallery View
         scrollView.addSubview(galleryView)
@@ -349,11 +356,6 @@ internal class AIServiceContentViewController: UIViewController {
                 }
             }
         }
-        
-        
-       
-        
-       
     }
     
     /**
