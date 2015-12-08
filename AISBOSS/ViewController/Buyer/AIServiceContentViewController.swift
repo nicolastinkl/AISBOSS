@@ -297,25 +297,44 @@ internal class AIServiceContentViewController: UIViewController {
         audioView.delegateAudio = self
         audioView.inputText.delegate = self
         
-        let audio1 = AIAudioMessageView.currentView()
-        audio1.audioDelegate = self
-        addNewSubView(audio1, preView: audioView)
         
-        let model = AIProposalHopeAudioTextModel()
-        model.audio_url = ""
-        model.audio_length = 8
-        model.type = 0
-        audio1.fillData(model)
-        audio1.deleteDelegate = self
+        //处理语音 文本数据
+        //处理数据填充
+        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
+            if let hopeList = wish.hope_list as? [AIProposalServiceDetail_hope_list_listModel] {
+                var perViews:UIView?
+                for item in hopeList {
+                    if item == hopeList.first {
+                        perViews = audioView
+                    }
+                    
+                    if item.type == 1 {
+                        // text.
+                        let newText = AITextMessageView.currentView()
+                        newText.content.text = item.text ?? ""
+                        let newSize = item.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+                        newText.setHeight(30 + newSize!.height)
+                        addNewSubView(newText, preView: perViews!)
+                        newText.delegate = self
+                        perViews = newText
+                        
+                    }else if item.type == 2 {
+                        // audio.
+                        let audio1 = AIAudioMessageView.currentView()
+                        audio1.audioDelegate = self
+                        audio1.deleteDelegate = self
+                        addNewSubView(audio1, preView: perViews!)
+                        audio1.fillData(item)
+                        perViews = audio1
+                    }
+                }
+            }
+        }
         
-        let text1 = AITextMessageView.currentView()
-        addNewSubView(text1, preView: audio1)
-        text1.delegate = self
         
+       
         
-        let text2 = AITextMessageView.currentView()
-        addNewSubView(text2, preView: text1)
-        text2.delegate = self
+       
     }
     
     /**
@@ -357,10 +376,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         // add a new View Model
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
-            
-            
             newText.content.text = textField.text
-            
             let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
             addNewSubView(newText, preView: cview)
@@ -422,9 +438,9 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
     //结束录音添加view到scrollview
-    func endRecording(audioModel: AIProposalHopeAudioTextModel) {
+    func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
         audioView?.hidden = true
-        if audioModel.audio_length > 0 {
+        if audioModel.time > 0 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
             audio1.audioDelegate = self

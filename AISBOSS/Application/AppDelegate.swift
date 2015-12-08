@@ -45,12 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = UIStatusBarStyle.LightContent
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
-        
         fetchPreSellerAndBuyerData()
         
         // 检查录音权限
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
-            print("录音权限查询结果： \(granted)")
+
             do{
                 try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
                 try AVAudioSession.sharedInstance().setActive(true)
@@ -105,7 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
     }
-    
     
     func fetchBuyerData() {
         let bdk = BDKProposalService()

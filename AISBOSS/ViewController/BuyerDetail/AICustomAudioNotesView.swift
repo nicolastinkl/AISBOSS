@@ -13,7 +13,7 @@ import AISpring
 @objc protocol AICustomAudioNotesViewDelegate : class{
     
     func updateMetersImage(lowPass:Double)
-    func endRecording(audioModel:AIProposalHopeAudioTextModel)
+    func endRecording(audioModel:AIProposalServiceDetail_hope_list_listModel)
     func willStartRecording()
     
     func willEndRecording()
@@ -76,7 +76,6 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
                 
                 AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
                     
-                    print("录音权限查询结果： \(granted)")
                     do{
                         try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
                         try AVAudioSession.sharedInstance().setActive(true)
@@ -159,10 +158,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         // fake
         let data = NSData(contentsOfFile: currentAutioUrl)
         let audioLength: Int = data!.length/1024/25
-        let model = AIProposalHopeAudioTextModel()
+        let model = AIProposalServiceDetail_hope_list_listModel()
         model.audio_url = currentAutioUrl
-        model.audio_length = audioLength
-        model.type = 0
+        model.time = audioLength
+        model.type = 2
         self.delegateAudio?.endRecording(model)
     }
     
@@ -176,10 +175,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         if data != nil {
             
             let audioLength: Int = data!.length/1024/25
-            let model = AIProposalHopeAudioTextModel()
+            let model = AIProposalServiceDetail_hope_list_listModel()
             model.audio_url = currentAutioUrl
-            model.audio_length = audioLength
-            model.type = 0
+            model.time = audioLength
+            model.type = 2
             self.delegateAudio?.endRecording(model)
             
             /// 处理文件存储
@@ -220,10 +219,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            let model = AIProposalHopeAudioTextModel()
+            let model = AIProposalServiceDetail_hope_list_listModel()
             model.audio_url = ""
-            model.audio_length = 0
-            model.type = 0
+            model.time = 0
+            model.type = 2
             self.delegateAudio?.endRecording(model)
         }
         

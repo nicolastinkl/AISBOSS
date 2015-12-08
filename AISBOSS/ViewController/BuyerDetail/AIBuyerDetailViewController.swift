@@ -564,8 +564,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
             cell.closeCell()
             self.deletedTableView.reloadData()
         })
-    }
-    
+    }    
 }
 
 // MARK: Extension.
