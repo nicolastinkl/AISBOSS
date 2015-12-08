@@ -16,8 +16,8 @@
                     <animations/>
                     <rect key="contentStretch" x="0.29999999999999999" y="0.75" width="0.45000000000000001" height="0.0"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
-                    <rect key="frame" x="19" y="12" width="562" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11111111" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
+                    <rect key="frame" x="19" y="12" width="554" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="L6J-KC-MOs"/>
@@ -25,6 +25,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="L6J-KC-MOs"/>
+                        </mask>
+                    </variation>
                 </label>
             </subviews>
             <animations/>
@@ -34,9 +39,11 @@
                 <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="6" id="Hc5-av-JCf"/>
                 <constraint firstItem="PJO-oW-g6h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="Prc-Os-dNP"/>
                 <constraint firstAttribute="trailing" secondItem="v3D-2c-op1" secondAttribute="trailing" constant="14" id="W0u-UC-cVz"/>
-                <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="19" id="XLX-JG-yeH"/>
+                <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="27" id="XLX-JG-yeH"/>
+                <constraint firstAttribute="bottom" secondItem="PJO-oW-g6h" secondAttribute="bottom" constant="12" id="kVK-nD-79e"/>
                 <constraint firstItem="PJO-oW-g6h" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ldr-oT-DeG"/>
                 <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="rde-aU-EBm"/>
+                <constraint firstItem="PJO-oW-g6h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="sIG-tY-kaj"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
