@@ -64,14 +64,18 @@ internal class AIServiceContentViewController: UIViewController {
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        
+        
     }
     
-    func keyboardWillChangeFrame(notification : NSNotification) {
+    func keyboardWillShow(notification : NSNotification) {
         
         if let userInfo = notification.userInfo {
             
@@ -83,16 +87,15 @@ internal class AIServiceContentViewController: UIViewController {
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
             scrollViewBottom()
         }
-        
-        
-        
+    }
+    
+    func keyboardDidShow(notification : NSNotification) {
     }
     
     func keyboardWillHide(notification : NSNotification) {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
-
     }
     
     
@@ -346,13 +349,23 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         if curTextField != nil {
             curTextField?.resignFirstResponder()
             curTextField = nil
-            scrollView.userInteractionEnabled = false
         }
     }
     
 
     func textFieldDidBeginEditing(textField: UITextField) {
         curTextField = textField
+        scrollView.userInteractionEnabled = true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        scrollView.userInteractionEnabled = false
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
