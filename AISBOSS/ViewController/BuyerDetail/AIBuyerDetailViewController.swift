@@ -57,7 +57,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var serviceRestoreToolbar : ServiceRestoreToolBar!
     
-    private var current_service_list: NSArray?{
+    private var current_service_list: NSArray? {
         get {
             let result = dataSource?.service_list.filter (){
                 return ($0 as! AIProposalServiceModel).is_deleted_flag == 0
