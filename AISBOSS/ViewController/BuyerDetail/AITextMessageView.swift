@@ -37,13 +37,13 @@ class AITextMessageView: UIView {
             return;
         }
         
-        let meunController = UIMenuController()
+        let meunController = UIMenuController.sharedMenuController()
         
         meunController.setTargetRect(self.bounds, inView: self)
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
         meunController.menuItems = [item]
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "menuWillShow:", name: UIMenuControllerWillShowMenuNotification, object: nil)
         meunController.setMenuVisible(true, animated: true)
         
     }
