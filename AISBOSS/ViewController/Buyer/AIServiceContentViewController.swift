@@ -21,7 +21,9 @@ internal class AIServiceContentViewController: UIViewController {
     
     
     var curAudioView : AIAudioMessageView?
-    
+    var keyboardDidShow : Bool?
+    var scrollViewFrame : CGRect?
+    var curTextField : UITextField?
     
     private let redColor : String = "b32b1d"
     
@@ -40,6 +42,7 @@ internal class AIServiceContentViewController: UIViewController {
         pageScrollView.pagingEnabled = false
         pageScrollView.showsHorizontalScrollIndicator = false
         pageScrollView.showsVerticalScrollIndicator = false
+        pageScrollView.delegate = self
         return pageScrollView
     }()
     
@@ -59,11 +62,79 @@ internal class AIServiceContentViewController: UIViewController {
         curAudioView?.stopPlay()
     }
     
+    // MARK: 键盘事件
+    
+    func addKeyboardNotifications () {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+    }
+    
+    func keyboardWillChangeFrame(notification : NSNotification) {
+        
+        if (keyboardDidShow == true || curTextField == nil) {
+            return
+        }
+
+        if let userInfo = notification.userInfo {
+            
+            // step 1: get keyboard height
+            let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+            let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
+            let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
+            let animationDuration : Double = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+            
+            // Step 2: 重新设定 scrollView 的大小
+            var newFrame : CGRect = scrollViewFrame!
+            newFrame.size.height = (scrollViewFrame?.size.height)! - keyboardHeight
+            
+            UIView.animateWithDuration(animationDuration) { () -> Void in
+                self.scrollView.frame = newFrame
+            }
+            
+            // Step 3：将被挡住的部分滚动显示出来
+            var textFieldFrame : CGRect = (curTextField?.frame)!
+            textFieldFrame = (curTextField?.convertRect(textFieldFrame, toView: scrollView))!
+            scrollView.scrollRectToVisible(textFieldFrame, animated: true)
+        }
+        
+        
+        
+    }
+    
+    func keyboardWillHide(notification : NSNotification) {
+        keyboardDidShow = false
+        
+        if let userInfo = notification.userInfo {
+            let animationDuration : Double = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! Double
+            UIView.animateWithDuration(animationDuration) { () -> Void in
+                self.scrollView.frame = self.scrollViewFrame!
+            }
+        }
+
+    }
+    
+    
+    func keyboardDidShow(notification : NSNotification) {
+        keyboardDidShow = true
+    }
+    
+
+    //
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollViewFrame = scrollView.frame
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        addKeyboardNotifications()
         /** 导航栏 */
         makeTopView()
      
@@ -82,12 +153,6 @@ internal class AIServiceContentViewController: UIViewController {
         
         self.scrollView.headerBeginRefreshing()
         
-        
-        /**
-        Notification Keyboard...
-        */
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -135,13 +200,6 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func keyboardWillShowNotification(notification: NSNotification) {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
-    }
-    
-    func keyboardWillHideNotification(notification: NSNotification) {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -268,6 +326,7 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(audioView, preView: custView)
         audioView.delegateAudio = self
         audioView.inputText.delegate = self
+        curTextField = audioView.inputText
         
         let audio1 = AIAudioMessageView.currentView()
         audio1.audioDelegate = self
@@ -308,10 +367,12 @@ internal class AIServiceContentViewController: UIViewController {
 
 // MARK : Delegate
 
-extension AIServiceContentViewController: UITextFieldDelegate{
+extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelegate{
     
     
-    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        curTextField?.resignFirstResponder()
+    }
     
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
