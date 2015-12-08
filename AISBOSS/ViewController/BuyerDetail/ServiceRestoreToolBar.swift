@@ -41,7 +41,6 @@ class ServiceRestoreToolBar: UIView {
 			let tap = UITapGestureRecognizer(target: self, action: "logoTapped:")
 			logo.addGestureRecognizer(tap)
 		}
-
 	}
 
 	@IBAction func bgTapped(sender: UITapGestureRecognizer) {
@@ -71,4 +70,8 @@ class ServiceRestoreToolBar: UIView {
 			}
 		}
 	}
+    
+    func removeLogoAt(index:Int) {
+        
+    }
 }
