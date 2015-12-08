@@ -68,9 +68,11 @@ internal class AICustomView : UIView{
             tag.fillOfData(model) //处理数据刷新  // add into whole array with key-value.
             
             tag.delegateNew = self
-            let ramdWidth = 30 + model.content!.length * 8
+            
+            let ramdWidthOLD = 45 + model.content!.length * 6
+            let sizenew = model.content.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(35/2.5), forWidth: CGFloat(ramdWidthOLD))
+            let ramdWidth = sizenew.width  + 55
             let ramdHeigth:CGFloat = 35
-          
             
             if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin) {
                
@@ -85,7 +87,13 @@ internal class AICustomView : UIView{
             
             if  y < 10 && n < 3 {
                 currentX = x
-                currentY = 2
+                
+                if isNormal {
+                    
+                }else{
+                    currentY = 2
+                }
+                
             } 
             
             if y > ramdHeigth*2 {
