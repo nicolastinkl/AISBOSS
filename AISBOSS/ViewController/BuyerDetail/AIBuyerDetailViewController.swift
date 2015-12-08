@@ -57,7 +57,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var serviceRestoreToolbar : ServiceRestoreToolBar!
     
-    private var current_service_list: NSArray?{
+    private var current_service_list: NSArray? {
         get {
             let result = dataSource?.service_list.filter (){
                 return ($0 as! AIProposalServiceModel).is_deleted_flag == 0
@@ -238,16 +238,18 @@ class AIBuyerDetailViewController : UIViewController {
         fakeLogo.frame = fromFrameOnWindow
         
         window?.addSubview(fakeLogo)
-        
+        let duration = 0.75
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        UIView.animateWithDuration(0.75, animations: {() -> Void in
+        UIView.animateWithDuration(duration, animations: {() -> Void in
             fakeLogo.frame = toFrameOnWindow
             }) {(success) -> Void in
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-
-                if let completionFunc = completion {
-                    fakeLogo.removeFromSuperview()
-                    completionFunc();
+                if let c = completion {
+                    // 0.01+duration to fix logo blink issue
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01+duration) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                        fakeLogo.removeFromSuperview()
+                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    })
+                    c();
                 }
         }
     }
@@ -273,10 +275,11 @@ class AIBuyerDetailViewController : UIViewController {
     
     func deletedTableView(isOpen:Bool, animated:Bool) {
         let window = UIApplication.sharedApplication().keyWindow
-        let contentLabelFrame = contentLabel.convertRect(contentLabel.bounds, toView: window)
-        let contentLabelMaxY = CGRectGetMaxY(contentLabelFrame)
+        let contentLabelHeight = contentLabel.height
+        let navigationBarMaxY = CGRectGetMaxY(navigationView.frame)
         
-        let maxHeight = (window?.height)! - contentLabelMaxY - buyerBottom.height - 10 // 10 is magic number hehe
+        
+        let maxHeight = (window?.height)! - navigationBarMaxY - contentLabelHeight - buyerBottom.height - 10 // 10 is magic number hehe
         
         let constant = isOpen ? min(maxHeight, deletedTableView.contentSize.height) : 0
         
@@ -304,22 +307,25 @@ class AIBuyerDetailViewController : UIViewController {
         let index = (afterArray as! [AIProposalServiceModel]).indexOf(model)
         
         
-        deletedTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexInDeletedTableView, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-        
         serviceRestoreToolbar.reloadLogos()
         
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        
-        //0.3s 以下的时间都会引起 下面删除了cell 上面不显示cell的问题，，因为使用了cell的缓存机制
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+        if isDeletedTableViewOpen {
+            deletedTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexInDeletedTableView, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            //0.3s 以下的时间都会引起 下面删除了cell 上面不显示cell的问题，，因为使用了cell的缓存机制
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                if self.deleted_service_list.count == 0 {
+                    self.closeDeletedTableView(true)
+                }else {
+                    self.deletedTableView(self.isDeletedTableViewOpen, animated: true)
+                }
+            })
+        } else {
+            deletedTableView.reloadData()
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-            if self.deleted_service_list.count == 0 {
-                self.closeDeletedTableView(true)
-            }else {
-                self.deletedTableView(self.isDeletedTableViewOpen, animated: true)
-            }
-        })
+        }
         
     }
     
@@ -362,7 +368,6 @@ class AIBuyerDetailViewController : UIViewController {
                     }
                 })
         }
-        
     }
     
 }
@@ -382,9 +387,13 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDataSource, ServiceR
     func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int) {
         
         if index < 5 {
-            //TODO: show alert to comfirm
-            let model = deleted_service_list[index] as! AIProposalServiceModel
-            restoreService(model)
+            let model = self.deleted_service_list[index] as! AIProposalServiceModel
+
+            let name = model.service_desc
+            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: UIImage(named: "lemon"), onComfirm: { () -> Void in
+                self.restoreService(model)
+            })
+            
         } else {
             openDeletedTableView(true)
         }

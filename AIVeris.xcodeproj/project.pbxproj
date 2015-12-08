@@ -69,7 +69,6 @@
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
 		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
-		840B63481C11783D00C75051 /* AIAlertView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B63471C11783D00C75051 /* AIAlertView+Extension.swift */; };
 		840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */; };
 		840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */; };
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
@@ -100,6 +99,8 @@
 		843E37E21C1534DD00FAD919 /* ViewController+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E37D41C1534DD00FAD919 /* ViewController+SnapKit.swift */; };
 		843F890E1BF0B88700BFC57E /* FlightServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843F890D1BF0B88700BFC57E /* FlightServiceView.xib */; };
 		843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */; };
+		844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844009171C166F6B0031E2F7 /* JSSAlertView.swift */; };
+		8440091A1C16702F0031E2F7 /* JSSAlertView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */; };
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
@@ -583,7 +584,6 @@
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
 		81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AITimeLineMainViewController.swift; path = TimeLine/AITimeLineMainViewController.swift; sourceTree = "<group>"; };
-		840B63471C11783D00C75051 /* AIAlertView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AIAlertView+Extension.swift"; sourceTree = "<group>"; };
 		840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettingView.xib; sourceTree = "<group>"; };
 		840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSettingView.swift; sourceTree = "<group>"; };
 		8423E5611BB4E16B006DC73B /* sellerOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sellerOrderList.json; sourceTree = "<group>"; };
@@ -616,6 +616,8 @@
 		843E37D41C1534DD00FAD919 /* ViewController+SnapKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+SnapKit.swift"; sourceTree = "<group>"; };
 		843F890D1BF0B88700BFC57E /* FlightServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightServiceView.xib; sourceTree = "<group>"; };
 		843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightServiceView.swift; sourceTree = "<group>"; };
+		844009171C166F6B0031E2F7 /* JSSAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSSAlertView.swift; sourceTree = "<group>"; };
+		844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSSAlertView-Extension.swift"; sourceTree = "<group>"; };
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
@@ -2451,7 +2453,8 @@
 				93C33F151B9BEAFE007BF506 /* UIViewControllerUtils.swift */,
 				939F49F61BDDD92600D07598 /* UIImageUtils.swift */,
 				93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */,
-				840B63471C11783D00C75051 /* AIAlertView+Extension.swift */,
+				844009171C166F6B0031E2F7 /* JSSAlertView.swift */,
+				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3185,7 +3188,6 @@
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				849B4B371C0EDFE300BEC179 /* FLEXWindow.m in Sources */,
-				840B63481C11783D00C75051 /* AIAlertView+Extension.swift in Sources */,
 				93FA1E481B9C3E12009965C8 /* AIContentView.swift in Sources */,
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
@@ -3197,6 +3199,7 @@
 				12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */,
 				849B4B511C0EDFE300BEC179 /* FLEXDictionaryExplorerViewController.m in Sources */,
 				93FA1DCB1B9C2F26009965C8 /* AOTag.m in Sources */,
+				8440091A1C16702F0031E2F7 /* JSSAlertView-Extension.swift in Sources */,
 				12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				849B4B5A1C0EDFE300BEC179 /* FLEXHeapEnumerator.m in Sources */,
@@ -3229,6 +3232,7 @@
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
+				844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */,
 				849B4B391C0EDFE300BEC179 /* FLEXCookiesTableViewController.m in Sources */,
 				937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
