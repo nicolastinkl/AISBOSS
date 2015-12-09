@@ -447,6 +447,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             #if !DEBUG
                 //FIXME: 不好看
                 //恢复区域不可删除
+               let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+                view.displayDeleteMode = (tableView == deletedTableView)
                 c.canDelete = !(tableView == deletedTableView)
             #endif
             return c;
@@ -470,6 +472,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         #if !DEBUG
             //FIXME: 不好看
             //恢复区域不可删除
+            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            view.displayDeleteMode = (tableView == deletedTableView)
             cell.canDelete = !(tableView == deletedTableView)
         #endif
         
@@ -608,12 +612,13 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
         //let row = settingButton.tag
         parentView.isSetted = !parentView.isSetted
-        
         if let s = parentView.dataModel {
             s.param_setting_flag = Int(parentView.isSetted)
             menuLightView?.showLightView(s)
         }
-        
-        
+    }
+    
+    func simpleServiceViewContainerCancelButtonDidClick(simpleServiceViewContainer: SimpleServiceViewContainer) {
+        restoreService(simpleServiceViewContainer.dataModel!)
     }
 }

@@ -37,6 +37,7 @@ class SimpleServiceViewContainer: UIView {
     
     @IBOutlet weak var cancelButton: UIButton!
     
+    var dataModel: AIProposalServiceModel?
     var settingButtonDelegate: SettingClickDelegate?
     
     internal var displayDeleteMode: Bool? {
@@ -60,7 +61,7 @@ class SimpleServiceViewContainer: UIView {
             
         }
     }
-    var dataModel: AIProposalServiceModel?
+
     
     private var paramViewHeight: CGFloat = 0
     private var settingFlag = false
@@ -260,9 +261,8 @@ class SimpleServiceViewContainer: UIView {
     }
     
     @IBAction func cancelAction(sender: AnyObject) {
-        
+       settingButtonDelegate?.simpleServiceViewContainerCancelButtonDidClick(self)
     }
-    
     private func getTopHeight() -> CGFloat {
         return topView.height
     }
@@ -273,5 +273,6 @@ class SimpleServiceViewContainer: UIView {
 }
 
 protocol SettingClickDelegate {
+    func simpleServiceViewContainerCancelButtonDidClick(simpleServiceViewContainer: SimpleServiceViewContainer)
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer)
 }
