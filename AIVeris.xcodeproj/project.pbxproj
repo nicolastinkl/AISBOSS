@@ -38,6 +38,7 @@
 		818D8EC31C040D4100006408 /* AIStarRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EBC1C040D4100006408 /* AIStarRate.m */; };
 		818E67BB1BFC1A2400F968E7 /* WMLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818E67BA1BFC1A2400F968E7 /* WMLoopView.m */; };
 		81A0458F1C11675500296E56 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A0458E1C11675500296E56 /* CoreAudio.framework */; };
+		81A0A5671C1817CF007DD9F8 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A0A5661C1817CF007DD9F8 /* UIView+Toast.m */; };
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
@@ -524,6 +525,9 @@
 		818E67B91BFC1A2400F968E7 /* WMLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLoopView.h; sourceTree = "<group>"; };
 		818E67BA1BFC1A2400F968E7 /* WMLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLoopView.m; sourceTree = "<group>"; };
 		81A0458E1C11675500296E56 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		81A0A5621C180811007DD9F8 /* AIBuyerParamsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBuyerParamsDelegate.h; sourceTree = "<group>"; };
+		81A0A5651C1817CF007DD9F8 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		81A0A5661C1817CF007DD9F8 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		81A5BE4D1BD78CD300019802 /* AIBubblesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubblesView.h; path = Buyer/AIBubblesView.h; sourceTree = "<group>"; };
 		81A5BE4E1BD78CD300019802 /* AIBubblesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubblesView.m; path = Buyer/AIBubblesView.m; sourceTree = "<group>"; };
 		81A5BE501BD87C1300019802 /* AIBuyerBubbleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerBubbleModel.h; path = ../ViewController/Buyer/AIBuyerBubbleModel.h; sourceTree = "<group>"; };
@@ -1811,6 +1815,7 @@
 				818D8EAB1C040C8B00006408 /* AIParamedicView.h */,
 				818D8EAC1C040C8B00006408 /* AIParamedicView.m */,
 				93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */,
+				81A0A5621C180811007DD9F8 /* AIBuyerParamsDelegate.h */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -2195,6 +2200,8 @@
 				93B25A451B9D799E00CD1FEB /* UP_NSString+Size.m */,
 				81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */,
 				81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */,
+				81A0A5651C1817CF007DD9F8 /* UIView+Toast.h */,
+				81A0A5661C1817CF007DD9F8 /* UIView+Toast.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -3214,6 +3221,7 @@
 				93B25A3D1B9D796F00CD1FEB /* AIMessage.m in Sources */,
 				849B4B3C1C0EDFE300BEC179 /* FLEXFileBrowserTableViewController.m in Sources */,
 				849B4B3D1C0EDFE300BEC179 /* FLEXGlobalsTableViewController.m in Sources */,
+				81A0A5671C1817CF007DD9F8 /* UIView+Toast.m in Sources */,
 				93B25AA51B9D7A7B00CD1FEB /* JSONKeyMapper.m in Sources */,
 				849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */,
 				846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,

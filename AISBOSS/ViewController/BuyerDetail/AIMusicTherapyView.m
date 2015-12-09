@@ -279,4 +279,17 @@
 }
 
 
+#pragma mark - AIServiceCoverageDelegate
+
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetail_Param_Value_listModel *)labelModel
+{
+    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
+        [self.delegate didChangeParams:nil];
+    }
+}
+
+
+
+
+
 @end

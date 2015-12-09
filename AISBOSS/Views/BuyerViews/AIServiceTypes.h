@@ -12,7 +12,7 @@
 
 @protocol AIServiceTypesDelegate <NSObject>
 
-- (void)didSelectedAtIndex:(NSInteger)index;
+- (void)didSelectServiceTypeAtIndex:(NSInteger)index;
 
 @end
 

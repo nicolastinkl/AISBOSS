@@ -82,6 +82,7 @@
 }
 
 
+
 - (void)makeTags
 {
     CGFloat x = 0;
@@ -97,7 +98,7 @@
         
         CGRect frame = CGRectMake(x, y, 100, height);
         NSString *title = model.value_display;
-        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection];
+        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:YES];
         label.delegate = self;
         label.backgroundColor = [colors objectAtIndex:i];
         label.selectionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Coverage%ld", i]];
@@ -125,9 +126,17 @@
 #pragma mark - AIServiceLabelDelegate
 
 
-- (void)serviceLabelDidSelected:(BOOL)selected
+- (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected
 {
-    NSLog(@"selected label");
+    if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel:)]) {
+        
+        for (AIProposalServiceDetail_Param_Value_listModel *model in self.coverageModel.param_value) {
+            if ([model.value_display isEqualToString:serviceLabel.labelTitle]) {
+                [self.delegate didChooseServiceLabelModel:model];
+                break;
+            }
+        }
+    }
 }
 
 @end

@@ -39,11 +39,12 @@
 @implementation AIServiceLabel
 @synthesize selectionImageView = _checkView;
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title type:(AIServiceLabelType)type
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title type:(AIServiceLabelType)type isSelected:(BOOL)selected
 {
     self = [super initWithFrame:frame];
     
     if (self) {
+        _isSelected = selected;
         _curType = type;
         self.labelTitle = title;
         [self makeProperties];
@@ -59,7 +60,6 @@
 #pragma mark - 构造基本属性，背景色、圆角等
 - (void)makeProperties
 {
-    _isSelected = YES;
     _maxWidth = CGRectGetWidth(self.frame);
     _maxHeight = CGRectGetHeight(self.frame);
     _textLeftMargin = [AITools displaySizeFrom1080DesignSize:34];
@@ -109,18 +109,14 @@
 {
     _isSelected = !_isSelected;
     self.selectionImageView.alpha = _isSelected ? 1 : 0.25;
-}
-
-
-- (void)selectedAction:(UIButton *)button
-{
-    button.selected = !button.selected;
     
-    if ([self.delegate respondsToSelector:@selector(serviceLabelDidSelected:)]) {
-        [self.delegate serviceLabelDidSelected:button.selected];
+    if ([self.delegate respondsToSelector:@selector(serviceLabel:isSelected:)]) {
+        [self.delegate serviceLabel:self isSelected:_isSelected];
     }
     
 }
+
+
 
 - (void)makeCheckBox
 {
@@ -129,6 +125,7 @@
     CGRect frame = CGRectMake(x, _tinyMargin, height, height);
     
     _checkView = [[UIImageView alloc] initWithFrame:frame];
+    _checkView.alpha = _isSelected ? 1 : 0.25;
     [self addSubview:_checkView];
     
 }

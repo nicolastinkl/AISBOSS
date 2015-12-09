@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ProposalModel.h"
+#import "AIBuyerParamsDelegate.h"
+#import "AIServiceTypes.h"
 
-@interface AIParamedicView : UIView
+@interface AIParamedicView : UIView<AIServiceTypesDelegate>
 
+@property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
 

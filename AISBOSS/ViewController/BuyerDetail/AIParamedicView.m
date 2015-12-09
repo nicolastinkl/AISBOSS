@@ -145,6 +145,17 @@
     line.backgroundColor = [AITools colorWithR:0xa1 g:0xa4 b:0xba a:0.4];
     
     [self addSubview:line];
+    
+}
+
+
+#pragma mark - AIServiceTypesDelegate
+
+- (void)didSelectedAtIndex:(NSInteger)index
+{
+    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
+        [self.delegate didChangeParams:nil];
+    }
 }
 
 @end

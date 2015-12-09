@@ -223,7 +223,13 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func backAction () {
-        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+        
+        self.parentViewController!.view.showLoadingWithMessage("Please Wait...")
+        
+        Async.main(after: Double(2)) { () -> Void in
+            self.parentViewController!.view.dismissLoading()
+            self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+        }
         //self.dismissViewControllerAnimated(true, completion: nil)
     }
     

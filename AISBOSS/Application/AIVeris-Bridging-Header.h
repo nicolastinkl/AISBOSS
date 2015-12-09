@@ -93,3 +93,6 @@
 #if DEBUG
 #import "FLEXManager.h"
 #endif
+
+
+#import "UIView+Toast.h"
