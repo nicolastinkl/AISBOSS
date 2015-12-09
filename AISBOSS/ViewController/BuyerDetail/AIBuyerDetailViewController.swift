@@ -569,6 +569,11 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
             self.deletedTableView.reloadData()
             cell.currentModel = model
         })
+        
+        //处理小设置按钮添加移除状态
+        if let list = current_service_list as? [AIProposalServiceModel] {
+           self.menuLightView?.refershDeleteMedelView(list)
+        }
     }    
 }
 
