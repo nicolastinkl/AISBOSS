@@ -119,12 +119,12 @@ class AIBuyerDetailViewController : UIViewController {
         }
         overlayView.hidden = true;
         
-        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped")
+        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped:")
         overlayView.addGestureRecognizer(tap)
     }
     
     //曲线和overlay 共用tapgesture
-    @IBAction func deletedOverlayTapped() {
+    @IBAction func deletedOverlayTapped(g: UITapGestureRecognizer) {
         if isDeletedTableViewOpen {
             closeDeletedTableView(true)
         }
@@ -172,10 +172,7 @@ class AIBuyerDetailViewController : UIViewController {
             bzView.refershModelView(list)
         }
         buyerBottom.addSubview(bzView)
-//        bottomView.addSubview(bzView)
-        // layout subviews
         menuLightView = bzView
-
     }
     
     
@@ -252,12 +249,13 @@ class AIBuyerDetailViewController : UIViewController {
             fakeLogo.frame = toFrameOnWindow
             }) {(success) -> Void in
                 if let c = completion {
-                    // 0.01+duration to fix logo blink issue
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01+duration) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    c();
+                    // 0.01 to fix logo blink issue
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
                         fakeLogo.removeFromSuperview()
                         UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     })
-                    c();
+                    
                 }
         }
     }
@@ -274,14 +272,14 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func openDeletedTableView(animated:Bool) {
-        deletedTableView(true, animated: true)
+        deletedTableViewOpen(true, animated: true)
     }
     
     func closeDeletedTableView(animated:Bool) {
-        deletedTableView(false, animated: true)
+        deletedTableViewOpen(false, animated: true)
     }
     
-    func deletedTableView(isOpen:Bool, animated:Bool) {
+    func deletedTableViewOpen(isOpen:Bool, animated:Bool) {
        
         let window = UIApplication.sharedApplication().keyWindow
         let contentLabelHeight = contentLabel.height
@@ -292,12 +290,16 @@ class AIBuyerDetailViewController : UIViewController {
         let restoreToolBarAlpha: CGFloat = isOpen ? 0 : 1;
         isDeletedTableViewAnimating = true
         stretchedConstraint.constant = constant
+        if !isOpen {
+            serviceRestoreToolbar.hidden = false
+        }
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         UIView.animateWithDuration(duration, animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.serviceRestoreToolbar.alpha = restoreToolBarAlpha
             }) { (completion) -> Void in
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                self.serviceRestoreToolbar.hidden = isOpen
                 self.overlayView.hidden = !isOpen
                 self.isDeletedTableViewAnimating = false
                 self.isDeletedTableViewOpen = isOpen
@@ -313,6 +315,11 @@ class AIBuyerDetailViewController : UIViewController {
         
         serviceRestoreToolbar.removeLogoAt(indexInDeletedTableView)
         
+        //处理小设置按钮添加移除状态
+        if let list = current_service_list as? [AIProposalServiceModel] {
+            self.menuLightView?.refershDeleteMedelView(list)
+        }
+        
         if isDeletedTableViewOpen {
             deletedTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexInDeletedTableView, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -323,7 +330,7 @@ class AIBuyerDetailViewController : UIViewController {
                 if self.deleted_service_list.count == 0 {
                     self.closeDeletedTableView(true)
                 }else {
-                    self.deletedTableView(self.isDeletedTableViewOpen, animated: true)
+                    self.deletedTableViewOpen(self.isDeletedTableViewOpen, animated: true)
                 }
             })
         } else {
@@ -383,10 +390,18 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
         
         if index < 5 {
             let model = self.deleted_service_list[index] as! AIProposalServiceModel
-
+            
+            let cell = model.cell
+            
+            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            
+            let logo = view.logo
+            
             let name = model.service_desc
-            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: UIImage(named: "lemon"), onComfirm: { () -> Void in
-                self.restoreService(model)
+            
+            let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
+            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
+            self.restoreService(model)
             })
             
         } else {
@@ -437,6 +452,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             #if !DEBUG
                 //FIXME: 不好看
                 //恢复区域不可删除
+               let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+                view.displayDeleteMode = (tableView == deletedTableView)
                 c.canDelete = !(tableView == deletedTableView)
             #endif
             return c;
@@ -460,6 +477,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         #if !DEBUG
             //FIXME: 不好看
             //恢复区域不可删除
+            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            view.displayDeleteMode = (tableView == deletedTableView)
             cell.canDelete = !(tableView == deletedTableView)
         #endif
         
@@ -548,15 +567,22 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         
         let index = current_service_list!.indexOfObject(model!)
         model?.is_deleted_flag = 1
+        
         deleted_service_list.addObject(model!)
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
             self.serviceRestoreToolbar.serviceModels = self.deleted_service_list
-            self.serviceRestoreToolbar.reloadLogos();
+            self.serviceRestoreToolbar.appendLogoAtLast();
             cell.closeCell()
             self.deletedTableView.reloadData()
+            cell.currentModel = model
         })
+        
+        //处理小设置按钮添加移除状态
+        if let list = current_service_list as? [AIProposalServiceModel] {
+           self.menuLightView?.refershDeleteMedelView(list)
+        }
     }    
 }
 
@@ -591,12 +617,13 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
         //let row = settingButton.tag
         parentView.isSetted = !parentView.isSetted
-        
         if let s = parentView.dataModel {
             s.param_setting_flag = Int(parentView.isSetted)
             menuLightView?.showLightView(s)
         }
-        
-        
+    }
+    
+    func simpleServiceViewContainerCancelButtonDidClick(simpleServiceViewContainer: SimpleServiceViewContainer) {
+        restoreService(simpleServiceViewContainer.dataModel!)
     }
 }

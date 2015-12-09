@@ -84,6 +84,7 @@
 		842FC8671BDA437C00A0517C /* customerProposalList.json in Resources */ = {isa = PBXBuildFile; fileRef = 842FC8631BDA437C00A0517C /* customerProposalList.json */; };
 		842FC8691BDDC99900A0517C /* ExpandContentViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */; };
 		8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */; };
+		843BAC291C17D598003E445E /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 843BAC281C17D598003E445E /* UIImage+Resize.m */; };
 		843E37D51C1534DD00FAD919 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E37C61C1534DC00FAD919 /* Constraint.swift */; };
 		843E37D61C1534DD00FAD919 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E37C71C1534DC00FAD919 /* ConstraintAttributes.swift */; };
 		843E37D71C1534DD00FAD919 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E37C81C1534DC00FAD919 /* ConstraintDescription.swift */; };
@@ -603,6 +604,8 @@
 		842FC8631BDA437C00A0517C /* customerProposalList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customerProposalList.json; sourceTree = "<group>"; };
 		842FC8681BDDC99900A0517C /* ExpandContentViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandContentViewFactory.swift; sourceTree = "<group>"; };
 		8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketGroupView.swift; sourceTree = "<group>"; };
+		843BAC271C17D598003E445E /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		843BAC281C17D598003E445E /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		843E37C61C1534DC00FAD919 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		843E37C71C1534DC00FAD919 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		843E37C81C1534DC00FAD919 /* ConstraintDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintDescription.swift; sourceTree = "<group>"; };
@@ -2194,6 +2197,8 @@
 		93B25A411B9D799E00CD1FEB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				843BAC271C17D598003E445E /* UIImage+Resize.h */,
+				843BAC281C17D598003E445E /* UIImage+Resize.m */,
 				93B25A421B9D799E00CD1FEB /* UP_NSString+Format.h */,
 				93B25A431B9D799E00CD1FEB /* UP_NSString+Format.mm */,
 				93B25A441B9D799E00CD1FEB /* UP_NSString+Size.h */,
@@ -2976,6 +2981,7 @@
 				93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */,
 				93FA1DFA1B9C306E009965C8 /* AIFavoriteContentModel.swift in Sources */,
 				12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */,
+				843BAC291C17D598003E445E /* UIImage+Resize.m in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,

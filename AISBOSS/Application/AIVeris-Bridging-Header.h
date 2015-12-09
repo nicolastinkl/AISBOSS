@@ -90,6 +90,7 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #import "OBShapedButton.h"
+#import "UIImage+Resize.h"
 #if DEBUG
 #import "FLEXManager.h"
 #endif
