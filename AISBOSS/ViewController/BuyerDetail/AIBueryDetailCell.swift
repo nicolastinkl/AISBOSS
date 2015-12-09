@@ -66,6 +66,9 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     @IBOutlet weak var contentHoldView: UIView!
     
+    
+    @IBOutlet weak var contentMaskView: UILabel!
+    
     // MARK: -> Internal class
     
     override func awakeFromNib(){
@@ -77,6 +80,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
         selfview.buttonView.layer.cornerRadius = 6
         selfview.buttonView.layer.masksToBounds = true
+        
         return selfview
     }
     

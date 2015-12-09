@@ -12,12 +12,16 @@
 
 @property (nonatomic, weak) IBOutlet UIView *buttonView;
 @property (nonatomic, weak) IBOutlet UIView *myContentView;
+@property (nonatomic, weak) IBOutlet UILabel *maskLabel;
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) CGPoint panStartPoint;
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
+
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonViewWidthConstraint;
 
 @end
 
@@ -82,6 +86,7 @@ static CGFloat const kOffsetValue = 20.0f;
             if (deltaX > 0) {
                 // open
                 [self.delegate cellDidAimationFrame:(deltaX + 20) cell:self];
+                 
             }
             
             if (self.startingRightLayoutConstraintConstant == 0) { //2
@@ -122,6 +127,12 @@ static CGFloat const kOffsetValue = 20.0f;
             }
             
             self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //20
+            
+            /**
+             //Change.
+             self.buttonView.hidden = false;
+             [self.delegate cellDidOpen:self];
+             */
         }
             break;
             

@@ -594,16 +594,18 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
         spring(0.3) { () -> Void in
             simpleView?.backgroundColor = UIColor.clearColor()
         }
+
     }
     
     func cellDidOpen(cell: UITableViewCell!) {
         //设置背景颜色
+        
         let selfSell =  cell as? AIBueryDetailCell
         let simpleView = selfSell?.contentHoldView.subviews.first
         spring(0.3) { () -> Void in
             simpleView?.backgroundColor = UIColor(hex: "#646187")
         }
-
+        
 //        self.tableView.scrollEnabled = false
     }
 }
