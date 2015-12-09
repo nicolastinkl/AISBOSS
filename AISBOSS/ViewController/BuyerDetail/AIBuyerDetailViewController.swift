@@ -53,9 +53,9 @@ class AIBuyerDetailViewController : UIViewController {
    
     var overlayView: UIView!
     
-    private var menuLightView:UIBezierPageView?
+    private var menuLightView: UIBezierPageView?
     
-    private var serviceRestoreToolbar : ServiceRestoreToolBar!
+    private var serviceRestoreToolbar: ServiceRestoreToolBar!
     
     private var current_service_list: NSArray? {
         get {
@@ -119,21 +119,20 @@ class AIBuyerDetailViewController : UIViewController {
         }
         overlayView.hidden = true;
         
-        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped")
+        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped:")
         overlayView.addGestureRecognizer(tap)
     }
     
     //曲线和overlay 共用tapgesture
-    @IBAction func deletedOverlayTapped() {
+    @IBAction func deletedOverlayTapped(g: UITapGestureRecognizer) {
         if isDeletedTableViewOpen {
             closeDeletedTableView(true)
         }
     }
     
     func initServiceRestoreToolbar() {
-        serviceRestoreToolbar = ServiceRestoreToolBar.currentView()
+        serviceRestoreToolbar = ServiceRestoreToolBar()
         serviceRestoreToolbar.delegate = self
-        serviceRestoreToolbar.dataSource = self
         serviceRestoreToolbar.frame = CGRectMake(0, 30, CGRectGetWidth(view.frame), 50)
         bottomView.addSubview(serviceRestoreToolbar)
     }
@@ -173,10 +172,7 @@ class AIBuyerDetailViewController : UIViewController {
             bzView.refershModelView(list)
         }
         buyerBottom.addSubview(bzView)
-//        bottomView.addSubview(bzView)
-        // layout subviews
         menuLightView = bzView
-
     }
     
     
@@ -231,8 +227,17 @@ class AIBuyerDetailViewController : UIViewController {
         let fromFrameOnWindow = logo.convertRect(logo.bounds, toView: window)
         
         let index = min(deleted_service_list.count - 1, 5)
-        let fromeLogo = serviceRestoreToolbar.logos[index]
-        let toFrameOnWindow = fromeLogo.convertRect(fromeLogo.bounds, toView: window)
+        let toolbarFrameOnWindow = serviceRestoreToolbar.convertRect(serviceRestoreToolbar.bounds, toView: window)
+        //FIXME: Variable 'toFrameX' was written to, but never read
+        var toFrameX: CGFloat = 0
+        
+        if index < 3 {
+            toFrameX = serviceRestoreToolbar.LOGO_SPACE + (serviceRestoreToolbar.LOGO_WIDTH + serviceRestoreToolbar.LOGO_SPACE) * CGFloat(index)
+        } else {
+            toFrameX = CGRectGetWidth(toolbarFrameOnWindow) - (serviceRestoreToolbar.LOGO_SPACE + (serviceRestoreToolbar.LOGO_WIDTH + serviceRestoreToolbar.LOGO_SPACE) * CGFloat(5 - index)) - serviceRestoreToolbar.LOGO_WIDTH
+        }
+        
+        let toFrameOnWindow = CGRectMake(CGRectGetMinX(toolbarFrameOnWindow) + toFrameX, CGRectGetMinY(toolbarFrameOnWindow) +  (CGRectGetHeight(toolbarFrameOnWindow) - serviceRestoreToolbar.LOGO_WIDTH) / 2, serviceRestoreToolbar.LOGO_WIDTH, serviceRestoreToolbar.LOGO_WIDTH)
         
         let fakeLogo = UIImageView(image: logo.image)
         fakeLogo.frame = fromFrameOnWindow
@@ -244,12 +249,13 @@ class AIBuyerDetailViewController : UIViewController {
             fakeLogo.frame = toFrameOnWindow
             }) {(success) -> Void in
                 if let c = completion {
-                    // 0.01+duration to fix logo blink issue
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01+duration) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    c();
+                    // 0.01 to fix logo blink issue
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
                         fakeLogo.removeFromSuperview()
                         UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     })
-                    c();
+                    
                 }
         }
     }
@@ -266,34 +272,34 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func openDeletedTableView(animated:Bool) {
-        deletedTableView(true, animated: true)
+        deletedTableViewOpen(true, animated: true)
     }
     
     func closeDeletedTableView(animated:Bool) {
-        deletedTableView(false, animated: true)
+        deletedTableViewOpen(false, animated: true)
     }
     
-    func deletedTableView(isOpen:Bool, animated:Bool) {
+    func deletedTableViewOpen(isOpen:Bool, animated:Bool) {
        
         let window = UIApplication.sharedApplication().keyWindow
         let contentLabelHeight = contentLabel.height
         let navigationBarMaxY = CGRectGetMaxY(navigationView.frame)
-        
-        
         let maxHeight = (window?.height)! - navigationBarMaxY - contentLabelHeight - buyerBottom.height - 10 // 10 is magic number hehe
-        
         let constant = isOpen ? min(maxHeight, deletedTableView.contentSize.height) : 0
-        
         let duration = animated ? 0.25 : 0
         let restoreToolBarAlpha: CGFloat = isOpen ? 0 : 1;
         isDeletedTableViewAnimating = true
         stretchedConstraint.constant = constant
+        if !isOpen {
+            serviceRestoreToolbar.hidden = false
+        }
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         UIView.animateWithDuration(duration, animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.serviceRestoreToolbar.alpha = restoreToolBarAlpha
             }) { (completion) -> Void in
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                self.serviceRestoreToolbar.hidden = isOpen
                 self.overlayView.hidden = !isOpen
                 self.isDeletedTableViewAnimating = false
                 self.isDeletedTableViewOpen = isOpen
@@ -307,8 +313,7 @@ class AIBuyerDetailViewController : UIViewController {
         let afterArray = current_service_list
         let index = (afterArray as! [AIProposalServiceModel]).indexOf(model)
         
-        
-        serviceRestoreToolbar.reloadLogos()
+        serviceRestoreToolbar.removeLogoAt(indexInDeletedTableView)
         
         if isDeletedTableViewOpen {
             deletedTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexInDeletedTableView, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
@@ -320,7 +325,7 @@ class AIBuyerDetailViewController : UIViewController {
                 if self.deleted_service_list.count == 0 {
                     self.closeDeletedTableView(true)
                 }else {
-                    self.deletedTableView(self.isDeletedTableViewOpen, animated: true)
+                    self.deletedTableViewOpen(self.isDeletedTableViewOpen, animated: true)
                 }
             })
         } else {
@@ -373,26 +378,25 @@ class AIBuyerDetailViewController : UIViewController {
     
 }
 
-extension AIBuyerDetailViewController: ServiceRestoreToolBarDataSource, ServiceRestoreToolBarDelegate {
-    // MARK: - ServiceRestoreToolBarDataSource
-    func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, imageAtIndex index: Int) -> String? {
-        if index < deleted_service_list.count {
-            let model = deleted_service_list[index] as! AIProposalServiceModel
-            return model.service_thumbnail_icon
-        }else {
-            return nil
-        }
-    }
+extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
     
     // MARK: - ServiceRestoreToolBarDelegate
     func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int) {
         
         if index < 5 {
             let model = self.deleted_service_list[index] as! AIProposalServiceModel
-
+            
+            let cell = model.cell
+            
+            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            
+            let logo = view.logo
+            
             let name = model.service_desc
-            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: UIImage(named: "lemon"), onComfirm: { () -> Void in
-                self.restoreService(model)
+            
+            let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
+            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
+            self.restoreService(model)
             })
             
         } else {
@@ -559,7 +563,8 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
-            self.serviceRestoreToolbar.reloadLogos();
+            self.serviceRestoreToolbar.serviceModels = self.deleted_service_list
+            self.serviceRestoreToolbar.appendLogoAtLast();
             cell.closeCell()
             self.deletedTableView.reloadData()
             cell.currentModel = model

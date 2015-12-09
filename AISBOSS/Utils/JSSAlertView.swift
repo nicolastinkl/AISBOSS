@@ -24,6 +24,7 @@ class JSSAlertView: UIViewController {
     var textLabel:UILabel!
     weak var rootViewController:UIViewController!
     var iconImage:UIImage!
+    var iconSize:CGSize!
     var iconImageView:UIImageView!
     var closeAction:(()->Void)!
     var cancelAction:(()->Void)!
@@ -116,6 +117,11 @@ class JSSAlertView: UIViewController {
         
         // position the icon image view, if there is one
         if self.iconImageView != nil {
+            if iconSize != nil {
+                var frame = iconImageView.frame
+                frame.size = iconSize
+                iconImageView.frame = frame
+            }
             yPos += iconImageView.frame.height
             let centerX = (self.alertWidth-self.iconImageView.frame.width)/2
             self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding)
@@ -208,8 +214,8 @@ class JSSAlertView: UIViewController {
         return alertview
     }
     
-    func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
-        
+    func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil, iconSize: CGSize?=nil) -> JSSAlertViewResponder {
+        self.iconSize = iconSize
         self.rootViewController = viewController
         //zhengxin
         //        self.rootViewController = viewController.view.window!.rootViewController

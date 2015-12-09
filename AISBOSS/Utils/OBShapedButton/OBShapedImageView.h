@@ -11,6 +11,4 @@
 //only response click when point is transparent
 @interface OBShapedImageView : UIImageView
 
-
-
 @end
