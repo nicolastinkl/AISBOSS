@@ -315,6 +315,11 @@ class AIBuyerDetailViewController : UIViewController {
         
         serviceRestoreToolbar.removeLogoAt(indexInDeletedTableView)
         
+        //处理小设置按钮添加移除状态
+        if let list = current_service_list as? [AIProposalServiceModel] {
+            self.menuLightView?.refershDeleteMedelView(list)
+        }
+        
         if isDeletedTableViewOpen {
             deletedTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexInDeletedTableView, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
