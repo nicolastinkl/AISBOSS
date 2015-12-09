@@ -260,7 +260,9 @@ class SimpleServiceViewContainer: UIView {
     }
     
     @IBAction func cancelAction(sender: AnyObject) {
+        
     }
+    
     private func getTopHeight() -> CGFloat {
         return topView.height
     }
