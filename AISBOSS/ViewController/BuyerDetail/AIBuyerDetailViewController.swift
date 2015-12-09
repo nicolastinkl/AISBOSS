@@ -125,7 +125,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     //曲线和overlay 共用tapgesture
     @IBAction func deletedOverlayTapped(g: UITapGestureRecognizer) {
-        if isDeletedTableViewOpen && g.view == overlayView {
+        if isDeletedTableViewOpen {
             closeDeletedTableView(true)
         }
     }
@@ -385,10 +385,18 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
         
         if index < 5 {
             let model = self.deleted_service_list[index] as! AIProposalServiceModel
-
+            
+            let cell = model.cell
+            
+            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            
+            let logo = view.logo
+            
             let name = model.service_desc
-            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: UIImage(named: "lemon"), onComfirm: { () -> Void in
-                self.restoreService(model)
+            
+            let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
+            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
+            self.restoreService(model)
             })
             
         } else {
