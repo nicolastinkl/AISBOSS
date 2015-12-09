@@ -562,6 +562,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         
         let index = current_service_list!.indexOfObject(model!)
         model?.is_deleted_flag = 1
+        
         deleted_service_list.addObject(model!)
         tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         
@@ -570,6 +571,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
             self.serviceRestoreToolbar.appendLogoAtLast();
             cell.closeCell()
             self.deletedTableView.reloadData()
+            cell.currentModel = model
         })
     }    
 }

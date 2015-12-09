@@ -48,7 +48,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
             
             let simpleServiceView = self.contentHoldView.subviews.last as? SimpleServiceViewContainer
             //Even if a delete property.
-            if modelInit.is_delemode == 1 {
+            if modelInit.is_deleted_flag == 1 {
                 // Set the content view to 'delete' MODE.
                 simpleServiceView?.displayDeleteMode = true
             }else{
