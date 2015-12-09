@@ -119,13 +119,13 @@ class AIBuyerDetailViewController : UIViewController {
         }
         overlayView.hidden = true;
         
-        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped")
+        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped:")
         overlayView.addGestureRecognizer(tap)
     }
     
     //曲线和overlay 共用tapgesture
-    @IBAction func deletedOverlayTapped() {
-        if isDeletedTableViewOpen {
+    @IBAction func deletedOverlayTapped(g: UITapGestureRecognizer) {
+        if isDeletedTableViewOpen && g.view == overlayView {
             closeDeletedTableView(true)
         }
     }
@@ -172,10 +172,7 @@ class AIBuyerDetailViewController : UIViewController {
             bzView.refershModelView(list)
         }
         buyerBottom.addSubview(bzView)
-//        bottomView.addSubview(bzView)
-        // layout subviews
         menuLightView = bzView
-
     }
     
     
@@ -252,12 +249,13 @@ class AIBuyerDetailViewController : UIViewController {
             fakeLogo.frame = toFrameOnWindow
             }) {(success) -> Void in
                 if let c = completion {
-                    // 0.01+duration to fix logo blink issue
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01+duration) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    c();
+                    // 0.01 to fix logo blink issue
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64((0.01) * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
                         fakeLogo.removeFromSuperview()
                         UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     })
-                    c();
+                    
                 }
         }
     }
@@ -274,14 +272,14 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func openDeletedTableView(animated:Bool) {
-        deletedTableView(true, animated: true)
+        deletedTableViewOpen(true, animated: true)
     }
     
     func closeDeletedTableView(animated:Bool) {
-        deletedTableView(false, animated: true)
+        deletedTableViewOpen(false, animated: true)
     }
     
-    func deletedTableView(isOpen:Bool, animated:Bool) {
+    func deletedTableViewOpen(isOpen:Bool, animated:Bool) {
        
         let window = UIApplication.sharedApplication().keyWindow
         let contentLabelHeight = contentLabel.height
@@ -292,12 +290,16 @@ class AIBuyerDetailViewController : UIViewController {
         let restoreToolBarAlpha: CGFloat = isOpen ? 0 : 1;
         isDeletedTableViewAnimating = true
         stretchedConstraint.constant = constant
+        if !isOpen {
+            serviceRestoreToolbar.hidden = false
+        }
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         UIView.animateWithDuration(duration, animations: { () -> Void in
             self.view.layoutIfNeeded()
             self.serviceRestoreToolbar.alpha = restoreToolBarAlpha
             }) { (completion) -> Void in
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                self.serviceRestoreToolbar.hidden = isOpen
                 self.overlayView.hidden = !isOpen
                 self.isDeletedTableViewAnimating = false
                 self.isDeletedTableViewOpen = isOpen
@@ -323,7 +325,7 @@ class AIBuyerDetailViewController : UIViewController {
                 if self.deleted_service_list.count == 0 {
                     self.closeDeletedTableView(true)
                 }else {
-                    self.deletedTableView(self.isDeletedTableViewOpen, animated: true)
+                    self.deletedTableViewOpen(self.isDeletedTableViewOpen, animated: true)
                 }
             })
         } else {
@@ -553,7 +555,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
             self.serviceRestoreToolbar.serviceModels = self.deleted_service_list
-            self.serviceRestoreToolbar.reloadLogos();
+            self.serviceRestoreToolbar.appendLogoAtLast();
             cell.closeCell()
             self.deletedTableView.reloadData()
         })
