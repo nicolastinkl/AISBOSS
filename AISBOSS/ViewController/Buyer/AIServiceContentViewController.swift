@@ -14,6 +14,10 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+
+
+
+
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
@@ -31,6 +35,8 @@ internal class AIServiceContentViewController: UIViewController {
     private var currentDatasource:AIProposalServiceDetailModel?
     
     internal var serviceContentType : AIServiceContentType!
+    
+    private var topNaviView : AINavigationBarView?
 
     private var preCacheView:UIView?
     
@@ -56,22 +62,35 @@ internal class AIServiceContentViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        shouldHideKeyboard()
         // 切换视图的时候停止播放录音
         curAudioView?.stopPlay()
+    }
+    
+    // MARK: 取消键盘
+    
+    func shouldHideKeyboard ()
+    {
+        if curTextField != nil {
+            curTextField?.resignFirstResponder()
+            curTextField = nil
+        }
     }
     
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillShowNotification, object: nil)
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+
     }
     
-    func keyboardWillChangeFrame(notification : NSNotification) {
+    func keyboardWillShow(notification : NSNotification) {
         
         if let userInfo = notification.userInfo {
             
@@ -83,19 +102,21 @@ internal class AIServiceContentViewController: UIViewController {
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
             scrollViewBottom()
         }
-        
+    }
+    
+    func keyboardDidShow(notification : NSNotification) {
+        scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
-
     }
     
     
     func keyboardDidHide(notification : NSNotification) {
-        //scrollView.userInteractionEnabled = true
+        scrollView.userInteractionEnabled = true
     }
     
 
@@ -237,13 +258,18 @@ internal class AIServiceContentViewController: UIViewController {
             auView.setWidth(self.view.width)
             auView.setTop((self.view.height - auView.height)/2)
         }
-         
-        // 数据填充
-        topView.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
         
+        topNaviView = topView
+        
+        // 数据填充
+        topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
     }    
     
     func makeContentView () {
+        
+        if self.currentDatasource?.service_name.length > 0 {
+             topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
+        } 
         
         // Add gallery View
         scrollView.addSubview(galleryView)
@@ -297,25 +323,39 @@ internal class AIServiceContentViewController: UIViewController {
         audioView.delegateAudio = self
         audioView.inputText.delegate = self
         
-        let audio1 = AIAudioMessageView.currentView()
-        audio1.audioDelegate = self
-        addNewSubView(audio1, preView: audioView)
         
-        let model = AIProposalHopeAudioTextModel()
-        model.audio_url = ""
-        model.audio_length = 8
-        model.type = 0
-        audio1.fillData(model)
-        audio1.deleteDelegate = self
-        
-        let text1 = AITextMessageView.currentView()
-        addNewSubView(text1, preView: audio1)
-        text1.delegate = self
-        
-        
-        let text2 = AITextMessageView.currentView()
-        addNewSubView(text2, preView: text1)
-        text2.delegate = self
+        //处理语音 文本数据
+        //处理数据填充
+        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
+            if let hopeList = wish.hope_list as? [AIProposalServiceDetail_hope_list_listModel] {
+                var perViews:UIView?
+                for item in hopeList {
+                    if item == hopeList.first {
+                        perViews = audioView
+                    }
+                    
+                    if item.type == 1 {
+                        // text.
+                        let newText = AITextMessageView.currentView()
+                        newText.content.text = item.text ?? ""
+                        let newSize = item.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+                        newText.setHeight(30 + newSize!.height)
+                        addNewSubView(newText, preView: perViews!)
+                        newText.delegate = self
+                        perViews = newText
+                        
+                    }else if item.type == 2 {
+                        // audio.
+                        let audio1 = AIAudioMessageView.currentView()
+                        audio1.audioDelegate = self
+                        audio1.deleteDelegate = self
+                        addNewSubView(audio1, preView: perViews!)
+                        audio1.fillData(item)
+                        perViews = audio1
+                    }
+                }
+            }
+        }
     }
     
     /**
@@ -342,9 +382,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if curTextField != nil {
-            curTextField?.resignFirstResponder()
-            curTextField = nil
-            //scrollView.userInteractionEnabled = false
+            shouldHideKeyboard()
         }
     }
     
@@ -353,14 +391,21 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         curTextField = textField
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        scrollView.userInteractionEnabled = false
+        return true
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // add a new View Model
         let newText = AITextMessageView.currentView()
         if let cview = preCacheView {
-            
-            
             newText.content.text = textField.text
-            
             let newSize = textField.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
             addNewSubView(newText, preView: cview)
@@ -422,9 +467,9 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
     //结束录音添加view到scrollview
-    func endRecording(audioModel: AIProposalHopeAudioTextModel) {
+    func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
         audioView?.hidden = true
-        if audioModel.audio_length > 0 {
+        if audioModel.time > 0 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
             audio1.audioDelegate = self
@@ -462,7 +507,20 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
     func deleteAction(cell: UIView?) {
         
         springWithCompletion(0.3, animations: { () -> Void in
-             cell?.alpha = 0
+            
+            cell?.alpha = 0
+            //刷新UI
+            let height = cell?.height ?? 0
+            let top = cell?.top
+            
+            let newListSubViews = self.scrollView.subviews.filter({ (subview) -> Bool in
+                return subview.top > top
+            })
+            
+            for nsubView in newListSubViews {
+                nsubView.setTop(nsubView.top - height)
+            }
+            
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
         }

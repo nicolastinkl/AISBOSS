@@ -32,7 +32,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBOutlet weak var audioGifImageView: UIImageView!
     @IBOutlet weak var audioLength: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    private var currentModelss:AIProposalHopeAudioTextModel?
+    private var currentModelss:AIProposalServiceDetail_hope_list_listModel?
     
     weak var audioDelegate:AIAudioMessageViewDelegate?
 
@@ -105,8 +105,8 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     }
     
     
-    func fillData(model:AIProposalHopeAudioTextModel){
-        self.audioLength.text = "\(model.audio_length)''"
+    func fillData(model:AIProposalServiceDetail_hope_list_listModel){
+        self.audioLength.text = "\(model.time)''"
         currentModelss = model
         self.configureAudio()
         self.configureImages()

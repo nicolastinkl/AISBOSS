@@ -282,6 +282,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func deletedTableView(isOpen:Bool, animated:Bool) {
+       
         let window = UIApplication.sharedApplication().keyWindow
         let contentLabelHeight = contentLabel.height
         let navigationBarMaxY = CGRectGetMaxY(navigationView.frame)
@@ -455,6 +456,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.currentModel = serviceDataModel
         
         cell.removeDelegate = self
+        cell.delegate = self
         #if !DEBUG
             //FIXME: 不好看
             //恢复区域不可删除
@@ -525,10 +527,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             model1.service_id = 1
         }
+        model1.service_desc = serviceDataModel.service_desc
         
-        model1.service_desc = "Service"
-        
-
         let array = [serviceDataModel,model1]
         viewController.bubbleModelArray = array
         viewController.selectCurrentIndex = 0 // fix here
@@ -557,12 +557,8 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
             cell.closeCell()
             self.deletedTableView.reloadData()
         })
-    }
-    
+    }    
 }
-
-
-
 
 // MARK: Extension.
 extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
@@ -572,10 +568,21 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
     }
     
     func cellDidClose(cell: UITableViewCell!) {
-        
+        let selfSell =  cell as? AIBueryDetailCell
+        let simpleView = selfSell?.contentHoldView.subviews.first
+        spring(0.3) { () -> Void in
+            simpleView?.backgroundColor = UIColor.clearColor()
+        }
     }
     
     func cellDidOpen(cell: UITableViewCell!) {
+        //设置背景颜色
+        let selfSell =  cell as? AIBueryDetailCell
+        let simpleView = selfSell?.contentHoldView.subviews.first
+        spring(0.3) { () -> Void in
+            simpleView?.backgroundColor = UIColor(hex: "#646187")
+        }
+
 //        self.tableView.scrollEnabled = false
     }
 }
