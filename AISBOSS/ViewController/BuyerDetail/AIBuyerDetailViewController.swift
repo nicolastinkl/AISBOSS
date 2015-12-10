@@ -106,6 +106,7 @@ class AIBuyerDetailViewController : UIViewController {
         
     }
     
+    
     func initDeletedTableView() {
         deletedTableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
     }
@@ -617,6 +618,12 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
 }
 
 extension AIBuyerDetailViewController: UIScrollViewDelegate{
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let cell = curretCell {
+            cell.closeCell()
+        }
+    }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if let cell = curretCell {
