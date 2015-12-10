@@ -77,9 +77,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     class func currentView()->AIBueryDetailCell{
         
-        let selfview =  NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell
-        selfview.buttonView.layer.cornerRadius = 6
-        selfview.buttonView.layer.masksToBounds = true
+        let selfview =  NSBundle.mainBundle().loadNibNamed("AIBueryDetailCell", owner: self, options: nil).first  as! AIBueryDetailCell 
         
         return selfview
     }
