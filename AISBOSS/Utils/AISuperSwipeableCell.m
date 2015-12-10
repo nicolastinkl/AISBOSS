@@ -261,9 +261,17 @@ static CGFloat const kButtonWidthValue = 48.0f;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    //https://github.com/alikaragoz/MCSwipeTableViewCell/blob/master/MCSwipeTableViewCell/MCSwipeTableViewCell.m#L329
+    if (gestureRecognizer == self.panRecognizer) {
+        CGPoint point = [self.panRecognizer velocityInView:self];
+        if (fabs(point.x) > fabs(point.y) ) {
+            return YES;
+        }
+    }
+    return NO;
 }
+
 
 @end

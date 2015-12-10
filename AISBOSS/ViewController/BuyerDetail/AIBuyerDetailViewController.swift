@@ -524,13 +524,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         if (tableView == deletedTableView) {
             serviceList = deleted_service_list
-
-            #if !DEBUG
-                let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
-                restoreService(serviceDataModel)
-                return;
-            #endif
-            
         } else {
             serviceList = current_service_list
         }
