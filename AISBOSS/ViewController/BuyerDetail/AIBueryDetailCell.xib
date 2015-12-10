@@ -78,16 +78,53 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="HHu-5g-7TO"/>
                                 <exclude reference="zh6-uj-Ifl"/>
                                 <exclude reference="vbf-5R-PxV"/>
+                                <exclude reference="HHu-5g-7TO"/>
                             </mask>
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiE-Pa-mgS">
                         <rect key="frame" x="8" y="0.0" width="584" height="87.5"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4U-6C-K4G">
+                                <rect key="frame" x="565" y="0.0" width="15" height="87.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lowwer_corner" translatesAutoresizingMaskIntoConstraints="NO" id="fzK-Ie-kfV">
+                                        <rect key="frame" x="5" y="78" width="10" height="10"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="UGb-s7-jwV"/>
+                                            <constraint firstAttribute="width" constant="10" id="Wm5-hR-eh0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper_corner" translatesAutoresizingMaskIntoConstraints="NO" id="y7K-oW-lc4">
+                                        <rect key="frame" x="5" y="0.0" width="10" height="10"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="1l5-fx-cwB"/>
+                                            <constraint firstAttribute="width" constant="10" id="rqf-5G-iZU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fzK-Ie-kfV" secondAttribute="bottom" id="2gN-zu-3X7"/>
+                                    <constraint firstItem="y7K-oW-lc4" firstAttribute="top" secondItem="x4U-6C-K4G" secondAttribute="top" id="6IQ-ud-Jfz"/>
+                                    <constraint firstAttribute="trailing" secondItem="y7K-oW-lc4" secondAttribute="trailing" id="C38-1j-68d"/>
+                                    <constraint firstAttribute="trailing" secondItem="fzK-Ie-kfV" secondAttribute="trailing" id="ZaX-xv-bGo"/>
+                                    <constraint firstAttribute="width" constant="15" id="uN5-lV-HL3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x4U-6C-K4G" firstAttribute="top" secondItem="IiE-Pa-mgS" secondAttribute="top" id="Ic9-ig-gof"/>
+                            <constraint firstAttribute="trailing" secondItem="x4U-6C-K4G" secondAttribute="trailing" constant="4" id="dZe-sn-U3n"/>
+                            <constraint firstAttribute="bottom" secondItem="x4U-6C-K4G" secondAttribute="bottom" id="qiD-sP-wRR"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <animations/>
@@ -120,14 +157,17 @@
                 <outlet property="contentMaskView" destination="YCa-6T-vOh" id="hXn-7D-Bt8"/>
                 <outlet property="contentViewLeftConstraint" destination="DkH-Lf-3bz" id="bHk-5m-f51"/>
                 <outlet property="contentViewRightConstraint" destination="h8e-7T-86k" id="Qbt-zc-fh4"/>
+                <outlet property="cornerFixView" destination="x4U-6C-K4G" id="2Dn-xI-mIo"/>
                 <outlet property="maskLabel" destination="YCa-6T-vOh" id="y7Q-Rj-61z"/>
                 <outlet property="myContentView" destination="IiE-Pa-mgS" id="SGM-0m-XAW"/>
             </connections>
-            <point key="canvasLocation" x="197" y="214"/>
+            <point key="canvasLocation" x="37" y="302"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="closeCell" width="13" height="13"/>
+        <image name="lowwer_corner" width="10" height="10"/>
+        <image name="upper_corner" width="11" height="11"/>
         <image name="x_buttondel" width="78" height="197"/>
     </resources>
 </document>

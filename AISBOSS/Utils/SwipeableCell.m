@@ -272,6 +272,22 @@ static CGFloat const kBounceValue = 20.0f;
     return YES;
 }
 
+
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    //https://github.com/alikaragoz/MCSwipeTableViewCell/blob/master/MCSwipeTableViewCell/MCSwipeTableViewCell.m#L329
+    if (gestureRecognizer == self.panRecognizer) {
+        CGPoint point = [self.panRecognizer velocityInView:self];
+        if (fabs(point.x) > fabs(point.y) ) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
 //- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
 //    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
 //        CGPoint point = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:self];
