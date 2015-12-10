@@ -35,6 +35,7 @@ internal class UIBezierPageView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /// 重新刷新图标布局
     func refershDeleteMedelView(newModel: [AIProposalServiceModel]){
         let model = newModel.filter { (filterModel) -> Bool in
             return filterModel.is_deleted_flag == 0
@@ -47,6 +48,7 @@ internal class UIBezierPageView : UIView {
         refershModelView(model)
     }
     
+    /// 初始化时布局处理
     func refershModelView(model: [AIProposalServiceModel]){
        
         //let number = model.count
@@ -133,6 +135,7 @@ internal class UIBezierPageView : UIView {
         self.addSubview(imageView)
         }
         */
+        
         
     }
     
