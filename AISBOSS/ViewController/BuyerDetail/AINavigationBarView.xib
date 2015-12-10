@@ -30,7 +30,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <inset key="titleEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Maternity Consulting" image="backIcon"/>
+                    <state key="normal" image="backIcon"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btn-6J-d1e">
                     <rect key="frame" x="0.0" y="61" width="600" height="50"/>

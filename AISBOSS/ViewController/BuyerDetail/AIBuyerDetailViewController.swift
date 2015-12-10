@@ -44,6 +44,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     @IBOutlet weak var stretchedBg: UIView!//可恢复service拉伸区域
     @IBOutlet weak var stretchedConstraint: NSLayoutConstraint!
+    
     var isDeletedTableViewOpen: Bool = false
     var isDeletedTableViewAnimating: Bool = false
     
@@ -56,6 +57,8 @@ class AIBuyerDetailViewController : UIViewController {
     private var menuLightView: UIBezierPageView?
     
     private var serviceRestoreToolbar: ServiceRestoreToolBar!
+    
+    var curretCell:AIBueryDetailCell?
     
     private var current_service_list: NSArray? {
         get {
@@ -106,6 +109,7 @@ class AIBuyerDetailViewController : UIViewController {
     func initDeletedTableView() {
         deletedTableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
     }
+    
     
     func initDeletedOverlayView() {
         overlayView = UIView()
@@ -587,23 +591,12 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
     }
     
     func cellDidClose(cell: UITableViewCell!) {
-//        let selfSell =  cell as? AIBueryDetailCell
-//        let simpleView = selfSell?.contentHoldView.subviews.first
-//        spring(0.3) { () -> Void in
-//            simpleView?.backgroundColor = UIColor.clearColor()
-//        }
 
     }
     
     func cellDidOpen(cell: UITableViewCell!) {
         //设置背景颜色
-        
-//        let selfSell =  cell as? AIBueryDetailCell
-//        let simpleView = selfSell?.contentHoldView.subviews.first
-//        spring(0.3) { () -> Void in
-//            simpleView?.backgroundColor = UIColor(hex: "#646187")
-//        }
-        
+        curretCell = cell as? AIBueryDetailCell
 //        self.tableView.scrollEnabled = false
     }
 }
@@ -621,4 +614,14 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
     func simpleServiceViewContainerCancelButtonDidClick(simpleServiceViewContainer: SimpleServiceViewContainer) {
         restoreService(simpleServiceViewContainer.dataModel!)
     }
+}
+
+extension AIBuyerDetailViewController: UIScrollViewDelegate{
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        if let cell = curretCell {
+            cell.closeCell()
+        }
+    }
+    
 }
