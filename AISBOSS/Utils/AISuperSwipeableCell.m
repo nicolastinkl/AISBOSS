@@ -12,17 +12,23 @@
 
 @property (nonatomic, weak) IBOutlet UIView *buttonView;
 @property (nonatomic, weak) IBOutlet UIView *myContentView;
+@property (nonatomic, weak) IBOutlet UILabel *maskLabel;
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) CGPoint panStartPoint;
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
+
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
+
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *buttonViewWidthConstraint;
 
 @end
 
 static CGFloat const kBounceValue = 20.0f;
-static CGFloat const kOffsetValue = 20.0f;
+static CGFloat const kOffsetValue = 21.0f;
+
+static CGFloat const kButtonWidthValue = 48.0f;
 
 @implementation AISuperSwipeableCell
 
@@ -82,6 +88,7 @@ static CGFloat const kOffsetValue = 20.0f;
             if (deltaX > 0) {
                 // open
                 [self.delegate cellDidAimationFrame:(deltaX + 20) cell:self];
+                 
             }
             
             if (self.startingRightLayoutConstraintConstant == 0) { //2
@@ -121,7 +128,18 @@ static CGFloat const kOffsetValue = 20.0f;
                 }
             }
             
-            self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //20
+            self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //20             
+            
+            
+            CGFloat newWidth = -self.contentViewLeftConstraint.constant;
+            
+            self.buttonViewWidthConstraint.constant = newWidth;
+            
+            /**
+             //Change.
+             self.buttonView.hidden = false;
+             [self.delegate cellDidOpen:self];
+             */
         }
             break;
             
@@ -186,7 +204,8 @@ static CGFloat const kOffsetValue = 20.0f;
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate
 {
     if (notifyDelegate) {
-        self.buttonView.hidden = true;
+        //self.buttonView.hidden = true;
+        self.buttonViewWidthConstraint.constant = 0;
         [self.delegate cellDidClose:self];
     }
     
@@ -214,7 +233,9 @@ static CGFloat const kOffsetValue = 20.0f;
 {
     if (notifyDelegate) {
         //Change.
-        self.buttonView.hidden = false;
+        //self.buttonView.hidden = false;
+
+        self.buttonViewWidthConstraint.constant = kButtonWidthValue;
         [self.delegate cellDidOpen:self];
     }
     
@@ -240,9 +261,17 @@ static CGFloat const kOffsetValue = 20.0f;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    //https://github.com/alikaragoz/MCSwipeTableViewCell/blob/master/MCSwipeTableViewCell/MCSwipeTableViewCell.m#L329
+    if (gestureRecognizer == self.panRecognizer) {
+        CGPoint point = [self.panRecognizer velocityInView:self];
+        if (fabs(point.x) > fabs(point.y) ) {
+            return YES;
+        }
+    }
+    return NO;
 }
+
 
 @end
