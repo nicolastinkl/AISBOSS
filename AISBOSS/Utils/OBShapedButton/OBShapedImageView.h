@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//only response click when point is transparent
+//透明区域可点击 不是非透明区域
 @interface OBShapedImageView : UIImageView
 
 @end
