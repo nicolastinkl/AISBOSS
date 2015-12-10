@@ -10,6 +10,8 @@
 #import "AITools.h"
 #import "AIViews.h"
 
+#define kRadioButtonTag   999
+
 
 @interface AIServiceTypes ()
 {
@@ -84,14 +86,12 @@
         
         //
         
-        
-        
         UIButton *radioButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [radioButton setImage:[UIImage imageNamed:@"Type_Off"] forState:UIControlStateNormal];
         [radioButton setImage:[UIImage imageNamed:@"Type_On"] forState:UIControlStateSelected];
         radioButton.frame = CGRectMake(0, 0, _radioSize, _radioSize);
         radioButton.userInteractionEnabled = NO;
-        radioButton.tag = 999;
+        radioButton.tag = kRadioButtonTag;
         radioButton.selected = _selectedIndex == i;
 
         [radioView addSubview:radioButton];
@@ -139,7 +139,7 @@
 - (void)action:(UITapGestureRecognizer *)gesture
 {
     UIView *view = gesture.view;
-    UIButton *button = [view viewWithTag:999];
+    UIButton *button = [view viewWithTag:kRadioButtonTag];
     button.selected = !button.selected;
     BOOL select = button.selected;
     
@@ -147,16 +147,15 @@
     
     if (_selectedIndex != view.tag) {
         UIView *preView = [self viewWithTag:_selectedIndex];
-        UIButton *preButton = [preView viewWithTag:999];
+        UIButton *preButton = [preView viewWithTag:kRadioButtonTag];
         preButton.selected = !select;
         
     }
     
     _selectedIndex = view.tag;
     
-    
-    if ([self.delegate respondsToSelector:@selector(didSelectedAtIndex:)]) {
-        [self.delegate didSelectedAtIndex:view.tag];
+    if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:)]) {
+        [self.delegate didSelectServiceTypeAtIndex:_selectedIndex];
     }
     
 }

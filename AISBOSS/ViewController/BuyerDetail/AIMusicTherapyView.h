@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "ProposalModel.h"
+#import "AIServiceCoverage.h"
 
-@interface AIMusicTherapyView : UIView
+#import "AIBuyerParamsDelegate.h"
 
+@protocol AIMusicTherapyViewDelegate <NSObject>
+
+- (void)didChangeParams:(NSDictionary *)params;
+
+@end
+
+
+@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate>
+
+@property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
 

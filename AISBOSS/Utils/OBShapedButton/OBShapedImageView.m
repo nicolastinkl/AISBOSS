@@ -18,9 +18,7 @@
 @implementation OBShapedImageView
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    
-
-    BOOL result = [self isAlphaVisibleAtPoint:point forImage:self.image];
+    BOOL result = [self isAlphaVisibleAtPoint:point forImage:self.image] && CGRectContainsPoint(self.bounds, point);
     return result;
 }
 
@@ -49,7 +47,7 @@
         CGColorRef cgPixelColor = [pixelColor CGColor];
         alpha = CGColorGetAlpha(cgPixelColor);
     }
-    return !alpha >= kAlphaVisibleThreshold;
+    return alpha <= kAlphaVisibleThreshold;
 }
 
 @end

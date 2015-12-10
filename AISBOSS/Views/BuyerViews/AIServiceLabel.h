@@ -8,17 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-
 typedef NS_ENUM(NSInteger, AIServiceLabelType) {
     AIServiceLabelTypeNormal,
     AIServiceLabelTypeSelection,
     AIServiceLabelTypeNumber,
 };
 
-
+@class AIServiceLabel;
 @protocol AIServiceLabelDelegate <NSObject>
 
-- (void)serviceLabelDidSelected:(BOOL)selected;
+- (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected;
 
 @end
 
@@ -30,7 +29,7 @@ typedef NS_ENUM(NSInteger, AIServiceLabelType) {
 
 @property (nonatomic, readonly) UIImageView *selectionImageView;
 
-- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title type:(AIServiceLabelType)type;
+- (instancetype)initWithFrame:(CGRect)frame title:(NSString *)title type:(AIServiceLabelType)type isSelected:(BOOL)selected;
 
 
 @end
