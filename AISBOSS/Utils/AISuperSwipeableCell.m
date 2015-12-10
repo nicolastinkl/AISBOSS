@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UIView *buttonView;
 @property (nonatomic, weak) IBOutlet UIView *myContentView;
 @property (nonatomic, weak) IBOutlet UILabel *maskLabel;
+@property (nonatomic, weak) IBOutlet UIView *cornerFixView; //圆角修复view
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) CGPoint panStartPoint;
@@ -135,6 +136,12 @@ static CGFloat const kButtonWidthValue = 48.0f;
             
             self.buttonViewWidthConstraint.constant = newWidth;
             
+            if (newWidth > 5) {
+                self.cornerFixView.hidden = false;
+            }else{
+                self.cornerFixView.hidden = true;
+            }
+            
             /**
              //Change.
              self.buttonView.hidden = false;
@@ -206,6 +213,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
     if (notifyDelegate) {
         //self.buttonView.hidden = true;
         self.buttonViewWidthConstraint.constant = 0;
+        self.cornerFixView.hidden = true;
         [self.delegate cellDidClose:self];
     }
     
@@ -236,6 +244,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
         //self.buttonView.hidden = false;
 
         self.buttonViewWidthConstraint.constant = kButtonWidthValue;
+        self.cornerFixView.hidden = true;
         [self.delegate cellDidOpen:self];
     }
     
