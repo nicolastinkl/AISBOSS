@@ -281,7 +281,42 @@
         tableView;
     });
     
+    
     [self.view addSubview:self.tableView];
+    //[self makeMaskForTable];
+}
+
+// test
+- (void)makeMaskForTable
+{
+    
+    UIView *maskView = [[UIView alloc] initWithFrame:self.view.bounds];
+    
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetWidth(maskView.frame) / 2, 0) radius:CGRectGetWidth(maskView.frame) / 2 startAngle:0 endAngle:M_PI clockwise:YES];
+    
+    CAShapeLayer *tracklayer = [CAShapeLayer layer];
+    tracklayer.fillColor = [[UIColor clearColor] CGColor];
+    tracklayer.frame = maskView.bounds;
+    tracklayer.path = [path CGPath];
+    maskView.layer.mask = tracklayer;
+    maskView.userInteractionEnabled = NO;
+    //
+    
+    
+    //边框蒙版
+//    
+    CAShapeLayer *maskBorderLayer = [CAShapeLayer layer];
+    
+    maskBorderLayer.path = [path CGPath];
+    
+    maskBorderLayer.fillColor = [[UIColor clearColor] CGColor];
+    maskBorderLayer.mask = tracklayer;
+    //边框宽度
+    [maskView.layer addSublayer:tracklayer];
+    [self.view addSubview:maskView];
+    self.view.clipsToBounds = YES;
+    self.view.layer.masksToBounds = YES;
 }
 
 

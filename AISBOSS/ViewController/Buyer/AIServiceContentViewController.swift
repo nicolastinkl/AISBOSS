@@ -152,40 +152,35 @@ internal class AIServiceContentViewController: UIViewController {
     func initData(){
         
         self.scrollView.hideErrorView()
-        
-        Async.userInitiated(after: 0.5) {[weak self]  () -> Void in
-            if let strongSelfss = self {
-                BDKProposalService().queryCustosmerServiceDetail(strongSelfss.serviceContentModel?.service_id ?? 0, success:
-                    {[weak self] (responseData) -> Void in
-                        
-                        if let strongSelf = self {
-                            strongSelf.currentDatasource = responseData
-                            
-                            //InitControl Data
-                            
-                            /** ScrollView数据填充 */
-                            strongSelf.makeContentView()
-
-                            strongSelf.scrollView.headerEndRefreshing()
-                        }
-                        
-                    },fail : {[weak self]
-                        (errType, errDes) -> Void in
-                        print(errDes)
-                        
-                        if let strongSelf = self {
-                            
-                            strongSelf.scrollView.headerEndRefreshing()
-                            //处理错误警告
-                            
-                            strongSelf.scrollView.showErrorContentView()
-                            
-                        }
-                        
-                })
-            }
-            
-        }
+    
+        BDKProposalService().queryCustosmerServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
+            {[weak self] (responseData) -> Void in
+                
+                if let strongSelf = self {
+                    strongSelf.currentDatasource = responseData
+                    
+                    //InitControl Data
+                    
+                    /** ScrollView数据填充 */
+                    strongSelf.makeContentView()
+                    
+                    strongSelf.scrollView.headerEndRefreshing()
+                }
+                
+            },fail : {[weak self]
+                (errType, errDes) -> Void in
+                print(errDes)
+                
+                if let strongSelf = self {
+                    
+                    strongSelf.scrollView.headerEndRefreshing()
+                    //处理错误警告
+                    
+                    strongSelf.scrollView.showErrorContentView()
+                    
+                }
+                
+            })
         
     }
     
@@ -224,13 +219,16 @@ internal class AIServiceContentViewController: UIViewController {
     
     func backAction () {
         
+        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+        
+        /*
         self.parentViewController!.view.showLoadingWithMessage("Please Wait...")
         
-        Async.main(after: Double(2)) { () -> Void in
+        Async.main(after: Double(0.5)) { () -> Void in
             self.parentViewController!.view.dismissLoading()
             self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
         }
-        //self.dismissViewControllerAnimated(true, completion: nil)
+        */
     }
     
     func scrollAction () {
