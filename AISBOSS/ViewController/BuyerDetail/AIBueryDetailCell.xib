@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="449-BM-UZX" customClass="SpringView" customModule="AISpring">
+                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="449-BM-UZX" customClass="SpringView" customModule="AISpring">
                         <rect key="frame" x="538" y="0.0" width="48" height="87.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCa-6T-vOh">
@@ -25,11 +25,11 @@
                                     <constraint firstAttribute="width" id="u5G-vq-YEn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-66-gd0">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="87.5"/>
+                                <rect key="frame" x="5" y="0.0" width="48" height="87.5"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="3oU-H3-div"/>
@@ -45,7 +45,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.6705882352941176" green="0.13333333333333333" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ZP0-66-gd0" secondAttribute="trailing" id="6LG-4q-buO"/>
+                            <constraint firstAttribute="trailing" secondItem="ZP0-66-gd0" secondAttribute="trailing" constant="-5" id="6LG-4q-buO"/>
                             <constraint firstItem="YCa-6T-vOh" firstAttribute="top" secondItem="449-BM-UZX" secondAttribute="top" id="FWE-Mc-xek"/>
                             <constraint firstItem="YCa-6T-vOh" firstAttribute="leading" secondItem="449-BM-UZX" secondAttribute="leading" id="IWz-Qg-NbU"/>
                             <constraint firstAttribute="bottom" secondItem="ZP0-66-gd0" secondAttribute="bottom" id="bhy-wT-cnC"/>
