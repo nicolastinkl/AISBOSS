@@ -22,6 +22,9 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 #define kMaxMoveSize      80
 
+#define kMaxMoveOffset    30
+
+
 @interface AIOpeningView ()
 {
     MPMoviePlayerController *_moviewPlayer;
@@ -464,6 +467,175 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
 }
 
+- (void)touchesMoved:(NSSet *)touches
+{
+    if (!_didTouchedTapView) return;
+    
+    _canTap = NO;
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint cPoint = [touch locationInView:self];
+    CGPoint pPoint=[[touches anyObject] previousLocationInView:self];
+    
+//    CGPoint newCenter = cPoint;//[touch.view convertPoint:cPoint toView:self];
+//    _logoView.center = cPoint;
+    
+    //
+    CGFloat xoff = cPoint.x - _firstTouchPoint.x;
+    CGFloat yoff = cPoint.y - _firstTouchPoint.y;
+    
+    BOOL didMoveUP = yoff < 0 && fabs(yoff) > fabs(xoff) && fabs(yoff) > kMaxMoveOffset;
+    BOOL didMoveDown = yoff > 0 && fabs(yoff) > fabs(xoff) && fabs(yoff) > kMaxMoveOffset;
+    BOOL didMoveLeft = xoff < 0 && fabs(xoff) > fabs(yoff) && fabs(xoff) > kMaxMoveOffset;
+    BOOL didMoveRight = xoff > 0 && fabs(xoff) > fabs(yoff) && fabs(xoff) > kMaxMoveOffset;
+    
+ 
+    //
+    BOOL didVerticalMove = fabs(cPoint.y - pPoint.y) > fabs(cPoint.x - pPoint.x) && !(_currentDirection == AIMovementLeft || _currentDirection == AIMovementRight) && (didMoveUP || didMoveDown);
+    BOOL didHorizontalMove = fabs(cPoint.x - pPoint.x) > fabs(cPoint.y - pPoint.y) && !(_currentDirection == AIMovementUp || _currentDirection == AIMovementDown) && (didMoveLeft || didMoveRight);
+    
+    // 上下
+    if (didVerticalMove) {
+        // NSLog(@"didVerticalMove");
+        
+        CGFloat yOffset = fabs(yoff);
+        
+        // 判断方向
+        
+        if (cPoint.y > _originalLogoCenter.y) {
+            _currentDirection = AIMovementDown;
+        }
+        else if (cPoint.y < _originalLogoCenter.y)
+        {
+            _currentDirection = AIMovementUp;
+        }
+        
+        // 计算位移量
+        _currentMovement = yOffset;
+        
+        // 开始位移
+        _logoView.center = CGPointMake(_originalLogoCenter.x, cPoint.y);
+    }
+    
+    // 左右
+    else if (didHorizontalMove)
+    {
+        NSLog(@"didHorontalMove");
+        // 判断方向
+        
+        if (cPoint.x > _originalLogoCenter.x) {
+            _currentDirection = AIMovementRight;
+        }
+        else if (cPoint.x < _originalLogoCenter.x)
+        {
+            _currentDirection = AIMovementLeft;
+        }
+        
+        // 计算位移量
+        _currentMovement = fabs(xoff);
+        
+        
+        // 开始位移
+        
+        _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
+    }
+
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event adn:(CGFloat)add
+{
+    
+    if (!_didTouchedTapView) return;
+    
+    _canTap = NO;
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint cPoint = [touch locationInView:self];
+    
+    
+    CGFloat xoff = cPoint.x - _firstTouchPoint.x;
+    CGFloat yoff = cPoint.y - _firstTouchPoint.y;
+    
+    // 未达到触发位移量则随手指运动
+    if (xoff < kMaxMoveOffset || yoff < kMaxMoveOffset) {
+        _logoView.center = cPoint;
+        _currentDirection = AIMovementNone;
+        return;
+    }
+    
+    
+    CGPoint pPoint=[[touches anyObject] previousLocationInView:self];
+    
+    //NSLog(@"point ---- %@", [NSValue valueWithCGPoint:cPoint]);
+    
+    //
+    
+    
+    //
+    
+    BOOL didVerticalMove = fabs(cPoint.y - pPoint.y) > fabs(cPoint.x - pPoint.x) && !(_currentDirection == AIMovementLeft || _currentDirection == AIMovementRight);
+    BOOL didHorontalMove = fabs(cPoint.x - pPoint.x) > fabs(cPoint.y - pPoint.y) && !(_currentDirection == AIMovementUp || _currentDirection == AIMovementDown);
+    
+    if (didVerticalMove) {
+        
+        CGFloat yOffset = fabs(yoff);
+        // NSLog(@"didVerticalMove");
+        // 判断方向
+        
+        if (cPoint.y > _originalLogoCenter.y && yOffset > kMaxMoveOffset) {
+            _currentDirection = AIMovementDown;
+            _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
+        }
+        else if (cPoint.y < _originalLogoCenter.y && yOffset > kMaxMoveOffset)
+        {
+            _currentDirection = AIMovementUp;
+            _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
+        }
+
+        
+        // 计算位移量
+        _currentMovement = fabs(yoff);
+        
+        
+        // 开始位移
+ 
+        
+    }
+    else if (didHorontalMove)
+    {
+        NSLog(@"didHorontalMove");
+        CGFloat xOffset = fabs(xoff);
+        // 判断方向
+        
+        if (cPoint.x > _originalLogoCenter.x && xOffset > kMaxMoveOffset) {
+            _currentDirection = AIMovementRight;
+            _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
+        }
+        else if (cPoint.x < _originalLogoCenter.x && xOffset > kMaxMoveOffset)
+        {
+            _currentDirection = AIMovementLeft;
+            _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
+        }
+
+        // 计算位移量
+        _currentMovement = fabs(xoff);
+        
+        
+        // 开始位移
+        
+        
+
+    }
+    
+    
+    
+    
+    
+    
+}
+
+
+
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -530,7 +702,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
         // 开始位移
         
         _logoView.center = CGPointMake(cPoint.x, _originalLogoCenter.y);
-
+        
     }
     
     
@@ -539,5 +711,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     
 }
+
+
+
 
 @end

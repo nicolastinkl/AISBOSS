@@ -381,11 +381,11 @@ internal class AIServiceContentViewController: UIViewController {
     }
 }
 
-// MARK : Delegate
+// MARK: Delegate
 
 extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelegate{
     
-    
+// MARK: ScrollDelegate
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if curTextField != nil {
             shouldHideKeyboard()
