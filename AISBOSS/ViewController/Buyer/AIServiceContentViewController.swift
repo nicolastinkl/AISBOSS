@@ -268,7 +268,7 @@ internal class AIServiceContentViewController: UIViewController {
         topNaviView = topView
         
         // 数据填充
-        topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
+        //topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
     }    
     
     func makeContentView () {
