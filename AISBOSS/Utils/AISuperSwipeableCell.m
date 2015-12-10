@@ -128,9 +128,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
                 }
             }
             
-            self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //20
-            
-            NSLog(@"%f, %f",self.contentViewLeftConstraint.constant,self.buttonViewWidthConstraint.constant);
+            self.contentViewLeftConstraint.constant = -self.contentViewRightConstraint.constant; //20             
             
             
             CGFloat newWidth = -self.contentViewLeftConstraint.constant;
