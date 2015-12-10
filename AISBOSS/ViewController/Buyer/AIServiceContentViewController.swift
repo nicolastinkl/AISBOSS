@@ -144,16 +144,16 @@ internal class AIServiceContentViewController: UIViewController {
             }
         }
         
-        self.scrollView.headerBeginRefreshing()
-        
-        
+        Async.main { () -> Void in
+            self.scrollView.headerBeginRefreshing()
+        }
     }
     
     func initData(){
         
         self.scrollView.hideErrorView()
-        
-        Async.userInitiated(after: 0.5) {[weak self]  () -> Void in
+
+        Async.background(after: 0.5) {[weak self]  () -> Void in
             if let strongSelfss = self {
                 BDKProposalService().queryCustosmerServiceDetail(strongSelfss.serviceContentModel?.service_id ?? 0, success:
                     {[weak self] (responseData) -> Void in
