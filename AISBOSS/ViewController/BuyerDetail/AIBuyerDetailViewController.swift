@@ -577,7 +577,6 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         model?.is_deleted_flag = 1
         
         deleted_service_list.addObject(model!)
-        tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         
         logoMoveToServiceRestoreToolBar(logo, completion: {() -> Void in
             self.serviceRestoreToolbar.serviceModels = self.deleted_service_list
@@ -586,6 +585,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
             self.deletedTableView.reloadData()
             cell.currentModel = model
         })
+        tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         
         //处理小设置按钮添加移除状态
         if let list = current_service_list as? [AIProposalServiceModel] {
