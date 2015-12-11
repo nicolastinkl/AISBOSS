@@ -95,11 +95,13 @@ internal class AICustomView : UIView{
                     currentY = 2
                 }
                 
+                
             } 
             
             if y > ramdHeigth*2 {
                 tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
             }else{
+                
                 tags.setOrigin(CGPointMake(x, y))
             }
             n = n + 1  //   Add 1
