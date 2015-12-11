@@ -358,6 +358,10 @@ internal class AIServiceContentViewController: UIViewController {
                         perViews = audio1
                     }
                 }
+                if let s = perViews {
+                    self.preCacheView = s
+                }
+                
             }
         }
     }
@@ -401,7 +405,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
-        scrollView.userInteractionEnabled = false
+        //scrollView.userInteractionEnabled = false
         return true
     }
     
@@ -484,7 +488,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 scrollViewBottom()
             }
         }
-        
     }
     
     
@@ -524,6 +527,10 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
             for nsubView in newListSubViews {
                 nsubView.setTop(nsubView.top - height)
             }
+         
+            var contentSizeOld = self.scrollView.contentSize
+            contentSizeOld.height -= height
+            self.scrollView.contentSize = contentSizeOld
             
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
