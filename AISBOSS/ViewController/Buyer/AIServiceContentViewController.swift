@@ -139,6 +139,7 @@ internal class AIServiceContentViewController: UIViewController {
             if let strongSelf = self {
                 // Init Data
                 /** 处理数据请求 */
+                
                 strongSelf.initData()
                 
             }
@@ -156,29 +157,35 @@ internal class AIServiceContentViewController: UIViewController {
         BDKProposalService().queryCustosmerServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
             {[weak self] (responseData) -> Void in
                 
-                if let strongSelf = self {
-                    strongSelf.currentDatasource = responseData
-                    
-                    //InitControl Data
-                    
-                    /** ScrollView数据填充 */
-                    strongSelf.makeContentView()
-                    
-                    strongSelf.scrollView.headerEndRefreshing()
-                }
+                Async.main({ () -> Void in
+                    if let strongSelf = self {
+                        strongSelf.currentDatasource = responseData
+                        
+                        //InitControl Data
+                        
+                        /** ScrollView数据填充 */
+                        strongSelf.makeContentView()
+                        strongSelf.scrollView.headerEndRefreshing()
+                    }
+                })
+                
+                
                 
             },fail : {[weak self]
                 (errType, errDes) -> Void in
                 print(errDes)
                 
-                if let strongSelf = self {
-                    
-                    strongSelf.scrollView.headerEndRefreshing()
-                    //处理错误警告
-                    
-                    strongSelf.scrollView.showErrorContentView()
-                    
-                }
+                Async.main({ () -> Void in
+                    if let strongSelf = self {
+                        
+                        strongSelf.scrollView.headerEndRefreshing()
+                        //处理错误警告
+                        
+                        strongSelf.scrollView.showErrorContentView()
+                        
+                    }
+                })
+                
                 
             })
         
