@@ -608,7 +608,7 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
     func cellDidOpen(cell: UITableViewCell!) {
         //设置背景颜色
         curretCell = cell as? AIBueryDetailCell
-//        self.tableView.scrollEnabled = false
+        self.tableView.userInteractionEnabled = false
     }
 }
 
@@ -632,6 +632,7 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let cell = curretCell {
             cell.closeCell()
+            self.tableView.userInteractionEnabled = true
         }
     }
     
