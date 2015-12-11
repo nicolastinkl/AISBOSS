@@ -730,6 +730,7 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
         newView.center = bubble.center;
         [newView addSubview:bubble];
         [self addSubview:newView];
+        bubble.superAIBubblesView = newView;
         bubble.center = CGPointMake(newView.width/2, newView.width/2);
         
         

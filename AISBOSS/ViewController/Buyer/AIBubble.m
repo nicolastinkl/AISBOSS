@@ -65,7 +65,7 @@ typedef enum  {
 - (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(int) indexModel
 {
     self = [super init];
-
+    _bubbleModel = model;
     _index = indexModel;
     if (self) {
         
@@ -242,7 +242,7 @@ typedef enum  {
 - (void) initWithNormal:(CGPoint)center model:(AIBuyerBubbleModel *)model{
     CGFloat size = model.bubbleSize*2;//[self bubbleRadiusByModel:_bubbleModel] * 2;
     _radius = size / 2;
-    
+    self.floatSize = size;
     self.frame = CGRectMake(0, 0, size, size);
     self.center = center;
     
@@ -296,31 +296,10 @@ typedef enum  {
         imageview.alpha = kDefaultAlpha;
         [UIView commitAnimations];
         
-        if (model.proposal_id_new > 0){
-            //根据发光效果添加图层
-            __weak typeof(self) weakSelf = self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //weakSelf.hidden = YES;
-                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
-                focalPointView.bgColor = [UIColor colorWithHexString:@"e2898a"];
-                focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
-                focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
-                focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
-                focalPointView.layer.masksToBounds  = YES;
-                
-                [weakSelf.superview insertSubview:focalPointView atIndex:0];
-                focalPointView.alpha = 0.5;
-                
-                [UIView animateWithDuration:0.8f delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
-                    focalPointView.alpha = 0;
-                } completion:nil];
-            });
-            
-            [self layoutIfNeeded];
+        
             
         }
-        
-    }
+    
     
     /**
     AIBuyerBubbleProportModel * modelChild = model.service_list.firstObject;
@@ -402,6 +381,33 @@ typedef enum  {
     
 }
 
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (self.bubbleModel.proposal_id_new > 0){
+        //根据发光效果添加图层
+        __weak typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //weakSelf.hidden = YES;
+            MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
+            focalPointView.bgColor = [UIColor colorWithHexString:@"e2898a"];
+            focalPointView.frame = CGRectMake(0, 0, self.floatSize + 16, self.floatSize + 16);
+            focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
+            focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
+            focalPointView.layer.masksToBounds  = YES;
+            
+            [weakSelf.superAIBubblesView insertSubview:focalPointView atIndex:0];
+            focalPointView.alpha = 0.5;
+            
+            [UIView animateWithDuration:0.8f delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
+                focalPointView.alpha = 0;
+            } completion:nil];
+        });
+    }
+    
+}
 - (void)shinningFromAlpha:(CGFloat)alpha toAlpha:(CGFloat)toAlpha forView:(UIView *)view
 {
     

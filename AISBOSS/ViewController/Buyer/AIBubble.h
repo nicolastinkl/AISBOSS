@@ -49,6 +49,10 @@ typedef enum  {
 
 @property (nonatomic, strong) AIBuyerBubbleModel *bubbleModel;
 
+@property (nonatomic, strong) UIView *superAIBubblesView;
+
+@property (nonatomic) CGFloat floatSize;
+
 
 + (CGFloat)bigBubbleRadius;
 
