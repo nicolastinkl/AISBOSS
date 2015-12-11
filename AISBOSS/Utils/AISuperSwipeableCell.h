@@ -12,6 +12,7 @@
 
 - (void)cellDidOpen:(UITableViewCell *)cell;
 - (void)cellDidClose:(UITableViewCell *)cell;
+- (void)cellWillOpen:(UITableViewCell *)cell;
 - (void)cellDidAimationFrame:(CGFloat) position cell:(UITableViewCell *)cell;
 @end
 

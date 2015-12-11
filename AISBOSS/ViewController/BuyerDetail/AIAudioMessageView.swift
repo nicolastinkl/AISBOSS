@@ -58,10 +58,11 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         if (becomeFirstResponder() == false) {
             return;
         }
+        let point = longPressRecognizer.locationInView(self)
         
         let meunController = UIMenuController.sharedMenuController()
-
-        let newBounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y + 12, self.bounds.width, self.bounds.height)
+        
+        let newBounds = CGRectMake(point.x, self.bounds.origin.y + 12, 50, self.bounds.height)        
         
         meunController.setTargetRect(newBounds, inView: self)
         

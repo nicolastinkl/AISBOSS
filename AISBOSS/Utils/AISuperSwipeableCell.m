@@ -138,6 +138,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
             
             if (newWidth > 5) {
                 self.cornerFixView.hidden = false;
+                [self.delegate cellWillOpen:self];
             }else{
                 self.cornerFixView.hidden = true;
             }
