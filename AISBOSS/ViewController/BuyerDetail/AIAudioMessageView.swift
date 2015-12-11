@@ -108,9 +108,8 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         return super.becomeFirstResponder()
     }
     
-    
     func fillData(model:AIProposalServiceDetail_hope_list_listModel){
-        self.audioLength.text = "\(model.time)''"
+        self.audioLength.text = "\((NSInteger)(model.time / 1000))''"
         currentModelss = model
         self.configureAudio()
         self.configureImages()
