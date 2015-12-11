@@ -68,8 +68,15 @@ class AIBuyerDetailViewController : UIViewController {
             return result
         }
     }
+
     
     private var deleted_service_list: NSMutableArray = NSMutableArray()
+    
+    private var deleted_service_list_copy: NSMutableArray {
+        //不优
+        return deleted_service_list.mutableCopy() as! NSMutableArray
+    }
+    
     
 //    private var horizontalCardCellCache = NSMutableDictionary()
     
@@ -446,7 +453,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         var serviceList: NSArray?
         
         if (tableView == deletedTableView) {
-            serviceList = deleted_service_list
+                    //不优
+            serviceList = deleted_service_list_copy
         } else {
             serviceList = current_service_list
         }
