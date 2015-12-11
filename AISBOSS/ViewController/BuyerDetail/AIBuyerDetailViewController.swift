@@ -604,6 +604,7 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
     func cellWillOpen(cell: UITableViewCell!) {
         if let cell = curretCell {
             cell.closeCell()
+            curretCell = nil
         }
     }
     func cellDidClose(cell: UITableViewCell!) {
@@ -637,6 +638,7 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let cell = curretCell {
             cell.closeCell()
+            curretCell = nil
 //            self.tableView.userInteractionEnabled = true
         }
     }
@@ -644,6 +646,7 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         if let cell = curretCell {
             cell.closeCell()
+            curretCell = nil
         }
     }
     
