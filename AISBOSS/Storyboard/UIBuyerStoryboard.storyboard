@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -58,7 +58,7 @@
                                 <animations/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3EU-06-uKE">
-                                <rect key="frame" x="0.0" y="86" width="600" height="419"/>
+                                <rect key="frame" x="0.0" y="88" width="600" height="417"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -420,7 +420,7 @@
                             <constraint firstItem="ctB-5W-Nxf" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="HO8-DH-8Bt"/>
                             <constraint firstItem="dgC-qc-VsT" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" id="MHj-Kh-3eN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ctB-5W-Nxf" secondAttribute="trailing" constant="-20" id="MVW-6l-WoF"/>
-                            <constraint firstItem="3EU-06-uKE" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" constant="86" id="NEQ-UK-cHL"/>
+                            <constraint firstItem="3EU-06-uKE" firstAttribute="top" secondItem="h3I-Tt-qzy" secondAttribute="bottom" constant="88" id="NEQ-UK-cHL"/>
                             <constraint firstItem="6Dh-Wj-Y5q" firstAttribute="leading" secondItem="BTh-No-Tv9" secondAttribute="leadingMargin" constant="-20" id="OAy-QM-KqQ"/>
                             <constraint firstItem="KoH-E7-fN6" firstAttribute="top" secondItem="CPV-nq-FDD" secondAttribute="bottom" id="Qtp-nT-6RU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3EU-06-uKE" secondAttribute="trailing" constant="-20" id="USD-Mo-WgS"/>

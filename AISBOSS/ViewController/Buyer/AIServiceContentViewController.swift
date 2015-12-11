@@ -526,6 +526,10 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
             for nsubView in newListSubViews {
                 nsubView.setTop(nsubView.top - height)
             }
+         
+//            var contentSizeOld = self.scrollView.contentSize
+//            contentSizeOld.height -= height
+//            self.scrollView.contentSize = contentSizeOld
             
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
