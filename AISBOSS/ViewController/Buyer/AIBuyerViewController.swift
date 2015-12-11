@@ -51,13 +51,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         selfViewPoint = self.view.center
+        
         self.makeBaseProperties()
         self.makeTableView()
-        //self.makeBubbleView()
         self.makeTopBar()
-//        self.makeData()
-        
         
         // Add Pull To Referesh..
         self.tableView.addHeaderWithCallback { [weak self]() -> Void in
@@ -90,7 +89,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             self.parseListData(listData)
             self.parseProposalData(proposalData)
             didShow = true
-        }
+        } 
     }
     
     

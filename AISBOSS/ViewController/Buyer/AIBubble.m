@@ -298,35 +298,27 @@ typedef enum  {
         
         if (model.proposal_id_new > 0){
             //根据发光效果添加图层
-            
+            __weak typeof(self) weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
                 //weakSelf.hidden = YES;
-                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:self];
+                MDCSpotlightView *focalPointView = [[MDCSpotlightView alloc] initWithFocalView:weakSelf];
                 focalPointView.bgColor = [UIColor colorWithHexString:@"e2898a"];
                 focalPointView.frame = CGRectMake(0, 0, size + 16, size + 16);
-                focalPointView.center = CGPointMake(self.width/2, self.height/2);
+                focalPointView.center = CGPointMake(weakSelf.width/2, weakSelf.height/2);
                 focalPointView.layer.cornerRadius = focalPointView.frame.size.width/2;
                 focalPointView.layer.masksToBounds  = YES;
-                [focalPointView setNeedsDisplay];
-                [self.superview insertSubview:focalPointView atIndex:0];
+                
+                [weakSelf.superview insertSubview:focalPointView atIndex:0];
                 focalPointView.alpha = 0.5;
                 
-                //定时器
-                
-                self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
-                                                              target:self
-                                                            selector:@selector(TimerEvent)
-                                                            userInfo:@{@"focalPointView":focalPointView}
-                                                             repeats:YES];
-                
-                [[NSRunLoop currentRunLoop]addTimer:self.timer  forMode:NSDefaultRunLoopMode];
+                [UIView animateWithDuration:0.8f delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAutoreverse animations:^{
+                    focalPointView.alpha = 0;
+                } completion:nil];
             });
             
-                
+            
             
         }
-        
-        [self setNeedsDisplay];
         
     }
     
@@ -409,6 +401,12 @@ typedef enum  {
     }];*/
     
 }
+
+- (void)shinningFromAlpha:(CGFloat)alpha toAlpha:(CGFloat)toAlpha forView:(UIView *)view
+{
+    
+}
+
 
 - (void)TimerEvent
 {
