@@ -536,7 +536,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         var serviceList: NSArray?
         
         if (tableView == deletedTableView) {
-            serviceList = deleted_service_list
+            //需求说已删除的服务 不支持点击事件
+            return
+//            serviceList = deleted_service_list
         } else {
             serviceList = current_service_list
         }
