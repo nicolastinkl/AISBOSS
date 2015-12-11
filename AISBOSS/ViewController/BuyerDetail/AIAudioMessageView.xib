@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAudioMessageView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
@@ -59,7 +59,7 @@
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
             </connections>
-            <point key="canvasLocation" x="-20" y="279"/>
+            <point key="canvasLocation" x="-111" y="405"/>
         </view>
     </objects>
     <resources>
