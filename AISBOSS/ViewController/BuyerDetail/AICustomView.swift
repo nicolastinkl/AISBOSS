@@ -74,7 +74,8 @@ internal class AICustomView : UIView{
             let ramdWidth = sizenew.width  + 55
             let ramdHeigth:CGFloat = 35
             
-            if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin) {
+            //print("\(x + CGFloat(ramdWidth) + tagMargin)   \((self.width - tagMargin*4))")
+            if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin*4) {
                
                 n = 0
                 x = tagMargin
@@ -97,7 +98,7 @@ internal class AICustomView : UIView{
             } 
             
             if y > ramdHeigth*2 {
-                tags.setOrigin(CGPointMake(currentX + tagMargin + CGFloat(ramdWidth), currentY))
+                tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
             }else{
                 tags.setOrigin(CGPointMake(x, y))
             }

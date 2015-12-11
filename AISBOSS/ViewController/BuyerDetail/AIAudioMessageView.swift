@@ -60,7 +60,10 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         }
         
         let meunController = UIMenuController.sharedMenuController()
-        meunController.setTargetRect(self.bounds, inView: self)
+
+        let newBounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y + 12, self.bounds.width, self.bounds.height)
+        
+        meunController.setTargetRect(newBounds, inView: self)
         
         let item = UIMenuItem(title: "Delete", action: "sendDeleteMenuItemPressed:")
         meunController.menuItems = [item]
