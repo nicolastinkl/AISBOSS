@@ -30,7 +30,7 @@ class PurchasedServiceView: UIView, Measureable {
     private let EYE_ENABLE_IMAGE = "eye_enable.png"
     private let EYE_DISABLE_IMAGE = "eye_disable.png"
     private let CONTENT_TOP_MARGIN: CGFloat = 20 / PurchasedViewDimention.CONVERT_FACTOR
-    private let DESCRIPTION_HEIGHT: CGFloat = 30
+    private let DESCRIPTION_ONE_LINE_HEIGHT: CGFloat = 30
     private let BOTTOM_PADDING_MARGIN: CGFloat = 48 / PurchasedViewDimention.CONVERT_FACTOR
     
     var serviceOrderData: ServiceOrderModel? {
@@ -48,9 +48,36 @@ class PurchasedServiceView: UIView, Measureable {
                 serviceDescription.text = model.service_intro
                 
                 if (model.service_intro == "") {
-                    frame.size.height = frame.size.height - DESCRIPTION_HEIGHT + BOTTOM_PADDING_MARGIN
+                    hideDescriptionLabel()
+                } else {
+                    setDescriptionLabelHeight()
                 }
             }
+        }
+    }
+    
+    private func hideDescriptionLabel() {
+        frame.size.height = frame.size.height - DESCRIPTION_ONE_LINE_HEIGHT + BOTTOM_PADDING_MARGIN
+    }
+    
+    private func setDescriptionLabelHeight() {
+        let descriptionWidth = serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
+        
+        let size = serviceOrderModel!.service_intro.sizeWithFont(serviceDescription.font, forWidth: descriptionWidth)
+        
+        var descriptionHeight = DESCRIPTION_ONE_LINE_HEIGHT
+        
+        if size.height / serviceDescription.font.lineHeight > 1 {
+            let ADDITION_HEIGHT: CGFloat = 10
+            descriptionHeight += ADDITION_HEIGHT
+            frame.size.height += ADDITION_HEIGHT
+        }
+        
+        layout(statu, serviceDescription) { statu, serviceDescription in
+            serviceDescription.top == statu.bottom - 2
+            serviceDescription.left == serviceDescription.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
+            serviceDescription.width == serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
+            serviceDescription.height >= descriptionHeight
         }
     }
     
@@ -143,12 +170,7 @@ class PurchasedServiceView: UIView, Measureable {
         serviceDescription.numberOfLines = 2
         addSubview(serviceDescription)
         
-        layout(statu, serviceDescription) { statu, serviceDescription in
-            serviceDescription.top == statu.bottom - 2
-            serviceDescription.left == serviceDescription.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
-            serviceDescription.width == serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
-            serviceDescription.height >= DESCRIPTION_HEIGHT
-        }
+        
     }
     
     private func addAddutionalIcons() {
