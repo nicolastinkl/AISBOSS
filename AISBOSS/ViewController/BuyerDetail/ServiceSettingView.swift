@@ -13,9 +13,10 @@ class ServiceSettingView: UIView {
 
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var messageViewHeight: NSLayoutConstraint!
     
     private static let HORIZAN_SPACE: CGFloat = 8
-    private static let MESSAGE_HEIGHT: CGFloat = 20
+    private static let MESSAGE_HEIGHT_ONE_LINE: CGFloat = 20
     private static let TAG_HEIGHT: CGFloat = 28
     private static let BOTTOM_PADDING: CGFloat = 12
     private static let COLLECTION_WIDTH: CGFloat = 303
@@ -33,17 +34,33 @@ class ServiceSettingView: UIView {
         return NSBundle.mainBundle().loadNibNamed("ServiceSettingView", owner: self, options: nil).first  as! ServiceSettingView
     }
     
+    func adjustSizeAfterSetData() {
+        adjustTwoLineMessageSize()
+    }
+    
     func loadData(model data: AIProposalHopeModel) {
         self.model = data
-        
-        frame.size.height = ServiceSettingView.MESSAGE_HEIGHT + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
         
         if data.hope_list != nil && data.hope_list.count > 0 {
             let hopeModel = data.hope_list.first as! AIProposalHopeAudioTextModel
             message.text = hopeModel.text ?? ""
+            
+            adjustTwoLineMessageSize()
         }
         
+        frame.size.height = messageViewHeight.constant + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
+        
         collectionView.reloadData()
+    }
+    
+    private func adjustTwoLineMessageSize() {
+        let MESSAGE_WIDTH_IOS6_PLUS: CGFloat = 317
+        let textSize = message.text!.sizeWithFont(message.font, forWidth: MESSAGE_WIDTH_IOS6_PLUS)
+        let row = textSize.height / message.font.lineHeight
+        if row > 1 {
+            messageViewHeight.constant += 10
+            message.setNeedsUpdateConstraints()
+        }
     }
     
     private func setCollectionView() {
