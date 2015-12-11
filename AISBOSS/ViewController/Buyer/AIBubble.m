@@ -316,7 +316,7 @@ typedef enum  {
                 } completion:nil];
             });
             
-            
+            [self layoutIfNeeded];
             
         }
         

@@ -86,8 +86,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
         
         if (listData != nil && proposalData != nil) {
-            self.parseListData(listData)
-            self.parseProposalData(proposalData)
+            Async.main(after: 0.3, block: { () -> Void in
+                self.parseListData(listData)
+                self.parseProposalData(proposalData)
+            })
             didShow = true
         } 
     }
