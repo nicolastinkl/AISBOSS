@@ -45,6 +45,9 @@
                                     <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="ChangeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gvl-r7-7Py"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" alpha="0.81999999284744263" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-St-jGg" customClass="DesignableTextField" customModule="AISpring">
                             <rect key="frame" x="46" y="4" width="530" height="35"/>
@@ -147,7 +150,13 @@
                     <exclude reference="kLZ-Fq-db3"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="526" y="339"/>
+            <connections>
+                <outlet property="audioButtonView" destination="Nhd-oA-fLB" id="Pmh-ns-4cj"/>
+                <outlet property="changeButton" destination="hKj-lk-jq5" id="SCa-Er-nVe"/>
+                <outlet property="inputButtomValue" destination="kbt-Za-gGC" id="JMt-D9-GXt"/>
+                <outlet property="textInput" destination="NL8-St-jGg" id="KSg-LT-g26"/>
+            </connections>
+            <point key="canvasLocation" x="378" y="348"/>
         </view>
         <tapGestureRecognizer id="K0h-nB-Afx">
             <connections>

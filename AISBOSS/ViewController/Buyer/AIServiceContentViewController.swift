@@ -14,10 +14,6 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
-
-
-
-
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
@@ -39,6 +35,8 @@ internal class AIServiceContentViewController: UIViewController {
     private var topNaviView : AINavigationBarView?
 
     private var preCacheView:UIView?
+    
+    private var currentAudioView:AIAudioInputView?
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -88,6 +86,29 @@ internal class AIServiceContentViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
 
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
+
+    }
+    
+    func keyboardDidChange(notification : NSNotification) {
+        //change keyboard height
+        
+        if let userInfo = notification.userInfo {
+            
+            // step 1: get keyboard height
+            let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+            let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
+            let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
+            if let view1 = self.currentAudioView {
+                if keyboardHeight > 0 {
+                    let newLayoutConstraint = keyboardHeight - view1.holdViewHeigh
+                    view1.inputButtomValue.constant = newLayoutConstraint
+                }
+            }
+            
+        }
+        
     }
     
     func keyboardWillShow(notification : NSNotification) {
@@ -101,6 +122,12 @@ internal class AIServiceContentViewController: UIViewController {
         
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
             scrollViewBottom()
+            
+            // hidden
+            if let view1 = self.currentAudioView {
+                view1.audioButtonView.hidden = true
+            }
+            
         }
     }
     
@@ -112,11 +139,18 @@ internal class AIServiceContentViewController: UIViewController {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
+        
     }
     
     
     func keyboardDidHide(notification : NSNotification) {
         scrollView.userInteractionEnabled = true
+        if let view1 = self.currentAudioView {
+            view1.inputButtomValue.constant = 1
+
+            view1.audioButtonView.hidden = false
+        }
+        
     }
     
 
@@ -441,6 +475,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
         let childView = AIAudioInputView.currentView()
         childView.alpha = 0
         self.view.addSubview(childView)
+        currentAudioView = childView
         layout(childView) { (cview) -> () in
             cview.leading == cview.superview!.leading
             cview.trailing == cview.superview!.trailing
