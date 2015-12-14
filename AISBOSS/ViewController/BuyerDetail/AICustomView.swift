@@ -36,6 +36,17 @@ internal class AICustomView : UIView{
      TODO: 处理数据填充和标签初始化
      */
     func fillTags(models:[AIProposalServiceDetail_label_list_listModel],isNormal:Bool){
+        
+        /**
+            根据model个数计算高度
+        */
+        
+        if UIScreen.mainScreen().bounds.size.width < 736.0 {
+            if models.count >= 6 {
+                self.setHeight(318 + 80)
+            }
+        }
+        
         allTagsArray = models //fill data..
         
         var x:CGFloat = tagMargin
@@ -80,6 +91,7 @@ internal class AICustomView : UIView{
                 n = 0
                 x = tagMargin
                 y += ramdHeigth + tagMargin
+                
             } else {
                 if n > 0 {
                     x = x + tagMargin
@@ -93,17 +105,22 @@ internal class AICustomView : UIView{
                     
                 }else{
                     currentY = 2
-                }
-                
-                
-            } 
+                } 
+            }
             
-            if y > ramdHeigth*2 {
-                tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
+            //iphone 6 plus
+            if UIScreen.mainScreen().bounds.size.width >= 736.0 {
+                if y > ramdHeigth*2 {
+                    tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
+                }else{
+                    
+                    tags.setOrigin(CGPointMake(x, y))
+                }
             }else{
-                
                 tags.setOrigin(CGPointMake(x, y))
             }
+            
+            
             n = n + 1  //   Add 1
             tags.setSize(CGSize(width: CGFloat(ramdWidth), height: ramdHeigth))
            

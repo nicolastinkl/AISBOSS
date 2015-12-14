@@ -318,16 +318,16 @@ internal class AIServiceContentViewController: UIViewController {
         }
            
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: holdView!)
-        
+        addNewSubView(custView, preView: holdView!)        
         //处理数据填充
         if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
             if let labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
-        
+            
         }
+
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
@@ -436,7 +436,23 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
 
 extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
     
-    
+    // show audio view...
+    func showAudioView() {
+        let childView = AIAudioInputView.currentView()
+        childView.alpha = 0
+        self.view.addSubview(childView)
+        layout(childView) { (cview) -> () in
+            cview.leading == cview.superview!.leading
+            cview.trailing == cview.superview!.trailing
+            cview.top == cview.superview!.top
+            cview.bottom == cview.superview!.bottom
+        }
+        spring(0.5) { () -> Void in
+            childView.alpha = 1
+        }
+        
+        
+    }
     
     // AIAudioMessageViewDelegate
     func willPlayRecording(audioView :AIAudioMessageView) {

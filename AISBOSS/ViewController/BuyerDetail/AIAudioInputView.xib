@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAudioInputView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tYv-kO-hZR">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xPt-rT-mJZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                    </view>
+                    <animations/>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-hw-zrs">
+                    <rect key="frame" x="12" y="266" width="576" height="43"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKj-lk-jq5" customClass="DesignableButton" customModule="AISpring">
+                            <rect key="frame" x="4" y="5" width="32" height="32"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="LTA-PL-xfd"/>
+                                <constraint firstAttribute="height" constant="32" id="mcj-Nx-7tj"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="ai_keyboard_button_change"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" alpha="0.81999999284744263" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-St-jGg" customClass="DesignableTextField" customModule="AISpring">
+                            <rect key="frame" x="46" y="4" width="530" height="35"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="TZT-Hh-QdI"/>
+                            </constraints>
+                            <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="NL8-St-jGg" firstAttribute="centerY" secondItem="UqE-hw-zrs" secondAttribute="centerY" id="BQn-QW-beM"/>
+                        <constraint firstAttribute="trailing" secondItem="NL8-St-jGg" secondAttribute="trailing" id="D23-6A-mX5"/>
+                        <constraint firstAttribute="height" constant="43" id="HIC-uC-jJ4"/>
+                        <constraint firstItem="NL8-St-jGg" firstAttribute="leading" secondItem="hKj-lk-jq5" secondAttribute="trailing" constant="10" id="OHj-q7-p6y"/>
+                        <constraint firstItem="hKj-lk-jq5" firstAttribute="centerY" secondItem="UqE-hw-zrs" secondAttribute="centerY" id="qNG-eV-ACD"/>
+                        <constraint firstItem="hKj-lk-jq5" firstAttribute="leading" secondItem="UqE-hw-zrs" secondAttribute="leading" constant="4" id="tnA-md-obP"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-oA-fLB">
+                    <rect key="frame" x="0.0" y="310" width="600" height="290"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV8-Bq-SQo" customClass="DesignableButton" customModule="AISpring">
+                            <rect key="frame" x="210" y="55" width="180" height="180"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="SeQ-mI-aGZ"/>
+                                <constraint firstAttribute="height" constant="35" id="Yur-H1-oqw"/>
+                                <constraint firstAttribute="height" constant="180" id="vWB-Vm-6DD"/>
+                            </constraints>
+                            <state key="normal" image="ai_audioButton_default">
+                                <color key="titleColor" red="0.79215686269999996" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Yur-H1-oqw"/>
+                                </mask>
+                            </variation>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79862034574468088" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerY" secondItem="Nhd-oA-fLB" secondAttribute="centerY" id="5Sc-NX-Arm"/>
+                        <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerX" secondItem="Nhd-oA-fLB" secondAttribute="centerX" id="Lnn-43-vxa"/>
+                        <constraint firstAttribute="height" constant="290" id="p9C-OF-67o"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-sV-q0j">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="267"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="K0h-nB-Afx" appends="YES" id="6tv-cS-qWd"/>
+                    </connections>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="tYv-kO-hZR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8aB-IK-frZ"/>
+                <constraint firstAttribute="bottom" secondItem="tYv-kO-hZR" secondAttribute="bottom" id="9We-cR-cu1"/>
+                <constraint firstAttribute="trailing" secondItem="UqE-hw-zrs" secondAttribute="trailing" constant="12" id="FOj-RK-ZIS"/>
+                <constraint firstAttribute="trailing" secondItem="xqo-sV-q0j" secondAttribute="trailing" id="OuS-u8-4N1"/>
+                <constraint firstAttribute="bottom" secondItem="tYv-kO-hZR" secondAttribute="bottom" id="Vki-nm-hNy"/>
+                <constraint firstItem="Nhd-oA-fLB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aYf-qN-0My"/>
+                <constraint firstItem="UqE-hw-zrs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="bDl-Ve-0dR"/>
+                <constraint firstItem="xqo-sV-q0j" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bZd-pP-Se8"/>
+                <constraint firstItem="tYv-kO-hZR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dot-dS-5DJ"/>
+                <constraint firstItem="xqo-sV-q0j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fic-S9-49l"/>
+                <constraint firstItem="Nhd-oA-fLB" firstAttribute="top" secondItem="tYv-kO-hZR" secondAttribute="bottom" id="kLZ-Fq-db3"/>
+                <constraint firstItem="Nhd-oA-fLB" firstAttribute="top" secondItem="UqE-hw-zrs" secondAttribute="bottom" constant="1" id="kbt-Za-gGC"/>
+                <constraint firstAttribute="trailing" secondItem="Nhd-oA-fLB" secondAttribute="trailing" id="mbo-Ow-0HT"/>
+                <constraint firstAttribute="bottom" secondItem="Nhd-oA-fLB" secondAttribute="bottom" id="nWo-W8-v9e"/>
+                <constraint firstAttribute="trailing" secondItem="tYv-kO-hZR" secondAttribute="trailing" id="ouI-ab-crG"/>
+                <constraint firstItem="UqE-hw-zrs" firstAttribute="top" secondItem="xqo-sV-q0j" secondAttribute="bottom" constant="-1" id="zic-Vt-o2P"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9We-cR-cu1"/>
+                    <exclude reference="kLZ-Fq-db3"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="526" y="339"/>
+        </view>
+        <tapGestureRecognizer id="K0h-nB-Afx">
+            <connections>
+                <action selector="closeViewAction:" destination="iN0-l3-epB" id="vc8-zr-JxI"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="ai_audioButton_default" width="139" height="139"/>
+        <image name="ai_keyboard_button_change" width="39" height="39"/>
+    </resources>
+</document>

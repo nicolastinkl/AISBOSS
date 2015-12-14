@@ -18,6 +18,7 @@ import AISpring
     
     func willEndRecording()
     func endRecordingWithError(error : String)
+    func showAudioView()
     
 }
 // MARK: -
@@ -165,10 +166,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         self.delegateAudio?.endRecording(model)
     }
     
-    
-    
     /// MARK:  Finish Audio..
-    
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         let data = NSData(contentsOfFile: currentAutioUrl) 
@@ -203,6 +201,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     // MARK: -
     
     // MARK: -> Private methods
+    
+    @IBAction func touchUpShowAudioViewAction(sender: AnyObject) {
+        self.delegateAudio?.showAudioView()
+    }
 
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let rder = recorder {
@@ -225,7 +227,17 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             model.type = 2
             self.delegateAudio?.endRecording(model)
         }
-        
+    }
+}
+
+extension AICustomAudioNotesView: UITextFieldDelegate{
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.text?.length < 198
+        {
+            return true
+        }
+        return false
     }
     
 }

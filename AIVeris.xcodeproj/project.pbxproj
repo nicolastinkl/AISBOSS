@@ -243,6 +243,8 @@
 		9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */; };
 		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; };
 		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; };
+		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
+		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; };
 		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937EA3801C02BB2700AF776B /* AVFoundation.framework */; };
@@ -834,6 +836,8 @@
 		93508CAD1BE07C8200525512 /* MDCFocalPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCFocalPointView.m; sourceTree = "<group>"; };
 		93508CAE1BE07C8200525512 /* MDCSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSpotlightView.h; sourceTree = "<group>"; };
 		93508CAF1BE07C8200525512 /* MDCSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSpotlightView.m; sourceTree = "<group>"; };
+		936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioInputView.swift; sourceTree = "<group>"; };
+		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
 		936EDC961BCB4C4100ED160F /* AITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITest.swift; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
@@ -2546,6 +2550,8 @@
 				937EA3941C04076D00AF776B /* AIAudioRecordView.swift */,
 				8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */,
 				8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */,
+				936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */,
+				936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2828,6 +2834,7 @@
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
 				845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */,
 				93CB8D831BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf in Resources */,
+				936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */,
 				81D83AEB1BB29F7900BE2BA2 /* MJRefresh.bundle in Resources */,
 				8450D1221C0479AF00CD1D5B /* AIIconTextView.xib in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
@@ -3112,6 +3119,7 @@
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
 				849B4B491C0EDFE300BEC179 /* FLEXNetworkTransaction.m in Sources */,
+				936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */,
 				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
 				93FA1E041B9C306E009965C8 /* SearchHistoryRecord.swift in Sources */,
 				849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */,
