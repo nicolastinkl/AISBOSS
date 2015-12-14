@@ -7,6 +7,7 @@
 //
 #import <MediaPlayer/MediaPlayer.h>
 #import "AIOpeningView.h"
+#import "AIFakeLoginView.h"
 
 typedef NS_ENUM(NSInteger, AIMovementDirection) {
     AIMovementNone = 0,
@@ -82,10 +83,22 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     return gInstance;
 }
 
+#pragma mark - BaseTap Action
+
+- (void)makeTapActionWithFrame:(CGRect)frame action:(SEL)action
+{
+    UIView *versionView = [[UIView alloc] initWithFrame:frame];
+    
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:action];
+    gesture.numberOfTapsRequired = 2;
+    [versionView addGestureRecognizer:gesture];
+    
+    [self addSubview:versionView];
+}
 
 #pragma mark - 增加版本信息
 
-- (void)doubleTap
+- (void)versionTap
 {
     NSString *version = @"V0.20151116.005";
     NSString *content = @"需求内容:\n孕期助理购物车，及其子服务音乐疗养、医院全程陪护的功能需求开发\n更新内容:\nUI优化,完善删除和恢复功能";
@@ -100,15 +113,27 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     CGFloat size = 100;
     CGFloat x = CGRectGetWidth(self.frame) - size;
     CGRect frame = CGRectMake(x, 0, size, size);
-    UIView *versionView = [[UIView alloc] initWithFrame:frame];
 
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap)];
-    [versionView addGestureRecognizer:gesture];
-    
-    [self addSubview:versionView];
+    [self makeTapActionWithFrame:frame action:@selector(versionTap)];
 }
 
+#pragma mark - Fake登录
 
+- (void)loginTap
+{
+    AIFakeLoginView *loginView = [[AIFakeLoginView alloc] initWithFrame:self.bounds];
+    [self addSubview:loginView];
+}
+
+- (void)addLoginAction
+{
+    CGFloat size = 100;
+    CGFloat x = CGRectGetWidth(self.frame) - size;
+    CGFloat y = CGRectGetHeight(self.frame) - size;
+    CGRect frame = CGRectMake(x, y, size, size);
+    
+    [self makeTapActionWithFrame:frame action:@selector(loginTap)];
+}
 
 #pragma mark - Delegate Event
 
@@ -196,6 +221,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     //
     
     [self addVersionAction];
+    [self addLoginAction];
 }
 
 - (void)centerTapAction
