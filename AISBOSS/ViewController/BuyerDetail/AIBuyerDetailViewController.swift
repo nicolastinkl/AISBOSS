@@ -204,9 +204,9 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text = dataSource?.proposal_desc
-        self.OrderFromLabel.text = "From"
+        self.OrderFromLabel.text = AILocalizationManager.AIBuyerDetailViewController.from.localized
         
-        if NSString(string: name).containsString("Pregnancy") {
+        if NSString(string: name).containsString(AILocalizationManager.AIBuyerDetailViewController.pregnancy.localized) {
             // 处理字体
             let price = dataSource?.proposal_price
             let richText = NSMutableAttributedString(string:(price)!)
@@ -412,7 +412,8 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let name = model.service_desc
             
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
-            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
+            let text = String(NSString(format: AILocalizationManager.AIBuyerDetailViewController.alert, name))
+            JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
             self.restoreService(model)
             })
             

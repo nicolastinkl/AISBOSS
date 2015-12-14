@@ -258,7 +258,7 @@ struct AIApplication{
     */
     static func shareAction(url:String){
         if let viewcontroller =  UIApplication.sharedApplication().keyWindow?.rootViewController{
-            let textToShare = "Swift is awesome!  Check out this website about it!"
+            let textToShare = AILocalizationManager.AIApplication.share.localized
             
             if let myWebsite = NSURL(string: "http://www.codingexplorer.com/")
             {

@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  AIVeris
+
+  Created by admin on 12/14/15.
+  Copyright © 2015 ___ASIAINFO___. All rights reserved.
+*/
+
+"AIApplication.share" = "Swift is awesome!  Check out this website about it!";
+
+"AIAudioMessageView.error" = "Get Record Error.";
+
+"AIAudioMessageView.info" = "Info";
+
+"AIAudioMessageView.close" = "Close";
+
+"AIBuyerDetailViewController.pregnancy" = "Pregnancy";
+
+"AIBuyerDetailViewController.from" = "From";
+
+"AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
+
+

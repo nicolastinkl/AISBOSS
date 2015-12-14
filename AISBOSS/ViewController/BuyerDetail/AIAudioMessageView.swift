@@ -206,7 +206,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
                 
             }else{
                 self.configureAudio()
-                AIAlertView().showInfo("Get Record Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
+                AIAlertView().showInfo(AILocalizationManager.AIAudioMessageView.error.localized, subTitle:AILocalizationManager.AIAudioMessageView.info.localized, closeButtonTitle: AILocalizationManager.AIAudioMessageView.close.localized, duration: 3)
             }
 
         })

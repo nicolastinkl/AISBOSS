@@ -134,6 +134,9 @@
 		8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; };
 		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
+		847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F69231C1EAF1D008A7804 /* Localizable.strings */; };
+		847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F69251C1EB337008A7804 /* AILocalizationManager.swift */; };
+		848080F01C1EBBE8007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848080EF1C1EBBE8007806E7 /* Localize.swift */; };
 		849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */; };
 		849B4B211C0EDFE300BEC179 /* FLEXArgumentInputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A931C0EDFE300BEC179 /* FLEXArgumentInputDateView.m */; };
 		849B4B221C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A951C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m */; };
@@ -656,6 +659,11 @@
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
+		847F69221C1EAF1D008A7804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		847F69241C1EAF37008A7804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		847F69251C1EB337008A7804 /* AILocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocalizationManager.swift; sourceTree = "<group>"; };
+		848080EE1C1EBBE8007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
+		848080EF1C1EBBE8007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		849B4A901C0EDFE300BEC179 /* FLEXArgumentInputColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputColorView.h; sourceTree = "<group>"; };
 		849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXArgumentInputColorView.m; sourceTree = "<group>"; };
 		849B4A921C0EDFE300BEC179 /* FLEXArgumentInputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputDateView.h; sourceTree = "<group>"; };
@@ -1538,6 +1546,15 @@
 				8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */,
 			);
 			name = Flight;
+			sourceTree = "<group>";
+		};
+		848080ED1C1EBBE8007806E7 /* Localize_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				848080EE1C1EBBE8007806E7 /* Localize.h */,
+				848080EF1C1EBBE8007806E7 /* Localize.swift */,
+			);
+			path = Localize_Swift;
 			sourceTree = "<group>";
 		};
 		849B4A8D1C0EDFE300BEC179 /* Flex */ = {
@@ -2438,6 +2455,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				848080ED1C1EBBE8007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
 				93A742C71BDF75FD001EF581 /* TDImageColors */,
 				93C33EFE1B9BEAFE007BF506 /* AIAssignUtils.swift */,
@@ -2467,6 +2485,7 @@
 				93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */,
 				844009171C166F6B0031E2F7 /* JSSAlertView.swift */,
 				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
+				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2511,6 +2530,7 @@
 				93A5A59F1B9BD5E1001DE36D /* Views */,
 				93D5A3531B709C1C00DDB158 /* Assets.xcassets */,
 				93D5A3581B709C1C00DDB158 /* Info.plist */,
+				847F69231C1EAF1D008A7804 /* Localizable.strings */,
 			);
 			name = AIVeris;
 			path = AISBOSS;
@@ -2741,8 +2761,8 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 93D5A3401B709C1C00DDB158;
 			productRefGroup = 93D5A34A1B709C1C00DDB158 /* Products */;
@@ -2785,6 +2805,7 @@
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
+				847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */,
 				937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
@@ -2956,6 +2977,7 @@
 				849B4B271C0EDFE300BEC179 /* FLEXArgumentInputStringView.m in Sources */,
 				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
 				849B4B461C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m in Sources */,
+				847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
@@ -3106,6 +3128,7 @@
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
+				848080F01C1EBBE8007806E7 /* Localize.swift in Sources */,
 				849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */,
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
@@ -3285,6 +3308,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		847F69231C1EAF1D008A7804 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847F69221C1EAF1D008A7804 /* Base */,
+				847F69241C1EAF37008A7804 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
