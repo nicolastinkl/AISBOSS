@@ -204,7 +204,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
             
             let y = CGRectGetMaxY(bubbles.frame)
-            let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
+            let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: AIBuyerViewController.kPROGRESS, fontSize: 20, color: UIColor.whiteColor())
             label.textAlignment = .Right
             
             label.verticalAlignment = UPVerticalAlignmentMiddle
@@ -633,4 +633,8 @@ extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
         let indexPath = NSIndexPath(forRow: proposalView.tag, inSection: 0)
         rowSelectAction(indexPath)
     }
+}
+
+extension AIBuyerViewController {
+    @nonobjc static let kPROGRESS = "AIBuyerViewController.progress".localized
 }

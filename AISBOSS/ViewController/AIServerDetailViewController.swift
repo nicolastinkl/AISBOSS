@@ -265,7 +265,7 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func addAction(sender: AnyObject) {
         
         if tags?.tags.count >= 10 {
-            AIAlertView().showError("Couldn't more than 10", subTitle: "", closeButtonTitle: "Close", duration: 3)
+            AIAlertView().showError("AIScanViewController.couldnt".localized, subTitle: "", closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             return
         }
         

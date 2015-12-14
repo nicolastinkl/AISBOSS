@@ -1,23 +1,60 @@
-/* 
-  Localizable.strings
-  AIVeris
 
-  Created by admin on 12/14/15.
-  Copyright © 2015 ___ASIAINFO___. All rights reserved.
-*/
-
+//
 "AIApplication.share" = "Swift is awesome!  Check out this website about it!";
 
+//
 "AIAudioMessageView.error" = "Get Record Error.";
 
 "AIAudioMessageView.info" = "Info";
 
 "AIAudioMessageView.close" = "Close";
 
+//
 "AIBuyerDetailViewController.pregnancy" = "Pregnancy";
 
 "AIBuyerDetailViewController.from" = "From";
 
 "AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
 
+//
+"AIBuyerViewController.progress" = "Progress";
 
+//
+"AICustomAudioNotesView.release" = "Release to Send";
+
+"AICustomAudioNotesView.hold" = "Hold to Talk";
+
+//
+"AICustomerCollectionCellView.hello" = "hello";
+
+"AICustomerCollectionCellView.hello2" = "hello2";
+
+//
+"AIMusicTherapyView.service" = "Service content evaluation";
+"AIMusicTherapyView.moreReviews" = "%ld More Reviews >";
+"AIMusicTherapyView.reviews" = "%ld reviews";
+"AIMusicTherapyView.helpful" = "Helpful Reviews";
+
+
+//
+"AIOrderDescView.time" = "Time";
+"AIOrderDescView.newTime" = "New Time";
+"AIOrderDescView.delayed" = "Delayed";
+"AIOrderDescView.delivery" = "Delivery staff:Mike Liu";
+"AIOrderDescView.sate" = "SATE";
+"AIOrderDescView.gate" = "GATE";
+"AIOrderDescView.ongoing" = "Ongoing";
+
+//
+"AIScanViewController.couldnt" = "Couldn't more than 10";
+
+//
+"AISellerCell.amy" = "Amy Copper";
+"AISerllerCell.dollar" = "$188";
+"AISerllerCell.fitness" = "Fitness Plan Making";
+"AISerllerCell.fitnessPlan" = "Fitness Plan -";
+"AISerllerCell.14:00" = "14:00 Aug 2nd";
+"AISerllerCell.fifth" = "Fifth Avenue";
+
+//
+"AISellerViewController.2beConfirmed" = "To Be Confirmed";

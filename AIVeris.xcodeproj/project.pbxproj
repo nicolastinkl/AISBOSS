@@ -136,7 +136,11 @@
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
 		847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F69231C1EAF1D008A7804 /* Localizable.strings */; };
 		847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F69251C1EB337008A7804 /* AILocalizationManager.swift */; };
-		848080F01C1EBBE8007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848080EF1C1EBBE8007806E7 /* Localize.swift */; };
+		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
+		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
+		848081401C1EE748007806E7 /* UIImageView+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */; };
+		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
+		848081421C1EE748007806E7 /* UISegmentedControl+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */; };
 		849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */; };
 		849B4B211C0EDFE300BEC179 /* FLEXArgumentInputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A931C0EDFE300BEC179 /* FLEXArgumentInputDateView.m */; };
 		849B4B221C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A951C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m */; };
@@ -662,8 +666,12 @@
 		847F69221C1EAF1D008A7804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		847F69241C1EAF37008A7804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		847F69251C1EB337008A7804 /* AILocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocalizationManager.swift; sourceTree = "<group>"; };
-		848080EE1C1EBBE8007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
-		848080EF1C1EBBE8007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		848081381C1EE748007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
+		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
+		8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Localize.swift"; sourceTree = "<group>"; };
+		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
+		8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Localize.swift"; sourceTree = "<group>"; };
 		849B4A901C0EDFE300BEC179 /* FLEXArgumentInputColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputColorView.h; sourceTree = "<group>"; };
 		849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXArgumentInputColorView.m; sourceTree = "<group>"; };
 		849B4A921C0EDFE300BEC179 /* FLEXArgumentInputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputDateView.h; sourceTree = "<group>"; };
@@ -1548,11 +1556,15 @@
 			name = Flight;
 			sourceTree = "<group>";
 		};
-		848080ED1C1EBBE8007806E7 /* Localize_Swift */ = {
+		848081371C1EE748007806E7 /* Localize_Swift */ = {
 			isa = PBXGroup;
 			children = (
-				848080EE1C1EBBE8007806E7 /* Localize.h */,
-				848080EF1C1EBBE8007806E7 /* Localize.swift */,
+				848081381C1EE748007806E7 /* Localize.h */,
+				848081391C1EE748007806E7 /* Localize.swift */,
+				8480813A1C1EE748007806E7 /* UIButton+Localize.swift */,
+				8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */,
+				8480813C1C1EE748007806E7 /* UILabel+Localize.swift */,
+				8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */,
 			);
 			path = Localize_Swift;
 			sourceTree = "<group>";
@@ -2455,7 +2467,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				848080ED1C1EBBE8007806E7 /* Localize_Swift */,
+				848081371C1EE748007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
 				93A742C71BDF75FD001EF581 /* TDImageColors */,
 				93C33EFE1B9BEAFE007BF506 /* AIAssignUtils.swift */,
@@ -3021,6 +3033,7 @@
 				849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
+				848081421C1EE748007806E7 /* UISegmentedControl+Localize.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
@@ -3102,6 +3115,7 @@
 				93FA1E141B9C375A009965C8 /* Async.swift in Sources */,
 				849B4B261C0EDFE300BEC179 /* FLEXArgumentInputNumberView.m in Sources */,
 				93FA1DA01B9C2EA9009965C8 /* DSLCalendarMonthView.m in Sources */,
+				848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */,
 				842FC8691BDDC99900A0517C /* ExpandContentViewFactory.swift in Sources */,
 				849B4B281C0EDFE300BEC179 /* FLEXArgumentInputStructView.m in Sources */,
 				93B25A461B9D799E00CD1FEB /* UP_NSString+Format.mm in Sources */,
@@ -3128,7 +3142,7 @@
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
-				848080F01C1EBBE8007806E7 /* Localize.swift in Sources */,
+				8480813E1C1EE748007806E7 /* Localize.swift in Sources */,
 				849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */,
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
@@ -3159,6 +3173,7 @@
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
 				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
+				848081401C1EE748007806E7 /* UIImageView+Localize.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
 				84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */,
@@ -3191,6 +3206,7 @@
 				93FA1E5A1B9C3E12009965C8 /* AISwipeViewUtil.swift in Sources */,
 				849B4B471C0EDFE300BEC179 /* FLEXNetworkRecorder.m in Sources */,
 				849B4B5B1C0EDFE300BEC179 /* FLEXKeyboardHelpViewController.m in Sources */,
+				8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */,
 				849B4B351C0EDFE300BEC179 /* FLEXManager.m in Sources */,
 				93FA1E451B9C3E12009965C8 /* AICalendarViewController.swift in Sources */,
 				93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */,

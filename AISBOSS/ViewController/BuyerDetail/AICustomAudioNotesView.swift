@@ -129,7 +129,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         
         startRecording()
         delegateAudio?.willStartRecording()
-        audioButton.setTitle("Release to Send", forState: UIControlState.Normal)
+        audioButton.setTitle(AICustomAudioNotesView.kRELEASE, forState: UIControlState.Normal)
     }
     
     @IBAction func changeAudioStatusAction(sender: AnyObject) {
@@ -212,7 +212,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
+            audioButton.setTitle(AICustomAudioNotesView.kHOLD, forState: UIControlState.Normal)
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
         }else{
@@ -227,5 +227,9 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         }
         
     }
-    
+}
+
+extension AICustomAudioNotesView {
+    @nonobjc static let kRELEASE = "AICustomAudioNotesView.release".localized
+    @nonobjc static let kHOLD = "AICustomAudioNotesView.hold".localized
 }

@@ -204,9 +204,9 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text = dataSource?.proposal_desc
-        self.OrderFromLabel.text = AILocalizationManager.AIBuyerDetailViewController.from.localized
+        self.OrderFromLabel.text = AIBuyerDetailViewController.kFROM
         
-        if NSString(string: name).containsString(AILocalizationManager.AIBuyerDetailViewController.pregnancy.localized) {
+        if NSString(string: name).containsString(AIBuyerDetailViewController.kPREGNANCY) {
             // 处理字体
             let price = dataSource?.proposal_price
             let richText = NSMutableAttributedString(string:(price)!)
@@ -412,7 +412,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let name = model.service_desc
             
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
-            let text = String(NSString(format: AILocalizationManager.AIBuyerDetailViewController.alert, name))
+            let text = String(format: AIBuyerDetailViewController.kALERT, name)
             JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
             self.restoreService(model)
             })
@@ -651,4 +651,10 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
         }
     }
     
+}
+
+extension AIBuyerDetailViewController {
+    @nonobjc static let kALERT = "AIBuyerDetailViewController.alert".localized
+    @nonobjc static let kFROM = "AIBuyerDetailViewController.from".localized
+    @nonobjc static let kPREGNANCY = "AIBuyerDetailViewController.pregnancy".localized
 }

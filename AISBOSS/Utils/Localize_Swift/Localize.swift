@@ -40,12 +40,34 @@ public func Localized(string: String, arguments args: CVarArgType...) -> String 
     return String(format: Localized(string), arguments: args)
 }
 
+public extension NSString {
+    /**
+     Swift 2 friendly localization syntax, replaces NSLocalizedString
+     - Returns: The localized string.
+     */
+    func localized() -> NSString {
+        if let path = NSBundle.mainBundle().pathForResource(Localize.currentLanguage(), ofType: "lproj"), bundle = NSBundle(path: path) {
+            return bundle.localizedStringForKey(self as String, value: nil, table: nil)
+        }
+        return self
+    }
+    
+    /**
+     Swift 2 friendly localization syntax with format arguments, replaces String(format:NSLocalizedString)
+     - Returns: The formatted localized string with arguments.
+     */
+    func localizedWithFormat(arguments args: CVarArgType) -> NSString {
+        return NSString(format: localized(), args)
+//        NSString(format: <#T##NSString#>, CVarArgType)
+    }
+}
+
 public extension String {
     /**
      Swift 2 friendly localization syntax, replaces NSLocalizedString
      - Returns: The localized string.
      */
-    func localized() -> String {
+    var localized: String {
         if let path = NSBundle.mainBundle().pathForResource(Localize.currentLanguage(), ofType: "lproj"), bundle = NSBundle(path: path) {
             return bundle.localizedStringForKey(self, value: nil, table: nil)
         }
@@ -57,7 +79,7 @@ public extension String {
      - Returns: The formatted localized string with arguments.
      */
     func localizedWithFormat(arguments args: CVarArgType...) -> String {
-        return String(format: localized(), arguments: args)
+        return String(format: localized, arguments: args)
     }
 }
 

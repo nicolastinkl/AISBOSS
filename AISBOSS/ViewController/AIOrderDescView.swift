@@ -19,8 +19,8 @@ class AIOrderDescView: UIView {
     
     var descLabel: UILabel!
     
-    let TIME_TEXT = "Time"
-    let NEW_TIME_TEXT = "New Time"
+    let TIME_TEXT = "AIOrderDescView.time".localized
+    let NEW_TIME_TEXT = "AIOrderDescView.newTime".localized
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
     let VIEW_PADDING : CGFloat = 1
@@ -109,7 +109,7 @@ class AIOrderDescView: UIView {
         }
         if let valueForOngoing = paramDictionary?.valueForKey("Ongoing") as? String{
             if valueForOngoing != ""{
-                timeValueText = "Ongoing"
+                timeValueText = "AIOrderDescView.ongoing".localized
                 timeLabelText = ""
                 timeValueFont = DESC_TEXT_FONT
                 timeSize = CGRectMake(0, 0, 0, 0)
@@ -126,10 +126,10 @@ class AIOrderDescView: UIView {
         var descLabelFrame : CGRect!
         
         if isDelayed{
-            let alertTextSize = caculateContentSize("Delayed", font: ALERT_LABEL_FONT)
+            let alertTextSize = caculateContentSize("AIOrderDescView.delayed".localized, font: ALERT_LABEL_FONT)
             let alertLabelFrame = CGRectMake(timeLabelFrame.origin.x - alertTextSize.width - 25, 0, alertTextSize.width, TEXT_HEIGHT)
             let alertLabel = UILabel(frame: alertLabelFrame)
-            alertLabel.text = "Delayed"
+            alertLabel.text = "AIOrderDescView.delayed".localized
             alertLabel.font = ALERT_LABEL_FONT
             alertLabel.textColor = UIColor(hex: "#dbb613")
             alertLabel.alpha = 0.6
@@ -143,7 +143,7 @@ class AIOrderDescView: UIView {
         
         
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = descText ?? "Delivery staff:Mike Liu"
+        descLabel.text = descText ?? "AIOrderDescView.delivery".localized
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         let timeLabel = UILabel(frame: timeLabelFrame)
@@ -186,7 +186,7 @@ class AIOrderDescView: UIView {
         let descLabelFrame = CGRectMake(0, 0, gateLabelFrame.origin.x - TEXT_PADDING, 21)
         //build sub view
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = descText ?? "Delivery staff:Mike Liu"
+        descLabel.text = descText ?? "AIOrderDescView.delivery".localized
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         
@@ -198,7 +198,7 @@ class AIOrderDescView: UIView {
         let sateLabel = UILabel(frame: sateLabelFrame)
         sateLabel.textColor = PurchasedViewColor.TITLE
         sateLabel.font = LABEL_TITLE_FONT
-        sateLabel.text = "SATE"
+        sateLabel.text = "AIOrderDescView.sate".localized
         sateLabel.alpha = 0.6
         
         let gateValueLabel = UILabel(frame: gateValueLabelFrame)
@@ -209,7 +209,7 @@ class AIOrderDescView: UIView {
         let gateLabel = UILabel(frame: gateLabelFrame)
         gateLabel.textColor = PurchasedViewColor.TITLE
         gateLabel.font = LABEL_TITLE_FONT
-        gateLabel.text = "GATE"
+        gateLabel.text = "AIOrderDescView.gate".localized
         gateLabel.alpha = 0.6
 
         self.addSubview(descLabel)
