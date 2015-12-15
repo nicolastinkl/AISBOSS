@@ -568,7 +568,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
             }
         }
         else {
-            AIAlertView().showInfo("Record is too short.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
+            AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
         }
     }
     

@@ -54,6 +54,8 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioInputView", owner: self, options: nil).first  as! AIAudioInputView
         selfView.timeText.font = AITools.myriadSemiCondensedWithSize(58/PurchasedViewDimention.CONVERT_FACTOR)
         selfView.timeText.textColor = UIColor(hex:"6a6a6a")
+        selfView.setNeedsUpdateConstraints()
+        selfView.layoutIfNeeded()
         return selfView
     }
     
@@ -215,7 +217,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
             timer?.invalidate()
             timer = nil
 
-            timeText.text = "Hold to Talk"
+            timeText.text = "AICustomAudioNotesView.hold".localized
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
         }

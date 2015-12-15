@@ -8,6 +8,10 @@
 "MJRefreshHeader.Latest" = "Latest: %@";
 
 //
+"JSSAlertView.yes" = "Yes";
+"JSSAlertView.no" = "No";
+
+//
 "AIAudioMessageView.error" = "Get Record Error.";
 "AIAudioMessageView.info" = "Info";
 "AIAudioMessageView.close" = "Close";
@@ -34,6 +38,8 @@
 "AIMusicTherapyView.reviews" = "%ld reviews";
 "AIMusicTherapyView.helpful" = "Helpful Reviews";
 
+//
+"AIServiceContentViewController.record" = "Record is too short.";
 
 //
 "AIOrderDescView.time" = "Time";
@@ -84,7 +90,8 @@
 "TransportService.pudong" = "Pudong Airport T2";
 "TransportService.yanan" = "Yanan Jingan District road 1218";
 
-
+//
+"UITransViewController.change" = "Change Failed";
 
 //nibs
 /*

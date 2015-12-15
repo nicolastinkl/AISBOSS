@@ -2,10 +2,14 @@
 "MJRefreshFooter.PullToRefresh" = "刷新";
 "MJRefreshFooter.ReleaseToRefresh" = "刷新";
 "MJRefreshFooter.Refreshing" = "加载中...";
-"MJRefreshHeader.PullToRefresh" = "刷新";
-"MJRefreshHeader.ReleaseToRefresh" = "刷新";
+"MJRefreshHeader.PullToRefresh" = "下拉刷新";
+"MJRefreshHeader.ReleaseToRefresh" = "松开刷新";
 "MJRefreshHeader.Refreshing" = "加载中...";
 "MJRefreshHeader.Latest" = "最后更新时间: %@";
+
+//
+"JSSAlertView.yes" = "确定";
+"JSSAlertView.no" = "取消";
 
 //
 "AIAudioMessageView.error" = "录音发生错误";
@@ -34,6 +38,8 @@
 "AIMusicTherapyView.reviews" = "%ld 条评论";
 "AIMusicTherapyView.helpful" = "有用的评论";
 
+//
+"AIServiceContentViewController.record" = "说话时间太短";
 
 //
 "AIOrderDescView.time" = "时间";
@@ -84,7 +90,8 @@
 "TransportService.pudong" = "浦东机场 T2";
 "TransportService.yanan" = "静安区延安中路1228号";
 
-
+//
+"UITransViewController.change" = "变更失败";
 
 //nibs
 /*
@@ -137,9 +144,9 @@
  * ./AISBOSS/Views/AIErrorRetryView.xib
  */
 
-"AIErrorRetryView.click" = "click to try";
+"AIErrorRetryView.click" = "点击重试";
 
-"AIErrorRetryView.loading" = "Loading Failed";
+"AIErrorRetryView.loading" = "加载失败";
 
 
 
@@ -155,7 +162,7 @@
 
 "AIDetailTopMenuView.share" = "分享";
 
-"AIDetailTopMenuView.customization" = "自定义";
+"AIDetailTopMenuView.customization" = "客户";
 
 
 
@@ -167,7 +174,7 @@
  * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
  */
 
-"AICustomView.notes" = "Customization Notes";
+"AICustomView.notes" = "客户留言";
 
 
 
