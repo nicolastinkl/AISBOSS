@@ -471,13 +471,18 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     }
 }
 
-
+- (void)cleanMovement
+{
+    _currentMovement = 0;
+    _currentDirection = AIMovementNone;
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
     if (_currentMovement > kMaxMoveSize) {
         [self hideWithDirection:_currentDirection];
+        [self cleanMovement];
     }
     else
     {
