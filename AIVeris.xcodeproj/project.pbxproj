@@ -135,6 +135,11 @@
 		8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; };
 		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
+		847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F69231C1EAF1D008A7804 /* Localizable.strings */; };
+		847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F69251C1EB337008A7804 /* AILocalizationManager.swift */; };
+		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
+		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
+		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
 		849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */; };
 		849B4B211C0EDFE300BEC179 /* FLEXArgumentInputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A931C0EDFE300BEC179 /* FLEXArgumentInputDateView.m */; };
 		849B4B221C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A951C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m */; };
@@ -220,6 +225,7 @@
 		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; };
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
+		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -507,6 +513,7 @@
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeLoginView.h; path = Login/AIFakeLoginView.h; sourceTree = "<group>"; };
 		816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeLoginView.m; path = Login/AIFakeLoginView.m; sourceTree = "<group>"; };
+		816E3B891C1FBD6D00A061DD /* AINotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AINotifications.h; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
 		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
@@ -661,6 +668,13 @@
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
+		847F69221C1EAF1D008A7804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		847F69241C1EAF37008A7804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		847F69251C1EB337008A7804 /* AILocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocalizationManager.swift; sourceTree = "<group>"; };
+		848081381C1EE748007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
+		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
+		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
 		849B4A901C0EDFE300BEC179 /* FLEXArgumentInputColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputColorView.h; sourceTree = "<group>"; };
 		849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXArgumentInputColorView.m; sourceTree = "<group>"; };
 		849B4A921C0EDFE300BEC179 /* FLEXArgumentInputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputDateView.h; sourceTree = "<group>"; };
@@ -814,6 +828,7 @@
 		84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceContainerView.swift; sourceTree = "<group>"; };
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
+		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1554,6 +1569,18 @@
 				8433D7551BAFB3C800146714 /* AirTicketGroupView.swift */,
 			);
 			name = Flight;
+			sourceTree = "<group>";
+		};
+		848081371C1EE748007806E7 /* Localize_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				848081381C1EE748007806E7 /* Localize.h */,
+				848081391C1EE748007806E7 /* Localize.swift */,
+				8480813A1C1EE748007806E7 /* UIButton+Localize.swift */,
+				8480813C1C1EE748007806E7 /* UILabel+Localize.swift */,
+				84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */,
+			);
+			path = Localize_Swift;
 			sourceTree = "<group>";
 		};
 		849B4A8D1C0EDFE300BEC179 /* Flex */ = {
@@ -2455,6 +2482,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				848081371C1EE748007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
 				93A742C71BDF75FD001EF581 /* TDImageColors */,
 				93C33EFE1B9BEAFE007BF506 /* AIAssignUtils.swift */,
@@ -2484,6 +2512,8 @@
 				93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */,
 				844009171C166F6B0031E2F7 /* JSSAlertView.swift */,
 				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
+				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
+				816E3B891C1FBD6D00A061DD /* AINotifications.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2528,6 +2558,7 @@
 				93A5A59F1B9BD5E1001DE36D /* Views */,
 				93D5A3531B709C1C00DDB158 /* Assets.xcassets */,
 				93D5A3581B709C1C00DDB158 /* Info.plist */,
+				847F69231C1EAF1D008A7804 /* Localizable.strings */,
 			);
 			name = AIVeris;
 			path = AISBOSS;
@@ -2760,8 +2791,8 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 93D5A3401B709C1C00DDB158;
 			productRefGroup = 93D5A34A1B709C1C00DDB158 /* Products */;
@@ -2804,6 +2835,7 @@
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
+				847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */,
 				937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
 				93FA1DAB1B9C2EAA009965C8 /* picker_selection.png in Resources */,
@@ -2976,6 +3008,7 @@
 				849B4B271C0EDFE300BEC179 /* FLEXArgumentInputStringView.m in Sources */,
 				93FA1E651B9C3E12009965C8 /* UICellMultiStyle.swift in Sources */,
 				849B4B461C0EDFE300BEC179 /* FLEXNetworkHistoryTableViewController.m in Sources */,
+				847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
@@ -3101,6 +3134,7 @@
 				93FA1E141B9C375A009965C8 /* Async.swift in Sources */,
 				849B4B261C0EDFE300BEC179 /* FLEXArgumentInputNumberView.m in Sources */,
 				93FA1DA01B9C2EA9009965C8 /* DSLCalendarMonthView.m in Sources */,
+				848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */,
 				842FC8691BDDC99900A0517C /* ExpandContentViewFactory.swift in Sources */,
 				849B4B281C0EDFE300BEC179 /* FLEXArgumentInputStructView.m in Sources */,
 				93B25A461B9D799E00CD1FEB /* UP_NSString+Format.mm in Sources */,
@@ -3127,6 +3161,7 @@
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
+				8480813E1C1EE748007806E7 /* Localize.swift in Sources */,
 				849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */,
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
@@ -3190,12 +3225,14 @@
 				93FA1E5A1B9C3E12009965C8 /* AISwipeViewUtil.swift in Sources */,
 				849B4B471C0EDFE300BEC179 /* FLEXNetworkRecorder.m in Sources */,
 				849B4B5B1C0EDFE300BEC179 /* FLEXKeyboardHelpViewController.m in Sources */,
+				8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */,
 				849B4B351C0EDFE300BEC179 /* FLEXManager.m in Sources */,
 				93FA1E451B9C3E12009965C8 /* AICalendarViewController.swift in Sources */,
 				93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */,
 				81C092841BAFAC0D003FFF35 /* SDWebImageCompat.m in Sources */,
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
+				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,
@@ -3307,6 +3344,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		847F69231C1EAF1D008A7804 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847F69221C1EAF1D008A7804 /* Base */,
+				847F69241C1EAF37008A7804 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

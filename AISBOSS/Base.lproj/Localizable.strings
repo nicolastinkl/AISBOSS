@@ -1,0 +1,187 @@
+//
+"MJRefreshFooter.PullToRefresh" = "Reload";
+"MJRefreshFooter.ReleaseToRefresh" = "Reload";
+"MJRefreshFooter.Refreshing" = "Loading...";
+"MJRefreshHeader.PullToRefresh" = "Reload";
+"MJRefreshHeader.ReleaseToRefresh" = "Reload";
+"MJRefreshHeader.Refreshing" = "Loading...";
+"MJRefreshHeader.Latest" = "Latest: %@";
+
+//
+"JSSAlertView.yes" = "Yes";
+"JSSAlertView.no" = "No";
+
+//
+"AIAudioMessageView.error" = "Get Record Error.";
+"AIAudioMessageView.info" = "Info";
+"AIAudioMessageView.close" = "Close";
+
+//
+"AIBuyerDetailViewController.pregnancy" = "Pregnancy";
+"AIBuyerDetailViewController.from" = "From";
+"AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
+
+//
+"AIBuyerViewController.progress" = "Progress";
+
+//
+"AICustomAudioNotesView.release" = "Release to Send";
+"AICustomAudioNotesView.hold" = "Hold to Talk";
+
+//
+"AICustomerCollectionCellView.hello" = "hello";
+"AICustomerCollectionCellView.hello2" = "hello2";
+
+//
+"AIMusicTherapyView.service" = "Service content evaluation";
+"AIMusicTherapyView.moreReviews" = "%ld More Reviews >";
+"AIMusicTherapyView.reviews" = "%ld reviews";
+"AIMusicTherapyView.helpful" = "Helpful Reviews";
+
+//
+"AIServiceContentViewController.record" = "Record is too short.";
+
+//
+"AIOrderDescView.time" = "Time";
+"AIOrderDescView.newTime" = "New Time";
+"AIOrderDescView.delayed" = "Delayed";
+"AIOrderDescView.delivery" = "Delivery staff:Mike Liu";
+"AIOrderDescView.seat" = "SEAT";
+"AIOrderDescView.gate" = "GATE";
+"AIOrderDescView.ongoing" = "Ongoing";
+
+//
+"AIScanViewController.couldnt" = "Couldn't more than 10";
+
+//
+"AISellerCell.amy" = "Amy Copper";
+"AISerllerCell.dollar" = "$188";
+"AISerllerCell.fitness" = "Fitness Plan Making";
+"AISerllerCell.fitnessPlan" = "Fitness Plan -";
+"AISerllerCell.14:00" = "14:00 Aug 2nd";
+"AISerllerCell.fifth" = "Fifth Avenue";
+
+//
+"AISellerViewController.2beConfirmed" = "To Be Confirmed";
+
+////
+//"AIServerDetailViewController.service" = "Services to Your Liking";
+//"AIServerDetailViewController.dollarFormat" = "$%@";
+//"AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
+//"AIServerDetailViewController.day" = "DAY";
+
+//
+"ProposalExpandedView.onSchedule" = "On Schedule";
+//"ProposalExpandedView.shop" = "Shop-on-behalf Service";
+
+//
+//"PurchasedServiceView.home" = "Home Delivery";
+"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
+
+//
+"ServiceContainerView.dollarZero" = "$0";
+
+//
+"SwitchServiceView.on" = "ON";
+"SwitchServiceView.off" = "OFF";
+
+//
+"TransportService.oct" = "Oct.10th 10:30";
+"TransportService.pudong" = "Pudong Airport T2";
+"TransportService.yanan" = "Yanan Jingan District road 1218";
+
+//
+"UITransViewController.change" = "Change Failed";
+
+//nibs
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/SimpleServiceViewContainer.xib
+ */
+
+//"16.73 saved" = "16.73 saved";
+
+"SimpleServiceViewContainer.review" = "Review";
+
+//"€101.83" = "€101.83";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIFoldedCellView.xib
+ */
+
+"AIFoldedCellView.weekend" = "Weekend Road Trip";
+
+"AIFoldedCellView.status" = " On Schedule  ";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomAudioNotesView.xib
+ */
+
+"AICustomAudioNotesView.leaveAText" = "Leave a text or voice message to the provider";
+
+"AICustomAudioNotesView.hold" = "Hold to Talk";
+
+"AICustomAudioNotesView.note" = "Note";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/AIErrorRetryView.xib
+ */
+
+"AIErrorRetryView.click" = "click to try";
+
+"AIErrorRetryView.loading" = "Loading Failed";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AIDetailTopMenuView.xib
+ */
+
+"AIDetailTopMenuView.like" = "Like";
+
+"AIDetailTopMenuView.share" = "Share";
+
+"AIDetailTopMenuView.customization" = "Customization";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
+ */
+
+"AICustomView.notes" = "Customization Notes";
+
+
+
+
+
+
+
+
+
+

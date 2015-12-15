@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="515" height="346"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hcx-Mj-cUA" id="tfw-64-UIq" userLabel="CellContainer">
-                <rect key="frame" x="0.0" y="0.0" width="515" height="345.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="515" height="345"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnj-id-tyt" userLabel="Top">
@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" constant="55" id="YGp-fR-9on"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="63"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Realize yourself" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQg-J7-4qR" userLabel="Title">
@@ -125,7 +125,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Yna-1j-owf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OPS-Lj-N7q" userLabel="ActionBar">
@@ -231,7 +231,7 @@
                 <outlet property="middleView" destination="pXD-dc-Ohs" id="bnc-Nj-a8r"/>
                 <outlet property="topView" destination="qnj-id-tyt" id="LC0-G0-Aez"/>
             </connections>
-            <point key="canvasLocation" x="531.5" y="351"/>
+            <point key="canvasLocation" x="277.5" y="264"/>
         </tableViewCell>
     </objects>
     <resources>

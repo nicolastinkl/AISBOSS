@@ -66,6 +66,7 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="ailTextFieldPlaceholder" value="AICustomAudioNotesView.leaveAText"/>
                             </userDefinedRuntimeAttributes>
                             <variation key="default">
                                 <mask key="constraints">
@@ -106,8 +107,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
-                            <exclude reference="BQn-QW-beM"/>
                             <exclude reference="qNG-eV-ACD"/>
+                            <exclude reference="BQn-QW-beM"/>
                         </mask>
                     </variation>
                 </view>
@@ -145,15 +146,17 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold to Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-Gt-Svh">
-                            <rect key="frame" x="181" y="34" width="238" height="21"/>
+                            <rect key="frame" x="181" y="31" width="238" height="24"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="21" id="Kq3-J7-nTy"/>
                                 <constraint firstAttribute="width" constant="238" id="hiO-0g-C96"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="ailLabel" value="AICustomAudioNotesView.hold"/>
+                            </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
                     <animations/>

@@ -327,7 +327,7 @@ class AIScanViewController: UIViewController {
         
         print(self.curveView?.bubbleCompareModels.allKeys.count)
         if self.curveView?.bubbleCompareModels.allKeys.count >= 10 {
-            AIAlertView().showError("Couldn't more than 10", subTitle: "", closeButtonTitle: "Close", duration: 3)
+            AIAlertView().showError("AIScanViewController.couldnt".localized, subTitle: "", closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             return
         }
         spring(0.7, animations: {

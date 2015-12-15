@@ -1,0 +1,400 @@
+/*
+ * ./AISBOSS/Views/AirTicketView.xib
+ */
+
+"QR988" = "QR988";
+
+"Fight" = "Fight";
+
+"$1,350 / adult" = "$1,350 / adult";
+
+"PEK" = "PEK";
+
+"18/03,01:50" = "18/03,01:50";
+
+"Qutar" = "Qutar";
+
+"18/03,21:50" = "18/03,21:50";
+
+"LHR" = "LHR";
+
+"Return" = "Return";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/UICustomsTags.xib
+ */
+
+"  anxious" = "  anxious";
+
+"32" = "32";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/DSLCalendarView/DSLCalendarMonthSelectorView.xib
+ */
+
+"Mon" = "Mon";
+
+"Tues" = "Tues";
+
+"Wed" = "Wed";
+
+"Thurs" = "Thurs";
+
+"Fri" = "Fri";
+
+"Sat" = "Sat";
+
+"Sun" = "Sun";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/ServiceSettingView.xib
+ */
+
+"It will be great if the paramedic freelancer could help to carry hand bags and arrange transportation" = "It will be great if the paramedic freelancer could help to carry hand bags and arrange transportation";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/BottomServiceContainer.xib
+ */
+
+"Label" = "Label";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/Buyer/UIPopView.xib
+ */
+
+"Medium Service Event" = "Medium Service Event";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AITopInfoView.xib
+ */
+
+"9" = "9";
+
+"音乐" = "音乐";
+
+"Receve yuserself" = "Receve yuserself";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AITextMessageView.xib
+ */
+
+"Have not get the check up test result." = "Have not get the check up test result.";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/SimpleServiceViewContainer.xib
+ */
+
+"16.73 saved" = "16.73 saved";
+
+"Review" = "Review";
+
+"€101.83" = "€101.83";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIFoldedCellView.xib
+ */
+
+"Weekend Road Trip" = "Weekend Road Trip";
+
+" On Schedule  " = " On Schedule  ";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomAudioNotesView.xib
+ */
+
+"Leave a text or voice message to the provider" = "Leave a text or voice message to the provider";
+
+"Hold to Talk" = "Hold to Talk";
+
+"Note" = "Note";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIOrderCellEShopSubView.xib
+ */
+
+"  Shipped  " = "  Shipped  ";
+
+"AIR JORDAN IV US 6" = "AIR JORDAN IV US 6";
+
+"$298" = "$298";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/AIErrorRetryView.xib
+ */
+
+"click to try" = "click to try";
+
+"Loading Failed" = "Loading Failed";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AIAudioMessageView.xib
+ */
+
+"17''" = "17''";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AIDetailTopMenuView.xib
+ */
+
+"Like" = "Like";
+
+"Share" = "Share";
+
+"Customization" = "Customization";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIContentView.xib
+ */
+
+"注意: 自从自定义 URL 的引入，本文始终是我博客中阅读量最大的文章。虽然大多数都相同，但仍然有一些细微差别的变化。本文是原帖的" = "注意: 自从自定义 URL 的引入，本文始终是我博客中阅读量最大的文章。虽然大多数都相同，但仍然有一些细微差别的变化。本文是原帖的";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/ServiceDetail/UICoverFlowView.xib
+ */
+
+"桃花所在的位置为出生年的地支或出生月份的地支上的人，" = "桃花所在的位置为出生年的地支或出生月份的地支上的人，";
+
+"桃花所在的位置为出生年的地支或出生月份的地支上的人，桃花所在的位置为出桃花所在的位置为出" = "桃花所在的位置为出生年的地支或出生月份的地支上的人，桃花所在的位置为出桃花所在的位置为出";
+
+"Keye Kending" = "Keye Kending";
+
+"$1231/123" = "$1231/123";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/CardCellView.xib
+ */
+
+"$220" = "$220";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AITIMELINESDTITLEView.xib
+ */
+
+"23:30" = "23:30";
+
+"NOW" = "NOW";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AICustomerSwipeView.xib
+ */
+
+"30%" = "30%";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AICustomerCollectionCellView.xib
+ */
+
+"From" = "From";
+
+"209" = "209";
+
+"My Yoga Club" = "My Yoga Club";
+
+"Order" = "Order";
+
+"$600-1,020" = "$600-1,020";
+
+"5" = "5";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
+ */
+
+"Customization Notes" = "Customization Notes";
+
+"Please Hold on the big tree,Please Hold on the big tree,Please Hold on the big tree" = "Please Hold on the big tree,Please Hold on the big tree,Please Hold on the big tree";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AITitleAndIconTextView.xib
+ */
+
+"Individual Prenatal Music Sessions" = "Individual Prenatal Music Sessions";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/ContentsCellView.xib
+ */
+
+"Description" = "Description";
+
+"Realize yourself" = "Realize yourself";
+
+"Normal" = "Normal";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/SwitchServiceView.xib
+ */
+
+"Weekly Bus Pass" = "Weekly Bus Pass";
+
+"$ 33" = "$ 33";
+
+"Reasonable Price to Travel Across Cities For a Week" = "Reasonable Price to Travel Across Cities For a Week";
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * SHARED STRINGS
+ */
+
+"Button" = "Button";
+
+"1" = "1";
+
+"1901A, Wanda Plaza, Haidian District" = "1901A, Wanda Plaza, Haidian District";
+
+"Label" = "Label";
+

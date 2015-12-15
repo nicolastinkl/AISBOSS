@@ -100,8 +100,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 - (void)versionTap
 {
-    NSString *version = @"V0.20151116.005";
-    NSString *content = @"需求内容:\n孕期助理购物车，及其子服务音乐疗养、医院全程陪护的功能需求开发\n更新内容:\nUI优化,完善删除和恢复功能";
+    NSString *version = @"V0.20151116.006";
+    NSString *content = @"需求内容:\n孕期助理购物车，及其子服务音乐疗养、医院全程陪护的功能需求开发\n更新内容:\n根据规范优化UI\n双击右下角弹出角色选择界面";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:version message:content delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
@@ -122,6 +122,15 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 - (void)loginTap
 {
     AIFakeLoginView *loginView = [[AIFakeLoginView alloc] initWithFrame:self.bounds];
+    loginView.transform = CGAffineTransformMakeScale(0.25, 0.25);
+    loginView.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        loginView.transform = CGAffineTransformMakeScale(1, 1);
+    } completion:^(BOOL finished) {
+        loginView.userInteractionEnabled = YES;
+    }];
+    
+    
     [self addSubview:loginView];
 }
 

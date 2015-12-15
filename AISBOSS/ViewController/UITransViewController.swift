@@ -289,7 +289,7 @@ class UITransViewController: UIViewController {
         } else if result.err != nil {
             view.showErrorView()
 
-            AIAlertView().showError("Loading Failed", subTitle: result.err!.message, closeButtonTitle: "Close", duration: 3)
+            AIAlertView().showError("AIErrorRetryView.loading".localized, subTitle: result.err!.message, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
         }
     }
     
@@ -314,7 +314,7 @@ class UITransViewController: UIViewController {
             
         } else if result.err != nil {
             view.showErrorView()
-            AIAlertView().showError("Loading Failed", subTitle: result.err!.message, closeButtonTitle: "Close", duration: 3)
+            AIAlertView().showError("AIErrorRetryView.loading".localized, subTitle: result.err!.message, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
         }
     }
     
@@ -1166,7 +1166,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         } else {
             if err != nil {
-                AIAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "Close", duration: 3)
+                AIAlertView().showInfo(err!.message, subTitle: "" , closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             }
         }
     }
@@ -1191,7 +1191,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             //tableView.reloadData()
         } else {
             if err != nil {
-                AIAlertView().showError("Change Failed", subTitle: err!.message, closeButtonTitle: "Close", duration: 3)
+                AIAlertView().showError("UITransViewController.change".localized, subTitle: err!.message, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             }
         }
     }

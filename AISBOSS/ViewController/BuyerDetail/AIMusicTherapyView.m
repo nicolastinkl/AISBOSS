@@ -15,6 +15,7 @@
 #import "AITools.h"
 #import "AIViews.h"
 #import "UP_NSString+Size.h"
+#import "Veris-Swift.h"
 
 @interface AIMusicTherapyView ()
 {
@@ -24,12 +25,9 @@
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 
-
 @end
 
-
 @implementation AIMusicTherapyView
-
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
 {
@@ -141,13 +139,13 @@
     y += [AITools displaySizeFrom1080DesignSize:37];
     CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGRect evaluationRect = CGRectMake(_sideMargin, y, width, fontSize);
-    UPLabel *evaluationLabel = [AIViews normalLabelWithFrame:evaluationRect text:@"Service content evaluation" fontSize:fontSize color:[UIColor whiteColor]];
+    UPLabel *evaluationLabel = [AIViews normalLabelWithFrame:evaluationRect text:[@"AIMusicTherapyView.service" localized] fontSize:fontSize color:[UIColor whiteColor]];
     evaluationLabel.font = [AITools myriadSemiCondensedWithSize:fontSize];
     [self addSubview:evaluationLabel];
     
     //
     CGFloat moreFontSize = [AITools displaySizeFrom1080DesignSize:31];
-    NSString *moreString = [NSString stringWithFormat:@"%ld More Reviews >", _detailModel.service_rating.reviews - 2];
+    NSString *moreString = [NSString stringWithFormat:[@"AIMusicTherapyView.moreReviews" localized], _detailModel.service_rating.reviews - 2];
     UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:moreString fontSize:moreFontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
     moreLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:moreLabel];
@@ -161,7 +159,7 @@
     [self addSubview:starRate];
     
     //
-    NSString *reviewStr = [NSString stringWithFormat:@"%ld reviews", _detailModel.service_rating.reviews];
+    NSString *reviewStr = [NSString stringWithFormat:[@"AIMusicTherapyView.reviews" localized], _detailModel.service_rating.reviews];
     CGFloat reFontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGFloat reviewX = CGRectGetMaxX(starRate.frame) + [AITools displaySizeFrom1080DesignSize:40];
     CGSize reviewSize = [reviewStr sizeWithFont:[AITools myriadSemiCondensedWithSize:reFontSize] forWidth:width];
@@ -172,7 +170,7 @@
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:reviewStr];
     
-    NSRange range = NSMakeRange(4, 7);
+    NSRange range = NSMakeRange(4, reviewStr.length - 4);
     
     [attr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:fontSize] range:range];
     reviewLabel.attributedText = attr;
@@ -220,7 +218,7 @@
     
     //
     
-    NSString *ctitle = @"Helpful Reviews";
+    NSString *ctitle = [@"AIMusicTherapyView.helpful" localized];
     UIFont *cfont = [AITools myriadSemiCondensedWithSize:fontSize];
     CGSize csize = [ctitle sizeWithFont:cfont forWidth:width];
     

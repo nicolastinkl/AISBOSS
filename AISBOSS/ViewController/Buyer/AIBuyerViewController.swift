@@ -9,7 +9,7 @@
 import UIKit
 import AISpring
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,AIBuyerDetailDelegate{
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AIBuyerDetailDelegate{
 
     // MARK: - Properties
     var dataSource  = [ProposalOrderModelWrap]()
@@ -37,11 +37,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     let topBarHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(130)
     
     // MARK: - Variable
-    var bubbleView : UIView!
+    var bubbleViewContainer : UIView!
     
     var tableView : UITableView!
     
     var topBar : UIView!
+    
+    
+    private let BUBBLE_VIEW_MARGIN = AITools.displaySizeFrom1080DesignSize(40)
+    private let BUBBLE_VIEW_HEIGHT = AITools.displaySizeFrom1080DesignSize(1538)
     
     var lastSelectedIndexPath : NSIndexPath?
     
@@ -60,29 +64,28 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Add Pull To Referesh..
         self.tableView.addHeaderWithCallback { [weak self]() -> Void in
-            if let strongSelf = self {
-                // Init Data
-                /** 处理数据请求 */
-                strongSelf.makeData()
+            if self != nil {
+                self!.loadData()
             }
         }
         
-        self.tableView.headerBeginRefreshing()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "NSNotiryAricToNomalStatus", name: AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        loadData()
+    }
+    
+    private func loadData() {
         if didShow {
             return
         }
         
+        self.tableView.hideErrorView()
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         let listData : ProposalOrderListModel? = appDelegate.buyerListData
-        
         let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
         
         if (listData != nil && proposalData != nil) {
@@ -90,44 +93,54 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.parseListData(listData)
                 self.parseProposalData(proposalData)
             })
+            
             didShow = true
-        } 
+        } else {
+            let bdk = BDKProposalService()
+            // 列表数据
+            bdk.getProposalList({ [weak self](responseData) -> Void in
+                
+                if let weakSelf = self {
+                    weakSelf.parseListData(responseData)
+                    appDelegate.buyerListData = responseData
+                }
+                
+                }) {  [weak self](errType, errDes) -> Void in
+                    if let weakSelf = self {
+                        weakSelf.tableView.showErrorContentView()
+                        weakSelf.tableView.headerEndRefreshing()
+                    }
+            }
+            
+            bdk.getPoposalBubbles({ [weak self] (responseData) -> Void in
+                if let weakSelf = self {
+                    weakSelf.parseProposalData(responseData)
+                    appDelegate.buyerProposalData = responseData
+                }
+                
+                }) {  [weak self](errType, errDes) -> Void in
+                    if let weakSelf = self {
+                        weakSelf.tableView.showErrorContentView()
+                        weakSelf.tableView.headerEndRefreshing()
+                    }
+            }
+            
+            let listData : ProposalOrderListModel? = appDelegate.buyerListData
+            let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
+            
+            // check again
+            if (listData != nil && proposalData != nil) {
+                didShow = true
+            }
+        }
     }
     
     
-    deinit{
+    deinit {
         tableViewCellCache.removeAll()
     }
     
-    func NSNotiryAricToNomalStatus(){
-        
-        /**
-        UIView.animateWithDuration(
-            1.2,
-            delay: 0,
-            usingSpringWithDamping: 1,
-            initialSpringVelocity: 1,
-            options: [],
-            animations: {
-                [weak self] () -> Void in
-                if let strongSelf = self{
-                    strongSelf.view.transform = CGAffineTransformMakeScale(1, 1)
-                    strongSelf.view.center = strongSelf.selfViewPoint!
-                }
-                
-            }, completion: { finished in
-        })*/
-    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - 构造属性
     func makeBaseProperties () {
@@ -138,14 +151,23 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: kShouldUpdataUserDataNotification, object: nil)
     }
     
-    func sphereDidSelected(index: Int) {
-        print("\(index)")
+    func reloadData() {
+        
+        self.tableView.hideErrorView()
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let listData : ProposalOrderListModel? = appDelegate.buyerListData
+        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
+        if (listData != nil && proposalData != nil) {
+            Async.main(after: 0.3, block: { () -> Void in
+                self.parseListData(listData)
+                self.parseProposalData(proposalData)
+            })
+        }
     }
-    
-    
-    // MARK: - 构造气泡区域
     
     // 回调
     func closeAIBDetailViewController() {
@@ -163,18 +185,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    func makeBubblesWithFrame(frame:CGRect) -> AIBubblesView{
+    func makeBubblesWithFrame(frame:CGRect) -> AIBubblesView {
 
         // add bubbles
         bubbles = AIBubblesView(frame: frame, models: NSMutableArray(array: self.dataSourcePop))
         bubbles.tag = bubblesTag
-        bubbleView?.addSubview(bubbles)
+        bubbleViewContainer?.addSubview(bubbles)
         
-        bubbles.addGestureBubbleAction  {  [weak self]   (bubbleModel,bubble) -> Void in
-            if let strongSelf = self{
-                
-                strongSelf.showBuyerDetailWithBubble(bubble, model: bubbleModel)
-    
+        bubbles.addGestureBubbleAction  {  [weak self]   (bubbleModel, bubble) -> Void in
+            if self != nil {
+                self!.showBuyerDetailWithBubble(bubble, model: bubbleModel)
             }
         }
         
@@ -183,38 +203,35 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func makeBubbleView () {
-        
-        let margin : CGFloat = AITools.displaySizeFrom1080DesignSize(40)
-        let bheight = AITools.displaySizeFrom1080DesignSize(1538)
+        if let _ = bubbles {
+            recreateBubbleView()
+        } else {
+            createBubbleView()
+        }
+    }
+    
+    private func recreateBubbleView() {
+        bubbles.removeFromSuperview()
+
+        makeBubblesWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, topBarHeight + BUBBLE_VIEW_MARGIN, screenWidth - 2 * BUBBLE_VIEW_MARGIN, BUBBLE_VIEW_HEIGHT))
+    }
+    
+    private func createBubbleView() {
         let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
         
-        if let b = bubbles {
-            b.removeFromSuperview()
-            // add bubbles
-            
-            self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
-        }
-        else
-        {
-            bubbleView = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-            tableView?.tableHeaderView = bubbleView
+        bubbleViewContainer = UIView(frame: CGRectMake(0, 0, screenWidth, height))
+        tableView?.tableHeaderView = bubbleViewContainer
         
-            // add bubbles
-            
-            self.makeBubblesWithFrame(CGRectMake(margin, topBarHeight + margin, screenWidth - 2 * margin, bheight))
-            
-            let y = CGRectGetMaxY(bubbles.frame)
-            let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(margin, y, screenWidth-2*margin, 20), text: "Progress", fontSize: 20, color: UIColor.whiteColor())
-            label.textAlignment = .Right
-            
-            label.verticalAlignment = UPVerticalAlignmentMiddle
-            label.font = AITools.myriadRegularWithSize(20);
-            bubbleView.addSubview(label)
-            
-        }
+        // add bubbles
+        makeBubblesWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, topBarHeight + BUBBLE_VIEW_MARGIN, screenWidth - 2 * BUBBLE_VIEW_MARGIN, BUBBLE_VIEW_HEIGHT))
         
+        let y = CGRectGetMaxY(bubbles.frame)
+        let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, y, screenWidth - 2 * BUBBLE_VIEW_MARGIN, 20), text: AIBuyerViewController.kPROGRESS, fontSize: 20, color: UIColor.whiteColor())
+        label.textAlignment = .Right
         
-
+        label.verticalAlignment = UPVerticalAlignmentMiddle
+        label.font = AITools.myriadRegularWithSize(20);
+        bubbleViewContainer.addSubview(label)
     }
     
     func convertPointToScaledPoint(point:CGPoint, scale:CGFloat , baseRect : CGRect) -> CGPoint {
@@ -256,25 +273,24 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.view.userInteractionEnabled = false
         
         // 处理detailViewController
-        
-        weak var detailViewController = self.showBuyerDetailAction(model)
-        detailViewController?.view.alpha = 0
+        unowned let detailViewController = createBuyerDetailViewController(model)
+
+        detailViewController.view.alpha = 0
         let detailScale : CGFloat = bubble.radius * 2 / CGRectGetWidth(self.view.frame)
         
         // self.presentViewController在真机iPhone5上会crash...
-        self.presentViewController(detailViewController!, animated: false) { () -> Void in
+        self.presentViewController(detailViewController, animated: false) { () -> Void in
             
-            detailViewController?.view.alpha = 1
-            detailViewController?.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
-            detailViewController?.view.center = realPoint
+            detailViewController.view.alpha = 1
+            detailViewController.view.transform =  CGAffineTransformMakeScale(detailScale, detailScale)
+            detailViewController.view.center = realPoint
             // 开始动画
             
             UIView.animateWithDuration(0.5, animations: { () -> Void in
-                //
-                detailViewController?.view.transform =  CGAffineTransformMakeScale(1, 1)
-                detailViewController?.view.center = self.originalViewCenter!
+
+                detailViewController.view.transform =  CGAffineTransformMakeScale(1, 1)
+                detailViewController.view.center = self.originalViewCenter!
                 
-                //
                 self.view.transform =  CGAffineTransformMakeScale(self.curBubbleScale!, self.curBubbleScale!)
                 self.view.center = self.curBubbleCenter!
                 }, completion: { (complate) -> Void in
@@ -287,20 +303,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.view.userInteractionEnabled = true
                 })
             }
+    }  
 
-            // springWithCompletion(1.2, animations: { () -> Void in }
-    }
-    
-
-    func  showBuyerDetailAction(model: AIBuyerBubbleModel) -> UIViewController {
+    func  createBuyerDetailViewController(model: AIBuyerBubbleModel) -> UIViewController {
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
         
         viewController.bubbleModel = model
 
-        
-        /**let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        viewController.bubbleModelArray = [model,model,model]*/
         viewController.delegate = self
         
         let naviController = UINavigationController(rootViewController: viewController)
@@ -494,14 +504,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - ScrollViewDelegate
     func handleScrollEventWithOffset(offset:CGFloat) {
-        if let bView = bubbleView {
+        if let bView = bubbleViewContainer {
             let maxHeight = CGRectGetHeight(bView.frame) - topBarHeight
             
             if (offset > maxHeight / 2 && offset <= maxHeight) {
                 tableView?.scrollRectToVisible(CGRectMake(0, maxHeight - AITools.displaySizeFrom1080DesignSize(96), screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
-            }
-            else if (offset < maxHeight / 2)
-            {
+            } else if (offset < maxHeight / 2) {
                 tableView?.scrollRectToVisible(CGRectMake(0, 0, screenWidth, CGRectGetHeight((tableView?.frame)!)), animated: true)
             }
         } 
@@ -558,44 +566,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
-    func makeData() {
-        
-        self.tableView.hideErrorView()
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let listData : ProposalOrderListModel? = appDelegate.buyerListData
-        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
-        if (listData != nil && proposalData != nil) {
-            return
-        }
-
-        let bdk = BDKProposalService()
-        // 列表数据
-        bdk.getProposalList({ [weak self](responseData) -> Void in
-            
-            if let strongSlef = self {
-                strongSlef.parseListData(responseData)
-                
-            }
-            
-            }) {  [weak self](errType, errDes) -> Void in
-                if let strongSlef = self {
-                    strongSlef.tableView.showErrorContentView()
-                    strongSlef.tableView.headerEndRefreshing()
-                }
-        }
-        
-        bdk.getPoposalBubbles({ [weak self] (responseData) -> Void in
-            if let strongSlef = self {
-                strongSlef.parseProposalData(responseData)
-            }
-            }) {  [weak self](errType, errDes) -> Void in
-                if let strongSlef = self {
-                    strongSlef.tableView.showErrorContentView()
-                    strongSlef.tableView.headerEndRefreshing()
-                }
-        }        
-    }
+    
     
     private func proposalToProposalWrap(model: ProposalOrderModel) -> ProposalOrderModelWrap {
         var p = ProposalOrderModelWrap()
@@ -633,4 +604,8 @@ extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
         let indexPath = NSIndexPath(forRow: proposalView.tag, inSection: 0)
         rowSelectAction(indexPath)
     }
+}
+
+extension AIBuyerViewController {
+    @nonobjc static let kPROGRESS = "AIBuyerViewController.progress".localized
 }

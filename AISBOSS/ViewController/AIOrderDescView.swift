@@ -19,12 +19,12 @@ class AIOrderDescView: UIView {
     
     var descLabel: UILabel!
     
-    let TIME_TEXT = "Time"
-    let NEW_TIME_TEXT = "New Time"
+    let TIME_TEXT = "AIOrderDescView.time".localized
+    let NEW_TIME_TEXT = "AIOrderDescView.newTime".localized
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
     let VIEW_PADDING : CGFloat = 1
-    let SATE_LABEL_WIDTH : CGFloat = 26
+    var SATE_LABEL_WIDTH : CGFloat = 26
     let PARAM_KEY_OTHER : String = "20151026"
     let PARAM_KEY_DESC : String = "25042643"
     
@@ -84,7 +84,7 @@ class AIOrderDescView: UIView {
     func buildDefaultView(){
         var timeSize : CGRect!
         var timeValueFont = TIME_VALUE_FONT
-        
+
         if let valueForTime = paramDictionary?.valueForKey("Time") as? String{
             if valueForTime != ""{
                 timeValueText = valueForTime
@@ -109,7 +109,7 @@ class AIOrderDescView: UIView {
         }
         if let valueForOngoing = paramDictionary?.valueForKey("Ongoing") as? String{
             if valueForOngoing != ""{
-                timeValueText = "Ongoing"
+                timeValueText = "AIOrderDescView.ongoing".localized
                 timeLabelText = ""
                 timeValueFont = DESC_TEXT_FONT
                 timeSize = CGRectMake(0, 0, 0, 0)
@@ -126,10 +126,10 @@ class AIOrderDescView: UIView {
         var descLabelFrame : CGRect!
         
         if isDelayed{
-            let alertTextSize = caculateContentSize("Delayed", font: ALERT_LABEL_FONT)
+            let alertTextSize = caculateContentSize("AIOrderDescView.delayed".localized, font: ALERT_LABEL_FONT)
             let alertLabelFrame = CGRectMake(timeLabelFrame.origin.x - alertTextSize.width - 25, 0, alertTextSize.width, TEXT_HEIGHT)
             let alertLabel = UILabel(frame: alertLabelFrame)
-            alertLabel.text = "Delayed"
+            alertLabel.text = "AIOrderDescView.delayed".localized
             alertLabel.font = ALERT_LABEL_FONT
             alertLabel.textColor = UIColor(hex: "#dbb613")
             alertLabel.alpha = 0.6
@@ -143,7 +143,7 @@ class AIOrderDescView: UIView {
         
         
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = descText ?? "Delivery staff:Mike Liu"
+        descLabel.text = descText ?? "AIOrderDescView.delivery".localized
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         let timeLabel = UILabel(frame: timeLabelFrame)
@@ -177,6 +177,10 @@ class AIOrderDescView: UIView {
             }
         }
         
+        if Localize.currentLanguage() == "zh-Hans" {
+            SATE_LABEL_WIDTH = 41
+        }
+        
         let gateValueSize = caculateContentSize(gateText, font: TIME_VALUE_FONT)
         let sateValueSize = caculateContentSize(sateText, font: TIME_VALUE_FONT)
         let sateValueLabelFrame = CGRectMake(self.bounds.width - sateValueSize.size.width - VIEW_PADDING, 0, sateValueSize.width, TEXT_HEIGHT)
@@ -186,7 +190,7 @@ class AIOrderDescView: UIView {
         let descLabelFrame = CGRectMake(0, 0, gateLabelFrame.origin.x - TEXT_PADDING, 21)
         //build sub view
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = descText ?? "Delivery staff:Mike Liu"
+        descLabel.text = descText ?? "AIOrderDescView.delivery".localized
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         
@@ -198,7 +202,7 @@ class AIOrderDescView: UIView {
         let sateLabel = UILabel(frame: sateLabelFrame)
         sateLabel.textColor = PurchasedViewColor.TITLE
         sateLabel.font = LABEL_TITLE_FONT
-        sateLabel.text = "SATE"
+        sateLabel.text = "AIOrderDescView.seat".localized
         sateLabel.alpha = 0.6
         
         let gateValueLabel = UILabel(frame: gateValueLabelFrame)
@@ -209,7 +213,7 @@ class AIOrderDescView: UIView {
         let gateLabel = UILabel(frame: gateLabelFrame)
         gateLabel.textColor = PurchasedViewColor.TITLE
         gateLabel.font = LABEL_TITLE_FONT
-        gateLabel.text = "GATE"
+        gateLabel.text = "AIOrderDescView.gate".localized
         gateLabel.alpha = 0.6
 
         self.addSubview(descLabel)
@@ -222,14 +226,14 @@ class AIOrderDescView: UIView {
     
     // MARK : - utils
     func caculateContentSize(content:String,fontSize:CGFloat) -> CGRect{
-        let size = CGSizeMake(150,100)
+        let size = CGSizeMake(200,100)
         let s:NSString = "\(content)"
         let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)], context: nil)
         return contentSize
     }
     
     func caculateContentSize(content:String,font:UIFont) -> CGRect{
-        let size = CGSizeMake(150,100)
+        let size = CGSizeMake(200,100)
         let s:NSString = "\(content)"
         let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:font], context: nil)
         return contentSize

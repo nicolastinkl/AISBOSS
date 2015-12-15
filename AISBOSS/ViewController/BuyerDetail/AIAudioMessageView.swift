@@ -220,7 +220,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
                 
             }else{
                 self.configureAudio()
-                AIAlertView().showInfo("Get Record Error.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
+                AIAlertView().showInfo(AIAudioMessageView.kERROR, subTitle:AIAudioMessageView.kINFO, closeButtonTitle: AIAudioMessageView.kCLOSE, duration: 3)
             }
 
         })
@@ -238,4 +238,10 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         self.stopPlay()
         logInfo("audioPlayerDecodeErrorDidOccur error\(error?.description)")
     }
+}
+
+extension AIAudioMessageView {
+    @nonobjc static let kERROR = "AILocalizationManager.error".localized
+    @nonobjc static let kINFO = "AILocalizationManager.info".localized
+    @nonobjc static let kCLOSE = "AILocalizationManager.close".localized
 }

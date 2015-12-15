@@ -365,8 +365,8 @@
     cell.sellerName.text = model.customer.user_name;
     cell.price.text = model.service.service_price;
     
-    NSString *time = @"To Be Confirmed";
-    NSString *address = @"To Be Confirmed";
+    NSString *time = [@"AISellerViewController.2beConfirmed" localized];
+    NSString *address = [@"AISellerViewController.2beConfirmed" localized];
     
     NSArray *array = model.service_progress.param_list;
     if (array) {

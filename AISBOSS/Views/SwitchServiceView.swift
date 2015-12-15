@@ -64,9 +64,9 @@ class SwitchServiceView: UIView {
         }
         
         switchController.addTarget(self, action: "switchChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        switchController.onLabel.text = "ON"
+        switchController.onLabel.text = "SwitchServiceView.on".localized
         switchController.onLabel.textColor = UIColor.whiteColor()
-        switchController.offLabel.text = "OFF"
+        switchController.offLabel.text = "SwitchServiceView.off".localized
         switchController.offLabel.textColor = UIColor.whiteColor()
         switchController.onTintColor = UIColor(red:0.33, green:0.28, blue:0.58, alpha:1)
         switchController.inactiveColor =  UIColor(red:0.78, green:0.78, blue:0.8, alpha:1)

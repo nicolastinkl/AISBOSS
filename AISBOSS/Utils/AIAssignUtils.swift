@@ -21,9 +21,9 @@ extension String{
         return classNameSS;
     }
     
-    var localized: String {
-        return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
-    }
+//    var localized: String {
+//        return NSLocalizedString(self, tableName: nil, bundle: NSBundle.mainBundle(), value: "", comment: "")
+//    }
     
     public func toInt() -> Int? {
         if self != "" && self.length > 0{

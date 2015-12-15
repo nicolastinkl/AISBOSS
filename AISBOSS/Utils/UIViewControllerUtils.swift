@@ -39,38 +39,15 @@ extension UIViewController {
     
     func viewWillDisappearForHiddenBottomBar(animated: Bool){
         self.viewWillDisappearForHiddenBottomBar(animated)
-        
-//        if self.isKindOfClass(AIHomeViewController.classForCoder()) ||
-//            self.isKindOfClass(AIDiscoveryViewController.classForCoder()) ||
-//            self.isKindOfClass(AITimelineViewController.classForCoder()) ||
-//            self.isKindOfClass(AIFavoritesViewController.classForCoder()) ||
-//            self.isKindOfClass(AISelfViewController.classForCoder()) {
-//                AIApplication.hideMessageUnreadView()
-//        }
     }
     
     func viewWillAppearForShowBottomBar(animated: Bool){
         self.viewWillAppearForShowBottomBar(animated)
         
-//        if self.isKindOfClass(AIHomeViewController.classForCoder()) ||
-//            self.isKindOfClass(AIDiscoveryViewController.classForCoder()) ||
-//            self.isKindOfClass(AITimelineViewController.classForCoder()) ||
-//            self.isKindOfClass(AIFavoritesViewController.classForCoder()) ||
-//            self.isKindOfClass(AISelfViewController.classForCoder()){
-//                let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-//                appDelegate.rootNavigationController = self.navigationController
-//                if let token = AILocalStore.accessToken() {
-//                    AIApplication.showMessageUnreadView()
-//                }
-//        }
+
     }
     
     func showMenuViewController(){
-        
-//        let menuViewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIMenuStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIMenuViewController) as AIMenuViewController
-//        menuViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-//        menuViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-//        self.showDetailViewController(menuViewController, sender: self)
         
     }
     

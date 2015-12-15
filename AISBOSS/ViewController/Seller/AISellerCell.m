@@ -15,6 +15,8 @@
 #import "UIImageView+WebCache.h"
 #import "AIOrderPreModel.h"
 #import "AITools.h"
+#import "Veris-Swift.h"
+
 #define kMargin5    5
 
 #define kMargin10    10
@@ -354,7 +356,7 @@
 
 - (void)buttonAction:(UIButton *)button
 {
-    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.userPhone?:@"空号"]];
+    NSURL *telURL =[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.userPhone?:@""]];
     [_telWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
 
 }
@@ -554,7 +556,7 @@
 #pragma mark - 姓名
 - (void)makeSellerName
 {
-    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10 * 2, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:@"Amy Copper" fontSize:16 color:[UIColor whiteColor]];
+    _sellerName = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(_iconContainer.frame)+kMargin10 * 2, 3, 200, CGRectGetHeight(_iconContainer.frame)/2) text:[@"AISellerCell.amy" localized] fontSize:16 color:[UIColor whiteColor]];
     _sellerName.font = [AITools myriadSemiboldSemiCnWithSize:50/2.5];
     [_boardView addSubview:_sellerName];
     
@@ -577,7 +579,7 @@
 #pragma mark - 价格
 - (void)makePrice
 {
-    _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:@"$188" fontSize:22 color:[UIColor whiteColor]];
+    _price = [AIViews normalLabelWithFrame:CGRectMake(0, kMargin5, CGRectGetWidth(self.frame) - kMargin10, CGRectGetHeight(_iconContainer.frame)/2) text:[@"AISerllerCell.dollar" localized] fontSize:22 color:[UIColor whiteColor]];
     _price.font = [AITools myriadBlackWithSize:66/2.5];
     _price.textAlignment = NSTextAlignmentRight;
     [_boardView addSubview:_price];
@@ -641,7 +643,7 @@
     x += kSmallImageSize +kMargin5;
     
     // class
-    NSString *class = @"Fitness Plan -";
+    NSString *class = [@"AISerllerCell.fitnessPlan" localized];
     CGSize classSize = [class sizeWithFontSize:kSmallFontSize forWidth:width];
     CGFloat y = containerHeight - yoffset;
     CGRect classFrame = CGRectMake(x, y, classSize.width, containerHeight);
@@ -650,7 +652,7 @@
     x += classSize.width;
     
     // name
-    NSString *name = @"Fitness Plan Making";
+    NSString *name = [@"AISerllerCell.fitness" localized];
     CGSize nameSize = [name sizeWithFont:[UIFont boldSystemFontOfSize:kSmallFontSize] forWidth:width];
     
     CGRect nameFrame = CGRectMake(x, y, nameSize.width, containerHeight);
@@ -673,7 +675,7 @@
     
     
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kStampHeight/2);
-    _timestamp = [AIViews normalLabelWithFrame:frame text:@"14:00 Aug 2nd" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
+    _timestamp = [AIViews normalLabelWithFrame:frame text:[@"AISerllerCell.14:00" localized] fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_timestamp];
     _timestamp.font = [AITools myriadCondWithSize:33/2.5];
 }
@@ -689,7 +691,7 @@
     
     
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kSmallImageSize);
-    _location = [AIViews normalLabelWithFrame:frame text:@"Fifth Avenue" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
+    _location = [AIViews normalLabelWithFrame:frame text:[@"AISerllerCell.fifth" localized] fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_location];
     _location.font = [AITools myriadCondWithSize:33/2.5];
 }

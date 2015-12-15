@@ -104,6 +104,7 @@ class AIServiceSearchView: UIView,UITextFieldDelegate {
     
     // MARK: - view function
     func buildSearchResult(){
+        //不用多语言
         let serviceList = [["air","affects","alpha","animation"],["bounds","buildResultButton","button","buttonPointY","blue shit","backup"],["code","complete","currentView","customer","cutoff"]]
         clearSearchResult()
         var rect = CGRectMake(0, resultViewPaddingTop, 0, 0)

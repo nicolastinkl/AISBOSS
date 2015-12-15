@@ -70,7 +70,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = "Services to Your Liking"
+        self.labelView.text = "AIServerDetailViewController.service".localized
         
         addSearchViewToParent()
 
@@ -132,12 +132,12 @@ class AIServerDetailViewController: UIViewController {
         
         tableView.reloadData()
         
-        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "AIServerDetailViewController.dollarFormat".localized, numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func insertDateModel() {
         let data = TableViewSourceModel()
-        data.title = "DAY"
+        data.title = "AIServerDetailViewController.day".localized
         data.type = CellType.DatePicker
         dataSource.addObject(data)
     }
@@ -227,7 +227,7 @@ class AIServerDetailViewController: UIViewController {
         }
         
         
-        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "AIServerDetailViewController.dollarFormat".localized, numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func changeDateViewNotification(){
@@ -265,7 +265,7 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func addAction(sender: AnyObject) {
         
         if tags?.tags.count >= 10 {
-            AIAlertView().showError("Couldn't more than 10", subTitle: "", closeButtonTitle: "Close", duration: 3)
+            AIAlertView().showError("AIScanViewController.couldnt".localized, subTitle: "", closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             return
         }
         
@@ -324,7 +324,7 @@ extension AIServerDetailViewController : ServiceSearchViewDelegate {
             })
             
             if newAry?.count > 0 {
-                AIAlertView().showError("Cannot add duplicate notes", subTitle: "", closeButtonTitle: "Close", duration: 3)
+                AIAlertView().showError("AIServerDetailViewController.duplicate".localized, subTitle: "", closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 return
             }
             

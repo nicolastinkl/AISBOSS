@@ -170,7 +170,6 @@ class AIBuyerDetailViewController : UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
     func makeBuyButton() {
@@ -180,7 +179,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.view.addSubview(button)
     }
     
-    func InitBottomView() {
+    func initBottomView() {
         
         let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
         bzView.setX((self.view.width - bzView.width) / 2)
@@ -208,9 +207,10 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text = dataSource?.proposal_desc
-        self.OrderFromLabel.text = "From"
+        self.OrderFromLabel.text = AIBuyerDetailViewController.kFROM
         
-        if NSString(string: name).containsString("Pregnancy") {
+//        "AIBuyerDetailViewController.pregnancy" = "怀孕"; 可能引起bug
+        if NSString(string: name).containsString("AIBuyerDetailViewController.pregnancy".localized) {
             // 处理字体
             let price = dataSource?.proposal_price
             let richText = NSMutableAttributedString(string:(price)!)
@@ -379,7 +379,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.tableView.reloadData()
                         
                         // Init Bottom Page white area
-                        viewController.InitBottomView()
+                        viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()
                     }
@@ -416,7 +416,8 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let name = model.service_desc
             
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
-            JSSAlertView().comfirm(self, title: name, text: "Are you sure you want to add  \(name) service", customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
+            let text = String(format: AIBuyerDetailViewController.kALERT, name)
+            JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
             self.restoreService(model)
             })
             
@@ -659,4 +660,10 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
         }
     }
     
+}
+
+extension AIBuyerDetailViewController {
+    @nonobjc static let kALERT = "AIBuyerDetailViewController.alert".localized
+    @nonobjc static let kFROM = "AIBuyerDetailViewController.from".localized
+    @nonobjc static let kPREGNANCY = "AIBuyerDetailViewController.pregnancy".localized
 }
