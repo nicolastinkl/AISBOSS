@@ -49,6 +49,10 @@ class AIBuyerDetailViewController : UIViewController {
     var isDeletedTableViewAnimating: Bool = false
     
     private var contentView: UIView?
+    
+    private var selectCount: Int = 0
+    private var openCell: Bool = false
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var buyerBottom: UIImageView! // 带购物车的一块
    
@@ -532,35 +536,39 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        var serviceList: NSArray?
-        
-        if (tableView == deletedTableView) {
-            //需求说已删除的服务 不支持点击事件
-            return
-//            serviceList = deleted_service_list
-        } else {
-            serviceList = current_service_list
+      
+        if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
+            selectCount = 0
+            var serviceList: NSArray?
+            
+            if (tableView == deletedTableView) {
+                //需求说已删除的服务 不支持点击事件
+                return
+                //            serviceList = deleted_service_list
+            } else {
+                serviceList = current_service_list
+            }
+            
+            
+            let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
+            
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+            
+            let model1 = AIProposalServiceModel()
+            if serviceDataModel.service_id == 1 {
+                model1.service_id = 2
+            } else {
+                model1.service_id = 1
+            }
+            model1.service_desc = serviceDataModel.service_desc
+            
+            let array = [serviceDataModel,model1]
+            viewController.bubbleModelArray = array
+            viewController.selectCurrentIndex = 0 // fix here
+            self.showViewController(viewController, sender: self)
         }
         
-        
-        let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
-
-        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-        
-        let model1 = AIProposalServiceModel()
-        if serviceDataModel.service_id == 1 {
-            model1.service_id = 2
-        } else {
-            model1.service_id = 1
-        }
-        model1.service_desc = serviceDataModel.service_desc
-        
-        let array = [serviceDataModel,model1]
-        viewController.bubbleModelArray = array
-        viewController.selectCurrentIndex = 0 // fix here
-        self.showViewController(viewController, sender: self)
-        
+        selectCount  = selectCount + 1
     }
 }
 
@@ -608,11 +616,12 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
         }
     }
     func cellDidClose(cell: UITableViewCell!) {
-
+        self.openCell = false
     }
     
     func cellDidOpen(cell: UITableViewCell!) {
         //设置背景颜色
+        self.openCell = true
         curretCell = cell as? AIBueryDetailCell
 //        self.tableView.userInteractionEnabled = false
     }

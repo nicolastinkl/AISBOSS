@@ -1,56 +1,44 @@
 //
-//  AICustomAudioNotesView.swift
+//  AIAudioInputView.swift
 //  AIVeris
 //
-//  Created by tinkl on 20/11/2015.
-//  Base on Tof Templates
+//  Created by tinkl on 14/12/2015.
 //  Copyright © 2015 ___ASIAINFO___. All rights reserved.
 //
 
 import Foundation
 import AISpring
 
-@objc protocol AICustomAudioNotesViewDelegate : class{
-    
-    func updateMetersImage(lowPass:Double)
-    func endRecording(audioModel:AIProposalServiceDetail_hope_list_listModel)
-    func willStartRecording()
-    
-    func willEndRecording()
-    func endRecordingWithError(error : String)
-    
-    
-}
+// 新的语音实现界面
 
+internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
 
-@objc protocol AICustomAudioNotesViewShowAudioDelegate : class{
-    func showAudioView()
-}
-// MARK: -
-// MARK: AICustomAudioNotesView
-// MARK: -
-internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
-  // MARK: -
-  // MARK: Internal access (aka public for current module)
-  // MARK: -
+    // MARK: Update
+    let holdViewHeigh:CGFloat = 290.0
     
-    // MARK: -> Internal class
+    private var currentAudioState: Bool = false
     
-    var currentTime : NSTimeInterval?
-    let maxRecordTime : NSTimeInterval = 60
+    @IBOutlet weak var timeText: UILabel!
     
-    @IBOutlet weak var note: UILabel!
-    @IBOutlet weak var audioButton: DesignableButton!
-    @IBOutlet weak var inputText: DesignableTextField!
     @IBOutlet weak var changeButton: DesignableButton!
+    
+    @IBOutlet weak var textInput: DesignableTextField!
+    
+    @IBOutlet weak var audioButtonView: UIView!
+    
+    @IBOutlet weak var inputButtomValue: NSLayoutConstraint!
     
     // MARK: -> Internal property
     private var recorder : AVAudioRecorder? //这里不能够weak
     private var lowPassResults: Double = 0
     private var timer: NSTimer?
-    private var currentAudioState: Bool = false
+    private var audioTimes:Int = 0
+    
+    var currentTime : NSTimeInterval?
+    let maxRecordTime : NSTimeInterval = 60
+    
     weak var delegateAudio:AICustomAudioNotesViewDelegate?
-    weak var delegateShowAudio:AICustomAudioNotesViewShowAudioDelegate?
+    
     internal var currentAutioUrl:String = ""
     
     func getAudioFileName() -> String{
@@ -60,6 +48,13 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             return "\(p)/\(filename).aac"
         }
         return ""
+    }
+    
+    class func currentView()->AIAudioInputView{
+        let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioInputView", owner: self, options: nil).first  as! AIAudioInputView
+        selfView.timeText.font = AITools.myriadSemiCondensedWithSize(58/PurchasedViewDimention.CONVERT_FACTOR)
+        selfView.timeText.textColor = UIColor(hex:"6a6a6a")
+        return selfView
     }
     
     /**
@@ -98,7 +93,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
                     self.recorder!.prepareToRecord()
                     self.recorder!.record()
                     
-                    self.timer = NSTimer(timeInterval: 0.1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
+                    self.timer = NSTimer(timeInterval: 1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
                     NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSDefaultRunLoopMode)
                 })
             }
@@ -108,47 +103,34 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     }
     
     /**
-     刷新峰值
-     
-     - parameter time: <#time description#>
+     - parameter time: 1s
      */
     func levelTimer(time : NSTimer){
         if let rder = recorder {
-            ///call to refresh meter values刷新平均和峰值功率,此计数是以对数刻度计量的,-160表示完全安静，0表示最大输入值
-            rder.updateMeters()
-            let ALPHA : Double = 0.05
-            let peakPowerForChannel : Double = pow(10, Double(0.05 * rder.peakPowerForChannel(0)))
-            lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
-            delegateAudio?.updateMetersImage(lowPassResults)
-            //logInfo("Average input Low pass results: \(lowPassResults)")
-            // 如果录音长度超长，则停止录音
+            // audioTimes ++
+            audioTimes = audioTimes + 1
+            
+            if audioTimes < 10 {
+                self.timeText.text = "0:0\(audioTimes)"
+            }else if audioTimes >= 10 {
+                self.timeText.text = "0:\(audioTimes)"
+            }
             
             if (rder.currentTime >= maxRecordTime) {
                 stopRecording()
             }
-            
         }
+    
     }
-    
-    // MARK: currentView
-    
-    class func currentView()->AICustomAudioNotesView{
-        let selfView = NSBundle.mainBundle().loadNibNamed("AICustomAudioNotesView", owner: self, options: nil).first  as! AICustomAudioNotesView
-        selfView.note.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
-        selfView.inputText.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
-        return selfView
-    }
-    
-    // MARK: -> Internal methods
     
     @IBAction func touchDownAudio(sender: AnyObject) {
         
         startRecording()
         delegateAudio?.willStartRecording()
-        audioButton.setTitle("Release to Send", forState: UIControlState.Normal)
+        self.timeText.text = "0:00"
     }
     
-    @IBAction func changeAudioStatusAction(sender: AnyObject) {
+    @IBAction func ChangeAction(sender: AnyObject) {
         currentAudioState = !currentAudioState
         //切换状态
         
@@ -156,22 +138,29 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         if currentAudioState {
             //语音模式
             bgImage = UIImage(named: "ai_keyboard_button_change")
-            audioButton.hidden = false
-            inputText.hidden = true
+            textInput.resignFirstResponder()
         }else{
             //文字模式
             bgImage = UIImage(named: "ai_audio_button_change")
-            audioButton.hidden = true
-            inputText.hidden = false
+            textInput.becomeFirstResponder()
         }
         if let m = bgImage {
             changeButton.setImage(m, forState: UIControlState.Normal)
-        }        
+        }
+        
     }
     
+    @IBAction func closeViewAction(sender: AnyObject) {
+        springWithCompletion(0.5, animations: { () -> Void in
+            self.alpha = 0
+            }) { (complate) -> Void in
+                self.removeFromSuperview()
+        }
+
+    }
     
     func notifyEndRecordWithUrl(url:String) {
-        
+        // fake
         let model = AIProposalServiceDetail_hope_list_listModel()
         model.audio_url = currentAutioUrl
         model.time = (NSInteger)(currentTime! * 1000)
@@ -182,10 +171,8 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     /// MARK:  Finish Audio..
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        let data = NSData(contentsOfFile: currentAutioUrl) 
-        if data != nil {
-            
-            print("Audio record length : %.2f", currentTime)
+        let data = NSData(contentsOfFile: currentAutioUrl)
+        if data != nil {            
             let model = AIProposalServiceDetail_hope_list_listModel()
             model.audio_url = currentAutioUrl
             model.time = (NSInteger)(currentTime! * 1000)
@@ -215,10 +202,6 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     
     // MARK: -> Private methods
     
-    @IBAction func touchUpShowAudioViewAction(sender: AnyObject) {
-        self.delegateShowAudio?.showAudioView()
-    }
-
     func stopRecording () {
         if let rder = recorder {
             
@@ -231,19 +214,19 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
+
+            timeText.text = "Hold to Talk"
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
         }
     }
-
     
 
+    
     @IBAction func touchUpAudioAction(sender: AnyObject) {
         if let _ = recorder {
-            
-            /// 松开 结束录音
             stopRecording()
+            
         }else{
             
             timer?.invalidate()
@@ -255,16 +238,4 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             self.delegateAudio?.endRecording(model)
         }
     }
-}
-
-extension AICustomAudioNotesView: UITextFieldDelegate{
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if textField.text?.length < 198
-        {
-            return true
-        }
-        return false
-    }
-    
 }

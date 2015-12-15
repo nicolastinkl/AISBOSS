@@ -66,10 +66,13 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="AISpring">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="AISpring">
                     <rect key="frame" x="8" y="136" width="584" height="83"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="83" id="GGH-zq-bX0"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,6 +81,11 @@
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="GGH-zq-bX0"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-e5-HX4" customClass="DesignableView" customModule="AISpring">
                     <rect key="frame" x="14" y="227" width="572" height="84"/>
@@ -105,6 +113,7 @@
                 <constraint firstItem="XoN-dI-8D6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BdD-Ft-eHa"/>
                 <constraint firstItem="XoN-dI-8D6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IRO-f3-qCH"/>
                 <constraint firstItem="jzk-e5-HX4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="283" id="J7z-OR-b5q"/>
+                <constraint firstItem="jzk-e5-HX4" firstAttribute="height" secondItem="ise-OE-xtY" secondAttribute="height" id="OaV-Vb-5RD"/>
                 <constraint firstAttribute="bottom" secondItem="SM9-Dw-aNC" secondAttribute="bottom" id="Rbz-de-ZgU"/>
                 <constraint firstAttribute="trailing" secondItem="XoN-dI-8D6" secondAttribute="trailing" id="XlW-QS-bHk"/>
                 <constraint firstItem="SM9-Dw-aNC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZhB-b1-Avo"/>
@@ -125,6 +134,7 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="J7z-OR-b5q"/>
+                    <exclude reference="dk6-gX-Pcl"/>
                 </mask>
             </variation>
             <connections>
@@ -134,7 +144,7 @@
                 <outlet property="title" destination="Ugh-Zu-ZTB" id="P5u-3U-3nN"/>
                 <outlet property="unselectView" destination="ise-OE-xtY" id="RUD-bK-pqQ"/>
             </connections>
-            <point key="canvasLocation" x="-23" y="451"/>
+            <point key="canvasLocation" x="-119" y="222"/>
         </view>
     </objects>
     <resources>

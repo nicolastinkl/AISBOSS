@@ -14,7 +14,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
                     <rect key="frame" x="14" y="2" width="138" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.074509803921568626" green="0.69019607843137254" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51764705882352935" green="0.50196078431372548" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -27,7 +27,7 @@
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="AISpring">
                     <rect key="frame" x="14" y="2" width="138" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.074509803919999826" green="0.65430369618115503" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51764705879999995" green="0.50196078430000002" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
