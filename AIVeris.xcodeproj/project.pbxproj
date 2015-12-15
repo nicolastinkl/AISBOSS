@@ -513,6 +513,7 @@
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeLoginView.h; path = Login/AIFakeLoginView.h; sourceTree = "<group>"; };
 		816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeLoginView.m; path = Login/AIFakeLoginView.m; sourceTree = "<group>"; };
+		816E3B891C1FBD6D00A061DD /* AINotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AINotifications.h; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
 		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
@@ -2512,6 +2513,7 @@
 				844009171C166F6B0031E2F7 /* JSSAlertView.swift */,
 				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
 				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
+				816E3B891C1FBD6D00A061DD /* AINotifications.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

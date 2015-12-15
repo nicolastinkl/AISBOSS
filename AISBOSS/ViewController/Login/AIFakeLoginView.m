@@ -34,7 +34,16 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [self removeFromSuperview];
+    self.userInteractionEnabled = NO;
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        weakSelf.alpha = 0.3;
+        weakSelf.transform = CGAffineTransformMakeScale(0.25, 0.25);
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+    
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
