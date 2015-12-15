@@ -122,7 +122,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         statu.backgroundColor = PurchasedViewColor.STATU_BACKGROUND
         statu.font = PurchasedViewFont.STATU
         statu.textColor = PurchasedViewColor.STATU
-        statu.text = "ProposalExpandedView.onSchedule".localized
+//        statu.text = "ProposalExpandedView.onSchedule"
         statu.layer.cornerRadius = 8
         statu.layer.masksToBounds = true
         statu.textAlignment = .Center
@@ -139,7 +139,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         title = UILabel(frame: CGRect(x: PurchasedViewDimention.PROPOSAL_PADDING_LEFT, y: PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP, width: 200, height: PurchasedViewDimention.PROPOSAL_TITLE_HEIGHT))
         title.font = PurchasedViewFont.TITLE
         title.textColor = PurchasedViewColor.TITLE
-        title.text = "ProposalExpandedView.shop".localized
+//        title.text = "ProposalExpandedView.shop"
         headView.addSubview(title)
         
         layout(statu, title) { statuView, title in

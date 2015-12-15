@@ -324,7 +324,7 @@ extension AIServerDetailViewController : ServiceSearchViewDelegate {
             })
             
             if newAry?.count > 0 {
-                AIAlertView().showError("Cannot add duplicate notes", subTitle: "", closeButtonTitle: "Close", duration: 3)
+                AIAlertView().showError("AIServerDetailViewController.duplicate".localized, subTitle: "", closeButtonTitle: "Close", duration: 3)
                 return
             }
             

@@ -256,24 +256,24 @@ struct AIApplication{
     
     :param: url URL
     */
-    static func shareAction(url:String){
-        if let viewcontroller =  UIApplication.sharedApplication().keyWindow?.rootViewController{
-            let textToShare = AIApplication.kSHARE
-            
-            if let myWebsite = NSURL(string: "http://www.codingexplorer.com/")
-            {
-                let objectsToShare = [textToShare, myWebsite]
-                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                
-                //New Excluded Activities Code
-                activityVC.excludedActivityTypes = [UIActivityTypeMail,UIActivityTypeMessage,UIActivityTypeAirDrop, UIActivityTypeAddToReadingList,UIActivityTypePostToWeibo]
-                
-                viewcontroller.presentViewController(activityVC, animated: true, completion: nil)
-            }
-        }
-    }
+//    static func shareAction(url:String){
+//        if let viewcontroller =  UIApplication.sharedApplication().keyWindow?.rootViewController{
+//            let textToShare = AIApplication.kSHARE
+//            
+//            if let myWebsite = NSURL(string: "http://www.codingexplorer.com/")
+//            {
+//                let objectsToShare = [textToShare, myWebsite]
+//                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//                
+//                //New Excluded Activities Code
+//                activityVC.excludedActivityTypes = [UIActivityTypeMail,UIActivityTypeMessage,UIActivityTypeAirDrop, UIActivityTypeAddToReadingList,UIActivityTypePostToWeibo]
+//                
+//                viewcontroller.presentViewController(activityVC, animated: true, completion: nil)
+//            }
+//        }
+//    }
 }
 
-extension AIApplication {
-    @nonobjc static let kSHARE = "AIApplication.share".localized
-}
+//extension AIApplication {
+//    @nonobjc static let kSHARE = "AIApplication.share".localized
+//}

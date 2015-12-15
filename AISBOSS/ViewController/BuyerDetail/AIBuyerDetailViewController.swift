@@ -206,7 +206,8 @@ class AIBuyerDetailViewController : UIViewController {
         self.contentLabel.text = dataSource?.proposal_desc
         self.OrderFromLabel.text = AIBuyerDetailViewController.kFROM
         
-        if NSString(string: name).containsString(AIBuyerDetailViewController.kPREGNANCY) {
+//        "AIBuyerDetailViewController.pregnancy" = "怀孕"; 可能引起bug
+        if NSString(string: name).containsString("AIBuyerDetailViewController.pregnancy".localized) {
             // 处理字体
             let price = dataSource?.proposal_price
             let richText = NSMutableAttributedString(string:(price)!)

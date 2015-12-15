@@ -198,7 +198,7 @@ class AIOrderDescView: UIView {
         let sateLabel = UILabel(frame: sateLabelFrame)
         sateLabel.textColor = PurchasedViewColor.TITLE
         sateLabel.font = LABEL_TITLE_FONT
-        sateLabel.text = "AIOrderDescView.sate".localized
+        sateLabel.text = "AIOrderDescView.seat".localized
         sateLabel.alpha = 0.6
         
         let gateValueLabel = UILabel(frame: gateValueLabelFrame)

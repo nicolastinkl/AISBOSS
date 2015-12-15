@@ -1,19 +1,11 @@
-
-//
-"AIApplication.share" = "Swift 很棒!  Check out this website about it!";
-
 //
 "AIAudioMessageView.error" = "录音发生错误";
-
 "AIAudioMessageView.info" = "提示";
-
 "AIAudioMessageView.close" = "取消";
 
 //
-"AIBuyerDetailViewController.pregnancy" = "Pregnancy";
-
+"AIBuyerDetailViewController.pregnancy" = "怀孕";
 "AIBuyerDetailViewController.from" = "从";
-
 "AIBuyerDetailViewController.alert" = "确定添加服务%@";
 
 //
@@ -21,12 +13,10 @@
 
 //
 "AICustomAudioNotesView.release" = "松手发送";
-
 "AICustomAudioNotesView.hold" = "按住讲话";
 
 //
 "AICustomerCollectionCellView.hello" = "hello";
-
 "AICustomerCollectionCellView.hello2" = "hello2";
 
 //
@@ -37,49 +27,50 @@
 
 
 //
-"AIOrderDescView.time" = "事件";
-"AIOrderDescView.newTime" = "New Time";
+"AIOrderDescView.time" = "时间";
+"AIOrderDescView.newTime" = "新时间";
 "AIOrderDescView.delayed" = "延迟";
 "AIOrderDescView.delivery" = "派送员:Mike Liu";
-"AIOrderDescView.sate" = "SATE";
-"AIOrderDescView.gate" = "GATE";
-"AIOrderDescView.ongoing" = "Ongoing";
+"AIOrderDescView.seat" = "座位";
+"AIOrderDescView.gate" = "登机门";
+"AIOrderDescView.ongoing" = "派送中";
 
 //
-"AIScanViewController.couldnt" = "Couldn't more than 10";
+"AIScanViewController.couldnt" = "不能大于10";
 
 //
 "AISellerCell.amy" = "Amy Copper";
-"AISerllerCell.dollar" = "$188";
-"AISerllerCell.fitness" = "Fitness Plan Making";
-"AISerllerCell.fitnessPlan" = "Fitness Plan -";
-"AISerllerCell.14:00" = "14:00 Aug 2nd";
-"AISerllerCell.fifth" = "Fifth Avenue";
+"AISerllerCell.dollar" = "¥188";
+"AISerllerCell.fitness" = "健身计划制定";
+"AISerllerCell.fitnessPlan" = "健身计划 -";
+"AISerllerCell.14:00" = "8月2日 14:00";
+"AISerllerCell.fifth" = "第五大道";
 
 //
-"AISellerViewController.2beConfirmed" = "To Be Confirmed";
+"AISellerViewController.2beConfirmed" = "待定";
+
+////
+//"AIServerDetailViewController.service" = "Services to Your Liking";
+//"AIServerDetailViewController.dollarFormat" = "¥%@";
+//"AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
+//"AIServerDetailViewController.day" = "DAY";
 
 //
-"AIServerDetailViewController.service" = "Services to Your Liking";
-"AIServerDetailViewController.dollarFormat" = "$%@";
-"AIServerDetailViewController.day" = "DAY";
+"ProposalExpandedView.onSchedule" = "派送中";
+//"ProposalExpandedView.shop" = "Shop-on-behalf Service";
 
 //
-"ProposalExpandedView.onSchedule" = "On Schedule";
-"ProposalExpandedView.shop" = "Shop-on-behalf Service";
+//"PurchasedServiceView.home" = "Home Delivery";
+"PurchasedServiceView.yourOrder" = "您订购的商品已经抵达上海转运中心，准备发往北京";
 
 //
-"PurchasedServiceView.home" = "Home Delivery";
-"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
+"ServiceContainerView.dollarZero" = "¥0";
 
 //
-"ServiceContainerView.dollarZero" = "$0";
+"SwitchServiceView.on" = "开";
+"SwitchServiceView.off" = "关";
 
 //
-"SwitchServiceView.on" = "ON";
-"SwitchServiceView.off" = "OFF";
-
-//
-"TransportService.oct" = "Oct.10th 10:30";
-"TransportService.pudong" = "Pudong Airport T2";
-"TransportService.yanan" = "Yanan Jingan District road 1218";
+"TransportService.oct" = "10月10日 10:30";
+"TransportService.pudong" = "浦东机场 T2";
+"TransportService.yanan" = "静安区延安中路1228号";

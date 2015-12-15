@@ -691,7 +691,7 @@
     
     
     CGRect frame = CGRectMake(CGRectGetMaxX(imageView.frame)+kMargin5, y, 200, kSmallImageSize);
-    _location = [AIViews normalLabelWithFrame:frame text:@"Fifth Avenue" fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
+    _location = [AIViews normalLabelWithFrame:frame text:[@"AISerllerCell.fifth" localized] fontSize:kSmallFontSize color:[UIColor colorWithWhite:kWhiteValue alpha:1]];
     [_boardView addSubview:_location];
     _location.font = [AITools myriadCondWithSize:33/2.5];
 }

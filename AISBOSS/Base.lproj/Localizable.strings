@@ -1,19 +1,11 @@
-
-//
-"AIApplication.share" = "Swift is awesome!  Check out this website about it!";
-
 //
 "AIAudioMessageView.error" = "Get Record Error.";
-
 "AIAudioMessageView.info" = "Info";
-
 "AIAudioMessageView.close" = "Close";
 
 //
 "AIBuyerDetailViewController.pregnancy" = "Pregnancy";
-
 "AIBuyerDetailViewController.from" = "From";
-
 "AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
 
 //
@@ -21,12 +13,10 @@
 
 //
 "AICustomAudioNotesView.release" = "Release to Send";
-
 "AICustomAudioNotesView.hold" = "Hold to Talk";
 
 //
 "AICustomerCollectionCellView.hello" = "hello";
-
 "AICustomerCollectionCellView.hello2" = "hello2";
 
 //
@@ -41,7 +31,7 @@
 "AIOrderDescView.newTime" = "New Time";
 "AIOrderDescView.delayed" = "Delayed";
 "AIOrderDescView.delivery" = "Delivery staff:Mike Liu";
-"AIOrderDescView.sate" = "SATE";
+"AIOrderDescView.seat" = "SEAT";
 "AIOrderDescView.gate" = "GATE";
 "AIOrderDescView.ongoing" = "Ongoing";
 
@@ -59,17 +49,18 @@
 //
 "AISellerViewController.2beConfirmed" = "To Be Confirmed";
 
-//
-"AIServerDetailViewController.service" = "Services to Your Liking";
-"AIServerDetailViewController.dollarFormat" = "$%@";
-"AIServerDetailViewController.day" = "DAY";
+////
+//"AIServerDetailViewController.service" = "Services to Your Liking";
+//"AIServerDetailViewController.dollarFormat" = "$%@";
+//"AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
+//"AIServerDetailViewController.day" = "DAY";
 
 //
 "ProposalExpandedView.onSchedule" = "On Schedule";
-"ProposalExpandedView.shop" = "Shop-on-behalf Service";
+//"ProposalExpandedView.shop" = "Shop-on-behalf Service";
 
 //
-"PurchasedServiceView.home" = "Home Delivery";
+//"PurchasedServiceView.home" = "Home Delivery";
 "PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
 
 //
