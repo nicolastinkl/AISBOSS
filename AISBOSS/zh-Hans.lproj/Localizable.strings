@@ -20,7 +20,7 @@
 "AICustomerCollectionCellView.hello2" = "hello2";
 
 //
-"AIMusicTherapyView.service" = "服务内容评估";
+"AIMusicTherapyView.service" = "服务内容评价";
 "AIMusicTherapyView.moreReviews" = "%ld 条更多评论 >";
 "AIMusicTherapyView.reviews" = "%ld 条评论";
 "AIMusicTherapyView.helpful" = "有用的评论";

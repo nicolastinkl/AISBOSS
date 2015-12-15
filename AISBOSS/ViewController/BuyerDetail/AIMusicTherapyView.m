@@ -170,7 +170,7 @@
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:reviewStr];
     
-    NSRange range = NSMakeRange(4, 7);
+    NSRange range = NSMakeRange(4, reviewStr.length - 4);
     
     [attr addAttribute:NSFontAttributeName value:[AITools myriadLightSemiCondensedWithSize:fontSize] range:range];
     reviewLabel.attributedText = attr;
