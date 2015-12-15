@@ -24,7 +24,7 @@ class AIOrderDescView: UIView {
     let TEXT_HEIGHT : CGFloat = 21
     let TEXT_PADDING : CGFloat = 5
     let VIEW_PADDING : CGFloat = 1
-    let SATE_LABEL_WIDTH : CGFloat = 26
+    var SATE_LABEL_WIDTH : CGFloat = 26
     let PARAM_KEY_OTHER : String = "20151026"
     let PARAM_KEY_DESC : String = "25042643"
     
@@ -84,7 +84,7 @@ class AIOrderDescView: UIView {
     func buildDefaultView(){
         var timeSize : CGRect!
         var timeValueFont = TIME_VALUE_FONT
-        
+
         if let valueForTime = paramDictionary?.valueForKey("Time") as? String{
             if valueForTime != ""{
                 timeValueText = valueForTime
@@ -177,6 +177,10 @@ class AIOrderDescView: UIView {
             }
         }
         
+        if Localize.currentLanguage() == "zh-Hans" {
+            SATE_LABEL_WIDTH = 41
+        }
+        
         let gateValueSize = caculateContentSize(gateText, font: TIME_VALUE_FONT)
         let sateValueSize = caculateContentSize(sateText, font: TIME_VALUE_FONT)
         let sateValueLabelFrame = CGRectMake(self.bounds.width - sateValueSize.size.width - VIEW_PADDING, 0, sateValueSize.width, TEXT_HEIGHT)
@@ -222,14 +226,14 @@ class AIOrderDescView: UIView {
     
     // MARK : - utils
     func caculateContentSize(content:String,fontSize:CGFloat) -> CGRect{
-        let size = CGSizeMake(150,100)
+        let size = CGSizeMake(200,100)
         let s:NSString = "\(content)"
         let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:UIFont.systemFontOfSize(fontSize)], context: nil)
         return contentSize
     }
     
     func caculateContentSize(content:String,font:UIFont) -> CGRect{
-        let size = CGSizeMake(150,100)
+        let size = CGSizeMake(200,100)
         let s:NSString = "\(content)"
         let contentSize = s.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:font], context: nil)
         return contentSize
