@@ -194,7 +194,7 @@ class BDKProposalService : MockProposalService{
      - parameter fail:    <#fail description#>
      - parameter errDes:  <#errDes description#>
      */
-    func queryCustosmerServiceDetail(serviceId : Int,success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func findServiceDetail(serviceId : Int,success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = "http://171.221.254.231:3000/findServiceDetailFake"
         
