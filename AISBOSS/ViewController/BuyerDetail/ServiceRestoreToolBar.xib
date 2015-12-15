@@ -147,6 +147,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="restore_toolbar_more" width="60" height="59"/>
+        <image name="restore_toolbar_more" width="60" height="60"/>
     </resources>
 </document>

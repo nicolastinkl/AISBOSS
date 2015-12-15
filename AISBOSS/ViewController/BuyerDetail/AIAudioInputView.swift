@@ -14,9 +14,10 @@ import AISpring
 internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
 
     // MARK: Update
-    let holdViewHeigh:CGFloat = 290.0
+    let holdViewHeigh:CGFloat = 252.0
     
     private var currentAudioState: Bool = false
+    @IBOutlet weak var inputHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var timeText: UILabel!
     
@@ -26,6 +27,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     
     @IBOutlet weak var audioButtonView: UIView!
     
+    @IBOutlet weak var inputTextView: DesignableTextView!
     @IBOutlet weak var inputButtomValue: NSLayoutConstraint!
     
     // MARK: -> Internal property
@@ -33,6 +35,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     private var lowPassResults: Double = 0
     private var timer: NSTimer?
     private var audioTimes:Int = 0
+    private var isCancalRecordMode: Bool = false
     
     var currentTime : NSTimeInterval?
     let maxRecordTime : NSTimeInterval = 60
@@ -54,6 +57,10 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioInputView", owner: self, options: nil).first  as! AIAudioInputView
         selfView.timeText.font = AITools.myriadSemiCondensedWithSize(58/PurchasedViewDimention.CONVERT_FACTOR)
         selfView.timeText.textColor = UIColor(hex:"6a6a6a")
+        
+        selfView.inputTextView.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
+        
+        
         return selfView
     }
     
@@ -100,6 +107,12 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         } catch {
             logInfo("startRecording error")
         }
+    }
+    
+    //放弃录音
+    @IBAction func cancelRecordAction(sender: AnyObject){
+        isCancalRecordMode = true
+        stopRecording()
     }
     
     /**
@@ -151,12 +164,15 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     }
     
     @IBAction func closeViewAction(sender: AnyObject) {
+        closeThisView()
+    }
+    
+    internal func closeThisView(){
         springWithCompletion(0.5, animations: { () -> Void in
             self.alpha = 0
             }) { (complate) -> Void in
                 self.removeFromSuperview()
         }
-
     }
     
     func notifyEndRecordWithUrl(url:String) {
@@ -168,9 +184,12 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         self.delegateAudio?.endRecording(model)
     }
     
-    /// MARK:  Finish Audio..
+    /// MARK:  Finish Audio ...
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        if isCancalRecordMode {
+            return
+        }
         let data = NSData(contentsOfFile: currentAutioUrl)
         if data != nil {            
             let model = AIProposalServiceDetail_hope_list_listModel()
@@ -224,6 +243,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
 
     
     @IBAction func touchUpAudioAction(sender: AnyObject) {
+        isCancalRecordMode = false
         if let _ = recorder {
             stopRecording()
             
