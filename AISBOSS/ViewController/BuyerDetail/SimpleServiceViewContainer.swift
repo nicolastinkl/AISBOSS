@@ -226,6 +226,7 @@ class SimpleServiceViewContainer: UIView {
         return  getTopHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
     }
     
+    
     private func addParamsView(serviceParams: UIView) {
         let height = getTopHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
         self.frame.size.height = height

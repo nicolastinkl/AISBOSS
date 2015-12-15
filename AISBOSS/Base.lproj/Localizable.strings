@@ -1,4 +1,13 @@
 //
+"MJRefreshFooter.PullToRefresh" = "Reload";
+"MJRefreshFooter.ReleaseToRefresh" = "Reload";
+"MJRefreshFooter.Refreshing" = "Loading...";
+"MJRefreshHeader.PullToRefresh" = "Reload";
+"MJRefreshHeader.ReleaseToRefresh" = "Reload";
+"MJRefreshHeader.Refreshing" = "Loading...";
+"MJRefreshHeader.Latest" = "Latest: %@";
+
+//
 "AIAudioMessageView.error" = "Get Record Error.";
 "AIAudioMessageView.info" = "Info";
 "AIAudioMessageView.close" = "Close";
@@ -74,3 +83,98 @@
 "TransportService.oct" = "Oct.10th 10:30";
 "TransportService.pudong" = "Pudong Airport T2";
 "TransportService.yanan" = "Yanan Jingan District road 1218";
+
+
+
+//nibs
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/SimpleServiceViewContainer.xib
+ */
+
+//"16.73 saved" = "16.73 saved";
+
+"SimpleServiceViewContainer.review" = "Review";
+
+//"€101.83" = "€101.83";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIFoldedCellView.xib
+ */
+
+"AIFoldedCellView.weekend" = "Weekend Road Trip";
+
+"AIFoldedCellView.status" = " On Schedule  ";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomAudioNotesView.xib
+ */
+
+"AICustomAudioNotesView.leaveAText" = "Leave a text or voice message to the provider";
+
+"AICustomAudioNotesView.hold" = "Hold to Talk";
+
+"AICustomAudioNotesView.note" = "Note";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/AIErrorRetryView.xib
+ */
+
+"AIErrorRetryView.click" = "click to try";
+
+"AIErrorRetryView.loading" = "Loading Failed";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AIDetailTopMenuView.xib
+ */
+
+"AIDetailTopMenuView.like" = "Like";
+
+"AIDetailTopMenuView.share" = "Share";
+
+"AIDetailTopMenuView.customization" = "Customization";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
+ */
+
+"AICustomView.notes" = "Customization Notes";
+
+
+
+
+
+
+
+
+
+

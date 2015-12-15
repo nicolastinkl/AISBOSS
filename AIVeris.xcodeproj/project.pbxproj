@@ -139,9 +139,7 @@
 		847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F69251C1EB337008A7804 /* AILocalizationManager.swift */; };
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
-		848081401C1EE748007806E7 /* UIImageView+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
-		848081421C1EE748007806E7 /* UISegmentedControl+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */; };
 		849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */; };
 		849B4B211C0EDFE300BEC179 /* FLEXArgumentInputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A931C0EDFE300BEC179 /* FLEXArgumentInputDateView.m */; };
 		849B4B221C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A951C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m */; };
@@ -227,6 +225,7 @@
 		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; };
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
+		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
 		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
@@ -674,9 +673,7 @@
 		848081381C1EE748007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
 		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
-		8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
-		8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Localize.swift"; sourceTree = "<group>"; };
 		849B4A901C0EDFE300BEC179 /* FLEXArgumentInputColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputColorView.h; sourceTree = "<group>"; };
 		849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXArgumentInputColorView.m; sourceTree = "<group>"; };
 		849B4A921C0EDFE300BEC179 /* FLEXArgumentInputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputDateView.h; sourceTree = "<group>"; };
@@ -830,6 +827,7 @@
 		84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceContainerView.swift; sourceTree = "<group>"; };
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
+		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
 		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1578,9 +1576,8 @@
 				848081381C1EE748007806E7 /* Localize.h */,
 				848081391C1EE748007806E7 /* Localize.swift */,
 				8480813A1C1EE748007806E7 /* UIButton+Localize.swift */,
-				8480813B1C1EE748007806E7 /* UIImageView+Localize.swift */,
 				8480813C1C1EE748007806E7 /* UILabel+Localize.swift */,
-				8480813D1C1EE748007806E7 /* UISegmentedControl+Localize.swift */,
+				84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */,
 			);
 			path = Localize_Swift;
 			sourceTree = "<group>";
@@ -3054,7 +3051,6 @@
 				849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
-				848081421C1EE748007806E7 /* UISegmentedControl+Localize.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
 				818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */,
 				93FA1DA21B9C2EAA009965C8 /* DSLCalendarView.m in Sources */,
@@ -3195,7 +3191,6 @@
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
 				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
-				848081401C1EE748007806E7 /* UIImageView+Localize.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
 				84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */,
@@ -3235,6 +3230,7 @@
 				81C092841BAFAC0D003FFF35 /* SDWebImageCompat.m in Sources */,
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
+				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,

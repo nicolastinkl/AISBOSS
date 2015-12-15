@@ -42,6 +42,9 @@
                     <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="ailLabel" value="AIFoldedCellView.status"/>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="2fw-UB-u5X" userLabel="serviceIcon">
                     <rect key="frame" x="16" y="59" width="24" height="24"/>

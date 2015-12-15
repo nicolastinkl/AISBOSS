@@ -52,9 +52,9 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.pullToRefreshText = MJRefreshHeaderPullToRefresh;
-        self.releaseToRefreshText = MJRefreshHeaderReleaseToRefresh;
-        self.refreshingText = MJRefreshHeaderRefreshing;
+        self.pullToRefreshText = NSLocalizedString(@"MJRefreshHeader.PullToRefresh", nil);;
+        self.releaseToRefreshText = NSLocalizedString(@"MJRefreshHeader.ReleaseToRefresh", nil);
+        self.refreshingText = NSLocalizedString(@"MJRefreshHeader.Refreshing", nil);;
     }
     return self;
 }
@@ -123,7 +123,7 @@
     NSString *time = [formatter stringFromDate:self.lastUpdateTime];
     
     // 3.显示日期
-    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:@"Latest：%@", time];
+    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MJRefreshHeader.Latest", nil), time];
 }
 
 #pragma mark - 监听UIScrollView的contentOffset属性

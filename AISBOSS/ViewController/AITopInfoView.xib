@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MyriadProRegular.ttf">
@@ -12,12 +13,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AITopInfoView" customModule="AITrans" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AITopInfoView" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_card_small_picture" translatesAutoresizingMaskIntoConstraints="NO" id="flh-hr-hHg">
                     <rect key="frame" x="571" y="27" width="10" height="10"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="3JC-sd-wNT"/>
                         <constraint firstAttribute="width" constant="10" id="GfZ-iS-uNQ"/>
@@ -25,6 +27,7 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTq-Xh-Y2A">
                     <rect key="frame" x="453" y="21" width="110" height="21"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2vy-Gr-ESd"/>
                         <constraint firstAttribute="width" constant="110" id="X32-l7-oOE"/>
@@ -35,6 +38,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niq-5N-oBv">
                     <rect key="frame" x="383" y="3" width="200" height="15"/>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="D3L-ZF-bcH"/>
@@ -43,6 +47,7 @@
                 </view>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" text="9" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN8-Uz-WwT">
                     <rect key="frame" x="-6" y="-9" width="86" height="72"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="86" id="TpM-g3-KAz"/>
                         <constraint firstAttribute="height" constant="72" id="UOE-rk-C1P"/>
@@ -52,6 +57,7 @@
                 </label>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Z6v-hA-pt5">
                     <rect key="frame" x="19" y="0.0" width="45" height="56"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="kGr-1e-pV3"/>
                         <constraint firstAttribute="height" constant="56" id="tnc-XC-bQM"/>
@@ -59,6 +65,7 @@
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ksm-vh-vz2">
                     <rect key="frame" x="59" y="-1" width="45" height="56"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="ZFd-V3-gzA"/>
                         <constraint firstAttribute="height" constant="56" id="eqQ-zS-yOq"/>
@@ -66,6 +73,7 @@
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_bigstar" translatesAutoresizingMaskIntoConstraints="NO" id="6fN-aH-Xb7">
                     <rect key="frame" x="5" y="-2" width="18" height="17"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="5b9-28-8x0"/>
                         <constraint firstAttribute="height" constant="17" id="asd-H9-tUs"/>
@@ -73,6 +81,7 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receve yuserself" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymZ-zO-eEz">
                     <rect key="frame" x="33" y="-8" width="477" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="HCA-g8-N2V"/>
                     </constraints>
@@ -81,6 +90,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>

@@ -11,10 +11,10 @@ import UIKit
 extension UILabel {
     var ailLabel: String? {
         get {
-            return self.text
+            return text
         }
         set {
-            text = ailLabel?.localized
+            text = newValue?.localized
         }
     }
 }

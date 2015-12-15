@@ -1,4 +1,13 @@
 //
+"MJRefreshFooter.PullToRefresh" = "刷新";
+"MJRefreshFooter.ReleaseToRefresh" = "刷新";
+"MJRefreshFooter.Refreshing" = "加载中...";
+"MJRefreshHeader.PullToRefresh" = "刷新";
+"MJRefreshHeader.ReleaseToRefresh" = "刷新";
+"MJRefreshHeader.Refreshing" = "加载中...";
+"MJRefreshHeader.Latest" = "最后更新时间: %@";
+
+//
 "AIAudioMessageView.error" = "录音发生错误";
 "AIAudioMessageView.info" = "提示";
 "AIAudioMessageView.close" = "取消";
@@ -29,11 +38,11 @@
 //
 "AIOrderDescView.time" = "时间";
 "AIOrderDescView.newTime" = "新时间";
-"AIOrderDescView.delayed" = "延迟";
+"AIOrderDescView.delayed" = "延误";
 "AIOrderDescView.delivery" = "派送员:Mike Liu";
 "AIOrderDescView.seat" = "座位";
 "AIOrderDescView.gate" = "登机门";
-"AIOrderDescView.ongoing" = "派送中";
+"AIOrderDescView.ongoing" = "进行中";
 
 //
 "AIScanViewController.couldnt" = "不能大于10";
@@ -56,7 +65,7 @@
 //"AIServerDetailViewController.day" = "DAY";
 
 //
-"ProposalExpandedView.onSchedule" = "派送中";
+"ProposalExpandedView.onSchedule" = "进行中";
 //"ProposalExpandedView.shop" = "Shop-on-behalf Service";
 
 //
@@ -74,3 +83,98 @@
 "TransportService.oct" = "10月10日 10:30";
 "TransportService.pudong" = "浦东机场 T2";
 "TransportService.yanan" = "静安区延安中路1228号";
+
+
+
+//nibs
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/SimpleServiceViewContainer.xib
+ */
+
+//"16.73 saved" = "16.73 saved";
+
+"SimpleServiceViewContainer.review" = "Review";
+
+//"€101.83" = "€101.83";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/AIFoldedCellView.xib
+ */
+
+"AIFoldedCellView.weekend" = "Weekend Road Trip";
+
+"AIFoldedCellView.status" = " 进行中  ";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomAudioNotesView.xib
+ */
+
+"AICustomAudioNotesView.leaveAText" = "给服务提供商留言或语音信息";
+
+"AICustomAudioNotesView.hold" = "按住 说话";
+
+"AICustomAudioNotesView.note" = "留言";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/Views/AIErrorRetryView.xib
+ */
+
+"AIErrorRetryView.click" = "click to try";
+
+"AIErrorRetryView.loading" = "Loading Failed";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AIDetailTopMenuView.xib
+ */
+
+"AIDetailTopMenuView.like" = "赞";
+
+"AIDetailTopMenuView.share" = "分享";
+
+"AIDetailTopMenuView.customization" = "自定义";
+
+
+
+
+
+
+
+/*
+ * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
+ */
+
+"AICustomView.notes" = "Customization Notes";
+
+
+
+
+
+
+
+
+
+

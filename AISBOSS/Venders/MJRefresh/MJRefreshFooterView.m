@@ -29,9 +29,9 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.pullToRefreshText = MJRefreshFooterPullToRefresh;
-        self.releaseToRefreshText = MJRefreshFooterReleaseToRefresh;
-        self.refreshingText = MJRefreshFooterRefreshing;
+        self.pullToRefreshText = NSLocalizedString(@"MJRefreshFooter.PullToRefresh", nil);
+        self.releaseToRefreshText = NSLocalizedString(@"MJRefreshFooter.ReleaseToRefresh", nil);
+        self.refreshingText = NSLocalizedString(@"MJRefreshFooter.Refreshing", nil);
     }
     return self;
 }
