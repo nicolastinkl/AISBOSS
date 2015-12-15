@@ -104,14 +104,31 @@
                                     <exclude reference="Yur-H1-oqw"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <action selector="touchDownAudio:" destination="iN0-l3-epB" eventType="touchDown" id="vzt-Z1-cP3"/>
+                                <action selector="touchUpAudioAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yav-Xl-eeL"/>
+                            </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold to Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-Gt-Svh">
+                            <rect key="frame" x="181" y="26" width="238" height="21"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Kq3-J7-nTy"/>
+                                <constraint firstAttribute="width" constant="238" id="hiO-0g-C96"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79862034574468088" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerY" secondItem="Nhd-oA-fLB" secondAttribute="centerY" id="5Sc-NX-Arm"/>
                         <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerX" secondItem="Nhd-oA-fLB" secondAttribute="centerX" id="Lnn-43-vxa"/>
+                        <constraint firstItem="ZV8-Bq-SQo" firstAttribute="top" secondItem="l93-Gt-Svh" secondAttribute="bottom" constant="8" id="iaA-Ec-fEN"/>
                         <constraint firstAttribute="height" constant="290" id="p9C-OF-67o"/>
+                        <constraint firstItem="l93-Gt-Svh" firstAttribute="centerX" secondItem="Nhd-oA-fLB" secondAttribute="centerX" id="sY4-4d-XlR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-sV-q0j">
@@ -155,6 +172,7 @@
                 <outlet property="changeButton" destination="hKj-lk-jq5" id="SCa-Er-nVe"/>
                 <outlet property="inputButtomValue" destination="kbt-Za-gGC" id="JMt-D9-GXt"/>
                 <outlet property="textInput" destination="NL8-St-jGg" id="KSg-LT-g26"/>
+                <outlet property="timeText" destination="l93-Gt-Svh" id="X2P-lg-GRe"/>
             </connections>
             <point key="canvasLocation" x="378" y="348"/>
         </view>

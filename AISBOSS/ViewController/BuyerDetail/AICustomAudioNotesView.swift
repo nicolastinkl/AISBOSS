@@ -18,8 +18,13 @@ import AISpring
     
     func willEndRecording()
     func endRecordingWithError(error : String)
-    func showAudioView()
     
+    
+}
+
+
+@objc protocol AICustomAudioNotesViewShowAudioDelegate : class{
+    func showAudioView()
 }
 // MARK: -
 // MARK: AICustomAudioNotesView
@@ -42,6 +47,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     private var timer: NSTimer?
     private var currentAudioState: Bool = false
     weak var delegateAudio:AICustomAudioNotesViewDelegate?
+    weak var delegateShowAudio:AICustomAudioNotesViewShowAudioDelegate?
     internal var currentAutioUrl:String = ""
     
     func getAudioFileName() -> String{
@@ -203,7 +209,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     // MARK: -> Private methods
     
     @IBAction func touchUpShowAudioViewAction(sender: AnyObject) {
-        self.delegateAudio?.showAudioView()
+        self.delegateShowAudio?.showAudioView()
     }
 
     @IBAction func touchUpAudioAction(sender: AnyObject) {
