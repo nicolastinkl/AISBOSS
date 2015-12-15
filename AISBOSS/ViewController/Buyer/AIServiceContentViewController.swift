@@ -9,6 +9,7 @@
 import UIKit
 import Cartography
 import AISpring
+import AIAlertView
 
 public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
@@ -553,8 +554,9 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     
     //结束录音添加view到scrollview
     func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
+
         audioView_AudioRecordView?.hidden = true
-        if audioModel.time > 0 {
+        if audioModel.time > 1000 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
             audio1.audioDelegate = self
@@ -564,6 +566,9 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 audio1.deleteDelegate = self
                 scrollViewBottom()
             }
+        }
+        else {
+            AIAlertView().showInfo("Record is too short.", subTitle: "Info", closeButtonTitle: "close", duration: 3)
         }
     }
     

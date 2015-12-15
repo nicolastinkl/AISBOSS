@@ -25,6 +25,7 @@
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
+		816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
 		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
 		818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */; };
@@ -504,6 +505,8 @@
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
+		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeLoginView.h; path = Login/AIFakeLoginView.h; sourceTree = "<group>"; };
+		816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeLoginView.m; path = Login/AIFakeLoginView.m; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIServiceContentViewController.swift; path = ../Buyer/AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBuyerModels.h; path = ocmodel/AIBuyerModels.h; sourceTree = "<group>"; };
 		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerModels.m; path = ocmodel/AIBuyerModels.m; sourceTree = "<group>"; };
@@ -1297,6 +1300,15 @@
 			path = MaterialDesign;
 			sourceTree = "<group>";
 		};
+		816E3B851C1ED62D00A061DD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */,
+				816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		818D8EAE1C040D4100006408 /* BuyerViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -2086,6 +2098,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				816E3B851C1ED62D00A061DD /* Login */,
 				935000101BFF248B00B8386B /* AIRoot */,
 				9350000F1BFF247500B8386B /* AITimeAndHome */,
 				9350000E1BFF245C00B8386B /* AICustom */,
@@ -2994,6 +3007,7 @@
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
+				816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
 				849B4B4F1C0EDFE300BEC179 /* FLEXClassExplorerViewController.m in Sources */,
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,

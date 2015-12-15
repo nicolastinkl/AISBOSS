@@ -34,6 +34,9 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     private var timer: NSTimer?
     private var audioTimes:Int = 0
     
+    var currentTime : NSTimeInterval?
+    let maxRecordTime : NSTimeInterval = 60
+    
     weak var delegateAudio:AICustomAudioNotesViewDelegate?
     
     internal var currentAutioUrl:String = ""
@@ -103,7 +106,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
      - parameter time: 1s
      */
     func levelTimer(time : NSTimer){
-        if let _ = recorder {
+        if let rder = recorder {
             // audioTimes ++
             audioTimes = audioTimes + 1
             
@@ -113,6 +116,9 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
                 self.timeText.text = "0:\(audioTimes)"
             }
             
+            if (rder.currentTime >= maxRecordTime) {
+                stopRecording()
+            }
         }
     
     }
@@ -155,11 +161,9 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     
     func notifyEndRecordWithUrl(url:String) {
         // fake
-        let data = NSData(contentsOfFile: currentAutioUrl)
-        let audioLength: Int = data!.length/1024/25
         let model = AIProposalServiceDetail_hope_list_listModel()
         model.audio_url = currentAutioUrl
-        model.time = audioLength
+        model.time = (NSInteger)(currentTime! * 1000)
         model.type = 2
         self.delegateAudio?.endRecording(model)
     }
@@ -168,12 +172,10 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         let data = NSData(contentsOfFile: currentAutioUrl)
-        if data != nil {
-            
-            let audioLength: Int = data!.length/1024/25
+        if data != nil {            
             let model = AIProposalServiceDetail_hope_list_listModel()
             model.audio_url = currentAutioUrl
-            model.time = audioLength
+            model.time = (NSInteger)(currentTime! * 1000)
             model.type = 2
             self.delegateAudio?.endRecording(model)
             
@@ -199,19 +201,32 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     // MARK: -
     
     // MARK: -> Private methods
-     
     
-    @IBAction func touchUpAudioAction(sender: AnyObject) {
+    func stopRecording () {
         if let rder = recorder {
             
             /// 松开 结束录音
+            // 记录录音时间
+            currentTime = rder.currentTime
+            
+            // 停止记录
             rder.stop()
             
             timer?.invalidate()
             timer = nil
+
             timeText.text = "Hold to Talk"
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
+        }
+    }
+    
+
+    
+    @IBAction func touchUpAudioAction(sender: AnyObject) {
+        if let _ = recorder {
+            stopRecording()
+            
         }else{
             
             timer?.invalidate()

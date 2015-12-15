@@ -36,6 +36,9 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     
     // MARK: -> Internal class
     
+    var currentTime : NSTimeInterval?
+    let maxRecordTime : NSTimeInterval = 60
+    
     @IBOutlet weak var note: UILabel!
     @IBOutlet weak var audioButton: DesignableButton!
     @IBOutlet weak var inputText: DesignableTextField!
@@ -118,6 +121,12 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
             delegateAudio?.updateMetersImage(lowPassResults)
             //logInfo("Average input Low pass results: \(lowPassResults)")
+            // 如果录音长度超长，则停止录音
+            
+            if (rder.currentTime >= maxRecordTime) {
+                stopRecording()
+            }
+            
         }
     }
     
@@ -162,12 +171,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     
     
     func notifyEndRecordWithUrl(url:String) {
-        // fake
-        let data = NSData(contentsOfFile: currentAutioUrl)
-        let audioLength: Int = data!.length/1024/25
+        
         let model = AIProposalServiceDetail_hope_list_listModel()
         model.audio_url = currentAutioUrl
-        model.time = audioLength
+        model.time = (NSInteger)(currentTime! * 1000)
         model.type = 2
         self.delegateAudio?.endRecording(model)
     }
@@ -178,10 +185,10 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         let data = NSData(contentsOfFile: currentAutioUrl) 
         if data != nil {
             
-            let audioLength: Int = data!.length/1024/25
+            print("Audio record length : %.2f", currentTime)
             let model = AIProposalServiceDetail_hope_list_listModel()
             model.audio_url = currentAutioUrl
-            model.time = audioLength
+            model.time = (NSInteger)(currentTime! * 1000)
             model.type = 2
             self.delegateAudio?.endRecording(model)
             
@@ -212,10 +219,14 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         self.delegateShowAudio?.showAudioView()
     }
 
-    @IBAction func touchUpAudioAction(sender: AnyObject) {
+    func stopRecording () {
         if let rder = recorder {
             
             /// 松开 结束录音
+            // 记录录音时间
+            currentTime = rder.currentTime
+            
+            // 停止记录
             rder.stop()
             
             timer?.invalidate()
@@ -223,6 +234,16 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             audioButton.setTitle("Hold to Talk", forState: UIControlState.Normal)
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
+        }
+    }
+
+    
+
+    @IBAction func touchUpAudioAction(sender: AnyObject) {
+        if let _ = recorder {
+            
+            /// 松开 结束录音
+            stopRecording()
         }else{
             
             timer?.invalidate()
