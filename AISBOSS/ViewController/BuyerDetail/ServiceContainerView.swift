@@ -88,9 +88,9 @@ class ServiceContainerView: UIView {
         grade.asyncLoadImage(dataModel.service_rating_icon ?? "")
         
         if dataModel.service_price != nil {
-            price.text = dataModel.service_price.original ?? "$0"
+            price.text = dataModel.service_price.original ?? "ServiceContainerView.dollarZero".localized
         }else{
-            price.text = "$0"
+            price.text = "ServiceContainerView.dollarZero".localized
         }
         name.text = dataModel.service_desc ?? ""
        

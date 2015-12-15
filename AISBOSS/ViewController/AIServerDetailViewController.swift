@@ -70,7 +70,7 @@ class AIServerDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelView.text = "Services to Your Liking"
+        self.labelView.text = "AIServerDetailViewController.service".localized
         
         addSearchViewToParent()
 
@@ -132,12 +132,12 @@ class AIServerDetailViewController: UIViewController {
         
         tableView.reloadData()
         
-        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "AIServerDetailViewController.dollarFormat".localized, numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     private func insertDateModel() {
         let data = TableViewSourceModel()
-        data.title = "DAY"
+        data.title = "AIServerDetailViewController.day".localized
         data.type = CellType.DatePicker
         dataSource.addObject(data)
     }
@@ -227,7 +227,7 @@ class AIServerDetailViewController: UIViewController {
         }
         
         
-        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "$%@", numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
+        labelPrice.changeFloatNumberTo(priceAccount.getTotalAmount(), format: "AIServerDetailViewController.dollarFormat".localized, numberFormat: JumpNumberLabel.createDefaultFloatCurrencyFormatter())
     }
     
     func changeDateViewNotification(){

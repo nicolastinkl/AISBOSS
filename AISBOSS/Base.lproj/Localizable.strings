@@ -58,3 +58,28 @@
 
 //
 "AISellerViewController.2beConfirmed" = "To Be Confirmed";
+
+//
+"AIServerDetailViewController.service" = "Services to Your Liking";
+"AIServerDetailViewController.dollarFormat" = "$%@";
+"AIServerDetailViewController.day" = "DAY";
+
+//
+"ProposalExpandedView.onSchedule" = "On Schedule";
+"ProposalExpandedView.shop" = "Shop-on-behalf Service";
+
+//
+"PurchasedServiceView.home" = "Home Delivery";
+"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
+
+//
+"ServiceContainerView.dollarZero" = "$0";
+
+//
+"SwitchServiceView.on" = "ON";
+"SwitchServiceView.off" = "OFF";
+
+//
+"TransportService.oct" = "Oct.10th 10:30";
+"TransportService.pudong" = "Pudong Airport T2";
+"TransportService.yanan" = "Yanan Jingan District road 1218";

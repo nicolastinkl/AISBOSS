@@ -18,7 +18,7 @@ class ServiceCardDetailFlag: ServiceParamlView {
     
 
     var dataSource : ServiceCellProductParamModel?
-    var flags = ["Medicine Pickup","Queuing","Calling for Taxi","Check-in","Paramedic","Test Results Pickup"]
+//    var flags = ["Medicine Pickup","Queuing","Calling for Taxi","Check-in","Paramedic","Test Results Pickup"]
     let colorArray = [UIColor(hexString: "#1c789f"),UIColor(hexString: "#7b3990"),UIColor(hexString: "#619505"),UIColor(hexString: "#f79a00"),UIColor(hexString: "#d05126"),UIColor(hexString: "#b32b1d")]
     //MARK: - Constants
     //sizes

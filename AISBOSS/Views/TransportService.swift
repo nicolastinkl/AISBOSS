@@ -58,7 +58,7 @@ class TransportService: ServiceParamlView {
         timeTitle = UILabel(frame: CGRect(x: 35, y: 15, width: 25, height: 12))
         timeTitle.textColor = UIColor.whiteColor()
         timeTitle.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
-        timeTitle.text = "Time"
+        timeTitle.text = "AIOrderDescView.time".localized
         addSubview(timeTitle)
         
         time = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -72,7 +72,7 @@ class TransportService: ServiceParamlView {
             time.height == AITools.displaySizeFrom1080DesignSize(66)
         }
         
-        time.text = "Oct.10th 10:30"
+        time.text = "TransportService.oct".localized
     }
     
     private func addLocation() {
@@ -126,8 +126,8 @@ class TransportService: ServiceParamlView {
             to.height == from.height
         }
         
-        from.text = "Pudong Airport T2"
-        to.text = "Yanan Jingan District road 1218"
+        from.text = "TransportService.pudong".localized
+        to.text = "TransportService.yanan".localized
     }
 
 }

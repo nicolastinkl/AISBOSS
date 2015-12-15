@@ -137,7 +137,7 @@ class PurchasedServiceView: UIView, Measureable {
         title = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         title.font = PurchasedViewFont.SERVICE_TITLE
         title.textColor = PurchasedViewColor.TITLE
-        title.text = "Home Delivery"
+        title.text = "PurchasedServiceView.home".localized
         addSubview(title)
         
         layout(logo, title) { logo, title in
@@ -151,7 +151,7 @@ class PurchasedServiceView: UIView, Measureable {
         statu = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         statu.font = PurchasedViewFont.SERVICE_STATU
         statu.textColor = PurchasedViewColor.SERVICE_STATU
-        statu.text = "Ongoing"
+        statu.text = "AIOrderDescView.ongoing".localized
         addSubview(statu)
         
         layout(title, statu) { title, statu in
@@ -166,7 +166,7 @@ class PurchasedServiceView: UIView, Measureable {
         serviceDescription = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         serviceDescription.font = PurchasedViewFont.SERVICE_DESCRIPTION
         serviceDescription.textColor = PurchasedViewColor.DEFAULT
-        serviceDescription.text = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing."
+        serviceDescription.text = "PurchasedServiceView.yourOrder".localized
         serviceDescription.numberOfLines = 2
         addSubview(serviceDescription)
         

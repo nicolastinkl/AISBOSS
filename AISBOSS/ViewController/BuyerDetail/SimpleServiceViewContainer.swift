@@ -132,7 +132,7 @@ class SimpleServiceViewContainer: UIView {
     
     private func setPrice() {
         if let priceModel = dataModel!.service_price {
-            price.text = priceModel.original ?? "$0"
+            price.text = priceModel.original ?? "ServiceContainerView.dollarZero".localized
             
             if priceModel.saved != nil && priceModel.saved != "" {
                 savedMoney.text = priceModel.saved
@@ -144,7 +144,7 @@ class SimpleServiceViewContainer: UIView {
                 price.text = priceModel.discount
             }
         } else {
-            price.text = "$0"
+            price.text = "ServiceContainerView.dollarZero".localized
         }
     }
     
