@@ -54,29 +54,10 @@
 "AIScanViewController.couldnt" = "Couldn't more than 10";
 
 //
-"AISellerCell.amy" = "Amy Copper";
-"AISerllerCell.dollar" = "$188";
-"AISerllerCell.fitness" = "Fitness Plan Making";
-"AISerllerCell.fitnessPlan" = "Fitness Plan -";
-"AISerllerCell.14:00" = "14:00 Aug 2nd";
-"AISerllerCell.fifth" = "Fifth Avenue";
-
-//
 "AISellerViewController.2beConfirmed" = "To Be Confirmed";
-
-////
-//"AIServerDetailViewController.service" = "Services to Your Liking";
-//"AIServerDetailViewController.dollarFormat" = "$%@";
-//"AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
-//"AIServerDetailViewController.day" = "DAY";
 
 //
 "ProposalExpandedView.onSchedule" = "On Schedule";
-//"ProposalExpandedView.shop" = "Shop-on-behalf Service";
-
-//
-//"PurchasedServiceView.home" = "Home Delivery";
-"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
 
 //
 "ServiceContainerView.dollarZero" = "$0";
@@ -84,11 +65,6 @@
 //
 "SwitchServiceView.on" = "ON";
 "SwitchServiceView.off" = "OFF";
-
-//
-"TransportService.oct" = "Oct.10th 10:30";
-"TransportService.pudong" = "Pudong Airport T2";
-"TransportService.yanan" = "Yanan Jingan District road 1218";
 
 //
 "UITransViewController.change" = "Change Failed";
@@ -114,7 +90,7 @@
  * ./AISBOSS/ViewController/AIFoldedCellView.xib
  */
 
-"AIFoldedCellView.weekend" = "Weekend Road Trip";
+//"AIFoldedCellView.weekend" = "Weekend Road Trip";
 
 "AIFoldedCellView.status" = " On Schedule  ";
 
