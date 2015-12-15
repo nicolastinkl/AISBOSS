@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -22,7 +22,7 @@
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-hw-zrs">
-                    <rect key="frame" x="12" y="266" width="576" height="43"/>
+                    <rect key="frame" x="12" y="304" width="576" height="43"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKj-lk-jq5" customClass="DesignableButton" customModule="AISpring">
                             <rect key="frame" x="4" y="5" width="32" height="32"/>
@@ -49,7 +49,7 @@
                                 <action selector="ChangeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Gvl-r7-7Py"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" alpha="0.81999999284744263" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-St-jGg" customClass="DesignableTextField" customModule="AISpring">
+                        <textField hidden="YES" opaque="NO" clipsSubviews="YES" alpha="0.81999999284744263" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-St-jGg" customClass="DesignableTextField" customModule="AISpring">
                             <rect key="frame" x="46" y="4" width="530" height="35"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,36 +68,70 @@
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="string" keyPath="ailTextFieldPlaceholder" value="AICustomAudioNotesView.leaveAText"/>
                             </userDefinedRuntimeAttributes>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="TZT-Hh-QdI"/>
+                                </mask>
+                            </variation>
                         </textField>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ANA-gV-mQs" customClass="DesignableTextView" customModule="AISpring">
+                            <rect key="frame" x="46" y="4" width="530" height="35"/>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="NL8-St-jGg" firstAttribute="top" secondItem="UqE-hw-zrs" secondAttribute="top" constant="4" id="1tB-rc-OTh"/>
+                        <constraint firstAttribute="trailing" secondItem="ANA-gV-mQs" secondAttribute="trailing" id="6Py-Ec-42Y"/>
+                        <constraint firstAttribute="bottom" secondItem="ANA-gV-mQs" secondAttribute="bottom" constant="4" id="8di-zd-ajx"/>
+                        <constraint firstItem="ANA-gV-mQs" firstAttribute="leading" secondItem="hKj-lk-jq5" secondAttribute="trailing" constant="10" id="9fj-UG-HOS"/>
                         <constraint firstItem="NL8-St-jGg" firstAttribute="centerY" secondItem="UqE-hw-zrs" secondAttribute="centerY" id="BQn-QW-beM"/>
                         <constraint firstAttribute="trailing" secondItem="NL8-St-jGg" secondAttribute="trailing" id="D23-6A-mX5"/>
                         <constraint firstAttribute="height" constant="43" id="HIC-uC-jJ4"/>
+                        <constraint firstItem="ANA-gV-mQs" firstAttribute="top" secondItem="UqE-hw-zrs" secondAttribute="top" constant="4" id="KQq-an-lx8"/>
                         <constraint firstItem="NL8-St-jGg" firstAttribute="leading" secondItem="hKj-lk-jq5" secondAttribute="trailing" constant="10" id="OHj-q7-p6y"/>
+                        <constraint firstAttribute="bottom" secondItem="hKj-lk-jq5" secondAttribute="bottom" constant="6" id="Omr-Hg-XWd"/>
+                        <constraint firstAttribute="bottom" secondItem="NL8-St-jGg" secondAttribute="bottom" constant="4" id="lME-Jn-Wwo"/>
                         <constraint firstItem="hKj-lk-jq5" firstAttribute="centerY" secondItem="UqE-hw-zrs" secondAttribute="centerY" id="qNG-eV-ACD"/>
                         <constraint firstItem="hKj-lk-jq5" firstAttribute="leading" secondItem="UqE-hw-zrs" secondAttribute="leading" constant="4" id="tnA-md-obP"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="qNG-eV-ACD"/>
+                            <exclude reference="BQn-QW-beM"/>
+                        </mask>
+                    </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nhd-oA-fLB">
-                    <rect key="frame" x="0.0" y="310" width="600" height="290"/>
+                    <rect key="frame" x="0.0" y="348" width="600" height="252"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV8-Bq-SQo" customClass="DesignableButton" customModule="AISpring">
-                            <rect key="frame" x="210" y="55" width="180" height="180"/>
+                            <rect key="frame" x="230" y="56" width="140" height="140"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="180" id="SeQ-mI-aGZ"/>
+                                <constraint firstAttribute="width" constant="140" id="SeQ-mI-aGZ"/>
                                 <constraint firstAttribute="height" constant="35" id="Yur-H1-oqw"/>
-                                <constraint firstAttribute="height" constant="180" id="vWB-Vm-6DD"/>
+                                <constraint firstAttribute="height" constant="140" id="vWB-Vm-6DD"/>
                             </constraints>
                             <state key="normal" image="ai_audioButton_default">
                                 <color key="titleColor" red="0.79215686269999996" green="0.1176470588" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="5"/>
+                                    <real key="value" value="70"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <variation key="default">
@@ -106,12 +140,13 @@
                                 </mask>
                             </variation>
                             <connections>
+                                <action selector="cancelRecordAction:" destination="iN0-l3-epB" eventType="touchDragOutside" id="kqY-6M-KOC"/>
                                 <action selector="touchDownAudio:" destination="iN0-l3-epB" eventType="touchDown" id="vzt-Z1-cP3"/>
                                 <action selector="touchUpAudioAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yav-Xl-eeL"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold to Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-Gt-Svh">
-                            <rect key="frame" x="181" y="23" width="238" height="24"/>
+                            <rect key="frame" x="181" y="31" width="238" height="24"/>
                             <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="238" id="hiO-0g-C96"/>
@@ -129,13 +164,13 @@
                     <constraints>
                         <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerY" secondItem="Nhd-oA-fLB" secondAttribute="centerY" id="5Sc-NX-Arm"/>
                         <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerX" secondItem="Nhd-oA-fLB" secondAttribute="centerX" id="Lnn-43-vxa"/>
-                        <constraint firstItem="ZV8-Bq-SQo" firstAttribute="top" secondItem="l93-Gt-Svh" secondAttribute="bottom" constant="8" id="iaA-Ec-fEN"/>
-                        <constraint firstAttribute="height" constant="290" id="p9C-OF-67o"/>
+                        <constraint firstItem="ZV8-Bq-SQo" firstAttribute="top" secondItem="l93-Gt-Svh" secondAttribute="bottom" constant="1" id="iaA-Ec-fEN"/>
+                        <constraint firstAttribute="height" constant="252" id="p9C-OF-67o"/>
                         <constraint firstItem="l93-Gt-Svh" firstAttribute="centerX" secondItem="Nhd-oA-fLB" secondAttribute="centerX" id="sY4-4d-XlR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-sV-q0j">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="267"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
@@ -174,10 +209,12 @@
                 <outlet property="audioButtonView" destination="Nhd-oA-fLB" id="Pmh-ns-4cj"/>
                 <outlet property="changeButton" destination="hKj-lk-jq5" id="SCa-Er-nVe"/>
                 <outlet property="inputButtomValue" destination="kbt-Za-gGC" id="JMt-D9-GXt"/>
+                <outlet property="inputHeightConstraint" destination="HIC-uC-jJ4" id="2jl-XX-pgn"/>
+                <outlet property="inputTextView" destination="ANA-gV-mQs" id="E2P-7V-79X"/>
                 <outlet property="textInput" destination="NL8-St-jGg" id="KSg-LT-g26"/>
                 <outlet property="timeText" destination="l93-Gt-Svh" id="X2P-lg-GRe"/>
             </connections>
-            <point key="canvasLocation" x="378" y="348"/>
+            <point key="canvasLocation" x="459" y="342"/>
         </view>
         <tapGestureRecognizer id="K0h-nB-Afx">
             <connections>

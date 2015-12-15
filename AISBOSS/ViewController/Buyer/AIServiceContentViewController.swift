@@ -89,7 +89,6 @@ internal class AIServiceContentViewController: UIViewController {
 
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
-
     }
     
     func keyboardDidChange(notification : NSNotification) {
@@ -101,6 +100,7 @@ internal class AIServiceContentViewController: UIViewController {
             let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
             let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
             let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
+             
             if let view1 = self.currentAudioView {
                 if keyboardHeight > 0 {
                     let newLayoutConstraint = keyboardHeight - view1.holdViewHeigh
@@ -140,6 +140,9 @@ internal class AIServiceContentViewController: UIViewController {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
+        if let view1 = self.currentAudioView {
+            view1.audioButtonView.hidden = false
+        }
         
     }    
     
@@ -147,8 +150,6 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.userInteractionEnabled = true
         if let view1 = self.currentAudioView {
             view1.inputButtomValue.constant = 1
-
-            view1.audioButtonView.hidden = false
         }
     }
     
@@ -331,8 +332,6 @@ internal class AIServiceContentViewController: UIViewController {
         var holdView:UIView?
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
-//            galleryView.imageModelArray = ["http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png","http://tinkl.qiniudn.com/tinklUpload_FreeLancer@3x.png"]
-            
             
             let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
             let paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
@@ -361,14 +360,12 @@ internal class AIServiceContentViewController: UIViewController {
             custView.content.text = wish.intro ?? ""
             
         }
-
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
         audioView.delegateShowAudio = self
 //        audioView.delegateAudio = self
 //        audioView.inputText.delegate = self
-        
         
         //处理语音 文本数据
         //处理数据填充
@@ -436,7 +433,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewShowAudioDelegate
         
         childView.delegateAudio = self
         childView.textInput.delegate = self
-        
+        childView.inputTextView.delegate = self
         currentAudioView = childView
         
         
@@ -497,6 +494,10 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
             addNewSubView(newText, preView: cview)
             scrollViewBottom()
             newText.delegate = self
+            
+            if let c = currentAudioView {
+                c.closeThisView()
+            }
         }
         textField.resignFirstResponder()
         textField.text = ""
@@ -566,9 +567,14 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 audio1.deleteDelegate = self
                 scrollViewBottom()
             }
+            
         }
         else {
             AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+        }
+        
+        if let c = currentAudioView {
+            c.closeThisView()
         }
     }
     
@@ -619,4 +625,49 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
         }
         
     }
+}
+
+extension AIServiceContentViewController : UITextViewDelegate {
+   
+    func textViewDidChange(textView: UITextView) {
+        if textView.text.length < 198 {
+            textView.returnKeyType = UIReturnKeyType.Default
+        }else{
+            textView.returnKeyType = UIReturnKeyType.Done
+        }
+        
+        
+        if let s = currentAudioView {
+            if textView.contentSize.height < 120 {
+                s.inputHeightConstraint.constant = 5 + textView.contentSize.height
+            }
+        }
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        if "\n" == text {
+            textView.resignFirstResponder()
+            // add a new View Model
+            let newText = AITextMessageView.currentView()
+            if let cview = preCacheView {
+                newText.content.text = textView.text
+                let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+                newText.setHeight(30 + newSize!.height)
+                addNewSubView(newText, preView: cview)
+                scrollViewBottom()
+                newText.delegate = self
+                
+                if let c = currentAudioView {
+                    c.closeThisView()
+                }
+            }
+            
+            
+            return false
+        }
+        
+        return true
+    }
+    
 }

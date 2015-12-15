@@ -25,6 +25,10 @@ struct AIApplication{
     // MARK: XUNFEI APPID
     internal static let XUNFEIAPPID  = "551ba83b"
     
+    struct IPHONEOS {
+        static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width >= 414
+    }
+    
     // MARK: All the ViewController Identifiers
     struct MainStoryboard {
         

@@ -41,11 +41,12 @@ internal class AICustomView : UIView{
             根据model个数计算高度
         */
         
-        if UIScreen.mainScreen().bounds.size.width < 736.0 {
+        if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
             if models.count >= 6 {
                 self.setHeight(318 + 80)
             }
         }
+        
         
         allTagsArray = models //fill data..
         
@@ -102,14 +103,14 @@ internal class AICustomView : UIView{
                 currentX = x
                 
                 if isNormal {
-                    
                 }else{
                     currentY = 2
-                } 
+                }
             }
             
             //iphone 6 plus
-            if UIScreen.mainScreen().bounds.size.width >= 736.0 {
+            
+            if AIApplication.IPHONEOS.IS_IPHONE6PLUS {
                 if y > ramdHeigth*2 {
                     tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
                 }else{
