@@ -13,11 +13,13 @@ class ServiceOrderExpandContentViewFactory {
     static func createExpandContentView(param: ParamModel) -> UIView? {
         var contentView: UIView?
         if param.param_key == "25043309" {
-            let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: 0, height: 180))
-            
-            expandContent.imgUrl = param.param_value
-            
-            contentView = expandContent
+            if param.param_value != "" {
+                let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: 0, height: 180))
+                
+                expandContent.imgUrl = param.param_value
+                
+                contentView = expandContent
+            }          
         } else if param.param_key == "25043310" {
             let expandContent = AIOrderCellEShopView(frame: CGRect(x: 0, y: 0, width: 0, height: 200))
             
