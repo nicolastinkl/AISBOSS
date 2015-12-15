@@ -116,7 +116,7 @@ internal class AIPageBueryViewController: UIViewController {
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceContentViewController) as! AIServiceContentViewController
             if model.service_id == 1 {
                 viewController.serviceContentType = AIServiceContentType.MusicTherapy
-            }else{
+            } else {
                 viewController.serviceContentType = AIServiceContentType.Escort
             }
             viewController.serviceContentModel = model
