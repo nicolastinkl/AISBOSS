@@ -16,7 +16,7 @@ class ServiceSettingView: UIView {
     @IBOutlet weak var messageViewHeight: NSLayoutConstraint!
     
     private static let HORIZAN_SPACE: CGFloat = 8
-    private static let MESSAGE_HEIGHT_ONE_LINE: CGFloat = 20
+    private static let MESSAGE_HEIGHT_ONE_LINE: CGFloat = 24
     private static let TAG_HEIGHT: CGFloat = 28
     private static let BOTTOM_PADDING: CGFloat = 12
     private static let COLLECTION_WIDTH: CGFloat = 303
