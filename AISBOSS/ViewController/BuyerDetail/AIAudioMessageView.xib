@@ -11,10 +11,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
-                    <rect key="frame" x="14" y="2" width="138" height="30"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
+                    <rect key="frame" x="14" y="2" width="80" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.074509803921568626" green="0.69019607843137254" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.51764705882352935" green="0.50196078431372548" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="E07-Mm-oha"/>
+                        <constraint firstAttribute="width" constant="80" id="Zd1-c5-d47"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -24,10 +28,9 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="AISpring">
-                    <rect key="frame" x="14" y="2" width="138" height="30"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="AISpring">
+                    <rect key="frame" x="-44" y="2" width="80" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.074509803919999826" green="0.65430369618115503" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
@@ -37,13 +40,21 @@
                         <action selector="playAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mcT-Ua-pad"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ai_audio_bg" translatesAutoresizingMaskIntoConstraints="NO" id="typ-Nl-fJ8">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_bg" translatesAutoresizingMaskIntoConstraints="NO" id="typ-Nl-fJ8">
                     <rect key="frame" x="23" y="9" width="12" height="15"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="Bal-Hc-cBT"/>
+                        <constraint firstAttribute="width" constant="12" id="oao-vd-vHt"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="17''" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-jG-rsx">
-                    <rect key="frame" x="156" y="7" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17''" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-jG-rsx">
+                    <rect key="frame" x="98" y="7" width="42" height="21"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="1B4-D9-9Dc"/>
+                        <constraint firstAttribute="width" constant="42" id="3Wi-ET-fqJ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -51,6 +62,18 @@
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="mUv-jG-rsx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="Fmm-OP-LxN"/>
+                <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="Ny8-Ua-fIo"/>
+                <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="typ-Nl-fJ8" secondAttribute="bottom" constant="-22" id="QTi-mL-Da8"/>
+                <constraint firstItem="UBl-GC-vKK" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="-138" id="Vqq-i6-cc7"/>
+                <constraint firstItem="UBl-GC-vKK" firstAttribute="top" secondItem="GVU-D7-HP9" secondAttribute="bottom" constant="-30" id="fZx-b7-BKx"/>
+                <constraint firstItem="GVU-D7-HP9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="iKs-I3-MT3"/>
+                <constraint firstItem="mUv-jG-rsx" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="4" id="obK-vJ-3nj"/>
+                <constraint firstItem="GVU-D7-HP9" firstAttribute="leading" secondItem="typ-Nl-fJ8" secondAttribute="trailing" constant="-21" id="tW4-eN-SYD"/>
+                <constraint firstItem="UBl-GC-vKK" firstAttribute="width" secondItem="GVU-D7-HP9" secondAttribute="width" id="xKF-4b-d8D"/>
+                <constraint firstItem="UBl-GC-vKK" firstAttribute="height" secondItem="GVU-D7-HP9" secondAttribute="height" id="yBx-Mt-9p6"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -58,8 +81,9 @@
                 <outlet property="audioGifImageView" destination="typ-Nl-fJ8" id="GiI-Po-2Qb"/>
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
+                <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-111" y="405"/>
+            <point key="canvasLocation" x="-496" y="568"/>
         </view>
     </objects>
     <resources>

@@ -119,6 +119,13 @@
                         </mask>
                     </variation>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQS-ri-ThB">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                    <animations/>
+                    <connections>
+                        <action selector="touchUpShowAudioViewAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2Uq-4N-KHi"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -128,8 +135,12 @@
                 <constraint firstItem="Zh6-Gb-DNr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjJ-9x-0TP"/>
                 <constraint firstItem="9kC-Qv-AsC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B3a-P2-dnZ"/>
                 <constraint firstAttribute="trailing" secondItem="9kC-Qv-AsC" secondAttribute="trailing" constant="14" id="Iv7-Ul-5xe"/>
+                <constraint firstAttribute="trailing" secondItem="iQS-ri-ThB" secondAttribute="trailing" id="MDv-ve-JuB"/>
+                <constraint firstAttribute="bottom" secondItem="iQS-ri-ThB" secondAttribute="bottom" id="OH3-di-cJ1"/>
                 <constraint firstAttribute="trailing" secondItem="Zh6-Gb-DNr" secondAttribute="trailing" id="RKL-Zh-HaW"/>
                 <constraint firstAttribute="bottom" secondItem="Zh6-Gb-DNr" secondAttribute="bottom" id="T6k-uc-gEX"/>
+                <constraint firstItem="iQS-ri-ThB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TJR-VJ-yLD"/>
+                <constraint firstItem="iQS-ri-ThB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="a67-Kv-u3a"/>
                 <constraint firstItem="Zh6-Gb-DNr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="beC-Py-WLV"/>
                 <constraint firstItem="9kC-Qv-AsC" firstAttribute="top" secondItem="vJ0-tA-fsd" secondAttribute="bottom" constant="14" id="xh7-4b-UyV"/>
             </constraints>
@@ -141,7 +152,7 @@
                 <outlet property="inputText" destination="CkB-fh-bBP" id="uLS-Fx-zAK"/>
                 <outlet property="note" destination="vJ0-tA-fsd" id="zva-Sd-Ahg"/>
             </connections>
-            <point key="canvasLocation" x="404" y="256.5"/>
+            <point key="canvasLocation" x="157" y="159"/>
         </view>
     </objects>
     <resources>

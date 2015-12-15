@@ -15,10 +15,6 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
-
-
-
-
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
@@ -41,6 +37,8 @@ internal class AIServiceContentViewController: UIViewController {
 
     private var preCacheView:UIView?
     
+    private var currentAudioView:AIAudioInputView?
+    
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
         let pageScrollView = UIScrollView()
@@ -57,7 +55,7 @@ internal class AIServiceContentViewController: UIViewController {
         return gView
     }()
     
-    private var audioView:AIAudioRecordView?
+    private var audioView_AudioRecordView:AIAudioRecordView?
     
     // MARK: -> Internal init methods
     
@@ -89,6 +87,29 @@ internal class AIServiceContentViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
 
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
+
+    }
+    
+    func keyboardDidChange(notification : NSNotification) {
+        //change keyboard height
+        
+        if let userInfo = notification.userInfo {
+            
+            // step 1: get keyboard height
+            let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+            let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
+            let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
+            if let view1 = self.currentAudioView {
+                if keyboardHeight > 0 {
+                    let newLayoutConstraint = keyboardHeight - view1.holdViewHeigh
+                    view1.inputButtomValue.constant = newLayoutConstraint
+                }
+            }
+            
+        }
+        
     }
     
     func keyboardWillShow(notification : NSNotification) {
@@ -102,6 +123,12 @@ internal class AIServiceContentViewController: UIViewController {
         
             scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
             scrollViewBottom()
+            
+            // hidden
+            if let view1 = self.currentAudioView {
+                view1.audioButtonView.hidden = true
+            }
+            
         }
     }
     
@@ -113,11 +140,16 @@ internal class AIServiceContentViewController: UIViewController {
  
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
-    }
-    
+        
+    }    
     
     func keyboardDidHide(notification : NSNotification) {
         scrollView.userInteractionEnabled = true
+        if let view1 = self.currentAudioView {
+            view1.inputButtomValue.constant = 1
+
+            view1.audioButtonView.hidden = false
+        }
     }
     
 
@@ -263,13 +295,14 @@ internal class AIServiceContentViewController: UIViewController {
         }
         
         //init recording view
-        audioView =  AIAudioRecordView.currentView()
-        if let auView = audioView {
+        /*
+        audioView_AudioRecordView =  AIAudioRecordView.currentView()
+        if let auView = audioView_AudioRecordView {
             self.view.addSubview(auView)
             auView.hidden = true
             auView.setWidth(self.view.width)
             auView.setTop((self.view.height - auView.height)/2)
-        }
+        }*/
         
         topNaviView = topView
         
@@ -319,21 +352,22 @@ internal class AIServiceContentViewController: UIViewController {
         }
            
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: holdView!)
-        
+        addNewSubView(custView, preView: holdView!)        
         //处理数据填充
         if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
             if let labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
-        
+            
         }
+
         
         let audioView = AICustomAudioNotesView.currentView()
         addNewSubView(audioView, preView: custView)
-        audioView.delegateAudio = self
-        audioView.inputText.delegate = self
+        audioView.delegateShowAudio = self
+//        audioView.delegateAudio = self
+//        audioView.inputText.delegate = self
         
         
         //处理语音 文本数据
@@ -393,6 +427,34 @@ internal class AIServiceContentViewController: UIViewController {
 
 // MARK: Delegate
 
+extension AIServiceContentViewController:AICustomAudioNotesViewShowAudioDelegate{
+    // show audio view...
+    func showAudioView() {
+        let childView = AIAudioInputView.currentView()
+        childView.alpha = 0
+        self.view.addSubview(childView)
+        
+        childView.delegateAudio = self
+        childView.textInput.delegate = self
+        
+        currentAudioView = childView
+        
+        
+        layout(childView) { (cview) -> () in
+            cview.leading == cview.superview!.leading
+            cview.trailing == cview.superview!.trailing
+            cview.top == cview.superview!.top
+            cview.bottom == cview.superview!.bottom
+        }
+        spring(0.5) { () -> Void in
+            childView.alpha = 1
+        }
+        
+        
+    }
+    
+}
+
 extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelegate{
     
 // MARK: ScrollDelegate
@@ -417,6 +479,14 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.text?.length < 198
+        {
+            return true
+        }
+        return false
+    }
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         // add a new View Model
         let newText = AITextMessageView.currentView()
@@ -437,7 +507,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
 
 extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
     
-    
+  
     
     // AIAudioMessageViewDelegate
     func willPlayRecording(audioView :AIAudioMessageView) {
@@ -453,7 +523,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
      开始录音处理
      */
     func willStartRecording() {
-        audioView?.hidden = false
+        audioView_AudioRecordView?.hidden = false
     }
     
     //更新Meters 图片处理
@@ -479,12 +549,13 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
             imageName = "RecordingSignal001"
         }
         
-        audioView?.passImageView.image = UIImage(named: imageName)
+        audioView_AudioRecordView?.passImageView.image = UIImage(named: imageName)
     }
     
     //结束录音添加view到scrollview
     func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
-        audioView?.hidden = true
+
+        audioView_AudioRecordView?.hidden = true
         if audioModel.time > 1000 {
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
