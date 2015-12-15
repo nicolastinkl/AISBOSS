@@ -166,7 +166,6 @@ class AIBuyerDetailViewController : UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.NSNotiryAricToNomalStatus, object: nil)
     }
     
     func makeBuyButton() {

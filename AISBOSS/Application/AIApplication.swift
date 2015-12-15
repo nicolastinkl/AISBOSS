@@ -134,8 +134,7 @@ struct AIApplication{
         static let UIAIASINFOChangeDateViewNotification         = "UIAIASINFOChangeDateViewNotification"
         // FIXME: 视频拍摄完成文件地址
         static let NSNotirydidFinishMergingVideosToOutPutFileAtURL  = "NSNotirydidFinishMergingVideosToOutPutFileAtURL"
-        
-        static let NSNotiryAricToNomalStatus  = "NSNotiryAricToNomalStatus"
+
     }
     
     // MARK: System theme's color
