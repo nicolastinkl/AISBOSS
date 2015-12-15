@@ -33,6 +33,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBOutlet weak var audioLength: UILabel!
     @IBOutlet weak var playButton: UIButton!
     private var currentModelss:AIProposalServiceDetail_hope_list_listModel?
+    @IBOutlet weak var widthAudioBgConstraint: NSLayoutConstraint!
     
     weak var audioDelegate:AIAudioMessageViewDelegate?
 
@@ -109,10 +110,23 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     }
     
     func fillData(model:AIProposalServiceDetail_hope_list_listModel){
-        self.audioLength.text = "\((NSInteger)(model.time / 1000))''"
+        let length = (NSInteger)(model.time / 1000)
+        self.audioLength.text = "\(length)''"
         currentModelss = model
+       
         self.configureAudio()
         self.configureImages()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let model = currentModelss{
+            
+            let length = (NSInteger)(model.time / 1000)
+
+            widthAudioBgConstraint.constant = 70 + 5.0 * CGFloat(length)
+            
+        }
     }
     
     // MARK: 停止播放
