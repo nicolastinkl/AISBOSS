@@ -151,7 +151,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: "login", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: kShouldUpdataUserDataNotification, object: nil)
     }
     
     func reloadData() {

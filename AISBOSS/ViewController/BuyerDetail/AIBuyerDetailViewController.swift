@@ -179,7 +179,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.view.addSubview(button)
     }
     
-    func InitBottomView() {
+    func initBottomView() {
         
         let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
         bzView.setX((self.view.width - bzView.width) / 2)
@@ -378,7 +378,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.tableView.reloadData()
                         
                         // Init Bottom Page white area
-                        viewController.InitBottomView()
+                        viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()
                     }
