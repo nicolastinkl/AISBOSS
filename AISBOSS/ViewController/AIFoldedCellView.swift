@@ -65,7 +65,6 @@ class AIFolderCellView: UIView {
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
         
-
         let firstServiceOrder : ServiceOrderModel? = proposalModel.order_list[0] as? ServiceOrderModel
         
         if let url = firstServiceOrder?.service_thumbnail_icon {
