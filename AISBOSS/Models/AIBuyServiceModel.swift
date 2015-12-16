@@ -50,7 +50,7 @@ struct AIPopPropsalModel : JSONJoy {
         service_id = decoder["service_id"].integer
         order_times = decoder["order_times"].integer
         
-        service_thumbnail_icon = decoder["service_thumbnail_icon"].string
+        service_thumbnail_icon = decoder["service_thumbnail_icon"].string ?? ""
         proposal_name = decoder["proposal_name"].string
         proposal_price = decoder["proposal_price"].string
         
