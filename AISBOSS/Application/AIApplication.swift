@@ -277,6 +277,3 @@ struct AIApplication{
 //    }
 }
 
-//extension AIApplication {
-//    @nonobjc static let kSHARE = "AIApplication.share".localized
-//}

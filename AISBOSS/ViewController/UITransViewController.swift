@@ -140,6 +140,15 @@ class UITransViewController: UIViewController {
             labelBg2.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             
         })
+        setupLanguageNotification()
+    }
+    
+    func setupLanguageNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupUIWithCurrentLanguage", name: LCLLanguageChangeNotification, object: nil)
+    }
+    
+    func setupUIWithCurrentLanguage() {
+        //TODO: reload data with current language
     }
     
     

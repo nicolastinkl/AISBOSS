@@ -54,6 +54,15 @@
     [self makeBottomBar];
     [self addRefreshActions];
     [self preProcess];
+    [self setupLanguageNotification];
+}
+
+- (void)setupLanguageNotification {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setupUIWithCurrentLanguage) name:@"LCLLanguageChangeNotification" object:nil];
+}
+
+- (void)setupUIWithCurrentLanguage {
+    //TODO: reload data with current language
 }
 
 - (void)didReceiveMemoryWarning {
