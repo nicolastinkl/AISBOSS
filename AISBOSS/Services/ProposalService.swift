@@ -104,10 +104,10 @@ class BDKProposalService : MockProposalService{
     override func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
-        let url = "http://171.221.254.231:3000/queryCustomerProposalList" + "Fake"
+        let url = "http://171.221.254.231:3000/queryCustomerProposalList"
         message.url = url
         
-        let body = ["data":["user_id":"1", "role_type": "1"],"desc":["data_mode":"0","digest":""]]
+        let body = ["data":["user_id":"200000001630", "role_type": "1", "status":1],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
