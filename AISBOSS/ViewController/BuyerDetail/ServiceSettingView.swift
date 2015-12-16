@@ -28,6 +28,7 @@ class ServiceSettingView: UIView {
         message.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
         
         setCollectionView()
+        
     }
     
     static func createInstance() -> ServiceSettingView {
