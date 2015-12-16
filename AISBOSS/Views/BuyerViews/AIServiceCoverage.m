@@ -25,14 +25,14 @@
 }
 
 
-@property (nonatomic, strong) AIProposalServiceDetail_Param_listModel *coverageModel;
+@property (nonatomic, strong) AIProposalServiceDetailParamModel *coverageModel;
 
 @end
 
 @implementation AIServiceCoverage
 
 
-- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Param_listModel *)model
+- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -93,7 +93,7 @@
     
     for (NSInteger i = 0; i < self.coverageModel.param_value.count; i++) {
         
-        AIProposalServiceDetail_Param_Value_listModel *model = [self.coverageModel.param_value objectAtIndex:i];
+        AIProposalServiceDetailParamValueModel *model = [self.coverageModel.param_value objectAtIndex:i];
         
         
         CGRect frame = CGRectMake(x, y, 100, height);
@@ -130,7 +130,7 @@
 {
     if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel:)]) {
         
-        for (AIProposalServiceDetail_Param_Value_listModel *model in self.coverageModel.param_value) {
+        for (AIProposalServiceDetailParamValueModel *model in self.coverageModel.param_value) {
             if ([model.value_display isEqualToString:serviceLabel.labelTitle]) {
                 [self.delegate didChooseServiceLabelModel:model];
                 break;

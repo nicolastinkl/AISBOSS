@@ -205,6 +205,7 @@ class BDKProposalService : MockProposalService{
             do {
                 let dic = response as! [NSObject : AnyObject]
                 let model = try AIProposalServiceDetailModel(dictionary: dic)
+                
                 success(responseData: model)
             
             } catch {
