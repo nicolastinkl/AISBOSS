@@ -11,7 +11,7 @@
 
 @protocol AIServiceCoverageDelegate <NSObject>
 
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetail_Param_Value_listModel *)labelModel;
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel;
 
 @end
 
@@ -20,6 +20,6 @@
 @property (nonatomic, weak) id<AIServiceCoverageDelegate> delegate;
 
 
-- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Param_listModel *)model;
+- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model;
 
 @end

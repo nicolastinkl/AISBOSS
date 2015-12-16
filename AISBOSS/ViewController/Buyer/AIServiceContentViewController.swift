@@ -339,7 +339,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         var imageArray = [String]()
         _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
-            let imageModel = imgModel as! AIProposalServiceDetail_Intro_img_listModel
+            let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
             imageArray.append(imageModel.service_intro_img ?? "")
             return true
         })
@@ -360,8 +360,8 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(custView, preView: preView)
         
         //处理数据填充
-        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
-            if let labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
+        if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
@@ -388,8 +388,8 @@ internal class AIServiceContentViewController: UIViewController {
         
         //处理语音 文本数据
         //处理数据填充
-        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
-            if let hopeList = wish.hope_list as? [AIProposalServiceDetail_hope_list_listModel] {
+        if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            if let hopeList = wish.hope_list as? [AIProposalServiceDetailHopeModel] {
                 var perViews:UIView?
                 for item in hopeList {
                     if item == hopeList.first {
@@ -573,7 +573,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
     //结束录音添加view到scrollview
-    func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
+    func endRecording(audioModel: AIProposalServiceDetailHopeModel) {
 
         audioView_AudioRecordView?.hidden = true
         if audioModel.time > 1000 {

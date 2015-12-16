@@ -13,7 +13,7 @@ import AISpring
 @objc protocol AICustomAudioNotesViewDelegate : class{
     
     func updateMetersImage(lowPass:Double)
-    func endRecording(audioModel:AIProposalServiceDetail_hope_list_listModel)
+    func endRecording(audioModel:AIProposalServiceDetailHopeModel)
     func willStartRecording()
     
     func willEndRecording()
@@ -172,7 +172,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     
     func notifyEndRecordWithUrl(url:String) {
         
-        let model = AIProposalServiceDetail_hope_list_listModel()
+        let model = AIProposalServiceDetailHopeModel()
         model.audio_url = currentAutioUrl
         model.time = (NSInteger)(currentTime! * 1000)
         model.type = 2
@@ -186,7 +186,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         if data != nil {
             
             print("Audio record length : %.2f", currentTime)
-            let model = AIProposalServiceDetail_hope_list_listModel()
+            let model = AIProposalServiceDetailHopeModel()
             model.audio_url = currentAutioUrl
             model.time = (NSInteger)(currentTime! * 1000)
             model.type = 2
@@ -248,7 +248,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            let model = AIProposalServiceDetail_hope_list_listModel()
+            let model = AIProposalServiceDetailHopeModel()
             model.audio_url = ""
             model.time = 0
             model.type = 2

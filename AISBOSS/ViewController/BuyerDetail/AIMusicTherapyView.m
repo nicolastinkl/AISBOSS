@@ -190,7 +190,7 @@
     //
     
     NSArray *models = _detailModel.service_rating.rating_level_list;
-    AIProposalServiceDetail_Rating_List_Item_listModel *exmodel = models.firstObject;
+    AIProposalServiceDetailRatingItemModel *exmodel = models.firstObject;
     CGFloat percentage = (CGFloat)exmodel.number / (CGFloat)_detailModel.service_rating.reviews * 100;
     NSString *rateP = [NSString stringWithFormat:@"%.0f%@", percentage, @"%"];
     UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, y, width, [AITools displaySizeFrom1080DesignSize:42]) text:rateP fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
@@ -201,7 +201,7 @@
     y += starSize + [AITools displaySizeFrom1080DesignSize:50];
     
     
-    for (AIProposalServiceDetail_Rating_List_Item_listModel *model in models) {
+    for (AIProposalServiceDetailRatingItemModel *model in models) {
         CGFloat height = [AITools displaySizeFrom1080DesignSize:34];
         CGRect frame = CGRectMake(_sideMargin, y, width, height);
         CGFloat rate = (CGFloat)model.number / (CGFloat)_detailModel.service_rating.reviews;
@@ -246,7 +246,7 @@
     //
     for (int i = 0; i < _detailModel.service_rating.comment_list.count; i++) {
         
-        AIProposalServiceDetail_Rating_Comment_listModel *comment = [_detailModel.service_rating.comment_list objectAtIndex:i];
+        AIProposalServiceDetailRatingCommentModel *comment = [_detailModel.service_rating.comment_list objectAtIndex:i];
 
         CGRect frame = CGRectMake(_sideMargin, y, width, 0);
         
@@ -279,7 +279,7 @@
 
 #pragma mark - AIServiceCoverageDelegate
 
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetail_Param_Value_listModel *)labelModel
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
 {
     if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
         [self.delegate didChangeParams:nil];
