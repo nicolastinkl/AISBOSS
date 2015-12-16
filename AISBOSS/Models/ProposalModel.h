@@ -100,7 +100,6 @@
 @property (strong, nonatomic) NSString<Optional> * saved;
 
 @property (assign, nonatomic) float price;
-@property (strong, nonatomic) NSString<Optional> * source;
 @property (strong, nonatomic) NSString<Optional> * billing_mode;
 @property (strong, nonatomic) NSString<Optional> * unit;
 @end
@@ -182,7 +181,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @protocol AIProposalServiceDetailProviderModel @end
 @interface AIProposalServiceDetailProviderModel : JSONModel
 
-@property (assign, nonatomic) NSInteger provider_id;
+@property (assign, nonatomic) NSInteger id;
 @property (strong, nonatomic) NSString<Optional> * name;
 @property (strong, nonatomic) NSString<Optional> * portrait_icon;
 
@@ -196,6 +195,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (assign, nonatomic) long id;
 @property (strong, nonatomic) NSString<Optional> * content;
 @property (assign, nonatomic) BOOL is_default;
+@property (strong, nonatomic) NSString<Optional> * source;
 @property (strong, nonatomic) NSString<Optional> * value_key;
 @property (strong, nonatomic) NSString<Optional> * value_display;
 
@@ -209,6 +209,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * param_name;
 @property (strong, nonatomic) NSString<Optional> * param_source;
 @property (assign, nonatomic) NSInteger param_source_id;
+@property (strong, nonatomic) NSString<Optional> * value;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailParamValueModel, Optional> * param_value;
 
 @end
@@ -224,7 +225,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (assign, nonatomic) long param_role;
 @property (assign, nonatomic) long param_key;
 @property (strong, nonatomic) NSString<Optional> * param_value;
-@property (assign, nonatomic) long param_value_key;
+@property (assign, nonatomic) NSString<Optional> * param_value_key;
 
 @end
 
@@ -327,7 +328,8 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * service_name;
 @property (strong, nonatomic) NSString<Optional> * service_intro_title;
 @property (strong, nonatomic) NSString<Optional> * service_intro_content;
-
+@property (strong, nonatomic) NSString<Optional> * service_thumbnail_url;
+@property (strong, nonatomic) ParamModel<Optional> * service_param;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailIntroImgModel, Optional> *service_intro_img_list;
 @property (nonatomic, strong) AIProposalServicePriceModel<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_guarantee;
