@@ -477,11 +477,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        if textField.text?.length < 198
-        {
-            return true
-        }
-        return false
+        return textField.text?.length < 198
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

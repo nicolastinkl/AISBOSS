@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import AISpring
 import Cartography
+import AIAlertView
 
 protocol AIBuyerDetailDelegate: class {
     func closeAIBDetailViewController()
@@ -188,8 +189,26 @@ class AIBuyerDetailViewController : UIViewController {
         }
         buyerBottom.addSubview(bzView)
         menuLightView = bzView
+        
+        //
+        addTapActionForView(buyerBottom)
     }
     
+    func addTapActionForView(view:UIView) {
+        let width :CGFloat = 100
+        let frame : CGRect = CGRectMake((CGRectGetWidth(view.frame)-width) / 2, 0, width, CGRectGetHeight(view.frame))
+        
+        let tapView = UIView(frame: frame)
+        tapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "bottomTapAction"))
+        view.addSubview(tapView)
+        tapView.backgroundColor = UIColor.redColor()
+        
+        view.userInteractionEnabled = true
+    }
+    
+    func bottomTapAction () {
+        AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+    }
     
     func showNextViewController() {
         let vc = AIServiceContentViewController()
