@@ -13,7 +13,10 @@
 
 #define kMargin 20
 
+@interface AIFakeLoginView ()
 
+
+@end
 
 @implementation AIFakeLoginView
 
@@ -48,6 +51,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    
     
 }
 
