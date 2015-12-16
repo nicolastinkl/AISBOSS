@@ -20,8 +20,8 @@ internal class AICustomView : UIView{
     @IBOutlet weak var selectView: DesignableView!
     @IBOutlet weak var avator: DesignableImageView!
     
-    private lazy var allTagsArray  = [AIProposalServiceDetail_label_list_listModel]()
-    private lazy var selectedTagsArray  = [AIProposalServiceDetail_label_list_listModel]()
+    private lazy var allTagsArray  = [AIProposalServiceDetailLabelModel]()
+    private lazy var selectedTagsArray  = [AIProposalServiceDetailLabelModel]()
     // MARK: currentView
     class func currentView()->AICustomView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
@@ -35,7 +35,7 @@ internal class AICustomView : UIView{
     /**
      TODO: 处理数据填充和标签初始化
      */
-    func fillTags(models:[AIProposalServiceDetail_label_list_listModel],isNormal:Bool){
+    func fillTags(models:[AIProposalServiceDetailLabelModel],isNormal:Bool){
         
         /**
             根据model个数计算高度
@@ -151,7 +151,7 @@ extension AICustomView:AIElasticDownTagStateDelegete{
      - parameter newState:  newState description
      - parameter viewModel: viewModel description
      */
-    func releaseTagState(newState: tagState, viewModel: AIProposalServiceDetail_label_list_listModel) {
+    func releaseTagState(newState: tagState, viewModel: AIProposalServiceDetailLabelModel) {
         
         //处理已选按钮的释放
         let array = selectedTagsArray.filter { (oldModel) -> Bool in
@@ -194,7 +194,7 @@ extension AICustomView:AIElasticDownTagStateDelegete{
      
      - parameter newState: tag改变之后的状态
      */
-    func changeTagState(newState: tagState, viewModel: AIProposalServiceDetail_label_list_listModel) {
+    func changeTagState(newState: tagState, viewModel: AIProposalServiceDetailLabelModel) {
     
         if newState == tagState.normal {
             //remove this view from list

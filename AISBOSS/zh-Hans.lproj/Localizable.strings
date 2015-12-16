@@ -18,7 +18,7 @@
 
 //
 "AIBuyerDetailViewController.pregnancy" = "怀孕";
-"AIBuyerDetailViewController.from" = "从";
+"AIBuyerDetailViewController.from" = "来源";
 "AIBuyerDetailViewController.alert" = "确定添加服务%@";
 
 //
@@ -54,29 +54,10 @@
 "AIScanViewController.couldnt" = "不能大于10";
 
 //
-"AISellerCell.amy" = "Amy Copper";
-"AISerllerCell.dollar" = "¥188";
-"AISerllerCell.fitness" = "健身计划制定";
-"AISerllerCell.fitnessPlan" = "健身计划 -";
-"AISerllerCell.14:00" = "8月2日 14:00";
-"AISerllerCell.fifth" = "第五大道";
-
-//
 "AISellerViewController.2beConfirmed" = "待定";
-
-////
-//"AIServerDetailViewController.service" = "Services to Your Liking";
-//"AIServerDetailViewController.dollarFormat" = "¥%@";
-//"AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
-//"AIServerDetailViewController.day" = "DAY";
 
 //
 "ProposalExpandedView.onSchedule" = "进行中";
-//"ProposalExpandedView.shop" = "Shop-on-behalf Service";
-
-//
-//"PurchasedServiceView.home" = "Home Delivery";
-"PurchasedServiceView.yourOrder" = "您订购的商品已经抵达上海转运中心，准备发往北京";
 
 //
 "ServiceContainerView.dollarZero" = "¥0";
@@ -84,11 +65,6 @@
 //
 "SwitchServiceView.on" = "开";
 "SwitchServiceView.off" = "关";
-
-//
-"TransportService.oct" = "10月10日 10:30";
-"TransportService.pudong" = "浦东机场 T2";
-"TransportService.yanan" = "静安区延安中路1228号";
 
 //
 "UITransViewController.change" = "变更失败";
@@ -100,7 +76,7 @@
 
 //"16.73 saved" = "16.73 saved";
 
-"SimpleServiceViewContainer.review" = "Review";
+"SimpleServiceViewContainer.review" = "评论";
 
 //"€101.83" = "€101.83";
 
@@ -114,7 +90,7 @@
  * ./AISBOSS/ViewController/AIFoldedCellView.xib
  */
 
-"AIFoldedCellView.weekend" = "Weekend Road Trip";
+//"AIFoldedCellView.weekend" = "Weekend Road Trip";
 
 "AIFoldedCellView.status" = " 进行中  ";
 
@@ -162,7 +138,7 @@
 
 "AIDetailTopMenuView.share" = "分享";
 
-"AIDetailTopMenuView.customization" = "客户";
+"AIDetailTopMenuView.customization" = "定制";
 
 
 
@@ -174,7 +150,7 @@
  * ./AISBOSS/ViewController/BuyerDetail/AICustomView.xib
  */
 
-"AICustomView.notes" = "客户留言";
+"AICustomView.notes" = "心愿单";
 
 
 

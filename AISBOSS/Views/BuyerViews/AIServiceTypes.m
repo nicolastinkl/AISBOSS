@@ -27,13 +27,13 @@
     NSInteger _lastIndex;
 }
 
-@property (nonatomic, strong) AIProposalServiceDetail_Param_listModel *serviceTypesModel;
+@property (nonatomic, strong) AIProposalServiceDetailParamModel *serviceTypesModel;
 
 @end
 
 @implementation AIServiceTypes
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Param_listModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -99,7 +99,7 @@
         //
         
         
-        AIProposalServiceDetail_Param_Value_listModel *param = [_serviceTypesModel.param_value objectAtIndex:i];
+        AIProposalServiceDetailParamValueModel *param = [_serviceTypesModel.param_value objectAtIndex:i];
         
         CGFloat x = _radioSize + _radioMargin;
         CGFloat strWidth = width - x;

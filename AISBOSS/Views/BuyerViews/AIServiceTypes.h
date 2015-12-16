@@ -21,6 +21,6 @@
 
 @property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Param_listModel *)model;
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model;
 
 @end

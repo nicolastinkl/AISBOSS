@@ -26,13 +26,13 @@
     UPLabel *_commentLabel;
 }
 
-@property (nonatomic, strong) AIProposalServiceDetail_Rating_Comment_listModel *commentModel;
+@property (nonatomic, strong) AIProposalServiceDetailRatingCommentModel *commentModel;
 
 @end
 
 @implementation AICommentCell
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetail_Rating_Comment_listModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailRatingCommentModel *)model
 {
     self = [super initWithFrame:frame];
     

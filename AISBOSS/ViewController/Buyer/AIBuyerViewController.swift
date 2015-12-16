@@ -30,6 +30,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let bubblesTag : NSInteger = 9999
 
+    let progressLabelTag = 321
+    
     let screenWidth : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     let tableCellRowHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(240)
@@ -63,12 +65,33 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeTopBar()
         
         // Add Pull To Referesh..
-        self.tableView.addHeaderWithCallback { [weak self]() -> Void in
+
+        setupLanguageNotification()
+        setupUIWithCurrentLanguage()
+    }
+    
+    func setupLanguageNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupUIWithCurrentLanguage", name: LCLLanguageChangeNotification, object: nil)
+    }
+    
+    func setupUIWithCurrentLanguage() {
+        //TODO: reload data with current language
+        
+        //remake bubble
+        let label = bubbleViewContainer?.viewWithTag(progressLabelTag) as? UILabel
+        label?.text = "AIBuyerViewController.progress".localized
+        
+        // reset refresh view
+        tableView.removeHeader()
+        tableView.addHeaderWithCallback { [weak self]() -> Void in
             if self != nil {
                 self!.loadData()
             }
         }
         
+        // reload bottom tableView
+        tableViewCellCache.removeAll()
+        tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -226,8 +249,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         makeBubblesWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, topBarHeight + BUBBLE_VIEW_MARGIN, screenWidth - 2 * BUBBLE_VIEW_MARGIN, BUBBLE_VIEW_HEIGHT))
         
         let y = CGRectGetMaxY(bubbles.frame)
-        let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, y, screenWidth - 2 * BUBBLE_VIEW_MARGIN, 20), text: AIBuyerViewController.kPROGRESS, fontSize: 20, color: UIColor.whiteColor())
+        let label : UPLabel = AIViews.normalLabelWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, y, screenWidth - 2 * BUBBLE_VIEW_MARGIN, 20), text: "AIBuyerViewController.progress".localized, fontSize: 20, color: UIColor.whiteColor())
         label.textAlignment = .Right
+        label.tag = progressLabelTag
         
         label.verticalAlignment = UPVerticalAlignmentMiddle
         label.font = AITools.myriadRegularWithSize(20);
@@ -604,8 +628,4 @@ extension AIBuyerViewController : DimentionChangable,ProposalExpandedDelegate {
         let indexPath = NSIndexPath(forRow: proposalView.tag, inSection: 0)
         rowSelectAction(indexPath)
     }
-}
-
-extension AIBuyerViewController {
-    @nonobjc static let kPROGRESS = "AIBuyerViewController.progress".localized
 }

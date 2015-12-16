@@ -178,7 +178,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     
     func notifyEndRecordWithUrl(url:String) {
         // fake
-        let model = AIProposalServiceDetail_hope_list_listModel()
+        let model = AIProposalServiceDetailHopeModel()
         model.audio_url = currentAutioUrl
         model.time = (NSInteger)(currentTime! * 1000)
         model.type = 2
@@ -193,7 +193,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         }
         let data = NSData(contentsOfFile: currentAutioUrl)
         if data != nil {            
-            let model = AIProposalServiceDetail_hope_list_listModel()
+            let model = AIProposalServiceDetailHopeModel()
             model.audio_url = currentAutioUrl
             model.time = (NSInteger)(currentTime! * 1000)
             model.type = 2
@@ -252,7 +252,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            let model = AIProposalServiceDetail_hope_list_listModel()
+            let model = AIProposalServiceDetailHopeModel()
             model.audio_url = ""
             model.time = 0
             model.type = 2

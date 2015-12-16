@@ -8,6 +8,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "AIOpeningView.h"
 #import "AIFakeLoginView.h"
+#import "Veris-Swift.h"
 
 typedef NS_ENUM(NSInteger, AIMovementDirection) {
     AIMovementNone = 0,
@@ -119,6 +120,28 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 #pragma mark - Fake登录
 
+- (void)langTap {
+    
+    NSString *(^displayNameForLanguage)(NSString *) = ^(NSString *lang) {
+        return [Localize displayNameForLanguage:lang];
+    };
+    
+    NSString *currentLanguage = [Localize currentLanguage];
+    NSString *message = [NSString stringWithFormat:@"当前语言是%@，切换到",displayNameForLanguage(currentLanguage)];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [[Localize availableLanguages] enumerateObjectsUsingBlock:^(NSString *language, NSUInteger idx, BOOL *stop) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:displayNameForLanguage(language) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [Localize setCurrentLanguage:language];
+        }];
+       [alert addAction:action];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+    [alert addAction:cancel];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)loginTap
 {
     AIFakeLoginView *loginView = [[AIFakeLoginView alloc] initWithFrame:self.bounds];
@@ -132,6 +155,14 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     
     [self addSubview:loginView];
+}
+
+- (void)addLanguageSwitchAction {
+    CGFloat size = 100;
+    CGFloat x = 0;
+       CGFloat y = CGRectGetHeight(self.frame) - size;
+    CGRect frame = CGRectMake(x, y, size, size);
+    [self makeTapActionWithFrame:frame action:@selector(langTap)];
 }
 
 - (void)addLoginAction
@@ -231,6 +262,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     [self addVersionAction];
     [self addLoginAction];
+    [self addLanguageSwitchAction];
 }
 
 - (void)centerTapAction

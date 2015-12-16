@@ -85,7 +85,7 @@
     [self addChildViewController:self.leftDirectionViewController];
     [self.leftDirectionViewController didMoveToParentViewController:self];
     
-    // RIGHT
+    // right
     self.rightDirectionViewController = self.centerTapViewController;
     
     // default
@@ -93,7 +93,7 @@
     _currentViewController = self.centerTapViewController;
 }
 
-- (void)didOperatedWithDirection:(NSInteger)direction// 0:center 1:up 2:down 3:lef 4:right
+- (void)didOperatedWithDirection:(NSInteger)direction// 0:center 1:up 2:down 3:left 4:right
 {
     
     switch (direction) {
@@ -127,7 +127,7 @@
             }];
         }
             break;
-        case 3: // 3:lef
+        case 3: // 3:left
         {
             if (_currentViewController == self.leftDirectionViewController) {
                 return;
