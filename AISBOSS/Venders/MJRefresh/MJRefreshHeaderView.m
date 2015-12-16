@@ -14,6 +14,7 @@
 #import "MJRefreshHeaderView.h"
 #import "UIView+MJExtension.h"
 #import "UIScrollView+MJExtension.h"
+#import "Veris-Swift.h"
 
 @interface MJRefreshHeaderView()
 // 最后的更新时间
@@ -52,9 +53,9 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.pullToRefreshText = NSLocalizedString(@"MJRefreshHeader.PullToRefresh", nil);;
-        self.releaseToRefreshText = NSLocalizedString(@"MJRefreshHeader.ReleaseToRefresh", nil);
-        self.refreshingText = NSLocalizedString(@"MJRefreshHeader.Refreshing", nil);;
+        self.pullToRefreshText = [@"MJRefreshHeader.PullToRefresh" localized];
+        self.releaseToRefreshText = [@"MJRefreshHeader.ReleaseToRefresh" localized];
+        self.refreshingText = [@"MJRefreshHeader.Refreshing" localized];
     }
     return self;
 }

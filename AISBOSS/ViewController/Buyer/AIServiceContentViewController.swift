@@ -188,7 +188,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         self.scrollView.hideErrorView()
         
-        BDKProposalService().queryCustosmerServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
+        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
             {[weak self] (responseData) -> Void in
                 
                 Async.main({ () -> Void in
@@ -317,60 +317,79 @@ internal class AIServiceContentViewController: UIViewController {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         } 
         
+        addGalleryView()
+
+        var serviceContentView: UIView!
+        if self.serviceContentType == AIServiceContentType.Escort {
+            //陪护
+            serviceContentView = addEscortView()
+        } else {
+            //音乐疗养
+            serviceContentView = addMusicView()
+        }
+   
+        let custView =  addCustomView(serviceContentView)
+        
+        addAudioView(custView)
+    }
+    
+    private func addGalleryView() {
         // Add gallery View
         scrollView.addSubview(galleryView)
         
         var imageArray = [String]()
         _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
-            let imageModel = imgModel as! AIProposalServiceDetail_Intro_img_listModel
+            let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
             imageArray.append(imageModel.service_intro_img ?? "")
             return true
         })
         galleryView.imageModelArray = imageArray
         galleryView.setTop(5)
-
-        var holdView:UIView?
-        if self.serviceContentType == AIServiceContentType.Escort {
-            //陪护
-            
-            let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-            let paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
-            //scrollView.addSubview(musicView)
-            addNewSubView(paramedicView, preView: galleryView)
-            paramedicView.backgroundColor = UIColor.clearColor()
-            holdView = paramedicView
-        }else{
-            //音乐疗养
-            
-            let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-            let musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
-            //scrollView.addSubview(musicView)
-            addNewSubView(musicView, preView: galleryView)
-            musicView.backgroundColor = UIColor.clearColor()
-            holdView = musicView
-        }
-           
+    }
+    
+    private func addEscortView() -> UIView {
+        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+        let paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
+        addNewSubView(paramedicView, preView: galleryView)
+        paramedicView.backgroundColor = UIColor.clearColor()
+        return paramedicView
+    }
+    
+    private func addCustomView(preView: UIView) -> AICustomView {
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: holdView!)        
+        addNewSubView(custView, preView: preView)
+        
         //处理数据填充
-        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
-            if let labelList = wish.label_list as? [AIProposalServiceDetail_label_list_listModel] {
+        if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
             
         }
         
+        return custView
+    }
+    
+    private func addMusicView() -> UIView {
+        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
+        addNewSubView(musicView, preView: galleryView)
+        musicView.backgroundColor = UIColor.clearColor()
+        return musicView
+    }
+    
+    private func addAudioView(preView: UIView) {
         let audioView = AICustomAudioNotesView.currentView()
-        addNewSubView(audioView, preView: custView)
+        addNewSubView(audioView, preView: preView)
         audioView.delegateShowAudio = self
-//        audioView.delegateAudio = self
-//        audioView.inputText.delegate = self
+        //        audioView.delegateAudio = self
+        //        audioView.inputText.delegate = self
         
         //处理语音 文本数据
         //处理数据填充
-        if let wish:AIProposalServiceDetail_wish_list_listModel = self.currentDatasource?.wish_list {
-            if let hopeList = wish.hope_list as? [AIProposalServiceDetail_hope_list_listModel] {
+        if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            if let hopeList = wish.hope_list as? [AIProposalServiceDetailHopeModel] {
                 var perViews:UIView?
                 for item in hopeList {
                     if item == hopeList.first {
@@ -387,7 +406,7 @@ internal class AIServiceContentViewController: UIViewController {
                         newText.delegate = self
                         perViews = newText
                         
-                    }else if item.type == 2 {
+                    } else if item.type == 2 {
                         // audio.
                         let audio1 = AIAudioMessageView.currentView()
                         audio1.audioDelegate = self
@@ -550,7 +569,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
     //结束录音添加view到scrollview
-    func endRecording(audioModel: AIProposalServiceDetail_hope_list_listModel) {
+    func endRecording(audioModel: AIProposalServiceDetailHopeModel) {
 
         audioView_AudioRecordView?.hidden = true
         if audioModel.time > 1000 {

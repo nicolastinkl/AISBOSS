@@ -99,8 +99,8 @@ class AIBuyerDetailViewController : UIViewController {
         initServiceRestoreToolbar()
         initDeletedTableView()
         initDeletedOverlayView()
-        // Init Label Font
-        InitLabelFont()
+        // init Label Font
+        initLabelFont()
         
         // Make
         // makeBuyButton()
@@ -108,7 +108,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Add Pull To Referesh..
         tableView.addHeaderWithCallback {[weak self]() -> Void in
             if let strongSelf = self {
-                // Init Data
+                // init Data
                 strongSelf.initData()
                 
             }
@@ -217,7 +217,7 @@ class AIBuyerDetailViewController : UIViewController {
         
     }
     
-    func InitController() {
+    func initController() {
         
         let name = bubbleModel?.proposal_name ?? ""
         self.backButton.setTitle(name, forState: UIControlState.Normal)
@@ -243,7 +243,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.totalMoneyLabel.textColor = AITools.colorWithR(253, g: 225, b: 50)
     }
     
-    func InitLabelFont() {
+    func initLabelFont() {
         self.backButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(60 / PurchasedViewDimention.CONVERT_FACTOR)
         self.moneyLabel.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
         self.numberLabel.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
@@ -393,11 +393,11 @@ class AIBuyerDetailViewController : UIViewController {
                     if let viewController = self {
                         viewController.dataSource = responseData
                         
-                        // InitControl Data
-                        viewController.InitController()
+                        // initControl Data
+                        viewController.initController()
                         viewController.tableView.reloadData()
                         
-                        // Init Bottom Page white area
+                        // init Bottom Page white area
                         viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()

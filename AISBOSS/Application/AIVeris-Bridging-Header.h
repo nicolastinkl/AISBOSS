@@ -67,10 +67,10 @@
 #import "CWStarRateView.h"
 
 //oc models
-#import "AIServiceSchemeModel.h"
 #import "AIOrderPreModel.h"
 #import "ProposalModel.h"
 #import "ServiceOrderDetailModel.h"
+#import "AIServiceSubmitModel.h"
 
 // SDWebImage
 #import "UIImageView+WebCache.h"

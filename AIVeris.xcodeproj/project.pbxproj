@@ -140,6 +140,11 @@
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
+		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
+		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
+		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
+		849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD11C202B61008C0A23 /* UIMainStoryboard.storyboard */; };
+		849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD21C202B61008C0A23 /* UITimeLineStoryboard.storyboard */; };
 		849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */; };
 		849B4B211C0EDFE300BEC179 /* FLEXArgumentInputDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A931C0EDFE300BEC179 /* FLEXArgumentInputDateView.m */; };
 		849B4B221C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4A951C0EDFE300BEC179 /* FLEXArgumentInputFontsPickerView.m */; };
@@ -212,6 +217,8 @@
 		84B62B181BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; };
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
 		84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
+		84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */; settings = {ASSET_TAGS = (); }; };
+		84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */; settings = {ASSET_TAGS = (); }; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */; };
@@ -226,12 +233,7 @@
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
 		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
-		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
-		930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */; };
-		930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */; };
-		930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */; };
-		930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */; };
 		930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A261B9D3C2200CD1FEB /* loading.mp4 */; };
 		930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A271B9D3C2200CD1FEB /* start.mp4 */; };
 		930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */; };
@@ -253,7 +255,6 @@
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; };
-		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937EA3801C02BB2700AF776B /* AVFoundation.framework */; };
 		937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3821C03097500AF776B /* AIAudioMessageView.swift */; };
 		937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3841C03098700AF776B /* AIAudioMessageView.xib */; };
@@ -271,7 +272,6 @@
 		939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */; };
 		939F49FD1BDE07FD00D07598 /* AIBuyServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */; };
 		93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */; };
-		93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */; };
 		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; };
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
 		93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */; };
@@ -668,13 +668,18 @@
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
-		847F69221C1EAF1D008A7804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		847F69241C1EAF37008A7804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		847F69251C1EB337008A7804 /* AILocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocalizationManager.swift; sourceTree = "<group>"; };
 		848081381C1EE748007806E7 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
 		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
+		849B0BCD1C202AC3008C0A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
+		849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
+		849B0BD11C202B61008C0A23 /* UIMainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIMainStoryboard.storyboard; sourceTree = "<group>"; };
+		849B0BD21C202B61008C0A23 /* UITimeLineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UITimeLineStoryboard.storyboard; sourceTree = "<group>"; };
 		849B4A901C0EDFE300BEC179 /* FLEXArgumentInputColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputColorView.h; sourceTree = "<group>"; };
 		849B4A911C0EDFE300BEC179 /* FLEXArgumentInputColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXArgumentInputColorView.m; sourceTree = "<group>"; };
 		849B4A921C0EDFE300BEC179 /* FLEXArgumentInputDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXArgumentInputDateView.h; sourceTree = "<group>"; };
@@ -815,6 +820,9 @@
 		84B62B171BD891670081ABDF /* ImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
 		84B62B1A1BD8E1290081ABDF /* ProposalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalModel.h; sourceTree = "<group>"; };
 		84B62B1B1BD8E1290081ABDF /* ProposalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalModel.m; sourceTree = "<group>"; };
+		84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceDetailTool.swift; sourceTree = "<group>"; };
+		84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceSubmitModel.h; sourceTree = "<group>"; };
+		84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceSubmitModel.m; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProviderOrdersJsonTest.json; sourceTree = "<group>"; };
@@ -829,12 +837,7 @@
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
 		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
-		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
-		930B271B1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
-		930B271D1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIHomeStoryboard.storyboard; sourceTree = "<group>"; };
-		930B271F1B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UIMainStoryboard.storyboard; sourceTree = "<group>"; };
-		930B27211B9D887C0011EE73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UITimeLineStoryboard.storyboard; sourceTree = "<group>"; };
 		930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineViewController.swift; sourceTree = "<group>"; };
 		930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTITLEView.swift; sourceTree = "<group>"; };
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
@@ -858,8 +861,6 @@
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
 		936EDC961BCB4C4100ED160F /* AITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITest.swift; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
-		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
 		937EA3801C02BB2700AF776B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		937EA3821C03097500AF776B /* AIAudioMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioMessageView.swift; sourceTree = "<group>"; };
 		937EA3841C03098700AF776B /* AIAudioMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioMessageView.xib; sourceTree = "<group>"; };
@@ -877,7 +878,6 @@
 		939F49FA1BDE04F800D07598 /* AIPopHoldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopHoldView.swift; sourceTree = "<group>"; };
 		939F49FC1BDE07FD00D07598 /* AIBuyServiceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyServiceModel.swift; sourceTree = "<group>"; };
 		93A3B1851C10345D00DE7EBB /* AIBueryDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBueryDetailCell.swift; sourceTree = "<group>"; };
-		93A5A5A11B9BD647001DE36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93A742C81BDF75FD001EF581 /* TDImageColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDImageColors.h; sourceTree = "<group>"; };
 		93A742C91BDF75FD001EF581 /* TDImageColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDImageColors.m; sourceTree = "<group>"; };
 		93A742CA1BDF75FD001EF581 /* UIColor+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TDAdditions.h"; sourceTree = "<group>"; };
@@ -1805,6 +1805,14 @@
 			path = ViewHierarchy;
 			sourceTree = "<group>";
 		};
+		84C2A58C1C2154B100CBDFAC /* ModelTools */ = {
+			isa = PBXGroup;
+			children = (
+				84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */,
+			);
+			name = ModelTools;
+			sourceTree = "<group>";
+		};
 		84CB0B3C1BA90524005F16D0 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1964,8 +1972,6 @@
 		937954AA1BA90B870057A99E /* ocModel */ = {
 			isa = PBXGroup;
 			children = (
-				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
-				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
 				84B62B1A1BD8E1290081ABDF /* ProposalModel.h */,
 				84B62B1B1BD8E1290081ABDF /* ProposalModel.m */,
 				842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */,
@@ -1978,6 +1984,8 @@
 				81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */,
 				12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */,
 				12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */,
+				84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */,
+				84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -2037,6 +2045,7 @@
 		93A5A5981B9BD5E1001DE36D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C2A58C1C2154B100CBDFAC /* ModelTools */,
 				937954AA1BA90B870057A99E /* ocModel */,
 				93FA1DE71B9C306E009965C8 /* AICatalogServicesModel.swift */,
 				93FA1DE81B9C306E009965C8 /* AIConnectToolModel.swift */,
@@ -2067,7 +2076,6 @@
 				93FA1DDE1B9C302A009965C8 /* AIOrderService.swift */,
 				93FA1DDF1B9C302A009965C8 /* AIServicesRequester.swift */,
 				93FA1DE01B9C302A009965C8 /* AITransformManager.swift */,
-				9306F2621BB02C170092D827 /* AIDetailNetService.swift */,
 				84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */,
 				844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
@@ -2097,11 +2105,11 @@
 		93A5A59C1B9BD5E1001DE36D /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */,
-				930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */,
-				930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */,
-				930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */,
-				930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */,
+				849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */,
+				849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */,
+				849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */,
+				849B0BD11C202B61008C0A23 /* UIMainStoryboard.storyboard */,
+				849B0BD21C202B61008C0A23 /* UITimeLineStoryboard.storyboard */,
 				93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */,
 			);
 			path = Storyboard;
@@ -2791,8 +2799,8 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				Base,
 				"zh-Hans",
+				en,
 			);
 			mainGroup = 93D5A3401B709C1C00DDB158;
 			productRefGroup = 93D5A34A1B709C1C00DDB158 /* Products */;
@@ -2824,7 +2832,6 @@
 				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */,
 				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
-				930B27251B9D887C0011EE73 /* UITimeLineStoryboard.storyboard in Resources */,
 				934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */,
 				842FC8661BDA437C00A0517C /* customerProposalList.json in Resources */,
 				93B25A601B9D7A1D00CD1FEB /* sdk_weibo_logo.png in Resources */,
@@ -2834,7 +2841,6 @@
 				937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */,
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
-				930B27221B9D887C0011EE73 /* UICustomerStoryboard.storyboard in Resources */,
 				847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */,
 				937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
@@ -2848,8 +2854,8 @@
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
 				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
-				930B27231B9D887C0011EE73 /* UIHomeStoryboard.storyboard in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
+				849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
 				93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */,
@@ -2869,13 +2875,13 @@
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
+				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
-				930B27241B9D887C0011EE73 /* UIMainStoryboard.storyboard in Resources */,
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
 				845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */,
 				93CB8D831BF9F41C00C41DDE /* MyriadPro-SemiboldSemiCn.otf in Resources */,
@@ -2883,11 +2889,12 @@
 				81D83AEB1BB29F7900BE2BA2 /* MJRefresh.bundle in Resources */,
 				8450D1221C0479AF00CD1D5B /* AIIconTextView.xib in Resources */,
 				93FA1DA31B9C2EAA009965C8 /* arraw_left.png in Resources */,
-				93A5A5A41B9BD647001DE36D /* LaunchScreen.storyboard in Resources */,
 				9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */,
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
+				849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */,
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
+				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
 				93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */,
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
@@ -2912,6 +2919,7 @@
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,
 				930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */,
+				849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */,
 				843E37DD1C1534DD00FAD919 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3000,6 +3008,7 @@
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,
 				93C33F271B9C0F46007BF506 /* AIApplication.swift in Sources */,
 				93FA1DFF1B9C306E009965C8 /* AIServiceCatalogModel.swift in Sources */,
+				84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
@@ -3061,7 +3070,6 @@
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
-				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
 				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */,
@@ -3167,6 +3175,7 @@
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
+				84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */,
 				849B4B491C0EDFE300BEC179 /* FLEXNetworkTransaction.m in Sources */,
 				936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */,
 				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
@@ -3191,7 +3200,6 @@
 				93B25A9C1B9D7A7B00CD1FEB /* AFURLConnectionOperation.m in Sources */,
 				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
-				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
@@ -3347,50 +3355,10 @@
 		847F69231C1EAF1D008A7804 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				847F69221C1EAF1D008A7804 /* Base */,
 				847F69241C1EAF37008A7804 /* zh-Hans */,
+				849B0BCD1C202AC3008C0A23 /* en */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		930B271A1B9D887C0011EE73 /* UICustomerStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				930B271B1B9D887C0011EE73 /* Base */,
-			);
-			name = UICustomerStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		930B271C1B9D887C0011EE73 /* UIHomeStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				930B271D1B9D887C0011EE73 /* Base */,
-			);
-			name = UIHomeStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		930B271E1B9D887C0011EE73 /* UIMainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				930B271F1B9D887C0011EE73 /* Base */,
-			);
-			name = UIMainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		930B27201B9D887C0011EE73 /* UITimeLineStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				930B27211B9D887C0011EE73 /* Base */,
-			);
-			name = UITimeLineStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
-		93A5A5A01B9BD647001DE36D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93A5A5A11B9BD647001DE36D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

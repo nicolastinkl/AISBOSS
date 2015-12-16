@@ -61,10 +61,10 @@
  *
  *  @since <#version number#>
  */
-@implementation AIProposalServiceDetail_Intro_img_listModel
+@implementation AIProposalServiceDetailIntroImgModel
 @end
 
-@implementation AIProposalServiceDetail_provider_listModel
+@implementation AIProposalServiceDetailProviderModel
 
 +(JSONKeyMapper*)keyMapper
 {
@@ -75,22 +75,22 @@
 
 @end
 
-@implementation AIProposalServiceDetail_Param_listModel
+@implementation AIProposalServiceDetailParamModel
 @end
 
-@implementation AIProposalServiceDetail_Param_Value_listModel
+@implementation AIProposalServiceDetailParamValueModel
 @end
 
-@implementation AIProposalServiceDetail_Rating_List_Item_listModel
+@implementation AIProposalServiceDetailRatingItemModel
 @end
 
-@implementation AIProposalServiceDetail_Rating_Comment_listModel
+@implementation AIProposalServiceDetailRatingCommentModel
 @end
 
-@implementation AIProposalServiceDetail_Rating_listModel
+@implementation AIProposalServiceDetailRatingModel
 @end
 
-@implementation AIProposalServiceDetail_label_list_listModel
+@implementation AIProposalServiceDetailLabelModel
 
 +(JSONKeyMapper*)keyMapper
 {
@@ -101,7 +101,7 @@
 
 @end
 
-@implementation AIProposalServiceDetail_hope_list_listModel
+@implementation AIProposalServiceDetailHopeModel
 
 +(JSONKeyMapper*)keyMapper
 {
@@ -112,8 +112,20 @@
 
 @end
 
-@implementation AIProposalServiceDetail_wish_list_listModel
+@implementation AIProposalServiceDetail_WishModel
 @end
 
 @implementation AIProposalServiceDetailModel
 @end
+
+
+
+@implementation AIProposalServiceParamRelationModel
+@end
+
+@implementation AIRelationParamItemModel
+@end
+
+@implementation AIParamRelationModel
+@end
+

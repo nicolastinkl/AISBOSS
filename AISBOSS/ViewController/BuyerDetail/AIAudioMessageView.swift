@@ -32,7 +32,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     @IBOutlet weak var audioGifImageView: UIImageView!
     @IBOutlet weak var audioLength: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    private var currentModelss:AIProposalServiceDetail_hope_list_listModel?
+    private var currentModelss:AIProposalServiceDetailHopeModel?
     @IBOutlet weak var widthAudioBgConstraint: NSLayoutConstraint!
     
     weak var audioDelegate:AIAudioMessageViewDelegate?
@@ -109,7 +109,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
         return super.becomeFirstResponder()
     }
     
-    func fillData(model:AIProposalServiceDetail_hope_list_listModel){
+    func fillData(model:AIProposalServiceDetailHopeModel){
         let length = (NSInteger)(model.time / 1000)
         self.audioLength.text = "\(length)''"
         currentModelss = model

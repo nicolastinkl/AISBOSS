@@ -146,9 +146,10 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold to Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-Gt-Svh">
-                            <rect key="frame" x="181" y="31" width="238" height="24"/>
+                            <rect key="frame" x="181" y="23" width="238" height="32"/>
                             <animations/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="32" id="Y4J-uR-HTv"/>
                                 <constraint firstAttribute="width" constant="238" id="hiO-0g-C96"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
