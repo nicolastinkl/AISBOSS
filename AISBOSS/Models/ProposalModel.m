@@ -121,6 +121,9 @@
 
 
 
+@implementation AIProposalServiceParamRelationModel
+@end
+
 @implementation AIRelationParamItemModel
 @end
 

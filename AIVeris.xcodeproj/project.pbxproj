@@ -217,6 +217,8 @@
 		84B62B181BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; };
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
 		84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
+		84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */; settings = {ASSET_TAGS = (); }; };
+		84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */; settings = {ASSET_TAGS = (); }; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */; };
@@ -231,7 +233,6 @@
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
 		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
-		9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9306F2621BB02C170092D827 /* AIDetailNetService.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A261B9D3C2200CD1FEB /* loading.mp4 */; };
 		930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A271B9D3C2200CD1FEB /* start.mp4 */; };
@@ -254,7 +255,6 @@
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; };
-		937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 937954A81BA90B830057A99E /* AIServiceSchemeModel.m */; };
 		937EA3811C02BB2700AF776B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937EA3801C02BB2700AF776B /* AVFoundation.framework */; };
 		937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3821C03097500AF776B /* AIAudioMessageView.swift */; };
 		937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3841C03098700AF776B /* AIAudioMessageView.xib */; };
@@ -820,6 +820,9 @@
 		84B62B171BD891670081ABDF /* ImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
 		84B62B1A1BD8E1290081ABDF /* ProposalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalModel.h; sourceTree = "<group>"; };
 		84B62B1B1BD8E1290081ABDF /* ProposalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalModel.m; sourceTree = "<group>"; };
+		84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceDetailTool.swift; sourceTree = "<group>"; };
+		84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceSubmitModel.h; sourceTree = "<group>"; };
+		84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceSubmitModel.m; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProviderOrdersJsonTest.json; sourceTree = "<group>"; };
@@ -834,7 +837,6 @@
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
 		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
-		9306F2621BB02C170092D827 /* AIDetailNetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDetailNetService.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineViewController.swift; sourceTree = "<group>"; };
 		930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTITLEView.swift; sourceTree = "<group>"; };
@@ -859,8 +861,6 @@
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
 		936EDC961BCB4C4100ED160F /* AITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITest.swift; sourceTree = "<group>"; };
 		9370FCF31BA00F0600957361 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		937954A71BA90B830057A99E /* AIServiceSchemeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIServiceSchemeModel.h; path = ocmodel/AIServiceSchemeModel.h; sourceTree = "<group>"; };
-		937954A81BA90B830057A99E /* AIServiceSchemeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIServiceSchemeModel.m; path = ocmodel/AIServiceSchemeModel.m; sourceTree = "<group>"; };
 		937EA3801C02BB2700AF776B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		937EA3821C03097500AF776B /* AIAudioMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioMessageView.swift; sourceTree = "<group>"; };
 		937EA3841C03098700AF776B /* AIAudioMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioMessageView.xib; sourceTree = "<group>"; };
@@ -1805,6 +1805,14 @@
 			path = ViewHierarchy;
 			sourceTree = "<group>";
 		};
+		84C2A58C1C2154B100CBDFAC /* ModelTools */ = {
+			isa = PBXGroup;
+			children = (
+				84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */,
+			);
+			name = ModelTools;
+			sourceTree = "<group>";
+		};
 		84CB0B3C1BA90524005F16D0 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1964,8 +1972,6 @@
 		937954AA1BA90B870057A99E /* ocModel */ = {
 			isa = PBXGroup;
 			children = (
-				937954A71BA90B830057A99E /* AIServiceSchemeModel.h */,
-				937954A81BA90B830057A99E /* AIServiceSchemeModel.m */,
 				84B62B1A1BD8E1290081ABDF /* ProposalModel.h */,
 				84B62B1B1BD8E1290081ABDF /* ProposalModel.m */,
 				842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */,
@@ -1978,6 +1984,8 @@
 				81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */,
 				12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */,
 				12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */,
+				84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */,
+				84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -2037,6 +2045,7 @@
 		93A5A5981B9BD5E1001DE36D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C2A58C1C2154B100CBDFAC /* ModelTools */,
 				937954AA1BA90B870057A99E /* ocModel */,
 				93FA1DE71B9C306E009965C8 /* AICatalogServicesModel.swift */,
 				93FA1DE81B9C306E009965C8 /* AIConnectToolModel.swift */,
@@ -2067,7 +2076,6 @@
 				93FA1DDE1B9C302A009965C8 /* AIOrderService.swift */,
 				93FA1DDF1B9C302A009965C8 /* AIServicesRequester.swift */,
 				93FA1DE01B9C302A009965C8 /* AITransformManager.swift */,
-				9306F2621BB02C170092D827 /* AIDetailNetService.swift */,
 				84D8ECDD1BB143440010E981 /* AIProviderDataObtainer.swift */,
 				844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
@@ -3000,6 +3008,7 @@
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,
 				93C33F271B9C0F46007BF506 /* AIApplication.swift in Sources */,
 				93FA1DFF1B9C306E009965C8 /* AIServiceCatalogModel.swift in Sources */,
+				84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
@@ -3061,7 +3070,6 @@
 				93FA1E021B9C306E009965C8 /* AITSLocation.swift in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
-				9306F2631BB02C170092D827 /* AIDetailNetService.swift in Sources */,
 				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */,
@@ -3167,6 +3175,7 @@
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
+				84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */,
 				849B4B491C0EDFE300BEC179 /* FLEXNetworkTransaction.m in Sources */,
 				936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */,
 				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
@@ -3191,7 +3200,6 @@
 				93B25A9C1B9D7A7B00CD1FEB /* AFURLConnectionOperation.m in Sources */,
 				93FA1E601B9C3E12009965C8 /* AISellerCell.m in Sources */,
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
-				937954A91BA90B830057A99E /* AIServiceSchemeModel.m in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,

@@ -65,13 +65,16 @@ class AIFolderCellView: UIView {
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
         
-        let firstServiceOrder = proposalModel.order_list[0]
-        if let url = firstServiceOrder.service_thumbnail_icon{
-            serviceIcon.sd_setImageWithURL("\(url)".toURL(), placeholderImage: UIImage(named: "Placehold"))
+
+        let firstServiceOrder : ServiceOrderModel? = proposalModel.order_list[0] as? ServiceOrderModel
+        
+        if let url = firstServiceOrder?.service_thumbnail_icon {
+            
+            serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
             
         }
         
-        descContentView?.descLabel.text = firstServiceOrder.service_name
+        descContentView?.descLabel.text = firstServiceOrder?.service_name
         
         buildStatusData()
     }
