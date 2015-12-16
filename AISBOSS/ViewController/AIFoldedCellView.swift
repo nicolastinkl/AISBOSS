@@ -67,7 +67,7 @@ class AIFolderCellView: UIView {
         
         let firstServiceOrder = proposalModel.order_list[0]
         if let url = firstServiceOrder.service_thumbnail_icon{
-            serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
+            serviceIcon.sd_setImageWithURL("\(url)".toURL(), placeholderImage: UIImage(named: "Placehold"))
             
         }
         
