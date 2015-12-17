@@ -76,6 +76,20 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
+    // MARK: 参数保存
+    
+    func getAllParameters () -> NSDictionary {
+        
+        let param = NSDictionary()
+        
+        return param
+    }
+    
+    func cleanAllParameters () {
+        
+    }
+    
+    
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {

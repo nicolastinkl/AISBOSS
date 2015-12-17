@@ -194,6 +194,8 @@ class AIBuyerDetailViewController : UIViewController {
         addTapActionForView(buyerBottom)
     }
     
+    
+    // MARK: 提交订单
     func addTapActionForView(view:UIView) {
         let width :CGFloat = 100
         let frame : CGRect = CGRectMake((CGRectGetWidth(view.frame)-width) / 2, 0, width, CGRectGetHeight(view.frame))
@@ -201,7 +203,6 @@ class AIBuyerDetailViewController : UIViewController {
         let tapView = UIView(frame: frame)
         tapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "bottomTapAction"))
         view.addSubview(tapView)
-        tapView.backgroundColor = UIColor.redColor()
         
         view.userInteractionEnabled = true
     }
