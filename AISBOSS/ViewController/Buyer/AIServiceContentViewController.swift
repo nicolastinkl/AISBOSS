@@ -15,11 +15,21 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+// MARK: 返回事件回调
+
+protocol AIServiceContentDelegate : class{
+    
+    func contentViewWillDismiss ()
+    
+}
+
+
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
     
+    weak var contentDelegate : AIServiceContentDelegate?
     
     var curAudioView : AIAudioMessageView?
     
@@ -280,16 +290,14 @@ internal class AIServiceContentViewController: UIViewController {
     
     func backAction () {
         
-        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
-        
-        /*
-        self.parentViewController!.view.showLoadingWithMessage("Please Wait...")
-        
-        Async.main(after: Double(0.5)) { () -> Void in
-            self.parentViewController!.view.dismissLoading()
+        if let delegate = contentDelegate {
+            
+            delegate.contentViewWillDismiss()
+        }
+        else {
             self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
         }
-        */
+
     }
     
     func scrollAction () {
