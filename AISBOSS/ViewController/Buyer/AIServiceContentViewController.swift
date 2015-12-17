@@ -640,6 +640,15 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     
 }
 
+// MARK: 参数修改回调
+
+extension AIServiceContentViewController : AIBuyerParamsDelegate {
+    func didChangeParams(params: [NSObject : AnyObject]!) {
+        
+    }
+}
+
+
 extension AIServiceContentViewController : AIDeleteActionDelegate{
     
     func deleteAction(cell: UIView?) {
@@ -712,5 +721,10 @@ extension AIServiceContentViewController : UITextViewDelegate {
         
         return true
     }
+    
+    
+    
+    
+    
     
 }
