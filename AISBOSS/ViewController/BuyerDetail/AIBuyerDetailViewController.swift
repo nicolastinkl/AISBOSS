@@ -231,9 +231,9 @@ class AIBuyerDetailViewController : UIViewController {
 //        "AIBuyerDetailViewController.pregnancy" = "怀孕"; 可能引起bug
         if NSString(string: name).containsString("AIBuyerDetailViewController.pregnancy".localized) {
             // 处理字体
-            let price = dataSource?.proposal_price
-            let richText = NSMutableAttributedString(string:(price)!)
-            richText.addAttribute(NSFontAttributeName, value: AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price!.length - 6, 6)) // 设置字体大小
+            let price = dataSource?.proposal_price ?? ""
+            let richText = NSMutableAttributedString(string:(price))
+            richText.addAttribute(NSFontAttributeName, value: AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price.length - 6, 6)) // 设置字体大小
             self.totalMoneyLabel.attributedText = richText
             
         } else {
