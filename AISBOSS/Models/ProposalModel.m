@@ -35,12 +35,26 @@
     return self;
 }
 
+
 @end
 
 @implementation AIProposalProvider
 @end
 
 @implementation AIProposalInstModel
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        // 临时添加初始值，服务器暂时没有做算费模型，没有这个字段
+        _proposal_price = @"€891+/month";
+    }
+    
+    return self;
+}
+
 @end
 
 @implementation AIProposalHopeModel
