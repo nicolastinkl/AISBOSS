@@ -331,6 +331,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * text;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
 @property (assign, nonatomic) NSInteger type;//1 text  2 audio
+@property (assign, nonatomic) NSString *noteType;//1 text  2 audio
 @property (assign, nonatomic) NSInteger time;
 @property (assign, nonatomic) NSInteger hope_id;
 

@@ -38,4 +38,37 @@
     return message;
     
 }
+
+
+
++ (AIMessage *)addWishNoteWithWishID:(NSInteger)wishID type:(NSString *)type content:(NSString *)content
+{
+    AIMessage *message = [AIMessage message];
+    
+    NSDictionary *body = @{@"data":@{@"wish_id":@(wishID),@"note_type":type,@"note_content":content},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    
+    [message.body addEntriesFromDictionary:body];
+    
+    message.url = kURL_AddWishNote;
+    return message;
+}
+
+
++ (AIMessage *)deleteWishNoteWithWishID:(NSInteger)wishID noteID:(NSInteger)noteID
+{
+    AIMessage *message = [AIMessage message];
+    
+    NSDictionary *body = @{@"data":@{@"wish_id":@(wishID),@"note_id":@(noteID)},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    
+    [message.body addEntriesFromDictionary:body];
+    
+    message.url = kURL_DelWishNote;
+    return message;
+}
+
+
+
+
+
+
 @end

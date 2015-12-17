@@ -611,6 +611,16 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 scrollViewBottom()
             }
             
+            // upload
+            self.view.showLoadingWithMessage("")
+            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
+            weak var weakSelf = self
+            AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
+                weakSelf?.view.dismissLoading()
+                }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
+                    
+            })
+            
         }
         else {
             AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)

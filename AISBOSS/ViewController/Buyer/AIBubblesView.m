@@ -70,7 +70,6 @@
     NSArray *undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3746a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"aa822a" ,@"7e6479",@"81476a",@"5198ac", @"93a44b",@"",@"",@"",@""];
     NSArray *borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"6db8d5",@"f8b989", @"8986c2",@"cd53e1", @"528319", @"e6ad44", @"8986c2" ,@"c474ac" ,@"9bd6f2" ,@"93bd78", @"f88d8e",@"",@"",@"",@""];
     
-    
     for (int i = 0; i < _bubbleModels.count; i++) {
         AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
         model.deepColor = [deepColor objectAtIndex:i];
