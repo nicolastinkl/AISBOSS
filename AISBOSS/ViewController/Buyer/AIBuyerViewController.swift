@@ -12,6 +12,7 @@ import AISpring
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AIBuyerDetailDelegate{
 
     // MARK: - Properties
+    
     var dataSource  = [ProposalOrderModelWrap]()
     var dataSourcePop = [AIBuyerBubbleModel]()
     var tableViewCellCache = [Int: UIView]()
@@ -39,6 +40,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     let topBarHeight : CGFloat = AITools.displaySizeFrom1080DesignSize(130)
     
     // MARK: - Variable
+    
     var bubbleViewContainer : UIView!
     
     var tableView : UITableView!
@@ -47,6 +49,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     private let BUBBLE_VIEW_MARGIN = AITools.displaySizeFrom1080DesignSize(40)
+    
     private let BUBBLE_VIEW_HEIGHT = AITools.displaySizeFrom1080DesignSize(1538)
     
     var lastSelectedIndexPath : NSIndexPath?

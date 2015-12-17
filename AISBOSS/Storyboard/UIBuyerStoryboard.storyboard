@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -300,7 +300,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ios-QE-FUq">
-                                        <rect key="frame" x="73" y="68" width="100" height="21"/>
+                                        <rect key="frame" x="70" y="68" width="503" height="21"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -310,6 +310,11 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="JEb-Iw-NIP"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <animations/>
@@ -322,6 +327,7 @@
                                     <constraint firstItem="mkb-ag-P9a" firstAttribute="leading" secondItem="85O-6e-yvW" secondAttribute="trailing" constant="3" id="CXJ-hg-6ch"/>
                                     <constraint firstItem="kby-pV-MOa" firstAttribute="centerY" secondItem="dgC-qc-VsT" secondAttribute="centerY" id="H8f-wB-K2S"/>
                                     <constraint firstItem="kby-pV-MOa" firstAttribute="leading" secondItem="As3-0T-zUo" secondAttribute="trailing" constant="15" id="Hu0-Db-fM5"/>
+                                    <constraint firstAttribute="trailing" secondItem="ios-QE-FUq" secondAttribute="trailing" constant="27" id="JoT-WF-lk2"/>
                                     <constraint firstItem="As3-0T-zUo" firstAttribute="centerY" secondItem="dgC-qc-VsT" secondAttribute="centerY" id="bIB-Yb-wRS"/>
                                     <constraint firstItem="H8s-Ef-iLH" firstAttribute="top" secondItem="85O-6e-yvW" secondAttribute="bottom" constant="6" id="cSR-KP-Qig"/>
                                     <constraint firstItem="As3-0T-zUo" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="top" constant="12" id="dLJ-0j-pJr"/>
@@ -333,7 +339,7 @@
                                     <constraint firstItem="Wqa-G4-So3" firstAttribute="top" secondItem="Ksj-KL-fh2" secondAttribute="top" constant="-1" id="nwD-e9-V7M"/>
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="leading" secondItem="dgC-qc-VsT" secondAttribute="leading" constant="34" id="nyU-kL-emv"/>
                                     <constraint firstItem="lJU-J2-MTd" firstAttribute="top" secondItem="dgC-qc-VsT" secondAttribute="top" constant="66" id="oi2-oe-JOO"/>
-                                    <constraint firstItem="ios-QE-FUq" firstAttribute="leading" secondItem="H8s-Ef-iLH" secondAttribute="trailing" constant="-1" id="qYC-OE-AO5"/>
+                                    <constraint firstItem="ios-QE-FUq" firstAttribute="leading" secondItem="H8s-Ef-iLH" secondAttribute="trailing" constant="-4" id="qYC-OE-AO5"/>
                                     <constraint firstItem="85O-6e-yvW" firstAttribute="top" secondItem="As3-0T-zUo" secondAttribute="bottom" constant="7" id="sAi-GK-9oS"/>
                                     <constraint firstItem="qCN-P4-SJd" firstAttribute="top" secondItem="kby-pV-MOa" secondAttribute="top" id="tAc-sN-pLO"/>
                                     <constraint firstAttribute="trailing" secondItem="lJU-J2-MTd" secondAttribute="trailing" constant="11" id="uxm-TV-AYH"/>
