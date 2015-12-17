@@ -17,11 +17,10 @@
 #import "UP_NSString+Size.h"
 #import "Veris-Swift.h"
 
-@interface AIMusicTherapyView ()
+@interface AIMusicTherapyView () <AIServiceTypesDelegate>
 {
     CGFloat _sideMargin;
 }
-
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 
@@ -112,6 +111,7 @@
     
     
     AIServiceTypes *serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:_detailModel.service_param_list.firstObject];
+    serviceTypes.delegate = self;
     [self addSubview:serviceTypes];
     
     //
@@ -286,7 +286,11 @@
     }
 }
 
-
+// AIServiceTypesDelegate
+- (void)didSelectServiceTypeAtIndex:(NSInteger)index
+{
+    
+}
 
 
 
