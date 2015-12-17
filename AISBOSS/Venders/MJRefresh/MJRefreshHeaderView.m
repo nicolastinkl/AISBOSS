@@ -124,7 +124,7 @@
     NSString *time = [formatter stringFromDate:self.lastUpdateTime];
     
     // 3.显示日期
-    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MJRefreshHeader.Latest", nil), time];
+    self.lastUpdateTimeLabel.text = [NSString stringWithFormat:[@"MJRefreshHeader.Latest" localized], time];
 }
 
 #pragma mark - 监听UIScrollView的contentOffset属性
