@@ -25,6 +25,8 @@ internal class AIServiceContentViewController: UIViewController {
     
     var curTextField : UITextField?
     
+    var configuredParameters : NSMutableDictionary?
+    
     private let redColor : String = "b32b1d"
     
     var serviceContentModel:AIProposalServiceModel?
@@ -78,15 +80,19 @@ internal class AIServiceContentViewController: UIViewController {
     
     // MARK: 参数保存
     
-    func getAllParameters () -> NSDictionary {
+    func getAllParameters () -> NSDictionary? {
         
-        let param = NSDictionary()
+        var param : NSDictionary?
+        
+        if let dic = configuredParameters {
+            param = NSDictionary(dictionary: dic)
+        }
         
         return param
     }
     
     func cleanAllParameters () {
-        
+        configuredParameters?.removeAllObjects()
     }
     
     
