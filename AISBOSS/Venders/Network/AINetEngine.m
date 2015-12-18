@@ -199,15 +199,12 @@
     
     NSString *resultCode = [des objectForKey:kKeyForResultCode];
     
-    success(returnResponseObject);
-//    if ([resultCode isEqualToString:kSuccessCode] && success) {
-//        success(returnResponseObject);
-//    }
-//    else
-//    {
-//        NSString *errorDes = [des objectForKey:kKeyForResultMsg];
-//        fail(AINetErrorFormat, errorDes);
-//    }
+    if ([resultCode isEqualToString:kSuccessCode] && success) {
+        success(returnResponseObject);
+    } else {
+        NSString *errorDes = [des objectForKey:kKeyForResultMsg];
+        fail(AINetErrorFormat, errorDes);
+    }
 }
 
 - (void)parseFailResponseWithTask:(NSURLSessionDataTask *)task

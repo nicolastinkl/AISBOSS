@@ -204,7 +204,7 @@ class BDKProposalService : MockProposalService{
    //     let header = ["HttpQuery":"0&0&0&0"]
         
         message.body = NSMutableDictionary(dictionary: body)
-        message.header = NSMutableDictionary(dictionary: header)
+  //      message.header = NSMutableDictionary(dictionary: header)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            
             do {
                 let dic = response as! [NSObject : AnyObject]
