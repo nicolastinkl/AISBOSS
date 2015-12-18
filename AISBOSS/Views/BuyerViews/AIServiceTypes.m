@@ -104,7 +104,7 @@
         CGFloat x = _radioSize + _radioMargin;
         CGFloat strWidth = width - x;
         CGRect strFrame = CGRectMake(x, 0, strWidth, _radioSize);
-        NSString *radio = param.value_display;
+        NSString *radio = param.content;
         
         UPLabel *label = [AIViews normalLabelWithFrame:strFrame text:radio fontSize:_fontSize color:[UIColor whiteColor]];
         label.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -154,8 +154,8 @@
     
     _selectedIndex = view.tag;
     
-    if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:)]) {
-        [self.delegate didSelectServiceTypeAtIndex:_selectedIndex];
+    if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:)]) {
+        [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex]];
     }
     
 }

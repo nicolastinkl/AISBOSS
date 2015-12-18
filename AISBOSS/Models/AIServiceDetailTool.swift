@@ -8,8 +8,11 @@
 
 import Foundation
 
-class AIServiceDetailTool {
-    func findParamRelated(service: AIProposalServiceDetailModel, selectedParamValue: AIProposalServiceDetailParamValueModel) -> AIProposalServiceParamRelationModel? {
+class AIServiceDetailTool: NSObject {
+    static let MUSIC_SERVICE_ID: Int = 900001001000
+    static let PARAMEDIC_SERVICE_ID: Int = 900001001003
+    
+    static func findParamRelated(service: AIProposalServiceDetailModel, selectedParamValue: AIProposalServiceDetailParamValueModel) -> AIProposalServiceParamRelationModel? {
         guard let relations = service.service_param_rel_list else {
             return nil
         }
@@ -19,11 +22,46 @@ class AIServiceDetailTool {
         for item in relations {
             let relation = item as! AIProposalServiceParamRelationModel
             
-            if selectedParamValue.id == relation.param.param_key {
+            if selectedParamValue.id == relation.param.param_value_key {
                 result = relation
             }
         }
         
         return result
+    }
+    
+    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, relation: AIProposalServiceParamRelationModel) -> JSONModel? {
+        var data: JSONModel?
+        
+        let paramKey = relation.rel_param.param_key
+        
+        for item in service.service_param_list {
+            let param = item as! AIProposalServiceDetailParamModel
+            
+            if param.param_key == paramKey {
+                if param.param_source == "product" {
+                    let productParam = AIProductParamItem()
+                    productParam.product_id = "\(param.param_source_id)"
+                    productParam.service_id = "\(service.service_id)"
+                    productParam.role_id = "\(relation.rel_param.param_role)"
+                    productParam.name = relation.rel_param.param_value
+                    
+                    data = productParam
+                } else if param.param_source == "product_param" {
+                    let serviceParam = AIServiceParamItem()
+                    serviceParam.source = param.param_source
+                    serviceParam.product_id = "\(param.param_source_id)"
+                    serviceParam.service_id = "\(service.service_id)"
+                    serviceParam.role_id = "\(relation.rel_param.param_role)"
+                    serviceParam.param_key = "\(paramKey)"
+                    serviceParam.param_value_id = "\(relation.rel_param.param_value_key)"
+                    serviceParam.param_value = relation.rel_param.param_value
+                    
+                    data = serviceParam
+                }
+            }
+        }
+        
+        return data
     }
 }

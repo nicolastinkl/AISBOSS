@@ -10,8 +10,9 @@
 #import "ProposalModel.h"
 #import "AIBuyerParamsDelegate.h"
 #import "AIServiceTypes.h"
+#import "AIServiceCoverage.h"
 
-@interface AIParamedicView : UIView<AIServiceTypesDelegate>
+@interface AIParamedicView : UIView<AIServiceTypesDelegate, AIServiceCoverageDelegate>
 
 @property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 

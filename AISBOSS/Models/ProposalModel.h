@@ -153,7 +153,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (assign, nonatomic) long param_role;
 @property (assign, nonatomic) long param_key;
 @property (strong, nonatomic) NSString<Optional> * param_value;
-@property (assign, nonatomic) NSString<Optional> * param_value_key;
+@property (assign, nonatomic) long param_value_key;
 
 @end
 
@@ -186,6 +186,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @protocol AIProposalServiceModel @end
 
+＃DEFINE_API(<#_type#>)
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;
@@ -277,8 +278,8 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * content;
 @property (assign, nonatomic) BOOL is_default;
 @property (strong, nonatomic) NSString<Optional> * source;
-@property (strong, nonatomic) NSString<Optional> * value_key;
-@property (strong, nonatomic) NSString<Optional> * value_display;
+//@property (strong, nonatomic) NSString<Optional> * value_key;
+//@property (strong, nonatomic) NSString<Optional> * value_display;
 
 @end
 
@@ -348,7 +349,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 /**
  *  @author tinkl, 15-12-01 10:12:26
  *
- *  @brief  心愿详情界面 url: http://171.221.254.231:3000/findServiceDetailFake
+ *  @brief  心愿详情界面 url: http://171.221.254.231:3000/findServiceDetail
  *  @ViewController AIServiceContentViewController
  */
 @interface AIProposalServiceDetailModel : JSONModel

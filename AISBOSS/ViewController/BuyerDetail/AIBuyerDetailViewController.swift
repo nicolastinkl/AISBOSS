@@ -581,14 +581,15 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
             
             let model1 = AIProposalServiceModel()
-            if serviceDataModel.service_id == 1 {
-                model1.service_id = 2
+            if serviceDataModel.service_id == AIServiceDetailTool.MUSIC_SERVICE_ID {
+                model1.service_id = AIServiceDetailTool.PARAMEDIC_SERVICE_ID
             } else {
-                model1.service_id = 1
+                model1.service_id = AIServiceDetailTool.MUSIC_SERVICE_ID
             }
             model1.service_desc = serviceDataModel.service_desc
             
-            let array = [serviceDataModel,model1]
+            let array = [serviceDataModel, model1]
+            viewController.proposalId = dataSource.proposal_id
             viewController.bubbleModelArray = array
             viewController.selectCurrentIndex = 0 // fix here
             self.showViewController(viewController, sender: self)
