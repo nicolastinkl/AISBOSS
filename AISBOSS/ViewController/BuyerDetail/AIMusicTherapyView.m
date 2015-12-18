@@ -17,13 +17,13 @@
 #import "UP_NSString+Size.h"
 #import "Veris-Swift.h"
 
-@interface AIMusicTherapyView ()
+@interface AIMusicTherapyView () <AIServiceTypesDelegate>
 {
     CGFloat _sideMargin;
 }
 
-
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+@property (nonatomic, strong) JSONModel *submitData;
 
 @end
 
@@ -109,13 +109,11 @@
     CGRect frame = CGRectMake(_sideMargin, y, width, 0);
     
     
+    AIServiceTypes *serviceTypes = [self addServiceTypes:frame];
     
-    
-    AIServiceTypes *serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:_detailModel.service_param_list.firstObject];
-    [self addSubview:serviceTypes];
-    
-    //
-    y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(serviceTypes.frame);
+    if (serviceTypes) {
+        y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(serviceTypes.frame);
+    }
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *image = [UIImage imageNamed:@"Wave_BG"];
@@ -124,8 +122,8 @@
     [self addSubview:imageView];
     //
     UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:_detailModel.service_price.original fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
-    
-    amLabel.attributedText = [self attrAmountWithAmount:_detailModel.service_price.original];
+    NSString *price = [NSString stringWithFormat:@"%@ %f", _detailModel.service_price.unit, _detailModel.service_price.price];
+    amLabel.attributedText = [self attrAmountWithAmount: price];
     amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];
@@ -257,8 +255,7 @@
         
         if (i == _detailModel.service_rating.comment_list.count - 1) {
             [self addLineViewAtY:y];
-        }
-        else
+        } else
         {
             [self addLineViewAtX:_sideMargin y:y width:CGRectGetWidth(self.frame) - _sideMargin*2];
         }
@@ -276,17 +273,56 @@
     
 }
 
-
-#pragma mark - AIServiceCoverageDelegate
-
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+- (AIServiceTypes *) addServiceTypes: (CGRect) frame
 {
-    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
-        [self.delegate didChangeParams:nil];
+    AIServiceTypes *serviceTypes;
+    
+    for (int i = 0; i < _detailModel.service_param_list.count; i++)
+    {
+        AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
+        
+        if (param.param_type == 2) {
+            serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:param];
+            
+        }
     }
+
+    if (serviceTypes != nil) {
+        serviceTypes.delegate = self;
+        [self addSubview:serviceTypes];
+    }
+    
+    return serviceTypes;
 }
 
 
+#pragma mark - AIBuyerParamsDelegate
+- (NSArray *)getSelectedParams
+{
+    if (_submitData) {
+        return @[_submitData];
+    } else {
+        return nil;
+    }
+    
+}
+
+#pragma mark - AIServiceCoverageDelegate
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+{
+    
+}
+
+#pragma mark - AIServiceTypesDelegate
+- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model
+{
+    AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
+    if (m) {
+        _submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+        NSInteger i = index;
+    }
+    
+}
 
 
 

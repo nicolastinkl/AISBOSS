@@ -97,7 +97,7 @@
         
         
         CGRect frame = CGRectMake(x, y, 100, height);
-        NSString *title = model.value_display;
+        NSString *title = model.content;
         AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:YES];
         label.delegate = self;
         label.backgroundColor = [colors objectAtIndex:i];
@@ -131,7 +131,7 @@
     if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel:)]) {
         
         for (AIProposalServiceDetailParamValueModel *model in self.coverageModel.param_value) {
-            if ([model.value_display isEqualToString:serviceLabel.labelTitle]) {
+            if ([model.content isEqualToString:serviceLabel.labelTitle]) {
                 [self.delegate didChooseServiceLabelModel:model];
                 break;
             }

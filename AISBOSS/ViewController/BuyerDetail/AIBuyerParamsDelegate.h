@@ -11,9 +11,8 @@
 
 @protocol AIBuyerParamsDelegate <NSObject>
 
-@optional
 
-- (void)didChangeParams:(NSDictionary *)params;
+- (NSArray *)getSelectedParams;
 
 
 @end

@@ -39,17 +39,20 @@ internal class AIServiceContentViewController: UIViewController {
     
     private let redColor : String = "b32b1d"
     
-    var serviceContentModel:AIProposalServiceModel?
+    var serviceContentModel: AIProposalServiceModel?
+    var propodalId: Int = 0
 
-    private var currentDatasource:AIProposalServiceDetailModel?
+    private var currentDatasource: AIProposalServiceDetailModel?
     
     internal var serviceContentType : AIServiceContentType!
     
     private var topNaviView : AINavigationBarView?
 
-    private var preCacheView:UIView?
+    private var preCacheView: UIView?
     
-    private var currentAudioView:AIAudioInputView?
+    private var currentAudioView: AIAudioInputView?
+    private var musicView: AIMusicTherapyView?
+    private var paramedicView: AIParamedicView?
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -220,7 +223,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         self.scrollView.hideErrorView()
         
-        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
+        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId, success:
             {[weak self] (responseData) -> Void in
                 
                 Async.main({ () -> Void in
@@ -379,10 +382,10 @@ internal class AIServiceContentViewController: UIViewController {
     
     private func addEscortView() -> UIView {
         let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-        let paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
-        addNewSubView(paramedicView, preView: galleryView)
-        paramedicView.backgroundColor = UIColor.clearColor()
-        return paramedicView
+        paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
+        addNewSubView(paramedicView!, preView: galleryView)
+        paramedicView!.backgroundColor = UIColor.clearColor()
+        return paramedicView!
     }
     
     private func addCustomView(preView: UIView) -> AICustomView {
@@ -403,10 +406,10 @@ internal class AIServiceContentViewController: UIViewController {
     
     private func addMusicView() -> UIView {
         let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
-        let musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
-        addNewSubView(musicView, preView: galleryView)
-        musicView.backgroundColor = UIColor.clearColor()
-        return musicView
+        musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
+        addNewSubView(musicView!, preView: galleryView)
+        musicView!.backgroundColor = UIColor.clearColor()
+        return musicView!
     }
     
     private func addAudioView(preView: UIView) {
@@ -487,7 +490,7 @@ internal class AIServiceContentViewController: UIViewController {
 
 // MARK: Delegate
 
-extension AIServiceContentViewController:AICustomAudioNotesViewShowAudioDelegate{
+extension AIServiceContentViewController: AICustomAudioNotesViewShowAudioDelegate{
     // show audio view...
     func showAudioView() {
         let childView = AIAudioInputView.currentView()
@@ -565,7 +568,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     }
 }
 
-extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
+extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
     
   
     
@@ -686,13 +689,26 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
 // MARK: 参数修改回调
 
 extension AIServiceContentViewController : AIBuyerParamsDelegate {
-    func didChangeParams(params: [NSObject : AnyObject]!) {
+    @objc func getSelectedParams() -> [AnyObject]! {
+        let musicServiceParams = musicView?.getSelectedParams()
+        let paramedicParams = paramedicView?.getSelectedParams()
         
+        var selectedParams: [AnyObject] = []
+        
+        if musicServiceParams != nil {
+            selectedParams += musicServiceParams!
+        }
+        
+        if paramedicParams != nil {
+            selectedParams += paramedicParams!
+        }
+        
+        return selectedParams
     }
 }
 
 
-extension AIServiceContentViewController : AIDeleteActionDelegate{
+extension AIServiceContentViewController : AIDeleteActionDelegate {
     
     func deleteAction(cell: UIView?) {
         
@@ -770,10 +786,5 @@ extension AIServiceContentViewController : UITextViewDelegate {
         
         return true
     }
-    
-    
-    
-    
-    
     
 }

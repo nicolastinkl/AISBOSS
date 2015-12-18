@@ -107,12 +107,11 @@
     
     CGRect coverageFrame = CGRectMake(_sideMargin, y, width, 0);
 
-    AIServiceCoverage *corverage = [[AIServiceCoverage alloc] initWithFrame:coverageFrame model:_detailModel.service_param_list.firstObject];
-    [self addSubview:corverage];
-    
-    //
-    //
-    y += [AITools displaySizeFrom1080DesignSize:70] + CGRectGetHeight(corverage.frame);
+    AIServiceCoverage *corverage = [self addServiceCoverage:coverageFrame];
+
+    if (corverage) {
+        y += [AITools displaySizeFrom1080DesignSize:70] + CGRectGetHeight(corverage.frame);
+    }    
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *image = [UIImage imageNamed:@"Wave_BG"];
@@ -139,6 +138,29 @@
 
 }
 
+- (AIServiceCoverage *) addServiceCoverage: (CGRect) frame
+{
+    AIServiceCoverage *serviceCoverage;
+    
+    for (int i = 0; i < _detailModel.service_param_list.count; i++)
+    {
+        AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
+        
+        if ([param.param_name isEqual: @"Service Coverage"]) {
+            serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:frame model:param];
+            
+        }
+    }
+    
+    if (serviceCoverage != nil) {
+        [self addSubview:serviceCoverage];
+        serviceCoverage.delegate = self;
+    }
+    
+    return serviceCoverage;
+}
+
+
 - (void)addLineViewAtY:(CGFloat)y
 {
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), 0.5)];
@@ -149,13 +171,25 @@
 }
 
 
+#pragma mark - AIBuyerParamsDelegate
+- (NSArray *)getSelectedParams
+{
+    return nil;
+    
+}
+
+
 #pragma mark - AIServiceTypesDelegate
 
 - (void)didSelectedAtIndex:(NSInteger)index
 {
-    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
-        [self.delegate didChangeParams:nil];
-    }
+    
+}
+
+#pragma mark - AIServiceCoverageDelegate
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+{
+    
 }
 
 @end
