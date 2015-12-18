@@ -156,16 +156,14 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
     func contentViewWillDismiss() {
 
         // handle parameter upload actio here
+        let submitDataDic = [NSString: AIServiceSubmitModel]()
         
         let params = NSMutableDictionary()
         
         for vc in childViewControllers {
             let contentVC = vc as! AIBuyerParamsDelegate
-
-            if let params = contentVC.getSelectedParams() {
-                print("getSelectedParams")
-            }
             
+            parseParam(contentVC, submitDataDic: submitDataDic)
         }
         
         
@@ -174,8 +172,63 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             return;
         }
         
-        // http request
+        // http request, get each model from submitDataDic, do upload
+    }
+    
+    private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: [NSString: AIServiceSubmitModel]) {
+        if let params = paramProvider.getSelectedParams() {
+            if params.count > 0 {
+                for model in params {
+                    addToSubmitData(model as! JSONModel, submitDataDic: submitDataDic)
+                }
+            }
+        }
+    }
+    
+    private func addToSubmitData(paramModel: JSONModel, var submitDataDic: [NSString: AIServiceSubmitModel]) {
+        var serviceId: NSString?
+        var roleId: NSString!
+        var isProduct: Bool = false
         
+        if let productParam = paramModel as? AIProductParamItem {
+            serviceId = productParam.service_id
+            roleId = productParam.role_id
+            isProduct = true
+        } else if let serviceParam = paramModel as? AIServiceParamItem {
+            serviceId = serviceParam.service_id
+            roleId = serviceParam.role_id
+        }
+        
+        if let sId = serviceId {
+            var submitModel: AIServiceSubmitModel!
+            submitModel = submitDataDic[sId]
+                
+            if submitModel == nil {
+                submitModel = AIServiceSubmitModel()
+                submitModel.service_id = Int(sId as String)!
+                submitModel.role_id = Int(roleId! as String)!
+                submitModel.proposal_id = proposalId
+                submitModel.customer_id = 100000002410
+                
+                submitModel.save_data = AIServiceSaveDataModel()
+                
+                submitDataDic[sId] = submitModel
+            }
+            
+            if isProduct {
+                if submitModel.save_data.product_list == nil {
+                    submitModel.save_data.product_list = [AIProductParamItem]()
+                }
+                
+                submitModel.save_data.product_list.append(paramModel)
+            } else {
+                if submitModel.save_data.service_param_list == nil {
+                    submitModel.save_data.service_param_list = [AIServiceParamItem]()
+                }
+                
+                submitModel.save_data.service_param_list.append(paramModel)
+            }
+        }
     }
 }
 

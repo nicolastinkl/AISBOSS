@@ -34,8 +34,8 @@
 @property (strong, nonatomic) NSString<Optional> * role_id;
 @property (strong, nonatomic) NSString<Optional> * product_id;
 @property (strong, nonatomic) NSString<Optional> * param_key;
-@property (strong, nonatomic) NSString<Optional> * param_value_id;
-@property (strong, nonatomic) NSString<Optional> * param_value;
+@property (strong, nonatomic) NSArray<Optional> * param_value_id;
+@property (strong, nonatomic) NSArray<Optional> * param_value;
 
 @end
 
