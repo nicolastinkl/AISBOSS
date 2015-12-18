@@ -23,6 +23,7 @@
 }
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+@property (nonatomic, strong) JSONModel *submitData;
 
 @end
 
@@ -113,13 +114,6 @@
     if (serviceTypes) {
         y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(serviceTypes.frame);
     }
-    
-//    AIServiceTypes *serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:_detailModel.service_param_list.firstObject];
-//    serviceTypes.delegate = self;
-//    [self addSubview:serviceTypes];
-//    
-//    //
-//    y += [AITools displaySizeFrom1080DesignSize:60] + CGRectGetHeight(serviceTypes.frame);
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *image = [UIImage imageNamed:@"Wave_BG"];
@@ -302,21 +296,25 @@
 }
 
 
-#pragma mark - AIServiceCoverageDelegate∫
-
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+#pragma mark - AIBuyerParamsDelegate
+- (NSArray *)getSelectedParams
 {
-    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
-        [self.delegate didChangeParams:nil];
-    }
+    return @[_submitData];
+    
 }
 
-// AIServiceTypesDelegate
+#pragma mark - AIServiceCoverageDelegate
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+{
+    
+}
+
+#pragma mark - AIServiceTypesDelegate
 - (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model
 {
     AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
     if (m) {
-        JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+        _submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
         NSInteger i = index;
     }
     

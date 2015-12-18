@@ -12,9 +12,8 @@
 #import "AIServiceTypes.h"
 #import "AIServiceCoverage.h"
 
-@interface AIParamedicView : UIView<AIServiceTypesDelegate, AIServiceCoverageDelegate>
+@interface AIParamedicView : UIView<AIServiceTypesDelegate, AIServiceCoverageDelegate, AIBuyerParamsDelegate>
 
-@property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
 

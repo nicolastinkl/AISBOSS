@@ -13,9 +13,8 @@
 #import "AIBuyerParamsDelegate.h"
 
 
-@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate, AIServiceTypesDelegate>
+@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate, AIServiceTypesDelegate, AIBuyerParamsDelegate>
 
-@property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
 

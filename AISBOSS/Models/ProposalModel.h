@@ -186,7 +186,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @protocol AIProposalServiceModel @end
 
-＃DEFINE_API(<#_type#>)
+
 @interface AIProposalServiceModel : JSONModel
 
 @property (assign, nonatomic) NSInteger service_id;

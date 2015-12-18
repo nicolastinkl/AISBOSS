@@ -115,6 +115,8 @@ internal class AIPageBueryViewController: UIViewController {
             //pageView.sizeWidthAndHeightToWidthAndHeightOfItem(pageScrollView)
             //pageViews.append(pageView)
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceContentViewController) as! AIServiceContentViewController
+            
+            viewController.contentDelegate = self
             if model.service_id == AIServiceDetailTool.MUSIC_SERVICE_ID {
                 viewController.serviceContentType = AIServiceContentType.MusicTherapy
             } else {
@@ -158,10 +160,10 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         let params = NSMutableDictionary()
         
         for vc in childViewControllers {
-            let contentVC = vc as! AIServiceContentViewController
-            
-            if let param = contentVC.getAllParameters() {
-                params.addEntriesFromDictionary(param as [NSObject : AnyObject])
+            let contentVC = vc as! AIBuyerParamsDelegate
+
+            if let params = contentVC.getSelectedParams() {
+                print("getSelectedParams")
             }
             
         }

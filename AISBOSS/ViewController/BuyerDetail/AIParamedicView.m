@@ -171,13 +171,19 @@
 }
 
 
+#pragma mark - AIBuyerParamsDelegate
+- (NSArray *)getSelectedParams
+{
+    return @[];
+    
+}
+
+
 #pragma mark - AIServiceTypesDelegate
 
 - (void)didSelectedAtIndex:(NSInteger)index
 {
-    if ([self.delegate respondsToSelector:@selector(didChangeParams:)]) {
-        [self.delegate didChangeParams:nil];
-    }
+    
 }
 
 #pragma mark - AIServiceCoverageDelegate
