@@ -780,6 +780,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
         if let s = currentAudioView {
             if textView.contentSize.height < 120 {
                 s.inputHeightConstraint.constant = 5 + textView.contentSize.height
+                textView.scrollRangeToVisible(NSMakeRange(0,0))
             }
         }
     }
