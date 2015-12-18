@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 @property (nonatomic, strong) NSMutableDictionary *selectedParamsDic;
+@property AIProposalServiceDetailParamModel *coverageModel;
 
 @end
 
@@ -149,8 +150,9 @@
         AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
         
         if ([param.param_name isEqual: @"Service Coverage"]) {
+            _coverageModel = param;
             serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:frame model:param];
-            
+            break;
         }
     }
     
@@ -185,19 +187,28 @@
 
 - (NSArray *) findSubmitData
 {
-    NSEnumerator *enumeratorObject = [_selectedParamsDic objectEnumerator];
+    
     
     NSMutableArray *params = [[NSMutableArray alloc]init];
-    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
-        
-        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
-        if (m) {
-            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
-            if (submitData) {
-                [params addObject:submitData];
-            }
-        }
+    
+    JSONModel *model = [AIServiceDetailTool createServiceSubmitModel:_detailModel param:_coverageModel paramContentDic:_selectedParamsDic];
+    
+    if (model) {
+        [params addObject:model];
     }
+    
+//    NSEnumerator *enumeratorObject = [_selectedParamsDic objectEnumerator];
+    
+//    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
+//        
+//        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
+//        if (m) {
+//            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+//            if (submitData) {
+//                [params addObject:submitData];
+//            }
+//        }
+//    }
     return params;
 }
 

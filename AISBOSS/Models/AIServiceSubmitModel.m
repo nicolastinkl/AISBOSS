@@ -12,6 +12,19 @@
 @end
 
 @implementation AIServiceParamItem
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _param_value_id = [[NSMutableArray alloc]init];
+        _param_value = [[NSMutableArray alloc]init];
+    }
+    
+    return self;
+}
+
 @end
 
 @implementation AIServiceSaveDataModel
