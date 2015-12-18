@@ -59,11 +59,33 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-fW-3EU">
+                    <rect key="frame" x="134" y="7" width="20" height="20"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="LJz-Xk-8dm"/>
+                        <constraint firstAttribute="height" constant="20" id="YWW-w9-fkQ"/>
+                    </constraints>
+                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-8Z-Mna">
+                    <rect key="frame" x="132" y="4" width="25" height="25"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="GdK-yY-cd6"/>
+                        <constraint firstAttribute="width" constant="25" id="sZ4-3p-rhB"/>
+                    </constraints>
+                    <state key="normal" image="connect_alert_error"/>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="uS6-8Z-Mna" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="AR4-ND-KsW"/>
                 <constraint firstItem="mUv-jG-rsx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="Fmm-OP-LxN"/>
+                <constraint firstItem="uS6-8Z-Mna" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="38" id="G68-bU-9n7"/>
+                <constraint firstItem="yiH-fW-3EU" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="40" id="GWD-uA-qkL"/>
+                <constraint firstItem="yiH-fW-3EU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="I6Z-Ln-FPi"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="Ny8-Ua-fIo"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="typ-Nl-fJ8" secondAttribute="bottom" constant="-22" id="QTi-mL-Da8"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" id="Vqq-i6-cc7"/>
@@ -88,13 +110,16 @@
                 <outlet property="audioBg" destination="GVU-D7-HP9" id="sEc-cq-mKS"/>
                 <outlet property="audioGifImageView" destination="typ-Nl-fJ8" id="GiI-Po-2Qb"/>
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
+                <outlet property="errorButton" destination="uS6-8Z-Mna" id="fgF-nY-nYb"/>
+                <outlet property="loadingView" destination="yiH-fW-3EU" id="jLG-8e-tmt"/>
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
                 <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-605" y="576"/>
+            <point key="canvasLocation" x="-1091" y="558"/>
         </view>
     </objects>
     <resources>
         <image name="ai_audio_bg" width="15" height="18"/>
+        <image name="connect_alert_error" width="120" height="120"/>
     </resources>
 </document>

@@ -442,7 +442,9 @@ internal class AIServiceContentViewController: UIViewController {
                         audio1.audioDelegate = self
                         audio1.deleteDelegate = self
                         addNewSubView(audio1, preView: perViews!)
-                        audio1.fillData(item)
+                        audio1.fillData(item)                    
+                        audio1.loadingView.hidden = true
+                        
                         perViews = audio1
                     }
                 }
@@ -625,14 +627,26 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 scrollViewBottom()
             }
             
+            audio1.loadingView.startAnimating()
+            audio1.loadingView.hidden = false
+            
             // upload
-            self.view.showLoadingWithMessage("")
+
             let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
-            weak var weakSelf = self
-            AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
-                weakSelf?.view.dismissLoading()
-                }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
-                    
+            
+            AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
+                if let eView = subView as? AIAudioMessageView {
+                    eView.loadingView.stopAnimating()
+                    eView.loadingView.hidden = true
+                    eView.errorButton.hidden = true
+                }
+                
+                }, fail: { (errorView, error) -> Void in
+                    if let eView = errorView as? AIAudioMessageView {
+                        eView.loadingView.stopAnimating()
+                        eView.loadingView.hidden = true
+                        eView.errorButton.hidden = false
+                    }
             })
             
         }
