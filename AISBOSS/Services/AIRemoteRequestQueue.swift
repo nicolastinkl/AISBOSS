@@ -22,7 +22,7 @@ internal class AIRemoteRequestQueue {
     
     private lazy var m_queueRemoteRequestOperation:dispatch_queue_t = {
         //串行队列
-        let queue = dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+        let queue = dispatch_queue_create("AI.SBOSS.AsyncRequset", DISPATCH_QUEUE_SERIAL)
         return queue
     }()
     
