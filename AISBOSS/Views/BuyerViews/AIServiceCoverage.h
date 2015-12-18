@@ -11,7 +11,7 @@
 
 @protocol AIServiceCoverageDelegate <NSObject>
 
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel;
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel isSelected:(BOOL)selected;
 
 @end
 

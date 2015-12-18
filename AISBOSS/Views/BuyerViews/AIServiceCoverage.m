@@ -128,11 +128,11 @@
 
 - (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected
 {
-    if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel:)]) {
+    if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel: isSelected:)]) {
         
         for (AIProposalServiceDetailParamValueModel *model in self.coverageModel.param_value) {
             if ([model.content isEqualToString:serviceLabel.labelTitle]) {
-                [self.delegate didChooseServiceLabelModel:model];
+                [self.delegate didChooseServiceLabelModel:model isSelected:selected];
                 break;
             }
         }
