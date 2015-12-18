@@ -21,4 +21,6 @@ protocol AIDeleteActionDelegate:class{
     
     func deleteAction(cell:UIView?)
     
+    func retrySendRequestAction(cell:UIView?)
+    
 }

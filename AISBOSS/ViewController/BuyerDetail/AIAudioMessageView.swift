@@ -41,6 +41,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
 
     weak var deleteDelegate:AIDeleteActionDelegate?
 
+    var messageCache:AIMessage?
     
     class func currentView()->AIAudioMessageView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioMessageView", owner: self, options: nil).first  as! AIAudioMessageView
@@ -229,6 +230,14 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
 
     }
     
+    @IBAction func retrySendRequest(sender: AnyObject) {
+        self.loadingView.hidden = false
+        self.loadingView.startAnimating()
+        self.errorButton.hidden = true
+        
+        self.deleteDelegate?.retrySendRequestAction(self)
+        
+    }
     // MARK: Delegate...
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {

@@ -68,7 +68,14 @@ extension qos_class_t {
 
 private class GCD {
 	
-	/* dispatch_get_queue() */
+	/* dispatch_get_queue()
+     
+    QOS_CLASS_USER_INTERACTIVE： user interactive等级表示任务需要被立即执行以提供好的用户体验。使用它来更新UI，响应事件以及需要低延时的小工作量任务。这个等级的工作总量应该保持较小规模。
+    QOS_CLASS_USER_INITIATED：user initiated等级表示任务由UI发起并且可以异步执行。它应该用在用户需要即时的结果同时又要求可以继续交互的任务。
+    QOS_CLASS_UTILITY：utility等级表示需要长时间运行的任务，常常伴随有用户可见的进度指示器。使用它来做计算，I/O，网络，持续的数据填充等任务。这个等级被设计成节能的。
+    QOS_CLASS_BACKGROUND：background等级表示那些用户不会察觉的任务。使用它来执行预加载，维护或是其它不需用户交互和对时间不敏感的任务。
+
+    */
 	class func mainQueue() -> dispatch_queue_t {
 		return dispatch_get_main_queue()
 		// Don't ever use dispatch_get_global_queue(qos_class_main().id, 0) re https://gist.github.com/duemunk/34babc7ca8150ff81844
