@@ -160,7 +160,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         let params = NSMutableDictionary()
         
         for vc in childViewControllers {
-            let contentVC = vc as! AIBuyerParamsDelegate
+            let contentVC = vc as! AIServiceContentViewController
 
             if let params = contentVC.getSelectedParams() {
                 print("getSelectedParams")
