@@ -139,6 +139,11 @@
 - (void)action:(UITapGestureRecognizer *)gesture
 {
     UIView *view = gesture.view;
+    
+    if (view.tag == _selectedIndex) {
+        return;
+    }
+    
     UIButton *button = [view viewWithTag:kRadioButtonTag];
     button.selected = !button.selected;
     BOOL select = button.selected;
