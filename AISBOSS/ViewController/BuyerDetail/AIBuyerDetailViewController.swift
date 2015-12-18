@@ -213,7 +213,8 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func bottomTapAction () {
-        AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+        AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func showNextViewController() {

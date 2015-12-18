@@ -691,20 +691,20 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
 // MARK: 参数修改回调
 
 extension AIServiceContentViewController : AIBuyerParamsDelegate {
-    @objc func getSelectedParams() -> [AnyObject]! {
-        let musicServiceParams = musicView?.getSelectedParams()
-        let paramedicParams = paramedicView?.getSelectedParams()
+    @objc func getSelectedParams() -> [AnyObject]? {
+
+        var selectedParams : [AnyObject]?
         
-        var selectedParams: [AnyObject] = []
-        
-        if musicServiceParams != nil {
-            selectedParams += musicServiceParams!
+        if let musicParams = musicView?.getSelectedParams() {
+            selectedParams = []
+            selectedParams? += musicParams
         }
         
-        if paramedicParams != nil {
-            selectedParams += paramedicParams!
+        if let paramedicParams = paramedicView?.getSelectedParams() {
+            selectedParams = []
+            selectedParams? += paramedicParams
         }
-        
+    
         return selectedParams
     }
 }

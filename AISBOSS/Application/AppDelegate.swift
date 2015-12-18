@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = "0"
         let RSA = "0"
         
-        let headerContent = "\(timeStamp)&" + token + "&" + "0" + "&" + RSA
+        let headerContent = "\(timeStamp)&" + token + "&" + "100000002410" + "&" + RSA
         
         let header = ["HttpQuery": headerContent]
         AINetEngine.defaultEngine().configureCommonHeaders(header)
