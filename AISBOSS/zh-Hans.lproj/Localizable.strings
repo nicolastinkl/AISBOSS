@@ -20,7 +20,6 @@
 "AIBuyerDetailViewController.pregnancy" = "怀孕";
 "AIBuyerDetailViewController.from" = "来源";
 "AIBuyerDetailViewController.alert" = "确定添加服务%@";
-
 "AIBuyerDetailViewController.SubmitSuccess" = "购买成功!";
 "AIBuyerDetailViewController.SubmitFail" = "购买失败!";
 
@@ -58,6 +57,12 @@
 
 //
 "AISellerViewController.2beConfirmed" = "待定";
+
+//
+"AIServerDetailViewController.service" = "添加你喜欢的服务";
+"AIServerDetailViewController.dollarFormat" = "¥%@";
+"AIServerDetailViewController.duplicate" = "不能重复添加";
+"AIServerDetailViewController.day" = "天";
 
 //
 "ProposalExpandedView.onSchedule" = "进行中";
