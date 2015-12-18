@@ -44,7 +44,7 @@ internal class AIRemoteRequestQueue {
         
         let md5 = "\(NSDate().timeIntervalSince1970)"
         m_strSuccNotificationName = "SUCCESS$\(md5)"
-        m_strFailedNotificationName = "FAILED$\(md5)"
+        m_strFailedNotificationName = "FAILED$\(md5)" 
 
         Async.customQueue(after: 1, queue: self.m_queueRemoteRequestOperation) { () -> Void in
             // New Request
@@ -58,54 +58,5 @@ internal class AIRemoteRequestQueue {
         
     }
     
-    func removeAsyncRequest(){
-        
-    }
-    
-    // MARK: -> Internal enums
-    
-    
-    
-    // MARK: -> Internal structs
-    
-    // MARK: -> Internal class
-    
-    // MARK: -> Internal type alias
-    
-    // MARK: -> Internal static properties
-    
-    // MARK: -> Internal properties
-    
-    // MARK: -> Internal class methods
-    
-    // MARK: -> Internal init methods
-    
-    // MARK: -> Internal methods
-    
-    // MARK: -> Internal class override <#class name#>
-    
-    // MARK: -> Internal protocol <#protocol name#>
-    
-    // MARK: -
-    // MARK: Private access
-    // MARK: -
-    
-    // MARK: -> Private enums
-    
-    // MARK: -> Private structs
-    
-    // MARK: -> Private class
-    
-    // MARK: -> Private type alias
-    
-    // MARK: -> Private static properties
-    
-    // MARK: -> Private properties
-    
-    // MARK: -> Private class methods
-    
-    // MARK: -> Private init methods
-    
-    // MARK: -> Private methods
 
 }
