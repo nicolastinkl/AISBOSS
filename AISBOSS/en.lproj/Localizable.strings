@@ -20,6 +20,8 @@
 "AIBuyerDetailViewController.pregnancy" = "Pregnancy";
 "AIBuyerDetailViewController.from" = "From";
 "AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
+"AIBuyerDetailViewController.SubmitSuccess" = "Buy Success !";
+"AIBuyerDetailViewController.SubmitFail" = "Buy Fail !";
 
 //
 "AIBuyerViewController.progress" = "Progress";
@@ -40,6 +42,8 @@
 
 //
 "AIServiceContentViewController.record" = "Record is too short.";
+
+
 
 //
 "AIOrderDescView.time" = "Time";
