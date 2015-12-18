@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -11,46 +11,59 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_text_bg" translatesAutoresizingMaskIntoConstraints="NO" id="v3D-2c-op1">
-                    <rect key="frame" x="14" y="7" width="572" height="32"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52x-Oe-8SB">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_text_bg" translatesAutoresizingMaskIntoConstraints="NO" id="v3D-2c-op1">
+                            <rect key="frame" x="14" y="7" width="572" height="32"/>
+                            <animations/>
+                            <rect key="contentStretch" x="0.29999999999999999" y="0.75" width="0.45000000000000001" height="0.0"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11111111" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
+                            <rect key="frame" x="27" y="12" width="545" height="21"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="L6J-KC-MOs"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="L6J-KC-MOs"/>
+                                </mask>
+                            </variation>
+                        </label>
+                    </subviews>
                     <animations/>
-                    <rect key="contentStretch" x="0.29999999999999999" y="0.75" width="0.45000000000000001" height="0.0"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11111111" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
-                    <rect key="frame" x="28" y="12" width="545" height="21"/>
-                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="L6J-KC-MOs"/>
+                        <constraint firstItem="PJO-oW-g6h" firstAttribute="leading" secondItem="52x-Oe-8SB" secondAttribute="leading" constant="27" id="3Pp-BR-3Sk"/>
+                        <constraint firstAttribute="bottom" secondItem="PJO-oW-g6h" secondAttribute="bottom" constant="12" id="3aO-2A-qPG"/>
+                        <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="6" id="5bE-Lc-cFK"/>
+                        <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="28" id="Uau-sg-gCk"/>
+                        <constraint firstAttribute="trailing" secondItem="v3D-2c-op1" secondAttribute="trailing" constant="14" id="YN9-Qa-bTF"/>
+                        <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="7" id="ZGZ-wV-JgG"/>
+                        <constraint firstItem="PJO-oW-g6h" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="12" id="bPR-HF-6hr"/>
+                        <constraint firstItem="v3D-2c-op1" firstAttribute="leading" secondItem="52x-Oe-8SB" secondAttribute="leading" constant="14" id="kei-J7-ssz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="L6J-KC-MOs"/>
-                        </mask>
-                    </variation>
-                </label>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="v3D-2c-op1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="1LX-mD-fMz"/>
-                <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="6" id="Hc5-av-JCf"/>
-                <constraint firstItem="PJO-oW-g6h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="Prc-Os-dNP"/>
-                <constraint firstAttribute="trailing" secondItem="v3D-2c-op1" secondAttribute="trailing" constant="14" id="W0u-UC-cVz"/>
-                <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="27" id="XLX-JG-yeH"/>
-                <constraint firstAttribute="bottom" secondItem="PJO-oW-g6h" secondAttribute="bottom" constant="12" id="kVK-nD-79e"/>
-                <constraint firstItem="PJO-oW-g6h" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ldr-oT-DeG"/>
-                <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="rde-aU-EBm"/>
-                <constraint firstItem="PJO-oW-g6h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="sIG-tY-kaj"/>
+                <constraint firstItem="52x-Oe-8SB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8OK-G9-m6c"/>
+                <constraint firstAttribute="trailing" secondItem="52x-Oe-8SB" secondAttribute="trailing" id="8iy-Vn-Ge3"/>
+                <constraint firstAttribute="bottom" secondItem="52x-Oe-8SB" secondAttribute="bottom" id="Egz-db-VYq"/>
+                <constraint firstItem="52x-Oe-8SB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hsA-lL-qoL"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="audioTextlengConstraint" destination="YN9-Qa-bTF" id="DkG-Fv-Z4z"/>
                 <outlet property="content" destination="PJO-oW-g6h" id="WGC-IS-iQs"/>
             </connections>
-            <point key="canvasLocation" x="206" y="234.5"/>
+            <point key="canvasLocation" x="185" y="447.5"/>
         </view>
     </objects>
     <resources>

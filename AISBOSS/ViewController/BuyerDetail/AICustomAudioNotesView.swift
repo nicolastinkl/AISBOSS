@@ -19,6 +19,7 @@ import AISpring
     func willEndRecording()
     func endRecordingWithError(error : String)
     
+    func cacheMessage(message:String?)
     
 }
 

@@ -108,7 +108,7 @@ class SimpleServiceViewContainer: UIView {
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
         
-        logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
+        logo.asyncLoadImage("\(dataModel.service_thumbnail_icon)")
         name.text = dataModel.service_desc ?? ""
         
         setPrice()
