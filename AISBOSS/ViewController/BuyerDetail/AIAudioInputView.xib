@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="height" constant="32" id="mcj-Nx-7tj"/>
                             </constraints>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal" image="ai_keyboard_button_change"/>
+                            <state key="normal" image="ai_audio_button_change"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                     <real key="value" value="1"/>
@@ -140,7 +140,7 @@
                                 </mask>
                             </variation>
                             <connections>
-                                <action selector="cancelRecordAction:" destination="iN0-l3-epB" eventType="touchDragOutside" id="kqY-6M-KOC"/>
+                                <action selector="cancelRecordAction:" destination="iN0-l3-epB" eventType="touchUpOutside" id="yvw-4J-FWe"/>
                                 <action selector="touchDownAudio:" destination="iN0-l3-epB" eventType="touchDown" id="vzt-Z1-cP3"/>
                                 <action selector="touchUpAudioAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Yav-Xl-eeL"/>
                             </connections>
@@ -225,6 +225,6 @@
     </objects>
     <resources>
         <image name="ai_audioButton_default" width="139" height="139"/>
-        <image name="ai_keyboard_button_change" width="39" height="39"/>
+        <image name="ai_audio_button_change" width="39" height="39"/>
     </resources>
 </document>

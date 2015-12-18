@@ -513,6 +513,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewShowAudioDelegat
             childView.alpha = 1
         }
         
+        childView.inputTextView.becomeFirstResponder()
         
     }
     
@@ -636,6 +637,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             // upload
 
             let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
+            audio1.messageCache = message
             
             AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
                 if let eView = subView as? AIAudioMessageView {
@@ -710,6 +712,30 @@ extension AIServiceContentViewController : AIBuyerParamsDelegate {
 
 extension AIServiceContentViewController : AIDeleteActionDelegate {
     
+    func retrySendRequestAction(cell: UIView?) {
+        if let audio1 = cell as? AIAudioMessageView {
+            if let m = audio1.messageCache {
+                AIRemoteRequestQueue().asyncRequset(audio1, message: m, successRequst: { (subView) -> Void in
+                    if let eView = subView as? AIAudioMessageView {
+                        eView.loadingView.stopAnimating()
+                        eView.loadingView.hidden = true
+                        eView.errorButton.hidden = true
+                    }
+                    
+                    }, fail: { (errorView, error) -> Void in
+                        if let eView = errorView as? AIAudioMessageView {
+                            eView.loadingView.stopAnimating()
+                            eView.loadingView.hidden = true
+                            eView.errorButton.hidden = false
+                        }
+                })
+            }
+            
+        }
+        
+        
+    }
+    
     func deleteAction(cell: UIView?) {
         
         springWithCompletion(0.3, animations: { () -> Void in
@@ -754,6 +780,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
         if let s = currentAudioView {
             if textView.contentSize.height < 120 {
                 s.inputHeightConstraint.constant = 5 + textView.contentSize.height
+                textView.scrollRangeToVisible(NSMakeRange(0,0))
             }
         }
     }
@@ -765,19 +792,18 @@ extension AIServiceContentViewController : UITextViewDelegate {
             self.inputMessageCache = "" //清空
             // add a new View Model
             let newText = AITextMessageView.currentView()
-            if let cview = preCacheView {
-                newText.content.text = textView.text
-                let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
-                newText.setHeight(30 + newSize!.height)                
-//                addNewSubView(newText, preView: cview)
-                addNewSubView(newText)
-                scrollViewBottom()
-                
-                newText.delegate = self
-                
-                if let c = currentAudioView {
-                    c.closeThisView()
-                }
+            
+            newText.content.text = textView.text
+            let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
+            newText.setHeight(30 + newSize!.height)
+            //                addNewSubView(newText, preView: cview)
+            addNewSubView(newText)
+            scrollViewBottom()
+            
+            newText.delegate = self
+            
+            if let c = currentAudioView {
+                c.closeThisView()
             }
             
             

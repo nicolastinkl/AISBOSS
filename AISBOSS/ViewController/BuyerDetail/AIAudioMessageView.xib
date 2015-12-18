@@ -76,6 +76,9 @@
                         <constraint firstAttribute="width" constant="25" id="sZ4-3p-rhB"/>
                     </constraints>
                     <state key="normal" image="connect_alert_error"/>
+                    <connections>
+                        <action selector="retrySendRequest:" destination="iN0-l3-epB" eventType="touchUpInside" id="jSC-7N-ikx"/>
+                    </connections>
                 </button>
             </subviews>
             <animations/>
