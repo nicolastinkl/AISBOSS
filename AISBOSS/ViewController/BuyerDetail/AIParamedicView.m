@@ -14,6 +14,7 @@
 #import "AITools.h"
 #import "AIViews.h"
 #import "UP_NSString+Size.h"
+#import "Veris-Swift.h"
 
 @interface AIParamedicView ()
 {
@@ -21,6 +22,7 @@
 }
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+@property (nonatomic, strong) NSMutableDictionary *selectedParamsDic;
 
 @end
 
@@ -174,8 +176,29 @@
 #pragma mark - AIBuyerParamsDelegate
 - (NSArray *)getSelectedParams
 {
-    return nil;
+    if (_selectedParamsDic != nil && [_selectedParamsDic count] > 0) {
+        return [self findSubmitData];
+    } else {
+        return nil;
+    }
+}
+
+- (NSArray *) findSubmitData
+{
+    NSEnumerator *enumeratorObject = [_selectedParamsDic objectEnumerator];
     
+    NSMutableArray *params = [[NSMutableArray alloc]init];
+    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
+        
+        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
+        if (m) {
+            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+            if (submitData) {
+                [params addObject:submitData];
+            }
+        }
+    }
+    return params;
 }
 
 
@@ -187,9 +210,18 @@
 }
 
 #pragma mark - AIServiceCoverageDelegate
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel
+- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel isSelected:(BOOL)selected
 {
-    
+    if (_selectedParamsDic == nil) {
+        _selectedParamsDic = [[NSMutableDictionary alloc]init];
+    }
+   
+    NSString *serviceId = [NSString stringWithFormat:@"%ld",labelModel.id];
+    if (selected) {
+        _selectedParamsDic[serviceId] = labelModel;
+    } else {
+        [_selectedParamsDic removeObjectForKey: serviceId];
+    }
 }
 
 @end

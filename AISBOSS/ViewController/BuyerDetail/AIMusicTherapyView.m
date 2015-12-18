@@ -319,7 +319,6 @@
     AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
     if (m) {
         _submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
-        NSInteger i = index;
     }
     
 }
