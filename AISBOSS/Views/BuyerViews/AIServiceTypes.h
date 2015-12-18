@@ -12,7 +12,7 @@
 
 @protocol AIServiceTypesDelegate <NSObject>
 
-- (void)didSelectServiceTypeAtIndex:(NSInteger)index;
+- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model;
 
 @end
 

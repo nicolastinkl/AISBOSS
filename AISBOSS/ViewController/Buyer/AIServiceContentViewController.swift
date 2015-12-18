@@ -39,9 +39,10 @@ internal class AIServiceContentViewController: UIViewController {
     
     private let redColor : String = "b32b1d"
     
-    var serviceContentModel:AIProposalServiceModel?
+    var serviceContentModel: AIProposalServiceModel?
+    var propodalId: Int = 0
 
-    private var currentDatasource:AIProposalServiceDetailModel?
+    private var currentDatasource: AIProposalServiceDetailModel?
     
     internal var serviceContentType : AIServiceContentType!
     
@@ -218,7 +219,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         self.scrollView.hideErrorView()
         
-        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, success:
+        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId, success:
             {[weak self] (responseData) -> Void in
                 
                 Async.main({ () -> Void in

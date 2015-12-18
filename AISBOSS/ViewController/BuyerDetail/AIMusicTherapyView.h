@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ProposalModel.h"
 #import "AIServiceCoverage.h"
-
+#import "AIServiceTypes.h"
 #import "AIBuyerParamsDelegate.h"
 
 
-@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate>
+@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate, AIServiceTypesDelegate>
 
 @property (nonatomic, weak) id<AIBuyerParamsDelegate> delegate;
 

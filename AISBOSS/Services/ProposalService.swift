@@ -194,13 +194,17 @@ class BDKProposalService : MockProposalService{
      - parameter fail:    <#fail description#>
      - parameter errDes:  <#errDes description#>
      */
-    func findServiceDetail(serviceId : Int,success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func findServiceDetail(serviceId : Int, proposalId: Int, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/findServiceDetailFake"
+        message.url = "http://171.221.254.231:3000/findServiceDetail"
         
-        let body = ["data":["service_id": serviceId,"service_type":0],"desc":["data_mode":"0","digest":""]]
+        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
+   //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]
+        
+   //     let header = ["HttpQuery":"0&0&0&0"]
+        
         message.body = NSMutableDictionary(dictionary: body)
-        
+        message.header = NSMutableDictionary(dictionary: header)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            
             do {
                 let dic = response as! [NSObject : AnyObject]
@@ -213,7 +217,7 @@ class BDKProposalService : MockProposalService{
             }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
-                fail(errType: error, errDes: errorDes)
+                fail(errType: error, errDes: errorDes ?? "")
         }
         
     }

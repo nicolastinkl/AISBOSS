@@ -83,7 +83,7 @@
 {
     // 设置头部
     [self addHeaders:message.header];
-    
+    	
     __weak typeof(self) weakSelf = self;
     NSURLSessionDataTask *curTask = [_sessionManager POST:message.url parameters:message.body success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf parseSuccessResponseWithTask:task
@@ -199,14 +199,15 @@
     
     NSString *resultCode = [des objectForKey:kKeyForResultCode];
     
-    if ([resultCode isEqualToString:kSuccessCode] && success) {
-        success(returnResponseObject);
-    }
-    else
-    {
-        NSString *errorDes = [des objectForKey:kKeyForResultMsg];
-        fail(AINetErrorFormat, errorDes);
-    }
+    success(returnResponseObject);
+//    if ([resultCode isEqualToString:kSuccessCode] && success) {
+//        success(returnResponseObject);
+//    }
+//    else
+//    {
+//        NSString *errorDes = [des objectForKey:kKeyForResultMsg];
+//        fail(AINetErrorFormat, errorDes);
+//    }
 }
 
 - (void)parseFailResponseWithTask:(NSURLSessionDataTask *)task
