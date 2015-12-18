@@ -174,7 +174,7 @@
 #pragma mark - AIBuyerParamsDelegate
 - (NSArray *)getSelectedParams
 {
-    return @[];
+    return nil;
     
 }
 
