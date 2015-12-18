@@ -299,7 +299,11 @@
 #pragma mark - AIBuyerParamsDelegate
 - (NSArray *)getSelectedParams
 {
-    return @[_submitData];
+    if (_submitData) {
+        return @[_submitData];
+    } else {
+        return nil;
+    }
     
 }
 

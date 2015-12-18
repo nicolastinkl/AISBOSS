@@ -35,6 +35,8 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     private var currentModelss:AIProposalServiceDetailHopeModel?
     @IBOutlet weak var widthAudioBgConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var errorButton: UIButton!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     weak var audioDelegate:AIAudioMessageViewDelegate?
 
     weak var deleteDelegate:AIDeleteActionDelegate?
