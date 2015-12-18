@@ -152,11 +152,11 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         if currentAudioState {
             //语音模式
             bgImage = UIImage(named: "ai_keyboard_button_change")
-            textInput.resignFirstResponder()
+            inputTextView.resignFirstResponder()
         }else{
             //文字模式
             bgImage = UIImage(named: "ai_audio_button_change")
-            textInput.becomeFirstResponder()
+            inputTextView.becomeFirstResponder()
         }
         if let m = bgImage {
             changeButton.setImage(m, forState: UIControlState.Normal)
@@ -165,6 +165,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     }
     
     @IBAction func closeViewAction(sender: AnyObject) {
+        self.delegateAudio?.cacheMessage(self.inputTextView.text)
         closeThisView()
     }
     

@@ -14,6 +14,7 @@ class AITextMessageView: UIView {
     
     @IBOutlet weak var content: UILabel!
     
+    @IBOutlet weak var audioTextlengConstraint: NSLayoutConstraint!
     weak var delegate:AIDeleteActionDelegate?
     
     class func currentView()->AITextMessageView{

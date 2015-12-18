@@ -79,6 +79,8 @@ internal class AIServiceContentViewController: UIViewController {
         curAudioView?.stopPlay()
     }
     
+    // 缓存输入信息
+    private var inputMessageCache:String = ""
     // MARK: 取消键盘
     
     func shouldHideKeyboard ()
@@ -468,6 +470,18 @@ internal class AIServiceContentViewController: UIViewController {
         preCacheView = cview
         
     }
+    
+    func addNewSubView(cview:UIView){
+        scrollView.addSubview(cview)
+        cview.setWidth(self.view.width)
+        cview.setTop(scrollView.contentSize.height)
+        cview.backgroundColor = UIColor(hex: redColor)
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
+        preCacheView = cview
+        
+    }
+    
+    
 }
 
 // MARK: Delegate
@@ -484,7 +498,6 @@ extension AIServiceContentViewController:AICustomAudioNotesViewShowAudioDelegate
         childView.inputTextView.delegate = self
         currentAudioView = childView
         
-        
         layout(childView) { (cview) -> () in
             cview.leading == cview.superview!.leading
             cview.trailing == cview.superview!.trailing
@@ -492,6 +505,7 @@ extension AIServiceContentViewController:AICustomAudioNotesViewShowAudioDelegate
             cview.bottom == cview.superview!.bottom
         }
         spring(0.5) { () -> Void in
+            childView.inputTextView.text = self.inputMessageCache
             childView.alpha = 1
         }
         
@@ -638,6 +652,11 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
         
     }
     
+    func cacheMessage(message: String?) {
+        if let meg = message{
+            self.inputMessageCache = meg
+        }
+    }
     
     // 录音发生错误
     func endRecordingWithError(error: String) {
@@ -669,6 +688,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
             cell?.alpha = 0
             //刷新UI
             let height = cell?.height ?? 0
+            print("delete view: \(height)")
             let top = cell?.top
             
             let newListSubViews = self.scrollView.subviews.filter({ (subview) -> Bool in
@@ -678,10 +698,13 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
             for nsubView in newListSubViews {
                 nsubView.setTop(nsubView.top - height)
             }
-         
+            
             var contentSizeOld = self.scrollView.contentSize
+            print(contentSizeOld.height)
             contentSizeOld.height -= height
             self.scrollView.contentSize = contentSizeOld
+            
+            print("new : \(contentSizeOld.height)")
             
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
@@ -693,12 +716,11 @@ extension AIServiceContentViewController : AIDeleteActionDelegate{
 extension AIServiceContentViewController : UITextViewDelegate {
    
     func textViewDidChange(textView: UITextView) {
-        if textView.text.length < 198 {
-            textView.returnKeyType = UIReturnKeyType.Default
-        }else{
-            textView.returnKeyType = UIReturnKeyType.Done
+        if textView.text.length > 160 {
+            let str = NSString(string: textView.text)
+            let newStr = str.substringToIndex(160)
+            textView.text = newStr
         }
-        
         
         if let s = currentAudioView {
             if textView.contentSize.height < 120 {
@@ -711,14 +733,17 @@ extension AIServiceContentViewController : UITextViewDelegate {
         
         if "\n" == text {
             textView.resignFirstResponder()
+            self.inputMessageCache = "" //清空
             // add a new View Model
             let newText = AITextMessageView.currentView()
             if let cview = preCacheView {
                 newText.content.text = textView.text
                 let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
-                newText.setHeight(30 + newSize!.height)
-                addNewSubView(newText, preView: cview)
+                newText.setHeight(30 + newSize!.height)                
+//                addNewSubView(newText, preView: cview)
+                addNewSubView(newText)
                 scrollViewBottom()
+                
                 newText.delegate = self
                 
                 if let c = currentAudioView {
