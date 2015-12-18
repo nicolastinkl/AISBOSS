@@ -28,7 +28,7 @@ typedef enum  {
 @property (nonatomic) BOOL hadRecommend;
 
 @property (nonatomic) CGFloat radius;
-@property (nonatomic) int index;
+@property (nonatomic) NSInteger index;
 
 //类型
 @property (nonatomic) BubbleType bubbleType;
@@ -64,7 +64,7 @@ typedef enum  {
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIBuyerBubbleModel *)model;
 
-- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(int) indexModel;
+- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(NSInteger) indexModel;
 
 
 @end

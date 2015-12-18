@@ -12,12 +12,6 @@
 
 #import "AIBuyerParamsDelegate.h"
 
-@protocol AIMusicTherapyViewDelegate <NSObject>
-
-- (void)didChangeParams:(NSDictionary *)params;
-
-@end
-
 
 @interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate>
 

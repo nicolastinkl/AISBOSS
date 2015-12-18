@@ -15,15 +15,27 @@ public enum AIServiceContentType : Int {
     case MusicTherapy = 100 ,Escort
 }
 
+// MARK: 返回事件回调
+
+protocol AIServiceContentDelegate : class{
+    
+    func contentViewWillDismiss ()
+    
+}
+
+
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
     // MARK: -> Internal properties
     
+    weak var contentDelegate : AIServiceContentDelegate?
     
     var curAudioView : AIAudioMessageView?
     
     var curTextField : UITextField?
+    
+    var configuredParameters : NSMutableDictionary?
     
     private let redColor : String = "b32b1d"
     
@@ -80,15 +92,19 @@ internal class AIServiceContentViewController: UIViewController {
     
     // MARK: 参数保存
     
-    func getAllParameters () -> NSDictionary {
+    func getAllParameters () -> NSDictionary? {
         
-        let param = NSDictionary()
+        var param : NSDictionary?
+        
+        if let dic = configuredParameters {
+            param = NSDictionary(dictionary: dic)
+        }
         
         return param
     }
     
     func cleanAllParameters () {
-        
+        configuredParameters?.removeAllObjects()
     }
     
     
@@ -276,16 +292,14 @@ internal class AIServiceContentViewController: UIViewController {
     
     func backAction () {
         
-        self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
-        
-        /*
-        self.parentViewController!.view.showLoadingWithMessage("Please Wait...")
-        
-        Async.main(after: Double(0.5)) { () -> Void in
-            self.parentViewController!.view.dismissLoading()
+        if let delegate = contentDelegate {
+            
+            delegate.contentViewWillDismiss()
+        }
+        else {
             self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
         }
-        */
+
     }
     
     func scrollAction () {
@@ -611,6 +625,16 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
                 scrollViewBottom()
             }
             
+            // upload
+            self.view.showLoadingWithMessage("")
+            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
+            weak var weakSelf = self
+            AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
+                weakSelf?.view.dismissLoading()
+                }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
+                    
+            })
+            
         }
         else {
             AIAlertView().showInfo("AIServiceContentViewController.record".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
@@ -644,6 +668,15 @@ extension AIServiceContentViewController:AICustomAudioNotesViewDelegate, AIAudio
     }
     
 }
+
+// MARK: 参数修改回调
+
+extension AIServiceContentViewController : AIBuyerParamsDelegate {
+    func didChangeParams(params: [NSObject : AnyObject]!) {
+        
+    }
+}
+
 
 extension AIServiceContentViewController : AIDeleteActionDelegate{
     
@@ -723,5 +756,10 @@ extension AIServiceContentViewController : UITextViewDelegate {
         
         return true
     }
+    
+    
+    
+    
+    
     
 }

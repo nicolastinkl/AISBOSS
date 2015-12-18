@@ -16,7 +16,7 @@ internal class AIPageBueryViewController: UIViewController {
     
     var selectCurrentIndex:Int? = 0
     
-    var delegate: AIBuyerDetailDelegate?
+    weak var delegate: AIBuyerDetailDelegate?
     
     // MARK: -> Internal static properties
     
@@ -142,6 +142,38 @@ internal class AIPageBueryViewController: UIViewController {
     
     
 }
+
+
+// MARK: ContentViewDelegate
+
+extension AIPageBueryViewController : AIServiceContentDelegate {
+    
+    func contentViewWillDismiss() {
+
+        // handle parameter upload actio here
+        
+        let params = NSMutableDictionary()
+        
+        for vc in childViewControllers {
+            let contentVC = vc as! AIServiceContentViewController
+            
+            if let param = contentVC.getAllParameters() {
+                params.addEntriesFromDictionary(param as [NSObject : AnyObject])
+            }
+            
+        }
+        
+        
+        guard params.allValues.count > 0 else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            return;
+        }
+        
+        // http request
+        
+    }
+}
+
 
 // MARK: -> Internal type alias
 extension AIPageBueryViewController:UIScrollViewDelegate {

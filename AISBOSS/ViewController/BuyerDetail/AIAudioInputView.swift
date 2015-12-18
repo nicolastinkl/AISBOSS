@@ -180,9 +180,10 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     func notifyEndRecordWithUrl(url:String) {
         // fake
         let model = AIProposalServiceDetailHopeModel()
-        model.audio_url = currentAutioUrl
+        model.audio_url = url
         model.time = (NSInteger)(currentTime! * 1000)
         model.type = 2
+        model.noteType = "Voice"
         self.delegateAudio?.endRecording(model)
     }
     
@@ -193,19 +194,13 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
             return
         }
         let data = NSData(contentsOfFile: currentAutioUrl)
-        if data != nil {            
-            let model = AIProposalServiceDetailHopeModel()
-            model.audio_url = currentAutioUrl
-            model.time = (NSInteger)(currentTime! * 1000)
-            model.type = 2
-            self.delegateAudio?.endRecording(model)
-            
+        if data != nil {
             /// 处理文件存储
-            //weak var weakSelf = self
+            weak var weakSelf = self
             let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
             videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
                 print("saveInBackgroundWithBlock : \(videoFile.url)")
-                //weakSelf?.notifyEndRecordWithUrl(videoFile.url)
+                weakSelf?.notifyEndRecordWithUrl(videoFile.url)
             })
         }
     }
@@ -257,6 +252,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
             model.audio_url = ""
             model.time = 0
             model.type = 2
+            model.noteType = "Voice"
             self.delegateAudio?.endRecording(model)
         }
     }

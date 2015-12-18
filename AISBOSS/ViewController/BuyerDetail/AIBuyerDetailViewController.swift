@@ -17,6 +17,11 @@ protocol AIBuyerDetailDelegate: class {
     func closeAIBDetailViewController()
 }
 
+enum ServiceDeletedStatus: Int {
+    case Deleted
+    case NotDeleted
+}
+
 class AIBuyerDetailViewController : UIViewController {
     
     private let SIMPLE_SERVICE_VIEW_CONTAINER_TAG: Int = 233
@@ -68,7 +73,7 @@ class AIBuyerDetailViewController : UIViewController {
     private var current_service_list: NSArray? {
         get {
             let result = dataSource?.service_list.filter (){
-                return ($0 as! AIProposalServiceModel).is_deleted_flag == 0
+                return ($0 as! AIProposalServiceModel).service_del_flag == ServiceDeletedStatus.NotDeleted.rawValue
             }
             return result
         }
@@ -344,7 +349,7 @@ class AIBuyerDetailViewController : UIViewController {
 
     func restoreService(model:AIProposalServiceModel) {
         let indexInDeletedTableView = deleted_service_list.indexOfObject(model)
-        model.is_deleted_flag = 0
+        model.service_del_flag = ServiceDeletedStatus.NotDeleted.rawValue
         deleted_service_list.removeObject(model)
         let afterArray = current_service_list
         let index = (afterArray as! [AIProposalServiceModel]).indexOf(model)
@@ -603,7 +608,7 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
         // TODO: delete from server
         
         let index = current_service_list!.indexOfObject(model!)
-        model?.is_deleted_flag = 1
+        model?.service_del_flag = ServiceDeletedStatus.Deleted.rawValue
         
         deleted_service_list.addObject(model!)
         

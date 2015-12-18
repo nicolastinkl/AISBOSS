@@ -9,8 +9,11 @@
 
 // 服务器地址
 
-#define kURL_GetServiceList     @"https://server.asiainfo.com/getservicelist"
-#define kURL_GetSchemeList     @"http://171.221.254.231:3000/getServiceScheme"
+#define kURL_GetServiceList         @"https://server.asiainfo.com/getservicelist"
+#define kURL_GetSchemeList          @"http://171.221.254.231:3000/getServiceScheme"
+
+#define kURL_AddWishNote            @"http://171.221.254.231:3000/addWishNote"
+#define kURL_DelWishNote            @"http://171.221.254.231:3000/delWishNote"
 
 // 关键字(字段名)
 

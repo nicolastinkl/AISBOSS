@@ -62,7 +62,7 @@ typedef enum  {
  *  @brief  INIT
  *
  */
-- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(int) indexModel
+- (instancetype)initWithCenter:(CGPoint)center model:(AIBuyerBubbleModel *)model type:(BubbleType) type Index:(NSInteger) indexModel
 {
     self = [super init];
     _bubbleModel = model;

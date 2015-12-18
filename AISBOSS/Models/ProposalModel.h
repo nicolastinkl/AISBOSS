@@ -9,9 +9,19 @@
 #import "JSONModel.h"
 
 
-@protocol ServiceOrderModel @end
+@protocol ServiceOrderModel
+@end
 
-@protocol ParamModel @end
+@protocol ParamModel
+@end
+
+@protocol AIProposalServiceDetailParamModel
+@end
+
+@protocol AIProposalServiceDetailParamValueModel
+@end
+
+
 
 @interface ParamModel : JSONModel
 
@@ -105,7 +115,7 @@
 @end
 
 
-@protocol AIProposalServiceModel @end
+
 
 
 // 服务参数设置标记
@@ -116,92 +126,10 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 
 @class AIBueryDetailCell;
-@interface AIProposalServiceModel : JSONModel
 
-@property (nonatomic, assign) NSInteger is_deleted_flag;
-@property (nonatomic, assign) NSInteger is_deletable;
 
-@property (nonatomic, strong) AIBueryDetailCell<Optional> *cell;
 
-@property (assign, nonatomic) NSInteger service_id;
-@property (assign, nonatomic) NSInteger is_main_flag;
-@property (assign, nonatomic) NSInteger is_delemode;
-@property (strong, nonatomic) NSString<Optional> * service_desc;
-@property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price;
-@property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
-@property (strong, nonatomic) NSString<Optional> * service_rating_icon;
-@property (strong, nonatomic) ParamModel<Optional> * service_param;
-@property (assign, nonatomic) NSInteger param_setting_flag;
-@property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
-@property (assign, nonatomic) NSInteger service_rating_level;
 
-@end
-
-@protocol AIProposalProvider @end
-@interface AIProposalProvider : JSONModel
-
-@property (assign, nonatomic) NSInteger            provider_id;
-@property (strong, nonatomic) NSString<Optional> * provider_phone;
-
-@end
-
-/**
- *  @author tinkl, 15-11-24 09:11:55
- *
- *  @brief  服务详情模型
- *
- */
-@protocol AIProposalInstModel @end
-
-@interface AIProposalInstModel : JSONModel
-
-@property (assign, nonatomic) NSInteger proposal_id;
-@property (assign, nonatomic) NSInteger order_times;
-@property (strong, nonatomic) NSString<Optional> * proposal_name;
-@property (strong, nonatomic) NSString<Optional> * proposal_price;
-@property (strong, nonatomic) NSString<Optional> * order_total_price;
-@property (strong, nonatomic) NSString<Optional> * proposal_origin;
-@property (strong, nonatomic) NSString<Optional> * proposal_desc;
-@property (nonatomic, strong) AIProposalProvider<Optional> * proposal_provider;
-@property (nonatomic, strong) NSArray<AIProposalServiceModel, Optional> *service_list;
-
-@end
-
-//==================================== AIProposalServiceDetailModel =============================================
-
-//service_intro_img_list
-@protocol AIProposalServiceDetailIntroImgModel @end
-@interface AIProposalServiceDetailIntroImgModel : JSONModel
-
-@property (strong, nonatomic) NSString<Optional> * service_intro_img;
-
-@end
-
-//service_provider
-@protocol AIProposalServiceDetailProviderModel @end
-@interface AIProposalServiceDetailProviderModel : JSONModel
-
-@property (assign, nonatomic) NSInteger id;
-@property (strong, nonatomic) NSString<Optional> * name;
-@property (strong, nonatomic) NSString<Optional> * portrait_icon;
-
-@end
-
-//service_param_list
-
-@protocol AIProposalServiceDetailParamValueModel @end
-@interface AIProposalServiceDetailParamValueModel : JSONModel
-
-@property (assign, nonatomic) long id;
-@property (strong, nonatomic) NSString<Optional> * content;
-@property (assign, nonatomic) BOOL is_default;
-@property (strong, nonatomic) NSString<Optional> * source;
-@property (strong, nonatomic) NSString<Optional> * value_key;
-@property (strong, nonatomic) NSString<Optional> * value_display;
-
-@end
-
-@protocol AIProposalServiceDetailParamModel @end
 @interface AIProposalServiceDetailParamModel : JSONModel
 
 @property (assign, nonatomic) NSInteger param_key;
@@ -256,6 +184,107 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 
 
+@protocol AIProposalServiceModel @end
+
+@interface AIProposalServiceModel : JSONModel
+
+@property (assign, nonatomic) NSInteger service_id;
+@property (strong, nonatomic) NSString<Optional> * state;
+@property (assign, nonatomic) NSInteger set_flag;
+@property (assign, nonatomic) int type;
+@property (assign, nonatomic) NSInteger service_rating_level;
+@property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
+@property (strong, nonatomic) NSString<Optional> * service_desc;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetailParamModel, Optional> * service_param_list;
+@property (nonatomic, strong) NSArray<AIProposalServiceParamRelationModel, Optional> * service_param_rel_list;
+@property (assign, nonatomic) NSInteger param_setting_flag;
+@property (nonatomic, assign) NSInteger service_del_flag;
+@property (nonatomic, assign) NSInteger is_deletable;
+
+@property (nonatomic, strong) AIBueryDetailCell<Optional> *cell;
+
+
+@property (assign, nonatomic) NSInteger is_main_flag;
+@property (assign, nonatomic) NSInteger is_delemode;
+
+@property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price;
+
+@property (strong, nonatomic) NSString<Optional> * service_rating_icon;
+@property (strong, nonatomic) ParamModel<Optional> * service_param;
+
+@property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
+
+
+@end
+
+@protocol AIProposalProvider @end
+@interface AIProposalProvider : JSONModel
+
+@property (assign, nonatomic) NSInteger            provider_id;
+@property (strong, nonatomic) NSString<Optional> * provider_phone;
+
+@end
+
+/**
+ *  @author tinkl, 15-11-24 09:11:55
+ *
+ *  @brief  Proposal详情模型
+ *
+ */
+@protocol AIProposalInstModel @end
+
+@interface AIProposalInstModel : JSONModel
+
+@property (assign, nonatomic) NSInteger proposal_id;
+@property (strong, nonatomic) NSString<Optional> * proposal_name;
+@property (strong, nonatomic) NSString<Optional> * proposal_desc;
+@property (strong, nonatomic) NSString<Optional> * proposal_owner;
+@property (assign, nonatomic) NSInteger order_times;
+@property (nonatomic, strong) NSArray<AIProposalServiceModel, Optional> *service_list;
+@property (strong, nonatomic) NSString<Optional> * proposal_price;
+@property (strong, nonatomic) NSString<Optional> * proposal_origin;
+@property (strong, nonatomic) NSString<Optional> * order_total_price;
+@property (nonatomic, strong) AIProposalProvider<Optional> * proposal_provider;
+
+@end
+
+//==================================== AIProposalServiceDetailModel =============================================
+
+//service_intro_img_list
+@protocol AIProposalServiceDetailIntroImgModel @end
+@interface AIProposalServiceDetailIntroImgModel : JSONModel
+
+@property (strong, nonatomic) NSString<Optional> * service_intro_img;
+
+@end
+
+//service_provider
+@protocol AIProposalServiceDetailProviderModel @end
+@interface AIProposalServiceDetailProviderModel : JSONModel
+
+@property (assign, nonatomic) NSInteger id;
+@property (strong, nonatomic) NSString<Optional> * name;
+@property (strong, nonatomic) NSString<Optional> * portrait_icon;
+
+@end
+
+//service_param_list
+
+
+@interface AIProposalServiceDetailParamValueModel : JSONModel
+
+@property (assign, nonatomic) long id;
+@property (strong, nonatomic) NSString<Optional> * content;
+@property (assign, nonatomic) BOOL is_default;
+@property (strong, nonatomic) NSString<Optional> * source;
+@property (strong, nonatomic) NSString<Optional> * value_key;
+@property (strong, nonatomic) NSString<Optional> * value_display;
+
+@end
+
+
+
+
 // service_rating
 @protocol AIProposalServiceDetailRatingItemModel @end
 @interface AIProposalServiceDetailRatingItemModel : JSONModel
@@ -302,6 +331,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * text;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
 @property (assign, nonatomic) NSInteger type;//1 text  2 audio
+@property (strong, nonatomic) NSString<Optional> *noteType;//1 text  2 audio
 @property (assign, nonatomic) NSInteger time;
 @property (assign, nonatomic) NSInteger hope_id;
 
