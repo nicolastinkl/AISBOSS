@@ -21,6 +21,7 @@ typedef void(^net_fail_block)(AINetError error, NSString *errorDes);
 
 @interface AINetEngine : NSObject
 
+@property (nonatomic, strong) NSMutableArray *activitedTask;
 
 
 /*说明:获取网络单例
