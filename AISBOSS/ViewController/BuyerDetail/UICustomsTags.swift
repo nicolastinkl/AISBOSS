@@ -125,7 +125,7 @@ internal class UICustomsTags : SpringView {
     func updateSelfState(block:(Void)->Void){
         //处理网络请求
         if let model = selfModel{
-            let message = AIMessageWrapper.updateWiskListTagStateWishID(self.wish_id, tagID: model.label_id, isChoose: currentTagState == tagState.selected)
+            let message = AIMessageWrapper.updateWiskListTagStateWishID(self.wish_id, tagID: model.label_id, isChoose: currentTagState != tagState.selected)
             self.showProgressViewLoading()
             self.userInteractionEnabled = false
             AIRemoteRequestQueue().asyncRequset(self, message: message, successRequst: {[weak self] (subView,reponse) -> Void in

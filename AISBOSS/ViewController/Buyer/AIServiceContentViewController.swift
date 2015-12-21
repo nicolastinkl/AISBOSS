@@ -394,12 +394,12 @@ internal class AIServiceContentViewController: UIViewController {
         
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
             if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
             custView.content.text = wish.intro ?? ""
             
-            custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
         }
         
         return custView
