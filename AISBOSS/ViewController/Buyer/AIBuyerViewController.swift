@@ -177,7 +177,15 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: kShouldUpdataUserDataNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAfterUserChanged", name: kShouldUpdataUserDataNotification, object: nil)
+    }
+    
+    func reloadDataAfterUserChanged() {
+        didShow = false;
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.buyerListData = nil
+        appDelegate.buyerProposalData = nil
+        loadData()
     }
     
     func reloadData() {
