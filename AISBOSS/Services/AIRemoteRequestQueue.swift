@@ -34,10 +34,6 @@ internal class AIRemoteRequestQueue {
     // MARK: -> Internal class
     
     func asyncRequset(subview:UIView,message:AIMessage,successRequst: (UIView,NSDictionary) -> Void, fail: (errorView:UIView,error: String) -> Void){
-        
-        let md5 = "\(NSDate().timeIntervalSince1970)"
-        m_strSuccNotificationName = "SUCCESS$\(md5)"
-        m_strFailedNotificationName = "FAILED$\(md5)"
 
         Async.customQueue(after: 1, queue: self.m_queueRemoteRequestOperation) { () -> Void in
             // New Request
