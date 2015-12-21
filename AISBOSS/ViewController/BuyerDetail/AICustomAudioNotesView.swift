@@ -176,8 +176,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         let model = AIProposalServiceDetailHopeModel()
         model.audio_url = url
         model.time = (NSInteger)(currentTime! * 1000)
-        model.type = 2
-        model.noteType = "Voice";
+        model.type = "Voice";
         self.delegateAudio?.endRecording(model)
     }
     
@@ -251,8 +250,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             let model = AIProposalServiceDetailHopeModel()
             model.audio_url = ""
             model.time = 0
-            model.type = 2
-            model.noteType = "Voice"
+            model.type = "Voice"
             self.delegateAudio?.endRecording(model)
         }
     }

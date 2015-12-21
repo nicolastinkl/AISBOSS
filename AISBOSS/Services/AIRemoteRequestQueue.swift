@@ -21,8 +21,8 @@ internal class AIRemoteRequestQueue {
     private var m_strFailedNotificationName = ""
     
     private lazy var m_queueRemoteRequestOperation:dispatch_queue_t = {
-        //串行队列
-        let queue = dispatch_queue_create("AI.SBOSS.AsyncRequset", DISPATCH_QUEUE_SERIAL)
+        //并发队列
+        let queue = dispatch_queue_create("AI.SBOSS.AsyncRequset", DISPATCH_QUEUE_CONCURRENT)
         return queue
     }()
     
@@ -34,10 +34,6 @@ internal class AIRemoteRequestQueue {
     // MARK: -> Internal class
     
     func asyncRequset(subview:UIView,message:AIMessage,successRequst: (UIView,NSDictionary) -> Void, fail: (errorView:UIView,error: String) -> Void){
-        
-        let md5 = "\(NSDate().timeIntervalSince1970)"
-        m_strSuccNotificationName = "SUCCESS$\(md5)"
-        m_strFailedNotificationName = "FAILED$\(md5)"
 
         Async.customQueue(after: 1, queue: self.m_queueRemoteRequestOperation) { () -> Void in
             // New Request

@@ -27,7 +27,7 @@
  *
  *
  */
-+ (AIMessage *)addWishNoteWithWishID:(NSInteger)wishID type:(NSString *)type content:(NSString *)content;
++ (AIMessage *)addWishNoteWithWishID:(NSInteger)wishID type:(NSString *)type content:(NSString *)content duration:(NSInteger)duration;
 
 /*说明：删除心愿单笔记
  *  @author Wang Li, 15-09-23 10:09:22

@@ -149,20 +149,25 @@
     __weak typeof(self) weakSelf = self;
     [self.tableView addHeaderWithCallback:^{
         
-        NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
-                              @"desc": @{@"data_mode": @"0",@"digest": @""}};
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
+                                  @"desc": @{@"data_mode": @"0",@"digest": @""}};
+            
+            AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
+            [message.body addEntriesFromDictionary:dic];
+            message.url = @"http://171.221.254.231:3000/querySellerOrderList";
+            [message.header setObject:@"0&0&200000001630&0" forKey:@"HttpQuery"];
+            [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
+                weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
+                [weakSelf.tableView reloadData];
+                [weakSelf.tableView headerEndRefreshing];
+            } fail:^(AINetError error, NSString *errorDes) {
+                [weakSelf.tableView headerEndRefreshing];
+            }];
+            
+        });
         
-        AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
-        [message.body addEntriesFromDictionary:dic];
-        message.url = @"http://171.221.254.231:3000/querySellerOrderList";
-        [message.header setObject:@"0&0&200000001630&0" forKey:@"HttpQuery"];
-        [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-            weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
-            [weakSelf.tableView reloadData];
-            [weakSelf.tableView headerEndRefreshing];
-        } fail:^(AINetError error, NSString *errorDes) {
-            [weakSelf.tableView headerEndRefreshing];
-        }];
     
     }];
     
