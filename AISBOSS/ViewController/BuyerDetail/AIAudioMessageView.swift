@@ -223,7 +223,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
                 
             }else{
                 self.configureAudio()
-                AIAlertView().showInfo("AILocalizationManager.error".localized, subTitle:"AILocalizationManager.info".localized, closeButtonTitle: "AILocalizationManager.close".localized, duration: 3)
+                AIAlertView().showInfo("AIAudioMessageView.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             }
 
         })
