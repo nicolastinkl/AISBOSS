@@ -202,7 +202,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             isProduct = true
         } else if let serviceParam = paramModel as? AIServiceParamItem {
             serviceId = serviceParam.service_id
-            roleId = serviceParam.role_id
+            roleId = serviceParam.role_id ?? "0"
         }
         
         if let sId = serviceId {
@@ -210,7 +210,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             if submitDataDic.objectForKey(sId) == nil {
                 submitModel = AIServiceSubmitModel()
                 submitModel.service_id = Int(sId as String)!
-                submitModel.role_id = Int(roleId! as String)!
+                submitModel.role_id = Int((roleId as String))!
                 submitModel.proposal_id = proposalId
                 submitModel.customer_id = 100000002410
                 
@@ -234,7 +234,6 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
                 }
                 
                 submitModel.save_data.service_param_list.append(paramModel)
-                print("\(submitDataDic)")
             }
         }
     }

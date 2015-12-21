@@ -84,6 +84,15 @@ class AIServiceDetailTool: NSObject {
             
             serviceParam.param_value = values
             
+            
+            var ids = [String]()
+            
+            for value in paramContentDic.values {
+                ids.append("\(value.id)")
+            }
+            
+            serviceParam.param_value_id = ids
+            
             data = serviceParam
         }
         
