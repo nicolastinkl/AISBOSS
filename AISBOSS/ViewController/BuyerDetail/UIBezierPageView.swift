@@ -38,7 +38,7 @@ internal class UIBezierPageView : UIView {
     /// 重新刷新图标布局
     func refershDeleteMedelView(newModel: [AIProposalServiceModel]){
         let model = newModel.filter { (filterModel) -> Bool in
-            return filterModel.service_del_flag == 0
+            return filterModel.service_del_flag == ServiceDeletedStatus.NotDeleted.rawValue
         }
         
         _ = self.subviews.filter { (view) -> Bool in
