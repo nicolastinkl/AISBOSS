@@ -98,7 +98,7 @@
         
         CGRect frame = CGRectMake(x, y, 100, height);
         NSString *title = model.content;
-        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:YES];
+        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:model.is_default];
         label.delegate = self;
         label.backgroundColor = [colors objectAtIndex:i];
         label.selectionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Coverage%ld", i]];
