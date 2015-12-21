@@ -223,7 +223,7 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
                 
             }else{
                 self.configureAudio()
-                AIAlertView().showInfo(AIAudioMessageView.kERROR, subTitle:AIAudioMessageView.kINFO, closeButtonTitle: AIAudioMessageView.kCLOSE, duration: 3)
+                AIAlertView().showInfo("AILocalizationManager.error".localized, subTitle:"AILocalizationManager.info".localized, closeButtonTitle: "AILocalizationManager.close".localized, duration: 3)
             }
 
         })
@@ -251,8 +251,3 @@ class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
     }
 }
 
-extension AIAudioMessageView {
-    @nonobjc static let kERROR = "AILocalizationManager.error".localized
-    @nonobjc static let kINFO = "AILocalizationManager.info".localized
-    @nonobjc static let kCLOSE = "AILocalizationManager.close".localized
-}

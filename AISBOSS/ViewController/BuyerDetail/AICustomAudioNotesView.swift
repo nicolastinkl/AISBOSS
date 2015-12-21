@@ -111,7 +111,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     /**
      刷新峰值
      
-     - parameter time: <#time description#>
+     - parameter time:
      */
     func levelTimer(time : NSTimer){
         if let rder = recorder {
@@ -146,7 +146,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
         
         startRecording()
         delegateAudio?.willStartRecording()
-        audioButton.setTitle(AICustomAudioNotesView.kRELEASE, forState: UIControlState.Normal)
+        audioButton.setTitle("AICustomAudioNotesView.release".localized, forState: UIControlState.Normal)
     }
     
     @IBAction func changeAudioStatusAction(sender: AnyObject) {
@@ -226,7 +226,7 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             timer?.invalidate()
             timer = nil
-            audioButton.setTitle(AICustomAudioNotesView.kHOLD, forState: UIControlState.Normal)
+            audioButton.setTitle("AICustomAudioNotesView.hold".localized, forState: UIControlState.Normal)
             self.delegateAudio?.willEndRecording()
             logInfo("松开 结束录音")
         }
@@ -264,7 +264,3 @@ extension AICustomAudioNotesView: UITextFieldDelegate{
     }
 }
 
-extension AICustomAudioNotesView {
-    @nonobjc static let kRELEASE = "AICustomAudioNotesView.release".localized
-    @nonobjc static let kHOLD = "AICustomAudioNotesView.hold".localized
-}

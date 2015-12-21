@@ -142,8 +142,8 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel!.text = AICustomerCollectionCellView.kHELLO
-        cell.detailTextLabel?.text = AICustomerCollectionCellView.kHELLO2
+        cell.textLabel!.text = "AICustomerCollectionCellView.hello".localized
+        cell.detailTextLabel?.text = "AICustomerCollectionCellView.hello2".localized
         return cell
     }
     
@@ -160,9 +160,4 @@ class AICustomerCollectionCellView: UICollectionViewCell,UITableViewDataSource,U
         return selfView
     }
     
-}
-
-extension AICustomerCollectionCellView {
-    @nonobjc static let kHELLO = "AICustomerCollectionCellView.hello".localized
-    @nonobjc static let kHELLO2 = "AICustomerCollectionCellView.hello2".localized
 }
