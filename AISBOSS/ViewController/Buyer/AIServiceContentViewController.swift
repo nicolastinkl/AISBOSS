@@ -793,7 +793,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
     func deleteAction(cell: UIView?) {
         
         let noteView = cell as? AIWishMessageView
-
+        self.view.userInteractionEnabled = false
         self.view.showLoadingWithMessage("")
         let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
         
@@ -802,8 +802,10 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
             weakSelf!.deleteAnimation(cell)
             weakSelf!.view.dismissLoading()
+            weakSelf!.view.userInteractionEnabled = true
             }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
                 weakSelf!.view.dismissLoading()
+                weakSelf!.view.userInteractionEnabled = true
                 AIAlertView().showInfo("AIAudioMessageView.info".localized, subTitle:"AIServiceContentViewController.wishDeleteError".localized , closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 
         })
@@ -853,6 +855,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
             }
             
             // add
+            self.view.userInteractionEnabled = false
             self.view.showLoadingWithMessage("")
             weak var weakSelf = self
             let message = AIMessageWrapper.addWishNoteWithWishID(currentDatasource?.wish_list.wish_id ?? 0, type: "Text", content: newText.content.text, duration: 0)
@@ -863,9 +866,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
                     let NoteId = response["NoteId"] as? NSNumber
                     eView.noteID = NoteId?.integerValue ?? 0
                 }
+                
+                weakSelf!.view.userInteractionEnabled = true
+                
                 }, fail: { (errorView, error) -> Void in
                     weakSelf!.view.dismissLoading()
                     AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                    weakSelf!.view.userInteractionEnabled = true
             })
             
             
