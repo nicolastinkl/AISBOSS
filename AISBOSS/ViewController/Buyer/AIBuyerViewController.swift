@@ -188,21 +188,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         loadData()
     }
     
-    func reloadData() {
         
-        self.tableView.hideErrorView()
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let listData : ProposalOrderListModel? = appDelegate.buyerListData
-        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
-        if (listData != nil && proposalData != nil) {
-            Async.main(after: 0.3, block: { () -> Void in
-                self.parseListData(listData)
-                self.parseProposalData(proposalData)
-            })
-        }
-    }
-    
     // 回调
     func closeAIBDetailViewController() {
         
