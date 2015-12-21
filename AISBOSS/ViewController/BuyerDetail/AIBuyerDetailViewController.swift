@@ -440,7 +440,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let logo = view.logo
             
             let name = model.service_desc
-            
+
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
             let text = String(format: "AIBuyerDetailViewController.alert".localized, name)
             JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
@@ -610,6 +610,11 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
 
         let logo = view.logo
         // TODO: delete from server
+//        BDKProposalService().delServiceCategory((model?.service_id)!, proposalId: (self.bubbleModel?.proposal_id)!, success: { () -> Void in
+//            print("success")
+//            }) { (errType, errDes) -> Void in
+//                print("failed")
+//        }
         
         let index = current_service_list!.indexOfObject(model!)
         model?.service_del_flag = ServiceDeletedStatus.Deleted.rawValue
@@ -661,9 +666,15 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
         //let row = settingButton.tag
         parentView.isSetted = !parentView.isSetted
-        if let s = parentView.dataModel {
-            s.param_setting_flag = Int(parentView.isSetted)
-            menuLightView?.showLightView(s)
+        
+        if let model = parentView.dataModel {
+            BDKProposalService().updateParamSettingState(customerId: 100000002410, serviceId: model.service_id, proposalId: (self.bubbleModel?.proposal_id)!, roleId: model.role_id, flag: parentView.isSetted, success: { () -> Void in
+                print("success")
+                }) { (errType, errDes) -> Void in
+                    print(errDes)
+            }
+            model.param_setting_flag = Int(parentView.isSetted)
+            menuLightView?.showLightView(model)
         }
     }
     

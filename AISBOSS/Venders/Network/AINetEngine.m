@@ -205,7 +205,7 @@
     
     NSString *resultCode = [des objectForKey:kKeyForResultCode];
     
-    if ([resultCode isEqualToString:kSuccessCode] && success) {
+    if ([resultCode isKindOfClass:[NSString class]] && [resultCode isEqualToString:kSuccessCode] && success) {
         success(returnResponseObject);
     } else {
         NSString *errorDes = [des objectForKey:kKeyForResultMsg];

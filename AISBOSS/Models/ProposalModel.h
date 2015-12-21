@@ -45,6 +45,7 @@
 // 1:可联系 0:不可联系
 @property (nonatomic, assign) NSInteger contact_flag;
 @property (nonatomic, strong) NSArray<ParamModel, Optional> *param_list;
+#warning parm_list 改成了 arrange_script_info
 
 @end
 
@@ -201,6 +202,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (assign, nonatomic) NSInteger param_setting_flag;
 @property (nonatomic, assign) NSInteger service_del_flag;
 @property (nonatomic, assign) NSInteger is_deletable;
+@property (nonatomic, assign) NSInteger role_id;
 
 @property (nonatomic, strong) AIBueryDetailCell<Optional> *cell;
 

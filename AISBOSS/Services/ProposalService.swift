@@ -92,6 +92,59 @@ class MockProposalService : ProposalService{
 
 class BDKProposalService : MockProposalService{
     
+    func updateParamSettingState(customerId customerId: Int, serviceId: Int, proposalId: Int, roleId: Int, flag: Bool, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/updateParamSettingState"
+        let flagNum = flag ? 1 : 0
+        let body = ["data": ["customer_id": customerId, "service_id": serviceId, "proposal_id": proposalId, "role_id": roleId, "flag": flagNum], "desc": ["data_mode": "0", "digest": ""]]
+        
+        message.body = NSMutableDictionary(dictionary: body)
+        AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
+            do {
+                success()
+                
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+            }
+            
+            }) {(error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes ?? "")
+        }
+    }
+    
+    //服务方案删除服务分类
+    //BDK还没做
+    
+    func delServiceCategory(serviceId : Int, proposalId: Int, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+//        catalog_id
+//        scheme_id
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/delServiceCategory"
+        
+        let body = ["data":["scheme_id": serviceId, "catalog_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
+        //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]
+        
+        //     let header = ["HttpQuery":"0&0&0&0"]
+        
+        message.body = NSMutableDictionary(dictionary: body)
+        //      message.header = NSMutableDictionary(dictionary: header)
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            do {
+//                let dic = response as! [NSObject : AnyObject]
+//                let model = try AIProposalServiceDetailModel(dictionary: dic)
+                
+//                success(responseData: model)
+                
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+            }
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes ?? "")
+        }
+    }
+    
     
     /**
     气泡数据
