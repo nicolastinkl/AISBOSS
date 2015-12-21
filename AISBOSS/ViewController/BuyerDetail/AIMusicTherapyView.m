@@ -314,11 +314,11 @@
 }
 
 #pragma mark - AIServiceTypesDelegate
-- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model
+- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model parentModel:(AIProposalServiceDetailParamModel*) parentModel
 {
     AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
     if (m) {
-        JSONModel *product = [AIServiceDetailTool createServiceSubmitModel:_detailModel productModel:model];
+        JSONModel *product = [AIServiceDetailTool createServiceSubmitModel:_detailModel productParam:model productModel:parentModel];
         JSONModel *param = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
         _submitData = @[product, param];
     }
