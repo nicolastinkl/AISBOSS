@@ -790,7 +790,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         
         
         let noteView = cell as? AIWishMessageView
-        
+
         self.view.showLoadingWithMessage("")
         let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
         
@@ -863,7 +863,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
                 }
                 }, fail: { (errorView, error) -> Void in
                     weakSelf!.view.dismissLoading()
-                    AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                    AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
             
