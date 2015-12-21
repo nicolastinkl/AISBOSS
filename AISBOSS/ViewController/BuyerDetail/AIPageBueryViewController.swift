@@ -225,7 +225,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         
         if let productParam = paramModel as? AIProductParamItem {
             serviceId = productParam.service_id
-            roleId = productParam.role_id
+            roleId = "0"
             isProduct = true
         } else if let serviceParam = paramModel as? AIServiceParamItem {
             serviceId = serviceParam.service_id
