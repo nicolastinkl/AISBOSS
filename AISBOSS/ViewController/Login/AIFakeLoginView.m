@@ -10,6 +10,7 @@
 #import "AITools.h"
 #import "AIViews.h"
 #import "AINetEngine.h"
+#import "AINotifications.h"
 
 #define kMargin 20
 
@@ -35,7 +36,8 @@
 
 #pragma mark - Tap
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+
+- (void)hideSelf
 {
     self.userInteractionEnabled = NO;
     __weak typeof(self) weakSelf = self;
@@ -45,7 +47,12 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     
+    [self hideSelf];
     
 }
 
@@ -79,6 +86,8 @@
     UIImageView *bubbleView = [self makeImageViewAtPoint:CGPointMake(kMargin, pointY) imageName:bubbleImageName];
     bubbleView.userInteractionEnabled = YES;
     bubbleView.tag = tag;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action:)];
+    [bubbleView addGestureRecognizer:tapGesture];
     //
     CGFloat titleHeight = [AITools displaySizeFrom1080DesignSize:200];
     
@@ -87,8 +96,7 @@
     [bubbleView addSubview:titleLabel];
     
     //
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action:)];
-    [bubbleView addGestureRecognizer:tapGesture];
+    
     
 }
 
@@ -137,17 +145,27 @@
 
 - (void)action:(UITapGestureRecognizer *)gesture
 {
+    NSString *userID = nil;
+    
     switch (gesture.view.tag) {
         case 100:
-            
+            userID = @"200000001630";
             break;
         case 200:
-            
+            userID = @"200000001630";
             break;
             
         default:
             break;
     }
+    
+    NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
+    //HttpQuery = "0&0&200000001630&0";
+    [[AINetEngine defaultEngine] removeCommonHeaders];
+    [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
+    [self hideSelf];
 }
 
 
