@@ -840,7 +840,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
             // add
             self.view.showLoadingWithMessage("")
             weak var weakSelf = self
-            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: "2", content: newText.content.text)
+            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: "Text", content: newText.content.text)
             AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
                 
                 }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
