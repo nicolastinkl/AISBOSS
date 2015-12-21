@@ -129,28 +129,12 @@
 
 - (void)addRefreshActions
 {
-    
-    
-    /**
-     
-     {
-     "data": {
-     "order_state": "0",
-     "order_role": "2"
-     },
-     "desc": {
-     "data_mode": "0",
-     "digest": ""
-     }
-     }
-     
-     */
-    
     __weak typeof(self) weakSelf = self;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+   
     [self.tableView addHeaderWithCallback:^{
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-           
             NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
                                   @"desc": @{@"data_mode": @"0",@"digest": @""}};
             
@@ -165,11 +149,10 @@
             } fail:^(AINetError error, NSString *errorDes) {
                 [weakSelf.tableView headerEndRefreshing];
             }];
-            
-        });
-        
-    
+     
     }];
+     
+    });
     
     [self.tableView addFooterWithCallback:^{
         [weakSelf.tableView footerEndRefreshing];

@@ -440,7 +440,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let logo = view.logo
             
             let name = model.service_desc
-            
+
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
             let text = String(format: "AIBuyerDetailViewController.alert".localized, name)
             JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
@@ -494,7 +494,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         if let c = serviceDataModel.cell {
             #if !DEBUG
-                //FIXME: 不好看
                 //恢复区域不可删除
                let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
                 view.displayDeleteMode = (tableView == deletedTableView)
@@ -519,7 +518,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.removeDelegate = self
         cell.delegate = self
         #if !DEBUG
-            //FIXME: 不好看
             //恢复区域不可删除
             let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
             view.displayDeleteMode = (tableView == deletedTableView)
@@ -611,6 +609,11 @@ extension AIBuyerDetailViewController: AIBueryDetailCellDetegate {
 
         let logo = view.logo
         // TODO: delete from server
+//        BDKProposalService().delServiceCategory((model?.service_id)!, proposalId: (self.bubbleModel?.proposal_id)!, success: { () -> Void in
+//            print("success")
+//            }) { (errType, errDes) -> Void in
+//                print("failed")
+//        }
         
         let index = current_service_list!.indexOfObject(model!)
         model?.service_del_flag = ServiceDeletedStatus.Deleted.rawValue
@@ -662,9 +665,18 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
     func settingButtonClicked(settingButton: UIImageView, parentView: SimpleServiceViewContainer) {
         //let row = settingButton.tag
         parentView.isSetted = !parentView.isSetted
-        if let s = parentView.dataModel {
-            s.param_setting_flag = Int(parentView.isSetted)
-            menuLightView?.showLightView(s)
+        
+        if let model = parentView.dataModel {
+            let userId = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
+            
+            let userIdInt = Int(userId!)!
+            BDKProposalService().updateParamSettingState(customerId: userIdInt, serviceId: model.service_id, proposalId: (self.bubbleModel?.proposal_id)!, roleId: model.role_id, flag: parentView.isSetted, success: { () -> Void in
+                print("success")
+                }) { (errType, errDes) -> Void in
+                    print(errDes)
+            }
+            model.param_setting_flag = Int(parentView.isSetted)
+            menuLightView?.showLightView(model)
         }
     }
     
