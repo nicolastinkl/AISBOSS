@@ -31,15 +31,15 @@ class AIServiceDetailTool: NSObject {
         return result
     }
     
-    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, productModel: AIProposalServiceDetailParamValueModel) -> JSONModel {
-        let productParam = AIProductParamItem()
+    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, productParam: AIProposalServiceDetailParamValueModel, productModel: AIProposalServiceDetailParamModel) -> JSONModel {
+        let saveData = AIProductParamItem()
         
-        productParam.product_id = "\(productModel.id)"
-        productParam.service_id = "\(service.service_id)"
-        productParam.role_id = "0"
-        productParam.name = productModel.content
+        saveData.product_id = "\(productParam.id)"
+        saveData.service_id = "\(service.service_id)"
+        saveData.role_id = "\(productModel.param_key)"
+        saveData.name = productParam.content
         
-        return productParam
+        return saveData
     }
     
     static func createServiceSubmitModel(service: AIProposalServiceDetailModel, relation: AIProposalServiceParamRelationModel) -> JSONModel? {
