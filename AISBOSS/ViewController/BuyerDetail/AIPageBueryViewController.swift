@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+// MARK: 返回事件回调
+
+@objc protocol AIProposalDelegate : class{
+    
+    optional func proposalContenDidChanged ()
+    
+}
+
+
 internal class AIPageBueryViewController: UIViewController {
     
     // MARK: -> Internal properties
@@ -17,7 +26,8 @@ internal class AIPageBueryViewController: UIViewController {
     var selectCurrentIndex:Int? = 0
     var proposalId: Int = 0
     
-    weak var delegate: AIBuyerDetailDelegate?
+    
+    weak var delegate: AIProposalDelegate?
     
     // MARK: -> Internal static properties
     
@@ -193,18 +203,17 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             
         }
 
-        
-        
         while (AINetEngine.defaultEngine().activitedTask.count > 0) {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
         }
         
-
         self.view.dismissLoading()
         self.dismissViewControllerAnimated(true, completion: nil)
         // http request, get each model from submitDataDic, do upload
         
-        
+        if let adelegate = self.delegate {
+            adelegate.proposalContenDidChanged!()
+        }
    
     }
     
