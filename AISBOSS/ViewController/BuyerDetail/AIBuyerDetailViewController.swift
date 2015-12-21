@@ -233,7 +233,7 @@ class AIBuyerDetailViewController : UIViewController {
         self.numberLabel.text = "\(dataSource?.order_times ?? 0)"
         self.whereLabel.text = dataSource?.proposal_origin
         self.contentLabel.text = dataSource?.proposal_desc
-        self.OrderFromLabel.text = AIBuyerDetailViewController.kFROM
+        self.OrderFromLabel.text = "AIBuyerDetailViewController.from".localized
         
 //        "AIBuyerDetailViewController.pregnancy" = "怀孕"; 可能引起bug
         if NSString(string: name).containsString("AIBuyerDetailViewController.pregnancy".localized) {
@@ -442,7 +442,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             let name = model.service_desc
             
             let logoWidth = AITools.displaySizeFrom1080DesignSize(94)
-            let text = String(format: AIBuyerDetailViewController.kALERT, name)
+            let text = String(format: "AIBuyerDetailViewController.alert".localized, name)
             JSSAlertView().comfirm(self, title: name, text: text, customIcon: logo.image, customIconSize: CGSizeMake(logoWidth, logoWidth), onComfirm: { () -> Void in
             self.restoreService(model)
             })
@@ -691,8 +691,3 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
     
 }
 
-extension AIBuyerDetailViewController {
-    @nonobjc static let kALERT = "AIBuyerDetailViewController.alert".localized
-    @nonobjc static let kFROM = "AIBuyerDetailViewController.from".localized
-    @nonobjc static let kPREGNANCY = "AIBuyerDetailViewController.pregnancy".localized
-}
