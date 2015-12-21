@@ -179,6 +179,11 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
 
         
         // http request, get each model from submitDataDic, do upload
+        
+        
+        
+        //AINetEngine.defaultEngine().postMessage(<#T##message: AIMessage!##AIMessage!#>, success: <#T##net_success_block!##net_success_block!##(AnyObject!) -> Void#>, fail: <#T##net_fail_block!##net_fail_block!##(AINetError, String!) -> Void#>)
+        
     }
     
     private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: NSMutableDictionary) {

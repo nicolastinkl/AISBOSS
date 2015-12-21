@@ -43,6 +43,7 @@
 		81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE4E1BD78CD300019802 /* AIBubblesView.m */; };
 		81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */; };
 		81A5BE551BD87D2900019802 /* AIBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A5BE541BD87D2900019802 /* AIBubble.m */; };
+		81B5476F1C27D7460062CB55 /* AIWishMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B5476E1C27D7460062CB55 /* AIWishMessageView.swift */; };
 		81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092611BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m */; };
 		81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092631BAFAC0D003FFF35 /* NSData+ImageContentType.m */; };
 		81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C092651BAFAC0D003FFF35 /* SDImageCache.m */; };
@@ -548,6 +549,7 @@
 		81A5BE511BD87C1300019802 /* AIBuyerBubbleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBuyerBubbleModel.m; path = ../ViewController/Buyer/AIBuyerBubbleModel.m; sourceTree = "<group>"; };
 		81A5BE531BD87D2900019802 /* AIBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIBubble.h; path = Buyer/AIBubble.h; sourceTree = "<group>"; };
 		81A5BE541BD87D2900019802 /* AIBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIBubble.m; path = Buyer/AIBubble.m; sourceTree = "<group>"; };
+		81B5476E1C27D7460062CB55 /* AIWishMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIWishMessageView.swift; sourceTree = "<group>"; };
 		81C092601BAFAC0D003FFF35 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		81C092611BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		81C092621BAFAC0D003FFF35 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -2607,6 +2609,7 @@
 				8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */,
 				936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */,
 				936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */,
+				81B5476E1C27D7460062CB55 /* AIWishMessageView.swift */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -3050,6 +3053,7 @@
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				93FA1DF91B9C306E009965C8 /* AICustomerModels.swift in Sources */,
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
+				81B5476F1C27D7460062CB55 /* AIWishMessageView.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
 				816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */,

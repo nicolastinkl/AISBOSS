@@ -20,7 +20,7 @@ import AIAlertView
 }
 
 
-class AIAudioMessageView: UIView,AVAudioPlayerDelegate {
+class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
     
     // MARK: currentView
     

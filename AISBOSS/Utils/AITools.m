@@ -7,6 +7,7 @@
 //
 
 #import "AITools.h"
+#import "Veris-Swift.h"
 
 @implementation AITools
 
@@ -343,6 +344,24 @@
 
 #pragma mark - 时间
 
++ (NSString *)enOrdinalIndicatorStringFromNumber:(NSInteger )number {
+    // If number % 100 is 11, 12, or 13
+    if (NSLocationInRange(number % 100, NSMakeRange(11, 3))) {
+        return @"th";
+    }
+    
+    switch (number % 10) {
+        case 1:
+            return @"st";
+        case 2:
+            return @"nd";
+        case 3:
+            return @"rd";
+        default:
+            return @"th";
+    }
+}
+
 
 + (NSString *)formatDateFromSeconds:(NSString *)seconds
 {
@@ -374,7 +393,8 @@
     [formatter setTimeZone:[NSTimeZone systemTimeZone]];
     [formatter setDateStyle:NSDateFormatterFullStyle];
     [formatter setTimeStyle:NSDateFormatterNoStyle];
-    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[Localize currentLanguage]]];
     [formatter setDateFormat:format];
     NSString *formatDate = [formatter stringFromDate:date];
     

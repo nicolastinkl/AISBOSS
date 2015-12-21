@@ -42,6 +42,7 @@
 
 //
 "AIServiceContentViewController.record" = "说话时间太短";
+"AIServiceContentViewController.wishDeleteError" = "删除失败";
 
 //
 "AIOrderDescView.time" = "时间";
@@ -133,8 +134,7 @@
 "AIErrorRetryView.loading" = "加载失败";
 
 
-
-
+"AIErrorRetryView.NetError" = "网络错误 !";
 
 
 

@@ -42,6 +42,7 @@
 
 //
 "AIServiceContentViewController.record" = "Record is too short.";
+"AIServiceContentViewController.wishDeleteError" = "Delete Failed";
 
 //
 "AIOrderDescView.time" = "Time";
@@ -133,7 +134,7 @@
 "AIErrorRetryView.loading" = "Loading Failed";
 
 
-
+"AIErrorRetryView.NetError" = "Net Error !";
 
 
 

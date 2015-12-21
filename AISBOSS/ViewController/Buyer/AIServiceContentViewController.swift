@@ -635,9 +635,10 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             
             // upload
 
+            self.view.showLoadingWithMessage("")
             let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
             audio1.messageCache = message
-            
+            weak var weakSelf = self
             AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
                 if let eView = subView as? AIAudioMessageView {
                     eView.loadingView.stopAnimating()
@@ -645,12 +646,17 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
                     eView.errorButton.hidden = true
                 }
                 
+                weakSelf!.view.dismissLoading()
+                
                 }, fail: { (errorView, error) -> Void in
                     if let eView = errorView as? AIAudioMessageView {
                         eView.loadingView.stopAnimating()
                         eView.loadingView.hidden = true
                         eView.errorButton.hidden = false
                     }
+                    
+                    weakSelf!.view.dismissLoading()
+                    AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
         }
@@ -735,8 +741,8 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         
     }
     
-    func deleteAction(cell: UIView?) {
-        
+    
+    func deleteAnimation (cell: UIView?) {
         springWithCompletion(0.3, animations: { () -> Void in
             
             cell?.alpha = 0
@@ -763,6 +769,29 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
         }
+
+    }
+    
+    
+    
+    func deleteAction(cell: UIView?) {
+        
+        
+        let noteView = cell as? AIWishMessageView
+        
+        self.view.showLoadingWithMessage("")
+        let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID?.integerValue)!, noteID: (noteView?.noteID?.integerValue)!)
+        
+        weak var weakSelf = self
+        AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
+            weakSelf!.deleteAnimation(cell)
+            weakSelf!.view.dismissLoading()
+            }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
+                weakSelf!.view.dismissLoading()
+                AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                
+        })
+        
         
     }
 }
@@ -807,6 +836,18 @@ extension AIServiceContentViewController : UITextViewDelegate {
             if let c = currentAudioView {
                 c.closeThisView()
             }
+            
+            // add
+            self.view.showLoadingWithMessage("")
+            weak var weakSelf = self
+            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: "2", content: newText.content.text)
+            AINetEngine.defaultEngine().postMessage(message, success: { (<#AnyObject!#>) -> Void in
+                
+                }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
+                    weakSelf!.view.dismissLoading()
+                    AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                    
+            })
             
             
             return false
