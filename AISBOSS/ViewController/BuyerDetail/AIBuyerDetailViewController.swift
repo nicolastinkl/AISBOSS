@@ -669,7 +669,10 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
         parentView.isSetted = !parentView.isSetted
         
         if let model = parentView.dataModel {
-            BDKProposalService().updateParamSettingState(customerId: 100000002410, serviceId: model.service_id, proposalId: (self.bubbleModel?.proposal_id)!, roleId: model.role_id, flag: parentView.isSetted, success: { () -> Void in
+            let userId = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
+            
+            let userIdInt = Int(userId!)!
+            BDKProposalService().updateParamSettingState(customerId: userIdInt, serviceId: model.service_id, proposalId: (self.bubbleModel?.proposal_id)!, roleId: model.role_id, flag: parentView.isSetted, success: { () -> Void in
                 print("success")
                 }) { (errType, errDes) -> Void in
                     print(errDes)
