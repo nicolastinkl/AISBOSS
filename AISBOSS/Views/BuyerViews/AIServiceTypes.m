@@ -92,7 +92,6 @@
         radioButton.frame = CGRectMake(0, 0, _radioSize, _radioSize);
         radioButton.userInteractionEnabled = NO;
         radioButton.tag = kRadioButtonTag;
-        
 
         [radioView addSubview:radioButton];
         
@@ -105,7 +104,6 @@
             _selectedIndex = i;
             radioButton.selected = YES;
         }
-        
         
         CGFloat x = _radioSize + _radioMargin;
         CGFloat strWidth = width - x;
