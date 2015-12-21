@@ -625,6 +625,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             audio1.audioDelegate = self
             if let cview = preCacheView {
                 addNewSubView(audio1, preView: cview)
+                audio1.wishID = currentDatasource?.wish_list.wish_id
                 audio1.fillData(audioModel)
                 audio1.deleteDelegate = self
                 scrollViewBottom()
@@ -636,7 +637,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             // upload
 
             self.view.showLoadingWithMessage("")
-            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
+            let message = AIMessageWrapper.addWishNoteWithWishID((currentDatasource?.wish_list.wish_id)!, type: audioModel.noteType, content: audioModel.audio_url)
             audio1.messageCache = message
             weak var weakSelf = self
             AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
@@ -780,7 +781,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         let noteView = cell as? AIWishMessageView
         
         self.view.showLoadingWithMessage("")
-        let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID?.integerValue)!, noteID: (noteView?.noteID?.integerValue)!)
+        let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
         
         weak var weakSelf = self
         AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
@@ -823,7 +824,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
             self.inputMessageCache = "" //清空
             // add a new View Model
             let newText = AITextMessageView.currentView()
-            
+            newText.wishID = currentDatasource?.wish_list.wish_id
             newText.content.text = textView.text
             let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
