@@ -298,8 +298,7 @@ internal class AIServiceContentViewController: UIViewController {
         if let delegate = contentDelegate {
             
             delegate.contentViewWillDismiss()
-        }
-        else {
+        } else {
             self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
         }
 
