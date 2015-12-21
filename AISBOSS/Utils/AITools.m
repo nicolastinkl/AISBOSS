@@ -341,6 +341,48 @@
     return displaySize;
 }
 
+#pragma mark - 时间
+
+
++ (NSString *)formatDateFromSeconds:(NSString *)seconds
+{
+    long longSeconds = seconds.doubleValue / 1000;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:longSeconds];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger count = [calendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
+    
+    NSString *format = @"";
+    
+    if (count == 1 || count == 21 || count == 31) {
+        format = @"MMM d'st', yyyy";
+    }
+    else if (count == 2 || count == 22)
+    {
+        format = @"MMM d'nd', yyyy";
+    }
+    else if (count == 3 || count == 23)
+    {
+        format = @"MMM d'rd', yyyy";
+    }
+    else
+    {
+        format = @"MMM d'th', yyyy";
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone systemTimeZone]];
+    [formatter setDateStyle:NSDateFormatterFullStyle];
+    [formatter setTimeStyle:NSDateFormatterNoStyle];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [formatter setDateFormat:format];
+    NSString *formatDate = [formatter stringFromDate:date];
+    
+    return formatDate;
+}
+
+
+
 #pragma mark - Most Color
 
 
@@ -400,6 +442,10 @@
 {
     return [self colorWithHexString:color alpha:1.0f];
 }
+
+
+
+
 
 
 @end

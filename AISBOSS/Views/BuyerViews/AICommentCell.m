@@ -113,6 +113,10 @@
 
 #pragma mark - 构造time
 
+
+
+
+
 - (void)makeTime
 {
     CGFloat x = CGRectGetMaxX(_starRate.frame) + _commonMargin;
@@ -122,7 +126,8 @@
     
     CGRect frame = CGRectMake(x, y, width, height);
     
-    _timeLabel = [AIViews normalLabelWithFrame:frame text:self.commentModel.time fontSize:_timeFontSize color:[UIColor whiteColor]];
+    NSString *time = [AITools formatDateFromSeconds:self.commentModel.time];
+    _timeLabel = [AIViews normalLabelWithFrame:frame text:time fontSize:_timeFontSize color:[UIColor whiteColor]];
     _timeLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     [self addSubview:_timeLabel];
 }
