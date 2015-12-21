@@ -67,7 +67,16 @@
 }
 
 
-
++ (AIMessage *) updateWiskListTagStateWishID:(NSInteger)wishID tagID:(NSInteger)tagID isChoose:(Boolean) ischoose{
+    AIMessage *message = [AIMessage message];
+    
+    NSDictionary *body = @{@"data":@{@"wish_id":@(wishID),@"tag_list":@[@{@"id":@(tagID),@"is_chosen":@(ischoose)}]},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    
+    [message.body addEntriesFromDictionary:body];
+    
+    message.url = kURL_UpateWishTagListID;
+    return message;
+}
 
 
 

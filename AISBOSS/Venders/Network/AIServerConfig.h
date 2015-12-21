@@ -15,6 +15,8 @@
 #define kURL_AddWishNote            @"http://171.221.254.231:3000/addWishNote"
 #define kURL_DelWishNote            @"http://171.221.254.231:3000/delWishNote"
 
+#define kURL_UpateWishTagListID            @"http://171.221.254.231:3000/updateWishListTagChosenState"
+
 // 关键字(字段名)
 
 #define kKey_ServiceID     @"serviceID"

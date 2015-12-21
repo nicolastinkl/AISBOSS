@@ -25,7 +25,7 @@ import AISpring
 
 
 @objc protocol AICustomAudioNotesViewShowAudioDelegate : class{
-    func showAudioView()
+    func showAudioView(type:Int)  // 0 audio , 1 text
 }
 // MARK: -
 // MARK: AICustomAudioNotesView
@@ -211,7 +211,12 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
     // MARK: -> Private methods
     
     @IBAction func touchUpShowAudioViewAction(sender: AnyObject) {
-        self.delegateShowAudio?.showAudioView()
+        self.delegateShowAudio?.showAudioView(0)
+    }
+
+    
+    @IBAction func touchUpShowTextViewAction(sender: AnyObject) {
+        self.delegateShowAudio?.showAudioView(1)
     }
 
     func stopRecording () {

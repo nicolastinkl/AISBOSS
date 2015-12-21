@@ -36,6 +36,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     private var timer: NSTimer?
     private var audioTimes:Int = 0
     private var isCancalRecordMode: Bool = false
+    @IBOutlet weak var audioButtonRecord: DesignableButton!
     
     var currentTime : NSTimeInterval?
     let maxRecordTime : NSTimeInterval = 60
@@ -144,23 +145,30 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         self.timeText.text = "0:00"
     }
     
-    @IBAction func ChangeAction(sender: AnyObject) {
-        currentAudioState = !currentAudioState
-        //切换状态
-        
+    func changeModel(type: Int){
         let bgImage:UIImage?
-        if currentAudioState {
-            //语音模式
+        if type == 0{
+            //Audio Mode...
             bgImage = UIImage(named: "ai_keyboard_button_change")
             inputTextView.resignFirstResponder()
+            currentAudioState  = false
         }else{
+            //Text Mode...
             //文字模式
             bgImage = UIImage(named: "ai_audio_button_change")
             inputTextView.becomeFirstResponder()
+            currentAudioState = true
         }
         if let m = bgImage {
             changeButton.setImage(m, forState: UIControlState.Normal)
         }
+             
+    }
+    
+    @IBAction func ChangeAction(sender: AnyObject) {
+        currentAudioState = !currentAudioState
+        //切换状态
+        changeModel(Int(currentAudioState))
         
     }
     
@@ -196,12 +204,24 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         let data = NSData(contentsOfFile: currentAutioUrl)
         if data != nil {
             /// 处理文件存储
-            weak var weakSelf = self
-            let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
-            videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
-                print("saveInBackgroundWithBlock : \(videoFile.url)")
-                weakSelf?.notifyEndRecordWithUrl(videoFile.url)
+            
+            self.audioButtonRecord.showProgressViewLoading()
+            self.audioButtonRecord.enabled = false
+            Async.background({ () -> Void in
+                
+                weak var weakSelf = self
+                let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+                videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
+                    
+                    self.audioButtonRecord.hideProgressViewLoading()
+                    self.audioButtonRecord.enabled = true
+                    
+                    print("saveInBackgroundWithBlock : \(videoFile.url)")
+                    weakSelf?.notifyEndRecordWithUrl(videoFile.url)
+                    
+                })
             })
+            
         }
     }
     

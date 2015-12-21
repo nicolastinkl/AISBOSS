@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +13,6 @@
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="AISpring">
                     <rect key="frame" x="14" y="2" width="80" height="30"/>
-                    <animations/>
                     <color key="backgroundColor" red="0.51764705882352935" green="0.50196078431372548" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="E07-Mm-oha"/>
@@ -30,7 +29,6 @@
                 </label>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="AISpring">
                     <rect key="frame" x="14" y="2" width="80" height="30"/>
-                    <animations/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
@@ -42,7 +40,6 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_bg" translatesAutoresizingMaskIntoConstraints="NO" id="typ-Nl-fJ8">
                     <rect key="frame" x="23" y="9" width="12" height="15"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Bal-Hc-cBT"/>
                         <constraint firstAttribute="width" constant="12" id="oao-vd-vHt"/>
@@ -50,7 +47,6 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17''" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUv-jG-rsx">
                     <rect key="frame" x="98" y="7" width="42" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1B4-D9-9Dc"/>
                         <constraint firstAttribute="width" constant="42" id="3Wi-ET-fqJ"/>
@@ -61,7 +57,6 @@
                 </label>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="yiH-fW-3EU">
                     <rect key="frame" x="134" y="7" width="20" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="LJz-Xk-8dm"/>
                         <constraint firstAttribute="height" constant="20" id="YWW-w9-fkQ"/>
@@ -70,7 +65,6 @@
                 </activityIndicatorView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uS6-8Z-Mna">
                     <rect key="frame" x="132" y="4" width="25" height="25"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="GdK-yY-cd6"/>
                         <constraint firstAttribute="width" constant="25" id="sZ4-3p-rhB"/>
@@ -81,7 +75,6 @@
                     </connections>
                 </button>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="uS6-8Z-Mna" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="AR4-ND-KsW"/>

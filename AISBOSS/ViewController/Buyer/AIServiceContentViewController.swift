@@ -150,7 +150,7 @@ internal class AIServiceContentViewController: UIViewController {
     func keyboardWillShow(notification : NSNotification) {
         
         if let userInfo = notification.userInfo {
-            
+            self.currentAudioView?.changeModel(1)
             // step 1: get keyboard height
             let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
             let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
@@ -348,7 +348,8 @@ internal class AIServiceContentViewController: UIViewController {
         
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
-        } 
+        }
+        
         
         addGalleryView()
 
@@ -399,6 +400,7 @@ internal class AIServiceContentViewController: UIViewController {
             }
             custView.content.text = wish.intro ?? ""
             
+            custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
         }
         
         return custView
@@ -492,7 +494,8 @@ internal class AIServiceContentViewController: UIViewController {
 
 extension AIServiceContentViewController: AICustomAudioNotesViewShowAudioDelegate{
     // show audio view...
-    func showAudioView() {
+    func showAudioView(type:Int) {
+        //type 0 : audio  1: text
         let childView = AIAudioInputView.currentView()
         childView.alpha = 0
         self.view.addSubview(childView)
@@ -513,7 +516,11 @@ extension AIServiceContentViewController: AICustomAudioNotesViewShowAudioDelegat
             childView.alpha = 1
         }
         
-        childView.inputTextView.becomeFirstResponder()
+        if type == 1 {
+            childView.changeModel(1)
+        }else{
+            childView.changeModel(0)
+        }
         
     }
     
@@ -624,19 +631,18 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             // add a new View Model
             let audio1 = AIAudioMessageView.currentView()
             audio1.audioDelegate = self
-            if let cview = preCacheView {
-                addNewSubView(audio1, preView: cview)
-                audio1.fillData(audioModel)
-                audio1.deleteDelegate = self
-                scrollViewBottom()
-            }
+            
+            addNewSubView(audio1)
+            audio1.fillData(audioModel)
+            audio1.deleteDelegate = self
+            scrollViewBottom()
             
             audio1.loadingView.startAnimating()
             audio1.loadingView.hidden = false
             
             // upload
-
-            let message = AIMessageWrapper.addWishNoteWithWishID(1, type: audioModel.noteType, content: audioModel.audio_url)
+            let wishid = self.currentDatasource?.wish_list.wish_id ?? 0
+            let message = AIMessageWrapper.addWishNoteWithWishID(wishid, type: audioModel.noteType, content: audioModel.audio_url)
             audio1.messageCache = message
             
             AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
@@ -757,9 +763,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
             var contentSizeOld = self.scrollView.contentSize
             print(contentSizeOld.height)
             contentSizeOld.height -= height
-            self.scrollView.contentSize = contentSizeOld
-            
-            print("new : \(contentSizeOld.height)")
+            self.scrollView.contentSize = contentSizeOld            
             
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
@@ -778,7 +782,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
         }
         
         if let s = currentAudioView {
-            print(textView.contentSize.height)
+            
             if textView.contentSize.height < 100 {
                 s.inputHeightConstraint.constant = 5 + textView.contentSize.height
             }else{

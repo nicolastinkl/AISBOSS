@@ -340,7 +340,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @protocol AIProposalServiceDetail_WishModel @end
 @interface AIProposalServiceDetail_WishModel : JSONModel
-
+@property (assign, nonatomic) NSInteger wish_id;
 @property (strong, nonatomic) NSString<Optional> * intro;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailLabelModel, Optional> * label_list;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailHopeModel, Optional> * hope_list;
