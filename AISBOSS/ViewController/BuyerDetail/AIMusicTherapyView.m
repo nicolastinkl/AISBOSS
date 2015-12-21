@@ -23,7 +23,7 @@
 }
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
-@property (nonatomic, strong) JSONModel *submitData;
+@property (nonatomic, strong) NSArray *submitData;
 
 @end
 
@@ -300,7 +300,7 @@
 - (NSArray *)getSelectedParams
 {
     if (_submitData) {
-        return @[_submitData];
+        return _submitData;
     } else {
         return nil;
     }
@@ -318,7 +318,9 @@
 {
     AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
     if (m) {
-        _submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+        JSONModel *product = [AIServiceDetailTool createServiceSubmitModel:_detailModel productModel:model];
+        JSONModel *param = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+        _submitData = @[product, param];
     }
     
 }

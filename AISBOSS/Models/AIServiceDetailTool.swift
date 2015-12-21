@@ -31,6 +31,17 @@ class AIServiceDetailTool: NSObject {
         return result
     }
     
+    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, productModel: AIProposalServiceDetailParamValueModel) -> JSONModel {
+        let productParam = AIProductParamItem()
+        
+        productParam.product_id = "\(productModel.id)"
+        productParam.service_id = "\(service.service_id)"
+        productParam.role_id = "0"
+        productParam.name = productModel.content
+        
+        return productParam
+    }
+    
     static func createServiceSubmitModel(service: AIProposalServiceDetailModel, relation: AIProposalServiceParamRelationModel) -> JSONModel? {
         var data: JSONModel?
         
@@ -40,7 +51,7 @@ class AIServiceDetailTool: NSObject {
             let param = item as! AIProposalServiceDetailParamModel
             
             if param.param_key == paramKey {
-                if param.param_source == "product" || param.param_source == "product_param" {
+                if param.param_source == "product" {
                     let productParam = AIProductParamItem()
                     productParam.product_id = "\(param.param_source_id)"
                     productParam.service_id = "\(service.service_id)"
@@ -48,7 +59,7 @@ class AIServiceDetailTool: NSObject {
                     productParam.name = relation.rel_param.param_value
                     
                     data = productParam
-                } else if param.param_source == "offering_param" {
+                } else if param.param_source.containsString("param") {
                     let serviceParam = AIServiceParamItem()
                     serviceParam.source = param.param_source
                     serviceParam.product_id = "\(param.param_source_id)"
