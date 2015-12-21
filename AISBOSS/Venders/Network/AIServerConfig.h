@@ -14,6 +14,7 @@
 
 #define kURL_AddWishNote            @"http://171.221.254.231:3000/addWishNote"
 #define kURL_DelWishNote            @"http://171.221.254.231:3000/delWishNote"
+#define kURL_SaveParameters         @"http://171.221.254.231:3000/sbss/saveServiceParameters"
 
 // 关键字(字段名)
 
