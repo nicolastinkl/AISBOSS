@@ -128,7 +128,7 @@ internal class UICustomsTags : SpringView {
             let message = AIMessageWrapper.updateWiskListTagStateWishID(self.wish_id, tagID: model.label_id, isChoose: currentTagState == tagState.selected)
             self.showProgressViewLoading()
             self.userInteractionEnabled = false
-            AIRemoteRequestQueue().asyncRequset(self, message: message, successRequst: {[weak self] (subView) -> Void in
+            AIRemoteRequestQueue().asyncRequset(self, message: message, successRequst: {[weak self] (subView,reponse) -> Void in
                 subView.hideProgressViewLoading()
                 subView.userInteractionEnabled = true
                 if let strongSelf = self{
@@ -153,7 +153,7 @@ internal class UICustomsTags : SpringView {
                         self.currentTagState = tagState.normal
                     }
                     
-                    AIAlertView().showInfo(AIAudioMessageView.kERROR, subTitle:AIAudioMessageView.kINFO, closeButtonTitle: AIAudioMessageView.kCLOSE, duration: 3)
+                    //AIAlertView().showInfo(AIAudioMessageView.kERROR, subTitle:AIAudioMessageView.kINFO, closeButtonTitle: AIAudioMessageView.kCLOSE, duration: 3)
                     
             })
         }

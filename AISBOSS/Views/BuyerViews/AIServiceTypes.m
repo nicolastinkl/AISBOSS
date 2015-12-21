@@ -92,7 +92,6 @@
         radioButton.frame = CGRectMake(0, 0, _radioSize, _radioSize);
         radioButton.userInteractionEnabled = NO;
         radioButton.tag = kRadioButtonTag;
-        radioButton.selected = _selectedIndex == i;
 
         [radioView addSubview:radioButton];
         
@@ -100,6 +99,11 @@
         
         
         AIProposalServiceDetailParamValueModel *param = [_serviceTypesModel.param_value objectAtIndex:i];
+        
+        if (param.is_default) {
+            _selectedIndex = i;
+            radioButton.selected = YES;
+        }
         
         CGFloat x = _radioSize + _radioMargin;
         CGFloat strWidth = width - x;

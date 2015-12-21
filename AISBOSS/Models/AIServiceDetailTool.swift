@@ -24,10 +24,22 @@ class AIServiceDetailTool: NSObject {
             
             if selectedParamValue.id == relation.param.param_value_key {
                 result = relation
+                break
             }
         }
         
         return result
+    }
+    
+    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, productModel: AIProposalServiceDetailParamValueModel) -> JSONModel {
+        let productParam = AIProductParamItem()
+        
+        productParam.product_id = "\(productModel.id)"
+        productParam.service_id = "\(service.service_id)"
+        productParam.role_id = "0"
+        productParam.name = productModel.content
+        
+        return productParam
     }
     
     static func createServiceSubmitModel(service: AIProposalServiceDetailModel, relation: AIProposalServiceParamRelationModel) -> JSONModel? {
@@ -47,19 +59,52 @@ class AIServiceDetailTool: NSObject {
                     productParam.name = relation.rel_param.param_value
                     
                     data = productParam
-                } else if param.param_source == "product_param" {
+                } else if param.param_source.containsString("param") {
                     let serviceParam = AIServiceParamItem()
                     serviceParam.source = param.param_source
                     serviceParam.product_id = "\(param.param_source_id)"
                     serviceParam.service_id = "\(service.service_id)"
                     serviceParam.role_id = "\(relation.rel_param.param_role)"
                     serviceParam.param_key = "\(paramKey)"
-                    serviceParam.param_value_id = "\(relation.rel_param.param_value_key)"
-                    serviceParam.param_value = relation.rel_param.param_value
+                    serviceParam.param_value_id = [relation.param.param_value_key]
+                    serviceParam.param_value = [relation.rel_param.param_value]
                     
                     data = serviceParam
                 }
             }
+        }
+        
+        return data
+    }
+    
+    static func createServiceSubmitModel(service: AIProposalServiceDetailModel, param: AIProposalServiceDetailParamModel, paramContentDic: [String : AIProposalServiceDetailParamValueModel]) -> JSONModel? {
+        var data: JSONModel?
+        
+        if param.param_source == "offering_param" {
+            let serviceParam = AIServiceParamItem()
+            serviceParam.source = param.param_source
+            serviceParam.product_id = "\(param.param_source_id)"
+            serviceParam.service_id = "\(service.service_id)"
+            serviceParam.param_key = "\(param.param_key)"
+            
+            var values = [String]()
+            
+            for value in paramContentDic.values {
+                values.append(value.content)
+            }
+            
+            serviceParam.param_value = values
+            
+            
+            var ids = [String]()
+            
+            for value in paramContentDic.values {
+                ids.append("\(value.id)")
+            }
+            
+            serviceParam.param_value_id = ids
+            
+            data = serviceParam
         }
         
         return data

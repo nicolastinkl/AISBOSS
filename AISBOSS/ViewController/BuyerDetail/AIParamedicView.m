@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 @property (nonatomic, strong) NSMutableDictionary *selectedParamsDic;
+@property AIProposalServiceDetailParamModel *coverageModel;
 
 @end
 
@@ -121,9 +122,11 @@
     imageView.frame = CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight);
     [self addSubview:imageView];
     //
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:_detailModel.service_price.original fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     
-    amLabel.attributedText = [self attrAmountWithAmount:_detailModel.service_price.original];
+    NSString *price = [NSString stringWithFormat:@"%@ %.2f %@", _detailModel.service_price.unit, _detailModel.service_price.price, _detailModel.service_price.billing_mode];
+    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
+    
+    amLabel.attributedText = [self attrAmountWithAmount:price];
     amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];
@@ -149,8 +152,9 @@
         AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
         
         if ([param.param_name isEqual: @"Service Coverage"]) {
+            _coverageModel = param;
             serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:frame model:param];
-            
+            break;
         }
     }
     
@@ -185,19 +189,28 @@
 
 - (NSArray *) findSubmitData
 {
-    NSEnumerator *enumeratorObject = [_selectedParamsDic objectEnumerator];
+    
     
     NSMutableArray *params = [[NSMutableArray alloc]init];
-    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
-        
-        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
-        if (m) {
-            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
-            if (submitData) {
-                [params addObject:submitData];
-            }
-        }
+    
+    JSONModel *model = [AIServiceDetailTool createServiceSubmitModel:_detailModel param:_coverageModel paramContentDic:_selectedParamsDic];
+    
+    if (model) {
+        [params addObject:model];
     }
+    
+//    NSEnumerator *enumeratorObject = [_selectedParamsDic objectEnumerator];
+    
+//    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
+//        
+//        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
+//        if (m) {
+//            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+//            if (submitData) {
+//                [params addObject:submitData];
+//            }
+//        }
+//    }
     return params;
 }
 

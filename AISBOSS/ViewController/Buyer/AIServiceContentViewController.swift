@@ -298,8 +298,7 @@ internal class AIServiceContentViewController: UIViewController {
         if let delegate = contentDelegate {
             
             delegate.contentViewWillDismiss()
-        }
-        else {
+        } else {
             self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
         }
 
@@ -641,16 +640,24 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             audio1.loadingView.hidden = false
             
             // upload
+
             let wishid = self.currentDatasource?.wish_list.wish_id ?? 0
             let message = AIMessageWrapper.addWishNoteWithWishID(wishid, type: audioModel.noteType, content: audioModel.audio_url)
+
             audio1.messageCache = message
-            
-            AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView) -> Void in 
+            weak var weakSelf = self
+            AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView,response) -> Void in
                 if let eView = subView as? AIAudioMessageView {
+                    
                     eView.loadingView.stopAnimating()
                     eView.loadingView.hidden = true
                     eView.errorButton.hidden = true
+                    
+                    let id = response["note_id"] as! NSNumber
+                    eView.noteID = id.integerValue
                 }
+                
+                weakSelf!.view.dismissLoading()
                 
                 }, fail: { (errorView, error) -> Void in
                     if let eView = errorView as? AIAudioMessageView {
@@ -658,6 +665,9 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
                         eView.loadingView.hidden = true
                         eView.errorButton.hidden = false
                     }
+                    
+                    weakSelf!.view.dismissLoading()
+                    AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
         }
@@ -721,11 +731,14 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
     func retrySendRequestAction(cell: UIView?) {
         if let audio1 = cell as? AIAudioMessageView {
             if let m = audio1.messageCache {
-                AIRemoteRequestQueue().asyncRequset(audio1, message: m, successRequst: { (subView) -> Void in
+                AIRemoteRequestQueue().asyncRequset(audio1, message: m, successRequst: { (subView,response) -> Void in
                     if let eView = subView as? AIAudioMessageView {
                         eView.loadingView.stopAnimating()
                         eView.loadingView.hidden = true
                         eView.errorButton.hidden = true
+                        
+                        let id = response["note_id"] as! NSNumber
+                        eView.noteID = id.integerValue
                     }
                     
                     }, fail: { (errorView, error) -> Void in
@@ -742,8 +755,8 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         
     }
     
-    func deleteAction(cell: UIView?) {
-        
+    
+    func deleteAnimation (cell: UIView?) {
         springWithCompletion(0.3, animations: { () -> Void in
             
             cell?.alpha = 0
@@ -768,6 +781,30 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
             }) { (complate) -> Void in
                 cell?.removeFromSuperview()
         }
+
+    }
+    
+    
+    
+    func deleteAction(cell: UIView?) {
+        
+        
+        let noteView = cell as? AIWishMessageView
+        
+        self.view.showLoadingWithMessage("")
+        let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
+        
+        
+        weak var weakSelf = self
+        AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
+            weakSelf!.deleteAnimation(cell)
+            weakSelf!.view.dismissLoading()
+            }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
+                weakSelf!.view.dismissLoading()
+                AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                
+        })
+        
         
     }
 }
@@ -799,7 +836,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
             self.inputMessageCache = "" //清空
             // add a new View Model
             let newText = AITextMessageView.currentView()
-            
+            newText.wishID = currentDatasource?.wish_list.wish_id
             newText.content.text = textView.text
             let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
@@ -812,6 +849,22 @@ extension AIServiceContentViewController : UITextViewDelegate {
             if let c = currentAudioView {
                 c.closeThisView()
             }
+            
+            // add
+            self.view.showLoadingWithMessage("")
+            weak var weakSelf = self
+            let message = AIMessageWrapper.addWishNoteWithWishID((currentDatasource?.wish_list.wish_id)!, type: "Text", content: newText.content.text)
+            
+            AIRemoteRequestQueue().asyncRequset(newText, message: message, successRequst: { (subView,response) -> Void in
+                if let eView = subView as? AITextMessageView {
+                    weakSelf!.view.dismissLoading()
+                    let id = response["note_id"] as! NSNumber
+                    eView.noteID = id.integerValue
+                }
+                }, fail: { (errorView, error) -> Void in
+                    weakSelf!.view.dismissLoading()
+                    AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+            })
             
             
             return false

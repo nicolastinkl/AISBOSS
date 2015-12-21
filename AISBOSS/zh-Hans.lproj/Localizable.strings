@@ -20,7 +20,6 @@
 "AIBuyerDetailViewController.pregnancy" = "怀孕";
 "AIBuyerDetailViewController.from" = "来源";
 "AIBuyerDetailViewController.alert" = "确定添加服务%@";
-
 "AIBuyerDetailViewController.SubmitSuccess" = "购买成功!";
 "AIBuyerDetailViewController.SubmitFail" = "购买失败!";
 
@@ -43,6 +42,7 @@
 
 //
 "AIServiceContentViewController.record" = "说话时间太短";
+"AIServiceContentViewController.wishDeleteError" = "删除失败";
 
 //
 "AIOrderDescView.time" = "时间";
@@ -58,6 +58,12 @@
 
 //
 "AISellerViewController.2beConfirmed" = "待定";
+
+//
+"AIServerDetailViewController.service" = "添加你喜欢的服务";
+"AIServerDetailViewController.dollarFormat" = "¥%@";
+"AIServerDetailViewController.duplicate" = "不能重复添加";
+"AIServerDetailViewController.day" = "天";
 
 //
 "ProposalExpandedView.onSchedule" = "进行中";
@@ -128,8 +134,7 @@
 "AIErrorRetryView.loading" = "加载失败";
 
 
-
-
+"AIErrorRetryView.NetError" = "网络错误 !";
 
 
 

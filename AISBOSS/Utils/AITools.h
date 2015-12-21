@@ -80,6 +80,8 @@
 
 + (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size;
 
++ (NSString *)formatDateFromSeconds:(NSString *)seconds;
+
 @end
 
 

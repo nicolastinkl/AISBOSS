@@ -20,7 +20,6 @@
 
 @interface AINetEngine ()
 {
-    NSMutableArray *_activitedTask;
     NSURLSessionConfiguration *_sessionConfiguration;
     AFHTTPSessionManager *_sessionManager;
     
@@ -184,7 +183,14 @@
                                 fail:(net_fail_block)fail
 {
     [self removeCompletedTask:task];
-    NSDictionary *response = (NSDictionary *)responseObject;
+    
+    
+    NSDictionary *response = nil;
+    
+    if ([responseObject isKindOfClass:[NSDictionary class]]) {
+        response = (NSDictionary *)responseObject;
+    }
+    
     if (!response && fail) {
         fail(AINetErrorFormat, @"报文格式错误");
         return;

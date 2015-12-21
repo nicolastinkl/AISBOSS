@@ -155,27 +155,114 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
     
     func contentViewWillDismiss() {
 
-        // handle parameter upload actio here
+        self.view.showLoadingWithMessage("")
         
-        let params = NSMutableDictionary()
+        
+        // handle parameter upload actio here
+        let submitDataDic = NSMutableDictionary()
         
         for vc in childViewControllers {
-            let contentVC = vc as! AIServiceContentViewController
-
-            if let params = contentVC.getSelectedParams() {
-                print("getSelectedParams")
-            }
             
+            let contentVC = vc as! AIServiceContentViewController
+            parseParam(contentVC, submitDataDic: submitDataDic)
         }
         
         
-        guard params.allValues.count > 0 else {
+        guard submitDataDic.count > 0 else {
             self.dismissViewControllerAnimated(true, completion: nil)
             return;
         }
         
-        // http request
+        let enumerator = submitDataDic.objectEnumerator()
         
+        for item in enumerator {
+            let data = item as! AIServiceSubmitModel
+            print(data.toJSONString())
+            
+            let message = AIMessage()
+            message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data.toDictionary()])
+    
+            print(message.body)
+            message.url = "http://171.221.254.231:3000/saveServiceParameters"
+            
+            AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                
+                }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                    
+            })
+            
+        }
+
+        
+        
+        while (AINetEngine.defaultEngine().activitedTask.count > 0) {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+        }
+        
+
+        self.view.dismissLoading()
+        self.dismissViewControllerAnimated(true, completion: nil)
+        // http request, get each model from submitDataDic, do upload
+        
+        
+   
+    }
+    
+    private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: NSMutableDictionary) {
+        if let params = paramProvider.getSelectedParams() {
+            if params.count > 0 {
+                for model in params {
+                    addToSubmitData(model as! JSONModel, submitDataDic: submitDataDic)
+                }
+            }
+        }
+    }
+    
+    private func addToSubmitData(paramModel: JSONModel, submitDataDic: NSMutableDictionary) {
+        var serviceId: NSString?
+        var roleId: NSString!
+        var isProduct: Bool = false
+        
+        if let productParam = paramModel as? AIProductParamItem {
+            serviceId = productParam.service_id
+            roleId = productParam.role_id
+            isProduct = true
+        } else if let serviceParam = paramModel as? AIServiceParamItem {
+            serviceId = serviceParam.service_id
+            roleId = serviceParam.role_id ?? "0"
+        }
+        
+        if let sId = serviceId {
+            var submitModel: AIServiceSubmitModel!
+            if submitDataDic.objectForKey(sId) == nil {
+                submitModel = AIServiceSubmitModel()
+                submitModel.service_id = Int(sId as String)!
+                submitModel.role_id = Int((roleId as String))!
+                submitModel.proposal_id = proposalId
+                submitModel.customer_id = 100000002410
+                
+                submitModel.save_data = AIServiceSaveDataModel()
+                
+                submitDataDic[sId] = submitModel
+            } else {
+                submitModel = submitDataDic.objectForKey(sId) as! AIServiceSubmitModel
+            }
+            
+            
+            if isProduct {
+                if submitModel.save_data.product_list == nil {
+                    submitModel.save_data.product_list = [AIProductParamItem]()
+                }
+                
+                submitModel.save_data.product_list.append(paramModel)
+            } else {
+                if submitModel.save_data.service_param_list == nil {
+                    submitModel.save_data.service_param_list = [AIServiceParamItem]()
+                }
+                
+                submitModel.save_data.service_param_list.append(paramModel)
+            }
+        }
     }
 }
 

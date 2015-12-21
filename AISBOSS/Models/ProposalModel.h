@@ -7,7 +7,7 @@
 //
 
 #import "JSONModel.h"
-
+#import <UIKit/UIKit.h>
 
 @protocol ServiceOrderModel
 @end
@@ -109,7 +109,7 @@
 @property (strong, nonatomic) NSString<Optional> * discount;
 @property (strong, nonatomic) NSString<Optional> * saved;
 
-@property (assign, nonatomic) float price;
+@property (assign, nonatomic) CGFloat price;
 @property (strong, nonatomic) NSString<Optional> * billing_mode;
 @property (strong, nonatomic) NSString<Optional> * unit;
 @end
