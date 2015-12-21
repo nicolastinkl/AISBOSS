@@ -149,7 +149,7 @@
     
     switch (gesture.view.tag) {
         case 100:
-            userID = @"200000001630";
+            userID = @"100000002410";
             break;
         case 200:
             userID = @"200000001630";
@@ -159,12 +159,23 @@
             break;
     }
     
-    NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
-    //HttpQuery = "0&0&200000001630&0";
-    [[AINetEngine defaultEngine] removeCommonHeaders];
-    [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
+    
+    if (userID) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kDefault_UserID];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[NSUserDefaults standardUserDefaults] objectForKey:@"Default_UserID"];
+        
+        NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
+        //HttpQuery = "0&0&200000001630&0";
+        [[AINetEngine defaultEngine] removeCommonHeaders];
+        [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
+    }
+    
+    
     [self hideSelf];
 }
 

@@ -16,7 +16,7 @@
 #define kKeyForResultCode              @"result_code"
 #define kKeyForResultMsg               @"result_msg"
 #define kSuccessCode                   @"200"
-#define kSuccessCode_1                   @"1"
+#define kSuccessCode_1                 @"1"
 
 @interface AINetEngine ()
 {
@@ -212,7 +212,8 @@
     
     NSString *resultCode = [NSString stringWithFormat:@"%@",[des objectForKey:kKeyForResultCode]];
     
-    if (([resultCode isEqualToString:kSuccessCode] || [resultCode isEqualToString:kSuccessCode_1] ) && success) {
+    if ([resultCode isKindOfClass:[NSString class]] && ([resultCode isEqualToString:kSuccessCode] || [resultCode isEqualToString:kSuccessCode_1] ) && success) {
+
         success(returnResponseObject);
     } else {
         NSString *errorDes = [des objectForKey:kKeyForResultMsg];

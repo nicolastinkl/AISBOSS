@@ -88,9 +88,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let timeStamp: Int = 0
         let token = "0"
         let RSA = "0"
+   
+        let userID : String = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "200000001630" ) as! String
+
+        if userID == "100000002410" {
+            NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "Default_UserID")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
         
-        let headerContent = "\(timeStamp)&" + token + "&" + "100000002410" + "&" + RSA
+        let splitedarray = ["\(timeStamp)",token,userID,RSA] as [String]
         
+        var headerContent : String = "";
+        
+        
+        for(var i = 0; i < splitedarray.count ; i++) {
+            let str = splitedarray[i]
+            headerContent += str
+            
+            if i != 3 {
+                headerContent += "&"
+            }
+            
+        }
+
+
         let header = ["HttpQuery": headerContent]
         AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
