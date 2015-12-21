@@ -55,7 +55,7 @@ class AIServiceDetailTool: NSObject {
                     serviceParam.service_id = "\(service.service_id)"
                     serviceParam.role_id = "\(relation.rel_param.param_role)"
                     serviceParam.param_key = "\(paramKey)"
-                    serviceParam.param_value_id = [relation.rel_param.param_value_key]
+                    serviceParam.param_value_id = [relation.param.param_value_key]
                     serviceParam.param_value = [relation.rel_param.param_value]
                     
                     data = serviceParam

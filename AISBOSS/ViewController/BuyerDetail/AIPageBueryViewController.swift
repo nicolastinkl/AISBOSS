@@ -156,7 +156,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
     func contentViewWillDismiss() {
 
         // handle parameter upload actio here
-        let submitDataDic = [NSString: AIServiceSubmitModel]()
+        let submitDataDic = NSMutableDictionary()
         
         for vc in childViewControllers {
             
@@ -170,10 +170,18 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             return;
         }
         
+        let enumerator = submitDataDic.objectEnumerator()
+        
+        for item in enumerator {
+            let data = item as! AIServiceSubmitModel
+            print(data.toJSONString())
+        }
+
+        
         // http request, get each model from submitDataDic, do upload
     }
     
-    private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: [NSString: AIServiceSubmitModel]) {
+    private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: NSMutableDictionary) {
         if let params = paramProvider.getSelectedParams() {
             if params.count > 0 {
                 for model in params {
@@ -183,7 +191,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         }
     }
     
-    private func addToSubmitData(paramModel: JSONModel, var submitDataDic: [NSString: AIServiceSubmitModel]) {
+    private func addToSubmitData(paramModel: JSONModel, submitDataDic: NSMutableDictionary) {
         var serviceId: NSString?
         var roleId: NSString!
         var isProduct: Bool = false
@@ -199,9 +207,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         
         if let sId = serviceId {
             var submitModel: AIServiceSubmitModel!
-            submitModel = submitDataDic[sId]
-                
-            if submitModel == nil {
+            if submitDataDic.objectForKey(sId) == nil {
                 submitModel = AIServiceSubmitModel()
                 submitModel.service_id = Int(sId as String)!
                 submitModel.role_id = Int(roleId! as String)!
@@ -211,7 +217,10 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
                 submitModel.save_data = AIServiceSaveDataModel()
                 
                 submitDataDic[sId] = submitModel
+            } else {
+                submitModel = submitDataDic.objectForKey(sId) as! AIServiceSubmitModel
             }
+            
             
             if isProduct {
                 if submitModel.save_data.product_list == nil {
@@ -225,6 +234,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
                 }
                 
                 submitModel.save_data.service_param_list.append(paramModel)
+                print("\(submitDataDic)")
             }
         }
     }
