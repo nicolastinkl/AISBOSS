@@ -155,6 +155,9 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
     
     func contentViewWillDismiss() {
 
+        self.view.showLoadingWithMessage("")
+        
+        
         // handle parameter upload actio here
         let submitDataDic = NSMutableDictionary()
         
@@ -175,15 +178,34 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         for item in enumerator {
             let data = item as! AIServiceSubmitModel
             print(data.toJSONString())
+            
+            let message = AIMessage()
+            message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data.toDictionary()])
+    
+            print(message.body)
+            message.url = "http://171.221.254.231:3000/saveServiceParameters"
+            
+            AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                
+                }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                    
+            })
+            
         }
 
         
+        
+        while (AINetEngine.defaultEngine().activitedTask.count > 0) {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+        }
+        
+
+        self.view.dismissLoading()
+        self.dismissViewControllerAnimated(true, completion: nil)
         // http request, get each model from submitDataDic, do upload
         
         
-        
-        //AINetEngine.defaultEngine().postMessage(<#T##message: AIMessage!##AIMessage!#>, success: <#T##net_success_block!##net_success_block!##(AnyObject!) -> Void#>, fail: <#T##net_fail_block!##net_fail_block!##(AINetError, String!) -> Void#>)
-        
+   
     }
     
     private func parseParam(paramProvider: AIBuyerParamsDelegate, submitDataDic: NSMutableDictionary) {
