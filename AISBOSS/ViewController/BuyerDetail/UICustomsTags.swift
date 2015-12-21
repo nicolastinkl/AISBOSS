@@ -8,6 +8,7 @@
 
 import Foundation
 import AISpring
+import AIAlertView
 
 internal protocol AIElasticDownTagStateDelegete : class{
     func changeTagState(newState:tagState,viewModel:AIProposalServiceDetailLabelModel)
@@ -43,6 +44,8 @@ internal class UICustomsTags : SpringView {
     @IBOutlet weak var unReadNumber: DesignableLabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    
+    var wish_id:Int = 0
     
     var selfModel:AIProposalServiceDetailLabelModel?
     
@@ -90,6 +93,14 @@ internal class UICustomsTags : SpringView {
         }
     }
     
+    func changeTagStateByLocal(model: tagState ){
+        currentTagState = model
+        updateStateLayout(model)
+        self.delegateNew?.changeTagState(self.currentTagState, viewModel: self.selfModel!)
+        
+        
+    }
+    
     /**
      改变tag的状态 并delegate通知其他view
      TODO: delegate是改变之后的状态
@@ -102,14 +113,60 @@ internal class UICustomsTags : SpringView {
             currentTagState = tagState.normal
         }
         
-        updateStateLayout(currentTagState)
-        delegateNew?.changeTagState(currentTagState, viewModel: selfModel!)
+        updateSelfState {[weak self] () -> Void in
+            if let strongSelf = self{
+                strongSelf.delegateNew?.changeTagState(strongSelf.currentTagState, viewModel: strongSelf.selfModel!)
+            }
+        }
+        
+    }
+    
+    ///通用函数
+    func updateSelfState(block:(Void)->Void){
+        //处理网络请求
+        if let model = selfModel{
+            let message = AIMessageWrapper.updateWiskListTagStateWishID(self.wish_id, tagID: model.label_id, isChoose: currentTagState != tagState.selected)
+            self.showProgressViewLoading()
+            self.userInteractionEnabled = false
+            AIRemoteRequestQueue().asyncRequset(self, message: message, successRequst: {[weak self] (subView,reponse) -> Void in
+                subView.hideProgressViewLoading()
+                subView.userInteractionEnabled = true
+                if let strongSelf = self{
+                    strongSelf.updateStateLayout(strongSelf.currentTagState)
+                    block()
+                    // 修改model 数据
+                    if strongSelf.selfModel?.selected_flag == 0{
+                        strongSelf.selfModel?.selected_flag = 1
+                    }else{
+                        strongSelf.selfModel?.selected_flag = 0
+                    }
+                }
+                
+                }, fail: { (errorView, error) -> Void in
+                    
+                    errorView.hideProgressViewLoading()
+                    errorView.userInteractionEnabled = true
+                    
+                    if self.currentTagState == tagState.normal {
+                        self.currentTagState = tagState.selected
+                    }else{
+                        self.currentTagState = tagState.normal
+                    }
+                    
+                    //AIAlertView().showInfo(AIAudioMessageView.kERROR, subTitle:AIAudioMessageView.kINFO, closeButtonTitle: AIAudioMessageView.kCLOSE, duration: 3)
+                    
+            })
+        }
+        
+   
     }
 
     @IBAction func backAction(sender: AnyObject) {
-//        let button = sender as! UIButton
-//        button.removeFromSuperview()
-        delegateNew?.releaseTagState(currentTagState, viewModel: selfModel!)
-    }
-    
+        updateSelfState {[weak self] () -> Void in
+            if let strongSelf = self{
+                strongSelf.delegateNew?.releaseTagState(strongSelf.currentTagState, viewModel: strongSelf.selfModel!)
+            }
+        }
+        
+     }
 }

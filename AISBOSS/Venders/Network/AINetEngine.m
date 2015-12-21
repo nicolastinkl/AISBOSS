@@ -16,6 +16,7 @@
 #define kKeyForResultCode              @"result_code"
 #define kKeyForResultMsg               @"result_msg"
 #define kSuccessCode                   @"200"
+#define kSuccessCode_1                 @"1"
 
 @interface AINetEngine ()
 {
@@ -192,20 +193,27 @@
     
     if (!response && fail) {
         fail(AINetErrorFormat, @"报文格式错误");
+        return;
     }
-    
 #ifdef DEBUG
-    
-    //NSLog(@"\n======HTTPResponse======\n%@\n============\n", response);
-    
+    NSLog(@"%@",response);
 #endif
+    if ([responseObject isKindOfClass:[NSArray class]]) {
+        NSArray * newRes = (NSArray *)responseObject;
+        if (newRes.count <= 0 ){
+            fail(AINetErrorFormat, @"返回值为空");
+            return;
+        }
+        
+    }
     
     NSDictionary *des = [response objectForKey:kKeyForDesc];
     id returnResponseObject = [response objectForKey:kKeyForData];
     
-    NSString *resultCode = [des objectForKey:kKeyForResultCode];
+    NSString *resultCode = [NSString stringWithFormat:@"%@",[des objectForKey:kKeyForResultCode]];
     
-    if ([resultCode isKindOfClass:[NSString class]] && [resultCode isEqualToString:kSuccessCode] && success) {
+    if ([resultCode isKindOfClass:[NSString class]] && ([resultCode isEqualToString:kSuccessCode] || [resultCode isEqualToString:kSuccessCode_1] ) && success) {
+
         success(returnResponseObject);
     } else {
         NSString *errorDes = [des objectForKey:kKeyForResultMsg];

@@ -333,8 +333,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @property (strong, nonatomic) NSString<Optional> * text;
 @property (strong, nonatomic) NSString<Optional> * audio_url;
-@property (assign, nonatomic) NSInteger type;//1 text  2 audio
-@property (strong, nonatomic) NSString<Optional> *noteType;//1 text  2 audio
+@property (strong, nonatomic) NSString<Optional> * type;//1 text  2 audio
 @property (assign, nonatomic) NSInteger time;
 @property (assign, nonatomic) NSInteger hope_id;
 
@@ -342,7 +341,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @protocol AIProposalServiceDetail_WishModel @end
 @interface AIProposalServiceDetail_WishModel : JSONModel
-@property (nonatomic, assign) NSInteger wish_id;
+@property (assign, nonatomic) NSInteger wish_id;
 @property (strong, nonatomic) NSString<Optional> * intro;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailLabelModel, Optional> * label_list;
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailHopeModel, Optional> * hope_list;

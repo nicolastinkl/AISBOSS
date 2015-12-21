@@ -53,6 +53,7 @@
 
 - (void)makeProperties
 {
+    _selectedIndex = -1;
     _radioSize = [AITools displaySizeFrom1080DesignSize:46];
     _radioMargin = [AITools displaySizeFrom1080DesignSize:40];
     _fontSize = [AITools displaySizeFrom1080DesignSize:42];
@@ -163,8 +164,8 @@
     
     _selectedIndex = view.tag;
     
-    if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:)]) {
-        [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex]];
+    if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:parentModel:)]) {
+        [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex] parentModel:_serviceTypesModel];
     }
     
 }

@@ -580,6 +580,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
             
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+            viewController.delegate = self
             
             let model1 = AIProposalServiceModel()
             let model2 = AIProposalServiceModel()
@@ -700,5 +701,12 @@ extension AIBuyerDetailViewController: UIScrollViewDelegate{
         }
     }
     
+}
+
+
+extension AIBuyerDetailViewController : AIProposalDelegate {
+    func proposalContenDidChanged () {
+        self.tableView.headerBeginRefreshing()
+    }
 }
 

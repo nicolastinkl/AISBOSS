@@ -14,6 +14,8 @@ internal class AICustomView : UIView{
     
     private let tagMargin:CGFloat = 5
     
+    var wish_id:Int = 0
+    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var unselectView: DesignableView!
@@ -47,6 +49,7 @@ internal class AICustomView : UIView{
             }
         }
         
+        var cacheArray = Array<UIView>()
         
         allTagsArray = models //fill data..
         
@@ -66,15 +69,18 @@ internal class AICustomView : UIView{
             
             let tag = UICustomsTags.currentView()
             let tags = UIView()
+            
             if isNormal {
+                //第一次填充数据
                 unselectView.addSubview(tags)
                 tag.backButton.hidden = true
+                
             }else{
                 selectView.addSubview(tags)
                 tag.closeIntoEnable()
                 tag.backButton.hidden = false
             }
-            
+            tag.wish_id = self.wish_id
             tags.addSubview(tag)
             
             tag.fillOfData(model) //处理数据刷新  // add into whole array with key-value.
@@ -138,6 +144,21 @@ internal class AICustomView : UIView{
             tag.clipsToBounds = true
             x = x + CGFloat(ramdWidth)
             
+            
+            // 加入到初始化时在线数据处理
+            
+            if isNormal{
+                if model.selected_flag == 0{
+                    cacheArray.append(tag)
+                }
+            }
+        }// end model for....
+        if isNormal{
+        _ = cacheArray.filter({ (subview) -> Bool in
+            let sview = subview as! UICustomsTags
+            sview.changeTagStateByLocal(tagState.selected)
+            return true
+        })
         }
     }
 }

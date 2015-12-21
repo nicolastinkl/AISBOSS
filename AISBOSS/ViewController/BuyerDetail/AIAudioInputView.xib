@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,9 +16,7 @@
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xPt-rT-mJZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                     </view>
-                    <animations/>
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UqE-hw-zrs">
@@ -26,7 +24,6 @@
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKj-lk-jq5" customClass="DesignableButton" customModule="AISpring">
                             <rect key="frame" x="4" y="5" width="32" height="32"/>
-                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="LTA-PL-xfd"/>
@@ -51,7 +48,6 @@
                         </button>
                         <textField hidden="YES" opaque="NO" clipsSubviews="YES" alpha="0.81999999284744263" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Leave a text or voice message to the provider" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NL8-St-jGg" customClass="DesignableTextField" customModule="AISpring">
                             <rect key="frame" x="46" y="4" width="530" height="35"/>
-                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="TZT-Hh-QdI"/>
@@ -76,7 +72,6 @@
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ANA-gV-mQs" customClass="DesignableTextView" customModule="AISpring">
                             <rect key="frame" x="46" y="4" width="530" height="35"/>
-                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textColor" red="0.3411764706" green="0.3411764706" blue="0.3411764706" alpha="0.42999999999999999" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -88,7 +83,6 @@
                             </userDefinedRuntimeAttributes>
                         </textView>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="NL8-St-jGg" firstAttribute="top" secondItem="UqE-hw-zrs" secondAttribute="top" constant="4" id="1tB-rc-OTh"/>
@@ -117,7 +111,6 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV8-Bq-SQo" customClass="DesignableButton" customModule="AISpring">
                             <rect key="frame" x="230" y="56" width="140" height="140"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="140" id="SeQ-mI-aGZ"/>
                                 <constraint firstAttribute="height" constant="35" id="Yur-H1-oqw"/>
@@ -147,7 +140,6 @@
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold to Talk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l93-Gt-Svh">
                             <rect key="frame" x="181" y="23" width="238" height="32"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="Y4J-uR-HTv"/>
                                 <constraint firstAttribute="width" constant="238" id="hiO-0g-C96"/>
@@ -160,7 +152,6 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
-                    <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79862034574468088" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="ZV8-Bq-SQo" firstAttribute="centerY" secondItem="Nhd-oA-fLB" secondAttribute="centerY" id="5Sc-NX-Arm"/>
@@ -172,7 +163,6 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-sV-q0j">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="305"/>
-                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <connections>
@@ -180,7 +170,6 @@
                     </connections>
                 </view>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tYv-kO-hZR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8aB-IK-frZ"/>
@@ -207,6 +196,7 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="audioButtonRecord" destination="ZV8-Bq-SQo" id="pzy-sw-rz8"/>
                 <outlet property="audioButtonView" destination="Nhd-oA-fLB" id="Pmh-ns-4cj"/>
                 <outlet property="changeButton" destination="hKj-lk-jq5" id="SCa-Er-nVe"/>
                 <outlet property="inputButtomValue" destination="kbt-Za-gGC" id="JMt-D9-GXt"/>
