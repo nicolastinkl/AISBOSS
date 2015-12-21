@@ -10,3 +10,4 @@
 #define kShouldUpdataUserDataNotification     @"ShouldUpdataUserDataNotification"
 
 
+#define kDefault_UserID                       @"Default_UserID"
