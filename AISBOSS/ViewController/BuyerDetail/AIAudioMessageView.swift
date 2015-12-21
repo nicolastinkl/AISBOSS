@@ -153,32 +153,7 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
             try audioSession.setActive(true)
 
         } catch {
-            logInfo("AVAudioPlayer play failed error .. ")
         }
-        
-        
-        if (currentModelss!.audio_url == nil || currentModelss!.audio_url.length == 0) {
-            currentModelss!.audio_url = "http://ac-xkz4nhs9.clouddn.com/lXoqWTK4pc4RcKjokfXcDgD.aac"
-        }
-        
-        do {
-            let url = NSURL(string: currentModelss!.audio_url)
-
-            let data = NSData(contentsOfURL: url!)
-            
-            if (data != nil) {
-                audioPlayer = try AVAudioPlayer(data: data!)
-            }else {
-                audioPlayer = try AVAudioPlayer(contentsOfURL: url!)
-            }
-            
-            audioPlayer.volume = 1.0
-
-        }
-        catch {
-            logInfo("AVAudioPlayer play failed error .. ")
-        }
-    
     }
     
     func configureImages () {
@@ -188,6 +163,9 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
     }
     
     func startPlay () {
+        
+        
+       
         
         if audioPlayer == nil {
             return
@@ -207,6 +185,32 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
      
     
     @IBAction func playAction(sender: AnyObject) {
+        
+        if (currentModelss!.audio_url == nil || currentModelss!.audio_url.length == 0) {
+            currentModelss!.audio_url = "http://ac-xkz4nhs9.clouddn.com/lXoqWTK4pc4RcKjokfXcDgD.aac"
+        }
+        
+        do {
+            let url = NSURL(string: currentModelss!.audio_url)
+            if audioPlayer == nil{
+                
+                let data = NSData(contentsOfURL: url!)
+                
+                if (data != nil) {
+                    audioPlayer = try AVAudioPlayer(data: data!)
+                }else {
+                    audioPlayer = try AVAudioPlayer(contentsOfURL: url!)
+                }
+                
+                audioPlayer.volume = 1.0
+            }
+            
+            
+        }
+        catch {
+            
+        }
+        
         Async.main(after: 0.1, block: { () -> Void in
             
             

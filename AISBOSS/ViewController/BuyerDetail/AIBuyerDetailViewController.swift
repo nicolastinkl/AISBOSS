@@ -494,7 +494,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         if let c = serviceDataModel.cell {
             #if !DEBUG
-                //FIXME: 不好看
                 //恢复区域不可删除
                let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
                 view.displayDeleteMode = (tableView == deletedTableView)
@@ -519,7 +518,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.removeDelegate = self
         cell.delegate = self
         #if !DEBUG
-            //FIXME: 不好看
             //恢复区域不可删除
             let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
             view.displayDeleteMode = (tableView == deletedTableView)

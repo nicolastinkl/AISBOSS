@@ -50,7 +50,6 @@
     return message;
 }
 
-
 + (AIMessage *)deleteWishNoteWithWishID:(NSInteger)wishID noteID:(NSInteger)noteID
 {
     AIMessage *message = [AIMessage message];
