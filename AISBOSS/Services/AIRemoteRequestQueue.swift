@@ -43,7 +43,11 @@ internal class AIRemoteRequestQueue {
             // New Request
             
             AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
-                successRequst(subview)
+                // parse here
+                let messageView = subview as! AIWishMessageView
+                let id = response["note_id"] as! NSNumber
+                messageView.noteID = id.integerValue
+                successRequst(messageView)
                 }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
                     fail(errorView: subview,error: errorStr)
             })

@@ -177,24 +177,18 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bgImageView.frame = self.view.frame
         self.view.addSubview(bgImageView)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: kShouldUpdataUserDataNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAfterUserChanged", name: kShouldUpdataUserDataNotification, object: nil)
     }
     
-    func reloadData() {
-        
-        self.tableView.hideErrorView()
-        
+    func reloadDataAfterUserChanged() {
+        didShow = false;
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let listData : ProposalOrderListModel? = appDelegate.buyerListData
-        let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
-        if (listData != nil && proposalData != nil) {
-            Async.main(after: 0.3, block: { () -> Void in
-                self.parseListData(listData)
-                self.parseProposalData(proposalData)
-            })
-        }
+        appDelegate.buyerListData = nil
+        appDelegate.buyerProposalData = nil
+        loadData()
     }
     
+        
     // 回调
     func closeAIBDetailViewController() {
         

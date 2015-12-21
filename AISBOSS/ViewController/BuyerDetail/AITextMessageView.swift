@@ -9,8 +9,7 @@
 import Foundation
 
 
-
-class AITextMessageView: UIView {
+class AITextMessageView: AIWishMessageView {
     
     @IBOutlet weak var content: UILabel!
     

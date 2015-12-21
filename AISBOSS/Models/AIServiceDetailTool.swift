@@ -40,7 +40,7 @@ class AIServiceDetailTool: NSObject {
             let param = item as! AIProposalServiceDetailParamModel
             
             if param.param_key == paramKey {
-                if param.param_source == "product" {
+                if param.param_source == "product" || param.param_source == "product_param" {
                     let productParam = AIProductParamItem()
                     productParam.product_id = "\(param.param_source_id)"
                     productParam.service_id = "\(service.service_id)"
@@ -48,7 +48,7 @@ class AIServiceDetailTool: NSObject {
                     productParam.name = relation.rel_param.param_value
                     
                     data = productParam
-                } else if param.param_source == "product_param" {
+                } else if param.param_source == "offering_param" {
                     let serviceParam = AIServiceParamItem()
                     serviceParam.source = param.param_source
                     serviceParam.product_id = "\(param.param_source_id)"
