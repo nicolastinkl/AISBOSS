@@ -121,7 +121,8 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"id": @"hope_id"
+                                                       @"id": @"hope_id",
+                                                       @"duration": @"time"
                                                        }];
 }
 

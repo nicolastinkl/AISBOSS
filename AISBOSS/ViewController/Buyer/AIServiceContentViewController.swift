@@ -430,22 +430,26 @@ internal class AIServiceContentViewController: UIViewController {
                         perViews = audioView
                     }
                     
-                    if item.type == 1 {
+                    if item.type == "Text" {
                         // text.
                         let newText = AITextMessageView.currentView()
                         newText.content.text = item.text ?? ""
                         let newSize = item.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
                         newText.setHeight(30 + newSize!.height)
+                        newText.wishID = wish.wish_id
+                        newText.noteID = item.hope_id
                         addNewSubView(newText, preView: perViews!)
                         newText.delegate = self
                         perViews = newText
                         
-                    } else if item.type == 2 {
+                    } else if item.type == "Voice" {
                         // audio.
                         let audio1 = AIAudioMessageView.currentView()
                         audio1.audioDelegate = self
                         audio1.deleteDelegate = self
                         addNewSubView(audio1, preView: perViews!)
+                        audio1.wishID = wish.wish_id
+                        audio1.noteID = item.hope_id
                         audio1.fillData(item)                    
                         audio1.loadingView.hidden = true
                         
@@ -642,7 +646,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
             // upload
 
             let wishid = self.currentDatasource?.wish_list.wish_id ?? 0
-            let message = AIMessageWrapper.addWishNoteWithWishID(wishid, type: audioModel.noteType, content: audioModel.audio_url)
+            let message = AIMessageWrapper.addWishNoteWithWishID(wishid, type: "Voice", content: audioModel.audio_url, duration: audioModel.time)
 
             audio1.messageCache = message
             weak var weakSelf = self
@@ -653,8 +657,8 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
                     eView.loadingView.hidden = true
                     eView.errorButton.hidden = true
                     
-                    let id = response["note_id"] as! NSNumber
-                    eView.noteID = id.integerValue
+                    let NoteId = response["NoteId"] as? NSNumber
+                    eView.noteID = NoteId?.integerValue ?? 0
                 }
                 
                 weakSelf!.view.dismissLoading()
@@ -737,8 +741,8 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
                         eView.loadingView.hidden = true
                         eView.errorButton.hidden = true
                         
-                        let id = response["note_id"] as! NSNumber
-                        eView.noteID = id.integerValue
+                        let NoteId = response["NoteId"] as? NSNumber
+                        eView.noteID = NoteId?.integerValue ?? 0
                     }
                     
                     }, fail: { (errorView, error) -> Void in
@@ -788,7 +792,6 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
     
     func deleteAction(cell: UIView?) {
         
-        
         let noteView = cell as? AIWishMessageView
 
         self.view.showLoadingWithMessage("")
@@ -801,7 +804,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
             weakSelf!.view.dismissLoading()
             }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
                 weakSelf!.view.dismissLoading()
-                AIAlertView().showInfo("AIServiceContentViewController.wishDeleteError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+                AIAlertView().showInfo("AIAudioMessageView.info".localized, subTitle:"AIServiceContentViewController.wishDeleteError".localized , closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 
         })
         
@@ -836,7 +839,6 @@ extension AIServiceContentViewController : UITextViewDelegate {
             self.inputMessageCache = "" //清空
             // add a new View Model
             let newText = AITextMessageView.currentView()
-            newText.wishID = currentDatasource?.wish_list.wish_id
             newText.content.text = textView.text
             let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
             newText.setHeight(30 + newSize!.height)
@@ -853,13 +855,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
             // add
             self.view.showLoadingWithMessage("")
             weak var weakSelf = self
-            let message = AIMessageWrapper.addWishNoteWithWishID((currentDatasource?.wish_list.wish_id)!, type: "Text", content: newText.content.text)
-            
+            let message = AIMessageWrapper.addWishNoteWithWishID(currentDatasource?.wish_list.wish_id ?? 0, type: "Text", content: newText.content.text, duration: 0)
+            newText.wishID = currentDatasource?.wish_list.wish_id ?? 0
             AIRemoteRequestQueue().asyncRequset(newText, message: message, successRequst: { (subView,response) -> Void in
                 if let eView = subView as? AITextMessageView {
                     weakSelf!.view.dismissLoading()
-                    let id = response["note_id"] as! NSNumber
-                    eView.noteID = id.integerValue
+                    let NoteId = response["NoteId"] as? NSNumber
+                    eView.noteID = NoteId?.integerValue ?? 0
                 }
                 }, fail: { (errorView, error) -> Void in
                     weakSelf!.view.dismissLoading()

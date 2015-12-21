@@ -11,9 +11,9 @@ import UIKit
 
 class AIWishMessageView : UIView {
     
-    var noteID : NSInteger?
-    var wishID : NSInteger?
-    var noteContent : String?
-    var noteType : String?
+    var noteID : NSInteger = 0
+    var wishID : NSInteger = 0
+    var noteContent : String = ""
+    var noteType : String = ""
     
 }

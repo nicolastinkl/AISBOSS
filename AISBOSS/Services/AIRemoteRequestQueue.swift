@@ -21,8 +21,8 @@ internal class AIRemoteRequestQueue {
     private var m_strFailedNotificationName = ""
     
     private lazy var m_queueRemoteRequestOperation:dispatch_queue_t = {
-        //串行队列
-        let queue = dispatch_queue_create("AI.SBOSS.AsyncRequset", DISPATCH_QUEUE_SERIAL)
+        //并发队列
+        let queue = dispatch_queue_create("AI.SBOSS.AsyncRequset", DISPATCH_QUEUE_CONCURRENT)
         return queue
     }()
     

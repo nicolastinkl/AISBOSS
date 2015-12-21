@@ -39,13 +39,10 @@
     
 }
 
-
-
-+ (AIMessage *)addWishNoteWithWishID:(NSInteger)wishID type:(NSString *)type content:(NSString *)content
++ (AIMessage *)addWishNoteWithWishID:(NSInteger)wishID type:(NSString *)type content:(NSString *)content  duration:(NSInteger)duration
 {
     AIMessage *message = [AIMessage message];
-    
-    NSDictionary *body = @{@"data":@{@"wish_id":@(wishID),@"note_type":type,@"note_content":content},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    NSDictionary *body = @{@"data":@{@"wish_id":@(wishID),@"note_type":type,@"note_content":content,@"duration":@(duration)},@"desc":@{@"data_mode":@"0",@"digest":@""}};
     
     [message.body addEntriesFromDictionary:body];
     
