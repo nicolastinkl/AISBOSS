@@ -8,7 +8,7 @@
 //
 
 #import "JSONModel.h"
-
+#import <UIKit/UIKit.h>
 // 作为product提交的数据
 @protocol AIProductParamItem
 @end
@@ -56,10 +56,10 @@
 
 @interface AIServiceSubmitModel : JSONModel
 
-@property (assign, nonatomic) long service_id;
-@property (assign, nonatomic) long customer_id;
-@property (assign, nonatomic) long proposal_id;
-@property (assign, nonatomic) long role_id;
+@property (assign, nonatomic) NSInteger service_id;
+@property (assign, nonatomic) NSInteger customer_id;
+@property (assign, nonatomic) NSInteger proposal_id;
+@property (assign, nonatomic) NSInteger role_id;
 @property (strong, nonatomic) AIServiceSaveDataModel<Optional> * save_data;
 
 @end

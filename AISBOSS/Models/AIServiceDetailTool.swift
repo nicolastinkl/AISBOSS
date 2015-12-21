@@ -9,8 +9,8 @@
 import Foundation
 
 class AIServiceDetailTool: NSObject {
-    static let MUSIC_SERVICE_ID: Int = 900001001000
-    static let PARAMEDIC_SERVICE_ID: Int = 900001001003
+    static let MUSIC_SERVICE_ID: NSInteger = 900001001000
+    static let PARAMEDIC_SERVICE_ID: NSInteger = 900001001003
     
     static func findParamRelated(service: AIProposalServiceDetailModel, selectedParamValue: AIProposalServiceDetailParamValueModel) -> AIProposalServiceParamRelationModel? {
         guard let relations = service.service_param_rel_list else {
