@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = "0"
         let RSA = "0"
    
-        let userID : String = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "100000002410" ) as! String
+        let userID : String = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "200000001630" ) as! String
 
         if userID == "100000002410" {
             NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "Default_UserID")
