@@ -47,7 +47,7 @@
 
 @interface InfoDetailModel : JSONModel
 
-@property (nonatomic, assign) NSString<Optional> *type;
+@property (nonatomic, strong) NSString<Optional> *type;
 @property (nonatomic, strong) NSString<Optional> *content;
 
 @end
