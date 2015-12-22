@@ -45,7 +45,6 @@
 // 1:可联系 0:不可联系
 @property (nonatomic, assign) NSInteger contact_flag;
 @property (nonatomic, strong) NSArray<ParamModel, Optional> *param_list;
-//#warning parm_list 改成了 arrange_script_info
 
 @end
 
