@@ -120,7 +120,7 @@
     UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle"];
     y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"Lucy" atPointY:y tag:kBuyer1Tag];
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"" atPointY:y tag:kBuyer1Tag];
 }
 
 - (void)makeSellerArea
@@ -134,7 +134,7 @@
     UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle"];
     y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"Lily" atPointY:y tag:kSeller1Tag];
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"" atPointY:y tag:kSeller1Tag];
 }
 
 #pragma mark - Actions
