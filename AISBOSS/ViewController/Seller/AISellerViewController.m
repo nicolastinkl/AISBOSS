@@ -42,19 +42,20 @@
 @implementation AISellerViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];;
     
-//    [self makeFakeDatas];
-//    [self makeDatas];
     [self makeBackGroundView];
     [self makeTableView];
     [self makeBottomBar];
     [self addRefreshActions];
     [self preProcess];
     [self setupLanguageNotification];
+    
 }
 
 - (void)setupLanguageNotification {
@@ -131,10 +132,8 @@
 {
     __weak typeof(self) weakSelf = self;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
    
     [self.tableView addHeaderWithCallback:^{
-        
             NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
                                   @"desc": @{@"data_mode": @"0",@"digest": @""}};
             
@@ -144,15 +143,21 @@
             [message.header setObject:@"0&0&200000001630&0" forKey:@"HttpQuery"];
             [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
                 weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
-                [weakSelf.tableView reloadData];
-                [weakSelf.tableView headerEndRefreshing];
+                
+                dispatch_main_async_safe(^{
+                    [weakSelf.tableView reloadData];
+                    [weakSelf.tableView headerEndRefreshing];
+                });
+    
             } fail:^(AINetError error, NSString *errorDes) {
-                [weakSelf.tableView headerEndRefreshing];
+                 dispatch_main_async_safe(^{
+                     [weakSelf.tableView headerEndRefreshing];
+                 });
+                
             }];
      
     }];
      
-    });
     
     [self.tableView addFooterWithCallback:^{
         [weakSelf.tableView footerEndRefreshing];
