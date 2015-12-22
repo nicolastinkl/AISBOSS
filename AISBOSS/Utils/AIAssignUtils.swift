@@ -65,7 +65,7 @@ extension String{
     }
     
     //add by liux at 20151117 根据字体计算占用空间
-    func sizeWithFont(font : UIFont,forWidth width : CGFloat) -> CGSize{
+    func sizeWithFont(font : UIFont,forWidth width : CGFloat) -> CGSize {
         let size = CGSizeMake(width, 2000)
         let text = self as NSString
         let contentRect = text.boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin , attributes: [NSFontAttributeName:font], context: nil)
