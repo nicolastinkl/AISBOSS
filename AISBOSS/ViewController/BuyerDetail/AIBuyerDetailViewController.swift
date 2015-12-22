@@ -548,6 +548,13 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
         
         if let height = serviceDataModel.cell?.cellHeight {
+             
+            if  (serviceDataModel.wish_list == nil) {
+                if (serviceDataModel.service_param == nil || serviceDataModel.service_param.param_key == nil) {
+                    return height + 50
+                }
+                
+            }
             return height + CELL_VERTICAL_SPACE
         } else {
             return 1
