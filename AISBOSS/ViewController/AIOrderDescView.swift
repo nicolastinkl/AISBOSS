@@ -60,34 +60,8 @@ class AIOrderDescView: UIView {
         if let keypoints = arrangeModel?.info_key_points as? [KeypointModel] {
             for var index = keypoints.count - 1; index >= 0; --index {
                 let keypoint = keypoints[index]
-                var strSize: CGSize?
-                var strLabel: UILabel!
                 
-                if let content = notEmptyString(keypoint.key_point_content) {
-                    strSize = content.sizeWithFont(LABEL_VALUE_FONT, forWidth: 1000)
-                    strLabel = createKeypointContentLabel(content)
-                } else if let title = notEmptyString(keypoint.key_point_title) {
-                    strSize = title.sizeWithFont(LABEL_TITLE_FONT, forWidth: 1000)
-                    strLabel = createKeypointTitleLabel(title)
-                }
-                
-                if strSize != nil {
-                    
-                    var currentStrFrame: CGRect!
-                    
-                    if preFrame == nil {
-                        currentStrFrame = CGRectMake(self.bounds.width - strSize!.width - VIEW_PADDING, 0, strSize!.width, TEXT_HEIGHT)
-                    } else {
-                        currentStrFrame = CGRectMake(preFrame.origin.x - TEXT_PADDING - strSize!.width, 0, strSize!.width, TEXT_HEIGHT)
-                    }
-                    
-                    strLabel.textColor = PurchasedViewColor.TITLE
-                    strLabel.frame = currentStrFrame
-                    
-                    addSubview(strLabel)
-                    
-                    preFrame = currentStrFrame
-                }
+                preFrame = addKeyPoint(keypoint, preFrame: preFrame)
             }
         }
         
@@ -97,6 +71,43 @@ class AIOrderDescView: UIView {
         }
         
         return preFrame.origin.x
+    }
+    
+    private func addKeyPoint(keypoint: KeypointModel, preFrame: CGRect?)  -> CGRect {
+        var labelFrame: CGRect!
+        
+        if let content = notEmptyString(keypoint.key_point_content) {
+            let strSize = content.sizeWithFont(LABEL_VALUE_FONT, forWidth: 1000)
+            let strLabel = createKeypointContentLabel(content)
+            
+            labelFrame = addKeyPointLabel(preFrame, strLabel: strLabel, strSize: strSize)
+        }
+        
+        if let title = notEmptyString(keypoint.key_point_title) {
+            let strSize = title.sizeWithFont(LABEL_TITLE_FONT, forWidth: 1000)
+            let strLabel = createKeypointTitleLabel(title)
+            
+            labelFrame = addKeyPointLabel(labelFrame, strLabel: strLabel, strSize: strSize)
+        }
+        
+        return labelFrame
+    }
+    
+    private func addKeyPointLabel(preFrame: CGRect?, strLabel: UILabel, strSize: CGSize) -> CGRect {
+        var currentStrFrame: CGRect!
+        
+        if preFrame == nil {
+            currentStrFrame = CGRectMake(self.bounds.width - strSize.width - VIEW_PADDING, 0, strSize.width, TEXT_HEIGHT)
+        } else {
+            currentStrFrame = CGRectMake(preFrame!.origin.x - TEXT_PADDING - strSize.width, 0, strSize.width, TEXT_HEIGHT)
+        }
+        
+        strLabel.textColor = PurchasedViewColor.TITLE
+        strLabel.frame = currentStrFrame
+        
+        addSubview(strLabel)
+        
+        return currentStrFrame
     }
     
     private func notEmptyString(srcString: String!) -> String? {
@@ -144,7 +155,7 @@ class AIOrderDescView: UIView {
         
         
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = serviceOrderModel.arrange_script_info.info_desc ?? "Delivery staff:Mike Liu"
+        descLabel.text = serviceOrderModel.arrange_script_info.info_title ?? "Delivery staff:Mike Liu"
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         addSubview(descLabel)
