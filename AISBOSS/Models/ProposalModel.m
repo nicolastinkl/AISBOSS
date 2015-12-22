@@ -9,11 +9,44 @@
 #import "ProposalModel.h"
 
 @implementation ParamModel
- 
+/*
++(JSONKeyMapper*)keyMapper
+{
+    // 这里就采用了KVC的方式来取值...
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"key_point_title": @"param_key",
+                                                       @"key_point_content": @"param_value"
+                                                       
+                                                       }];
+}*/
+
 @end
 
 @implementation ServiceOrderModel
 
+/*
++(JSONKeyMapper*)keyMapper
+{
+    // 这里就采用了KVC的方式来取值...
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"arrange_script_info.info_title": @"service_name",
+                                                       @"arrange_script_info.info_desc": @"service_intro",
+                                                       @"arrange_script_info.info_state": @"order_state",
+                                                       @"arrange_script_info.info_key_points": @"param_list"
+                                                       
+                                                       }];
+}*/
+
+@end
+
+@implementation KeypointModel
+@end
+
+@implementation InfoDetailModel
+@end
+
+
+@implementation ArrangeScriptModel
 @end
 
 @implementation ProposalOrderListModel

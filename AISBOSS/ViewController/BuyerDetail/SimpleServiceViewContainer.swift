@@ -107,8 +107,8 @@ class SimpleServiceViewContainer: UIView {
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
-        
-        logo.asyncLoadImage("\(dataModel.service_thumbnail_icon)")
+        print(dataModel.service_thumbnail_icon ?? "")
+        logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
         name.text = dataModel.service_desc ?? ""
         
         setPrice()
@@ -154,10 +154,6 @@ class SimpleServiceViewContainer: UIView {
             if let key = dataModel!.service_param.param_key {
                 let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
                 if let paramValueString = dataModel!.service_param.param_value{
-                    //                    let jsonData = paramValueString.dataUsingEncoding(NSUTF8StringEncoding)
-                    //获取到参数的dictionary
-                    //                    let paramDictionary = try? NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    
                     if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
                         addParamsView(serviceView)
                     }

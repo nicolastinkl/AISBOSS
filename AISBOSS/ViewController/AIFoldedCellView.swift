@@ -38,20 +38,23 @@ class AIFolderCellView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         if isFirstLayout{
-            setLayout()
+            setDescContentView()
         }
     }
     
-    func setLayout(){
+    override func awakeFromNib() {
         serviceNameLabel.font = PurchasedViewFont.TITLE
         statusLabel.font = PurchasedViewFont.STATU
         statusLabel.layer.cornerRadius = 8
         statusLabel.clipsToBounds = true
-        
+    }
+    
+    private func setDescContentView(){
         descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
         for serviceOrderModel : ServiceOrderModel in proposalModel.order_list as! [ServiceOrderModel]{
             if serviceOrderModel.order_state != "Completed" {
                 descContentView?.loadData(serviceOrderModel)
+                break
             }
         }
         
@@ -61,7 +64,7 @@ class AIFolderCellView: UIView {
         isFirstLayout = false
     }
     
-    func loadData(proposalModel : ProposalOrderModel){
+    func loadData(proposalModel : ProposalOrderModel) {
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
 
@@ -71,8 +74,6 @@ class AIFolderCellView: UIView {
             
             serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
         }
-        
-        descContentView?.descLabel.text = firstServiceOrder?.service_name
         
         buildStatusData()
     }
