@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ProposalModel.h"
-#import "AIServiceCoverage.h"
+
 #import "AIServiceTypes.h"
 #import "AIBuyerParamsDelegate.h"
 
 
-@interface AIMusicTherapyView : UIView<AIServiceCoverageDelegate, AIServiceTypesDelegate, AIBuyerParamsDelegate>
+@interface AIMusicTherapyView : UIView<AIServiceTypesDelegate, AIBuyerParamsDelegate>
 
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
