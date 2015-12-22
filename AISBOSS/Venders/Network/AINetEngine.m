@@ -195,9 +195,7 @@
         fail(AINetErrorFormat, @"报文格式错误");
         return;
     }
-#ifdef DEBUG
-    NSLog(@"%@",response);
-#endif
+
     if ([responseObject isKindOfClass:[NSArray class]]) {
         NSArray * newRes = (NSArray *)responseObject;
         if (newRes.count <= 0 ){
