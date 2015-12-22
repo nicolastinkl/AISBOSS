@@ -30,21 +30,66 @@
 
 @end
 
+
+// 重要信息关键点
+@protocol KeypointModel
+@end
+
+@interface KeypointModel  : JSONModel
+
+// 关键点标题
+@property (nonatomic, strong) NSString<Optional> *key_point_title;
+// 关键点内容
+@property (nonatomic, strong) NSString<Optional> *key_point_content;
+
+@end
+
+
+@interface InfoDetailModel : JSONModel
+
+@property (nonatomic, assign) NSString<Optional> *type;
+@property (nonatomic, strong) NSString<Optional> *content;
+
+@end
+
+// 流程脚本对象
+@protocol ArrangeScriptModel
+@end
+
+@interface ArrangeScriptModel  : JSONModel
+
+// 重要信息标题
+@property (nonatomic, strong) NSString<Optional> *info_title;
+// 重要信息说明
+@property (nonatomic, strong) NSString<Optional> *info_desc;
+// 当前流程步骤的状态
+@property (nonatomic, strong) NSString<Optional> *info_state;
+// 重要信息关键点列表
+@property (nonatomic, strong) NSArray<KeypointModel, Optional> *info_key_points;
+// 订单详情展开展示的内容, 为json格式的字符窜
+@property (nonatomic, strong) InfoDetailModel *info_detail;
+
+@end
+
+
+
 @interface ServiceOrderModel : JSONModel
 
 @property (nonatomic, assign) NSInteger order_id;
-@property (nonatomic, assign) NSInteger service_id;
-@property (nonatomic, strong) NSString<Optional> *service_name;
-@property (nonatomic, strong) NSString<Optional> *service_thumbnail_icon;
-@property (nonatomic, strong) NSString<Optional> *service_intro;
 @property (nonatomic, strong) NSString<Optional> *order_state;
-// 1:可现实详情 0:不显示详情
+@property (nonatomic, assign) NSInteger service_id;
+@property (nonatomic, strong) NSString<Optional> *service_thumbnail_icon;
+// 详情标识 1:可显示详情 2:不显示详情
 @property (nonatomic, assign) NSInteger detail_flag;
 // 1:可催单 0:不可催单
 @property (nonatomic, assign) NSInteger prompt_flag;
 // 1:可联系 0:不可联系
 @property (nonatomic, assign) NSInteger contact_flag;
-@property (nonatomic, strong) NSArray<ParamModel, Optional> *param_list;
+//@property (nonatomic, strong) NSArray<ParamModel, Optional> *param_list;
+
+// 流程脚本对象
+@property (nonatomic, strong) ArrangeScriptModel<Optional> *arrange_script_info;
+
 
 @end
 

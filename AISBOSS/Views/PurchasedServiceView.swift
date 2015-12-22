@@ -43,11 +43,12 @@ class PurchasedServiceView: UIView, Measureable {
             
             if let model = newValue {
                 logo.asyncLoadImage(model.service_thumbnail_icon)
-                title.text = model.service_name
+                title.text = model.arrange_script_info.info_title
                 statu.text = model.order_state
-                serviceDescription.text = model.service_intro
-                print("NULL:\(model.service_intro)")
-                if ("\(model.service_intro)".length == 0) {
+                serviceDescription.text = model.arrange_script_info.info_desc
+                
+                if (model.arrange_script_info.info_desc == "") {
+
                     hideDescriptionLabel()
                 } else {
                     setDescriptionLabelHeight()
@@ -63,7 +64,7 @@ class PurchasedServiceView: UIView, Measureable {
     private func setDescriptionLabelHeight() {
         let descriptionWidth = serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
         
-        let size = serviceOrderModel!.service_intro.sizeWithFont(serviceDescription.font, forWidth: descriptionWidth)
+        let size = serviceOrderModel!.arrange_script_info.info_desc.sizeWithFont(serviceDescription.font, forWidth: descriptionWidth)
         
         var descriptionHeight = DESCRIPTION_ONE_LINE_HEIGHT
         
