@@ -139,10 +139,10 @@ class AIOrderDescView: UIView {
         var descLabelFrame : CGRect!
         
         if isDelayed() {
-            let alertTextSize = "Delayed".sizeWithFont(ALERT_LABEL_FONT, forWidth: 1000)
+            let alertTextSize = "AIOrderDescView.delayed".localized.sizeWithFont(ALERT_LABEL_FONT, forWidth: 1000)
             let alertLabelFrame = CGRectMake(keypointViewOriginX - alertTextSize.width - 25, 0, alertTextSize.width, TEXT_HEIGHT)
             let alertLabel = UILabel(frame: alertLabelFrame)
-            alertLabel.text = "Delayed"
+            alertLabel.text = "AIOrderDescView.delayed".localized
             alertLabel.font = ALERT_LABEL_FONT
             alertLabel.textColor = UIColor(hex: "#dbb613")
             alertLabel.alpha = 0.6
@@ -155,7 +155,7 @@ class AIOrderDescView: UIView {
         
         
         descLabel = UILabel(frame: descLabelFrame)
-        descLabel.text = serviceOrderModel.arrange_script_info.info_title ?? "Delivery staff:Mike Liu"
+        descLabel.text = serviceOrderModel.arrange_script_info.info_title ?? "AIOrderDescView.delivery".localized
         descLabel.textColor = UIColor.whiteColor()
         descLabel.font = DESC_TEXT_FONT
         addSubview(descLabel)
