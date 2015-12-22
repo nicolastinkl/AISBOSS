@@ -12,6 +12,10 @@ import UIKit
 class ServiceOrderExpandContentViewFactory {
     static func createExpandContentView(param: InfoDetailModel) -> UIView? {
         var contentView: UIView?
+        guard let _ = param.type else {
+            return nil
+        }
+        
         if param.type == "url" {
             let expandContent = ImageContent(frame: CGRect(x: 0, y: 0, width: 0, height: 180))
             
