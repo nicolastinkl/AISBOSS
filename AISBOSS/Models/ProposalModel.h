@@ -205,7 +205,6 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @property (nonatomic, strong) AIBueryDetailCell<Optional> *cell;
 
-
 @property (assign, nonatomic) NSInteger is_main_flag;
 @property (assign, nonatomic) NSInteger is_delemode;
 

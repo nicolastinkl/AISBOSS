@@ -484,26 +484,23 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         var serviceList: NSArray?
         
         if (tableView == deletedTableView) {
-                    //不优
             serviceList = deleted_service_list_copy
         } else {
             serviceList = current_service_list
         }
         
         let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
-        
+
         if let c = serviceDataModel.cell {
-            #if !DEBUG
-                //恢复区域不可删除
-               let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
-                view.displayDeleteMode = (tableView == deletedTableView)
-                c.canDelete = !(tableView == deletedTableView)
-            #endif
-            return c;
+            //恢复区域不可删除
+            let view: SimpleServiceViewContainer = c.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            view.displayDeleteMode = (tableView == deletedTableView)
+            c.canDelete = !(tableView == deletedTableView)
+            return c
         }
         
         
-        
+        // Init AIBueryDetailCell and SimpleServiceViewContainer.currentView..
         let cell = AIBueryDetailCell.currentView()
         
         let serviceView = SimpleServiceViewContainer.currentView()
@@ -517,12 +514,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         cell.removeDelegate = self
         cell.delegate = self
-        #if !DEBUG
-            //恢复区域不可删除
-            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
-            view.displayDeleteMode = (tableView == deletedTableView)
-            cell.canDelete = !(tableView == deletedTableView)
-        #endif
+
+        serviceView.displayDeleteMode = (tableView == deletedTableView)
+        cell.canDelete = !(tableView == deletedTableView)
         
         // Add constrain
         constrain(serviceView, cell.contentHoldView) {(view, container) ->() in
