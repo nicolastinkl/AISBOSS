@@ -278,7 +278,7 @@ class PurchasedServiceView: UIView, Measureable {
     
     private func adjustFrameToCollapse() {
         let oldFrame = frame
-        frame = CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: oldFrame.width, height: oldFrame.height - expandContent!.frame.height)
+        frame = CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: oldFrame.width, height: oldFrame.height - CONTENT_TOP_MARGIN - expandContent!.frame.height)
         
         dimentionListener?.heightChanged(self, beforeHeight: oldFrame.height, afterHeight: frame.height)
     }
