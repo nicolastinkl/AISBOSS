@@ -70,6 +70,27 @@ static char MJRefreshFooterViewKey;
     self.header.beginRefreshingCallback = callback;
 }
 
+
+/**
+ *  添加下拉刷新结束通知
+ *
+ *  @param callback 回调
+ */
+- (void)addHeaderRefreshEndCallback:(void (^)())callback
+{
+    // 1.创建新的header
+    if (!self.header) {
+        MJRefreshHeaderView *header = [MJRefreshHeaderView header];
+        [self addSubview:header];
+        self.header = header;
+    }
+    
+    // 2.设置block回调
+    self.header.refreshDidEndCallback = callback;
+}
+
+
+
 /**
  *  添加一个下拉刷新头部控件
  *

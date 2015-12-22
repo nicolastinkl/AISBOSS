@@ -195,6 +195,10 @@
                 
                 [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
                     self.scrollView.mj_contentInsetTop -= self.mj_height;
+                } completion:^(BOOL finished) {
+                    if (self.refreshDidEndCallback) {
+                        self.refreshDidEndCallback();
+                    }
                 }];
             } else {
                 // 执行动画

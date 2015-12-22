@@ -22,6 +22,16 @@
 - (void)addHeaderWithCallback:(void (^)())callback;
 
 /**
+ *  添加下拉刷新结束通知
+ *
+ *  @param callback 回调
+ */
+- (void)addHeaderRefreshEndCallback:(void (^)())callback;
+
+
+
+
+/**
  *  添加一个下拉刷新头部控件
  *
  *  @param target 目标
