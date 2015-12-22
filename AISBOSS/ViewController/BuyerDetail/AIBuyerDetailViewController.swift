@@ -186,22 +186,19 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func initBottomView() {
-        
-        if menuLightView == nil {
-            let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
-            bzView.setX((self.view.width - bzView.width) / 2)
-            buyerBottom.addSubview(bzView)
-            menuLightView = bzView
-            addTapActionForView(buyerBottom)
-
+        if menuLightView != nil {
+            menuLightView?.removeFromSuperview()
         }
-
+        let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
+        bzView.setX((self.view.width - bzView.width) / 2)
         if let list = dataSource.service_list as? [AIProposalServiceModel] {
-            self.menuLightView?.refershModelView(list)
+            bzView.refershModelView(list)
         }
-
+        buyerBottom.addSubview(bzView)
+        menuLightView = bzView
         
         //
+        addTapActionForView(buyerBottom)
     }
     
     
@@ -218,8 +215,12 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func bottomTapAction () {
-        AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        AIOrderRequester().submitProposalOrder(dataSource.proposal_id, success: { () -> Void in
+            AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            }) { (errType, errDes) -> Void in
+                
+        }
     }
     
     func showNextViewController() {
