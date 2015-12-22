@@ -248,8 +248,10 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
                 submitModel.service_id = Int(sId as String)!
                 submitModel.role_id = Int((roleId as String))!
                 submitModel.proposal_id = proposalId
-                submitModel.customer_id = 100000002410
-                
+                let str : NSString = "100000002410"
+                submitModel.customer_id = str.integerValue
+                let userID : String = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "100000002410" ) as! String
+                submitModel.customer_id = Int(userID)!
                 submitModel.save_data = AIServiceSaveDataModel()
                 
                 submitDataDic[sId] = submitModel

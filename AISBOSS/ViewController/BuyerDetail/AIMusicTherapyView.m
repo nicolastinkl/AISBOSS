@@ -122,7 +122,7 @@
     [self addSubview:imageView];
     //
     
-    NSString *price = [NSString stringWithFormat:@"%@ %.2f %@", _detailModel.service_price.unit, _detailModel.service_price.price, _detailModel.service_price.billing_mode];
+    NSString *price = [NSString stringWithFormat:@"%@ %ld %@", _detailModel.service_price.unit, (NSInteger)_detailModel.service_price.price, _detailModel.service_price.billing_mode];
     UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     amLabel.attributedText = [self attrAmountWithAmount: price];
     amLabel.textAlignment = NSTextAlignmentCenter;
