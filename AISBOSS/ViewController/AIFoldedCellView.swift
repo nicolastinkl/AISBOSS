@@ -61,7 +61,7 @@ class AIFolderCellView: UIView {
         isFirstLayout = false
     }
     
-    func loadData(proposalModel : ProposalOrderModel){
+    func loadData(proposalModel : ProposalOrderModel) {
         self.proposalModel = proposalModel
         serviceNameLabel.text = proposalModel.proposal_name
 
@@ -72,7 +72,7 @@ class AIFolderCellView: UIView {
             serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
         }
         
-        descContentView?.descLabel.text = firstServiceOrder?.service_name
+  //      descContentView?.descLabel.text = firstServiceOrder?.service_name
         
         buildStatusData()
     }
