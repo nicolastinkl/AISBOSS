@@ -187,16 +187,21 @@ class AIBuyerDetailViewController : UIViewController {
     
     func initBottomView() {
         
-        let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
-        bzView.setX((self.view.width - bzView.width) / 2)
-        if let list = dataSource.service_list as? [AIProposalServiceModel] {
-            bzView.refershModelView(list)
+        if menuLightView == nil {
+            let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
+            bzView.setX((self.view.width - bzView.width) / 2)
+            buyerBottom.addSubview(bzView)
+            menuLightView = bzView
+            addTapActionForView(buyerBottom)
+
         }
-        buyerBottom.addSubview(bzView)
-        menuLightView = bzView
+
+        if let list = dataSource.service_list as? [AIProposalServiceModel] {
+            self.menuLightView?.refershModelView(list)
+        }
+
         
         //
-        addTapActionForView(buyerBottom)
     }
     
     
