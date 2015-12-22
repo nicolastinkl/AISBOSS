@@ -46,8 +46,8 @@ class PurchasedServiceView: UIView, Measureable {
                 title.text = model.service_name
                 statu.text = model.order_state
                 serviceDescription.text = model.service_intro
-                
-                if (model.service_intro == "") {
+                print("NULL:\(model.service_intro)")
+                if ("\(model.service_intro)".length == 0) {
                     hideDescriptionLabel()
                 } else {
                     setDescriptionLabelHeight()

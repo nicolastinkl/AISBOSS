@@ -39,6 +39,22 @@ public class AIImageView: UIImageView {
         didSet {
             self.image = placeholderImage
             
+            self.sd_setImageWithURL(url) { [weak self]  (imgContent, ErrorType, CacheType, CacheURL) -> Void in
+                if let strongSelf = self {
+                    if strongSelf.url == CacheURL {
+                        strongSelf.alpha=0.2;
+                        strongSelf.image = imgContent
+                        UIView.beginAnimations(nil, context: nil)
+                        UIView.setAnimationDuration(0.5)
+                        strongSelf.setNeedsDisplay()
+                        strongSelf.alpha = 1;
+                        UIView.commitAnimations()
+                        
+                    }
+                }
+            }
+            
+            /*
             if let urlString = url?.absoluteString {
                 ImageLoader.sharedLoader.imageForUrl(urlString) { [weak self] image, url in
                     if let strongSelf = self {
@@ -57,7 +73,7 @@ public class AIImageView: UIImageView {
                         })
                     }
                 }
-            }
+            }*/
         }
     }
     
@@ -71,30 +87,4 @@ public class AIImageView: UIImageView {
     
 }
 
-extension UIImageView{
-    
-    typealias DowloadHandler = ()->()
-    func sd_setImageWithURL(url:NSURL?,placeholderImage: UIImage?,completion: DowloadHandler?)->UIImageView{
-        
-        self.image = placeholderImage
-        
-        if let urlString = url?.absoluteString {
-            ImageLoader.sharedLoader.imageForUrl(urlString) { [weak self] image, url in
-                if let strongSelf = self {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        strongSelf.alpha=0.2;
-                        strongSelf.image = image
-                        UIView.beginAnimations(nil, context: nil)
-                        UIView.setAnimationDuration(0.5)
-                        strongSelf.setNeedsDisplay()
-                        strongSelf.alpha = 1;
-                        UIView.commitAnimations()
-                        completion?()
-                    })
-                }
-            }
-        }                
-        return self
-    }
-}
 
