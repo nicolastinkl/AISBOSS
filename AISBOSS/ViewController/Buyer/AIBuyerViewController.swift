@@ -25,8 +25,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var originalViewCenter : CGPoint?
 
-    var didShow : Bool = false
-
     // MARK: - Constants
     
     let bubblesTag : NSInteger = 9999
@@ -71,6 +69,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
         setupLanguageNotification()
         setupUIWithCurrentLanguage()
+        
+        loadData()
     }
     
     func setupLanguageNotification() {
@@ -86,11 +86,16 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // reset refresh view
         tableView.removeHeader()
-        tableView.addHeaderWithCallback { [weak self]() -> Void in
-            if self != nil {
-                self!.loadData()
-            }
+        weak var weakSelf = self
+        tableView.addHeaderWithCallback { () -> Void in
+            print("HeaderWithCallback\n")
+            weakSelf!.loadData()
         }
+        
+        tableView.addHeaderRefreshEndCallback { () -> Void in
+            weakSelf!.tableView.reloadData()
+        }
+        
         
         // reload bottom tableView
         tableViewCellCache.removeAll()
@@ -100,64 +105,58 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        loadData()
+        
     }
     
     private func loadData() {
-        if didShow {
-            return
-        }
+
         
         self.tableView.hideErrorView()
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let listData : ProposalOrderListModel? = appDelegate.buyerListData
         let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
-        
+        weak var weakSelf = self
         if (listData != nil && proposalData != nil) {
             Async.main(after: 0.3, block: { () -> Void in
-                self.parseListData(listData)
-                self.parseProposalData(proposalData)
+                weakSelf!.parseListData(listData)
+                weakSelf!.parseProposalData(proposalData)
+                appDelegate.buyerListData = nil
+                appDelegate.buyerProposalData = nil
+                weakSelf?.tableView.reloadData()
+                
             })
-            
-            didShow = true
+     
         } else {
             let bdk = BDKProposalService()
+            var listDone = false
+            var bubblesDone = false
             // 列表数据
-            bdk.getProposalList({ [weak self](responseData) -> Void in
+            bdk.getProposalList({ (responseData) -> Void in
+                listDone = true
+                weakSelf!.parseListData(responseData)
                 
-                if let weakSelf = self {
-                    weakSelf.parseListData(responseData)
-                    appDelegate.buyerListData = responseData
+                if bubblesDone {
+                    weakSelf!.tableView.headerEndRefreshing()
                 }
                 
-                }) {  [weak self](errType, errDes) -> Void in
-                    if let weakSelf = self {
-                        weakSelf.tableView.showErrorContentView()
-                        weakSelf.tableView.headerEndRefreshing()
-                    }
-            }
-            
-            bdk.getPoposalBubbles({ [weak self] (responseData) -> Void in
-                if let weakSelf = self {
-                    weakSelf.parseProposalData(responseData)
-                    appDelegate.buyerProposalData = responseData
-                }
                 
-                }) {  [weak self](errType, errDes) -> Void in
-                    if let weakSelf = self {
-                        weakSelf.tableView.showErrorContentView()
-                        weakSelf.tableView.headerEndRefreshing()
-                    }
-            }
+                }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.tableView.showErrorContentView()
+            })
+        
+            bdk.getPoposalBubbles({ (responseData) -> Void in
+                bubblesDone = true
+                weakSelf!.parseProposalData(responseData)
+                
+                if listDone {
+                    weakSelf!.tableView.headerEndRefreshing()
+                  
+                }
+                }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.tableView.showErrorContentView()
+            })
             
-            let listData : ProposalOrderListModel? = appDelegate.buyerListData
-            let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
-            
-            // check again
-            if (listData != nil && proposalData != nil) {
-                didShow = true
-            }
         }
     }
     
@@ -181,7 +180,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func reloadDataAfterUserChanged() {
-        didShow = false;
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.buyerListData = nil
         appDelegate.buyerProposalData = nil
@@ -519,6 +517,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 tableViewCellCache[indexPath.row] = buildTableViewCell(indexPath)
             }
         }
+        
         tableView.reloadData()
 
     }
@@ -570,7 +569,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.tableFooterView = view
             }
             
-            self.tableView.reloadData()
+            
         }
     }
     
@@ -579,17 +578,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         if let pops = proposalData!.proposal_list {
             if pops.count > 0 {
                 self.dataSourcePop = pops as! [AIBuyerBubbleModel]
-                
                 self.makeBubbleView()
-                self.tableView.reloadData()
-                self.tableView.headerEndRefreshing()
             }
         }
     }
 
     
     
-    private func proposalToProposalWrap(model: ProposalOrderModel) -> ProposalOrderModelWrap {
+    func proposalToProposalWrap(model: ProposalOrderModel) -> ProposalOrderModelWrap {
         var p = ProposalOrderModelWrap()
         p.model = model
         return p

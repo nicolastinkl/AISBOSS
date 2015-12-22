@@ -54,6 +54,12 @@ typedef enum {
  */
 @property (nonatomic, copy) void (^beginRefreshingCallback)();
 
+
+/**
+ *  结束刷新完成通知
+ */
+@property (nonatomic, copy) void (^refreshDidEndCallback)();
+
 #pragma mark - 刷新相关
 /**
  *  是否正在刷新
@@ -67,6 +73,9 @@ typedef enum {
  *  结束刷新
  */
 - (void)endRefreshing;
+
+
+
 
 #pragma mark - 交给子类去实现 和 调用
 @property (assign, nonatomic) MJRefreshState state;

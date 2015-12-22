@@ -14,6 +14,10 @@
 
 #define kMargin 20
 
+#define kBuyer1Tag 100
+
+#define kSeller1Tag 200
+
 @interface AIFakeLoginView ()
 
 
@@ -116,7 +120,7 @@
     UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle"];
     y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"Lucy" atPointY:y tag:100];
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"Lucy" atPointY:y tag:kBuyer1Tag];
 }
 
 - (void)makeSellerArea
@@ -130,7 +134,7 @@
     UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle"];
     y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"Lily" atPointY:y tag:200];
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"Lily" atPointY:y tag:kSeller1Tag];
 }
 
 #pragma mark - Actions
@@ -148,11 +152,11 @@
     NSString *userID = nil;
     
     switch (gesture.view.tag) {
-        case 100:
+        case kBuyer1Tag:
             userID = @"100000002410";
             break;
-        case 200:
-            userID = @"100000002410";
+        case kSeller1Tag:
+            userID = @"200000002501";
             break;
             
         default:
@@ -165,10 +169,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kDefault_UserID];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"Default_UserID"];
-        
         NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
-        //HttpQuery = "0&0&200000001630&0";
         [[AINetEngine defaultEngine] removeCommonHeaders];
         [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
         
