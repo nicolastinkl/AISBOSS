@@ -575,12 +575,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func parseProposalData(proposalData : AIProposalPopListModel?) {
-        if let pops = proposalData!.proposal_list {
-            if pops.count > 0 {
-                self.dataSourcePop = pops as! [AIBuyerBubbleModel]
-                self.makeBubbleView()
+        
+        
+        if let data = proposalData {
+            if let pops = data.proposal_list {
+                if pops.count > 0 {
+                    self.dataSourcePop = pops as! [AIBuyerBubbleModel]
+                    self.makeBubbleView()
+                }
             }
         }
+        
     }
 
     

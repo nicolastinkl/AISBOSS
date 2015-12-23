@@ -142,6 +142,39 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     [window.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
+//改变服务器地址
+- (void)changeDomainTap
+{
+    NSInteger currentDomain = [[NSUserDefaults standardUserDefaults] integerForKey:kDefault_ServerURL];
+    NSString * s = currentDomain ==  0 ?@"模拟环境":@"正式环境";
+    NSString *message = [NSString stringWithFormat:@"当前服务器环境是%@，切换到",s];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"模拟环境"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kDefault_ServerURL];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+        }];
+        [alert addAction:action];
+    }
+    
+    {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"正式环境"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:kDefault_ServerURL];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }];
+        [alert addAction:action];
+    }
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+    [alert addAction:cancel];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window.rootViewController presentViewController:alert animated:YES completion:nil];
+    
+}
+
+
 - (void)loginTap
 {
     AIFakeLoginView *loginView = [[AIFakeLoginView alloc] initWithFrame:self.bounds];
@@ -160,7 +193,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 - (void)addLanguageSwitchAction {
     CGFloat size = 100;
     CGFloat x = 0;
-       CGFloat y = CGRectGetHeight(self.frame) - size;
+    CGFloat y = CGRectGetHeight(self.frame) - size;
     CGRect frame = CGRectMake(x, y, size, size);
     [self makeTapActionWithFrame:frame action:@selector(langTap)];
 }
@@ -174,6 +207,18 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     [self makeTapActionWithFrame:frame action:@selector(loginTap)];
 }
+
+- (void) addChangeDomainAction
+{
+    CGFloat size = 100;
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGRect frame = CGRectMake(x, y, size, size);
+    
+    [self makeTapActionWithFrame:frame action:@selector(changeDomainTap)];
+}
+
+
 
 #pragma mark - Delegate Event
 
@@ -263,6 +308,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     [self addVersionAction];
     [self addLoginAction];
     [self addLanguageSwitchAction];
+    [self addChangeDomainAction];
+    
 }
 
 - (void)centerTapAction
