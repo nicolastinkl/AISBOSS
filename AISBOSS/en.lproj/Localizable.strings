@@ -20,7 +20,7 @@
 "AIBuyerDetailViewController.pregnancy" = "Pregnancy";
 "AIBuyerDetailViewController.from" = "From";
 "AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
-"AIBuyerDetailViewController.SubmitSuccess" = "Buy Success !";
+"AIBuyerDetailViewController.SubmitSuccess" = "Order Success !";
 "AIBuyerDetailViewController.SubmitFail" = "Buy Fail !";
 "AIBuyerDetailViewController.selectService" = "Please select all service";
 
