@@ -22,6 +22,7 @@
 "AIBuyerDetailViewController.alert" = "Are you sure you want to add %@ service";
 "AIBuyerDetailViewController.SubmitSuccess" = "Buy Success !";
 "AIBuyerDetailViewController.SubmitFail" = "Buy Fail !";
+"AIBuyerDetailViewController.selectService" = "Please select all service";
 
 //
 "AIBuyerViewController.progress" = "Progress";
