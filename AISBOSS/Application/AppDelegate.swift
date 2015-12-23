@@ -172,7 +172,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let message : AIMessage = AIMessage()
         message.url = "http://171.221.254.231:3000/querySellerOrderList"
         message.body.addEntriesFromDictionary(dic)
-        message.header.setObject("0&0&200000001630&0", forKey: "HttpQuery")
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             self.didFinishGetSellerData = true
             self.sellerData = response as? NSDictionary
