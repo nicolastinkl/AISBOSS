@@ -74,7 +74,7 @@ class BDKProposalService : MockProposalService{
     func updateParamSettingState(customerId customerId: Int, serviceId: Int, proposalId: Int, roleId: Int, flag: Bool, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/updateParamSettingState"
+        message.url = AIApplication.AIApplicationServerURL.updateParamSettingState.description
         let flagNum = flag ? 1 : 0
         let body = ["data": ["customer_id": customerId, "service_id": serviceId, "proposal_id": proposalId, "role_id": roleId, "flag": flagNum], "desc": ["data_mode": "0", "digest": ""]]
         
@@ -99,7 +99,7 @@ class BDKProposalService : MockProposalService{
 //        catalog_id
 //        scheme_id
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/delServiceCategory"
+        message.url = AIApplication.AIApplicationServerURL.delServiceCategory.description
         
         let body = ["data":["scheme_id": serviceId, "catalog_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
         //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]
@@ -136,7 +136,7 @@ class BDKProposalService : MockProposalService{
     override func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
-        let url = "http://171.221.254.231:3000/queryCustomerProposalList"
+        let url = AIApplication.AIApplicationServerURL.queryCustomerProposalList.description
         message.url = url
         
         let user : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
@@ -197,7 +197,8 @@ class BDKProposalService : MockProposalService{
     */
     override func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/findCustomerProposalDetail"
+        
+        message.url = AIApplication.AIApplicationServerURL.findCustomerProposalDetail.description
         
         let body = ["data":["proposal_id": proposalId],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)

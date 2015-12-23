@@ -41,7 +41,6 @@ class ServiceCardDetailShopping: ServiceParamlView {
     let MAIN_TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
     override func loadData(json jsonString : String){
-        //let jsonString = "{\"product_name\":\"Shopping list for 8 weeks of pregnancy\",\"product_sub_name\":\"Supplments package\",\"item_list\":[{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Vitafusion Fiber Plus Calcium PreNature Made Calcium 600 Mg, 220-Count\"},{\"item_icon\":\"http://171.221.254.231:3000/upload/proposal/FKByrmpYrI5kn.png\",\"item_intro\":\"Nature Made Prenatal Multi Vitaminalue Size, Tablets, 250-Count\"}]}"
         buildModel(jsonString)
         layoutView()
     }

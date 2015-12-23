@@ -440,6 +440,7 @@ class AIBuyerDetailViewController : UIViewController {
                     }
                 })
         }
+        
     }
     
 }

@@ -163,7 +163,7 @@
         
             AIMessage  * message = [[AIMessage alloc] init];
             //AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
-            [message.body addEntriesFromDictionary:dic];
+            [message.body addEntriesFromDictionary:dic];            
             message.url = @"http://171.221.254.231:3000/querySellerOrderList";
             [weakSelf.tableView hideErrorView];
             [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {

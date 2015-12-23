@@ -145,14 +145,14 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 //改变服务器地址
 - (void)changeDomainTap
 {
-    NSInteger currentDomain = [[NSUserDefaults standardUserDefaults] integerForKey:kDefault_ServerURL];
+    NSInteger currentDomain = [[NSUserDefaults standardUserDefaults] integerForKey:kDefault_ServerURLStatus];
     NSString * s = currentDomain ==  0 ?@"模拟环境":@"正式环境";
     NSString *message = [NSString stringWithFormat:@"当前服务器环境是%@，切换到",s];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleActionSheet];
     
     {
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"模拟环境"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kDefault_ServerURL];
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kDefault_ServerURLStatus];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
         }];
@@ -161,7 +161,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
     {
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"正式环境"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:kDefault_ServerURL];
+            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:kDefault_ServerURLStatus];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }];
         [alert addAction:action];
@@ -303,8 +303,6 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     UITapGestureRecognizer *tapGuesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(centerTapAction)];
     [_tapView addGestureRecognizer:tapGuesture];
     
-    //
-    
     [self addVersionAction];
     [self addLoginAction];
     [self addLanguageSwitchAction];
@@ -331,15 +329,12 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     
 }
 
-
 - (void)startTapAnimation
 {
     
     [self startFlickerView:_logoView repeatCount:2];
     
-    
 }
-
 
 - (void)startFlickerView:(UIView *)view repeatCount:(NSInteger)repeatCount
 {

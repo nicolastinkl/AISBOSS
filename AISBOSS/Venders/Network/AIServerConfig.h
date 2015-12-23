@@ -8,17 +8,13 @@
 
 
 // 服务器地址
+#define kURL_GetServiceList                 @"https://server.asiainfo.com/getservicelist" //TEST..
 
-#define kURL_GetServiceList         @"https://server.asiainfo.com/getservicelist"
-#define kURL_GetSchemeList          @"http://171.221.254.231:3000/getServiceScheme"
+#define KURL_ReleaseURL                     @"http://171.221.254.231:3000"  //正式地址
+#define KURL_DebugURL                       @"http://171.221.254.231:3000"  //测试地址
 
-#define kURL_AddWishNote            @"http://171.221.254.231:3000/addWishListNote"
-#define kURL_DelWishNote            @"http://171.221.254.231:3000/delWishListNote"
-#define kURL_SaveParameters         @"http://171.221.254.231:3000/sbss/saveServiceParameters"
-
-#define kURL_UpateWishTagListID            @"http://171.221.254.231:3000/updateWishListTagChosenState"
+#define kURL_QuerySellerOrderList           @"http://171.221.254.231:3000/querySellerOrderList"
 
 // 关键字(字段名)
-
 #define kKey_ServiceID     @"serviceID"
 #define kKey_SchemeID      @"sheme_id"
