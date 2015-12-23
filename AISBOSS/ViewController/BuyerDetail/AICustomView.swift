@@ -34,6 +34,10 @@ internal class AICustomView : UIView{
         return selfView
     }
     
+    func imageViewLoad(url:String?){
+        self.avator.sd_setImageWithURL(NSURL(string: "\(url ?? "")"))
+    }
+    
     /**
      TODO: 处理数据填充和标签初始化
      */

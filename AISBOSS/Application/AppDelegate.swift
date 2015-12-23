@@ -44,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置状态栏高亮
         application.statusBarStyle = UIStatusBarStyle.LightContent
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        
-        fetchPreSellerAndBuyerData()
+         
         
         // 检查录音权限
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
@@ -56,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }catch{
             }
         }) 
+        
+        fetchPreSellerAndBuyerData()
+//        showRootViewController()
         
         return true
 
@@ -89,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = "0"
         let RSA = "0"
    
-        let userID : String = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "100000002410" ) as! String
+        let userID  = (NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") ?? "100000002410") as! String
 
         if userID == "100000002410" {
             NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "Default_UserID")
@@ -164,18 +166,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
     func fetchSellerData () {
         let dic = ["data": ["order_state": "0","order_role": "2"],
             "desc": ["data_mode": "0","digest": ""]]
         
-        let message : AIMessage = AIMessage()
+        let message = AIMessage()
         message.url = "http://171.221.254.231:3000/querySellerOrderList"
         message.body.addEntriesFromDictionary(dic)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             self.didFinishGetSellerData = true
             self.sellerData = response as? NSDictionary
-            
+
             if (self.didFinishGetBuyerListData && self.didFinishGetBuyerProposalData) {
                 self.showRootViewController()
             }
@@ -190,8 +191,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func fetchPreSellerAndBuyerData () {
-        
-        
         
         // Get Seller
         fetchSellerData()

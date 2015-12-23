@@ -392,6 +392,7 @@ internal class AIServiceContentViewController: UIViewController {
         let custView =  AICustomView.currentView()
         addNewSubView(custView, preView: preView)
         
+        custView.imageViewLoad(self.currentDatasource?.service_provider.portrait_icon)
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
             custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0

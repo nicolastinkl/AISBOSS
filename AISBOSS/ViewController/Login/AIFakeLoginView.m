@@ -163,7 +163,6 @@
             break;
     }
     
-    
     if (userID) {
         
         [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kDefault_UserID];
