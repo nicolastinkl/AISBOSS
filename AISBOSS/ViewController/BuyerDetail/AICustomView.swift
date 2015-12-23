@@ -35,7 +35,8 @@ internal class AICustomView : UIView{
     }
     
     func imageViewLoad(url:String?){
-        self.avator.sd_setImageWithURL(NSURL(string: "\(url ?? "")"))
+        let s = url ?? ""
+        self.avator.sd_setImageWithURL(NSURL(string: "\(s)"))
     }
     
     /**
