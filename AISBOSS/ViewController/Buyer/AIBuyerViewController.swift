@@ -9,7 +9,7 @@
 import UIKit
 import AISpring
 
-class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AIBuyerDetailDelegate{
+class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AIBuyerDetailDelegate {
 
     // MARK: - Properties
     

@@ -151,7 +151,7 @@
             AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
             [message.body addEntriesFromDictionary:dic];
             message.url = @"http://171.221.254.231:3000/querySellerOrderList";
-            [message.header setObject:@"0&0&200000001630&0" forKey:@"HttpQuery"];
+            
             [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
                 weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
                 

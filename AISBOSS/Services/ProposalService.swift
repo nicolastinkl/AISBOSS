@@ -139,7 +139,8 @@ class BDKProposalService : MockProposalService{
         let url = "http://171.221.254.231:3000/queryCustomerProposalList"
         message.url = url
         
-        let body = ["data":["user_id":"200000001630", "role_type": "1", "status":1],"desc":["data_mode":"0","digest":""]]
+        let user : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        let body = ["data":["user_id":user, "role_type": "1", "status":1],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in

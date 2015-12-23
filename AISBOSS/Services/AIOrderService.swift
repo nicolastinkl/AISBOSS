@@ -13,6 +13,26 @@ class AIOrderRequester {
     typealias OrderListRequesterCompletion = (data:[AIOrderListItemModel]) ->()
     private var isLoading : Bool = false
     
+    func submitProposalOrder(proposalId: Int, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        
+        let message = AIMessage()
+        message.url = "http://171.221.254.231:3000/submitProposalOrder"
+        let body = ["data": ["proposal_id": proposalId], "desc": ["data_mode": "0", "digest": ""]]
+        
+        message.body = NSMutableDictionary(dictionary: body)
+        AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
+            do {
+                success()
+                
+            } catch {
+                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+            }
+            
+            }) {(error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes ?? "")
+        }
+    }
+    
     //查询订单列表 
     func queryOrderList(page :Int=1,completion:OrderListRequesterCompletion){
         

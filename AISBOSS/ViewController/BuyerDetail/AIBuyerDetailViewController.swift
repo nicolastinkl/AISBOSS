@@ -186,7 +186,9 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func initBottomView() {
-        
+        if menuLightView != nil {
+            menuLightView?.removeFromSuperview()
+        }
         let bzView = UIBezierPageView(frame: CGRectMake(0, -19, 200, 50))
         bzView.setX((self.view.width - bzView.width) / 2)
         if let list = dataSource.service_list as? [AIProposalServiceModel] {
@@ -213,8 +215,25 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func bottomTapAction () {
-        AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if let anyServiceNotSelected = current_service_list?.contains({ (obj) -> Bool in
+            return obj.param_setting_flag == 0 ? true : false
+        }) {
+            //有任何一个或几个服务 未选中
+            if anyServiceNotSelected {
+                AIAlertView().showInfo("AIBuyerDetailViewController.selectService".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+                return
+            }
+        }
+
+        
+        self.view.showLoadingWithMessage("")
+        AIOrderRequester().submitProposalOrder(dataSource.proposal_id, success: { () -> Void in
+            AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+            self.view.dismissLoading()
+            self.dismissViewControllerAnimated(true, completion: nil)
+            }) { (errType, errDes) -> Void in
+                self.view.dismissLoading()
+        }
     }
     
     func showNextViewController() {
