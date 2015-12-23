@@ -53,7 +53,7 @@
     [self makeTableView];
     [self makeBottomBar];
     [self addRefreshActions];
-    [self preProcess];
+    //[self preProcess];
     [self setupLanguageNotification];
     
     //Chaged UserID.
@@ -61,7 +61,20 @@
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self preProcess];
+    [AISellserAnimationView startAnimationOnSellerViewController:self];
+}
+
+
 - (void) reloadDataAfterUserChanged {
+    
+    self.sellerInfoList = nil;
+    [self.tableView reloadData];
+    
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.sellerData = nil;
     
@@ -83,13 +96,6 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [AISellserAnimationView startAnimationOnSellerViewController:self];
-}
-
 
 /*
 #pragma mark - Navigation
@@ -104,11 +110,18 @@
 - (void)preProcess
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    if (delegate.sellerData) {
+   
+    if (delegate.sellerData || self.listModel ) {
         self.listModel = [[AIOrderPreListModel alloc] initWithDictionary:delegate.sellerData error:nil];
-        [self.tableView reloadData];
-        [self.tableView headerEndRefreshing];
+        if (self.listModel != nil) {
+            
+            [self.tableView reloadData];
+            [self.tableView headerEndRefreshing];
+            [AISellserAnimationView startAnimationOnSellerViewController:self];
+        }else{
+            [self.tableView headerBeginRefreshing];
+        }
+       
     }
     else
     {
@@ -147,13 +160,29 @@
     [self.tableView addHeaderWithCallback:^{
             NSDictionary *dic = @{@"data": @{@"order_state": @"0",@"order_role": @"2"},
                                   @"desc": @{@"data_mode": @"0",@"digest": @""}};
-            
-            AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
+        
+            AIMessage  * message = [[AIMessage alloc] init];
+            //AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
             [message.body addEntriesFromDictionary:dic];
             message.url = @"http://171.221.254.231:3000/querySellerOrderList";
-            
+            [weakSelf.tableView hideErrorView];
             [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
-                weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
+                
+                if (response != nil){
+                    NSArray * array = response[@"order_list"];
+                    if (array != nil)  {
+                        if (array.count > 0) {
+                            weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
+                            if (weakSelf.listModel == nil){
+                                [weakSelf.tableView showErrorContentView];
+                            }
+                        }
+                        
+                    }else{
+                        [weakSelf.tableView showErrorContentView];
+                    }
+                }
+                
                 
                 dispatch_main_async_safe(^{
                     [weakSelf.tableView reloadData];
@@ -163,6 +192,7 @@
             } fail:^(AINetError error, NSString *errorDes) {
                  dispatch_main_async_safe(^{
                      [weakSelf.tableView headerEndRefreshing];
+                     [weakSelf.tableView showErrorContentView];
                  });
                 
             }];
