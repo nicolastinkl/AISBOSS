@@ -45,7 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = UIStatusBarStyle.LightContent
         application.setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
-        fetchPreSellerAndBuyerData()
+        
+        
         
         // 检查录音权限
         AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool)-> Void in
@@ -56,6 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }catch{
             }
         }) 
+        
+        fetchPreSellerAndBuyerData()
+//        showRootViewController()
         
         return true
 
@@ -164,7 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
     func fetchSellerData () {
         let dic = ["data": ["order_state": "0","order_role": "2"],
             "desc": ["data_mode": "0","digest": ""]]
@@ -176,6 +179,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             self.didFinishGetSellerData = true
             self.sellerData = response as? NSDictionary
+
+            
             
             if (self.didFinishGetBuyerListData && self.didFinishGetBuyerProposalData) {
                 self.showRootViewController()
@@ -191,8 +196,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func fetchPreSellerAndBuyerData () {
-        
-        
         
         // Get Seller
         fetchSellerData()

@@ -56,7 +56,18 @@
     [self preProcess];
     [self setupLanguageNotification];
     
+    //Chaged UserID.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterUserChanged) name:kShouldUpdataUserDataNotification object:nil];
+    
 }
+
+- (void) reloadDataAfterUserChanged {
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.sellerData = nil;
+    
+    [self.tableView headerBeginRefreshing];
+}
+
 
 - (void)setupLanguageNotification {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(setupUIWithCurrentLanguage) name:@"LCLLanguageChangeNotification" object:nil];

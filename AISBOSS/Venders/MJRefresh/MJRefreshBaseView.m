@@ -62,9 +62,10 @@
 - (UIActivityIndicatorView *)activityView
 {
     if (!_activityView) {
-        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         activityView.bounds = self.arrowImage.bounds;
         activityView.autoresizingMask = self.arrowImage.autoresizingMask;
+//        activityView.color = [UIColor whiteColor];
         [self addSubview:_activityView = activityView];
     }
     return _activityView;

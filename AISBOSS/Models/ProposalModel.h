@@ -9,6 +9,10 @@
 #import "JSONModel.h"
 #import <UIKit/UIKit.h>
 
+@interface AIBaseModel : JSONModel
+
+@end
+
 @protocol ServiceOrderModel
 @end
 
