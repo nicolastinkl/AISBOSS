@@ -22,6 +22,7 @@
 "AIBuyerDetailViewController.alert" = "确定添加服务%@";
 "AIBuyerDetailViewController.SubmitSuccess" = "购买成功!";
 "AIBuyerDetailViewController.SubmitFail" = "购买失败!";
+"AIBuyerDetailViewController.selectService" = "请选择全部服务";
 
 //
 "AIBuyerViewController.progress" = "进度";
