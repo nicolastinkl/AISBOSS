@@ -204,14 +204,9 @@ internal class AIServiceContentViewController: UIViewController {
         makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")        
         
         // Add Pull To Referesh..
-        self.scrollView.addHeaderWithCallback { [weak self]() -> Void in
-            if let strongSelf = self {
-                // Init Data
-                /** 处理数据请求 */
-                
-                strongSelf.initData()
-                
-            }
+        weak var weakSelf = self
+        self.scrollView.addHeaderWithCallback { () -> Void in
+            weakSelf!.initData()
         }
         
         Async.main { () -> Void in
@@ -219,10 +214,18 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
+    func removeContentView () {
+        for view in scrollView.subviews {
+            if view != scrollView.headerView() {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
     func initData(){
         
-        self.scrollView.hideErrorView()
-        
+        scrollView.hideErrorView()
+  
         BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId, success:
             {[weak self] (responseData) -> Void in
                 
@@ -233,6 +236,7 @@ internal class AIServiceContentViewController: UIViewController {
                         //InitControl Data
                         
                         /** ScrollView数据填充 */
+                        strongSelf.removeContentView()
                         strongSelf.makeContentView()
                         strongSelf.scrollView.headerEndRefreshing()
                     }
@@ -368,6 +372,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     private func addGalleryView() {
         // Add gallery View
+
         scrollView.addSubview(galleryView)
         
         var imageArray = [String]()

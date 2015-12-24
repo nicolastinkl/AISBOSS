@@ -370,7 +370,7 @@
 {
     SellerCellColorType type;
     
-    if (state == 10 || state == 14)
+    if (state == 10 || state == 14 || state == 11)
     {
         type = SellerCellColorTypeNormal;
     }

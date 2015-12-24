@@ -14,6 +14,12 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
      
     // MARK: -> Internal class methods
     
+    
+    class func defaultTag () -> NSInteger {
+        return (Int)(99999 + (arc4random() % 9999999))
+    }
+    
+    
     var imageModelArray : [String]? {
         didSet {
             guard let imageArray = imageModelArray else { return }
