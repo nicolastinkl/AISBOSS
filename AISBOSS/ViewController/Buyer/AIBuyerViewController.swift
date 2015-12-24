@@ -113,6 +113,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.tableView.hideErrorView()
         
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let listData : ProposalOrderListModel? = appDelegate.buyerListData
         let proposalData : AIProposalPopListModel? = appDelegate.buyerProposalData
@@ -134,6 +135,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             // 列表数据
             bdk.getProposalList({ (responseData) -> Void in
                 listDone = true
+                
                 weakSelf!.parseListData(responseData)
                 
                 if bubblesDone {
@@ -406,12 +408,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func makeTableView () {
         
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.separatorStyle = .None
-        tableView?.showsVerticalScrollIndicator = true
-        tableView?.backgroundColor = UIColor.clearColor()
-        tableView?.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .None
+        tableView.showsVerticalScrollIndicator = true
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
 
         self.view.addSubview(tableView!)
         
@@ -565,6 +567,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func parseListData(listData : ProposalOrderListModel?) {
         
         if let data = listData {
+            tableViewCellCache.removeAll()
+
             dataSource.removeAll()
             
             for proposal in data.proposal_order_list {

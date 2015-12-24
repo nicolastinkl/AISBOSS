@@ -240,6 +240,7 @@ class AIBuyerDetailViewController : UIViewController {
             AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
             self.view.dismissLoading()
             self.dismissViewControllerAnimated(true, completion: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
             }) { (errType, errDes) -> Void in
                 self.view.dismissLoading()
         }
