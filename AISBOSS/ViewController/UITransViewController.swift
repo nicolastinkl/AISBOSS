@@ -1097,10 +1097,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         }
     } 
  
-//    
-    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false

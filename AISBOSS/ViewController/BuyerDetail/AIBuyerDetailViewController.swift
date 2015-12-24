@@ -26,8 +26,7 @@ class AIBuyerDetailViewController : UIViewController {
     
     private let SIMPLE_SERVICE_VIEW_CONTAINER_TAG: Int = 233
     private let CELL_VERTICAL_SPACE: CGFloat = 10
-    
-//    private var cellHeights: [Int : CGFloat] = [Int : CGFloat]()
+
     private var dataSource : AIProposalInstModel!
     var bubbleModel : AIBuyerBubbleModel?
     weak var delegate: AIBuyerDetailDelegate?
@@ -91,38 +90,48 @@ class AIBuyerDetailViewController : UIViewController {
 //    private var horizontalCardCellCache = NSMutableDictionary()
     
     // MARK: life cycle
-    
+    func initTableView(){
+        
+        self.tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+
+        /* Here's a test for me to use autoLayout in tableView interface the autoheight.
+        self.tableView.estimatedRowHeight = 150.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension*/
+        
+        contentView = tableView.tableHeaderView?.viewWithTag(1)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        // Setting's default tableView settings.
+        initTableView()
         
-        contentView = tableView.tableHeaderView?.viewWithTag(1)
-        
+        // Setting's Restore tool bar.
         initServiceRestoreToolbar()
+        
+        // Set delete TabelView.
         initDeletedTableView()
+        
+        // Set's Deleted overly View.
         initDeletedOverlayView()
+        
         // init Label Font
         initLabelFont()
-        
-        // Make
-        // makeBuyButton()
         
         // Add Pull To Referesh..
         tableView.addHeaderWithCallback {[weak self]() -> Void in
             if let strongSelf = self {
                 // init Data
                 strongSelf.initData()
-                
             }
         }
         
+        // Default request frist networking from asiainfo server.
         self.tableView.headerBeginRefreshing()
         
     }
-    
     
     func initDeletedTableView() {
         deletedTableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
@@ -435,8 +444,7 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         viewController.tableView.headerEndRefreshing()
                         // 处理错误警告
-                        
-                        viewController.tableView.showErrorContentView()
+                         
                     }
                 })
         }
@@ -553,6 +561,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         return cell
         
     }
+    
     
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

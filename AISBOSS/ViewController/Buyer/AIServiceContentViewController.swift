@@ -795,7 +795,6 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
     }
     
     
-    
     func deleteAction(cell: UIView?) {
         
         let noteView = cell as? AIWishMessageView
