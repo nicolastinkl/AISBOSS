@@ -295,9 +295,7 @@ typedef enum  {
         imageview.alpha = kDefaultAlpha;
         [UIView commitAnimations];
         
-        
-            
-        }
+    }
     
     
     /**

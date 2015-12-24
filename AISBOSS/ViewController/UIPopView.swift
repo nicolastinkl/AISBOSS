@@ -66,7 +66,7 @@ import AISpring
                 let logoModel = server as! AIBuyerBubbleProportModel
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()
-                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? ""), placeholderImage:nil)
+                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? AIApplication.AIImagePlaceHolder.AIDefaultPlaceHolder), placeholderImage:UIImage(named: "scrollball_5"))
                 //36^
                 imageView.frame = CGRectMake(position.x, position.y, 29/2.5, 29/2.5)
                 self.addSubview(imageView)

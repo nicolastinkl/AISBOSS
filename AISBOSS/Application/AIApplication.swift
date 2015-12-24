@@ -172,6 +172,10 @@ struct AIApplication{
         static let height:CGFloat           = 9.0
     }
     
+    struct AIImagePlaceHolder {
+        static let AIDefaultPlaceHolder = "http://tinkl.qiniudn.com/tinklUpload_scrollball_5.png"
+    }
+    
     // MARK: IM ObjectIDS
     struct AIIMOBJECTS {
         static let AIYUJINGID = "556c0a2ae4b09419962544b7"          //预警通知
@@ -218,7 +222,7 @@ struct AIApplication{
         let newMethod = class_getInstanceMethod(clzz, newSelector)
         method_exchangeImplementations(oldMethod, newMethod)
     }
-    
+
     
     /**
      根据不同环境获取服务器Api地址.    
