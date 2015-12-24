@@ -89,7 +89,7 @@
         
         if (responseObject) {
             NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
-            if (length > 200 && [responseObject isKindOfClass:[NSDictionary class]]) {
+            if (length > 180 && [responseObject isKindOfClass:[NSDictionary class]]) {
                 [weakSelf parseSuccessResponseWithTask:task
                                         responseObject:responseObject
                                                success:success
