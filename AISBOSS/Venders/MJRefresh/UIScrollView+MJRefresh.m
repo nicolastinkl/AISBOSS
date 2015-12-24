@@ -16,8 +16,10 @@
 #import <objc/runtime.h>
 
 @interface UIScrollView()
+
 @property (weak, nonatomic) MJRefreshHeaderView *header;
 @property (weak, nonatomic) MJRefreshFooterView *footer;
+
 @end
 
 
@@ -52,6 +54,20 @@ static char MJRefreshFooterViewKey;
 }
 
 #pragma mark - 下拉刷新
+
+
+/**
+ *  返回头部刷新视图对象
+ *
+ *
+ */
+
+- (UIView *)headerView
+{
+    return self.header;
+}
+
+
 /**
  *  添加一个下拉刷新头部控件
  *

@@ -264,7 +264,7 @@ struct AIApplication{
         // 查询客户Proposal列表
         case queryCustomerProposalList
         // 查询客户订单列表
-        case queryCustomerOrderListFake
+        case queryCustomerOrderList
         // 查找客户Proposal详情
         case findCustomerProposalDetail
         // 查找服务详情
@@ -293,7 +293,7 @@ struct AIApplication{
             case .updateParamSettingState: return AIApplication.KURL_ReleaseURL+"/updateParamSettingState"
             case .delServiceCategory: return AIApplication.KURL_ReleaseURL+"/delServiceCategory"
             case .queryCustomerProposalList: return AIApplication.KURL_ReleaseURL+"/queryCustomerProposalList"
-            case .queryCustomerOrderListFake: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderListFake"
+            case .queryCustomerOrderList: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderList"
             case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetail"
             case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
             case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"

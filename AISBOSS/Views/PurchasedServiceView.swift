@@ -47,7 +47,7 @@ class PurchasedServiceView: UIView, Measureable {
                 statu.text = model.order_state
                 serviceDescription.text = model.arrange_script_info.info_desc
                 
-                if (model.arrange_script_info.info_desc == "") {
+                if (model.arrange_script_info.info_desc == nil || model.arrange_script_info.info_desc == "") {
 
                     hideDescriptionLabel()
                 } else {
