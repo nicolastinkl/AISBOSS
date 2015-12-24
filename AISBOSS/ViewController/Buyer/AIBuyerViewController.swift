@@ -109,7 +109,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    private func loadData() {
+    func loadData() {
         
         self.tableView.hideErrorView()
         
@@ -562,7 +562,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             topBar.backgroundColor = UIColor.clearColor()
         }
     }
-    
     
     func parseListData(listData : ProposalOrderListModel?) {
         
