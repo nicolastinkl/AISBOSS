@@ -176,7 +176,8 @@ class SimpleServiceViewContainer: UIView {
         let msgContent = ServiceSettingView.createInstance()
         msgContent.loadData(model: hopeModel)
         
-        dividerTopMargin.constant =  msgContent.height
+        dividerTopMargin.constant = SimpleServiceViewContainer.DIVIDER_TOP_MARGIN
+        dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
         messageHeight.constant = msgContent.height
         
         messageView.setNeedsUpdateConstraints()
@@ -191,6 +192,7 @@ class SimpleServiceViewContainer: UIView {
         dividerHeight.constant = 0.5
         divider.setNeedsUpdateConstraints()
         frame.size.height = totalHeight()
+        setNeedsUpdateConstraints()
     }
     
     private func isParamSetted() -> Bool {
@@ -224,7 +226,7 @@ class SimpleServiceViewContainer: UIView {
     }
     
     func selfHeight() -> CGFloat {
-        return  getTopHeight() + paramsViewTopMargin.constant + paramViewHeight + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+        return totalHeight()
     }
     
     

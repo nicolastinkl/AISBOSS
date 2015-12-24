@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -142,35 +142,17 @@
                     <animations/>
                     <color key="backgroundColor" red="0.83921568627450982" green="0.83529411764705885" blue="0.96470588235294119" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="sFB-V2-G6T" firstAttribute="leading" secondItem="19k-ls-gMA" secondAttribute="leading" id="3c3-6X-9N1"/>
                         <constraint firstAttribute="trailing" secondItem="sFB-V2-G6T" secondAttribute="trailing" id="4Br-SB-BLL"/>
                         <constraint firstItem="19k-ls-gMA" firstAttribute="top" secondItem="sFB-V2-G6T" secondAttribute="bottom" id="4Cc-LC-U9r"/>
-                        <constraint firstItem="19k-ls-gMA" firstAttribute="leading" secondItem="GEZ-92-Mww" secondAttribute="leading" id="Hqf-Tt-bJa"/>
-                        <constraint firstItem="19k-ls-gMA" firstAttribute="width" secondItem="GEZ-92-Mww" secondAttribute="width" id="INL-y4-mUV"/>
                         <constraint firstItem="GEZ-92-Mww" firstAttribute="leading" secondItem="7sD-DV-Xc4" secondAttribute="leading" id="LiS-04-Ted"/>
                         <constraint firstItem="GEZ-92-Mww" firstAttribute="top" secondItem="19k-ls-gMA" secondAttribute="bottom" id="Lts-2G-5rd"/>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="top" secondItem="7sD-DV-Xc4" secondAttribute="top" id="MS4-vC-5B7"/>
                         <constraint firstAttribute="trailing" secondItem="GEZ-92-Mww" secondAttribute="trailing" constant="29" id="Nbv-bC-iPu"/>
-                        <constraint firstItem="sFB-V2-G6T" firstAttribute="trailing" secondItem="GEZ-92-Mww" secondAttribute="trailing" id="QOT-X7-Hh8"/>
-                        <constraint firstItem="sFB-V2-G6T" firstAttribute="leading" secondItem="GEZ-92-Mww" secondAttribute="leading" id="WIl-52-bmR"/>
                         <constraint firstAttribute="bottom" secondItem="GEZ-92-Mww" secondAttribute="bottom" id="ZwY-Ak-fQm"/>
-                        <constraint firstItem="sFB-V2-G6T" firstAttribute="width" secondItem="GEZ-92-Mww" secondAttribute="width" id="d8m-Ar-nx1"/>
                         <constraint firstItem="sFB-V2-G6T" firstAttribute="leading" secondItem="7sD-DV-Xc4" secondAttribute="leading" id="fk2-rt-CXM"/>
                         <constraint firstAttribute="trailing" secondItem="378-hf-H9o" secondAttribute="trailing" id="jnp-yB-Ub5"/>
-                        <constraint firstItem="sFB-V2-G6T" firstAttribute="width" secondItem="19k-ls-gMA" secondAttribute="width" id="saW-Wk-Adh"/>
                         <constraint firstAttribute="bottom" secondItem="378-hf-H9o" secondAttribute="bottom" id="yAB-th-2wZ"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="3c3-6X-9N1"/>
-                            <exclude reference="QOT-X7-Hh8"/>
-                            <exclude reference="WIl-52-bmR"/>
-                            <exclude reference="d8m-Ar-nx1"/>
-                            <exclude reference="saW-Wk-Adh"/>
-                            <exclude reference="Hqf-Tt-bJa"/>
-                            <exclude reference="INL-y4-mUV"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <animations/>
