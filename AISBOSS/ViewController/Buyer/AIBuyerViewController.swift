@@ -79,6 +79,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func refreshAfterNewOrder () {
+        cleanHistoryData()
         
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
@@ -99,23 +100,26 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         weak var weakSelf = self
         tableView.addHeaderWithCallback { () -> Void in
             print("HeaderWithCallback\n")
+            weakSelf!.cleanHistoryData()
             weakSelf!.loadData()
         }
+//        
+//        tableView.addHeaderRefreshEndCallback { () -> Void in
+//            weakSelf!.tableView.reloadData()
+//        }
         
-        tableView.addHeaderRefreshEndCallback { () -> Void in
-            weakSelf!.tableView.reloadData()
-        }
-        
-        
-        // reload bottom tableView
-        tableViewCellCache.removeAll()
-        tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         
+    }
+    
+    func cleanHistoryData () {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.buyerListData = nil
+        appDelegate.buyerProposalData = nil
     }
     
     func loadData() {
@@ -149,6 +153,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 if bubblesDone {
                     weakSelf!.tableView.headerEndRefreshing()
+                    weakSelf!.tableView.reloadData()
                 }
                 
                 
@@ -163,7 +168,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 if listDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                  
+                    weakSelf!.tableView.reloadData()
                 }
                 }, fail: { (errType, errDes) -> Void in
                     weakSelf!.tableView.headerEndRefreshing()
