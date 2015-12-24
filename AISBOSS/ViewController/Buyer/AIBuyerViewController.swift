@@ -557,9 +557,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func parseListData(listData : ProposalOrderListModel?) {
         
         if let data = listData {
+            dataSource.removeAll()
+            
             for proposal in data.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalOrderModel)
-                self.dataSource.append(wrapModel)
+                
+                dataSource.append(wrapModel)
             }
             
             // 添加占位区
