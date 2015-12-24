@@ -98,10 +98,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.removeHeader()
         weak var weakSelf = self
         tableView.addHeaderWithCallback { () -> Void in
+
             weakSelf!.clearPropodalData()
+
             weakSelf!.loadData()
         }
-        
+
         tableView.addHeaderRefreshEndCallback { () -> Void in
             weakSelf!.tableView.reloadData()
         }
@@ -109,6 +111,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // reload bottom tableView
         tableViewCellCache.removeAll()
         tableView.reloadData()
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -148,6 +151,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 if bubblesDone {
                     weakSelf!.tableView.headerEndRefreshing()
+                    weakSelf!.tableView.reloadData()
                 }
                 
                 
@@ -162,7 +166,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 if listDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                  
+                    weakSelf!.tableView.reloadData()
                 }
                 }, fail: { (errType, errDes) -> Void in
                     weakSelf!.tableView.headerEndRefreshing()
