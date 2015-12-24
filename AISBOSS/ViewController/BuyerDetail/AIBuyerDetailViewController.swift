@@ -91,13 +91,19 @@ class AIBuyerDetailViewController : UIViewController {
 //    private var horizontalCardCellCache = NSMutableDictionary()
     
     // MARK: life cycle
-    
+    func initTableView(){
+        
+        self.tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        self.tableView.estimatedRowHeight = 50.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        initTableView()
         
         contentView = tableView.tableHeaderView?.viewWithTag(1)
         
@@ -553,6 +559,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
     }
     
+    /*
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -578,7 +585,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         } else {
             return 1
         }
-    }
+    }*/
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       

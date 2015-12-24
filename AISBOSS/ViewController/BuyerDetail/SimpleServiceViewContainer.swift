@@ -11,6 +11,7 @@ import Cartography
 
 class SimpleServiceViewContainer: UIView {
     
+    /// Variables.
     private static let DIVIDER_TOP_MARGIN: CGFloat = 1
     private static let DIVIDER_BOTTOM_MARGIN: CGFloat = 1
 
@@ -40,6 +41,7 @@ class SimpleServiceViewContainer: UIView {
     var dataModel: AIProposalServiceModel?
     var settingButtonDelegate: SettingClickDelegate?
     
+    // Privater
     internal var displayDeleteMode: Bool? {
         didSet{
             guard let dModel = self.displayDeleteMode else {
@@ -86,6 +88,9 @@ class SimpleServiceViewContainer: UIView {
         return serviceView
     }
     
+    /**
+     AwakeFromeNib
+     */
     override func awakeFromNib() {
         super.awakeFromNib()
      
