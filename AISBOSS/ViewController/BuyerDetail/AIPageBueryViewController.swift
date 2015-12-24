@@ -192,8 +192,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             let message = AIMessage()
             message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data.toDictionary()])
     
-            print(message.body)
-            message.url = "http://171.221.254.231:3000/saveServiceParameters"
+            message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
             
             AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
                 

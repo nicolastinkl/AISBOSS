@@ -14,12 +14,17 @@ import Cartography
 *
 *  AI2020OS Application Paramters
 */
+
 struct AIApplication{
     
     // MARK: LEANCLOUD APPKEY
     internal static let AVOSCLOUDID  = "xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk"
     
     internal static let AVOSCLOUDKEY = "qqcxwtjlx3ctw32buizjkaw5elwf0s41u4xf8ct7glbox171"
+    
+    internal static let KURL_ReleaseURL =  "http://171.221.254.231:3000"  //正式地址
+    internal static let KURL_DebugURL   =  "http://171.221.254.231:3000"  //测试地址
+    
     
     // MARK: XUNFEI APPID
     internal static let XUNFEIAPPID  = "551ba83b"
@@ -235,6 +240,71 @@ struct AIApplication{
         }
         
     }
+    
+    // 根据不同环境获取服务器Api地址...
+    
+    internal enum AIApplicationServerURL: CustomStringConvertible {
+        
+        // 获取服务方案
+        case getServiceScheme
+        // 添加服务Note (文本和语音)
+        case addWishListNote
+        // 删除服务Note (文本和语音)
+        case delWishListNote
+        // 保持服务参数
+        case saveServiceParameters
+        // 提交Proposal订单
+        case submitProposalOrder
+        // 查询卖家订单列表
+        case querySellerOrderList
+        // 更新参数设置状态
+        case updateParamSettingState
+        // 删除服务类别
+        case delServiceCategory
+        // 查询客户Proposal列表
+        case queryCustomerProposalList
+        // 查询客户订单列表
+        case queryCustomerOrderList
+        // 查找客户Proposal详情
+        case findCustomerProposalDetail
+        // 查找服务详情
+        case findServiceDetail
+        // 更新心愿单tag状态
+        case updateWishListTagChosenState
+        //查询热门搜索
+        case queryHotSearch
+        // 获取Api具体地址.
+        var description: String {
+            
+            let serverStatus = NSUserDefaults.standardUserDefaults().integerForKey(kDefault_ServerURLStatus)
+            if serverStatus == 0{
+                   // debug
+            }else if serverStatus == 1{
+                // release
+            }
+            
+            switch self {
+            case .getServiceScheme: return AIApplication.KURL_ReleaseURL+"/getServiceScheme"
+            case .addWishListNote: return AIApplication.KURL_ReleaseURL+"/addWishListNote"
+            case .delWishListNote: return AIApplication.KURL_ReleaseURL+"/delWishListNote"
+            case .saveServiceParameters: return AIApplication.KURL_ReleaseURL+"/sboss/saveServiceParameters"
+            case .submitProposalOrder: return AIApplication.KURL_ReleaseURL+"/submitProposalOrder"
+            case .querySellerOrderList: return AIApplication.KURL_ReleaseURL+"/querySellerOrderList"
+            case .updateParamSettingState: return AIApplication.KURL_ReleaseURL+"/updateParamSettingState"
+            case .delServiceCategory: return AIApplication.KURL_ReleaseURL+"/delServiceCategory"
+            case .queryCustomerProposalList: return AIApplication.KURL_ReleaseURL+"/queryCustomerProposalList"
+            case .queryCustomerOrderList: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderList"
+            case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetail"
+            case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
+            case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
+            case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"
+            }
+            
+        }
+    }
+    
+    
+    
     
     /*!
         隐藏消息按钮

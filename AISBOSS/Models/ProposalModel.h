@@ -398,7 +398,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 /**
  *  @author tinkl, 15-12-01 10:12:26
  *
- *  @brief  心愿详情界面 url: http://171.221.254.231:3000/findServiceDetail
+ *  @brief  心愿详情界面 //findServiceDetail
  *  @ViewController AIServiceContentViewController
  */
 @interface AIProposalServiceDetailModel : JSONModel

@@ -365,6 +365,7 @@
 		93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CB8D871BFB098600C41DDE /* AITestUI.xib */; };
 		93CB8D8A1BFB23A900C41DDE /* UIBezierPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
+		93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */; };
 		93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */; };
 		93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */; };
 		93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */; };
@@ -1079,6 +1080,7 @@
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIApplicationObjc.swift; sourceTree = "<group>"; };
 		93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGNAutoLayout.swift; sourceTree = "<group>"; };
 		93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPageBueryViewController.swift; sourceTree = "<group>"; };
 		93DA9C081BFD62D100E2DA3B /* ReadmeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadmeViewController.swift; sourceTree = "<group>"; };
@@ -2023,6 +2025,7 @@
 				93C33F261B9C0F46007BF506 /* AIApplication.swift */,
 				93C33EE41B9BDF3D007BF506 /* AppDelegate.swift */,
 				93C33EE31B9BDF3D007BF506 /* AIVeris-Bridging-Header.h */,
+				93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -3328,6 +3331,7 @@
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
 				849B4B2C1C0EDFE300BEC179 /* FLEXArgumentInputViewFactory.m in Sources */,
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
+				93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */,
 				81C092861BAFAC0D003FFF35 /* SDWebImageDownloader.m in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
 				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,

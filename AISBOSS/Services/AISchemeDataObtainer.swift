@@ -29,6 +29,7 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
     override func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message: AIMessage = AIMessageWrapper.getServiceSchemeWithServiceID("\(sheme_id)")
+        message.url = AIApplication.AIApplicationServerURL.getServiceScheme.description        
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             

@@ -171,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "desc": ["data_mode": "0","digest": ""]]
         
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/querySellerOrderList"
+        message.url = AIApplication.AIApplicationServerURL.querySellerOrderList.description
         message.body.addEntriesFromDictionary(dic)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             self.didFinishGetSellerData = true

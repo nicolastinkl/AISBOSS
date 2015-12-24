@@ -9,7 +9,7 @@
 #import "AIMessageWrapper.h"
 #import "AIMessage.h"
 #import "AIServerConfig.h"
-
+#import "Veris-Swift.h"
 
 @implementation AIMessageWrapper
 
@@ -34,7 +34,7 @@
     
     [message.body addEntriesFromDictionary:body];
 
-    message.url = kURL_GetSchemeList;
+    
     return message;
     
 }
@@ -46,7 +46,6 @@
     
     [message.body addEntriesFromDictionary:body];
     
-    message.url = kURL_AddWishNote;
     return message;
 }
 
@@ -58,7 +57,6 @@
     
     [message.body addEntriesFromDictionary:body];
     
-    message.url = kURL_DelWishNote;
     return message;
 }
 
@@ -70,7 +68,6 @@
     
     [message.body addEntriesFromDictionary:body];
     
-    message.url = kURL_UpateWishTagListID;
     return message;
 }
 

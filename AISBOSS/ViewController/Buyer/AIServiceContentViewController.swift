@@ -653,7 +653,7 @@ extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudi
 
             let wishid = self.currentDatasource?.wish_list.wish_id ?? 0
             let message = AIMessageWrapper.addWishNoteWithWishID(wishid, type: "Voice", content: audioModel.audio_url, duration: audioModel.time)
-
+            message.url = AIApplication.AIApplicationServerURL.addWishListNote.description
             audio1.messageCache = message
             weak var weakSelf = self
             AIRemoteRequestQueue().asyncRequset(audio1, message: message, successRequst: { (subView,response) -> Void in
@@ -802,7 +802,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         self.view.userInteractionEnabled = false
         self.view.showLoadingWithMessage("")
         let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
-        
+        message.url = AIApplication.AIApplicationServerURL.delWishListNote.description
         
         weak var weakSelf = self
         AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
@@ -865,6 +865,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
             self.view.showLoadingWithMessage("")
             weak var weakSelf = self
             let message = AIMessageWrapper.addWishNoteWithWishID(currentDatasource?.wish_list.wish_id ?? 0, type: "Text", content: newText.content.text, duration: 0)
+            message.url = AIApplication.AIApplicationServerURL.addWishListNote.description      
             newText.wishID = currentDatasource?.wish_list.wish_id ?? 0
             AIRemoteRequestQueue().asyncRequset(newText, message: message, successRequst: { (subView,response) -> Void in
                 if let eView = subView as? AITextMessageView {

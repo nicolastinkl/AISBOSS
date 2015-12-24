@@ -11,4 +11,4 @@
 
 
 #define kDefault_UserID                       @"Default_UserID"
-#define kDefault_ServerURL                       @"kDefault_ServerURL"
+#define kDefault_ServerURLStatus                       @"kDefault_ServerURLStatus"
