@@ -43,15 +43,19 @@ class PurchasedServiceView: UIView, Measureable {
             
             if let model = newValue {
                 logo.asyncLoadImage(model.service_thumbnail_icon)
-                title.text = model.arrange_script_info.info_title
                 statu.text = model.order_state
-                serviceDescription.text = model.arrange_script_info.info_desc
                 
-                if (model.arrange_script_info.info_desc == nil || model.arrange_script_info.info_desc == "") {
-
-                    hideDescriptionLabel()
-                } else {
-                    setDescriptionLabelHeight()
+                if let _ = model.arrange_script_info {
+                    title.text = model.arrange_script_info.info_title
+                    
+                    serviceDescription.text = model.arrange_script_info.info_desc
+                    
+                    if (model.arrange_script_info.info_desc == nil || model.arrange_script_info.info_desc == "") {
+                        
+                        hideDescriptionLabel()
+                    } else {
+                        setDescriptionLabelHeight()
+                    }
                 }
             }
         }
