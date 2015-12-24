@@ -75,8 +75,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func setupLanguageNotification() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupUIWithCurrentLanguage", name: LCLLanguageChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadOrders", name: AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
     }
+    
+//    func reloadOrders() {
+//        
+//    }
     
     func setupUIWithCurrentLanguage() {
         //TODO: reload data with current language

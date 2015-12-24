@@ -79,7 +79,8 @@ class BDKProposalService : MockProposalService{
     func recoverOrders(success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = AIApplication.AIApplicationServerURL.recoverOrders.description
-        
+        let body = ["data": [:], "desc": ["data_mode": "0", "digest": ""]]
+        message.body = NSMutableDictionary(dictionary: body)
         AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
             do {
                 success()

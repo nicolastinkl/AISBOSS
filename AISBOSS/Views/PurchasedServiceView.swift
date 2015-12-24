@@ -57,7 +57,6 @@ class PurchasedServiceView: UIView, Measureable {
 
                 statu.text = model.order_state
                 
-                
             }
         }
     }
