@@ -171,9 +171,11 @@
         NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
         [[AINetEngine defaultEngine] removeCommonHeaders];
         [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
-        
+
         [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
     }
+    
+    
     
     
     [self hideSelf];

@@ -172,8 +172,6 @@ struct AIApplication{
         static let height:CGFloat           = 9.0
     }
     
-    
-    
     // MARK: IM ObjectIDS
     struct AIIMOBJECTS {
         static let AIYUJINGID = "556c0a2ae4b09419962544b7"          //预警通知
@@ -185,8 +183,6 @@ struct AIApplication{
     // MARK: The Application preferorm
     internal func SendAction(functionName:String,ownerName:AnyObject){
         /*!
-        *  @author tinkl, 15-04-22 16:04:07
-        *
         *   how to use it ?
         SendAction("minimizeView:", ownerName: self)
         */
@@ -223,28 +219,10 @@ struct AIApplication{
         method_exchangeImplementations(oldMethod, newMethod)
     }
     
-    // MARK: Application Unread ViewController.
-    static func showMessageUnreadView(){
-        
-        if let loadingXibView = UIApplication.sharedApplication().keyWindow!.viewWithTag(AIApplication.AIViewTags.AIMessageUnReadViewTag) {
-            loadingXibView.hidden = false
-        }else
-        {
-            //            let unreadView = AIMessageUnReadView.currentView() as AIMessageUnReadView
-            //            UIApplication.sharedApplication().keyWindow!.addSubview(unreadView)
-            //            unreadView.tag = AIApplication.AIViewTags.AIMessageUnReadViewTag
-            //            layout(unreadView) { view in
-            //                view.width  == 80
-            //                view.height == 74
-            //                view.top >= view.superview!.top
-            //                view.right >= view.superview!.right+10
-            //            }
-        }
-        
-    }
     
-    // 根据不同环境获取服务器Api地址...
-    
+    /**
+     根据不同环境获取服务器Api地址.    
+     */
     internal enum AIApplicationServerURL: CustomStringConvertible {
         
         // 获取服务方案
@@ -309,8 +287,6 @@ struct AIApplication{
     }
     
     
-    
-    
     /*!
         隐藏消息按钮
     */
@@ -320,34 +296,5 @@ struct AIApplication{
         }
     }
     
-    static func pushViewController(view:UIViewController){
-        //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //        if let rootViewController = appDelegate.rootNavigationController{
-        //            rootViewController.pushViewController(view, animated: true)
-        //        }
-        
-    }
-    
-    /*!
-    全局分享按钮
-    
-    :param: url URL
-    */
-//    static func shareAction(url:String){
-//        if let viewcontroller =  UIApplication.sharedApplication().keyWindow?.rootViewController{
-//            let textToShare = AIApplication.kSHARE
-//            
-//            if let myWebsite = NSURL(string: "http://www.codingexplorer.com/")
-//            {
-//                let objectsToShare = [textToShare, myWebsite]
-//                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//                
-//                //New Excluded Activities Code
-//                activityVC.excludedActivityTypes = [UIActivityTypeMail,UIActivityTypeMessage,UIActivityTypeAirDrop, UIActivityTypeAddToReadingList,UIActivityTypePostToWeibo]
-//                
-//                viewcontroller.presentViewController(activityVC, animated: true, completion: nil)
-//            }
-//        }
-//    }
 }
 
