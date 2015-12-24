@@ -271,42 +271,39 @@ struct AIApplication{
         case findServiceDetail
         // 更新心愿单tag状态
         case updateWishListTagChosenState
-        
+        //查询热门搜索
+        case queryHotSearch
         // 获取Api具体地址.
         var description: String {
             
             let serverStatus = NSUserDefaults.standardUserDefaults().integerForKey(kDefault_ServerURLStatus)
             if serverStatus == 0{
-                // debug
-                
-                switch self {
-                case .getServiceScheme: return AIApplication.KURL_ReleaseURL+"/getServiceScheme"
-                case .addWishListNote: return AIApplication.KURL_ReleaseURL+"/addWishListNote"
-                case .delWishListNote: return AIApplication.KURL_ReleaseURL+"/delWishListNote"
-                case .saveServiceParameters: return AIApplication.KURL_ReleaseURL+"/sboss/saveServiceParameters"
-                case .submitProposalOrder: return AIApplication.KURL_ReleaseURL+"/submitProposalOrder"
-                case .querySellerOrderList: return AIApplication.KURL_ReleaseURL+"/querySellerOrderList"
-                case .updateParamSettingState: return AIApplication.KURL_ReleaseURL+"/updateParamSettingState"
-                case .delServiceCategory: return AIApplication.KURL_ReleaseURL+"/delServiceCategory"
-                case .queryCustomerProposalList: return AIApplication.KURL_ReleaseURL+"/queryCustomerProposalList"
-                case .queryCustomerOrderListFake: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderListFake"
-                case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetail"
-                case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
-                case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
-                    
-                }
-                
+                   // debug
             }else if serverStatus == 1{
                 // release
-                
             }
             
-            return ""
+            switch self {
+            case .getServiceScheme: return AIApplication.KURL_ReleaseURL+"/getServiceScheme"
+            case .addWishListNote: return AIApplication.KURL_ReleaseURL+"/addWishListNote"
+            case .delWishListNote: return AIApplication.KURL_ReleaseURL+"/delWishListNote"
+            case .saveServiceParameters: return AIApplication.KURL_ReleaseURL+"/sboss/saveServiceParameters"
+            case .submitProposalOrder: return AIApplication.KURL_ReleaseURL+"/submitProposalOrder"
+            case .querySellerOrderList: return AIApplication.KURL_ReleaseURL+"/querySellerOrderList"
+            case .updateParamSettingState: return AIApplication.KURL_ReleaseURL+"/updateParamSettingState"
+            case .delServiceCategory: return AIApplication.KURL_ReleaseURL+"/delServiceCategory"
+            case .queryCustomerProposalList: return AIApplication.KURL_ReleaseURL+"/queryCustomerProposalList"
+            case .queryCustomerOrderListFake: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderListFake"
+            case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetail"
+            case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
+            case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
+            case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"
+            }
             
         }
     }
     
-        
+    
     
     
     /*!

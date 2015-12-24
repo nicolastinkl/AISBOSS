@@ -167,7 +167,7 @@ class BDKProposalService : MockProposalService{
     */
     override func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/queryCustomerOrderListFake"
+        message.url = AIApplication.AIApplicationServerURL.queryCustomerOrderListFake.description
         
         let body = ["data":["order_role":1, "order_state": "0"],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
@@ -230,7 +230,7 @@ class BDKProposalService : MockProposalService{
      */
     func findServiceDetail(serviceId : Int, proposalId: Int, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = "http://171.221.254.231:3000/findServiceDetail"
+        message.url = AIApplication.AIApplicationServerURL.findServiceDetail.description
         
         let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
    //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]

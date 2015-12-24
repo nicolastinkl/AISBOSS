@@ -20,6 +20,7 @@
 #import "AIOrderPreModel.h"
 #import "UIImageView+WebCache.h"
 #import "Veris-Swift.h"
+#import "AIServerConfig.h"
 
 #define kTablePadding      15
 
@@ -113,7 +114,7 @@
    
     if (delegate.sellerData || self.listModel ) {
         self.listModel = [[AIOrderPreListModel alloc] initWithDictionary:delegate.sellerData error:nil];
-        if (self.listModel != nil) {
+        if (self.listModel != nil && self.listModel.order_list.count > 0) {
             
             [self.tableView reloadData];
             [self.tableView headerEndRefreshing];
@@ -164,7 +165,7 @@
             AIMessage  * message = [[AIMessage alloc] init];
             //AIMessage *message = [weakSelf getServiceListWithUserID:123123123 role:2];
             [message.body addEntriesFromDictionary:dic];            
-            message.url = @"http://171.221.254.231:3000/querySellerOrderList";
+            message.url =  kURL_QuerySellerOrderList;
             [weakSelf.tableView hideErrorView];
             [[AINetEngine defaultEngine] postMessage:message success:^(NSDictionary *response) {
                 
@@ -176,6 +177,8 @@
                             if (weakSelf.listModel == nil){
                                 [weakSelf.tableView showErrorContentView];
                             }
+                        }else{
+                            [weakSelf.tableView showDiyContentView:@"No Data"];
                         }
                         
                     }else{

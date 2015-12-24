@@ -10,9 +10,6 @@
 // 服务器地址
 #define kURL_GetServiceList                 @"https://server.asiainfo.com/getservicelist" //TEST..
 
-#define KURL_ReleaseURL                     @"http://171.221.254.231:3000"  //正式地址
-#define KURL_DebugURL                       @"http://171.221.254.231:3000"  //测试地址
-
 #define kURL_QuerySellerOrderList           @"http://171.221.254.231:3000/querySellerOrderList"
 
 // 关键字(字段名)
