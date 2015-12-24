@@ -435,8 +435,7 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         viewController.tableView.headerEndRefreshing()
                         // 处理错误警告
-                        
-                        viewController.tableView.showErrorContentView()
+                         
                     }
                 })
         }

@@ -190,6 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
     func fetchPreSellerAndBuyerData () {
         
         // Get Seller
