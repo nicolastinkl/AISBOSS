@@ -154,7 +154,8 @@
         if ([param.param_name isEqual: @"Service Coverage"]) {
             _coverageModel = param;
             serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:frame model:param];
-            break;
+            
+            [self initSelectedParamsDic: param.param_value];
         }
     }
     
@@ -164,6 +165,25 @@
     }
     
     return serviceCoverage;
+}
+
+- (void) initSelectedParamsDic: (NSArray *)paramValues
+{
+    if (_selectedParamsDic == nil) {
+        _selectedParamsDic = [[NSMutableDictionary alloc]init];
+    }
+    
+    for (int i = 0; i < paramValues.count; i++)
+    {
+        AIProposalServiceDetailParamValueModel *model = [paramValues objectAtIndex:i];
+        
+        BOOL selected = model.is_default;
+        
+        if (selected) {
+            NSString *serviceId = [NSString stringWithFormat:@"%ld",model.id];
+            _selectedParamsDic[serviceId] = model;
+        }
+    }
 }
 
 
