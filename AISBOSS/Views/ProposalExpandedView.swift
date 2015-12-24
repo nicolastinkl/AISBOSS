@@ -45,7 +45,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
     }
     
     private func orderIsNormal(orderModel: ProposalOrderModel) -> Bool {
-        return orderModel.alarm_state == 1
+        return orderModel.alarm_state == 0
     }
     
     private func showNormalStatu() {

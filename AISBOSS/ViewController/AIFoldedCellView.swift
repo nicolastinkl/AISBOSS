@@ -79,11 +79,11 @@ class AIFolderCellView: UIView {
     }
     
     func buildStatusData(){
-        //1: 正常 0:异常
-        if proposalModel.alarm_state == 0 {
+        //0: 正常 1:异常
+        if proposalModel.alarm_state == 1 {
             alertIcon.hidden = false
             statusLabel.hidden = true
-        } else {
+        } else if proposalModel.alarm_state == 0 {
             alertIcon.hidden = true
             statusLabel.hidden = false
         }
