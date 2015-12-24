@@ -77,19 +77,34 @@ class ServiceSettingView: UIView {
     }
     
     private func estimateRowCount() -> Int {
+        var rowCount = 0
         var length: CGFloat = 0
+        
+        let rowWidth = ServiceSettingView.COLLECTION_WIDTH
+        
+        if model.label_list.count > 0 {
+            rowCount = 1
+        }
         
         for item in model.label_list {
             let tag = item as! AIProposalNotesModel
             let size = AIMsgTagCell.sizeForContentString(tag.name, forMaxWidth: 1000)
             length += (size.width + ServiceSettingView.HORIZAN_SPACE)
+            
+            if (length > rowWidth) {
+                rowCount++
+                
+                // last word should be arranged in next row, so new row length equal last word's width
+                length = size.width
+            }
         }
         
-        if model.label_list.count == 0 {
-            return 0
-        } else {
-            return Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
-        }
+//        if model.label_list.count != 0 {
+//            rowCount = Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
+//        }
+        
+        print("estimateRowCount:\(rowCount)")
+        return rowCount
     }
 }
 
@@ -152,8 +167,6 @@ class FixedSpaceFlowLayout: UICollectionViewFlowLayout {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    private static let HORIZAN_SPACE: CGFloat = 9
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let attributes = super.layoutAttributesForElementsInRect(rect)
