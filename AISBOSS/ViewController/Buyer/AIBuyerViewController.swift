@@ -45,6 +45,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var topBar : UIView!
     
+    var didRefresh : Bool?
+    
     
     private let BUBBLE_VIEW_MARGIN = AITools.displaySizeFrom1080DesignSize(40)
     
@@ -103,10 +105,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             weakSelf!.cleanHistoryData()
             weakSelf!.loadData()
         }
-//        
-//        tableView.addHeaderRefreshEndCallback { () -> Void in
-//            weakSelf!.tableView.reloadData()
-//        }
+        
+        tableView.addHeaderRefreshEndCallback { () -> Void in
+            if let _ = weakSelf!.didRefresh {
+                weakSelf!.tableView.reloadData()
+            }
+        }
         
     }
     
@@ -148,29 +152,29 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             // 列表数据
             bdk.getProposalList({ (responseData) -> Void in
                 listDone = true
-                
+                weakSelf!.didRefresh = true
                 weakSelf!.parseListData(responseData)
                 
                 if bubblesDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.reloadData()
                 }
                 
                 
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.didRefresh = false
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.showErrorContentView()
             })
         
             bdk.getPoposalBubbles({ (responseData) -> Void in
                 bubblesDone = true
+                weakSelf!.didRefresh = true
                 weakSelf!.parseProposalData(responseData)
                 
                 if listDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.reloadData()
                 }
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.didRefresh = false
                     weakSelf!.tableView.headerEndRefreshing()
             })
             
@@ -596,8 +600,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
                 self.tableView.tableFooterView = view
             }
-            
-            
+
         }
     }
     
