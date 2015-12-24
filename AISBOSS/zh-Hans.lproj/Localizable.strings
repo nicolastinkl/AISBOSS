@@ -61,8 +61,8 @@
 "AISellerViewController.2beConfirmed" = "待定";
 
 //
-"PurchasedServiceView.home" = "Home Delivery";
-"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
+"PurchasedServiceView.home" = "家庭快递";
+"PurchasedServiceView.yourOrder" = "您的快递已抵达上海，正发往北京";
 
 //
 "AIServerDetailViewController.service" = "添加你喜欢的服务";
