@@ -80,13 +80,7 @@ class BDKProposalService : MockProposalService{
         
         message.body = NSMutableDictionary(dictionary: body)
         AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
-            do {
-                success()
-                
-            } catch {
-                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
-            }
-            
+            success()
             }) {(error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes ?? "")
         }
