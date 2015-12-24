@@ -81,7 +81,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func refreshAfterNewOrder () {
-        cleanHistoryData()
         
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
@@ -101,8 +100,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.removeHeader()
         weak var weakSelf = self
         tableView.addHeaderWithCallback { () -> Void in
-            print("HeaderWithCallback\n")
-            weakSelf!.cleanHistoryData()
+
+            weakSelf!.clearPropodalData()
+
             weakSelf!.loadData()
         }
         
@@ -111,19 +111,22 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 weakSelf!.tableView.reloadData()
             }
         }
+
+        tableView.addHeaderRefreshEndCallback { () -> Void in
+            weakSelf!.tableView.reloadData()
+
+        }
         
+        // reload bottom tableView
+        tableViewCellCache.removeAll()
+        tableView.reloadData()
+
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         
-    }
-    
-    func cleanHistoryData () {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.buyerListData = nil
-        appDelegate.buyerProposalData = nil
     }
     
     func loadData() {
@@ -204,11 +207,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.buyerListData = nil
-            appDelegate.buyerProposalData = nil
             ws!.tableView.headerBeginRefreshing()
         }
+    }
+    
+    private func clearPropodalData() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.buyerListData = nil
+        appDelegate.buyerProposalData = nil
     }
     
         
@@ -519,26 +525,23 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if !dataSource[indexPath.row].isExpanded{
+        if !dataSource[indexPath.row].isExpanded {
             rowSelectAction(indexPath)
         }
     }
     
     //处理表格点击事件
-    func rowSelectAction(indexPath : NSIndexPath){
+    func rowSelectAction(indexPath : NSIndexPath) {
         dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
         //如果有，做比较
         if let _ = lastSelectedIndexPath {
             //如果点击了不同的cell
-            if lastSelectedIndexPath?.row != indexPath.row {
-                dataSource[lastSelectedIndexPath!.row].isExpanded = !dataSource[lastSelectedIndexPath!.row].isExpanded
-                lastSelectedIndexPath = indexPath;
-            } else {
-                lastSelectedIndexPath = nil
+            if lastSelectedIndexPath?.row != indexPath.row && dataSource[lastSelectedIndexPath!.row].isExpanded {
+                dataSource[lastSelectedIndexPath!.row].isExpanded = false
             }
-        } else {
-            lastSelectedIndexPath = indexPath;
         }
+        
+        lastSelectedIndexPath = indexPath;
         
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache[indexPath.row] as! AITableFoldedCellHolder? {
             if cellNeedRebuild(cacheCell) {
