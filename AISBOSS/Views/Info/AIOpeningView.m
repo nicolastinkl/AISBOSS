@@ -146,7 +146,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 - (void)changeDomainTap
 {
     NSInteger currentDomain = [[NSUserDefaults standardUserDefaults] integerForKey:kDefault_ServerURLStatus];
-    NSString * s = currentDomain ==  0 ?@"模拟环境":@"正式环境";
+    NSString * s = currentDomain ==  0 ? @"模拟环境":@"正式环境";
     NSString *message = [NSString stringWithFormat:@"当前服务器环境是%@，切换到",s];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -163,6 +163,19 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"正式环境"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:kDefault_ServerURLStatus];
             [[NSUserDefaults standardUserDefaults] synchronize];
+        }];
+        [alert addAction:action];
+    }
+    
+    {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"清除订单"  style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[BDKProposalService new] recoverOrders:^{
+                //post notification to refresh order tableView
+//                AIApplication.Notification.UIAIASINFORecoverOrdersNotificatoin
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"UIAIASINFORecoverOrdersNotification" object:nil];
+            } fail:^(AINetError error, NSString * errDes) {
+                
+            }];
         }];
         [alert addAction:action];
     }

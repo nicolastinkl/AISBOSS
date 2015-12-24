@@ -10,7 +10,7 @@ import Foundation
 
 import AISwiftyJSON
 
-protocol ProposalService {
+@objc protocol ProposalService {
     //获取通过proposal订购的订单实例列表
     func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
     //获取proposal气泡列表
@@ -19,8 +19,12 @@ protocol ProposalService {
     func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)
 }
 
-class MockProposalService : ProposalService{
-    func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+class MockProposalService: NSObject {
+// 改成这样oc 才能调用
+}
+
+extension MockProposalService : ProposalService{
+    @objc func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("customerOrderList", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             if let dataJSON = data {
@@ -36,7 +40,7 @@ class MockProposalService : ProposalService{
         }
     }
     
-    func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    @objc func getPoposalBubbles(success: (responseData: AIProposalPopListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             
@@ -52,7 +56,7 @@ class MockProposalService : ProposalService{
         }
     }
     
-    func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    @objc func queryCustomerProposalDetail(proposalId : Int,success : (responseData : AIProposalInstModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("BusinessTravel", ofType: "json") {
             let data: NSData? = NSData(contentsOfFile: path)
             
@@ -71,6 +75,25 @@ class MockProposalService : ProposalService{
 
 class BDKProposalService : MockProposalService{
     
+    //一键恢复所有订单
+    func recoverOrders(success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        message.url = AIApplication.AIApplicationServerURL.recoverOrders.description
+        
+        AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
+            do {
+                success()
+                
+            } catch {
+                fail(errType: AINetError.Format, errDes: "recoverOrders error.")
+            }
+            
+            }) {(error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes ?? "")
+        }
+    }
+    
+    //设置服务状态
     func updateParamSettingState(customerId customerId: Int, serviceId: Int, proposalId: Int, roleId: Int, flag: Bool, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()

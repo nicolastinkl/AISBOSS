@@ -142,6 +142,8 @@ struct AIApplication{
         static let UIAIASINFOChangeDateViewNotification         = "UIAIASINFOChangeDateViewNotification"
         // FIXME: 视频拍摄完成文件地址
         static let NSNotirydidFinishMergingVideosToOutPutFileAtURL  = "NSNotirydidFinishMergingVideosToOutPutFileAtURL"
+        //一键清除订单
+        static let UIAIASINFORecoverOrdersNotification = "UIAIASINFORecoverOrdersNotification"
 
     }
     
@@ -274,6 +276,8 @@ struct AIApplication{
         //查询热门搜索
         case queryHotSearch
         // 获取Api具体地址.
+        case recoverOrders
+        // 一键恢复订单
         var description: String {
             
             let serverStatus = NSUserDefaults.standardUserDefaults().integerForKey(kDefault_ServerURLStatus)
@@ -298,6 +302,7 @@ struct AIApplication{
             case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
             case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
             case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"
+            case .recoverOrders: return AIApplication.KURL_ReleaseURL+"/recoverOrders"
             }
             
         }
