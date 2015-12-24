@@ -39,9 +39,21 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // MARK: - Variable
     
-    var bubbleViewContainer : UIView!
+    private lazy var bubbleViewContainer : UIView = {
+        // Create Bubble View of Top.
+        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
+        return UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, height))
+    }()
     
-    var tableView : UITableView!
+    private lazy var tableView : UITableView = {
+        let tableView = UITableView(frame: self.view.bounds, style: .Plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .None
+        tableView.showsVerticalScrollIndicator = true
+        tableView.backgroundColor = UIColor.clearColor()
+        return  tableView
+    }()
     
     var topBar : UIView!
     
@@ -60,9 +72,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         selfViewPoint = self.view.center
+
+        
         
         self.makeBaseProperties()
+
         self.makeTableView()
+        
         self.makeTopBar()
         
         // Add Pull To Referesh..
@@ -71,6 +87,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         setupUIWithCurrentLanguage()
         
         loadData()
+    }
+    
+    // MARK: - 构造列表区域
+    func makeTableView () {
+        
+        tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+        
+        self.view.addSubview(tableView)
+        
+        tableView.tableHeaderView = bubbleViewContainer
+        
     }
     
     func setupLanguageNotification() {
@@ -92,7 +119,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         //TODO: reload data with current language
         
         //remake bubble
-        let label = bubbleViewContainer?.viewWithTag(progressLabelTag) as? UILabel
+        let label = bubbleViewContainer.viewWithTag(progressLabelTag) as? UILabel
         label?.text = "AIBuyerViewController.progress".localized
         
         // reset refresh view
@@ -103,23 +130,20 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             weakSelf!.cleanHistoryData()
             weakSelf!.loadData()
         }
-//        
-//        tableView.addHeaderRefreshEndCallback { () -> Void in
-//            weakSelf!.tableView.reloadData()
-//        }
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
     
     func cleanHistoryData () {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.buyerListData = nil
         appDelegate.buyerProposalData = nil
+        /**
+        Clear self data.
+        */
+        self.dataSourcePop = []
+        self.dataSource = []
+        self.tableView.reloadData()
     }
     
     func loadData() {
@@ -229,7 +253,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         // add bubbles
         bubbles = AIBubblesView(frame: frame, models: NSMutableArray(array: self.dataSourcePop))
         bubbles.tag = bubblesTag
-        bubbleViewContainer?.addSubview(bubbles)
+        bubbleViewContainer.addSubview(bubbles)
         
         bubbles.addGestureBubbleAction  {  [weak self]   (bubbleModel, bubble) -> Void in
             if self != nil {
@@ -418,27 +442,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.makeBubbleView()
     }
     
-    // MARK: - 构造列表区域
-    func makeTableView () {
-        
-        tableView = UITableView(frame: self.view.bounds, style: .Plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .None
-        tableView.showsVerticalScrollIndicator = true
-        tableView.backgroundColor = UIColor.clearColor()
-        tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
 
-        self.view.addSubview(tableView!)
-        
-        
-        // Create Bubble View of Top.
-        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
-        
-        bubbleViewContainer = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        tableView?.tableHeaderView = bubbleViewContainer
-        
-    }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if  dataSource[indexPath.row].isExpanded {
@@ -546,6 +550,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
     }
     
+    /*
+    
     // MARK: - ScrollViewDelegate
     func handleScrollEventWithOffset(offset:CGFloat) {
         if let bView = bubbleViewContainer {
@@ -575,7 +581,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         } else {
             topBar.backgroundColor = UIColor.clearColor()
         }
-    }
+    }*/
     
     func parseListData(listData : ProposalOrderListModel?) {
         
