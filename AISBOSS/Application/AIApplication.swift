@@ -219,22 +219,7 @@ struct AIApplication{
     
     
     /**
-     根据不同环境获取服务器Api地址...
-     
-     - getServiceScheme:             <#getServiceScheme description#>
-     - addWishListNote:              <#addWishListNote description#>
-     - delWishListNote:              <#delWishListNote description#>
-     - saveServiceParameters:        <#saveServiceParameters description#>
-     - submitProposalOrder:          <#submitProposalOrder description#>
-     - querySellerOrderList:         <#querySellerOrderList description#>
-     - updateParamSettingState:      <#updateParamSettingState description#>
-     - delServiceCategory:           <#delServiceCategory description#>
-     - queryCustomerProposalList:    <#queryCustomerProposalList description#>
-     - queryCustomerOrderList:       <#queryCustomerOrderList description#>
-     - findCustomerProposalDetail:   <#findCustomerProposalDetail description#>
-     - findServiceDetail:            <#findServiceDetail description#>
-     - updateWishListTagChosenState: <#updateWishListTagChosenState description#>
-     - queryHotSearch:               <#queryHotSearch description#>
+     根据不同环境获取服务器Api地址.    
      */
     internal enum AIApplicationServerURL: CustomStringConvertible {
         

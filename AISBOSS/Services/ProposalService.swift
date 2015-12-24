@@ -170,9 +170,12 @@ class BDKProposalService : MockProposalService{
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
-                let dic = response as! [NSObject : AnyObject]
-                let model = try ProposalOrderListModel(dictionary: dic)
-                success(responseData: model)
+                if let dic = response as? [NSObject : AnyObject]{
+                    let model = try ProposalOrderListModel(dictionary: dic)
+                    success(responseData: model)
+                }else{
+                    fail(errType: AINetError.Format, errDes: "Requst JSON Parse error.")
+                }
             } catch {
                 fail(errType: AINetError.Format, errDes: "ProposalListModel JSON Parse error.")
             }

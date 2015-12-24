@@ -85,15 +85,25 @@
     [self addHeaders:message.header];
     	
     __weak typeof(self) weakSelf = self;
-    NSURLSessionDataTask *curTask = [_sessionManager POST:message.url parameters:message.body success:^(NSURLSessionDataTask *task, id responseObject) {
-        [weakSelf parseSuccessResponseWithTask:task
-                                responseObject:responseObject
-                                       success:success
-                                          fail:fail];
+    NSURLSessionDataTask *curTask = [_sessionManager POST:message.url parameters:message.body success:^(NSURLSessionDataTask *task, id responseObject) {    
+        
+        if (responseObject) {
+            NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
+            if (length > 200 && [responseObject isKindOfClass:[NSDictionary class]]) {
+                [weakSelf parseSuccessResponseWithTask:task
+                                        responseObject:responseObject
+                                               success:success
+                                                  fail:nil];
+            }else{
+                [weakSelf parseFailResponseWithTask:task
+                                              error:[NSError errorWithDomain:@"Null Data" code:-1 userInfo:nil]                                            success:nil fail:fail];
+            }
+        }
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [weakSelf parseFailResponseWithTask:task
                                       error:error
-                                    success:success fail:fail];
+                                    success:nil fail:fail];
     }];
     
     // 添加到task队列

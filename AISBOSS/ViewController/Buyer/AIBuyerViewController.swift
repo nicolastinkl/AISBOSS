@@ -142,6 +142,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.tableView.headerEndRefreshing()
                     weakSelf!.tableView.showErrorContentView()
             })
         
@@ -154,6 +155,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                   
                 }
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.tableView.headerEndRefreshing()
                     weakSelf!.tableView.showErrorContentView()
             })
             
