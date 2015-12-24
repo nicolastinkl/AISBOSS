@@ -78,10 +78,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
     }
     
-//    func reloadOrders() {
-//        
-//    }
-    
     func setupUIWithCurrentLanguage() {
         //TODO: reload data with current language
         
@@ -114,7 +110,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func loadData() {
-
         
         self.tableView.hideErrorView()
         
@@ -161,7 +156,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 }
                 }, fail: { (errType, errDes) -> Void in
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.showErrorContentView()
             })
             
         }
@@ -171,13 +165,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     deinit {
         tableViewCellCache.removeAll()
     }
-    
 
     
     // MARK: - 构造属性
     func makeBaseProperties () {
         self.view.backgroundColor = UIColor.blackColor()
         self.navigationController?.navigationBarHidden = true
+        
         
         let bgImageView = UIImageView(image: UIImage(named: "Buyer_topBar_Bg"))
         bgImageView.frame = self.view.frame
@@ -246,10 +240,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func createBubbleView() {
-        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
-        
-        bubbleViewContainer = UIView(frame: CGRectMake(0, 0, screenWidth, height))
-        tableView?.tableHeaderView = bubbleViewContainer
         
         // add bubbles
         makeBubblesWithFrame(CGRectMake(BUBBLE_VIEW_MARGIN, topBarHeight + BUBBLE_VIEW_MARGIN, screenWidth - 2 * BUBBLE_VIEW_MARGIN, BUBBLE_VIEW_HEIGHT))
@@ -424,6 +414,13 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
 
         self.view.addSubview(tableView!)
+        
+        
+        // Create Bubble View of Top.
+        let height = CGRectGetHeight(self.view.bounds) - AITools.displaySizeFrom1080DesignSize(116)
+        
+        bubbleViewContainer = UIView(frame: CGRectMake(0, 0, screenWidth, height))
+        tableView?.tableHeaderView = bubbleViewContainer
         
     }
     
