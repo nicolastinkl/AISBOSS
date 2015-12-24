@@ -167,7 +167,8 @@ class BDKProposalService : MockProposalService{
     */
     override func getProposalList(success: (responseData: ProposalOrderListModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = AIApplication.AIApplicationServerURL.queryCustomerOrderListFake.description
+
+        message.url = AIApplication.AIApplicationServerURL.queryCustomerOrderList.description
         
         let body = ["data":["order_role":1, "order_state": "0"],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
