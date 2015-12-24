@@ -88,10 +88,12 @@
     NSURLSessionDataTask *curTask = [_sessionManager POST:message.url parameters:message.body success:^(NSURLSessionDataTask *task, id responseObject) {    
         
         if (responseObject) {
+            NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
+            if (length > 180 && [responseObject isKindOfClass:[NSDictionary class]]) {
 //            NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
 //            if (length > 200 && [responseObject isKindOfClass:[NSDictionary class]]) {
             //长度200 判断不准确，长度200以下也可能是成功的
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+
                 [weakSelf parseSuccessResponseWithTask:task
                                         responseObject:responseObject
                                                success:success

@@ -153,7 +153,7 @@ internal class AICustomView : UIView{
             // 加入到初始化时在线数据处理
             
             if isNormal{
-                if model.selected_flag == 0{
+                if model.selected_flag == 1{
                     cacheArray.append(tag)
                 }
             }

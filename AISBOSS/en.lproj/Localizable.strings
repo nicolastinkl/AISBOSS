@@ -61,6 +61,10 @@
 "AISellerViewController.2beConfirmed" = "To Be Confirmed";
 
 //
+"PurchasedServiceView.home" = "Home Delivery";
+"PurchasedServiceView.yourOrder" = "Your ordered items have arrived at Shanghai storehouse, ready to be sent to Beijing.";
+
+//
 "AIServerDetailViewController.service" = "Services to Your Liking";
 "AIServerDetailViewController.dollarFormat" = "$%@";
 "AIServerDetailViewController.duplicate" = "Cannot add duplicate notes";
