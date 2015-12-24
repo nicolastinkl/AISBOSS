@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 @property (nonatomic, strong) NSMutableDictionary *selectedParamsDic;
+@property (nonatomic, strong) NSMutableDictionary *defaultParamsDic;
 @property AIProposalServiceDetailParamModel *coverageModel;
 
 @end
@@ -169,8 +170,8 @@
 
 - (void) initSelectedParamsDic: (NSArray *)paramValues
 {
-    if (_selectedParamsDic == nil) {
-        _selectedParamsDic = [[NSMutableDictionary alloc]init];
+    if (_defaultParamsDic == nil) {
+        _defaultParamsDic = [[NSMutableDictionary alloc]init];
     }
     
     for (int i = 0; i < paramValues.count; i++)
@@ -181,7 +182,7 @@
         
         if (selected) {
             NSString *serviceId = [NSString stringWithFormat:@"%ld",model.id];
-            _selectedParamsDic[serviceId] = model;
+            _defaultParamsDic[serviceId] = model;
         }
     }
 }
@@ -196,11 +197,70 @@
     
 }
 
+- (BOOL)isArray:(NSArray *)a contains:(id)obj {
+    BOOL result = NO;
+//    a
+    return result;
+}
+
+- (BOOL)isArrayA:(NSArray *)a equalToArrayB:(NSArray *)b
+{
+    BOOL isSame = YES;
+    if (a.count == b.count) {
+        for (NSString *defaultKey in a) {
+            for (NSString *selectedKey in b) {
+                if (![selectedKey isEqualToString:defaultKey]) {
+                    isSame = NO;
+                    break;
+                }
+            }
+        }
+    }
+    else
+    {
+        isSame = NO;
+    }
+    
+    return isSame;
+}
+
+
+- (NSDictionary *)insertDicA:(NSDictionary *)a toDicB:(NSDictionary *)b
+{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    
+    NSArray *defaultKeys = a.allKeys;
+    NSArray *selectedKeys = b.allKeys;
+    
+    for (NSString *defaultKey in defaultKeys) {
+        [dic setObject:a[defaultKey] forKey:defaultKey];
+    
+        for (NSString *selectedKey in selectedKeys) {
+            if (![selectedKey isEqualToString:defaultKey]) {
+               
+                [dic setObject:b[selectedKey] forKey:selectedKey];
+            }
+            else
+            {
+                
+            }
+        }
+    }
+    
+    return dic;
+}
+
 
 #pragma mark - AIBuyerParamsDelegate
 - (NSArray *)getSelectedParams
 {
-    if (_selectedParamsDic != nil && [_selectedParamsDic count] > 0) {
+    //
+    NSArray *defaultKeys = _defaultParamsDic.allKeys;
+    NSArray *selectedKeys = _selectedParamsDic.allKeys;
+    
+    BOOL isSame = [self isArray:defaultKeys contains:selectedKeys];
+
+    if (_selectedParamsDic != nil && [_selectedParamsDic count] > 0 && !isSame) {
         return [self findSubmitData];
     } else {
         return nil;
@@ -246,7 +306,7 @@
 - (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel isSelected:(BOOL)selected
 {
     if (_selectedParamsDic == nil) {
-        _selectedParamsDic = [[NSMutableDictionary alloc]init];
+        _selectedParamsDic = [[NSMutableDictionary alloc]initWithDictionary:_defaultParamsDic];
     }
    
     NSString *serviceId = [NSString stringWithFormat:@"%ld",labelModel.id];
