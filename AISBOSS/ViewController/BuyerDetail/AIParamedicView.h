@@ -12,7 +12,7 @@
 #import "AIServiceTypes.h"
 #import "AIServiceCoverage.h"
 
-@interface AIParamedicView : UIView<AIBuyerParamsDelegate>
+@interface AIParamedicView : UIView<AIBuyerParamsDelegate,AIServiceCoverageDelegate>
 
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;

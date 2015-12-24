@@ -269,7 +269,7 @@ struct AIApplication{
             case .getServiceScheme: return AIApplication.KURL_ReleaseURL+"/getServiceScheme"
             case .addWishListNote: return AIApplication.KURL_ReleaseURL+"/addWishListNote"
             case .delWishListNote: return AIApplication.KURL_ReleaseURL+"/delWishListNote"
-            case .saveServiceParameters: return AIApplication.KURL_ReleaseURL+"/sboss/saveServiceParameters"
+            case .saveServiceParameters: return AIApplication.KURL_ReleaseURL+"/saveServiceParameters"
             case .submitProposalOrder: return AIApplication.KURL_ReleaseURL+"/submitProposalOrder"
             case .querySellerOrderList: return AIApplication.KURL_ReleaseURL+"/querySellerOrderList"
             case .updateParamSettingState: return AIApplication.KURL_ReleaseURL+"/updateParamSettingState"

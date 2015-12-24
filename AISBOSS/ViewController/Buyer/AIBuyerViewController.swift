@@ -75,8 +75,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func setupLanguageNotification() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupUIWithCurrentLanguage", name: LCLLanguageChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshAfterNewOrder", name: AIApplication.Notification.UIAIASINFORecoverOrdersNotification, object: nil)
     }
+    
+    func refreshAfterNewOrder () {
+        
+        weak var ws = self
+        Async.main(after: 0.2) { () -> Void in
+            ws!.tableView.headerBeginRefreshing()
+        }
+    }
+    
     
     func setupUIWithCurrentLanguage() {
         //TODO: reload data with current language
@@ -109,9 +118,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    private func loadData() {
+    func loadData() {
         
         self.tableView.hideErrorView()
+        
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let listData : ProposalOrderListModel? = appDelegate.buyerListData
@@ -134,6 +144,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             // 列表数据
             bdk.getProposalList({ (responseData) -> Void in
                 listDone = true
+                
                 weakSelf!.parseListData(responseData)
                 
                 if bubblesDone {
@@ -406,12 +417,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     func makeTableView () {
         
         tableView = UITableView(frame: self.view.bounds, style: .Plain)
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        tableView?.separatorStyle = .None
-        tableView?.showsVerticalScrollIndicator = true
-        tableView?.backgroundColor = UIColor.clearColor()
-        tableView?.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .None
+        tableView.showsVerticalScrollIndicator = true
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
 
         self.view.addSubview(tableView!)
         
@@ -561,10 +572,11 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    
     func parseListData(listData : ProposalOrderListModel?) {
         
         if let data = listData {
+            tableViewCellCache.removeAll()
+
             dataSource.removeAll()
             
             for proposal in data.proposal_order_list {

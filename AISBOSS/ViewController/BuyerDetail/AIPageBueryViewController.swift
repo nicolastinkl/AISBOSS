@@ -187,8 +187,6 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
         
         for item in enumerator {
             let data = item as! AIServiceSubmitModel
-            print(data.toJSONString())
-            
             let message = AIMessage()
             message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data.toDictionary()])
     
