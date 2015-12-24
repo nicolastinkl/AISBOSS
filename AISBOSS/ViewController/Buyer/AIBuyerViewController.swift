@@ -57,6 +57,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var topBar : UIView!
     
+    var didRefresh : Bool?
+    
     
     private let BUBBLE_VIEW_MARGIN = AITools.displaySizeFrom1080DesignSize(40)
     
@@ -106,7 +108,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func refreshAfterNewOrder () {
-        cleanHistoryData()
         
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
@@ -126,11 +127,27 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.removeHeader()
         weak var weakSelf = self
         tableView.addHeaderWithCallback { () -> Void in
-            print("HeaderWithCallback\n")
-            weakSelf!.cleanHistoryData()
+
+            weakSelf!.clearPropodalData()
+
             weakSelf!.loadData()
         }
         
+        tableView.addHeaderRefreshEndCallback { () -> Void in
+            if let _ = weakSelf!.didRefresh {
+                weakSelf!.tableView.reloadData()
+            }
+        }
+
+        tableView.addHeaderRefreshEndCallback { () -> Void in
+            weakSelf!.tableView.reloadData()
+
+        }
+        
+        // reload bottom tableView
+        tableViewCellCache.removeAll()
+        tableView.reloadData()
+
     }
     
     
@@ -172,29 +189,29 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             // 列表数据
             bdk.getProposalList({ (responseData) -> Void in
                 listDone = true
-                
+                weakSelf!.didRefresh = true
                 weakSelf!.parseListData(responseData)
                 
                 if bubblesDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.reloadData()
                 }
                 
                 
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.didRefresh = false
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.showErrorContentView()
             })
         
             bdk.getPoposalBubbles({ (responseData) -> Void in
                 bubblesDone = true
+                weakSelf!.didRefresh = true
                 weakSelf!.parseProposalData(responseData)
                 
                 if listDone {
                     weakSelf!.tableView.headerEndRefreshing()
-                    weakSelf!.tableView.reloadData()
                 }
                 }, fail: { (errType, errDes) -> Void in
+                    weakSelf!.didRefresh = false
                     weakSelf!.tableView.headerEndRefreshing()
             })
             
@@ -224,11 +241,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDelegate.buyerListData = nil
-            appDelegate.buyerProposalData = nil
             ws!.tableView.headerBeginRefreshing()
         }
+    }
+    
+    private func clearPropodalData() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.buyerListData = nil
+        appDelegate.buyerProposalData = nil
     }
     
         
@@ -519,26 +539,23 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if !dataSource[indexPath.row].isExpanded{
+        if !dataSource[indexPath.row].isExpanded {
             rowSelectAction(indexPath)
         }
     }
     
     //处理表格点击事件
-    func rowSelectAction(indexPath : NSIndexPath){
+    func rowSelectAction(indexPath : NSIndexPath) {
         dataSource[indexPath.row].isExpanded = !dataSource[indexPath.row].isExpanded
         //如果有，做比较
         if let _ = lastSelectedIndexPath {
             //如果点击了不同的cell
-            if lastSelectedIndexPath?.row != indexPath.row {
-                dataSource[lastSelectedIndexPath!.row].isExpanded = !dataSource[lastSelectedIndexPath!.row].isExpanded
-                lastSelectedIndexPath = indexPath;
-            } else {
-                lastSelectedIndexPath = nil
+            if lastSelectedIndexPath?.row != indexPath.row && dataSource[lastSelectedIndexPath!.row].isExpanded {
+                dataSource[lastSelectedIndexPath!.row].isExpanded = false
             }
-        } else {
-            lastSelectedIndexPath = indexPath;
         }
+        
+        lastSelectedIndexPath = indexPath;
         
         if let cacheCell : AITableFoldedCellHolder = tableViewCellCache[indexPath.row] as! AITableFoldedCellHolder? {
             if cellNeedRebuild(cacheCell) {
@@ -572,7 +589,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-         self.handleScrollEventWithOffset(scrollView.contentOffset.y)
+        self.handleScrollEventWithOffset(scrollView.contentOffset.y)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -602,8 +619,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
                 self.tableView.tableFooterView = view
             }
-            
-            
+
         }
     }
     
