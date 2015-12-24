@@ -180,10 +180,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func reloadDataAfterUserChanged() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.buyerListData = nil
-        appDelegate.buyerProposalData = nil
-        loadData()
+        
+        weak var ws = self
+        Async.main(after: 0.2) { () -> Void in
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDelegate.buyerListData = nil
+            appDelegate.buyerProposalData = nil
+            ws!.tableView.headerBeginRefreshing()
+        }
     }
     
         

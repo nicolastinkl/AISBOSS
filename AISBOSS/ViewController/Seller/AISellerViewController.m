@@ -73,13 +73,19 @@
 
 - (void) reloadDataAfterUserChanged {
     
-    self.sellerInfoList = nil;
-    [self.tableView reloadData];
+    __weak typeof (self) ws = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        ws.sellerInfoList = nil;
+        [ws.tableView reloadData];
+        
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        appDelegate.sellerData = nil;
+        
+        [ws.tableView headerBeginRefreshing];
+    });
     
-    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    appDelegate.sellerData = nil;
     
-    [self.tableView headerBeginRefreshing];
+    
 }
 
 
