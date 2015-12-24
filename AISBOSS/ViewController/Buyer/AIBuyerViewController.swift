@@ -573,7 +573,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-         self.handleScrollEventWithOffset(scrollView.contentOffset.y)
+        self.handleScrollEventWithOffset(scrollView.contentOffset.y)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

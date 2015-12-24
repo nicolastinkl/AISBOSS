@@ -194,7 +194,7 @@
                 self.lastUpdateTime = [NSDate date];
                 
                 [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
-                    self.scrollView.mj_contentInsetTop -= self.mj_height;
+                    self.scrollView.mj_contentInsetTop = self.scrollViewOriginalInset.top;
                 } completion:^(BOOL finished) {
                     if (self.refreshDidEndCallback) {
                         self.refreshDidEndCallback();
