@@ -1,6 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
+import Foundation
 
 var str = "Hello, playground"
 
@@ -14,7 +15,34 @@ One of the great things about Swift is that it transparently inter operates with
 let distinction = "区别"
 
 
+// assert mentioned on page 55
+assert(true)
 
+assert(true, "error")
+
+
+"error".characters.count //equel countElements.
+
+for (i,j) in EnumerateSequence(["A","B","a"]){
+        print("\(i):\(j)")
+}
+
+
+min(8, 2, 3) == 2
+
+let newArray = ["B", "A","V","D"].sort { (a, b) -> Bool in
+    return true
+}
+
+newArray
+
+abs(-1) == 1
+abs(-42) == 42
+abs(42) == 42
+
+var lanuages = ["swift","java"]
+
+dump(lanuages)
 
 
 
