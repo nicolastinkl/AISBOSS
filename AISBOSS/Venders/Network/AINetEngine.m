@@ -89,6 +89,7 @@
         
         if (responseObject) {
             NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
+            NSLog(@"responseObject lenght:%ld",(long)length);
             if (length > 180 && [responseObject isKindOfClass:[NSDictionary class]]) {
 //            NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
 //            if (length > 200 && [responseObject isKindOfClass:[NSDictionary class]]) {

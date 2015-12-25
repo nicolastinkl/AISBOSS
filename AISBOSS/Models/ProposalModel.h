@@ -9,6 +9,9 @@
 #import "JSONModel.h"
 #import <UIKit/UIKit.h>
 
+//NS_ASSUME_NONNULL_BEGIN
+//NS_ASSUME_NONNULL_END
+
 @interface AIBaseModel : JSONModel
 
 @end
@@ -332,9 +335,6 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @end
 
-
-
-
 // service_rating
 @protocol AIProposalServiceDetailRatingItemModel @end
 @interface AIProposalServiceDetailRatingItemModel : JSONModel
@@ -366,6 +366,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 //wish list
 
 @protocol AIProposalServiceDetailLabelModel @end
+
 @interface AIProposalServiceDetailLabelModel : JSONModel
 
 @property (strong, nonatomic) NSString<Optional> * content;
