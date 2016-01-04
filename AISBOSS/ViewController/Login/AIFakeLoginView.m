@@ -18,8 +18,16 @@
 
 #define kSeller1Tag 200
 
-@interface AIFakeLoginView ()
+#define kBuyer1     @"100000002410"
+#define kSeller1    @"200000002501"
 
+
+
+@interface AIFakeLoginView ()
+{
+    UIImageView *_buyerTitleImageView;
+    UIImageView *_sellerTitleImageView;
+}
 
 @end
 
@@ -33,10 +41,25 @@
         [self makeBackground];
         [self makeBuyerArea];
         [self makeSellerArea];
+        [self makeDefaultUser];
     }
     
     return self;
 }
+
+- (void)makeDefaultUser
+{
+    NSString *userID = [[NSUserDefaults standardUserDefaults] objectForKey:kDefault_UserID];
+    
+    if ([userID isEqualToString:kBuyer1]) {
+        _buyerTitleImageView.highlighted = YES;
+    }
+    else if ([userID isEqualToString:kSeller1])
+    {
+        _sellerTitleImageView.highlighted = YES;
+    }
+}
+
 
 #pragma mark - Tap
 
@@ -66,17 +89,25 @@
     
 }
 
+- (void)noneAction
+{
+    
+}
+
 #pragma mark- Util
 
-- (UIImageView *)makeImageViewAtPoint:(CGPoint)point imageName:(NSString *)imageName
+- (UIImageView *)makeImageViewAtPoint:(CGPoint)point imageName:(NSString *)imageName hlImageName:(NSString *)hlImageName
 {
     UIImage *image = [UIImage imageNamed:imageName];
     CGSize size = [AITools imageDisplaySizeFrom1080DesignSize:image.size];
     CGRect frame = CGRectMake(point.x, point.y, size.width, size.height);
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image highlightedImage: hlImageName ? [UIImage imageNamed:hlImageName] : nil];
     imageView.frame = frame;
     imageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(noneAction)];
+    [imageView addGestureRecognizer:tapGesture];
     [self addSubview:imageView];
     
     return imageView;
@@ -87,7 +118,7 @@
                              bubbleTitle:(NSString *)bubbleTitle
                                  atPointY:(CGFloat)pointY tag:(NSInteger)tag
 {
-    UIImageView *bubbleView = [self makeImageViewAtPoint:CGPointMake(kMargin, pointY) imageName:bubbleImageName];
+    UIImageView *bubbleView = [self makeImageViewAtPoint:CGPointMake(kMargin, pointY) imageName:bubbleImageName hlImageName:nil];
     bubbleView.userInteractionEnabled = YES;
     bubbleView.tag = tag;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action:)];
@@ -108,7 +139,8 @@
 
 - (void)makeBackground
 {
-    UIImageView *bgView = [self makeImageViewAtPoint:CGPointZero imageName:@"FakeLogin_BG"];
+    UIImageView *bgView = [self makeImageViewAtPoint:CGPointZero imageName:@"FakeLogin_BG" hlImageName:nil];
+    bgView.userInteractionEnabled = NO;
     bgView.frame = self.bounds;
 }
 
@@ -117,8 +149,8 @@
 {
     CGFloat y = kMargin;
     
-    UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle"];
-    y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
+    _buyerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle" hlImageName:@"FakeLogin_BuyerTitleL"];
+    y += kMargin * 2 + CGRectGetHeight(_buyerTitleImageView.frame);
     
     [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"" atPointY:y tag:kBuyer1Tag];
 }
@@ -127,12 +159,12 @@
 {
     CGFloat y = CGRectGetHeight(self.frame) / 2;
     
-    [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_Line"];
+    [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_Line" hlImageName:nil];
     
     y += 1 + kMargin;
     
-    UIImageView *titleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle"];
-    y += kMargin * 2 + CGRectGetHeight(titleImageView.frame);
+    _sellerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle" hlImageName:@"FakeLogin_SellerTitleL"];
+    y += kMargin * 2 + CGRectGetHeight(_sellerTitleImageView.frame);
     
     [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"" atPointY:y tag:kSeller1Tag];
 }
@@ -149,14 +181,24 @@
 
 - (void)action:(UITapGestureRecognizer *)gesture
 {
+    // handle userID
     NSString *userID = nil;
     
     switch (gesture.view.tag) {
         case kBuyer1Tag:
-            userID = @"100000002410";
+        {
+            userID = kBuyer1;
+            _buyerTitleImageView.highlighted = YES;
+            _sellerTitleImageView.highlighted = NO;
+        }
+            
             break;
         case kSeller1Tag:
-            userID = @"200000002501";
+        {
+            userID = kSeller1;
+            _buyerTitleImageView.highlighted = NO;
+            _sellerTitleImageView.highlighted = YES;
+        }
             break;
             
         default:

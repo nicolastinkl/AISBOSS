@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        configDefaultUser()
         initNetEngine()
         
         // 设置状态栏隐藏
@@ -87,6 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func configDefaultUser () {
+        NSUserDefaults.standardUserDefaults().setObject("100000002410", forKey: kDefault_UserID)
+    }
     
     private func initNetEngine() {
         let timeStamp: Int = 0
