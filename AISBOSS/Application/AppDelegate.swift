@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         showRootViewControllerReal()
         
-        fetchPreSellerAndBuyerData()
+        //fetchPreSellerAndBuyerData()
 
         
         return true
