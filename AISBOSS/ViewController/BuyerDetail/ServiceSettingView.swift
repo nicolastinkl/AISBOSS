@@ -174,12 +174,15 @@ class FixedSpaceFlowLayout: UICollectionViewFlowLayout {
         if let atts = attributes {
             for(var i = 1; i < atts.count; ++i) {
                 if i >= 1 {
+                    
                     let currentLayoutAttributes = atts[i]
                     let prevLayoutAttributes = atts[i - 1]
                     
                     let preRightX = CGRectGetMaxX(prevLayoutAttributes.frame)
                     
-                    if(preRightX + horizanSpace + currentLayoutAttributes.frame.size.width < self.collectionViewContentSize().width) {
+                    let currentPossibleRightXPosition = preRightX + horizanSpace + currentLayoutAttributes.frame.size.width
+                    
+                    if(currentPossibleRightXPosition < self.collectionViewContentSize().width && currentLayoutAttributes.frame.origin.y == prevLayoutAttributes.frame.origin.y) {
                         currentLayoutAttributes.frame.origin.x = preRightX + horizanSpace
                     }
                 }
