@@ -66,9 +66,13 @@
 - (void)parserBubbleColors
 {
     
-    NSArray *deepColor = @[@"aa6e28",@"ad2063",@"7e3d60",@"438091",@"936d4c",@"574d71" , @"5f257d",@"162c18",@"6b4a1d",@"4a5679",@"1b1a3a",@"ca9e82",@"6a8e5c",@"",@"",@"",@""];
-    NSArray *undertoneColor = @[@"cdaf13",@"cf4e5a",@"c3746a", @"6c929f",@"ae9277" ,@"696a9a", @"9c417c", @"32542c", @"aa822a" ,@"7e6479",@"81476a",@"5198ac", @"93a44b",@"",@"",@"",@""];
-    NSArray *borderColor = @[@"fee34a",@"ef6d83", @"f88d8e", @"6db8d5",@"f8b989", @"8986c2",@"cd53e1", @"528319", @"e6ad44", @"8986c2" ,@"c474ac" ,@"9bd6f2" ,@"93bd78", @"f88d8e",@"",@"",@"",@""];
+    NSArray *deepColor = @[@"ca9e82",@"936d4c",@"aa6e28",@"574d71",@"7e3d60",@"438091",@"ad2063",@"5f257d",@"162c18",@"B10000",@"4a5679", @"6b4a1d",@"1b1a3a",@"aa6e28",@"6a8e5c",@"",@"",@"",@""];
+    
+    NSArray *undertoneColor =
+        @[@"5198ac",@"ae9277",@"cdaf13", @"696a9a",@"c3746a", @"6c929f",@"cf4e5a", @"9c417c", @"32542c", @"F25A68",@"7e6479",@"aa822a" ,@"81476a",@"cdaf13",@"93a44b",@"",@"",@"",@""];
+    
+    NSArray *borderColor =
+        @[@"9bd6f2",@"f8b989",@"fee34a", @"8986c2", @"f88d8e", @"6db8d5",@"ef6d83",@"cd53e1", @"528319", @"F25A68",@"8986c2" ,@"e6ad44", @"c474ac" ,@"fee34a",@"93bd78",@"",@"",@"",@""];
     
     for (int i = 0; i < _bubbleModels.count; i++) {
         AIBuyerBubbleModel *model = [_bubbleModels objectAtIndex:i];
