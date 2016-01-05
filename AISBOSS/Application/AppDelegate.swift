@@ -56,9 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }catch{
             }
         }) 
+
+        showRootViewControllerReal()
         
-        fetchPreSellerAndBuyerData()
-//        showRootViewController()
+        //fetchPreSellerAndBuyerData()
+
         
         return true
 
@@ -122,8 +124,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let header = ["HttpQuery": headerContent]
         AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
-
-    func showRootViewController() {
+    
+    func showRootViewControllerReal() {
         //创建Root
         let root = AIRootViewController()
         //创建导航控制器
@@ -131,6 +133,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBarHidden = true
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
+    }
+    
+
+    func showRootViewController() {
+        
     }
     
     func fetchBuyerData() {

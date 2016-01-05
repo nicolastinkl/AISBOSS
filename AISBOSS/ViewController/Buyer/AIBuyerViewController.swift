@@ -628,6 +628,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         if let data = proposalData {
+            //TODO: 有泄漏
             if let pops = data.proposal_list {
                 if pops.count > 0 {
                     self.dataSourcePop = pops as! [AIBuyerBubbleModel]
