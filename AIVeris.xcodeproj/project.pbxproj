@@ -108,6 +108,7 @@
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
+		845087D71C3B6E8B00E93937 /* VerticalIconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */; };
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
 		8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */; };
 		8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */; };
@@ -652,6 +653,7 @@
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
+		845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabel.swift; sourceTree = "<group>"; };
 		8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHorizontalLineLabel.swift; sourceTree = "<group>"; };
 		8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITitleAndIconTextView.xib; sourceTree = "<group>"; };
 		8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITitleAndIconTextView.swift; sourceTree = "<group>"; };
@@ -2231,6 +2233,7 @@
 				93FA1DD81B9C3001009965C8 /* ContentsCellView.xib */,
 				93FA1DC91B9C2F26009965C8 /* AOTag.h */,
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
+				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3346,6 +3349,7 @@
 				93FA1DCB1B9C2F26009965C8 /* AOTag.m in Sources */,
 				8440091A1C16702F0031E2F7 /* JSSAlertView-Extension.swift in Sources */,
 				12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */,
+				845087D71C3B6E8B00E93937 /* VerticalIconLabel.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				849B4B5A1C0EDFE300BEC179 /* FLEXHeapEnumerator.m in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
