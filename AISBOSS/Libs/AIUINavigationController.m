@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     __weak AIUINavigationController *weakSelf = self;
     
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])

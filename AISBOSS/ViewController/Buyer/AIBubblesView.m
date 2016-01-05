@@ -193,6 +193,8 @@ void MyCGPathApplierFunc (void *info, const CGPathElement *element) {
     {
         NSLog(@"outPoint out path!");
     }
+    
+    CFRelease(pathRef);
 }
 
 //////////////////////
