@@ -16,6 +16,7 @@
 #import "AIViews.h"
 #import "UP_NSString+Size.h"
 #import "Veris-Swift.h"
+#import "PKYStepper.h"
 
 @interface AIMusicTherapyView () <AIServiceTypesDelegate>
 {
@@ -24,6 +25,7 @@
 
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 @property (nonatomic, strong) NSArray *submitData;
+@property (nonatomic, strong) PKYStepper *selectedCounter;
 
 @end
 
@@ -163,6 +165,8 @@
     
     
     y -= [AITools displaySizeFrom1080DesignSize:22] - 0.5;
+    
+    
     // reset frame
     CGRect myFrame = self.frame;
     myFrame.size.height = y;
@@ -209,17 +213,45 @@
 
 - (CGFloat) addPriceView: (CGFloat) positionY
 {
+    CGFloat totelWidth = [self contentViewWidth];
+    CGFloat counterWidth = 100;
+    
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
-    UIImage *image = [UIImage imageNamed:@"Wave_BG"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIImage *backgroundImage = [UIImage imageNamed:@"Wave_BG"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:backgroundImage];
     imageView.frame = CGRectMake(0, positionY, CGRectGetWidth(self.frame), imageHeight);
     [self addSubview:imageView];
-    //
+    
+    self.selectedCounter = [[PKYStepper alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) -  counterWidth - _sideMargin, positionY, counterWidth, imageHeight)];
+    [self.selectedCounter setBorderColor:[UIColor whiteColor]];
+    [self.selectedCounter setBorderWidth:0.5];
+    [self.selectedCounter setLabelTextColor:[UIColor whiteColor]];
+    self.selectedCounter.countLabel.layer.borderWidth = 0.5;
+    self.selectedCounter.buttonWidth = 34;
+    [self.selectedCounter setButtonTextColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.selectedCounter setButtonTextColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.selectedCounter setButtonFont:[AITools myriadSemiCondensedWithSize:29]];
+    [self.selectedCounter.decrementButton setTitle:@"-" forState:UIControlStateNormal];
+    self.selectedCounter.countLabel.text = @"0";
+    [self.selectedCounter setup];
+
+    __weak AIMusicTherapyView *weakself = self;
+    [self.selectedCounter setValueChangedCallback:^void(PKYStepper *stepper, float newValue) {
+        [weakself serviceSelectedCountChanged:stepper count:newValue];
+    }];
+    
+    [self addSubview:self.selectedCounter];
+    
+    UILabel *selectedTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.selectedCounter.origin.x, self.selectedCounter.origin.y - 20, self.selectedCounter.width, 20)];
+    selectedTitle.textColor = [UIColor whiteColor];
+    selectedTitle.font = [AITools myriadSemiCondensedWithSize:15];
+    selectedTitle.text = @"Selected Amount";
+    selectedTitle.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:selectedTitle];
     
     NSString *price = [NSString stringWithFormat:@"%@ %ld %@", _detailModel.service_price.unit, (NSInteger)_detailModel.service_price.price, _detailModel.service_price.billing_mode];
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, positionY, CGRectGetWidth(self.frame), imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
+    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(_sideMargin, positionY, totelWidth - counterWidth - _sideMargin, imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
     amLabel.attributedText = [self attrAmountWithAmount: price];
-    amLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:amLabel];
     
@@ -382,6 +414,11 @@
         _submitData = @[product, param];
     }
     
+}
+
+- (void) serviceSelectedCountChanged: (PKYStepper *) stepper count: (float) count
+{
+    stepper.countLabel.text = [NSString stringWithFormat:@"%@", @(count)];
 }
 
 
