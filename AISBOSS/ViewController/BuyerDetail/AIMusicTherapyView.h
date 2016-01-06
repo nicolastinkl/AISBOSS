@@ -11,12 +11,11 @@
 
 #import "AIServiceTypes.h"
 #import "AIBuyerParamsDelegate.h"
+#import "ProposalServiceDetailBaseView.h"
 
 
-@interface AIMusicTherapyView : UIView<AIServiceTypesDelegate, AIBuyerParamsDelegate>
+@interface AIMusicTherapyView : ProposalServiceDetailBaseView<AIServiceTypesDelegate>
 
-
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
 
 
 @end

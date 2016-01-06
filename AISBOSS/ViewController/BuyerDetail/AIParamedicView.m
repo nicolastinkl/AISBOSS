@@ -9,6 +9,7 @@
 #import "AIParamedicView.h"
 #import "AIServiceCoverage.h"
 #import "AIDetailText.h"
+#import "PKYStepper.h"
 
 
 #import "AITools.h"
@@ -17,11 +18,8 @@
 #import "Veris-Swift.h"
 
 @interface AIParamedicView ()
-{
-    CGFloat _sideMargin;
-}
 
-@property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
+
 @property (nonatomic, strong) NSMutableDictionary *selectedParamsDic;
 @property (nonatomic, strong) NSMutableDictionary *defaultParamsDic;
 @property AIProposalServiceDetailParamModel *coverageModel;
@@ -34,11 +32,9 @@
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame model:model];
     
     if (self) {
-        self.detailModel = model;
-        [self makeProperties];
         [self makeSubViews];
     }
     
@@ -50,18 +46,12 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        [self makeProperties];
         [self makeSubViews];
     }
     
     return self;
 }
 
-
-- (void)makeProperties
-{
-    _sideMargin = [AITools displaySizeFrom1080DesignSize:35];
-}
 
 
 - (NSAttributedString *)attrAmountWithAmount:(NSString *)amount
@@ -95,48 +85,31 @@
 
 - (void)makeSubViews
 {
+    CGFloat viewHeight = 0;
     CGFloat y = [AITools displaySizeFrom1080DesignSize:32];
-    CGFloat width = CGRectGetWidth(self.frame) - _sideMargin * 2;
-    //
-    CGRect textFrame = CGRectMake(_sideMargin, y, width, 0);
-
-    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:self.detailModel.service_intro_title detail:self.detailModel.service_intro_content];
-    [self addSubview:detailText];
     
-    //
-    y += CGRectGetHeight(detailText.frame) + [AITools displaySizeFrom1080DesignSize:34] - 4;
+    viewHeight = [self addDetailText:y];
+
+    y += viewHeight + [AITools displaySizeFrom1080DesignSize:34] - 4;
+    
+    
     [self addLineViewAtY:y];
-    //
+    
     y += [AITools displaySizeFrom1080DesignSize:38];
-    
-    CGRect coverageFrame = CGRectMake(_sideMargin, y, width, 0);
 
-    AIServiceCoverage *corverage = [self addServiceCoverage:coverageFrame];
+    viewHeight = [self addServiceCoverage:y];
 
-    if (corverage) {
-        y += [AITools displaySizeFrom1080DesignSize:70] + CGRectGetHeight(corverage.frame);
-    }    
+    if (viewHeight > 0) {
+        y += viewHeight + [AITools displaySizeFrom1080DesignSize:70];
+    }
     
-    CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
-    UIImage *image = [UIImage imageNamed:@"Wave_BG"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight);
-    [self addSubview:imageView];
-    //
-    
-    NSString *price = [NSString stringWithFormat:@"%@ %ld %@", _detailModel.service_price.unit, (NSInteger)_detailModel.service_price.price, _detailModel.service_price.billing_mode];
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(0, y, CGRectGetWidth(self.frame), imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
-    
-    amLabel.attributedText = [self attrAmountWithAmount:price];
-    amLabel.textAlignment = NSTextAlignmentCenter;
-    
-    [self addSubview:amLabel];
+    viewHeight = [self addPriceView:y];
+    y += [AITools displaySizeFrom1080DesignSize:14] + viewHeight;
     
     
-    //
-    y += [AITools displaySizeFrom1080DesignSize:14] + imageHeight;
     [self addLineViewAtY:y];
     y += 1;
+    
     // reset frame
     CGRect myFrame = self.frame;
     myFrame.size.height = y;
@@ -144,17 +117,23 @@
 
 }
 
-- (AIServiceCoverage *) addServiceCoverage: (CGRect) frame
+
+- (CGFloat) addServiceCoverage: (CGFloat) positionY
 {
+    CGFloat viewHeight = 0;
+    CGFloat width = [self contentViewWidth];
+    
     AIServiceCoverage *serviceCoverage;
     
-    for (int i = 0; i < _detailModel.service_param_list.count; i++)
+    CGRect coverageFrame = CGRectMake(self.sideMargin, positionY, width, 0);
+    
+    for (int i = 0; i < self.detailModel.service_param_list.count; i++)
     {
-        AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
+        AIProposalServiceDetailParamModel *param = [self.detailModel.service_param_list objectAtIndex:i];
         
         if ([param.param_name isEqual: @"Service Coverage"]) {
             _coverageModel = param;
-            serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:frame model:param];
+            serviceCoverage = [[AIServiceCoverage alloc] initWithFrame:coverageFrame model:param];
             
             [self initSelectedParamsDic: param.param_value];
         }
@@ -163,10 +142,12 @@
     if (serviceCoverage != nil) {
         [self addSubview:serviceCoverage];
         serviceCoverage.delegate = self;
+        viewHeight = CGRectGetHeight(serviceCoverage.frame);
     }
     
-    return serviceCoverage;
+    return viewHeight;
 }
+
 
 - (void) initSelectedParamsDic: (NSArray *)paramValues
 {
@@ -273,7 +254,7 @@
     
     NSMutableArray *params = [[NSMutableArray alloc]init];
     
-    JSONModel *model = [AIServiceDetailTool createServiceSubmitModel:_detailModel param:_coverageModel paramContentDic:_selectedParamsDic];
+    JSONModel *model = [AIServiceDetailTool createServiceSubmitModel:self.detailModel param:_coverageModel paramContentDic:_selectedParamsDic];
     
     if (model) {
         [params addObject:model];
@@ -283,9 +264,9 @@
     
 //    for (AIProposalServiceDetailParamValueModel *object in enumeratorObject) {
 //        
-//        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue: object];
+//        AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:self.detailModel selectedParamValue: object];
 //        if (m) {
-//            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+//            JSONModel *submitData = [AIServiceDetailTool createServiceSubmitModel:self.detailModel relation:m];
 //            if (submitData) {
 //                [params addObject:submitData];
 //            }
@@ -315,6 +296,11 @@
     } else {
         [_selectedParamsDic removeObjectForKey: serviceId];
     }
+}
+
+- (void) serviceSelectedCountChanged: (PKYStepper *) stepper count: (float) count
+{
+    stepper.countLabel.text = [NSString stringWithFormat:@"%@", @(count)];
 }
 
 @end
