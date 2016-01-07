@@ -77,6 +77,7 @@
 		8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8423E5611BB4E16B006DC73B /* sellerOrderList.json */; };
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
+		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85F1BDA3E3B00A0517C /* ProposalService.swift */; };
@@ -142,6 +143,7 @@
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
+		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
 		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
 		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
 		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
@@ -622,6 +624,8 @@
 		8423E56A1BB4E4EE006DC73B /* Veris Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Veris Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Veris_Tests.swift; sourceTree = "<group>"; };
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
+		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
 		842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailModel.m; sourceTree = "<group>"; };
 		842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailModel.h; sourceTree = "<group>"; };
 		842FC85F1BDA3E3B00A0517C /* ProposalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalService.swift; sourceTree = "<group>"; };
@@ -688,6 +692,8 @@
 		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
+		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
+		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
 		849B0BCD1C202AC3008C0A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1614,6 +1620,15 @@
 			path = Localize_Swift;
 			sourceTree = "<group>";
 		};
+		848690241C3BB1A600D177BC /* PKYStepper */ = {
+			isa = PBXGroup;
+			children = (
+				848690251C3BB1A600D177BC /* PKYStepper.h */,
+				848690261C3BB1A600D177BC /* PKYStepper.m */,
+			);
+			path = PKYStepper;
+			sourceTree = "<group>";
+		};
 		849B4A8D1C0EDFE300BEC179 /* Flex */ = {
 			isa = PBXGroup;
 			children = (
@@ -1924,6 +1939,8 @@
 				818D8EAC1C040C8B00006408 /* AIParamedicView.m */,
 				93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */,
 				81A0A5621C180811007DD9F8 /* AIBuyerParamsDelegate.h */,
+				842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */,
+				842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -2213,6 +2230,7 @@
 				8454E6F81BAFE9D800016AB3 /* SwitchService */,
 				847D93721BAF93C4000FAE69 /* Flight */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
+				848690241C3BB1A600D177BC /* PKYStepper */,
 				840FD40D1BABD2B8000C6033 /* JumpNumberLabel */,
 				84CB0B3C1BA90524005F16D0 /* Switch */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
@@ -3231,6 +3249,7 @@
 				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
 				843E37E11C1534DD00FAD919 /* View+SnapKit.swift in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
+				848690271C3BB1A600D177BC /* PKYStepper.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				8480813E1C1EE748007806E7 /* Localize.swift in Sources */,
@@ -3340,6 +3359,7 @@
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				843E37DF1C1534DD00FAD919 /* SnapKit.swift in Sources */,
+				842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				849B4B601C0EDFE300BEC179 /* FLEXUtility.m in Sources */,
@@ -3585,7 +3605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "1c3303c7-ff27-46f2-bdbd-07661d6976fd";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3601,7 +3621,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
