@@ -142,7 +142,7 @@
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
-		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; settings = {ASSET_TAGS = (); }; };
+		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
 		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
 		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
 		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
@@ -3615,7 +3615,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
