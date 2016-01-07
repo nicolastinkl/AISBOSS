@@ -99,11 +99,6 @@ class ServiceSettingView: UIView {
             }
         }
         
-//        if model.label_list.count != 0 {
-//            rowCount = Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
-//        }
-        
-        print("estimateRowCount:\(rowCount)")
         return rowCount
     }
 }
