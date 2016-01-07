@@ -21,7 +21,7 @@ class AICustomHomeViewController: UIViewController,UICollectionViewDelegateWater
     
     // MARK: - IBActions
     @IBAction func addAction(sender: UIButton) {
-        
+//        collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag        
     }
     
     @IBAction func logoAction(sender: UIButton) {
