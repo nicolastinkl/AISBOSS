@@ -19,13 +19,8 @@
 #import "PKYStepper.h"
 
 @interface AIMusicTherapyView () <AIServiceTypesDelegate>
-{
-    CGFloat _sideMargin;
-}
 
-@property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 @property (nonatomic, strong) NSArray *submitData;
-@property (nonatomic, strong) PKYStepper *selectedCounter;
 
 @end
 
@@ -33,22 +28,15 @@
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame model:model];
     
     if (self) {
-        self.detailModel = model;
-        [self makeProperties];
         [self makeSubViews];
     }
     
     return self;
 }
 
-
-- (void)makeProperties
-{
-    _sideMargin = [AITools displaySizeFrom1080DesignSize:35];
-}
 
 - (void)addLineViewAtX:(CGFloat)x y:(CGFloat)y width:(CGFloat)width
 {
@@ -129,7 +117,7 @@
     y += viewHeight + [AITools displaySizeFrom1080DesignSize:50];
     
     
-    NSArray *models = _detailModel.service_rating.rating_level_list;
+    NSArray *models = self.detailModel.service_rating.rating_level_list;
     
     for (AIProposalServiceDetailRatingItemModel *model in models) {
         viewHeight = [self addRatingBarView:y model:model];
@@ -147,17 +135,17 @@
     
     y += 1 + [AITools displaySizeFrom1080DesignSize:22];
     //
-    for (int i = 0; i < _detailModel.service_rating.comment_list.count; i++) {
+    for (int i = 0; i < self.detailModel.service_rating.comment_list.count; i++) {
         
-        AIProposalServiceDetailRatingCommentModel *comment = [_detailModel.service_rating.comment_list objectAtIndex:i];
+        AIProposalServiceDetailRatingCommentModel *comment = [self.detailModel.service_rating.comment_list objectAtIndex:i];
         
         viewHeight = [self addCommentItemView:y comment:comment];
         y += viewHeight + [AITools displaySizeFrom1080DesignSize:22];
         
-        if (i == _detailModel.service_rating.comment_list.count - 1) {
+        if (i == self.detailModel.service_rating.comment_list.count - 1) {
             [self addLineViewAtY:y];
         } else {
-            [self addLineViewAtX:_sideMargin y:y width:CGRectGetWidth(self.frame) - _sideMargin*2];
+            [self addLineViewAtX:self.sideMargin y:y width:CGRectGetWidth(self.frame) - self.sideMargin*2];
         }
         
         y +=  [AITools displaySizeFrom1080DesignSize:22];
@@ -174,27 +162,17 @@
     
 }
 
-- (CGFloat) addDetailText: (CGFloat) positionY
-{
-    CGFloat width = [self contentViewWidth];
-    CGRect textFrame = CGRectMake(_sideMargin, positionY, width, 0);
-    AIDetailText *detailText = [[AIDetailText alloc] initWithFrame:textFrame titile:self.detailModel.service_intro_title detail:self.detailModel.service_intro_content];
-    [self addSubview:detailText];
-    
-    return CGRectGetHeight(detailText.frame);
-}
-
 - (CGFloat) addServiceTypes: (CGFloat) positionY
 {
     CGFloat viewHeight = 0;
     AIServiceTypes *serviceTypes;
     
     CGFloat width = [self contentViewWidth];
-    CGRect frame = CGRectMake(_sideMargin, positionY, width, 0);
+    CGRect frame = CGRectMake(self.sideMargin, positionY, width, 0);
     
-    for (int i = 0; i < _detailModel.service_param_list.count; i++)
+    for (int i = 0; i < self.detailModel.service_param_list.count; i++)
     {
-        AIProposalServiceDetailParamModel *param = [_detailModel.service_param_list objectAtIndex:i];
+        AIProposalServiceDetailParamModel *param = [self.detailModel.service_param_list objectAtIndex:i];
         
         if (param.param_type == 2) {
             serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:param];
@@ -211,65 +189,18 @@
     return viewHeight;
 }
 
-- (CGFloat) addPriceView: (CGFloat) positionY
-{
-    CGFloat totelWidth = [self contentViewWidth];
-    CGFloat counterWidth = 100;
-    
-    CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
-    UIImage *backgroundImage = [UIImage imageNamed:@"Wave_BG"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:backgroundImage];
-    imageView.frame = CGRectMake(0, positionY, CGRectGetWidth(self.frame), imageHeight);
-    [self addSubview:imageView];
-    
-    self.selectedCounter = [[PKYStepper alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) -  counterWidth - _sideMargin, positionY, counterWidth, imageHeight)];
-    [self.selectedCounter setBorderColor:[UIColor whiteColor]];
-    [self.selectedCounter setBorderWidth:0.5];
-    [self.selectedCounter setLabelTextColor:[UIColor whiteColor]];
-    self.selectedCounter.countLabel.layer.borderWidth = 0.5;
-    self.selectedCounter.buttonWidth = 34;
-    [self.selectedCounter setButtonTextColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.selectedCounter setButtonTextColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-    [self.selectedCounter setButtonFont:[AITools myriadSemiCondensedWithSize:29]];
-    [self.selectedCounter.decrementButton setTitle:@"-" forState:UIControlStateNormal];
-    self.selectedCounter.countLabel.text = @"0";
-    [self.selectedCounter setup];
-
-    __weak AIMusicTherapyView *weakself = self;
-    [self.selectedCounter setValueChangedCallback:^void(PKYStepper *stepper, float newValue) {
-        [weakself serviceSelectedCountChanged:stepper count:newValue];
-    }];
-    
-    [self addSubview:self.selectedCounter];
-    
-    UILabel *selectedTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.selectedCounter.origin.x, self.selectedCounter.origin.y - 20, self.selectedCounter.width, 20)];
-    selectedTitle.textColor = [UIColor whiteColor];
-    selectedTitle.font = [AITools myriadSemiCondensedWithSize:15];
-    selectedTitle.text = @"Selected Amount";
-    selectedTitle.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:selectedTitle];
-    
-    NSString *price = [NSString stringWithFormat:@"%@ %ld %@", _detailModel.service_price.unit, (NSInteger)_detailModel.service_price.price, _detailModel.service_price.billing_mode];
-    UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(_sideMargin, positionY, totelWidth - counterWidth - _sideMargin, imageHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
-    amLabel.attributedText = [self attrAmountWithAmount: price];
-    
-    [self addSubview:amLabel];
-    
-    return imageHeight;
-}
-
 - (CGFloat) addEvaluationTitleView: (CGFloat) positionY
 {
     CGFloat width = [self contentViewWidth];
     CGFloat fontSize = [AITools displaySizeFrom1080DesignSize:42];
-    CGRect evaluationRect = CGRectMake(_sideMargin, positionY, width, fontSize);
+    CGRect evaluationRect = CGRectMake(self.sideMargin, positionY, width, fontSize);
     UPLabel *evaluationLabel = [AIViews normalLabelWithFrame:evaluationRect text:[@"AIMusicTherapyView.service" localized] fontSize:fontSize color:[UIColor whiteColor]];
     evaluationLabel.font = [AITools myriadSemiCondensedWithSize:fontSize];
     [self addSubview:evaluationLabel];
     
     //
     CGFloat moreFontSize = [AITools displaySizeFrom1080DesignSize:31];
-    NSString *moreString = [NSString stringWithFormat:[@"AIMusicTherapyView.moreReviews" localized], _detailModel.service_rating.reviews - 2];
+    NSString *moreString = [NSString stringWithFormat:[@"AIMusicTherapyView.moreReviews" localized], self.detailModel.service_rating.reviews - 2];
     UPLabel *moreLabel = [AIViews normalLabelWithFrame:evaluationRect text:moreString fontSize:moreFontSize color:[AITools colorWithR:0x61 g:0xb0 b:0xfa]];
     moreLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:moreLabel];
@@ -283,12 +214,12 @@
     
     CGFloat starSize = [AITools displaySizeFrom1080DesignSize:39];
     
-    CGRect starFrame = CGRectMake(_sideMargin, positionY, 100, starSize);
+    CGRect starFrame = CGRectMake(self.sideMargin, positionY, 100, starSize);
     AIStarRate *starRate = [[AIStarRate alloc] initWithFrame:starFrame rate:9];
     [self addSubview:starRate];
     
     //
-    NSString *reviewStr = [NSString stringWithFormat:[@"AIMusicTherapyView.reviews" localized], _detailModel.service_rating.reviews];
+    NSString *reviewStr = [NSString stringWithFormat:[@"AIMusicTherapyView.reviews" localized], self.detailModel.service_rating.reviews];
     CGFloat reFontSize = [AITools displaySizeFrom1080DesignSize:42];
     CGFloat reviewX = CGRectGetMaxX(starRate.frame) + [AITools displaySizeFrom1080DesignSize:40];
     CGSize reviewSize = [reviewStr sizeWithFont:[AITools myriadSemiCondensedWithSize:reFontSize] forWidth:width];
@@ -318,9 +249,9 @@
     
     [self addSubview:zanView];
     
-    NSArray *models = _detailModel.service_rating.rating_level_list;
+    NSArray *models = self.detailModel.service_rating.rating_level_list;
     AIProposalServiceDetailRatingItemModel *exmodel = models.firstObject;
-    CGFloat percentage = (CGFloat)exmodel.number / (CGFloat)_detailModel.service_rating.reviews * 100;
+    CGFloat percentage = (CGFloat)exmodel.number / (CGFloat)self.detailModel.service_rating.reviews * 100;
     NSString *rateP = [NSString stringWithFormat:@"%.0f%@", percentage, @"%"];
     UPLabel *perLabel = [AIViews normalLabelWithFrame:CGRectMake(CGRectGetMaxX(zanFrame) + 5, positionY, width, [AITools displaySizeFrom1080DesignSize:42]) text:rateP fontSize:[AITools displaySizeFrom1080DesignSize:reFontSize] color:Color_LowWhite];
     perLabel.font = [AITools myriadSemiCondensedWithSize:reFontSize];
@@ -334,8 +265,8 @@
     CGFloat height = [AITools displaySizeFrom1080DesignSize:34];
     CGFloat width = [self contentViewWidth];
     
-    CGRect frame = CGRectMake(_sideMargin, positionY, width, height);
-    CGFloat rate = (CGFloat)model.number / (CGFloat)_detailModel.service_rating.reviews;
+    CGRect frame = CGRectMake(self.sideMargin, positionY, width, height);
+    CGFloat rate = (CGFloat)model.number / (CGFloat)self.detailModel.service_rating.reviews;
     AIHorizontalBarChart *chart = [[AIHorizontalBarChart alloc] initWithFrame:frame name:model.name number:model.number rate:rate];
     [self addSubview:chart];
     
@@ -355,7 +286,7 @@
     cimage = [cimage resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:UIImageResizingModeStretch];
     UIImageView *cimageView = [[UIImageView alloc] initWithImage:cimage];
     CGFloat cimageViewHeight = [AITools displaySizeFrom1080DesignSize:73];
-    cimageView.frame = CGRectMake(_sideMargin, positionY, 30 + csize.width, cimageViewHeight);
+    cimageView.frame = CGRectMake(self.sideMargin, positionY, 30 + csize.width, cimageViewHeight);
     
     [self addSubview:cimageView];
     
@@ -373,17 +304,12 @@
 {
     CGFloat width = [self contentViewWidth];
     
-    CGRect frame = CGRectMake(_sideMargin, positionY, width, 0);
+    CGRect frame = CGRectMake(self.sideMargin, positionY, width, 0);
     
     AICommentCell *cell = [[AICommentCell alloc] initWithFrame:frame model:model];
     [self addSubview:cell];
     
     return CGRectGetHeight(cell.frame);
-}
-
-- (CGFloat) contentViewWidth
-{
-    return CGRectGetWidth(self.frame) - _sideMargin * 2;
 }
 
 
@@ -407,10 +333,10 @@
 #pragma mark - AIServiceTypesDelegate
 - (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model parentModel:(AIProposalServiceDetailParamModel*) parentModel
 {
-    AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:_detailModel selectedParamValue:model];
+    AIProposalServiceParamRelationModel *m = [AIServiceDetailTool findParamRelated:self.detailModel selectedParamValue:model];
     if (m) {
-        JSONModel *product = [AIServiceDetailTool createServiceSubmitModel:_detailModel productParam:model productModel:parentModel];
-        JSONModel *param = [AIServiceDetailTool createServiceSubmitModel:_detailModel relation:m];
+        JSONModel *product = [AIServiceDetailTool createServiceSubmitModel:self.detailModel productParam:model productModel:parentModel];
+        JSONModel *param = [AIServiceDetailTool createServiceSubmitModel:self.detailModel relation:m];
         _submitData = @[product, param];
     }
     
