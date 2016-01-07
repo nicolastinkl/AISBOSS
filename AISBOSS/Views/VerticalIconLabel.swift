@@ -72,6 +72,11 @@ class VerticalIconLabel: UIView {
 		self.label.text = text
 		self.imageView.image = type.image()
 	}
+    
+    override init(frame: CGRect) {
+        self.type = .Custom
+        super.init(frame: frame)
+    }
 	
 	init(image: UIImage, text: String, frame: CGRect = DEFAULT_FRAME) {
 		self.type = .Custom
