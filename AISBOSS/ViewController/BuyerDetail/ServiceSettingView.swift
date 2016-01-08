@@ -99,11 +99,6 @@ class ServiceSettingView: UIView {
             }
         }
         
-//        if model.label_list.count != 0 {
-//            rowCount = Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
-//        }
-        
-        print("estimateRowCount:\(rowCount)")
         return rowCount
     }
 }
@@ -173,18 +168,15 @@ class FixedSpaceFlowLayout: UICollectionViewFlowLayout {
         
         if let atts = attributes {
             for(var i = 1; i < atts.count; ++i) {
-                if i >= 1 {
-                    
-                    let currentLayoutAttributes = atts[i]
-                    let prevLayoutAttributes = atts[i - 1]
-                    
-                    let preRightX = CGRectGetMaxX(prevLayoutAttributes.frame)
-                    
-                    let currentPossibleRightXPosition = preRightX + horizanSpace + currentLayoutAttributes.frame.size.width
-                    
-                    if(currentPossibleRightXPosition < self.collectionViewContentSize().width && currentLayoutAttributes.frame.origin.y == prevLayoutAttributes.frame.origin.y) {
-                        currentLayoutAttributes.frame.origin.x = preRightX + horizanSpace
-                    }
+                let currentLayoutAttributes = atts[i]
+                let prevLayoutAttributes = atts[i - 1]
+                
+                let preRightX = CGRectGetMaxX(prevLayoutAttributes.frame)
+                
+                let currentPossibleRightXPosition = preRightX + horizanSpace + currentLayoutAttributes.frame.size.width
+                
+                if(currentPossibleRightXPosition < self.collectionViewContentSize().width && currentLayoutAttributes.frame.origin.y == prevLayoutAttributes.frame.origin.y) {
+                    currentLayoutAttributes.frame.origin.x = preRightX + horizanSpace
                 }
             }
         }

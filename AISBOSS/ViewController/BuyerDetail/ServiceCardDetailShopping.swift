@@ -18,7 +18,6 @@ class ServiceCardDetailShopping: ServiceParamlView {
     
     
     var dataSource : ServiceCellShoppingModel?
-    var shoppingListData : NSArray?
     
     //MARK: - Constants
     //sizes

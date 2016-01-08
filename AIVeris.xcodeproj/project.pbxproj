@@ -78,6 +78,7 @@
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
+		842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85F1BDA3E3B00A0517C /* ProposalService.swift */; };
@@ -626,6 +627,7 @@
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
 		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
+		842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabelCollectionView.swift; sourceTree = "<group>"; };
 		842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailModel.m; sourceTree = "<group>"; };
 		842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailModel.h; sourceTree = "<group>"; };
 		842FC85F1BDA3E3B00A0517C /* ProposalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalService.swift; sourceTree = "<group>"; };
@@ -1885,11 +1887,11 @@
 				845BE00F1BE8CEC60001716A /* TransportService.swift */,
 				845BE0111BE8D7490001716A /* AccommodationService.swift */,
 				12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */,
-				12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */,
 				840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */,
 				840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */,
 				844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */,
 				844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */,
+				12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */,
 				12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */,
 				12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */,
 				8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */,
@@ -2252,6 +2254,7 @@
 				93FA1DC91B9C2F26009965C8 /* AOTag.h */,
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
+				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3399,6 +3402,7 @@
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
 				849B4B4C1C0EDFE300BEC179 /* FLEXNetworkObserver.m in Sources */,
+				842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
