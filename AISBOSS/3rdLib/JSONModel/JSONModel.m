@@ -348,6 +348,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
             if (property.type == nil && property.structName==nil) {
                 
                 //generic setter
+//                NSLog(@"%@",property.name);
                 if (jsonValue != [self valueForKey:property.name]) {
                     [self setValue:jsonValue forKey: property.name];
                 }

@@ -179,7 +179,7 @@ class SimpleServiceViewContainer: UIView {
         dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
         messageHeight.constant = msgContent.height
         
-        messageView.setNeedsUpdateConstraints()
+        //messageView.setNeedsUpdateConstraints()
         
         messageView.addSubview(msgContent)
         
@@ -187,7 +187,6 @@ class SimpleServiceViewContainer: UIView {
         layout(messageView, msgContent) {container, view in
             view.edges == container.edges
         }
-
         
         divider.hidden = false
         dividerHeight.constant = 0.5

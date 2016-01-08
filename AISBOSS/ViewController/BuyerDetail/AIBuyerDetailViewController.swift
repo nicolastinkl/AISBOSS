@@ -528,7 +528,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             return c
         }
         
-        
         // Init AIBueryDetailCell and SimpleServiceViewContainer.currentView..
         
         let cell = AIBueryDetailCell.currentView()
@@ -558,7 +557,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             view.right == container.right  - 6
 //            container.height == serviceView.selfHeight()
         }
-        cell.cellHeight = serviceView.selfHeight()
+        print(serviceView.selfHeight())
+        cell.cellHeight = serviceView.selfHeight() + CELL_VERTICAL_SPACE
         
         // Cache Cell.
         serviceDataModel.cell = cell;

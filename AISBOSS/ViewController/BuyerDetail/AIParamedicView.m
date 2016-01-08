@@ -162,7 +162,7 @@
         BOOL selected = model.is_default;
         
         if (selected) {
-            NSString *serviceId = [NSString stringWithFormat:@"%ld",model.id];
+            NSString *serviceId = [NSString stringWithFormat:@"%ld",(long)model.sid];
             _defaultParamsDic[serviceId] = model;
         }
     }
@@ -290,7 +290,7 @@
         _selectedParamsDic = [[NSMutableDictionary alloc]initWithDictionary:_defaultParamsDic];
     }
    
-    NSString *serviceId = [NSString stringWithFormat:@"%ld",labelModel.id];
+    NSString *serviceId = [NSString stringWithFormat:@"%ld",(long)labelModel.sid];
     if (selected) {
         _selectedParamsDic[serviceId] = labelModel;
     } else {

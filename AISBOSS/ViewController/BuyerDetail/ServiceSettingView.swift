@@ -103,7 +103,7 @@ class ServiceSettingView: UIView {
 //            rowCount = Int(length / ServiceSettingView.COLLECTION_WIDTH) + 1
 //        }
         
-        print("estimateRowCount:\(rowCount)")
+        //print("estimateRowCount:\(rowCount)")
         return rowCount
     }
 }

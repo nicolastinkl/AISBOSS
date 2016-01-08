@@ -254,6 +254,7 @@
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; };
+		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
@@ -879,6 +880,7 @@
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
+		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
@@ -2597,6 +2599,7 @@
 				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
 				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
 				816E3B891C1FBD6D00A061DD /* AINotifications.h */,
+				93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -3080,6 +3083,7 @@
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
 				849B4B621C0EDFE300BEC179 /* FLEXHierarchyTableViewController.m in Sources */,
 				93FA1E621B9C3E12009965C8 /* AISellerViewController.m in Sources */,
+				93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */,
 				93FA1D9D1B9C2EA9009965C8 /* DSLCalendarDayView.m in Sources */,
 				93FA1E011B9C306E009965C8 /* AITagModel.swift in Sources */,
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,

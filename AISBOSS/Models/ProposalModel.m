@@ -133,7 +133,7 @@
 +(JSONKeyMapper*)keyMapper
 {
     return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"id": @"provider_id"
+                                                       @"id": @"sid"
                                                        }];
 }
 
@@ -143,6 +143,14 @@
 @end
 
 @implementation AIProposalServiceDetailParamValueModel
+//sid
+
++(JSONKeyMapper*)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"id": @"sid"
+                                                       }];
+}
 @end
 
 @implementation AIProposalServiceDetailRatingItemModel
