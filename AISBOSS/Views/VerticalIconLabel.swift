@@ -33,6 +33,15 @@ class VerticalIconLabel: UIView {
 			return self.imageView.image
 		}
 	}
+    
+    var text: String? {
+        set {
+            self.label.text = newValue
+        }
+        get {
+            return self.label.text
+        }
+    }
 	
 	lazy var imageView: UIImageView = {
 		let result = UIImageView()
@@ -40,8 +49,6 @@ class VerticalIconLabel: UIView {
 		result.snp_makeConstraints(closure: {(make) -> Void in
 				make.centerX.equalTo(self)
 				make.top.equalTo(self).offset(20)
-//            make.width.equalTo(50)
-//            make.height.equalTo(50)
 			})
 		return result
 	}()
@@ -72,6 +79,11 @@ class VerticalIconLabel: UIView {
 		self.label.text = text
 		self.imageView.image = type.image()
 	}
+    
+    override init(frame: CGRect) {
+        self.type = .Custom
+        super.init(frame: frame)
+    }
 	
 	init(image: UIImage, text: String, frame: CGRect = DEFAULT_FRAME) {
 		self.type = .Custom

@@ -46,7 +46,6 @@ class ServiceCardDetailFlag: ServiceParamlView {
     
     //MARK: - load data
     override func loadData(json jsonString : String){
-        //let jsonString = "{\"product_name\":\"Service Coverage\",\"param_list\":[{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Medicine Pickup\"},{\"param_key\":\"2\",\"param_icon\":\"\",\"param_value\":\"Queuing\"},{\"param_key\":\"3\",\"param_icon\":\"\",\"param_value\":\"Calling for Taxi\"},{\"param_key\":\"4\",\"param_icon\":\"\",\"param_value\":\"Check-in\"},{\"param_key\":\"1\",\"param_icon\":\"\",\"param_value\":\"Paramedic\"},{\"param_key\":\"5\",\"param_icon\":\"\",\"param_value\":\"Test Results Pickup\"}]}"
         buildModel(jsonString)
         layoutView()
         

@@ -121,7 +121,6 @@ class UITransViewController: UIViewController {
         topMenuDiyView.delegate = self
         topMenuDiyView.setWidth(self.view.width)
         
-        // initVideoAnimation()
         self.videoView.hidden = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "PlayerPlaybackDidFinish", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
 
@@ -152,17 +151,6 @@ class UITransViewController: UIViewController {
     }
     
     
-    // init video controls.
-    func initVideoAnimation(){
-        
-        let filePath = NSBundle.mainBundle().pathForResource("loading", ofType: "m4v")
-        moviePlayer = MPMoviePlayerController(contentURL: NSURL(fileURLWithPath: filePath!))
-        moviePlayer!.controlStyle = MPMovieControlStyle.None
-        moviePlayer?.view.frame = self.view.frame
-        self.videoView.addSubview(moviePlayer!.view)
-        moviePlayer?.play()
-        
-    }
     
     // Play end.
     func PlayerPlaybackDidFinish() {
@@ -697,7 +685,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let model =  dataSource![indexPath.section]
+        let model = dataSource![indexPath.section]
  
         for index  in 1...5 {
             if let button = cell.view_Tags.viewWithTag(index) as? UIButton{

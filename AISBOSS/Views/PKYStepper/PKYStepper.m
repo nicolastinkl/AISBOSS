@@ -18,6 +18,15 @@
 
 static const float kButtonWidth = 44.0f;
 
+@interface PKYStepper ()
+{
+    BOOL _isIncrementBtnInLongTouch;
+    BOOL _isDecrementBtnInLongTouch;
+}
+
+@end
+
+
 @implementation PKYStepper
 
 #pragma mark initialization
@@ -41,6 +50,9 @@ static const float kButtonWidth = 44.0f;
 
 - (void)commonInit
 {
+    _isIncrementBtnInLongTouch = NO;
+    _isDecrementBtnInLongTouch = NO;
+    
     _value = 0.0f;
     _stepInterval = 1.0f;
     _minimum = 0.0f;
@@ -61,11 +73,17 @@ static const float kButtonWidth = 44.0f;
     self.incrementButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.incrementButton setTitle:@"+" forState:UIControlStateNormal];
     [self.incrementButton addTarget:self action:@selector(incrementButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer *incrementLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(incrementBtnLongTapped:)];
+    incrementLongPress.minimumPressDuration = 0.8; //定义按的时间
+    [self.incrementButton addGestureRecognizer:incrementLongPress];
     [self addSubview:self.incrementButton];
     
     self.decrementButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.decrementButton setTitle:@"-" forState:UIControlStateNormal];
     [self.decrementButton addTarget:self action:@selector(decrementButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer *decrementLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(decrementBtnLongTapped:)];
+    decrementLongPress.minimumPressDuration = 0.8; //定义按的时间
+    [self.decrementButton addGestureRecognizer:decrementLongPress];
     [self addSubview:self.decrementButton];
     
     UIColor *defaultColor = [UIColor colorWithRed:(79/255.0) green:(161/255.0) blue:(210/255.0) alpha:1.0];
@@ -187,6 +205,7 @@ static const float kButtonWidth = 44.0f;
     }
 }
 
+
 - (void)decrementButtonTapped:(id)sender
 {
     if (self.value > self.minimum)
@@ -196,6 +215,68 @@ static const float kButtonWidth = 44.0f;
         {
             self.decrementCallback(self, self.value);
         }
+    }
+}
+
+- (void)incrementBtnLongTapped:(UILongPressGestureRecognizer *)gestureRecognizer{
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _isIncrementBtnInLongTouch = YES;
+        
+        [self incrementBtnLongTappedHandle];
+    } else {
+        _isIncrementBtnInLongTouch = NO;
+    }
+}
+
+- (void) incrementBtnLongTappedHandle
+{
+    if (self.value < self.maximum)
+    {
+        self.value += self.stepInterval;
+        if (self.incrementCallback)
+        {
+            self.incrementCallback(self, self.value);
+        }
+    }
+    
+    if (_isIncrementBtnInLongTouch) {
+        double delayInSeconds = 0.08;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)); // 1
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self incrementBtnLongTappedHandle];
+        });
+    }
+}
+
+- (void)decrementBtnLongTapped:(UILongPressGestureRecognizer *)gestureRecognizer{
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _isDecrementBtnInLongTouch = YES;
+        
+        [self decrementBtnLongTappedHandle];
+    } else {
+        _isDecrementBtnInLongTouch = NO;
+    }
+}
+
+- (void) decrementBtnLongTappedHandle
+{
+    if (self.value > self.minimum)
+    {
+        self.value -= self.stepInterval;
+        if (self.decrementCallback)
+        {
+            self.decrementCallback(self, self.value);
+        }
+    }
+    
+    if (_isDecrementBtnInLongTouch) {
+        double delayInSeconds = 0.08;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)); // 1
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self decrementBtnLongTappedHandle];
+        });
     }
 }
 
