@@ -256,6 +256,8 @@
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; };
 		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
+		93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */; };
+		93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93294B311C3FA5D800EFF5FC /* AIProviderView.xib */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
@@ -883,6 +885,8 @@
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
 		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
+		93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderView.swift; sourceTree = "<group>"; };
+		93294B311C3FA5D800EFF5FC /* AIProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProviderView.xib; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
@@ -2686,6 +2690,8 @@
 				936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */,
 				936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */,
 				81B5476E1C27D7460062CB55 /* AIWishMessageView.swift */,
+				93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */,
+				93294B311C3FA5D800EFF5FC /* AIProviderView.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2992,6 +2998,7 @@
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */,
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
+				93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */,
 				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				937EA38D1C03172B00AF776B /* AIDetailTopMenuView.xib in Resources */,
@@ -3436,6 +3443,7 @@
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 				849B4B5D1C0EDFE300BEC179 /* FLEXMultilineTableViewCell.m in Sources */,
 				849B4B3E1C0EDFE300BEC179 /* FLEXInstancesTableViewController.m in Sources */,
+				93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

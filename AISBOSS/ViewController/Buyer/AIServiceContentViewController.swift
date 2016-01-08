@@ -353,7 +353,6 @@ internal class AIServiceContentViewController: UIViewController {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
         
-        
         addGalleryView()
 
         var serviceContentView: UIView!
@@ -392,12 +391,12 @@ internal class AIServiceContentViewController: UIViewController {
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
     }
+
     
     private func addCustomView(preView: UIView) -> AICustomView {
         let custView =  AICustomView.currentView()
         addNewSubView(custView, preView: preView)
         
-        custView.imageViewLoad(self.currentDatasource?.service_provider.portrait_icon)
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
             custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0

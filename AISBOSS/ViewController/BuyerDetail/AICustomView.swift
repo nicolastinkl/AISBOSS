@@ -17,10 +17,12 @@ internal class AICustomView : UIView{
     var wish_id:Int = 0
     
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var avator: DesignableImageView!
     @IBOutlet weak var content: UILabel!
+    
     @IBOutlet weak var unselectView: DesignableView!
     @IBOutlet weak var selectView: DesignableView!
-    @IBOutlet weak var avator: DesignableImageView!
+
     
     private lazy var allTagsArray  = [AIProposalServiceDetailLabelModel]()
     private lazy var selectedTagsArray  = [AIProposalServiceDetailLabelModel]()
