@@ -11,10 +11,18 @@ import Cartography
 
 class VerticalIconLabelCollectionView: UIView {
     
+    private var horizanSpace: CGFloat = 0
+    
     var itemCountOfOneLine: Int = 3 {
         
         didSet {
+            
             if itemCountOfOneLine != oldValue && itemCountOfOneLine > 0 {
+                
+                if itemCountOfOneLine > 1 {
+                    horizanSpace = calculateHorizanSpace()
+                }
+                
                 collectionView.reloadData()
             }
         }
@@ -38,7 +46,7 @@ class VerticalIconLabelCollectionView: UIView {
         }
     }
     
-    var dataSource: [(UIImage, String)]? {
+    var dataSource: [(image:UIImage, title:String)]? {
         didSet {
             collectionView.reloadData()
         }
@@ -57,9 +65,16 @@ class VerticalIconLabelCollectionView: UIView {
     }
     
     private func initSelf() {
-        collectionView = UICollectionView(frame: CGRect.zero)
+        horizanSpace = calculateHorizanSpace()
+        
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: FixedSpaceFlowLayout(space: horizanSpace))
+        collectionView.backgroundColor = UIColor.clearColor()
         collectionView.dataSource = self
         collectionView.delegate = self
+        let flowLayout = collectionView.collectionViewLayout
+        let flow = flowLayout as! UICollectionViewFlowLayout
+        flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
         collectionView.registerClass(VerticalIconLabelCell.self,
             forCellWithReuseIdentifier: "cell")
         
@@ -67,6 +82,14 @@ class VerticalIconLabelCollectionView: UIView {
         
         layout(collectionView, self) {collectionView, parent in
             collectionView.edges == parent.edges
+        }
+    }
+    
+    private func calculateHorizanSpace() -> CGFloat {
+        if itemCountOfOneLine > 1 {
+            return (width - itemWidth * CGFloat(itemCountOfOneLine))  / CGFloat(itemCountOfOneLine - 1)
+        } else {
+            return 0
         }
     }
 
@@ -85,10 +108,11 @@ extension VerticalIconLabelCollectionView: UICollectionViewDelegate, UICollectio
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! VerticalIconLabelCell
-        
+
         let (img, text) = dataSource![indexPath.item]
         
-    //    cell.iconLabel.imageView.image
+        cell.iconLabel.image = img
+        cell.iconLabel.text = text
         
         return cell
     }
@@ -127,6 +151,7 @@ class VerticalIconLabelCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        iconLabel = VerticalIconLabel(frame: self.contentView.bounds)
         contentView.addSubview(iconLabel)
     }
 
@@ -134,3 +159,4 @@ class VerticalIconLabelCell: UICollectionViewCell {
         super.init(coder: aDecoder)!
     }
 }
+
