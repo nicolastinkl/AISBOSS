@@ -89,8 +89,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func configDefaultUser () {
-        NSUserDefaults.standardUserDefaults().setObject("100000002410", forKey: kDefault_UserID)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    
+        if let userID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as? String {
+            print("Default UserID is " + userID)
+        }
+        else {
+            NSUserDefaults.standardUserDefaults().setObject("100000002410", forKey: kDefault_UserID)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        
+        
     }
     
     private func initNetEngine() {
