@@ -14,6 +14,10 @@
 
 @implementation ProposalServiceDetailBaseView
 
+- (NSArray *)getSelectedParams{
+    return @[];
+}
+
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
 {
     self = [super initWithFrame:frame];

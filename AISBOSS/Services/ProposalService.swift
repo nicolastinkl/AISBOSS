@@ -82,12 +82,7 @@ class BDKProposalService : MockProposalService{
         let body = ["data": [:], "desc": ["data_mode": "0", "digest": ""]]
         message.body = NSMutableDictionary(dictionary: body)
         AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
-            do {
-                success()
-                
-            } catch {
-                fail(errType: AINetError.Format, errDes: "recoverOrders error.")
-            }
+            success()
             
             }) {(error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes ?? "")
@@ -127,15 +122,16 @@ class BDKProposalService : MockProposalService{
         message.body = NSMutableDictionary(dictionary: body)
         //      message.header = NSMutableDictionary(dictionary: header)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            do {
+            success()
+//            do {
 //                let dic = response as! [NSObject : AnyObject]
 //                let model = try AIProposalServiceDetailModel(dictionary: dic)
                 
 //                success(responseData: model)
                 
-            } catch {
-                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
-            }
+//            } catch {
+//                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+//            }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes ?? "")

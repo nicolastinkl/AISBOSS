@@ -15,6 +15,24 @@
 + (AVAudioPlayer *)playAccAudio:(NSURL*) filename
 {
     //初始化播放器的时候如下设置
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+    NSError *setCategoryError = nil;
+    if (![session setCategory:AVAudioSessionCategoryPlayback
+                  withOptions:kAudioSessionProperty_AudioCategory
+                        error:&setCategoryError]) {
+        // handle error
+    }
+    
+    if (![session setCategory:AVAudioSessionCategoryPlayAndRecord
+                  withOptions:kAudioSessionProperty_OverrideAudioRoute
+                        error:&setCategoryError]) {
+        // handle error
+    }
+    
+    
+    /*
     UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
     AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
                             sizeof(sessionCategory),
@@ -25,13 +43,7 @@
                              sizeof (audioRouteOverride),
                              &audioRouteOverride);
     
-    
-//    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,sizeof (audioRouteOverride),&audioRouteOverride);
-    
-//    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-//    //默认情况下扬声器播放
-//    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-//    [audioSession setActive:YES error:nil];
+    */
     
     NSError *playerError;
     
