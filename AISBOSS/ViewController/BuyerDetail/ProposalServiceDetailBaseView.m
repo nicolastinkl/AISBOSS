@@ -41,7 +41,7 @@
 - (CGFloat) addPriceView: (CGFloat) positionY
 {
     CGFloat totelWidth = [self contentViewWidth];
-    CGFloat counterWidth = 100;
+    CGFloat counterWidth = 120;
     
     CGFloat imageHeight = [AITools displaySizeFrom1080DesignSize:97];
     UIImage *backgroundImage = [UIImage imageNamed:@"Wave_BG"];

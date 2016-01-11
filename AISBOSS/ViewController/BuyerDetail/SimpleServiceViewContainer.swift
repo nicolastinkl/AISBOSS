@@ -112,7 +112,6 @@ class SimpleServiceViewContainer: UIView {
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
-        print(dataModel.service_thumbnail_icon ?? "")
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
         name.text = dataModel.service_desc ?? ""
         
@@ -158,7 +157,7 @@ class SimpleServiceViewContainer: UIView {
             
             if let key = dataModel!.service_param.param_key {
                 let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
-                if let paramValueString = dataModel!.service_param.param_value{
+                if let paramValueString = dataModel!.service_param.param_value {
                     if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
                         addParamsView(serviceView)
                     }
@@ -180,9 +179,10 @@ class SimpleServiceViewContainer: UIView {
         dividerBottomMargin.constant = SimpleServiceViewContainer.DIVIDER_BOTTOM_MARGIN
         messageHeight.constant = msgContent.height
         
-        messageView.setNeedsUpdateConstraints()
+        //messageView.setNeedsUpdateConstraints()
         
         messageView.addSubview(msgContent)
+        
         
         layout(messageView, msgContent) {container, view in
             view.edges == container.edges
@@ -201,6 +201,7 @@ class SimpleServiceViewContainer: UIView {
     
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
+
         var paramView: ServiceParamlView?
         
         switch viewTemplate {
@@ -222,7 +223,25 @@ class SimpleServiceViewContainer: UIView {
         
         paramView?.loadData(json: jsonData)
         
-        return paramView
+        let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+        
+        
+        paramContainerView.frame.size.height = (paramView?.height ?? 0) + paramContainerView.height
+        
+        if paramView != nil {
+            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: paramView!.height, width: paramViewWidth, height: 120))
+            
+            let iconLabelDataSource = [(image:UIImage(named: "icon_time_big")!, title:"2 session"), (image:UIImage(named: "icon_time_big")!, title:"2 session")]
+            iconLabelCollection.dataSource = iconLabelDataSource
+            
+            
+            paramContainerView.addSubview(paramView!)
+            paramContainerView.addSubview(iconLabelCollection)
+            
+            paramContainerView.frame.size.height = paramView!.height + iconLabelCollection.height
+        }
+        
+        return paramContainerView
     }
     
     func selfHeight() -> CGFloat {

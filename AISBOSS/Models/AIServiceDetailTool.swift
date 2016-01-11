@@ -22,7 +22,7 @@ class AIServiceDetailTool: NSObject {
         for item in relations {
             let relation = item as! AIProposalServiceParamRelationModel
             
-            if selectedParamValue.id == relation.param.param_value_key {
+            if selectedParamValue.sid == relation.param.param_value_key {
                 result = relation
                 break
             }
@@ -34,7 +34,7 @@ class AIServiceDetailTool: NSObject {
     static func createServiceSubmitModel(service: AIProposalServiceDetailModel, productParam: AIProposalServiceDetailParamValueModel, productModel: AIProposalServiceDetailParamModel) -> JSONModel {
         let saveData = AIProductParamItem()
         
-        saveData.product_id = "\(productParam.id)"
+        saveData.product_id = "\(productParam.sid)"
         saveData.service_id = "\(service.service_id)"
         saveData.role_id = "\(productModel.param_key)"
         saveData.name = productParam.content
@@ -99,7 +99,7 @@ class AIServiceDetailTool: NSObject {
             var ids = [String]()
             
             for value in paramContentDic.values {
-                ids.append("\(value.id)")
+                ids.append("\(value.sid)")
             }
             
             serviceParam.param_value_id = ids

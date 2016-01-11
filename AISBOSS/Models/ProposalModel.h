@@ -297,7 +297,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * proposal_price;
 @property (strong, nonatomic) NSString<Optional> * proposal_origin;
 @property (strong, nonatomic) NSString<Optional> * order_total_price;
-@property (nonatomic, strong) AIProposalProvider<Optional> * proposal_provider;
+//@property (nonatomic, strong) AIProposalProvider<Optional> * proposal_provider;
 
 @end
 
@@ -315,7 +315,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @protocol AIProposalServiceDetailProviderModel @end
 @interface AIProposalServiceDetailProviderModel : JSONModel
 
-@property (assign, nonatomic) NSInteger id;
+@property (assign, nonatomic) NSInteger sid;
 @property (strong, nonatomic) NSString<Optional> * name;
 @property (strong, nonatomic) NSString<Optional> * portrait_icon;
 
@@ -326,7 +326,7 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 @interface AIProposalServiceDetailParamValueModel : JSONModel
 
-@property (assign, nonatomic) long id;
+@property (assign, nonatomic) NSInteger sid;
 @property (strong, nonatomic) NSString<Optional> * content;
 @property (assign, nonatomic) BOOL is_default;
 @property (strong, nonatomic) NSString<Optional> * source;

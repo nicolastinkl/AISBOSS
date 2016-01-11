@@ -18,6 +18,18 @@
 
 static const float kButtonWidth = 44.0f;
 
+@interface PKYStepper ()
+{
+    BOOL _isIncrementBtnInLongTouch;
+    BOOL _isDecrementBtnInLongTouch;
+    
+    UIVisualEffectView *_effectview;
+    UITextView *_inputText;
+}
+
+@end
+
+
 @implementation PKYStepper
 
 #pragma mark initialization
@@ -41,6 +53,9 @@ static const float kButtonWidth = 44.0f;
 
 - (void)commonInit
 {
+    _isIncrementBtnInLongTouch = NO;
+    _isDecrementBtnInLongTouch = NO;
+    
     _value = 0.0f;
     _stepInterval = 1.0f;
     _minimum = 0.0f;
@@ -56,16 +71,25 @@ static const float kButtonWidth = 44.0f;
     self.countLabel = [[UILabel alloc] init];
     self.countLabel.textAlignment = NSTextAlignmentCenter;
     self.countLabel.layer.borderWidth = 1.0f;
+    self.countLabel.userInteractionEnabled = TRUE;
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(labelTouchUpInside:)];
+    [self.countLabel addGestureRecognizer:labelTapGestureRecognizer];
     [self addSubview:self.countLabel];
     
     self.incrementButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.incrementButton setTitle:@"+" forState:UIControlStateNormal];
     [self.incrementButton addTarget:self action:@selector(incrementButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer *incrementLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(incrementBtnLongTapped:)];
+    incrementLongPress.minimumPressDuration = 0.8; //定义按的时间
+    [self.incrementButton addGestureRecognizer:incrementLongPress];
     [self addSubview:self.incrementButton];
     
     self.decrementButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.decrementButton setTitle:@"-" forState:UIControlStateNormal];
     [self.decrementButton addTarget:self action:@selector(decrementButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UILongPressGestureRecognizer *decrementLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(decrementBtnLongTapped:)];
+    decrementLongPress.minimumPressDuration = 0.8; //定义按的时间
+    [self.decrementButton addGestureRecognizer:decrementLongPress];
     [self addSubview:self.decrementButton];
     
     UIColor *defaultColor = [UIColor colorWithRed:(79/255.0) green:(161/255.0) blue:(210/255.0) alpha:1.0];
@@ -187,6 +211,7 @@ static const float kButtonWidth = 44.0f;
     }
 }
 
+
 - (void)decrementButtonTapped:(id)sender
 {
     if (self.value > self.minimum)
@@ -196,6 +221,68 @@ static const float kButtonWidth = 44.0f;
         {
             self.decrementCallback(self, self.value);
         }
+    }
+}
+
+- (void)incrementBtnLongTapped:(UILongPressGestureRecognizer *)gestureRecognizer{
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _isIncrementBtnInLongTouch = YES;
+        
+        [self incrementBtnLongTappedHandle];
+    } else {
+        _isIncrementBtnInLongTouch = NO;
+    }
+}
+
+- (void) incrementBtnLongTappedHandle
+{
+    if (self.value < self.maximum)
+    {
+        self.value += self.stepInterval;
+        if (self.incrementCallback)
+        {
+            self.incrementCallback(self, self.value);
+        }
+    }
+    
+    if (_isIncrementBtnInLongTouch) {
+        double delayInSeconds = 0.08;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)); // 1
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self incrementBtnLongTappedHandle];
+        });
+    }
+}
+
+- (void)decrementBtnLongTapped:(UILongPressGestureRecognizer *)gestureRecognizer{
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        _isDecrementBtnInLongTouch = YES;
+        
+        [self decrementBtnLongTappedHandle];
+    } else {
+        _isDecrementBtnInLongTouch = NO;
+    }
+}
+
+- (void) decrementBtnLongTappedHandle
+{
+    if (self.value > self.minimum)
+    {
+        self.value -= self.stepInterval;
+        if (self.decrementCallback)
+        {
+            self.decrementCallback(self, self.value);
+        }
+    }
+    
+    if (_isDecrementBtnInLongTouch) {
+        double delayInSeconds = 0.08;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)); // 1
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self decrementBtnLongTappedHandle];
+        });
     }
 }
 
@@ -210,5 +297,57 @@ static const float kButtonWidth = 44.0f;
 {
     return self.value == self.maximum;
 }
+
+- (void) labelTouchUpInside:(UITapGestureRecognizer *)recognizer{
+    
+    [self addInputView];
+}
+
+
+- (void) addInputView
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    if (_effectview == NULL) {
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        
+        _effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+        _effectview.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *inputTextTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(inputTextUpInside:)];
+        [_effectview addGestureRecognizer:inputTextTapGestureRecognizer];
+        
+        
+        _effectview.frame =  window.bounds;
+        
+        CGFloat textWidth = window.bounds.size.width / 2;
+        CGFloat textHeight = 30;
+        CGFloat x = (window.bounds.size.width - textWidth) / 2;
+        CGFloat y = (window.bounds.size.height - textHeight) / 2;
+        
+        _inputText = [[UITextView alloc] initWithFrame:CGRectMake(x, y, textWidth, textHeight)];
+        _inputText.keyboardType = UIKeyboardTypeNumberPad;
+        
+        [_effectview addSubview:_inputText];
+    }
+    
+    _inputText.text = [NSString stringWithFormat:@"%@", @(_value)];
+    [_inputText becomeFirstResponder];
+    [window addSubview:_effectview];
+    
+}
+
+- (void) inputTextUpInside:(UITapGestureRecognizer *)recognizer{
+    
+    [_effectview removeFromSuperview];
+    [_inputText resignFirstResponder];
+    float inputValue = [_inputText.text floatValue];
+    
+    if (inputValue <= _maximum && inputValue >= _minimum) {
+        _value = inputValue;
+        self.countLabel.text = _inputText.text;
+    }
+}
+
 
 @end

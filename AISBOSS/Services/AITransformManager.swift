@@ -181,6 +181,7 @@ class AIHttpTransformManager: AIMockTransformManager {
     
     override func queryCollectedContents(pageNum: Int = 1, pageSize: Int = 10, tags: [AITagModel]?, origin: String?, favoriteFlag: AIFavoriteStatu?, colorFlags: [AIColorFlag]?, completion: (([AITransformContentModel], Error?)) -> Void) {
         
+        // 内存问题
         if isLoading {
             return
         }
@@ -225,6 +226,17 @@ class AIHttpTransformManager: AIMockTransformManager {
             ]
         ]
         
+        
+//        let message = AIMessage()
+//        message.url = "http://171.221.254.231:8282" + AIHttpEngine.ResourcePath.QueryCollectedContents.description
+//        message.body = NSMutableDictionary(dictionary: paras)
+//        
+//        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+//            
+//            }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+//                
+//        })
+//        return
         AIHttpEngine.postRequestWithParameters(AIHttpEngine.ResourcePath.QueryCollectedContents, parameters: paras) {  [weak self] (response, error) -> () in
             responseError = error
             if let strongSelf = self{

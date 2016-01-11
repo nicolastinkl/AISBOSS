@@ -228,7 +228,7 @@ class BDKProposalService : MockProposalService{
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
-                let dic = response as! [NSObject : AnyObject]
+                let dic = response as! [NSObject : AnyObject]                
                 let model = try AIProposalInstModel(dictionary: dic)
                 success(responseData: model)
             } catch {

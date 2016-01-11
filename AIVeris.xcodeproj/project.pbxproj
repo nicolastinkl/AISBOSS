@@ -78,6 +78,7 @@
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
+		842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC85D1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
 		842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85F1BDA3E3B00A0517C /* ProposalService.swift */; };
@@ -254,6 +255,9 @@
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		932338691BC8A9ED009C12BA /* AIServiceSchemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */; };
+		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
+		93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */; };
+		93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93294B311C3FA5D800EFF5FC /* AIProviderView.xib */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
@@ -626,6 +630,7 @@
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
 		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
+		842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabelCollectionView.swift; sourceTree = "<group>"; };
 		842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailModel.m; sourceTree = "<group>"; };
 		842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailModel.h; sourceTree = "<group>"; };
 		842FC85F1BDA3E3B00A0517C /* ProposalService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalService.swift; sourceTree = "<group>"; };
@@ -879,6 +884,9 @@
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		932338681BC8A9ED009C12BA /* AIServiceSchemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceSchemeModel.swift; sourceTree = "<group>"; };
+		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
+		93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderView.swift; sourceTree = "<group>"; };
+		93294B311C3FA5D800EFF5FC /* AIProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProviderView.xib; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
@@ -1885,11 +1893,11 @@
 				845BE00F1BE8CEC60001716A /* TransportService.swift */,
 				845BE0111BE8D7490001716A /* AccommodationService.swift */,
 				12E0487D1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift */,
-				12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */,
 				840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */,
 				840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */,
 				844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */,
 				844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */,
+				12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */,
 				12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */,
 				12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */,
 				8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */,
@@ -2252,6 +2260,7 @@
 				93FA1DC91B9C2F26009965C8 /* AOTag.h */,
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
+				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2597,6 +2606,7 @@
 				844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */,
 				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
 				816E3B891C1FBD6D00A061DD /* AINotifications.h */,
+				93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2680,6 +2690,8 @@
 				936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */,
 				936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */,
 				81B5476E1C27D7460062CB55 /* AIWishMessageView.swift */,
+				93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */,
+				93294B311C3FA5D800EFF5FC /* AIProviderView.xib */,
 			);
 			name = subView;
 			sourceTree = "<group>";
@@ -2986,6 +2998,7 @@
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */,
 				93FA1DA61B9C2EAA009965C8 /* DSLCalendar-nextMonth@2x.png in Resources */,
+				93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */,
 				93FA1E491B9C3E12009965C8 /* AIContentView.xib in Resources */,
 				93FA1DD61B9C2F4F009965C8 /* airplane@2x.png in Resources */,
 				937EA38D1C03172B00AF776B /* AIDetailTopMenuView.xib in Resources */,
@@ -3080,6 +3093,7 @@
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
 				849B4B621C0EDFE300BEC179 /* FLEXHierarchyTableViewController.m in Sources */,
 				93FA1E621B9C3E12009965C8 /* AISellerViewController.m in Sources */,
+				93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */,
 				93FA1D9D1B9C2EA9009965C8 /* DSLCalendarDayView.m in Sources */,
 				93FA1E011B9C306E009965C8 /* AITagModel.swift in Sources */,
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,
@@ -3399,6 +3413,7 @@
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
 				849B4B4C1C0EDFE300BEC179 /* FLEXNetworkObserver.m in Sources */,
+				842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
@@ -3428,6 +3443,7 @@
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 				849B4B5D1C0EDFE300BEC179 /* FLEXMultilineTableViewCell.m in Sources */,
 				849B4B3E1C0EDFE300BEC179 /* FLEXInstancesTableViewController.m in Sources */,
+				93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

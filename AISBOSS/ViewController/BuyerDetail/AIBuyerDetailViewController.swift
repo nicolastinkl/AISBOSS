@@ -528,10 +528,10 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             return c
         }
         
-        
         // Init AIBueryDetailCell and SimpleServiceViewContainer.currentView..
-        let cell = AIBueryDetailCell.currentView()
         
+        let cell = AIBueryDetailCell.currentView()
+
         let serviceView = SimpleServiceViewContainer.currentView()
         serviceView.tag = SIMPLE_SERVICE_VIEW_CONTAINER_TAG
         serviceView.settingState.tag = indexPath.row
@@ -539,24 +539,27 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
+        
         cell.currentModel = serviceDataModel
         
         cell.removeDelegate = self
         cell.delegate = self
 
         serviceView.displayDeleteMode = (tableView == deletedTableView)
+
         cell.canDelete = !(tableView == deletedTableView)
-        
+
         // Add constrain
         constrain(serviceView, cell.contentHoldView) {(view, container) ->() in
             view.left == container.left + 6
             view.top == container.top
             view.bottom == container.bottom
             view.right == container.right  - 6
-            container.height == serviceView.selfHeight()
+//            container.height == serviceView.selfHeight()
         }
+        print(serviceView.selfHeight())
+        cell.cellHeight = serviceView.selfHeight() + CELL_VERTICAL_SPACE
         
-        cell.cellHeight = serviceView.selfHeight();
         // Cache Cell.
         serviceDataModel.cell = cell;
         return cell
