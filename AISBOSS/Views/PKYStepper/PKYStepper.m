@@ -22,6 +22,9 @@ static const float kButtonWidth = 44.0f;
 {
     BOOL _isIncrementBtnInLongTouch;
     BOOL _isDecrementBtnInLongTouch;
+    
+    UIVisualEffectView *_effectview;
+    UITextView *_inputText;
 }
 
 @end
@@ -68,6 +71,9 @@ static const float kButtonWidth = 44.0f;
     self.countLabel = [[UILabel alloc] init];
     self.countLabel.textAlignment = NSTextAlignmentCenter;
     self.countLabel.layer.borderWidth = 1.0f;
+    self.countLabel.userInteractionEnabled = TRUE;
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(labelTouchUpInside:)];
+    [self.countLabel addGestureRecognizer:labelTapGestureRecognizer];
     [self addSubview:self.countLabel];
     
     self.incrementButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -291,5 +297,57 @@ static const float kButtonWidth = 44.0f;
 {
     return self.value == self.maximum;
 }
+
+- (void) labelTouchUpInside:(UITapGestureRecognizer *)recognizer{
+    
+    [self addInputView];
+}
+
+
+- (void) addInputView
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    
+    if (_effectview == NULL) {
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        
+        _effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+        _effectview.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *inputTextTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(inputTextUpInside:)];
+        [_effectview addGestureRecognizer:inputTextTapGestureRecognizer];
+        
+        
+        _effectview.frame =  window.bounds;
+        
+        CGFloat textWidth = window.bounds.size.width / 2;
+        CGFloat textHeight = 30;
+        CGFloat x = (window.bounds.size.width - textWidth) / 2;
+        CGFloat y = (window.bounds.size.height - textHeight) / 2;
+        
+        _inputText = [[UITextView alloc] initWithFrame:CGRectMake(x, y, textWidth, textHeight)];
+        _inputText.keyboardType = UIKeyboardTypeNumberPad;
+        
+        [_effectview addSubview:_inputText];
+    }
+    
+    _inputText.text = [NSString stringWithFormat:@"%@", @(_value)];
+    [_inputText becomeFirstResponder];
+    [window addSubview:_effectview];
+    
+}
+
+- (void) inputTextUpInside:(UITapGestureRecognizer *)recognizer{
+    
+    [_effectview removeFromSuperview];
+    [_inputText resignFirstResponder];
+    float inputValue = [_inputText.text floatValue];
+    
+    if (inputValue <= _maximum && inputValue >= _minimum) {
+        _value = inputValue;
+        self.countLabel.text = _inputText.text;
+    }
+}
+
 
 @end
