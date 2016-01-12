@@ -124,6 +124,7 @@
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
 		845BE0101BE8CEC60001716A /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00F1BE8CEC60001716A /* TransportService.swift */; };
 		845BE0121BE8D7490001716A /* AccommodationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE0111BE8D7490001716A /* AccommodationService.swift */; };
+		8465731E1C435E04008ADA0B /* PriceAndStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465731D1C435E04008ADA0B /* PriceAndStepperView.swift */; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
@@ -676,6 +677,7 @@
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
 		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransportService.swift; path = ../../Views/TransportService.swift; sourceTree = "<group>"; };
 		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccommodationService.swift; path = ../../Views/AccommodationService.swift; sourceTree = "<group>"; };
+		8465731D1C435E04008ADA0B /* PriceAndStepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAndStepperView.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
@@ -1949,6 +1951,7 @@
 				81A0A5621C180811007DD9F8 /* AIBuyerParamsDelegate.h */,
 				842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */,
 				842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */,
+				8465731D1C435E04008ADA0B /* PriceAndStepperView.swift */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -3438,6 +3441,7 @@
 				81A5BE551BD87D2900019802 /* AIBubble.m in Sources */,
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
+				8465731E1C435E04008ADA0B /* PriceAndStepperView.swift in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
 				93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */,
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,

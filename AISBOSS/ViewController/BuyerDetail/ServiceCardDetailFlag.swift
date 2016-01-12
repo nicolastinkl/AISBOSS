@@ -48,8 +48,6 @@ class ServiceCardDetailFlag: ServiceParamlView {
     override func loadData(json jsonString : String){
         buildModel(jsonString)
         layoutView()
-        
-        
     }
     
     func buildModel(jsonString : String){
