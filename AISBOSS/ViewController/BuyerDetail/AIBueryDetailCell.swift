@@ -9,7 +9,7 @@
 
 import Foundation
 import UIKit
-import AISpring
+import Spring
 
 // protocol
 protocol AIBueryDetailCellDetegate: class {

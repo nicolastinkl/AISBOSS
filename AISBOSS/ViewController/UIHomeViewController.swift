@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import AISpring
+import Spring
 
 class UIHomeViewController: UIViewController,GBSlideOutToUnlockViewDelegate {
     @IBOutlet weak var unlockView: GBSlideOutToUnlockView!
@@ -25,7 +25,7 @@ class UIHomeViewController: UIViewController,GBSlideOutToUnlockViewDelegate {
         unlockView.layoutSubviews()
         unlockView.fixCenter()
         
-        spring(0.3, animations: { () -> Void in
+        SpringAnimation.spring(0.3, animations: { () -> Void in
             self.unlockView.hidden = false
         })
     }

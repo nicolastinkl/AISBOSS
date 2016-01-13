@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 protocol SchemeDataObtainer {
     func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void)

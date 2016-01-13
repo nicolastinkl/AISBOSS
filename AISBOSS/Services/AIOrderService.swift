@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 class AIOrderRequester {
     typealias OrderListRequesterCompletion = (data:[AIOrderListItemModel]) ->()

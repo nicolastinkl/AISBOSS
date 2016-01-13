@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 // 服务方案详情
 struct AIServiceSchemeModel : JSONJoy {
@@ -86,7 +86,7 @@ struct Catalog: JSONJoy {
     }
 }
 
-struct Service: JSONJoy{
+struct Service: JSONJoy {
     
     var service_id: Int?
     var provider_id: Int?

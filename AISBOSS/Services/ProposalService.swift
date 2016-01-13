@@ -8,7 +8,7 @@
 
 import Foundation
 
-import AISwiftyJSON
+import SwiftyJSON
 
 @objc protocol ProposalService {
     //获取通过proposal订购的订单实例列表

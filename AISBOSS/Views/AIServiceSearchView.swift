@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AISpring
+import Spring
 
 protocol ServiceSearchViewDelegate : class{
     func complateWithTextView(text:String?)
@@ -42,7 +42,7 @@ class AIServiceSearchView: UIView,UITextFieldDelegate {
     @IBOutlet weak var arrowTopImage: UIImageView!
     
     @IBAction func closeSearchAction(sender: UIButton) {
-        springWithCompletion(1, animations: { () -> Void in
+        SpringAnimation.springWithCompletion(1, animations: { () -> Void in
             self.alpha = 0
             self.setTop(UIScreen.mainScreen().bounds.height)
         }) { (complete) -> Void in
@@ -91,7 +91,7 @@ class AIServiceSearchView: UIView,UITextFieldDelegate {
     
     func setSearchingViewAttr(){
         if !isSearching {
-            spring(1, animations: {
+            SpringAnimation.spring(1, animations: {
                 self.searchResultView.alpha = 1
                 self.searchResultView.setHeight(self.searchResultViewHeight)
                 self.dotImage.alpha = 1
@@ -151,7 +151,7 @@ class AIServiceSearchView: UIView,UITextFieldDelegate {
     }
     
     func selectResultAction(sender:UIButton){
-        springWithCompletion(1, animations: { () -> Void in
+        SpringAnimation.springWithCompletion(1, animations: { () -> Void in
             self.alpha = 0
             self.setTop(UIScreen.mainScreen().bounds.height)
             }) { (complete) -> Void in

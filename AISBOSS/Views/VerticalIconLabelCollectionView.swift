@@ -82,7 +82,7 @@ class VerticalIconLabelCollectionView: UIView {
         
         addSubview(collectionView)
         
-        layout(collectionView, self) {collectionView, parent in
+        constrain(collectionView, self) {collectionView, parent in
             collectionView.edges == parent.edges
         }
     }

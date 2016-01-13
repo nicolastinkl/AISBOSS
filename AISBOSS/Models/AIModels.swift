@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 struct AIServiceTopicResult: JSONJoy  {
     var service_array: Array<AIServiceTopicListModel>?

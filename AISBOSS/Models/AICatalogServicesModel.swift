@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 struct AICatalogServicesResult: JSONJoy {
     var services = [AIServiceTopicModel]()

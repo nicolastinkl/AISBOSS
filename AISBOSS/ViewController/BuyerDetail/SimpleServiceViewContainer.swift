@@ -184,7 +184,7 @@ class SimpleServiceViewContainer: UIView {
         messageView.addSubview(msgContent)
         
         
-        layout(messageView, msgContent) {container, view in
+        constrain(messageView, msgContent) {container, view in
             view.edges == container.edges
         }
         
@@ -257,7 +257,7 @@ class SimpleServiceViewContainer: UIView {
         paramViewHeight = serviceParams.frame.height
         paramsView.addSubview(serviceParams)
         
-        layout(paramsView, serviceParams) {container, item in
+        constrain(paramsView, serviceParams) {container, item in
             item.edges == container.edges
         }
     }
@@ -275,7 +275,7 @@ class SimpleServiceViewContainer: UIView {
         let score: CGFloat = CGFloat(rating) / 10
         starRateView.scorePercent = score
         
-        layout(starRateView, review) {star, review in
+        constrain(starRateView, review) {star, review in
             star.left == review.right - 2
             star.height == starRateView.height
             star.width == starRateView.width

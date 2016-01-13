@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 struct AICustomerServiceSolutionModel : JSONJoy {
     var service_id : Int?
@@ -24,10 +24,10 @@ struct AICustomerServiceSolutionModel : JSONJoy {
     init(){
         
     }
-    
     init(_ decoder: JSONDecoder) {
         
     }
+    
 }
 
 
@@ -46,10 +46,10 @@ struct AICustomerServiceSolutionItemModel : JSONJoy {
     init(){
         
     }
-    
     init(_ decoder: JSONDecoder) {
-        
+         
     }
+     
 }
 
 enum AICustomerFilterFlag: Int {

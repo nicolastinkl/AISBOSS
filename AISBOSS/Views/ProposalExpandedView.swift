@@ -126,7 +126,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         statu.textAlignment = .Center
         headView.addSubview(statu)
         
-        layout(statu) { statuView in
+        constrain(statu) { statuView in
             statuView.top == statuView.superview!.top + PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP
             statuView.right == statuView.superview!.right - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
             statuView.width == 80
@@ -140,7 +140,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
 //        title.text = "ProposalExpandedView.shop"
         headView.addSubview(title)
         
-        layout(statu, title) { statuView, title in
+        constrain(statu, title) { statuView, title in
             title.top == title.superview!.top + PurchasedViewDimention.PROPOSAL_TITLE_MARGIN_TOP
             title.left == title.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             title.right == statuView.left - 10
@@ -150,7 +150,7 @@ class ProposalExpandedView: UIView, Measureable, DimentionChangable {
         alertIcon = UIImageView(image: UIImage(named: "AlertIcon.png"))
         headView.addSubview(alertIcon)
         
-        layout(statu, alertIcon) { statu, alertIcon in
+        constrain(statu, alertIcon) { statu, alertIcon in
             alertIcon.top == statu.top
             alertIcon.right == statu.right
             alertIcon.width == 11

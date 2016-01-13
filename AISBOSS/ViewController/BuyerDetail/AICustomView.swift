@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 import Cartography
 
 internal class AICustomView : UIView{
@@ -140,7 +140,7 @@ internal class AICustomView : UIView{
            
             //tag.frame = tags.frame
             
-            layout(tag) { (ticketView) -> () in
+            constrain(tag) { (ticketView) -> () in
                 ticketView.left == ticketView.superview!.left
                 ticketView.top == ticketView.superview!.top
                 ticketView.right == ticketView.superview!.right

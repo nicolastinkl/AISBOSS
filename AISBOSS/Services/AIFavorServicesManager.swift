@@ -8,7 +8,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 protocol AIFavorServicesManager {
     // 获取收藏服务列表

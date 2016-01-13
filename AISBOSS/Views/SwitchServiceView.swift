@@ -12,7 +12,7 @@ let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forInd
 let switchView = SwitchServiceView.createSwitchServiceView()
 cell.contentView.addSubview(switchView)
 
-layout(switchView) { switchView in
+constrain(switchView) { switchView in
 switchView.left == switchView.superview!.left
 switchView.top == switchView.superview!.top
 switchView.right == switchView.superview!.right
@@ -56,7 +56,7 @@ class SwitchServiceView: UIView {
         
         addSubview(switchController)
         
-        layout(switchController, switchHolder) { switchView, holderView in
+        constrain(switchController, switchHolder) { switchView, holderView in
             switchView.top == holderView.top
             switchView.left == holderView.left
             switchView.width == holderView.width

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import AISpring
+import Spring
 
 /** AIProviderView Class
 

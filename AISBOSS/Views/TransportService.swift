@@ -65,7 +65,7 @@ class TransportService: ServiceParamlView {
         time.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(66))
         time.textColor = UIColor.whiteColor()
         addSubview(time)
-        layout(timeTitle, time) {title, time in
+        constrain(timeTitle, time) {title, time in
             time.left == title.right + 5
             time.bottom == title.bottom + 3
             time.right == time.superview!.right
@@ -98,28 +98,28 @@ class TransportService: ServiceParamlView {
         addSubview(from)
         addSubview(to)
         
-        layout(fromIcon, from, timeTitle) {fromIcon, from, timeTitle in
+        constrain(fromIcon, from, timeTitle) {fromIcon, from, timeTitle in
             fromIcon.left == timeTitle.left
             fromIcon.top == timeTitle.bottom + AITools.displaySizeFrom1080DesignSize(32)
             fromIcon.width == fromIconSize.width
             fromIcon.height == fromIconSize.height
         }
         
-        layout(time, from, fromIcon) {time, from, fromIcon in
+        constrain(time, from, fromIcon) {time, from, fromIcon in
             from.top == time.bottom + AITools.displaySizeFrom1080DesignSize(26)
             from.left == fromIcon.right + 5
             from.right == from.superview!.right
             from.height == AITools.displaySizeFrom1080DesignSize(36)
         }
         
-        layout(toIcon, fromIcon) {toIcon, fromIcon in
+        constrain(toIcon, fromIcon) {toIcon, fromIcon in
             toIcon.left == fromIcon.left
             toIcon.top == fromIcon.bottom + AITools.displaySizeFrom1080DesignSize(25)
             toIcon.width == toIconSize.width
             toIcon.height == toIconSize.height
         }
         
-        layout(to, from) {to, from in
+        constrain(to, from) {to, from in
             to.top == from.bottom + AITools.displaySizeFrom1080DesignSize(20)
             to.left == from.left
             to.right == to.superview!.right

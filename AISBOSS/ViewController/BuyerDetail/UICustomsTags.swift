@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 import AIAlertView
 
 internal protocol AIElasticDownTagStateDelegete : class{

@@ -1,6 +1,0 @@
-framework module AISwiftyJSON {
-  umbrella header "AISwiftyJSON-umbrella.h"
-
-  export *
-  module * { export * }
-}

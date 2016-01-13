@@ -8,7 +8,7 @@
 
 import UIKit
 import Cartography
-import AISpring
+import Spring
 import AIAlertView
 
 public enum AIServiceContentType : Int {
@@ -511,13 +511,13 @@ extension AIServiceContentViewController: AICustomAudioNotesViewShowAudioDelegat
         childView.inputTextView.delegate = self
         currentAudioView = childView
         
-        layout(childView) { (cview) -> () in
+        constrain(childView) { (cview) -> () in
             cview.leading == cview.superview!.leading
             cview.trailing == cview.superview!.trailing
             cview.top == cview.superview!.top
             cview.bottom == cview.superview!.bottom
         }
-        spring(0.5) { () -> Void in
+        SpringAnimation.spring(0.5) { () -> Void in
             childView.inputTextView.text = self.inputMessageCache
             childView.alpha = 1
         }
@@ -764,7 +764,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
     
     
     func deleteAnimation (cell: UIView?) {
-        springWithCompletion(0.3, animations: { () -> Void in
+        SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
             
             cell?.alpha = 0
             //刷新UI

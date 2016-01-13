@@ -80,14 +80,14 @@ class AITitleAndIconTextView: ServiceParamlView {
                 label.textColor = firstText.textColor
                 addSubview(label)
                 
-                layout(preIcon, icon) {preIcon, icon in
+                constrain(preIcon, icon) {preIcon, icon in
                     icon.width == preIcon.width
                     icon.height == preIcon.height
                     icon.leading == preIcon.leading
                     icon.top == preIcon.bottom + AITitleAndIconTextView.ICON_VERTICAL_SPACE
                 }
 
-                layout(preLabel, icon, label) {preLabel, icon, label in
+                constrain(preLabel, icon, label) {preLabel, icon, label in
                     label.width == preLabel.width
                     label.height == preLabel.height
                     label.leading == preLabel.leading
