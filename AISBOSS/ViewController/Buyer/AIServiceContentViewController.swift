@@ -51,6 +51,7 @@ internal class AIServiceContentViewController: UIViewController {
     private var preCacheView: UIView?
     
     private var currentAudioView: AIAudioInputView?
+    private var brandView: AIDropdownBrandView?
     private var musicView: AIMusicTherapyView?
     private var paramedicView: AIParamedicView?
     
@@ -241,9 +242,6 @@ internal class AIServiceContentViewController: UIViewController {
                         strongSelf.scrollView.headerEndRefreshing()
                     }
                 })
-                
-                
-                
             },fail : {[weak self]
                 (errType, errDes) -> Void in
                 print(errDes)
@@ -266,13 +264,6 @@ internal class AIServiceContentViewController: UIViewController {
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
     }
     
     func topImage() -> UIImage {
@@ -355,18 +346,27 @@ internal class AIServiceContentViewController: UIViewController {
         
         addGalleryView()
 
+        //TODO: add brand View
+       var bView = addBrandView()
+
         var serviceContentView: UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
-            serviceContentView = addEscortView()
+            serviceContentView = addEscortView(bView)
         } else {
             //音乐疗养
-            serviceContentView = addMusicView()
+            serviceContentView = addMusicView(bView)
         }
    
         let custView =  addCustomView(serviceContentView)
         
         addAudioView(custView)
+    }
+    
+    private func addBrandView()-> AIDropdownBrandView? {
+        brandView = AIDropdownBrandView(brands: ["amazon", "jd", "twitter", "adiaosi", "adiwang"], selectedIndex: 0, width: view.width)
+        addNewSubView(brandView!, preView: galleryView)
+        return brandView
     }
     
     private func addGalleryView() {
@@ -384,10 +384,11 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.setTop(5)
     }
     
-    private func addEscortView() -> UIView {
-        let paramedicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+    private func addEscortView(var preView: UIView?) -> UIView {
+        preView = preView ?? galleryView
+        let paramedicFrame = CGRectMake(0, preView!.bottom, CGRectGetWidth(scrollView.frame), 600)
         paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
-        addNewSubView(paramedicView!, preView: galleryView)
+        addNewSubView(paramedicView!, preView: preView!)
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
     }
@@ -410,10 +411,11 @@ internal class AIServiceContentViewController: UIViewController {
         return custView
     }
     
-    private func addMusicView() -> UIView {
-        let musicFrame = CGRectMake(0, galleryView.top + galleryView.height, CGRectGetWidth(scrollView.frame), 600)
+    private func addMusicView(var preView: UIView?) -> UIView {
+        preView = preView ?? galleryView
+        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 600)
         musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
-        addNewSubView(musicView!, preView: galleryView)
+        addNewSubView(musicView!, preView: preView!)
         musicView!.backgroundColor = UIColor.clearColor()
         return musicView!
     }
@@ -871,7 +873,6 @@ extension AIServiceContentViewController : UITextViewDelegate {
                     let NoteId = response["NoteId"] as? NSNumber
                     eView.noteID = NoteId?.integerValue ?? 0
                 }
-                
                 weakSelf!.view.userInteractionEnabled = true
                 
                 }, fail: { (errorView, error) -> Void in
@@ -879,8 +880,6 @@ extension AIServiceContentViewController : UITextViewDelegate {
                     AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                     weakSelf!.view.userInteractionEnabled = true
             })
-            
-            
             return false
         }
         

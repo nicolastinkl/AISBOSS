@@ -107,6 +107,15 @@
 		843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */; };
 		844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844009171C166F6B0031E2F7 /* JSSAlertView.swift */; };
 		8440091A1C16702F0031E2F7 /* JSSAlertView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */; };
+		8442828B1C45EF95001C2DCB /* _OALayoutGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282791C45EF95001C2DCB /* _OALayoutGuide.m */; };
+		8442828C1C45EF95001C2DCB /* OAStackView+Constraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442827B1C45EF95001C2DCB /* OAStackView+Constraint.m */; };
+		8442828D1C45EF95001C2DCB /* OAStackView+Hiding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442827D1C45EF95001C2DCB /* OAStackView+Hiding.m */; };
+		8442828E1C45EF95001C2DCB /* OAStackView+Traversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442827F1C45EF95001C2DCB /* OAStackView+Traversal.m */; };
+		8442828F1C45EF95001C2DCB /* OAStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282811C45EF95001C2DCB /* OAStackView.m */; };
+		844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282831C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m */; };
+		844282911C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282851C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m */; };
+		844282921C45EF95001C2DCB /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */; };
+		844282931C45EF95001C2DCB /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282891C45EF95001C2DCB /* OATransformLayer.m */; };
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
@@ -124,6 +133,7 @@
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
 		845BE0101BE8CEC60001716A /* TransportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE00F1BE8CEC60001716A /* TransportService.swift */; };
 		845BE0121BE8D7490001716A /* AccommodationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BE0111BE8D7490001716A /* AccommodationService.swift */; };
+		845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E4D161C44D5B900FB32E5 /* AIDropdownBrandView.swift */; };
 		8465731E1C435E04008ADA0B /* PriceAndStepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465731D1C435E04008ADA0B /* PriceAndStepperView.swift */; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
@@ -660,6 +670,24 @@
 		843F890F1BF0BE6500BFC57E /* FlightServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightServiceView.swift; sourceTree = "<group>"; };
 		844009171C166F6B0031E2F7 /* JSSAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSSAlertView.swift; sourceTree = "<group>"; };
 		844009191C16702F0031E2F7 /* JSSAlertView-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSSAlertView-Extension.swift"; sourceTree = "<group>"; };
+		844282781C45EF95001C2DCB /* _OALayoutGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OALayoutGuide.h; sourceTree = "<group>"; };
+		844282791C45EF95001C2DCB /* _OALayoutGuide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OALayoutGuide.m; sourceTree = "<group>"; };
+		8442827A1C45EF95001C2DCB /* OAStackView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Constraint.h"; sourceTree = "<group>"; };
+		8442827B1C45EF95001C2DCB /* OAStackView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Constraint.m"; sourceTree = "<group>"; };
+		8442827C1C45EF95001C2DCB /* OAStackView+Hiding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Hiding.h"; sourceTree = "<group>"; };
+		8442827D1C45EF95001C2DCB /* OAStackView+Hiding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Hiding.m"; sourceTree = "<group>"; };
+		8442827E1C45EF95001C2DCB /* OAStackView+Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Traversal.h"; sourceTree = "<group>"; };
+		8442827F1C45EF95001C2DCB /* OAStackView+Traversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Traversal.m"; sourceTree = "<group>"; };
+		844282801C45EF95001C2DCB /* OAStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackView.h; sourceTree = "<group>"; };
+		844282811C45EF95001C2DCB /* OAStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackView.m; sourceTree = "<group>"; };
+		844282821C45EF95001C2DCB /* OAStackViewAlignmentStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewAlignmentStrategy.h; sourceTree = "<group>"; };
+		844282831C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentStrategy.m; sourceTree = "<group>"; };
+		844282841C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewAlignmentStrategyBaseline.h; sourceTree = "<group>"; };
+		844282851C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentStrategyBaseline.m; sourceTree = "<group>"; };
+		844282861C45EF95001C2DCB /* OAStackViewDistributionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewDistributionStrategy.h; sourceTree = "<group>"; };
+		844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewDistributionStrategy.m; sourceTree = "<group>"; };
+		844282881C45EF95001C2DCB /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATransformLayer.h; sourceTree = "<group>"; };
+		844282891C45EF95001C2DCB /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATransformLayer.m; sourceTree = "<group>"; };
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
@@ -677,6 +705,7 @@
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
 		845BE00F1BE8CEC60001716A /* TransportService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransportService.swift; path = ../../Views/TransportService.swift; sourceTree = "<group>"; };
 		845BE0111BE8D7490001716A /* AccommodationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccommodationService.swift; path = ../../Views/AccommodationService.swift; sourceTree = "<group>"; };
+		845E4D161C44D5B900FB32E5 /* AIDropdownBrandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDropdownBrandView.swift; sourceTree = "<group>"; };
 		8465731D1C435E04008ADA0B /* PriceAndStepperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAndStepperView.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
@@ -1545,6 +1574,31 @@
 				843E37D41C1534DD00FAD919 /* ViewController+SnapKit.swift */,
 			);
 			path = SnapKit;
+			sourceTree = "<group>";
+		};
+		844282761C45EF95001C2DCB /* OAStackView */ = {
+			isa = PBXGroup;
+			children = (
+				844282781C45EF95001C2DCB /* _OALayoutGuide.h */,
+				844282791C45EF95001C2DCB /* _OALayoutGuide.m */,
+				8442827A1C45EF95001C2DCB /* OAStackView+Constraint.h */,
+				8442827B1C45EF95001C2DCB /* OAStackView+Constraint.m */,
+				8442827C1C45EF95001C2DCB /* OAStackView+Hiding.h */,
+				8442827D1C45EF95001C2DCB /* OAStackView+Hiding.m */,
+				8442827E1C45EF95001C2DCB /* OAStackView+Traversal.h */,
+				8442827F1C45EF95001C2DCB /* OAStackView+Traversal.m */,
+				844282801C45EF95001C2DCB /* OAStackView.h */,
+				844282811C45EF95001C2DCB /* OAStackView.m */,
+				844282821C45EF95001C2DCB /* OAStackViewAlignmentStrategy.h */,
+				844282831C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m */,
+				844282841C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.h */,
+				844282851C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m */,
+				844282861C45EF95001C2DCB /* OAStackViewDistributionStrategy.h */,
+				844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */,
+				844282881C45EF95001C2DCB /* OATransformLayer.h */,
+				844282891C45EF95001C2DCB /* OATransformLayer.m */,
+			);
+			path = OAStackView;
 			sourceTree = "<group>";
 		};
 		8450D1161BFEB76000CD1D5B /* Label */ = {
@@ -2577,6 +2631,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				844282761C45EF95001C2DCB /* OAStackView */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
 				93A742C71BDF75FD001EF581 /* TDImageColors */,
@@ -2673,6 +2728,7 @@
 			children = (
 				93DA9C0D1BFDB68000E2DA3B /* AIGalleryView.swift */,
 				93DA9C0F1BFDCC2600E2DA3B /* UICustomsTags.swift */,
+				845E4D161C44D5B900FB32E5 /* AIDropdownBrandView.swift */,
 				93DA9C111BFDCC4400E2DA3B /* UICustomsTags.xib */,
 				93E7BFB11BFEBA3F00A6C906 /* AICustomView.swift */,
 				93E7BFB31BFEBA5300A6C906 /* AICustomView.xib */,
@@ -3105,6 +3161,7 @@
 				93FA1DFF1B9C306E009965C8 /* AIServiceCatalogModel.swift in Sources */,
 				84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
+				8442828C1C45EF95001C2DCB /* OAStackView+Constraint.m in Sources */,
 				93C33F2A1B9C1071007BF506 /* AIErrorRetryView.swift in Sources */,
 				93FA1DFD1B9C306E009965C8 /* AIOrderDetailModel.swift in Sources */,
 				930B272E1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift in Sources */,
@@ -3173,6 +3230,7 @@
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
 				81C092881BAFAC0D003FFF35 /* SDWebImageManager.m in Sources */,
 				930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */,
+				8442828B1C45EF95001C2DCB /* _OALayoutGuide.m in Sources */,
 				84F001531C3A43CB000C93AF /* FLEXTableLeftCell.m in Sources */,
 				93C33F1D1B9BEAFE007BF506 /* KMDetailsPageView.m in Sources */,
 				93FA1DE31B9C302A009965C8 /* AIOrderDetailService.swift in Sources */,
@@ -3181,6 +3239,7 @@
 				849B4B611C0EDFE300BEC179 /* FLEXHierarchyTableViewCell.m in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
+				845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */,
 				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
 				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,
 				93B25A981B9D7A7B00CD1FEB /* AFHTTPRequestOperationManager.m in Sources */,
@@ -3196,6 +3255,7 @@
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				849B4B3B1C0EDFE300BEC179 /* FLEXFileBrowserSearchOperation.m in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
+				8442828E1C45EF95001C2DCB /* OAStackView+Traversal.m in Sources */,
 				937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
@@ -3220,6 +3280,7 @@
 				93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */,
 				8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */,
 				93C33F1A1B9BEAFE007BF506 /* AITools.m in Sources */,
+				844282931C45EF95001C2DCB /* OATransformLayer.m in Sources */,
 				12D795041BA9597400586011 /* AIScrollLabel.m in Sources */,
 				126B2A1B1BD7952200146BBE /* AIOrderDescView.swift in Sources */,
 				849B4B551C0EDFE300BEC179 /* FLEXObjectExplorerFactory.m in Sources */,
@@ -3274,6 +3335,7 @@
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
 				93C33EFA1B9BEA75007BF506 /* OHAttributedLabel.m in Sources */,
 				84F0014F1C3A43CB000C93AF /* FLEXMultiColumnTableView.m in Sources */,
+				8442828F1C45EF95001C2DCB /* OAStackView.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
 				84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */,
@@ -3364,6 +3426,7 @@
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
+				844282921C45EF95001C2DCB /* OAStackViewDistributionStrategy.m in Sources */,
 				843F89101BF0BE6500BFC57E /* FlightServiceView.swift in Sources */,
 				843E37DC1C1534DD00FAD919 /* EdgeInsets.swift in Sources */,
 				846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */,
@@ -3412,6 +3475,7 @@
 				937EA38B1C0316D600AF776B /* AIDetailTopMenuView.swift in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
+				844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
@@ -3425,6 +3489,7 @@
 				937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
+				8442828D1C45EF95001C2DCB /* OAStackView+Hiding.m in Sources */,
 				849B4B2C1C0EDFE300BEC179 /* FLEXArgumentInputViewFactory.m in Sources */,
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */,
@@ -3437,6 +3502,7 @@
 				849B4B5C1C0EDFE300BEC179 /* FLEXKeyboardShortcutManager.m in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
 				81C092871BAFAC0D003FFF35 /* SDWebImageDownloaderOperation.m in Sources */,
+				844282911C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,
 				81A5BE551BD87D2900019802 /* AIBubble.m in Sources */,
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
