@@ -250,10 +250,7 @@ class BDKProposalService : MockProposalService{
         let message = AIMessage()
         message.url = AIApplication.AIApplicationServerURL.findServiceDetail.description
         
-        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
-   //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]
-        
-   //     let header = ["HttpQuery":"0&0&0&0"]
+        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]] 
         
         message.body = NSMutableDictionary(dictionary: body)
   //      message.header = NSMutableDictionary(dictionary: header)

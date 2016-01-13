@@ -48,7 +48,8 @@ class VerticalIconLabel: UIView {
 		self.addSubview(result)
 		result.snp_makeConstraints(closure: {(make) -> Void in
 				make.centerX.equalTo(self)
-				make.top.equalTo(self).offset(20)
+                make.width.height.equalTo(62/2.5)
+				//make.top.equalTo(self).offset(20)
 			})
 		return result
 	}()
@@ -62,7 +63,7 @@ class VerticalIconLabel: UIView {
 		result.snp_makeConstraints(closure: {(make) -> Void in
 				// TODO:
 				make.centerX.equalTo(self)
-				make.bottom.equalTo(self).offset(-20)
+				make.bottom.equalTo(self).offset(0)
 			})
 		return result
 	}()

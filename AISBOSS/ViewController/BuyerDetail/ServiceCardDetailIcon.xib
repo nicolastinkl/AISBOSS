@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +13,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tvq-Xj-s8X">
                     <rect key="frame" x="24" y="69" width="62" height="62"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="lem-iW-RIW"/>
                         <constraint firstAttribute="width" constant="62" id="mNS-SA-B7X"/>
@@ -21,7 +20,6 @@
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwF-Vs-URp">
                     <rect key="frame" x="119" y="69" width="62" height="62"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="M2h-sA-k6Z"/>
                         <constraint firstAttribute="width" constant="62" id="ydo-l5-vOZ"/>
@@ -29,7 +27,6 @@
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D83-h5-gIu">
                     <rect key="frame" x="204" y="69" width="62" height="62"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="62" id="PXB-fb-nvc"/>
                         <constraint firstAttribute="width" constant="62" id="jnE-2H-NNs"/>
@@ -37,7 +34,6 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRo-MI-ST6">
                     <rect key="frame" x="34" y="21" width="42" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="s5D-q9-9Yc"/>
                     </constraints>
@@ -47,7 +43,6 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yv-Pm-e7T">
                     <rect key="frame" x="34" y="156" width="42" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Plc-Ni-gpY"/>
                     </constraints>
@@ -56,7 +51,6 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="D83-h5-gIu" firstAttribute="leading" secondItem="KwF-Vs-URp" secondAttribute="trailing" constant="23" id="4bW-kM-5wH"/>
@@ -78,6 +72,7 @@
                     <exclude reference="6Jw-Nc-jgV"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="218" y="326"/>
         </view>
     </objects>
 </document>

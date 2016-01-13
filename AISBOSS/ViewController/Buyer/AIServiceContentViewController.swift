@@ -242,8 +242,6 @@ internal class AIServiceContentViewController: UIViewController {
                     }
                 })
                 
-                
-                
             },fail : {[weak self]
                 (errType, errDes) -> Void in
                 print(errDes)

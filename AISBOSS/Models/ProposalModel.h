@@ -409,19 +409,21 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) NSString<Optional> * service_intro_title;
 @property (strong, nonatomic) NSString<Optional> * service_intro_content;
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_url;
-@property (strong, nonatomic) ParamModel<Optional> * service_param;
-@property (nonatomic, strong) NSArray<AIProposalServiceDetailIntroImgModel, Optional> *service_intro_img_list;
-@property (nonatomic, strong) AIProposalServicePriceModel<Optional> * service_price;
 @property (strong, nonatomic) NSString<Optional> * service_guarantee;
 @property (strong, nonatomic) NSString<Optional> * service_restraint;
 @property (strong, nonatomic) NSString<Optional> * service_process;
 @property (strong, nonatomic) NSString<Optional> * service_exectime;
-@property (nonatomic, strong) AIProposalServiceDetailProviderModel<Optional> * service_provider;
+
+@property (strong, nonatomic) ParamModel<Optional> * service_param;
+@property (nonatomic, strong) NSArray<AIProposalServiceDetailIntroImgModel, Optional> *service_intro_img_list;
+@property (nonatomic, strong) AIProposalServicePriceModel<Optional> * service_price;
+@property (nonatomic, strong) AIProposalServiceDetailProviderModel<Optional> * service_provider; // ok
+
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailParamModel, Optional> * service_param_list;
 @property (nonatomic, strong) NSArray<AIProposalServiceParamRelationModel, Optional> * service_param_rel_list;
 
-@property (nonatomic, strong) AIProposalServiceDetailRatingModel<Optional> * service_rating;
-@property (nonatomic, strong) AIProposalServiceDetail_WishModel<Optional> * wish_list;
+@property (nonatomic, strong) AIProposalServiceDetailRatingModel<Optional> * service_rating; // ok
+@property (nonatomic, strong) AIProposalServiceDetail_WishModel<Optional> * wish_list;       // ok
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailRatingCommentModel, Optional> *comment_list;
 
 @end
