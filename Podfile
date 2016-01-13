@@ -22,7 +22,7 @@ pod 'Cartography', '~> 0.6.0'
 
 pod 'SnapKit', '~> 0.18.0'
 
-pod 'AIAlertView', '~> 1.0.6'
+pod 'AIAlertView', :git => 'https://github.com/asiainfomobile/AIAlertView.git'
 
 # iOS System Facebook
 
