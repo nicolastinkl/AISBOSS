@@ -167,7 +167,7 @@
                 <outlet property="inputText" destination="CkB-fh-bBP" id="uLS-Fx-zAK"/>
                 <outlet property="note" destination="vJ0-tA-fsd" id="zva-Sd-Ahg"/>
             </connections>
-            <point key="canvasLocation" x="157" y="159"/>
+            <point key="canvasLocation" x="-74" y="200"/>
         </view>
     </objects>
     <resources>
