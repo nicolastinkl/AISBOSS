@@ -8,7 +8,7 @@
 
 import Foundation
 
-import AISwiftyJSON
+import SwiftyJSON
 
 @objc protocol ProposalService {
     //获取通过proposal订购的订单实例列表
@@ -82,12 +82,7 @@ class BDKProposalService : MockProposalService{
         let body = ["data": [:], "desc": ["data_mode": "0", "digest": ""]]
         message.body = NSMutableDictionary(dictionary: body)
         AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
-            do {
-                success()
-                
-            } catch {
-                fail(errType: AINetError.Format, errDes: "recoverOrders error.")
-            }
+            success()
             
             }) {(error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes ?? "")
@@ -127,15 +122,16 @@ class BDKProposalService : MockProposalService{
         message.body = NSMutableDictionary(dictionary: body)
         //      message.header = NSMutableDictionary(dictionary: header)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            do {
+            success()
+//            do {
 //                let dic = response as! [NSObject : AnyObject]
 //                let model = try AIProposalServiceDetailModel(dictionary: dic)
                 
 //                success(responseData: model)
                 
-            } catch {
-                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
-            }
+//            } catch {
+//                fail(errType: AINetError.Format, errDes: "AIProposalServiceDetailModel JSON Parse error.")
+//            }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes ?? "")
@@ -254,10 +250,7 @@ class BDKProposalService : MockProposalService{
         let message = AIMessage()
         message.url = AIApplication.AIApplicationServerURL.findServiceDetail.description
         
-        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]]
-   //     let body = ["data":["service_id": 900001001000, "proposal_id": 2043, "service_type":0],"desc":["data_mode":"0","digest":""]]
-        
-   //     let header = ["HttpQuery":"0&0&0&0"]
+        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]] 
         
         message.body = NSMutableDictionary(dictionary: body)
   //      message.header = NSMutableDictionary(dictionary: header)

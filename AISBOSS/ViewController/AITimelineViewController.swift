@@ -38,7 +38,7 @@ class AITimelineViewController: UIViewController {
         //label.backgroundColor = UIColor(rgba: "#a7a7a7")
         self.view.insertSubview(label, atIndex: 0)
 
-        layout(label) { view in
+        constrain(label) { view in
             view.width == 0.5
             view.height == view.superview!.height+1000
             view.centerY == view.superview!.centerY

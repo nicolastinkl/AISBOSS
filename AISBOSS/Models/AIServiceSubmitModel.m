@@ -34,8 +34,8 @@
     self = [super init];
     
     if (self) {
-        _product_list = [[NSMutableArray alloc]init];
-        _service_param_list = [[NSMutableArray alloc]init];
+//        _product_list = [[NSMutableArray alloc]init];
+//        _service_param_list = [[NSMutableArray alloc]init];
     }
     
     return self;

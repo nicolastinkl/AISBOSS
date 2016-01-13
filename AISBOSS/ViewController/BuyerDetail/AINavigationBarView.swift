@@ -26,7 +26,7 @@ internal class AINavigationBarView : UIView{
         customView.custom.font = AITools.myriadSemiCondensedWithSize(31/PurchasedViewDimention.CONVERT_FACTOR)
         
         selfView.custView.addSubview(customView)
-        layout(customView) { (view1) -> () in
+        constrain(customView) { (view1) -> () in
             view1.left == view1.superview!.left
             view1.right == view1.superview!.right
             view1.top == view1.superview!.top

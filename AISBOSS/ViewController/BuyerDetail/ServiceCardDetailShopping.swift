@@ -62,7 +62,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
         divideLineView.backgroundColor = UIColor.whiteColor()
         self.addSubview(divideLineView)
         
-        layout(titleLabel, divideLineView){
+        constrain(titleLabel, divideLineView){
             titleLabel, divideLineView in
             titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + MAIN_TITLE_LEFT_MARGIN
@@ -84,7 +84,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
         subTitleLabel.textColor = UIColor.whiteColor()
         self.addSubview(subTitleLabel)
         
-        layout(subTitleLabel){
+        constrain(subTitleLabel){
             subTitleLabel in
             //subTitleLabel.topMargin == subTitleLabel.superview!.topMargin + TITLE_TOP_MARGIN
             subTitleLabel.leadingMargin == subTitleLabel.superview!.leadingMargin + SUB_TITLE_LEFT_MARGIN
@@ -107,7 +107,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
             cellView.loadData(serviceItemModel)
             shoppingViewContainer.addSubview(cellView)
             
-            layout(cellView){
+            constrain(cellView){
                 cellView in
                 cellView.leadingMargin == cellView.superview!.leadingMargin
                 cellView.trailingMargin == cellView.trailingMargin
@@ -119,7 +119,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
         let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
         shoppingViewContainer.frame.size.height = containerHeight
         
-        layout(shoppingViewContainer){
+        constrain(shoppingViewContainer){
             shoppingViewContainer in
             //shoppingViewContainer.height == containerHeight
             shoppingViewContainer.leadingMargin == shoppingViewContainer.superview!.leadingMargin
@@ -197,7 +197,7 @@ class SCDShoppingListCellView : UIView {
         
         self.addSubview(descLabel)
         
-        layout(imageView, descLabel) {
+        constrain(imageView, descLabel) {
             imageView, descLabel in
             imageView.width == IMAGE_SIZE
             imageView.height == IMAGE_SIZE

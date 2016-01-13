@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 //订单列表model
 struct AIOrderListModel : JSONJoy {
@@ -23,7 +23,7 @@ struct AIOrderListModel : JSONJoy {
 }
 
 //订单列表项model
-struct AIOrderListItemModel : JSONJoy{
+struct AIOrderListItemModel : JSONJoy {
 //    "order_id": 1001,
 //    "order_number": "2015052811234",
 //    "order_state": 3,

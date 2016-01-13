@@ -44,6 +44,7 @@ class ServiceCardDetailFlag: ServiceParamlView {
         super.init(coder: aDecoder)
     }
     
+    
     //MARK: - load data
     override func loadData(json jsonString : String){
         buildModel(jsonString)

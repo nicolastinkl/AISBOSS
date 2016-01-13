@@ -61,7 +61,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="AISpring">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ise-OE-xtY" customClass="DesignableView" customModule="Spring">
                     <rect key="frame" x="8" y="136" width="584" height="84"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -81,7 +81,7 @@
                         </mask>
                     </variation>
                 </view>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-e5-HX4" customClass="DesignableView" customModule="AISpring">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzk-e5-HX4" customClass="DesignableView" customModule="Spring">
                     <rect key="frame" x="14" y="228" width="572" height="83"/>
                     <color key="backgroundColor" red="0.61176470588235299" green="0.11764705882352941" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                     <userDefinedRuntimeAttributes>

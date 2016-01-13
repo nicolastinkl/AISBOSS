@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 protocol AITransformManager {
     func queryCollectedContents(pageNum: Int, pageSize: Int, tags: [AITagModel]?, origin: String?, favoriteFlag: AIFavoriteStatu?, colorFlags: [AIColorFlag]?, completion: (([AITransformContentModel], Error?)) -> Void)

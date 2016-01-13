@@ -46,3 +46,12 @@ dump(lanuages)
 
 
 
+var testArray:[Int] = [1,2,3]
+
+let newArrayssss = testArray.map({return "NO.\($0)"})
+
+newArrayssss
+
+
+
+

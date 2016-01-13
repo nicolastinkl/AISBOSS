@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import  AISwiftyJSON
+import  SwiftyJSON
 
 /*!
 *  @author tinkl, 15-04-22 17:04:51

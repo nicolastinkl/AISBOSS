@@ -572,7 +572,7 @@
     _messageNum.clipsToBounds = YES;
     _messageNum.backgroundColor = [UIColor redColor];
     [_boardView addSubview:_messageNum];
-#warning hidden unread message number.
+//#warning hidden unread message number.
     [_messageNum setHidden:YES];
 }
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 
 
 protocol topActionDelegate{
@@ -45,7 +45,7 @@ class AIMenuTopView: UIView {
 
     func closeMenuAction(sender: UISwipeGestureRecognizer) {
         if sender.direction == UISwipeGestureRecognizerDirection.Up {
-            spring(0.5, animations: {
+            SpringAnimation.spring(0.5, animations: {
                 //TODO: 以后要加height变化
                 //self.setTop(-self.height)
                 self.alpha = 0

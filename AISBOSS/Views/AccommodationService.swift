@@ -64,7 +64,7 @@ class AccommodationService: ServiceParamlView {
         dayCount.textColor = UIColor.whiteColor()
         addSubview(dayCount)
 
-        layout(dayCount, period) {dayCount, period in
+        constrain(dayCount, period) {dayCount, period in
             dayCount.left == period.right
             dayCount.bottom == period.bottom - 3
             dayCount.height == AITools.displaySizeFrom1080DesignSize(40)
@@ -81,7 +81,7 @@ class AccommodationService: ServiceParamlView {
         additionDes.textColor = UIColor.whiteColor()
         addSubview(additionDes)
         
-        layout(additionDes, period) {additionDes, period in
+        constrain(additionDes, period) {additionDes, period in
             additionDes.left == period.left
             additionDes.top == period.bottom + AITools.displaySizeFrom1080DesignSize(10)
             additionDes.height >= 25

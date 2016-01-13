@@ -14,7 +14,7 @@ let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forInd
 let ticketGroupView = AirTicketGroupView()
 cell.contentView.addSubview(ticketGroupView)
 
-layout(ticketGroupView) { viewTic in
+constrain(ticketGroupView) { viewTic in
     viewTic.left == viewTic.superview!.left
     viewTic.top == viewTic.superview!.top
     viewTic.right == viewTic.superview!.right
@@ -60,13 +60,13 @@ class AirTicketGroupView: UIView {
             self.addSubview(ticket)
             
             if index == 0 {
-                layout(ticket) { ticketView in
+                constrain(ticket) { ticketView in
                     ticketView.left == ticketView.superview!.left
                     ticketView.top == ticketView.superview!.top
                     ticketView.right == ticketView.superview!.right
                 }
             } else if (preTicket != nil) {
-                layout(preTicket!, ticket) { preTicket, ticket in
+                constrain(preTicket!, ticket) { preTicket, ticket in
                     ticket.top == preTicket.top + AirTicketView.TICKET_HEAD_HEIGHT
                     ticket.left == preTicket.superview!.left
                     ticket.right == preTicket.superview!.right

@@ -184,7 +184,7 @@ class SimpleServiceViewContainer: UIView {
         messageView.addSubview(msgContent)
         
         
-        layout(messageView, msgContent) {container, view in
+        constrain(messageView, msgContent) {container, view in
             view.edges == container.edges
         }
         
@@ -201,35 +201,34 @@ class SimpleServiceViewContainer: UIView {
     
     private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
-
+        
         var paramView: ServiceParamlView?
         
         switch viewTemplate {
-        case .PlaneTicket:
+        case .PlaneTicket: // 机票
             paramView = FlightServiceView.createInstance()
-        case .Taxi:
+        case .Taxi:        // 出租车
             paramView = TransportService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-        case .Hotel:
+        case .Hotel:       // 酒店
             paramView = AccommodationService(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-        case .SingleParam:
+        case .SingleParam: // 单参数
             paramView = AITitleAndIconTextView.createInstance()
-        case .MutilParams:
+        case .MutilParams: // 多参数
             paramView = ServiceCardDetailFlag(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-        case .MutilTextAndImage:
+        case .MutilTextAndImage: // 多文本图片
             paramView = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-        case .Shopping:
+        case .Shopping:     // 购物
             paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
         
-        paramView?.loadData(json: jsonData)
-        
-        let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-        
-        
-        paramContainerView.frame.size.height = (paramView?.height ?? 0) + paramContainerView.height
-        
-        if paramView != nil {
-            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: paramView!.height, width: paramViewWidth, height: 120))
+        if let param = paramView{
+            param.loadData(json: jsonData)
+            
+            let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+            
+            paramContainerView.frame.size.height = (param.height ?? 0) + paramContainerView.height
+            
+            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: paramView!.height + 5, width: paramViewWidth, height: 55))
             
             let iconLabelDataSource = [(image:UIImage(named: "icon_time_big")!, title:"2 session"), (image:UIImage(named: "icon_time_big")!, title:"2 session")]
             iconLabelCollection.dataSource = iconLabelDataSource
@@ -239,9 +238,11 @@ class SimpleServiceViewContainer: UIView {
             paramContainerView.addSubview(iconLabelCollection)
             
             paramContainerView.frame.size.height = paramView!.height + iconLabelCollection.height
+            
+            return paramContainerView
         }
         
-        return paramContainerView
+        return nil
     }
     
     func selfHeight() -> CGFloat {
@@ -256,7 +257,7 @@ class SimpleServiceViewContainer: UIView {
         paramViewHeight = serviceParams.frame.height
         paramsView.addSubview(serviceParams)
         
-        layout(paramsView, serviceParams) {container, item in
+        constrain(paramsView, serviceParams) {container, item in
             item.edges == container.edges
         }
     }
@@ -274,7 +275,7 @@ class SimpleServiceViewContainer: UIView {
         let score: CGFloat = CGFloat(rating) / 10
         starRateView.scorePercent = score
         
-        layout(starRateView, review) {star, review in
+        constrain(starRateView, review) {star, review in
             star.left == review.right - 2
             star.height == starRateView.height
             star.width == starRateView.width

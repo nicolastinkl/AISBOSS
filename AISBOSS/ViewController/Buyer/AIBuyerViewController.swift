@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AISpring
+import Spring
 
 class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AIBuyerDetailDelegate {
 
@@ -391,7 +391,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.view.center = self.curBubbleCenter!
                     }, completion: { (complate) -> Void in
                         
-                        springEaseIn(0.2, animations: { () -> Void in
+                        SpringAnimation.springEaseIn(0.2, animations: { () -> Void in
                             self.view.transform =  CGAffineTransformMakeScale(1, 1)
                             self.view.center = self.originalViewCenter!
                         })

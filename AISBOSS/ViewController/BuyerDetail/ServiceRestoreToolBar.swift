@@ -8,6 +8,7 @@
 
 import Foundation
 import Cartography
+import SnapKit
 
 @objc protocol ServiceRestoreToolBarDelegate: NSObjectProtocol {
 	optional func serviceRestoreToolBar(serviceRestoreToolBar: ServiceRestoreToolBar, didClickLogoAtIndex index: Int)

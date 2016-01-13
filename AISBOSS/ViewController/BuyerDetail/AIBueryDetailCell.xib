@@ -15,14 +15,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="95.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-rg-MUb" customClass="SpringView" customModule="AISpring">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-rg-MUb" customClass="SpringView" customModule="Spring">
                         <rect key="frame" x="538" y="0.0" width="48" height="88"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="QX6-7F-5cB"/>
                         </constraints>
                     </view>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="449-BM-UZX" customClass="SpringView" customModule="AISpring">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="449-BM-UZX" customClass="SpringView" customModule="Spring">
                         <rect key="frame" x="586" y="0.0" width="0.0" height="88"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="x_buttondel" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-Pf-ZFL">

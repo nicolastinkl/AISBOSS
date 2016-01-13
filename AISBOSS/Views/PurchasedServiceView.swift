@@ -9,7 +9,7 @@
 
 import UIKit
 import Cartography
-import AISpring
+import Spring
 
 class PurchasedServiceView: UIView, Measureable {
     
@@ -78,7 +78,7 @@ class PurchasedServiceView: UIView, Measureable {
             frame.size.height += ADDITION_HEIGHT
         }
         
-        layout(statu, serviceDescription) { statu, serviceDescription in
+        constrain(statu, serviceDescription) { statu, serviceDescription in
             serviceDescription.top == statu.bottom - 2
             serviceDescription.left == serviceDescription.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             serviceDescription.width == serviceDescription.superview!.width - PurchasedViewDimention.PROPOSAL_PADDING_LEFT - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
@@ -130,7 +130,7 @@ class PurchasedServiceView: UIView, Measureable {
         
         addSubview(logo)
         
-        layout(logo) { logView in
+        constrain(logo) { logView in
             logView.top == logView.superview!.top + PurchasedViewDimention.LOGO_MARGIN_TOP
             logView.left == logView.superview!.left + PurchasedViewDimention.PROPOSAL_PADDING_LEFT
             logView.width == PurchasedViewDimention.LOGO_WIDTH
@@ -145,7 +145,7 @@ class PurchasedServiceView: UIView, Measureable {
         title.text = "PurchasedServiceView.home".localized
         addSubview(title)
         
-        layout(logo, title) { logo, title in
+        constrain(logo, title) { logo, title in
             title.top == logo.top - 4
             title.left == logo.right + 10
             title.height == 20
@@ -159,7 +159,7 @@ class PurchasedServiceView: UIView, Measureable {
         statu.text = "AIOrderDescView.ongoing".localized
         addSubview(statu)
         
-        layout(title, statu) { title, statu in
+        constrain(title, statu) { title, statu in
             statu.top == title.bottom - 2
             statu.left == title.left
             statu.width == title.width
@@ -191,28 +191,28 @@ class PurchasedServiceView: UIView, Measureable {
         eyeIcon.image = UIImage(named: EYE_DISABLE_IMAGE)
         addSubview(eyeIcon)
         
-        layout(contactIcon) { contacView in
+        constrain(contactIcon) { contacView in
             contacView.top == contacView.superview!.top + PurchasedViewDimention.LOGO_MARGIN_TOP
             contacView.right == contacView.superview!.right - PurchasedViewDimention.PROPOSAL_PADDING_RIGHT
             contacView.width == PurchasedViewDimention.ICON_WIDTH
             contacView.height == PurchasedViewDimention.ICON_HEIGHT
         }
         
-        layout(contactIcon, bellIcon) { contact, bell in
+        constrain(contactIcon, bellIcon) { contact, bell in
             bell.top == contact.top
             bell.right == contact.left - PurchasedViewDimention.ADDITIONAL_ICON_MARGIN
             bell.width == contact.width
             bell.height == contact.height
         }
         
-        layout(bellIcon, eyeIcon) { bell, eye in
+        constrain(bellIcon, eyeIcon) { bell, eye in
             eye.top == bell.top
             eye.right == bell.left - PurchasedViewDimention.ADDITIONAL_ICON_MARGIN
             eye.width == bell.width
             eye.height == bell.height
         }
         
-        layout(eyeIcon, title) { eyeIcon, title in
+        constrain(eyeIcon, title) { eyeIcon, title in
             title.right == eyeIcon.left - 10
         }
 

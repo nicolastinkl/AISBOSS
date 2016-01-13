@@ -107,7 +107,7 @@ class ServiceContainerView: UIView {
                         frame.size.height = detail.frame.origin.y + serviceView.frame.height
                         detail.addSubview(serviceView)
                         
-                        layout(detail, serviceView) {detail, serviceView in
+                        constrain(detail, serviceView) {detail, serviceView in
                             serviceView.left == detail.left
                             serviceView.top == detail.top
                             serviceView.bottom == detail.bottom

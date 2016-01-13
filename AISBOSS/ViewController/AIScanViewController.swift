@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import AIAlertView
-import AISpring
+import Spring
 
 class AIScanViewController: UIViewController {
     
@@ -293,7 +293,7 @@ class AIScanViewController: UIViewController {
 
         var newViews = views
         if let label = newViews.first {
-            springWithCompletion(0.6, animations: { () -> Void in
+            SpringAnimation.springWithCompletion(0.6, animations: { () -> Void in
                 label.alpha = 1
 //                label.scaleX = 1.8
 //                label.scaleY = 1.8
@@ -330,7 +330,7 @@ class AIScanViewController: UIViewController {
             AIAlertView().showError("AIScanViewController.couldnt".localized, subTitle: "", closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             return
         }
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
             })

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vu1-nI-z5D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vu1-nI-z5D">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +23,6 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="bg_top_3" translatesAutoresizingMaskIntoConstraints="NO" id="ti5-fT-ZOk">
                                         <rect key="frame" x="-4" y="0.0" width="600" height="56"/>
-                                        <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="PZc-UQ-DKz"/>
@@ -31,7 +30,6 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3K-hm-sY6" userLabel="logoButton">
                                         <rect key="frame" x="248" y="-18" width="95" height="92"/>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="92" id="dvl-ze-Jgj"/>
                                             <constraint firstAttribute="width" constant="95" id="pTN-si-yn0"/>
@@ -45,7 +43,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="0OI-GN-WKQ"/>
@@ -58,7 +55,6 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="W2z-lv-t2G">
                                 <rect key="frame" x="4" y="77" width="592" height="523"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="AITIMELINESDTimesViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="AITIMELINESDTimesViewCell" rowHeight="44" id="gBN-dv-sgf" customClass="AITIMELINESDTimesViewCell" customModule="Veris" customModuleProvider="target">
@@ -70,7 +66,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3月14号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1K9-Wf-71c">
                                                     <rect key="frame" x="22" y="11" width="65" height="21"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="6DG-5A-qPh"/>
@@ -81,13 +76,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="1K9-Wf-71c" secondAttribute="centerY" id="5iC-XJ-fpR"/>
                                                 <constraint firstItem="1K9-Wf-71c" firstAttribute="leading" secondItem="za2-Od-UNF" secondAttribute="leadingMargin" constant="14" id="GGu-nn-sAI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="monthLabel" destination="1K9-Wf-71c" id="uz7-5g-vLn"/>
@@ -102,7 +95,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvN-UY-XNr">
                                                     <rect key="frame" x="22" y="30" width="61" height="21"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="5kG-Mq-DuV"/>
@@ -114,12 +106,10 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeline_bg" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-jK-Xyy">
                                                     <rect key="frame" x="81" y="12" width="487" height="58"/>
-                                                    <animations/>
                                                     <rect key="contentStretch" x="0.39999999999999997" y="0.70000000000000007" width="0.24999999999999967" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="瑞特瑜伽课" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2u-dM-6kq">
                                                     <rect key="frame" x="106" y="19" width="439" height="24"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="Dd4-h4-uzJ"/>
                                                         <constraint firstAttribute="width" constant="439" id="HNW-sg-Qwb"/>
@@ -130,7 +120,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="瑞特瑜伽课" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdo-XW-gs8">
                                                     <rect key="frame" x="106" y="40" width="439" height="24"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="OjD-T5-V1D"/>
                                                     </constraints>
@@ -139,7 +128,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="N2u-dM-6kq" firstAttribute="top" secondItem="BXF-jK-Xyy" secondAttribute="top" constant="7" id="IVL-PU-uoX"/>
                                                 <constraint firstAttribute="centerY" secondItem="zvN-UY-XNr" secondAttribute="centerY" id="K9d-6z-gR4"/>
@@ -153,7 +141,6 @@
                                                 <constraint firstItem="Fdo-XW-gs8" firstAttribute="top" secondItem="N2u-dM-6kq" secondAttribute="bottom" constant="-3" id="zUh-b3-FjG"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="contentBgImageView" destination="BXF-jK-Xyy" id="Prj-Ij-mTF"/>
@@ -169,7 +156,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="KKI-X4-7NY" secondAttribute="trailing" constant="-16" id="0SH-65-Giv"/>
