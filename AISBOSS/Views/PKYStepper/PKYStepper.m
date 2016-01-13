@@ -66,7 +66,7 @@ static const float kButtonWidth = 44.0f;
     
     self.clipsToBounds = YES;
     [self setBorderWidth:1.0f];
-    [self setCornerRadius:3.0];
+    [self setCornerRadius:4.0];
     
     self.countLabel = [[UILabel alloc] init];
     self.countLabel.textAlignment = NSTextAlignmentCenter;
