@@ -11,6 +11,7 @@
 #import "AIViews.h"
 #import "AINetEngine.h"
 #import "AINotifications.h"
+#import "AIFakeUser.h"
 
 #define kMargin 20
 
@@ -30,6 +31,9 @@
     UIImageView *_buyerTitleImageView;
     UIImageView *_sellerTitleImageView;
 }
+
+
+@property (nonatomic, weak) AIFakeUser *currentUser;
 
 @end
 
@@ -85,16 +89,6 @@
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-    
-}
-
-- (void)noneAction
-{
-    
-}
 
 #pragma mark- Util
 
@@ -108,8 +102,7 @@
     imageView.frame = frame;
     imageView.userInteractionEnabled = YES;
     
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(noneAction)];
-    [imageView addGestureRecognizer:tapGesture];
+
     [self addSubview:imageView];
     
     return imageView;
@@ -154,11 +147,24 @@
     _buyerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle" hlImageName:@"FakeLogin_BuyerTitleL"];
     y += kMargin * 2 + CGRectGetHeight(_buyerTitleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"" atPoint:CGPointMake(kMargin, y) tag:kBuyer1Tag];
+    
+    UIImage *image = [UIImage imageNamed:@"FakeLogin_Buyer"];
+    CGSize size = [AITools imageDisplaySizeFrom1080DesignSize:image.size];
+    
+    __weak typeof(self) wf = self;
+    AIFakeUser *buyer = [[AIFakeUser alloc] initWithFrame:CGRectMake(kMargin, y, size.width, size.height) icon:image selectedAction:^(AIFakeUser *user) {
+        [wf handlerUser:user];
+    }];
+    buyer.userID = @"100000002410";
+    buyer.userType = FakeUserBuyer;
+    [self handlerDefaultUser:buyer];
+    [self addSubview:buyer];
+
 }
 
 - (void)makeSellerArea
 {
+    __weak typeof(self) wf = self;
     CGFloat y = CGRectGetHeight(self.frame) / 2;
     
     [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_Line" hlImageName:nil];
@@ -168,78 +174,87 @@
     _sellerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle" hlImageName:@"FakeLogin_SellerTitleL"];
     y += kMargin * 2 + CGRectGetHeight(_sellerTitleImageView.frame);
     
-    UIImageView *seller =  [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"" atPoint:CGPointMake(kMargin, y) tag:kSeller1Tag];
+    // Seller
+    
+    UIImage *image = [UIImage imageNamed:@"FakeLogin_Seller"];
+    CGSize size = [AITools imageDisplaySizeFrom1080DesignSize:image.size];
+    
+    AIFakeUser *seller = [[AIFakeUser alloc] initWithFrame:CGRectMake(kMargin, y, size.width, size.height) icon:image selectedAction:^(AIFakeUser *user) {
+        [wf handlerUser:user];
+    }];
+    seller.userID = @"200000002501";
+    seller.userType = FakeUserSeller;
+    [self addSubview:seller];
+    [self handlerDefaultUser:seller];
+    // David
     
     CGFloat x = CGRectGetMaxX(seller.frame) + kMargin;
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_David" bubbleTitle:@"" atPoint:CGPointMake(x, y) tag:kSellerDavidTag];
+    image = [UIImage imageNamed:@"FakeLogin_David"];
+    size = [AITools imageDisplaySizeFrom1080DesignSize:image.size];
+    
+    seller = [[AIFakeUser alloc] initWithFrame:CGRectMake(x, y, size.width, size.height) icon:image selectedAction:^(AIFakeUser *user) {
+        [wf handlerUser:user];
+    }];
+    seller.userID = @"200000001635";
+    seller.userType = FakeUserSeller;
+    [self handlerDefaultUser:seller];
+    [self addSubview:seller];
+    
     
 }
 
-- (void)makeDavidArea
-{
-    
-}
+
 
 #pragma mark - Actions
-/*买家气泡以100开头，卖家气泡以200开头
- * 100 : 第一个买家气泡
- * 200 : 第一个卖家气泡
- *
- *
- *
- *
- */
 
-- (void)action:(UITapGestureRecognizer *)gesture
+- (void)makeStatusWithUserType:(FakeUserType)type
 {
-    // handle userID
-    NSString *userID = nil;
-    
-    switch (gesture.view.tag) {
-        case kBuyer1Tag:
-        {
-            userID = kBuyer1;
-            _buyerTitleImageView.highlighted = YES;
-            _sellerTitleImageView.highlighted = NO;
-        }
-            
-            break;
-        case kSeller1Tag:
-        {
-            userID = kSeller1;
-            _buyerTitleImageView.highlighted = NO;
-            _sellerTitleImageView.highlighted = YES;
-        }
-            break;
-        case kSellerDavidTag:
-        {
-            userID = kSellerDavid;
-            _buyerTitleImageView.highlighted = NO;
-            _sellerTitleImageView.highlighted = YES;
-        }
-            
-        default:
-            break;
+    if (type == FakeUserBuyer) {
+        _buyerTitleImageView.highlighted = YES;
+        _sellerTitleImageView.highlighted = NO;
     }
+    else if (type == FakeUserSeller)
+    {
+        _buyerTitleImageView.highlighted = NO;
+        _sellerTitleImageView.highlighted = YES;
+    }
+}
+
+
+- (void)handlerDefaultUser:(AIFakeUser *)user
+{
+    NSString *defaultID = [[NSUserDefaults standardUserDefaults] objectForKey:kDefault_UserID];
     
-    if (userID) {
+    if ([user.userID isEqualToString:defaultID]) {
+        self.currentUser = user;
+        [user setSelected:YES];
+        [self makeStatusWithUserType:user.userType];
+    }
+}
+
+- (void)handlerUser:(AIFakeUser *)user
+{
+    [self.currentUser setSelected:NO];
+    
+    [self makeStatusWithUserType:user.userType];
+    
+    if (user.userID) {
         
-        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:kDefault_UserID];
+        [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:kDefault_UserID];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        NSString *query = [NSString stringWithFormat:@"0&0&%@&0", userID];
+        NSString *query = [NSString stringWithFormat:@"0&0&%@&0", user.userID];
         [[AINetEngine defaultEngine] removeCommonHeaders];
         [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
-
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
     }
     
-    
-    
-    
     [self hideSelf];
 }
+
+
 
 
 

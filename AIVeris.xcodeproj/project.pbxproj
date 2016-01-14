@@ -24,6 +24,7 @@
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; };
+		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
@@ -520,6 +521,8 @@
 		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeUser.h; path = Login/AIFakeUser.h; sourceTree = "<group>"; };
+		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeUser.m; path = Login/AIFakeUser.m; sourceTree = "<group>"; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeLoginView.h; path = Login/AIFakeLoginView.h; sourceTree = "<group>"; };
@@ -1358,6 +1361,8 @@
 			children = (
 				816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */,
 				816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */,
+				815EAD761C47817000D83780 /* AIFakeUser.h */,
+				815EAD771C47817000D83780 /* AIFakeUser.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1505,28 +1510,6 @@
 				8423E56E1BB4E4EE006DC73B /* Info.plist */,
 			);
 			path = "Veris Tests";
-			sourceTree = "<group>";
-		};
-		843E37C51C1534DC00FAD919 /* SnapKit */ = {
-			isa = PBXGroup;
-			children = (
-				843E37C61C1534DC00FAD919 /* Constraint.swift */,
-				843E37C71C1534DC00FAD919 /* ConstraintAttributes.swift */,
-				843E37C81C1534DC00FAD919 /* ConstraintDescription.swift */,
-				843E37C91C1534DC00FAD919 /* ConstraintItem.swift */,
-				843E37CA1C1534DC00FAD919 /* ConstraintMaker.swift */,
-				843E37CB1C1534DC00FAD919 /* ConstraintRelation.swift */,
-				843E37CC1C1534DC00FAD919 /* Debugging.swift */,
-				843E37CD1C1534DC00FAD919 /* EdgeInsets.swift */,
-				843E37CE1C1534DC00FAD919 /* Info.plist */,
-				843E37CF1C1534DC00FAD919 /* LayoutConstraint.swift */,
-				843E37D01C1534DD00FAD919 /* SnapKit.h */,
-				843E37D11C1534DD00FAD919 /* SnapKit.swift */,
-				843E37D21C1534DD00FAD919 /* SourceLocation.swift */,
-				843E37D31C1534DD00FAD919 /* View+SnapKit.swift */,
-				843E37D41C1534DD00FAD919 /* ViewController+SnapKit.swift */,
-			);
-			path = SnapKit;
 			sourceTree = "<group>";
 		};
 		844282761C45EF95001C2DCB /* OAStackView */ = {
@@ -3093,6 +3076,7 @@
 				81D83AF01BB29F7900BE2BA2 /* UIScrollView+MJExtension.m in Sources */,
 				8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */,
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
+				815EAD781C47817000D83780 /* AIFakeUser.m in Sources */,
 				93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */,
 				846F74191C15A68100EDAE8D /* UIImage+ColorAtPixel.m in Sources */,
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
