@@ -382,6 +382,7 @@ class AIScanViewController: UIViewController {
         if newAry?.count > 0 {
             return
         }
+                
         
         let numberObj: AnyObject = self.tempHolderArray.objectAtIndex((self.temp.count-1))
         self.temp.addObject(numberObj)
