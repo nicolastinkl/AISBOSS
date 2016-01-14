@@ -112,6 +112,7 @@ class SimpleServiceViewContainer: UIView {
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
         self.dataModel = dataModel
+        
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
         name.text = dataModel.service_desc ?? ""
         
@@ -228,16 +229,31 @@ class SimpleServiceViewContainer: UIView {
             
             paramContainerView.frame.size.height = (param.height ?? 0) + paramContainerView.height
             
-            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: param.height + 5, width: paramViewWidth, height: 55))
-            
-            let iconLabelDataSource = [(image:UIImage(named: "icon_time_big")!, title:"2 session"), (image:UIImage(named: "icon_time_big")!, title:"2 session")]
-            iconLabelCollection.dataSource = iconLabelDataSource
-            
             paramContainerView.addSubview(param)
             
-            paramContainerView.addSubview(iconLabelCollection)
+            // Add constrain
+            constrain(param, paramContainerView) {(view, container) ->() in
+                view.left == container.left
+                view.top == container.top
+                view.bottom == container.bottom
+                view.right == container.right
+            }
             
-            paramContainerView.frame.size.height = param.height + iconLabelCollection.height
+            if viewTemplate != .MutilTextAndImage && viewTemplate != .Shopping  {
+
+                let VIEW_LEFT_MARGIN: CGFloat  = AITools.displaySizeFrom1080DesignSize(87)
+                
+                let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 45))
+                
+                let iconLabelDataSource = [
+                    (image:UIImage(named: "icon_time_big")!, title:"2 session"),
+                    (image:UIImage(named: "icon_price_big")!, title:"1 package"),
+                    (image:UIImage(named: "icon_calenda_big")!, title:"&85.1 package")]
+                iconLabelCollection.dataSource = iconLabelDataSource
+                
+                paramContainerView.addSubview(iconLabelCollection)
+                paramContainerView.frame.size.height = param.height + iconLabelCollection.height
+            }
             
             return paramContainerView
         }

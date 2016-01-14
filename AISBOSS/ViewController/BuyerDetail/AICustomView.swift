@@ -27,21 +27,19 @@ internal class AICustomView : UIView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
         
         return selfView
-    }
-     
+    }    
     
     /**
      TODO: 处理数据填充和标签初始化
      */
     func fillTags(models:[AIProposalServiceDetailLabelModel],isNormal:Bool){
-        
         /**
             根据model个数计算高度
         */
         
         if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
             if models.count >= 6 {
-                self.setHeight(318 + 80)
+                self.setHeight(191 + 80)//318
             }
         }
         

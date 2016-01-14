@@ -44,6 +44,13 @@ class ServiceCardDetailShopping: ServiceParamlView {
         layoutView()
     }
     
+    func layoutView(){
+        buildTitle()
+        buildSubTitle()
+        buildShoppingListContainer()
+        fixFrame()
+    }
+    
     func buildModel(jsonString : String){
         dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
     }
@@ -99,9 +106,11 @@ class ServiceCardDetailShopping: ServiceParamlView {
     }
     
     func buildShoppingListContainer(){
+        
         shoppingViewContainer = UIView(frame: CGRectZero)
         self.addSubview(shoppingViewContainer)
         for var index = 0; index < dataSource?.item_list.count; index++ {
+            
             let cellView : SCDShoppingListCellView = SCDShoppingListCellView(frame: CGRectZero)
             let serviceItemModel = dataSource?.item_list[index] as! ServiceCellShoppingItemModel
             cellView.loadData(serviceItemModel)
@@ -139,12 +148,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
         self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + VIEW_TOP_MARGIN + MAIN_TITLE_HEIGHT + 15
     }
     
-    func layoutView(){
-        buildTitle()
-        buildSubTitle()
-        buildShoppingListContainer()
-        fixFrame()
-    }
+   
 
 }
 

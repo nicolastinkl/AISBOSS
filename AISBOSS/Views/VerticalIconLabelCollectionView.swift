@@ -29,7 +29,7 @@ class VerticalIconLabelCollectionView: UIView {
         }
     }
     
-    var itemWidth: CGFloat = 100.0 {
+    var itemWidth: CGFloat = 85.0 {
         
         didSet {
             if itemWidth != oldValue && itemWidth > 0 {

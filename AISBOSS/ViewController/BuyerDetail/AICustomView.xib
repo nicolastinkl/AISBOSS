@@ -79,7 +79,7 @@
                 <outlet property="selectView" destination="jzk-e5-HX4" id="QWw-Up-gPh"/>
                 <outlet property="unselectView" destination="ise-OE-xtY" id="RUD-bK-pqQ"/>
             </connections>
-            <point key="canvasLocation" x="-134" y="48.5"/>
+            <point key="canvasLocation" x="-537" y="-56.5"/>
         </view>
     </objects>
 </document>
