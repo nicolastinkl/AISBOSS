@@ -29,4 +29,8 @@ class AIProviderView :  UIView {
         return selfView
     }
     
+    func imageViewLoad(url:String?){
+        let s = url ?? ""
+        self.avator.sd_setImageWithURL(NSURL(string: "\(s)"))
+    }
 }
