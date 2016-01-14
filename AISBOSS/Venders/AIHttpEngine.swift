@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import AINetworking
-import AISwiftyJSON
+import Alamofire
+import SwiftyJSON
 
 struct Error {
     
@@ -84,15 +84,12 @@ struct AIHttpEngine{
     
     static func postRequestWithParameters(path:ResourcePath,parameters: [String: AnyObject]? = nil,response: (response:AnyObject?, error:Error?) -> ()) {
         print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
-
-        let encoding = AINetworking.ParameterEncoding.JSON
+ 
         
-        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
-            //Response<AnyObject, NSError>
-            
-        }
+        let encoding = Alamofire.ParameterEncoding.JSON
         
-        AINetworking.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
+        
+        Alamofire.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
             
             let jsonre:Response<AnyObject, NSError> = JSON
             

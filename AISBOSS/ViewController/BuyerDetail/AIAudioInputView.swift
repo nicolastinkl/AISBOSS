@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 
 // 新的语音实现界面
 
@@ -178,7 +178,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     }
     
     internal func closeThisView(){
-        springWithCompletion(0.5, animations: { () -> Void in
+        SpringAnimation.springWithCompletion(0.5, animations: { () -> Void in
             self.alpha = 0
             }) { (complate) -> Void in
                 self.removeFromSuperview()

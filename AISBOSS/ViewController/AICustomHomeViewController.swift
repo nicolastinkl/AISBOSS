@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AISpring
+import Spring
 
 
 let cellIdentify = "viewCell"
@@ -404,7 +404,7 @@ extension AICustomHomeViewController:AITopMsgViewDelegate {
         var alphaY:CGFloat = 0
         var animateY:CGFloat = 0
         
-        spring(0.7, {
+        SpringAnimation.spring(0.7, {
             if showIt {
                 // show
                 self.topMsgView.alpha = 1

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 // 订单详情数据模型
 struct OrderDetailModel : JSONJoy {

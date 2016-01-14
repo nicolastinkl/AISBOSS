@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 struct AICatalogListModel : JSONJoy {
     var catalogArray = Array<AICatalogItemModel>()
@@ -26,7 +26,7 @@ struct AICatalogListModel : JSONJoy {
     }
 }
 
-struct AICatalogItemModel : JSONJoy{
+struct AICatalogItemModel : JSONJoy {
 
     var catalog_id : Int?
     var catalog_name : String?

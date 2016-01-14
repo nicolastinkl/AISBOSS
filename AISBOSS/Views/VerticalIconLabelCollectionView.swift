@@ -9,6 +9,7 @@
 import UIKit
 import Cartography
 
+/// 这里是服务参数collection 的动态显示
 class VerticalIconLabelCollectionView: UIView {
     
     private var horizanSpace: CGFloat = 0
@@ -37,7 +38,7 @@ class VerticalIconLabelCollectionView: UIView {
         }
     }
     
-    var itemHeight: CGFloat = 100.0 {
+    var itemHeight: CGFloat = 48.0 {
         
         didSet {
             if itemHeight != oldValue && itemHeight > 0 {
@@ -71,6 +72,7 @@ class VerticalIconLabelCollectionView: UIView {
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.scrollEnabled = false
         let flowLayout = collectionView.collectionViewLayout
         let flow = flowLayout as! UICollectionViewFlowLayout
         flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -80,7 +82,7 @@ class VerticalIconLabelCollectionView: UIView {
         
         addSubview(collectionView)
         
-        layout(collectionView, self) {collectionView, parent in
+        constrain(collectionView, self) {collectionView, parent in
             collectionView.edges == parent.edges
         }
     }

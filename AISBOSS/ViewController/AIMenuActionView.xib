@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,7 +13,6 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPZ-zl-WFQ" userLabel="Delete">
                     <rect key="frame" x="538" y="14" width="53" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="WHp-W8-zoo"/>
                         <constraint firstAttribute="width" constant="53" id="sZX-qd-KW2"/>
@@ -27,7 +26,6 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-Un-Lf6" userLabel="Expend">
                     <rect key="frame" x="18" y="15" width="68" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="cui-Hd-cNe"/>
                         <constraint firstAttribute="width" constant="68" id="jVz-Tj-gGQ"/>
@@ -41,7 +39,6 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00M-oP-lDs" userLabel="Browse">
                     <rect key="frame" x="438" y="14" width="53" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="2he-vo-zQw"/>
                         <constraint firstAttribute="width" constant="53" id="qUw-ch-EJd"/>
@@ -55,7 +52,6 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-UD-8Kl" userLabel="Favorite">
                     <rect key="frame" x="490" y="14" width="53" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="Du1-hg-CHg"/>
                         <constraint firstAttribute="width" constant="53" id="GJc-hK-ZFK"/>
@@ -67,9 +63,8 @@
                         <action selector="buttonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="W38-ns-Xg1"/>
                     </connections>
                 </button>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-z7-sxS" customClass="DesignableLabel" customModule="AISpring">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3A-z7-sxS" customClass="DesignableLabel" customModule="Spring">
                     <rect key="frame" x="17" y="8" width="566" height="1"/>
-                    <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.22" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="s8V-ru-AJM"/>
@@ -80,13 +75,11 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_Line_bg" translatesAutoresizingMaskIntoConstraints="NO" id="H31-PK-zFo">
                     <rect key="frame" x="10" y="8" width="580" height="1"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="o8c-57-tKG"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="NPZ-zl-WFQ" firstAttribute="leading" secondItem="zEQ-UD-8Kl" secondAttribute="trailing" constant="-5" id="1Mz-gb-heK"/>

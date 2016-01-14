@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AISpring
+import Spring
 
 class ImageContent: UIView {
     

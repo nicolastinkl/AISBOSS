@@ -1,32 +1,45 @@
 PODS:
   - AIAlertView (1.0.6)
-  - AINetworking (1.0.3)
-  - AISpring (1.0.4)
-  - AISwiftyJSON (1.0.6)
-  - Cartography (0.5.0)
+  - Alamofire (3.1.4)
+  - AsyncDisplayKit (1.9.4):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.4)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.4)
+  - Cartography (0.6.0)
+  - SnapKit (0.18.0)
+  - Spring (1.0.3)
+  - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - AIAlertView (~> 1.0.6)
-  - AINetworking (~> 1.0.3)
-  - AISpring (~> 1.0.4)
-  - AISwiftyJSON (~> 1.0.6)
-  - Cartography (from `https://github.com/robb/Cartography.git`, branch `swift-2.0`)
+  - Alamofire (~> 3.1.4)
+  - AsyncDisplayKit (~> 1.9.4)
+  - Cartography (~> 0.6.0)
+  - SnapKit (~> 0.18.0)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
-  Cartography:
-    :branch: swift-2.0
-    :git: https://github.com/robb/Cartography.git
+  Spring:
+    :branch: swift2
+    :git: https://github.com/MengTo/Spring.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-  Cartography:
-    :commit: 36eeb22dbf7db7eff066389e9dc19e47a7266071
-    :git: https://github.com/robb/Cartography.git
+  Spring:
+    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :git: https://github.com/MengTo/Spring.git
+  SwiftyJSON:
+    :commit: 929539eb6a3304eaa9153ca44041a78b85bf2ee5
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   AIAlertView: 453783745789a34fafc8c01fb9a3c25ad111bf01
-  AINetworking: eef629fe3a691d08575184cecf9c28584de73dd9
-  AISpring: 3d8fed91bc7db9f54c1d6e32a24f88c40ebbf977
-  AISwiftyJSON: 4eb8f72a69ee1a811532ef1758ab652bb43acfbe
-  Cartography: 314f5ed1495995760487161eeb7a8a0940d88ad3
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  AsyncDisplayKit: 0932ff6f78364130a195039ab9a1c2ff63adc665
+  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0

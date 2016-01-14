@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISwiftyJSON
+import SwiftyJSON
 
 class AIFavoritesServicesResult: JSONJoy {
     var services = [AIServiceTopicModel]()

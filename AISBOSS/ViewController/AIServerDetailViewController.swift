@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import AISpring
+import Spring
 import AIAlertView
 import Cartography
 
@@ -269,7 +269,7 @@ class AIServerDetailViewController: UIViewController {
             return
         }
         
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             self.serviceSearchView.setTop(0)
             self.serviceSearchView.alpha = 1
         })
@@ -508,7 +508,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             
             cell?.contentView.addSubview(ticketGroupView)
             // add layout constrain to cell
-            layout(ticketGroupView) { viewTicketGroup in
+            constrain(ticketGroupView) { viewTicketGroup in
                 viewTicketGroup.left == viewTicketGroup.superview!.left + 9
                 viewTicketGroup.top == viewTicketGroup.superview!.top
                 viewTicketGroup.right == viewTicketGroup.superview!.right - 9
@@ -535,7 +535,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         } else {
             switchView = SwitchServiceView.createSwitchServiceView()
             cell?.contentView.addSubview(switchView)
-            layout(switchView) { switchView in
+            constrain(switchView) { switchView in
                 switchView.left == switchView.superview!.left
                 switchView.top == switchView.superview!.top
                 switchView.right == switchView.superview!.right

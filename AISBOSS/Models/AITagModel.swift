@@ -8,7 +8,7 @@
 
 import Foundation
 
-import AISwiftyJSON
+import SwiftyJSON
 
 class AITagModel: JSONJoy {
     var id: Int?

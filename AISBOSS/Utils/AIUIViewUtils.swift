@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 
 extension UIView {
     
@@ -176,7 +176,7 @@ extension UIView {
         loadingXibView.startAnimating()
         
         loadingXibView.alpha = 0
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             loadingXibView.alpha = 1
         })
     }
@@ -189,7 +189,7 @@ extension UIView {
         if let loadingXibView = self.viewWithTag(AIApplication.AIViewTags.loadingProcessTag) {
             loadingXibView.alpha = 1
             if let viewss = loadingXibView as? UIActivityIndicatorView{
-                springWithCompletion(0.7, animations: {
+                SpringAnimation.springWithCompletion(0.7, animations: {
                     loadingXibView.alpha = 0
                     viewss.stopAnimating()
                     loadingXibView.transform = CGAffineTransformMakeScale(1.5, 1.5)
@@ -215,7 +215,7 @@ extension UIView {
         self.addSubview(errorview)
         
         errorview.alpha = 0
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             errorview.alpha = 1
         })
         
@@ -236,7 +236,7 @@ extension UIView {
         self.addSubview(errorview)
         
         errorview.alpha = 0
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             errorview.alpha = 1
         })
     }
@@ -257,7 +257,7 @@ extension UIView {
         self.addSubview(errorview)
         errorview.toast.text = content
         errorview.alpha = 0
-        spring(0.7, animations: {
+        SpringAnimation.spring(0.7, animations: {
             errorview.alpha = 1
         })
     }
@@ -269,7 +269,7 @@ extension UIView {
     public func hideErrorView(){
         if let loadingXibView = self.viewWithTag(AIApplication.AIViewTags.errorviewTag) {
             loadingXibView.alpha = 1
-            springWithCompletion(0.7, animations: {
+            SpringAnimation.springWithCompletion(0.7, animations: {
                 loadingXibView.alpha = 0
                 loadingXibView.transform = CGAffineTransformMakeScale(1.5, 1.5)
                 }, completion: { (completed) -> Void in

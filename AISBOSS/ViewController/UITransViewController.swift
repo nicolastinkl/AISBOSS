@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import AISpring
+import Spring
 import MediaPlayer
 import AIAlertView
 import Cartography
@@ -421,7 +421,8 @@ extension UITransViewController: SwipeableCellDelegate{
             
             tagPreButton = button //Cache ..
             
-            spring(0.3, animations: {
+            
+            SpringAnimation.spring(0.3, animations: {
                 button.setBackgroundImage(UIImage(named: "tags_select"), forState: UIControlState.Normal)
             })
         }
@@ -437,7 +438,7 @@ extension UITransViewController: SwipeableCellDelegate{
         let superCell =  cell as! AICellIdentityCell
         
         superCell.view_Tags.alpha = 0
-        spring(0.7,animations: {
+        SpringAnimation.spring(0.7,animations: {
             superCell.view_Tags.alpha = 1
             superCell.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
             for subButton in superCell.view_Tags.subviews as! [DesignableButton] {
@@ -453,7 +454,7 @@ extension UITransViewController: SwipeableCellDelegate{
         superCell.backgroundColor = UIColor.clearColor()
         
 //        superCell.view_Tags.alpha = 1
-//        spring(0.7, {
+//        SpringAnimation.spring(0.7, {
 //            superCell.view_Tags.alpha = 0
 //            superCell.backgroundColor = UIColor.clearColor()
 //        })
@@ -712,7 +713,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 fillAITopInfoView(model, topView: tView, indexPath: indexPath)
                 cell.view_Content.addSubview(tView)
                 
-                layout(tView){ view in
+                constrain(tView){ view in
                     
                     view.width == view.superview!.width
                     view.height == 65
@@ -731,7 +732,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 let actionView = AIMenuActionView.currentView()
                 cell.view_Content.addSubview(actionView)
                 fillAIActionView(model, actionView: actionView, indexPath: indexPath)
-                layout(tView,actionView){ viewTop,actionView in
+                constrain(tView,actionView){ viewTop,actionView in
                     viewTop.width == viewTop.superview!.width
                     viewTop.left == viewTop.superview!.left
                     viewTop.height == 55
@@ -759,7 +760,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 fillAIMediaInfoView(model, mediaView: mediaView, indexPath: indexPath)
                 cell.view_Content.addSubview(mediaView)
                 
-                layout(tView,mediaView){ viewTop,viewMedia in
+                constrain(tView,mediaView){ viewTop,viewMedia in
                     viewTop.width == viewTop.superview!.width
                     viewTop.height == 55
                     viewTop.top == viewTop.superview!.top + 10
@@ -794,7 +795,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let height = self.heightForContent(model.favoriteDes)
                 
-                layout(tView,mediaView,contentView){ view1,view2,view3 in
+                constrain(tView,mediaView,contentView){ view1,view2,view3 in
                     
                     view1.width == view1.superview!.width
                     view1.height == 55
@@ -814,7 +815,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 // Attach `view` to the top left corner of its superview
-                layout(contentView, actionView) { view3, view4 in
+                constrain(contentView, actionView) { view3, view4 in
                     
                     view4.top == view3.bottom
                     view4.left == view4.superview!.left
@@ -842,7 +843,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 contentView.Label_Content.sizeToFit()
                 contentView.Label_Content.numberOfLines = 1
                 contentView.Image_Line.hidden = false
-                layout(tView,contentView){ view1,view2 in
+                constrain(tView,contentView){ view1,view2 in
                     
                     view1.width == view1.superview!.width
                     view1.height == 55
@@ -877,7 +878,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let height = self.heightForContent(model.favoriteDes)
                 
-                layout(tView,contentView,actionView){ view1,view2,view3 in
+                constrain(tView,contentView,actionView){ view1,view2,view3 in
                     
                     
                     view1.width == view1.superview!.width
@@ -1381,7 +1382,7 @@ extension UITransViewController: ColorIndicatorDelegate {
     }
     
     func changeMesageView(show:Bool){
-        spring(0.3, animations: { () -> Void in
+        SpringAnimation.spring(0.3, animations: { () -> Void in
             
             if show {
                 self.tableView.setTop(75)
@@ -1422,7 +1423,7 @@ extension UITransViewController: playCellDelegate{
         /*if let play = self.player{
             play.stop()
             self.view.viewWithTag(151)?.removeFromSuperview()
-            springWithCompletion(0.7, {
+            SpringAnimation.springWithCompletion(0.7, {
                 play.view.alpha = 0
                 play.view.transform = CGAffineTransformMakeScale(1.5, 1.5)
                 }, { (completed) -> Void in
@@ -1471,7 +1472,7 @@ extension UITransViewController: playCellDelegate{
         //"AVLayerVideoGravityResizeAspectFill"// 
         self.view.addSubview(self.player!.view)
         self.player!.view.alpha = 0
-        spring(0.7, {
+        SpringAnimation.spring(0.7, {
             self.player!.view.alpha = 1
         })
         self.player?.path = "http://mvvideo2.meitudata.com/559101886d3943189.mp4"

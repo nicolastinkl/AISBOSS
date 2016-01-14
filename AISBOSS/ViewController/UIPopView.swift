@@ -8,7 +8,7 @@
 
 import Foundation
 
-import AISpring
+import Spring
 
 @objc public class UIPopView: UIView {
     

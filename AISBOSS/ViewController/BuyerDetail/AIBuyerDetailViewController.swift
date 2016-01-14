@@ -9,9 +9,10 @@
 import Foundation
 
 import UIKit
-import AISpring
+import Spring
 import Cartography
 import AIAlertView
+import SnapKit
 
 protocol AIBuyerDetailDelegate: class {
     func closeAIBDetailViewController()
@@ -537,9 +538,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         serviceView.settingState.tag = indexPath.row
         serviceView.settingButtonDelegate = self
         
-        serviceView.loadData(serviceDataModel)
         cell.contentHoldView.addSubview(serviceView)
-        
+        serviceView.loadData(serviceDataModel)
         cell.currentModel = serviceDataModel
         
         cell.removeDelegate = self
@@ -555,9 +555,8 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             view.top == container.top
             view.bottom == container.bottom
             view.right == container.right  - 6
-//            container.height == serviceView.selfHeight()
         }
-        print(serviceView.selfHeight())
+
         cell.cellHeight = serviceView.selfHeight() + CELL_VERTICAL_SPACE
         
         // Cache Cell.

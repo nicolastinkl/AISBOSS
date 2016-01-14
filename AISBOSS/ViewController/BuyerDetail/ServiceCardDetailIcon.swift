@@ -89,7 +89,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
         
-        layout(titleLabel){titleLabel in
+        constrain(titleLabel){titleLabel in
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + VIEW_LEFT_MARGIN
             titleLabel.trailingMargin >= titleLabel.superview!.trailingMargin
             titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
@@ -111,7 +111,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
             priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
         }
         
-        layout(timeIconImageView,priceIconImageView,calendarIconImageView){
+        constrain(timeIconImageView,priceIconImageView,calendarIconImageView){
             timeIconImageView,priceIconImageView,calendarIconImageView in
             priceIconImageView.centerX == priceIconImageView.superview!.centerX
             
@@ -145,7 +145,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         self.addSubview(calendarLabelView)
         
         
-        layout(timeLabelView,timeIconImageView){
+        constrain(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
             timeLabelView.height == 21
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
@@ -154,14 +154,14 @@ class ServiceCardDetailIcon: ServiceParamlView {
         }
         
         
-        layout(priceLabelView,priceIconImageView){
+        constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
             priceLabelView.height == 21
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
         }
         
-        layout(calendarLabelView,calendarIconImageView){
+        constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
             calendarLabelView.height == 21
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
@@ -183,7 +183,7 @@ class ServiceCardDetailIconLabelView : UIView{
         iconView = UIImageView(frame: CGRectZero)
         labelView = UILabel(frame: CGRectZero)
         
-        layout(iconView,labelView){
+        constrain(iconView,labelView){
             iconView,labelView in
             
         }

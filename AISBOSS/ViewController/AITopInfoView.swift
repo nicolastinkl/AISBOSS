@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 
 class AITopInfoView: SpringView {
     

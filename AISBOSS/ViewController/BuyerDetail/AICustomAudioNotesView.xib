@@ -34,7 +34,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kC-Qv-AsC">
                     <rect key="frame" x="10" y="45" width="576" height="43"/>
                     <subviews>
-                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWs-Vc-vpm" customClass="DesignableButton" customModule="AISpring">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWs-Vc-vpm" customClass="DesignableButton" customModule="Spring">
                             <rect key="frame" x="4" y="5" width="32" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -77,7 +77,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="ailTextFieldPlaceholder" value="AICustomAudioNotesView.leaveAText"/>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-YQ-3K8" customClass="DesignableButton" customModule="AISpring">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNl-YQ-3K8" customClass="DesignableButton" customModule="Spring">
                             <rect key="frame" x="46" y="4" width="530" height="35"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -167,7 +167,7 @@
                 <outlet property="inputText" destination="CkB-fh-bBP" id="uLS-Fx-zAK"/>
                 <outlet property="note" destination="vJ0-tA-fsd" id="zva-Sd-Ahg"/>
             </connections>
-            <point key="canvasLocation" x="157" y="159"/>
+            <point key="canvasLocation" x="-74" y="200"/>
         </view>
     </objects>
     <resources>

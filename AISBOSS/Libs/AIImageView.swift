@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import AISpring
+import Spring
 
 /*!
 *  @author tinkl, 15-04-07 15:04:21

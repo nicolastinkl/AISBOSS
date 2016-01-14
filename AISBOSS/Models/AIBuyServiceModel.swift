@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-import AISwiftyJSON
+import SwiftyJSON
 
 struct AIBuyServiceModel : JSONJoy {
  

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -14,7 +14,6 @@
             <subviews>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2qY-Qj-nIc" userLabel="logo_first">
                     <rect key="frame" x="20" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="2qY-Qj-nIc" secondAttribute="height" multiplier="1:1" id="knP-cv-Y85"/>
                         <constraint firstAttribute="width" constant="19" id="lcK-wS-anh"/>
@@ -22,68 +21,56 @@
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1k3-5V-Xcf" userLabel="logo">
                     <rect key="frame" x="59" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="1k3-5V-Xcf" secondAttribute="height" multiplier="1:1" id="FoA-cw-S7P"/>
                     </constraints>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ls-f4-H0E" userLabel="logo">
                     <rect key="frame" x="98" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="8ls-f4-H0E" secondAttribute="height" multiplier="1:1" id="9QY-fS-xh3"/>
                     </constraints>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wMW-Mk-fUr" userLabel="logo">
                     <rect key="frame" x="483" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="wMW-Mk-fUr" secondAttribute="height" multiplier="1:1" id="n18-lu-bDO"/>
                     </constraints>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDn-X8-jAG" userLabel="logo">
                     <rect key="frame" x="522" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="UDn-X8-jAG" secondAttribute="height" multiplier="1:1" id="oRb-sg-VJe"/>
                     </constraints>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restore_toolbar_more" translatesAutoresizingMaskIntoConstraints="NO" id="Qwa-2T-R0r" userLabel="logo">
                     <rect key="frame" x="561" y="16" width="19" height="19"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Qwa-2T-R0r" secondAttribute="height" multiplier="1:1" id="GEF-iK-sVt"/>
                     </constraints>
                 </imageView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDI-Zr-gGW" userLabel="space">
                     <rect key="frame" x="78" y="0.0" width="20" height="50"/>
-                    <animations/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3z1-bG-Vkl" userLabel="space_first">
                     <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="GKE-uZ-BJR"/>
                     </constraints>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8c1-Kf-fJM" userLabel="space">
                     <rect key="frame" x="580" y="0.0" width="20" height="50"/>
-                    <animations/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83B-D5-hdX" userLabel="space">
                     <rect key="frame" x="541" y="0.0" width="20" height="50"/>
-                    <animations/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBr-U4-n8Y" userLabel="space">
                     <rect key="frame" x="502" y="0.0" width="20" height="50"/>
-                    <animations/>
                 </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CV-Gm-y6o" userLabel="space">
                     <rect key="frame" x="39" y="0.0" width="20" height="50"/>
-                    <animations/>
                 </view>
             </subviews>
-            <animations/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="UDn-X8-jAG" firstAttribute="centerY" secondItem="VBH-9o-5AJ" secondAttribute="centerY" id="0mD-XO-h1V"/>
