@@ -140,6 +140,7 @@ struct AIApplication{
         static let UIAIASINFOOpenAddViewNotification         = "UIAIASINFOOpenAddViewNotification"
         static let UIAIASINFOOpenRemoveViewNotification         = "UIAIASINFOOpenRemoveViewNotification"
         static let UIAIASINFOChangeDateViewNotification         = "UIAIASINFOChangeDateViewNotification"
+        static let UIAIASINFOmotifyParamsNotification =     "UIAIASINFOmotifyParamsNotification"
         // FIXME: 视频拍摄完成文件地址
         static let NSNotirydidFinishMergingVideosToOutPutFileAtURL  = "NSNotirydidFinishMergingVideosToOutPutFileAtURL"
         //一键清除订单

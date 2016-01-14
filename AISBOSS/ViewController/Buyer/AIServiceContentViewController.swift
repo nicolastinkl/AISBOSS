@@ -347,15 +347,14 @@ internal class AIServiceContentViewController: UIViewController {
         addGalleryView()
 
         //TODO: add brand View
-       var bView = addBrandView()
 
         var serviceContentView: UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
-            serviceContentView = addEscortView(bView)
+            serviceContentView = addEscortView(addBrandView())
         } else {
             //音乐疗养
-            serviceContentView = addMusicView(bView)
+            serviceContentView = addMusicView(addBrandView())
         }
    
         let custView =  addCustomView(serviceContentView)
@@ -364,7 +363,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: ["amazon", "jd", "twitter", "adiaosi", "adiwang"], selectedIndex: 0, width: view.width)
+        brandView = AIDropdownBrandView(brands: ["Amazon", "Mia", "Gou", "BeiBei", "Leyou"], selectedIndex: 0, width: view.width)
         addNewSubView(brandView!, preView: galleryView)
         return brandView
     }
@@ -395,8 +394,12 @@ internal class AIServiceContentViewController: UIViewController {
 
     
     private func addCustomView(preView: UIView) -> AICustomView {
+        
+        let providerView =  AIProviderView.currentView()
+        addNewSubView(providerView, preView: preView)
+        
         let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: preView)
+        addNewSubView(custView, preView: providerView)
         
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
@@ -404,7 +407,7 @@ internal class AIServiceContentViewController: UIViewController {
             if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
                 custView.fillTags(labelList, isNormal: true)
             }
-            custView.content.text = wish.intro ?? ""
+            providerView.content.text = wish.intro ?? ""
             
         }
         

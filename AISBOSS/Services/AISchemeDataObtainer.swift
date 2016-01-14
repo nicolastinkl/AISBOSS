@@ -26,6 +26,35 @@ class MockchemeDataObtainer: SchemeDataObtainer {
 }
 
 class BDKSchemeDataObtainer:  MockchemeDataObtainer {
+
+    /**
+     提交order
+     */
+    func submitParamsOrderServiceSchemes(services:[String],success:(isComplate:Bool)->Void,fail: (errType: AINetError, errDes: String) -> Void) {
+        
+        let message = AIMessageWrapper.submitOrderServiceWithServiceArrays(services)
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            if let _ = response {
+                success(isComplate: true)
+            }else{
+                fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
+            }
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+
+    }
+    
+    /**
+     获取sever数据
+     
+     - parameter sheme_id: <#sheme_id description#>
+     - parameter success:  <#success description#>
+     - parameter fail:     <#fail description#>
+     */
     override func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message: AIMessage = AIMessageWrapper.getServiceSchemeWithServiceID("\(sheme_id)")

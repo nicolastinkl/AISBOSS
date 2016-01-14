@@ -187,6 +187,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             var listDone = false
             var bubblesDone = false
             // 列表数据
+            /*
             bdk.getProposalList({ (responseData) -> Void in
                 listDone = true
                 weakSelf!.didRefresh = true
@@ -200,8 +201,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
                 }, fail: { (errType, errDes) -> Void in
                     weakSelf!.didRefresh = false
                     weakSelf!.tableView.headerEndRefreshing()
-            })
+            })*/
         
+            //气泡数据
+            
             bdk.getPoposalBubbles({ (responseData) -> Void in
                 bubblesDone = true
                 weakSelf!.didRefresh = true

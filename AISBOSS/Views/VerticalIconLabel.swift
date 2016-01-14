@@ -47,9 +47,12 @@ class VerticalIconLabel: UIView {
 	lazy var imageView: UIImageView = {
 		let result = UIImageView()
 		self.addSubview(result)
+        let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
+        let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(257)
+        
 		result.snp_makeConstraints(closure: {(make) -> Void in
 				make.centerX.equalTo(self)
-                make.width.height.equalTo(62/2.5)
+                make.width.height.equalTo(ICON_SIZE)
 				//make.top.equalTo(self).offset(20)
 			})
 		return result
@@ -64,7 +67,7 @@ class VerticalIconLabel: UIView {
 		result.snp_makeConstraints(closure: {(make) -> Void in
 				// TODO:
 				make.centerX.equalTo(self)
-				make.bottom.equalTo(self).offset(0)
+				make.top.equalTo(self).offset(25)
 			})
 		return result
 	}()
@@ -104,12 +107,8 @@ class VerticalIconLabel: UIView {
 			layoutIfNeeded()
 		}
 	}
-	
-	
+    
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	
-	
 }

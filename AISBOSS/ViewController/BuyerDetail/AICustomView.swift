@@ -16,10 +16,6 @@ internal class AICustomView : UIView{
     
     var wish_id:Int = 0
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var avator: DesignableImageView!
-    @IBOutlet weak var content: UILabel!
-    
     @IBOutlet weak var unselectView: DesignableView!
     @IBOutlet weak var selectView: DesignableView!
 
@@ -30,29 +26,20 @@ internal class AICustomView : UIView{
     class func currentView()->AICustomView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AICustomView", owner: self, options: nil).first  as! AICustomView
         
-        selfView.title.font = AITools.myriadSemiCondensedWithSize(63/PurchasedViewDimention.CONVERT_FACTOR)
-        selfView.content.font = AITools.myriadLightSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
-        
         return selfView
-    }
-    
-    func imageViewLoad(url:String?){
-        let s = url ?? ""
-        self.avator.sd_setImageWithURL(NSURL(string: "\(s)"))
-    }
+    }    
     
     /**
      TODO: 处理数据填充和标签初始化
      */
     func fillTags(models:[AIProposalServiceDetailLabelModel],isNormal:Bool){
-        
         /**
             根据model个数计算高度
         */
         
         if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
             if models.count >= 6 {
-                self.setHeight(318 + 80)
+                self.setHeight(191 + 80)//318
             }
         }
         

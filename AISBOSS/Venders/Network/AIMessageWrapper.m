@@ -60,6 +60,15 @@
     return message;
 }
 
++ (AIMessage *) submitOrderServiceWithServiceArrays:(NSArray *)services{
+    AIMessage *message = [AIMessage message];
+    
+    NSDictionary *body = @{@"data":@{@"service_id":services},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    
+    [message.body addEntriesFromDictionary:body];
+    
+    return message;
+}
 
 + (AIMessage *) updateWiskListTagStateWishID:(NSInteger)wishID tagID:(NSInteger)tagID isChoose:(Boolean) ischoose{
     AIMessage *message = [AIMessage message];

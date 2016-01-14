@@ -45,4 +45,10 @@
 + (AIMessage *) updateWiskListTagStateWishID:(NSInteger)wishID tagID:(NSInteger)tagID isChoose:(Boolean) ischoose;
 
 
+/*说明：提交Order
+ *  @author Tinkl
+ */
++ (AIMessage *) submitOrderServiceWithServiceArrays:(NSArray *)services;
+
+
 @end
