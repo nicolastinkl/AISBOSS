@@ -32,10 +32,14 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
      */
     func submitParamsOrderServiceSchemes(services:[String],success:(isComplate:Bool)->Void,fail: (errType: AINetError, errDes: String) -> Void) {
         
-        let message = AIMessageWrapper.submitOrderServiceWithServiceArrays(services)
+        let params =  NSMutableArray()
+        for ser in services {
+            params.addObject(["service_id":ser,"role_id":0])
+        }
         
-        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            
+        let message = AIMessageWrapper.submitOrderServiceWithServiceArrays(params as [AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.submitOrderByService.description
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            
             if let _ = response {
                 success(isComplate: true)
             }else{
