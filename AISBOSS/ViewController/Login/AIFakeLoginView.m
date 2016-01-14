@@ -18,9 +18,11 @@
 
 #define kSeller1Tag 200
 
-#define kBuyer1     @"100000002410"
-#define kSeller1    @"200000002501"
+#define kSellerDavidTag 300
 
+#define kBuyer1         @"100000002410"
+#define kSeller1        @"200000002501"
+#define kSellerDavid    @"200000002501"
 
 
 @interface AIFakeLoginView ()
@@ -114,11 +116,11 @@
 }
 
 
-- (void)makeBubbleViewWithBubbleImageName:(NSString *)bubbleImageName
+- (UIImageView *)makeBubbleViewWithBubbleImageName:(NSString *)bubbleImageName
                              bubbleTitle:(NSString *)bubbleTitle
-                                 atPointY:(CGFloat)pointY tag:(NSInteger)tag
+                                 atPoint:(CGPoint)point tag:(NSInteger)tag
 {
-    UIImageView *bubbleView = [self makeImageViewAtPoint:CGPointMake(kMargin, pointY) imageName:bubbleImageName hlImageName:nil];
+    UIImageView *bubbleView = [self makeImageViewAtPoint:point imageName:bubbleImageName hlImageName:nil];
     bubbleView.userInteractionEnabled = YES;
     bubbleView.tag = tag;
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(action:)];
@@ -131,7 +133,7 @@
     [bubbleView addSubview:titleLabel];
     
     //
-    
+    return bubbleView;
     
 }
 
@@ -152,7 +154,7 @@
     _buyerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_BuyerTitle" hlImageName:@"FakeLogin_BuyerTitleL"];
     y += kMargin * 2 + CGRectGetHeight(_buyerTitleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"" atPointY:y tag:kBuyer1Tag];
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Buyer" bubbleTitle:@"" atPoint:CGPointMake(kMargin, y) tag:kBuyer1Tag];
 }
 
 - (void)makeSellerArea
@@ -166,7 +168,17 @@
     _sellerTitleImageView = [self makeImageViewAtPoint:CGPointMake(0, y) imageName:@"FakeLogin_SellerTitle" hlImageName:@"FakeLogin_SellerTitleL"];
     y += kMargin * 2 + CGRectGetHeight(_sellerTitleImageView.frame);
     
-    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"" atPointY:y tag:kSeller1Tag];
+    UIImageView *seller =  [self makeBubbleViewWithBubbleImageName:@"FakeLogin_Seller" bubbleTitle:@"" atPoint:CGPointMake(kMargin, y) tag:kSeller1Tag];
+    
+    CGFloat x = CGRectGetMaxX(seller.frame) + kMargin;
+    
+    [self makeBubbleViewWithBubbleImageName:@"FakeLogin_David" bubbleTitle:@"" atPoint:CGPointMake(x, y) tag:kSellerDavidTag];
+    
+}
+
+- (void)makeDavidArea
+{
+    
 }
 
 #pragma mark - Actions
@@ -200,6 +212,12 @@
             _sellerTitleImageView.highlighted = YES;
         }
             break;
+        case kSellerDavidTag:
+        {
+            userID = kSellerDavid;
+            _buyerTitleImageView.highlighted = NO;
+            _sellerTitleImageView.highlighted = YES;
+        }
             
         default:
             break;

@@ -228,16 +228,16 @@ class SimpleServiceViewContainer: UIView {
             
             paramContainerView.frame.size.height = (param.height ?? 0) + paramContainerView.height
             
-            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: paramView!.height + 5, width: paramViewWidth, height: 55))
+            let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: 0, y: param.height + 5, width: paramViewWidth, height: 55))
             
             let iconLabelDataSource = [(image:UIImage(named: "icon_time_big")!, title:"2 session"), (image:UIImage(named: "icon_time_big")!, title:"2 session")]
             iconLabelCollection.dataSource = iconLabelDataSource
             
+            paramContainerView.addSubview(param)
             
-            paramContainerView.addSubview(paramView!)
             paramContainerView.addSubview(iconLabelCollection)
             
-            paramContainerView.frame.size.height = paramView!.height + iconLabelCollection.height
+            paramContainerView.frame.size.height = param.height + iconLabelCollection.height
             
             return paramContainerView
         }
@@ -248,7 +248,6 @@ class SimpleServiceViewContainer: UIView {
     func selfHeight() -> CGFloat {
         return totalHeight()
     }
-    
     
     private func addParamsView(serviceParams: UIView) {
         let height = getTopHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
