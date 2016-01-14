@@ -59,6 +59,8 @@ class AIServerDetailViewController: UIViewController {
     private var coverflowCellCache = NSMutableDictionary()
     private var horizontalCardCellCache = NSMutableDictionary()
     
+    private var paramsService = NSMutableDictionary()
+    
     private var dataSource : NSMutableArray = NSMutableArray()
     
     private var schemeModel: AIServiceSchemeModel?
@@ -79,7 +81,11 @@ class AIServerDetailViewController: UIViewController {
         loadSchemeData()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+    
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "motifyParamsNotification:", name: AIApplication.Notification.UIAIASINFOmotifyParamsNotification, object: nil)
+        
     }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -92,6 +98,28 @@ class AIServerDetailViewController: UIViewController {
         serviceSearchView.alpha = 0
         serviceSearchView.searchDelegate = self
         self.view.addSubview(serviceSearchView)
+    }
+    
+    private func motifyParamsNotification(notify: NSNotification){
+        
+        //paramsService
+        if let userINFO = notify.userInfo {
+            paramsService.setValue(userINFO["key"], forKey: "key")
+        }
+        
+    }
+    
+    private func settingsParams(services:Service?){
+        if let serv = services{
+            self.paramsService.setValue(serv.service_price?.price_show ?? "", forKey: "\(serv.service_id ?? 0)")
+        }
+    }
+    
+    private func removeParams(services:Service?){
+        if let serv = services{
+            // search this key and remove it.
+            self.paramsService.removeObjectForKey("\(serv.service_id ?? 0)")
+        }
     }
     
     private func addPriceLabel() {
@@ -259,6 +287,28 @@ class AIServerDetailViewController: UIViewController {
     提交订单
     */
     @IBAction func submitOrderAction(sender: AnyObject) {
+        //
+        let paramServieID = self.paramsService.allKeys as! [String]
+        self.view.showProgressViewLoading()
+        Async.userInitiated {
+            let dataObtainer = BDKSchemeDataObtainer()
+            
+            dataObtainer.submitParamsOrderServiceSchemes(paramServieID, success: { (isComplate) -> Void in
+                
+                self.view.hideProgressViewLoading()
+                
+                if isComplate == true {
+                    self.navigationController?.popToRootViewControllerAnimated(true)
+                }
+                
+                
+                }, fail: { (errType, errDes) -> Void in
+                    
+                    self.view.hideProgressViewLoading()
+                    
+            })
+            
+        }
         
     }
     
@@ -307,6 +357,7 @@ class AIServerDetailViewController: UIViewController {
 extension AIServerDetailViewController: AISchemeProtocol {
     func chooseItem(model: Service?, cancelItem: Service?) {
         changePrice(model, cancelService: cancelItem)
+        settingsParams(model)
     }
 }
 
@@ -352,8 +403,10 @@ extension AIServerDetailViewController : AOTagDelegate {
 extension AIServerDetailViewController: ServiceSwitchDelegate {
     func switchStateChanged(isOn: Bool, operationService: Service) {
         if isOn {
+            settingsParams(operationService)
             changePrice(operationService, cancelService: nil)
         } else {
+            removeParams(operationService)
             changePrice(nil, cancelService: operationService)
         }
     }
@@ -420,11 +473,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 case .SwitchChoose:
                     cell = createSwitchViewCell(model, indexPath: indexPath)
                 case .MutiChoose,
-                .SignleChoose:
+                     .SignleChoose:
                     cell = createHorizontalCardViewCell(model, indexPath: indexPath)
                 default:
                     cell = createDefaultTableViewCell()
-                    
                 }
             } else {
                 cell = createDefaultTableViewCell()
@@ -514,6 +566,10 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 viewTicketGroup.right == viewTicketGroup.superview!.right - 9
                 viewTicketGroup.height == ticketGroupView.getViewHeight()
             }
+            
+            for tic in tickets {
+                settingsParams(tic)
+            }
 
             return cell!
         }
@@ -561,9 +617,11 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }else{
                 
                 let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
-                let cell = AITableCellHolder.currentView() //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
+                let cell = AITableCellHolder.currentView()
+                //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                 cell.contentView.addSubview(hori)
                 if let services = model.services{
+                    settingsParams(services.first)
                     if services.count > 0 {
                         hori.loadData(services, multiSelect: model.type == CellType.MutiChoose)
                     }

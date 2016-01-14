@@ -1321,7 +1321,8 @@
 				815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */,
 				815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */,
 			);
-			path = MaterialDesign;
+			name = MaterialDesign;
+			path = ../Venders/MaterialDesign;
 			sourceTree = "<group>";
 		};
 		816E3B851C1ED62D00A061DD /* Login */ = {
@@ -1414,7 +1415,8 @@
 				81D83AE91BB29F7900BE2BA2 /* UIView+MJExtension.h */,
 				81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */,
 			);
-			path = MJRefresh;
+			name = MJRefresh;
+			path = ../Venders/MJRefresh;
 			sourceTree = "<group>";
 		};
 		81DC18DB1BD5D2550081D131 /* Buyer */ = {
@@ -1582,7 +1584,8 @@
 				849B4B0A1C0EDFE300BEC179 /* Utility */,
 				849B4B191C0EDFE300BEC179 /* ViewHierarchy */,
 			);
-			path = Flex;
+			name = Flex;
+			path = ../Venders/Flex;
 			sourceTree = "<group>";
 		};
 		849B4A8E1C0EDFE300BEC179 /* Editing */ = {
@@ -2130,9 +2133,6 @@
 		93A5A59D1B9BD5E1001DE36D /* Venders */ = {
 			isa = PBXGroup;
 			children = (
-				849B4A8D1C0EDFE300BEC179 /* Flex */,
-				815F21891BEAF386002EB473 /* MaterialDesign */,
-				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
 				81C0925F1BAFAC0D003FFF35 /* SDWebImage */,
 				93B25A351B9D796F00CD1FEB /* Network */,
 				93C33EE81B9BE4C9007BF506 /* AIHttpEngine.swift */,
@@ -2536,6 +2536,9 @@
 				847F69251C1EB337008A7804 /* AILocalizationManager.swift */,
 				816E3B891C1FBD6D00A061DD /* AINotifications.h */,
 				93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */,
+				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
+				849B4A8D1C0EDFE300BEC179 /* Flex */,
+				815F21891BEAF386002EB473 /* MaterialDesign */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
