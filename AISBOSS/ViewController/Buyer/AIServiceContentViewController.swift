@@ -363,7 +363,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: ["amazon", "jd", "twitter", "adiaosi", "adiwang"], selectedIndex: 0, width: view.width)
+        brandView = AIDropdownBrandView(brands: ["Amazon", "Mia", "Gou", "BeiBei", "Leyou"], selectedIndex: 0, width: view.width)
         addNewSubView(brandView!, preView: galleryView)
         return brandView
     }
