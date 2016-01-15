@@ -289,28 +289,30 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func submitOrderAction(sender: AnyObject) {
         //
         let paramServieID = self.paramsService.allKeys as! [String]
-        self.view.showProgressViewLoading()
+        self.view.showLoadingWithMessage("")
         Async.userInitiated {
             let dataObtainer = BDKSchemeDataObtainer()
             
             dataObtainer.submitParamsOrderServiceSchemes(paramServieID, success: { (isComplate) -> Void in
                 
-                self.view.hideProgressViewLoading()
+                self.view.dismissLoading()
                 
                 if isComplate == true {
                     
-                    AIAlertView().showSuccess("AIServerDetailViewController.success".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
-
-                    Async.main(after: 3, block: { () -> Void in
-                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    let alert = AIAlertView()
+                    alert.addButton("AIAudioMessageView.close".localized, action: { () -> Void in
+                         self.navigationController?.popToRootViewControllerAnimated(true)
                     })
+                    alert.showCloseButton = false
+                    alert.showSuccess("AIAudioMessageView.info".localized, subTitle:"AIServerDetailViewController.success".localized)
+                    
                 }else{
                     AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 }
                 
                 }, fail: { (errType, errDes) -> Void in
                     
-                    self.view.hideProgressViewLoading()
+                    self.view.dismissLoading()
                     AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
