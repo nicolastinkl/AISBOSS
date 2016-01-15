@@ -37,6 +37,7 @@ class AIFolderCellView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         if isFirstLayout{
             setDescContentView()
         }
@@ -47,9 +48,14 @@ class AIFolderCellView: UIView {
         statusLabel.font = PurchasedViewFont.STATU
         statusLabel.layer.cornerRadius = 8
         statusLabel.clipsToBounds = true
+        
     }
     
     private func setDescContentView(){
+        
+        alertIcon.layer.cornerRadius = 12
+        alertIcon.clipsToBounds = true
+        
         descContentView = AIOrderDescView(frame: CGRectMake(0, 0, descView.bounds.width, descView.bounds.height))
         for serviceOrderModel : ServiceOrderModel in proposalModel.order_list as! [ServiceOrderModel]{
             if serviceOrderModel.order_state != "Completed" {

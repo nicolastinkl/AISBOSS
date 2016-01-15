@@ -127,7 +127,7 @@ class PurchasedServiceView: UIView, Measureable {
         
         logo.layer.cornerRadius = PurchasedViewDimention.LOGO_WIDTH / 2
         logo.layer.masksToBounds = true
-        
+        logo.image = UIImage(named: "Placehold")
         addSubview(logo)
         
         constrain(logo) { logView in
