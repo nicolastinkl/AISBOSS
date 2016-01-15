@@ -44,7 +44,7 @@ internal class AIServiceContentViewController: UIViewController {
 
     private var currentDatasource: AIProposalServiceDetailModel?
     
-    internal var serviceContentType : AIServiceContentType!
+    var serviceContentType : AIServiceContentType!
     
     private var topNaviView : AINavigationBarView?
 
