@@ -57,7 +57,7 @@
     [self makeTableView];
     [self makeBottomBar];
     [self addRefreshActions];
-    //[self preProcess];
+    [self preProcess];
     [self setupLanguageNotification];
     
     //Chaged UserID.
@@ -69,7 +69,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self preProcess];
+    //[self preProcess];
     [AISellserAnimationView startAnimationOnSellerViewController:self];
 }
 
@@ -121,7 +121,7 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
    
-    if (delegate.sellerData || self.listModel ) {
+    if (delegate.sellerData ) {
         self.listModel = [[AIOrderPreListModel alloc] initWithDictionary:delegate.sellerData error:nil];
         if (self.listModel != nil && self.listModel.order_list.count > 0) {
             

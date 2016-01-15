@@ -63,6 +63,7 @@ internal class AIServiceContentViewController: UIViewController {
         pageScrollView.showsHorizontalScrollIndicator = false
         pageScrollView.showsVerticalScrollIndicator = false
         pageScrollView.delegate = self
+        pageScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
         return pageScrollView
     }()
     
@@ -196,7 +197,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = AITools.colorWithR(0x1e, g: 0x1b, b: 0x38);
         addKeyboardNotifications()
         /** 导航栏 */
         makeTopView()
@@ -359,6 +360,9 @@ internal class AIServiceContentViewController: UIViewController {
 
         //TODO: add brand View
 
+        
+        
+        //TODO: add Parameters
         var serviceContentView: UIView!
         var preView : UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
@@ -370,7 +374,7 @@ internal class AIServiceContentViewController: UIViewController {
             serviceContentView = addMusicView(addBrandView())
             preView = addCustomView(serviceContentView)
         }else {
-            serviceContentView = addMusicView(addBrandView())
+            serviceContentView = addMusicView(galleryView)
             preView = serviceContentView
         }
    
