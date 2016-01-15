@@ -55,11 +55,17 @@ class ServiceCardDetailShopping: ServiceParamlView {
         dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
     }
     
+    
+    func addIconCollectionView(iconCollectionView: UIView){
+        
+    }
+    
+    
     //MARK: - build views
     func buildTitle(){
-        let text = dataSource?.product_name
+        let _ = dataSource?.product_name
         titleLabel = UILabel(frame: CGRectZero)
-        titleLabel.text = text
+        titleLabel.text = ""
         titleLabel.font = MAIN_TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
@@ -74,7 +80,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
             titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + MAIN_TITLE_LEFT_MARGIN
             titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
-            titleLabel.height == MAIN_TITLE_HEIGHT
+            titleLabel.height == MAIN_TITLE_HEIGHT - MAIN_TITLE_HEIGHT
             
             divideLineView.height == 0.5
             divideLineView.leadingMargin == divideLineView.superview!.leadingMargin + DIVIDE_MARGIN

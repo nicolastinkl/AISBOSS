@@ -157,11 +157,18 @@
 
 @interface AIOrderPreModel : JSONModel
 
+@property (nonatomic, assign) NSInteger proposal_id;
+
 @property (nonatomic, assign) NSInteger order_id;
 
 @property (nonatomic, assign) NSInteger order_number;
 
 @property (nonatomic, assign) NSInteger order_state;
+
+@property (nonatomic, strong) NSString *order_sort_time;
+
+@property (nonatomic, strong) NSString *order_create_time;
+
 
 @property (nonatomic, strong) NSString<Optional> *order_state_name;
 

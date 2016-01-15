@@ -167,8 +167,8 @@
 
 
 
-
-
+"AIServerDetailViewController.success" = "订单提交成功";
+"AIServerDetailViewController.error" = "订单提交失败";
 
 
 

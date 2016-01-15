@@ -298,14 +298,20 @@ class AIServerDetailViewController: UIViewController {
                 self.view.hideProgressViewLoading()
                 
                 if isComplate == true {
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    
+                    AIAlertView().showSuccess("AIServerDetailViewController.success".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
+
+                    Async.main(after: 3, block: { () -> Void in
+                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    })
+                }else{
+                    AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 }
-                
                 
                 }, fail: { (errType, errDes) -> Void in
                     
                     self.view.hideProgressViewLoading()
-                    
+                    AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
         }

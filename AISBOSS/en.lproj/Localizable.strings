@@ -167,7 +167,10 @@
 "AICustomView.notes" = "Customization Notes";
 
 
+"AIServerDetailViewController.error" = "submit order error";
 
+
+"AIServerDetailViewController.success" = "submit success";
 
 
 

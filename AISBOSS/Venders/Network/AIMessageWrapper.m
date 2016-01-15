@@ -63,7 +63,7 @@
 + (AIMessage *) submitOrderServiceWithServiceArrays:(NSArray *)services{
     AIMessage *message = [AIMessage message];
     
-    NSDictionary *body = @{@"data":@{@"service_id":services},@"desc":@{@"data_mode":@"0",@"digest":@""}};
+    NSDictionary *body = @{@"data":@{@"service_list":services},@"desc":@{@"data_mode":@"0",@"digest":@""}};
     
     [message.body addEntriesFromDictionary:body];
     

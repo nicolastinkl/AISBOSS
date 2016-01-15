@@ -21,6 +21,7 @@
 #import "UIImageView+WebCache.h"
 #import "Veris-Swift.h"
 #import "AIServerConfig.h"
+#import "AIOrderTableModel.h"
 
 #define kTablePadding      15
 
@@ -37,6 +38,8 @@
 @property (nonatomic, strong) NSArray *sellerInfoList;
 
 @property (nonatomic, strong) AIOrderPreListModel *listModel;
+
+@property (nonatomic, strong) NSMutableDictionary *tableDictionary;
 
 @end
 
@@ -159,6 +162,36 @@
     
 }
 
+- (void)parseTableDataSource
+{
+    if (_tableDictionary) {
+        [_tableDictionary removeAllObjects];
+    }
+    else
+    {
+        _tableDictionary = [[NSMutableDictionary alloc] init];
+    }
+    
+    
+    for (AIOrderPreModel *model in self.listModel.order_list)
+    {
+        NSString *sort = model.order_sort_time;
+        AIOrderTableModel *tableModel = [_tableDictionary objectForKey:sort];
+       
+        if (tableModel == nil) {
+            
+            tableModel = [[AIOrderTableModel alloc] init];
+            tableModel.timeTitle = model.order_create_time;
+            tableModel.sortTime = sort;
+            [_tableDictionary setObject:tableModel forKey:sort];
+        }
+        
+        [tableModel.orderList addObject:model];
+        
+    }
+    
+}
+
 - (void)addRefreshActions
 {
     __weak typeof(self) weakSelf = self;
@@ -182,6 +215,10 @@
                             weakSelf.listModel = [[AIOrderPreListModel alloc] initWithDictionary:response error:nil];
                             if (weakSelf.listModel == nil){
                                 [weakSelf.tableView showErrorContentView];
+                            }
+                            else
+                            {
+                                [weakSelf parseTableDataSource];
                             }
                         }else{
                             [weakSelf.tableView showDiyContentView:@"No Data"];
@@ -283,7 +320,6 @@
 
 - (void)addTopAndBottomMaskForTable:(UITableView *)table
 {
-    
     // header
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(table.frame), kTablePadding)];
     view.backgroundColor = _normalBackgroundColor;
@@ -307,6 +343,7 @@
 
 - (void)addBackgroundViewForTable:(UITableView *)table
 {
+    
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:table.bounds];
     backImageView.image = [UIImage imageNamed:@"wholebackground"];
     backImageView.layer.cornerRadius = 8;
@@ -314,6 +351,8 @@
     backImageView.backgroundColor = [UIColor clearColor];
     backImageView.layer.backgroundColor = [UIColor clearColor].CGColor;
     backImageView.contentMode = UIViewContentModeScaleAspectFill;
+
+    
     table.backgroundView = backImageView;
 }
 
@@ -398,9 +437,32 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.listModel.order_list.count;
+    
+    for (NSInteger i = 0; i < _tableDictionary.allKeys.count; i++) {
+        AIOrderTableModel *model = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:i]];
+        if (i == section) {
+            return model.orderList.count;
+        }
+    }
+    
+    return 0;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return _tableDictionary.allKeys.count;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:section]];
+    
+    UPLabel *label = [AIViews normalLabelWithFrame:CGRectMake(15, 0, 300, 20) text:tableModel.timeTitle fontSize:16 color:Color_HighWhite];
+    label.backgroundColor = _normalBackgroundColor;
+    
+    return label;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -412,7 +474,11 @@
         
     }
     
-    AIOrderPreModel *model = [self.listModel.order_list objectAtIndex:indexPath.row];
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:indexPath.section]];
+    
+    
+    
+    AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
     [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
     cell.sellerName.text = model.customer.user_name;
     cell.price.text = model.service.service_price;
@@ -450,6 +516,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:indexPath.section]];
+    AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
+    
+    
+    AIProposalServiceModel *serviceModel = [[AIProposalServiceModel alloc] init];
+    serviceModel.service_id = model.service.service_id;
+    
+    
+    
+    AIServiceContentViewController *contentVC = [[AIServiceContentViewController alloc] init];
+    contentVC.serviceContentModel = serviceModel;
+    contentVC.propodalId = model.proposal_id;
+    [self presentViewController:contentVC animated:YES completion:nil];
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -457,7 +538,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0;
+    return 20;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {

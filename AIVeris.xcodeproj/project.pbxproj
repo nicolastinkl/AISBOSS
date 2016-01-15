@@ -25,6 +25,7 @@
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
+		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
@@ -523,6 +524,8 @@
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeUser.h; path = Login/AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeUser.m; path = Login/AIFakeUser.m; sourceTree = "<group>"; };
+		815EAD791C488A8600D83780 /* AIOrderTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderTableModel.h; sourceTree = "<group>"; };
+		815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderTableModel.m; sourceTree = "<group>"; };
 		815F218A1BEAF386002EB473 /* UIView+MaterialDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MaterialDesign.h"; sourceTree = "<group>"; };
 		815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MaterialDesign.m"; sourceTree = "<group>"; };
 		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeLoginView.h; path = Login/AIFakeLoginView.h; sourceTree = "<group>"; };
@@ -2792,6 +2795,8 @@
 				93FA1E3E1B9C3E12009965C8 /* AISellingProgressBar.m */,
 				93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */,
 				93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */,
+				815EAD791C488A8600D83780 /* AIOrderTableModel.h */,
+				815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */,
 			);
 			path = Seller;
 			sourceTree = "<group>";
@@ -3219,6 +3224,7 @@
 				93FA1DE51B9C302A009965C8 /* AIServicesRequester.swift in Sources */,
 				849B4B421C0EDFE300BEC179 /* FLEXSystemLogMessage.m in Sources */,
 				93B25AA41B9D7A7B00CD1FEB /* JSONModelError.m in Sources */,
+				815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */,
 				93CA11DA1C463475008B1EE1 /* AITagModel.swift in Sources */,
 				93FA1DC41B9C2F0F009965C8 /* AIViews.m in Sources */,
 				84F0014E1C3A43CB000C93AF /* FLEXDatabaseManager.m in Sources */,
