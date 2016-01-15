@@ -30,9 +30,9 @@
 @implementation AIParamedicView
 
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should
 {
-    self = [super initWithFrame:frame model:model];
+    self = [super initWithFrame:frame model:model shouldShowParams:should];
     
     if (self) {
         [self makeSubViews];
@@ -95,19 +95,25 @@
     
     [self addLineViewAtY:y];
     
-    y += [AITools displaySizeFrom1080DesignSize:38];
-
-    viewHeight = [self addServiceCoverage:y];
-
-    if (viewHeight > 0) {
-        y += viewHeight + [AITools displaySizeFrom1080DesignSize:70];
+    if (_shouldShowParams) {
+        y += [AITools displaySizeFrom1080DesignSize:38];
+        
+        viewHeight = [self addServiceCoverage:y];
+        
+        if (viewHeight > 0) {
+            y += viewHeight + [AITools displaySizeFrom1080DesignSize:70];
+        }
+        
+        viewHeight = [self addPriceView:y];
+        y += [AITools displaySizeFrom1080DesignSize:14] + viewHeight;
+        
+        
+        [self addLineViewAtY:y];
     }
     
-    viewHeight = [self addPriceView:y];
-    y += [AITools displaySizeFrom1080DesignSize:14] + viewHeight;
     
     
-    [self addLineViewAtY:y];
+    
     y += 1;
     
     // reset frame

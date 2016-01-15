@@ -12,13 +12,15 @@
 #import "AIBuyerParamsDelegate.h"
 
 @interface ProposalServiceDetailBaseView: UIView <AIBuyerParamsDelegate>
-
+{
+    BOOL _shouldShowParams;
+}
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 
 @property (nonatomic, assign) CGFloat sideMargin;
 @property (nonatomic, strong) PKYStepper *selectedCounter;
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model;
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should;
 - (CGFloat) addDetailText: (CGFloat) positionY;
 - (CGFloat) addPriceView: (CGFloat) positionY;
 - (CGFloat) contentViewWidth;
