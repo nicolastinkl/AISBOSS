@@ -49,7 +49,6 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
                 }else{
                     success(isComplate: false)
                 }
-                
             }else{
                 fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
             }
