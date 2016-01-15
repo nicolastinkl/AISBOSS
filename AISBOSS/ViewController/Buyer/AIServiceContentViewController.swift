@@ -44,7 +44,7 @@ internal class AIServiceContentViewController: UIViewController {
 
     private var currentDatasource: AIProposalServiceDetailModel?
     
-    internal var serviceContentType : AIServiceContentType!
+    var serviceContentType : AIServiceContentType = .None
     
     private var topNaviView : AINavigationBarView?
 
@@ -360,17 +360,22 @@ internal class AIServiceContentViewController: UIViewController {
         //TODO: add brand View
 
         var serviceContentView: UIView!
+        var preView : UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
             serviceContentView = addEscortView(addBrandView())
-        } else {
+            preView = addCustomView(serviceContentView)
+        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
             //音乐疗养
             serviceContentView = addMusicView(addBrandView())
+            preView = addCustomView(serviceContentView)
+        }else {
+            serviceContentView = addMusicView(addBrandView())
+            preView = serviceContentView
         }
    
-        let custView =  addCustomView(serviceContentView)
-        
-        addAudioView(custView)
+  
+        addAudioView(preView)
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
@@ -397,7 +402,8 @@ internal class AIServiceContentViewController: UIViewController {
     private func addEscortView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
         let paramedicFrame = CGRectMake(0, preView!.bottom, CGRectGetWidth(scrollView.frame), 600)
-        paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
+        paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
+
         addNewSubView(paramedicView!, preView: preView!)
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
@@ -428,7 +434,7 @@ internal class AIServiceContentViewController: UIViewController {
     private func addMusicView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
         let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 600)
-        musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
+        musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
         addNewSubView(musicView!, preView: preView!)
         musicView!.backgroundColor = UIColor.clearColor()
         return musicView!

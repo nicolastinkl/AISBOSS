@@ -13,6 +13,7 @@
 #import "Veris-Swift.h"
 
 @interface ProposalServiceDetailBaseView ()
+
 @property (nonatomic, strong) PriceAndStepperView *priceView;
 @end
 
@@ -22,13 +23,13 @@
     return @[];
 }
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should
 {
     self = [super initWithFrame:frame];
 
     if (self) {
         _sideMargin = [AITools displaySizeFrom1080DesignSize:35];
-
+        _shouldShowParams = should;
         self.detailModel = model;
     }
 
