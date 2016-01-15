@@ -23,6 +23,7 @@ enum CellType: Int {
 }
 
 class TableViewSourceModel : NSObject {
+    var catelogID:Int?
     var title: String?
     var type: CellType?
     var services: [Service]?
@@ -109,16 +110,18 @@ class AIServerDetailViewController: UIViewController {
         
     }
     
-    private func settingsParams(services:Service?){
+    private func settingsParams(services:Service?,catalogID:String?){
         if let serv = services{
-            self.paramsService.setValue(serv.service_price?.price_show ?? "", forKey: "\(serv.service_id ?? 0)")
+            self.paramsService.setValue("\(serv.service_id ?? 0)", forKey: catalogID ?? "")
+            
+            //self.paramsService.setValue(serv.service_price?.price_show ?? "", forKey: "\(serv.service_id ?? 0)")
         }
     }
     
-    private func removeParams(services:Service?){
-        if let serv = services{
+    private func removeParams(services:Service?,catalogID:String?){
+        if let _ = services{
             // search this key and remove it.
-            self.paramsService.removeObjectForKey("\(serv.service_id ?? 0)")
+            self.paramsService.removeObjectForKey(catalogID ?? "")
         }
     }
     
@@ -218,6 +221,7 @@ class AIServerDetailViewController: UIViewController {
     
     private func convertSchemeToCellModel(catalog: Catalog) -> TableViewSourceModel {
         let data =  TableViewSourceModel()
+        data.catelogID = catalog.catalog_id ?? 0
         data.title = catalog.catalog_name ?? ""
         data.type = convertServiceLevelToCellType(catalog.service_level ?? .Undefine, selectFlag : catalog.select_flag ?? 0)
         data.services = catalog.service_list
@@ -288,29 +292,31 @@ class AIServerDetailViewController: UIViewController {
     */
     @IBAction func submitOrderAction(sender: AnyObject) {
         //
-        let paramServieID = self.paramsService.allKeys as! [String]
-        self.view.showProgressViewLoading()
+        let paramServieID = self.paramsService.allValues as! [String]
+        self.view.showLoadingWithMessage("")
         Async.userInitiated {
             let dataObtainer = BDKSchemeDataObtainer()
             
             dataObtainer.submitParamsOrderServiceSchemes(paramServieID, success: { (isComplate) -> Void in
                 
-                self.view.hideProgressViewLoading()
+                self.view.dismissLoading()
                 
                 if isComplate == true {
                     
-                    AIAlertView().showSuccess("AIServerDetailViewController.success".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
-
-                    Async.main(after: 3, block: { () -> Void in
-                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    let alert = AIAlertView()
+                    alert.addButton("AIAudioMessageView.close".localized, action: { () -> Void in
+                         self.navigationController?.popToRootViewControllerAnimated(true)
                     })
+                    alert.showCloseButton = false
+                    alert.showSuccess("AIAudioMessageView.info".localized, subTitle:"AIServerDetailViewController.success".localized)
+                    
                 }else{
                     AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 }
                 
                 }, fail: { (errType, errDes) -> Void in
                     
-                    self.view.hideProgressViewLoading()
+                    self.view.dismissLoading()
                     AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
@@ -355,16 +361,29 @@ class AIServerDetailViewController: UIViewController {
             self.tableView.reloadData()
 
         }
-        
     }
 }
 
+
 // MARK: AISchemeProtocol
 extension AIServerDetailViewController: AISchemeProtocol {
+    
     func chooseItem(model: Service?, cancelItem: Service?) {
         changePrice(model, cancelService: cancelItem)
-        settingsParams(model)
+        
+        //settingsParams(model)
+        
     }
+    
+    func chooseItem(model: Service?, cancelItem: Service?, fromView: UIView?) {
+        if let sView = fromView {
+            let catalogid = sView.associatedName ?? ""
+            changePrice(model, cancelService: cancelItem)
+            
+            settingsParams(model,catalogID: catalogid)
+        }
+    }
+    
 }
 
 extension AIServerDetailViewController : ServiceSearchViewDelegate {
@@ -407,12 +426,14 @@ extension AIServerDetailViewController : AOTagDelegate {
 }
 
 extension AIServerDetailViewController: ServiceSwitchDelegate {
-    func switchStateChanged(isOn: Bool, operationService: Service) {
+
+    func switchStateChanged(isOn: Bool, operationService: Service, fromView: UIView?) {
+
         if isOn {
-            settingsParams(operationService)
+            settingsParams(operationService,catalogID: fromView?.associatedName ?? "")
             changePrice(operationService, cancelService: nil)
         } else {
-            removeParams(operationService)
+            removeParams(operationService,catalogID: fromView?.associatedName ?? "")
             changePrice(nil, cancelService: operationService)
         }
     }
@@ -488,6 +509,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell = createDefaultTableViewCell()
             }
         }
+        cell.associatedName = "\(model.catelogID ?? 0)"
         
         return cell        
     }
@@ -574,7 +596,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
             
             for tic in tickets {
-                settingsParams(tic)
+                settingsParams(tic,catalogID: "\(model.catelogID ?? 0)")
             }
 
             return cell!
@@ -627,7 +649,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                 cell.contentView.addSubview(hori)
                 if let services = model.services{
-                    settingsParams(services.first)
+                    settingsParams(services.first,catalogID: "\(model.catelogID ?? 0)")
                     if services.count > 0 {
                         hori.loadData(services, multiSelect: model.type == CellType.MutiChoose)
                     }

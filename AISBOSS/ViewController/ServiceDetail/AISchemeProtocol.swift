@@ -12,4 +12,6 @@ protocol AISchemeProtocol {
     
     func chooseItem(model: Service?, cancelItem: Service?)
     
+    
+    func chooseItem(model: Service?, cancelItem: Service?, fromView: UIView?)
 }

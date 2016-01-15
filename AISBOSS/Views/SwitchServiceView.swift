@@ -28,7 +28,7 @@ import UIKit
 import Cartography
 
 protocol ServiceSwitchDelegate {
-    func switchStateChanged(isOn: Bool, operationService: Service)
+    func switchStateChanged(isOn: Bool, operationService: Service,fromView: UIView?)
 }
 
 
@@ -84,7 +84,7 @@ class SwitchServiceView: UIView {
     
     func switchChanged(sender: SevenSwitch) {
         if let ser = operationService {
-            switchDelegate?.switchStateChanged(sender.on, operationService: ser)
+            switchDelegate?.switchStateChanged(sender.on, operationService: ser,fromView: self)
         }
     }
     

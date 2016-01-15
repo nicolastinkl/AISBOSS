@@ -230,7 +230,7 @@ class HorizontalCardView: UIView {
             }
             
             
-            delegate?.chooseItem(selectedService, cancelItem: canceledService)
+            delegate?.chooseItem(selectedService, cancelItem: canceledService,fromView: self)
         }
         
     }
