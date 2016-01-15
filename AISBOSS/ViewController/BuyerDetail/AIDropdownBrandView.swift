@@ -14,10 +14,11 @@ class AIDropdownBrandView: UIView {
 			// TODO: animation
 		}
 	}
-    
-    var expandedView: UIView!
-	var brands = [String]()
+	
+	var expandedView: UIView!
+	var brands = [(title: String, image: String)]()
 	var labels = [HalfRoundedCornerLabel]()
+    var iconLabels = [VerticalIconLabel]()
 	var downButton: UIButton!
 	var barView: UIView! // 上面条状的 bar 背景
 	var lineView: UIView!
@@ -34,6 +35,11 @@ class AIDropdownBrandView: UIView {
 		static let space: CGFloat = 20
 		static let lineViewHeight: CGFloat = 0.5
 		static let barViewBackgroundColor: UIColor = UIColor(red: 0.1176, green: 0.1059, blue: 0.2196, alpha: 1.0)
+		
+		struct IconLabel {
+			
+			static let size = CGSizeMake(AITools.displaySizeFrom1080DesignSize(176), AITools.displaySizeFrom1080DesignSize(176))
+		}
 		struct Label {
 			static let backgroundColor: UIColor = UIColor.clearColor()
 			static let highlightedBackgroundColor: UIColor = UIColor(red: 0.2941, green: 0.2863, blue: 0.3765, alpha: 1.0)
@@ -42,13 +48,13 @@ class AIDropdownBrandView: UIView {
 		}
 	}
 	
-	init(brands: [String], selectedIndex: Int, width: CGFloat) {
+	init(brands: [(title: String, image: String)], selectedIndex: Int, width: CGFloat) {
 		self.brands = brands
 		self.selectedIndex = selectedIndex
 		super.init(frame: CGRectMake(0, 0, width, Constants.barHeight))
 		setupBarView()
 		setupDownButton()
-        setupExpandedView()
+		setupExpandedView()
 		setupLabels()
 		setupLineView()
 		updateLabelSelectStatus()
@@ -57,16 +63,20 @@ class AIDropdownBrandView: UIView {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-    
-    func setupExpandedView() {
-        expandedView = UIView(frame: .zero)
-        addSubview(expandedView)
-        setupIconLabels()
-    }
-    
-    func setupIconLabels() {
-        
-    }
+	
+	func setupExpandedView() {
+		expandedView = UIView(frame: .zero)
+		addSubview(expandedView)
+		setupIconLabels()
+	}
+	
+	func setupIconLabels() {
+		for brand in brands {
+			let label = VerticalIconLabel(image: UIImage(named: brand.image)!, text: brand.title, frame: CGRectMake(0, 0, 300, 300))
+            expandedView.addSubview(label)
+            iconLabels.append(label)
+		}
+	}
 	
 	func setupBarView() {
 		barView = UIView(frame: .zero)
@@ -82,8 +92,8 @@ class AIDropdownBrandView: UIView {
 		let barScrollView = UIScrollView(frame: .zero)
 		barView.addSubview(barScrollView)
 		for (i, brand) in brands.enumerate() {
-			let label = HalfRoundedCornerLabel(text: brand, backgroundColor: Constants.Label.backgroundColor, highlightedBackgroundColor: Constants.Label.highlightedBackgroundColor, textColor: Constants.Label.textColor, highlightedTextColor: Constants.Label.highlightedTextColor)
-			label.text = brand
+			let label = HalfRoundedCornerLabel(text: brand.title, backgroundColor: Constants.Label.backgroundColor, highlightedBackgroundColor: Constants.Label.highlightedBackgroundColor, textColor: Constants.Label.textColor, highlightedTextColor: Constants.Label.highlightedTextColor)
+			label.text = brand.title
 			label.tag = i
 			label.userInteractionEnabled = true
 			barScrollView.addSubview(label)
