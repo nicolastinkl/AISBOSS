@@ -116,6 +116,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    
+    
+    
     func setupUIWithCurrentLanguage() {
         //TODO: reload data with current language
         
@@ -131,12 +134,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             weakSelf!.clearPropodalData()
 
             weakSelf!.loadData()
-        }
-        
-        tableView.addHeaderRefreshEndCallback { () -> Void in
-            if let _ = weakSelf!.didRefresh {
-                weakSelf!.tableView.reloadData()
-            }
         }
 
         tableView.addHeaderRefreshEndCallback { () -> Void in
@@ -241,9 +238,20 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func reloadDataAfterUserChanged() {
-        
+
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
+            
+            
+            ws!.clearPropodalData()
+            ws!.bubbles.removeFromSuperview()
+            ws!.tableView.removeFromSuperview()
+            
+            ws!.tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+            
+            ws!.view.insertSubview(ws!.tableView, belowSubview: ws!.topBar)
+            
+            ws!.tableView.tableHeaderView = ws!.bubbleViewContainer
             ws!.tableView.headerBeginRefreshing()
         }
     }
@@ -252,6 +260,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.buyerListData = nil
         appDelegate.buyerProposalData = nil
+        tableViewCellCache.removeAll()
+        
+        dataSource.removeAll()
+        // reset UI
     }
     
         

@@ -41,6 +41,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *tableDictionary;
 
+@property (nonatomic, strong) NSMutableArray *tableHeaderList;
+
 @end
 
 @implementation AISellerViewController
@@ -166,10 +168,12 @@
 {
     if (_tableDictionary) {
         [_tableDictionary removeAllObjects];
+        [_tableHeaderList removeAllObjects];
     }
     else
     {
         _tableDictionary = [[NSMutableDictionary alloc] init];
+        _tableHeaderList = [[NSMutableArray alloc] init];
     }
     
     
@@ -185,6 +189,8 @@
             tableModel.sortTime = sort;
             tableModel.nameTitle = model.proposal_name;
             [_tableDictionary setObject:tableModel forKey:sort];
+            
+            [_tableHeaderList addObject:sort];
         }
         
         [tableModel.orderList addObject:model];
@@ -440,7 +446,7 @@
 {
     
     for (NSInteger i = 0; i < _tableDictionary.allKeys.count; i++) {
-        AIOrderTableModel *model = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:i]];
+        AIOrderTableModel *model = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:i]];
         if (i == section) {
             return model.orderList.count;
         }
@@ -451,14 +457,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _tableDictionary.allKeys.count;
+    return _tableHeaderList.count;
 }
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CGFloat width = CGRectGetWidth(tableView.frame);
-    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:section]];
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:section]];
     
     UPLabel *nameLabel = [AIViews normalLabelWithFrame:CGRectMake(0, 0, width, 20) text:tableModel.nameTitle fontSize:16 color:Color_HighWhite];
     
@@ -484,7 +490,7 @@
         
     }
     
-    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:indexPath.section]];
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:indexPath.section]];
     
     
     
@@ -527,7 +533,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableDictionary.allKeys objectAtIndex:indexPath.section]];
+    AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:indexPath.section]];
     AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
     
     
