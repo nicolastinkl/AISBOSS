@@ -316,7 +316,7 @@ class UITransViewController: UIViewController {
     }
     
     func retryNetworkingAction(){
-        //view.hideErrorView()
+        view.hideErrorView()
 
         self.loadContentData()
 

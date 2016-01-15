@@ -40,8 +40,15 @@ class BDKSchemeDataObtainer:  MockchemeDataObtainer {
         let message = AIMessageWrapper.submitOrderServiceWithServiceArrays(params as [AnyObject])
         message.url = AIApplication.AIApplicationServerURL.submitOrderByService.description
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            
-            if let _ = response {
-                success(isComplate: true)
+            if let jsonObject = response {
+                let json = JSON(jsonObject)
+                //Just the same
+                let codes = json["result_code"].string ?? ""
+                if codes == "200" {
+                    success(isComplate: true)
+                }else{
+                    success(isComplate: false)
+                }
             }else{
                 fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
             }
