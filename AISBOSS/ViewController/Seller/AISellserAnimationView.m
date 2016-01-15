@@ -135,7 +135,7 @@
     CGFloat width = CGRectGetWidth(sellerTableView.frame);
     CGFloat height = 95;
     CGFloat x = 15;
-    CGFloat y = 15 + (cells.count - 1) * height;
+    CGFloat y = 35 + (cells.count - 1) * height;
     CGFloat yOffset = 60;
     
     __weak UIView *weakBackground = background;

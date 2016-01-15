@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) NSMutableArray *orderList;
 
+
+@property (nonatomic, strong) NSString *nameTitle;
+
 @property (nonatomic, strong) NSString *timeTitle;
 
 
