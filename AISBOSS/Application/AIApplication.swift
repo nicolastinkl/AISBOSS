@@ -260,6 +260,9 @@ struct AIApplication{
         case queryHotSearch
         // 获取Api具体地址.
         case recoverOrders
+        // 获取Api具体地址.
+        case submitOrderByService
+        
         // 一键恢复订单
         var description: String {
             
@@ -286,6 +289,7 @@ struct AIApplication{
             case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
             case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"
             case .recoverOrders: return AIApplication.KURL_ReleaseURL+"/recoverOrders"
+            case .submitOrderByService:   return AIApplication.KURL_ReleaseURL + "/submitOrderByService"
             }
             
         }

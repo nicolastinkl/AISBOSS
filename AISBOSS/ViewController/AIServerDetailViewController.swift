@@ -305,7 +305,7 @@ class AIServerDetailViewController: UIViewController {
                 }, fail: { (errType, errDes) -> Void in
                     
                     self.view.hideProgressViewLoading()
-                    
+                    AIAlertView().showInfo("AIAudioMessageView.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             
         }
