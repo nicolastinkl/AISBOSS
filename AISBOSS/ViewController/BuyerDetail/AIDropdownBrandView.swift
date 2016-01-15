@@ -9,7 +9,7 @@
 import UIKit
 
 class AIDropdownBrandView: UIView {
-	var isExtended: Bool = false {
+	var isExpanded: Bool = false {
 		didSet {
 			// TODO: animation
 		}
@@ -18,10 +18,10 @@ class AIDropdownBrandView: UIView {
 	var expandedView: UIView!
 	var brands = [(title: String, image: String)]()
 	var labels = [HalfRoundedCornerLabel]()
-    var iconLabels = [VerticalIconLabel]()
+	var iconLabels = [BrandIconLabel]()
 	var downButton: UIButton!
 	var barView: UIView! // 上面条状的 bar 背景
-	var lineView: UIView!
+	var lineView: UIView! // 细线
 	var selectedIndex: Int {
 		didSet {
 			updateLabelSelectStatus()
@@ -37,9 +37,11 @@ class AIDropdownBrandView: UIView {
 		static let barViewBackgroundColor: UIColor = UIColor(red: 0.1176, green: 0.1059, blue: 0.2196, alpha: 1.0)
 		
 		struct IconLabel {
-			
-			static let size = CGSizeMake(AITools.displaySizeFrom1080DesignSize(176), AITools.displaySizeFrom1080DesignSize(176))
+            static let imageWidth = AITools.displaySizeFrom1080DesignSize(110)
+			static let hspace = AITools.displaySizeFrom1080DesignSize(110)
+			static let vspace = AITools.displaySizeFrom1080DesignSize(18)
 		}
+        
 		struct Label {
 			static let backgroundColor: UIColor = UIColor.clearColor()
 			static let highlightedBackgroundColor: UIColor = UIColor(red: 0.2941, green: 0.2863, blue: 0.3765, alpha: 1.0)
@@ -71,11 +73,19 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	func setupIconLabels() {
-		for brand in brands {
-			let label = VerticalIconLabel(image: UIImage(named: brand.image)!, text: brand.title, frame: CGRectMake(0, 0, 300, 300))
-            expandedView.addSubview(label)
-            iconLabels.append(label)
+		for (i, brand) in brands.enumerate() {
+			let labelWidth = (width - Constants.IconLabel.hspace) / 4 - Constants.IconLabel.hspace
+			let label = BrandIconLabel(frame: .zero)
+            label.imageWidth = Constants.IconLabel.imageWidth
+			expandedView.addSubview(label)
+			label.image = UIImage(named: brand.image)
+			label.text = brand.title
+			iconLabels.append(label)
+			let row = CGFloat(i / 4)
+			let column = CGFloat(i % 4)
+			label.frame = CGRectMake(Constants.IconLabel.hspace + column * (labelWidth + Constants.IconLabel.hspace), labelWidth + Constants.IconLabel.vspace + row * (labelWidth + Constants.IconLabel.vspace), labelWidth, labelWidth)
 		}
+		expandedView.frame = CGRectMake(0, CGRectGetMaxY(barView.frame), width, CGRectGetMaxY(iconLabels.last!.frame))
 	}
 	
 	func setupBarView() {
@@ -146,6 +156,10 @@ class AIDropdownBrandView: UIView {
 		for (i, label) in labels.enumerate() {
 			label.highlighted = (i == selectedIndex)
 		}
+		
+		for (i, label) in iconLabels.enumerate() {
+//			label.highlighted = (i == selectedIndex)
+		}
 	}
 	
 	func tapped(g: UITapGestureRecognizer) {
@@ -167,24 +181,30 @@ class AIDropdownBrandView: UIView {
 	
 	func downButtonPressed(sender: UIButton) {
 		sender.selected = !sender.selected
-		isExtended = !isExtended
+		isExpanded = !isExpanded
+	}
+}
+
+class BrandIconLabel: VerticalIconLabel {
+	var highlighted: Bool = false {
+		didSet {
+		}
 	}
 }
 
 class HalfRoundedCornerLabel: UILabel {
 	var highlightedBackgroundColor: UIColor
 	var normalBackgroundColor: UIColor
+	override var highlighted: Bool {
+		didSet {
+			backgroundColor = highlighted ? highlightedBackgroundColor : normalBackgroundColor
+		}
+	}
 	
 	struct Constants {
 		static let cornerRadii = CGSize(width: AITools.displaySizeFrom1080DesignSize(10), height: AITools.displaySizeFrom1080DesignSize(10))
 		static let margin = AITools.displaySizeFrom1080DesignSize(24)
 		static let font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
-	}
-	
-	override var highlighted: Bool {
-		didSet {
-			backgroundColor = highlighted ? highlightedBackgroundColor : normalBackgroundColor
-		}
 	}
 	
 	override var frame: CGRect {
@@ -197,7 +217,6 @@ class HalfRoundedCornerLabel: UILabel {
 		return CGSizeMake(super.intrinsicContentSize().width + Constants.margin * 2, super.intrinsicContentSize().height + 10)
 		// 10 is magic number hehe.
 	}
-	
 	
 	init(text: String, backgroundColor: UIColor, highlightedBackgroundColor: UIColor, textColor: UIColor, highlightedTextColor: UIColor) {
 		self.highlightedBackgroundColor = highlightedBackgroundColor

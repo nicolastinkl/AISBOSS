@@ -9,19 +9,6 @@
 import UIKit
 import SnapKit
 
-enum VerticalIconType: Int {
-	case Custom, Price;
-	
-	func image() -> UIImage? {
-		switch self {
-		case .Custom:
-			return nil
-		case .Price:
-			return UIImage(named: "eye_enable") // tofix
-		}
-	}
-}
-
 class VerticalIconLabel: UIView {
 	
 	static let DEFAULT_FRAME = CGRect(x: 0, y: 0, width: 100, height: 100)
@@ -34,27 +21,32 @@ class VerticalIconLabel: UIView {
 			return self.imageView.image
 		}
 	}
-    
-    var text: String? {
-        set {
-            self.label.text = newValue
-        }
-        get {
-            return self.label.text
-        }
-    }
 	
+	var text: String? {
+		set {
+			self.label.text = newValue
+			setNeedsLayout()
+			layoutIfNeeded()
+		}
+		get {
+			return self.label.text
+		}
+	}
+	var imageWidth : CGFloat = AITools.displaySizeFrom1080DesignSize(54) {
+		didSet {
+			setNeedsLayout()
+			layoutIfNeeded()
+		}
+	}
 	lazy var imageView: UIImageView = {
 		let result = UIImageView()
 		self.addSubview(result)
-        let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
-        let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(257)
-        
-		result.snp_makeConstraints(closure: {(make) -> Void in
-				make.centerX.equalTo(self)
-                make.width.height.equalTo(ICON_SIZE)
-				//make.top.equalTo(self).offset(20)
-			})
+		
+//		result.snp_makeConstraints(closure: {(make) -> Void in
+//				make.centerX.equalTo(self)
+//				make.width.height.equalTo(self.ICON_SIZE)
+//				// make.top.equalTo(self).offset(20)
+//			})
 		return result
 	}()
 	
@@ -64,50 +56,31 @@ class VerticalIconLabel: UIView {
 		result.textColor = UIColor.whiteColor()
 		result.textAlignment = .Center
 		self.addSubview(result)
-		result.snp_makeConstraints(closure: {(make) -> Void in
-				// TODO:
-				make.centerX.equalTo(self)
-				make.top.equalTo(self).offset(25)
-			})
+//		result.snp_makeConstraints(closure: {(make) -> Void in
+//				// TODO:
+//				make.centerX.equalTo(self)
+//				make.top.equalTo(self).offset(25)
+//			})
 		return result
 	}()
 	
-	var type: VerticalIconType {
-		didSet {
-			imageView.image = type.image()
-		}
-	}
-	
-	init(type: VerticalIconType, text: String, frame: CGRect = DEFAULT_FRAME) {
-		self.type = type
+	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.label.text = text
-		self.imageView.image = type.image()
-	}
-    
-    override init(frame: CGRect) {
-        self.type = .Custom
-        super.init(frame: frame)
-    }
-	
-	init(image: UIImage, text: String, frame: CGRect = DEFAULT_FRAME) {
-		self.type = .Custom
-		super.init(frame: frame)
-		self.label.text = text
-		self.imageView.image = image
 	}
 	
 	override var frame: CGRect {
-		get {
-			return super.frame
-		}
-		set {
-			super.frame = newValue
-			self.label.preferredMaxLayoutWidth = CGRectGetWidth(newValue) - 16
+		didSet {
+			setNeedsLayout()
 			layoutIfNeeded()
 		}
 	}
-    
+	
+	override func layoutSubviews() {
+		imageView.frame = CGRectMake(width / 2 - imageWidth / 2, 8, imageWidth, imageWidth)
+		label.sizeToFit()
+		label.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame), width, label.height)
+	}
+	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

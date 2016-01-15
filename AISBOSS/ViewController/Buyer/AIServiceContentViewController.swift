@@ -368,7 +368,7 @@ internal class AIServiceContentViewController: UIViewController {
             serviceContentView = addMusicView(addBrandView())
         }
    
-        let custView =  addCustomView(serviceContentView)
+        let custView = addCustomView(serviceContentView)
         
         addAudioView(custView)
     }
