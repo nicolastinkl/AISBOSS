@@ -12,7 +12,7 @@ import Spring
 import AIAlertView
 
 public enum AIServiceContentType : Int {
-    case MusicTherapy = 100 ,Escort
+    case None = 100, MusicTherapy ,Escort
 }
 
 // MARK: 返回事件回调
@@ -274,7 +274,10 @@ internal class AIServiceContentViewController: UIViewController {
             name = "Fake_Top"
         case .Escort:
             name = "Fake_Escort_Top"
+        case .None: break
+     
         }
+        
         
         return UIImage(named: name)!
     }
@@ -294,7 +297,15 @@ internal class AIServiceContentViewController: UIViewController {
             
             delegate.contentViewWillDismiss()
         } else {
-            self.parentViewController!.dismissViewControllerAnimated(true, completion: nil)
+            if let parent = self.parentViewController {
+                parent.dismissViewControllerAnimated(true, completion: nil)
+            }
+            else
+            
+            {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
         }
 
     }
