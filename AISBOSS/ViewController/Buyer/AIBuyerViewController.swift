@@ -237,22 +237,32 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAfterUserChanged", name: kShouldUpdataUserDataNotification, object: nil)
     }
     
+    func handleUserChangeEvent () {
+        clearPropodalData()
+        
+        if let b = bubbles {
+            b.removeFromSuperview()
+        }
+
+        if let _ : UITableView = tableView {
+            tableView.removeFromSuperview()
+            
+            tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+            
+            self.view.insertSubview(self.tableView, belowSubview: self.topBar)
+            
+            tableView.tableHeaderView = self.bubbleViewContainer
+            tableView.headerBeginRefreshing()
+        }
+        
+    }
+    
+    
     func reloadDataAfterUserChanged() {
 
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
-            
-            
-            ws!.clearPropodalData()
-            ws!.bubbles.removeFromSuperview()
-            ws!.tableView.removeFromSuperview()
-            
-            ws!.tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
-            
-            ws!.view.insertSubview(ws!.tableView, belowSubview: ws!.topBar)
-            
-            ws!.tableView.tableHeaderView = ws!.bubbleViewContainer
-            ws!.tableView.headerBeginRefreshing()
+            ws!.handleUserChangeEvent()
         }
     }
     
