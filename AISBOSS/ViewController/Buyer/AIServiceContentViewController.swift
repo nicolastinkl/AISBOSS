@@ -355,8 +355,14 @@ internal class AIServiceContentViewController: UIViewController {
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
-        
+ 
         addGalleryView()
+        
+        if currentDatasource?.service_intro_img_list.count == 0
+        {
+            galleryView.setHeight(0)
+        }
+        
 
         //TODO: add brand View
 
@@ -581,7 +587,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
         //scrollView.userInteractionEnabled = false
-        return true
+        return serviceContentType != .None
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -865,6 +871,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        if serviceContentType == .None
+        {
+            return false
+        }
+        
+        
         
         if "\n" == text {
             textView.resignFirstResponder()
