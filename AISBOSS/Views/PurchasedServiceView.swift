@@ -42,7 +42,10 @@ class PurchasedServiceView: UIView, Measureable {
             serviceOrderModel = newValue
             
             if let model = newValue {
-                logo.asyncLoadImage("\(model.service_thumbnail_icon)")
+                logo.image = UIImage(named: "Placehold")
+                print("\(model.service_thumbnail_icon)")
+                logo.sd_setImageWithURL("\(model.service_thumbnail_icon)".toURL(), placeholderImage: UIImage(named: "Placehold"))
+                
                 if model.arrange_script_info != nil {
                     title.text = model.arrange_script_info.info_title
                     if (model.arrange_script_info.info_desc == nil || model.arrange_script_info.info_desc == "") {

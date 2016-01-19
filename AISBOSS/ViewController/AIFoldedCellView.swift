@@ -41,6 +41,15 @@ class AIFolderCellView: UIView {
         if isFirstLayout{
             setDescContentView()
         }
+        
+        let firstServiceOrder : ServiceOrderModel? = proposalModel.order_list.first as? ServiceOrderModel
+        
+        if let url = firstServiceOrder?.service_thumbnail_icon {
+            serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
+        }else{
+            serviceIcon.image = UIImage(named: "Placehold")
+        }
+        
     }
     
     override func awakeFromNib() {
@@ -75,13 +84,15 @@ class AIFolderCellView: UIView {
         serviceNameLabel.text = proposalModel.proposal_name
 
         let firstServiceOrder : ServiceOrderModel? = proposalModel.order_list[0] as? ServiceOrderModel
-
+ 
+        serviceIcon.layer.cornerRadius = 12
+        serviceIcon.layer.masksToBounds = true
+        serviceIcon.image = UIImage(named: "Placehold")
+        
         if let url = firstServiceOrder?.service_thumbnail_icon {
-            
             serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
-            serviceIcon.layer.cornerRadius = 12
-            serviceIcon.layer.masksToBounds = true
-            
+        }else{
+            serviceIcon.image = UIImage(named: "Placehold")
         }
         
         buildStatusData()
