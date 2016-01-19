@@ -408,6 +408,10 @@ internal class AIServiceContentViewController: UIViewController {
         brandView?.onDownButtonDidClick = { [weak self] bView in
             self?.updateFrames(animated:true)
         }
+        
+        brandView?.onSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+            // handle selected index changed 
+        }
         return brandView
     }
     

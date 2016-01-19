@@ -17,6 +17,7 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	var onDownButtonDidClick: ((AIDropdownBrandView) -> ())? = nil
+    var onSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	
 	var expandedView: UIView!
 	var brands = [(title: String, image: String)]()
@@ -206,6 +207,9 @@ class AIDropdownBrandView: UIView {
 	func tapped(g: UITapGestureRecognizer) {
 		selectedIndex = g.view!.tag
 		updateLabelSelectStatus()
+        if let c = onSelectedIndexDidChanged {
+            c(self,selectedIndex)
+        }
 	}
 	
 	func setupDownButton() {
