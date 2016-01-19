@@ -114,6 +114,7 @@ class AIServerDetailViewController: UIViewController {
         if let serv = services{
             self.paramsService.setValue("\(serv.service_id ?? 0)", forKey: catalogID ?? "")
             
+            print(self.paramsService)
             //self.paramsService.setValue(serv.service_price?.price_show ?? "", forKey: "\(serv.service_id ?? 0)")
         }
     }
@@ -122,6 +123,7 @@ class AIServerDetailViewController: UIViewController {
         if let _ = services{
             // search this key and remove it.
             self.paramsService.removeObjectForKey(catalogID ?? "")
+            print(self.paramsService)
         }
     }
     
@@ -509,7 +511,6 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 cell = createDefaultTableViewCell()
             }
         }
-        cell.associatedName = "\(model.catelogID ?? 0)"
         
         return cell        
     }
@@ -562,6 +563,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                 return cacheCell
             } else {
                 let cell = CoverFlowCell.currentView()
+                cell.associatedName = "\(model.catelogID ?? 0)"
                 cell.delegate = self
                 cell.carousel.type = .CoverFlow2
                 cell.dataSource = model.services!
@@ -618,6 +620,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             
         } else {
             switchView = SwitchServiceView.createSwitchServiceView()
+            switchView.associatedName = "\(model.catelogID ?? 0)"
             cell?.contentView.addSubview(switchView)
             constrain(switchView) { switchView in
                 switchView.left == switchView.superview!.left
@@ -629,6 +632,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
         
         if let ser = services.first as Service?{
             switchView.setService(ser)
+            //settingsParams(ser,catalogID: "\(model.catelogID ?? 0)")
         }
 
         switchView.switchDelegate = self
@@ -645,6 +649,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }else{
                 
                 let hori = HorizontalCardView(frame: CGRectMake(0, 0, self.view.width, 80))
+                hori.associatedName = "\(model.catelogID ?? 0)"
                 let cell = AITableCellHolder.currentView()
                 //tableView.dequeueReusableCellWithIdentifier(AIApplication.MainStoryboard.CellIdentifiers.AITableCellHolder)
                 cell.contentView.addSubview(hori)
@@ -655,6 +660,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
                     }
                 }
                 hori.delegate = self
+
                 horizontalCardCellCache.setValue(cell, forKey: key)
                 
                 return cell

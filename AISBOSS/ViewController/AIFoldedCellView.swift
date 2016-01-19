@@ -79,6 +79,9 @@ class AIFolderCellView: UIView {
         if let url = firstServiceOrder?.service_thumbnail_icon {
             
             serviceIcon.sd_setImageWithURL(url.toURL(), placeholderImage: UIImage(named: "Placehold"))
+            serviceIcon.layer.cornerRadius = 12
+            serviceIcon.layer.masksToBounds = true
+            
         }
         
         buildStatusData()
