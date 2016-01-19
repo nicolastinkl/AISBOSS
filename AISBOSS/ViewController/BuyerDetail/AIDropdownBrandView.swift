@@ -8,12 +8,15 @@
 
 import UIKit
 
+
 class AIDropdownBrandView: UIView {
 	var isExpanded: Bool = false {
 		didSet {
-			// TODO: animation
+			updateExpandedViewStatus()
 		}
 	}
+	
+	var onDownButtonDidClick: ((AIDropdownBrandView) -> ())? = nil
 	
 	var expandedView: UIView!
 	var brands = [(title: String, image: String)]()
@@ -21,6 +24,8 @@ class AIDropdownBrandView: UIView {
 	var iconLabels = [BrandIconLabel]()
 	var downButton: UIButton!
 	var barView: UIView! // 上面条状的 bar 背景
+	var barScrollView: UIScrollView!
+	var numberOfBrandsLabel: UILabel!
 	var lineView: UIView! // 细线
 	var selectedIndex: Int {
 		didSet {
@@ -37,11 +42,12 @@ class AIDropdownBrandView: UIView {
 		static let barViewBackgroundColor: UIColor = UIColor(red: 0.1176, green: 0.1059, blue: 0.2196, alpha: 1.0)
 		
 		struct IconLabel {
-            static let imageWidth = AITools.displaySizeFrom1080DesignSize(110)
+			static let margin = AITools.displaySizeFrom1080DesignSize(40)
+			static let imageWidth = AITools.displaySizeFrom1080DesignSize(110)
 			static let hspace = AITools.displaySizeFrom1080DesignSize(110)
 			static let vspace = AITools.displaySizeFrom1080DesignSize(18)
 		}
-        
+		
 		struct Label {
 			static let backgroundColor: UIColor = UIColor.clearColor()
 			static let highlightedBackgroundColor: UIColor = UIColor(red: 0.2941, green: 0.2863, blue: 0.3765, alpha: 1.0)
@@ -60,6 +66,7 @@ class AIDropdownBrandView: UIView {
 		setupLabels()
 		setupLineView()
 		updateLabelSelectStatus()
+		updateExpandedViewStatus()
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -74,18 +81,23 @@ class AIDropdownBrandView: UIView {
 	
 	func setupIconLabels() {
 		for (i, brand) in brands.enumerate() {
-			let labelWidth = (width - Constants.IconLabel.hspace) / 4 - Constants.IconLabel.hspace
+			let labelWidth = (width - Constants.IconLabel.margin * 2 - Constants.IconLabel.hspace * 3) / 4
+            let labelHeight = labelWidth + 4 // just magic number
 			let label = BrandIconLabel(frame: .zero)
-            label.imageWidth = Constants.IconLabel.imageWidth
+			label.tag = i
+			label.imageWidth = Constants.IconLabel.imageWidth
 			expandedView.addSubview(label)
 			label.image = UIImage(named: brand.image)
 			label.text = brand.title
 			iconLabels.append(label)
 			let row = CGFloat(i / 4)
 			let column = CGFloat(i % 4)
-			label.frame = CGRectMake(Constants.IconLabel.hspace + column * (labelWidth + Constants.IconLabel.hspace), labelWidth + Constants.IconLabel.vspace + row * (labelWidth + Constants.IconLabel.vspace), labelWidth, labelWidth)
+			label.frame = CGRectMake(Constants.IconLabel.margin + column * (labelWidth + Constants.IconLabel.hspace), Constants.IconLabel.vspace + row * (labelHeight + Constants.IconLabel.vspace), labelWidth, labelHeight)
+			
+			let tap = UITapGestureRecognizer(target: self, action: "tapped:")
+			label.addGestureRecognizer(tap)
 		}
-		expandedView.frame = CGRectMake(0, CGRectGetMaxY(barView.frame), width, CGRectGetMaxY(iconLabels.last!.frame))
+		expandedView.frame = CGRectMake(0, Constants.barHeight, width, CGRectGetMaxY(iconLabels.last!.frame))
 	}
 	
 	func setupBarView() {
@@ -99,7 +111,22 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	func setupLabels() {
-		let barScrollView = UIScrollView(frame: .zero)
+		numberOfBrandsLabel = {
+			let result = UILabel(frame: .zero)
+			result.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
+			result.text = "\(brands.count) brands in total"
+			result.textColor = UIColor.whiteColor()
+			barView.addSubview(result)
+			result.sizeToFit()
+			var f = result.frame
+			f.origin.y = Constants.barHeight / 2 - result.height / 2
+			f.origin.x = Constants.margin
+			result.frame = f
+			return result
+		}()
+		
+		barScrollView = UIScrollView(frame: .zero)
+		barScrollView.alwaysBounceVertical = false
 		barView.addSubview(barScrollView)
 		for (i, brand) in brands.enumerate() {
 			let label = HalfRoundedCornerLabel(text: brand.title, backgroundColor: Constants.Label.backgroundColor, highlightedBackgroundColor: Constants.Label.highlightedBackgroundColor, textColor: Constants.Label.textColor, highlightedTextColor: Constants.Label.highlightedTextColor)
@@ -158,8 +185,22 @@ class AIDropdownBrandView: UIView {
 		}
 		
 		for (i, label) in iconLabels.enumerate() {
-//			label.highlighted = (i == selectedIndex)
+			label.highlighted = (i == selectedIndex)
 		}
+	}
+	
+	func updateExpandedViewStatus() {
+		var f = frame
+		barScrollView.alpha = isExpanded ? 0 : 1.0
+		expandedView.alpha = isExpanded ? 1.0 : 0
+		numberOfBrandsLabel.alpha = isExpanded ? 1.0 : 0
+		
+		if isExpanded {
+			f.size.height = Constants.barHeight + expandedView.height
+		} else {
+			f.size.height = Constants.barHeight
+		}
+		frame = f
 	}
 	
 	func tapped(g: UITapGestureRecognizer) {
@@ -181,14 +222,74 @@ class AIDropdownBrandView: UIView {
 	
 	func downButtonPressed(sender: UIButton) {
 		sender.selected = !sender.selected
-		isExpanded = !isExpanded
+		if let block = onDownButtonDidClick {
+			block(self)
+		}
 	}
 }
 
 class BrandIconLabel: VerticalIconLabel {
 	var highlighted: Bool = false {
 		didSet {
+			updateHighlighted()
 		}
+	}
+	
+	var colorfulImage: UIImage?
+	var grayImage: UIImage?
+	
+	override var image: UIImage? {
+		set {
+			if let i = newValue {
+				grayImage = BrandIconLabel.convertImageToGray(i)
+			}
+			colorfulImage = newValue
+			updateImage()
+		}
+		get {
+			// return highlighted image
+			return colorfulImage
+		}
+	}
+	
+	func updateHighlighted() {
+		updateImage()
+		updateBorder()
+        updateAlpha()
+	}
+	
+	func updateAlpha() {
+		let a: CGFloat = highlighted ? 1 : 0.18
+        alpha = a
+	}
+	
+	func updateBorder() {
+		let borderWidth: CGFloat = highlighted ? 1 : 0
+		layer.borderColor = UIColor(red: 0.2275, green: 0.2157, blue: 0.349, alpha: 1.0).CGColor
+		layer.borderWidth = borderWidth
+		layer.cornerRadius = AITools.displaySizeFrom1080DesignSize(11)
+	}
+	
+	func updateImage() {
+		if highlighted {
+			self.imageView.image = colorfulImage
+		} else {
+			self.imageView.image = grayImage
+		}
+	}
+	
+	private static func convertImageToGray(image: UIImage) -> UIImage {
+		// Create image rectangle with current image width/height
+		let beginImage = CIImage(CGImage: image.CGImage!) ;
+		
+		let blackAndWhite = CIFilter(name: "CIColorControls", withInputParameters: [kCIInputImageKey: beginImage, "inputBrightness": 0.0, "inputContrast": 1.1, "inputSaturation": 0.0])?.outputImage
+		let output = CIFilter(name: "CIExposureAdjust", withInputParameters: [kCIInputImageKey: blackAndWhite!, "inputEV": 0.7])?.outputImage
+		
+		let context = CIContext(options: nil)
+		let cgiimage = context.createCGImage(output!, fromRect: (output?.extent)!)
+		let newImage = UIImage(CGImage: cgiimage, scale: 0, orientation: image.imageOrientation)
+		
+		return newImage;
 	}
 }
 

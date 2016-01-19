@@ -54,6 +54,9 @@ internal class AIServiceContentViewController: UIViewController {
     private var brandView: AIDropdownBrandView?
     private var musicView: AIMusicTherapyView?
     private var paramedicView: AIParamedicView?
+
+    
+    private var scrollViewSubviews = [UIView]()
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
@@ -347,7 +350,33 @@ internal class AIServiceContentViewController: UIViewController {
         
         // 数据填充
         //topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
-    }    
+    }
+    
+    func updateFrames(animated animated:Bool=false) {
+        var previousView:UIView = brandView ?? galleryView
+        let duration = animated ? 0.25 : 0
+        
+            let validateViews = scrollViewSubviews.filter { (v) -> Bool in
+                return v.superview == scrollView && v != brandView && v != galleryView
+                }.sort({ (a, b) -> Bool in
+                    return a.y < b.y
+                })
+        
+        UIView.animateWithDuration(duration, animations: { [unowned self] () -> Void in
+            
+            self.brandView!.isExpanded = !self.brandView!.isExpanded
+            validateViews.forEach { (v) -> () in
+                var f = v.frame
+                f.origin.y = previousView.bottom
+                v.frame = f
+                previousView = v
+            }
+            
+            self.scrollView.contentSize = CGSizeMake(self.scrollView.width, CGRectGetMaxY((validateViews.last?.frame)!))
+            }) { (stop) -> Void in
+                
+        }
+    }
     
     func makeContentView () {
         
@@ -369,13 +398,16 @@ internal class AIServiceContentViewController: UIViewController {
         }
    
         let custView = addCustomView(serviceContentView)
-        
         addAudioView(custView)
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
         brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, width: view.width)
-        addNewSubView(brandView!, preView: galleryView)
+        addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())
+    
+        brandView?.onDownButtonDidClick = { [weak self] bView in
+            self?.updateFrames(animated:true)
+        }
         return brandView
     }
     
@@ -490,12 +522,14 @@ internal class AIServiceContentViewController: UIViewController {
      
      - parameter cview:   被添加的view
      - parameter preView: 上一个view
+     - parameter color:   默认红色
      */
-    func addNewSubView(cview:UIView,preView:UIView){
+    func addNewSubView(cview:UIView,preView:UIView,color:UIColor = UIColor(hex: "b32b1d")){
         scrollView.addSubview(cview)
+        scrollViewSubviews.append(cview)
         cview.setWidth(self.view.width)
         cview.setTop(preView.top + preView.height)
-        cview.backgroundColor = UIColor(hex: redColor)
+        cview.backgroundColor = color
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
         preCacheView = cview
         
@@ -503,6 +537,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func addNewSubView(cview:UIView){
         scrollView.addSubview(cview)
+        scrollViewSubviews.append(cview)
         cview.setWidth(self.view.width)
         cview.setTop(scrollView.contentSize.height)
         cview.backgroundColor = UIColor(hex: redColor)

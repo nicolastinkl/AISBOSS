@@ -41,12 +41,6 @@ class VerticalIconLabel: UIView {
 	lazy var imageView: UIImageView = {
 		let result = UIImageView()
 		self.addSubview(result)
-		
-//		result.snp_makeConstraints(closure: {(make) -> Void in
-//				make.centerX.equalTo(self)
-//				make.width.height.equalTo(self.ICON_SIZE)
-//				// make.top.equalTo(self).offset(20)
-//			})
 		return result
 	}()
 	
@@ -56,11 +50,6 @@ class VerticalIconLabel: UIView {
 		result.textColor = UIColor.whiteColor()
 		result.textAlignment = .Center
 		self.addSubview(result)
-//		result.snp_makeConstraints(closure: {(make) -> Void in
-//				// TODO:
-//				make.centerX.equalTo(self)
-//				make.top.equalTo(self).offset(25)
-//			})
 		return result
 	}()
 	
@@ -76,9 +65,9 @@ class VerticalIconLabel: UIView {
 	}
 	
 	override func layoutSubviews() {
-		imageView.frame = CGRectMake(width / 2 - imageWidth / 2, 8, imageWidth, imageWidth)
+		imageView.frame = CGRectMake(width / 2 - imageWidth / 2, 4, imageWidth, imageWidth)
 		label.sizeToFit()
-		label.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame), width, label.height)
+		label.frame = CGRectMake(0, CGRectGetMaxY(imageView.frame) + 4, width, label.height)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
