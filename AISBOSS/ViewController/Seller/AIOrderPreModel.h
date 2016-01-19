@@ -46,7 +46,7 @@
 
 @interface AICustomerModel : JSONModel
 
-@property (nonatomic, assign) NSString<Optional> *user_id;               // 用户ID
+@property (nonatomic, assign) NSInteger user_id;               // 用户ID
 @property (nonatomic, strong) NSString<Optional> *user_portrait_icon;    // 用户头像
 @property (nonatomic, strong) NSString<Optional> *user_name;
 @property (nonatomic, strong) NSString<Optional> *user_phone;

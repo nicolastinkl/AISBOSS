@@ -116,6 +116,9 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
+    
+    
+    
     func setupUIWithCurrentLanguage() {
         //TODO: reload data with current language
         
@@ -131,12 +134,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             weakSelf!.clearPropodalData()
 
             weakSelf!.loadData()
-        }
-        
-        tableView.addHeaderRefreshEndCallback { () -> Void in
-            if let _ = weakSelf!.didRefresh {
-                weakSelf!.tableView.reloadData()
-            }
         }
 
         tableView.addHeaderRefreshEndCallback { () -> Void in
@@ -240,11 +237,32 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAfterUserChanged", name: kShouldUpdataUserDataNotification, object: nil)
     }
     
-    func reloadDataAfterUserChanged() {
+    func handleUserChangeEvent () {
+        clearPropodalData()
         
+        if let b = bubbles {
+            b.removeFromSuperview()
+        }
+
+        if let _ : UITableView = tableView {
+            tableView.removeFromSuperview()
+            
+            tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
+            
+            self.view.insertSubview(self.tableView, belowSubview: self.topBar)
+            
+            tableView.tableHeaderView = self.bubbleViewContainer
+            tableView.headerBeginRefreshing()
+        }
+        
+    }
+    
+    
+    func reloadDataAfterUserChanged() {
+
         weak var ws = self
         Async.main(after: 0.2) { () -> Void in
-            ws!.tableView.headerBeginRefreshing()
+            ws!.handleUserChangeEvent()
         }
     }
     
@@ -252,6 +270,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.buyerListData = nil
         appDelegate.buyerProposalData = nil
+        tableViewCellCache.removeAll()
+        
+        dataSource.removeAll()
+        // reset UI
     }
     
         
