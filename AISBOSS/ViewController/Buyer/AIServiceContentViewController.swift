@@ -44,7 +44,7 @@ internal class AIServiceContentViewController: UIViewController {
 
     private var currentDatasource: AIProposalServiceDetailModel?
     
-    internal var serviceContentType : AIServiceContentType!
+    var serviceContentType : AIServiceContentType = .None
     
     private var topNaviView : AINavigationBarView?
 
@@ -66,6 +66,7 @@ internal class AIServiceContentViewController: UIViewController {
         pageScrollView.showsHorizontalScrollIndicator = false
         pageScrollView.showsVerticalScrollIndicator = false
         pageScrollView.delegate = self
+        pageScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
         return pageScrollView
     }()
     
@@ -199,7 +200,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = AITools.colorWithR(0x1e, g: 0x1b, b: 0x38);
         addKeyboardNotifications()
         /** 导航栏 */
         makeTopView()
@@ -383,26 +384,41 @@ internal class AIServiceContentViewController: UIViewController {
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
-        
+ 
         addGalleryView()
+        
+        if currentDatasource?.service_intro_img_list.count == 0
+        {
+            galleryView.setHeight(0)
+        }
+        
 
         //TODO: add brand View
 
+        
+        
+        //TODO: add Parameters
         var serviceContentView: UIView!
+        var preView : UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
             serviceContentView = addEscortView(addBrandView())
-        } else {
+            preView = addCustomView(serviceContentView)
+        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
             //音乐疗养
             serviceContentView = addMusicView(addBrandView())
+            preView = addCustomView(serviceContentView)
+        }else {
+            serviceContentView = addMusicView(galleryView)
+            preView = serviceContentView
         }
    
-        let custView = addCustomView(serviceContentView)
-        addAudioView(custView)
+        addAudioView(preView)
+
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, width: view.width)
+        brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, width: view.width)
         addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())
     
         brandView?.onDownButtonDidClick = { [weak self] bView in
@@ -433,7 +449,8 @@ internal class AIServiceContentViewController: UIViewController {
     private func addEscortView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
         let paramedicFrame = CGRectMake(0, preView!.bottom, CGRectGetWidth(scrollView.frame), 600)
-        paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource)
+        paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
+
         addNewSubView(paramedicView!, preView: preView!)
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
@@ -464,7 +481,7 @@ internal class AIServiceContentViewController: UIViewController {
     private func addMusicView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
         let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 600)
-        musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource)
+        musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
         addNewSubView(musicView!, preView: preView!)
         musicView!.backgroundColor = UIColor.clearColor()
         return musicView!
@@ -610,7 +627,7 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         
         //scrollView.userInteractionEnabled = false
-        return true
+        return serviceContentType != .None
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -894,6 +911,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        if serviceContentType == .None
+        {
+            return false
+        }
+        
+        
         
         if "\n" == text {
             textView.resignFirstResponder()

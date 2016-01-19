@@ -109,7 +109,7 @@ class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate {
     func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
         if let dataSour = dataSource {
             let ser:Service = dataSour[carousel.currentItemIndex]
-            delegate?.chooseItem(ser, cancelItem: oldChoosedItem)
+            delegate?.chooseItem(ser, cancelItem: oldChoosedItem,fromView: self)
             
             oldChoosedItem = ser
         }

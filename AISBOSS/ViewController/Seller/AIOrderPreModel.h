@@ -170,6 +170,9 @@
 @property (nonatomic, strong) NSString *order_create_time;
 
 
+@property (nonatomic, strong) NSString *proposal_name;
+
+
 @property (nonatomic, strong) NSString<Optional> *order_state_name;
 
 @property (nonatomic, strong) AICustomerModel<Optional> *customer;

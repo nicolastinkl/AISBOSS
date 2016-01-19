@@ -26,9 +26,9 @@
 
 @implementation AIMusicTherapyView
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should
 {
-    self = [super initWithFrame:frame model:model];
+    self = [super initWithFrame:frame model:model shouldShowParams:should];
     
     if (self) {
         [self makeSubViews];
@@ -93,28 +93,32 @@
     
     y += [AITools displaySizeFrom1080DesignSize:39];
     
-    
-    viewHeight = [self addServiceTypes:y];
-    
-    if (viewHeight > 0) {
-        y += [AITools displaySizeFrom1080DesignSize:60] + viewHeight;
+    if (_shouldShowParams) {
+        viewHeight = 0;
+        viewHeight = [self addServiceTypes:y];
+        
+        if (viewHeight > 0) {
+            y += [AITools displaySizeFrom1080DesignSize:60] + viewHeight;
+        }
+        
+        viewHeight = [self addPriceView:y];
+        
+        y += [AITools displaySizeFrom1080DesignSize:14] + viewHeight;
+        [self addLineViewAtY:y];
     }
     
-    viewHeight = [self addPriceView:y];
-    
-    y += [AITools displaySizeFrom1080DesignSize:14] + viewHeight;
-    [self addLineViewAtY:y];
-    
-    
     y += [AITools displaySizeFrom1080DesignSize:37];
-    
     
     viewHeight = [self addEvaluationTitleView:y];
     y += viewHeight + [AITools displaySizeFrom1080DesignSize:28];
     
     viewHeight = [self addReviewView:y];
-
+    
     y += viewHeight + [AITools displaySizeFrom1080DesignSize:50];
+        
+    
+    
+    
     
     
     NSArray *models = self.detailModel.service_rating.rating_level_list;
