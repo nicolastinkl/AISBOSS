@@ -17,7 +17,7 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	var onDownButtonDidClick: ((AIDropdownBrandView) -> ())? = nil
-    var onSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
+	var onSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	
 	var expandedView: UIView!
 	var brands = [(title: String, image: String)]()
@@ -57,6 +57,13 @@ class AIDropdownBrandView: UIView {
 		}
 	}
 	
+	override func layoutSubviews() {
+		var size = barScrollView.contentSize
+		size.height = barScrollView.height
+		barScrollView.contentSize = size
+		super.layoutSubviews()
+	}
+	
 	init(brands: [(title: String, image: String)], selectedIndex: Int, width: CGFloat) {
 		self.brands = brands
 		self.selectedIndex = selectedIndex
@@ -83,7 +90,7 @@ class AIDropdownBrandView: UIView {
 	func setupIconLabels() {
 		for (i, brand) in brands.enumerate() {
 			let labelWidth = (width - Constants.IconLabel.margin * 2 - Constants.IconLabel.hspace * 3) / 4
-            let labelHeight = labelWidth + 4 // just magic number
+			let labelHeight = labelWidth + 4 // just magic number
 			let label = BrandIconLabel(frame: .zero)
 			label.tag = i
 			label.imageWidth = Constants.IconLabel.imageWidth
@@ -128,6 +135,9 @@ class AIDropdownBrandView: UIView {
 		
 		barScrollView = UIScrollView(frame: .zero)
 		barScrollView.alwaysBounceVertical = false
+		barScrollView.showsHorizontalScrollIndicator = false
+		barScrollView.showsVerticalScrollIndicator = false
+		
 		barView.addSubview(barScrollView)
 		for (i, brand) in brands.enumerate() {
 			let label = HalfRoundedCornerLabel(text: brand.title, backgroundColor: Constants.Label.backgroundColor, highlightedBackgroundColor: Constants.Label.highlightedBackgroundColor, textColor: Constants.Label.textColor, highlightedTextColor: Constants.Label.highlightedTextColor)
@@ -207,9 +217,9 @@ class AIDropdownBrandView: UIView {
 	func tapped(g: UITapGestureRecognizer) {
 		selectedIndex = g.view!.tag
 		updateLabelSelectStatus()
-        if let c = onSelectedIndexDidChanged {
-            c(self,selectedIndex)
-        }
+		if let c = onSelectedIndexDidChanged {
+			c(self, selectedIndex)
+		}
 	}
 	
 	func setupDownButton() {
@@ -259,12 +269,12 @@ class BrandIconLabel: VerticalIconLabel {
 	func updateHighlighted() {
 		updateImage()
 		updateBorder()
-        updateAlpha()
+		updateAlpha()
 	}
 	
 	func updateAlpha() {
 		let a: CGFloat = highlighted ? 1 : 0.18
-        alpha = a
+		alpha = a
 	}
 	
 	func updateBorder() {
