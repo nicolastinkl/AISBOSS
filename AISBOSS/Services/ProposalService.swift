@@ -246,9 +246,16 @@ class BDKProposalService : MockProposalService{
      - parameter fail:    <#fail description#>
      - parameter errDes:  <#errDes description#>
      */
-    func findServiceDetail(serviceId : Int, proposalId: Int, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func findServiceDetail(serviceId : Int, proposalId: Int,customID : String?, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         message.url = AIApplication.AIApplicationServerURL.findServiceDetail.description
+        
+        if let _ : String = customID {
+            let str = "0&0&"+customID!+"&0"
+            message.header .setObject(str, forKey: "HttpQuery")
+        }
+        
+        
         
         let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]] 
         

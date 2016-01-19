@@ -76,17 +76,24 @@
 }
 
 
+- (void)handleUserChangeEvent {
+    [_tableDictionary removeAllObjects];
+    [_tableHeaderList removeAllObjects];
+    self.sellerInfoList = nil;
+    [self.tableView reloadData];
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.sellerData = nil;
+    
+    [self.tableView headerBeginRefreshing];
+}
+
+
 - (void) reloadDataAfterUserChanged {
     
     __weak typeof (self) ws = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        ws.sellerInfoList = nil;
-        [ws.tableView reloadData];
-        
-        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        appDelegate.sellerData = nil;
-        
-        [ws.tableView headerBeginRefreshing];
+        [ws handleUserChangeEvent];
     });
     
     
@@ -536,16 +543,14 @@
     AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:indexPath.section]];
     AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
     
-    
     AIProposalServiceModel *serviceModel = [[AIProposalServiceModel alloc] init];
     serviceModel.service_id = model.service.service_id;
-    
-    
     
     AIServiceContentViewController *contentVC = [[AIServiceContentViewController alloc] init];
     contentVC.serviceContentModel = serviceModel;
     contentVC.propodalId = model.proposal_id;
-
+    contentVC.customID = [NSString stringWithFormat:@"%ld", model.customer.user_id ?: 0];
+    
     [self presentViewController:contentVC animated:YES completion:nil];
     
 }

@@ -37,6 +37,8 @@ internal class AIServiceContentViewController: UIViewController {
     
     var configuredParameters : NSMutableDictionary?
     
+    var customID : String?
+    
     private let redColor : String = "b32b1d"
     
     var serviceContentModel: AIProposalServiceModel?
@@ -228,7 +230,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         scrollView.hideErrorView()
   
-        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId, success:
+        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId,customID : customID, success:
             {[weak self] (responseData) -> Void in
                 
                 Async.main({ () -> Void in

@@ -590,9 +590,9 @@
 
 - (void)resizeGoodsInfo
 {
-    CGSize classSize = [_goodsClass.text sizeWithFontSize:kSmallFontSize forWidth:CGRectGetWidth(_boardView.frame)];
-    
-    [AITools resetOriginalX:(CGRectGetMinX(_goodsClass.frame) + classSize.width) forView:_goodsName];
+//    CGSize classSize = [_goodsClass.text sizeWithFontSize:kSmallFontSize forWidth:CGRectGetWidth(_boardView.frame)];
+//    
+//    [AITools resetOriginalX:(CGRectGetMinX(_goodsClass.frame) + classSize.width) forView:_goodsName];
 }
 
 
@@ -607,26 +607,25 @@
     }
     
     
-    NSString *name = model.service_category.category_name ?: @"";
+    NSString *class = model.service_category.category_name ?: @"";
     
-    NSString *service = model.service.service_name ?: @"";
+    NSString *name = model.service.service_name ?: @"";
     
-    CGRect nameFrame = _goodsClass.frame;
-    CGRect serviceFrame = _goodsName.frame;
+    CGRect classFrame = _goodsClass.frame;
+    CGRect nameFrame = _goodsName.frame;
     
-    name = [NSString stringWithFormat:@"%@ - ", name];
-    CGSize nameSize = [name sizeWithFontSize:kSmallFontSize forWidth:CGRectGetWidth(_boardView.frame)];
-    nameFrame.size.width = nameSize.width;
-    _goodsClass.frame = nameFrame;
-    _goodsClass.text = name;
-    
+    class = [NSString stringWithFormat:@"%@ - ", class];
+    CGSize classSize = [class sizeWithFont:[AITools myriadLightSemiCondensedWithSize:kSmallFontSize] forWidth:CGRectGetWidth(_boardView.frame)];
+    classFrame.size.width = classSize.width;
+    _goodsClass.frame = classFrame;
+    _goodsClass.text = class;
     //
-    CGSize serviceSize = [service sizeWithFontSize:kSmallFontSize+2 forWidth:CGRectGetWidth(_boardView.frame)];
-    serviceFrame.origin.x = CGRectGetMaxX(_goodsClass.frame);
-    serviceFrame.size.width = serviceSize.width + 300;
-    _goodsName.frame = serviceFrame;
-    _goodsName.text = service;
-    
+    CGSize nameSize = [name sizeWithFont:[AITools myriadBoldWithSize:33/2.5] forWidth:CGRectGetWidth(_boardView.frame)];
+
+    nameFrame.origin.x = classFrame.origin.x + classFrame.size.width;
+    nameFrame.size.width = nameSize.width;
+    _goodsName.frame = nameFrame;
+    _goodsName.text = name;
 }
 
 - (void)makeGoodsInfoView
