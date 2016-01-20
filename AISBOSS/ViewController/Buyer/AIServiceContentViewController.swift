@@ -427,7 +427,7 @@ internal class AIServiceContentViewController: UIViewController {
             self?.updateFrames(animated:true)
         }
         
-        brandView?.onSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+        brandView?.onSelectedIndexDidChanged = {  bView, selectedIndex in
             // handle selected index changed 
         }
         return brandView
