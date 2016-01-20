@@ -245,11 +245,12 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
 
         if let _ : UITableView = tableView {
+            tableView.reloadData()
             tableView.removeFromSuperview()
             
             tableView.registerClass(AITableFoldedCellHolder.self, forCellReuseIdentifier: AIApplication.MainStoryboard.CellIdentifiers.AITableFoldedCellHolder)
             
-            self.view.insertSubview(self.tableView, belowSubview: self.topBar)
+            self.view.insertSubview(tableView, belowSubview: self.topBar)
             
             tableView.tableHeaderView = self.bubbleViewContainer
             tableView.headerBeginRefreshing()
@@ -661,6 +662,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
             if (offset > 0) {
                 let view = UIView(frame: CGRectMake(0, 0, self.screenWidth, offset))
                 self.tableView.tableFooterView = view
+            }else {
+                self.tableView.tableFooterView = nil;
             }
 
         }
