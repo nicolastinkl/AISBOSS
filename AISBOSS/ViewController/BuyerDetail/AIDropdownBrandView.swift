@@ -9,6 +9,11 @@
 import UIKit
 
 
+ /// 入参 [(title: String, imageURL: String)], selectedIndex: Int
+ /// 出参 selectedIndex
+ /// onDownButtonDidClick 处理下拉按钮点击
+ /// onSelectedIndexDidChanged 处理brand选择
+
 class AIDropdownBrandView: UIView {
 	var isExpanded: Bool = false {
 		didSet {
