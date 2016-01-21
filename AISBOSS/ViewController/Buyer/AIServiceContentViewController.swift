@@ -216,8 +216,12 @@ internal class AIServiceContentViewController: UIViewController {
             weakSelf!.initData()
         }
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         Async.main { () -> Void in
-            self.scrollView.headerBeginRefreshing()
+            //self.scrollView.headerBeginRefreshing()
         }
     }
     

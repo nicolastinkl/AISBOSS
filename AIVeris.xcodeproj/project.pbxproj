@@ -258,6 +258,8 @@
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
+		93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9A1C50784E003F6833 /* YYFPSLabel.m */; };
+		93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9C1C50784E003F6833 /* YYWeakProxy.m */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -891,6 +893,10 @@
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
+		93441E991C50784E003F6833 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		93441E9A1C50784E003F6833 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		93441E9B1C50784E003F6833 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		93441E9C1C50784E003F6833 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -1952,6 +1958,17 @@
 			path = BuyerDetail;
 			sourceTree = "<group>";
 		};
+		93441E981C507846003F6833 /* YYKit */ = {
+			isa = PBXGroup;
+			children = (
+				93441E991C50784E003F6833 /* YYFPSLabel.h */,
+				93441E9A1C50784E003F6833 /* YYFPSLabel.m */,
+				93441E9B1C50784E003F6833 /* YYWeakProxy.h */,
+				93441E9C1C50784E003F6833 /* YYWeakProxy.m */,
+			);
+			name = YYKit;
+			sourceTree = "<group>";
+		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2565,6 +2582,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				93441E981C507846003F6833 /* YYKit */,
 				844282761C45EF95001C2DCB /* OAStackView */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
@@ -3363,6 +3381,7 @@
 				842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
+				93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */,
 				849B4B601C0EDFE300BEC179 /* FLEXUtility.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
 				12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */,
@@ -3404,6 +3423,7 @@
 				93CA11D21C463475008B1EE1 /* AICustomerModels.swift in Sources */,
 				842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
+				93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
 				844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */,
