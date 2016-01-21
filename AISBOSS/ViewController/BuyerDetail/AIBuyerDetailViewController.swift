@@ -606,9 +606,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             } else {
                 serviceList = current_service_list
             }
-            
-            
-            
+             
             
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
             viewController.delegate = self
@@ -628,7 +626,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             let array = [model1, model2]*/
             viewController.proposalId = dataSource.proposal_id
             viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
-            viewController.selectCurrentIndex = indexPath.row // fix here
+            viewController.selectCurrentIndex = indexPath.row
             self.showViewController(viewController, sender: self)
         }
         
