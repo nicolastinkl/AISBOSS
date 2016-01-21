@@ -44,6 +44,8 @@ internal class AIServiceContentViewController: UIViewController {
     var serviceContentModel: AIProposalServiceModel?
     var propodalId: Int = 0
 
+    var pageIndex: Int = 0
+    
     private var currentDatasource: AIProposalServiceDetailModel?
     
     var serviceContentType : AIServiceContentType = .None
@@ -56,6 +58,8 @@ internal class AIServiceContentViewController: UIViewController {
     private var brandView: AIDropdownBrandView?
     private var musicView: AIMusicTherapyView?
     private var paramedicView: AIParamedicView?
+    
+    private var isfinishLoadData:Bool = false
 
     
     private var scrollViewSubviews = [UIView]()
@@ -79,7 +83,10 @@ internal class AIServiceContentViewController: UIViewController {
     
     private var audioView_AudioRecordView:AIAudioRecordView?
     
-    // MARK: -> Internal init methods
+    
+    
+    // MARK: Life Cricel..
+    
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -88,8 +95,42 @@ internal class AIServiceContentViewController: UIViewController {
         curAudioView?.stopPlay()
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = AITools.colorWithR(0x1e, g: 0x1b, b: 0x38);
+        addKeyboardNotifications()
+        /** 导航栏 */
+        makeTopView()
+        
+        //SCI
+        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
+        
+        // Add Pull To Referesh..
+        weak var weakSelf = self
+        self.scrollView.addHeaderWithCallback { () -> Void in
+            weakSelf!.initData()
+        }
+
+        var s = NSStringFromClass(AIServiceContentViewController)
+        s = s+"\(self.pageIndex)"
+        print(s)
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(s, object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
+            
+            guard weakSelf?.isfinishLoadData == true else{
+                weakSelf!.loaddataNecessary()
+                return
+            }            
+        }
+        
+    }
+    
+    
+    
     // 缓存输入信息
     private var inputMessageCache:String = ""
+    
     // MARK: 取消键盘
     
     func shouldHideKeyboard ()
@@ -117,6 +158,8 @@ internal class AIServiceContentViewController: UIViewController {
         configuredParameters?.removeAllObjects()
     }
     
+    
+    // MARK: -> Internal init methods
     
     // MARK: 键盘事件
     
@@ -196,32 +239,10 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
 
-    // MARK: Life Cricel..
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = AITools.colorWithR(0x1e, g: 0x1b, b: 0x38);
-        addKeyboardNotifications()
-        /** 导航栏 */
-        makeTopView()
-     
-        //SCI
-        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")        
-        
-        // Add Pull To Referesh..
-        weak var weakSelf = self
-        self.scrollView.addHeaderWithCallback { () -> Void in
-            weakSelf!.initData()
-        }
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    func loaddataNecessary(){
         Async.main { () -> Void in
-            //self.scrollView.headerBeginRefreshing()
+            self.scrollView.headerBeginRefreshing()
         }
     }
     
@@ -245,7 +266,7 @@ internal class AIServiceContentViewController: UIViewController {
                         strongSelf.currentDatasource = responseData
                         
                         //InitControl Data
-                        
+                        strongSelf.isfinishLoadData  = true
                         /** ScrollView数据填充 */
                         strongSelf.removeContentView()
                         strongSelf.makeContentView()

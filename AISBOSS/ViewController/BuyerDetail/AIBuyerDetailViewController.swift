@@ -610,6 +610,11 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
             viewController.delegate = self
+            viewController.proposalId = dataSource.proposal_id
+            viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
+            viewController.selectCurrentIndex = indexPath.row
+            self.showViewController(viewController, sender: self)
+            
             
             /*
             let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
@@ -624,10 +629,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             }
             
             let array = [model1, model2]*/
-            viewController.proposalId = dataSource.proposal_id
-            viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
-            viewController.selectCurrentIndex = indexPath.row
-            self.showViewController(viewController, sender: self)
         }
         
         selectCount  = selectCount + 1
