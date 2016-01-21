@@ -114,7 +114,7 @@
                 <outlet property="serviceNameLabel" destination="cvO-1B-1e4" id="PRs-Rj-1ei"/>
                 <outlet property="statusLabel" destination="kLf-bf-ITi" id="C6m-if-kmG"/>
             </connections>
-            <point key="canvasLocation" x="567" y="309"/>
+            <point key="canvasLocation" x="386" y="199.5"/>
         </view>
     </objects>
     <resources>

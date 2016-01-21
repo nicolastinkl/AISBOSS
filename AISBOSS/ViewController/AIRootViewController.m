@@ -36,6 +36,19 @@
      */
     [self makeChildViewControllers];
     [self startOpenningAnimation];
+ 
+#if DEBUG
+    YYFPSLabel* _fpsLabel = [[YYFPSLabel alloc] init];
+    [_fpsLabel sizeToFit];
+    _fpsLabel.bottom = self.view.height - 25;
+    _fpsLabel.left = 10;
+    _fpsLabel.alpha = 1;
+    _fpsLabel.size = CGSizeMake(80, 30);
+    [self.view addSubview:_fpsLabel];
+    
+    AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.window addSubview:_fpsLabel];
+#endif
     
 }
 

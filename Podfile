@@ -27,3 +27,5 @@ pod 'AIAlertView', :git => 'https://github.com/asiainfomobile/AIAlertView.git'
 # iOS System Facebook
 
 pod 'AsyncDisplayKit', '~> 1.9.4'
+
+# iOS Debug

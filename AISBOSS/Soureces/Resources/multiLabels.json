@@ -1,0 +1,70 @@
+{
+  "labels": [
+    {
+      "title": "label1",
+      "id": 1,
+      "desc": "",
+      "sublabels": [
+        {
+          "title": "label11",
+          "id": 11,
+          "desc": "",
+          "sublabels": [
+            {
+              "title": "label3",
+              "id": 3,
+              "desc": "",
+              "sublabels": [
+                {
+                  "title": "label31",
+                  "id": 31,
+                  "desc": "",
+                  "sublabels": []
+                },
+                {
+                  "title": "label32",
+                  "id": 32,
+                  "desc": "",
+                  "sublabels": []
+                },
+                {
+                  "title": "label33",
+                  "id": 33,
+                  "desc": "",
+                  "sublabels": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "label12",
+          "id": 12,
+          "desc": "",
+          "sublabels": []
+        }
+      ]
+    },
+    {
+      "title": "label2",
+      "id": 2,
+      "desc": "",
+      "sublabels": [
+        {
+          "title": "label21",
+          "id": 21,
+          "desc": "",
+          "sublabels": []
+        },
+        {
+          "title": "label22",
+          "id": 22,
+          "desc": "",
+          "sublabels": []
+        }
+      ]
+    }
+  ],
+  "selected_label_id": 31,
+  "type": "multiLabels"
+}
