@@ -83,11 +83,10 @@ struct AIHttpEngine{
     }
     
     static func postRequestWithParameters(path:ResourcePath,parameters: [String: AnyObject]? = nil,response: (response:AnyObject?, error:Error?) -> ()) {
-        print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
  
+        print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
         
         let encoding = Alamofire.ParameterEncoding.JSON
-        
         
         Alamofire.request(.POST,  self.baseURL+path.description, parameters: parameters, encoding: encoding, headers: ["HttpQuery":"0&0&100000001872&0"]).responseJSON { (JSON) -> Void in
             

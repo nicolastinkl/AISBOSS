@@ -43,7 +43,7 @@ class PurchasedServiceView: UIView, Measureable {
             
             if let model = newValue {
                 logo.image = UIImage(named: "Placehold")
-                print("\(model.service_thumbnail_icon)")
+                //print("\(model.service_thumbnail_icon)")
                 logo.sd_setImageWithURL("\(model.service_thumbnail_icon)".toURL(), placeholderImage: UIImage(named: "Placehold"))
                 
                 if model.arrange_script_info != nil {

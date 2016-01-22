@@ -116,6 +116,9 @@ internal class AIPageBueryViewController: UIViewController {
         // Add the album view controllers to the scroll view
         //var pageViews: [UIView] = []
         var viewTag:Int = 0
+        
+        let indexNcecssary = (self.selectCurrentIndex ?? 0)
+        
         for model in bubbleModelArray! {
             let pageView = UIView()
             pageView.tag = viewTag
@@ -135,8 +138,13 @@ internal class AIPageBueryViewController: UIViewController {
             
             viewController.serviceContentModel = model
             viewController.propodalId = proposalId
-            
+            viewController.pageIndex = viewTag
             self.addSubViewController(viewController, toView: pageView)
+            
+            if (viewTag == indexNcecssary)  || ((viewTag + 1) == indexNcecssary) || ((viewTag - 1) == indexNcecssary){
+                viewController.loaddataNecessary()
+            }
+            
             viewTag = viewTag + 1
         }
         pageScrollView.contentSize = CGSizeMake(self.view.width * CGFloat(viewTag), self.view.height)
@@ -148,6 +156,7 @@ internal class AIPageBueryViewController: UIViewController {
             return true
         }
     }
+    
     /**
      初始化数据
      */
@@ -289,6 +298,13 @@ extension AIPageBueryViewController:UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let index = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
         pageControl.currentPage = Int(index)
+        
+        // notify to request data
+        
+        var s = NSStringFromClass(AIServiceContentViewController)
+        s = s+"\(Int(index))"
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(s, object: nil)
     }
     
 }

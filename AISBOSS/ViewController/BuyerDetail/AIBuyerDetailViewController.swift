@@ -606,13 +606,18 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             } else {
                 serviceList = current_service_list
             }
-            
-            
-            let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
+             
             
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
             viewController.delegate = self
+            viewController.proposalId = dataSource.proposal_id
+            viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
+            viewController.selectCurrentIndex = indexPath.row
+            self.showViewController(viewController, sender: self)
             
+            
+            /*
+            let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
             let model1 = AIProposalServiceModel()
             let model2 = AIProposalServiceModel()
             if serviceDataModel.service_id == AIServiceDetailTool.MUSIC_SERVICE_ID.integerValue {
@@ -623,11 +628,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
                 model2.service_id = AIServiceDetailTool.MUSIC_SERVICE_ID.integerValue
             }
             
-            let array = [model1, model2]
-            viewController.proposalId = dataSource.proposal_id
-            viewController.bubbleModelArray = array
-            viewController.selectCurrentIndex = 0 // fix here
-            self.showViewController(viewController, sender: self)
+            let array = [model1, model2]*/
         }
         
         selectCount  = selectCount + 1

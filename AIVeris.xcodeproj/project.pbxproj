@@ -111,6 +111,7 @@
 		844282931C45EF95001C2DCB /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282891C45EF95001C2DCB /* OATransformLayer.m */; };
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
+		844F94A01C4F8377002C8A36 /* multiLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 844F949F1C4F8377002C8A36 /* multiLabels.json */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
 		845087D71C3B6E8B00E93937 /* VerticalIconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */; };
 		8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */; };
@@ -264,6 +265,8 @@
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
+		93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9A1C50784E003F6833 /* YYFPSLabel.m */; };
+		93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9C1C50784E003F6833 /* YYWeakProxy.m */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -674,6 +677,7 @@
 		844282891C45EF95001C2DCB /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATransformLayer.m; sourceTree = "<group>"; };
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
+		844F949F1C4F8377002C8A36 /* multiLabels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multiLabels.json; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
 		845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabel.swift; sourceTree = "<group>"; };
 		8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIHorizontalLineLabel.swift; sourceTree = "<group>"; };
@@ -904,6 +908,10 @@
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
+		93441E991C50784E003F6833 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		93441E9A1C50784E003F6833 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		93441E9B1C50784E003F6833 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		93441E9C1C50784E003F6833 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -1970,6 +1978,17 @@
 			path = BuyerDetail;
 			sourceTree = "<group>";
 		};
+		93441E981C507846003F6833 /* YYKit */ = {
+			isa = PBXGroup;
+			children = (
+				93441E991C50784E003F6833 /* YYFPSLabel.h */,
+				93441E9A1C50784E003F6833 /* YYFPSLabel.m */,
+				93441E9B1C50784E003F6833 /* YYWeakProxy.h */,
+				93441E9C1C50784E003F6833 /* YYWeakProxy.m */,
+			);
+			name = YYKit;
+			sourceTree = "<group>";
+		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2304,6 +2323,7 @@
 		93B25A281B9D78B000CD1FEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				844F949F1C4F8377002C8A36 /* multiLabels.json */,
 				12A9625A1BEA0A5000732E23 /* BusinessTravel.json */,
 				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
 				93B25A291B9D78B000CD1FEB /* AINote.strings */,
@@ -2585,6 +2605,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				93441E981C507846003F6833 /* YYKit */,
 				844282761C45EF95001C2DCB /* OAStackView */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
 				846F74131C15A68100EDAE8D /* OBShapedButton */,
@@ -2987,6 +3008,7 @@
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
+				844F94A01C4F8377002C8A36 /* multiLabels.json in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
@@ -3389,6 +3411,7 @@
 				842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
+				93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */,
 				849B4B601C0EDFE300BEC179 /* FLEXUtility.m in Sources */,
 				81C0928D1BAFAC0D003FFF35 /* UIImage+WebP.m in Sources */,
 				12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */,
@@ -3430,6 +3453,7 @@
 				93CA11D21C463475008B1EE1 /* AICustomerModels.swift in Sources */,
 				842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
+				93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
 				844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */,
