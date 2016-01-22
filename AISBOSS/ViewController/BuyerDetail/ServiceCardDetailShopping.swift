@@ -208,7 +208,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
             divideLineView.leadingMargin == divideLineView.superview!.leadingMargin + DIVIDE_MARGIN
             divideLineView.superview!.trailingMargin == divideLineView.trailingMargin + DIVIDE_MARGIN
 //            divideLineView.topMargin == divideLineView.superview!.topMargin + 50
-            distribute(by: ICON_LABEL_MARGIN_SUPER + 5, vertically : titleLabel, divideLineView)
+            distribute(by: ICON_LABEL_MARGIN_SUPER + 15, vertically : titleLabel, divideLineView)
         }
     }
     

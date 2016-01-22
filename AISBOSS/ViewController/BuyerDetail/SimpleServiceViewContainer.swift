@@ -249,7 +249,7 @@ class SimpleServiceViewContainer: UIView {
         case .Shopping:     // 购物
             paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .LabelTag: //文本 
-            paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+            paramView = ServiceCardTextView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
         return paramView
         

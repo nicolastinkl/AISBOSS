@@ -1,5 +1,4 @@
 {
-  "data": {
     "proposal_id": 2692,
     "proposal_name": "Event Planning",
     "proposal_desc": "TRUE is a full service event management company,specializing in product launches.TRUE will help you streamline the process and deliver a successful event.",
@@ -530,11 +529,4 @@
     "proposal_origin": "Search",
     "order_total_price": "0",
     "proposal_price": "€ 3060 / month"
-  },
-  "desc": {
-    "result_code": "200",
-    "result_msg": "success",
-    "data_mode": "",
-    "digest": ""
   }
-}

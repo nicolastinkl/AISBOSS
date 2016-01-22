@@ -220,12 +220,12 @@ class BDKProposalService : MockProposalService{
         
         let body = ["data":["proposal_id": proposalId],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
-        
+
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
                 
-                let dic = response as! [NSObject : AnyObject]                
+                let dic = response as! [NSObject : AnyObject]
                 let model = try AIProposalInstModel(dictionary: dic)
                 success(responseData: model)
                 
@@ -236,7 +236,6 @@ class BDKProposalService : MockProposalService{
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
-        
     }
     
     

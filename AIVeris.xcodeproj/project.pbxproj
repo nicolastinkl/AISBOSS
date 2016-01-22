@@ -406,6 +406,7 @@
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
+		93F7066C1C5224EC00AB6BFC /* ServiceCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
 		93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D821B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m */; };
@@ -1158,6 +1159,7 @@
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
+		93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardTextView.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		93FA1D7D1B9C2E9D009965C8 /* JTSScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSScrollIndicator.h; sourceTree = "<group>"; };
@@ -1912,6 +1914,7 @@
 				8450D11D1C045CF800CD1D5B /* AITitleAndIconTextView.xib */,
 				8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */,
 				8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */,
+				93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -3464,6 +3467,7 @@
 				818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */,
 				849B4B5D1C0EDFE300BEC179 /* FLEXMultilineTableViewCell.m in Sources */,
 				849B4B3E1C0EDFE300BEC179 /* FLEXInstancesTableViewController.m in Sources */,
+				93F7066C1C5224EC00AB6BFC /* ServiceCardTextView.swift in Sources */,
 				93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
