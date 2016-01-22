@@ -283,6 +283,7 @@
 		937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3901C032E9400AF776B /* AINavigationBarView.xib */; };
 		937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3921C04076500AF776B /* AIAudioRecordView.xib */; };
 		937EA3951C04076D00AF776B /* AIAudioRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3941C04076D00AF776B /* AIAudioRecordView.swift */; };
+		9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9394B2931C52188200F80344 /* AIEvent_Planning.json */; };
 		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; };
 		939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F61BDDD92600D07598 /* UIImageUtils.swift */; };
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
@@ -925,6 +926,7 @@
 		937EA3901C032E9400AF776B /* AINavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AINavigationBarView.xib; sourceTree = "<group>"; };
 		937EA3921C04076500AF776B /* AIAudioRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioRecordView.xib; sourceTree = "<group>"; };
 		937EA3941C04076D00AF776B /* AIAudioRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioRecordView.swift; sourceTree = "<group>"; };
+		9394B2931C52188200F80344 /* AIEvent_Planning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIEvent_Planning.json; sourceTree = "<group>"; };
 		939F49F41BDDD67E00D07598 /* UIPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPopView.swift; sourceTree = "<group>"; };
 		939F49F61BDDD92600D07598 /* UIImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UIPopView.xib; path = Buyer/UIPopView.xib; sourceTree = "<group>"; };
@@ -2304,6 +2306,7 @@
 			isa = PBXGroup;
 			children = (
 				844F949F1C4F8377002C8A36 /* multiLabels.json */,
+				9394B2931C52188200F80344 /* AIEvent_Planning.json */,
 				12A9625A1BEA0A5000732E23 /* BusinessTravel.json */,
 				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
 				93B25A291B9D78B000CD1FEB /* AINote.strings */,
@@ -2978,6 +2981,7 @@
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
 				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
+				9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,

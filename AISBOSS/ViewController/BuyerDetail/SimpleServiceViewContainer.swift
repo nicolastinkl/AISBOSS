@@ -153,18 +153,6 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
-    private func setParamView() {
-        if let s  = dataModel!.service_param as? [ServiceCellProductParamModel] {
-            for params in s {                
-                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(params.param_key)!)
-                if let serviceView = createServiceView(viewTemplate!, jsonData: params) {
-                    addParamsView(serviceView)
-                }
-                
-            }
-        }
-        
-    }
     
     private func hasHopeList() -> Bool {
         return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil
@@ -198,8 +186,48 @@ class SimpleServiceViewContainer: UIView {
     private func isParamSetted() -> Bool {
         return dataModel!.param_setting_flag == ParamSettingFlag.Set.rawValue
     }
+
+    private func createServiceView(models: [ServiceCellProductParamModel]?) -> View?{
+
+        let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
+        let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+        var paramHeight:CGFloat = 0
+        var pareusView:View?
+        for  serCellModel in models! {
+            let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
+            if let param = getViewTemplateView(viewTemplate!) {
+                param.loadDataWithModelArray(serCellModel)
+                if let par = pareusView {
+                    //上一个view
+                    param.setTop(par.top + par.height)
+                }
+                paramContainerView.addSubview(param)
+                
+                constrain(param, paramContainerView) {(view, container) ->() in
+                    view.left == container.left
+                    view.top == container.top + paramHeight
+                    view.right == container.right
+                    view.height == param.height
+                }
+                
+                paramHeight += param.height
+                pareusView = param
+            }
+        }
+        paramContainerView.setHeight(paramHeight)
+        return paramContainerView
+       
+    }
     
-    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : ServiceCellProductParamModel) -> View? {
+    /**
+     根据模板获取view
+     
+     - parameter viewTemplate: viewTemplate description
+     
+     - returns: return value description
+     */
+    private func getViewTemplateView(viewTemplate : ProposalServiceViewTemplate) -> ServiceParamlView? {
+        
         
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
         
@@ -220,8 +248,16 @@ class SimpleServiceViewContainer: UIView {
             paramView = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .Shopping:     // 购物
             paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+        case .LabelTag: //文本 
+            paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
+        return paramView
         
+    }
+    
+    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : ServiceCellProductParamModel) -> View? {
+        
+        /*
         if let param = paramView{
             
             param.loadDataWithModelArray(jsonData)
@@ -239,7 +275,7 @@ class SimpleServiceViewContainer: UIView {
                 
                 let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 55))
                 paramContainerView.addSubview(iconLabelCollection)
-                iconLabelCollection.modelDataSource = jsonData.param_list as? [ServiceCellStadandParamModel]
+                //iconLabelCollection.modelDataSource = jsonData.param_list as? [ServiceCellStadandParamModel]
                 if  viewTemplate == .Shopping {
                     
                     let titleLabel = UILabel(frame: CGRectZero)
@@ -282,7 +318,7 @@ class SimpleServiceViewContainer: UIView {
             
             return paramContainerView
         }
-        
+        */
         return nil
     }
     
@@ -290,16 +326,30 @@ class SimpleServiceViewContainer: UIView {
         return totalHeight()
     }
     
-    private func addParamsView(serviceParams: UIView) {
-        let height = getTopHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
-        self.frame.size.height = height
+    private func setParamView() {
         
-        paramViewHeight = serviceParams.frame.height
-        paramsView.addSubview(serviceParams)
-        
-        constrain(paramsView, serviceParams) {container, item in
-            item.edges == container.edges
+        if let s  = dataModel!.service_param as? [ServiceCellProductParamModel] {
+            addParamsView(createServiceView(s))
         }
+        
+    }
+    
+    
+    private func addParamsView(serviceParams: UIView?) {
+        if let parmsSer = serviceParams {
+            let height = getTopHeight() + paramsViewTopMargin.constant + parmsSer.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+            self.frame.size.height = height
+            
+            paramViewHeight = parmsSer.frame.height
+            paramsView.addSubview(parmsSer)
+            
+            constrain(parmsSer,paramsView) {container, item in
+                container.edges == item.edges
+            }
+            
+        }
+        
+       
     }
     
     private func createReviewView(rating: Int) {

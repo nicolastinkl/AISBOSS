@@ -123,31 +123,6 @@
 //
 //@end
 
-/**
- *  @author wantsor, 15-11-24 10:11:32
- *
- *  @view ServiceCardDetailFlag
- *  @brief   气泡详情中的服务参数卡片内容模型
- *
- */
-@protocol ServiceCellProductParamModel
-
-@end
-@interface ServiceCellProductParamModel : JSONModel
-
-@property (nonatomic, strong) NSString<Optional> *param_key;
-@property (nonatomic, strong) NSString<Optional> *product_name;
-@property (nonatomic, strong) NSString<Optional> *product_sub_name;
-@property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
-
-@end
-
-
-@interface ServiceCellStandardParamListModel : JSONModel
-
-@property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
-
-@end
 
 /**
  *  @author wantsor, 15-11-24 10:11:32
@@ -166,6 +141,33 @@
 @property (nonatomic, strong) NSString<Optional> *item_icon;
 
 @end
+
+/**
+ *  @author wantsor, 15-11-24 10:11:32
+ *
+ *  @view ServiceCardDetailFlag
+ *  @brief   气泡详情中的服务参数卡片内容模型
+ *
+ */
+@protocol ServiceCellProductParamModel
+
+@end
+@interface ServiceCellProductParamModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *param_key;
+@property (nonatomic, strong) NSString<Optional> *product_name;
+@property (nonatomic, strong) NSString<Optional> *product_sub_name;
+@property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
+@property (nonatomic, strong) NSArray<ServiceCellShoppingItemModel,Optional> *item_list;
+@end
+
+
+@interface ServiceCellStandardParamListModel : JSONModel
+
+@property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
+
+@end
+
 
 @interface ServiceCellShoppingModel : JSONModel
 

@@ -107,7 +107,7 @@ class AITitleAndIconTextView: ServiceParamlView {
             preIcon.asyncLoadImage(model.param_icon)
 
             if model.param_name.hasPrefix("address") {
-                preLabel.text = model.param_value
+                preLabel.text = "\(model.product_name)"  + "\(model.param_value)"
             } else {
                 preLabel.textColor = UIColor.whiteColor()
                 let str = model.param_name + " " + model.param_value

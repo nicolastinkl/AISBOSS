@@ -26,7 +26,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     //MARK: - Constants
     //sizes
     let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
-    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(257)
+    let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(187)
     let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
     let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
     let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
@@ -65,6 +65,13 @@ class ServiceCardDetailIcon: ServiceParamlView {
     }
     
     func layoutView(){
+        
+        //self.backgroundColor = UIColor.redColor()
+        buildTitle()
+        buildIcon()
+        buildIconDesc()
+        fixFrame()
+        
         titleLabel.text = dataSource?.product_name
         for var i = 0 ; i < dataSource?.param_list.count ; i++ {
             let paramModel = dataSource?.param_list[i] as! ServiceCellStadandParamModel
@@ -81,11 +88,6 @@ class ServiceCardDetailIcon: ServiceParamlView {
                 calendarLabelView.text = paramModel.param_value
             }
         }
-        //self.backgroundColor = UIColor.redColor()
-        buildTitle()
-        buildIcon()
-        buildIconDesc()
-        fixFrame()
     }
     
     //MARK: - build views
@@ -96,11 +98,24 @@ class ServiceCardDetailIcon: ServiceParamlView {
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
         
+        var heightAlisx:CGFloat = 0
+        print(dataSource?.product_name)
+        if dataSource?.product_name.isEmpty == false {
+            heightAlisx = 20
+        }else{
+            heightAlisx = 0
+        }
         constrain(titleLabel){titleLabel in
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + VIEW_LEFT_MARGIN
             titleLabel.trailingMargin >= titleLabel.superview!.trailingMargin
-            titleLabel.topMargin == titleLabel.superview!.topMargin + VIEW_TOP_MARGIN
-            titleLabel.height == 20
+            
+            if dataSource?.product_name != nil || dataSource?.product_name != "" {
+                titleLabel.top == titleLabel.superview!.top
+            }else{
+                titleLabel.topMargin == titleLabel.superview!.top - 20
+            }
+            
+            titleLabel.height == heightAlisx
         }
     }
     
@@ -116,6 +131,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         constrain(titleLabel,priceIconImageView){
             titleLabel,priceIconImageView in
             priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
+ 
         }
         
         constrain(timeIconImageView,priceIconImageView,calendarIconImageView){
@@ -177,7 +193,9 @@ class ServiceCardDetailIcon: ServiceParamlView {
     }
     
     func fixFrame(){
-        self.frame.size.height = VIEW_HEIGHT
+        
+         self.frame.size.height = VIEW_HEIGHT
+        
     }
 }
 

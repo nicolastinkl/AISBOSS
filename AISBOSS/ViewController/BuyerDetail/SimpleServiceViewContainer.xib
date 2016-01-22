@@ -179,7 +179,7 @@
                 <outlet property="topHeight" destination="CXA-hr-bZ3" id="8eW-pc-6cs"/>
                 <outlet property="topView" destination="ZQW-hO-nDs" id="ns4-P7-TtA"/>
             </connections>
-            <point key="canvasLocation" x="281" y="295"/>
+            <point key="canvasLocation" x="107" y="323"/>
         </view>
     </objects>
     <resources>

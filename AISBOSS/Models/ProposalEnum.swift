@@ -29,4 +29,6 @@ enum ProposalServiceViewTemplate : Int {
     case MutilTextAndImage //6
     // 商品清单
     case Shopping //7
+    // 文本标签
+    case LabelTag //8 text
 }
