@@ -64,14 +64,14 @@
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mv0-83-Itj">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoUp" translatesAutoresizingMaskIntoConstraints="NO" id="0TZ-1A-H3W">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoUp" translatesAutoresizingMaskIntoConstraints="NO" id="0TZ-1A-H3W">
                                                     <rect key="frame" x="12" y="6" width="16" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="m5A-pg-l3e"/>
                                                         <constraint firstAttribute="width" constant="16" id="qNn-zl-fjS"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoDown" translatesAutoresizingMaskIntoConstraints="NO" id="Vv2-Zz-luE">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoDown" translatesAutoresizingMaskIntoConstraints="NO" id="Vv2-Zz-luE">
                                                     <rect key="frame" x="570" y="52" width="16" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="MY0-k1-3C0"/>
@@ -200,14 +200,14 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moneyCount" translatesAutoresizingMaskIntoConstraints="NO" id="85O-6e-yvW">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moneyCount" translatesAutoresizingMaskIntoConstraints="NO" id="85O-6e-yvW">
                                         <rect key="frame" x="34" y="47" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="3w1-Tv-Jlc"/>
                                             <constraint firstAttribute="width" constant="15" id="M2Y-DO-rvW"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyCount" translatesAutoresizingMaskIntoConstraints="NO" id="Ksj-KL-fh2">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyCount" translatesAutoresizingMaskIntoConstraints="NO" id="Ksj-KL-fh2">
                                         <rect key="frame" x="96" y="47" width="13" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="9rf-uo-Giy"/>
@@ -440,7 +440,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="173" y="239"/>
+            <point key="canvasLocation" x="272" y="222"/>
         </scene>
         <!--Page Buery View Controller-->
         <scene sceneID="F25-Ic-djb">

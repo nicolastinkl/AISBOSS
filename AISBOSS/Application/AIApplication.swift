@@ -284,7 +284,7 @@ struct AIApplication{
             case .delServiceCategory: return AIApplication.KURL_ReleaseURL+"/delServiceCategory"
             case .queryCustomerProposalList: return AIApplication.KURL_ReleaseURL+"/queryCustomerProposalList"
             case .queryCustomerOrderList: return AIApplication.KURL_ReleaseURL+"/queryCustomerOrderList"
-            case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetail"
+            case .findCustomerProposalDetail: return AIApplication.KURL_ReleaseURL+"/findCustomerProposalDetailNew"
             case .findServiceDetail: return AIApplication.KURL_ReleaseURL+"/findServiceDetail"
             case .updateWishListTagChosenState: return AIApplication.KURL_ReleaseURL+"/updateWishListTagChosenState"
             case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"

@@ -17,7 +17,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
     var divideLineView : UIView!
     
     
-    var dataSource : ServiceCellShoppingModel?
+    var dataSource : ServiceCellProductParamModel?
     
     //MARK: - Constants
     //sizes
@@ -51,8 +51,15 @@ class ServiceCardDetailShopping: ServiceParamlView {
         fixFrame()
     }
     
+    
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        dataSource = models
+        layoutView()
+        
+    }
+    
     func buildModel(jsonString : String){
-        dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
+        //dataSource = ServiceCellShoppingModel(string: jsonString, error: nil)
     }
     
     
@@ -115,10 +122,10 @@ class ServiceCardDetailShopping: ServiceParamlView {
         
         shoppingViewContainer = UIView(frame: CGRectZero)
         self.addSubview(shoppingViewContainer)
-        for var index = 0; index < dataSource?.item_list.count; index++ {
+        for var index = 0; index < dataSource?.param_list.count; index++ {
             
             let cellView : SCDShoppingListCellView = SCDShoppingListCellView(frame: CGRectZero)
-            let serviceItemModel = dataSource?.item_list[index] as! ServiceCellShoppingItemModel
+            let serviceItemModel = dataSource?.param_list[index] as! ServiceCellStadandParamModel
             cellView.loadData(serviceItemModel)
             shoppingViewContainer.addSubview(cellView)
             
@@ -131,7 +138,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
             }
         }
         
-        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
+        let containerHeight = CGFloat((dataSource?.param_list.count)!) * SHOPPING_ITEM_HEIGHT
         shoppingViewContainer.frame.size.height = containerHeight
         
         constrain(shoppingViewContainer){
@@ -150,7 +157,7 @@ class ServiceCardDetailShopping: ServiceParamlView {
     }
     
     func fixFrame(){
-        let containerHeight = CGFloat((dataSource?.item_list.count)!) * SHOPPING_ITEM_HEIGHT
+        let containerHeight = CGFloat((dataSource?.param_list.count)!) * SHOPPING_ITEM_HEIGHT
         self.frame.size.height = TITLE_HEIGHT + containerHeight + TITLE_TOP_MARGIN + VIEW_TOP_MARGIN + MAIN_TITLE_HEIGHT + 15
     }
     
@@ -166,7 +173,7 @@ class SCDShoppingListCellView : UIView {
     var descLabel : UILabel!
     
     
-    var dataSource : ServiceCellShoppingItemModel?
+    var dataSource : ServiceCellStadandParamModel?
 
     //MARK: - Constants
     //sizes
@@ -180,14 +187,14 @@ class SCDShoppingListCellView : UIView {
     //fonts
     let LABEL_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     
-    func loadData(shoppingItemModel : ServiceCellShoppingItemModel){
+    func loadData(shoppingItemModel : ServiceCellStadandParamModel){
         dataSource = shoppingItemModel
         
         layoutView()
         
-        let url = dataSource?.item_icon
+        let url = dataSource?.param_icon
         imageView.sd_setImageWithURL(url!.toURL(), placeholderImage: UIImage(named: "Placehold"))
-        let text = dataSource?.item_intro
+        let text = dataSource?.param_name
         descLabel.text = text
         
   //      adjustRowMargin(descLabel,lineSpacing : LABEL_LINE_SPACING)

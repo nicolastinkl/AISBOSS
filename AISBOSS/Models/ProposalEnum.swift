@@ -18,15 +18,15 @@ enum ProposalServiceViewTemplate : Int {
     // 机票
     case PlaneTicket = 1
     // 打车
-    case Taxi
+    case Taxi //2
     // 酒店
-    case Hotel
+    case Hotel //3
     // 单参数展示
-    case SingleParam
+    case SingleParam //4
     // 多参数文字展示
-    case MutilParams
+    case MutilParams //5
     // 多参数图文展示
-    case MutilTextAndImage
+    case MutilTextAndImage //6
     // 商品清单
-    case Shopping
+    case Shopping //7
 }

@@ -121,7 +121,7 @@ internal class AIServiceContentViewController: UIViewController {
             guard weakSelf?.isfinishLoadData == true else{
                 weakSelf!.loaddataNecessary()
                 return
-            }            
+            }
         }
         
     }

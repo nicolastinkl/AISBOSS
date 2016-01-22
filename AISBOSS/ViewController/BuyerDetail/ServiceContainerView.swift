@@ -82,6 +82,7 @@ class ServiceContainerView: UIView {
     
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
+        /*
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
@@ -117,6 +118,7 @@ class ServiceContainerView: UIView {
                 }
             }
         }
+*/
     }
 
     

@@ -130,9 +130,14 @@
  *  @brief   气泡详情中的服务参数卡片内容模型
  *
  */
+@protocol ServiceCellProductParamModel
+
+@end
 @interface ServiceCellProductParamModel : JSONModel
 
+@property (nonatomic, strong) NSString<Optional> *param_key;
 @property (nonatomic, strong) NSString<Optional> *product_name;
+@property (nonatomic, strong) NSString<Optional> *product_sub_name;
 @property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
 
 @end

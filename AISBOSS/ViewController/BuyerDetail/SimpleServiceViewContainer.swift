@@ -154,17 +154,16 @@ class SimpleServiceViewContainer: UIView {
     }
     
     private func setParamView() {
-        if dataModel!.service_param != nil {
-            
-            if let key = dataModel!.service_param.param_key {
-                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
-                if let paramValueString = dataModel!.service_param.param_value {
-                    if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
-                        addParamsView(serviceView)
-                    }
+        if let s  = dataModel!.service_param as? [ServiceCellProductParamModel] {
+            for params in s {                
+                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(params.param_key)!)
+                if let serviceView = createServiceView(viewTemplate!, jsonData: params) {
+                    addParamsView(serviceView)
                 }
+                
             }
         }
+        
     }
     
     private func hasHopeList() -> Bool {
@@ -200,7 +199,8 @@ class SimpleServiceViewContainer: UIView {
         return dataModel!.param_setting_flag == ParamSettingFlag.Set.rawValue
     }
     
-    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
+    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : ServiceCellProductParamModel) -> View? {
+        
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
         
         var paramView: ServiceParamlView?
@@ -223,7 +223,8 @@ class SimpleServiceViewContainer: UIView {
         }
         
         if let param = paramView{
-            param.loadData(json: jsonData)
+            
+            param.loadDataWithModelArray(jsonData)
             
             let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
             
@@ -236,10 +237,9 @@ class SimpleServiceViewContainer: UIView {
 
                 let VIEW_LEFT_MARGIN: CGFloat  = AITools.displaySizeFrom1080DesignSize(87)
                 
-                let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 45))
+                let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 55))
                 paramContainerView.addSubview(iconLabelCollection)
-                
-                
+                iconLabelCollection.modelDataSource = jsonData.param_list as? [ServiceCellStadandParamModel]
                 if  viewTemplate == .Shopping {
                     
                     let titleLabel = UILabel(frame: CGRectZero)

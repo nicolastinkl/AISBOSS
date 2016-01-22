@@ -47,6 +47,10 @@ class AITitleAndIconTextView: ServiceParamlView {
         
     }
     
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        loadData(model: models)
+    }
+    
     func loadData(model data: ServiceCellProductParamModel) {        
         
         if data.param_list != nil && data.param_list.count > 0 {

@@ -7,6 +7,7 @@
 //
 
 #import "AINetEngine.h"
+#import "ProposalModel.h"
 #import "AFNetworking.h"
 
 #define kTimeoutIntervalForRequest     60
@@ -258,5 +259,17 @@
     return netError;
 }
 
+
+- (void)testPostMessage:(AIMessage *)message{
+    
+    [self postMessage:message success:^(id responseObject) {
+        NSError *myerror = nil;
+        AIProposalInstModel * proModel = [[AIProposalInstModel alloc] initWithDictionary:responseObject error:&myerror];
+        JMLog(@"myerror.description: %@ %@", myerror.description,proModel.proposal_name);
+ 
+    } fail:^(AINetError error, NSString *errorDes) {
+        JMLog(@"errorDes: %@", errorDes);
+    }];
+}
 
 @end

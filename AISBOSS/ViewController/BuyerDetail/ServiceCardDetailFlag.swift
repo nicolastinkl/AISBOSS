@@ -55,6 +55,11 @@ class ServiceCardDetailFlag: ServiceParamlView {
         dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
     }
     
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        dataSource = models
+        layoutView()
+    }
+    
     func layoutView(){
         buildTitle()
         buildFlagsContainer()

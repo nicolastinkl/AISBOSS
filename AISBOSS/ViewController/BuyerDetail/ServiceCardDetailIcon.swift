@@ -45,12 +45,26 @@ class ServiceCardDetailIcon: ServiceParamlView {
         super.init(coder: aDecoder)
     }
     
+    
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        dataSource = models
+        layoutView()
+        
+    }
+    
     //MARK: - load data
     override func loadData(json jsonString : String){
         buildModel(jsonString)
         
         layoutView()
         
+    }
+    
+    func buildModel(jsonString : String){
+        dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
+    }
+    
+    func layoutView(){
         titleLabel.text = dataSource?.product_name
         for var i = 0 ; i < dataSource?.param_list.count ; i++ {
             let paramModel = dataSource?.param_list[i] as! ServiceCellStadandParamModel
@@ -67,13 +81,6 @@ class ServiceCardDetailIcon: ServiceParamlView {
                 calendarLabelView.text = paramModel.param_value
             }
         }
-    }
-    
-    func buildModel(jsonString : String){
-        dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
-    }
-    
-    func layoutView(){
         //self.backgroundColor = UIColor.redColor()
         buildTitle()
         buildIcon()
