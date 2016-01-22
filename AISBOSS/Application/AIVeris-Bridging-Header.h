@@ -101,3 +101,14 @@
 #import "AIBuyerParamsDelegate.h"
 
 #import "AINotifications.h"
+
+// 子服务详情UI模型
+
+#import "AIServiceDetailUIModel.h"
+
+
+
+
+
+
+
