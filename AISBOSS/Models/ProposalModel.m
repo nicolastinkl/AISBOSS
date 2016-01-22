@@ -193,3 +193,11 @@
 @implementation AIParamRelationModel
 @end
 
+
+/////AIServiceDetailDisplayModel
+@implementation AIServiceDetailDisplayModel
+
+@end
+
+
+

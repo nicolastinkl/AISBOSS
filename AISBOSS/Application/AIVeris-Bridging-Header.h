@@ -102,4 +102,11 @@
 
 #import "AINotifications.h"
 
+// 子服务详情UI模型
+
+#import "AIServiceDetailUIModel.h"
+
 #import "YYFPSLabel.h"
+
+// AITagView
+#import "AIBaseTagsView.h"

@@ -235,6 +235,9 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 
 
+
+
+
 @protocol AIProposalServiceModel @end
 
 
@@ -434,4 +437,15 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @end
 
 
+
+
+/////// AIServiceDetailDisplayModel
+
+@protocol AIServiceDetailDisplayModel
+
+@end
+
+@interface AIServiceDetailDisplayModel : JSONModel
+
+@end
 
