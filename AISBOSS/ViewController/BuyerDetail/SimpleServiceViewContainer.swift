@@ -255,73 +255,6 @@ class SimpleServiceViewContainer: UIView {
         
     }
     
-    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : ServiceCellProductParamModel) -> View? {
-        
-        /*
-        if let param = paramView{
-            
-            param.loadDataWithModelArray(jsonData)
-            
-            let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            
-            paramContainerView.frame.size.height = (param.height ?? 0) + paramContainerView.height
-            
-            paramContainerView.addSubview(param)
-            
-            
-            if viewTemplate != .MutilTextAndImage {
-
-                let VIEW_LEFT_MARGIN: CGFloat  = AITools.displaySizeFrom1080DesignSize(87)
-                
-                let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 55))
-                paramContainerView.addSubview(iconLabelCollection)
-                //iconLabelCollection.modelDataSource = jsonData.param_list as? [ServiceCellStadandParamModel]
-                if  viewTemplate == .Shopping {
-                    
-                    let titleLabel = UILabel(frame: CGRectZero)
-                    let paramV  = param as! ServiceCardDetailShopping
-                    titleLabel.text = paramV.dataSource?.product_name
-                    titleLabel.font = paramV.MAIN_TITLE_TEXT_FONT
-                    titleLabel.textColor = UIColor.whiteColor()
-                    paramContainerView.addSubview(titleLabel)
-                    
-                    constrain(titleLabel){
-                        titleLabel in
-                        titleLabel.topMargin == titleLabel.superview!.topMargin + paramV.VIEW_TOP_MARGIN
-                        titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + paramV.MAIN_TITLE_LEFT_MARGIN
-                        titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
-                        titleLabel.height == paramV.MAIN_TITLE_HEIGHT
-                    }
-                    iconLabelCollection.setTop(paramV.VIEW_TOP_MARGIN + paramV.MAIN_TITLE_HEIGHT + 5)
-                    let toHeight = iconLabelCollection.height + iconLabelCollection.top
-                    param.setTop(toHeight)
-                    
-                    constrain(param,iconLabelCollection, paramContainerView) {(view1 ,icon, container) ->() in
-                        view1.top == view1.superview!.top + toHeight
-                        view1.left == container.left
-                        view1.right == container.right
-                        view1.bottom == container.bottom
-                    }
-                    paramContainerView.frame.size.height = param.height + iconLabelCollection.height
-                    
-                }else{
-                    // Add constrain
-                    constrain(param, paramContainerView) {(view, container) ->() in
-                        view.left == container.left
-                        view.top == container.top
-                        view.bottom == container.bottom
-                        view.right == container.right
-                    }
-                    paramContainerView.frame.size.height = param.height + iconLabelCollection.height
-                }
-            }
-            
-            return paramContainerView
-        }
-        */
-        return nil
-    }
-    
     func selfHeight() -> CGFloat {
         return totalHeight()
     }
@@ -333,7 +266,6 @@ class SimpleServiceViewContainer: UIView {
         }
         
     }
-    
     
     private func addParamsView(serviceParams: UIView?) {
         if let parmsSer = serviceParams {

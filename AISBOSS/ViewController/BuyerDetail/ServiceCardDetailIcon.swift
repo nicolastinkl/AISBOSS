@@ -155,6 +155,13 @@ class ServiceCardDetailIcon: ServiceParamlView {
         priceLabelView = UILabel(frame: CGRectZero)
         calendarLabelView = UILabel(frame: CGRectZero)
         
+        timeLabelView.numberOfLines = 3
+        timeLabelView.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        priceLabelView.numberOfLines = 3
+        priceLabelView.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        calendarLabelView.numberOfLines = 3
+        calendarLabelView.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
         timeLabelView.textColor = UIColor.whiteColor()
         priceLabelView.textColor = UIColor.whiteColor()
         calendarLabelView.textColor = UIColor.whiteColor()
@@ -170,7 +177,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         
         constrain(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
-            timeLabelView.height == 21
+            timeLabelView.height == 35
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
             timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
@@ -179,14 +186,14 @@ class ServiceCardDetailIcon: ServiceParamlView {
         
         constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
-            priceLabelView.height == 21
+            priceLabelView.height == 35
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
         }
         
         constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
-            calendarLabelView.height == 21
+            calendarLabelView.height == 35
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
             calendarLabelView.centerX == calendarIconImageView.centerX
         }
