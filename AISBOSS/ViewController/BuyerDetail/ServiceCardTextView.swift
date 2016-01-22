@@ -78,7 +78,7 @@ class ServiceCardTextView: ServiceParamlView {
         
         for var i = 0 ; i < dataSource?.param_list.count ; i++ {
             let stadandParam = dataSource?.param_list[i] as! ServiceCellStadandParamModel
-            let text = stadandParam.param_name
+            let text = stadandParam.param_value
             curFrame = buildFlag(curFrame, text: text,number : i)
         }
         //加载完subView后计算最后高度
