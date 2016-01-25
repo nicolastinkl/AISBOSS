@@ -36,7 +36,7 @@ class PriceAndStepperView: UIView {
 	 - parameter price:        单价
 	 - parameter showStepper:  是否显示stepper
 	 - parameter defaultValue: 默认选择数量
-	 - parameter minValue:     最小数量
+	 - parameter minValue:     最小数量 可选默认0
 	 - parameter maxValue:     最大数量 －1则是默认值100
 
 	 - returns:
