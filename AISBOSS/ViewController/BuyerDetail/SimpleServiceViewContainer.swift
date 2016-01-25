@@ -171,7 +171,6 @@ class SimpleServiceViewContainer: UIView {
         
         messageView.addSubview(msgContent)
         
-        
         constrain(messageView, msgContent) {container, view in
             view.edges == container.edges
         }
@@ -252,7 +251,6 @@ class SimpleServiceViewContainer: UIView {
             paramView = ServiceCardTextView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
         return paramView
-        
     }
     
     func selfHeight() -> CGFloat {
