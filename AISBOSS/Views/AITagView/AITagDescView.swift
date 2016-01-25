@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class AITagDescView: UIView {
 	lazy private var label: UILabel = { [weak self] in
-		let result = UILabel(frame: CGRectInset((self?.bounds)!, 10, 0))
+		let result = UILabel(frame: CGRectInset((self?.bounds)!, -8, 0))
 		self?.addSubview(result)
 		result.numberOfLines = 0
 		return result
@@ -18,6 +19,12 @@ class AITagDescView: UIView {
 	var text: String? {
 		set {
 			label.text = newValue
+			if let string = newValue {
+                let size = CGSizeMake(CGRectGetWidth(label.bounds), .max)
+                let contentRect = string.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:label.font], context: nil)
+                label.frame = contentRect
+                self.frame = CGRectInset(contentRect, 8, 0)
+			}
 		}
 		get {
 			return label.text
