@@ -258,7 +258,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         scrollView.hideErrorView()
   
-        BDKProposalService().findServiceDetail(self.serviceContentModel?.service_id ?? 0, proposalId: propodalId,customID : customID, success:
+        BDKProposalService().findServiceDetail(self.serviceContentModel!, proposalId: propodalId,customID : customID, success:
             {[weak self] (responseData) -> Void in
                 
                 Async.main({ () -> Void in

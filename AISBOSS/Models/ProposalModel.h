@@ -270,6 +270,10 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
 @property (nonatomic, weak) AIBueryDetailCell<Optional> *cell;      //view
 
+// 1.25 added
+@property (assign, nonatomic) NSInteger comp_service_id;
+
+
 @end
 
 
