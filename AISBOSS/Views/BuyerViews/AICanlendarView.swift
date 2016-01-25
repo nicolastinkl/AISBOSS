@@ -7,3 +7,37 @@
 //
 
 import Foundation
+
+
+class AICanlendarView: UIView {
+    
+    //MARK: Constants
+    
+    
+    //MARK: Variables
+    
+    var displayModel : AICanlendarViewModel?
+    var textField : UITextField?
+    var totalNumber : Int = 0
+    var totalPriceLabel : UPLabel?
+    
+    //MARK: Override
+    
+    init(frame : CGRect, model: AICanlendarViewModel?) {
+        super.init(frame: frame)
+        displayModel = model
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+    func makeSubViews () {
+        
+        
+    }
+    
+    
+}
