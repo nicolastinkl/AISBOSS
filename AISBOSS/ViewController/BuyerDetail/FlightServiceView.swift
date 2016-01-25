@@ -46,6 +46,19 @@ class FlightServiceView: ServiceParamlView {
         toAirport.text = getStringContent("arrival_desc")
     }
     
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        
+//        takeOffTime.text = model.departure_time
+//        from.text = model.departure_place
+//        fromAirport.text = model.departure_desc
+//        
+//        arriveTime.text = model.arrival_time
+//        to.text = model.arrival_place
+//        toAirport.text = model.arrival_desc
+        
+        
+    }
+    
     override func loadData(json jonsStr: String) {
         let jsonData = jonsStr.dataUsingEncoding(NSUTF8StringEncoding)
         do {

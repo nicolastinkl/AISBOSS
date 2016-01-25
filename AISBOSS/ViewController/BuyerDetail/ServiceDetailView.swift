@@ -8,7 +8,17 @@
 
 import UIKit
 
-class ServiceParamlView: UIView {
+protocol ServiceParamlViewProtocol{
+    func loadData(json jonsStr: String)
+}
+
+extension ServiceParamlViewProtocol {
+    func loadDataWithModelArray(models: ServiceCellProductParamModel!){
+        
+    }
+}
+
+class ServiceParamlView: UIView,ServiceParamlViewProtocol{
 
     var paramData : NSDictionary?
     
@@ -28,10 +38,12 @@ class ServiceParamlView: UIView {
         
         return str
     }
-    
     func loadData(json jonsStr: String) {
         
     }
-
+    
+    func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        
+    }
 }
 

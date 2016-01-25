@@ -26,10 +26,49 @@
 @end
 
 @implementation ServiceCellStadandParamModel
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _product_name = @"";
+        _param_value = @"";
+        _product_key = @"";
+    }
+    
+    return self;
+}
 
 @end
 
 @implementation ServiceCellProductParamModel
+
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _product_name = @"";
+        _product_sub_name = @"";
+    }
+    
+    return self;
+}
+
+
++(JSONKeyMapper*)keyMapper
+{
+    // 这里就采用了KVC的方式来取值...
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"param_value.product_name": @"product_name",
+                                                       @"param_value.product_sub_name": @"product_sub_name",
+                                                       @"param_value.item_list":@"item_list",
+                                                       @"param_value.param_list": @"param_list"
+                                                       
+                                                       }];
+}
+
 
 @end
 

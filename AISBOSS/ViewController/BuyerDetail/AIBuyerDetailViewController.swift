@@ -72,10 +72,13 @@ class AIBuyerDetailViewController : UIViewController {
     
     private var current_service_list: NSArray? {
         get {
-            let result = dataSource?.service_list.filter (){
-                return ($0 as! AIProposalServiceModel).service_del_flag == ServiceDeletedStatus.NotDeleted.rawValue
+            guard dataSource?.service_list == nil else {
+                let result = dataSource?.service_list.filter (){
+                    return ($0 as! AIProposalServiceModel).service_del_flag == ServiceDeletedStatus.NotDeleted.rawValue
+                }
+                return result
             }
-            return result
+            return nil
         }
     }
 
@@ -86,9 +89,6 @@ class AIBuyerDetailViewController : UIViewController {
         //不优
         return deleted_service_list.mutableCopy() as! NSMutableArray
     }
-    
-    
-//    private var horizontalCardCellCache = NSMutableDictionary()
     
     // MARK: life cycle
     func initTableView(){
@@ -438,6 +438,34 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()
+                        
+                        /**
+                        *  @author tinkl, 16-01-22 10:01:25
+                        *
+                        *  Display View some Icons.
+                        *
+                        *  @return none
+                        */
+                        _ = viewController.navigationView.subviews.filter({(view:AnyObject)->Bool in
+                            let someView = view as! UIView
+                            if someView.tag == 10 {
+                                someView.hidden = false
+                            }
+                            return true
+                        })
+                        
+                        
+                        if let cView = viewController.contentView {
+                            _ = cView.subviews.filter({ (svsiew:AnyObject) -> Bool in
+                                let someView = svsiew as! UIView
+                                if someView.tag == 10 {
+                                    someView.hidden = false
+                                }
+                                return true
+                            })
+                        }
+                       
+                        
                     }
                     
                 }, fail : {[weak self]
@@ -446,7 +474,6 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         viewController.tableView.headerEndRefreshing()
                         // 处理错误警告
-                         
                     }
                 })
         }
@@ -465,7 +492,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             
             let cell = model.cell
             
-            let view: SimpleServiceViewContainer = cell.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
+            let view: SimpleServiceViewContainer = cell?.contentView.viewWithTag(SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as! SimpleServiceViewContainer
             
             let logo = view.logo
             
@@ -502,7 +529,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             serviceList = current_service_list
         }
         
-        if dataSource == nil {
+        if serviceList == nil {
             return 0
         } else {
             return serviceList!.count
@@ -565,7 +592,6 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
     }
     
-    
     // MARK: - UITableViewDelegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -582,10 +608,9 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         if let height = serviceDataModel.cell?.cellHeight {
              
             if  (serviceDataModel.wish_list == nil) {
-                if (serviceDataModel.service_param == nil || serviceDataModel.service_param.param_key == nil) {
+                if (serviceDataModel.service_param == nil){
                     return height + 50
                 }
-                
             }
             return height + CELL_VERTICAL_SPACE
         } else {

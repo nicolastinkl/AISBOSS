@@ -8,6 +8,7 @@
 
 #import "JSONModel.h"
 #import <UIKit/UIKit.h>
+#import "AIProposalServiceCellModel.h"
 
 //NS_ASSUME_NONNULL_BEGIN
 //NS_ASSUME_NONNULL_END
@@ -19,8 +20,6 @@
 @protocol ServiceOrderModel
 @end
 
-@protocol ParamModel
-@end
 
 @protocol AIProposalServiceDetailParamModel
 @end
@@ -28,15 +27,8 @@
 @protocol AIProposalServiceDetailParamValueModel
 @end
 
-
-
-@interface ParamModel : JSONModel
-
-@property (nonatomic, strong) NSString<Optional> *param_key;
-@property (nonatomic, strong) NSString<Optional> *param_value;
-
+@protocol ParamModel
 @end
-
 
 // 重要信息关键点
 @protocol KeypointModel
@@ -49,6 +41,13 @@
 // 关键点内容
 @property (nonatomic, strong) NSString<Optional> *key_point_content;
 
+@end
+
+
+@interface ParamModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *param_key;
+@property (nonatomic, strong) NSString<Optional> *param_value;
 @end
 
 
@@ -243,36 +242,42 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 
 
 @interface AIProposalServiceModel : JSONModel
-
 @property (assign, nonatomic) NSInteger service_id;
 @property (strong, nonatomic) NSString<Optional> * state;
 @property (assign, nonatomic) NSInteger set_flag;
 @property (assign, nonatomic) int type;
 @property (assign, nonatomic) NSInteger service_rating_level;
-@property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
-@property (strong, nonatomic) NSString<Optional> * service_desc;
-@property (nonatomic, strong) NSArray<AIProposalServiceDetailParamModel, Optional> * service_param_list;
-@property (nonatomic, strong) NSArray<AIProposalServiceParamRelationModel, Optional> * service_param_rel_list;
+
 @property (assign, nonatomic) NSInteger param_setting_flag;
 @property (nonatomic, assign) NSInteger service_del_flag;
 @property (nonatomic, assign) NSInteger is_deletable;
 @property (nonatomic, assign) NSInteger role_id;
-
-@property (nonatomic, strong) AIBueryDetailCell<Optional> *cell;
-
+@property (nonatomic, assign) NSInteger default_offering;
+@property (nonatomic, assign) NSInteger real_price;
+@property (strong, nonatomic) NSString<Optional> *  unit;
 @property (assign, nonatomic) NSInteger is_main_flag;
 @property (assign, nonatomic) NSInteger is_delemode;
 
-@property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price;
-
+@property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
+@property (strong, nonatomic) NSString<Optional> * service_desc;
 @property (strong, nonatomic) NSString<Optional> * service_rating_icon;
-@property (strong, nonatomic) ParamModel<Optional> * service_param;
+@property (strong, nonatomic) NSString<Optional> * billing_mode;
 
+@property (nonatomic, strong) NSArray<AIProposalServiceDetailParamModel, Optional> * service_param_list;
+@property (nonatomic, strong) NSArray<AIProposalServiceParamRelationModel, Optional> * service_param_rel_list;
+@property (strong, nonatomic) AIProposalServicePriceModel<Optional> * service_price; //服务价格
+@property (strong, nonatomic) NSArray<ServiceCellProductParamModel,Optional> * service_param;     //服务参数
 @property (strong, nonatomic) AIProposalHopeModel<Optional> * wish_list; //服务心愿单
-
+@property (nonatomic, weak) AIBueryDetailCell<Optional> *cell;      //view
 
 @end
 
+
+/**
+ *  @author tinkl, 16-01-21 16:01:45
+ *
+ *  提供者
+ */
 @protocol AIProposalProvider @end
 @interface AIProposalProvider : JSONModel
 

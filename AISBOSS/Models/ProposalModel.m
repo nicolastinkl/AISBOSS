@@ -24,20 +24,6 @@
 
 @end
 
-@implementation ParamModel
-/*
-+(JSONKeyMapper*)keyMapper
-{
-    // 这里就采用了KVC的方式来取值...
-    return [[JSONKeyMapper alloc] initWithDictionary:@{
-                                                       @"key_point_title": @"param_key",
-                                                       @"key_point_content": @"param_value"
-                                                       
-                                                       }];
-}*/
-
-@end
-
 @implementation ServiceOrderModel
 
 /*
@@ -103,6 +89,11 @@
     
     return self;
 }
+
+@end
+@implementation ParamModel
+
+
 
 @end
 

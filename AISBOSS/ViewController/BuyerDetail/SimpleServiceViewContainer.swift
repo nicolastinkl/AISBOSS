@@ -153,19 +153,6 @@ class SimpleServiceViewContainer: UIView {
         }
     }
     
-    private func setParamView() {
-        if dataModel!.service_param != nil {
-            
-            if let key = dataModel!.service_param.param_key {
-                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(key)!)
-                if let paramValueString = dataModel!.service_param.param_value {
-                    if let serviceView = createServiceView(viewTemplate!, jsonData : paramValueString) {
-                        addParamsView(serviceView)
-                    }
-                }
-            }
-        }
-    }
     
     private func hasHopeList() -> Bool {
         return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil
@@ -199,8 +186,49 @@ class SimpleServiceViewContainer: UIView {
     private func isParamSetted() -> Bool {
         return dataModel!.param_setting_flag == ParamSettingFlag.Set.rawValue
     }
+
+    private func createServiceView(models: [ServiceCellProductParamModel]?) -> View?{
+
+        let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
+        let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+        var paramHeight:CGFloat = 0
+        var pareusView:View?
+        for  serCellModel in models! {
+            let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
+            if let param = getViewTemplateView(viewTemplate!) {
+                param.loadDataWithModelArray(serCellModel)
+                if let par = pareusView {
+                    //上一个view
+                    param.setTop(par.top + par.height)
+                }
+                paramContainerView.addSubview(param)
+                
+                constrain(param, paramContainerView) {(view, container) ->() in
+                    view.left == container.left
+                    view.top == container.top + paramHeight
+                    view.right == container.right
+                    view.height == param.height
+                }
+                
+                paramHeight += param.height
+                pareusView = param
+            }
+        }
+        paramContainerView.setHeight(paramHeight)
+        return paramContainerView
+       
+    }
     
-    private func createServiceView(viewTemplate : ProposalServiceViewTemplate, jsonData : String) -> View? {
+    /**
+     根据模板获取view
+     
+     - parameter viewTemplate: viewTemplate description
+     
+     - returns: return value description
+     */
+    private func getViewTemplateView(viewTemplate : ProposalServiceViewTemplate) -> ServiceParamlView? {
+        
+        
         let paramViewWidth = AITools.displaySizeFrom1080DesignSize(1010)
         
         var paramView: ServiceParamlView?
@@ -220,86 +248,40 @@ class SimpleServiceViewContainer: UIView {
             paramView = ServiceCardDetailIcon(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         case .Shopping:     // 购物
             paramView = ServiceCardDetailShopping(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
+        case .LabelTag: //文本 
+            paramView = ServiceCardTextView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         }
+        return paramView
         
-        if let param = paramView{
-            param.loadData(json: jsonData)
-            
-            let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
-            
-            paramContainerView.frame.size.height = (param.height ?? 0) + paramContainerView.height
-            
-            paramContainerView.addSubview(param)
-            
-            
-            if viewTemplate != .MutilTextAndImage {
-
-                let VIEW_LEFT_MARGIN: CGFloat  = AITools.displaySizeFrom1080DesignSize(87)
-                
-                let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 45))
-                paramContainerView.addSubview(iconLabelCollection)
-                
-                
-                if  viewTemplate == .Shopping {
-                    
-                    let titleLabel = UILabel(frame: CGRectZero)
-                    let paramV  = param as! ServiceCardDetailShopping
-                    titleLabel.text = paramV.dataSource?.product_name
-                    titleLabel.font = paramV.MAIN_TITLE_TEXT_FONT
-                    titleLabel.textColor = UIColor.whiteColor()
-                    paramContainerView.addSubview(titleLabel)
-                    
-                    constrain(titleLabel){
-                        titleLabel in
-                        titleLabel.topMargin == titleLabel.superview!.topMargin + paramV.VIEW_TOP_MARGIN
-                        titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + paramV.MAIN_TITLE_LEFT_MARGIN
-                        titleLabel.superview!.trailingMargin >= titleLabel.trailingMargin
-                        titleLabel.height == paramV.MAIN_TITLE_HEIGHT
-                    }
-                    iconLabelCollection.setTop(paramV.VIEW_TOP_MARGIN + paramV.MAIN_TITLE_HEIGHT + 5)
-                    let toHeight = iconLabelCollection.height + iconLabelCollection.top
-                    param.setTop(toHeight)
-                    
-                    constrain(param,iconLabelCollection, paramContainerView) {(view1 ,icon, container) ->() in
-                        view1.top == view1.superview!.top + toHeight
-                        view1.left == container.left
-                        view1.right == container.right
-                        view1.bottom == container.bottom
-                    }
-                    paramContainerView.frame.size.height = param.height + iconLabelCollection.height
-                    
-                }else{
-                    // Add constrain
-                    constrain(param, paramContainerView) {(view, container) ->() in
-                        view.left == container.left
-                        view.top == container.top
-                        view.bottom == container.bottom
-                        view.right == container.right
-                    }
-                    paramContainerView.frame.size.height = param.height + iconLabelCollection.height
-                }
-            }
-            
-            return paramContainerView
-        }
-        
-        return nil
     }
     
     func selfHeight() -> CGFloat {
         return totalHeight()
     }
     
-    private func addParamsView(serviceParams: UIView) {
-        let height = getTopHeight() + paramsViewTopMargin.constant + serviceParams.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
-        self.frame.size.height = height
+    private func setParamView() {
         
-        paramViewHeight = serviceParams.frame.height
-        paramsView.addSubview(serviceParams)
-        
-        constrain(paramsView, serviceParams) {container, item in
-            item.edges == container.edges
+        if let s  = dataModel!.service_param as? [ServiceCellProductParamModel] {
+            addParamsView(createServiceView(s))
         }
+        
+    }
+    
+    private func addParamsView(serviceParams: UIView?) {
+        if let parmsSer = serviceParams {
+            let height = getTopHeight() + paramsViewTopMargin.constant + parmsSer.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+            self.frame.size.height = height
+            
+            paramViewHeight = parmsSer.frame.height
+            paramsView.addSubview(parmsSer)
+            
+            constrain(parmsSer,paramsView) {container, item in
+                container.edges == item.edges
+            }
+            
+        }
+        
+       
     }
     
     private func createReviewView(rating: Int) {

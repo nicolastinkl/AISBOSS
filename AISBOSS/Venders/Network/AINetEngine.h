@@ -53,4 +53,12 @@ typedef void(^net_fail_block)(AINetError error, NSString *errorDes);
  */
 - (void)removeCommonHeaders;
 
+
+/**
+ *  @author tinkl, 16-01-22 10:01:11
+ *
+ *  测试案例
+ */
+- (void)testPostMessage:(AIMessage *)message;
+
 @end

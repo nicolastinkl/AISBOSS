@@ -1,0 +1,532 @@
+{
+    "proposal_id": 2692,
+    "proposal_name": "Event Planning",
+    "proposal_desc": "TRUE is a full service event management company,specializing in product launches.TRUE will help you streamline the process and deliver a successful event.",
+    "proposal_owner": 0,
+    "order_times": 0,
+    "service_list": [
+      {
+        "service_id": 900001001200,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001600,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/uxmxyhWXczanK.png",
+        "service_desc": "Event Planning",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_rating_level": 10,
+        "service_price": {
+          "original": "€ 800",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 800,
+        "unit": "€",
+        "billing_mode": "floating",
+        "wish_list" : {},
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "event Time",
+                  "param_value": "Nov 19th"
+                },
+                {
+                  "param_key": "",
+                  "param_name": "person",
+                  "param_value": "80 persons"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 5,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_value": "Event Planning",
+                  "param_icon": ""
+                },
+                {
+                  "param_key": "",
+                  "param_value": "Board Design",
+                  "param_icon": ""
+                },
+                {
+                  "param_key": "",
+                  "param_value": "Online Service",
+                  "param_icon": ""
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "1 time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 800 / time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001201,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001601,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/ZirWNCPCHUNuz.png",
+        "service_desc": "Show/Performance",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_rating_level": 10,
+        "service_price": {
+          "original": "€ 480",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 480,
+        "unit": "€",
+        "billing_mode": "",
+        "wish_list" : {},
+        "service_param": [
+          {
+            "param_key": 4,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "address",
+                  "param_value": "No. 16, North Fengwo Road, Haidian",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/CTQJUtkd0VWNI.png",
+                  "product_key": "",
+                  "product_name": "Show/Performance"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "1 time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 480 / time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001202,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001602,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/TyDUxO7UXgHeL.png",
+        "service_desc": "Venue Rental",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 500",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 500,
+        "unit": "€",
+        "billing_mode": "",
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "seates",
+                  "param_value": "100 seats"
+                },
+                {
+                  "param_key": "",
+                  "param_name": "person",
+                  "param_value": "Rental duration"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 4,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "address",
+                  "param_value": "No. 16, North Fengwo Road, Haidian",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/CTQJUtkd0VWNI.png",
+                  "product_key": "",
+                  "product_name": ""
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "1 time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 500 / half day",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001203,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001603,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/1ETI1uzC3YJqt.png",
+        "service_desc": "Social Media Publicity",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 80",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 80,
+        "unit": "€",
+        "billing_mode": "floating",
+        "service_param": [
+          {
+            "param_key": 5,
+            "param_value": {
+              "product_name": "Service Coverage",
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_value": "Wechat",
+                  "param_icon": ""
+                },
+                {
+                  "param_key": "",
+                  "param_value": "Weibo",
+                  "param_icon": ""
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "Real-time billing",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 60 for first 160 audiences \r\n € 0.5 / audience after 160",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001204,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001604,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/OtynSpgbSZUNu.png",
+        "service_desc": "Professional Photography",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 230",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 230,
+        "unit": "€",
+        "billing_mode": "/Half day",
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "Aerial photography",
+                  "param_value": "Videotaping"
+                },
+                {
+                  "param_key": "",
+                  "param_name": "Aerial photography",
+                  "param_value": "Photography"
+                },
+                {
+                  "param_key": "",
+                  "param_name": "Rental duration",
+                  "param_value": "half day"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "1 time",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 230 / half day",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001205,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001605,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/fe1eV2TsZKdsv.png",
+        "service_desc": "Live Event Webcast",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 50",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 50,
+        "unit": "€",
+        "billing_mode": "floating",
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "Webcast",
+                  "param_value": "Cooperation Webcast"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "Real-time billing",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 60 for first 80 audiences \r\n€ 0.5 / audience after 80",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001206,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001606,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/twjCPUBsh6NUP.png",
+        "service_desc": "Catering",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 800",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 800,
+        "unit": "€",
+        "billing_mode": "",
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "Webcast",
+                  "param_value": "Tea break "
+                },
+                {
+                  "param_key": "",
+                  "param_name": "menu",
+                  "param_value": "Menu A"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "80 persons",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 10 / person",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "service_id": 900001001207,
+        "state": "1",
+        "set_flag": 0,
+        "type": 0,
+        "role_id": 100000001607,
+        "default_offering": 1,
+        "service_thumbnail_icon": "http://171.221.254.231:3000/upload/proposal/pGHyFetIvuJ07.png",
+        "service_desc": "Shuttle Bus",
+        "param_setting_flag": 0,
+        "service_del_flag": "1",
+        "service_price": {
+          "original": "€ 120",
+          "discount": "",
+          "saved": ""
+        },
+        "real_price": 120,
+        "unit": "€",
+        "billing_mode": "/Half day",
+        "service_param": [
+          {
+            "param_key": 8,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "Webcast",
+                  "param_value": "Small Coach( 21–26 seats ) "
+                },
+                {
+                  "param_key": "",
+                  "param_name": "Webcast",
+                  "param_value": "half day"
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 4,
+            "param_value": {
+              "param_list": [
+                {
+                  "param_key": "",
+                  "param_name": "address_departure",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/CTQJUtkd0VWNI.png",
+                  "param_value": "No. 16, North Fengwo Road, Haidian",
+                  "product_key": "",
+                  "product_name": ""
+                },
+                {
+                  "param_key": "",
+                  "param_name": "address_arrival",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/LqB8JyHilA5yl.png",
+                  "param_value": "No. 66 Courtyard, Guangqu Road Chaoyang",
+                  "product_key": "",
+                  "product_name": ""
+                }
+              ]
+            }
+          },
+          {
+            "param_key": 6,
+            "param_value": {
+              "product_name": "",
+              "param_list": [
+                {
+                  "param_key": "time",
+                  "param_value": "1 Coach",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/6F8rsHmPuvAb0.png"
+                },
+                {
+                  "param_key": "price",
+                  "param_value": "€ 120 / half day",
+                  "param_icon": "http://171.221.254.231:3000/upload/shoppingcart/cLw38v2T0R0h4.png"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "proposal_origin": "Search",
+    "order_total_price": "0",
+    "proposal_price": "€ 3060 / month"
+  }

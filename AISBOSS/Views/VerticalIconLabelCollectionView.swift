@@ -29,7 +29,7 @@ class VerticalIconLabelCollectionView: UIView {
         }
     }
     
-    var itemWidth: CGFloat = 85.0 {
+    var itemWidth: CGFloat = 88.0 {
         
         didSet {
             if itemWidth != oldValue && itemWidth > 0 {
@@ -44,6 +44,12 @@ class VerticalIconLabelCollectionView: UIView {
             if itemHeight != oldValue && itemHeight > 0 {
                 collectionView.reloadData()
             }
+        }
+    }
+    
+    var modelDataSource:[ServiceCellStadandParamModel]?{
+        didSet {
+            collectionView.reloadData()
         }
     }
     
@@ -107,17 +113,17 @@ extension VerticalIconLabelCollectionView: UICollectionViewDelegate, UICollectio
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.count ?? 0;
+        return modelDataSource?.count ?? 0;
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! VerticalIconLabelCell
 
-        let (img, text) = dataSource![indexPath.item]
+        let model = modelDataSource![indexPath.item] 
         
-        cell.iconLabel.image = img
-        cell.iconLabel.text = text
+        cell.iconLabel.imageView.sd_setImageWithURL(NSURL(string: "\(model.param_icon)"), placeholderImage: UIImage(named: "Placehold"))
+        cell.iconLabel.text = model.param_value
         
         return cell
     }

@@ -47,6 +47,10 @@ class AITitleAndIconTextView: ServiceParamlView {
         
     }
     
+    override func loadDataWithModelArray(models: ServiceCellProductParamModel!) {
+        loadData(model: models)
+    }
+    
     func loadData(model data: ServiceCellProductParamModel) {        
         
         if data.param_list != nil && data.param_list.count > 0 {
@@ -103,7 +107,7 @@ class AITitleAndIconTextView: ServiceParamlView {
             preIcon.asyncLoadImage(model.param_icon)
 
             if model.param_name.hasPrefix("address") {
-                preLabel.text = model.param_value
+                preLabel.text = "\(model.product_name)"  + "\(model.param_value)"
             } else {
                 preLabel.textColor = UIColor.whiteColor()
                 let str = model.param_name + " " + model.param_value
