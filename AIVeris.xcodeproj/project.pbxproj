@@ -417,6 +417,8 @@
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
+		93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */; };
+		93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */; };
 		93F7066C1C5224EC00AB6BFC /* ServiceCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
@@ -1184,6 +1186,8 @@
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
+		93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDatePickerView.swift; sourceTree = "<group>"; };
+		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDatePickerView.xib; sourceTree = "<group>"; };
 		93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardTextView.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -2324,6 +2328,8 @@
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
 				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
+				93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */,
+				93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2356,7 +2362,6 @@
 		93B25A281B9D78B000CD1FEB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				844F949F1C4F8377002C8A36 /* multiLabels.json */,
 				9394B2931C52188200F80344 /* AIEvent_Planning.json */,
 				12A9625A1BEA0A5000732E23 /* BusinessTravel.json */,
 				8423E5611BB4E16B006DC73B /* sellerOrderList.json */,
@@ -3060,6 +3065,7 @@
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
+				93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */,
 				93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */,
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
@@ -3460,6 +3466,7 @@
 				845087D71C3B6E8B00E93937 /* VerticalIconLabel.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				849B4B5A1C0EDFE300BEC179 /* FLEXHeapEnumerator.m in Sources */,
+				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
