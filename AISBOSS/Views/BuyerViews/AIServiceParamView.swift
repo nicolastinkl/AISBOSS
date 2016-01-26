@@ -24,6 +24,9 @@ class AIServiceParamView : UIView {
     
     var sviewWidth : CGFloat
     //MARK: Variables
+    
+    var displayViews : NSMutableArray = NSMutableArray()
+    
     var displayModels : NSArray?
 
     weak var rootViewController : UIViewController?
@@ -110,6 +113,8 @@ class AIServiceParamView : UIView {
         addSubview(detailText)
         
         originalY += CGRectGetHeight(detailText.frame) + margin
+        
+        displayViews.addObject(detailText)
     }
     
     //MARK: Display 2
@@ -120,6 +125,7 @@ class AIServiceParamView : UIView {
         addSubview(types)
         
         originalY += CGRectGetHeight(types.frame) + margin
+        displayViews.addObject(types)
     }
     
     //MARK: Display 3
@@ -130,6 +136,7 @@ class AIServiceParamView : UIView {
         addSubview(priceView)
         
         originalY += CGRectGetHeight(priceView.frame) + margin
+        displayViews.addObject(priceView)
     }
     
     //MARK: Display 4
@@ -140,9 +147,17 @@ class AIServiceParamView : UIView {
         
         let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
         addSubview(tagsView)
-        
+        tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents:.ValueChanged )
         originalY += CGRectGetHeight(tagsView.frame) + margin
+        displayViews.addObject(tagsView)
     }
+    
+    
+    func handleTagsViewChanged(sender: AITagsView) {
+        
+    }
+    
+    
     
     //MARK: Display 5
     func addView5 (model : JSONModel) {
@@ -165,6 +180,7 @@ class AIServiceParamView : UIView {
         addSubview(inputView)
         
         originalY += CGRectGetHeight(inputView.frame) + margin
+        displayViews.addObject(inputView)
     }
     
     //MARK: Display 7
@@ -177,6 +193,7 @@ class AIServiceParamView : UIView {
         addSubview(coverage)
         
         originalY += CGRectGetHeight(coverage.frame) + margin
+        displayViews.addObject(coverage)
     }
     
     //MARK: Display 8
@@ -198,6 +215,7 @@ class AIServiceParamView : UIView {
         addSubview(serviceProviderView)
         
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
+        displayViews.addObject(serviceProviderView)
     }
     
 

@@ -56,7 +56,7 @@ class AIDropdownBrandView: UIView {
 		struct Label {
 			static let backgroundColor: UIColor = UIColor.clearColor()
 			static let highlightedBackgroundColor: UIColor = UIColor(red: 0.2941, green: 0.2863, blue: 0.3765, alpha: 1.0)
-			static let textColor: UIColor = UIColor(red: 0.7804, green: 0.7961, blue: 0.8863, alpha: 1.0)
+			static let textColor: UIColor = UIColor.whiteColor()
 			static let highlightedTextColor: UIColor = UIColor.whiteColor()
 		}
 	}
@@ -129,7 +129,8 @@ class AIDropdownBrandView: UIView {
 	func setupLabels() {
 		numberOfBrandsLabel = {
 			let result = UILabel(frame: .zero)
-			result.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
+          
+			result.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
 			result.text = "\(brands.count) brands in total"
 			result.textColor = UIColor.whiteColor()
 			barView.addSubview(result)
@@ -343,7 +344,7 @@ class HalfRoundedCornerLabel: UILabel {
 	struct Constants {
 		static let cornerRadii = CGSize(width: AITools.displaySizeFrom1080DesignSize(10), height: AITools.displaySizeFrom1080DesignSize(10))
 		static let margin = AITools.displaySizeFrom1080DesignSize(24)
-		static let font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
+		static let font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
 	}
 	
 	override var frame: CGRect {
