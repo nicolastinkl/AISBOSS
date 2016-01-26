@@ -38,7 +38,7 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        _serviceTypesModel = [model copy];
+        self.serviceTypesModel = model;
         [self makeProperties];
         [self makeTitle];
         [self makeRadios];

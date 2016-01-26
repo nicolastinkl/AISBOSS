@@ -15,7 +15,7 @@ class AIPriceView: UIView {
     
     
     //MARK: Variables
-    
+    var originalY : CGFloat = 0
     var displayModel : AIPriceViewModel?
     var priceView : PriceAndStepperView?
     var totalNumber : Int = 0
@@ -25,14 +25,22 @@ class AIPriceView: UIView {
     
     init(frame : CGRect, model: AIPriceViewModel?) {
         super.init(frame: frame)
-        displayModel = model
+        if let _ = model {
+            displayModel = model
+            makeSubViews()
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    func resetFrame () {
+        var frame = self.frame
+        frame.size.height = originalY
+        self.frame = frame
+    }
     
     func makeSubViews () {
         
@@ -41,13 +49,19 @@ class AIPriceView: UIView {
             if (dModel.defaultPrice != nil) {
                 makePriceView()
                 makeTotalPriceView()
+                
             }
             else {
-                addBackgroundView(self.bounds)
+                let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
+                addBackgroundView(frame)
                 let label : UPLabel = AIViews.normalLabelWithFrame(self.bounds, text: "In time billing price", fontSize: 16, color: UIColor.whiteColor())
                 label.textAlignment = .Center
                 self.addSubview(label)
+                originalY += 40
+                
             }
+            
+            resetFrame()
             
         }
 
@@ -62,25 +76,55 @@ class AIPriceView: UIView {
     
     
     func makePriceView () {
-        let finalPrice = displayModel!.defaultPrice.currency + displayModel!.defaultPrice.price + displayModel!.defaultPrice.billingMode;
+        
+        var finalPrice : String = ""
+        
+        if let _ = displayModel?.defaultPrice.currency {
+            finalPrice += (displayModel?.defaultPrice.currency)!
+        }
+        
+        if let _ = displayModel?.defaultPrice.price {
+            finalPrice += (displayModel?.defaultPrice.price)!
+        }
+        
+        if let _ = displayModel?.defaultPrice.billingMode {
+            finalPrice += (displayModel?.defaultPrice.billingMode)!
+        }
+        
+        
         weak var ws = self
-        priceView = PriceAndStepperView(frame: self.bounds, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { (steper : PKYStepper!, number : Float) -> Void in
+        let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
+        priceView = PriceAndStepperView(frame: frame, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { (steper : PKYStepper!, number : Float) -> Void in
             ws!.changeTotalPrice (Int(number))
         })
         self.addSubview(priceView!)
+        
+        originalY += 40
     }
     
     func makeTotalPriceView ()
     {
-        let frame = CGRectMake(0, CGRectGetMaxY(priceView!.frame), CGRectGetWidth(priceView!.frame), CGRectGetHeight(priceView!.frame))
+        let frame = CGRectMake(0, CGRectGetMaxY(priceView!.frame), CGRectGetWidth(priceView!.frame), 40)
         addBackgroundView(frame)
         let price : NSString = displayModel!.defaultPrice.price as NSString
         let totalPrice = Double(displayModel!.defaultNumber) * price.doubleValue
-        let PriceStr = String("%.2f",totalPrice)
+        var PriceStr = "Total "
         
-        totalPriceLabel = AIViews.normalLabelWithFrame(frame, text: PriceStr, fontSize: 16, color: UIColor.whiteColor())
+        if let _ = displayModel?.defaultPrice.currency {
+            PriceStr += (displayModel?.defaultPrice.currency)!
+        }
+        
+        
+        
+        PriceStr += " \(totalPrice)"  //String("%.2f",totalPrice)
+        let fontSize = AITools.displaySizeFrom1080DesignSize(63)
+        totalPriceLabel = AIViews.normalLabelWithFrame(frame, text: PriceStr, fontSize: fontSize, color: UIColor.whiteColor())
         totalPriceLabel!.textAlignment = .Center
+        totalPriceLabel!.textColor = AITools.colorWithR(0xf7, g: 0x9a, b: 0x00)
+        totalPriceLabel?.font = AITools.myriadBoldWithSize(fontSize)
         self.addSubview(totalPriceLabel!)
+        
+        originalY = originalY * 2
     }
     
     //MARK: Action

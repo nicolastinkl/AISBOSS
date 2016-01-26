@@ -455,32 +455,14 @@ internal class AIServiceContentViewController: UIViewController {
         
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
         
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.top, CGRectGetWidth(scrollView.frame), 100), models: parser.displayModels, rootViewController : self)
-        serviceContentView.rootViewController = self
-        addNewSubView(serviceContentView, preView: galleryView)
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.top + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        serviceContentView.rootViewController = self.parentViewController
+        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
         
-        addMusicView(serviceContentView)
-        
-        
-        let preView = addCustomView(serviceContentView);
+        let musicView : UIView = addMusicView(serviceContentView)
         
         
-        
-//        //TODO: add Parameters
-//        var serviceContentView: UIView!
-//        var preView : UIView!
-//        if self.serviceContentType == AIServiceContentType.Escort {
-//            //陪护
-//            serviceContentView = addEscortView(addBrandView())
-//            preView = addCustomView(serviceContentView)
-//        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
-//            //音乐疗养
-//            serviceContentView = addMusicView(addBrandView())
-//            preView = addCustomView(serviceContentView)
-//        }else {
-//            serviceContentView = addMusicView(galleryView)
-//            preView = serviceContentView
-//        }
+        let preView = addCustomView(musicView);
 
    
         addAudioView(preView)

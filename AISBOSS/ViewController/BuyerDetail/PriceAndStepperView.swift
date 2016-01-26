@@ -50,6 +50,10 @@ class PriceAndStepperView: UIView {
 		self.onValueChanged = onValueChanged
 		super.init(frame: frame)
 		setup()
+        
+        var frame = self.frame
+        frame.size.height += CONSTANTS.selectedLabelHeight
+        self.frame = frame
 	}
 	
 	func setup() {
@@ -57,17 +61,18 @@ class PriceAndStepperView: UIView {
 		let bgImage = UIImage(named: "Wave_BG")
 		let bgImageView = UIImageView(image: bgImage)
 		addSubview(bgImageView)
-		bgImageView.frame = CGRectMake(0, CONSTANTS.selectedLabelHeight, frame.size.width, frame.size.height - CONSTANTS.selectedLabelHeight)
+		bgImageView.frame = CGRectMake(0, CONSTANTS.selectedLabelHeight, frame.size.width, frame.size.height)
 		
 		// setup price label
-		let priceLabelFrame = CGRectMake(CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CGRectGetHeight(frame) - CONSTANTS.selectedLabelHeight)
+		let priceLabelFrame = CGRectMake(CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CGRectGetHeight(frame))
 		let priceLabel = AIViews.normalLabelWithFrame(priceLabelFrame, text: price, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
+        priceLabel.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
 		addSubview(priceLabel)
 		
 		if showStepper {
 			
 			// setup stepper
-			let stepperFrame = CGRectMake(CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CONSTANTS.stepperWidth, CGRectGetHeight(frame) - CONSTANTS.selectedLabelHeight)
+			let stepperFrame = CGRectMake(CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CONSTANTS.stepperWidth, CGRectGetHeight(frame))
 			stepper = PKYStepper(frame: stepperFrame)
 			stepper.setBorderColor(UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0))
 			stepper.setBorderWidth(1)

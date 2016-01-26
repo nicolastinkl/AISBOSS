@@ -125,7 +125,7 @@ class AIServiceParamView : UIView {
     //MARK: Display 3
     func addView3 (model : JSONModel) {
         let m : AIPriceViewModel = model as! AIPriceViewModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth + margin * 2, 100)
         let priceView : AIPriceView = AIPriceView(frame: frame, model: m)
         addSubview(priceView)
         
@@ -138,10 +138,10 @@ class AIServiceParamView : UIView {
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
   
         
-        let priceView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
-        addSubview(priceView)
+        let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
+        addSubview(tagsView)
         
-        originalY += CGRectGetHeight(priceView.frame) + margin
+        originalY += CGRectGetHeight(tagsView.frame) + margin
     }
     
     //MARK: Display 5
@@ -182,7 +182,7 @@ class AIServiceParamView : UIView {
     //MARK: Display 8
     func addView8 (model : JSONModel) {
         let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth+margin*2, 0)
         
         var brands : [(title: String, image: String)] = []
         var index : Int = 0

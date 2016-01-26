@@ -16,6 +16,8 @@ class AIInputView: UIView {
     
     //MARK: Variables
     
+    var keyboardDidShow : Bool = false
+    
     var titleLabel : UPLabel?
     
     var textField : UITextField!
@@ -38,6 +40,7 @@ class AIInputView: UIView {
         
         if let _ = model {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
             makeSubViews()
         }
     }
@@ -72,6 +75,7 @@ class AIInputView: UIView {
         
         textLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, textSize.height), text: displayModel?.defaultText ?? "", fontSize: 16, color: UIColor.whiteColor())
         textLabel.backgroundColor = UIColor.whiteColor()
+        textLabel.textColor = UIColor.grayColor()
         textLabel.layer.cornerRadius = 4
         textLabel.layer.masksToBounds = true
         textLabel.text = displayModel!.defaultText ?? ""
@@ -129,11 +133,11 @@ class AIInputView: UIView {
         
         
         //TODO: add textField
-        textField = UITextField(frame: CGRectMake(0, y, width, 35))
+        textField = UITextField(frame: CGRectMake(0, CGRectGetHeight(maskedView!.frame) - 35, width, 35))
         textField.borderStyle = .RoundedRect
         textField.clearButtonMode = .WhileEditing
         textField.placeholder = "请输入..."
-        textField.frame = CGRectMake(10, CGRectGetHeight(self.frame) / 2, CGRectGetWidth(self.frame) - 30, 35)
+        textField.frame = CGRectMake(10, CGRectGetHeight(maskedView!.frame) - 35, CGRectGetWidth(self.frame) - 20, 35)
         if let text = displayModel?.defaultText {
             textField.text = text
         }
@@ -146,29 +150,44 @@ class AIInputView: UIView {
     
     func dismissMaskedView () {
         if let _ = maskedView {
+            textLabel.text = textField.text
             maskedView?.removeFromSuperview()
             maskedView = nil
         }
         
-        textLabel.text = textField.text
+        
     }
     
     //MARK: Keyboard Notification
     func keyboardWillShow(notification : NSNotification) {
+        if keyboardDidShow {
+            return
+        }
+        
         
         if let userInfo = notification.userInfo {
            
             let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
             let keyboardRect : CGRect = keyboardRectValue.CGRectValue()
             let keyboardHeight : CGFloat = min(CGRectGetHeight(keyboardRect), CGRectGetWidth(keyboardRect))
-            
-            if let _ = textField {
-                
-                textField.frame = CGRectMake(10, CGRectGetHeight(self.frame) - 30 - keyboardHeight, CGRectGetWidth(self.frame) - 30, 35)
-                
+            let duration : NSNumber = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+            if keyboardHeight > 0 {
+                keyboardDidShow = true
+                if let _ = textField {
+                    
+                    weak var wf = self
+                    UIView.animateWithDuration(duration.doubleValue as NSTimeInterval, animations: { () -> Void in
+                        wf!.textField.frame = CGRectMake(10, CGRectGetHeight(wf!.maskedView!.frame) - 130 - keyboardHeight, CGRectGetWidth(wf!.maskedView!.frame) - 20, 35)
+                    })
+                    
+                    
+                }
             }
-            
         }
+    }
+    
+    func keyboardDidHide(notification : NSNotification) {
+        keyboardDidShow = false
     }
     
 }

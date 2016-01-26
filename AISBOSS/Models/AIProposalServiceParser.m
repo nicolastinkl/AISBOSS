@@ -205,7 +205,8 @@
     
     NSDictionary *priceDic = [content objectForKey:@"default_price"];
     AIPriceModel *priceM = [[AIPriceModel alloc] init];
-    priceM.price = [priceDic objectForKey:@"price"];
+    
+    priceM.price = [NSString stringWithFormat:@"%@", [priceDic objectForKey:@"price"] ?: @"0"];
     priceM.currency = [priceDic objectForKey:@"unit"];
     priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
     model.defaultPrice = priceM;
