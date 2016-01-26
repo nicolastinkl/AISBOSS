@@ -9,7 +9,7 @@
 import UIKit
 
 class TopServiceContainerView: ServiceContainerView {
-     
+    
     var isSingle: Bool = false {
         willSet(newVaklue) {
             bottomBall.hidden = newVaklue
@@ -19,10 +19,10 @@ class TopServiceContainerView: ServiceContainerView {
     override func isPrimeService(isPrime: Bool) {
         super.isPrimeService(isPrime)
         if isPrime {
+            
             topBall.image = UIImage(named: "white_ball")
             background.image = UIImage(named: "white_top_unfilled_corner")
             topBallHeightConstraint.constant = 20
-            
             
         } else {
             topBall.image = UIImage(named: "hollow_ball")

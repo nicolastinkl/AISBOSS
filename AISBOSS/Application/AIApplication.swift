@@ -146,6 +146,9 @@ struct AIApplication{
         //一键清除订单
         static let UIAIASINFORecoverOrdersNotification = "UIAIASINFORecoverOrdersNotification"
 
+        
+        static let AIDatePickerViewNotificationName  = "AIDatePickerViewNotificationName"
+        static let AISinglePickerViewNotificationName  = "AISinglePickerViewNotificationName"
     }
     
     // MARK: System theme's color

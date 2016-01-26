@@ -96,7 +96,6 @@ internal class AIServiceContentViewController: UIViewController {
     private var audioView_AudioRecordView:AIAudioRecordView?
     
     
-    
     // MARK: Life Cricel..
     
     
@@ -457,9 +456,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeContentView () {
         
-        // new
-        
-        
+      
     
         // old
         if self.currentDatasource?.service_name.length > 0 {
@@ -482,14 +479,24 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView.rootViewController = self.parentViewController
         addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
         
-        let musicView : UIView = addMusicView(serviceContentView)
+        let musicView  = addMusicView(serviceContentView)
         
         
-        let preView = addCustomView(musicView);
-
-   
+        //test  时间选择
+        let timer = AIEventTimerView.currentView()
+        timer.title.text = "Event time:"
+        timer.timeContent.setTitle("Nov 19th", forState: .Normal)
+        addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
+        
+        // test 单选
+        let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
+        addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
+        
+        // Necesarry public View...
+        let preView = addCustomView(singleSelectView)
+        
         addAudioView(preView)
-
+        
     }
     
     private func addBrandView()-> AIDropdownBrandView? {

@@ -92,6 +92,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     
     //MARK: - build views
     func buildTitle(){
+        
         let titleFrame = CGRectMake(0, 0, 0, 21)
         titleLabel = UILabel(frame: titleFrame)
         titleLabel.font = TITLE_TEXT_FONT
@@ -99,7 +100,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         self.addSubview(titleLabel)
         
         var heightAlisx:CGFloat = 0
-        print(dataSource?.product_name)
+        //print(dataSource?.product_name)
         if dataSource?.product_name.isEmpty == false {
             heightAlisx = 20
         }else{
