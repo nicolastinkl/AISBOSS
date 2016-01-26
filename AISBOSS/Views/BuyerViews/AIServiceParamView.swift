@@ -188,11 +188,20 @@ class AIServiceParamView : UIView {
         let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
+        var brands : [(title: String, image: String)] = []
+        var index : Int = 0
+        for var i : Int = 0; i < m.providers.count; i++ {
+            let provider : AIServiceProviderModel = m.providers[i] as! AIServiceProviderModel
+            brands.append((title: provider.name, image: provider.icon))
+            if provider.isSelected {
+                index = i
+            }
+        }
         
-        let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: <#T##[(title: String, image: String)]#>, selectedIndex: <#T##Int#>, width: <#T##CGFloat#>)
-        addSubview(coverage)
+        let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)
+        addSubview(serviceProviderView)
         
-        originalY += CGRectGetHeight(coverage.frame) + margin
+        originalY += CGRectGetHeight(serviceProviderView.frame) + margin
     }
     
 
