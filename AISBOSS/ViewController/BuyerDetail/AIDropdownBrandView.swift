@@ -69,10 +69,10 @@ class AIDropdownBrandView: UIView {
 		super.layoutSubviews()
 	}
 	
-	init(brands: [(title: String, image: String)], selectedIndex: Int, width: CGFloat) {
+	init(brands: [(title: String, image: String)], selectedIndex: Int, frame: CGRect) {
 		self.brands = brands
 		self.selectedIndex = selectedIndex
-		super.init(frame: CGRectMake(0, 0, width, Constants.barHeight))
+		super.init(frame: CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, Constants.barHeight))
 		setupBarView()
 		setupDownButton()
 		setupExpandedView()
