@@ -261,9 +261,9 @@ class BDKProposalService : MockProposalService{
      - parameter fail:    <#fail description#>
      - parameter errDes:  <#errDes description#>
      */
-    func findServiceDetail(serviceId : Int, proposalId: Int,customID : String?, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func findServiceDetail(service : AIProposalServiceModel, proposalId: Int,customID : String?, success : (responseData : AIProposalServiceDetailModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        message.url = AIApplication.AIApplicationServerURL.findServiceDetail.description
+        message.url = AIApplication.AIApplicationServerURL.findServiceDetailNew.description
         
         if let _ : String = customID {
             let str = "0&0&"+customID!+"&0"
@@ -272,7 +272,7 @@ class BDKProposalService : MockProposalService{
         
         
         
-        let body = ["data":["service_id": serviceId, "proposal_id": proposalId, "service_type":0],"desc":["data_mode":"0","digest":""]] 
+        let body = ["data":["service_id": service.service_id, "proposal_id": proposalId, "service_type":0, "role_id": service.role_id, "comp_service_id": service.comp_service_id],"desc":["data_mode":"0","digest":""]]
         
         message.body = NSMutableDictionary(dictionary: body)
   //      message.header = NSMutableDictionary(dictionary: header)

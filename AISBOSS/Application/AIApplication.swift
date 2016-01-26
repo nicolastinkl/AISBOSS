@@ -254,6 +254,7 @@ struct AIApplication{
         case findCustomerProposalDetail
         // 查找服务详情
         case findServiceDetail
+        case findServiceDetailNew
         // 更新心愿单tag状态
         case updateWishListTagChosenState
         //查询热门搜索
@@ -290,6 +291,7 @@ struct AIApplication{
             case .queryHotSearch: return "http://171.221.254.231:8282/sboss/queryHotSearch"
             case .recoverOrders: return AIApplication.KURL_ReleaseURL+"/recoverOrders"
             case .submitOrderByService:   return AIApplication.KURL_ReleaseURL + "/submitOrderByService"
+            case .findServiceDetailNew: return AIApplication.KURL_ReleaseURL+"/findServiceDetailNew"
             }
             
         }
