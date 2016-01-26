@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="O2I-LZ-ThV" customClass="AISinglePickerView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjk-oK-bzs">
+                    <rect key="frame" x="0.0" y="44" width="600" height="216"/>
+                    <connections>
+                        <outlet property="dataSource" destination="O2I-LZ-ThV" id="RUy-oB-SKy"/>
+                        <outlet property="delegate" destination="O2I-LZ-ThV" id="0Dh-zZ-pln"/>
+                    </connections>
+                </pickerView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-fJ-JQc">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <items>
+                        <barButtonItem title="Close" id="OLD-ws-wwq">
+                            <connections>
+                                <action selector="closeAction:" destination="O2I-LZ-ThV" id="Fj1-wQ-izS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Done" id="dU2-1e-jDQ">
+                            <connections>
+                                <action selector="doneAction:" destination="O2I-LZ-ThV" id="UbD-Nl-NuW"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Jjk-oK-bzs" secondAttribute="trailing" id="AKY-Xt-5t7"/>
+                <constraint firstItem="Jjk-oK-bzs" firstAttribute="leading" secondItem="O2I-LZ-ThV" secondAttribute="leading" id="EgD-4f-O1v"/>
+                <constraint firstAttribute="bottom" secondItem="Jjk-oK-bzs" secondAttribute="bottom" id="PCW-aJ-l7p"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pickOneView" destination="Jjk-oK-bzs" id="inv-d9-qTA"/>
+            </connections>
+            <point key="canvasLocation" x="-159" y="323"/>
+        </view>
+    </objects>
+</document>

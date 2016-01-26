@@ -84,7 +84,6 @@ internal class AIServiceContentViewController: UIViewController {
     private var audioView_AudioRecordView:AIAudioRecordView?
     
     
-    
     // MARK: Life Cricel..
     
     
@@ -396,9 +395,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeContentView () {
         
-        // new
-        
-        
+      
     
         // old
         if self.currentDatasource?.service_name.length > 0 {
@@ -417,34 +414,21 @@ internal class AIServiceContentViewController: UIViewController {
         
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
         
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectZero, models: parser.displayModels)
+        let serviceContentView = AIServiceParamView(frame: CGRectZero, models: parser.displayModels)
+        addNewSubView(serviceContentView, preView: galleryView,color: UIColor.clearColor())
         
-        addNewSubView(serviceContentView, preView: galleryView)
+        //test
+        let timer = AIEventTimerView.currentView()
+        timer.title.text = "Event time:"
+        timer.timeContent.setTitle("Nov 19th", forState: .Normal)
+        addNewSubView(timer, preView: serviceContentView, color: UIColor.clearColor())
         
+        let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
+        addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
         
-        let preView = addCustomView(serviceContentView);
-        
-        
-        
-//        //TODO: add Parameters
-//        var serviceContentView: UIView!
-//        var preView : UIView!
-//        if self.serviceContentType == AIServiceContentType.Escort {
-//            //陪护
-//            serviceContentView = addEscortView(addBrandView())
-//            preView = addCustomView(serviceContentView)
-//        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
-//            //音乐疗养
-//            serviceContentView = addMusicView(addBrandView())
-//            preView = addCustomView(serviceContentView)
-//        }else {
-//            serviceContentView = addMusicView(galleryView)
-//            preView = serviceContentView
-//        }
-
-   
+        let preView = addCustomView(singleSelectView)
         addAudioView(preView)
-
+        
     }
     
     private func addBrandView()-> AIDropdownBrandView? {

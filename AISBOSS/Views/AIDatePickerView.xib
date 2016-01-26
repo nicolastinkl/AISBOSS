@@ -33,7 +33,6 @@
                                 <action selector="closeAction:" destination="iN0-l3-epB" id="xbL-Aa-ZSu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="464" style="plain" systemItem="fixedSpace" id="VQh-9W-Olw"/>
                         <barButtonItem title="Done" id="H6X-aY-gNx">
                             <connections>
                                 <action selector="doneAction:" destination="iN0-l3-epB" id="br4-0S-0nM"/>
@@ -56,7 +55,7 @@
                 <outlet property="pickOneView" destination="QKM-EG-xy1" id="5MQ-Y0-64Z"/>
                 <outlet property="pickTwoView" destination="OfX-jP-qSf" id="0y3-L5-zpr"/>
             </connections>
-            <point key="canvasLocation" x="-7" y="308"/>
+            <point key="canvasLocation" x="-159" y="323"/>
         </view>
     </objects>
 </document>

@@ -295,37 +295,42 @@
     for ( AIComplexLabelModel *model in array) {
         for (NSDictionary *dic in self.relatedParams) {
             NSDictionary *param = [dic objectForKey:@"param"];
-            NSNumber *value_key = [param objectForKey:@"param_value_key"];
             
-            if (value_key.integerValue == model.identifier) {
-                NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
-                NSNumber *subLabelsKey = [rel_param objectForKey:@"param_key"];
-                
-                for (NSDictionary *service_dic in self.serviceParams) {
-                    NSNumber *ffkey = [service_dic objectForKey:@"param_key"];
-                    if (subLabelsKey.integerValue == ffkey.integerValue) {
-                        NSArray *param_value = [service_dic objectForKey:@"param_value"];
-                        NSMutableArray *subLabels = [[NSMutableArray alloc] init];
-                        
-                        for (NSDictionary *subParam in param_value) {
-                            AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
-                            sModel.atitle = [subParam objectForKey:@"content"];
-                            NSNumber *ide = [subParam objectForKey:@"id"];
-                            sModel.identifier = ide.integerValue;
-                            NSNumber *se = [subParam objectForKey:@"is_default"];
-                            sModel.adesc = [subParam objectForKey:@"param_description"];;
-                            sModel.isSelected = se.boolValue;
+            if ([[param objectForKey:@"param_value_key"] isMemberOfClass:[NSNumber class]]){
+                NSNumber *value_key = [param objectForKey:@"param_value_key"];
+                if (value_key.integerValue == model.identifier) {
+                    NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
+                    NSNumber *subLabelsKey = [rel_param objectForKey:@"param_key"];
+                    
+                    for (NSDictionary *service_dic in self.serviceParams) {
+                        NSNumber *ffkey = [service_dic objectForKey:@"param_key"];
+                        if (subLabelsKey.integerValue == ffkey.integerValue) {
+                            NSArray *param_value = [service_dic objectForKey:@"param_value"];
+                            NSMutableArray *subLabels = [[NSMutableArray alloc] init];
                             
-                            [subLabels addObject:sModel];
+                            for (NSDictionary *subParam in param_value) {
+                                AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
+                                sModel.atitle = [subParam objectForKey:@"content"];
+                                NSNumber *ide = [subParam objectForKey:@"id"];
+                                sModel.identifier = ide.integerValue;
+                                NSNumber *se = [subParam objectForKey:@"is_default"];
+                                sModel.adesc = [subParam objectForKey:@"param_description"];;
+                                sModel.isSelected = se.boolValue;
+                                
+                                [subLabels addObject:sModel];
+                            }
+                            
+                            model.sublabels = subLabels;
+                            break;
+                            
                         }
-                        
-                        model.sublabels = subLabels;
-                        break;
-                        
                     }
+                    
                 }
                 
-            }
+            }//end
+            
+            
         }
     }
     
