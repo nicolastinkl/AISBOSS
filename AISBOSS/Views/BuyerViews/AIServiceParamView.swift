@@ -140,33 +140,82 @@ class AIServiceParamView : UIView {
     func addView4 (model : JSONModel) {
         let m : AIComplexLabelsModel = model as! AIComplexLabelsModel
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
-//        let priceView : AITagsView = AITagsView(tags: m as! [ta], frame: <#T##CGRect#>)
-//        addSubview(priceView)
+  
+        
+        let priceView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
+        addSubview(priceView)
         
         originalY += CGRectGetHeight(priceView.frame) + margin
     }
     
     //MARK: Display 5
     func addView5 (model : JSONModel) {
-        
+        let m : AIPickerViewModel = model as! AIPickerViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+//        let pickerView : AIDatePickerView = AIDatePickerView.currentView()
+//        
+//        addSubview(pickerView)
+//        
+//        originalY += CGRectGetHeight(priceView.frame) + margin
     }
     
     //MARK: Display 6
     func addView6 (model : JSONModel) {
+        let m : AIInputViewModel = model as! AIInputViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
+        
+        let inputView : AIInputView = AIInputView(frame: frame, model: m)
+        addSubview(inputView)
+        
+        originalY += CGRectGetHeight(inputView.frame) + margin
     }
     
     //MARK: Display 7
     func addView7 (model : JSONModel) {
+        let m : AIServiceCoverageModel = model as! AIServiceCoverageModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
+        
+        let coverage : AIServiceCoverage = AIServiceCoverage(frame: frame, model: m)
+        addSubview(coverage)
+        
+        originalY += CGRectGetHeight(coverage.frame) + margin
     }
     
     //MARK: Display 8
     func addView8 (model : JSONModel) {
+        let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
+        
+        let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: <#T##[(title: String, image: String)]#>, selectedIndex: <#T##Int#>, width: <#T##CGFloat#>)
+        addSubview(coverage)
+        
+        originalY += CGRectGetHeight(coverage.frame) + margin
     }
     
 
     
 
 }
+
+extension AIComplexLabelModel : Tagable {
+    var id : Int {
+        get {
+            return identifier
+        }
+    }
+    
+    var subtags: [Tagable]? {
+        get {return sublabels as? [Tagable]}
+    }
+    
+    
+    var selected: Bool {
+        get{return isSelected}
+    }
+    
+    
+}
+

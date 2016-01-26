@@ -309,10 +309,7 @@
                             NSNumber *ide = [subParam objectForKey:@"id"];
                             sModel.identifier = ide.integerValue;
                             NSNumber *se = [subParam objectForKey:@"is_default"];
-                            
-                            AIDetailTextModel *textModel = [[AIDetailTextModel alloc] init];
-                            textModel.content = [subParam objectForKey:@"param_description"];
-                            sModel.desc = textModel;
+                            sModel.desc = [subParam objectForKey:@"param_description"];;
                             sModel.isSelected = se.boolValue;
                             
                             [subLabels addObject:sModel];

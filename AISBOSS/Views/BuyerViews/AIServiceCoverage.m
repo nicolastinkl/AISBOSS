@@ -25,14 +25,14 @@
 }
 
 
-@property (nonatomic, strong) AIProposalServiceDetailParamModel *coverageModel;
+@property (nonatomic, strong) AIServiceCoverageModel *coverageModel;
 
 @end
 
 @implementation AIServiceCoverage
 
 
-- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model
+- (instancetype)initWithFrame:(CGRect)frame model:(AIServiceCoverageModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -59,9 +59,9 @@
 - (void)makeTitle
 {
     UIFont *font = [AITools myriadSemiCondensedWithSize:_titleFontSize];
-    CGSize size = [_coverageModel.param_name sizeWithFont:font forWidth:300];
+    CGSize size = [_coverageModel.title sizeWithFont:font forWidth:300];
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), size.height);
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:_coverageModel.param_name fontSize:_titleFontSize color:Color_HighWhite];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:_coverageModel.title fontSize:_titleFontSize color:Color_HighWhite];
     _titleLabel.font = font;
     [self addSubview:_titleLabel];
 }
@@ -91,14 +91,13 @@
     NSArray *colors = [self makeColors];
     
     
-    for (NSInteger i = 0; i < self.coverageModel.param_value.count; i++) {
+    for (NSInteger i = 0; i < self.coverageModel.options.count; i++) {
         
-        AIProposalServiceDetailParamValueModel *model = [self.coverageModel.param_value objectAtIndex:i];
-        
+        AIOptionModel *model = [self.coverageModel.options objectAtIndex:i];
         
         CGRect frame = CGRectMake(x, y, 100, height);
-        NSString *title = model.content;
-        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:model.is_default];
+        NSString *title = model.desc;
+        AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:model.isSelected];
         label.delegate = self;
         label.backgroundColor = [colors objectAtIndex:i];
         label.selectionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Coverage%ld", i]];
@@ -130,11 +129,11 @@
 {
     if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel: isSelected:)]) {
         
-        for (AIProposalServiceDetailParamValueModel *model in self.coverageModel.param_value) {
-            if ([model.content isEqualToString:serviceLabel.labelTitle]) {
-                [self.delegate didChooseServiceLabelModel:model isSelected:selected];
-                break;
-            }
+        for (AIOptionModel *model in self.coverageModel.options) {
+//            if ([model.content isEqualToString:serviceLabel.labelTitle]) {
+//                [self.delegate didChooseServiceLabelModel:model isSelected:selected];
+//                break;
+//            }
         }
     }
 }

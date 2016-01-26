@@ -146,11 +146,11 @@
 
 @end
 
-@interface AIComplexLabelModel : JSONModel<>
+@interface AIComplexLabelModel : JSONModel
 
 @property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, assign) NSInteger identifier;
-@property (nonatomic, strong) AIDetailTextModel<Optional> *desc;
+@property (nonatomic, strong) NSString<Optional> *desc;
 @property (nonatomic, strong) NSArray<Optional> *sublabels;
 @property (nonatomic, assign) BOOL isSelected;
 
