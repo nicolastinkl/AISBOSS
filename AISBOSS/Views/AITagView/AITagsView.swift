@@ -36,28 +36,77 @@ import UIKit
  */
 
 class AITagsView: UIControl {
+	var titleLabel: UILabel = UILabel(frame: .zero)
 	var tags: [Tagable]
-	var selectedTagIds: [Int]
+	var title: String
+	var selectedTagIds: [Int] = [Int]()
 	var row = 0
 	var singleLineTagViews = [AISingleLineTagView]()
-	init(tags: [Tagable], selectedTagIds: [Int] = [Int](), frame: CGRect) {
+	init(title: String = "", tags: [Tagable], frame: CGRect) {
+		self.title = title
 		self.tags = tags
-		self.selectedTagIds = selectedTagIds
 		super.init(frame: frame)
-		renderAllSingleLineTagViews()
+		self.calculateSelectedTagIdsWith(tags: tags)
+		self.setupNofitication()
+		self.renderAllViews()
 	}
 	
 	struct Constants {
+		static var margin: CGFloat = 10 {
+			didSet {
+				NSNotificationCenter.defaultCenter().postNotificationName(kNeedRerenderAllViews, object: nil)
+			}
+		}
+		static let kNeedRerenderAllViews = "kNeedRerenderAllViews"
 		struct Tag {
 			static let normalBackgroudColor = UIColor.redColor()
 			static let highlightedBackgroundColor = UIColor.blackColor()
+			static var spaceBetweenTags: CGFloat = 5 {
+				didSet {
+					NSNotificationCenter.defaultCenter().postNotificationName(kNeedRerenderAllViews, object: nil)
+				}
+			}
 		}
 	}
 	
-	func renderAllSingleLineTagViews() {
+	func calculateSelectedTagIdsWith(tags tags: [Tagable]) {
+		
+		
+		let getSelectedInTags: ([Tagable]) -> (Tagable, Int)? = { tags in
+			let selectedTag: Tagable? = tags.filter({ (t) -> Bool in
+				return t.selected
+			}).first
+			
+			if let t = selectedTag {
+				return (t, t.id)
+			} else {
+				return nil
+			}
+		}
+		
+		if let tuple = getSelectedInTags(tags) {
+			selectedTagIds.append(tuple.1)
+			if let subtags = tuple.0.subtags {
+				calculateSelectedTagIdsWith(tags: subtags)
+			}
+		}
+	}
+	
+	func setupNofitication() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "renderAllViews()", name: Constants.kNeedRerenderAllViews, object: nil)
+	}
+	
+	func renderAllViews() {
 		for v in subviews {
 			v.removeFromSuperview()
 		}
+		
+		if title != "" {
+			titleLabel.text = title
+			addSubview(titleLabel)
+			titleLabel.frame = CGRectMake(Constants.margin, 0, bounds.size.width - Constants.margin, 20)
+		}
+		
 		singleLineTagViews.removeAll()
 		row = 0
 		addSingleLineTagView(tags: tags) // add first line
@@ -72,13 +121,12 @@ class AITagsView: UIControl {
 		newSelectedTagIds.append(sender.selectedTagId!)
 		selectedTagIds = newSelectedTagIds
 		print(selectedTagIds)
-		renderAllSingleLineTagViews()
-		
+		renderAllViews()
 		sendActionsForControlEvents(.ValueChanged)
 	}
 	
 	func addSingleLineTagView(tags tags: [Tagable], parent: Tagable? = nil) {
-		let previousSingleLineTagView = singleLineTagViews.last
+		let previousSingleLineTagView = subviews.last
 		if tags.last != nil {
 			// init single line tag view
 			let s = AISingleLineTagView(tags: tags, frame: frame)
@@ -95,10 +143,16 @@ class AITagsView: UIControl {
 				var selfFrame = frame
 				selfFrame.size.height = CGRectGetMaxY(f)
 				frame = selfFrame
+			} else if title != "" {
+				
+				var selfFrame = frame
+				selfFrame.size.height = CGRectGetWidth(titleLabel.frame)
+				frame = selfFrame
 			}
 			singleLineTagViews.append(s)
 			s.row = row
 			
+			// TODO: 根据 selected 判断 selected id
 			// set single line tag view 's selected tag id
 			if selectedTagIds.count > row {
 				s.selectedTagId = selectedTagIds[row]
@@ -151,6 +205,10 @@ class AITagsView: UIControl {
 	}
 	
 	var desc: String? {
+		get
+	}
+	
+	var selected: Bool {
 		get
 	}
 }
