@@ -170,32 +170,39 @@ class ServiceCardDetailIcon: ServiceParamlView {
         priceLabelView.font = ICON_DESC_FONT
         calendarLabelView.font = ICON_DESC_FONT
         
+        timeLabelView.textAlignment = NSTextAlignment.Center
+        priceLabelView.textAlignment = NSTextAlignment.Center
+        calendarLabelView.textAlignment = NSTextAlignment.Center
+        
         self.addSubview(timeLabelView)
         self.addSubview(priceLabelView)
         self.addSubview(calendarLabelView)
         
         let widthS:CGFloat = 45
-        let widthSpace:CGFloat = 20
+        let widthSpace:CGFloat = 110
         constrain(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
             timeLabelView.height == widthS
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
             timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
+            timeLabelView.width == widthSpace
         }        
         
         constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
             priceLabelView.height == widthS
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
-            priceLabelView.centerX == priceIconImageView.centerX + widthSpace
+            priceLabelView.centerX == priceIconImageView.centerX
+            priceLabelView.width == widthSpace
         }
         
         constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
             calendarLabelView.height == widthS
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
-            calendarLabelView.centerX == calendarIconImageView.centerX + widthSpace
+            calendarLabelView.centerX == calendarIconImageView.centerX
+            calendarLabelView.width == widthSpace
         }
     }
     

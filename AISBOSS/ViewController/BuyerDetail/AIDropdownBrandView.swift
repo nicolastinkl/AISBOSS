@@ -8,11 +8,10 @@
 
 import UIKit
 
-
- /// 入参 [(title: String, imageURL: String)], selectedIndex: Int
- /// 出参 selectedIndex
- /// onDownButtonDidClick 处理下拉按钮点击
- /// onSelectedIndexDidChanged 处理brand选择
+/// 入参 [(title: String, imageURL: String)], selectedIndex: Int
+/// 出参 selectedIndex
+/// onDownButtonDidClick 处理下拉按钮点击
+/// onSelectedIndexDidChanged 处理brand选择
 
 class AIDropdownBrandView: UIView {
 	var isExpanded: Bool = false {
@@ -100,7 +99,11 @@ class AIDropdownBrandView: UIView {
 			label.tag = i
 			label.imageWidth = Constants.IconLabel.imageWidth
 			expandedView.addSubview(label)
-			label.image = UIImage(named: brand.image)
+			if let image = UIImage(named: brand.image) {
+				label.image = image
+			} else {
+				label.imageURL = brand.image
+			}
 			label.text = brand.title
 			iconLabels.append(label)
 			let row = CGFloat(i / 4)
@@ -117,7 +120,7 @@ class AIDropdownBrandView: UIView {
 		barView = UIView(frame: .zero)
 		barView.backgroundColor = Constants.barViewBackgroundColor
 		addSubview(barView)
-		barView.snp_makeConstraints {(make) -> Void in
+		barView.snp_makeConstraints { (make) -> Void in
 			make.top.leading.trailing.equalTo(self)
 			make.height.equalTo(Constants.barHeight)
 		}
@@ -155,7 +158,7 @@ class AIDropdownBrandView: UIView {
 			label.addGestureRecognizer(tap)
 		}
 		
-		barScrollView.snp_makeConstraints {(make) -> Void in
+		barScrollView.snp_makeConstraints { (make) -> Void in
 			make.top.equalTo(barView)
 			make.leading.equalTo(barView).offset(Constants.margin)
 			make.bottom.equalTo(barView).offset(-Constants.lineViewHeight)
@@ -164,22 +167,22 @@ class AIDropdownBrandView: UIView {
 		
 		var previousView: UIView = barScrollView
 		for (i, label) in labels.enumerate() {
-			label.snp_makeConstraints(closure: {(make) -> Void in
-					if i == 0 {
-						// first label
-						make.leading.equalTo(previousView)
-					} else if i == labels.count - 1 {
-						// last label
-						make.leading.equalTo(previousView.snp_trailing).offset(Constants.space)
-						make.trailing.equalTo(barScrollView)
-					} else {
-						// center labels
-						make.leading.equalTo(previousView.snp_trailing).offset(Constants.space)
-					}
-					// every label
-					make.bottom.equalTo(barScrollView)
-					make.top.equalTo(barScrollView).offset(10)
-				})
+			label.snp_makeConstraints(closure: { (make) -> Void in
+				if i == 0 {
+					// first label
+					make.leading.equalTo(previousView)
+				} else if i == labels.count - 1 {
+					// last label
+					make.leading.equalTo(previousView.snp_trailing).offset(Constants.space)
+					make.trailing.equalTo(barScrollView)
+				} else {
+					// center labels
+					make.leading.equalTo(previousView.snp_trailing).offset(Constants.space)
+				}
+				// every label
+				make.bottom.equalTo(barScrollView)
+				make.top.equalTo(barScrollView).offset(10)
+			})
 			previousView = label
 		}
 	}
@@ -188,7 +191,7 @@ class AIDropdownBrandView: UIView {
 		let line = UIView(frame: .zero)
 		line.backgroundColor = Constants.Label.highlightedBackgroundColor
 		barView.addSubview(line)
-		line.snp_makeConstraints {(make) -> Void in
+		line.snp_makeConstraints { (make) -> Void in
 			make.leading.equalTo(barView).offset(Constants.margin / 2)
 			make.trailing.bottom.equalTo(barView)
 			make.height.equalTo(Constants.lineViewHeight)
@@ -233,7 +236,7 @@ class AIDropdownBrandView: UIView {
 		downButton.setImage(UIImage(named: "down_triangle"), forState: .Normal)
 		downButton.addTarget(self, action: "downButtonPressed:", forControlEvents: .TouchUpInside)
 		barView.addSubview(downButton)
-		downButton.snp_makeConstraints {(make) -> Void in
+		downButton.snp_makeConstraints { (make) -> Void in
 			make.top.trailing.bottom.equalTo(barView)
 			make.width.equalTo(Constants.downButtonWidth)
 		}
@@ -256,6 +259,22 @@ class BrandIconLabel: VerticalIconLabel {
 	
 	var colorfulImage: UIImage?
 	var grayImage: UIImage?
+	var imageURL: String? {
+		didSet {
+			if let i = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(imageURL) {
+				image = i
+			} else {
+				if let wrappedImageURL = imageURL {
+					if let url = NSURL(string: wrappedImageURL) {
+						SDWebImageDownloader.sharedDownloader().downloadImageWithURL(url, options: SDWebImageDownloaderOptions.HighPriority, progress: { (_, _) -> Void in
+						}, completed: { [weak self](i, data, error, completed) -> Void in
+							self?.image = i
+						})
+					}
+				}
+			}
+		}
+	}
 	
 	override var image: UIImage? {
 		set {

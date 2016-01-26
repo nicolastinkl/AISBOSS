@@ -126,8 +126,6 @@ internal class AIServiceContentViewController: UIViewController {
         
     }
     
-    
-    
     // 缓存输入信息
     private var inputMessageCache:String = ""
     
@@ -341,17 +339,7 @@ internal class AIServiceContentViewController: UIViewController {
 
     }
     
-    func scrollAction () {
-//        let image = bottomImage()
-//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
-//        let frame = CGRectMake(0, size.height - 10, CGRectGetWidth(scrollView.frame), 10)
-//        scrollView.scrollRectToVisible(frame, animated: true)
-    }
-    
     func makeTopView () {
-        
-//        let image = topImage()
-//        let size = AITools.imageDisplaySizeFrom1080DesignSize(image.size) as CGSize
         
         let topView = AINavigationBarView.currentView()
         self.view.addSubview(topView)
@@ -360,9 +348,6 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
         
         topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
-        if self.serviceContentType == AIServiceContentType.Escort {
-          //  topView.naviDetailBar?.backgroundColor = UIColor(hex: "")
-        }
         
         //init recording view
         /*
@@ -376,10 +361,13 @@ internal class AIServiceContentViewController: UIViewController {
         
         topNaviView = topView
         
-        // 数据填充
-        //topNaviView?.backButton.setTitle(serviceContentModel?.service_desc ?? "", forState: UIControlState.Normal)
     }
     
+    /**
+     update Position
+     
+     - parameter animated: YES
+     */
     func updateFrames(animated animated:Bool=false) {
         var previousView:UIView = brandView ?? galleryView
         let duration = animated ? 0.25 : 0
@@ -460,7 +448,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, frame: view.frame)
+        brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128"), ("Mia","http://www.easyicon.net/api/resizeApi.php?id=1095741&size=128"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, frame: view.frame)
         addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())
     
         brandView?.onDownButtonDidClick = { [weak self] bView in
@@ -497,7 +485,6 @@ internal class AIServiceContentViewController: UIViewController {
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
     }
-
     
     private func addCustomView(preView: UIView) -> AICustomView {
         
