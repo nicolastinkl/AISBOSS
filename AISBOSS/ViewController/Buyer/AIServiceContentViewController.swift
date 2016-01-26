@@ -453,7 +453,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, width: view.width)
+        brandView = AIDropdownBrandView(brands: [("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, frame: view.frame)
         addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())
     
         brandView?.onDownButtonDidClick = { [weak self] bView in
