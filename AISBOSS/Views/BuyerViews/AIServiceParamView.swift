@@ -32,11 +32,12 @@ class AIServiceParamView : UIView {
     
     //MARK: Override
     
-    init(frame : CGRect, models: NSArray?) {
+    init(frame : CGRect, models: NSArray?, rootViewController: UIViewController) {
         sviewWidth = CGRectGetWidth(frame) - originalX*2
         super.init(frame: frame)
         
         if let _ = models {
+            self.rootViewController = rootViewController
             displayModels = models
             parseModels(displayModels!)
             resetFrameHeight(originalY)
