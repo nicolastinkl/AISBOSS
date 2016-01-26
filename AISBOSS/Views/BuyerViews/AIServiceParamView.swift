@@ -10,7 +10,7 @@ import Foundation
 
 
 @objc protocol AIServiceParamViewDelegate : class {
-
+    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
 }
 
 
@@ -24,6 +24,15 @@ class AIServiceParamView : UIView {
     
     var sviewWidth : CGFloat
     //MARK: Variables
+    
+    weak var delegate : AIServiceParamViewDelegate?
+    
+    var tagViewHeight : CGFloat?
+    
+    var brandsViewHeight : CGFloat?
+    
+    var displayViews : NSMutableArray = NSMutableArray()
+    
     var displayModels : NSArray?
 
     weak var rootViewController : UIViewController?
@@ -56,6 +65,9 @@ class AIServiceParamView : UIView {
 
     //MARK: 解析数据模型
     func parseModels(models : NSArray) {
+        
+        
+        
         
         for var i = 0; i < models.count; i++ {
             
@@ -110,6 +122,8 @@ class AIServiceParamView : UIView {
         addSubview(detailText)
         
         originalY += CGRectGetHeight(detailText.frame) + margin
+        
+        displayViews.addObject(detailText)
     }
     
     //MARK: Display 2
@@ -120,6 +134,7 @@ class AIServiceParamView : UIView {
         addSubview(types)
         
         originalY += CGRectGetHeight(types.frame) + margin
+        displayViews.addObject(types)
     }
     
     //MARK: Display 3
@@ -130,6 +145,7 @@ class AIServiceParamView : UIView {
         addSubview(priceView)
         
         originalY += CGRectGetHeight(priceView.frame) + margin
+        displayViews.addObject(priceView)
     }
     
     //MARK: Display 4
@@ -140,9 +156,28 @@ class AIServiceParamView : UIView {
         
         let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
         addSubview(tagsView)
+        tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents:.ValueChanged )
+        tagViewHeight = CGRectGetHeight(tagsView.frame)
+        originalY += tagViewHeight! + margin
         
-        originalY += CGRectGetHeight(tagsView.frame) + margin
+        displayViews.addObject(tagsView)
     }
+    
+    
+    func handleTagsViewChanged(sender: AITagsView) {
+        let offset : CGFloat = sender.frame.size.height - tagViewHeight!
+        tagViewHeight = sender.frame.size.height
+        //TODO: 下移所有在之下的view
+        if offset != 0 {
+            moveViewsBelow(sender, offset: offset)
+            if let _ = self.delegate {
+                self.delegate?.serviceParamsViewHeightChanged(offset, view: self)
+            }
+        }
+        
+    }
+    
+    
     
     //MARK: Display 5
     func addView5 (model : JSONModel) {
@@ -165,6 +200,7 @@ class AIServiceParamView : UIView {
         addSubview(inputView)
         
         originalY += CGRectGetHeight(inputView.frame) + margin
+        displayViews.addObject(inputView)
     }
     
     //MARK: Display 7
@@ -177,6 +213,7 @@ class AIServiceParamView : UIView {
         addSubview(coverage)
         
         originalY += CGRectGetHeight(coverage.frame) + margin
+        displayViews.addObject(coverage)
     }
     
     //MARK: Display 8
@@ -198,10 +235,38 @@ class AIServiceParamView : UIView {
         addSubview(serviceProviderView)
         
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
+        displayViews.addObject(serviceProviderView)
     }
     
 
+    //MARK: 移动视图
     
+    func moveViewsBelow(view : UIView, offset : CGFloat) {
+        
+        // find anchor
+        var anchor : Int = 0
+        for var index : Int = 0; index < displayViews.count; index++ {
+            let sview : UIView = displayViews.objectAtIndex(index) as! UIView
+            if sview == view {
+                anchor = index
+                continue
+            }
+            
+        }
+        
+        // move
+        
+        for var index : Int = anchor; index < displayViews.count; index++ {
+            let sview : UIView = displayViews.objectAtIndex(index) as! UIView
+            var frame = sview.frame
+            frame.size.height += offset
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                sview.frame = frame
+            })
+            
+        }
+
+    }
 
 }
 

@@ -42,7 +42,7 @@ internal class AIPageBueryViewController: UIViewController {
         return pageControl
     }()
     
-    private lazy var pageScrollView:UIScrollView = {
+    lazy var pageScrollView:UIScrollView = {
         // Setup the paging scroll view
         let pageScrollView = UIScrollView()
         pageScrollView.backgroundColor = UIColor.clearColor()

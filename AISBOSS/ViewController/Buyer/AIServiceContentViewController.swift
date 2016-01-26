@@ -223,9 +223,17 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardWillShow(notification : NSNotification) {
+        
+        let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
+        parentVC.pageScrollView.scrollEnabled = false
         if self.isStepperEditing  {
             return
         }
+        
+        if curTextField == nil {
+            return
+        }
+        
         if let userInfo = notification.userInfo {
             self.currentAudioView?.changeModel(1)
             // step 1: get keyboard height
@@ -248,11 +256,16 @@ internal class AIServiceContentViewController: UIViewController {
         if self.isStepperEditing  {
             return
         }
+        
         scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
         if self.isStepperEditing  {
+            return
+        }
+        
+        if curTextField == nil {
             return
         }
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -264,9 +277,19 @@ internal class AIServiceContentViewController: UIViewController {
     }    
     
     func keyboardDidHide(notification : NSNotification) {
+        
+        let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
+        parentVC.pageScrollView.scrollEnabled = true
+        
         if self.isStepperEditing  {
             return
         }
+        
+        if curTextField == nil {
+            return
+        }
+        
+        
         scrollView.userInteractionEnabled = true
         if let view1 = self.currentAudioView {
             view1.inputButtomValue.constant = 1
@@ -1019,5 +1042,43 @@ extension AIServiceContentViewController : UITextViewDelegate {
         
         return true
     }
+    
+}
+
+
+extension  AIServiceContentViewController : AIServiceParamViewDelegate {
+    
+    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
+        moveViewsBelow(view, offset: offset)
+    }
+    
+    
+    func moveViewsBelow(view : UIView, offset : CGFloat) {
+        
+        // find anchor
+        var anchor : Int = 0
+        for var index : Int = 0; index < scrollView.subviews.count; index++ {
+            let sview : UIView = scrollView.subviews[index] 
+            if sview == view {
+                anchor = index
+                continue
+            }
+            
+        }
+        
+        // move
+        
+        for var index : Int = anchor; index < scrollView.subviews.count; index++ {
+            let sview : UIView = scrollView.subviews[index]
+            var frame = sview.frame
+            frame.size.height += offset
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                sview.frame = frame
+            })
+            
+        }
+        
+    }
+    
     
 }
