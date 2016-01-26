@@ -174,28 +174,28 @@ class ServiceCardDetailIcon: ServiceParamlView {
         self.addSubview(priceLabelView)
         self.addSubview(calendarLabelView)
         
-        
+        let widthS:CGFloat = 45
+        let widthSpace:CGFloat = 20
         constrain(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
-            timeLabelView.height == 35
+            timeLabelView.height == widthS
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
             timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
-        }
-        
+        }        
         
         constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
-            priceLabelView.height == 35
+            priceLabelView.height == widthS
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
-            priceLabelView.centerX == priceIconImageView.centerX
+            priceLabelView.centerX == priceIconImageView.centerX + widthSpace
         }
         
         constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
-            calendarLabelView.height == 35
+            calendarLabelView.height == widthS
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
-            calendarLabelView.centerX == calendarIconImageView.centerX
+            calendarLabelView.centerX == calendarIconImageView.centerX + widthSpace
         }
     }
     

@@ -23,7 +23,6 @@ class ServiceCardTextView: ServiceParamlView {
     let FLAG_MAX_WIDTH : CGFloat = UIScreen.mainScreen().bounds.width - 20
     let TITLE_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(36)
     //fonts
-    let FLAG_TEXT_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(34))
     
     let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     
@@ -86,7 +85,7 @@ class ServiceCardTextView: ServiceParamlView {
     }
     
     func buildFlag(lastFrame : CGRect,text : String,number : Int) -> CGRect {
-        let width = text.sizeWithFont(FLAG_TEXT_FONT, forWidth: FLAG_MAX_WIDTH).width + CORNER_RADIOS_SIZE * 2 + 20
+        let width = text.sizeWithFont(TITLE_TEXT_FONT, forWidth: FLAG_MAX_WIDTH).width + CORNER_RADIOS_SIZE * 2
         var x = lastFrame.maxX
         if x == 0 {
             x = x + VIEW_LEFT_MARGIN
@@ -104,7 +103,7 @@ class ServiceCardTextView: ServiceParamlView {
         flagLabel.text = text
         flagLabel.font = TITLE_TEXT_FONT
         flagLabel.textColor = UIColor.whiteColor()
-        flagLabel.textAlignment = NSTextAlignment.Center
+        flagLabel.textAlignment = NSTextAlignment.Left
         //MARK: - TODO
         flagContainer.addSubview(flagLabel)
         return flagLabel.frame
