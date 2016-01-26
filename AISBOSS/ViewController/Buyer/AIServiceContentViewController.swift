@@ -119,7 +119,7 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(s, object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
             
             guard weakSelf?.isfinishLoadData == true else{
-                weakSelf!.loaddataNecessary()
+                weakSelf?.loaddataNecessary()
                 return
             }
         }
