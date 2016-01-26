@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProposalModel.h"
+#import "AIServiceDetailUIModel.h"
 
 
 @protocol AIServiceTypesDelegate <NSObject>
 
-- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model parentModel:(AIProposalServiceDetailParamModel*) parentModel;
+//- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model parentModel:(AIProposalServiceDetailParamModel*) parentModel;
 
 @end
 
@@ -21,6 +21,6 @@
 
 @property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model;
+- (id)initWithFrame:(CGRect)frame model:(AIServiceTypesModel *)model;
 
 @end

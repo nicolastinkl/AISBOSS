@@ -26,16 +26,28 @@ class AIServiceParamView : UIView {
     
     
     //MARK: Constants
+    let margin : CGFloat = 10
     
+    let originalX : CGFloat = 10
     
+    var sviewWidth : CGFloat
     //MARK: Variables
+    var displayModels : NSArray?
+
     
+    var originalY : CGFloat = 0
     
     //MARK: Override
     
-    init(params: [AIServiceDetailDisplayModel]?) {
-        super.init(frame: CGRectZero)
-        //super.init()
+    init(frame : CGRect, models: NSArray?) {
+        super.init(frame: frame)
+        
+        if let _ = models {
+            displayModels = models
+            parseModels(displayModels!)
+            sviewWidth = CGRectGetWidth(frame)
+        }
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,15 +59,114 @@ class AIServiceParamView : UIView {
     //MARK: Method
 
     //MARK: 解析数据模型
-    func parseModel(models : [AIServiceDetailDisplayModel]?) {
-        guard let _ = models else {
-            return
+    func parseModels(models : NSArray) {
+        
+        for var i = 0; i < models.count; i++ {
+            
+            let model : JSONModel = models.objectAtIndex(i) as! JSONModel
+            
+            switch (model.displayType) {
+            case 1: // title + detail
+                addView1(model)
+                break;
+            case 2: // 单选checkbox组
+                addView2(model)
+                break;
+            case 3: // 金额展示
+                addView3(model)
+                break;
+            case 4: // 标签组复合控件，可多选，单选，可分层
+                addView4(model)
+                break;
+            case 5: // picker控件，时间，日历
+                addView5(model)
+                break;
+            case 6: // 输入框
+                addView6(model)
+                break;
+            case 7: // 普通标签：title + 标签组
+                addView7(model)
+                break;
+            case 8: // 切换服务标签
+                addView8(model)
+                break;
+            default:
+                break;
+            }
         }
-        
-        
-        
-        
+
         
     }
     
+    //MARK: Reset Frame
+    func resetFrameHeight(height : CGFloat) {
+        var frame = self.frame
+        frame.size.height = height
+        self.frame = frame
+    }
+    
+    //MARK: Display 1
+    
+    func addView1 (model : JSONModel) {
+        let m : AIDetailTextModel = model as! AIDetailTextModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let detailText : AIDetailText = AIDetailText(frame: frame, titile: m.title, detail: m.content)
+        addSubview(detailText)
+        
+        originalY += CGRectGetHeight(detailText.frame) + margin
+    }
+    
+    //MARK: Display 2
+    func addView2 (model : JSONModel) {
+        let m : AIServiceTypesModel = model as! AIServiceTypesModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let types : AIServiceTypes = AIServiceTypes(frame:frame, model:m)
+        addSubview(types)
+        
+        originalY += CGRectGetHeight(types.frame) + margin
+    }
+    
+    //MARK: Display 3
+    func addView3 (model : JSONModel) {
+        let m : AIPriceViewModel = model as! AIPriceViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let priceView : AIPriceView = AIPriceView(frame: frame, model: m)
+        addSubview(priceView)
+        
+        originalY += CGRectGetHeight(priceView.frame) + margin
+    }
+    
+    //MARK: Display 4
+    func addView4 (model : JSONModel) {
+        let m : AIComplexLabelsModel = model as! AIComplexLabelsModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+//        let priceView : AITagsView = AITagsView(tags: m as! [ta], frame: <#T##CGRect#>)
+//        addSubview(priceView)
+        
+        originalY += CGRectGetHeight(priceView.frame) + margin
+    }
+    
+    //MARK: Display 5
+    func addView5 (model : JSONModel) {
+        
+    }
+    
+    //MARK: Display 6
+    func addView6 (model : JSONModel) {
+        
+    }
+    
+    //MARK: Display 7
+    func addView7 (model : JSONModel) {
+        
+    }
+    
+    //MARK: Display 8
+    func addView8 (model : JSONModel) {
+        
+    }
+    
+
+    
+
 }

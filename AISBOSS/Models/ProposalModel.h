@@ -431,12 +431,14 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (nonatomic, strong) AIProposalServicePriceModel<Optional> * service_price;
 @property (nonatomic, strong) AIProposalServiceDetailProviderModel<Optional> * service_provider; // ok
 
-@property (nonatomic, strong) NSArray<AIProposalServiceDetailParamModel, Optional> * service_param_list;
-@property (nonatomic, strong) NSArray<AIProposalServiceParamRelationModel, Optional> * service_param_rel_list;
+@property (nonatomic, strong) NSArray<Optional> * service_param_list;
+@property (nonatomic, strong) NSArray<Optional> * service_param_rel_list;
 
 @property (nonatomic, strong) AIProposalServiceDetailRatingModel<Optional> * service_rating; // ok
 @property (nonatomic, strong) AIProposalServiceDetail_WishModel<Optional> * wish_list;       // ok
 @property (nonatomic, strong) NSArray<AIProposalServiceDetailRatingCommentModel, Optional> *comment_list;
+
+@property (nonatomic, strong) NSArray<Optional> *service_param_display_list;
 
 @end
 

@@ -146,6 +146,8 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol, NSSecureCoding>
 
+@property (nonatomic, assign) NSInteger displayType;// Customize for Veris
+
 /** @name Creating and initializing models */
 
   /**

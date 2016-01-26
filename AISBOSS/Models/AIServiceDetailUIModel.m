@@ -50,6 +50,10 @@
 
 @end
 
+@implementation AIComplexLabelsModel
+
+@end
+
 // case TitleLabel =             "TitleLabels"    // 彩色标签
 
 @implementation AIServiceCoverageModel
