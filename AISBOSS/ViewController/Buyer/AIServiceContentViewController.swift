@@ -224,9 +224,17 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardWillShow(notification : NSNotification) {
+        
+        let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
+        parentVC.pageScrollView.scrollEnabled = false
         if self.isStepperEditing  {
             return
         }
+        
+        if curTextField == nil {
+            return
+        }
+        
         if let userInfo = notification.userInfo {
             self.currentAudioView?.changeModel(1)
             // step 1: get keyboard height
@@ -249,11 +257,16 @@ internal class AIServiceContentViewController: UIViewController {
         if self.isStepperEditing  {
             return
         }
+        
         scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
         if self.isStepperEditing  {
+            return
+        }
+        
+        if curTextField == nil {
             return
         }
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
@@ -265,9 +278,19 @@ internal class AIServiceContentViewController: UIViewController {
     }    
     
     func keyboardDidHide(notification : NSNotification) {
+        
+        let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
+        parentVC.pageScrollView.scrollEnabled = true
+        
         if self.isStepperEditing  {
             return
         }
+        
+        if curTextField == nil {
+            return
+        }
+        
+        
         scrollView.userInteractionEnabled = true
         if let view1 = self.currentAudioView {
             view1.inputButtomValue.constant = 1
