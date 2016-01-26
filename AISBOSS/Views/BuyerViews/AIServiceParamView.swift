@@ -9,16 +9,8 @@
 import Foundation
 
 
-enum AIServiceDetailDisplayType : String {
-    case Input =                  "Input"          // 输入控件
-    case TitleLabel =             "TitleLabels"    // 彩色标签
-    case Price =                  "Price"          // 价格
-    case TextDetail =             "TextDetail"     // 描述信息
-    case SingalOption =           "SingalOption"   // 单选
-    case ComplexLabel =           "ComplexLabel"   // 复合标签组
-    case Picker =                 "Picker"         // pick选择
-    case Calendar =               "Calendar"       // 日历
-    case Services =               "Services"       // 切换服务商
+@objc protocol AIServiceParamViewDelegate : class {
+
 }
 
 
@@ -34,13 +26,14 @@ class AIServiceParamView : UIView {
     //MARK: Variables
     var displayModels : NSArray?
 
-    
+    weak var rootViewController : UIViewController?
     var originalY : CGFloat = 0
+    
     
     //MARK: Override
     
     init(frame : CGRect, models: NSArray?) {
-        sviewWidth = CGRectGetWidth(frame)
+        sviewWidth = CGRectGetWidth(frame) - originalX*2
         super.init(frame: frame)
         
         if let _ = models {
@@ -166,8 +159,8 @@ class AIServiceParamView : UIView {
         let m : AIInputViewModel = model as! AIInputViewModel
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
-        
         let inputView : AIInputView = AIInputView(frame: frame, model: m)
+        inputView.root = rootViewController
         addSubview(inputView)
         
         originalY += CGRectGetHeight(inputView.frame) + margin
