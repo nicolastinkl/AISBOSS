@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProposalModel.h"
+#import "AIServiceDetailUIModel.h"
 
 @protocol AIServiceCoverageDelegate <NSObject>
 
-- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel isSelected:(BOOL)selected;
+//- (void)didChooseServiceLabelModel:(AIProposalServiceDetailParamValueModel *)labelModel isSelected:(BOOL)selected;
 
 @end
 
@@ -20,6 +20,6 @@
 @property (nonatomic, weak) id<AIServiceCoverageDelegate> delegate;
 
 
-- (instancetype)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model;
+- (instancetype)initWithFrame:(CGRect)frame model:(AIServiceCoverageModel *)model;
 
 @end

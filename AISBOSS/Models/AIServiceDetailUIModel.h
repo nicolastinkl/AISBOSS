@@ -36,7 +36,6 @@
 
 @interface AIInputViewModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, strong) NSString<Optional> *title;
 
@@ -72,7 +71,6 @@
 @interface AIPriceViewModel : JSONModel
 
 
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, strong) AIPriceModel<Optional> *defaultPrice;
 
@@ -90,8 +88,6 @@
 @end
 
 @interface AICanlendarViewModel : JSONModel
-
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, assign) NSInteger calendarType; // default 0 : 月日
 
@@ -121,23 +117,57 @@
 
 @interface AIServiceTypesModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, strong) NSString<Optional> *title;
 
-@property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
+@property (nonatomic, strong) NSArray<Optional> *typeOptions;
 
 @property (nonatomic, strong) NSDictionary<Optional> *params;
 
 @end
+
+// case TextDetail =             "TextDetail"     // 描述信息
+@protocol AIDetailTextModel
+@end
+
+@interface AIDetailTextModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *title;
+
+@property (nonatomic, strong) NSString<Optional> *content;
+
+@end
+
+
+
 // case ComplexLabel =           "ComplexLabel"   // 复合标签组
+
 @protocol AIComplexLabelModel
 
 @end
 
 @interface AIComplexLabelModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *displayType;
+@property (nonatomic, strong) NSString<Optional> *atitle;
+@property (nonatomic, assign) NSInteger identifier;
+@property (nonatomic, strong) NSString<Optional> *adesc;
+@property (nonatomic, strong) NSArray<Optional> *sublabels;
+@property (nonatomic, assign) BOOL isSelected;
+
+
+@end
+
+
+@protocol AIComplexLabelsModel
+
+@end
+
+@interface AIComplexLabelsModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *title;
+@property (nonatomic, strong) NSArray<Optional> *selected_label_id;
+@property (nonatomic, strong) NSArray<Optional> *labels;
+
 
 @end
 
@@ -148,11 +178,10 @@
 
 @interface AIServiceCoverageModel : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, strong) NSString<Optional> *title;
 
-@property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
+@property (nonatomic, strong) NSArray<Optional> *options;
 
 @property (nonatomic, strong) NSDictionary<Optional> *params;
 
@@ -165,7 +194,6 @@
 @end
 
 @interface AIPickerViewModel : JSONModel
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
 @property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
 
@@ -173,25 +201,19 @@
 
 
 
-// case TextDetail =             "TextDetail"     // 描述信息
-@protocol AIDetailTextModel
 
-@end
-
-@interface AIDetailTextModel : JSONModel
-@property (nonatomic, strong) NSString<Optional> *displayType;
-
-@property (nonatomic, strong) NSString<Optional> *title;
-
-@property (nonatomic, strong) NSString<Optional> *content;
-
-@end
 
 // case Services =               "Services"       // 切换服务商
 
 @protocol AIServiceProviderModel
 
-@property (nonatomic, strong) NSString<Optional> *identifier;
+
+
+@end
+
+@interface AIServiceProviderModel : JSONModel
+
+@property (nonatomic, assign) NSInteger identifier;
 
 @property (nonatomic, strong) NSString<Optional> *name;
 
@@ -201,19 +223,14 @@
 
 @end
 
-@interface AIServiceProviderModel : JSONModel
-
-@end
-
 
 @protocol AIServiceProviderViewModel
 
 @end
 
 @interface AIServiceProviderViewModel : JSONModel
-@property (nonatomic, strong) NSString<Optional> *displayType;
 
-@property (nonatomic, strong) NSArray<Optional, AIServiceProviderModel> *providers;
+@property (nonatomic, strong) NSArray<Optional> *providers;
 
 @end
 

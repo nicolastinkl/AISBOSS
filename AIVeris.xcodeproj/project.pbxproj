@@ -30,6 +30,7 @@
 		8120B78C1C51C21F001BB063 /* AIPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78B1C51C21F001BB063 /* AIPriceView.swift */; };
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
+		8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B79E1C564925001BB063 /* AIProposalServiceParser.m */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
@@ -547,6 +548,8 @@
 		8120B78D1C51C42D001BB063 /* AIServiceDetailUIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceDetailUIModel.h; sourceTree = "<group>"; };
 		8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceDetailUIModel.m; sourceTree = "<group>"; };
 		8120B7931C51CB11001BB063 /* AIInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInputView.swift; sourceTree = "<group>"; };
+		8120B79D1C564925001BB063 /* AIProposalServiceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceParser.h; sourceTree = "<group>"; };
+		8120B79E1C564925001BB063 /* AIProposalServiceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceParser.m; sourceTree = "<group>"; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIFakeUser.h; path = Login/AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIFakeUser.m; path = Login/AIFakeUser.m; sourceTree = "<group>"; };
 		815EAD791C488A8600D83780 /* AIOrderTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderTableModel.h; sourceTree = "<group>"; };
@@ -2139,6 +2142,8 @@
 				84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */,
 				8120B78D1C51C42D001BB063 /* AIServiceDetailUIModel.h */,
 				8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */,
+				8120B79D1C564925001BB063 /* AIProposalServiceParser.h */,
+				8120B79E1C564925001BB063 /* AIProposalServiceParser.m */,
 			);
 			name = ocModel;
 			sourceTree = "<group>";
@@ -3356,6 +3361,7 @@
 				8442828F1C45EF95001C2DCB /* OAStackView.m in Sources */,
 				93FA1E571B9C3E12009965C8 /* AIServerDetailViewController.swift in Sources */,
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
+				8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */,
 				84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */,
 				849B4B491C0EDFE300BEC179 /* FLEXNetworkTransaction.m in Sources */,
 				936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */,

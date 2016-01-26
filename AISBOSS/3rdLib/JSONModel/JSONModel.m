@@ -32,6 +32,7 @@ static const char * kMapperObjectKey;
 static const char * kClassPropertiesKey;
 static const char * kClassRequiredPropertyNamesKey;
 static const char * kIndexPropertyNameKey;
+static const char * kDisplayTypeKey = "kDisplayTypeKey";
 
 #pragma mark - class static variables
 static NSArray* allowedJSONTypes = nil;
@@ -44,6 +45,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - JSONModel implementation
 @implementation JSONModel
+
 {
     NSString* _description;
 }
@@ -1174,6 +1176,20 @@ static JSONKeyMapper* globalKeyMapper = nil;
 }
 
 #pragma mark - custom comparison methods
+
+
+//- (NSInteger)displayType
+//{
+//    NSNumber *number = objc_getAssociatedObject(self, &kDisplayTypeKey);
+//    return number ? number.integerValue : -1;
+//}
+//
+//- (void)setDisplayType:(NSInteger)displayType
+//{
+//    NSNumber *number = [NSNumber numberWithInteger:displayType];
+//    objc_setAssociatedObject(self, kDisplayTypeKey, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//}
+
 -(NSString*)indexPropertyName
 {
     //custom getter for an associated object

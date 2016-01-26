@@ -27,13 +27,13 @@
     NSInteger _lastIndex;
 }
 
-@property (nonatomic, strong) AIProposalServiceDetailParamModel *serviceTypesModel;
+@property (nonatomic, strong) AIServiceTypesModel *serviceTypesModel;
 
 @end
 
 @implementation AIServiceTypes
 
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailParamModel *)model
+- (id)initWithFrame:(CGRect)frame model:(AIServiceTypesModel *)model
 {
     self = [super initWithFrame:frame];
     
@@ -65,7 +65,7 @@
 - (void)makeTitle
 {
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), _fontSize);
-    _titleLabel = [AIViews normalLabelWithFrame:frame text:_serviceTypesModel.param_name fontSize:_fontSize color:[UIColor whiteColor]];
+    _titleLabel = [AIViews normalLabelWithFrame:frame text:_serviceTypesModel.title fontSize:_fontSize color:[UIColor whiteColor]];
     _titleLabel.font = [AITools myriadSemiCondensedWithSize:_fontSize];
     [self addSubview:_titleLabel];
 }
@@ -78,8 +78,9 @@
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat margin = _radioSize + _radioMargin - 2;
     
-    for (NSInteger i = 0; i < _serviceTypesModel.param_value.count; i++) {
+    for (NSInteger i = 0; i < _serviceTypesModel.typeOptions.count; i++) {
         
+        AIOptionModel *optionModel = [_serviceTypesModel.typeOptions objectAtIndex:i];
         CGRect frame = CGRectMake(0, y, width, _radioSize);
         UIView *radioView = [[UIView alloc] initWithFrame:frame];
         radioView.tag = i;
@@ -97,11 +98,8 @@
         [radioView addSubview:radioButton];
         
         //
-        
-        
-        AIProposalServiceDetailParamValueModel *param = [_serviceTypesModel.param_value objectAtIndex:i];
-        
-        if (param.is_default) {
+  
+        if (optionModel.isSelected) {
             _selectedIndex = i;
             radioButton.selected = YES;
         }
@@ -109,7 +107,7 @@
         CGFloat x = _radioSize + _radioMargin;
         CGFloat strWidth = width - x;
         CGRect strFrame = CGRectMake(x, 0, strWidth, _radioSize);
-        NSString *radio = param.content;
+        NSString *radio = optionModel.desc;
         
         UPLabel *label = [AIViews normalLabelWithFrame:strFrame text:radio fontSize:_fontSize color:[UIColor whiteColor]];
         label.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -164,10 +162,11 @@
     
     _selectedIndex = view.tag;
     
+    /*
     if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:parentModel:)]) {
         [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex] parentModel:_serviceTypesModel];
     }
-    
+    */
 }
 
 
