@@ -9,16 +9,8 @@
 import Foundation
 
 
-enum AIServiceDetailDisplayType : String {
-    case Input =                  "Input"          // 输入控件
-    case TitleLabel =             "TitleLabels"    // 彩色标签
-    case Price =                  "Price"          // 价格
-    case TextDetail =             "TextDetail"     // 描述信息
-    case SingalOption =           "SingalOption"   // 单选
-    case ComplexLabel =           "ComplexLabel"   // 复合标签组
-    case Picker =                 "Picker"         // pick选择
-    case Calendar =               "Calendar"       // 日历
-    case Services =               "Services"       // 切换服务商
+@objc protocol AIServiceParamViewDelegate : class {
+
 }
 
 
@@ -34,16 +26,18 @@ class AIServiceParamView : UIView {
     //MARK: Variables
     var displayModels : NSArray?
 
-    
+    weak var rootViewController : UIViewController?
     var originalY : CGFloat = 0
+    
     
     //MARK: Override
     
-    init(frame : CGRect, models: NSArray?) {
-        sviewWidth = CGRectGetWidth(frame)
+    init(frame : CGRect, models: NSArray?, rootViewController: UIViewController) {
+        sviewWidth = CGRectGetWidth(frame) - originalX*2
         super.init(frame: frame)
         
         if let _ = models {
+            self.rootViewController = rootViewController
             displayModels = models
             parseModels(displayModels!)
             resetFrameHeight(originalY)
@@ -131,7 +125,7 @@ class AIServiceParamView : UIView {
     //MARK: Display 3
     func addView3 (model : JSONModel) {
         let m : AIPriceViewModel = model as! AIPriceViewModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth + margin * 2, 100)
         let priceView : AIPriceView = AIPriceView(frame: frame, model: m)
         addSubview(priceView)
         
@@ -144,10 +138,10 @@ class AIServiceParamView : UIView {
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
   
         
-        let priceView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
-        addSubview(priceView)
+        let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
+        addSubview(tagsView)
         
-        originalY += CGRectGetHeight(priceView.frame) + margin
+        originalY += CGRectGetHeight(tagsView.frame) + margin
     }
     
     //MARK: Display 5
@@ -166,8 +160,8 @@ class AIServiceParamView : UIView {
         let m : AIInputViewModel = model as! AIInputViewModel
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
-        
         let inputView : AIInputView = AIInputView(frame: frame, model: m)
+        inputView.root = rootViewController
         addSubview(inputView)
         
         originalY += CGRectGetHeight(inputView.frame) + margin
@@ -188,7 +182,7 @@ class AIServiceParamView : UIView {
     //MARK: Display 8
     func addView8 (model : JSONModel) {
         let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth+margin*2, 0)
         
         var brands : [(title: String, image: String)] = []
         var index : Int = 0

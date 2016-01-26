@@ -61,6 +61,18 @@ internal class AIServiceContentViewController: UIViewController {
     
     private var isfinishLoadData:Bool = false
 
+    private var isStepperEditing = false {
+        didSet {
+            if isStepperEditing {
+                removeKeyboardNotifications()
+            } else {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { [weak self] () -> Void in
+                    // 修复 stepper 编辑时 scrollview 滚到底部的bug
+                    self?.addKeyboardNotifications()
+                    })
+            }
+        }
+    }
     
     private var scrollViewSubviews = [UIView]()
     
@@ -123,6 +135,9 @@ internal class AIServiceContentViewController: UIViewController {
             }
         }
         
+        NSNotificationCenter.defaultCenter().addObserverForName("kStepperIsEditing", object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
+            weakSelf?.isStepperEditing = Bool(NSNotificationOBJ.object as! Int)
+        }
     }
     
     // 缓存输入信息
@@ -155,7 +170,7 @@ internal class AIServiceContentViewController: UIViewController {
         configuredParameters?.removeAllObjects()
     }
     
-    
+
     // MARK: -> Internal init methods
     
     // MARK: 键盘事件
@@ -173,7 +188,20 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
     }
     
+    
+    func removeKeyboardNotifications() {
+        let names = [UIKeyboardWillShowNotification,
+            UIKeyboardDidShowNotification,UIKeyboardWillHideNotification,UIKeyboardDidHideNotification,UIKeyboardDidChangeFrameNotification]
+        let center = NSNotificationCenter.defaultCenter()
+        for name in names {
+            center.removeObserver(self, name: name, object: nil)
+        }
+    }
+    
     func keyboardDidChange(notification : NSNotification) {
+        if self.isStepperEditing  {
+            return
+        }
         //change keyboard height
         
         if let userInfo = notification.userInfo {
@@ -195,7 +223,9 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardWillShow(notification : NSNotification) {
-        
+        if self.isStepperEditing  {
+            return
+        }
         if let userInfo = notification.userInfo {
             self.currentAudioView?.changeModel(1)
             // step 1: get keyboard height
@@ -215,11 +245,16 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardDidShow(notification : NSNotification) {
+        if self.isStepperEditing  {
+            return
+        }
         scrollView.userInteractionEnabled = true
     }
     
     func keyboardWillHide(notification : NSNotification) {
- 
+        if self.isStepperEditing  {
+            return
+        }
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         scrollViewBottom()
         if let view1 = self.currentAudioView {
@@ -229,6 +264,9 @@ internal class AIServiceContentViewController: UIViewController {
     }    
     
     func keyboardDidHide(notification : NSNotification) {
+        if self.isStepperEditing  {
+            return
+        }
         scrollView.userInteractionEnabled = true
         if let view1 = self.currentAudioView {
             view1.inputButtomValue.constant = 1
@@ -414,19 +452,26 @@ internal class AIServiceContentViewController: UIViewController {
         
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
         
-        let serviceContentView = AIServiceParamView(frame: CGRectZero, models: parser.displayModels)
-        addNewSubView(serviceContentView, preView: galleryView,color: UIColor.clearColor())
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.top + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        serviceContentView.rootViewController = self.parentViewController
+        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
         
-        //test
+        let musicView  = addMusicView(serviceContentView)
+        
+        
+        //test  时间选择
         let timer = AIEventTimerView.currentView()
         timer.title.text = "Event time:"
         timer.timeContent.setTitle("Nov 19th", forState: .Normal)
-        addNewSubView(timer, preView: serviceContentView, color: UIColor.clearColor())
+        addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
         
+        // test 单选
         let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
         addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
         
+        // Necesarry public View...
         let preView = addCustomView(singleSelectView)
+        
         addAudioView(preView)
         
     }

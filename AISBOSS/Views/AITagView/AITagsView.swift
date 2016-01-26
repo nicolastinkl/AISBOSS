@@ -32,6 +32,7 @@ import UIKit
  func tagsViewValueDidChanged(sender: AITagsView) {
  label.text = "\(sender.selectedTagIds)"
  label.sizeToFit()
+/size frame ....update frames()
  }
  */
 
@@ -61,6 +62,7 @@ class AITagsView: UIControl {
 		struct Tag {
 			static let normalBackgroudColor = UIColor.redColor()
 			static let highlightedBackgroundColor = UIColor.blackColor()
+            static let textColor = UIColor.whiteColor()
 			static var spaceBetweenTags: CGFloat = 5 {
 				didSet {
 					NSNotificationCenter.defaultCenter().postNotificationName(kNeedRerenderAllViews, object: nil)
@@ -132,6 +134,7 @@ class AITagsView: UIControl {
 			let s = AISingleLineTagView(tags: tags, frame: frame)
 			s.tagNormalColor = Constants.Tag.normalBackgroudColor
 			s.tagSelectedColor = Constants.Tag.highlightedBackgroundColor
+            s.setTagTextColor(Constants.Tag.textColor)
 			
 			s.addTarget(self, action: "singleLineTagViewValueChanged:", forControlEvents: .ValueChanged)
 			addSubview(s)
