@@ -1045,3 +1045,41 @@ extension AIServiceContentViewController : UITextViewDelegate {
     }
     
 }
+
+
+extension  AIServiceContentViewController : AIServiceParamViewDelegate {
+    
+    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
+        moveViewsBelow(view, offset: offset)
+    }
+    
+    
+    func moveViewsBelow(view : UIView, offset : CGFloat) {
+        
+        // find anchor
+        var anchor : Int = 0
+        for var index : Int = 0; index < scrollView.subviews.count; index++ {
+            let sview : UIView = scrollView.subviews[index] 
+            if sview == view {
+                anchor = index
+                continue
+            }
+            
+        }
+        
+        // move
+        
+        for var index : Int = anchor; index < scrollView.subviews.count; index++ {
+            let sview : UIView = scrollView.subviews[index]
+            var frame = sview.frame
+            frame.size.height += offset
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                sview.frame = frame
+            })
+            
+        }
+        
+    }
+    
+    
+}

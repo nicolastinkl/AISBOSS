@@ -10,7 +10,7 @@ import Foundation
 
 
 @objc protocol AIServiceParamViewDelegate : class {
-
+    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
 }
 
 
@@ -24,6 +24,12 @@ class AIServiceParamView : UIView {
     
     var sviewWidth : CGFloat
     //MARK: Variables
+    
+    weak var delegate : AIServiceParamViewDelegate?
+    
+    var tagViewHeight : CGFloat?
+    
+    var brandsViewHeight : CGFloat?
     
     var displayViews : NSMutableArray = NSMutableArray()
     
@@ -59,6 +65,9 @@ class AIServiceParamView : UIView {
 
     //MARK: 解析数据模型
     func parseModels(models : NSArray) {
+        
+        
+        
         
         for var i = 0; i < models.count; i++ {
             
@@ -148,12 +157,23 @@ class AIServiceParamView : UIView {
         let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
         addSubview(tagsView)
         tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents:.ValueChanged )
-        originalY += CGRectGetHeight(tagsView.frame) + margin
+        tagViewHeight = CGRectGetHeight(tagsView.frame)
+        originalY += tagViewHeight! + margin
+        
         displayViews.addObject(tagsView)
     }
     
     
     func handleTagsViewChanged(sender: AITagsView) {
+        let offset : CGFloat = sender.frame.size.height - tagViewHeight!
+        tagViewHeight = sender.frame.size.height
+        //TODO: 下移所有在之下的view
+        if offset != 0 {
+            moveViewsBelow(sender, offset: offset)
+            if let _ = self.delegate {
+                self.delegate?.serviceParamsViewHeightChanged(offset, view: self)
+            }
+        }
         
     }
     
@@ -219,7 +239,34 @@ class AIServiceParamView : UIView {
     }
     
 
+    //MARK: 移动视图
     
+    func moveViewsBelow(view : UIView, offset : CGFloat) {
+        
+        // find anchor
+        var anchor : Int = 0
+        for var index : Int = 0; index < displayViews.count; index++ {
+            let sview : UIView = displayViews.objectAtIndex(index) as! UIView
+            if sview == view {
+                anchor = index
+                continue
+            }
+            
+        }
+        
+        // move
+        
+        for var index : Int = anchor; index < displayViews.count; index++ {
+            let sview : UIView = displayViews.objectAtIndex(index) as! UIView
+            var frame = sview.frame
+            frame.size.height += offset
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                sview.frame = frame
+            })
+            
+        }
+
+    }
 
 }
 
