@@ -52,7 +52,7 @@
 
 - (CGFloat)addPriceView:(CGFloat)positionY {
     CGFloat totalWidth = self.width;
-    CGFloat totalHeight = [AITools displaySizeFrom1080DesignSize:97];
+    CGFloat totalHeight = [AITools displaySizeFrom1080DesignSize:97]+20;
     NSString *price = [NSString stringWithFormat:@"%@ %ld %@", self.detailModel.service_price.unit, (NSInteger)self.detailModel.service_price.price, self.detailModel.service_price.billing_mode];
     
     CGRect frame = CGRectMake(0, positionY, totalWidth, totalHeight);

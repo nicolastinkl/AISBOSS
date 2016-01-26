@@ -9,7 +9,7 @@
 #import "AIBaseTagsView.h"
 
 #define TAG_SPACE_HORIZONTAL      10
-#define TAG_SPACE_VERTICAL        5
+#define TAG_SPACE_VERTICAL        10
 #define DEFAULT_VIEW_HEIGHT       44
 #define MAX_TAG_SIZE              300
 #define MIN_TAG_SIZE              40
@@ -66,7 +66,7 @@
         [self addTagInView:tag index:[tagsToDisplay indexOfObject:tag]];
     }
 
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y + 10, viewWidth, viewHeight + 10);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y + 10, viewWidth, viewHeight);
 }
 
 - (void)setTagNormalColor:(UIColor *)tagNormalColor {
@@ -130,7 +130,7 @@
     tagLabel.tag = index;
     UIFont *tagFont = [UIFont fontWithName:@"Arial" size:26];
     CGSize maximumLabelSize = CGSizeMake(maxTagSize, CGRectGetWidth(self.bounds));
-
+    
     CGSize expectedLabelSize = [tag sizeWithFont:tagFont
                                constrainedToSize:maximumLabelSize
                                    lineBreakMode:[tagLabel lineBreakMode]];

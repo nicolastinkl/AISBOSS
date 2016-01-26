@@ -2,14 +2,17 @@
     "labels": [{
         "title": "Apple",
         "id": 1,
+        "selected": 1,
         "desc": "",
         "sublabels": [{
             "title": "Mac",
             "id": 11,
+            "selected": 1,
             "desc": "",
             "sublabels": [{
                 "title": "macbook",
                 "id": 3,
+                "selected": 1,
                 "desc": "",
                 "sublabels": [{
                     "title": "new macbook",
@@ -19,6 +22,7 @@
                 }, {
                     "title": "macbook pro",
                     "id": 32,
+                    "selected": 1,
                     "desc": "the most powerful macbook",
                     "sublabels": []
                 }, {
@@ -70,6 +74,6 @@
             "sublabels": []
         }]
     }],
-    "selected_label_id": [1, 11, 3, 32],
-    "type": "multiLabels"
+    "type": "multiLabels",
+    "title": "a long title"
 }
