@@ -16,14 +16,14 @@ import UIKit
  let dic = JSON(data: data)
 
  let tags = dic["labels"].object as! [Dictionary<String, AnyObject>]
- let selectedTagIds = dic["selected_label_id"].object as! [Int]
+
 
  var mTags = [Tagable]()
  for t in tags {
  mTags.append(AITag(dic: t))
  }
 
- let tagsView = AITagsView(tags: mTags, selectedTagIds: selectedTagIds, frame: view.bounds)
+ let tagsView = AITagsView(tags: mTags, frame: view.bounds)
  tagsView.backgroundColor = UIColor.orangeColor()
  view.addSubview(tagsView)
 
