@@ -195,6 +195,7 @@
 
 @interface AIPickerViewModel : JSONModel
 
+@property (nonatomic, strong)NSString<Optional> *identifierPick;
 @property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
 
 @end

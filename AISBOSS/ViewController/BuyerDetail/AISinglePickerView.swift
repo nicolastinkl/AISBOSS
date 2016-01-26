@@ -7,10 +7,14 @@
 //
 
 import Foundation
-
+import Spring
 public class AISinglePickerView: UIView {    
     
     @IBOutlet weak var pickOneView: UIPickerView!
+
+    var superViewID:String = ""
+    
+    private let DIYSuperView = UIView()
     
     private var dataSource:[AIOptionModel] = {
         //构造函数
@@ -21,30 +25,59 @@ public class AISinglePickerView: UIView {
         option1.isSelected = true
         option1.displayColor = "#534F5D"
         
-        return [option1,option1,option1,option1,option1,option1,option1]
+        var option2 = AIOptionModel()
+        option2.desc = "bedrooms False"
+        option2.identifier = "213456"
+        option2.isSelected = false
+        option2.displayColor = "#534F5D"
+        
+        return [option1,option2,option2,option2]
         
     }()
     
+    private var currentModel:AIOptionModel?
     public func show(){
         
         if let superView = UIApplication.sharedApplication().keyWindow {
-            superView.addSubview(self)
-            pickOneView.reloadAllComponents()
-            //pickOneView.selectRow(3, inComponent: 1, animated: false)
+            DIYSuperView.frame = superView.frame
+            superView.addSubview(DIYSuperView)
+            DIYSuperView.backgroundColor = UIColor(hexString: "#534F5D", alpha: 0.5)
+            DIYSuperView.alpha = 0
+            
+            DIYSuperView.addSubview(self)
+            self.alpha = 0
             self.setWidth(superView.width)
-            self.setTop(superView.height - self.height)
+            pickOneView.reloadAllComponents() 
+            
+            SpringAnimation.spring(0.3, animations: { () -> Void in
+                self.alpha = 1
+                self.DIYSuperView.alpha = 1
+                self.setTop(self.DIYSuperView.height - self.height)
+                
+            })
+            
         }
     }
     
     @IBAction func closeAction(sender: AnyObject) {
-        self.removeFromSuperview()
+        
+        SpringAnimation.springEaseInOut(0.3) { () -> Void in
+             self.DIYSuperView.alpha = 0.0
+             self.DIYSuperView.removeFromSuperview()
+        }
+       
     }
     
     @IBAction func doneAction(sender: AnyObject) {
+        if let model = currentModel{
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AISinglePickerViewNotificationName, object: ["model":model,"ID":superViewID])
+        }
         
         
-        self.removeFromSuperview()
-        
+        SpringAnimation.springEaseInOut(0.3) { () -> Void in
+            self.DIYSuperView.alpha = 0.0
+            self.DIYSuperView.removeFromSuperview()
+        }
     }
     
     
@@ -68,8 +101,8 @@ extension AISinglePickerView: UIPickerViewDataSource,UIPickerViewDelegate {
     
     
     public func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // let model = dataSource[row] as AIOptionModel
-        
+        let model = dataSource[row] as AIOptionModel
+        currentModel = model
         
     }
     

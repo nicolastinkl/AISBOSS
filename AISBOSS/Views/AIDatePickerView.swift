@@ -8,6 +8,7 @@
 
 import Foundation
 import Cartography
+import Spring
 
 public enum UIPickViewTag:  Int {
     case month = 1
@@ -16,6 +17,7 @@ public enum UIPickViewTag:  Int {
 
 public class AIDatePickerView: UIView {
     
+    private let DIYSuperView = UIView()
     
     @IBOutlet weak var pickOneView: UIPickerView!
     
@@ -41,7 +43,10 @@ public class AIDatePickerView: UIView {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIDatePickerViewNotificationName, object: selectSource)
         }
         
-        self.removeFromSuperview()
+        SpringAnimation.springEaseInOut(0.3) { () -> Void in
+            self.DIYSuperView.alpha = 0.0
+            self.DIYSuperView.removeFromSuperview()
+        }
         
     }
     
@@ -55,11 +60,25 @@ public class AIDatePickerView: UIView {
     public func show(){
         
         if let superView = UIApplication.sharedApplication().keyWindow {
-            superView.addSubview(self)
+                    
+            DIYSuperView.frame = superView.frame
+            superView.addSubview(DIYSuperView)
+            DIYSuperView.backgroundColor = UIColor(hexString: "#534F5D", alpha: 0.5)
+            DIYSuperView.alpha = 0
+            
+            DIYSuperView.addSubview(self)
+            self.alpha = 0
+            self.setWidth(superView.width)
             pickOneView.reloadAllComponents()
             pickTwoView.reloadAllComponents()
-            self.setWidth(superView.width)
-            self.setTop(superView.height - self.height)
+            
+            SpringAnimation.spring(0.3, animations: { () -> Void in
+                self.alpha = 1
+                self.DIYSuperView.alpha = 1
+                self.setTop(self.DIYSuperView.height - self.height)
+                
+            })
+            
             
         }
         

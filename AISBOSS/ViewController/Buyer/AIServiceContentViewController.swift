@@ -457,8 +457,7 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
         
         let musicView  = addMusicView(serviceContentView)
-        
-        
+                
         //test  时间选择
         let timer = AIEventTimerView.currentView()
         timer.title.text = "Event time:"
