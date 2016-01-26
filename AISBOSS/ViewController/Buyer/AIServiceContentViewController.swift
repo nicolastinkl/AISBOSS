@@ -488,11 +488,11 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
         
         // test 单选
-        let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
-        addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
+        //let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
+        //addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
         
         // Necesarry public View...
-        let preView = addCustomView(singleSelectView)
+        let preView = addCustomView(timer)
         
         addAudioView(preView)
         
