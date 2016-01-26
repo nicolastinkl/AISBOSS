@@ -77,7 +77,7 @@ class ServiceContainerView: UIView {
         
         price.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(56))
         price.textColor = UIColor.whiteColor()
-
+        
     }
     
     //加载数据
@@ -119,6 +119,7 @@ class ServiceContainerView: UIView {
             }
         }
 */
+        
     }
 
     
