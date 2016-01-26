@@ -411,10 +411,7 @@ internal class AIServiceContentViewController: UIViewController {
         // new
         
         
-        
-        
-        
-        return
+    
         // old
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
@@ -429,24 +426,34 @@ internal class AIServiceContentViewController: UIViewController {
         
 
         //TODO: add brand View
+        
+        let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
+        
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectZero, models: parser.displayModels)
+        
+        addNewSubView(serviceContentView, preView: galleryView)
+        
+        
+        let preView = addCustomView(serviceContentView);
+        
+        
+        
+//        //TODO: add Parameters
+//        var serviceContentView: UIView!
+//        var preView : UIView!
+//        if self.serviceContentType == AIServiceContentType.Escort {
+//            //陪护
+//            serviceContentView = addEscortView(addBrandView())
+//            preView = addCustomView(serviceContentView)
+//        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
+//            //音乐疗养
+//            serviceContentView = addMusicView(addBrandView())
+//            preView = addCustomView(serviceContentView)
+//        }else {
+//            serviceContentView = addMusicView(galleryView)
+//            preView = serviceContentView
+//        }
 
-        
-        
-        //TODO: add Parameters
-        var serviceContentView: UIView!
-        var preView : UIView!
-        if self.serviceContentType == AIServiceContentType.Escort {
-            //陪护
-            serviceContentView = addEscortView(addBrandView())
-            preView = addCustomView(serviceContentView)
-        } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
-            //音乐疗养
-            serviceContentView = addMusicView(addBrandView())
-            preView = addCustomView(serviceContentView)
-        }else {
-            serviceContentView = addMusicView(galleryView)
-            preView = serviceContentView
-        }
    
         addAudioView(preView)
 

@@ -26,13 +26,13 @@
     self = [super init];
     
     if (self) {
-        if (params) {
+        if (displayParams) {
             self.serviceParams = params;
             self.displayParams = displayParams;
             self.relatedParams = relatedParams;
     
             self.displayModels = [[NSMutableArray alloc] init];
-            [self parseParams:params];
+            [self parseParams:displayParams];
         }
     }
     
@@ -93,9 +93,11 @@
      */
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AIDetailTextModel *model = [[AIDetailTextModel alloc] init];
+
     model.title = [content objectForKey:@"title"];
     model.content = [content objectForKey:@"detail"];
     
+    [model setDisplayType:1];
     [_displayModels addObject:model];
     
 }
@@ -166,7 +168,7 @@
     
     model.typeOptions = options;
     model.params = nil;
-    
+    [model setDisplayType:2];
     [_displayModels addObject:model];
     
 }
@@ -207,7 +209,7 @@
     priceM.currency = [priceDic objectForKey:@"unit"];
     priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
     model.defaultPrice = priceM;
-    
+    [model setDisplayType:3];
     [_displayModels addObject:model];
     
     
@@ -262,7 +264,8 @@
      @property (nonatomic, strong) NSArray<Optional> *selected_label_id;
      @property (nonatomic, strong) NSArray<Optional> *labels;
      */
-    NSDictionary *content = [param objectForKey:@"ui_template_content"];
+    NSArray *list = [param objectForKey:@"ui_template_content"];
+    NSDictionary *content = [list objectAtIndex:0];
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     
@@ -270,7 +273,7 @@
     
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
-        sModel.title = [dic objectForKey:@"content"];
+        sModel.atitle = [dic objectForKey:@"content"];
         NSNumber *ide = [dic objectForKey:@"id"];
         sModel.identifier = ide.integerValue;
         sModel.sublabels = [[NSMutableArray alloc] init];
@@ -281,7 +284,7 @@
     
     
     model.labels = [self makeComplexArrayWithArray:level1];
-    
+    [model setDisplayType:4];
     [_displayModels addObject:model];
     
 }
@@ -292,24 +295,25 @@
     for ( AIComplexLabelModel *model in array) {
         for (NSDictionary *dic in self.relatedParams) {
             NSDictionary *param = [dic objectForKey:@"param"];
-            NSString *value_key = [param objectForKey:@"param_value_key"];
+            NSNumber *value_key = [param objectForKey:@"param_value_key"];
             
-            if ([value_key isEqualToString:[NSString stringWithFormat:@"%ld", model.identifier]]) {
+            if (value_key.integerValue == model.identifier) {
                 NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
-                NSString *subLabelsKey = [rel_param objectForKey:@"param_key"];
+                NSNumber *subLabelsKey = [rel_param objectForKey:@"param_key"];
                 
                 for (NSDictionary *service_dic in self.serviceParams) {
-                    if ([subLabelsKey isEqualToString:[service_dic objectForKey:@"param_key"]]) {
+                    NSNumber *ffkey = [service_dic objectForKey:@"param_key"];
+                    if (subLabelsKey.integerValue == ffkey.integerValue) {
                         NSArray *param_value = [service_dic objectForKey:@"param_value"];
                         NSMutableArray *subLabels = [[NSMutableArray alloc] init];
                         
                         for (NSDictionary *subParam in param_value) {
                             AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
-                            sModel.title = [subParam objectForKey:@"content"];
+                            sModel.atitle = [subParam objectForKey:@"content"];
                             NSNumber *ide = [subParam objectForKey:@"id"];
                             sModel.identifier = ide.integerValue;
                             NSNumber *se = [subParam objectForKey:@"is_default"];
-                            sModel.desc = [subParam objectForKey:@"param_description"];;
+                            sModel.adesc = [subParam objectForKey:@"param_description"];;
                             sModel.isSelected = se.boolValue;
                             
                             [subLabels addObject:sModel];
@@ -357,6 +361,7 @@
      */
     
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
+    [model setDisplayType:5];
     [_displayModels addObject:model];
 }
 
@@ -392,8 +397,8 @@
     AIInputViewModel *model = [[AIInputViewModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     model.defaultText = [content objectForKey:@""];
-    model.tail = [[content objectForKey:@"param_value"] objectForKey:@"content"];
-    
+    model.tail = [content objectForKey:@"value"];
+    [model setDisplayType:6];
     [_displayModels addObject:model];
 }
 
@@ -470,7 +475,7 @@
     model.options = options;
     model.params = nil;
     model.modelType = 0;
-    
+    [model setDisplayType:7];
     [_displayModels addObject:model];
 }
 
@@ -510,6 +515,7 @@
     }
     
     model.providers = providers;
+    [model setDisplayType:8];
     [_displayModels addObject:model];
 }
 @end

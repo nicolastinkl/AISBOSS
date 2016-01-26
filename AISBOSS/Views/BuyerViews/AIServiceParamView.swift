@@ -40,17 +40,19 @@ class AIServiceParamView : UIView {
     //MARK: Override
     
     init(frame : CGRect, models: NSArray?) {
+        sviewWidth = CGRectGetWidth(frame)
         super.init(frame: frame)
         
         if let _ = models {
             displayModels = models
             parseModels(displayModels!)
-            sviewWidth = CGRectGetWidth(frame)
+            resetFrameHeight(originalY)
         }
 
     }
     
     required init?(coder aDecoder: NSCoder) {
+
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -64,8 +66,8 @@ class AIServiceParamView : UIView {
         for var i = 0; i < models.count; i++ {
             
             let model : JSONModel = models.objectAtIndex(i) as! JSONModel
-            
-            switch (model.displayType) {
+            let type : Int = model.displayType as Int
+            switch (type) {
             case 1: // title + detail
                 addView1(model)
                 break;
@@ -150,8 +152,8 @@ class AIServiceParamView : UIView {
     
     //MARK: Display 5
     func addView5 (model : JSONModel) {
-        let m : AIPickerViewModel = model as! AIPickerViewModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+//        let m : AIPickerViewModel = model as! AIPickerViewModel
+//        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 //        let pickerView : AIDatePickerView = AIDatePickerView.currentView()
 //        
 //        addSubview(pickerView)
@@ -225,6 +227,15 @@ extension AIComplexLabelModel : Tagable {
         get{return isSelected}
     }
     
+    
+    var title: String {
+        get{return self.atitle}
+    }
+
+    
+    var desc: String? {
+        get{return self.adesc}
+    }
     
 }
 
