@@ -9,8 +9,6 @@
 import Foundation
 import Spring
 
-
-
 class AIErrorRetryView: SpringView {
 
     @IBOutlet weak var toast: UILabel!
