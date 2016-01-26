@@ -42,7 +42,7 @@
         tagsToDisplay = tagsArray;
         maxTagSize = DEFAULT_VIEW_WIDTH - TAG_SPACE_HORIZONTAL;
         tagRadius = DEFAULT_TAG_CORNER_RADIUS;
-        tagTextColor = [UIColor blueColor];
+        tagTextColor = [UIColor whiteColor];
         _tagNormalColor = [UIColor grayColor];
         _tagSelectedColor = [UIColor redColor];
         _tagViews = @[].mutableCopy;

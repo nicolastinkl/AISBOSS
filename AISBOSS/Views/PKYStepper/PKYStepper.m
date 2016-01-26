@@ -298,11 +298,14 @@ static const float kButtonWidth = 44.0f;
         _inputText.text = @"";
     }
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kStepperIsEditing" object:@(1)];
     [_inputText becomeFirstResponder];
     [window addSubview:_effectview];
 }
 
 - (void)inputTextUpInside:(UITapGestureRecognizer *)recognizer {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kStepperIsEditing" object:@(0)];
+
     [_effectview removeFromSuperview];
     [_inputText resignFirstResponder];
     float inputValue = [_inputText.text floatValue];
