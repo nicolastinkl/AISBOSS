@@ -417,9 +417,11 @@ internal class AIServiceContentViewController: UIViewController {
         
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
         
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectZero, models: parser.displayModels)
-        
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.top, CGRectGetWidth(scrollView.frame), 100), models: parser.displayModels)
+        serviceContentView.rootViewController = self
         addNewSubView(serviceContentView, preView: galleryView)
+        
+        addMusicView(serviceContentView)
         
         
         let preView = addCustomView(serviceContentView);

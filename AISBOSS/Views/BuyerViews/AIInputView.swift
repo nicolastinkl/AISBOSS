@@ -70,11 +70,12 @@ class AIInputView: UIView {
 //            textSize = defaultTitle.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
 //        }
         
-        textLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, textSize.height), text: "", fontSize: 16, color: UIColor.whiteColor())
+        textLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, textSize.height), text: displayModel?.defaultText ?? "", fontSize: 16, color: UIColor.whiteColor())
         textLabel.backgroundColor = UIColor.whiteColor()
         textLabel.layer.cornerRadius = 4
         textLabel.layer.masksToBounds = true
-        textLabel.text = displayModel!.defaultText
+        textLabel.text = displayModel!.defaultText ?? ""
+        textLabel.userInteractionEnabled = true
         textLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showKeyboard"))
         self.addSubview(textLabel)
         
@@ -86,10 +87,13 @@ class AIInputView: UIView {
             
             tailLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, tailSize.height), text: tail, fontSize: 16, color: UIColor.whiteColor())
             self.addSubview(tailLabel!)
+            
+            y += tailSize.height
         }
     
-       
-        
+        var frame = self.frame
+        frame.size.height = y
+        self.frame = frame
         
     }
     
