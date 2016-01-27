@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import MMNumberKeyboard
 
 class PriceAndStepperView: UIView {
 	
-	var stepper: PKYStepper!
+	var stepper: KBHTextFieldStepper!
 	let price: String
 	let showStepper: Bool
 	let defaultValue: Int
@@ -50,10 +51,10 @@ class PriceAndStepperView: UIView {
 		self.onValueChanged = onValueChanged
 		super.init(frame: frame)
 		setup()
-        
-        var frame = self.frame
-        frame.size.height += CONSTANTS.selectedLabelHeight
-        self.frame = frame
+		
+		var frame = self.frame
+		frame.size.height += CONSTANTS.selectedLabelHeight
+		self.frame = frame
 	}
 	
 	func setup() {
@@ -66,33 +67,43 @@ class PriceAndStepperView: UIView {
 		// setup price label
 		let priceLabelFrame = CGRectMake(CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CGRectGetHeight(frame))
 		let priceLabel = AIViews.normalLabelWithFrame(priceLabelFrame, text: price, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
-        priceLabel.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
+		priceLabel.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
 		addSubview(priceLabel)
 		
 		if showStepper {
-			
-			// setup stepper
 			let stepperFrame = CGRectMake(CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CONSTANTS.stepperWidth, CGRectGetHeight(frame))
-			stepper = PKYStepper(frame: stepperFrame)
-			stepper.setBorderColor(UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0))
-			stepper.setBorderWidth(1)
-			stepper.setLabelTextColor(UIColor.whiteColor())
-			stepper.countLabel.layer.borderWidth = 0.5
-			stepper.buttonWidth = 34
-			stepper.setButtonTextColor(UIColor(red: 0.8235, green: 0.8196, blue: 0.8431, alpha: 1.0), forState: .Normal)
-			stepper.setButtonTextColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forState: .Highlighted)
-			stepper.setButtonFont(AITools.myriadSemiCondensedWithSize(29))
-			stepper.decrementButton .setTitle("-", forState: .Normal)
-			stepper.countLabel.text = "0"
-			stepper.setup()
-			if maxValue != -1 {
-				stepper.maximum = Float(maxValue)
-			}
-			stepper.minimum = Float(minValue)
-			stepper.countLabel.text = String(defaultValue)
-			stepper.valueChangedCallback = onValueChanged
-			addSubview(stepper)
+			stepper = KBHTextFieldStepper(frame: stepperFrame)
+			stepper.tintColor = UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0)
+			stepper.backgroundColor = UIColor.clearColor()
+			let keyboard = MMNumberKeyboard(frame: .zero)
+			keyboard.allowsDecimalPoint = true;
+			keyboard.delegate = self;
 			
+			stepper.textField.inputView = keyboard
+			stepper.addTarget(self, action: "stepperValueChanged:", forControlEvents: .ValueChanged)
+            addSubview(stepper)
+//			// setup stepper
+//			let stepperFrame = CGRectMake(CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CONSTANTS.stepperWidth, CGRectGetHeight(frame))
+//			stepper = PKYStepper(frame: stepperFrame)
+//			stepper.setBorderColor(UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0))
+//			stepper.setBorderWidth(1)
+//			stepper.setLabelTextColor(UIColor.whiteColor())
+//			stepper.countLabel.layer.borderWidth = 0.5
+//			stepper.buttonWidth = 34
+//			stepper.setButtonTextColor(UIColor(red: 0.8235, green: 0.8196, blue: 0.8431, alpha: 1.0), forState: .Normal)
+//			stepper.setButtonTextColor(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forState: .Highlighted)
+//			stepper.setButtonFont(AITools.myriadSemiCondensedWithSize(29))
+//			stepper.decrementButton .setTitle("-", forState: .Normal)
+//			stepper.countLabel.text = "0"
+//			stepper.setup()
+//			if maxValue != -1 {
+//				stepper.maximum = Float(maxValue)
+//			}
+//			stepper.minimum = Float(minValue)
+//			stepper.countLabel.text = String(defaultValue)
+//			stepper.valueChangedCallback = onValueChanged
+//			addSubview(stepper)
+//
 			// setup selected title label
 			let seletedTitleLabelFrame = CGRectMake(stepper.x, CONSTANTS.selectedLabelY, CONSTANTS.stepperWidth, CONSTANTS.selectedLabelHeight)
 			let selectedTitle = UILabel(frame: seletedTitleLabelFrame)
@@ -103,4 +114,11 @@ class PriceAndStepperView: UIView {
 			addSubview(selectedTitle)
 		}
 	}
+    
+    func stepperValueChanged(sender:KBHTextFieldStepper) {
+        
+    }
+}
+
+extension PriceAndStepperView: MMNumberKeyboardDelegate {
 }
