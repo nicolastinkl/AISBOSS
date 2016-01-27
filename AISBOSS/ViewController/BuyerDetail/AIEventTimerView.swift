@@ -11,6 +11,8 @@ import Spring
 
 public class AIEventTimerView: UIView {
     
+    var newFrame : CGRect?
+    
     @IBOutlet weak var title: UILabel!
     
     @IBOutlet weak var timeContent: UIButton!
@@ -34,6 +36,16 @@ public class AIEventTimerView: UIView {
         selfview.title.font = AITools.myriadSemiCondensedWithSize(43/PurchasedViewDimention.CONVERT_FACTOR)
         selfview.timeContent.titleLabel?.font = AITools.myriadSemiCondensedWithSize(43/PurchasedViewDimention.CONVERT_FACTOR)
         return selfview
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if let _ = newFrame {
+            newFrame?.size.height = CGRectGetHeight(self.frame)
+            self.frame = newFrame!
+        }
+        
     }
     
     

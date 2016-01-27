@@ -470,27 +470,44 @@ internal class AIServiceContentViewController: UIViewController {
             galleryView.setHeight(0)
         }
         
+        //TODO: text
+        
+        let detailView : AIDetailText = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
+        addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor())
+        detailView.frame = CGRectMake(10, galleryView.bottom + 10, CGRectGetWidth(self.view.frame)-20, CGRectGetHeight(detailView.frame))
+        
         //TODO: add brand View
         
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
-        
-        let serviceContentView  = AIServiceParamView(frame: CGRectMake(0, galleryView.top + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+
         serviceContentView.rootViewController = self.parentViewController
-        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
-        
-        //test  时间选择
-//        let timer = AIEventTimerView.currentView()
-//        timer.title.text = "Event time:"
-//        timer.timeContent.setTitle("Nov 19th", forState: .Normal)
-//        addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
-        
-        // test 单选
-        //let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
-        //addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
-        
-        // Necesarry public View...
+        addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
+        serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
         let musicView  = addMusicView(serviceContentView)
+        musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)
+        
+        /*** 测试
+         *
+         
+         
+         //test  时间选择
+         let timer = AIEventTimerView.currentView()
+         timer.title.text = "Event time:"
+         timer.timeContent.setTitle("Nov 19th", forState: .Normal)
+         addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
+         
+         // test 单选
+         let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
+         addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
+         
+         */
+        
+        
+        // Necesarry public View...
+
         let preView = addCustomView(musicView)
         addAudioView(preView)
         

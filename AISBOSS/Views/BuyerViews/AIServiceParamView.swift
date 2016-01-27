@@ -65,10 +65,7 @@ class AIServiceParamView : UIView {
 
     //MARK: 解析数据模型
     func parseModels(models : NSArray) {
-        
-        
-        
-        
+
         for var i = 0; i < models.count; i++ {
             
             let model : JSONModel = models.objectAtIndex(i) as! JSONModel
@@ -86,7 +83,7 @@ class AIServiceParamView : UIView {
             case 4: // 标签组复合控件，可多选，单选，可分层
                 addView4(model)
                 break;
-            case 5: // picker控件，时间，日历
+            case 5: // 时间，日历
                 addView5(model)
                 break;
             case 6: // 输入框
@@ -97,6 +94,9 @@ class AIServiceParamView : UIView {
                 break;
             case 8: // 切换服务标签
                 addView8(model)
+                
+            case 9: // picker控件
+                addView9(model)
                 break;
             default:
                 break;
@@ -181,13 +181,14 @@ class AIServiceParamView : UIView {
     func addView5 (model : JSONModel) {
         
         //let m : AIPickerViewModel = model as! AIPickerViewModel
-        //let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         
         let pickerView = AIEventTimerView.currentView()
         addSubview(pickerView)
         pickerView.title.text = "Event time:"
         pickerView.timeContent.setTitle("Nov 19th", forState: .Normal)
         pickerView.setY(originalY)
+        pickerView.newFrame = frame
         originalY += CGRectGetHeight(pickerView.frame) + margin
         displayViews.addObject(pickerView)
         
@@ -242,6 +243,12 @@ class AIServiceParamView : UIView {
         displayViews.addObject(serviceProviderView)
     }
     
+    
+    //MARK: Display 9
+    func addView9 (model : JSONModel) {
+        
+        
+    }
 
     //MARK: 移动视图
     
