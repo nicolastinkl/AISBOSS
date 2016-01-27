@@ -456,9 +456,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeContentView () {
         
-      
-    
-        // old
+        //MARK: Old View Some Logic.
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
@@ -481,7 +479,7 @@ internal class AIServiceContentViewController: UIViewController {
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
         let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
-
+        
         serviceContentView.rootViewController = self.parentViewController
         addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
@@ -489,7 +487,7 @@ internal class AIServiceContentViewController: UIViewController {
         let musicView  = addMusicView(serviceContentView)
         musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)          
         
-        // Necesarry public View...
+        //TODO: Necessary public View...
 
         let preView = addCustomView(musicView)
         addAudioView(preView)

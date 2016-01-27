@@ -111,7 +111,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
             titleLabel.trailingMargin >= titleLabel.superview!.trailingMargin
             
             if dataSource?.product_name != nil || dataSource?.product_name != "" {
-                titleLabel.top == titleLabel.superview!.top
+                titleLabel.top == titleLabel.superview!.top  + 5
             }else{
                 titleLabel.topMargin == titleLabel.superview!.top - 20
             }
@@ -215,7 +215,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     
     func fixFrame(){
         
-         self.frame.size.height = VIEW_HEIGHT
+         self.frame.size.height = VIEW_HEIGHT + ICON_LABEL_MARGIN
         
     }
 }
