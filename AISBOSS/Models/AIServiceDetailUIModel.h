@@ -167,6 +167,16 @@
 @property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, strong) NSArray<Optional> *selected_label_id;
 @property (nonatomic, strong) NSArray<Optional> *labels;
+// params
+@property (nonatomic, strong) NSArray<Optional> *paramSource;
+@property (nonatomic, strong) NSArray<Optional> *paramKey;
+
+// fadeBack
+
+
+
+
+
 
 
 @end
@@ -195,7 +205,7 @@
 
 @interface AIPickerViewModel : JSONModel
 
-@property (nonatomic, strong)NSString<Optional> *identifierPick;
+@property (nonatomic, strong) NSString<Optional> *identifierPick;
 @property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
 
 @end
