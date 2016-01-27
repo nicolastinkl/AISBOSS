@@ -26,15 +26,22 @@ public class AIDatePickerView: UIView {
     private var selectSource = [String:String]()
     
     private  var months : [String]  = {
-        return (1...12).map({"\($0)月"})
+        return ["January","February","March","April","May","June","July","August","September","Octomber","Novermber","December"]
+//        return (1...12).map({"\($0)月"})
     }()
     
     private var days : [String]  = {
-        return (1...31).map({"\($0)日"})
+        return (1...31).map({"\($0)th"})
     }()
     
     @IBAction func closeAction(sender: AnyObject) {
-        self.removeFromSuperview()
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.DIYSuperView.alpha = 0
+            }, completion: { finished in
+                self.DIYSuperView.removeFromSuperview()
+                
+        })
     }
     
     @IBAction func doneAction(sender: AnyObject) {
@@ -43,10 +50,12 @@ public class AIDatePickerView: UIView {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIDatePickerViewNotificationName, object: selectSource)
         }
         
-        SpringAnimation.springEaseInOut(0.3) { () -> Void in
-            self.DIYSuperView.alpha = 0.0
-            self.DIYSuperView.removeFromSuperview()
-        }
+        UIView.animateWithDuration(0.3, animations: {
+            self.DIYSuperView.alpha = 0
+            }, completion: { finished in
+                self.DIYSuperView.removeFromSuperview()
+                
+        })
         
     }
     
@@ -71,7 +80,8 @@ public class AIDatePickerView: UIView {
             self.setWidth(superView.width)
             pickOneView.reloadAllComponents()
             pickTwoView.reloadAllComponents()
-            
+            selectSource["day"] = days.first ?? ""
+            selectSource["month"] = months.first ?? ""
             SpringAnimation.spring(0.3, animations: { () -> Void in
                 self.alpha = 1
                 self.DIYSuperView.alpha = 1
