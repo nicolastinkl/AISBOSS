@@ -58,7 +58,7 @@
                 case 4: // 标签组复合控件，可多选，单选，可分层
                     [self parse4WithParam:param];
                     break;
-                case 5: // picker控件，时间，日历
+                case 5: // 时间，日历
                     [self parse5WithParam:param];
                     break;
                 case 6: // 输入框
@@ -69,6 +69,9 @@
                     break;
                 case 8: // 切换服务标签
                     [self parse8WithParam:param];
+                    break;
+                case 9: // picker控件
+                    [self parse9WithParam:param];
                     break;
                     
                 default:
@@ -89,6 +92,12 @@
     model.title = [content objectForKey:@"title"];
     model.content = [content objectForKey:@"detail"];
     
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:1];
     [_displayModels addObject:model];
     
@@ -114,6 +123,12 @@
     
     model.typeOptions = options;
     model.params = nil;
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:2];
     [_displayModels addObject:model];
     
@@ -138,6 +153,12 @@
     priceM.currency = [priceDic objectForKey:@"unit"];
     priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
     model.defaultPrice = priceM;
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:3];
     [_displayModels addObject:model];
     
@@ -168,6 +189,12 @@
     
     
     model.labels = [self makeComplexArrayWithArray:level1];
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:4];
     [_displayModels addObject:model];
     
@@ -224,7 +251,14 @@
 #pragma mark - 解析 5
 - (void)parse5WithParam:(NSDictionary *)param
 {
+    NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:5];
     [_displayModels addObject:model];
 }
@@ -237,6 +271,12 @@
     model.title = [content objectForKey:@"param_name"];
     model.defaultText = [content objectForKey:@""];
     model.tail = [content objectForKey:@"value"];
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:6];
     [_displayModels addObject:model];
 }
@@ -264,6 +304,12 @@
     model.options = options;
     model.params = nil;
     model.modelType = 0;
+    
+    // 是否价格相关
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    [model setIsPriceRelated:isPriceRelated.boolValue];
+    
+    // 设置控件类型
     [model setDisplayType:7];
     [_displayModels addObject:model];
 }
@@ -288,7 +334,18 @@
     }
     
     model.providers = providers;
+    
     [model setDisplayType:8];
     [_displayModels addObject:model];
 }
+
+
+#pragma mark - 解析 9
+- (void)parse9WithParam:(NSDictionary *)param
+{
+    
+}
+
+
+
 @end
