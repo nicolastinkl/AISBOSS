@@ -240,6 +240,19 @@ class AIServiceParamView : UIView {
         let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)
         addSubview(serviceProviderView)
         
+        serviceProviderView.onDownButtonDidClick = { [weak self] bView in
+            let frameBefore = bView.frame
+            bView.isExpanded = !bView.isExpanded
+            let frameAfter = bView.frame
+            let offset = CGRectGetMaxY(frameAfter) - CGRectGetMaxY(frameBefore)
+            self?.moveViewsBelow(serviceProviderView, offset: offset)
+        }
+        
+        serviceProviderView.onSelectedIndexDidChanged = {  bView, selectedIndex in
+            // handle selected index changed
+        }
+        
+        
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
         displayViews.addObject(serviceProviderView)
     
@@ -281,7 +294,6 @@ class AIServiceParamView : UIView {
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 sview.frame = frame
             })
-            
         }
 
     }
