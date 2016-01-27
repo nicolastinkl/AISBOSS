@@ -193,6 +193,9 @@ class SimpleServiceViewContainer: UIView {
         var paramHeight:CGFloat = 0
         var pareusView:View?
         for  serCellModel in models! {
+            if serCellModel.param_key == nil {
+                return nil
+            }
             let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
             if let param = getViewTemplateView(viewTemplate!) {
                 param.loadDataWithModelArray(serCellModel)

@@ -278,7 +278,6 @@ static const float kButtonWidth = 44.0f;
         UITapGestureRecognizer *inputTextTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(inputTextUpInside:)];
         [_effectview addGestureRecognizer:inputTextTapGestureRecognizer];
 
-
         _effectview.frame = window.bounds;
 
         CGFloat textWidth = window.bounds.size.width / 2;

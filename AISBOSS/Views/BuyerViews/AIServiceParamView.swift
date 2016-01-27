@@ -151,11 +151,12 @@ class AIServiceParamView : UIView {
     //MARK: Display 4
     func addView4 (model : JSONModel) {
         let m : AIComplexLabelsModel = model as! AIComplexLabelsModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth, 0)
   
         
         let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
         addSubview(tagsView)
+        
         tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents:.ValueChanged )
         tagViewHeight = CGRectGetHeight(tagsView.frame)
         originalY += tagViewHeight! + margin
@@ -239,15 +240,28 @@ class AIServiceParamView : UIView {
         let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)
         addSubview(serviceProviderView)
         
+        serviceProviderView.onDownButtonDidClick = { [weak self] bView in
+            let frameBefore = bView.frame
+            bView.isExpanded = !bView.isExpanded
+            let frameAfter = bView.frame
+            let offset = CGRectGetMaxY(frameAfter) - CGRectGetMaxY(frameBefore)
+            self?.moveViewsBelow(serviceProviderView, offset: offset)
+        }
+        
+        serviceProviderView.onSelectedIndexDidChanged = {  bView, selectedIndex in
+            // handle selected index changed
+        }
+        
+        
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
         displayViews.addObject(serviceProviderView)
     
     }
     
-    
     //MARK: Display 9
     func addView9 (model : JSONModel) {
         //let m : AIPickerViewModel = model as! AIPickerViewModel
+        originalY += 20
         let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
         let singleSelectView = AISingleSelectView(frame: frame)        
         addSubview(singleSelectView)
@@ -280,7 +294,6 @@ class AIServiceParamView : UIView {
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 sview.frame = frame
             })
-            
         }
 
     }

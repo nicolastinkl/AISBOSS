@@ -43,6 +43,10 @@
 
 @implementation ServiceCellProductParamModel
 
+//propertyIsIgnored
++(BOOL)propertyIsIgnored:(NSString *)propertyName{
+    return YES;
+}
 
 - (id) init
 {

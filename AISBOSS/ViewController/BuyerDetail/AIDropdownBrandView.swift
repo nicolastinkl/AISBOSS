@@ -163,7 +163,11 @@ class AIDropdownBrandView: UIView {
 			make.top.equalTo(barView)
 			make.leading.equalTo(barView).offset(Constants.margin)
 			make.bottom.equalTo(barView).offset(-Constants.lineViewHeight)
-			make.trailing.equalTo(downButton.snp_leading).offset(-Constants.margin)
+            if downButton != nil {
+                make.trailing.equalTo(downButton.snp_leading).offset(-Constants.margin)
+            }else {
+                make.trailing.equalTo(self)
+            }
 		}
 		
 		var previousView: UIView = barScrollView
@@ -232,6 +236,9 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	func setupDownButton() {
+        if brands.count < 5 {
+            return
+        }
 		downButton = UIButton(type: .Custom)
 		downButton.setImage(UIImage(named: "up_triangle"), forState: .Selected)
 		downButton.setImage(UIImage(named: "down_triangle"), forState: .Normal)
