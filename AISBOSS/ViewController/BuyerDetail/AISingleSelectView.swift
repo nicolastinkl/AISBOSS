@@ -10,6 +10,7 @@ import Foundation
 import Spring
 import Cartography
 
+/// 界面容器
 class AISingleSelectView: UIView {
     
     var dataSource:[AIPickerViewModel] = {
@@ -78,8 +79,7 @@ class AISingleSelectView: UIView {
         
         self.setHeight(heigth)
         
-    }
-   
+    }   
     
     func singleAction(sender: AnyObject){
         

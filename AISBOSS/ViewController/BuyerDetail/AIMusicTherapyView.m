@@ -134,32 +134,6 @@
     
 }
 
-- (CGFloat) addServiceTypes: (CGFloat) positionY
-{
-    CGFloat viewHeight = 0;
-    AIServiceTypes *serviceTypes;
-    
-    CGFloat width = [self contentViewWidth];
-    CGRect frame = CGRectMake(self.sideMargin, positionY, width, 0);
-    
-    for (int i = 0; i < self.detailModel.service_param_list.count; i++)
-    {
-        AIProposalServiceDetailParamModel *param = [self.detailModel.service_param_list objectAtIndex:i];
-        
-        if (param.param_type == 2) {
-            serviceTypes = [[AIServiceTypes alloc] initWithFrame:frame model:param];
-            
-        }
-    }
-
-    if (serviceTypes != nil) {
-        serviceTypes.delegate = self;
-        [self addSubview:serviceTypes];
-        viewHeight = CGRectGetHeight(serviceTypes.frame);
-    }
-    
-    return viewHeight;
-}
 
 - (CGFloat) addEvaluationTitleView: (CGFloat) positionY
 {

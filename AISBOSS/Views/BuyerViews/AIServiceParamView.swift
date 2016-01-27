@@ -178,17 +178,21 @@ class AIServiceParamView : UIView {
         
     }
     
-    
-    
     //MARK: Display 5
     func addView5 (model : JSONModel) {
-//        let m : AIPickerViewModel = model as! AIPickerViewModel
-//        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
-//        let pickerView : AIDatePickerView = AIDatePickerView.currentView()
-//        
-//        addSubview(pickerView)
-//        
-//        originalY += CGRectGetHeight(priceView.frame) + margin
+        
+        //let m : AIPickerViewModel = model as! AIPickerViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        
+        let pickerView = AIEventTimerView.currentView()
+        addSubview(pickerView)
+        pickerView.title.text = "Event time:"
+        pickerView.timeContent.setTitle("Nov 19th", forState: .Normal)
+        pickerView.setY(originalY)
+        pickerView.newFrame = frame
+        originalY += CGRectGetHeight(pickerView.frame) + margin
+        displayViews.addObject(pickerView)
+        
     }
     
     //MARK: Display 6
@@ -202,6 +206,7 @@ class AIServiceParamView : UIView {
         
         originalY += CGRectGetHeight(inputView.frame) + margin
         displayViews.addObject(inputView)
+        
     }
     
     //MARK: Display 7
@@ -237,12 +242,18 @@ class AIServiceParamView : UIView {
         
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
         displayViews.addObject(serviceProviderView)
+    
     }
     
     
     //MARK: Display 9
     func addView9 (model : JSONModel) {
-        
+        //let m : AIPickerViewModel = model as! AIPickerViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let singleSelectView = AISingleSelectView(frame: frame)        
+        addSubview(singleSelectView)
+        originalY += CGRectGetHeight(singleSelectView.frame) + margin
+        displayViews.addObject(singleSelectView)
         
     }
 

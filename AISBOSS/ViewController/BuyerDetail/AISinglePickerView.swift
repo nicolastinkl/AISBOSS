@@ -8,6 +8,8 @@
 
 import Foundation
 import Spring
+
+//pickview 选择器
 public class AISinglePickerView: UIView {    
     
     @IBOutlet weak var pickOneView: UIPickerView!
@@ -36,6 +38,7 @@ public class AISinglePickerView: UIView {
     }()
     
     private var currentModel:AIOptionModel?
+    
     public func show(){
         
         if let superView = UIApplication.sharedApplication().keyWindow {
@@ -49,6 +52,8 @@ public class AISinglePickerView: UIView {
             self.setWidth(superView.width)
             pickOneView.reloadAllComponents() 
             
+            currentModel = dataSource.first
+            
             SpringAnimation.spring(0.3, animations: { () -> Void in
                 self.alpha = 1
                 self.DIYSuperView.alpha = 1
@@ -61,11 +66,13 @@ public class AISinglePickerView: UIView {
     
     @IBAction func closeAction(sender: AnyObject) {
         
-        SpringAnimation.springEaseInOut(0.3) { () -> Void in
-             self.DIYSuperView.alpha = 0.0
-             self.DIYSuperView.removeFromSuperview()
-        }
-       
+        UIView.animateWithDuration(0.3, animations: {
+            self.DIYSuperView.alpha = 0
+            }, completion: { finished in
+                self.DIYSuperView.removeFromSuperview()
+                
+        })
+        
     }
     
     @IBAction func doneAction(sender: AnyObject) {
@@ -73,11 +80,12 @@ public class AISinglePickerView: UIView {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AISinglePickerViewNotificationName, object: ["model":model,"ID":superViewID])
         }
         
-        
-        SpringAnimation.springEaseInOut(0.3) { () -> Void in
-            self.DIYSuperView.alpha = 0.0
-            self.DIYSuperView.removeFromSuperview()
-        }
+        UIView.animateWithDuration(0.3, animations: {
+            self.DIYSuperView.alpha = 0
+            }, completion: { finished in
+                self.DIYSuperView.removeFromSuperview()
+                
+        })
     }
     
     

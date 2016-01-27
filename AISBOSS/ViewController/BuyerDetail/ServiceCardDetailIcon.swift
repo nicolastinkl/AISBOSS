@@ -111,7 +111,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
             titleLabel.trailingMargin >= titleLabel.superview!.trailingMargin
             
             if dataSource?.product_name != nil || dataSource?.product_name != "" {
-                titleLabel.top == titleLabel.superview!.top
+                titleLabel.top == titleLabel.superview!.top  + 5
             }else{
                 titleLabel.topMargin == titleLabel.superview!.top - 20
             }
@@ -163,6 +163,8 @@ class ServiceCardDetailIcon: ServiceParamlView {
         calendarLabelView.numberOfLines = 3
         calendarLabelView.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
+
+        
         timeLabelView.textColor = UIColor.whiteColor()
         priceLabelView.textColor = UIColor.whiteColor()
         calendarLabelView.textColor = UIColor.whiteColor()
@@ -174,6 +176,10 @@ class ServiceCardDetailIcon: ServiceParamlView {
         timeLabelView.textAlignment = NSTextAlignment.Center
         priceLabelView.textAlignment = NSTextAlignment.Center
         calendarLabelView.textAlignment = NSTextAlignment.Center
+        
+        timeLabelView.contentMode = UIViewContentMode.Top
+        priceLabelView.contentMode = UIViewContentMode.Top
+        calendarLabelView.contentMode = UIViewContentMode.Top
         
         self.addSubview(timeLabelView)
         self.addSubview(priceLabelView)
@@ -209,7 +215,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     
     func fixFrame(){
         
-         self.frame.size.height = VIEW_HEIGHT
+         self.frame.size.height = VIEW_HEIGHT + ICON_LABEL_MARGIN
         
     }
 }

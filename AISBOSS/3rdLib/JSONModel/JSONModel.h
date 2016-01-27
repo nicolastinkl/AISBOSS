@@ -148,6 +148,8 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 
 @property (nonatomic, assign) NSInteger displayType;
 
+@property (nonatomic, assign) BOOL isPriceRelated;
+
 // Customize for Veris
 
 //- (NSInteger)displayType;
