@@ -9,8 +9,6 @@
 #import "AIParamedicView.h"
 #import "AIServiceCoverage.h"
 #import "AIDetailText.h"
-#import "PKYStepper.h"
-
 
 #import "AITools.h"
 #import "AIViews.h"
@@ -281,9 +279,7 @@
     return params;
 }
 
-
 #pragma mark - AIServiceTypesDelegate
-
 - (void)didSelectedAtIndex:(NSInteger)index
 {
     
@@ -302,11 +298,6 @@
     } else {
         [_selectedParamsDic removeObjectForKey: serviceId];
     }
-}
-
-- (void) serviceSelectedCountChanged: (PKYStepper *) stepper count: (float) count
-{
-    stepper.countLabel.text = [NSString stringWithFormat:@"%@", @(count)];
 }
 
 @end

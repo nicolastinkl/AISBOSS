@@ -151,11 +151,12 @@ class AIServiceParamView : UIView {
     //MARK: Display 4
     func addView4 (model : JSONModel) {
         let m : AIComplexLabelsModel = model as! AIComplexLabelsModel
-        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let frame = CGRectMake(0, originalY, sviewWidth, 0)
   
         
         let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
         addSubview(tagsView)
+        
         tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents:.ValueChanged )
         tagViewHeight = CGRectGetHeight(tagsView.frame)
         originalY += tagViewHeight! + margin
