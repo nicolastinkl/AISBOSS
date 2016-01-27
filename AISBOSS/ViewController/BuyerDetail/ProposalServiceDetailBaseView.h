@@ -18,7 +18,6 @@
 @property (nonatomic, strong) AIProposalServiceDetailModel *detailModel;
 
 @property (nonatomic, assign) CGFloat sideMargin;
-@property (nonatomic, strong) PKYStepper *selectedCounter;
 
 - (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should;
 - (CGFloat) addDetailText: (CGFloat) positionY;

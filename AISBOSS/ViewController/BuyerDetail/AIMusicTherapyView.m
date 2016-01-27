@@ -16,7 +16,6 @@
 #import "AIViews.h"
 #import "UP_NSString+Size.h"
 #import "Veris-Swift.h"
-#import "PKYStepper.h"
 
 @interface AIMusicTherapyView () <AIServiceTypesDelegate>
 
@@ -314,12 +313,6 @@
     }
     
 }
-
-- (void) serviceSelectedCountChanged: (PKYStepper *) stepper count: (float) count
-{
-    stepper.countLabel.text = [NSString stringWithFormat:@"%@", @(count)];
-}
-
 
 
 @end

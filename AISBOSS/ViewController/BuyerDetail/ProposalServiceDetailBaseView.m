@@ -36,9 +36,6 @@
     return self;
 }
 
-- (PKYStepper *)selectedCounter {
-    return self.priceView.stepper;
-}
 
 - (CGFloat)addDetailText:(CGFloat)positionY {
     CGFloat width = [self contentViewWidth];
@@ -65,62 +62,6 @@
     [self addSubview:priceView];
 
     return totalHeight;
-//
-////    bg image
-//    {
-//        UIImage *backgroundImage = [UIImage imageNamed:@"Wave_BG"];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:backgroundImage];
-//        imageView.frame = CGRectMake(0, positionY, CGRectGetWidth(self.frame), totalHeight);
-//        [self addSubview:imageView];
-//    }
-//
-////    stepper
-//    {
-//        CGFloat counterWidth = 120;
-//        self.selectedCounter = [[PKYStepper alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) -  counterWidth - self.sideMargin, positionY, counterWidth, totalHeight)];
-//        [self.selectedCounter setBorderColor:[UIColor whiteColor]];
-//        [self.selectedCounter setBorderWidth:0.5];
-//        [self.selectedCounter setLabelTextColor:[UIColor whiteColor]];
-//        self.selectedCounter.countLabel.layer.borderWidth = 0.5;
-//        self.selectedCounter.buttonWidth = 34;
-//        [self.selectedCounter setButtonTextColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//        [self.selectedCounter setButtonTextColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-//        [self.selectedCounter setButtonFont:[AITools myriadSemiCondensedWithSize:29]];
-//        [self.selectedCounter.decrementButton setTitle:@"-" forState:UIControlStateNormal];
-//        self.selectedCounter.countLabel.text = @"0";
-//        [self.selectedCounter setup];
-//
-//        __weak ProposalServiceDetailBaseView *weakself = self;
-//        [self.selectedCounter setValueChangedCallback:^(PKYStepper *stepper, float newValue) {
-//            [weakself serviceSelectedCountChanged:stepper count:newValue];
-//        }];
-//
-//        [self addSubview:self.selectedCounter];
-//    }
-//
-////    title label
-//    {
-//        UILabel *selectedTitle = [[UILabel alloc] initWithFrame:CGRectMake(self.selectedCounter.origin.x, self.selectedCounter.origin.y - 20, self.selectedCounter.width, 20)];
-//
-//        selectedTitle.textColor = [UIColor whiteColor];
-//        selectedTitle.font = [AITools myriadSemiCondensedWithSize:15];
-//        selectedTitle.text = @"Selected Amount";
-//        selectedTitle.textAlignment = NSTextAlignmentCenter;
-//        [self addSubview:selectedTitle];
-//    }
-//
-//
-//    //price label
-//    {
-//        NSString *price = [NSString stringWithFormat:@"%@ %ld %@", self.detailModel.service_price.unit, (NSInteger)self.detailModel.service_price.price, self.detailModel.service_price.billing_mode];
-//        UPLabel *amLabel = [AIViews normalLabelWithFrame:CGRectMake(self.sideMargin, positionY, totalWidth - self.selectedCounter.width - self.sideMargin, totalHeight) text:price fontSize:[AITools displaySizeFrom1080DesignSize:63] color:[AITools colorWithR:0xf7 g:0x9a b:0x00]];
-//
-//        amLabel.attributedText = [self attrAmountWithAmount:price];
-//
-//        [self addSubview:amLabel];
-//    }
-//
-//    return totalHeight;
 }
 
 - (CGFloat)contentViewWidth {

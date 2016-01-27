@@ -95,7 +95,7 @@ class AIPriceView: UIView {
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
         priceView = PriceAndStepperView(frame: frame, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { (steper : PKYStepper!, number : Float) -> Void in
-            ws!.changeTotalPrice (Int(number))
+            ws?.changeTotalPrice (Int(number))
         })
         self.addSubview(priceView!)
         
