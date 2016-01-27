@@ -163,6 +163,8 @@ class ServiceCardDetailIcon: ServiceParamlView {
         calendarLabelView.numberOfLines = 3
         calendarLabelView.lineBreakMode = NSLineBreakMode.ByWordWrapping
         
+
+        
         timeLabelView.textColor = UIColor.whiteColor()
         priceLabelView.textColor = UIColor.whiteColor()
         calendarLabelView.textColor = UIColor.whiteColor()
@@ -174,6 +176,10 @@ class ServiceCardDetailIcon: ServiceParamlView {
         timeLabelView.textAlignment = NSTextAlignment.Center
         priceLabelView.textAlignment = NSTextAlignment.Center
         calendarLabelView.textAlignment = NSTextAlignment.Center
+        
+        timeLabelView.contentMode = UIViewContentMode.Top
+        priceLabelView.contentMode = UIViewContentMode.Top
+        calendarLabelView.contentMode = UIViewContentMode.Top
         
         self.addSubview(timeLabelView)
         self.addSubview(priceLabelView)

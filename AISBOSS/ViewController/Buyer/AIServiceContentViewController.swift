@@ -487,24 +487,7 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
         let musicView  = addMusicView(serviceContentView)
-        musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)
-        
-        /*** 测试
-         *
-         
-         
-         //test  时间选择
-         let timer = AIEventTimerView.currentView()
-         timer.title.text = "Event time:"
-         timer.timeContent.setTitle("Nov 19th", forState: .Normal)
-         addNewSubView(timer, preView: musicView, color: UIColor.clearColor())
-         
-         // test 单选
-         let singleSelectView = AISingleSelectView(frame: CGRectMake(0,0,0,0))
-         addNewSubView(singleSelectView, preView: timer, color: UIColor.clearColor())
-         
-         */
-        
+        musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)          
         
         // Necesarry public View...
 

@@ -241,12 +241,18 @@ class AIServiceParamView : UIView {
         
         originalY += CGRectGetHeight(serviceProviderView.frame) + margin
         displayViews.addObject(serviceProviderView)
+    
     }
     
     
     //MARK: Display 9
     func addView9 (model : JSONModel) {
-        
+        //let m : AIPickerViewModel = model as! AIPickerViewModel
+        let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+        let singleSelectView = AISingleSelectView(frame: frame)        
+        addSubview(singleSelectView)
+        originalY += CGRectGetHeight(singleSelectView.frame) + margin
+        displayViews.addObject(singleSelectView)
         
     }
 
