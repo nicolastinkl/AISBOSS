@@ -125,10 +125,7 @@ class PriceAndStepperView: UIView {
 			
 			inputTextField = UITextField(frame: CGRectMake(x, y, textWidth, textHeight))
 			inputTextField.backgroundColor = UIColor.whiteColor()
-			let keyboard = MMNumberKeyboard(frame: .zero)
-			keyboard.delegate = self;
-			
-			inputTextField.inputView = keyboard
+            inputTextField.keyboardType = .NumberPad
 			effectView.addSubview(inputTextField)
 		}
 		
@@ -149,13 +146,6 @@ class PriceAndStepperView: UIView {
 		
 		value = CGFloat((inputTextField.text! as NSString).floatValue)
 		onValueChanged(self)
-	}
-}
-
-extension PriceAndStepperView: MMNumberKeyboardDelegate {
-	func numberKeyboardShouldReturn(numberKeyboard: MMNumberKeyboard!) -> Bool {
-		removeEffectView()
-		return true
 	}
 }
 
