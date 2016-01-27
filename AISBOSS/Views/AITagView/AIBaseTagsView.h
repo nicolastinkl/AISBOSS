@@ -42,6 +42,7 @@
 }
 @property (nonatomic, strong) UIColor *tagNormalColor;
 @property (nonatomic, strong) UIColor *tagSelectedColor;
+- (void)setTagTextColor:(UIColor *)color;
 @property (nonatomic, assign) NSInteger selectedIndex;
 
 
@@ -50,7 +51,6 @@
 - (instancetype)initWithTags:(NSArray *)tagsArray;
 - (instancetype)initWithTags:(NSArray *)tagsArray frame:(CGRect)frame;
 - (void)setTagCornerRadius:(int)radius;
-- (void)setTagTextColor:(UIColor *)color;
 - (void)setFrameWidth:(int)width;
 - (void)labelDidTapped:(UITapGestureRecognizer *)tapG;
 

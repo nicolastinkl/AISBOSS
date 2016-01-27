@@ -11,7 +11,7 @@
 #define TAG_SPACE_HORIZONTAL      10
 #define TAG_SPACE_VERTICAL        10
 #define DEFAULT_VIEW_HEIGHT       44
-#define MAX_TAG_SIZE              300
+#define MAX_TAG_SIZE              125
 #define MIN_TAG_SIZE              40
 #define DEFAULT_VIEW_WIDTH        320
 #define DEFAULT_TAG_CORNER_RADIUS 10
@@ -22,12 +22,12 @@
 
     if (self) {
         viewWidth = DEFAULT_VIEW_WIDTH;
-        tagsToDisplay = tagsArray;
+//        tagsToDisplay = tagsArray;
         maxTagSize = DEFAULT_VIEW_WIDTH - TAG_SPACE_HORIZONTAL;
         tagRadius = DEFAULT_TAG_CORNER_RADIUS;
-        tagTextColor = [UIColor blueColor];
-        _tagNormalColor = [UIColor grayColor];
-        _tagSelectedColor = [UIColor redColor];
+//        tagTextColor = [UIColor blueColor];
+//        _tagNormalColor = [UIColor grayColor];
+//        _tagSelectedColor = [UIColor redColor];
         [self renderTagsOnView];
     }
 
@@ -42,9 +42,9 @@
         tagsToDisplay = tagsArray;
         maxTagSize = DEFAULT_VIEW_WIDTH - TAG_SPACE_HORIZONTAL;
         tagRadius = DEFAULT_TAG_CORNER_RADIUS;
-        tagTextColor = [UIColor whiteColor];
-        _tagNormalColor = [UIColor grayColor];
-        _tagSelectedColor = [UIColor redColor];
+//        tagTextColor = [UIColor whiteColor];
+//        _tagNormalColor = [UIColor grayColor];
+//        _tagSelectedColor = [UIColor redColor];
         _tagViews = @[].mutableCopy;
         [self renderTagsOnView];
     }
@@ -72,16 +72,16 @@
 - (void)setTagNormalColor:(UIColor *)tagNormalColor {
     _tagNormalColor = tagNormalColor;
 
-    for (UILabel *label in self.tagViews) {
-        label.backgroundColor = label.isHighlighted ? self.tagSelectedColor : _tagNormalColor;
+    for (AITagLabel *label in self.tagViews) {
+        label.normalBackgroundColor = _tagNormalColor;
     }
 }
 
 - (void)setTagSelectedColor:(UIColor *)tagSelectedColor {
     _tagSelectedColor = tagSelectedColor;
 
-    for (UILabel *label in self.tagViews) {
-        label.backgroundColor = label.isHighlighted ? _tagSelectedColor : self.tagNormalColor;
+    for (AITagLabel *label in self.tagViews) {
+        label.highlightedBackgroundColor = _tagSelectedColor;
     }
 }
 
@@ -102,7 +102,7 @@
     tagTextColor = color;
 
     for (UIView *view in self.subviews) {
-        if ([view isKindOfClass:[UILabel class]]) {
+        if ([view isKindOfClass:[AITagLabel class]]) {
             UILabel *tag = (UILabel *)view;
             tag.textColor = tagTextColor;
         }
@@ -136,6 +136,8 @@
                                    lineBreakMode:[tagLabel lineBreakMode]];
 
     if (expectedLabelSize.width < MIN_TAG_SIZE) expectedLabelSize.width = MIN_TAG_SIZE;
+    
+    if (expectedLabelSize.width > MAX_TAG_SIZE) expectedLabelSize.width = MAX_TAG_SIZE;
 
     NSLog(@"%f", expectedLabelSize.width);
 

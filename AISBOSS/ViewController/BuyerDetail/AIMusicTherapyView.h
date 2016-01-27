@@ -8,14 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ProposalModel.h"
-
 #import "AIServiceTypes.h"
 #import "AIBuyerParamsDelegate.h"
 #import "ProposalServiceDetailBaseView.h"
 
-
 @interface AIMusicTherapyView : ProposalServiceDetailBaseView<AIServiceTypesDelegate>
-
-
 
 @end

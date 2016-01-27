@@ -110,6 +110,7 @@
 		844282911C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282851C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m */; };
 		844282921C45EF95001C2DCB /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */; };
 		844282931C45EF95001C2DCB /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282891C45EF95001C2DCB /* OATransformLayer.m */; };
+		844D70591C58975700975523 /* KBHTextFieldStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D70581C58975700975523 /* KBHTextFieldStepper.swift */; };
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
 		844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */; };
@@ -692,6 +693,7 @@
 		844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewDistributionStrategy.m; sourceTree = "<group>"; };
 		844282881C45EF95001C2DCB /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATransformLayer.h; sourceTree = "<group>"; };
 		844282891C45EF95001C2DCB /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATransformLayer.m; sourceTree = "<group>"; };
+		844D70581C58975700975523 /* KBHTextFieldStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBHTextFieldStepper.swift; sourceTree = "<group>"; };
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
 		844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeDataObtainer.swift; sourceTree = "<group>"; };
@@ -2672,6 +2674,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				844D70581C58975700975523 /* KBHTextFieldStepper.swift */,
 				93441E981C507846003F6833 /* YYKit */,
 				844282761C45EF95001C2DCB /* OAStackView */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
@@ -3397,6 +3400,7 @@
 				93B25A9B1B9D7A7B00CD1FEB /* AFSecurityPolicy.m in Sources */,
 				93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */,
 				93CB8D8A1BFB23A900C41DDE /* UIBezierPageView.swift in Sources */,
+				844D70591C58975700975523 /* KBHTextFieldStepper.swift in Sources */,
 				8433D7561BAFB3C800146714 /* AirTicketGroupView.swift in Sources */,
 				81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */,
 				849B4B2A1C0EDFE300BEC179 /* FLEXArgumentInputTextView.m in Sources */,

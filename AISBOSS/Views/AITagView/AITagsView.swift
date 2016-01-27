@@ -60,8 +60,8 @@ class AITagsView: UIControl {
 		}
 		static let kNeedRerenderAllViews = "kNeedRerenderAllViews"
 		struct Tag {
-			static let normalBackgroudColor = UIColor.redColor()
-			static let highlightedBackgroundColor = UIColor.blackColor()
+			static let normalBackgroudColor = UIColor.clearColor()
+			static let highlightedBackgroundColor = UIColor.grayColor()
             static let textColor = UIColor.whiteColor()
 			static var spaceBetweenTags: CGFloat = 5 {
 				didSet {
@@ -105,6 +105,7 @@ class AITagsView: UIControl {
 		
 		if title != "" {
 			titleLabel.text = title
+            titleLabel.textColor = UIColor.whiteColor()
 			addSubview(titleLabel)
 			titleLabel.frame = CGRectMake(Constants.margin, 0, bounds.size.width - Constants.margin, 20)
 		}

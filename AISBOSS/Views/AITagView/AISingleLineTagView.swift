@@ -34,7 +34,7 @@ class AISingleLineTagView: AIBaseTagsView {
 		for label in tagViews {
 			if let l = label as? AITagLabel {
 				if let t = label.tagNode as? Tagable {
-					l.highlighted = t.id != selectedTagId
+					l.highlighted = t.id == selectedTagId
 				}
 			}
 		}
