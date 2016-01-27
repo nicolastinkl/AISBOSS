@@ -45,6 +45,7 @@ public class AIEventTimerView: UIView {
             
             newFrame?.size.height = CGRectGetHeight(title.frame)
             self.frame = newFrame!
+            
         }
         
     }
