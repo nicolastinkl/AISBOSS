@@ -156,7 +156,7 @@
 
 @property (nonatomic, strong) NSString<Optional> *param_key;
 @property (nonatomic, strong) NSString<Optional> *product_name;
-@property (nonatomic, strong) NSString<Optional,Ignore> *product_sub_name;
+@property (nonatomic, strong) NSString<Optional> *product_sub_name;
 @property (nonatomic, strong) NSArray<ServiceCellStadandParamModel,Optional> *param_list;
 @property (nonatomic, strong) NSArray<ServiceCellShoppingItemModel,Optional> *item_list;
 

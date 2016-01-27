@@ -26,6 +26,7 @@
 @end
 
 @implementation ServiceCellStadandParamModel
+
 - (id) init
 {
     self = [super init];
@@ -43,11 +44,9 @@
 
 @implementation ServiceCellProductParamModel
 
-//propertyIsIgnored
-+(BOOL)propertyIsIgnored:(NSString *)propertyName{
++(BOOL)propertyIsOptional:(NSString *)propertyName{
     return YES;
 }
-
 - (id) init
 {
     self = [super init];
