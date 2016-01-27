@@ -19,12 +19,7 @@
 
 @implementation ProposalServiceDetailBaseView
 
-- (NSArray *)getSelectedParams{
-    return @[];
-}
-
-- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should
-{
+- (id)initWithFrame:(CGRect)frame model:(AIProposalServiceDetailModel *)model shouldShowParams:(BOOL)should {
     self = [super initWithFrame:frame];
 
     if (self) {
@@ -35,7 +30,6 @@
 
     return self;
 }
-
 
 - (CGFloat)addDetailText:(CGFloat)positionY {
     CGFloat width = [self contentViewWidth];
@@ -49,16 +43,15 @@
 
 - (CGFloat)addPriceView:(CGFloat)positionY {
     CGFloat totalWidth = self.width;
-    CGFloat totalHeight = [AITools displaySizeFrom1080DesignSize:97]+20;
+    CGFloat totalHeight = [AITools displaySizeFrom1080DesignSize:97] + 20;
     NSString *price = [NSString stringWithFormat:@"%@ %ld %@", self.detailModel.service_price.unit, (NSInteger)self.detailModel.service_price.price, self.detailModel.service_price.billing_mode];
-    
+
     CGRect frame = CGRectMake(0, positionY, totalWidth, totalHeight);
-    
+
     __weak ProposalServiceDetailBaseView *weakself = self;
-    PriceAndStepperView *priceView = [[PriceAndStepperView alloc]initWithFrame:frame price:price showStepper:YES defaultValue:0 minValue:0 maxValue:-1 onValueChanged:^(PKYStepper * stepper, float newValue) {
-       [weakself serviceSelectedCountChanged:stepper count:newValue];
+    PriceAndStepperView *priceView = [[PriceAndStepperView alloc]initWithFrame:frame price:price showStepper:YES defaultValue:0 minValue:0 maxValue:-1 onValueChanged:^(PriceAndStepperView *stepper) {
     }];
-    
+
     [self addSubview:priceView];
 
     return totalHeight;
@@ -90,10 +83,6 @@
 
 
     return attriString;
-}
-
-- (void)serviceSelectedCountChanged:(PKYStepper *)stepper count:(float)count {
-    stepper.countLabel.text = [NSString stringWithFormat:@"%@", @(count)];
 }
 
 @end

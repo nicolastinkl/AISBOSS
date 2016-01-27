@@ -427,8 +427,6 @@ extension UIView {
     func setCornerOnNone(){
         self.layer.mask = nil
     }
-    
-    
 }
 
 extension UITableViewCell{

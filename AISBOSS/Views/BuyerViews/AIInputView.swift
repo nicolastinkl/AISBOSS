@@ -16,21 +16,21 @@ class AIInputView: UIView {
     
     //MARK: Variables
     
-    var keyboardDidShow : Bool = false
+    var keyboardDidShow: Bool = false
     
-    var titleLabel : UPLabel?
+    var titleLabel: UPLabel?
     
-    var textField : UITextField!
+    var textField: UITextField!
     
-    var tailLabel : UPLabel?
+    var tailLabel: UPLabel?
     
-    var textLabel : UPLabel!
+    var textLabel: UPLabel!
     
-    var maskedView : UIView?
+    var maskedView: UIView?
     
-    weak var root :UIViewController?
+    weak var root: UIViewController?
     
-    var displayModel : AIInputViewModel?
+    var displayModel: AIInputViewModel?
     
     //MARK: Override
     
@@ -45,11 +45,13 @@ class AIInputView: UIView {
         }
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
     
     func makeSubViews () {
         
@@ -164,7 +166,6 @@ class AIInputView: UIView {
             return
         }
         
-        
         if let userInfo = notification.userInfo {
            
             let keyboardRectValue : NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
@@ -194,19 +195,13 @@ class AIInputView: UIView {
 
 extension AIInputView: UITextFieldDelegate {
     
-    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        
         textField.text = textLabel.text
         return true
     }
     
-    
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
         textLabel.text = textField.text
-        
         return true
     }
 }
