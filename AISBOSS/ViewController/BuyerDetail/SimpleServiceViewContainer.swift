@@ -235,7 +235,7 @@ class SimpleServiceViewContainer: UIView {
             if viewTemplate != .MutilTextAndImage {
 
                 let VIEW_LEFT_MARGIN: CGFloat  = AITools.displaySizeFrom1080DesignSize(87)
-                
+                /*
                 let iconLabelCollection = VerticalIconLabelCollectionView(frame: CGRect(x: VIEW_LEFT_MARGIN, y: param.height + 5, width: paramViewWidth - VIEW_LEFT_MARGIN * 2, height: 45))
                 paramContainerView.addSubview(iconLabelCollection)
                 
@@ -267,17 +267,19 @@ class SimpleServiceViewContainer: UIView {
                         view1.bottom == container.bottom
                     }
                     paramContainerView.frame.size.height = param.height + iconLabelCollection.height
-                    
+
                 }else{
-                    // Add constrain
-                    constrain(param, paramContainerView) {(view, container) ->() in
-                        view.left == container.left
-                        view.top == container.top
-                        view.bottom == container.bottom
-                        view.right == container.right
-                    }
-                    paramContainerView.frame.size.height = param.height + iconLabelCollection.height
+                    
                 }
+*/
+                // Add constrain
+                constrain(param, paramContainerView) {(view, container) ->() in
+                    view.left == container.left
+                    view.top == container.top
+                    view.bottom == container.bottom
+                    view.right == container.right
+                }
+                paramContainerView.frame.size.height = param.height //+ iconLabelCollection.height
             }
             
             return paramContainerView

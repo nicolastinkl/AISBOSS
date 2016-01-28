@@ -213,7 +213,7 @@ internal class AIServiceContentViewController: UIViewController {
         // Add Pull To Referesh..
         weak var weakSelf = self
         self.scrollView.addHeaderWithCallback { () -> Void in
-            weakSelf!.initData()
+            weakSelf?.initData()
         }
         
         Async.main { () -> Void in
@@ -404,11 +404,11 @@ internal class AIServiceContentViewController: UIViewController {
         var preView : UIView!
         if self.serviceContentType == AIServiceContentType.Escort {
             //陪护
-            serviceContentView = addEscortView(addBrandView())
+            serviceContentView = addEscortView(galleryView)
             preView = addCustomView(serviceContentView)
         } else if (self.serviceContentType == AIServiceContentType.MusicTherapy){
             //音乐疗养
-            serviceContentView = addMusicView(addBrandView())
+            serviceContentView = addMusicView(galleryView)
             preView = addCustomView(serviceContentView)
         }else {
             serviceContentView = addMusicView(galleryView)

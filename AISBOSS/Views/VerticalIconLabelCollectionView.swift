@@ -48,9 +48,8 @@ class VerticalIconLabelCollectionView: UIView {
     }
     
     var dataSource: [(image:UIImage, title:String)]?  = [
-        (image:UIImage(named: "icon_time_big")!, title:"2 session"),
-        (image:UIImage(named: "icon_price_big")!, title:"1 package"),
-        (image:UIImage(named: "icon_calenda_big")!, title:"&85.1 package")] {
+        (image:UIImage(named: "icon_time_big")!, title:""),
+        (image:UIImage(named: "icon_price_big")!, title:"")] {
         didSet {
             collectionView.reloadData()
         }

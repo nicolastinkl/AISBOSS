@@ -1,5 +1,5 @@
 PODS:
-  - AIAlertView (1.0.6)
+  - AIAlertView (1.0.8)
   - Alamofire (3.1.4)
   - AsyncDisplayKit (1.9.4):
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.4)
@@ -10,7 +10,7 @@ PODS:
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - AIAlertView (~> 1.0.6)
+  - AIAlertView (from `https://github.com/asiainfomobile/AIAlertView.git`)
   - Alamofire (~> 3.1.4)
   - AsyncDisplayKit (~> 1.9.4)
   - Cartography (~> 0.6.0)
@@ -19,6 +19,8 @@ DEPENDENCIES:
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
+  AIAlertView:
+    :git: https://github.com/asiainfomobile/AIAlertView.git
   Spring:
     :branch: swift2
     :git: https://github.com/MengTo/Spring.git
@@ -26,6 +28,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
+  AIAlertView:
+    :commit: 2de5b00cba21ea82c3c5af5fcde0a21fce5d82d3
+    :git: https://github.com/asiainfomobile/AIAlertView.git
   Spring:
     :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
     :git: https://github.com/MengTo/Spring.git
@@ -34,7 +39,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  AIAlertView: 453783745789a34fafc8c01fb9a3c25ad111bf01
+  AIAlertView: 9d17a80a22042548ee7888d7e645c84ccbfb1d53
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   AsyncDisplayKit: 0932ff6f78364130a195039ab9a1c2ff63adc665
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
