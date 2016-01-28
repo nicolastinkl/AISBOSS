@@ -452,7 +452,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeContentView () {
         
-        //MARK: Old View Some Logic.
+        //TODO: Old View Some Logic.
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
@@ -464,7 +464,7 @@ internal class AIServiceContentViewController: UIViewController {
             galleryView.setHeight(0)
         }
         
-        //TODO: text
+        //TODO: Text
         
         let detailView = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
         addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor())
@@ -480,8 +480,8 @@ internal class AIServiceContentViewController: UIViewController {
         addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
+        //TODO: Add helpfull views.
         let musicView = addMusicView(serviceContentView)
-        //musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)
         
         //TODO: Necessary public View...
 
