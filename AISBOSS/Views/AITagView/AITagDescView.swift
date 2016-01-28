@@ -13,6 +13,7 @@ class AITagDescView: UIView {
 	lazy private var label: UILabel = { [weak self] in
 		let result = UILabel(frame: CGRectInset((self?.bounds)!, -8, 0))
 		self?.addSubview(result)
+        result.textColor = UIColor.whiteColor()
 		result.numberOfLines = 0
 		return result
 	}()
