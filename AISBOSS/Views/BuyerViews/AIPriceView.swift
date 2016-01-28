@@ -132,9 +132,9 @@ class AIPriceView: AIServiceParamBaseView {
     func changeTotalPrice (num : Int) {
         totalNumber = num
         let price : NSString = displayModel!.defaultPrice.price as NSString
-        let totalPrice = Double(displayModel!.defaultNumber) * price.doubleValue
-        let PriceStr = String("%.2f",totalPrice)
-        
+//        let totalPrice = Double(displayModel!.defaultNumber) * price.doubleValue
+        let totoalPrice = Double(totalNumber) * price.doubleValue
+        let PriceStr = "Total€\(totoalPrice)"
         totalPriceLabel?.text = PriceStr
         
     }

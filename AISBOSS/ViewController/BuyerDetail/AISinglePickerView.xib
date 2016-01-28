@@ -18,14 +18,18 @@
                         <outlet property="delegate" destination="O2I-LZ-ThV" id="0Dh-zZ-pln"/>
                     </connections>
                 </pickerView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-fJ-JQc">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm3-fJ-JQc">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="nkl-eB-nsf"/>
+                    </constraints>
                     <items>
                         <barButtonItem title="Close" id="OLD-ws-wwq">
                             <connections>
                                 <action selector="closeAction:" destination="O2I-LZ-ThV" id="Fj1-wQ-izS"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="H1I-6h-zTC"/>
                         <barButtonItem title="Done" id="dU2-1e-jDQ">
                             <connections>
                                 <action selector="doneAction:" destination="O2I-LZ-ThV" id="UbD-Nl-NuW"/>
@@ -36,9 +40,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="wm3-fJ-JQc" firstAttribute="leading" secondItem="O2I-LZ-ThV" secondAttribute="leading" id="16I-I8-TOg"/>
                 <constraint firstAttribute="trailing" secondItem="Jjk-oK-bzs" secondAttribute="trailing" id="AKY-Xt-5t7"/>
                 <constraint firstItem="Jjk-oK-bzs" firstAttribute="leading" secondItem="O2I-LZ-ThV" secondAttribute="leading" id="EgD-4f-O1v"/>
                 <constraint firstAttribute="bottom" secondItem="Jjk-oK-bzs" secondAttribute="bottom" id="PCW-aJ-l7p"/>
+                <constraint firstItem="wm3-fJ-JQc" firstAttribute="top" secondItem="O2I-LZ-ThV" secondAttribute="top" id="re8-su-uwN"/>
+                <constraint firstAttribute="trailing" secondItem="wm3-fJ-JQc" secondAttribute="trailing" id="vpT-Js-jGB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
