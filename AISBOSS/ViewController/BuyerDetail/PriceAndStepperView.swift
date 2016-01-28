@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MMNumberKeyboard
 
 class PriceAndStepperView: UIView {
 	

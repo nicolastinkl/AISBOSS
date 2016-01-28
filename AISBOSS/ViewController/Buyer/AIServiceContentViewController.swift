@@ -78,14 +78,14 @@ internal class AIServiceContentViewController: UIViewController {
     
     private lazy var scrollView:UIScrollView = {
         // Setup the paging scroll view
-        let pageScrollView = UIScrollView()
-        pageScrollView.backgroundColor = UIColor.clearColor()
-        pageScrollView.pagingEnabled = false
-        pageScrollView.showsHorizontalScrollIndicator = false
-        pageScrollView.showsVerticalScrollIndicator = false
-        pageScrollView.delegate = self
-        pageScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
-        return pageScrollView
+        let result = UIScrollView()
+        result.backgroundColor = UIColor.clearColor()
+        result.pagingEnabled = false
+        result.showsHorizontalScrollIndicator = false
+        result.showsVerticalScrollIndicator = false
+        result.delegate = self
+        result.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))
+        return result
     }()
     
     private lazy var galleryView : AIGalleryView = {
@@ -138,6 +138,8 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName("kStepperIsEditing", object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
             weakSelf?.isStepperEditing = Bool(NSNotificationOBJ.object as! Int)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serviceParamsViewHeightChanged:", name: "kServiceParamsViewHeightChanged", object: nil)
     }
     
     // 缓存输入信息
@@ -176,14 +178,13 @@ internal class AIServiceContentViewController: UIViewController {
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-       NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
-
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
     }
@@ -289,14 +290,11 @@ internal class AIServiceContentViewController: UIViewController {
             return
         }
         
-        
         scrollView.userInteractionEnabled = true
         if let view1 = self.currentAudioView {
             view1.inputButtomValue.constant = 1
         }
     }
-    
-
     
     func loaddataNecessary(){
         Async.main { () -> Void in
@@ -345,10 +343,7 @@ internal class AIServiceContentViewController: UIViewController {
                         
                     }
                 })
-                
-                
             })
-        
     }
     
     deinit {
@@ -470,7 +465,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         //TODO: text
         
-        let detailView : AIDetailText = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
+        let detailView = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
         addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor())
         detailView.frame = CGRectMake(10, galleryView.bottom + 10, CGRectGetWidth(self.view.frame)-20, CGRectGetHeight(detailView.frame))
         
@@ -502,7 +497,7 @@ internal class AIServiceContentViewController: UIViewController {
             self?.updateFrames(animated:true)
         }
         
-        brandView?.onSelectedIndexDidChanged = {  bView, selectedIndex in
+        brandView?.onSelectedIndexDidChanged = { bView, selectedIndex in
             // handle selected index changed 
         }
         return brandView
@@ -512,7 +507,7 @@ internal class AIServiceContentViewController: UIViewController {
         // Add gallery View
 
         scrollView.addSubview(galleryView)
-        
+        scrollViewSubviews.append(galleryView)
         var imageArray = [String]()
         _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
             let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
@@ -733,8 +728,6 @@ extension AIServiceContentViewController: UITextFieldDelegate,UIScrollViewDelega
 }
 
 extension AIServiceContentViewController: AICustomAudioNotesViewDelegate, AIAudioMessageViewDelegate{
-    
-  
     
     // AIAudioMessageViewDelegate
     func willPlayRecording(audioView :AIAudioMessageView) {
@@ -1039,42 +1032,38 @@ extension AIServiceContentViewController : UITextViewDelegate {
         return true
     }
     
-}
-
-
-extension  AIServiceContentViewController : AIServiceParamViewDelegate {
-    
-    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
-        moveViewsBelow(view, offset: offset)
+    func serviceParamsViewHeightChanged(notification:NSNotification) {
+        if let obj = notification.object as? Dictionary<String,AnyObject> {
+            let view = obj["view"] as! UIView
+            if let _ = scrollView.subviews.indexOf(view) {
+                let offset = obj["offset"] as! CGFloat
+                moveViewsBelow(view, offset: offset)
+            }
+        }
     }
     
     
     func moveViewsBelow(view : UIView, offset : CGFloat) {
-        
-        // find anchor
-        var anchor : Int = 0
-        for var index : Int = 0; index < scrollView.subviews.count; index++ {
-            let sview : UIView = scrollView.subviews[index] 
-            if sview == view {
-                anchor = index
-                continue
-            }
-            
-        }
-        
+        let validateViews = scrollViewSubviews
+        let anchor = validateViews.indexOf(view)! + 1
+
         // move
         
-        for var index : Int = anchor; index < scrollView.subviews.count; index++ {
-            let sview : UIView = scrollView.subviews[index]
+        for var index : Int = anchor; index < scrollViewSubviews.count; index++ {
+            let sview : UIView = scrollViewSubviews[index]
+            if let v = sview as? AIMusicTherapyView {
+                print(v)
+            }
             var frame = sview.frame
-            frame.size.height += offset
+            frame.origin.y += offset
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 sview.frame = frame
             })
-            
+        
         }
         
+        var s = scrollView.contentSize
+        s.height = CGRectGetMaxY(scrollView.subviews.last!.frame)
+        scrollView.contentSize = s
     }
-    
-    
 }
