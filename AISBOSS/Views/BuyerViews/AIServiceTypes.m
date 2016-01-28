@@ -58,6 +58,11 @@
     _radioMargin = [AITools displaySizeFrom1080DesignSize:40];
     _fontSize = [AITools displaySizeFrom1080DesignSize:42];
     _topMargin = [AITools displaySizeFrom1080DesignSize:35];
+    
+    //
+    
+    _serviceTypesModel.product_id_save = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
+    _serviceTypesModel.role_id_save = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
 }
 
 #pragma mark - Title
@@ -169,6 +174,28 @@
     */
 }
 
+#pragma mark - 获取参数
+
+- (NSDictionary *)productParams
+{
+    NSString *product_id = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
+    NSString *role_id = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+    
+    NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    
+    return productParams;
+}
+
+
+- (NSDictionary *)serviceParams
+{
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
+    AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
+    
+    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":_serviceTypesModel.role_id_save ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": _serviceTypesModel.product_id_save ?: @"", @"param_key":model.identifier ?: @"", @"param_value":model.desc ?: @""};
+    
+    return serviceParams;
+}
 
 
 @end

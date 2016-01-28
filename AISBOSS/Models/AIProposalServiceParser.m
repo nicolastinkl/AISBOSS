@@ -97,29 +97,12 @@
     return (_serviceParams != nil && _serviceParams.count > 0);
 }
 
-/*
- @property (nonatomic, assign) BOOL isPriceRelated;   // 是否会影响价格
- 
- @property (nonatomic, assign) NSInteger product_id;  // 产品ID
- 
- @property (nonatomic, assign) NSInteger service_id;  // 服务ID
- 
- @property (nonatomic, assign) NSInteger role_id;     // 角色ID
- 
- @property (nonatomic, strong) NSString<Optional> *source; // 源类型
- 
- @property (nonatomic, assign) NSInteger param_key; // 参数的KEY
- 
- @property (nonatomic, assign) NSInteger param_value_id; // 参数值ID
- 
- @property (nonatomic, strong) NSString<Optional> *param_value; // 参数值
- */
 - (void)parserBaseSavedParams:(NSDictionary *)params forModel:(JSONModel *)model
 {
     
     model.serviceParams = _serviceParams;
     model.relatedParams = _relatedParams;
-    model.displayParams = _displayParams;
+    model.displayParams = params;
 
     NSDictionary *content = [params objectForKey:@"ui_template_content"];
     NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
@@ -326,7 +309,6 @@
 #pragma mark - 解析 5 时间，日历
 - (void)parse5WithParam:(NSDictionary *)param
 {
-    NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
     
     // 设置基本参数
@@ -343,7 +325,7 @@
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AIInputViewModel *model = [[AIInputViewModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
-    model.defaultText = [content objectForKey:@""];
+    model.defaultText = [content objectForKey:@"default_value"];
     model.tail = [content objectForKey:@"value"];
     
     // 设置基本参数

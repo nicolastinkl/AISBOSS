@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) AIServiceCoverageModel *coverageModel;
 
+@property (nonatomic, strong) NSMutableArray *selectedLabels;
+
 @end
 
 @implementation AIServiceCoverage
@@ -52,6 +54,8 @@
     _titleMargin = [AITools displaySizeFrom1080DesignSize:51];
     _labelMargin = [AITools displaySizeFrom1080DesignSize:30];
     _titleFontSize = [AITools displaySizeFrom1080DesignSize:42];
+    
+    self.selectedLabels = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 构造title
@@ -70,7 +74,7 @@
 #pragma mark - 构造标签
 
 
-- (NSArray *)makeColors
+- (UIColor *)makeColors
 {
     NSArray *colors = @[[AITools colorWithHexString:@"1c789f"],
                         [AITools colorWithHexString:@"7b3990"],
@@ -79,7 +83,11 @@
                         [AITools colorWithHexString:@"d05126"],
                         [AITools colorWithHexString:@"b32b1d"]];
     
-    return colors;
+    NSInteger index = arc4random() % colors.count;
+    UIColor *color = [colors objectAtIndex:index];
+    
+    
+    return color;
 }
 
 
@@ -90,8 +98,6 @@
     CGFloat x = 0;
     CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _titleMargin;
     CGFloat height = [AITools displaySizeFrom1080DesignSize:67];
-    NSArray *colors = [self makeColors];
-    
     
     for (NSInteger i = 0; i < self.coverageModel.options.count; i++) {
         
@@ -101,7 +107,7 @@
         NSString *title = model.desc;
         AIServiceLabel *label = [[AIServiceLabel alloc] initWithFrame:frame title:title type:AIServiceLabelTypeSelection isSelected:model.isSelected];
         label.delegate = self;
-        label.backgroundColor = [colors objectAtIndex:i];
+        label.backgroundColor = [self makeColors];
         label.selectionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Coverage%ld", i]];
         
         [self addSubview:label];
@@ -126,16 +132,50 @@
 
 #pragma mark - AIServiceLabelDelegate
 
+- (NSDictionary *)productParams
+{
+    NSString *product_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
+    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_key"];
+    
+    NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    
+    return productParams;
+}
+
+
+- (NSArray *)coverageServiceParams
+{
+    NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
+    NSMutableArray *params = [[NSMutableArray alloc] init];
+    
+    for (AIOptionModel *model in _selectedLabels) {
+        NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":_coverageModel.role_id_save ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": _coverageModel.product_id_save ?: @"", @"param_key":model.identifier ?: @"", @"param_value":model.desc ?: @""};
+        [params addObject:serviceParams];
+    }
+    
+    return params;
+}
+
+
+- (void)insertModel:(AIOptionModel *)model
+{
+    for (AIOptionModel *m in _selectedLabels) {
+        if (model == m) {
+            return;
+        }
+    }
+    
+    [_selectedLabels addObject:model];
+    
+}
+
 
 - (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected
 {
-    if ([self.delegate respondsToSelector:@selector(didChooseServiceLabelModel: isSelected:)]) {
-        
-        for (AIOptionModel *model in self.coverageModel.options) {
-//            if ([model.content isEqualToString:serviceLabel.labelTitle]) {
-//                [self.delegate didChooseServiceLabelModel:model isSelected:selected];
-//                break;
-//            }
+    for (AIOptionModel *model in _coverageModel.options) {
+        if ([model.desc isEqualToString:serviceLabel.labelTitle] && selected) {
+            [self insertModel:model];
+            break;
         }
     }
 }
