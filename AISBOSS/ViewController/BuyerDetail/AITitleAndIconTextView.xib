@@ -37,6 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="tJR-Kq-12A" firstAttribute="top" secondItem="hqG-RM-OsG" secondAttribute="bottom" constant="-17" id="5BE-SJ-Vdz"/>
                 <constraint firstItem="hqG-RM-OsG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="IqU-5q-FxI"/>
@@ -56,8 +57,9 @@
                 <outlet property="textMaginRight" destination="i4x-nd-7NO" id="JLw-Fw-cU2"/>
                 <outlet property="textTopToIcon" destination="Lbi-i1-pPW" id="dlw-Fr-WUf"/>
                 <outlet property="titleHeight" destination="Hab-yb-krT" id="aze-L0-ez3"/>
+                <outlet property="titleTopConstraint" destination="y1c-7a-U8e" id="MaU-xB-J0P"/>
             </connections>
-            <point key="canvasLocation" x="429" y="287"/>
+            <point key="canvasLocation" x="574" y="361"/>
         </view>
     </objects>
     <resources>
