@@ -236,9 +236,9 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	func setupDownButton() {
-//        if brands.count < 5 {
-//            return
-//        }
+        if brands.count < 5 {
+            return
+        }
 		downButton = UIButton(type: .Custom)
 		downButton.setImage(UIImage(named: "up_triangle"), forState: .Selected)
 		downButton.setImage(UIImage(named: "down_triangle"), forState: .Normal)
