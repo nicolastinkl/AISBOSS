@@ -23,4 +23,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame model:(AIServiceCoverageModel *)model;
 
+- (NSArray *)coverageServiceParams;
+
 @end

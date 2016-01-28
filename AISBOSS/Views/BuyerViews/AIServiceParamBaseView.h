@@ -10,4 +10,10 @@
 
 @interface AIServiceParamBaseView : UIControl
 
+- (NSDictionary *)productParams;
+
+- (NSDictionary *)serviceParams;
+
+
+
 @end

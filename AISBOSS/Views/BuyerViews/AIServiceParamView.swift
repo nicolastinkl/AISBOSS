@@ -146,7 +146,7 @@ class AIServiceParamView : UIView {
 		
 		let tagsView : AITagsView = AITagsView(title: m.title, tags: m.labels as! [Tagable], frame: frame)
 		addSubview(tagsView)
-		
+		tagsView.originalModel = m
 		tagsView.addTarget(self, action: "handleTagsViewChanged:", forControlEvents: .ValueChanged)
 		tagViewHeight = CGRectGetHeight(tagsView.frame)
 		originalY += tagViewHeight! + margin

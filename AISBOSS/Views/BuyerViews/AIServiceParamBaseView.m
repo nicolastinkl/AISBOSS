@@ -10,4 +10,16 @@
 
 @implementation AIServiceParamBaseView
 
+
+- (NSDictionary *)productParams
+{
+    return nil;
+}
+
+- (NSDictionary *)serviceParams
+{
+    return nil;
+}
+
+
 @end

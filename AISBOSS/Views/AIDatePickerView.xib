@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -25,14 +25,18 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="hW3-VS-b8u"/>
                     </connections>
                 </pickerView>
-                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EqS-af-dxi">
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqS-af-dxi">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="GRh-Cn-kpm"/>
+                    </constraints>
                     <items>
                         <barButtonItem title="Close" id="5lM-6m-JSc">
                             <connections>
                                 <action selector="closeAction:" destination="iN0-l3-epB" id="xbL-Aa-ZSu"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ybn-Tg-g3V"/>
                         <barButtonItem title="Done" id="H6X-aY-gNx">
                             <connections>
                                 <action selector="doneAction:" destination="iN0-l3-epB" id="br4-0S-0nM"/>
@@ -43,9 +47,12 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="EqS-af-dxi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FPL-bx-TQN"/>
                 <constraint firstItem="QKM-EG-xy1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VnY-hW-Eyr"/>
                 <constraint firstAttribute="bottom" secondItem="OfX-jP-qSf" secondAttribute="bottom" id="XcP-75-II7"/>
+                <constraint firstItem="EqS-af-dxi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XtZ-ub-QK2"/>
                 <constraint firstItem="QKM-EG-xy1" firstAttribute="width" secondItem="OfX-jP-qSf" secondAttribute="width" id="Ydz-6y-jM2"/>
+                <constraint firstAttribute="trailing" secondItem="EqS-af-dxi" secondAttribute="trailing" id="bN8-MT-eCh"/>
                 <constraint firstItem="OfX-jP-qSf" firstAttribute="leading" secondItem="QKM-EG-xy1" secondAttribute="trailing" id="gXJ-b5-br7"/>
                 <constraint firstAttribute="trailing" secondItem="OfX-jP-qSf" secondAttribute="trailing" id="nSK-pr-zbR"/>
                 <constraint firstAttribute="bottom" secondItem="QKM-EG-xy1" secondAttribute="bottom" id="osh-s3-tWo"/>
@@ -55,7 +62,7 @@
                 <outlet property="pickOneView" destination="QKM-EG-xy1" id="5MQ-Y0-64Z"/>
                 <outlet property="pickTwoView" destination="OfX-jP-qSf" id="0y3-L5-zpr"/>
             </connections>
-            <point key="canvasLocation" x="-159" y="323"/>
+            <point key="canvasLocation" x="-285" y="357"/>
         </view>
     </objects>
 </document>

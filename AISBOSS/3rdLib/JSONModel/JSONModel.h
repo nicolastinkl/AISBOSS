@@ -151,7 +151,7 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  *
  */
 
-@property (nonatomic, strong) NSArray *displayParams;
+@property (nonatomic, strong) NSDictionary *displayParams;
 
 @property (nonatomic, strong) NSArray *relatedParams;
 
