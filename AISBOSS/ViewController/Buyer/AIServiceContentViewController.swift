@@ -42,6 +42,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     var serviceContentModel: AIProposalServiceModel?
+    
     var propodalId: Int = 0
 
     var pageIndex: Int = 0
@@ -471,16 +472,16 @@ internal class AIServiceContentViewController: UIViewController {
         
         //TODO: add brand View
         
-        let parser : AIProposalServiceParser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
+        let parser = AIProposalServiceParser(serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 0), models: parser.displayModels, rootViewController : self)
         
         serviceContentView.rootViewController = self.parentViewController
         addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
-        let musicView  = addMusicView(serviceContentView)
-        musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)          
+        let musicView = addMusicView(serviceContentView)
+        //musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)
         
         //TODO: Necessary public View...
 
@@ -550,7 +551,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     private func addMusicView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
-        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 0)
         musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
         addNewSubView(musicView!, preView: preView!)
         musicView!.backgroundColor = UIColor.clearColor()

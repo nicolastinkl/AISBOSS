@@ -33,7 +33,6 @@
     
             self.displayModels = [[NSMutableArray alloc] init];
             [self parseParams:displayParams];
-            [self parse9WithParam:nil];
         }
     }
     
@@ -344,6 +343,7 @@
 - (void)parse9WithParam:(NSDictionary *)param
 {
     AIServiceProviderViewModel *model = [[AIServiceProviderViewModel alloc] init];
+    
     NSMutableArray *providers = [NSMutableArray array];
     AIServiceProviderModel *provider = [[AIServiceProviderModel alloc] init];
      
@@ -357,6 +357,7 @@
     
     [model setDisplayType:9];
     [_displayModels addObject:model];
+    
 }
 
 

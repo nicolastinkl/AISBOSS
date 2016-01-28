@@ -124,11 +124,17 @@
     
     y -= [AITools displaySizeFrom1080DesignSize:22] - 0.5;
     
-    
-    // reset frame
-    CGRect myFrame = self.frame;
-    myFrame.size.height = y;
-    self.frame = myFrame;
+    if (self.detailModel.service_rating.comment_list.count > 0) {
+        // reset frame
+        CGRect myFrame = self.frame;
+        myFrame.size.height = y;
+        self.frame = myFrame;
+        
+    }else{
+        CGRect myFrame = self.frame;
+        myFrame.size.height = 0;
+        self.frame = myFrame;
+    }
     
 }
 
