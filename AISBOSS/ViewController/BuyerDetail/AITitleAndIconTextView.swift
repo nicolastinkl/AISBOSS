@@ -41,6 +41,7 @@ class AITitleAndIconTextView: ServiceParamlView {
             let model = try ServiceCellProductParamModel(data: jsonData)
             
             loadData(model: model)
+            
         } catch {
             
         }
@@ -67,9 +68,8 @@ class AITitleAndIconTextView: ServiceParamlView {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {
-                frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
-                
                 if model.product_name != nil && model.product_name != "" {
+                    frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
                     firstTitle.hidden = false
                     firstTitle.text = model.product_name
                     iconMaginTop.constant = AITitleAndIconTextView.ICON_VERTICAL_SPACE

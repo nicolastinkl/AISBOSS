@@ -36,7 +36,6 @@
     return self;
 }
 
-
 - (void)addLineViewAtX:(CGFloat)x y:(CGFloat)y width:(CGFloat)width
 {
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, 0.5)];
@@ -44,7 +43,6 @@
     
     [self addSubview:line];
 }
-
 
 - (void)addLineViewAtY:(CGFloat)y
 {

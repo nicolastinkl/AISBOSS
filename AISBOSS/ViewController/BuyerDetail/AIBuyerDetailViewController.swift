@@ -514,6 +514,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             openDeletedTableView(true)
         }
     }
+    
 }
 
 
