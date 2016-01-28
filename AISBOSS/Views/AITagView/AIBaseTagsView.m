@@ -11,8 +11,8 @@
 #define TAG_SPACE_HORIZONTAL      10
 #define TAG_SPACE_VERTICAL        10
 #define DEFAULT_VIEW_HEIGHT       44
-#define MAX_TAG_SIZE              125
-#define MIN_TAG_SIZE              40
+#define MAX_TAG_SIZE              123321231
+#define MIN_TAG_SIZE              80
 #define DEFAULT_VIEW_WIDTH        320
 #define DEFAULT_TAG_CORNER_RADIUS 10
 @implementation AIBaseTagsView
@@ -103,8 +103,9 @@
 
     for (UIView *view in self.subviews) {
         if ([view isKindOfClass:[AITagLabel class]]) {
-            UILabel *tag = (UILabel *)view;
-            tag.textColor = tagTextColor;
+            AITagLabel *tag = (AITagLabel *)view;
+//            tag.textColor = tagTextColor;
+            [tag setTitleColor:tagTextColor forState:UIControlStateNormal];
         }
     }
 }
@@ -128,12 +129,12 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(labelDidTapped:)];
     [tagLabel addGestureRecognizer:tap];
     tagLabel.tag = index;
-    UIFont *tagFont = [UIFont fontWithName:@"Arial" size:26];
-    CGSize maximumLabelSize = CGSizeMake(maxTagSize, CGRectGetWidth(self.bounds));
+//    UIFont *tagFont = [UIFont fontWithName:@"Arial" size:26];
+//    CGSize maximumLabelSize = CGSizeMake(maxTagSize, CGRectGetWidth(self.bounds));
     
-    CGSize expectedLabelSize = [tag sizeWithFont:tagFont
-                               constrainedToSize:maximumLabelSize
-                                   lineBreakMode:[tagLabel lineBreakMode]];
+    [tagLabel setTitle:tag forState:UIControlStateNormal];
+    CGSize expectedLabelSize = tagLabel.intrinsicContentSize;
+    expectedLabelSize.width += tagLabel.spaceBetweenImageAndTitle;//加上 title and image space in AITagLabel.m
 
     if (expectedLabelSize.width < MIN_TAG_SIZE) expectedLabelSize.width = MIN_TAG_SIZE;
     
@@ -148,13 +149,12 @@
     }
 
     tagLabel.frame = CGRectMake(tagXPos, tagYPos, expectedLabelSize.width, expectedLabelSize.height);
-    tagLabel.text = tag;
-    tagLabel.textAlignment = NSTextAlignmentCenter;
+//    tagLabel.textAlignment = NSTextAlignmentCenter;
     tagLabel.backgroundColor = self.tagNormalColor;
     tagLabel.highlightedBackgroundColor = self.tagSelectedColor;
-    tagLabel.textColor = tagTextColor;
-    tagLabel.layer.masksToBounds = YES;
-    tagLabel.layer.cornerRadius = tagRadius;
+    [tagLabel setTitleColor:tagTextColor forState:UIControlStateNormal];
+//    tagLabel.layer.masksToBounds = YES;
+//    tagLabel.layer.cornerRadius = tagRadius;
     [self addSubview:tagLabel];
     [self.tagViews addObject:tagLabel];
     tagXPos += tagLabel.frame.size.width + TAG_SPACE_HORIZONTAL;

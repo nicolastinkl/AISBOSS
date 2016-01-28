@@ -8,25 +8,33 @@
 
 #import "AITagLabel.h"
 
+@interface AITagLabel ()
+
+@end
+
 @implementation AITagLabel
 
-- (void)setHighlighted:(BOOL)highlighted {
-    [super setHighlighted:highlighted];
-    [self updateColor];
+- (instancetype)init {
+    self = [super init];
+
+    if (self) {
+        [self setup];
+    }
+
+    return self;
 }
 
-- (void)setNormalBackgroundColor:(UIColor *)normalBackgroundColor {
-    _normalBackgroundColor = normalBackgroundColor;
-    [self updateColor];
+- (CGFloat)spaceBetweenImageAndTitle {
+    return 5;
 }
 
-- (void)setHighlightedBackgroundColor:(UIColor *)highlightedBackgroundColor {
-    _highlightedBackgroundColor = highlightedBackgroundColor;
-    [self updateColor];
-}
-
-- (void)updateColor {
-    self.backgroundColor = self.highlighted ? self.highlightedBackgroundColor : self.normalBackgroundColor;
+- (void)setup {
+    [self setImage:[UIImage imageNamed:@"Type_Off"] forState:UIControlStateNormal];
+    [self setImage:[UIImage imageNamed:@"Type_On"] forState:UIControlStateHighlighted];
+    self.titleLabel.font = [UIFont systemFontOfSize:14];
+    //http://stackoverflow.com/questions/4564621/aligning-text-and-image-on-uibutton-with-imageedgeinsets-and-titleedgeinsets
+    self.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, self.spaceBetweenImageAndTitle);
+    self.titleEdgeInsets = UIEdgeInsetsMake(0, self.spaceBetweenImageAndTitle, 0, 0);
 }
 
 @end

@@ -85,6 +85,7 @@ class AIInputView: UIView {
         textLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showKeyboard"))
         self.addSubview(textLabel)
         
+        y += textLabel.height
         //TODO: make tailLabel
         if let tail = displayModel?.tail {
             y += textSize.height
