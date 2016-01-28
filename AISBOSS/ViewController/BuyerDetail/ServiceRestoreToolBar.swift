@@ -35,6 +35,13 @@ class ServiceRestoreToolBar: UIView {
 		}
 	}
     
+    func removeAllLogos() {
+        for logo in logos {
+            logo.removeFromSuperview()
+        }
+        logos.removeAll()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()

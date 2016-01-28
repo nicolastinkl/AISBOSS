@@ -428,6 +428,8 @@ class AIBuyerDetailViewController : UIViewController {
                 {[weak self] (responseData) -> Void in
                     
                     if let viewController = self {
+                        viewController.deleted_service_list.removeAllObjects()
+                        viewController.serviceRestoreToolbar.removeAllLogos()
                         viewController.dataSource = responseData
                         
                         // initControl Data
