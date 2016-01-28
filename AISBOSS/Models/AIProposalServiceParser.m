@@ -17,11 +17,13 @@
 
 @property (nonatomic, strong) NSArray *serviceParams;
 
+@property (nonatomic, strong) NSNumber *serviceID;
+
 @end
 
 @implementation AIProposalServiceParser
 
-- (id)initWithServiceParams:(NSArray *)params relatedParams:(NSArray *)relatedParams displayParams:(NSArray *)displayParams
+- (id)initWithServiceID:(NSInteger)serviceID serviceParams:(NSArray *)params relatedParams:(NSArray *)relatedParams displayParams:(NSArray *)displayParams
 {
     self = [super init];
     
@@ -30,6 +32,7 @@
             self.serviceParams = params;
             self.displayParams = displayParams;
             self.relatedParams = relatedParams;
+            self.serviceID = [NSNumber numberWithInteger:serviceID];
     
             self.displayModels = [[NSMutableArray alloc] init];
             [self parseParams:displayParams];
@@ -80,9 +83,88 @@
         }
     }
 }
+#pragma mark - 解析保存参数
 
+// 判断是否有关联参数
+- (BOOL)isExistRelParams
+{
+    return (_relatedParams != nil && _relatedParams.count > 0);
+}
 
-#pragma mark - 解析 1
+// 判断是否有服务参数
+- (BOOL)isExistServiceParams
+{
+    return (_serviceParams != nil && _serviceParams.count > 0);
+}
+
+/*
+ @property (nonatomic, assign) BOOL isPriceRelated;   // 是否会影响价格
+ 
+ @property (nonatomic, assign) NSInteger product_id;  // 产品ID
+ 
+ @property (nonatomic, assign) NSInteger service_id;  // 服务ID
+ 
+ @property (nonatomic, assign) NSInteger role_id;     // 角色ID
+ 
+ @property (nonatomic, strong) NSString<Optional> *source; // 源类型
+ 
+ @property (nonatomic, assign) NSInteger param_key; // 参数的KEY
+ 
+ @property (nonatomic, assign) NSInteger param_value_id; // 参数值ID
+ 
+ @property (nonatomic, strong) NSString<Optional> *param_value; // 参数值
+ */
+- (void)parserBaseSavedParams:(NSDictionary *)params forModel:(JSONModel *)model
+{
+    
+    model.serviceParams = _serviceParams;
+    model.relatedParams = _relatedParams;
+    model.displayParams = _displayParams;
+
+    if ([[params objectForKey:@"ui_template_content"] isMemberOfClass:[NSDictionary class]]) {
+        
+        NSDictionary *content = [params objectForKey:@"ui_template_content"];
+        NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+        model.isPriceRelated = isPriceRelated.boolValue;
+        model.service_id_save = _serviceID;
+        model.source_save = [content objectForKey:@"param_source"];
+    }
+    
+    
+    /*
+     NSString *paramSource = [content objectForKey:@"param_source"];
+     
+     
+     if ([paramSource isEqualToString:@"product"]) { // 产品类型
+     NSArray *param_value = [content objectForKey:@"param_value"];
+     if (param_value.count > 0 && _relatedParams.count > 0) { // 有关联参数
+     model.product_id_save = [content objectForKey:@"param_source_id"];
+     }
+     else
+     {
+     model.product_id_save = [content objectForKey:@"param_source_id"];
+     }
+     
+     
+     model.product_id_save = [content objectForKey:@"param_source_id"];
+     //model.role_id_save =
+     
+     
+     }else if ([paramSource containsString:@"param"]) { // offerring类型
+     
+     }else { // 其他普通参数
+     
+     }
+     */
+    
+    
+    
+    
+    
+
+}
+
+#pragma mark - 解析 1  title + detail
 
 - (void)parse1WithParam:(NSDictionary *)param
 {
@@ -93,17 +175,16 @@
     model.content = [content objectForKey:@"detail"];
     
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
-    
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+
     // 设置控件类型
     [model setDisplayType:1];
     [_displayModels addObject:model];
     
 }
 
-#pragma mark - 解析 2
+#pragma mark - 解析 2 单选checkbox组
 - (void)parse2WithParam:(NSDictionary *)param
 {
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
@@ -124,17 +205,16 @@
     model.typeOptions = options;
     model.params = nil;
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
-    
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+
     // 设置控件类型
     [model setDisplayType:2];
     [_displayModels addObject:model];
     
 }
 
-#pragma mark - 解析 3
+#pragma mark - 解析 3 金额展示
 - (void)parse3WithParam:(NSDictionary *)param
 {
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
@@ -154,9 +234,8 @@
     priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
     model.defaultPrice = priceM;
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
     
     // 设置控件类型
     [model setDisplayType:3];
@@ -166,7 +245,7 @@
     
 }
 
-#pragma mark - 解析 4
+#pragma mark - 解析 4 标签组复合控件，可多选，单选，可分层
 - (void)parse4WithParam:(NSDictionary *)param
 {
     NSArray *list = [param objectForKey:@"ui_template_content"];
@@ -190,10 +269,9 @@
     
     model.labels = [self makeComplexArrayWithArray:level1];
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
-    
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+
     // 设置控件类型
     [model setDisplayType:4];
     [_displayModels addObject:model];
@@ -248,22 +326,21 @@
     return array;
 }
 
-#pragma mark - 解析 5
+#pragma mark - 解析 5 时间，日历
 - (void)parse5WithParam:(NSDictionary *)param
 {
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
     
     // 设置控件类型
     [model setDisplayType:5];
     [_displayModels addObject:model];
 }
 
-#pragma mark - 解析 6
+#pragma mark - 解析 6 输入框
 - (void)parse6WithParam:(NSDictionary *)param
 {
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
@@ -272,16 +349,15 @@
     model.defaultText = [content objectForKey:@""];
     model.tail = [content objectForKey:@"value"];
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
-    
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+
     // 设置控件类型
     [model setDisplayType:6];
     [_displayModels addObject:model];
 }
 
-#pragma mark - 解析 7
+#pragma mark - 解析 7 普通标签：title + 标签组
 - (void)parse7WithParam:(NSDictionary *)param
 {
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
@@ -305,16 +381,16 @@
     model.params = nil;
     model.modelType = 0;
     
-    // 是否价格相关
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    [model setIsPriceRelated:isPriceRelated.boolValue];
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+    
     
     // 设置控件类型
     [model setDisplayType:7];
     [_displayModels addObject:model];
 }
 
-#pragma mark - 解析 8
+#pragma mark - 解析 8 切换服务标签
 - (void)parse8WithParam:(NSDictionary *)param
 {
     NSArray *content = [param objectForKey:@"ui_template_content"];
@@ -335,11 +411,14 @@
     
     model.providers = providers;
     
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
+    
     [model setDisplayType:8];
     [_displayModels addObject:model];
 }
 
-#pragma mark - 解析 9
+#pragma mark - 解析 9 picker控件
 - (void)parse9WithParam:(NSDictionary *)param
 {
     AIServiceProviderViewModel *model = [[AIServiceProviderViewModel alloc] init];
@@ -354,6 +433,10 @@
     
     [providers addObject:provider];
     model.providers = providers;
+    
+    
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
     
     [model setDisplayType:9];
     [_displayModels addObject:model];

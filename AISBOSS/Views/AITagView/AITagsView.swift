@@ -35,9 +35,9 @@ import UIKit
 /size frame ....update frames()
  }
  */
-//[radioButton setImage:[UIImage imageNamed:@"Type_Off"] forState:UIControlStateNormal];
-//[radioButton setImage:[UIImage imageNamed:@"Type_On"] forState:UIControlStateSelected];
-class AITagsView: UIControl {
+
+class AITagsView: AIServiceParamBaseView {
+
 	var titleLabel: UILabel = UILabel(frame: .zero)
 	var tags: [Tagable]
 	var title: String

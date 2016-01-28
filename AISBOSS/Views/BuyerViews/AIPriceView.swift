@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class AIPriceView: UIView {
+class AIPriceView: AIServiceParamBaseView {
 
     //MARK: Constants
     

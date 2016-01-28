@@ -15,7 +15,7 @@ public enum UIPickViewTag:  Int {
     case day = 2
 }
 
-public class AIDatePickerView: UIView {
+public class AIDatePickerView: AIServiceParamBaseView {
     
     private let DIYSuperView = UIView()
     
