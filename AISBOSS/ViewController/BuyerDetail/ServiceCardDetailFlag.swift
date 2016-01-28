@@ -68,7 +68,10 @@ class ServiceCardDetailFlag: ServiceParamlView {
     
     //MARK: - build views
     func buildTitle(){
-        let titleFrame = CGRectMake(VIEW_LEFT_MARGIN, VIEW_TOP_MARGIN, FLAG_MAX_WIDTH, TITLE_HEIGHT)
+        var titleFrame = CGRectMake(VIEW_LEFT_MARGIN, VIEW_TOP_MARGIN, FLAG_MAX_WIDTH, TITLE_HEIGHT)
+        if dataSource?.product_name.isEmpty == true {
+            titleFrame = CGRectMake(VIEW_LEFT_MARGIN, 0, FLAG_MAX_WIDTH, 0)
+        }
         titleLabel = UILabel(frame: titleFrame)
         titleLabel.font = TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()

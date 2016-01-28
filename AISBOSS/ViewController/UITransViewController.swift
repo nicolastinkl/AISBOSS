@@ -997,7 +997,17 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
 
         mediaView.associatedName = "\(model.content_url)"
         if model.favoriteAvator != nil {
+            
+            if model.id == 352 {
+                model.favoriteAvator = "http://7xq9bx.com1.z0.glb.clouddn.com/wide64045957124.jpg"
+            }
+            if model.id == 354 {
+                model.favoriteAvator = "http://7xq9bx.com1.z0.glb.clouddn.com/13245ythgfdskhaj.jpg"
+            }
+            
             mediaView.Image_Media.setURL(NSURL(string: model.favoriteAvator!), placeholderImage: UIImage(named: "Placehold"))
+        }else{
+            mediaView.Image_Media.image = UIImage(named: "Placehold")
         }
         
         mediaView.Image_Media.layer.borderColor = UIColor.whiteColor().CGColor
