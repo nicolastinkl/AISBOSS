@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *displayModels;
 
-- (id)initWithServiceParams:(NSArray *)params relatedParams:(NSArray *)relatedParams displayParams:(NSArray *)displayParams;
+- (id)initWithServiceID:(NSInteger)serviceID serviceParams:(NSArray *)params relatedParams:(NSArray *)relatedParams displayParams:(NSArray *)displayParams;
 
 @end

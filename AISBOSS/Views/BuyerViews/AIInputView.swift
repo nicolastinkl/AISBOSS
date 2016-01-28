@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class AIInputView: UIView {
+class AIInputView: AIServiceParamBaseView {
 
     //MARK: Constants
     let margin : CGFloat = 10

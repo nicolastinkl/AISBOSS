@@ -10,7 +10,7 @@ import Foundation
 import Spring
 
 //pickview 选择器
-public class AISinglePickerView: UIView {    
+public class AISinglePickerView: AIServiceParamBaseView {    
     
     @IBOutlet weak var pickOneView: UIPickerView!
 

@@ -111,5 +111,7 @@
 
 #import "AIDetailText.h"
 
+#import "AIServiceParamBaseView.h"
+
 // AITagView
 #import "AIBaseTagsView.h"

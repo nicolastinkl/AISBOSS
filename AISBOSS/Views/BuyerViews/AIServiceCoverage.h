@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AIServiceDetailUIModel.h"
+#import "AIServiceParamBaseView.h"
 
 @protocol AIServiceCoverageDelegate <NSObject>
 
@@ -16,7 +17,7 @@
 @end
 
 
-@interface AIServiceCoverage : UIView
+@interface AIServiceCoverage : AIServiceParamBaseView
 @property (nonatomic, weak) id<AIServiceCoverageDelegate> delegate;
 
 

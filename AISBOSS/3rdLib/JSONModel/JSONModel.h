@@ -146,15 +146,43 @@ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
  */
 @interface JSONModel : NSObject <AbstractJSONModelProtocol, NSSecureCoding>
 
-@property (nonatomic, assign) NSInteger displayType;
+/**
+ * 王坜自定义
+ *
+ */
 
-@property (nonatomic, assign) BOOL isPriceRelated;
+@property (nonatomic, strong) NSArray *displayParams;
+
+@property (nonatomic, strong) NSArray *relatedParams;
+
+@property (nonatomic, strong) NSArray *serviceParams;
+
+/////
+
+@property (nonatomic, assign) NSInteger displayType; // 显示类型
+
+@property (nonatomic, assign) BOOL isPriceRelated;   // 是否会影响价格
+
+@property (nonatomic, assign) NSNumber<Optional> *product_id_save;  // 产品ID
+
+@property (nonatomic, assign) NSNumber<Optional> *service_id_save;  // 服务ID
+
+@property (nonatomic, assign) NSNumber<Optional> *role_id_save;     // 角色ID
+
+@property (nonatomic, strong) NSString<Optional> *source_save; // 源类型
+
+@property (nonatomic, assign) NSNumber<Optional> *param_key_save; // 参数的KEY
+
+@property (nonatomic, assign) NSNumber<Optional> *param_value_id_save; // 参数值ID
+
+@property (nonatomic, strong) NSString<Optional> *param_value_save; // 参数值
+
+
+
+
 
 // Customize for Veris
 
-//- (NSInteger)displayType;
-//
-//- (void)setDisplayType:(NSInteger)displayType;
 
 /** @name Creating and initializing models */
 
