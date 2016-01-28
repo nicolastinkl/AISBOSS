@@ -138,6 +138,8 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName("kStepperIsEditing", object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
             weakSelf?.isStepperEditing = Bool(NSNotificationOBJ.object as! Int)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serviceParamsViewHeightChanged:", name: "kServiceParamsViewHeightChanged", object: nil)
     }
     
     // 缓存输入信息
@@ -1039,13 +1041,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
         return true
     }
     
-}
-
-
-extension  AIServiceContentViewController : AIServiceParamViewDelegate {
-    
-    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
-        moveViewsBelow(view, offset: offset)
+    func serviceParamsViewHeightChanged(notification:NSNotification) {
+        
+        if let obj = notification.object as? Dictionary<String,AnyObject> {
+            let view = obj["view"] as! UIView
+            let offset = obj["offset"] as! CGFloat
+            moveViewsBelow(view, offset: offset)
+        }
     }
     
     
@@ -1074,7 +1076,8 @@ extension  AIServiceContentViewController : AIServiceParamViewDelegate {
             
         }
         
+        var s = scrollView.contentSize
+        s.height = CGRectGetMaxY(scrollView.subviews.last!.frame)
+        scrollView.contentSize = s
     }
-    
-    
 }
