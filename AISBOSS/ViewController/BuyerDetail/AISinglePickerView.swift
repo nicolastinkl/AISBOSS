@@ -25,15 +25,15 @@ public class AISinglePickerView: UIView {
         option1.desc = "2 bedrooms"
         option1.identifier = "4322345678"
         option1.isSelected = true
-        option1.displayColor = "#534F5D"
+        option1.displayColor = "#FFFFFF"
         
         var option2 = AIOptionModel()
         option2.desc = "bedrooms False"
         option2.identifier = "213456"
         option2.isSelected = false
-        option2.displayColor = "#534F5D"
+        option2.displayColor = "#FFFFFF"
         
-        return [option1,option2,option2,option2]
+        return [option1,option2]
         
     }()
     

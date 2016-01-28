@@ -42,6 +42,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     var serviceContentModel: AIProposalServiceModel?
+    
     var propodalId: Int = 0
 
     var pageIndex: Int = 0
