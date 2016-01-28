@@ -12,7 +12,7 @@
 #define TAG_SPACE_VERTICAL        10
 #define DEFAULT_VIEW_HEIGHT       44
 #define MAX_TAG_SIZE              123321231
-#define MIN_TAG_SIZE              80
+#define MIN_TAG_SIZE              0
 #define DEFAULT_VIEW_WIDTH        320
 #define DEFAULT_TAG_CORNER_RADIUS 10
 @implementation AIBaseTagsView
