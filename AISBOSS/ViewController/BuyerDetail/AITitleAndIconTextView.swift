@@ -18,6 +18,7 @@ class AITitleAndIconTextView: ServiceParamlView {
     @IBOutlet weak var firstIcon: UIImageView!
     @IBOutlet weak var firstText: UILabel!
     
+    @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleMaginTop: NSLayoutConstraint!
     @IBOutlet weak var iconMaginTop: NSLayoutConstraint!
     @IBOutlet weak var textTopToIcon: NSLayoutConstraint!
@@ -41,6 +42,7 @@ class AITitleAndIconTextView: ServiceParamlView {
             let model = try ServiceCellProductParamModel(data: jsonData)
             
             loadData(model: model)
+            
         } catch {
             
         }
@@ -59,6 +61,7 @@ class AITitleAndIconTextView: ServiceParamlView {
     }
     
     private func createIconTextPair(paramList: [AnyObject]) {
+        //2043
         
         var preIcon = firstIcon
         var preLabel = firstText
@@ -67,13 +70,17 @@ class AITitleAndIconTextView: ServiceParamlView {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {
-                frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
-                
                 if model.product_name != nil && model.product_name != "" {
+                    frame.size.height += AITitleAndIconTextView.TITLE_HEIGHT
                     firstTitle.hidden = false
                     firstTitle.text = model.product_name
                     iconMaginTop.constant = AITitleAndIconTextView.ICON_VERTICAL_SPACE
                     firstIcon.setNeedsUpdateConstraints()
+                }else{
+                    firstTitle.hidden = true
+                    titleTopConstraint.constant = 4
+                    firstTitle.updateConstraints()                     
+                    
                 }
             } else {
                 let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
@@ -106,6 +113,10 @@ class AITitleAndIconTextView: ServiceParamlView {
             
             preIcon.asyncLoadImage(model.param_icon)
 
+            if paramList.count == 1 && model.product_name.isEmpty == true {
+                frame.size.height -= 30
+            }
+            
             if model.param_name.hasPrefix("address") {
                 preLabel.text = "\(model.product_name)"  + "\(model.param_value)"
             } else {

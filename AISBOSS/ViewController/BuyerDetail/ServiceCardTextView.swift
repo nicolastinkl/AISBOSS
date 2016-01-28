@@ -71,7 +71,7 @@ class ServiceCardTextView: ServiceParamlView {
     
     
     func buildFlagsContainer(){
-        flagContainer = UIView(frame: CGRectMake(0,  FLAG_HEIGHT_MARGIN, self.bounds.width, 100))
+        flagContainer = UIView(frame: CGRectMake(0,  AITools.displaySizeFrom1080DesignSize(44), self.bounds.width, 100))
         self.addSubview(flagContainer)
         var curFrame = CGRectMake(0, 0, 0, FLAG_LABEL_HEIGHT)
         

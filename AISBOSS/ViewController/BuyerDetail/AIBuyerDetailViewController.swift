@@ -514,6 +514,7 @@ extension AIBuyerDetailViewController: ServiceRestoreToolBarDelegate {
             openDeletedTableView(true)
         }
     }
+    
 }
 
 
@@ -641,19 +642,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             self.showViewController(viewController, sender: self)
             
             
-            /*
-            let serviceDataModel = serviceList![indexPath.row] as! AIProposalServiceModel
-            let model1 = AIProposalServiceModel()
-            let model2 = AIProposalServiceModel()
-            if serviceDataModel.service_id == AIServiceDetailTool.MUSIC_SERVICE_ID.integerValue {
-                model1.service_id = AIServiceDetailTool.MUSIC_SERVICE_ID.integerValue
-                model2.service_id = AIServiceDetailTool.PARAMEDIC_SERVICE_ID.integerValue
-            } else {
-                model1.service_id = AIServiceDetailTool.PARAMEDIC_SERVICE_ID.integerValue
-                model2.service_id = AIServiceDetailTool.MUSIC_SERVICE_ID.integerValue
-            }
-            
-            let array = [model1, model2]*/
+  
         }
         
         selectCount  = selectCount + 1

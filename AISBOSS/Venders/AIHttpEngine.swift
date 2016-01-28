@@ -18,6 +18,7 @@ struct Error {
     
     let message : String
     let code : Int
+
 }
 
 /*!
@@ -27,6 +28,7 @@ struct Error {
  */
 struct AIHttpEngine{
     
+
   //  private static let baseURL = "http://10.1.228.179:8282"
     private static let baseURL = "http://171.221.254.231:8282"
     private static let clientID = "750ab22aac78be1c0a1a6d"
@@ -83,7 +85,7 @@ struct AIHttpEngine{
     }
     
     static func postRequestWithParameters(path:ResourcePath,parameters: [String: AnyObject]? = nil,response: (response:AnyObject?, error:Error?) -> ()) {
- 
+
         print("url: \(self.baseURL+path.description)      ------------   parameters:\(parameters)")
         
         let encoding = Alamofire.ParameterEncoding.JSON

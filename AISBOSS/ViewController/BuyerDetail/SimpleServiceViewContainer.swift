@@ -216,7 +216,18 @@ class SimpleServiceViewContainer: UIView {
                 pareusView = param
             }
         }
+        
+        
+        if let modArray = models {
+            if (modArray.count == 1) {
+                let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(modArray.first!.param_key)!)
+                if (viewTemplate == .MutilTextAndImage) {
+                     paramHeight += ( AITools.displaySizeFrom1080DesignSize(40))
+                }
+            }
+        }
         paramContainerView.setHeight(paramHeight)
+        
         return paramContainerView
        
     }
@@ -265,24 +276,21 @@ class SimpleServiceViewContainer: UIView {
         if let s = dataModel!.service_param as? [ServiceCellProductParamModel] {
             addParamsView(createServiceView(s))
         }
-        
     }
     
     private func addParamsView(serviceParams: UIView?) {
         if let parmsSer = serviceParams {
             let height = getTopHeight() + paramsViewTopMargin.constant + parmsSer.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
             
-            self.frame.size.height = height 
-            paramViewHeight = parmsSer.frame.height
+            self.frame.size.height = height
+            
+            paramViewHeight = parmsSer.frame.height + 5
             paramsView.addSubview(parmsSer)
             
             constrain(parmsSer,paramsView) {container, item in
                 container.edges == item.edges
             }
-            
         }
-        
-       
     }
     
     private func createReviewView(rating: Int) {

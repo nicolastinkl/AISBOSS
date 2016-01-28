@@ -58,6 +58,7 @@
 
 - (void)makeTitle
 {
+    if (![self.coverageModel.title isKindOfClass:[NSString class]] | !self.coverageModel.title.length) return;
     UIFont *font = [AITools myriadSemiCondensedWithSize:_titleFontSize];
     CGSize size = [_coverageModel.title sizeWithFont:font forWidth:300];
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), size.height);
@@ -85,6 +86,7 @@
 
 - (void)makeTags
 {
+    if (self.coverageModel.options.count == 0) return;
     CGFloat x = 0;
     CGFloat y = CGRectGetMaxY(_titleLabel.frame) + _titleMargin;
     CGFloat height = [AITools displaySizeFrom1080DesignSize:67];

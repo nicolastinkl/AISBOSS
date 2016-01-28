@@ -37,6 +37,7 @@ import UIKit
  */
 
 class AITagsView: AIServiceParamBaseView {
+
 	var titleLabel: UILabel = UILabel(frame: .zero)
 	var tags: [Tagable]
 	var title: String

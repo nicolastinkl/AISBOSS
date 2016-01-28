@@ -59,7 +59,6 @@
     return self;
 }
 
-
 +(JSONKeyMapper*)keyMapper
 {
     // 这里就采用了KVC的方式来取值...
@@ -68,7 +67,6 @@
                                                        @"param_value.product_sub_name": @"product_sub_name",
                                                        @"param_value.item_list":@"item_list",
                                                        @"param_value.param_list": @"param_list"
-                                                       
                                                        }];
 }
 

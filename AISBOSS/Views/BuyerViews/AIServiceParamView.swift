@@ -23,7 +23,7 @@ class AIServiceParamView : UIView {
 	// MARK: Variables
 	
 	weak var delegate : AIServiceParamViewDelegate?
-	
+    var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	var tagViewHeight : CGFloat?
 	
 	var brandsViewHeight : CGFloat?
@@ -109,7 +109,7 @@ class AIServiceParamView : UIView {
 	func addView1(model : JSONModel) {
 		let m : AIDetailTextModel = model as! AIDetailTextModel
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
-		let detailText : AIDetailText = AIDetailText(frame: frame, titile: m.title, detail: m.content)
+		let detailText = AIDetailText(frame: frame, titile: m.title, detail: m.content)
 		addSubview(detailText)
 		
 		originalY += CGRectGetHeight(detailText.frame) + margin
@@ -119,7 +119,7 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Display 2
 	func addView2(model : JSONModel) {
-		let m : AIServiceTypesModel = model as! AIServiceTypesModel
+		let m = model as! AIServiceTypesModel
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		let types : AIServiceTypes = AIServiceTypes(frame: frame, model: m)
 		addSubview(types)
@@ -203,7 +203,7 @@ class AIServiceParamView : UIView {
 		let coverage : AIServiceCoverage = AIServiceCoverage(frame: frame, model: m)
 		addSubview(coverage)
 		
-		originalY += CGRectGetHeight(coverage.frame) + margin
+        originalY += CGRectGetHeight(coverage.frame) > 0 ? CGRectGetHeight(coverage.frame) + margin : CGRectGetHeight(coverage.frame)
 		displayViews.append(coverage)
 	}
 	
@@ -233,8 +233,11 @@ class AIServiceParamView : UIView {
 			self?.moveViewsBelow(serviceProviderView, offset: offset)
 		}
 		
-		serviceProviderView.onSelectedIndexDidChanged = { bView, selectedIndex in
+		serviceProviderView.onSelectedIndexDidChanged = {[weak self] bView, selectedIndex in
 			// handle selected index changed
+            if let c = self?.onDropdownBrandViewSelectedIndexDidChanged {
+                c(bView,selectedIndex)
+            }
 		}
 		
 		originalY += CGRectGetHeight(serviceProviderView.frame) + margin

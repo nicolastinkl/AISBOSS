@@ -42,6 +42,7 @@ internal class AIServiceContentViewController: UIViewController {
     private let redColor : String = "b32b1d"
     
     var serviceContentModel: AIProposalServiceModel?
+    
     var propodalId: Int = 0
 
     var pageIndex: Int = 0
@@ -451,7 +452,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     func makeContentView () {
         
-        //MARK: Old View Some Logic.
+        //TODO: Old View Some Logic.
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
@@ -463,7 +464,7 @@ internal class AIServiceContentViewController: UIViewController {
             galleryView.setHeight(0)
         }
         
-        //TODO: text
+        //TODO: Text
         
         let detailView = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
         addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor())
@@ -471,16 +472,20 @@ internal class AIServiceContentViewController: UIViewController {
         
         //TODO: add brand View
         
+
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 0), models: parser.displayModels, rootViewController : self)
         
+        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+           //TODO: 发送请求刷新整个界面
+        }
         serviceContentView.rootViewController = self.parentViewController
         addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
-        let musicView  = addMusicView(serviceContentView)
-        musicView.frame = CGRectMake(0, serviceContentView.top + serviceContentView.height, CGRectGetWidth(self.view.frame), 600)          
+        //TODO: Add helpfull views.
+        let musicView = addMusicView(serviceContentView)
         
         //TODO: Necessary public View...
 
@@ -509,10 +514,9 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(galleryView)
         scrollViewSubviews.append(galleryView)
         var imageArray = [String]()
-        _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
+        self.currentDatasource?.service_intro_img_list.forEach({ imgModel in
             let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
             imageArray.append(imageModel.service_intro_img ?? "")
-            return true
         })
         galleryView.imageModelArray = imageArray
         galleryView.setTop(5)
@@ -551,7 +555,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     private func addMusicView(var preView: UIView?) -> UIView {
         preView = preView ?? galleryView
-        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 600)
+        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 0)
         musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
         addNewSubView(musicView!, preView: preView!)
         musicView!.backgroundColor = UIColor.clearColor()

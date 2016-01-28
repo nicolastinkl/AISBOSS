@@ -20,7 +20,6 @@ class ServiceCardDetailIcon: ServiceParamlView {
     var priceLabelView : UILabel!
     var calendarLabelView : UILabel!
     
-    
     var dataSource : ServiceCellProductParamModel?
 
     //MARK: - Constants
@@ -30,8 +29,8 @@ class ServiceCardDetailIcon: ServiceParamlView {
     let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
     let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
     let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
-    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(220)
-    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(10)
+    let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(260)
+    let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(26)
     //fonts
     let TITLE_TEXT_FONT : UIFont = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     let ICON_DESC_FONT : UIFont = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(42))
@@ -185,11 +184,11 @@ class ServiceCardDetailIcon: ServiceParamlView {
         self.addSubview(priceLabelView)
         self.addSubview(calendarLabelView)
         
-        let widthS:CGFloat = 45
-        let widthSpace:CGFloat = 110
+        let widthS:CGFloat = 15
+        let widthSpace:CGFloat = 100
         constrain(timeLabelView,timeIconImageView){
             timeLabelView,timeIconImageView in
-            timeLabelView.height == widthS
+            timeLabelView.height >= widthS
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
             timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
@@ -198,7 +197,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         
         constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
-            priceLabelView.height == widthS
+            priceLabelView.height >= widthS
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
             priceLabelView.width == widthSpace
@@ -206,7 +205,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
         
         constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
-            calendarLabelView.height == widthS
+            calendarLabelView.height >=  widthS
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
             calendarLabelView.centerX == calendarIconImageView.centerX
             calendarLabelView.width == widthSpace

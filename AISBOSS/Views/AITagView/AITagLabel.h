@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AITagLabel : UILabel
+@interface AITagLabel : UIButton
 
 @property (nonatomic, strong) id tagNode;
 @property (nonatomic, strong) UIColor *normalBackgroundColor;
 @property (nonatomic, strong) UIColor *highlightedBackgroundColor;
+@property (nonatomic, readonly) CGFloat spaceBetweenImageAndTitle;
 
 @end
