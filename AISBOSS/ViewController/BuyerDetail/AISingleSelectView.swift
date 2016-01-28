@@ -106,7 +106,6 @@ class AISingleSelectView: UIView {
             }
         }
         
-        
     }
     
 }

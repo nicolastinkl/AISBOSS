@@ -509,10 +509,9 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(galleryView)
         scrollViewSubviews.append(galleryView)
         var imageArray = [String]()
-        _ = self.currentDatasource?.service_intro_img_list.filter({ (imgModel) -> Bool in
+        self.currentDatasource?.service_intro_img_list.forEach({ imgModel in
             let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
             imageArray.append(imageModel.service_intro_img ?? "")
-            return true
         })
         galleryView.imageModelArray = imageArray
         galleryView.setTop(5)
