@@ -23,7 +23,7 @@ class AIServiceParamView : UIView {
 	// MARK: Variables
 	
 	weak var delegate : AIServiceParamViewDelegate?
-	
+    var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	var tagViewHeight : CGFloat?
 	
 	var brandsViewHeight : CGFloat?
@@ -233,8 +233,11 @@ class AIServiceParamView : UIView {
 			self?.moveViewsBelow(serviceProviderView, offset: offset)
 		}
 		
-		serviceProviderView.onSelectedIndexDidChanged = { bView, selectedIndex in
+		serviceProviderView.onSelectedIndexDidChanged = {[weak self] bView, selectedIndex in
 			// handle selected index changed
+            if let c = self?.onDropdownBrandViewSelectedIndexDidChanged {
+                c(bView,selectedIndex)
+            }
 		}
 		
 		originalY += CGRectGetHeight(serviceProviderView.frame) + margin

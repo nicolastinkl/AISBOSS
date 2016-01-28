@@ -476,6 +476,9 @@ internal class AIServiceContentViewController: UIViewController {
 
         let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 0), models: parser.displayModels, rootViewController : self)
         
+        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+           //TODO: 发送请求刷新整个界面
+        }
         serviceContentView.rootViewController = self.parentViewController
         addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
         serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
