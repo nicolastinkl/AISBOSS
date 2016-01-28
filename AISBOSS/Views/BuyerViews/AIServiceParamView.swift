@@ -28,7 +28,7 @@ class AIServiceParamView : UIView {
 	
 	var brandsViewHeight : CGFloat?
 	
-	var displayViews : NSMutableArray = NSMutableArray()
+	var displayViews = [UIView]()
 	
 	var displayModels : NSArray?
 	
@@ -114,7 +114,7 @@ class AIServiceParamView : UIView {
 		
 		originalY += CGRectGetHeight(detailText.frame) + margin
 		
-		displayViews.addObject(detailText)
+		displayViews.append(detailText)
 	}
 	
 	// MARK: Display 2
@@ -125,7 +125,7 @@ class AIServiceParamView : UIView {
 		addSubview(types)
 		
 		originalY += CGRectGetHeight(types.frame) + margin
-		displayViews.addObject(types)
+		displayViews.append(types)
 	}
 	
 	// MARK: Display 3
@@ -136,7 +136,7 @@ class AIServiceParamView : UIView {
 		addSubview(priceView)
 		
 		originalY += CGRectGetHeight(priceView.frame) + margin
-		displayViews.addObject(priceView)
+		displayViews.append(priceView)
 	}
 	
 	// MARK: Display 4
@@ -151,7 +151,7 @@ class AIServiceParamView : UIView {
 		tagViewHeight = CGRectGetHeight(tagsView.frame)
 		originalY += tagViewHeight! + margin
 		
-		displayViews.addObject(tagsView)
+		displayViews.append(tagsView)
 	}
 	
 	func handleTagsViewChanged(sender: AITagsView) {
@@ -179,7 +179,7 @@ class AIServiceParamView : UIView {
 		pickerView.setY(originalY)
 		pickerView.newFrame = frame
 		originalY += CGRectGetHeight(pickerView.frame) + margin
-		displayViews.addObject(pickerView)
+		displayViews.append(pickerView)
 	}
 	
 	// MARK: Display 6
@@ -192,7 +192,7 @@ class AIServiceParamView : UIView {
 		addSubview(inputView)
 		
 		originalY += CGRectGetHeight(inputView.frame) + margin
-		displayViews.addObject(inputView)
+		displayViews.append(inputView)
 	}
 	
 	// MARK: Display 7
@@ -204,7 +204,7 @@ class AIServiceParamView : UIView {
 		addSubview(coverage)
 		
 		originalY += CGRectGetHeight(coverage.frame) + margin
-		displayViews.addObject(coverage)
+		displayViews.append(coverage)
 	}
 	
 	// MARK: Display 8
@@ -238,7 +238,7 @@ class AIServiceParamView : UIView {
 		}
 		
 		originalY += CGRectGetHeight(serviceProviderView.frame) + margin
-		displayViews.addObject(serviceProviderView)
+		displayViews.append(serviceProviderView)
 	}
 	
 	// MARK: Display 9
@@ -249,7 +249,7 @@ class AIServiceParamView : UIView {
 		let singleSelectView = AISingleSelectView(frame: frame)
 		addSubview(singleSelectView)
 		originalY += CGRectGetHeight(singleSelectView.frame) + margin
-		displayViews.addObject(singleSelectView)
+		displayViews.append(singleSelectView)
 	}
 	
 	// MARK: 移动视图
@@ -257,32 +257,25 @@ class AIServiceParamView : UIView {
 	func moveViewsBelow(view : UIView, offset : CGFloat) {
 		
 		// find anchor
-		var anchor : Int = 0
-		for var index : Int = 0; index < displayViews.count; index++ {
-			let sview : UIView = displayViews.objectAtIndex(index) as! UIView
-			if sview == view {
-				anchor = index
-				continue
-			}
-		}
-		
+		let anchor = displayViews.indexOf(view)! + 1
+        
 		// move
 		
 		for var index : Int = anchor; index < displayViews.count; index++ {
-			let sview : UIView = displayViews.objectAtIndex(index) as! UIView
+			let sview : UIView = displayViews[index]
 			var frame = sview.frame
-			frame.size.height += offset
+            frame.origin.y += offset
 			UIView.animateWithDuration(0.25, animations: { () -> Void in
 				sview.frame = frame
 			})
 		}
 		
 		var f = frame
-        var newOffset = f.height
-		f.size.height = CGRectGetMaxY(displayViews.lastObject!.frame)
+        let frameBefore = f
+		f.size.height = CGRectGetMaxY(displayViews.last!.frame)
 		frame = f
-        newOffset = newOffset - f.height
-        
+        let frameAfter = f
+        let newOffset = CGRectGetMaxY(frameAfter) - CGRectGetMaxY(frameBefore)
 		
 		// post relayout view notification
 //    kServiceParamsViewHeightChanged
