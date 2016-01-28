@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AIServiceParamBaseView.h"
 
-@interface AIDetailText : UIView
+@interface AIDetailText : AIServiceParamBaseView
 
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *detailString;

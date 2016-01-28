@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AIServiceDetailUIModel.h"
-
+#import "AIServiceParamBaseView.h"
 
 @protocol AIServiceTypesDelegate <NSObject>
 
@@ -17,7 +17,7 @@
 @end
 
 
-@interface AIServiceTypes : UIView
+@interface AIServiceTypes : AIServiceParamBaseView
 
 @property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
 

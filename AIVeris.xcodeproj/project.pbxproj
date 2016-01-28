@@ -24,9 +24,8 @@
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; };
+		810870191C5A43BE00077008 /* AIServiceParamBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810870181C5A43BE00077008 /* AIServiceParamBaseView.m */; };
 		8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7831C4F908D001BB063 /* AIServiceParamView.swift */; };
-		8120B7881C50DE99001BB063 /* AIPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7871C50DE99001BB063 /* AIPickerView.swift */; };
-		8120B78A1C50DEAB001BB063 /* AICanlendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7891C50DEAB001BB063 /* AICanlendarView.swift */; };
 		8120B78C1C51C21F001BB063 /* AIPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78B1C51C21F001BB063 /* AIPriceView.swift */; };
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
@@ -547,9 +546,9 @@
 		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810870171C5A43BE00077008 /* AIServiceParamBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceParamBaseView.h; sourceTree = "<group>"; };
+		810870181C5A43BE00077008 /* AIServiceParamBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceParamBaseView.m; sourceTree = "<group>"; };
 		8120B7831C4F908D001BB063 /* AIServiceParamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceParamView.swift; sourceTree = "<group>"; };
-		8120B7871C50DE99001BB063 /* AIPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPickerView.swift; sourceTree = "<group>"; };
-		8120B7891C50DEAB001BB063 /* AICanlendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICanlendarView.swift; sourceTree = "<group>"; };
 		8120B78B1C51C21F001BB063 /* AIPriceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPriceView.swift; sourceTree = "<group>"; };
 		8120B78D1C51C42D001BB063 /* AIServiceDetailUIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceDetailUIModel.h; sourceTree = "<group>"; };
 		8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceDetailUIModel.m; sourceTree = "<group>"; };
@@ -1445,10 +1444,10 @@
 				818D8EBB1C040D4100006408 /* AIStarRate.h */,
 				818D8EBC1C040D4100006408 /* AIStarRate.m */,
 				8120B7831C4F908D001BB063 /* AIServiceParamView.swift */,
-				8120B7871C50DE99001BB063 /* AIPickerView.swift */,
-				8120B7891C50DEAB001BB063 /* AICanlendarView.swift */,
 				8120B78B1C51C21F001BB063 /* AIPriceView.swift */,
 				8120B7931C51CB11001BB063 /* AIInputView.swift */,
+				810870171C5A43BE00077008 /* AIServiceParamBaseView.h */,
+				810870181C5A43BE00077008 /* AIServiceParamBaseView.m */,
 			);
 			path = BuyerViews;
 			sourceTree = "<group>";
@@ -3448,7 +3447,6 @@
 				849B4B351C0EDFE300BEC179 /* FLEXManager.m in Sources */,
 				93FA1E451B9C3E12009965C8 /* AICalendarViewController.swift in Sources */,
 				93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */,
-				8120B78A1C50DEAB001BB063 /* AICanlendarView.swift in Sources */,
 				81C092841BAFAC0D003FFF35 /* SDWebImageCompat.m in Sources */,
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
@@ -3482,7 +3480,6 @@
 				846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */,
 				849B4B3A1C0EDFE300BEC179 /* FLEXFileBrowserFileOperationController.m in Sources */,
 				849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */,
-				8120B7881C50DE99001BB063 /* AIPickerView.swift in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */,
@@ -3560,6 +3557,7 @@
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
 				81C092871BAFAC0D003FFF35 /* SDWebImageDownloaderOperation.m in Sources */,
 				844282911C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m in Sources */,
+				810870191C5A43BE00077008 /* AIServiceParamBaseView.m in Sources */,
 				93FA1DAC1B9C2EAA009965C8 /* NSDate+DSLCalendarView.m in Sources */,
 				81A5BE551BD87D2900019802 /* AIBubble.m in Sources */,
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
