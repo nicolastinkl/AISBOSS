@@ -1200,8 +1200,8 @@
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
-		93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDatePickerView.swift; sourceTree = "<group>"; };
-		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDatePickerView.xib; sourceTree = "<group>"; };
+		93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIDatePickerView.swift; path = ../../Views/AIDatePickerView.swift; sourceTree = "<group>"; };
+		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AIDatePickerView.xib; path = ../../Views/AIDatePickerView.xib; sourceTree = "<group>"; };
 		93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardTextView.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -2165,6 +2165,8 @@
 			children = (
 				9395FDB01C5788B300D95F54 /* AIEventTimerView.swift */,
 				9395FDB21C5788D800D95F54 /* AIEventTimerView.xib */,
+				93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */,
+				93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */,
 				9395FDB41C57982600D95F54 /* AISinglePickerView.swift */,
 				9395FDB61C57983500D95F54 /* AISinglePickerView.xib */,
 				9395FDB81C579C5B00D95F54 /* AISingleSelectView.swift */,
@@ -2357,8 +2359,6 @@
 				93FA1DCA1B9C2F26009965C8 /* AOTag.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
 				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
-				93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */,
-				93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -104,11 +104,14 @@
     model.relatedParams = _relatedParams;
     model.displayParams = params;
 
-    NSDictionary *content = [params objectForKey:@"ui_template_content"];
-    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-    model.isPriceRelated = isPriceRelated.boolValue;
-    model.service_id_save = _serviceID;
-    model.source_save = [content objectForKey:@"param_source"];
+    if ([[params objectForKey:@"ui_template_content"] isMemberOfClass:[NSDictionary class]]) {
+        
+        NSDictionary *content = [params objectForKey:@"ui_template_content"];
+        NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+        model.isPriceRelated = isPriceRelated.boolValue;
+        model.service_id_save = _serviceID;
+        model.source_save = [content objectForKey:@"param_source"];
+    }
     
     
     /*

@@ -56,26 +56,10 @@ class AIInputView: AIServiceParamBaseView {
     func makeSubViews () {
         
         let width = CGRectGetWidth(self.frame)
-        var y : CGFloat = 0
-        //TODO: make title
+        let height:CGFloat = 35
+        let margin:CGFloat = 5
         
-        if let title = displayModel?.title {
-            let titleSize = title.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
-            titleLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, titleSize.height), text: title, fontSize: 16, color: UIColor.whiteColor());
-            self.addSubview(titleLabel!)
-            
-            y += titleSize.height + margin
-        }
-        
-        //TODO: make textLabel
-        
-        let textSize : CGSize = CGSizeMake(width, 35)
-        
-//        if let defaultTitle = displayModel?.defaultText {
-//            textSize = defaultTitle.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
-//        }
-        
-        textLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, textSize.height), text: displayModel?.defaultText ?? "", fontSize: 16, color: UIColor.whiteColor())
+        textLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, 0, width, height), text: displayModel?.defaultText ?? "", fontSize: 16, color: UIColor.whiteColor())
         textLabel.backgroundColor = UIColor.whiteColor()
         textLabel.textColor = UIColor.grayColor()
         textLabel.layer.cornerRadius = 4
@@ -83,23 +67,36 @@ class AIInputView: AIServiceParamBaseView {
         textLabel.text = displayModel!.defaultText ?? ""
         textLabel.userInteractionEnabled = true
         textLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showKeyboard"))
-        self.addSubview(textLabel)
         
-        y += textLabel.height
+        self.addSubview(textLabel)
+        if let title = displayModel?.title {
+            let titleSize = title.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
+            titleLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, 0, width, titleSize.height), text: title, fontSize: 16, color: UIColor.whiteColor());
+            titleLabel?.sizeToFit()
+            titleLabel?.setCenterY(height/2)
+            self.addSubview(titleLabel!)
+            
+            textLabel.setLeft((titleLabel?.right)!+margin)
+            textLabel.setWidth(textLabel.width - (titleLabel?.width)! - margin)
+        }
+        
+        //TODO: make textLabel
+        
+        
         //TODO: make tailLabel
         if let tail = displayModel?.tail {
-            y += textSize.height
-            
             let tailSize = tail.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
-            
-            tailLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, y, width, tailSize.height), text: tail, fontSize: 16, color: UIColor.whiteColor())
+            tailLabel = AIViews.wrapLabelWithFrame(CGRectMake(0, 0, width, tailSize.height), text: tail, fontSize: 16, color: UIColor.whiteColor())
+            tailLabel?.sizeToFit()
+            tailLabel?.setCenterY(height/2)
+            tailLabel?.setRight(width)
+            textLabel.setWidth(textLabel.width - (tailLabel?.width)! - margin)
             self.addSubview(tailLabel!)
-            
-            y += tailSize.height
         }
+        
     
         var frame = self.frame
-        frame.size.height = y
+        frame.size.height = textLabel.height
         self.frame = frame
         
     }
@@ -147,8 +144,6 @@ class AIInputView: AIServiceParamBaseView {
         textField.delegate = self
         textField.becomeFirstResponder()
         maskedView!.addSubview(textField!)
-        
-        
     }
     
     func dismissMaskedView () {
@@ -157,8 +152,6 @@ class AIInputView: AIServiceParamBaseView {
             maskedView?.removeFromSuperview()
             maskedView = nil
         }
-        
-        
     }
     
     //MARK: Keyboard Notification
@@ -181,8 +174,6 @@ class AIInputView: AIServiceParamBaseView {
                     UIView.animateWithDuration(duration.doubleValue as NSTimeInterval, animations: { () -> Void in
                         wf!.textField.frame = CGRectMake(10, CGRectGetHeight(wf!.maskedView!.frame) - 130 - keyboardHeight, CGRectGetWidth(wf!.maskedView!.frame) - 20, 35)
                     })
-                    
-                    
                 }
             }
         }
