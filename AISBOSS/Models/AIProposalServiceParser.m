@@ -260,11 +260,6 @@
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     
-   
-    void(^recursiveBlock)(NSArray *,AIComplexLabelModel *) = ^(NSArray *inputArray,AIComplexLabelModel *parentLabel) {
-        
-    };
-    
     NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
@@ -282,6 +277,8 @@
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
+    NSArray *paramss = [param objectForKey:@"ui_template_content"];
+    model.displayParams = paramss.firstObject;
 
     // 设置控件类型
     [model setDisplayType:4];

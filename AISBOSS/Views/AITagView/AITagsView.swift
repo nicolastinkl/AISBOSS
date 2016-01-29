@@ -235,7 +235,7 @@ class AITagsView: AIServiceParamBaseView {
         
         let tagable : Tagable = selectedTags[0] as Tagable
         originalModel?.product_id_save = NSNumber(integer: tagable.id as Int)
-        originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as! NSNumber
+        originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as? NSNumber
         productParams["product_id"] = originalModel?.product_id_save
         productParams["service_id"] = originalModel?.service_id_save
         productParams["role_id"] = originalModel?.displayParams["param_key"]
