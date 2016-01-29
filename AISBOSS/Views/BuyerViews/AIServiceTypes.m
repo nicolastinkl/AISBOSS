@@ -150,6 +150,22 @@
 
 #pragma mark - 设置单选
 
+
+- (void)shouldQueryNewPrice
+{
+    if (self.queryPriceBlock) {
+        AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
+        NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+        
+        NSDictionary *body = @{@"data" : @{@"service_id": _serviceTypesModel.service_id_save ?: @"",@"prod_spec_id": @"0",@"param_value_id": @"0",@"price_param_list":@[@{@"param_key": param_key ?: @"",@"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""}]},@"desc": @{@"data_mode": @"0",@"digest": @""}};
+        self.queryPriceBlock(body);
+    }
+    
+    
+    
+}
+
+
 - (void)action:(UITapGestureRecognizer *)gesture
 {
     UIView *view = gesture.view;
@@ -162,6 +178,7 @@
     button.selected = !button.selected;
     BOOL select = button.selected;
     
+    [self shouldQueryNewPrice];
     /////
     
     if (_selectedIndex != view.tag) {

@@ -212,8 +212,8 @@ internal class AIServiceContentViewController: UIViewController {
    
         var params : [String : AnyObject] = [String : AnyObject]()
         
-        if let _ : AIServiceParamView = serviceContentView {
-            if let _ : [String : AnyObject] = serviceContentView?.getAllParams() {
+        if let _ = serviceContentView {
+            if let _  = serviceContentView?.getAllParams() {
                 params["service_id"] = currentDatasource?.service_id
                 params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
                 params["save_data"] = serviceContentView?.getAllParams()
@@ -537,6 +537,7 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+            self?.scrollView.headerBeginRefreshing()
             self?.saveDataForVS(self!, proposalId: self!.propodalId, completion: { () -> () in
                 self?.initData()
             })
@@ -1113,6 +1114,11 @@ extension AIServiceContentViewController : UITextViewDelegate {
                 moveViewsBelow(view, offset: offset)
             }
         }
+    }
+    
+    //MARK: 处理更新金额请求
+    func shouldQueryNewPrice (body : NSDictionary) {
+        
     }
     
     

@@ -45,7 +45,6 @@
 - (void)setTagTextColor:(UIColor *)color;
 @property (nonatomic, assign) NSInteger selectedIndex;
 
-
 @property (nonatomic, strong) NSMutableArray *tagViews;
 @property (nonatomic, assign) BOOL allowMultipleSelection;
 - (instancetype)initWithTags:(NSArray *)tagsArray;

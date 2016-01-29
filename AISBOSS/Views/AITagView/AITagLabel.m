@@ -7,7 +7,7 @@
 //
 
 #import "AITagLabel.h"
-
+#import "AITools.h"
 @interface AITagLabel ()
 
 @end
@@ -35,6 +35,8 @@
     //http://stackoverflow.com/questions/4564621/aligning-text-and-image-on-uibutton-with-imageedgeinsets-and-titleedgeinsets
     self.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, self.spaceBetweenImageAndTitle);
     self.titleEdgeInsets = UIEdgeInsetsMake(0, self.spaceBetweenImageAndTitle, 0, 0);
+    
+    self.titleLabel.font = [AITools myriadLightSemiExtendedWithSize:16];
 }
 
 @end

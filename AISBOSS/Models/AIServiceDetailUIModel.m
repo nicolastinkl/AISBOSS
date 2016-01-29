@@ -53,6 +53,7 @@
         _defaultNumber = 0;
         _minNumber = 0;
         _maxNumber = 0;
+
         _defaultPrice = [[AIPriceModel alloc] init];
         
     }
@@ -85,6 +86,23 @@
 @end
 
 @implementation AIComplexLabelsModel
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _title = @"";
+        _selected_label_id = [[NSArray<Optional> alloc] init];        
+        _labels = [[NSArray<Optional> alloc] init];
+        _paramSource = [[NSArray<Optional> alloc] init];
+        _paramKey = [[NSArray<Optional> alloc] init];
+        
+    }
+    
+    return self;
+}
+
 
 @end
 

@@ -126,6 +126,7 @@ class AITagsView: AIServiceParamBaseView {
 		
 		if title != "" {
 			titleLabel.text = title
+            titleLabel.font = AITools.myriadLightSemiCondensedWithSize(14)
 			titleLabel.textColor = UIColor.whiteColor()
 			addSubview(titleLabel)
 			titleLabel.frame = CGRectMake(Constants.margin, 0, bounds.size.width - Constants.margin, 20)
