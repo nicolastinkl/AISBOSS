@@ -451,7 +451,9 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func makeContentView () {
-        
+        if self.currentDatasource == nil  || self.currentDatasource?.service_name == nil{
+            return
+        }
         //TODO: Old View Some Logic.
         if self.currentDatasource?.service_name?.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: .Normal)
@@ -479,7 +481,7 @@ internal class AIServiceContentViewController: UIViewController {
 
         let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
-        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { bView, selectedIndex in
            //TODO: 发送请求刷新整个界面
         }
         serviceContentView.rootViewController = self.parentViewController
@@ -491,9 +493,9 @@ internal class AIServiceContentViewController: UIViewController {
         
         //TODO: Necessary public View...
 
-        let preView = addCustomView(musicView)
-        addAudioView(preView)
-        
+        if let preView = addCustomView(musicView){
+            addAudioView(preView)
+        }
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
@@ -534,25 +536,35 @@ internal class AIServiceContentViewController: UIViewController {
         return paramedicView!
     }
     
-    private func addCustomView(preView: UIView) -> AICustomView {
+    private func addCustomView(preView: UIView) -> UIView? {
         
-        let providerView =  AIProviderView.currentView()
-        addNewSubView(providerView, preView: preView)
-        
-        let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: providerView)
-        
+        var viw:UIView = preView
+    
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
-            custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
-            if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
-                custView.fillTags(labelList, isNormal: true)
-            }
-            providerView.content.text = wish.intro ?? ""
             
+            if (wish.intro != nil) && (wish.intro.isEmpty == false) {
+                let providerView =  AIProviderView.currentView()
+                addNewSubView(providerView, preView: viw)
+                viw = providerView
+                providerView.content.text = wish.intro ?? ""
+            }
+            
+            
+            if (wish.hope_list != nil) && wish.hope_list.count > 0 {
+                let custView =  AICustomView.currentView()
+                addNewSubView(custView, preView: viw)
+                viw = custView
+                custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
+                if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
+                    custView.fillTags(labelList, isNormal: true)
+                }
+            }
         }
-        
-        return custView
+        if view == preView {
+            return nil
+        }
+        return viw
     }
     
     private func addMusicView(var preView: UIView?) -> UIView {

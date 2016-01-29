@@ -111,6 +111,7 @@ class SimpleServiceViewContainer: UIView {
     
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
+        
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
@@ -129,6 +130,30 @@ class SimpleServiceViewContainer: UIView {
         }
         
         createReviewView(dataModel.service_rating_level)
+        
+        fixCurrentViewMODE(self.paramsView)
+        
+    }
+    
+    func fixCurrentViewMODE(v:UIView){
+        self.paramsView.updateConstraints()
+        _ = self.paramsView.subviews.filter { (visubs) -> Bool in
+//            visubs.subviews.last?.backgroundColor = UIColor.blackColor()
+            if let selfViews = visubs.subviews.last {
+                
+                let bottomViewHeight = selfViews.top + selfViews.height
+                let slogne = AITools.displaySizeFrom1080DesignSize(50)
+                let selfSlogne = self.paramsView.height - bottomViewHeight
+                print(selfSlogne)
+                if selfSlogne > 0 {
+                    //paramViewHeight -= (selfSlogne - slogne)
+                   // paramViewHeight  = paramViewHeight -  10
+                }
+                
+            }
+            
+            return false
+        }
     }
     
     func settingClickHandle(sender: UITapGestureRecognizer) {
@@ -155,7 +180,7 @@ class SimpleServiceViewContainer: UIView {
     
     
     private func hasHopeList() -> Bool {
-        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil
+        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil && dataModel!.wish_list.hope_list.count > 0
     }
     
     private func createHopeList() {
@@ -192,12 +217,14 @@ class SimpleServiceViewContainer: UIView {
         let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         var paramHeight:CGFloat = 0
         var pareusView:View?
+        
         for  serCellModel in models! {
             if serCellModel.param_key == nil {
                 return nil
             }
             let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
             if let param = getViewTemplateView(viewTemplate!) {
+                param.isFirstView(serCellModel == models?.first)
                 param.loadDataWithModelArray(serCellModel)
                 if let par = pareusView {
                     //上一个view
@@ -217,7 +244,6 @@ class SimpleServiceViewContainer: UIView {
             }
         }
         
-        
         if let modArray = models {
             if (modArray.count == 1) {
                 let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(modArray.first!.param_key)!)
@@ -227,7 +253,7 @@ class SimpleServiceViewContainer: UIView {
             }
         }
         paramContainerView.setHeight(paramHeight)
-        
+
         return paramContainerView
        
     }
@@ -284,7 +310,8 @@ class SimpleServiceViewContainer: UIView {
             
             self.frame.size.height = height
             
-            paramViewHeight = parmsSer.frame.height + 5
+            paramViewHeight = parmsSer.frame.height - 5
+            
             paramsView.addSubview(parmsSer)
             
             constrain(parmsSer,paramsView) {container, item in

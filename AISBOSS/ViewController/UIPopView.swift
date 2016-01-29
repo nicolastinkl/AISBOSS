@@ -66,7 +66,8 @@ import Spring
                 let logoModel = server as! AIBuyerBubbleProportModel
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()
-                imageView.setURL(NSURL(string: logoModel.service_thumbnail_icon ?? AIApplication.AIImagePlaceHolder.AIDefaultPlaceHolder), placeholderImage:UIImage(named: "scrollball_5"))
+                imageView.setURL(NSURL(string: "\(logoModel.service_thumbnail_icon)"), placeholderImage:UIColor(hex: "#4b4960").imageWithColor())
+                
                 //36^
                 imageView.frame = CGRectMake(position.x, position.y, 29/2.5, 29/2.5)
                 self.addSubview(imageView)

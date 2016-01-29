@@ -45,46 +45,59 @@
 
 - (void)parseParams:(NSArray *)params
 {
-    for (NSDictionary *param in params) {
-        if ([param isKindOfClass:[NSDictionary class]]) {
+    
+    @try {
+        NSUInteger number = params.count;
+        if ( params != nil && number > 0){
             
-            NSNumber *type = [param objectForKey:@"ui_template_type"];
-            if (type) {
-                switch (type.integerValue) {
-                    case 1: // title + detail
-                        [self parse1WithParam:param];
-                        break;
-                    case 2: // 单选checkbox组
-                        [self parse2WithParam:param];
-                        break;
-                    case 3: // 金额展示
-                        [self parse3WithParam:param];
-                        break;
-                    case 4: // 标签组复合控件，可多选，单选，可分层
-                        [self parse4WithParam:param];
-                        break;
-                    case 5: // 时间，日历
-                        [self parse5WithParam:param];
-                        break;
-                    case 6: // 输入框
-                        [self parse6WithParam:param];
-                        break;
-                    case 7: // 普通标签：title + 标签组
-                        [self parse7WithParam:param];
-                        break;
-                    case 8: // 切换服务标签
-                        [self parse8WithParam:param];
-                        break;
-                    case 9: // picker控件
-                        [self parse9WithParam:param];
-                        break;
-                        
-                    default:
-                        break;
-                }
-            }
+            for (NSDictionary *param in params) {
+                if ([param isKindOfClass:[NSDictionary class]]) {
+                    
+                    NSNumber *type = [param objectForKey:@"ui_template_type"];
+                    if (type) {
+                        switch (type.integerValue) {
+                            case 1: // title + detail
+                                [self parse1WithParam:param];
+                                break;
+                            case 2: // 单选checkbox组
+                                [self parse2WithParam:param];
+                                break;
+                            case 3: // 金额展示
+                                [self parse3WithParam:param];
+                                break;
+                            case 4: // 标签组复合控件，可多选，单选，可分层
+                                [self parse4WithParam:param];
+                                break;
+                            case 5: // 时间，日历
+                                [self parse5WithParam:param];
+                                break;
+                            case 6: // 输入框
+                                [self parse6WithParam:param];
+                                break;
+                            case 7: // 普通标签：title + 标签组
+                                [self parse7WithParam:param];
+                                break;
+                            case 8: // 切换服务标签
+                                [self parse8WithParam:param];
+                                break;
+                            case 9: // picker控件
+                                [self parse9WithParam:param];
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                    }
+                } }
         }
     }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
 }
 #pragma mark - 解析保存参数
 

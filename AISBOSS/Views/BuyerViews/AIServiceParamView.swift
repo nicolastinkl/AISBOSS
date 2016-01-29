@@ -218,10 +218,14 @@ class AIServiceParamView : UIView {
 			let provider : AIServiceProviderModel = m.providers[i] as! AIServiceProviderModel
             if let name = provider.name {
                 brands.append((title: name, image: provider.icon))
+//			brands.append((title: "\(provider.name)", image: "\(provider.icon)"))
                 if provider.isSelected {
                     index = i
                 }
             }
+			if provider.isSelected {
+				index = i
+			}
 		}
 		
 		let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)

@@ -157,6 +157,21 @@ class BDKProposalService : MockProposalService{
         let body = ["data":["user_id":user, "role_type": "1", "status":1],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
         
+        
+        /*
+        if let path = NSBundle.mainBundle().pathForResource("customerProposalList", ofType: "json") {
+            let data: NSData? = NSData(contentsOfFile: path)
+            if let dataJSON = data {
+                do {
+                    let model = try AIProposalPopListModel(data: dataJSON)
+                    success(responseData: model)
+                } catch {
+                    print("AIProposalPopListModel JSON Parse err.")
+                    fail(errType: AINetError.Format, errDes: "AIOrderPreListModel JSON Parse error.")
+                }
+            }
+        }
+        */
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
