@@ -82,8 +82,10 @@ class ServiceSettingView: UIView {
         
         let rowWidth = ServiceSettingView.COLLECTION_WIDTH
         
-        if model.label_list.count > 0 {
+        if model.label_list != nil && model.label_list.count > 0 {
             rowCount = 1
+        }else{
+            return 0
         }
         
         for item in model.label_list {
