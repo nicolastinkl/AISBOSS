@@ -499,16 +499,16 @@ internal class AIServiceContentViewController: UIViewController {
         //TODO: add brand View
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
-        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+        serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
 
            //TODO: 发送请求刷新整个界面
         }
 
-        serviceContentView.rootViewController = self.parentViewController
-        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
-        serviceContentView.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
+        serviceContentView!.rootViewController = self.parentViewController
+        addNewSubView(serviceContentView!, preView: galleryView, color: UIColor.clearColor())
+        serviceContentView!.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView!.frame))
 
         
         //TODO: Add helpfull views.
