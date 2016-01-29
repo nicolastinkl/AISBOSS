@@ -284,7 +284,7 @@
                                 NSNumber *se = [subParam objectForKey:@"is_default"];
                                 sModel.adesc = [subParam objectForKey:@"param_description"];;
                                 sModel.isSelected = se.boolValue;
-                                
+                                sModel.paramKey = ffkey.integerValue;
                                 [subLabels addObject:sModel];
                             }
                             
