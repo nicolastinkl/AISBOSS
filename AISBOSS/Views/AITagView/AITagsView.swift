@@ -221,53 +221,53 @@ class AITagsView: AIServiceParamBaseView {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-	
-	// TODO: 获取参数
-	
-	override func productParamsList() -> [AnyObject]! {
-		if selectedTags.count == 0 {
-			return nil
-		}
-		
-		var params : [AnyObject] = [AnyObject]()
-		
-		var productParams : [NSObject : AnyObject] = [NSObject : AnyObject]()
-		
-		let tagable : Tagable = selectedTags[0] as Tagable
-		originalModel?.product_id_save = NSNumber(integer: tagable.id as Int)
-		originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as! NSNumber
-		productParams["product_id"] = originalModel?.product_id_save
-		productParams["service_id"] = originalModel?.service_id_save
-		productParams["role_id"] = originalModel?.displayParams["param_key"]
-		
-		params.append(productParams)
-		
-		return params
-	}
-	
-	override func serviceParamsList() -> [AnyObject]! {
-		if selectedTags.count == 0 {
-			return []
-		}
-		
-		var params : [AnyObject] = [AnyObject]()
-		
-		let source : String? = originalModel?.displayParams["param_source"] as? String
-		
-		selectedTags.forEach({ (tagable) -> () in
-			var serviceParam = [NSObject : AnyObject]()
-			serviceParam["source"] = source ?? ""
-			serviceParam["role_id"] = originalModel?.role_id_save ?? ""
-			serviceParam["service_id"] = originalModel?.service_id_save ?? ""
-			serviceParam["product_id"] = originalModel?.product_id_save ?? ""
-			serviceParam["param_key"] = originalModel?.displayParams["param_key"] ?? ""
-			serviceParam["param_value"] = tagable.desc ?? ""
-			serviceParam["param_value_id"] = NSNumber(integer: tagable.id) ?? ""
-			params.append(serviceParam)
-		})
-		
-		return params
-	}
+
+    //TODO: 获取参数
+    
+    override func productParamsList() -> [AnyObject]! {
+        if selectedTags.count == 0 {
+            return nil
+        }
+        
+        var params : [AnyObject] = [AnyObject]()
+        
+        var productParams : [NSObject : AnyObject] = [NSObject : AnyObject]()
+        
+        let tagable : Tagable = selectedTags[0] as Tagable
+        originalModel?.product_id_save = NSNumber(integer: tagable.id as Int)
+        originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as! NSNumber
+        productParams["product_id"] = originalModel?.product_id_save
+        productParams["service_id"] = originalModel?.service_id_save
+        productParams["role_id"] = originalModel?.displayParams["param_key"]
+        
+        params.append(productParams)
+        
+        return params
+    }
+    
+    override func serviceParamsList() -> [AnyObject]! {
+        if selectedTags.count == 0 {
+            return []
+        }
+        
+        var params : [AnyObject] = [AnyObject]()
+        
+        let source : String? = originalModel?.displayParams["param_source"] as? String
+        
+        selectedTags.forEach({ (tagable) -> () in
+            var serviceParam = [NSObject : AnyObject]()
+            serviceParam["source"] = source ?? ""
+            serviceParam["role_id"] = originalModel?.role_id_save ?? ""
+            serviceParam["service_id"] = originalModel?.service_id_save ?? ""
+            serviceParam["product_id"] = originalModel?.product_id_save ?? ""
+            serviceParam["param_key"] = originalModel?.displayParams["param_key"] ?? ""
+            serviceParam["param_value"] = [tagable.desc ?? ""]
+            serviceParam["param_value_id"] = NSNumber(integer: tagable.id) ?? ""
+            params.append(serviceParam)
+        })
+        
+        return params
+    }
 }
 
 @objc protocol Tagable: NSObjectProtocol {

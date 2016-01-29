@@ -220,7 +220,7 @@
     NSString *role_id =  isProduct ? [_serviceTypesModel.displayParams objectForKey:@"param_source_id"] : @"0";
     NSString *product_id = isProduct ? model.identifier : @"0";
     
-    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""};
+    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":@[model.desc ?: @""], @"param_value_id":model.identifier ?: @""};
     [params addObject:serviceParams];
     
     return params;

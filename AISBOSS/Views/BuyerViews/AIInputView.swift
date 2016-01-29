@@ -193,7 +193,7 @@ class AIInputView: AIServiceParamBaseView {
         serviceParam["service_id"] = displayModel?.service_id_save ?? ""
         serviceParam["product_id"] = ""
         serviceParam["param_key"] = displayModel?.displayParams["param_key"] ?? ""
-        serviceParam["param_value"] = textLabel?.text ?? ""
+        serviceParam["param_value"] = [textLabel?.text ?? ""]
         serviceParam["param_value_id"] = ""
         params.append(serviceParam)
         
