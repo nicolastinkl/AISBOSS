@@ -23,7 +23,7 @@ class ServiceCardDetailFlag: ServiceParamlView {
     //MARK: - Constants
     //sizes
     let VIEW_LEFT_MARGIN : CGFloat = 35
-    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(50)
+    var VIEW_TOP_MARGIN : CGFloat = 0
     let CORNER_RADIOS_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(67/2)
     let FLAG_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(18)
     let FLAG_HEIGHT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
@@ -42,6 +42,12 @@ class ServiceCardDetailFlag: ServiceParamlView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func isFirstView(isfirst: Bool) {
+        if isfirst {
+           VIEW_TOP_MARGIN = AITools.displaySizeFrom1080DesignSize(50)
+        }
     }
     
     
@@ -81,7 +87,10 @@ class ServiceCardDetailFlag: ServiceParamlView {
     }
     
     func buildFlagsContainer(){
-        flagContainer = UIView(frame: CGRectMake(0, titleLabel.frame.maxY + FLAG_HEIGHT_MARGIN, self.bounds.width, 100))
+        flagContainer = UIView(frame: CGRectMake(0, titleLabel.frame.maxY + FLAG_HEIGHT_MARGIN, self.bounds.width, 0))
+        if dataSource?.product_name.isEmpty == true {
+            flagContainer.setY(0)
+        }
         self.addSubview(flagContainer)
         var curFrame = CGRectMake(0, 0, 0, FLAG_LABEL_HEIGHT)
 

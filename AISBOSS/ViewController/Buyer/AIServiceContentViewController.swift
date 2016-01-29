@@ -451,7 +451,9 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func makeContentView () {
-        
+        if self.currentDatasource == nil  || self.currentDatasource?.service_name == nil{
+            return
+        }
         //TODO: Old View Some Logic.
         if self.currentDatasource?.service_name.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
@@ -532,16 +534,18 @@ internal class AIServiceContentViewController: UIViewController {
         return paramedicView!
     }
     
-    private func addCustomView(preView: UIView) -> AICustomView {
+    private func addCustomView(preView: UIView) -> UIView {
         
+        var viw:UIView?
         let providerView =  AIProviderView.currentView()
         addNewSubView(providerView, preView: preView)
-        
-        let custView =  AICustomView.currentView()
-        addNewSubView(custView, preView: providerView)
-        
+        viw = providerView
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
+            
+            let custView =  AICustomView.currentView()
+            addNewSubView(custView, preView: providerView)
+            viw = custView
             custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
             if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
                 custView.fillTags(labelList, isNormal: true)
@@ -549,8 +553,7 @@ internal class AIServiceContentViewController: UIViewController {
             providerView.content.text = wish.intro ?? ""
             
         }
-        
-        return custView
+        return viw!
     }
     
     private func addMusicView(var preView: UIView?) -> UIView {

@@ -9,11 +9,17 @@
 import UIKit
 
 protocol ServiceParamlViewProtocol{
+
     func loadData(json jonsStr: String)
+
 }
 
 extension ServiceParamlViewProtocol {
+    
     func loadDataWithModelArray(models: ServiceCellProductParamModel!){
+        
+    }
+    func isFirstView(isfirst:Bool){
         
     }
 }
@@ -38,8 +44,13 @@ class ServiceParamlView: UIView,ServiceParamlViewProtocol{
         
         return str
     }
+    
     func loadData(json jonsStr: String) {
         
+    }
+    
+    func isFirstView(isfirst:Bool) {
+    
     }
     
     func loadDataWithModelArray(models: ServiceCellProductParamModel!) {

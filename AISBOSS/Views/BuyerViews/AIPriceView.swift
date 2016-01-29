@@ -91,7 +91,6 @@ class AIPriceView: AIServiceParamBaseView {
             finalPrice += (displayModel?.defaultPrice.billingMode)!
         }
         
-        
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
         priceView = PriceAndStepperView(frame: frame, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
