@@ -306,28 +306,30 @@ class AIServiceParamView : UIView {
         
         displayViews.forEach { (view) -> () in
             
-            let paramView : AIServiceParamBaseView = view as! AIServiceParamBaseView
-            if paramView is AIPriceView {
-                if let list = paramView.serviceParamsList() {
-                    if list.count > 0 {
-                        priceList.addObjectsFromArray(list)
-                    }
-                }
-            }
-            else {
-                if let list = paramView.productParamsList() {
-                    if list.count > 0 {
-                        productList.addObjectsFromArray(list)
-                    }
-                }
+            if let p = view as? AIServiceParamBaseView {
                 
-                if let list = paramView.serviceParamsList() {
-                    if list.count > 0 {
-                        serviceList.addObjectsFromArray(list)
+                if p is AIPriceView {
+                    if let list = p.serviceParamsList() {
+                        if list.count > 0 {
+                            priceList.addObjectsFromArray(list)
+                        }
+                    }
+                }
+                else {
+                    if let list = p.productParamsList() {
+                        if list.count > 0 {
+                            productList.addObjectsFromArray(list)
+                        }
+                    }
+                    
+                    if let list = p.serviceParamsList() {
+                        if list.count > 0 {
+                            serviceList.addObjectsFromArray(list)
+                        }
                     }
                 }
             }
- 
+            
         }
         
         if productList.count > 0 {

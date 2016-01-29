@@ -32,35 +32,37 @@ import UIKit
  func tagsViewValueDidChanged(sender: AITagsView) {
  label.text = "\(sender.selectedTagIds)"
  label.sizeToFit()
-/size frame ....update frames()
+ /size frame ....update frames()
  }
  */
 
 class AITagsView: AIServiceParamBaseView {
-
-    var originalModel : AIComplexLabelsModel?
+	
+	var originalModel : AIComplexLabelsModel?
 	var titleLabel: UILabel = UILabel(frame: .zero)
 	var tags: [Tagable]
 	var title: String
 	var selectedTagIds: [Int] = [Int]()
-    var selectedTags: [Tagable] {
-        get {
-            var result = [Tagable]()
-            var singleTagViews = subviews.filter { (v) -> Bool in
-                return v.isKindOfClass(AISingleLineTagView)
-            } as! [AISingleLineTagView]
-            
-            singleTagViews = singleTagViews.sort({ (a, b) -> Bool in
-                return a.row < b.row
-            })
-            
-            for s in singleTagViews {
-                result.append(s.selectedTag!)
-            }
-            
-            return result
-        }
-    }
+	var selectedTags: [Tagable] {
+		get {
+			var result = [Tagable]()
+			var singleTagViews = subviews.filter { (v) -> Bool in
+				return v.isKindOfClass(AISingleLineTagView)
+			} as! [AISingleLineTagView]
+			
+			singleTagViews = singleTagViews.sort({ (a, b) -> Bool in
+				return a.row < b.row
+			})
+			
+			for s in singleTagViews {
+				if let t = s.selectedTag {
+					result.append(t)
+				}
+			}
+			
+			return result
+		}
+	}
 	var row = 0
 	var singleLineTagViews = [AISingleLineTagView]()
 	init(title: String = "", tags: [Tagable], frame: CGRect) {
@@ -82,7 +84,7 @@ class AITagsView: AIServiceParamBaseView {
 		struct Tag {
 			static let normalBackgroudColor = UIColor.clearColor()
 			static let highlightedBackgroundColor = UIColor.grayColor()
-            static let textColor = UIColor.whiteColor()
+			static let textColor = UIColor.whiteColor()
 			static var spaceBetweenTags: CGFloat = 5 {
 				didSet {
 					NSNotificationCenter.defaultCenter().postNotificationName(kNeedRerenderAllViews, object: nil)
@@ -92,7 +94,6 @@ class AITagsView: AIServiceParamBaseView {
 	}
 	
 	func calculateSelectedTagIdsWith(tags tags: [Tagable]) {
-		
 		
 		let getSelectedInTags: ([Tagable]) -> (Tagable, Int)? = { tags in
 			let selectedTag: Tagable? = tags.filter({ (t) -> Bool in
@@ -125,7 +126,7 @@ class AITagsView: AIServiceParamBaseView {
 		
 		if title != "" {
 			titleLabel.text = title
-            titleLabel.textColor = UIColor.whiteColor()
+			titleLabel.textColor = UIColor.whiteColor()
 			addSubview(titleLabel)
 			titleLabel.frame = CGRectMake(Constants.margin, 0, bounds.size.width - Constants.margin, 20)
 		}
@@ -147,26 +148,26 @@ class AITagsView: AIServiceParamBaseView {
 		renderAllViews()
 		sendActionsForControlEvents(.ValueChanged)
 	}
-    
-    func addDescViewOfTag(tag: Tagable) {
-        if let desc = tag.desc {
-            if (desc as NSString).length > 0 {
-                let v = AITagDescView()
-                v.frame = CGRectMake(0, 0, frame.width, 30)
-                v.text = desc
-                var f = v.frame
-                if let p = subviews.last {
-                    f.origin.y = CGRectGetMaxY(p.frame)
-                }
-                v.frame = f
-                addSubview(v)
-                
-                var selfFrame = frame
-                selfFrame.size.height = CGRectGetMaxY(f)
-                frame = selfFrame
-            }
-        }
-    }
+	
+	func addDescViewOfTag(tag: Tagable) {
+		if let desc = tag.desc {
+			if (desc as NSString).length > 0 {
+				let v = AITagDescView()
+				v.frame = CGRectMake(0, 0, frame.width, 30)
+				v.text = desc
+				var f = v.frame
+				if let p = subviews.last {
+					f.origin.y = CGRectGetMaxY(p.frame)
+				}
+				v.frame = f
+				addSubview(v)
+				
+				var selfFrame = frame
+				selfFrame.size.height = CGRectGetMaxY(f)
+				frame = selfFrame
+			}
+		}
+	}
 	
 	func addSingleLineTagView(tags tags: [Tagable], parent: Tagable? = nil) {
 		let previousSingleLineTagView = subviews.last
@@ -175,7 +176,7 @@ class AITagsView: AIServiceParamBaseView {
 			let s = AISingleLineTagView(tags: tags, frame: frame)
 			s.tagNormalColor = Constants.Tag.normalBackgroudColor
 			s.tagSelectedColor = Constants.Tag.highlightedBackgroundColor
-            s.setTagTextColor(Constants.Tag.textColor)
+			s.setTagTextColor(Constants.Tag.textColor)
 			
 			s.addTarget(self, action: "singleLineTagViewValueChanged:", forControlEvents: .ValueChanged)
 			addSubview(s)
@@ -206,23 +207,21 @@ class AITagsView: AIServiceParamBaseView {
 				row++
 				if let subtags = tag.subtags {
 					addSingleLineTagView(tags: subtags, parent: tag)
-                } else {
-                    addDescViewOfTag(tag)
-                }
+				} else {
+					addDescViewOfTag(tag)
+				}
 			}
 		} else {
-            if let p = parent {
-                addDescViewOfTag(p)
-            }
+			if let p = parent {
+				addDescViewOfTag(p)
+			}
 		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-    
-    
-    
+
     //TODO: 获取参数
     
     override func productParamsList() -> [AnyObject]! {
@@ -246,8 +245,6 @@ class AITagsView: AIServiceParamBaseView {
         return params
     }
     
-
-    
     override func serviceParamsList() -> [AnyObject]! {
         if selectedTags.count == 0 {
             return []
@@ -267,16 +264,10 @@ class AITagsView: AIServiceParamBaseView {
             serviceParam["param_value"] = [tagable.desc ?? ""]
             serviceParam["param_value_id"] = NSNumber(integer: tagable.id) ?? ""
             params.append(serviceParam)
-            
         })
-        
         
         return params
     }
-
-    
-    
-    
 }
 
 @objc protocol Tagable: NSObjectProtocol {
@@ -300,7 +291,6 @@ class AITagsView: AIServiceParamBaseView {
 	var selected: Bool {
 		get
 	}
-    
 }
 func == (lhs: Tagable, rhs: Tagable) -> Bool {
 	return lhs.id == rhs.id
