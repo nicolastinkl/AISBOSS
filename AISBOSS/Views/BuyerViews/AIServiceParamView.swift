@@ -384,11 +384,15 @@ extension AIComplexLabelModel : Tagable {
 	}
 	
 	var title: String {
-		get { return self.atitle }
+		get { return atitle }
 	}
 	
 	var desc: String? {
-		get { return self.adesc }
+		get { return adesc }
 	}
+    
+    var paramkey: Int {
+        get { return paramKey}
+    }
 }
 

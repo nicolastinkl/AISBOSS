@@ -118,7 +118,7 @@
     
     model.serviceParams = _serviceParams;
     model.relatedParams = _relatedParams;
-    model.displayParams = [params objectForKey:@"ui_template_content"];
+    
 
     NSDictionary *content = nil;
     if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSDictionary class]]) {
@@ -129,6 +129,7 @@
         content = array.firstObject;
     }
     
+    model.displayParams = content;
     NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
     model.isPriceRelated = isPriceRelated.boolValue;
     model.service_id_save = _serviceID;
@@ -283,7 +284,7 @@
                                 NSNumber *se = [subParam objectForKey:@"is_default"];
                                 sModel.adesc = [subParam objectForKey:@"param_description"];;
                                 sModel.isSelected = se.boolValue;
-                                
+                                sModel.paramKey = ffkey.integerValue;
                                 [subLabels addObject:sModel];
                             }
                             

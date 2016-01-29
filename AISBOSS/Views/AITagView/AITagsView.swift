@@ -236,7 +236,7 @@ class AITagsView: AIServiceParamBaseView {
         
         let tagable : Tagable = selectedTags[0] as Tagable
         originalModel?.product_id_save = NSNumber(integer: tagable.id as Int)
-        originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as? NSNumber
+        originalModel?.role_id_save = originalModel?.displayParams["param_source_id"] as! NSNumber
         productParams["product_id"] = originalModel?.product_id_save
         productParams["service_id"] = originalModel?.service_id_save
         productParams["role_id"] = originalModel?.displayParams["param_key"]
@@ -247,7 +247,7 @@ class AITagsView: AIServiceParamBaseView {
     }
     
     override func serviceParamsList() -> [AnyObject]! {
-        if selectedTags.count == 0 {
+        if selectedTags.count <= 1 {
             return []
         }
         
@@ -255,17 +255,32 @@ class AITagsView: AIServiceParamBaseView {
         
         let source : String? = originalModel?.displayParams["param_source"] as? String
         
+        let param_value_ids = NSMutableArray()
+        let param_values = NSMutableArray()
+        
         selectedTags.forEach({ (tagable) -> () in
-            var serviceParam = [NSObject : AnyObject]()
-            serviceParam["source"] = source ?? ""
-            serviceParam["role_id"] = originalModel?.role_id_save ?? ""
-            serviceParam["service_id"] = originalModel?.service_id_save ?? ""
-            serviceParam["product_id"] = originalModel?.product_id_save ?? ""
-            serviceParam["param_key"] = originalModel?.displayParams["param_key"] ?? ""
-            serviceParam["param_value"] = [tagable.desc ?? ""]
-            serviceParam["param_value_id"] = NSNumber(integer: tagable.id) ?? ""
-            params.append(serviceParam)
+            
+            param_value_ids.addObject(NSNumber(integer: tagable.id) ?? "")
+            param_values.addObject(tagable.desc ?? "")
+            
+            
         })
+        
+        param_value_ids.removeObjectAtIndex(0)
+        param_values.removeObjectAtIndex(0)
+        
+        var serviceParam = [NSObject : AnyObject]()
+        serviceParam["source"] = source ?? ""
+        serviceParam["role_id"] = originalModel?.role_id_save ?? ""
+        serviceParam["service_id"] = originalModel?.service_id_save ?? ""
+        serviceParam["product_id"] = originalModel?.product_id_save ?? ""
+        let tag = selectedTags[1] as Tagable
+        serviceParam["param_key"] = tag.paramkey ?? ""
+        
+        serviceParam["param_value"] = param_values
+        serviceParam["param_value_id"] = param_value_ids
+        params.append(serviceParam)
+        
         
         return params
     }
@@ -292,6 +307,10 @@ class AITagsView: AIServiceParamBaseView {
 	var selected: Bool {
 		get
 	}
+    
+    var paramkey: Int {
+        get
+    }
 }
 func == (lhs: Tagable, rhs: Tagable) -> Bool {
 	return lhs.id == rhs.id

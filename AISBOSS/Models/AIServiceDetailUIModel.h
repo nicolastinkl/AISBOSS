@@ -161,6 +161,7 @@
 
 @property (nonatomic, strong) NSString<Optional> *atitle;
 @property (nonatomic, assign) NSInteger identifier;
+@property (nonatomic, assign) NSInteger paramKey;
 @property (nonatomic, strong) NSString<Optional> *adesc;
 @property (nonatomic, strong) NSArray<Optional> *sublabels;
 @property (nonatomic, assign) BOOL isSelected;
