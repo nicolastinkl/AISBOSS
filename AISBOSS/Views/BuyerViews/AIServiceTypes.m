@@ -153,6 +153,11 @@
 
 - (void)shouldQueryNewPrice
 {
+    
+    if (_defaultIndex == _selectedIndex) {
+        return;
+    }
+    
     if (self.queryPriceBlock) {
         AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
         NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
@@ -201,6 +206,9 @@
 
 - (NSArray *)productParamsList
 {
+    if (_defaultIndex == _selectedIndex) {
+        return nil;
+    }
     NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
     
     if (![source isEqualToString:@"product"]) {
