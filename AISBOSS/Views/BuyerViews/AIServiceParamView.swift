@@ -135,10 +135,14 @@ class AIServiceParamView : UIView {
 		addSubview(types)
         
         weak var wf = self
-        types.queryPriceBlock = {(body) -> Void in
-            // 发送网络请求
-            wf!.delegate?.shouldQueryNewPrice(body)
+        
+        if m.isPriceRelated {
+            types.queryPriceBlock = {(body) -> Void in
+                // 发送网络请求
+                wf!.delegate?.shouldQueryNewPrice(body)
+            }
         }
+        
 		originalY += CGRectGetHeight(types.frame) + margin
 		displayViews.append(types)
 	}
