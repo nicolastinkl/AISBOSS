@@ -183,7 +183,6 @@
     button.selected = !button.selected;
     BOOL select = button.selected;
     
-    [self shouldQueryNewPrice];
     /////
     
     if (_selectedIndex != view.tag) {
@@ -195,6 +194,7 @@
     
     _selectedIndex = view.tag;
     
+    [self shouldQueryNewPrice];
     /*
     if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:parentModel:)]) {
         [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex] parentModel:_serviceTypesModel];
