@@ -10,6 +10,8 @@ import Foundation
 
 @objc protocol AIServiceParamViewDelegate : class {
 	func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
+    
+    func shouldQueryNewPrice (body : NSDictionary)
 }
 
 class AIServiceParamView : UIView {
@@ -56,6 +58,14 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Method
 	
+    //TODO: 修改金额
+    
+    
+    func modifyPrice(price : AIPriceViewModel) {
+        
+    }
+    
+    
 	// MARK: 解析数据模型
 	func parseModels(models : NSArray) {
 		
@@ -123,7 +133,12 @@ class AIServiceParamView : UIView {
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		let types : AIServiceTypes = AIServiceTypes(frame: frame, model: m)
 		addSubview(types)
-		
+        
+        weak var wf = self
+        types.queryPriceBlock = {(body) -> Void in
+            // 发送网络请求
+            wf!.delegate?.shouldQueryNewPrice(body)
+        }
 		originalY += CGRectGetHeight(types.frame) + margin
 		displayViews.append(types)
 	}

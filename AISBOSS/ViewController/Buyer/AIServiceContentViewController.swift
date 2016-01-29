@@ -1112,6 +1112,11 @@ extension AIServiceContentViewController : UITextViewDelegate {
         }
     }
     
+    //MARK: 处理更新金额请求
+    func shouldQueryNewPrice (body : NSDictionary) {
+        
+    }
+    
     
     func moveViewsBelow(view : UIView, offset : CGFloat) {
         let validateViews = scrollViewSubviews
