@@ -147,7 +147,8 @@
     
     for (AIOptionModel *model in _selectedLabels) {
         product_id = model.identifier;
-        NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
+        NSString *product_name = model.desc;
+        NSDictionary *productParams = @{@"product_name" : product_name?:@"",@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
         [params addObject:productParams];
     }
 

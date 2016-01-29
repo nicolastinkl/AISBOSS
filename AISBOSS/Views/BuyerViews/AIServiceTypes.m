@@ -206,9 +206,10 @@
 
 - (NSArray *)productParamsList
 {
-    if (_defaultIndex == _selectedIndex) {
+    if (_selectedIndex == -1) {
         return nil;
     }
+    
     NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
     
     if (![source isEqualToString:@"product"]) {
@@ -219,8 +220,10 @@
     AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
     
     NSString *product_id = model.identifier;
+    
+    NSString *product_name = model.desc;
     NSString *role_id = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
-    NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    NSDictionary *productParams = @{@"product_name" : product_name?:@"", @"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
     [params addObject:productParams];
     
     return params;
@@ -229,8 +232,7 @@
 
 - (NSArray *)serviceParamsList
 {
-    
-    if (_defaultIndex == _selectedIndex) {
+    if (_selectedIndex == -1) {
         return nil;
     }
     

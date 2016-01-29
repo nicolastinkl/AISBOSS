@@ -67,7 +67,7 @@ class AIInputView: AIServiceParamBaseView {
         textLabel.text = displayModel!.defaultText ?? ""
         textLabel.userInteractionEnabled = true
         textLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showKeyboard"))
-        
+        textLabel.text = displayModel?.defaultText
         self.addSubview(textLabel)
         if let title = displayModel?.title {
             let titleSize = title.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(16), forWidth: width)
