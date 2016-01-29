@@ -52,9 +52,12 @@ class AIPriceView: AIServiceParamBaseView {
             else {
                 let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
                 addBackgroundView(frame)
-                let label : UPLabel = AIViews.normalLabelWithFrame(self.bounds, text: dModel.totalPriceDesc, fontSize: 16, color: UIColor.whiteColor())
+                let label = AIViews.normalLabelWithFrame(frame, text: dModel.totalPriceDesc, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
+                label.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
+                
                 label.textAlignment = .Center
                 self.addSubview(label)
+                label.setCenterY(20)
                 originalY += 40
             }
             resetFrame()
@@ -95,7 +98,7 @@ class AIPriceView: AIServiceParamBaseView {
         })
         self.addSubview(priceView!)
         
-        originalY += 40
+        originalY += (priceView?.height)!
     }
     
     func makeTotalPriceView ()
@@ -120,7 +123,7 @@ class AIPriceView: AIServiceParamBaseView {
         totalPriceLabel?.font = AITools.myriadBoldWithSize(fontSize)
         self.addSubview(totalPriceLabel!)
         
-        originalY = originalY * 2
+        originalY += 40
     }
     
     //MARK: Action

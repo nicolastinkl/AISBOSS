@@ -228,9 +228,9 @@
     NSDictionary *priceDic = [content objectForKey:@"default_price"];
     AIPriceModel *priceM = [[AIPriceModel alloc] init];
     
-    if (priceDic[@"total_price_desc"] && [priceDic[@"total_price_desc"] length]) {
-        priceM.totalPriceDesc = priceDic[@"total_price_desc"];
-        model.totalPriceDesc = priceDic[@"total_price_desc"];
+    if (content[@"total_price_desc"] && [content[@"total_price_desc"] length]) {
+        priceM.totalPriceDesc = content[@"total_price_desc"];
+        model.totalPriceDesc = content[@"total_price_desc"];
     }else {
         priceM.price = [NSString stringWithFormat:@"%@", [priceDic objectForKey:@"price"] ?: @"0"];
         priceM.currency = [priceDic objectForKey:@"unit"];
@@ -255,8 +255,12 @@
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     
-    NSMutableArray *level1 = [NSMutableArray array];
+   
+    void(^recursiveBlock)(NSArray *,AIComplexLabelModel *) = ^(NSArray *inputArray,AIComplexLabelModel *parentLabel) {
+        
+    };
     
+    NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
         sModel.atitle = [dic objectForKey:@"content"];
@@ -287,7 +291,7 @@
         for (NSDictionary *dic in self.relatedParams) {
             NSDictionary *param = [dic objectForKey:@"param"];
             
-            if ([[param objectForKey:@"param_value_key"] isMemberOfClass:[NSNumber class]]){
+            if ([[param objectForKey:@"param_value_key"] isKindOfClass:[NSNumber class]]){
                 NSNumber *value_key = [param objectForKey:@"param_value_key"];
                 if (value_key.integerValue == model.identifier) {
                     NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
@@ -348,7 +352,7 @@
     AIInputViewModel *model = [[AIInputViewModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     model.defaultText = [content objectForKey:@"default_value"];
-    model.tail = [content objectForKey:@"value"];
+    model.tail = [content objectForKey:@"unit"];
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];

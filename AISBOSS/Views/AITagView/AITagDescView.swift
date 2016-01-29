@@ -24,6 +24,7 @@ class AITagDescView: UIView {
                 let size = CGSizeMake(CGRectGetWidth(label.bounds), .max)
                 let contentRect = string.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:label.font], context: nil)
                 label.frame = contentRect
+                self.setHeight(frame.height)
                 self.frame = CGRectInset(contentRect, 8, 0)
 			}
 		}
