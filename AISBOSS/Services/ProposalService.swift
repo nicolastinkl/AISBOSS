@@ -289,7 +289,7 @@ class BDKProposalService : MockProposalService{
         
         
         let body = ["data":["service_id": service.service_id, "proposal_id": proposalId, "service_type":0, "role_id": service.role_id, "comp_service_id": service.comp_service_id],"desc":["data_mode":"0","digest":""]]
-        
+        print(body)
         message.body = NSMutableDictionary(dictionary: body)
   //      message.header = NSMutableDictionary(dictionary: header)
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in            

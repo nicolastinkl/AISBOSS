@@ -136,7 +136,7 @@ internal class AIServiceContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(s, object: nil, queue: nil) { (NSNotificationOBJ) -> Void in
             
             guard weakSelf?.isfinishLoadData == true else{
-                weakSelf?.loaddataNecessary()
+                weakSelf?.loadDataNecessary()
                 return
             }
         }
@@ -178,22 +178,44 @@ internal class AIServiceContentViewController: UIViewController {
                 
                 let message = AIMessage()
                 message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+                print(message.body)
                 message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
                 
                 AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-                    
+                    if let c = completion {
+                        c()
+                    }
                     }, fail: { (ErrorType : AINetError, error : String!) -> Void in
-                        if let c = completion {
-                            c()
-                        }
+                        
                 })
             }
-            
-            
         }
-        
     }
     
+    func saveChangeService( serviceid : Int, completion:(()->())?=nil) {
+        
+        let data : NSMutableDictionary = NSMutableDictionary()
+        let userId : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        data.setObject(userId, forKey: "customer_id")
+        data.setObject(-1, forKey: "service_id")
+        data.setObject((serviceContentModel?.role_id)!, forKey: "role_id")
+        data.setObject(propodalId, forKey: "proposal_id")
+        data.setObject(["service_id":serviceid], forKey: "save_data")
+        
+        let message = AIMessage()
+        message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+        print(message.body)
+        message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            }, fail: { [weak self] (ErrorType : AINetError, error : String!) -> Void in
+                self?.serviceContentModel?.service_id = serviceid
+                if let c = completion {
+                    c()
+                }
+        })
+    }
     
     
     // MARK: 查询金额
@@ -353,13 +375,14 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
-    func loaddataNecessary(){
+    func loadDataNecessary(){
         Async.main { () -> Void in
             self.scrollView.headerBeginRefreshing()
         }
     }
     
     func removeContentView () {
+        scrollViewSubviews.removeAll()
         for view in scrollView.subviews {
             if view != scrollView.headerView() {
                 view.removeFromSuperview()
@@ -507,7 +530,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func makeContentView () {
-        if self.currentDatasource == nil  || self.currentDatasource?.service_name == nil{
+        if self.currentDatasource == nil || self.currentDatasource?.service_name == nil{
             return
         }
         //TODO: Old View Some Logic.
@@ -523,15 +546,6 @@ internal class AIServiceContentViewController: UIViewController {
         }
         
         
-       
-//        if  currentDatasource?.service_intro_content.length > 0 {
-//            let detailView = AIDetailText(frame: CGRectMake(10, previousView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
-//            addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor(),space: 10)
-//            detailView.frame = CGRectMake(10, galleryView.bottom + 10, CGRectGetWidth(self.view.frame)-20, CGRectGetHeight(detailView.frame))
-//            previousView = detailView
-//        }
-        
-        
         //TODO: add brand View
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
@@ -539,9 +553,9 @@ internal class AIServiceContentViewController: UIViewController {
        
         serviceContentView?.delegate = self
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
-            self?.scrollView.headerBeginRefreshing()
-            self?.saveDataForVS(self!, proposalId: self!.propodalId, completion: { () -> () in
-                self?.initData()
+            let id = bView.brands[selectedIndex].id
+            self?.saveChangeService(id, completion: { () -> () in
+                self?.scrollView.headerBeginRefreshing()
             })
         }
 
@@ -561,7 +575,7 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
-        brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128"), ("Mia","http://www.easyicon.net/api/resizeApi.php?id=1095741&size=128"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou"),("Amazon","icon-amazon"), ("Mia","icon-mia"), ("Gou","icon-gou"), ("BeiBei","icon-beibei"), ("Leyou", "icon-leyou")], selectedIndex: 0, frame: view.frame)
+        brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128",321)], selectedIndex: 0, frame: view.frame)
         addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())
     
         brandView?.onDownButtonDidClick = { [weak self] bView in
