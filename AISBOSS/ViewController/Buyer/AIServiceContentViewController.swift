@@ -541,13 +541,10 @@ internal class AIServiceContentViewController: UIViewController {
         //处理数据填充
         if let wish:AIProposalServiceDetail_WishModel = self.currentDatasource?.wish_list {
             
-            if (wish.intro != nil) && (wish.intro.isEmpty == false) {
-                let providerView =  AIProviderView.currentView()
-                addNewSubView(providerView, preView: viw)
-                viw = providerView
-                providerView.content.text = wish.intro ?? ""
-            }
-            
+            let providerView =  AIProviderView.currentView()
+            addNewSubView(providerView, preView: viw)
+            viw = providerView
+            providerView.content.text = wish.intro ?? ""
             
             if (wish.hope_list != nil) && wish.hope_list.count > 0 {
                 let custView =  AICustomView.currentView()
