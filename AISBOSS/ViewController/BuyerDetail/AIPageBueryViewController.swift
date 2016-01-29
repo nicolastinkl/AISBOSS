@@ -185,19 +185,23 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             let data : NSMutableDictionary = NSMutableDictionary()
             
             if let params : [String : AnyObject] = contentVC.getAllParameters() {
-                data.addEntriesFromDictionary(params)
-                data.setObject(proposalId, forKey: "proposal_id")
-                data.setObject(0, forKey: "role_id")
                 
-                let message = AIMessage()
-                message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
-                message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
-                
-                AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                if params.keys.count > 0 {
+                    data.addEntriesFromDictionary(params)
+                    data.setObject(proposalId, forKey: "proposal_id")
+                    data.setObject(0, forKey: "role_id")
                     
-                    }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                    let message = AIMessage()
+                    message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+                    message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
+                    
+                    AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
                         
-                })
+                        }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                            
+                    })
+                }
+                
 
             }
             

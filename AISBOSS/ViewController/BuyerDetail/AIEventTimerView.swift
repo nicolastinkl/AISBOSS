@@ -13,7 +13,7 @@ public class AIEventTimerView: AIServiceParamBaseView {
     
     var newFrame : CGRect?
     
-    var displayModel : AIPickerViewModel?
+    var displayModel : AICanlendarViewModel?
     
     @IBOutlet weak var title: UILabel!
     
@@ -63,7 +63,7 @@ public class AIEventTimerView: AIServiceParamBaseView {
         serviceParam["service_id"] = displayModel?.service_id_save ?? ""
         serviceParam["product_id"] = ""
         serviceParam["param_key"] = displayModel?.displayParams["param_key"] ?? ""
-        serviceParam["param_value"] = timeContent ?? ""
+        serviceParam["param_value"] = timeContent.titleLabel?.text ?? ""
         serviceParam["param_value_id"] = ""
         params.append(serviceParam)
         

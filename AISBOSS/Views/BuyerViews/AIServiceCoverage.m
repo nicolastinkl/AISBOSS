@@ -108,7 +108,8 @@
         [self addSubview:label];
 
         if (model.isSelected) {
-            [_defaultLabels addObject:label];
+            [_defaultLabels addObject:model];
+            [self.selectedLabels addObject:model];
         }
         
         if (CGRectGetMaxX(label.frame) > CGRectGetWidth(self.frame)) {
@@ -120,6 +121,8 @@
 
         x += _labelMargin + CGRectGetWidth(label.frame);
     }
+    
+    self.selectedLabels = [[NSMutableArray alloc] initWithArray:_defaultLabels];
 
     CGRect frame = self.frame;
     frame.size.height = y + height;
@@ -138,11 +141,6 @@
         return nil;
     }
     
-    if ([_defaultLabels isEqualToArray:_selectedLabels]) {
-        return nil;
-    }
-    
-    
     NSMutableArray *params = [[NSMutableArray alloc] init];
     NSString *product_id = nil;
     NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
@@ -159,21 +157,27 @@
 
 - (NSArray *)serviceParamsList
 {
-    if ([_defaultLabels isEqualToArray:_selectedLabels]) {
-        return nil;
-    }
-    
     NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
     NSNumber *param_key = [_coverageModel.displayParams objectForKey:@"param_key"];
     NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
     BOOL isProduct = [source isEqualToString:@"product"];
     NSMutableArray *params = [[NSMutableArray alloc] init];
 
+    
+    NSMutableArray *paramValues = [[NSMutableArray alloc] init];
+    NSMutableArray *paramsIDs = [[NSMutableArray alloc] init];
+    NSString *productID = nil;
+    
     for (AIOptionModel *model in _selectedLabels) {
-        NSString *productID = isProduct ? model.identifier : @"0";
-        NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": productID ?: @"", @"param_key": param_key ?: @"", @"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""};
-        [params addObject:serviceParams];
+        productID = isProduct ? model.identifier : @"";
+        [paramsIDs addObject:model.identifier ?: @""];
+        [paramValues addObject:model.desc ?: @""];
     }
+    
+    
+    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": productID ?: @"", @"param_key": param_key ?: @"", @"param_value":paramValues, @"param_value_id":paramsIDs};
+    [params addObject:serviceParams];
+    
 
     return params;
 }
@@ -195,9 +199,9 @@
             if (selected) {
                 [self insertModel:model];
             }
-            else if ([_selectedLabels containsObject:serviceLabel])
+            else if ([_selectedLabels containsObject:model])
             {
-                [_selectedLabels removeObject:serviceLabel];
+                [_selectedLabels removeObject:model];
             }
             
             break;

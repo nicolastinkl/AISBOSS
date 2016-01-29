@@ -158,17 +158,26 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
+    // MARK: 查询金额
+    
+    func getPriceParameters () -> [String : AnyObject]? {
+        var params : [String : AnyObject] = [String : AnyObject]()
+        params["service_id"] = currentDatasource?.service_id
+        params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
+        
+        return params
+    }
+    
     // MARK: 参数保存
     
     func getAllParameters () -> [String : AnyObject]? {
    
         var params : [String : AnyObject] = [String : AnyObject]()
         
-        params["service_id"] = currentDatasource?.service_id
-        params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
-        
         if let _ : AIServiceParamView = serviceContentView {
             if let _ : [String : AnyObject] = serviceContentView?.getAllParams() {
+                params["service_id"] = currentDatasource?.service_id
+                params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
                 params["save_data"] = serviceContentView?.getAllParams()
             }
         }

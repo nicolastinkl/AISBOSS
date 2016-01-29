@@ -94,6 +94,8 @@
 
 @property (nonatomic, strong) NSString<Optional> *identifier;
 
+@property (nonatomic, strong) NSString<Optional> *title;
+
 @property (nonatomic, strong) NSString<Optional> *calendar; // default 0 : 月日
 
 @end

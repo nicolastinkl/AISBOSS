@@ -102,9 +102,9 @@
     
     model.serviceParams = _serviceParams;
     model.relatedParams = _relatedParams;
-    model.displayParams = params;
+    model.displayParams = [params objectForKey:@"ui_template_content"];
 
-    if ([[params objectForKey:@"ui_template_content"] isMemberOfClass:[NSDictionary class]]) {
+    if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSDictionary class]]) {
         
         NSDictionary *content = [params objectForKey:@"ui_template_content"];
         NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
@@ -320,7 +320,8 @@
     NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
     model.identifier = [content objectForKey:@"param_key"];
-    model.calendar = [content objectForKey:@"param_name"];;
+    model.title = [content objectForKey:@"param_name"];;
+    model.calendar = [content objectForKey:@"default_value"];
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
     

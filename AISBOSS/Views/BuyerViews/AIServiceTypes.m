@@ -189,10 +189,6 @@
         return nil;
     }
     
-    if (_defaultIndex == _selectedIndex) {
-        return nil;
-    }
-    
     NSMutableArray *params = [[NSMutableArray alloc] init];
     AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
     

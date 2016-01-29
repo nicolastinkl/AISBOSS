@@ -169,13 +169,13 @@ class AIServiceParamView : UIView {
 	// MARK: Display 5
 	func addView5(model : JSONModel) {
 		
-		 let m : AIPickerViewModel = model as! AIPickerViewModel
+		 let m : AICanlendarViewModel = model as! AICanlendarViewModel
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		
 		let pickerView = AIEventTimerView.currentView()
 		addSubview(pickerView)
-		pickerView.title.text = "Event time:"
-		pickerView.timeContent.setTitle("Nov 19th", forState: .Normal)
+		pickerView.title.text = m.title ?? ""
+		pickerView.timeContent.setTitle(m.calendar ?? "", forState: .Normal)
 		pickerView.setY(originalY)
 		pickerView.newFrame = frame
         pickerView.displayModel = m
@@ -294,9 +294,9 @@ class AIServiceParamView : UIView {
     
     func getAllParams() -> [String : AnyObject]? {
         var saveData : [String : AnyObject] = [String : AnyObject]()
-        var productList : [AnyObject] = [AnyObject]()
-        var serviceList : [AnyObject] = [AnyObject]()
-        var priceList : [AnyObject] = [AnyObject]()
+        let productList : NSMutableArray = NSMutableArray()
+        let serviceList : NSMutableArray = NSMutableArray()
+        let priceList : NSMutableArray = NSMutableArray()
         
         displayViews.forEach { (view) -> () in
             
@@ -304,20 +304,20 @@ class AIServiceParamView : UIView {
             if paramView is AIPriceView {
                 if let list = paramView.serviceParamsList() {
                     if list.count > 0 {
-                        priceList.appendContentsOf(list)
+                        priceList.addObjectsFromArray(list)
                     }
                 }
             }
             else {
                 if let list = paramView.productParamsList() {
                     if list.count > 0 {
-                        productList.appendContentsOf(list)
+                        productList.addObjectsFromArray(list)
                     }
                 }
                 
                 if let list = paramView.serviceParamsList() {
                     if list.count > 0 {
-                        serviceList.appendContentsOf(list)
+                        serviceList.addObjectsFromArray(list)
                     }
                 }
             }
