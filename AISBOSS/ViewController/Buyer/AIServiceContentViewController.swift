@@ -546,7 +546,7 @@ internal class AIServiceContentViewController: UIViewController {
             viw = providerView
             providerView.content.text = wish.intro ?? ""
             
-            if (wish.hope_list != nil) && wish.hope_list.count > 0 {
+            if (wish.hope_list != nil) && wish.hope_list.count > 0 && wish.label_list.count > 0 {
                 let custView =  AICustomView.currentView()
                 addNewSubView(custView, preView: viw)
                 viw = custView

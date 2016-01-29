@@ -131,11 +131,12 @@ class SimpleServiceViewContainer: UIView {
         
         createReviewView(dataModel.service_rating_level)
         
-        fixCurrentViewMODE(self.paramsView)
+        //fixCurrentViewMODE(self.paramsView)
         
     }
     
     func fixCurrentViewMODE(v:UIView){
+        /*
         self.paramsView.updateConstraints()
         _ = self.paramsView.subviews.filter { (visubs) -> Bool in
 //            visubs.subviews.last?.backgroundColor = UIColor.blackColor()
@@ -154,6 +155,7 @@ class SimpleServiceViewContainer: UIView {
             
             return false
         }
+        */
     }
     
     func settingClickHandle(sender: UITapGestureRecognizer) {
