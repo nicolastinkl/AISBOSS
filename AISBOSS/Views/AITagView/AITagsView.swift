@@ -43,6 +43,24 @@ class AITagsView: AIServiceParamBaseView {
 	var tags: [Tagable]
 	var title: String
 	var selectedTagIds: [Int] = [Int]()
+    var selectedTags: [Tagable] {
+        get {
+            var result = [Tagable]()
+            var singleTagViews = subviews.filter { (v) -> Bool in
+                return v.isKindOfClass(AISingleLineTagView)
+            } as! [AISingleLineTagView]
+            
+            singleTagViews = singleTagViews.sort({ (a, b) -> Bool in
+                return a.row < b.row
+            })
+            
+            for s in singleTagViews {
+                result.append(s.selectedTag!)
+            }
+            
+            return result
+        }
+    }
 	var row = 0
 	var singleLineTagViews = [AISingleLineTagView]()
 	init(title: String = "", tags: [Tagable], frame: CGRect) {
