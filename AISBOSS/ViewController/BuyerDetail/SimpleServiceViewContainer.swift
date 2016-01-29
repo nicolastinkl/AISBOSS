@@ -281,12 +281,11 @@ class SimpleServiceViewContainer: UIView {
     
     private func addParamsView(serviceParams: UIView?) {
         if let parmsSer = serviceParams {
-            let height = getTopHeight() + paramsViewTopMargin.constant + parmsSer.frame.height
-                //+ dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
+            let height = getTopHeight() + paramsViewTopMargin.constant + parmsSer.frame.height + dividerTopMargin.constant + dividerBottomMargin.constant + divider.height
             
             self.frame.size.height = height
             
-            paramViewHeight = parmsSer.frame.height 
+            paramViewHeight = parmsSer.frame.height - 5
             
             paramsView.addSubview(parmsSer)
             
