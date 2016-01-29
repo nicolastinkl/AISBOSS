@@ -536,7 +536,8 @@ internal class AIServiceContentViewController: UIViewController {
         let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
         serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
-        
+       
+        serviceContentView?.delegate = self
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
             self?.scrollView.headerBeginRefreshing()
             self?.saveDataForVS(self!, proposalId: self!.propodalId, completion: { () -> () in
@@ -1117,10 +1118,7 @@ extension AIServiceContentViewController : UITextViewDelegate {
         }
     }
     
-    //MARK: 处理更新金额请求
-    func shouldQueryNewPrice (body : NSDictionary) {
-        
-    }
+
     
     
     func moveViewsBelow(view : UIView, offset : CGFloat) {
@@ -1145,5 +1143,39 @@ extension AIServiceContentViewController : UITextViewDelegate {
         var s = scrollView.contentSize
         s.height = CGRectGetMaxY(scrollView.subviews.last!.frame)
         scrollView.contentSize = s
+    }
+}
+
+extension AIServiceContentViewController:AIServiceParamViewDelegate {
+   
+    func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
+        
+    }
+    
+     //MARK: 处理更新金额请求
+    func shouldQueryNewPrice(body: NSDictionary) {
+        let message = AIMessage()
+        message.body = body.mutableCopy() as! NSMutableDictionary
+        message.url = "http://10.5.1.249:3000/findServicePrice"
+        self.view.showLoading()
+        AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
+            self?.view.hideLoading()
+            if let views = self?.serviceContentView!.displayViews {
+                let priceView = views.filter({ (v) -> Bool in
+                    return v.isKindOfClass(AIPriceView)
+                }).first //get the price view
+                if let p = priceView as? AIPriceView {
+                    let model = p.displayModel
+                    if let responseDic = response as?  NSDictionary {
+                        if let priceDic = responseDic["price"] as?  NSDictionary {
+                            model?.finalPrice = priceDic.objectForKey("final_price") as! String
+                            p.priceView?.price = model!.finalPrice
+                        }
+                    }
+                }
+            }
+
+            }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+        })
     }
 }
