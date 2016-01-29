@@ -232,13 +232,13 @@ class AIServiceParamView : UIView {
 		let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
 		let frame = CGRectMake(0, originalY, sviewWidth + margin * 2, 0)
 		
-		var brands : [(title: String, image: String)] = []
+        var brands : [(title: String, image: String,id:Int)] = []
 		var index : Int = 0
 		for var i : Int = 0; i < m.providers.count; i++ {
 			let provider : AIServiceProviderModel = m.providers[i] as! AIServiceProviderModel
             if let name = provider.name {
-                brands.append((title: name, image: provider.icon))
-//			brands.append((title: "\(provider.name)", image: "\(provider.icon)"))
+                brands.append((title: name, image: provider.icon,id:provider.identifier))
+
                 if provider.isSelected {
                     index = i
                 }
