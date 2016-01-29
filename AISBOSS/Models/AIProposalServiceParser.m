@@ -120,49 +120,21 @@
     model.relatedParams = _relatedParams;
     model.displayParams = [params objectForKey:@"ui_template_content"];
 
+    NSDictionary *content = nil;
     if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSDictionary class]]) {
-        
-        NSDictionary *content = [params objectForKey:@"ui_template_content"];
-        NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
-        model.isPriceRelated = isPriceRelated.boolValue;
-        model.service_id_save = _serviceID;
-        model.source_save = [content objectForKey:@"param_source"];
-        
-        model.product_id_save = [content objectForKey:@"param_source_id"];
-        model.role_id_save = [content objectForKey:@"param_key"];
+        content = [params objectForKey:@"ui_template_content"];
+    }
+    else if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSArray class]]) {
+        NSArray *array = [params objectForKey:@"ui_template_content"];
+        content = array.firstObject;
     }
     
-    
-    /*
-     NSString *paramSource = [content objectForKey:@"param_source"];
-     
-     
-     if ([paramSource isEqualToString:@"product"]) { // 产品类型
-     NSArray *param_value = [content objectForKey:@"param_value"];
-     if (param_value.count > 0 && _relatedParams.count > 0) { // 有关联参数
-     model.product_id_save = [content objectForKey:@"param_source_id"];
-     }
-     else
-     {
-     model.product_id_save = [content objectForKey:@"param_source_id"];
-     }
-     
-     
-     model.product_id_save = [content objectForKey:@"param_source_id"];
-     //model.role_id_save =
-     
-     
-     }else if ([paramSource containsString:@"param"]) { // offerring类型
-     
-     }else { // 其他普通参数
-     
-     }
-     */
-    
-    
-    
-    
-    
+    NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
+    model.isPriceRelated = isPriceRelated.boolValue;
+    model.service_id_save = _serviceID;
+    model.source_save = [content objectForKey:@"param_source"];
+    model.product_id_save = [content objectForKey:@"param_source_id"];
+    model.role_id_save = [content objectForKey:@"param_key"];
 
 }
 
@@ -259,11 +231,6 @@
     NSDictionary *content = [list objectAtIndex:0];
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
-    
-   
-    void(^recursiveBlock)(NSArray *,AIComplexLabelModel *) = ^(NSArray *inputArray,AIComplexLabelModel *parentLabel) {
-        
-    };
     
     NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {

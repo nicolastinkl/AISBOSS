@@ -214,6 +214,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         if let _ = serviceContentView {
             if let _  = serviceContentView?.getAllParams() {
+
                 params["service_id"] = currentDatasource?.service_id
                 params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
                 params["save_data"] = serviceContentView?.getAllParams()
