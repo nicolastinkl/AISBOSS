@@ -217,7 +217,7 @@ class AIServiceParamView : UIView {
 		var index : Int = 0
 		for var i : Int = 0; i < m.providers.count; i++ {
 			let provider : AIServiceProviderModel = m.providers[i] as! AIServiceProviderModel
-			brands.append((title: provider.name, image: provider.icon))
+			brands.append((title: "\(provider.name)", image: "\(provider.icon)"))
 			if provider.isSelected {
 				index = i
 			}

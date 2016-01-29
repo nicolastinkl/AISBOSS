@@ -27,7 +27,8 @@ class ServiceCardDetailIcon: ServiceParamlView {
     let ICON_SIZE : CGFloat = AITools.displaySizeFrom1080DesignSize(54)
     let VIEW_HEIGHT : CGFloat = AITools.displaySizeFrom1080DesignSize(187)
     let VIEW_LEFT_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(87)
-    let VIEW_TOP_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(41)
+    var VIEW_TOP_MARGIN : CGFloat = 0
+    var VIEW_NUMBERLINES_MARGIN : CGFloat = 0
     let ICON_TITLE_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(30)
     let ICONS_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(260)
     let ICON_LABEL_MARGIN : CGFloat = AITools.displaySizeFrom1080DesignSize(26)
@@ -63,17 +64,25 @@ class ServiceCardDetailIcon: ServiceParamlView {
         dataSource = ServiceCellProductParamModel(string: jsonString, error: nil)
     }
     
+    override func isFirstView(isfirst: Bool) {
+        if isfirst {
+            VIEW_TOP_MARGIN = AITools.displaySizeFrom1080DesignSize(50)
+        }
+    }
+    
     func layoutView(){
         
         //self.backgroundColor = UIColor.redColor()
         buildTitle()
         buildIcon()
         buildIconDesc()
-        fixFrame()
-        
+ 
         titleLabel.text = dataSource?.product_name
+        
+        var holdHeight:CGFloat = 0
         for var i = 0 ; i < dataSource?.param_list.count ; i++ {
             let paramModel = dataSource?.param_list[i] as! ServiceCellStadandParamModel
+            
             if paramModel.param_key == "time" {
                 timeIconImageView.image = UIImage(named: "icon_time_big")
                 timeLabelView.text = paramModel.param_value
@@ -85,25 +94,33 @@ class ServiceCardDetailIcon: ServiceParamlView {
             else if paramModel.param_key == "calendar" {
                 calendarIconImageView.image = UIImage(named: "icon_calenda_big")
                 calendarLabelView.text = paramModel.param_value
+                
+            }
+            let labelSize = paramModel.param_value.sizeWithFont(ICON_DESC_FONT, forWidth:  100)
+            if holdHeight < labelSize.height {
+                holdHeight = labelSize.height
             }
         }
+        
+        VIEW_NUMBERLINES_MARGIN = holdHeight -  15
+        
+        fixFrame()
     }
     
     //MARK: - build views
     func buildTitle(){
         
-        let titleFrame = CGRectMake(0, 0, 0, 21)
+        let titleFrame = CGRectZero
         titleLabel = UILabel(frame: titleFrame)
         titleLabel.font = TITLE_TEXT_FONT
         titleLabel.textColor = UIColor.whiteColor()
         self.addSubview(titleLabel)
-        
         var heightAlisx:CGFloat = 0
         //print(dataSource?.product_name)
-        if dataSource?.product_name.isEmpty == false {
-            heightAlisx = 20
-        }else{
+        if dataSource?.product_name.isEmpty == true {
             heightAlisx = 0
+        }else{
+            heightAlisx = 20
         }
         constrain(titleLabel){titleLabel in
             titleLabel.leadingMargin == titleLabel.superview!.leadingMargin + VIEW_LEFT_MARGIN
@@ -130,7 +147,11 @@ class ServiceCardDetailIcon: ServiceParamlView {
         
         constrain(titleLabel,priceIconImageView){
             titleLabel,priceIconImageView in
-            priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
+            if dataSource?.product_name.isEmpty == false {
+                priceIconImageView.top == titleLabel.bottom + ICON_TITLE_MARGIN
+            }else{
+                priceIconImageView.top == titleLabel.top + AITools.displaySizeFrom1080DesignSize(10)
+            }
  
         }
         
@@ -184,37 +205,45 @@ class ServiceCardDetailIcon: ServiceParamlView {
         self.addSubview(priceLabelView)
         self.addSubview(calendarLabelView)
         
-        let widthS:CGFloat = 15
+        let heightS:CGFloat = 15
         let widthSpace:CGFloat = 100
-        constrain(timeLabelView,timeIconImageView){
-            timeLabelView,timeIconImageView in
-            timeLabelView.height >= widthS
+        constrain(timeLabelView,timeIconImageView,self){
+            timeLabelView,timeIconImageView,superV in
+            timeLabelView.height >= heightS
             //distribute(by: ICON_LABEL_MARGIN, vertically: timeIconImageView,timeLabelView)
             timeIconImageView.bottom ==  timeLabelView.top - ICON_LABEL_MARGIN
             timeLabelView.centerX == timeIconImageView.centerX
             timeLabelView.width == widthSpace
-        }        
+            //timeLabelView.bottom == timeLabelView.superview!.bottom
+        }
         
         constrain(priceLabelView,priceIconImageView){
             priceLabelView,priceIconImageView in
-            priceLabelView.height >= widthS
+            priceLabelView.height >= heightS
             priceLabelView.top == priceIconImageView.bottom + ICON_LABEL_MARGIN
             priceLabelView.centerX == priceIconImageView.centerX
             priceLabelView.width == widthSpace
+            //priceLabelView.bottom == priceLabelView.superview!.bottom
         }
         
         constrain(calendarLabelView,calendarIconImageView){
             calendarLabelView,calendarIconImageView in
-            calendarLabelView.height >=  widthS
+            calendarLabelView.height >=  heightS
             calendarLabelView.top == calendarIconImageView.bottom + ICON_LABEL_MARGIN
             calendarLabelView.centerX == calendarIconImageView.centerX
             calendarLabelView.width == widthSpace
+            //calendarLabelView.bottom == calendarLabelView.superview!.bottom
+            
         }
+        
     }
     
     func fixFrame(){
-        
-         self.frame.size.height = VIEW_HEIGHT + ICON_LABEL_MARGIN
+        if dataSource?.product_name.isEmpty == true {
+            self.frame.size.height = VIEW_HEIGHT - ICON_LABEL_MARGIN + VIEW_NUMBERLINES_MARGIN
+        }else{
+            self.frame.size.height = VIEW_HEIGHT + ICON_LABEL_MARGIN
+        }
         
     }
 }

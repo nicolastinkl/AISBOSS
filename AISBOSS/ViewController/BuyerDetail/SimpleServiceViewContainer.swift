@@ -192,12 +192,14 @@ class SimpleServiceViewContainer: UIView {
         let paramContainerView = UIView(frame: CGRect(x: 0, y: 0, width: paramViewWidth, height: 0))
         var paramHeight:CGFloat = 0
         var pareusView:View?
+        
         for  serCellModel in models! {
             if serCellModel.param_key == nil {
                 return nil
             }
             let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
             if let param = getViewTemplateView(viewTemplate!) {
+                param.isFirstView(serCellModel == models?.first)
                 param.loadDataWithModelArray(serCellModel)
                 if let par = pareusView {
                     //上一个view
@@ -216,7 +218,6 @@ class SimpleServiceViewContainer: UIView {
                 pareusView = param
             }
         }
-        
         
         if let modArray = models {
             if (modArray.count == 1) {
@@ -284,7 +285,8 @@ class SimpleServiceViewContainer: UIView {
             
             self.frame.size.height = height
             
-            paramViewHeight = parmsSer.frame.height + 5
+            paramViewHeight = parmsSer.frame.height - 5
+            
             paramsView.addSubview(parmsSer)
             
             constrain(parmsSer,paramsView) {container, item in

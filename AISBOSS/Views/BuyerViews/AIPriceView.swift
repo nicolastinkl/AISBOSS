@@ -49,7 +49,6 @@ class AIPriceView: AIServiceParamBaseView {
             if (dModel.defaultPrice != nil) {
                 makePriceView()
                 makeTotalPriceView()
-                
             }
             else {
                 let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
@@ -58,11 +57,8 @@ class AIPriceView: AIServiceParamBaseView {
                 label.textAlignment = .Center
                 self.addSubview(label)
                 originalY += 40
-                
             }
-            
             resetFrame()
-            
         }
 
     }
@@ -81,16 +77,17 @@ class AIPriceView: AIServiceParamBaseView {
         
         if let _ = displayModel?.defaultPrice.currency {
             finalPrice += (displayModel?.defaultPrice.currency)!
+            finalPrice += " "
         }
         
         if let _ = displayModel?.defaultPrice.price {
             finalPrice += (displayModel?.defaultPrice.price)!
+            finalPrice += " "
         }
         
         if let _ = displayModel?.defaultPrice.billingMode {
             finalPrice += (displayModel?.defaultPrice.billingMode)!
         }
-        
         
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
