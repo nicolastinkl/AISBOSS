@@ -75,25 +75,25 @@ class AIPriceView: AIServiceParamBaseView {
     
     func makePriceView () {
         
-        var finalPrice : String = ""
+        var text : String = ""
         
         if let _ = displayModel?.defaultPrice.currency {
-            finalPrice += (displayModel?.defaultPrice.currency)!
-            finalPrice += " "
+            text += (displayModel?.defaultPrice.currency)!
+            text += " "
         }
         
         if let _ = displayModel?.defaultPrice.price {
-            finalPrice += (displayModel?.defaultPrice.price)!
-            finalPrice += " "
+            text += (displayModel?.defaultPrice.price)!
+            text += " "
         }
         
         if let _ = displayModel?.defaultPrice.billingMode {
-            finalPrice += (displayModel?.defaultPrice.billingMode)!
+            text += (displayModel?.defaultPrice.billingMode)!
         }
         
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
-        priceView = PriceAndStepperView(frame: frame, price: (displayModel?.finalPrice)!, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
+        priceView = PriceAndStepperView(frame: frame, price: displayModel?.finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
             ws?.changeTotalPrice(Int(priceAndStepperView.value))
         })
         self.addSubview(priceView!)

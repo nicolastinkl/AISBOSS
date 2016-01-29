@@ -62,7 +62,7 @@ class PriceAndStepperView: UIView {
 
 	 - returns:
 	 */
-	init(frame: CGRect, price: String, showStepper: Bool, defaultValue: Int = 0, minValue: Int = 0, maxValue: Int, onValueChanged: (PriceAndStepperView) -> ()) {
+	init(frame: CGRect, price: String?, showStepper: Bool, defaultValue: Int = 0, minValue: Int = 0, maxValue: Int, onValueChanged: (PriceAndStepperView) -> ()) {
 		
 		self.showStepper = showStepper
 		self.defaultValue = defaultValue
@@ -77,7 +77,7 @@ class PriceAndStepperView: UIView {
 		self.frame = frame
 	}
 	
-    func setup(price:String) {
+    func setup(price:String?) {
 		// setup bg
 		let bgImage = UIImage(named: "Wave_BG")
 		let bgImageView = UIImageView(image: bgImage)
