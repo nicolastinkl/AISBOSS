@@ -391,7 +391,7 @@ extension AIComplexLabelModel : Tagable {
 		get { return adesc }
 	}
     
-    var paramkey: Int? {
+    var paramkey: Int {
         get { return paramKey}
     }
 }
