@@ -10,6 +10,8 @@
 #import "AIServiceDetailUIModel.h"
 #import "AIServiceParamBaseView.h"
 
+typedef void (^QueryPriceBlock)(NSDictionary *);
+
 @protocol AIServiceTypesDelegate <NSObject>
 
 //- (void)didSelectServiceTypeAtIndex:(NSInteger)index value:(AIProposalServiceDetailParamValueModel *) model parentModel:(AIProposalServiceDetailParamModel*) parentModel;
@@ -20,6 +22,8 @@
 @interface AIServiceTypes : AIServiceParamBaseView
 
 @property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
+
+@property (nonatomic, strong) QueryPriceBlock queryPriceBlock;
 
 - (id)initWithFrame:(CGRect)frame model:(AIServiceTypesModel *)model;
 

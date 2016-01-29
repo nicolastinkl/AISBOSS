@@ -10,6 +10,8 @@ import Foundation
 
 @objc protocol AIServiceParamViewDelegate : class {
 	func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
+    
+    func shouldQueryNewPrice (body : NSDictionary)
 }
 
 class AIServiceParamView : UIView {
@@ -56,6 +58,14 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Method
 	
+    //TODO: 修改金额
+    
+    
+    func modifyPrice(price : AIPriceViewModel) {
+        
+    }
+    
+    
 	// MARK: 解析数据模型
 	func parseModels(models : NSArray) {
 		
@@ -123,7 +133,12 @@ class AIServiceParamView : UIView {
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		let types : AIServiceTypes = AIServiceTypes(frame: frame, model: m)
 		addSubview(types)
-		
+        
+        weak var wf = self
+        types.queryPriceBlock = {(body) -> Void in
+            // 发送网络请求
+            wf!.delegate?.shouldQueryNewPrice(body)
+        }
 		originalY += CGRectGetHeight(types.frame) + margin
 		displayViews.append(types)
 	}
@@ -298,8 +313,8 @@ class AIServiceParamView : UIView {
     
     //MARK: 获取参数
     
-    func getAllParams() -> [String : AnyObject]? {
-        var saveData : [String : AnyObject] = [String : AnyObject]()
+    func getAllParams() -> NSDictionary? {
+        let saveData : NSMutableDictionary = NSMutableDictionary()
         let productList : NSMutableArray = NSMutableArray()
         let serviceList : NSMutableArray = NSMutableArray()
         let priceList : NSMutableArray = NSMutableArray()
@@ -341,10 +356,10 @@ class AIServiceParamView : UIView {
         }
         
         if priceList.count > 0 {
-            saveData["price_param_list"] = priceList
+            saveData.addEntriesFromDictionary(priceList.firstObject as! [NSObject : AnyObject])
         }
         
-        if saveData.keys.count > 0 {
+        if saveData.allKeys.count > 0 {
             return saveData
         }
         
