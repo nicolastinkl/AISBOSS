@@ -169,15 +169,16 @@ class AIServiceParamView : UIView {
 	// MARK: Display 5
 	func addView5(model : JSONModel) {
 		
-		// let m : AIPickerViewModel = model as! AIPickerViewModel
+		 let m : AICanlendarViewModel = model as! AICanlendarViewModel
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		
 		let pickerView = AIEventTimerView.currentView()
 		addSubview(pickerView)
-		pickerView.title.text = "Event time:"
-		pickerView.timeContent.setTitle("Nov 19th", forState: .Normal)
+		pickerView.title.text = m.title ?? ""
+		pickerView.timeContent.setTitle(m.calendar ?? "", forState: .Normal)
 		pickerView.setY(originalY)
 		pickerView.newFrame = frame
+        pickerView.displayModel = m
 		originalY += CGRectGetHeight(pickerView.frame) + margin
 		displayViews.append(pickerView)
 	}
@@ -230,6 +231,7 @@ class AIServiceParamView : UIView {
 		
 		let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)
 		addSubview(serviceProviderView)
+        serviceProviderView.displayModel = m
 		
 		serviceProviderView.onDownButtonDidClick = { [weak self] bView in
 			let frameBefore = bView.frame
@@ -291,6 +293,62 @@ class AIServiceParamView : UIView {
         let obj = ["view":self,"offset":newOffset]
         NSNotificationCenter.defaultCenter().postNotificationName("kServiceParamsViewHeightChanged", object: obj)
 	}
+    
+    
+    
+    //MARK: 获取参数
+    
+    func getAllParams() -> [String : AnyObject]? {
+        var saveData : [String : AnyObject] = [String : AnyObject]()
+        let productList : NSMutableArray = NSMutableArray()
+        let serviceList : NSMutableArray = NSMutableArray()
+        let priceList : NSMutableArray = NSMutableArray()
+        
+        displayViews.forEach { (view) -> () in
+            
+            let paramView : AIServiceParamBaseView = view as! AIServiceParamBaseView
+            if paramView is AIPriceView {
+                if let list = paramView.serviceParamsList() {
+                    if list.count > 0 {
+                        priceList.addObjectsFromArray(list)
+                    }
+                }
+            }
+            else {
+                if let list = paramView.productParamsList() {
+                    if list.count > 0 {
+                        productList.addObjectsFromArray(list)
+                    }
+                }
+                
+                if let list = paramView.serviceParamsList() {
+                    if list.count > 0 {
+                        serviceList.addObjectsFromArray(list)
+                    }
+                }
+            }
+ 
+        }
+        
+        if productList.count > 0 {
+            saveData["product_list"] = productList
+        }
+        
+        if serviceList.count > 0 {
+            saveData["service_param_list"] = serviceList
+        }
+        
+        if priceList.count > 0 {
+            saveData["price_param_list"] = priceList
+        }
+        
+        if saveData.keys.count > 0 {
+            return saveData
+        }
+        
+        return nil
+  
+    }
 }
 
 extension AIComplexLabelModel : Tagable {

@@ -93,7 +93,7 @@ class AIPriceView: AIServiceParamBaseView {
         
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
-        priceView = PriceAndStepperView(frame: frame, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
+        priceView = PriceAndStepperView(frame: frame, price: (displayModel?.finalPrice)!, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
             ws?.changeTotalPrice(Int(priceAndStepperView.value))
         })
         self.addSubview(priceView!)
@@ -138,14 +138,36 @@ class AIPriceView: AIServiceParamBaseView {
         
     }
     
+
     //MARK: 输出数据
-    
-    func params() -> [String : AnyObject] {
-        var params = [String : AnyObject]()
-        params["price"] = displayModel?.defaultPrice.toDictionary()
-        params["number"] = NSNumber(integer: totalNumber)
-        
-        return params
+
+    /*
+    "price_param": {
+    "amount": 2,
+    "billing_mode": "/time",
+    "unit": "€",
+    "price": 800,
+    "final_price": "€ 800+ / time "
     }
+    */
+
+    
+    override func serviceParamsList() -> [AnyObject]! {
+        var list = [AnyObject]()
+        var price = [String : AnyObject]()
+        var params = [String : AnyObject]()
+        
+        params["amount"] = totalNumber
+        params["billing_mode"] = displayModel?.defaultPrice.billingMode ?? ""
+        params["unit"] = displayModel?.defaultPrice.currency ?? ""
+        params["price"] = displayModel?.defaultPrice.price ?? ""
+        params["final_price"] = displayModel?.finalPrice ?? ""
+        
+        price["price_param"] = params
+        list.append(price)
+        
+        return list
+    }
+    
     
 }

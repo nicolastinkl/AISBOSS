@@ -14,6 +14,8 @@
 
 - (NSDictionary *)serviceParams;
 
+- (NSArray *)serviceParamsList;
 
+- (NSArray *)productParamsList;
 
 @end

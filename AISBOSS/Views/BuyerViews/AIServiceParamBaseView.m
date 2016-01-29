@@ -21,5 +21,14 @@
     return nil;
 }
 
+- (NSArray *)serviceParamsList;
+{
+    return nil;
+}
+
+- (NSArray *)productParamsList
+{
+    return nil;
+}
 
 @end

@@ -118,15 +118,18 @@
     
     model.serviceParams = _serviceParams;
     model.relatedParams = _relatedParams;
-    model.displayParams = params;
+    model.displayParams = [params objectForKey:@"ui_template_content"];
 
-    if ([[params objectForKey:@"ui_template_content"] isMemberOfClass:[NSDictionary class]]) {
+    if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSDictionary class]]) {
         
         NSDictionary *content = [params objectForKey:@"ui_template_content"];
         NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
         model.isPriceRelated = isPriceRelated.boolValue;
         model.service_id_save = _serviceID;
         model.source_save = [content objectForKey:@"param_source"];
+        
+        model.product_id_save = [content objectForKey:@"param_source_id"];
+        model.role_id_save = [content objectForKey:@"param_key"];
     }
     
     
@@ -224,6 +227,7 @@
     model.defaultNumber = defaultNumber.integerValue;
     model.minNumber = minNumber.integerValue;
     model.maxNumber = maxNumber.integerValue;
+    model.finalPrice = [content objectForKey:@"final_price"];
     
     NSDictionary *priceDic = [content objectForKey:@"default_price"];
     AIPriceModel *priceM = [[AIPriceModel alloc] init];
@@ -237,6 +241,7 @@
         priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
         model.defaultPrice = priceM;
     }
+    
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
@@ -335,8 +340,11 @@
 #pragma mark - 解析 5 时间，日历
 - (void)parse5WithParam:(NSDictionary *)param
 {
+    NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
-    
+    model.identifier = [content objectForKey:@"param_key"];
+    model.title = [content objectForKey:@"param_name"];;
+    model.calendar = [content objectForKey:@"default_value"];
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
     

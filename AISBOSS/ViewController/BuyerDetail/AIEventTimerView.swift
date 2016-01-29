@@ -9,9 +9,11 @@
 import Foundation
 import Spring
 
-public class AIEventTimerView: UIView {
+public class AIEventTimerView: AIServiceParamBaseView {
     
     var newFrame : CGRect?
+    
+    var displayModel : AICanlendarViewModel?
     
     @IBOutlet weak var title: UILabel!
     
@@ -49,6 +51,26 @@ public class AIEventTimerView: UIView {
         }
         
     }
+    
+    
+    override public func serviceParamsList() -> [AnyObject]! {
+        
+        var params : [AnyObject] = [AnyObject]()
+        let source : String? = displayModel?.displayParams["param_source"] as? String
+        var serviceParam = [NSObject : AnyObject]()
+        serviceParam["source"] = source ?? ""
+        serviceParam["role_id"] = ""
+        serviceParam["service_id"] = displayModel?.service_id_save ?? ""
+        serviceParam["product_id"] = ""
+        serviceParam["param_key"] = displayModel?.displayParams["param_key"] ?? ""
+        serviceParam["param_value"] = timeContent.titleLabel?.text ?? ""
+        serviceParam["param_value_id"] = ""
+        params.append(serviceParam)
+        
+        
+        return params
+    }
+
     
     
 }
