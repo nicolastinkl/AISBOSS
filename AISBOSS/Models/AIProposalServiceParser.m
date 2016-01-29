@@ -45,43 +45,59 @@
 
 - (void)parseParams:(NSArray *)params
 {
-    for (NSDictionary *param in params) {
-        NSNumber *type = [param objectForKey:@"ui_template_type"];
-        if (type) {
-            switch (type.integerValue) {
-                case 1: // title + detail
-                    [self parse1WithParam:param];
-                    break;
-                case 2: // 单选checkbox组
-                    [self parse2WithParam:param];
-                    break;
-                case 3: // 金额展示
-                    [self parse3WithParam:param];
-                    break;
-                case 4: // 标签组复合控件，可多选，单选，可分层
-                    [self parse4WithParam:param];
-                    break;
-                case 5: // 时间，日历
-                    [self parse5WithParam:param];
-                    break;
-                case 6: // 输入框
-                    [self parse6WithParam:param];
-                    break;
-                case 7: // 普通标签：title + 标签组
-                    [self parse7WithParam:param];
-                    break;
-                case 8: // 切换服务标签
-                    [self parse8WithParam:param];
-                    break;
-                case 9: // picker控件
-                    [self parse9WithParam:param];
-                    break;
+    
+    @try {
+        NSUInteger number = params.count;
+        if ( params != nil && number > 0){
+            
+            for (NSDictionary *param in params) {
+                if ([param isKindOfClass:[NSDictionary class]]) {
                     
-                default:
-                    break;
-            }
+                    NSNumber *type = [param objectForKey:@"ui_template_type"];
+                    if (type) {
+                        switch (type.integerValue) {
+                            case 1: // title + detail
+                                [self parse1WithParam:param];
+                                break;
+                            case 2: // 单选checkbox组
+                                [self parse2WithParam:param];
+                                break;
+                            case 3: // 金额展示
+                                [self parse3WithParam:param];
+                                break;
+                            case 4: // 标签组复合控件，可多选，单选，可分层
+                                [self parse4WithParam:param];
+                                break;
+                            case 5: // 时间，日历
+                                [self parse5WithParam:param];
+                                break;
+                            case 6: // 输入框
+                                [self parse6WithParam:param];
+                                break;
+                            case 7: // 普通标签：title + 标签组
+                                [self parse7WithParam:param];
+                                break;
+                            case 8: // 切换服务标签
+                                [self parse8WithParam:param];
+                                break;
+                            case 9: // picker控件
+                                [self parse9WithParam:param];
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                    }
+                } }
         }
     }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
 }
 #pragma mark - 解析保存参数
 
@@ -216,10 +232,15 @@
     NSDictionary *priceDic = [content objectForKey:@"default_price"];
     AIPriceModel *priceM = [[AIPriceModel alloc] init];
     
-    priceM.price = [NSString stringWithFormat:@"%@", [priceDic objectForKey:@"price"] ?: @"0"];
-    priceM.currency = [priceDic objectForKey:@"unit"];
-    priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
-    model.defaultPrice = priceM;
+    if (content[@"total_price_desc"] && [content[@"total_price_desc"] length]) {
+        priceM.totalPriceDesc = content[@"total_price_desc"];
+        model.totalPriceDesc = content[@"total_price_desc"];
+    }else {
+        priceM.price = [NSString stringWithFormat:@"%@", [priceDic objectForKey:@"price"] ?: @"0"];
+        priceM.currency = [priceDic objectForKey:@"unit"];
+        priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
+        model.defaultPrice = priceM;
+    }
     
     
     // 设置基本参数
@@ -228,8 +249,6 @@
     // 设置控件类型
     [model setDisplayType:3];
     [_displayModels addObject:model];
-    
-    
     
 }
 
@@ -241,8 +260,12 @@
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     
-    NSMutableArray *level1 = [NSMutableArray array];
+   
+    void(^recursiveBlock)(NSArray *,AIComplexLabelModel *) = ^(NSArray *inputArray,AIComplexLabelModel *parentLabel) {
+        
+    };
     
+    NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
         sModel.atitle = [dic objectForKey:@"content"];
@@ -273,7 +296,7 @@
         for (NSDictionary *dic in self.relatedParams) {
             NSDictionary *param = [dic objectForKey:@"param"];
             
-            if ([[param objectForKey:@"param_value_key"] isMemberOfClass:[NSNumber class]]){
+            if ([[param objectForKey:@"param_value_key"] isKindOfClass:[NSNumber class]]){
                 NSNumber *value_key = [param objectForKey:@"param_value_key"];
                 if (value_key.integerValue == model.identifier) {
                     NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
@@ -337,7 +360,7 @@
     AIInputViewModel *model = [[AIInputViewModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     model.defaultText = [content objectForKey:@"default_value"];
-    model.tail = [content objectForKey:@"value"];
+    model.tail = [content objectForKey:@"unit"];
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];

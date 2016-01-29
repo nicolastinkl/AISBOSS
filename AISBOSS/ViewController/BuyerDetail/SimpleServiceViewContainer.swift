@@ -111,6 +111,7 @@ class SimpleServiceViewContainer: UIView {
     
     //加载数据
     func loadData(dataModel : AIProposalServiceModel){
+        
         self.dataModel = dataModel
         
         logo.asyncLoadImage(dataModel.service_thumbnail_icon ?? "")
@@ -129,6 +130,32 @@ class SimpleServiceViewContainer: UIView {
         }
         
         createReviewView(dataModel.service_rating_level)
+        
+        //fixCurrentViewMODE(self.paramsView)
+        
+    }
+    
+    func fixCurrentViewMODE(v:UIView){
+        /*
+        self.paramsView.updateConstraints()
+        _ = self.paramsView.subviews.filter { (visubs) -> Bool in
+//            visubs.subviews.last?.backgroundColor = UIColor.blackColor()
+            if let selfViews = visubs.subviews.last {
+                
+                let bottomViewHeight = selfViews.top + selfViews.height
+                let slogne = AITools.displaySizeFrom1080DesignSize(50)
+                let selfSlogne = self.paramsView.height - bottomViewHeight
+                print(selfSlogne)
+                if selfSlogne > 0 {
+                    //paramViewHeight -= (selfSlogne - slogne)
+                   // paramViewHeight  = paramViewHeight -  10
+                }
+                
+            }
+            
+            return false
+        }
+        */
     }
     
     func settingClickHandle(sender: UITapGestureRecognizer) {
@@ -155,7 +182,7 @@ class SimpleServiceViewContainer: UIView {
     
     
     private func hasHopeList() -> Bool {
-        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil
+        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil && dataModel!.wish_list.hope_list.count > 0
     }
     
     private func createHopeList() {
@@ -228,7 +255,7 @@ class SimpleServiceViewContainer: UIView {
             }
         }
         paramContainerView.setHeight(paramHeight)
-        
+
         return paramContainerView
        
     }

@@ -66,7 +66,7 @@ class ServiceCardTextView: ServiceParamlView {
         
     }
     func fixFrame(){
-        self.frame.size.height = flagContainer.frame.maxY
+        self.frame.size.height = flagContainer.frame.maxY - 10
     }
     
     

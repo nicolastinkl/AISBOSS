@@ -147,6 +147,26 @@ class AITagsView: AIServiceParamBaseView {
 		renderAllViews()
 		sendActionsForControlEvents(.ValueChanged)
 	}
+    
+    func addDescViewOfTag(tag: Tagable) {
+        if let desc = tag.desc {
+            if (desc as NSString).length > 0 {
+                let v = AITagDescView()
+                v.frame = CGRectMake(0, 0, frame.width, 30)
+                v.text = desc
+                var f = v.frame
+                if let p = subviews.last {
+                    f.origin.y = CGRectGetMaxY(p.frame)
+                }
+                v.frame = f
+                addSubview(v)
+                
+                var selfFrame = frame
+                selfFrame.size.height = CGRectGetMaxY(f)
+                frame = selfFrame
+            }
+        }
+    }
 	
 	func addSingleLineTagView(tags tags: [Tagable], parent: Tagable? = nil) {
 		let previousSingleLineTagView = subviews.last
@@ -186,26 +206,14 @@ class AITagsView: AIServiceParamBaseView {
 				row++
 				if let subtags = tag.subtags {
 					addSingleLineTagView(tags: subtags, parent: tag)
-				}
+                } else {
+                    addDescViewOfTag(tag)
+                }
 			}
 		} else {
-			if let desc = parent?.desc {
-				if (desc as NSString).length > 0 {
-					let v = AITagDescView()
-					v.frame = CGRectMake(0, 0, frame.width, 30)
-					v.text = desc
-					var f = v.frame
-					if let p = previousSingleLineTagView {
-						f.origin.y = CGRectGetMaxY(p.frame)
-					}
-					v.frame = f
-					addSubview(v)
-					
-					var selfFrame = frame
-					selfFrame.size.height = CGRectGetMaxY(f)
-					frame = selfFrame
-				}
-			}
+            if let p = parent {
+                addDescViewOfTag(p)
+            }
 		}
 	}
 	

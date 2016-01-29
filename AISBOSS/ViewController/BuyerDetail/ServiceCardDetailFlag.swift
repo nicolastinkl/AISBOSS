@@ -89,7 +89,7 @@ class ServiceCardDetailFlag: ServiceParamlView {
     func buildFlagsContainer(){
         flagContainer = UIView(frame: CGRectMake(0, titleLabel.frame.maxY + FLAG_HEIGHT_MARGIN, self.bounds.width, 0))
         if dataSource?.product_name.isEmpty == true {
-            flagContainer.setY(0)
+            flagContainer.setY(5)
         }
         self.addSubview(flagContainer)
         var curFrame = CGRectMake(0, 0, 0, FLAG_LABEL_HEIGHT)

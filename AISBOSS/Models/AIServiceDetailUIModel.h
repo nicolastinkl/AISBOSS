@@ -59,6 +59,8 @@
 
 @property (nonatomic, strong) NSString<Optional> *billingMode;
 
+@property (nonatomic, strong) NSString *totalPriceDesc;
+
 @end
 
 
@@ -81,6 +83,8 @@
 @property (nonatomic, assign) NSInteger minNumber;
 
 @property (nonatomic, strong) NSString<Optional> *finalPrice;
+
+@property (nonatomic, strong) NSString *totalPriceDesc;
 
 
 @end

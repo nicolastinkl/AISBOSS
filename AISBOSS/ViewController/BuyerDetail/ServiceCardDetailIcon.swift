@@ -103,6 +103,9 @@ class ServiceCardDetailIcon: ServiceParamlView {
         }
         
         VIEW_NUMBERLINES_MARGIN = holdHeight -  15
+        if VIEW_NUMBERLINES_MARGIN > 30 {
+            VIEW_NUMBERLINES_MARGIN = 20
+        }
         
         fixFrame()
     }
@@ -239,6 +242,7 @@ class ServiceCardDetailIcon: ServiceParamlView {
     }
     
     func fixFrame(){
+        
         if dataSource?.product_name.isEmpty == true {
             self.frame.size.height = VIEW_HEIGHT - ICON_LABEL_MARGIN + VIEW_NUMBERLINES_MARGIN
         }else{
