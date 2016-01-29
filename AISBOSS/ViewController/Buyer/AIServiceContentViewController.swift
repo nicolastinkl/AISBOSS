@@ -537,6 +537,7 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+            self?.scrollView.headerBeginRefreshing()
             self?.saveDataForVS(self!, proposalId: self!.propodalId, completion: { () -> () in
                 self?.initData()
             })
