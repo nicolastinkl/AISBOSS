@@ -58,6 +58,7 @@
 - (void)makeProperties
 {
     _selectedIndex = -1;
+    _defaultIndex = -1;
     _radioSize = [AITools displaySizeFrom1080DesignSize:46];
     _radioMargin = [AITools displaySizeFrom1080DesignSize:40];
     _fontSize = [AITools displaySizeFrom1080DesignSize:42];

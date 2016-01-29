@@ -165,7 +165,7 @@ internal class AIServiceContentViewController: UIViewController {
     //MARK: 保存数据
     
     
-    func saveDataForVS(vc : AIServiceContentViewController, proposalId : Int) {
+    func saveDataForVS(vc : AIServiceContentViewController, proposalId : Int, completion:(()->())?=nil) {
         
         let data : NSMutableDictionary = NSMutableDictionary()
         
@@ -183,13 +183,15 @@ internal class AIServiceContentViewController: UIViewController {
                 AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
                     
                     }, fail: { (ErrorType : AINetError, error : String!) -> Void in
-                        
+                        if let c = completion {
+                            c()
+                        }
                 })
             }
             
             
         }
-
+        
     }
     
     
@@ -535,8 +537,10 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
-
-           //TODO: 发送请求刷新整个界面
+            self?.scrollView.headerBeginRefreshing()
+            self?.saveDataForVS(self!, proposalId: self!.propodalId, completion: { () -> () in
+                self?.initData()
+            })
         }
 
         serviceContentView!.rootViewController = self.parentViewController

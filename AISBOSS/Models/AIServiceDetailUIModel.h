@@ -59,7 +59,7 @@
 
 @property (nonatomic, strong) NSString<Optional> *billingMode;
 
-@property (nonatomic, strong) NSString *totalPriceDesc;
+@property (nonatomic, strong) NSString<Optional> *totalPriceDesc;
 
 @end
 
@@ -84,7 +84,7 @@
 
 @property (nonatomic, strong) NSString<Optional> *finalPrice;
 
-@property (nonatomic, strong) NSString *totalPriceDesc;
+@property (nonatomic, strong) NSString<Optional> *totalPriceDesc;
 
 
 @end

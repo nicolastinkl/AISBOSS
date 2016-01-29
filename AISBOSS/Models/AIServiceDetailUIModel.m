@@ -22,10 +22,43 @@
 
 @implementation AIPriceModel
 
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _price = @"";
+        _totalPriceDesc = @"";
+        _billingMode = @"";
+        _currency = @"";
+        
+    }
+    
+    return self;
+}
+
 
 @end
 
 @implementation AIPriceViewModel
+
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self) {
+        _finalPrice = @"";
+        _totalPriceDesc = @"";
+        _defaultNumber = 0;
+        _minNumber = 0;
+        _maxNumber = 0;
+        _defaultPrice = [[AIPriceModel alloc] init ];
+    }
+    
+    return self;
+}
+
 
 @end
 
