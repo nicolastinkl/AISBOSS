@@ -53,6 +53,7 @@
         _defaultNumber = 0;
         _minNumber = 0;
         _maxNumber = 0;
+        _defaultPrice = [[AIPriceModel alloc] init];
         
     }
     
