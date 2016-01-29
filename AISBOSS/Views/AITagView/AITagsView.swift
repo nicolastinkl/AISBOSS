@@ -264,7 +264,7 @@ class AITagsView: AIServiceParamBaseView {
             serviceParam["service_id"] = originalModel?.service_id_save ?? ""
             serviceParam["product_id"] = originalModel?.product_id_save ?? ""
             serviceParam["param_key"] = originalModel?.displayParams["param_key"] ?? ""
-            serviceParam["param_value"] = tagable.desc ?? ""
+            serviceParam["param_value"] = [tagable.desc ?? ""]
             serviceParam["param_value_id"] = NSNumber(integer: tagable.id) ?? ""
             params.append(serviceParam)
             
