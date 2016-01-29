@@ -161,6 +161,39 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
+    
+    //MARK: 保存数据
+    
+    
+    func saveDataForVS(vc : AIServiceContentViewController, proposalId : Int) {
+        
+        let data : NSMutableDictionary = NSMutableDictionary()
+        
+        if let params : [String : AnyObject] = vc.getAllParameters() {
+            
+            if params.keys.count > 0 {
+                data.addEntriesFromDictionary(params)
+                data.setObject(proposalId, forKey: "proposal_id")
+                data.setObject(0, forKey: "role_id")
+                
+                let message = AIMessage()
+                message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+                message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
+                
+                AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                    
+                    }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                        
+                })
+            }
+            
+            
+        }
+
+    }
+    
+    
+    
     // MARK: 查询金额
     
     func getPriceParameters () -> [String : AnyObject]? {
