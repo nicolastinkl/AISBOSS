@@ -161,7 +161,7 @@ class AIPriceView: AIServiceParamBaseView {
         params["billing_mode"] = displayModel?.defaultPrice.billingMode ?? ""
         params["unit"] = displayModel?.defaultPrice.currency ?? ""
         params["price"] = displayModel?.defaultPrice.price ?? ""
-        params["final_price"] = totalPriceLabel ?? ""
+        params["final_price"] = totalPriceLabel?.text ?? ""
         
         price["price_param"] = params
         list.append(price)
