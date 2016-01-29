@@ -29,7 +29,6 @@ class AIPriceView: AIServiceParamBaseView {
             displayModel = model
             makeSubViews()
         }
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,14 +45,14 @@ class AIPriceView: AIServiceParamBaseView {
         
         if let dModel = displayModel {
             
-            if (dModel.defaultPrice != nil) {
+            if (dModel.totalPriceDesc == nil) {
                 makePriceView()
                 makeTotalPriceView()
             }
             else {
                 let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
                 addBackgroundView(frame)
-                let label : UPLabel = AIViews.normalLabelWithFrame(self.bounds, text: "In time billing price", fontSize: 16, color: UIColor.whiteColor())
+                let label : UPLabel = AIViews.normalLabelWithFrame(self.bounds, text: dModel.totalPriceDesc, fontSize: 16, color: UIColor.whiteColor())
                 label.textAlignment = .Center
                 self.addSubview(label)
                 originalY += 40

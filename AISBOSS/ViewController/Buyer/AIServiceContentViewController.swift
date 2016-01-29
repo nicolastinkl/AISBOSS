@@ -27,8 +27,8 @@ protocol AIServiceContentDelegate : class{
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
-    // MARK: -> Internal properties
-    
+    // MARK: - Internal properties
+
     weak var contentDelegate : AIServiceContentDelegate?
     
     var curAudioView : AIAudioMessageView?
@@ -456,35 +456,37 @@ internal class AIServiceContentViewController: UIViewController {
         }
         //TODO: Old View Some Logic.
         if self.currentDatasource?.service_name?.length > 0 {
-             topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
+             topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: .Normal)
         }
  
         addGalleryView()
         
-        if currentDatasource?.service_intro_img_list.count == 0
+        if currentDatasource?.service_intro_img_list?.count == 0
         {
             galleryView.setHeight(0)
         }
         
-        //TODO: Text
         
-        let detailView = AIDetailText(frame: CGRectMake(10, galleryView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
-        addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor())
-        detailView.frame = CGRectMake(10, galleryView.bottom + 10, CGRectGetWidth(self.view.frame)-20, CGRectGetHeight(detailView.frame))
+       
+//        if  currentDatasource?.service_intro_content.length > 0 {
+//            let detailView = AIDetailText(frame: CGRectMake(10, previousView.bottom + 20, CGRectGetWidth(self.view.frame)-20, 100), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
+//            addNewSubView(detailView, preView: galleryView, color: UIColor.clearColor(),space: 10)
+//            detailView.frame = CGRectMake(10, galleryView.bottom + 10, CGRectGetWidth(self.view.frame)-20, CGRectGetHeight(detailView.frame))
+//            previousView = detailView
+//        }
+        
         
         //TODO: add brand View
-        
+        let parser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
-        let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
-
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, detailView.bottom + 20, CGRectGetWidth(self.view.frame), 0), models: parser.displayModels, rootViewController : self)
+        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
         serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { bView, selectedIndex in
            //TODO: 发送请求刷新整个界面
         }
         serviceContentView.rootViewController = self.parentViewController
-        addNewSubView(serviceContentView, preView: detailView, color: UIColor.clearColor())
-        serviceContentView.frame = CGRectMake(0, detailView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
+        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
+        serviceContentView.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
         
         //TODO: Add helpfull views.
         let musicView = addMusicView(serviceContentView)
@@ -516,7 +518,7 @@ internal class AIServiceContentViewController: UIViewController {
         scrollView.addSubview(galleryView)
         scrollViewSubviews.append(galleryView)
         var imageArray = [String]()
-        self.currentDatasource?.service_intro_img_list.forEach({ imgModel in
+        self.currentDatasource?.service_intro_img_list?.forEach({ imgModel in
             let imageModel = imgModel as! AIProposalServiceDetailIntroImgModel
             imageArray.append(imageModel.service_intro_img ?? "")
         })
@@ -629,15 +631,14 @@ internal class AIServiceContentViewController: UIViewController {
      - parameter preView: 上一个view
      - parameter color:   默认红色
      */
-    func addNewSubView(cview:UIView,preView:UIView,color:UIColor = UIColor(hex: "b32b1d")){
+    func addNewSubView(cview:UIView,preView:UIView,color:UIColor = UIColor(hex: "b32b1d"),space:CGFloat=0){
         scrollView.addSubview(cview)
         scrollViewSubviews.append(cview)
         cview.setWidth(self.view.width)
-        cview.setTop(preView.top + preView.height)
+        cview.setTop(preView.top + preView.height+space)
         cview.backgroundColor = color
         scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
         preCacheView = cview
-        
     }
     
     func addNewSubView(cview:UIView){
