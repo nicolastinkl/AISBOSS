@@ -15,7 +15,7 @@ DEPENDENCIES:
   - AsyncDisplayKit (~> 1.9.4)
   - Cartography (~> 0.6.0)
   - SnapKit (~> 0.18.0)
-  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - Spring (from `https://github.com/asiainfomobile/Spring.git`, branch `swift2`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
     :git: https://github.com/asiainfomobile/AIAlertView.git
   Spring:
     :branch: swift2
-    :git: https://github.com/MengTo/Spring.git
+    :git: https://github.com/asiainfomobile/Spring.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
@@ -32,8 +32,8 @@ CHECKOUT OPTIONS:
     :commit: 2de5b00cba21ea82c3c5af5fcde0a21fce5d82d3
     :git: https://github.com/asiainfomobile/AIAlertView.git
   Spring:
-    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
-    :git: https://github.com/MengTo/Spring.git
+    :commit: 2e1d44fbd7b50298abfc2ff881f60268ac806757
+    :git: https://github.com/asiainfomobile/Spring.git
   SwiftyJSON:
     :commit: 929539eb6a3304eaa9153ca44041a78b85bf2ee5
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git

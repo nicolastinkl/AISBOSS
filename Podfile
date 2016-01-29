@@ -16,7 +16,7 @@ pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
  
 # UI/UX
 
-pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+pod 'Spring', :git => 'https://github.com/asiainfomobile/Spring.git', :branch => 'swift2'
 
 pod 'Cartography', '~> 0.6.0'
 
