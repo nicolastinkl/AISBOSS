@@ -236,7 +236,7 @@ class BDKProposalService : MockProposalService{
         let body = ["data":["proposal_id": proposalId],"desc":["data_mode":"0","digest":""]]
         message.body = NSMutableDictionary(dictionary: body)
 
-        if proposalId == 2692 {
+        if proposalId == 2692000 {
             if let path = NSBundle.mainBundle().pathForResource("AIEvent_Planning", ofType: "json") {
                 let data: NSData? = NSData(contentsOfFile: path)
                 if let dataJSON = data {
