@@ -313,8 +313,8 @@ class AIServiceParamView : UIView {
     
     //MARK: 获取参数
     
-    func getAllParams() -> [String : AnyObject]? {
-        var saveData : [String : AnyObject] = [String : AnyObject]()
+    func getAllParams() -> NSDictionary? {
+        let saveData : NSMutableDictionary = NSMutableDictionary()
         let productList : NSMutableArray = NSMutableArray()
         let serviceList : NSMutableArray = NSMutableArray()
         let priceList : NSMutableArray = NSMutableArray()
@@ -356,10 +356,10 @@ class AIServiceParamView : UIView {
         }
         
         if priceList.count > 0 {
-            saveData["price_param_list"] = priceList
+            saveData.addEntriesFromDictionary(priceList.firstObject as! [NSObject : AnyObject])
         }
         
-        if saveData.keys.count > 0 {
+        if saveData.allKeys.count > 0 {
             return saveData
         }
         
