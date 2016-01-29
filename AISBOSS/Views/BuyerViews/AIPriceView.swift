@@ -45,7 +45,7 @@ class AIPriceView: AIServiceParamBaseView {
         
         if let dModel = displayModel {
             
-            if (dModel.totalPriceDesc == nil) {
+            if (dModel.totalPriceDesc == "") {
                 makePriceView()
                 makeTotalPriceView()
             }
