@@ -455,7 +455,7 @@ internal class AIServiceContentViewController: UIViewController {
             return
         }
         //TODO: Old View Some Logic.
-        if self.currentDatasource?.service_name.length > 0 {
+        if self.currentDatasource?.service_name?.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: UIControlState.Normal)
         }
  

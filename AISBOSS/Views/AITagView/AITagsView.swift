@@ -38,10 +38,29 @@ import UIKit
 
 class AITagsView: AIServiceParamBaseView {
 
+    var originalModel : AIComplexLabelsModel?
 	var titleLabel: UILabel = UILabel(frame: .zero)
 	var tags: [Tagable]
 	var title: String
 	var selectedTagIds: [Int] = [Int]()
+    var selectedTags: [Tagable] {
+        get {
+            var result = [Tagable]()
+            var singleTagViews = subviews.filter { (v) -> Bool in
+                return v.isKindOfClass(AISingleLineTagView)
+            } as! [AISingleLineTagView]
+            
+            singleTagViews = singleTagViews.sort({ (a, b) -> Bool in
+                return a.row < b.row
+            })
+            
+            for s in singleTagViews {
+                result.append(s.selectedTag!)
+            }
+            
+            return result
+        }
+    }
 	var row = 0
 	var singleLineTagViews = [AISingleLineTagView]()
 	init(title: String = "", tags: [Tagable], frame: CGRect) {
@@ -193,6 +212,43 @@ class AITagsView: AIServiceParamBaseView {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+    
+    
+    
+    //TODO: 获取参数
+    
+    override func productParams() -> [NSObject : AnyObject]! {
+
+        var productParams : [NSObject : AnyObject] = [NSObject : AnyObject]()
+        
+        productParams["product_id"] = originalModel?.displayParams["param_source_id"]
+        productParams["service_id"] = originalModel?.service_id_save
+        productParams["role_id"] = originalModel?.displayParams["param_key"]
+        
+        return productParams
+        
+        
+    }
+    
+    func tagsServiceParams() -> [AnyObject] {
+        
+        var params : [AnyObject] = [AnyObject]()
+        
+        selectedTagIds.forEach { (i) -> () in
+            var index : Int = selectedTagIds[i] as Int
+            
+            
+        }
+        
+        
+        
+        return params
+        
+    }
+    
+    
+    
+    
 }
 
 @objc protocol Tagable: NSObjectProtocol {
@@ -216,6 +272,7 @@ class AITagsView: AIServiceParamBaseView {
 	var selected: Bool {
 		get
 	}
+    
 }
 func == (lhs: Tagable, rhs: Tagable) -> Bool {
 	return lhs.id == rhs.id
