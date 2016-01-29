@@ -183,6 +183,25 @@ class AIInputView: AIServiceParamBaseView {
         keyboardDidShow = false
     }
     
+    override func serviceParamsList() -> [AnyObject]! {
+        
+        var params : [AnyObject] = [AnyObject]()
+        let source : String? = displayModel?.displayParams["param_source"] as? String
+        var serviceParam = [NSObject : AnyObject]()
+        serviceParam["source"] = source ?? ""
+        serviceParam["role_id"] = ""
+        serviceParam["service_id"] = displayModel?.service_id_save ?? ""
+        serviceParam["product_id"] = ""
+        serviceParam["param_key"] = displayModel?.displayParams["param_key"] ?? ""
+        serviceParam["param_value"] = titleLabel?.text ?? ""
+        serviceParam["param_value_id"] = ""
+        params.append(serviceParam)
+        
+        
+        return params
+    }
+    
+    
 }
 
 extension AIInputView: UITextFieldDelegate {

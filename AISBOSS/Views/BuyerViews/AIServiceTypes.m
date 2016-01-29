@@ -25,9 +25,13 @@
     
     NSInteger _selectedIndex;
     NSInteger _lastIndex;
+    
+    NSInteger _defaultIndex;
 }
 
 @property (nonatomic, strong) AIServiceTypesModel *serviceTypesModel;
+
+
 
 @end
 
@@ -107,6 +111,7 @@
         if (optionModel.isSelected) {
             _selectedIndex = i;
             radioButton.selected = YES;
+            _defaultIndex = i;
         }
         
         CGFloat x = _radioSize + _radioMargin;
@@ -176,25 +181,52 @@
 
 #pragma mark - 获取参数
 
-- (NSDictionary *)productParams
+- (NSArray *)productParamsList
 {
-    NSString *product_id = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
-    NSString *role_id = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
     
+    if (![source isEqualToString:@"product"]) {
+        return nil;
+    }
+    
+    if (_defaultIndex == _selectedIndex) {
+        return nil;
+    }
+    
+    NSMutableArray *params = [[NSMutableArray alloc] init];
+    AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
+    
+    NSString *product_id = model.identifier;
+    NSString *role_id = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
     NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    [params addObject:productParams];
     
-    return productParams;
+    return params;
 }
 
 
-- (NSDictionary *)serviceParams
+- (NSArray *)serviceParamsList
 {
-    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
+    
+    if (_defaultIndex == _selectedIndex) {
+        return nil;
+    }
+    
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
+    BOOL isProduct = [source isEqualToString:@"product"];
+
+    
     AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
     
-    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":_serviceTypesModel.role_id_save ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": _serviceTypesModel.product_id_save ?: @"", @"param_key":model.identifier ?: @"", @"param_value":model.desc ?: @""};
+    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+    NSString *role_id =  isProduct ? [_serviceTypesModel.displayParams objectForKey:@"param_source_id"] : @"0";
+    NSString *product_id = isProduct ? model.identifier : @"0";
     
-    return serviceParams;
+    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""};
+    [params addObject:serviceParams];
+    
+    return params;
 }
 
 

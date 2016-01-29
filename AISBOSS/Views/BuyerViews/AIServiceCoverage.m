@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSMutableArray *selectedLabels;
 
+@property (nonatomic, strong) NSMutableArray *defaultLabels;
+
 @end
 
 @implementation AIServiceCoverage
@@ -56,6 +58,7 @@
     _titleFontSize = [AITools displaySizeFrom1080DesignSize:42];
     
     self.selectedLabels = [[NSMutableArray alloc] init];
+    self.defaultLabels =  [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 构造title
@@ -111,6 +114,9 @@
         label.selectionImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Coverage%ld", i]];
         
         [self addSubview:label];
+        if (model.isSelected) {
+            [_defaultLabels addObject:label];
+        }
         
         if (CGRectGetMaxX(label.frame) > CGRectGetWidth(self.frame)) {
             x = 0;
@@ -132,24 +138,50 @@
 
 #pragma mark - AIServiceLabelDelegate
 
-- (NSDictionary *)productParams
+- (NSArray *)productParamsList
 {
-    NSString *product_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
-    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_key"];
+    NSString *source = [_coverageModel.displayParams objectForKey:@"source"];
     
-    NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    if (![source isEqualToString:@"product"]) {
+        return nil;
+    }
     
-    return productParams;
+    if ([_defaultLabels isEqualToArray:_selectedLabels]) {
+        return nil;
+    }
+    
+    
+    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSString *product_id = nil;
+    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
+    
+    for (AIOptionModel *model in _selectedLabels) {
+        product_id = model.identifier;
+        NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
+        [params addObject:productParams];
+    }
+
+    return params;
 }
 
 
-- (NSArray *)coverageServiceParams
+- (NSArray *)serviceParamsList
 {
+    if ([_defaultLabels isEqualToArray:_selectedLabels]) {
+        return nil;
+    }
+    
     NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
+    NSNumber *param_key = [_coverageModel.displayParams objectForKey:@"param_key"];
+    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
+    BOOL isProduct = [source isEqualToString:@"product"];
     NSMutableArray *params = [[NSMutableArray alloc] init];
     
     for (AIOptionModel *model in _selectedLabels) {
-        NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":_coverageModel.role_id_save ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": _coverageModel.product_id_save ?: @"", @"param_key":model.identifier ?: @"", @"param_value":model.desc ?: @""};
+        
+        NSString *productID = isProduct ? model.identifier : @"0";
+        
+        NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": productID ?: @"", @"param_key": param_key ?: @"", @"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""};
         [params addObject:serviceParams];
     }
     
@@ -173,8 +205,16 @@
 - (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected
 {
     for (AIOptionModel *model in _coverageModel.options) {
-        if ([model.desc isEqualToString:serviceLabel.labelTitle] && selected) {
-            [self insertModel:model];
+        if ([model.desc isEqualToString:serviceLabel.labelTitle]) {
+            
+            if (selected) {
+                [self insertModel:model];
+            }
+            else if ([_selectedLabels containsObject:serviceLabel])
+            {
+                [_selectedLabels removeObject:serviceLabel];
+            }
+            
             break;
         }
     }

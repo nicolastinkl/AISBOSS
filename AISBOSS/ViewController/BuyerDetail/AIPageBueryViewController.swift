@@ -176,39 +176,34 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
 
         self.view.showLoadingWithMessage("")
         
-        
         // handle parameter upload actio here
-        let submitDataDic = NSMutableDictionary()
         
         for vc in childViewControllers {
             
             let contentVC = vc as! AIServiceContentViewController
-            parseParam(contentVC, submitDataDic: submitDataDic)
-        }
-        
-        
-        guard submitDataDic.count > 0 else {
-            self.dismissViewControllerAnimated(true, completion: nil)
-            return;
-        }
-        
-        let enumerator = submitDataDic.objectEnumerator()
-        
-        for item in enumerator {
-            let data = item as! AIServiceSubmitModel
-            let message = AIMessage()
-            message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data.toDictionary()])
-    
-            message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
             
-            AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            let data : NSMutableDictionary = NSMutableDictionary()
+            
+            if let params : [String : AnyObject] = contentVC.getAllParameters() {
+                data.addEntriesFromDictionary(params)
+                data.setObject(proposalId, forKey: "proposal_id")
+                data.setObject(0, forKey: "role_id")
                 
-                }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                let message = AIMessage()
+                message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+                message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
+                
+                AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
                     
-            })
+                    }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                        
+                })
+
+            }
+            
             
         }
-
+        
         while (AINetEngine.defaultEngine().activitedTask.count > 0) {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
         }
