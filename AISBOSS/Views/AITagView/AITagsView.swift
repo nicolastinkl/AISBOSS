@@ -274,7 +274,9 @@ class AITagsView: AIServiceParamBaseView {
         serviceParam["role_id"] = originalModel?.role_id_save ?? ""
         serviceParam["service_id"] = originalModel?.service_id_save ?? ""
         serviceParam["product_id"] = originalModel?.product_id_save ?? ""
-        serviceParam["param_key"] = selectedTags[1] ?? ""
+        let tag = selectedTags[1] as Tagable
+        serviceParam["param_key"] = tag.paramkey ?? ""
+        
         serviceParam["param_value"] = param_values
         serviceParam["param_value_id"] = param_value_ids
         params.append(serviceParam)
