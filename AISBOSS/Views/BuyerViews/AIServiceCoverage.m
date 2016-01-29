@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) NSMutableArray *selectedLabels;
 
+@property (nonatomic, strong) NSMutableArray *defaultLabels;
+
 @end
 
 @implementation AIServiceCoverage
@@ -54,6 +56,7 @@
     _titleFontSize = [AITools displaySizeFrom1080DesignSize:42];
 
     self.selectedLabels = [[NSMutableArray alloc] init];
+    self.defaultLabels =  [[NSMutableArray alloc] init];
 }
 
 #pragma mark - 构造title
@@ -104,6 +107,11 @@
 
         [self addSubview:label];
 
+        if (model.isSelected) {
+            [_defaultLabels addObject:model];
+            [self.selectedLabels addObject:model];
+        }
+        
         if (CGRectGetMaxX(label.frame) > CGRectGetWidth(self.frame)) {
             x = 0;
             y += _labelMargin + height;
@@ -113,6 +121,8 @@
 
         x += _labelMargin + CGRectGetWidth(label.frame);
     }
+    
+    self.selectedLabels = [[NSMutableArray alloc] initWithArray:_defaultLabels];
 
     CGRect frame = self.frame;
     frame.size.height = y + height;
@@ -122,23 +132,52 @@
 
 #pragma mark - AIServiceLabelDelegate
 
-- (NSDictionary *)productParams {
-    NSString *product_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
-    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_key"];
 
-    NSDictionary *productParams = @{ @"product_id": product_id ? : @"", @"service_id": _coverageModel.service_id_save ? : @"", @"role_id": role_id ? : @"" };
+- (NSArray *)productParamsList
+{
+    NSString *source = [_coverageModel.displayParams objectForKey:@"source"];
+    
+    if (![source isEqualToString:@"product"]) {
+        return nil;
+    }
+    
+    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSString *product_id = nil;
+    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
+    
+    for (AIOptionModel *model in _selectedLabels) {
+        product_id = model.identifier;
+        NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_coverageModel.service_id_save?:@"", @"role_id":role_id?: @""};
+        [params addObject:productParams];
+    }
 
-    return productParams;
+    return params;
 }
 
-- (NSArray *)coverageServiceParams {
+
+- (NSArray *)serviceParamsList
+{
     NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
+    NSNumber *param_key = [_coverageModel.displayParams objectForKey:@"param_key"];
+    NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
+    BOOL isProduct = [source isEqualToString:@"product"];
     NSMutableArray *params = [[NSMutableArray alloc] init];
 
+    
+    NSMutableArray *paramValues = [[NSMutableArray alloc] init];
+    NSMutableArray *paramsIDs = [[NSMutableArray alloc] init];
+    NSString *productID = nil;
+    
     for (AIOptionModel *model in _selectedLabels) {
-        NSDictionary *serviceParams = @{ @"source": source ? : @"", @"role_id": _coverageModel.role_id_save ? : @"", @"service_id": _coverageModel.service_id_save ? : @"", @"product_id": _coverageModel.product_id_save ? : @"", @"param_key": model.identifier ? : @"", @"param_value": model.desc ? : @"" };
-        [params addObject:serviceParams];
+        productID = isProduct ? model.identifier : @"";
+        [paramsIDs addObject:model.identifier ?: @""];
+        [paramValues addObject:model.desc ?: @""];
     }
+    
+    
+    NSDictionary *serviceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_coverageModel.service_id_save ?: @"", @"product_id": productID ?: @"", @"param_key": param_key ?: @"", @"param_value":paramValues, @"param_value_id":paramsIDs};
+    [params addObject:serviceParams];
+    
 
     return params;
 }
@@ -155,8 +194,16 @@
 
 - (void)serviceLabel:(AIServiceLabel *)serviceLabel isSelected:(BOOL)selected {
     for (AIOptionModel *model in _coverageModel.options) {
-        if ([model.desc isEqualToString:serviceLabel.labelTitle] && selected) {
-            [self insertModel:model];
+        if ([model.desc isEqualToString:serviceLabel.labelTitle]) {
+            
+            if (selected) {
+                [self insertModel:model];
+            }
+            else if ([_selectedLabels containsObject:model])
+            {
+                [_selectedLabels removeObject:model];
+            }
+            
             break;
         }
     }

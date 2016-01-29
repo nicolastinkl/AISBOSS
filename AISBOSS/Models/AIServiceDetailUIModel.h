@@ -82,7 +82,10 @@
 
 @property (nonatomic, assign) NSInteger minNumber;
 
+@property (nonatomic, strong) NSString<Optional> *finalPrice;
+
 @property (nonatomic, strong) NSString *totalPriceDesc;
+
 
 @end
 // case Calendar =               "Calendar"       // 日历
@@ -92,7 +95,12 @@
 
 @interface AICanlendarViewModel : JSONModel
 
-@property (nonatomic, assign) NSInteger calendarType; // default 0 : 月日
+
+@property (nonatomic, strong) NSString<Optional> *identifier;
+
+@property (nonatomic, strong) NSString<Optional> *title;
+
+@property (nonatomic, strong) NSString<Optional> *calendar; // default 0 : 月日
 
 @end
 // case SingalOption =           "SingalOption"   // 单选

@@ -11,7 +11,16 @@ import UIKit
 class PriceAndStepperView: UIView {
 	
 	var stepper: KBHTextFieldStepper!
-	let price: String // 单价
+	// 单价
+	var price: String? {
+		set {
+			priceLabel?.text = newValue
+		}
+		get {
+			return priceLabel.text
+		}
+	}
+	var priceLabel: UILabel!
 	let showStepper: Bool
 	let defaultValue: Int
 	var value: CGFloat {
@@ -54,21 +63,21 @@ class PriceAndStepperView: UIView {
 	 - returns:
 	 */
 	init(frame: CGRect, price: String, showStepper: Bool, defaultValue: Int = 0, minValue: Int = 0, maxValue: Int, onValueChanged: (PriceAndStepperView) -> ()) {
-		self.price = price
+		
 		self.showStepper = showStepper
 		self.defaultValue = defaultValue
 		self.minValue = minValue
 		self.maxValue = maxValue
 		self.onValueChanged = onValueChanged
 		super.init(frame: frame)
-		setup()
+		setup(price)
 		
 		var frame = self.frame
 		frame.size.height += CONSTANTS.selectedLabelHeight
 		self.frame = frame
 	}
 	
-	func setup() {
+    func setup(price:String) {
 		// setup bg
 		let bgImage = UIImage(named: "Wave_BG")
 		let bgImageView = UIImageView(image: bgImage)
@@ -77,7 +86,7 @@ class PriceAndStepperView: UIView {
 		
 		// setup price label
 		let priceLabelFrame = CGRectMake(CONSTANTS.margin, CONSTANTS.selectedLabelHeight, CGRectGetWidth(frame) - CONSTANTS.stepperWidth - CONSTANTS.margin, CGRectGetHeight(frame))
-		let priceLabel = AIViews.normalLabelWithFrame(priceLabelFrame, text: price, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
+		priceLabel = AIViews.normalLabelWithFrame(priceLabelFrame, text: price, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
 		priceLabel.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
 		addSubview(priceLabel)
 		
@@ -87,6 +96,7 @@ class PriceAndStepperView: UIView {
 			stepper.tintColor = UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0)
 			stepper.backgroundColor = UIColor.clearColor()
 			stepper.textField.textColor = UIColor.whiteColor()
+            stepper.textField.text = "\(defaultValue)"
 			stepper.textField.delegate = self
 			stepper.addTarget(self, action: "stepperValueChanged", forControlEvents: .ValueChanged)
 			addSubview(stepper)
@@ -124,7 +134,7 @@ class PriceAndStepperView: UIView {
 			
 			inputTextField = UITextField(frame: CGRectMake(x, y, textWidth, textHeight))
 			inputTextField.backgroundColor = UIColor.whiteColor()
-            inputTextField.keyboardType = .NumberPad
+			inputTextField.keyboardType = .NumberPad
 			effectView.addSubview(inputTextField)
 		}
 		

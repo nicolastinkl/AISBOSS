@@ -118,15 +118,18 @@
     
     model.serviceParams = _serviceParams;
     model.relatedParams = _relatedParams;
-    model.displayParams = params;
+    model.displayParams = [params objectForKey:@"ui_template_content"];
 
-    if ([[params objectForKey:@"ui_template_content"] isMemberOfClass:[NSDictionary class]]) {
+    if ([[params objectForKey:@"ui_template_content"] isKindOfClass:[NSDictionary class]]) {
         
         NSDictionary *content = [params objectForKey:@"ui_template_content"];
         NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
         model.isPriceRelated = isPriceRelated.boolValue;
         model.service_id_save = _serviceID;
         model.source_save = [content objectForKey:@"param_source"];
+        
+        model.product_id_save = [content objectForKey:@"param_source_id"];
+        model.role_id_save = [content objectForKey:@"param_key"];
     }
     
     
@@ -224,19 +227,21 @@
     model.defaultNumber = defaultNumber.integerValue;
     model.minNumber = minNumber.integerValue;
     model.maxNumber = maxNumber.integerValue;
+    model.finalPrice = [content objectForKey:@"final_price"];
     
     NSDictionary *priceDic = [content objectForKey:@"default_price"];
     AIPriceModel *priceM = [[AIPriceModel alloc] init];
     
-    if (priceDic[@"total_price_desc"] && [priceDic[@"total_price_desc"] length]) {
-        priceM.totalPriceDesc = priceDic[@"total_price_desc"];
-        model.totalPriceDesc = priceDic[@"total_price_desc"];
+    if (content[@"total_price_desc"] && [content[@"total_price_desc"] length]) {
+        priceM.totalPriceDesc = content[@"total_price_desc"];
+        model.totalPriceDesc = content[@"total_price_desc"];
     }else {
         priceM.price = [NSString stringWithFormat:@"%@", [priceDic objectForKey:@"price"] ?: @"0"];
         priceM.currency = [priceDic objectForKey:@"unit"];
         priceM.billingMode = [priceDic objectForKey:@"billing_mode"];
         model.defaultPrice = priceM;
     }
+    
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
@@ -255,8 +260,12 @@
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     
-    NSMutableArray *level1 = [NSMutableArray array];
+   
+    void(^recursiveBlock)(NSArray *,AIComplexLabelModel *) = ^(NSArray *inputArray,AIComplexLabelModel *parentLabel) {
+        
+    };
     
+    NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
         sModel.atitle = [dic objectForKey:@"content"];
@@ -287,7 +296,7 @@
         for (NSDictionary *dic in self.relatedParams) {
             NSDictionary *param = [dic objectForKey:@"param"];
             
-            if ([[param objectForKey:@"param_value_key"] isMemberOfClass:[NSNumber class]]){
+            if ([[param objectForKey:@"param_value_key"] isKindOfClass:[NSNumber class]]){
                 NSNumber *value_key = [param objectForKey:@"param_value_key"];
                 if (value_key.integerValue == model.identifier) {
                     NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
@@ -331,8 +340,11 @@
 #pragma mark - 解析 5 时间，日历
 - (void)parse5WithParam:(NSDictionary *)param
 {
+    NSDictionary *content = [param objectForKey:@"ui_template_content"];
     AICanlendarViewModel *model = [[AICanlendarViewModel alloc] init];
-    
+    model.identifier = [content objectForKey:@"param_key"];
+    model.title = [content objectForKey:@"param_name"];;
+    model.calendar = [content objectForKey:@"default_value"];
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];
     
@@ -348,7 +360,7 @@
     AIInputViewModel *model = [[AIInputViewModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
     model.defaultText = [content objectForKey:@"default_value"];
-    model.tail = [content objectForKey:@"value"];
+    model.tail = [content objectForKey:@"unit"];
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];

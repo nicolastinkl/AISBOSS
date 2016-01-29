@@ -19,7 +19,7 @@ class AIDropdownBrandView: UIView {
 			updateExpandedViewStatus()
 		}
 	}
-	
+    var displayModel : AIServiceProviderViewModel?
 	var onDownButtonDidClick: ((AIDropdownBrandView) -> ())? = nil
 	var onSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	
@@ -390,4 +390,8 @@ class HalfRoundedCornerLabel: UILabel {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+    
+
+    
+    
 }

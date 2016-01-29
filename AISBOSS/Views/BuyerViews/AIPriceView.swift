@@ -52,9 +52,12 @@ class AIPriceView: AIServiceParamBaseView {
             else {
                 let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
                 addBackgroundView(frame)
-                let label : UPLabel = AIViews.normalLabelWithFrame(self.bounds, text: dModel.totalPriceDesc, fontSize: 16, color: UIColor.whiteColor())
+                let label = AIViews.normalLabelWithFrame(frame, text: dModel.totalPriceDesc, fontSize: AITools.displaySizeFrom1080DesignSize(63), color: AITools.colorWithR(0xf7, g: 0x9a, b: 0x00))
+                label.font = AITools.myriadBoldWithSize(AITools.displaySizeFrom1080DesignSize(63))
+                
                 label.textAlignment = .Center
                 self.addSubview(label)
+                label.setCenterY(20)
                 originalY += 40
             }
             resetFrame()
@@ -90,12 +93,12 @@ class AIPriceView: AIServiceParamBaseView {
         
         weak var ws = self
         let frame = CGRectMake(0, originalY, CGRectGetWidth(self.frame), 40)
-        priceView = PriceAndStepperView(frame: frame, price: finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
+        priceView = PriceAndStepperView(frame: frame, price: (displayModel?.finalPrice)!, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
             ws?.changeTotalPrice(Int(priceAndStepperView.value))
         })
         self.addSubview(priceView!)
         
-        originalY += 40
+        originalY += (priceView?.height)!
     }
     
     func makeTotalPriceView ()
@@ -120,7 +123,7 @@ class AIPriceView: AIServiceParamBaseView {
         totalPriceLabel?.font = AITools.myriadBoldWithSize(fontSize)
         self.addSubview(totalPriceLabel!)
         
-        originalY = originalY * 2
+        originalY += 40
     }
     
     //MARK: Action
@@ -130,19 +133,41 @@ class AIPriceView: AIServiceParamBaseView {
         let price : NSString = displayModel!.defaultPrice.price as NSString
 //        let totalPrice = Double(displayModel!.defaultNumber) * price.doubleValue
         let totoalPrice = Double(totalNumber) * price.doubleValue
-        let PriceStr = "Total€\(totoalPrice)"
+        let PriceStr = "Total € \(totoalPrice)"
         totalPriceLabel?.text = PriceStr
         
     }
     
+
     //MARK: 输出数据
-    
-    func params() -> [String : AnyObject] {
-        var params = [String : AnyObject]()
-        params["price"] = displayModel?.defaultPrice.toDictionary()
-        params["number"] = NSNumber(integer: totalNumber)
-        
-        return params
+
+    /*
+    "price_param": {
+    "amount": 2,
+    "billing_mode": "/time",
+    "unit": "€",
+    "price": 800,
+    "final_price": "€ 800+ / time "
     }
+    */
+
+    
+    override func serviceParamsList() -> [AnyObject]! {
+        var list = [AnyObject]()
+        var price = [String : AnyObject]()
+        var params = [String : AnyObject]()
+        
+        params["amount"] = totalNumber
+        params["billing_mode"] = displayModel?.defaultPrice.billingMode ?? ""
+        params["unit"] = displayModel?.defaultPrice.currency ?? ""
+        params["price"] = displayModel?.defaultPrice.price ?? ""
+        params["final_price"] = displayModel?.finalPrice ?? ""
+        
+        price["price_param"] = params
+        list.append(price)
+        
+        return list
+    }
+    
     
 }

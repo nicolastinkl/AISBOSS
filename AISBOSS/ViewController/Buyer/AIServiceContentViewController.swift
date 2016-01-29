@@ -27,6 +27,11 @@ protocol AIServiceContentDelegate : class{
 ///  - AIServiceContentViewController
 internal class AIServiceContentViewController: UIViewController {
 
+
+    // MARK: -> Internal properties
+    
+    var serviceContentView : AIServiceParamView?
+
     // MARK: - Internal properties
 
     weak var contentDelegate : AIServiceContentDelegate?
@@ -156,17 +161,65 @@ internal class AIServiceContentViewController: UIViewController {
         }
     }
     
+    
+    //MARK: 保存数据
+    
+    
+    func saveDataForVS(vc : AIServiceContentViewController, proposalId : Int) {
+        
+        let data : NSMutableDictionary = NSMutableDictionary()
+        
+        if let params : [String : AnyObject] = vc.getAllParameters() {
+            
+            if params.keys.count > 0 {
+                data.addEntriesFromDictionary(params)
+                data.setObject(proposalId, forKey: "proposal_id")
+                data.setObject(0, forKey: "role_id")
+                
+                let message = AIMessage()
+                message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
+                message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
+                
+                AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                    
+                    }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+                        
+                })
+            }
+            
+            
+        }
+
+    }
+    
+    
+    
+    // MARK: 查询金额
+    
+    func getPriceParameters () -> [String : AnyObject]? {
+        var params : [String : AnyObject] = [String : AnyObject]()
+        params["service_id"] = currentDatasource?.service_id
+        params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
+        
+        return params
+    }
+    
     // MARK: 参数保存
     
-    func getAllParameters () -> NSDictionary? {
+    func getAllParameters () -> [String : AnyObject]? {
+   
+        var params : [String : AnyObject] = [String : AnyObject]()
         
-        var param : NSDictionary?
-        
-        if let dic = configuredParameters {
-            param = NSDictionary(dictionary: dic)
+        if let _ : AIServiceParamView = serviceContentView {
+            if let _ : [String : AnyObject] = serviceContentView?.getAllParams() {
+                params["service_id"] = currentDatasource?.service_id
+                params["customer_id"] = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
+                params["save_data"] = serviceContentView?.getAllParams()
+            }
         }
+
         
-        return param
+        return params
     }
     
     func cleanAllParameters () {
@@ -477,16 +530,19 @@ internal class AIServiceContentViewController: UIViewController {
         
         
         //TODO: add brand View
-        let parser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
+        let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
 
-        let serviceContentView : AIServiceParamView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+        serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
         
-        serviceContentView.onDropdownBrandViewSelectedIndexDidChanged = { bView, selectedIndex in
+        serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+
            //TODO: 发送请求刷新整个界面
         }
-        serviceContentView.rootViewController = self.parentViewController
-        addNewSubView(serviceContentView, preView: galleryView, color: UIColor.clearColor())
-        serviceContentView.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView.frame))
+
+        serviceContentView!.rootViewController = self.parentViewController
+        addNewSubView(serviceContentView!, preView: galleryView, color: UIColor.clearColor())
+        serviceContentView!.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView!.frame))
+
         
         //TODO: Add helpfull views.
         let musicView = addMusicView(serviceContentView)
