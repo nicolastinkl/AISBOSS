@@ -135,7 +135,7 @@
 
 - (NSArray *)productParamsList
 {
-    NSString *source = [_coverageModel.displayParams objectForKey:@"source"];
+    NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
     
     if (![source isEqualToString:@"product"]) {
         return nil;

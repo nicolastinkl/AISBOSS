@@ -207,6 +207,7 @@ internal class AIServiceContentViewController: UIViewController {
         print(message.body)
         message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
         
+        self.view.showLoading()
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             }, fail: { [weak self] (ErrorType : AINetError, error : String!) -> Void in
@@ -555,8 +556,17 @@ internal class AIServiceContentViewController: UIViewController {
         serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
             let id = bView.brands[selectedIndex].id
             self?.saveChangeService(id, completion: { () -> () in
-                self?.scrollView.headerBeginRefreshing()
+                self?.view.hideLoading()
+                self?.initData()
             })
+        }
+        // enum all service provider id get the selected service id and index
+        if let dropdownBrandView = serviceContentView?.dropdownBrandView {
+            for (index,(title:_,image:_,id:serviceId)) in dropdownBrandView.brands.enumerate() {
+                if serviceId == serviceContentModel?.service_id {
+                    dropdownBrandView.selectedIndex = index
+                }
+            }
         }
 
         serviceContentView!.rootViewController = self.parentViewController
@@ -1168,6 +1178,7 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
     
      //MARK: 处理更新金额请求
     func shouldQueryNewPrice(body: NSDictionary) {
+
         let message = AIMessage()
         message.body = body.mutableCopy() as! NSMutableDictionary
         message.url = "http://10.5.1.249:3000/findServicePrice"
@@ -1181,7 +1192,7 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
                 if let p = priceView as? AIPriceView {
                     let model = p.displayModel
                     if let responseDic = response as?  NSDictionary {
-                        if let priceDic = responseDic["price"] as?  NSDictionary {
+                        if let priceDic = responseDic["price"] as? NSDictionary {
                             model?.finalPrice = priceDic.objectForKey("final_price") as! String
                             p.priceView?.price = model!.finalPrice
                         }
