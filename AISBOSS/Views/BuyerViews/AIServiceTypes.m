@@ -210,7 +210,7 @@
         return nil;
     }
     
-    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
     
     if (![source isEqualToString:@"product"]) {
         return nil;
@@ -236,7 +236,7 @@
         return nil;
     }
     
-    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
     BOOL isProduct = [source isEqualToString:@"product"];
 
     
