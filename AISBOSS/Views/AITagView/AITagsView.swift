@@ -241,6 +241,9 @@ class AITagsView: AIServiceParamBaseView {
         productParams["service_id"] = originalModel?.service_id_save
         productParams["role_id"] = originalModel?.displayParams["param_key"]
         
+        let tag = selectedTags[0] as Tagable
+        productParams["product_name"] = tag.title ?? ""
+        
         params.append(productParams)
         
         return params
@@ -261,7 +264,7 @@ class AITagsView: AIServiceParamBaseView {
         selectedTags.forEach({ (tagable) -> () in
             
             param_value_ids.addObject(NSNumber(integer: tagable.id) ?? "")
-            param_values.addObject(tagable.desc ?? "")
+            param_values.addObject(tagable.title ?? "")
             
             
         })

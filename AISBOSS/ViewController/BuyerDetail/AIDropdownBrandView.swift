@@ -19,12 +19,12 @@ class AIDropdownBrandView: UIView {
 			updateExpandedViewStatus()
 		}
 	}
-    var displayModel : AIServiceProviderViewModel?
+	var displayModel : AIServiceProviderViewModel?
 	var onDownButtonDidClick: ((AIDropdownBrandView) -> ())? = nil
 	var onSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
 	
 	var expandedView: UIView!
-	var brands = [(title: String, image: String)]()
+	var brands = [(title: String, image: String, id: Int)]()
 	var labels = [HalfRoundedCornerLabel]()
 	var iconLabels = [BrandIconLabel]()
 	var downButton: UIButton!
@@ -68,7 +68,7 @@ class AIDropdownBrandView: UIView {
 		super.layoutSubviews()
 	}
 	
-	init(brands: [(title: String, image: String)], selectedIndex: Int, frame: CGRect) {
+	init(brands: [(title: String, image: String, id: Int)], selectedIndex: Int, frame: CGRect) {
 		self.brands = brands
 		self.selectedIndex = selectedIndex
 		super.init(frame: CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, Constants.barHeight))
@@ -105,6 +105,7 @@ class AIDropdownBrandView: UIView {
 				label.imageURL = brand.image
 			}
 			label.text = brand.title
+			
 			iconLabels.append(label)
 			let row = CGFloat(i / 4)
 			let column = CGFloat(i % 4)
@@ -129,7 +130,7 @@ class AIDropdownBrandView: UIView {
 	func setupLabels() {
 		numberOfBrandsLabel = {
 			let result = UILabel(frame: .zero)
-          
+			
 			result.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(41))
 			result.text = "\(brands.count) brands in total"
 			result.textColor = UIColor.whiteColor()
@@ -151,6 +152,9 @@ class AIDropdownBrandView: UIView {
 		for (i, brand) in brands.enumerate() {
 			let label = HalfRoundedCornerLabel(text: brand.title, backgroundColor: Constants.Label.backgroundColor, highlightedBackgroundColor: Constants.Label.highlightedBackgroundColor, textColor: Constants.Label.textColor, highlightedTextColor: Constants.Label.highlightedTextColor)
 			label.text = brand.title
+			#if !DEBUG
+			label.text = "\(brand.id)"
+			#endif
 			label.tag = i
 			label.userInteractionEnabled = true
 			barScrollView.addSubview(label)
@@ -163,11 +167,11 @@ class AIDropdownBrandView: UIView {
 			make.top.equalTo(barView)
 			make.leading.equalTo(barView).offset(Constants.margin)
 			make.bottom.equalTo(barView).offset(-Constants.lineViewHeight)
-            if downButton != nil {
-                make.trailing.equalTo(downButton.snp_leading).offset(-Constants.margin)
-            }else {
-                make.trailing.equalTo(self)
-            }
+			if downButton != nil {
+				make.trailing.equalTo(downButton.snp_leading).offset(-Constants.margin)
+			} else {
+				make.trailing.equalTo(self)
+			}
 		}
 		
 		var previousView: UIView = barScrollView
@@ -236,9 +240,9 @@ class AIDropdownBrandView: UIView {
 	}
 	
 	func setupDownButton() {
-        if brands.count < 5 {
-            return
-        }
+		if brands.count < 5 {
+			return
+		}
 		downButton = UIButton(type: .Custom)
 		downButton.setImage(UIImage(named: "up_triangle"), forState: .Selected)
 		downButton.setImage(UIImage(named: "down_triangle"), forState: .Normal)
@@ -390,8 +394,4 @@ class HalfRoundedCornerLabel: UILabel {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
-    
-
-    
-    
 }

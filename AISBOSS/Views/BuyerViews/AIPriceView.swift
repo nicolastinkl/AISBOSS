@@ -27,6 +27,7 @@ class AIPriceView: AIServiceParamBaseView {
         super.init(frame: frame)
         if let _ = model {
             displayModel = model
+            totalNumber = displayModel!.defaultNumber
             makeSubViews()
         }
     }
@@ -96,6 +97,7 @@ class AIPriceView: AIServiceParamBaseView {
         priceView = PriceAndStepperView(frame: frame, price: displayModel?.finalPrice, showStepper: true, defaultValue: displayModel!.defaultNumber, minValue: displayModel!.minNumber, maxValue: displayModel!.maxNumber, onValueChanged: { priceAndStepperView in
             ws?.changeTotalPrice(Int(priceAndStepperView.value))
         })
+        
         self.addSubview(priceView!)
         
         originalY += (priceView?.height)!
@@ -153,6 +155,7 @@ class AIPriceView: AIServiceParamBaseView {
 
     
     override func serviceParamsList() -> [AnyObject]! {
+        
         var list = [AnyObject]()
         var price = [String : AnyObject]()
         var params = [String : AnyObject]()

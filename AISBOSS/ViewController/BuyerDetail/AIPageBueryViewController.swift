@@ -142,7 +142,7 @@ internal class AIPageBueryViewController: UIViewController {
             self.addSubViewController(viewController, toView: pageView)
             
             if (viewTag == indexNcecssary)  || ((viewTag + 1) == indexNcecssary) || ((viewTag - 1) == indexNcecssary){
-                viewController.loaddataNecessary()
+                viewController.loadDataNecessary()
             }
             
             viewTag = viewTag + 1

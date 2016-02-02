@@ -153,6 +153,11 @@
 
 - (void)shouldQueryNewPrice
 {
+    
+    if (_defaultIndex == _selectedIndex) {
+        return;
+    }
+    
     if (self.queryPriceBlock) {
         AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
         NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
@@ -178,7 +183,6 @@
     button.selected = !button.selected;
     BOOL select = button.selected;
     
-    [self shouldQueryNewPrice];
     /////
     
     if (_selectedIndex != view.tag) {
@@ -190,6 +194,7 @@
     
     _selectedIndex = view.tag;
     
+    [self shouldQueryNewPrice];
     /*
     if ([self.delegate respondsToSelector:@selector(didSelectServiceTypeAtIndex:value:parentModel:)]) {
         [self.delegate didSelectServiceTypeAtIndex:_selectedIndex value:[_serviceTypesModel.param_value objectAtIndex:_selectedIndex] parentModel:_serviceTypesModel];
@@ -201,6 +206,10 @@
 
 - (NSArray *)productParamsList
 {
+    if (_selectedIndex == -1) {
+        return nil;
+    }
+    
     NSString *source = [_serviceTypesModel.displayParams objectForKey:@"source"];
     
     if (![source isEqualToString:@"product"]) {
@@ -211,8 +220,10 @@
     AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
     
     NSString *product_id = model.identifier;
+    
+    NSString *product_name = model.desc;
     NSString *role_id = [_serviceTypesModel.displayParams objectForKey:@"param_source_id"];
-    NSDictionary *productParams = @{@"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
+    NSDictionary *productParams = @{@"product_name" : product_name?:@"", @"product_id" : product_id?:@"", @"service_id":_serviceTypesModel.service_id_save?:@"", @"role_id":role_id?: @""};
     [params addObject:productParams];
     
     return params;
@@ -221,8 +232,7 @@
 
 - (NSArray *)serviceParamsList
 {
-    
-    if (_defaultIndex == _selectedIndex) {
+    if (_selectedIndex == -1) {
         return nil;
     }
     

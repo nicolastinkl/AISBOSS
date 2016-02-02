@@ -15,7 +15,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var dataSource  = [ProposalOrderModelWrap]()
     var dataSourcePop = [AIBuyerBubbleModel]()
-    var tableViewCellCache = [Int: UIView]()
+    var tableViewCellCache = NSMutableDictionary()
     
     var bubbles : AIBubblesView!
     
@@ -132,7 +132,6 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.addHeaderWithCallback { () -> Void in
 
             weakSelf!.clearPropodalData()
-
             weakSelf!.loadData()
         }
 
@@ -142,7 +141,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         // reload bottom tableView
-        tableViewCellCache.removeAll()
+        tableViewCellCache.removeAllObjects()
         tableView.reloadData()
 
     }
@@ -220,7 +219,7 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     deinit {
-        tableViewCellCache.removeAll()
+        tableViewCellCache.removeAllObjects()
     }
 
     
@@ -271,9 +270,10 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.buyerListData = nil
         appDelegate.buyerProposalData = nil
-        tableViewCellCache.removeAll()
-        
+        tableViewCellCache.removeAllObjects()
+        dataSourcePop = []
         dataSource.removeAll()
+        tableView.reloadData()
         // reset UI
     }
     
@@ -611,9 +611,18 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
 
     }
     
+    // MARK: - ScrollViewDelegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y > 0) {
+            topBar.backgroundColor = UIColor(white: 0, alpha: 0.55)
+        } else {
+            topBar.backgroundColor = UIColor.clearColor()
+        }
+    }
+    
     /*
     
-    // MARK: - ScrollViewDelegate
+    
     func handleScrollEventWithOffset(offset:CGFloat) {
         if let bView = bubbleViewContainer {
             let maxHeight = CGRectGetHeight(bView.frame) - topBarHeight
@@ -636,21 +645,14 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         self.handleScrollEventWithOffset(scrollView.contentOffset.y)
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y > 0) {
-            topBar.backgroundColor = UIColor(white: 0, alpha: 0.55)
-        } else {
-            topBar.backgroundColor = UIColor.clearColor()
-        }
-    }*/
+    */
     
     func parseListData(listData : ProposalOrderListModel?) {
         
         if let data = listData {
-            tableViewCellCache.removeAll()
-
+            tableViewCellCache.removeAllObjects()
             dataSource.removeAll()
-            
+            tableView.reloadData()
             for proposal in data.proposal_order_list {
                 let wrapModel = self.proposalToProposalWrap(proposal as! ProposalOrderModel)
                 
