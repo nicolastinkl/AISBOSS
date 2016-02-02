@@ -26,6 +26,18 @@ class AIServiceParamView : UIView {
 	
 	weak var delegate : AIServiceParamViewDelegate?
     var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
+    var dropdownBrandView: AIDropdownBrandView? {
+        get {
+            var result:AIDropdownBrandView? = nil;
+            for v in subviews {
+                if let r = v as? AIDropdownBrandView {
+                    result = r
+                    break
+                }
+            }
+            return result
+        }
+    }
 	var tagViewHeight : CGFloat?
 	
 	var brandsViewHeight : CGFloat?

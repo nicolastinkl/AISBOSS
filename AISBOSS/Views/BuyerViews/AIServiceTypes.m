@@ -12,7 +12,6 @@
 
 #define kRadioButtonTag   999
 
-
 @interface AIServiceTypes ()
 {
     CGFloat _radioSize;
