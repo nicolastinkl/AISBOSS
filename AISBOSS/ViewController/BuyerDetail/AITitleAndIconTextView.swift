@@ -118,10 +118,10 @@ class AITitleAndIconTextView: ServiceParamlView {
             }
             
             if model.param_name.hasPrefix("address") {
-                preLabel.text = "\(model.product_name)"  + "\(model.param_value)"
+                preLabel.text = "\(model.param_value)"// "\(model.product_name)"  + 
             } else {
                 preLabel.textColor = UIColor.whiteColor()
-                let str = model.param_name + " " + model.param_value
+                let str = model.param_name + " " + "\(model.param_value)"
                 let attStr = NSMutableAttributedString(string: str)
                 
                 attStr.addAttribute(NSFontAttributeName, value: AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31)), range: NSMakeRange(0, model.param_name.length))
