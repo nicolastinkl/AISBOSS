@@ -1178,6 +1178,7 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
     
      //MARK: 处理更新金额请求
     func shouldQueryNewPrice(body: NSDictionary) {
+
         let message = AIMessage()
         message.body = body.mutableCopy() as! NSMutableDictionary
         message.url = "http://10.5.1.249:3000/findServicePrice"
