@@ -208,11 +208,11 @@ internal class AIServiceContentViewController: UIViewController {
         message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
         print(message.body)
         message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
-        
         self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             self.view.dismissLoading()
             }, fail: { [weak self] (ErrorType : AINetError, error : String!) -> Void in
+                self?.view.dismissLoading()
                 self?.serviceContentModel?.service_id = serviceid
                 if let c = completion {
                     c()
