@@ -128,6 +128,7 @@
 		84567F681C5222CA0032266C /* AITagLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84567F621C5222CA0032266C /* AITagLabel.m */; };
 		84567F691C5222CA0032266C /* AITagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84567F631C5222CA0032266C /* AITagsView.swift */; };
 		84567F6A1C5222CA0032266C /* multiLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 84567F641C5222CA0032266C /* multiLabels.json */; };
+		8457064B1C61F05B00216D70 /* AIStepperParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457064A1C61F05B00216D70 /* AIStepperParamView.swift */; };
 		8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */; };
 		8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */; };
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
@@ -714,6 +715,7 @@
 		84567F621C5222CA0032266C /* AITagLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AITagLabel.m; sourceTree = "<group>"; };
 		84567F631C5222CA0032266C /* AITagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITagsView.swift; sourceTree = "<group>"; };
 		84567F641C5222CA0032266C /* multiLabels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multiLabels.json; sourceTree = "<group>"; };
+		8457064A1C61F05B00216D70 /* AIStepperParamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIStepperParamView.swift; sourceTree = "<group>"; };
 		8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRestoreToolBar.swift; sourceTree = "<group>"; };
 		8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceRestoreToolBar.xib; sourceTree = "<group>"; };
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
@@ -1448,6 +1450,7 @@
 				8120B7831C4F908D001BB063 /* AIServiceParamView.swift */,
 				8120B78B1C51C21F001BB063 /* AIPriceView.swift */,
 				8120B7931C51CB11001BB063 /* AIInputView.swift */,
+				8457064A1C61F05B00216D70 /* AIStepperParamView.swift */,
 				810870171C5A43BE00077008 /* AIServiceParamBaseView.h */,
 				810870181C5A43BE00077008 /* AIServiceParamBaseView.m */,
 			);
@@ -3492,6 +3495,7 @@
 				818D8EC31C040D4100006408 /* AIStarRate.m in Sources */,
 				81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */,
 				842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */,
+				8457064B1C61F05B00216D70 /* AIStepperParamView.swift in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */,

@@ -1183,7 +1183,8 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
         self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
             self?.view.dismissLoading()
-            print(response)
+                paramView.modifyPrice(response)
+            
             }, fail: {[weak self]  (ErrorType : AINetError, error : String!) -> Void in
                 self?.view.dismissLoading()
         })

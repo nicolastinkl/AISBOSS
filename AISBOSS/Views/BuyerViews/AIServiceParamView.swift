@@ -10,8 +10,8 @@ import Foundation
 
 @objc protocol AIServiceParamViewDelegate : class {
 	func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
-    
-    func newPriceNeedQuery(paramView:AIServiceParamView, body: NSDictionary)
+	
+	func newPriceNeedQuery(paramView: AIServiceParamView, body: NSDictionary)
 }
 
 class AIServiceParamView : UIView {
@@ -25,25 +25,25 @@ class AIServiceParamView : UIView {
 	// MARK: Variables
 	
 	weak var delegate : AIServiceParamViewDelegate?
-    var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
-    var dropdownBrandView: AIDropdownBrandView? {
-        get {
-            return self.viewsWithClass(AIDropdownBrandView).first
-        }
-    }
-    
-    var priceView: AIPriceView? {
-        get {
-            return self.viewsWithClass(AIPriceView).first
-        }
-    }
-    
-    var serviceTypes: [AIServiceTypes] {
-        get {
-            return self.viewsWithClass(AIServiceTypes)
-        }
-    }
-    
+	var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
+	var dropdownBrandView: AIDropdownBrandView? {
+		get {
+			return self.viewsWithClass(AIDropdownBrandView).first
+		}
+	}
+	
+	var priceView: AIPriceView? {
+		get {
+			return self.viewsWithClass(AIPriceView).first
+		}
+	}
+	
+	var serviceTypes: [AIServiceTypes] {
+		get {
+			return self.viewsWithClass(AIServiceTypes)
+		}
+	}
+	
 	var tagViewHeight : CGFloat?
 	
 	var brandsViewHeight : CGFloat?
@@ -56,13 +56,13 @@ class AIServiceParamView : UIView {
 	var originalY : CGFloat = 0
 	
 	// MARK: Override
-    
-    func viewsWithClass<T:UIView>(viewClass:T.Type)-> [T] {
-        let result = displayViews.filter { (v) -> Bool in
-            return v.isKindOfClass(T)
-        } as! [T]
-        return result
-    }
+	
+	func viewsWithClass<T: UIView>(viewClass: T.Type) -> [T] {
+		let result = displayViews.filter { (v) -> Bool in
+			return v.isKindOfClass(T)
+		} as! [T]
+		return result
+	}
 	
 	init(frame : CGRect, models: NSArray?, rootViewController: UIViewController) {
 		sviewWidth = CGRectGetWidth(frame) - originalX * 2
@@ -83,24 +83,33 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Method
 	
-    //TODO: 修改金额
-    
-    
-    func priceRelatedParam(body:NSDictionary) -> NSMutableDictionary {
-        let result = NSMutableDictionary(dictionary: body)
-        let data = NSMutableDictionary(dictionary: result["data"] as! NSDictionary)
-        let price_param_list = NSMutableArray()
-        for types in serviceTypes {
-            if let p = types.priceRelatedParam() {
-                price_param_list.addObject(p)
-            }
-        }
-        data["price_param_list"] = price_param_list
-        result["data"] = data
-        return result
-    }
-    
-    func modifyPrice(price : AIPriceViewModel) {
+	// TODO: 修改金额
+	
+	func priceRelatedParam(body: NSDictionary) -> NSMutableDictionary {
+		let result = NSMutableDictionary(dictionary: body)
+		let data = NSMutableDictionary(dictionary: result["data"] as! NSDictionary)
+		let price_param_list = NSMutableArray()
+		for types in serviceTypes {
+			if let p = types.priceRelatedParam() {
+				price_param_list.addObject(p)
+			}
+		}
+		data["price_param_list"] = price_param_list
+		result["data"] = data
+		return result
+	}
+	
+	func modifyPrice(response : AnyObject!) {
+		print(response)
+		if let dic = response as? NSDictionary {
+			if let m = self.priceView?.displayModel {
+				if let price = dic["price"] as? NSDictionary {
+					m.finalPrice = price["final_price"] as! String
+					m.defaultPrice.price = price["originalPrice"] as! String
+					self.priceView?.displayModel = m
+				}
+			}
+		}
 //        if let views = self.viewsWithClass(AIPriceView) {
 //                let priceView = views.filter({ (v) -> Bool in
 //                    return v.isKindOfClass(AIPriceView)
@@ -115,9 +124,8 @@ class AIServiceParamView : UIView {
 //                    }
 //                }
 //            }
-    }
-    
-    
+	}
+	
 	// MARK: 解析数据模型
 	func parseModels(models : NSArray) {
 		
@@ -185,16 +193,16 @@ class AIServiceParamView : UIView {
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		let types : AIServiceTypes = AIServiceTypes(frame: frame, model: m)
 		addSubview(types)
-        
-        weak var wf = self
-        
-        if m.isPriceRelated {
-            types.queryPriceBlock = {(body) -> Void in
-                // 发送网络请求
-                wf?.delegate?.newPriceNeedQuery(wf!, body:body)
-            }
-        }
-        
+		
+		weak var wf = self
+		
+		if m.isPriceRelated {
+			types.queryPriceBlock = { (body) -> Void in
+				// 发送网络请求
+				wf?.delegate?.newPriceNeedQuery(wf!, body: body)
+			}
+		}
+		
 		originalY += CGRectGetHeight(types.frame) + margin
 		displayViews.append(types)
 	}
@@ -240,7 +248,7 @@ class AIServiceParamView : UIView {
 	// MARK: Display 5
 	func addView5(model : JSONModel) {
 		
-		 let m : AICanlendarViewModel = model as! AICanlendarViewModel
+		let m : AICanlendarViewModel = model as! AICanlendarViewModel
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
 		
 		let pickerView = AIEventTimerView.currentView()
@@ -249,7 +257,7 @@ class AIServiceParamView : UIView {
 		pickerView.timeContent.setTitle(m.calendar ?? "", forState: .Normal)
 		pickerView.setY(originalY)
 		pickerView.newFrame = frame
-        pickerView.displayModel = m
+		pickerView.displayModel = m
 		originalY += CGRectGetHeight(pickerView.frame) + margin
 		displayViews.append(pickerView)
 	}
@@ -275,7 +283,7 @@ class AIServiceParamView : UIView {
 		let coverage : AIServiceCoverage = AIServiceCoverage(frame: frame, model: m)
 		addSubview(coverage)
 		
-        originalY += CGRectGetHeight(coverage.frame) > 0 ? CGRectGetHeight(coverage.frame) + margin : CGRectGetHeight(coverage.frame)
+		originalY += CGRectGetHeight(coverage.frame) > 0 ? CGRectGetHeight(coverage.frame) + margin : CGRectGetHeight(coverage.frame)
 		displayViews.append(coverage)
 	}
 	
@@ -284,17 +292,17 @@ class AIServiceParamView : UIView {
 		let m : AIServiceProviderViewModel = model as! AIServiceProviderViewModel
 		let frame = CGRectMake(0, originalY, sviewWidth + margin * 2, 0)
 		
-        var brands : [(title: String, image: String,id:Int)] = []
+		var brands : [(title: String, image: String, id: Int)] = []
 		var index : Int = 0
 		for var i : Int = 0; i < m.providers.count; i++ {
 			let provider : AIServiceProviderModel = m.providers[i] as! AIServiceProviderModel
-            if let name = provider.name {
-                brands.append((title: name, image: provider.icon,id:provider.identifier))
-
-                if provider.isSelected {
-                    index = i
-                }
-            }
+			if let name = provider.name {
+				brands.append((title: name, image: provider.icon, id: provider.identifier))
+				
+				if provider.isSelected {
+					index = i
+				}
+			}
 			if provider.isSelected {
 				index = i
 			}
@@ -302,7 +310,7 @@ class AIServiceParamView : UIView {
 		
 		let serviceProviderView : AIDropdownBrandView = AIDropdownBrandView(brands: brands, selectedIndex: index, frame: frame)
 		addSubview(serviceProviderView)
-        serviceProviderView.displayModel = m
+		serviceProviderView.displayModel = m
 		
 		serviceProviderView.onDownButtonDidClick = { [weak self] bView in
 			let frameBefore = bView.frame
@@ -312,11 +320,11 @@ class AIServiceParamView : UIView {
 			self?.moveViewsBelow(serviceProviderView, offset: offset)
 		}
 		
-		serviceProviderView.onSelectedIndexDidChanged = {[weak self] bView, selectedIndex in
+		serviceProviderView.onSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
 			// handle selected index changed
-            if let c = self?.onDropdownBrandViewSelectedIndexDidChanged {
-                c(bView,selectedIndex)
-            }
+			if let c = self?.onDropdownBrandViewSelectedIndexDidChanged {
+				c(bView, selectedIndex)
+			}
 		}
 		
 		originalY += CGRectGetHeight(serviceProviderView.frame) + margin
@@ -325,13 +333,15 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Display 9
 	func addView9(model : JSONModel) {
-		// let m : AIPickerViewModel = model as! AIPickerViewModel
-//		originalY += 20
-//		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
-//		let singleSelectView = AISingleSelectView(frame: frame)
-//		addSubview(singleSelectView)
-//		originalY += CGRectGetHeight(singleSelectView.frame) + margin
-//		displayViews.append(singleSelectView)
+
+		let m = model as! AIStepperParamViewModel
+		originalY += 20
+		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
+		let singleSelectView = AIStepperParamView(frame: frame, model: m)
+		addSubview(singleSelectView)
+		originalY += CGRectGetHeight(singleSelectView.frame) + margin
+		displayViews.append(singleSelectView)
+
 	}
 	
 	// MARK: 移动视图
@@ -340,88 +350,84 @@ class AIServiceParamView : UIView {
 		
 		// find anchor
 		let anchor = displayViews.indexOf(view)! + 1
-        
+		
 		// move
 		
 		for var index : Int = anchor; index < displayViews.count; index++ {
 			let sview : UIView = displayViews[index]
 			var frame = sview.frame
-            frame.origin.y += offset
+			frame.origin.y += offset
 			UIView.animateWithDuration(0.25, animations: { () -> Void in
 				sview.frame = frame
 			})
 		}
 		
 		var f = frame
-        let frameBefore = f
+		let frameBefore = f
 		f.size.height = CGRectGetMaxY(displayViews.last!.frame)
 		frame = f
-        let frameAfter = f
-        let newOffset = CGRectGetMaxY(frameAfter) - CGRectGetMaxY(frameBefore)
+		let frameAfter = f
+		let newOffset = CGRectGetMaxY(frameAfter) - CGRectGetMaxY(frameBefore)
 		
 		// post relayout view notification
 //    kServiceParamsViewHeightChanged
-        let obj = ["view":self,"offset":newOffset]
-        NSNotificationCenter.defaultCenter().postNotificationName("kServiceParamsViewHeightChanged", object: obj)
+		let obj = ["view": self, "offset": newOffset]
+		NSNotificationCenter.defaultCenter().postNotificationName("kServiceParamsViewHeightChanged", object: obj)
 	}
-    
-    
-    
-    //MARK: 获取参数
-    
-    func getAllParams() -> NSDictionary? {
-        let saveData : NSMutableDictionary = NSMutableDictionary()
-        let productList : NSMutableArray = NSMutableArray()
-        let serviceList : NSMutableArray = NSMutableArray()
-        let priceList : NSMutableArray = NSMutableArray()
-        
-        displayViews.forEach { (view) -> () in
-            
-            if let p = view as? AIServiceParamBaseView {
-                
-                if p is AIPriceView {
-                    if let list = p.serviceParamsList() {
-                        if list.count > 0 {
-                            priceList.addObjectsFromArray(list)
-                        }
-                    }
-                }
-                else {
-                    if let list = p.productParamsList() {
-                        if list.count > 0 {
-                            productList.addObjectsFromArray(list)
-                        }
-                    }
-                    
-                    if let list = p.serviceParamsList() {
-                        if list.count > 0 {
-                            serviceList.addObjectsFromArray(list)
-                        }
-                    }
-                }
-            }
-            
-        }
-        
-        if productList.count > 0 {
-            saveData["product_list"] = productList
-        }
-        
-        if serviceList.count > 0 {
-            saveData["service_param_list"] = serviceList
-        }
-        
-        if priceList.count > 0 {
-            saveData.addEntriesFromDictionary(priceList.firstObject as! [NSObject : AnyObject])
-        }
-        
-        if saveData.allKeys.count > 0 {
-            return saveData
-        }
-        
-        return nil
-  
-    }
+	
+	// MARK: 获取参数
+	
+	func getAllParams() -> NSDictionary? {
+		let saveData : NSMutableDictionary = NSMutableDictionary()
+		let productList : NSMutableArray = NSMutableArray()
+		let serviceList : NSMutableArray = NSMutableArray()
+		let priceList : NSMutableArray = NSMutableArray()
+		
+		displayViews.forEach { (view) -> () in
+			
+			if let p = view as? AIServiceParamBaseView {
+				
+				if p is AIPriceView {
+					if let list = p.serviceParamsList() {
+						if list.count > 0 {
+							priceList.addObjectsFromArray(list)
+						}
+					}
+				}
+				else {
+					if let list = p.productParamsList() {
+						if list.count > 0 {
+							productList.addObjectsFromArray(list)
+						}
+					}
+					
+					if let list = p.serviceParamsList() {
+						if list.count > 0 {
+							serviceList.addObjectsFromArray(list)
+						}
+					}
+				}
+			}
+		}
+		
+		if productList.count > 0 {
+			saveData["product_list"] = productList
+		}
+		
+		if serviceList.count > 0 {
+			saveData["service_param_list"] = serviceList
+		}
+		
+		if priceList.count > 0 {
+			saveData.addEntriesFromDictionary(priceList.firstObject as! [NSObject : AnyObject])
+		}
+		
+		if saveData.allKeys.count > 0 {
+			return saveData
+		}
+		
+		return nil
+	}
 }
 
 extension AIComplexLabelModel : Tagable {
@@ -446,9 +452,9 @@ extension AIComplexLabelModel : Tagable {
 	var desc: String? {
 		get { return adesc }
 	}
-    
-    var paramkey: Int {
-        get { return paramKey}
-    }
+	
+	var paramkey: Int {
+		get { return paramKey }
+	}
 }
 
