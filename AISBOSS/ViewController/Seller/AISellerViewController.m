@@ -59,7 +59,7 @@
     [self makeTableView];
     [self makeBottomBar];
     [self addRefreshActions];
-    [self preProcess];
+    //[self preProcess];
     [self setupLanguageNotification];
     
     //Chaged UserID.
@@ -71,7 +71,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self preProcess];
+    [self preProcess];
     [AISellserAnimationView startAnimationOnSellerViewController:self];
 }
 
