@@ -207,9 +207,9 @@ internal class AIServiceContentViewController: UIViewController {
         print(message.body)
         message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
         
-        self.view.showLoading()
+        self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            
+            self.view.dismissLoading()
             }, fail: { [weak self] (ErrorType : AINetError, error : String!) -> Void in
                 self?.serviceContentModel?.service_id = serviceid
                 if let c = completion {
