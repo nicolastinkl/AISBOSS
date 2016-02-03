@@ -590,11 +590,16 @@ internal class AIServiceContentViewController: UIViewController {
         //TODO: Add helpfull views.
         let musicView = addMusicView(contentView)
         
-        //TODO: Necessary public View...
+        //TODO: Necessary public View.
 
         if let preView = addCustomView(musicView){
-            addAudioView(preView)
+            if displayForSeller == false {
+                addAudioView(preView)
+            }
         }
+        
+        //TODO: DisplayForSeller.
+        
     }
     
     private func addBrandView()-> AIDropdownBrandView? {
@@ -647,15 +652,18 @@ internal class AIServiceContentViewController: UIViewController {
             viw = providerView
             providerView.content.text = wish.intro ?? ""
             
-            if (wish.hope_list != nil) && wish.hope_list.count > 0 && wish.label_list.count > 0 {
-                let custView =  AICustomView.currentView()
-                addNewSubView(custView, preView: viw)
-                viw = custView
-                custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
-                if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
-                    custView.fillTags(labelList, isNormal: true)
+            if displayForSeller == false {
+                if (wish.hope_list != nil) && wish.hope_list.count > 0 && wish.label_list.count > 0 {
+                    let custView =  AICustomView.currentView()
+                    addNewSubView(custView, preView: viw)
+                    viw = custView
+                    custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
+                    if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
+                        custView.fillTags(labelList, isNormal: true)
+                    }
                 }
             }
+            
         }
         if view == preView {
             return nil
