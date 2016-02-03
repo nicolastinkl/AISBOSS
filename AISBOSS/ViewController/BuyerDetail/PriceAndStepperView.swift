@@ -97,6 +97,7 @@ class PriceAndStepperView: UIView {
 			stepper.backgroundColor = UIColor.clearColor()
 			stepper.textField.textColor = UIColor.whiteColor()
             stepper.textField.text = "\(defaultValue)"
+            stepper.value = Double(defaultValue)
 			stepper.textField.delegate = self
 			stepper.addTarget(self, action: "stepperValueChanged", forControlEvents: .ValueChanged)
 			addSubview(stepper)

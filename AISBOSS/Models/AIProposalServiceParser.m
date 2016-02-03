@@ -387,8 +387,8 @@
         AIServiceProviderModel *provider = [[AIServiceProviderModel alloc] init];
         NSNumber *ide = [dic objectForKey:@"service_id"];
         provider.identifier = ide.integerValue;
-        provider.name = [dic objectForKey:@"service_name"];
-        provider.icon = [dic objectForKey:@"service_thumbnail_icon"];
+        provider.name = [dic objectForKey:@"user_name"];
+        provider.icon = [dic objectForKey:@"user_portrait_icon"];
         provider.isSelected = NO;
         
         [providers addObject:provider];
@@ -408,18 +408,7 @@
 - (void)parse9WithParam:(NSDictionary *)param
 {
     AIServiceProviderViewModel *model = [[AIServiceProviderViewModel alloc] init];
-    
-    NSMutableArray *providers = [NSMutableArray array];
-    AIServiceProviderModel *provider = [[AIServiceProviderModel alloc] init];
-     
-    provider.identifier = 123;
-    provider.name = @"asdfq34";
-    provider.icon = @"";
-    provider.isSelected = NO;
-    
-    [providers addObject:provider];
-    model.providers = providers;
-    
+
     
     // 设置基本参数
     [self parserBaseSavedParams:param forModel:model];

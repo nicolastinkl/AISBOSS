@@ -148,15 +148,11 @@
 {
   
     if (self.queryPriceBlock) {
-        AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
-        NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+
         
-        NSDictionary *body = @{@"data" : @{@"service_id": _serviceTypesModel.service_id_save ?: @"",@"prod_spec_id": @"0",@"param_value_id": @"0",@"price_param_list":@[@{@"param_key": param_key ?: @"",@"param_value":model.desc ?: @"", @"param_value_id":model.identifier ?: @""}]},@"desc": @{@"data_mode": @"0",@"digest": @""}};
+        NSDictionary *body = @{@"data" : @{@"service_id": _serviceTypesModel.service_id_save ?: @"",@"prod_spec_id": @"0",@"param_value_id": @"0",@"price_param_list":@[]},@"desc": @{@"data_mode": @"0",@"digest": @""}};
         self.queryPriceBlock(body);
     }
-    
-    
-    
 }
 
 
@@ -210,10 +206,8 @@
     NSString *role_id =  isProduct ? [_serviceTypesModel.displayParams objectForKey:@"param_source_id"] : @"0";
     NSString *product_id = isProduct ? model.identifier : @"0";
     
-    NSDictionary *priceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":@[model.desc ?: @""], @"param_value_id":model.identifier ?: @""};
+    NSDictionary *priceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":(model.desc ?: @""), @"param_value_id":model.identifier ?: @""};
     return priceParams;
-
-    
 }
 
 
