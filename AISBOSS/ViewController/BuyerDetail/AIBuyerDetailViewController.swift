@@ -538,7 +538,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
         var serviceList: NSArray?
         
         if (tableView == deletedTableView) {

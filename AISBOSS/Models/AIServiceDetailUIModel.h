@@ -73,7 +73,6 @@
 @interface AIPriceViewModel : JSONModel
 
 
-
 @property (nonatomic, strong) AIPriceModel<Optional> *defaultPrice;
 
 @property (nonatomic, assign) NSInteger defaultNumber;
