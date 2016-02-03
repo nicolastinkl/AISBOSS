@@ -34,6 +34,8 @@ internal class AIServiceContentViewController: UIViewController {
 
     // MARK: - Internal properties
 
+    var displayForSeller : Bool = false
+    
     weak var contentDelegate : AIServiceContentDelegate?
     
     var curAudioView : AIAudioMessageView?
@@ -541,41 +543,52 @@ internal class AIServiceContentViewController: UIViewController {
  
         addGalleryView()
         
+        var contentView : UIView
+        
         if currentDatasource?.service_intro_img_list?.count == 0
         {
             galleryView.setHeight(0)
         }
         
+        //TODO: add text for seller
         
-        //TODO: add brand View
-        let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
-
-        serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
-       
-        serviceContentView?.delegate = self
-        serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
-            let id = bView.brands[selectedIndex].id
-            self?.saveChangeService(id, completion: { () -> () in
-                self?.view.hideLoading()
-                self?.initData()
-            })
+        if displayForSeller {
+            contentView = AIDetailText(frame: CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(scrollView.frame), 0), titile: currentDatasource?.service_intro_title, detail: currentDatasource?.service_intro_content)
+            addNewSubView(contentView, preView: galleryView, color: UIColor.clearColor())
         }
-        // enum all service provider id get the selected service id and index
-        if let dropdownBrandView = serviceContentView?.dropdownBrandView {
-            for (index,(title:_,image:_,id:serviceId)) in dropdownBrandView.brands.enumerate() {
-                if serviceId == serviceContentModel?.service_id {
-                    dropdownBrandView.selectedIndex = index
+        else
+        {
+            //TODO: add brand View
+            let parser : AIProposalServiceParser = AIProposalServiceParser(serviceID: (currentDatasource?.service_id)!, serviceParams: currentDatasource?.service_param_list, relatedParams: currentDatasource?.service_param_rel_list, displayParams: currentDatasource?.service_param_display_list)
+            
+            serviceContentView = AIServiceParamView(frame: CGRectMake(0, galleryView.bottom + 20, CGRectGetWidth(self.view.frame), 100), models: parser.displayModels, rootViewController : self)
+            
+            serviceContentView?.delegate = self
+            serviceContentView!.onDropdownBrandViewSelectedIndexDidChanged = { [weak self] bView, selectedIndex in
+                let id = bView.brands[selectedIndex].id
+                self?.saveChangeService(id, completion: { () -> () in
+                    self?.view.hideLoading()
+                    self?.initData()
+                })
+            }
+            // enum all service provider id get the selected service id and index
+            if let dropdownBrandView = serviceContentView?.dropdownBrandView {
+                for (index,(title:_,image:_,id:serviceId)) in dropdownBrandView.brands.enumerate() {
+                    if serviceId == serviceContentModel?.service_id {
+                        dropdownBrandView.selectedIndex = index
+                    }
                 }
             }
+            
+            serviceContentView!.rootViewController = self.parentViewController
+            addNewSubView(serviceContentView!, preView: galleryView, color: UIColor.clearColor())
+            serviceContentView!.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView!.frame))
+
+            contentView = serviceContentView!
         }
-
-        serviceContentView!.rootViewController = self.parentViewController
-        addNewSubView(serviceContentView!, preView: galleryView, color: UIColor.clearColor())
-        serviceContentView!.frame = CGRectMake(0, galleryView.bottom + 10, CGRectGetWidth(self.view.frame), CGRectGetHeight(serviceContentView!.frame))
-
         
         //TODO: Add helpfull views.
-        let musicView = addMusicView(serviceContentView)
+        let musicView = addMusicView(contentView)
         
         //TODO: Necessary public View...
 
