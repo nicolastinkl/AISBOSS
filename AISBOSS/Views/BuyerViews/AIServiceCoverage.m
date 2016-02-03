@@ -159,6 +159,11 @@
 - (NSArray *)serviceParamsList
 {
     NSString *source = [_coverageModel.displayParams objectForKey:@"param_source"];
+    
+    if ([source isEqualToString:@"product"]) {
+        return nil;
+    }
+    
     NSNumber *param_key = [_coverageModel.displayParams objectForKey:@"param_key"];
     NSString *role_id = [_coverageModel.displayParams objectForKey:@"param_source_id"];
     BOOL isProduct = [source isEqualToString:@"product"];

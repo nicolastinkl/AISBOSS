@@ -220,7 +220,7 @@
 @property (nonatomic, strong) NSString<Optional> *identifierPick;
 @property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, strong) NSString<Optional> *tailUnit;
-@property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
+@property (nonatomic, strong) NSArray<Optional> *options;
 @property (nonatomic, strong) id defaultValue; // 当类型是数字为NSNumber对象，其他为字符串
 
 
