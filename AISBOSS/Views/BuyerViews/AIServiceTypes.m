@@ -25,11 +25,7 @@
     NSInteger _selectedIndex;
     NSInteger _lastIndex;
     
-    NSInteger _defaultIndex;
 }
-
-@property (nonatomic, strong) AIServiceTypesModel *serviceTypesModel;
-
 
 
 @end
@@ -57,7 +53,6 @@
 - (void)makeProperties
 {
     _selectedIndex = -1;
-    _defaultIndex = -1;
     _radioSize = [AITools displaySizeFrom1080DesignSize:46];
     _radioMargin = [AITools displaySizeFrom1080DesignSize:40];
     _fontSize = [AITools displaySizeFrom1080DesignSize:42];
@@ -111,7 +106,6 @@
         if (optionModel.isSelected) {
             _selectedIndex = i;
             radioButton.selected = YES;
-            _defaultIndex = i;
         }
         
         CGFloat x = _radioSize + _radioMargin;
@@ -152,11 +146,7 @@
 
 - (void)shouldQueryNewPrice
 {
-    
-    if (_defaultIndex == _selectedIndex) {
-        return;
-    }
-    
+  
     if (self.queryPriceBlock) {
         AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
         NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];

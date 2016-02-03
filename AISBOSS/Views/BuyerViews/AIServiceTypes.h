@@ -22,8 +22,8 @@ typedef void (^QueryPriceBlock)(NSDictionary *);
 @interface AIServiceTypes : AIServiceParamBaseView
 
 @property (nonatomic, weak) id<AIServiceTypesDelegate> delegate;
-
 @property (nonatomic, strong) QueryPriceBlock queryPriceBlock;
+@property (nonatomic, strong) AIServiceTypesModel *serviceTypesModel;
 
 - (id)initWithFrame:(CGRect)frame model:(AIServiceTypesModel *)model;
 

@@ -1178,12 +1178,13 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
     
      //MARK: 处理更新金额请求
     func shouldQueryNewPrice(body: NSDictionary) {
+
         let message = AIMessage()
         message.body = body.mutableCopy() as! NSMutableDictionary
         message.url = "http://10.5.1.249:3000/findServicePrice"
-        self.view.showLoading()
+        self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
-            self?.view.hideLoading()
+            self?.view.dismissLoading()
             if let views = self?.serviceContentView!.displayViews {
                 let priceView = views.filter({ (v) -> Bool in
                     return v.isKindOfClass(AIPriceView)
@@ -1199,7 +1200,8 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
                 }
             }
 
-            }, fail: { (ErrorType : AINetError, error : String!) -> Void in
+            }, fail: {[weak self]  (ErrorType : AINetError, error : String!) -> Void in
+                self?.view.dismissLoading()
         })
     }
 }

@@ -66,6 +66,7 @@ class AIPriceView: AIServiceParamBaseView {
 
     }
     
+    
     func addBackgroundView (frame : CGRect) {
         let bgImageView = UIImageView(image: UIImage(named: "Wave_BG"))
         addSubview(bgImageView)
@@ -114,7 +115,6 @@ class AIPriceView: AIServiceParamBaseView {
         if let _ = displayModel?.defaultPrice.currency {
             PriceStr += (displayModel?.defaultPrice.currency)!
         }
-        
         
         
         PriceStr += " \(totalPrice)"  //String("%.2f",totalPrice)

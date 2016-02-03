@@ -118,7 +118,7 @@ class AITitleAndIconTextView: ServiceParamlView {
             }
             
             if model.param_name.hasPrefix("address") {
-                preLabel.text = "\(model.param_value)"// "\(model.product_name)"  + 
+                preLabel.text = "\(model.param_value)"// "\(model.product_name)"  +
             } else {
                 preLabel.textColor = UIColor.whiteColor()
                 let str = model.param_name + " " + "\(model.param_value)"
