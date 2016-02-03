@@ -549,8 +549,9 @@
     AIServiceContentViewController *contentVC = [[AIServiceContentViewController alloc] init];
     contentVC.serviceContentModel = serviceModel;
     contentVC.propodalId = model.proposal_id;
+    contentVC.displayForSeller = YES;
     contentVC.customID = [NSString stringWithFormat:@"%ld", model.customer.user_id ?: 0];
-    
+    [contentVC loadDataNecessary];
     [self presentViewController:contentVC animated:YES completion:nil];
     
 }
