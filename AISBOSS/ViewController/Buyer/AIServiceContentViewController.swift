@@ -1179,11 +1179,12 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
     func newPriceNeedQuery(paramView:AIServiceParamView, body: NSDictionary) {
         let message = AIMessage()
         message.body = paramView.priceRelatedParam(body)
-        message.url = "http://10.5.1.249:3000/findServicePrice"
+        message.url = AIApplication.AIApplicationServerURL.findServicePrice.description
         self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
             self?.view.dismissLoading()
-            print(response)
+                paramView.modifyPrice(response)
+            
             }, fail: {[weak self]  (ErrorType : AINetError, error : String!) -> Void in
                 self?.view.dismissLoading()
         })

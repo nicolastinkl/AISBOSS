@@ -36,7 +36,6 @@ class PriceAndStepperView: UIView {
 	let onValueChanged: (PriceAndStepperView) -> ()
 	
 	private var inputTextField: UITextField!
-	
 	private var effectView: UIVisualEffectView!
 	
 	private struct CONSTANTS {
@@ -97,13 +96,18 @@ class PriceAndStepperView: UIView {
 			stepper.backgroundColor = UIColor.clearColor()
 			stepper.textField.textColor = UIColor.whiteColor()
             stepper.textField.text = "\(defaultValue)"
-            stepper.value = Double(defaultValue)
-			stepper.textField.delegate = self
-			stepper.addTarget(self, action: "stepperValueChanged", forControlEvents: .ValueChanged)
+
+//			stepper.textField.delegate = self
+            stepper.onValueChanged = { [weak self] sender in
+                self?.value = CGFloat(sender.value)
+                self?.onValueChanged(self!)
+            }
 			addSubview(stepper)
+            stepper.minimumValue = Double(minValue)
 			if maxValue != -1 {
 				stepper.maximumValue = Double(maxValue)
 			}
+            stepper.value = Double(defaultValue)
 			let seletedTitleLabelFrame = CGRectMake(stepper.x, CONSTANTS.selectedLabelY, CONSTANTS.stepperWidth, CONSTANTS.selectedLabelHeight)
 			let selectedTitle = UILabel(frame: seletedTitleLabelFrame)
 			selectedTitle.textColor = UIColor.whiteColor()
@@ -114,54 +118,5 @@ class PriceAndStepperView: UIView {
 		}
 	}
 	
-	func stepperValueChanged() {
-		value = CGFloat(stepper.value)
-		onValueChanged(self)
-	}
-	
-	func addInputView() {
-		let window = UIApplication.sharedApplication().keyWindow!
-		if effectView == nil {
-			let textWidth = window.width / 2
-			let textHeight: CGFloat = 30
-			let x = window.width / 2 - textWidth / 2
-			let y = window.height / 2 - textHeight / 2
-			
-			let effect = UIBlurEffect(style: .Light)
-			effectView = UIVisualEffectView(effect: effect)
-			effectView.frame = window.bounds
-			let tap = UITapGestureRecognizer(target: self, action: "removeEffectView")
-			effectView.addGestureRecognizer(tap)
-			
-			inputTextField = UITextField(frame: CGRectMake(x, y, textWidth, textHeight))
-			inputTextField.backgroundColor = UIColor.whiteColor()
-			inputTextField.keyboardType = .NumberPad
-			effectView.addSubview(inputTextField)
-		}
-		
-		inputTextField.text = "\(Int(value))"
-		if value == 0 {
-			inputTextField.text = ""
-		}
-		
-		NSNotificationCenter.defaultCenter().postNotificationName("kStepperIsEditing", object: 1)
-		inputTextField.becomeFirstResponder()
-		window.addSubview(effectView)
-	}
-	
-	func removeEffectView() {
-		NSNotificationCenter.defaultCenter().postNotificationName("kStepperIsEditing", object: 0)
-		inputTextField.resignFirstResponder()
-		effectView.removeFromSuperview()
-		
-		value = CGFloat((inputTextField.text! as NSString).floatValue)
-		onValueChanged(self)
-	}
-}
 
-extension PriceAndStepperView: UITextFieldDelegate {
-	func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-		addInputView()
-		return false
-	}
 }

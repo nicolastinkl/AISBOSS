@@ -266,7 +266,8 @@ struct AIApplication{
         case recoverOrders
         // 获取Api具体地址.
         case submitOrderByService
-        
+        // 查询价格
+        case findServicePrice
         // 一键恢复订单
         var description: String {
             
@@ -295,6 +296,7 @@ struct AIApplication{
             case .recoverOrders: return AIApplication.KURL_ReleaseURL+"/recoverOrders"
             case .submitOrderByService:   return AIApplication.KURL_ReleaseURL + "/submitOrderByService"
             case .findServiceDetailNew: return AIApplication.KURL_ReleaseURL+"/findServiceDetailNew"
+            case .findServicePrice: return AIApplication.KURL_ReleaseURL + "/findServicePrice"
             }
             
         }

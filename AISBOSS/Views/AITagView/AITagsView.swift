@@ -154,8 +154,11 @@ class AITagsView: AIServiceParamBaseView {
 		if let desc = tag.desc {
 			if (desc as NSString).length > 0 {
 				let v = AITagDescView()
+                
 				v.frame = CGRectMake(0, 0, frame.width, 30)
+                v.label.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(46))
 				v.text = desc
+                v.label.textColor = AITools.colorWithR(0xc7, g: 0xcb, b: 0xe2, a: 0.7)
 				var f = v.frame
 				if let p = subviews.last {
 					f.origin.y = CGRectGetMaxY(p.frame)

@@ -219,7 +219,7 @@
 @property (nonatomic, strong) NSString<Optional> *identifierPick;
 @property (nonatomic, strong) NSString<Optional> *title;
 @property (nonatomic, strong) NSString<Optional> *tailUnit;
-@property (nonatomic, strong) NSArray<Optional, AIOptionModel> *options;
+@property (nonatomic, strong) NSArray<Optional> *options;
 @property (nonatomic, strong) id defaultValue; // 当类型是数字为NSNumber对象，其他为字符串
 
 
@@ -236,8 +236,6 @@
 // case Services =               "Services"       // 切换服务商
 
 @protocol AIServiceProviderModel
-
-
 
 @end
 
@@ -261,6 +259,24 @@
 @interface AIServiceProviderViewModel : JSONModel
 
 @property (nonatomic, strong) NSArray<Optional> *providers;
+
+@end
+
+@protocol AIStepperParamViewModel
+
+@end
+
+@interface AIStepperParamViewModel : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *title;
+
+@property (nonatomic, strong) NSString<Optional> *tail;
+
+@property (nonatomic, assign) NSInteger defaultNumber;
+
+@property (nonatomic, assign) NSInteger maxNumber;
+
+@property (nonatomic, assign) NSInteger minNumber;
 
 @end
 
