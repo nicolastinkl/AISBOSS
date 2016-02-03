@@ -407,7 +407,13 @@
 #pragma mark - 解析 9 picker控件
 - (void)parse9WithParam:(NSDictionary *)param
 {
-    AIServiceProviderViewModel *model = [[AIServiceProviderViewModel alloc] init];
+    NSDictionary *content = [param objectForKey:@"ui_template_content"];
+    AIStepperParamViewModel *model = [[AIStepperParamViewModel alloc] init];
+    model.title = [content objectForKey:@"param_name"];
+//    model.defaultNumber = [content objectForKey:@"default_value"];
+    model.tail = [content objectForKey:@"unit"];
+    model.maxNumber = [content[@"max_cardinality"] integerValue];
+    model.minNumber = [content[@"min_cardinality"] integerValue];
 
     
     // 设置基本参数

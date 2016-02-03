@@ -134,3 +134,7 @@
 @implementation AIServiceProviderViewModel
 
 @end
+
+@implementation AIStepperParamViewModel
+
+@end

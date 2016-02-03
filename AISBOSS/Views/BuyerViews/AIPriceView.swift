@@ -16,7 +16,11 @@ class AIPriceView: AIServiceParamBaseView {
     
     //MARK: Variables
     var originalY : CGFloat = 0
-    var displayModel : AIPriceViewModel?
+    var displayModel : AIPriceViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
     var priceView : PriceAndStepperView?
     var totalNumber : Int = 0
     var totalPriceLabel : UPLabel?
@@ -66,6 +70,11 @@ class AIPriceView: AIServiceParamBaseView {
 
     }
     
+    
+    func updateUI() {
+        priceView?.price = displayModel?.finalPrice
+        changeTotalPrice(Int(priceView!.value))
+    }
     
     func addBackgroundView (frame : CGRect) {
         let bgImageView = UIImageView(image: UIImage(named: "Wave_BG"))
