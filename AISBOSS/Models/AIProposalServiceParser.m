@@ -235,11 +235,14 @@
     NSDictionary *content = [list objectAtIndex:0];
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
     model.title = [content objectForKey:@"param_name"];
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
     
     NSMutableArray *level1 = [NSMutableArray array];
     for (NSDictionary *dic in [content objectForKey:@"param_value"]) {
         AIComplexLabelModel *sModel = [[AIComplexLabelModel alloc] init];
         sModel.atitle = [dic objectForKey:@"content"];
+        sModel.param_key_save = model.param_key_save;
         NSNumber *ide = [dic objectForKey:@"id"];
         sModel.identifier = ide.integerValue;
         sModel.sublabels = [[NSMutableArray alloc] init];
@@ -248,8 +251,7 @@
         [level1 addObject:sModel];
     }
     
-    // 设置基本参数
-    [self parserBaseSavedParams:param forModel:model];
+    
     
     model.labels = [self makeComplexArrayWithArray:level1];
     
