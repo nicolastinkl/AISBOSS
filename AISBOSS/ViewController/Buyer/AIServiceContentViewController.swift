@@ -1173,33 +1173,17 @@ extension AIServiceContentViewController : UITextViewDelegate {
 extension AIServiceContentViewController:AIServiceParamViewDelegate {
    
     func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView) {
-        
     }
     
      //MARK: 处理更新金额请求
-    func shouldQueryNewPrice(body: NSDictionary) {
-
+    func newPriceNeedQuery(paramView:AIServiceParamView, body: NSDictionary) {
         let message = AIMessage()
-        message.body = body.mutableCopy() as! NSMutableDictionary
+        message.body = paramView.priceRelatedParam(body)
         message.url = "http://10.5.1.249:3000/findServicePrice"
         self.view.showLoadingWithMessage("")
         AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
             self?.view.dismissLoading()
-            if let views = self?.serviceContentView!.displayViews {
-                let priceView = views.filter({ (v) -> Bool in
-                    return v.isKindOfClass(AIPriceView)
-                }).first //get the price view
-                if let p = priceView as? AIPriceView {
-                    let model = p.displayModel
-                    if let responseDic = response as?  NSDictionary {
-                        if let priceDic = responseDic["price"] as? NSDictionary {
-                            model?.finalPrice = priceDic.objectForKey("final_price") as! String
-                            p.priceView?.price = model!.finalPrice
-                        }
-                    }
-                }
-            }
-
+            print(response)
             }, fail: {[weak self]  (ErrorType : AINetError, error : String!) -> Void in
                 self?.view.dismissLoading()
         })

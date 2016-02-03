@@ -11,7 +11,7 @@ import Foundation
 @objc protocol AIServiceParamViewDelegate : class {
 	func serviceParamsViewHeightChanged(offset : CGFloat, view : UIView)
     
-    func shouldQueryNewPrice (body : NSDictionary)
+    func newPriceNeedQuery(paramView:AIServiceParamView, body: NSDictionary)
 }
 
 class AIServiceParamView : UIView {
@@ -28,16 +28,22 @@ class AIServiceParamView : UIView {
     var onDropdownBrandViewSelectedIndexDidChanged: ((AIDropdownBrandView, Int) -> ())? = nil
     var dropdownBrandView: AIDropdownBrandView? {
         get {
-            var result:AIDropdownBrandView? = nil;
-            for v in subviews {
-                if let r = v as? AIDropdownBrandView {
-                    result = r
-                    break
-                }
-            }
-            return result
+            return self.viewsWithClass(AIDropdownBrandView).first
         }
     }
+    
+    var priceView: AIPriceView? {
+        get {
+            return self.viewsWithClass(AIPriceView).first
+        }
+    }
+    
+    var serviceTypes: [AIServiceTypes] {
+        get {
+            return self.viewsWithClass(AIServiceTypes)
+        }
+    }
+    
 	var tagViewHeight : CGFloat?
 	
 	var brandsViewHeight : CGFloat?
@@ -50,6 +56,13 @@ class AIServiceParamView : UIView {
 	var originalY : CGFloat = 0
 	
 	// MARK: Override
+    
+    func viewsWithClass<T:UIView>(viewClass:T.Type)-> [T] {
+        let result = displayViews.filter { (v) -> Bool in
+            return v.isKindOfClass(T)
+        } as! [T]
+        return result
+    }
 	
 	init(frame : CGRect, models: NSArray?, rootViewController: UIViewController) {
 		sviewWidth = CGRectGetWidth(frame) - originalX * 2
@@ -73,8 +86,35 @@ class AIServiceParamView : UIView {
     //TODO: 修改金额
     
     
+    func priceRelatedParam(body:NSDictionary) -> NSMutableDictionary {
+        let result = NSMutableDictionary(dictionary: body)
+        let data = NSMutableDictionary(dictionary: result["data"] as! NSDictionary)
+        let price_param_list = NSMutableArray()
+        for types in serviceTypes {
+            if let p = types.priceRelatedParam() {
+                price_param_list.addObject(p)
+            }
+        }
+        data["price_param_list"] = price_param_list
+        result["data"] = data
+        return result
+    }
+    
     func modifyPrice(price : AIPriceViewModel) {
-        
+//        if let views = self.viewsWithClass(AIPriceView) {
+//                let priceView = views.filter({ (v) -> Bool in
+//                    return v.isKindOfClass(AIPriceView)
+//                }).first //get the price view
+//                if let p = priceView as? AIPriceView {
+//                    let model = p.displayModel
+//                    if let responseDic = response as?  NSDictionary {
+//                        if let priceDic = responseDic["price"] as? NSDictionary {
+//                            model?.finalPrice = priceDic.objectForKey("final_price") as! String
+//                            p.priceView?.price = model!.finalPrice
+//                        }
+//                    }
+//                }
+//            }
     }
     
     
@@ -151,7 +191,7 @@ class AIServiceParamView : UIView {
         if m.isPriceRelated {
             types.queryPriceBlock = {(body) -> Void in
                 // 发送网络请求
-                wf!.delegate?.shouldQueryNewPrice(body)
+                wf?.delegate?.newPriceNeedQuery(wf!, body:body)
             }
         }
         
