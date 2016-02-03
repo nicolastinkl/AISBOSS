@@ -333,6 +333,7 @@ class AIServiceParamView : UIView {
 	
 	// MARK: Display 9
 	func addView9(model : JSONModel) {
+
 		let m = model as! AIStepperParamViewModel
 		originalY += 20
 		let frame = CGRectMake(originalX, originalY, sviewWidth, 0)
@@ -340,6 +341,7 @@ class AIServiceParamView : UIView {
 		addSubview(singleSelectView)
 		originalY += CGRectGetHeight(singleSelectView.frame) + margin
 		displayViews.append(singleSelectView)
+
 	}
 	
 	// MARK: 移动视图

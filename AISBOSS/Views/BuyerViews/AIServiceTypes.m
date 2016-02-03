@@ -246,6 +246,9 @@
     NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
     BOOL isProduct = [source isEqualToString:@"product"];
 
+    if (isProduct) {
+        return nil;
+    }
     
     AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
     
