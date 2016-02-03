@@ -129,6 +129,7 @@
         content = array.firstObject;
     }
     
+    model.param_key_save = [content objectForKey:@"param_key"];
     model.displayParams = content;
     NSNumber *isPriceRelated = [content objectForKey:@"is_price_related"];
     model.isPriceRelated = isPriceRelated.boolValue;
@@ -228,6 +229,8 @@
 #pragma mark - 解析 4 标签组复合控件，可多选，单选，可分层
 - (void)parse4WithParam:(NSDictionary *)param
 {
+    
+    
     NSArray *list = [param objectForKey:@"ui_template_content"];
     NSDictionary *content = [list objectAtIndex:0];
     AIComplexLabelsModel *model = [[AIComplexLabelsModel alloc] init];
@@ -245,11 +248,12 @@
         [level1 addObject:sModel];
     }
     
+    // 设置基本参数
+    [self parserBaseSavedParams:param forModel:model];
     
     model.labels = [self makeComplexArrayWithArray:level1];
     
-    // 设置基本参数
-    [self parserBaseSavedParams:param forModel:model];
+    
 
     // 设置控件类型
     [model setDisplayType:4];
@@ -266,7 +270,8 @@
             
             if ([[param objectForKey:@"param_value_key"] isKindOfClass:[NSNumber class]]){
                 NSNumber *value_key = [param objectForKey:@"param_value_key"];
-                if (value_key.integerValue == model.identifier) {
+                NSNumber *product_param_key = [param objectForKey:@"param_key"];
+                if (value_key.integerValue == model.identifier && product_param_key.integerValue == model.param_key_save.integerValue) {
                     NSDictionary *rel_param = [dic objectForKey:@"rel_param"];
                     NSNumber *subLabelsKey = [rel_param objectForKey:@"param_key"];
                     

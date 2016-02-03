@@ -31,4 +31,9 @@
     return nil;
 }
 
+- (NSDictionary *)priceRelatedParam
+{
+    return nil;
+}
+
 @end

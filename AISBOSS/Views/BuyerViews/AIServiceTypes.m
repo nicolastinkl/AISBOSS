@@ -203,6 +203,30 @@
 
 #pragma mark - 获取参数
 
+
+- (NSDictionary *)priceRelatedParam
+{
+    if (!_serviceTypesModel.isPriceRelated || _selectedIndex == -1) {
+        return nil;
+    }
+    
+    NSString *source = [_serviceTypesModel.displayParams objectForKey:@"param_source"];
+    BOOL isProduct = [source isEqualToString:@"product"];
+    
+    
+    AIOptionModel *model = [_serviceTypesModel.typeOptions objectAtIndex:_selectedIndex];
+    
+    NSString *param_key = [_serviceTypesModel.displayParams objectForKey:@"param_key"];
+    NSString *role_id =  isProduct ? [_serviceTypesModel.displayParams objectForKey:@"param_source_id"] : @"0";
+    NSString *product_id = isProduct ? model.identifier : @"0";
+    
+    NSDictionary *priceParams = @{@"source":source?:@"" ,@"role_id":role_id ?: @"", @"service_id":_serviceTypesModel.service_id_save ?: @"", @"product_id": product_id ?: @"", @"param_key":param_key ?: @"", @"param_value":@[model.desc ?: @""], @"param_value_id":model.identifier ?: @""};
+    return priceParams;
+
+    
+}
+
+
 - (NSArray *)productParamsList
 {
     if (_selectedIndex == -1) {

@@ -18,4 +18,6 @@
 
 - (NSArray *)productParamsList;
 
+- (NSDictionary *)priceRelatedParam;
+
 @end
