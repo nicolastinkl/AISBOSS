@@ -593,9 +593,9 @@ internal class AIServiceContentViewController: UIViewController {
         //TODO: Necessary public View.
 
         if let preView = addCustomView(musicView){
-            if displayForSeller == false {
+            
                 addAudioView(preView)
-            }
+            
         }
         
         //TODO: DisplayForSeller.
@@ -681,9 +681,15 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     private func addAudioView(preView: UIView) {
-        let audioView = AICustomAudioNotesView.currentView()
-        addNewSubView(audioView, preView: preView)
-        audioView.delegateShowAudio = self
+        
+        var preViewContent:UIView = preView
+        
+        if displayForSeller == false {
+            let audioView = AICustomAudioNotesView.currentView()
+            addNewSubView(audioView, preView: preView)
+            audioView.delegateShowAudio = self
+            preViewContent = audioView
+        }
         //        audioView.delegateAudio = self
         //        audioView.inputText.delegate = self
         
@@ -694,7 +700,7 @@ internal class AIServiceContentViewController: UIViewController {
                 var perViews:UIView?
                 for item in hopeList {
                     if item == hopeList.first {
-                        perViews = audioView
+                        perViews = preViewContent
                     }
                     
                     if item.type == "Text" {
