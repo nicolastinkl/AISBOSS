@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 class AITagDescView: UIView {
-	lazy private var label: UILabel = { [weak self] in
+	lazy var label: UILabel = { [weak self] in
 		let result = UILabel(frame: CGRectInset((self?.bounds)!, -Constants.margin, 0))
 		self?.addSubview(result)
 		result.textColor = UIColor.whiteColor()
