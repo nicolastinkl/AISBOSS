@@ -125,9 +125,9 @@ class SimpleServiceViewContainer: UIView {
             createHopeList()
         }
         
-        if isParamSetted() {
-            isSetted = true
-        }
+//        if isParamSetted() {
+            isSetted = isParamSetted()
+//        }
         
         createReviewView(dataModel.service_rating_level)
         
