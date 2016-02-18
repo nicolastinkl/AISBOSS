@@ -237,7 +237,7 @@ class AIBuyerDetailViewController : UIViewController {
 
         
         self.view.showLoadingWithMessage("")
-        AIOrderRequester().submitProposalOrder(dataSource.proposal_id, success: { () -> Void in
+        AIOrderRequester().submitProposalOrder(dataSource.proposal_id,serviceList:current_service_list as! [AnyObject] , success: { () -> Void in
             AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
             self.view.dismissLoading()
             self.dismissViewControllerAnimated(true, completion: nil)

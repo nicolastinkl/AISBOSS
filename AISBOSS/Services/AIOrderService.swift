@@ -13,11 +13,15 @@ class AIOrderRequester {
     typealias OrderListRequesterCompletion = (data:[AIOrderListItemModel]) ->()
     private var isLoading : Bool = false
     
-    func submitProposalOrder(proposalId: Int, success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
+    func submitProposalOrder(proposalId: Int,serviceList:[AnyObject], success: () -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
         message.url = AIApplication.AIApplicationServerURL.submitProposalOrder.description
-        let body = ["data": ["proposal_id": proposalId], "desc": ["data_mode": "0", "digest": ""]]
+        let service_list = serviceList.map { (o) -> [String:Int] in
+            let service = o as! AIProposalServiceModel
+            return ["service_id":service.service_id,"role_id":service.role_id]
+        }
+        let body = ["data": ["proposal_id": proposalId,"service_list":service_list], "desc": ["data_mode": "0", "digest": ""]]
         
         message.body = NSMutableDictionary(dictionary: body)
         AINetEngine.defaultEngine().postMessage(message, success: {(response) -> Void in
