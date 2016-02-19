@@ -25,6 +25,8 @@ public class AIDatePickerView: AIServiceParamBaseView {
     
     private var selectSource = [String:String]()
     
+    private var selectDayDiff : Int = 0
+    
     private  var months : [String]  = {
         return ["January","February","March","April","May","June","July","August","September","Octomber","Novermber","December"]
 //        return (1...12).map({"\($0)月"})
@@ -108,7 +110,7 @@ extension AIDatePickerView: UIPickerViewDataSource,UIPickerViewDelegate {
         if pickerView.tag == UIPickViewTag.month.rawValue {
             return months.count
         }
-        return days.count
+        return days.count - selectDayDiff
     }
     
     
@@ -116,6 +118,19 @@ extension AIDatePickerView: UIPickerViewDataSource,UIPickerViewDelegate {
         if pickerView.tag == UIPickViewTag.month.rawValue {
             let currentMonth:String = months[row]
             selectSource["month"] = currentMonth
+            //刷新月份天数
+            
+            let currentMonthS = row + 1
+            
+            let inputFormatter = NSDateFormatter()
+            inputFormatter.setLocalizedDateFormatFromTemplate("MM/dd/yyy")
+            let currentDate = inputFormatter.dateFromString("\(currentMonthS)/9/2016")
+            
+            let countDays = NSCalendar.currentCalendar().rangeOfUnit(NSCalendarUnit.Day, inUnit: NSCalendarUnit.Month, forDate: currentDate!).length
+            selectDayDiff = days.count - countDays
+            
+            pickTwoView.reloadAllComponents()
+            
         }else{
            let currentDay:String = days[row]
             selectSource["day"] = currentDay

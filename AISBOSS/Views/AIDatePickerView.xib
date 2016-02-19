@@ -27,22 +27,62 @@
                 </pickerView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EqS-af-dxi">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="GRh-Cn-kpm"/>
                     </constraints>
                     <items>
-                        <barButtonItem title="Close" id="5lM-6m-JSc">
-                            <connections>
-                                <action selector="closeAction:" destination="iN0-l3-epB" id="xbL-Aa-ZSu"/>
-                            </connections>
+                        <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="57f-rq-OzF"/>
+                        <barButtonItem style="plain" id="wI3-ek-1mO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="izx-Yf-9uR" customClass="DesignableButton" customModule="Spring">
+                                <rect key="frame" x="30" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="HH5-iv-3La"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Ybn-Tg-g3V"/>
-                        <barButtonItem title="Done" id="H6X-aY-gNx">
-                            <connections>
-                                <action selector="doneAction:" destination="iN0-l3-epB" id="br4-0S-0nM"/>
-                            </connections>
+                        <barButtonItem style="plain" id="qI0-vr-MKQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TcA-dF-379" customClass="DesignableButton" customModule="Spring">
+                                <rect key="frame" x="524" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lHH-uE-gPT"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
+                        <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="jxO-fZ-NsD"/>
                     </items>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </toolbar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -62,7 +102,7 @@
                 <outlet property="pickOneView" destination="QKM-EG-xy1" id="5MQ-Y0-64Z"/>
                 <outlet property="pickTwoView" destination="OfX-jP-qSf" id="0y3-L5-zpr"/>
             </connections>
-            <point key="canvasLocation" x="-285" y="357"/>
+            <point key="canvasLocation" x="237" y="424"/>
         </view>
     </objects>
 </document>
