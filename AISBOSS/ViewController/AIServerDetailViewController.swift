@@ -602,8 +602,7 @@ extension AIServerDetailViewController:UITableViewDataSource,UITableViewDelegate
             }
 
             return cell!
-        }
-        
+        }        
         
         return createDefaultTableViewCell()
         
