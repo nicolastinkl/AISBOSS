@@ -121,3 +121,8 @@ internal class AIGalleryView : UIView,UIScrollViewDelegate {
         return superview as? UIScrollView
     }
 }
+
+
+
+
+

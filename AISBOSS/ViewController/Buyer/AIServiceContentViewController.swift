@@ -97,7 +97,7 @@ internal class AIServiceContentViewController: UIViewController {
     }()
     
     private lazy var galleryView : AIGalleryView = {
-        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200))
+        let gView = AIGalleryView(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 184))
         return gView
     }()
     
@@ -481,6 +481,7 @@ internal class AIServiceContentViewController: UIViewController {
         
         let topView = AINavigationBarView.currentView()
         self.view.addSubview(topView)
+        print(topView.height)
         self.view.addSubview(scrollView)
         topView.setWidth(self.view.width)
         scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
@@ -1072,6 +1073,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         
         weak var weakSelf = self
         AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
+            print(response)
             weakSelf!.deleteAnimation(cell)
             weakSelf!.view.dismissLoading()
             weakSelf!.view.userInteractionEnabled = true

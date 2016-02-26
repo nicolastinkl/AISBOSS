@@ -19,7 +19,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It will be great if the paramedic freelancer could help to carry hand bags and arrange transportation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ld-5Z-CXv" userLabel="message">
-                    <rect key="frame" x="34" y="6" width="460" height="34"/>
+                    <rect key="frame" x="34" y="6" width="460" height="33.5"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Zkt-Pg-aQX"/>
                     </constraints>
@@ -28,7 +28,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h50-eb-6J9">
-                    <rect key="frame" x="34" y="42" width="458" height="7"/>
+                    <rect key="frame" x="34" y="41.5" width="496" height="7.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p8R-zM-1Lu">
                         <size key="itemSize" width="50" height="50"/>
@@ -39,7 +39,7 @@
                 </collectionView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="h50-eb-6J9" secondAttribute="trailing" constant="8" id="2qX-AN-626"/>
+                <constraint firstAttribute="trailing" secondItem="h50-eb-6J9" secondAttribute="trailing" constant="-30" id="2qX-AN-626"/>
                 <constraint firstAttribute="bottom" secondItem="h50-eb-6J9" secondAttribute="bottom" constant="1" id="4IO-3O-lgy"/>
                 <constraint firstItem="h50-eb-6J9" firstAttribute="top" secondItem="2ld-5Z-CXv" secondAttribute="bottom" constant="2" id="9C8-xW-GJC"/>
                 <constraint firstItem="CwZ-dU-g1g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Idx-6I-MAn"/>

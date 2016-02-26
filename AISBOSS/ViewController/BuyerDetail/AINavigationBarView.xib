@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AINavigationBarView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H1-3f-6Ia">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="110"/>
-                    <animations/>
                     <color key="backgroundColor" red="0.11764705882352941" green="0.10588235294117647" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="110" id="pux-OH-VwF"/>
@@ -24,7 +23,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkH-lL-sZx">
                     <rect key="frame" x="14" y="19" width="578" height="24"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="UIE-x9-haE"/>
                     </constraints>
@@ -33,21 +31,19 @@
                     <state key="normal" image="backIcon"/>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btn-6J-d1e">
-                    <rect key="frame" x="0.0" y="61" width="600" height="50"/>
-                    <animations/>
+                    <rect key="frame" x="0.0" y="58" width="600" height="47"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="jOR-Xd-o8P"/>
+                        <constraint firstAttribute="height" constant="47" id="jOR-Xd-o8P"/>
                     </constraints>
                 </view>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="btn-6J-d1e" firstAttribute="top" secondItem="5H1-3f-6Ia" secondAttribute="bottom" constant="-1" id="BLL-nP-kCg"/>
                 <constraint firstItem="vkH-lL-sZx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="Bh5-Sv-uys"/>
                 <constraint firstItem="5H1-3f-6Ia" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DOq-Rs-vLB"/>
-                <constraint firstItem="btn-6J-d1e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="61" id="N7d-4v-Hbz"/>
+                <constraint firstItem="btn-6J-d1e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="58" id="N7d-4v-Hbz"/>
                 <constraint firstItem="btn-6J-d1e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ygh-xU-53B"/>
                 <constraint firstAttribute="trailing" secondItem="5H1-3f-6Ia" secondAttribute="trailing" id="dwh-kf-URH"/>
                 <constraint firstAttribute="trailing" secondItem="btn-6J-d1e" secondAttribute="trailing" id="iAW-pH-T1T"/>
@@ -68,7 +64,7 @@
                 <outlet property="backButton" destination="vkH-lL-sZx" id="WtQ-mw-Q8x"/>
                 <outlet property="custView" destination="btn-6J-d1e" id="aQF-cC-bYu"/>
             </connections>
-            <point key="canvasLocation" x="397" y="303"/>
+            <point key="canvasLocation" x="244" y="296"/>
         </view>
     </objects>
     <resources>
