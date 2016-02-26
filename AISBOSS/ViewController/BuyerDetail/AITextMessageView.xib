@@ -59,7 +59,7 @@
                 <outlet property="audioTextlengConstraint" destination="YN9-Qa-bTF" id="DkG-Fv-Z4z"/>
                 <outlet property="content" destination="PJO-oW-g6h" id="WGC-IS-iQs"/>
             </connections>
-            <point key="canvasLocation" x="156" y="560.5"/>
+            <point key="canvasLocation" x="344" y="573.5"/>
         </view>
     </objects>
     <resources>
