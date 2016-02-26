@@ -26,10 +26,10 @@
                         <rect key="frame" x="586" y="0.0" width="0.0" height="88"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="x_buttondel" translatesAutoresizingMaskIntoConstraints="NO" id="VQO-Pf-ZFL">
-                                <rect key="frame" x="-48" y="0.0" width="48" height="88"/>
+                                <rect key="frame" x="-52" y="0.0" width="52" height="88"/>
                                 <rect key="contentStretch" x="1" y="0.45000000000000001" width="0.0" height="0.20000000000000001"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="8oi-Nf-NGx"/>
+                                    <constraint firstAttribute="width" constant="52" id="8oi-Nf-NGx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCa-6T-vOh">
@@ -43,9 +43,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP0-66-gd0">
-                                <rect key="frame" x="-43" y="0.0" width="48" height="88"/>
+                                <rect key="frame" x="-47" y="0.0" width="52" height="88"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="3oU-H3-div"/>
+                                    <constraint firstAttribute="width" constant="52" id="3oU-H3-div"/>
                                 </constraints>
                                 <state key="normal" image="closeCell">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,7 +150,7 @@
                 <outlet property="maskLabel" destination="YCa-6T-vOh" id="y7Q-Rj-61z"/>
                 <outlet property="myContentView" destination="IiE-Pa-mgS" id="SGM-0m-XAW"/>
             </connections>
-            <point key="canvasLocation" x="-67" y="261"/>
+            <point key="canvasLocation" x="-553" y="293"/>
         </tableViewCell>
     </objects>
     <resources>

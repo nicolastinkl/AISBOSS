@@ -29,7 +29,7 @@
 static CGFloat const kBounceValue = 20.0f;
 static CGFloat const kOffsetValue = 21.0f;
 
-static CGFloat const kButtonWidthValue = 48.0f;
+static CGFloat const kButtonWidthValue = 52.0f;
 
 @implementation AISuperSwipeableCell
 
@@ -67,7 +67,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
   
 - (CGFloat)buttonTotalWidth
 {
-    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.buttonView.frame) - kOffsetValue;
+    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.buttonView.frame) - kOffsetValue + 4;
 }
 
 - (void)panThisCell:(UIPanGestureRecognizer *)recognizer
@@ -102,6 +102,7 @@ static CGFloat const kButtonWidthValue = 48.0f;
                         self.contentViewRightConstraint.constant = constant; //6
                     }
                 } else {
+                    
                     CGFloat constant = MIN(-deltaX, [self buttonTotalWidth]); //7
                     if (constant == [self buttonTotalWidth]) { //8
                         [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:NO]; //9
