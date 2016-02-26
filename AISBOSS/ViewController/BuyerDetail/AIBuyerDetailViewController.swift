@@ -26,7 +26,7 @@ enum ServiceDeletedStatus: Int {
 class AIBuyerDetailViewController : UIViewController {
     
     private let SIMPLE_SERVICE_VIEW_CONTAINER_TAG: Int = 233
-    private let CELL_VERTICAL_SPACE: CGFloat = 10
+    private let CELL_VERTICAL_SPACE: CGFloat = 12 // preous 10.
 
     private var dataSource : AIProposalInstModel!
     var bubbleModel : AIBuyerBubbleModel?

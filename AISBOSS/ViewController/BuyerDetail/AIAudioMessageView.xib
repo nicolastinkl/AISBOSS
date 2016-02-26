@@ -8,11 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAudioMessageView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVU-D7-HP9" customClass="DesignableLabel" customModule="Spring">
-                    <rect key="frame" x="14" y="5" width="80" height="30"/>
+                    <rect key="frame" x="14" y="3" width="80" height="30"/>
                     <color key="backgroundColor" red="0.51764705882352935" green="0.50196078431372548" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="E07-Mm-oha"/>
@@ -28,7 +28,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBl-GC-vKK" customClass="DesignableButton" customModule="Spring">
-                    <rect key="frame" x="14" y="5" width="80" height="30"/>
+                    <rect key="frame" x="14" y="3" width="80" height="30"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="15"/>
@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_bg" translatesAutoresizingMaskIntoConstraints="NO" id="typ-Nl-fJ8">
-                    <rect key="frame" x="23" y="12" width="12" height="15"/>
+                    <rect key="frame" x="23" y="10" width="12" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Bal-Hc-cBT"/>
                         <constraint firstAttribute="width" constant="12" id="oao-vd-vHt"/>
@@ -82,7 +82,7 @@
                 <constraint firstItem="uS6-8Z-Mna" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="38" id="G68-bU-9n7"/>
                 <constraint firstItem="yiH-fW-3EU" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="40" id="GWD-uA-qkL"/>
                 <constraint firstItem="yiH-fW-3EU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="I6Z-Ln-FPi"/>
-                <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Ny8-Ua-fIo"/>
+                <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="Ny8-Ua-fIo"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="typ-Nl-fJ8" secondAttribute="bottom" constant="-22" id="QTi-mL-Da8"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" id="Vqq-i6-cc7"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="top" secondItem="GVU-D7-HP9" secondAttribute="bottom" constant="-30" id="fZx-b7-BKx"/>
@@ -111,7 +111,7 @@
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
                 <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-1110" y="726"/>
+            <point key="canvasLocation" x="-1258" y="796"/>
         </view>
     </objects>
     <resources>
