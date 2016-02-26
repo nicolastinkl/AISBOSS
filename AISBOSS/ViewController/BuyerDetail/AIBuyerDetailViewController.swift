@@ -234,7 +234,6 @@ class AIBuyerDetailViewController : UIViewController {
                 return
             }
         }
-
         
         self.view.showLoadingWithMessage("")
         AIOrderRequester().submitProposalOrder(dataSource.proposal_id,serviceList:current_service_list as! [AnyObject] , success: { () -> Void in
@@ -289,8 +288,6 @@ class AIBuyerDetailViewController : UIViewController {
         self.whereLabel.font = AITools.myriadLightSemiCondensedWithSize(42 / PurchasedViewDimention.CONVERT_FACTOR)
         self.contentLabel.font = AITools.myriadLightSemiCondensedWithSize(42 / PurchasedViewDimention.CONVERT_FACTOR)
     }
-    
-    
     
     // MARK: - 删除service
     
@@ -409,7 +406,6 @@ class AIBuyerDetailViewController : UIViewController {
             deletedTableView.reloadData()
             self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
-        
     }
     
     func initData() {
@@ -428,6 +424,10 @@ class AIBuyerDetailViewController : UIViewController {
                 {[weak self] (responseData) -> Void in
                     
                     if let viewController = self {
+                        // 清空已删除
+                        viewController.deleted_service_list.removeAllObjects()
+                        viewController.serviceRestoreToolbar.serviceModels = viewController.deleted_service_list
+                        viewController.serviceRestoreToolbar.removeAllLogos()
                         viewController.dataSource = responseData
                         
                         // initControl Data

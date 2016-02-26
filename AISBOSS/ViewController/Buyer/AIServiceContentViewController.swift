@@ -1143,8 +1143,8 @@ extension AIServiceContentViewController : UITextViewDelegate {
             AIRemoteRequestQueue().asyncRequset(newText, message: message, successRequst: { (subView,response) -> Void in
                 if let eView = subView as? AITextMessageView {
                     weakSelf!.view.dismissLoading()
-                    let NoteId = response["NoteId"] as? NSNumber
-                    eView.noteID = NoteId?.integerValue ?? 0
+                    let NoteId = response["NoteId"] as? String ?? "0"
+                    eView.noteID = Int(NoteId) ?? 0
                 }
                 weakSelf!.view.userInteractionEnabled = true
                 
