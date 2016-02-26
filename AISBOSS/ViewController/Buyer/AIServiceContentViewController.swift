@@ -1124,8 +1124,8 @@ extension AIServiceContentViewController : UITextViewDelegate {
             let newText = AITextMessageView.currentView()
             newText.content.text = textView.text
             let newSize = textView.text?.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(36/2.5), forWidth: self.view.width - 50)
-            newText.setHeight(30 + newSize!.height)
-            //                addNewSubView(newText, preView: cview)
+            newText.setHeight(25 + newSize!.height) //30
+            //addNewSubView(newText, preView: cview)
             addNewSubView(newText)
             scrollViewBottom()
             

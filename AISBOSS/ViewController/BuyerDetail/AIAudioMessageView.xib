@@ -111,7 +111,7 @@
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
                 <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-967" y="634"/>
+            <point key="canvasLocation" x="-1110" y="726"/>
         </view>
     </objects>
     <resources>
