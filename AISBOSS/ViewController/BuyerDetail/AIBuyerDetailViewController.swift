@@ -132,6 +132,7 @@ class AIBuyerDetailViewController : UIViewController {
         // Default request frist networking from asiainfo server.
         self.tableView.headerBeginRefreshing()
         
+        
     }
     
     func initDeletedTableView() {

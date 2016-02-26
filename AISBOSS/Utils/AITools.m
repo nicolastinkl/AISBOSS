@@ -333,6 +333,7 @@
 {
     return [UIFont fontWithName:@"MyriadPro-Cond" size:size];
 }
+
 + (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size
 {
     CGFloat displaySize;
@@ -340,6 +341,7 @@
     displaySize = size * screen.bounds.size.width / 1080;
     return displaySize;
 }
+
 
 + (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size
 {
