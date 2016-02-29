@@ -2952,12 +2952,12 @@
 			buildConfigurationList = 93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */;
 			buildPhases = (
 				6DA50057C5F5AD017E487884 /* Check Pods Manifest.lock */,
+				846BA8FF1C76AF0400211702 /* ShellScript */,
 				93D5A3451B709C1C00DDB158 /* Sources */,
 				93D5A3461B709C1C00DDB158 /* Frameworks */,
 				93D5A3471B709C1C00DDB158 /* Resources */,
 				BE13F8A047272C818E183B81 /* Embed Pods Frameworks */,
 				7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */,
-				846BA8FF1C76AF0400211702 /* ShellScript */,
 			);
 			buildRules = (
 			);
