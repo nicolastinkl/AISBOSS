@@ -1115,8 +1115,6 @@ extension AIServiceContentViewController : UITextViewDelegate {
             return false
         }
         
-        
-        
         if "\n" == text {
             textView.resignFirstResponder()
             self.inputMessageCache = "" //清空

@@ -8,18 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AITextMessageView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52x-Oe-8SB">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_audio_text_bg" translatesAutoresizingMaskIntoConstraints="NO" id="v3D-2c-op1">
-                            <rect key="frame" x="14" y="7" width="572" height="32"/>
+                            <rect key="frame" x="14" y="4" width="572" height="32"/>
                             <rect key="contentStretch" x="0.29999999999999999" y="0.75" width="0.45000000000000001" height="0.0"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have not get the check up test result." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="11111111" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJO-oW-g6h">
-                            <rect key="frame" x="27" y="12" width="545" height="21"/>
+                            <rect key="frame" x="27" y="9" width="545" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="L6J-KC-MOs"/>
                             </constraints>
@@ -38,12 +38,24 @@
                         <constraint firstItem="PJO-oW-g6h" firstAttribute="leading" secondItem="52x-Oe-8SB" secondAttribute="leading" constant="27" id="3Pp-BR-3Sk"/>
                         <constraint firstAttribute="bottom" secondItem="PJO-oW-g6h" secondAttribute="bottom" constant="12" id="3aO-2A-qPG"/>
                         <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="6" id="5bE-Lc-cFK"/>
+                        <constraint firstAttribute="bottom" secondItem="PJO-oW-g6h" secondAttribute="bottom" constant="10" id="GtT-TZ-OOa"/>
                         <constraint firstAttribute="trailing" secondItem="PJO-oW-g6h" secondAttribute="trailing" constant="28" id="Uau-sg-gCk"/>
+                        <constraint firstAttribute="bottom" secondItem="v3D-2c-op1" secondAttribute="bottom" constant="4" id="V8m-Lh-4EO"/>
                         <constraint firstAttribute="trailing" secondItem="v3D-2c-op1" secondAttribute="trailing" constant="14" id="YN9-Qa-bTF"/>
                         <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="7" id="ZGZ-wV-JgG"/>
                         <constraint firstItem="PJO-oW-g6h" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="12" id="bPR-HF-6hr"/>
                         <constraint firstItem="v3D-2c-op1" firstAttribute="leading" secondItem="52x-Oe-8SB" secondAttribute="leading" constant="14" id="kei-J7-ssz"/>
+                        <constraint firstItem="PJO-oW-g6h" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="9" id="us8-hk-FKC"/>
+                        <constraint firstItem="v3D-2c-op1" firstAttribute="top" secondItem="52x-Oe-8SB" secondAttribute="top" constant="4" id="wL5-OY-vrj"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="5bE-Lc-cFK"/>
+                            <exclude reference="ZGZ-wV-JgG"/>
+                            <exclude reference="3aO-2A-qPG"/>
+                            <exclude reference="bPR-HF-6hr"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -59,7 +71,7 @@
                 <outlet property="audioTextlengConstraint" destination="YN9-Qa-bTF" id="DkG-Fv-Z4z"/>
                 <outlet property="content" destination="PJO-oW-g6h" id="WGC-IS-iQs"/>
             </connections>
-            <point key="canvasLocation" x="344" y="573.5"/>
+            <point key="canvasLocation" x="189" y="425.5"/>
         </view>
     </objects>
     <resources>
