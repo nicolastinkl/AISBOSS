@@ -267,6 +267,8 @@
 		930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */; };
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
+		9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21B1C86F12B0070FF7A /* AIRACModel.swift */; };
+		9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */; };
 		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
 		93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */; };
 		93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93294B311C3FA5D800EFF5FC /* AIProviderView.xib */; };
@@ -931,6 +933,8 @@
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
+		9326A21B1C86F12B0070FF7A /* AIRACModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACModel.swift; sourceTree = "<group>"; };
+		9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderMangerProtocol.swift; sourceTree = "<group>"; };
 		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
 		93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderView.swift; sourceTree = "<group>"; };
 		93294B311C3FA5D800EFF5FC /* AIProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProviderView.xib; sourceTree = "<group>"; };
@@ -2009,6 +2013,13 @@
 			path = DatabaseBrowser;
 			sourceTree = "<group>";
 		};
+		9326A21A1C86F0DB0070FF7A /* RACViewC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RACViewC;
+			sourceTree = "<group>";
+		};
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2250,6 +2261,7 @@
 				93CA11CD1C463475008B1EE1 /* AIServiceCatalogModel.swift */,
 				93CA11CE1C463475008B1EE1 /* AIServiceSchemeModel.swift */,
 				93CA11CF1C463475008B1EE1 /* AITagModel.swift */,
+				9326A21B1C86F12B0070FF7A /* AIRACModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2267,6 +2279,7 @@
 				844FDD901BB920DB00915797 /* AISchemeDataObtainer.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
 				9372C5331C23F0300097CC92 /* AIRemoteRequestQueue.swift */,
+				9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2316,6 +2329,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9326A21A1C86F0DB0070FF7A /* RACViewC */,
 				816E3B851C1ED62D00A061DD /* Login */,
 				935000101BFF248B00B8386B /* AIRoot */,
 				9350000F1BFF247500B8386B /* AITimeAndHome */,
@@ -3230,6 +3244,7 @@
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,
 				84F001541C3A43CB000C93AF /* FLEXTableListViewController.m in Sources */,
 				93C33F271B9C0F46007BF506 /* AIApplication.swift in Sources */,
+				9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */,
 				84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
 				8442828C1C45EF95001C2DCB /* OAStackView+Constraint.m in Sources */,
@@ -3565,6 +3580,7 @@
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
 				8442828D1C45EF95001C2DCB /* OAStackView+Hiding.m in Sources */,
 				849B4B2C1C0EDFE300BEC179 /* FLEXArgumentInputViewFactory.m in Sources */,
+				9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */,
 				93B25AA31B9D7A7B00CD1FEB /* JSONModelClassProperty.m in Sources */,
 				93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */,
 				93CA11D41C463475008B1EE1 /* AIFavoritesServicesModel.swift in Sources */,
@@ -3726,7 +3742,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
-				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
+				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3780,7 +3796,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3803,7 +3819,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
+				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SWIFT_OBJC_BRIDGING_HEADER = "AISBOSS/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

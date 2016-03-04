@@ -10,13 +10,12 @@ import Foundation
 import Spring
 import AIAlertView
 
-
 @objc protocol AIAudioMessageViewDelegate : class{
     
     func willPlayRecording(audioMessageView :AIAudioMessageView)
     
     func didEndPlayRecording(audioMessageView :AIAudioMessageView)
-
+    
 }
 
 

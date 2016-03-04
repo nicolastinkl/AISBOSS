@@ -60,7 +60,9 @@ newArrayssss
 
 
 
+
 protocol ErrorPopoverRenderer {
+    
     func  presentError(errorOptions: NSError)
 }
 
@@ -181,3 +183,17 @@ func sayHello() {
 //    
 //}
 //
+
+
+let a: [Float] = [1, 2, 3, 4]
+let b: [Float] = [0.5, 0.25, 0.125, 0.0625]
+var result: [Float] = [0, 0, 0, 0]
+ 
+
+
+
+
+
+
+
+
