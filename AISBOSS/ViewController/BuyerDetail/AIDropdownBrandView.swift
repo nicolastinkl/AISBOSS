@@ -116,8 +116,9 @@ class AIDropdownBrandView: UIView {
 		}
 		expandedView.frame = CGRectMake(0, Constants.barHeight, width, CGRectGetMaxY(iconLabels.last!.frame))
 	}
-	
+
 	func setupBarView() {
+
 		barView = UIView(frame: .zero)
 		barView.backgroundColor = Constants.barViewBackgroundColor
 		addSubview(barView)

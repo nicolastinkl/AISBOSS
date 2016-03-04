@@ -2952,7 +2952,6 @@
 			buildConfigurationList = 93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */;
 			buildPhases = (
 				6DA50057C5F5AD017E487884 /* Check Pods Manifest.lock */,
-				846BA8FF1C76AF0400211702 /* ShellScript */,
 				93D5A3451B709C1C00DDB158 /* Sources */,
 				93D5A3461B709C1C00DDB158 /* Frameworks */,
 				93D5A3471B709C1C00DDB158 /* Resources */,
@@ -3165,19 +3164,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		846BA8FF1C76AF0400211702 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\nif [ \"$CONFIGURATION\" == \"Release\" ]; then\n# get GIT revision number\nbuildNumber=`git rev-list --count HEAD`\n\n# write build number\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${buildNumber}\" \"${INFOPLIST_FILE}\"\n\n\n\n# read current version number\nversionNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n\n# split version number by delimiter\nIFS='.' read -a array <<< \"$versionNumber\"\n\nn0=${array[0]}\nn1=${array[1]}\nn2=${array[2]}\narchiveNumer=$((n2+1))\n\n# write version number\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $n0.$n1.$archiveNumer\" \"${INFOPLIST_FILE}\"\nfi";
 		};
 		BE13F8A047272C818E183B81 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
