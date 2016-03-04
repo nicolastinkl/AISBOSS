@@ -19,9 +19,10 @@ internal struct AIRACModel : JSONJoy {
         id = 1
     }
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
         
     }
+   
 
 }
 
@@ -32,7 +33,7 @@ internal struct AIRACModel : JSONJoy {
 internal struct AILeftMenuModel : JSONJoy {
     var id: Int?
     var type : Int?
-    var selected : bool? = false
+    var selected : Bool? = false
     var iconUrl : String?
     
     
@@ -40,7 +41,7 @@ internal struct AILeftMenuModel : JSONJoy {
         id = 1
     }
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
         
     }
     
@@ -63,7 +64,7 @@ internal struct AIContentCellModel : JSONJoy{
         id = 1
     }
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
         
     }
     
@@ -75,7 +76,7 @@ internal struct AIContentCellModel : JSONJoy{
  *  @author tinkl, 16-03-03 14:03:01
  *  内容cell 数据 Model
  */
-internal struct AIContentCellModel : JSONJoy{
+internal struct AIChildContentCellModel : JSONJoy{
     var id: Int?
     var type : Int?  //text or audio
     var audioUrl : String?
@@ -88,7 +89,7 @@ internal struct AIContentCellModel : JSONJoy{
         id = 1
     }
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
         
     }
     
@@ -108,7 +109,7 @@ internal struct AIIconTagModel : JSONJoy{
         id = 1
     }
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
         
     }
     

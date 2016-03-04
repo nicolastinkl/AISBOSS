@@ -29,12 +29,12 @@ internal protocol AIOrderMangerProtocol {
   // MARK: -> Internal protocol <#protocol name#>
   
 
-    internal var DefaultUserInfomation : String?
+//    var DefaultUserInfomation : String?
     
     
 }
 
-
+/*
 
 //基于UIViewController
 extension AIOrderMangerProtocol where Self : UIViewController {
@@ -70,3 +70,4 @@ extension AIOrderMangerProtocol where Self : UIView {
     }
 }
 
+*/
