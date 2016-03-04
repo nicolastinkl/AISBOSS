@@ -114,10 +114,16 @@ class AIDropdownBrandView: UIView {
 			let tap = UITapGestureRecognizer(target: self, action: "tapped:")
 			label.addGestureRecognizer(tap)
 		}
-		expandedView.frame = CGRectMake(0, Constants.barHeight, width, CGRectGetMaxY(iconLabels.last!.frame))
+		
+		if let last = iconLabels.last {
+			expandedView.frame = CGRectMake(0, Constants.barHeight, width, CGRectGetMaxY(last.frame))
+		} else {
+            expandedView.frame = CGRectMake(0, Constants.barHeight, width, 0)
+		}
 	}
-	
+
 	func setupBarView() {
+
 		barView = UIView(frame: .zero)
 		barView.backgroundColor = Constants.barViewBackgroundColor
 		addSubview(barView)
@@ -279,7 +285,7 @@ class BrandIconLabel: VerticalIconLabel {
 				if let wrappedImageURL = imageURL {
 					if let url = NSURL(string: wrappedImageURL) {
 						SDWebImageDownloader.sharedDownloader().downloadImageWithURL(url, options: SDWebImageDownloaderOptions.HighPriority, progress: { (_, _) -> Void in
-						}, completed: { [weak self](i, data, error, completed) -> Void in
+							}, completed: { [weak self](i, data, error, completed) -> Void in
 							self?.image = i
 						})
 					}
@@ -330,7 +336,7 @@ class BrandIconLabel: VerticalIconLabel {
 	
 	private static func convertImageToGray(image: UIImage) -> UIImage {
 		// Create image rectangle with current image width/height
-		let beginImage = CIImage(CGImage: image.CGImage!) ;
+		let beginImage = CIImage(CGImage: image.CGImage!);
 		
 		let blackAndWhite = CIFilter(name: "CIColorControls", withInputParameters: [kCIInputImageKey: beginImage, "inputBrightness": 0.0, "inputContrast": 1.1, "inputSaturation": 0.0])?.outputImage
 		let output = CIFilter(name: "CIExposureAdjust", withInputParameters: [kCIInputImageKey: blackAndWhite!, "inputEV": 0.7])?.outputImage
@@ -349,6 +355,7 @@ class HalfRoundedCornerLabel: UILabel {
 	override var highlighted: Bool {
 		didSet {
 			backgroundColor = highlighted ? highlightedBackgroundColor : normalBackgroundColor
+			userInteractionEnabled = highlighted ? false : true
 		}
 	}
 	
