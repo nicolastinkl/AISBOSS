@@ -54,11 +54,11 @@ internal struct AILeftMenuModel : JSONJoy {
  */
 internal struct AIContentCellModel : JSONJoy{
     var id: Int?
-    var type : Int?  //text or audio
-    var audioUrl : String?
-    var bgImageUrl : String?
-    var childServerIconArray : [String]?
-    
+    var type : Int?  // tag  note message ...
+    var typeName : String?
+    var typeImageUrl : String?
+    var childServices : [AIChildContentCellModel]?
+
     
     init() {
         id = 1
@@ -82,7 +82,11 @@ internal struct AIChildContentCellModel : JSONJoy{
     var audioUrl : String?
     var audioLengh : Int?
     var bgImageUrl : String?
-    var childServerIconArray : [String]?
+    var text : String?
+    var content : String?
+    var childServerIconArray : [AIIconTagModel]?
+    var leftActionImages : [String]?
+    var rightActionImages : [String]?
     
     
     init() {

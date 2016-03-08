@@ -272,6 +272,8 @@
 		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
 		93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */; };
 		93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93294B311C3FA5D800EFF5FC /* AIProviderView.xib */; };
+		932DB08B1C8F01770024C40D /* AIRACContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DB08A1C8F01770024C40D /* AIRACContentView.swift */; };
+		932DB08D1C8F01A80024C40D /* AIRACContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932DB08C1C8F01A80024C40D /* AIRACContentView.xib */; };
 		93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */; };
 		93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */; };
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
@@ -279,6 +281,7 @@
 		93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9C1C50784E003F6833 /* YYWeakProxy.m */; };
 		934445E11C8ED36500F86E5D /* AIAssignmentContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */; };
 		934445E31C8ED37B00F86E5D /* AICollContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */; };
+		934445E71C8EEF3100F86E5D /* SESlideTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934445E61C8EEF3100F86E5D /* SESlideTableViewCell.m */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -945,6 +948,8 @@
 		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
 		93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderView.swift; sourceTree = "<group>"; };
 		93294B311C3FA5D800EFF5FC /* AIProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProviderView.xib; sourceTree = "<group>"; };
+		932DB08A1C8F01770024C40D /* AIRACContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACContentView.swift; sourceTree = "<group>"; };
+		932DB08C1C8F01A80024C40D /* AIRACContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIRACContentView.xib; sourceTree = "<group>"; };
 		93306BCC1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIBuyerStoryboard.storyboard; sourceTree = "<group>"; };
 		93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerDetailViewController.swift; sourceTree = "<group>"; };
 		933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIBueryDetailCell.xib; sourceTree = "<group>"; };
@@ -954,6 +959,8 @@
 		93441E9C1C50784E003F6833 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAssignmentContentViewController.swift; sourceTree = "<group>"; };
 		934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICollContentViewController.swift; sourceTree = "<group>"; };
+		934445E51C8EEF3100F86E5D /* SESlideTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SESlideTableViewCell.h; sourceTree = "<group>"; };
+		934445E61C8EEF3100F86E5D /* SESlideTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SESlideTableViewCell.m; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -1985,6 +1992,15 @@
 			path = RACViewC;
 			sourceTree = "<group>";
 		};
+		932DB0891C8F01640024C40D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				932DB08A1C8F01770024C40D /* AIRACContentView.swift */,
+				932DB08C1C8F01A80024C40D /* AIRACContentView.xib */,
+			);
+			name = SubViews;
+			sourceTree = "<group>";
+		};
 		93306BCE1BE85FD500F68FD8 /* BuyerDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2019,6 +2035,15 @@
 				93441E9C1C50784E003F6833 /* YYWeakProxy.m */,
 			);
 			path = YYKit;
+			sourceTree = "<group>";
+		};
+		934445E41C8EEF3100F86E5D /* swipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				934445E51C8EEF3100F86E5D /* SESlideTableViewCell.h */,
+				934445E61C8EEF3100F86E5D /* SESlideTableViewCell.m */,
+			);
+			path = swipeCell;
 			sourceTree = "<group>";
 		};
 		934C41B21BA7F13500002853 /* ServiceDetail */ = {
@@ -2315,6 +2340,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				934445E41C8EEF3100F86E5D /* swipeCell */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
 				84567F5C1C5222CA0032266C /* AITagView */,
 				818D8EAE1C040D4100006408 /* BuyerViews */,
@@ -2629,6 +2655,7 @@
 		93CD0D281C8E72E00047F4A7 /* AIRequirement */ = {
 			isa = PBXGroup;
 			children = (
+				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
 				93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */,
@@ -2992,6 +3019,7 @@
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
 				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
+				932DB08D1C8F01A80024C40D /* AIRACContentView.xib in Resources */,
 				9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
@@ -3146,6 +3174,7 @@
 				847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */,
+				934445E71C8EEF3100F86E5D /* SESlideTableViewCell.m in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
 				8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */,
 				84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */,
@@ -3456,6 +3485,7 @@
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */,
+				932DB08B1C8F01770024C40D /* AIRACContentView.swift in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
