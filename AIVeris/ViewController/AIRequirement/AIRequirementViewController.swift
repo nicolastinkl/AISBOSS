@@ -25,12 +25,11 @@ internal class AIRequirementViewController : UIViewController {
     
     // MARK: -> Internal properties
   
+    @IBOutlet weak var rightHoldView: UIView!
     
     private var uid : Int = 1
     
     // MARK: -> Private type alias
-    
-    // MARK: -> Private methods
     
     
     // MARK: -> Internal init methods
@@ -39,7 +38,6 @@ internal class AIRequirementViewController : UIViewController {
         super.viewDidLoad()
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-        
         
     }
     
@@ -54,41 +52,47 @@ internal class AIRequirementViewController : UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-
 }
-
-
-//extension AIRequirementViewController : AIRequireProtocol {
-//
-//    
-//    func withSwitchProfessionVC(type: Int) {
-//        print("main type")
-//    }
-//    
-//}
 
 extension AIRequireProtocol where Self : AIRequirementViewController {
 
+    // MARK: -> Private methods
+    
     func withSwitchProfessionVC(type: Int){
-        print("select button : ")
         
         switch type {
         case 1 :
-            print("1")
+            
+            self.addSubViewController(UIViewController(), toView: self.rightHoldView)
             
         case 2 :
-            print("2")
+            
+            self.addSubViewController(UIViewController(nibName: "", bundle: nil), toView: self.rightHoldView)
+            
         case 3 :
             print("3")
         case 4 :
             print("4")
         default:
-            print("default")
-            
             break
         }
-        
-        
+    }
+    
+    
+    // MARK: -> Internal methods
+    func addSubViewController(viewController: UIViewController, toView: UIView? = nil, belowSubview: UIView? = nil) {
+        self.addChildViewController(viewController)
+        var parentView = self.view
+        if let view = toView {
+            parentView = view
+        }
+        if let subview = belowSubview {
+            parentView.insertSubview(viewController.view, belowSubview: subview)
+        } else {
+            parentView.addSubview(viewController.view)
+        }
+        viewController.didMoveToParentViewController(self)
+        viewController.view.pinToEdgesOfSuperview()
     }
     
 }

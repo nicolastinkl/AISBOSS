@@ -72,14 +72,13 @@
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umN-d2-ZNS">
                                 <rect key="frame" x="59" y="79" width="528" height="521"/>
-                                <connections>
-                                    <segue destination="nVn-6w-g5V" kind="embed" id="UFH-aQ-tze"/>
-                                </connections>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Dhb-Rf-QbV" firstAttribute="top" secondItem="umN-d2-ZNS" secondAttribute="bottom" id="44J-Z6-3bg"/>
+                            <constraint firstItem="umN-d2-ZNS" firstAttribute="leading" secondItem="9Xg-gE-yFw" secondAttribute="leadingMargin" constant="39" id="ENA-LK-n6N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jow-hA-Dc6" secondAttribute="trailing" constant="-20" id="FSM-4k-LEl"/>
                             <constraint firstItem="pIy-fY-NPF" firstAttribute="leading" secondItem="9Xg-gE-yFw" secondAttribute="leadingMargin" constant="-7" id="HGc-l3-Ij2"/>
                             <constraint firstItem="uff-fJ-KWs" firstAttribute="top" secondItem="4Xh-3L-WGI" secondAttribute="bottom" id="IN1-vf-hn7"/>
@@ -90,6 +89,7 @@
                             <constraint firstItem="Dhb-Rf-QbV" firstAttribute="top" secondItem="pIy-fY-NPF" secondAttribute="bottom" id="P6N-Gx-TXq"/>
                             <constraint firstItem="uff-fJ-KWs" firstAttribute="leading" secondItem="9Xg-gE-yFw" secondAttribute="leadingMargin" constant="-20" id="Tc1-pB-xCa"/>
                             <constraint firstItem="Dhb-Rf-QbV" firstAttribute="top" secondItem="jow-hA-Dc6" secondAttribute="bottom" id="YZ9-Dc-aiw"/>
+                            <constraint firstItem="umN-d2-ZNS" firstAttribute="trailing" secondItem="pIy-fY-NPF" secondAttribute="trailing" id="ZpO-0t-Erg"/>
                             <constraint firstItem="pIy-fY-NPF" firstAttribute="top" secondItem="8LD-5A-vi1" secondAttribute="bottom" constant="20" id="b2S-Xf-tai"/>
                             <constraint firstItem="AI6-lY-ikB" firstAttribute="leading" secondItem="9Xg-gE-yFw" secondAttribute="leadingMargin" constant="-4" id="cFk-sm-6wQ"/>
                             <constraint firstItem="jow-hA-Dc6" firstAttribute="top" secondItem="8LD-5A-vi1" secondAttribute="bottom" id="d9e-Lp-4bZ"/>
@@ -100,9 +100,18 @@
                             <constraint firstItem="umN-d2-ZNS" firstAttribute="leading" secondItem="uff-fJ-KWs" secondAttribute="trailing" id="pEa-SY-eon"/>
                             <constraint firstItem="jow-hA-Dc6" firstAttribute="leading" secondItem="9Xg-gE-yFw" secondAttribute="leadingMargin" constant="-20" id="x9S-wq-8Ze"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="jCO-Bz-wNY"/>
+                                <exclude reference="pEa-SY-eon"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="rightHoldView" destination="umN-d2-ZNS" id="y7r-Lk-dC5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzr-CE-epD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,6 +168,24 @@
                                     <action selector="targetForRequirementAction:" destination="UTQ-k0-OTq" eventType="touchDown" id="JJd-C5-NE2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="requirement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJF-jK-L6C">
+                                <rect key="frame" x="5" y="59" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="assignment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIG-e9-chb">
+                                <rect key="frame" x="5" y="119" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="collaboration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QA-W6-bkt">
+                                <rect key="frame" x="5" y="178" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -185,7 +212,10 @@
                     </view>
                     <connections>
                         <outlet property="assignButton" destination="Y2x-0G-yH0" id="IwI-ov-Qta"/>
+                        <outlet property="assignLabel" destination="oIG-e9-chb" id="Ydv-cT-9bX"/>
+                        <outlet property="collLabel" destination="1QA-W6-bkt" id="kZD-OS-PqH"/>
                         <outlet property="collaborationButton" destination="gdl-L5-3n5" id="QyF-FW-9J7"/>
+                        <outlet property="labelRequire" destination="ZJF-jK-L6C" id="FOn-gn-Dtz"/>
                         <outlet property="requireButton" destination="gS9-Jk-zcZ" id="OdZ-Er-ctt"/>
                     </connections>
                 </viewController>
@@ -202,17 +232,91 @@
                         <viewControllerLayoutGuide type="bottom" id="Zoi-1P-qzj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VPE-5f-hoP">
-                        <rect key="frame" x="0.0" y="0.0" width="528" height="521"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VKz-qx-O0Y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="545"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXX-lu-pBH">
+                                <rect key="frame" x="0.0" y="545" width="600" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Li-KN-HhV">
+                                        <rect key="frame" x="135" y="0.0" width="110" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="rDv-G9-b91"/>
+                                            <constraint firstAttribute="width" constant="110" id="si7-sQ-C3D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="10"/>
+                                        <state key="normal" title="Add Tag" image="AIROAddTag"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnM-NG-772">
+                                        <rect key="frame" x="245" y="0.0" width="110" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="3eu-k3-6f7"/>
+                                            <constraint firstAttribute="height" constant="55" id="YeV-a4-VQY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="39" minY="0.0" maxX="0.0" maxY="10"/>
+                                        <state key="normal" title="Add Note" image="AIROAddNote"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuR-hh-5Tp">
+                                        <rect key="frame" x="355" y="0.0" width="110" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="CR5-bC-A73"/>
+                                            <constraint firstAttribute="width" constant="110" id="dYJ-h5-szg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="10"/>
+                                        <state key="normal" title="Add Task" image="AIROAddTask"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.10588235294117647" blue="0.2196078431372549" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gnM-NG-772" firstAttribute="centerY" secondItem="2Li-KN-HhV" secondAttribute="centerY" id="EDw-kT-erS"/>
+                                    <constraint firstAttribute="height" constant="55" id="Gca-M5-Js3"/>
+                                    <constraint firstItem="2Li-KN-HhV" firstAttribute="centerY" secondItem="FXX-lu-pBH" secondAttribute="centerY" id="RIf-q3-Mxe"/>
+                                    <constraint firstItem="gnM-NG-772" firstAttribute="centerX" secondItem="FXX-lu-pBH" secondAttribute="centerX" id="RJy-8B-6uv"/>
+                                    <constraint firstItem="fuR-hh-5Tp" firstAttribute="leading" secondItem="gnM-NG-772" secondAttribute="trailing" id="TnJ-Cn-wUS"/>
+                                    <constraint firstItem="gnM-NG-772" firstAttribute="leading" secondItem="2Li-KN-HhV" secondAttribute="trailing" id="iX8-el-aaT"/>
+                                    <constraint firstItem="fuR-hh-5Tp" firstAttribute="centerY" secondItem="gnM-NG-772" secondAttribute="centerY" id="lqa-eu-lWc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VKz-qx-O0Y" firstAttribute="top" secondItem="7tR-M6-BE5" secondAttribute="bottom" id="AHw-m4-IyU"/>
+                            <constraint firstItem="Zoi-1P-qzj" firstAttribute="top" secondItem="FXX-lu-pBH" secondAttribute="bottom" id="LGd-YF-b9I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VKz-qx-O0Y" secondAttribute="trailing" constant="-20" id="M8a-ez-Y9l"/>
+                            <constraint firstItem="FXX-lu-pBH" firstAttribute="leading" secondItem="VPE-5f-hoP" secondAttribute="leadingMargin" constant="-20" id="Nbc-LV-JZy"/>
+                            <constraint firstItem="VKz-qx-O0Y" firstAttribute="top" secondItem="7tR-M6-BE5" secondAttribute="bottom" constant="-20" id="VMc-MA-FKX"/>
+                            <constraint firstItem="VKz-qx-O0Y" firstAttribute="leading" secondItem="VPE-5f-hoP" secondAttribute="leadingMargin" constant="-20" id="fHy-Ky-QuH"/>
+                            <constraint firstItem="Zoi-1P-qzj" firstAttribute="top" secondItem="VKz-qx-O0Y" secondAttribute="bottom" constant="55" id="g6G-kx-VbU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FXX-lu-pBH" secondAttribute="trailing" constant="-20" id="hFt-b8-YtF"/>
+                            <constraint firstItem="FXX-lu-pBH" firstAttribute="top" secondItem="VKz-qx-O0Y" secondAttribute="bottom" id="myT-bE-fRK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AHw-m4-IyU"/>
+                                <exclude reference="g6G-kx-VbU"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nC-Kv-7yM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="402.5" y="873.5"/>
+            <point key="canvasLocation" x="402" y="873"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AIROAddNote" width="21" height="21"/>
+        <image name="AIROAddTag" width="21" height="21"/>
+        <image name="AIROAddTask" width="21" height="21"/>
         <image name="AIRequireIcon" width="56" height="58"/>
         <image name="AIRequirebg1" width="621" height="1104"/>
         <image name="AIRequirebg2" width="581" height="1075"/>

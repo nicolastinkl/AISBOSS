@@ -22,22 +22,39 @@ internal class AIRequirementMenuViewController : AIRequirementViewController,AIR
     
     // MARK: -> Internal static properties
     
+    @IBOutlet weak var labelRequire: UILabel!
+    
+    @IBOutlet weak var assignLabel: UILabel!
+    
+    @IBOutlet weak var collLabel: UILabel!
+    
     // MARK: -> Internal properties
     
     @IBOutlet weak var requireButton: UIButton!
     @IBOutlet weak var collaborationButton: UIButton!
     @IBOutlet weak var assignButton: UIButton!
-    // MARK: -> Private type alias
-    
-    // MARK: -> Private methods
     
     
     // MARK: -> Internal init methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        // TODO: Init Veris Lable's Font and Size.
+        
+        func initFont(label : UILabel){
+            label.font = AITools.myriadLightSemiCondensedWithSize(9)
+            label.textColor = UIColor(hexString: "ffffff", alpha: 0.7)
+        }
+        
+        initFont(labelRequire)
+        initFont(collLabel)
+        initFont(assignLabel)
+        
+        
+        
     }
+    
     
     @IBAction func targetForRequirementAction(anyobj: AnyObject){
         
@@ -65,7 +82,7 @@ internal class AIRequirementMenuViewController : AIRequirementViewController,AIR
                 
                 
             default :
-                print("")
+
                 break
             }
             
