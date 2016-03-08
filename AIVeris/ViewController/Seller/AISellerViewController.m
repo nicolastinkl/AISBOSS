@@ -53,7 +53,7 @@
     
     // Do any additional setup after loading the view.
     
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     [self makeBackGroundView];
     [self makeTableView];
@@ -545,7 +545,7 @@
     
     AIProposalServiceModel *serviceModel = [[AIProposalServiceModel alloc] init];
     serviceModel.service_id = model.service.service_id;
-    
+    /*
     AIServiceContentViewController *contentVC = [[AIServiceContentViewController alloc] init];
     contentVC.serviceContentModel = serviceModel;
     contentVC.propodalId = model.proposal_id;
@@ -553,8 +553,17 @@
     contentVC.customID = [NSString stringWithFormat:@"%ld", model.customer.user_id ?: 0];
     [contentVC loadDataNecessary];
     [self presentViewController:contentVC animated:YES completion:nil];
+     */
+    
+    AIRequirementViewController * requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
+    
+    [self.navigationController pushViewController:requirementVC animated:YES];
+    
+    
+    
     
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return kCommonCellHeight;

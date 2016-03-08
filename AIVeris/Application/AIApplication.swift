@@ -52,6 +52,7 @@ struct AIApplication{
             static let AIVideoStoryboard            = "AIVideoStoryboard"
             static let UIMainStoryboard             = "UIMainStoryboard"
             static let UIBuyerStoryboard            = "UIBuyerStoryboard"
+            static let UIRrequirementStoryboard     = "UIRrequirementStoryboard"
             
         }
         
@@ -67,6 +68,7 @@ struct AIApplication{
             static let AIBuyerDetailViewController = "AIBuyerDetailViewController"
             static let AIPageBueryViewController    = "AIPageBueryViewController"
             static let AIServiceContentViewController   = "AIServiceContentViewController"
+            static let AIRequirementViewController  = "AIRequirementViewController"
         }
         
         /*!

@@ -37,6 +37,7 @@
     [self makeChildViewControllers];
     [self startOpenningAnimation];
  
+    /*
 #if DEBUG
     YYFPSLabel* _fpsLabel = [[YYFPSLabel alloc] init];
     [_fpsLabel sizeToFit];
@@ -49,7 +50,7 @@
     AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.window addSubview:_fpsLabel];
 #endif
-    
+    */
 }
 
 -(BOOL)prefersStatusBarHidden{
