@@ -277,6 +277,8 @@
 		933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933077631C1133A200DD7FB4 /* AIBueryDetailCell.xib */; };
 		93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9A1C50784E003F6833 /* YYFPSLabel.m */; };
 		93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 93441E9C1C50784E003F6833 /* YYWeakProxy.m */; };
+		934445E11C8ED36500F86E5D /* AIAssignmentContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */; };
+		934445E31C8ED37B00F86E5D /* AICollContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -284,6 +286,7 @@
 		9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */; };
 		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; };
 		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; };
+		9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
 		936EDC971BCB4C4100ED160F /* AITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936EDC961BCB4C4100ED160F /* AITest.swift */; };
@@ -949,6 +952,8 @@
 		93441E9A1C50784E003F6833 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		93441E9B1C50784E003F6833 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		93441E9C1C50784E003F6833 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAssignmentContentViewController.swift; sourceTree = "<group>"; };
+		934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICollContentViewController.swift; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -959,6 +964,7 @@
 		93508CAD1BE07C8200525512 /* MDCFocalPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCFocalPointView.m; sourceTree = "<group>"; };
 		93508CAE1BE07C8200525512 /* MDCSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSpotlightView.h; sourceTree = "<group>"; };
 		93508CAF1BE07C8200525512 /* MDCSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSpotlightView.m; sourceTree = "<group>"; };
+		9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireContentViewController.swift; sourceTree = "<group>"; };
 		936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioInputView.swift; sourceTree = "<group>"; };
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
 		936EDC961BCB4C4100ED160F /* AITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITest.swift; sourceTree = "<group>"; };
@@ -2626,6 +2632,9 @@
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
 				93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */,
+				9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */,
+				934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */,
+				934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */,
 			);
 			path = AIRequirement;
 			sourceTree = "<group>";
@@ -3201,6 +3210,7 @@
 				849B4B241C0EDFE300BEC179 /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				93B25A991B9D7A7B00CD1FEB /* AFHTTPSessionManager.m in Sources */,
 				849B4B611C0EDFE300BEC179 /* FLEXHierarchyTableViewCell.m in Sources */,
+				9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
 				845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */,
@@ -3388,6 +3398,7 @@
 				93FA1E4F1B9C3E12009965C8 /* AIMediaView.swift in Sources */,
 				84DDA94C1BEC67BB00CA5C83 /* ServiceDetailView.swift in Sources */,
 				93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */,
+				934445E31C8ED37B00F86E5D /* AICollContentViewController.swift in Sources */,
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
@@ -3472,6 +3483,7 @@
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
 				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
+				934445E11C8ED36500F86E5D /* AIAssignmentContentViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				81C092891BAFAC0D003FFF35 /* SDWebImagePrefetcher.m in Sources */,
 				849B4B5C1C0EDFE300BEC179 /* FLEXKeyboardShortcutManager.m in Sources */,

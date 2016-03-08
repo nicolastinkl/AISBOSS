@@ -12,7 +12,7 @@ import Foundation
 // MARK: -
 // MARK: AIRequirementMenuViewController
 // MARK: -
-internal class AIRequirementMenuViewController : AIRequirementViewController,AIRequireProtocol {
+internal class AIRequirementMenuViewController : UIViewController  {
     
     // MARK: -> Internal structs
     
@@ -38,7 +38,8 @@ internal class AIRequirementMenuViewController : AIRequirementViewController,AIR
     // MARK: -> Internal init methods
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+
+        super.viewDidLoad() // .if this will error.
         
         // TODO: Init Veris Lable's Font and Size.
         
@@ -90,11 +91,13 @@ internal class AIRequirementMenuViewController : AIRequirementViewController,AIR
         
         selectButton(button.tag)
         
-        withSwitchProfessionVC(button.tag)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: button.tag)
+        
+        //withSwitchProfessionVC(button.tag)
     }
     
     @IBAction func targetForTableViewSelectAction(anyobj: AnyObject){
-        withSwitchProfessionVC(4)
+        //withSwitchProfessionVC(4)
     }
     
 

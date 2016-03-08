@@ -24,8 +24,8 @@ internal class AIRequirementViewController : UIViewController {
     // MARK: -> Internal static properties
     
     // MARK: -> Internal properties
-  
-    @IBOutlet weak var rightHoldView: UIView!
+    
+    @IBOutlet weak var rightContentView: UIView!
     
     private var uid : Int = 1
     
@@ -37,8 +37,68 @@ internal class AIRequirementViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
+        // Init Status Bar
         
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
+     
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
+        
+        
+        // Init RightContent View
+        
+        withSwitchProfessionVC(1)
+        
+    }
+    
+    func notifySwitchProfessionVC(notify: NSNotification){
+        
+        if let objType = notify.object as? Int {
+             withSwitchProfessionVC(objType)
+        }
+    }
+    
+    
+    func withSwitchProfessionVC(type: Int){
+        
+        switch type {
+        case 1 :
+            
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+            
+            self.addSubViewController(viewController)
+            
+        case 2 :
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+            
+            self.addSubViewController(viewController)
+            
+        case 3 :
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICollContentViewController) as! AICollContentViewController
+            
+            self.addSubViewController(viewController)
+            
+        case 4 :
+            print("4")
+        default:
+            break
+        }
+    }
+    
+    
+    // MARK: -> Internal methods
+    func addSubViewController(viewController: UIViewController, toView: UIView? = nil) {
+        self.addChildViewController(viewController)
+        if self.rightContentView != nil {
+            _ = self.rightContentView.subviews.filter({ (cview) -> Bool in
+                cview.removeFromSuperview()
+                return false
+            })
+            viewController.view.frame = self.rightContentView.frame // reload frame.
+            self.rightContentView.addSubview(viewController.view)
+            viewController.didMoveToParentViewController(self)
+            viewController.view.pinToEdgesOfSuperview(offset: 20)
+            
+        }
     }
     
     
@@ -50,49 +110,6 @@ internal class AIRequirementViewController : UIViewController {
     
     @IBAction func dissMissViewController(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-}
-
-extension AIRequireProtocol where Self : AIRequirementViewController {
-
-    // MARK: -> Private methods
-    
-    func withSwitchProfessionVC(type: Int){
-        
-        switch type {
-        case 1 :
-            
-            self.addSubViewController(UIViewController(), toView: self.rightHoldView)
-            
-        case 2 :
-            
-            self.addSubViewController(UIViewController(nibName: "", bundle: nil), toView: self.rightHoldView)
-            
-        case 3 :
-            print("3")
-        case 4 :
-            print("4")
-        default:
-            break
-        }
-    }
-    
-    
-    // MARK: -> Internal methods
-    func addSubViewController(viewController: UIViewController, toView: UIView? = nil, belowSubview: UIView? = nil) {
-        self.addChildViewController(viewController)
-        var parentView = self.view
-        if let view = toView {
-            parentView = view
-        }
-        if let subview = belowSubview {
-            parentView.insertSubview(viewController.view, belowSubview: subview)
-        } else {
-            parentView.addSubview(viewController.view)
-        }
-        viewController.didMoveToParentViewController(self)
-        viewController.view.pinToEdgesOfSuperview()
     }
     
 }
