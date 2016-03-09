@@ -11,6 +11,11 @@ import Foundation
 class AIRACContentView: UIView {
     
     @IBOutlet weak var tiitleLabel: UILabel!
+    
+    @IBOutlet weak var bgImageView: UIImageView!
+    
+//    @IBOutlet weak var bgIconView: UIView!
+    
     class func currentView()->AIRACContentView{
         
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIRACContentView", owner: self, options: nil).first  as! AIRACContentView
