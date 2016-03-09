@@ -73,8 +73,7 @@ class AIRequireContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableview.estimatedRowHeight = UITableViewAutomaticDimension
-        
+        tableview.estimatedRowHeight = 44
         
     }
     
@@ -82,6 +81,8 @@ class AIRequireContentViewController: UIViewController {
 
 
 extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSource {
+    
+  
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -132,8 +133,13 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                     break
                 }
                 
-                cell?.textLabel?.text = contentModel.text ?? ""
+                let contentView = AIRACContentView.currentView()
                 
+                cell?.contentView.addSubview(contentView)
+                
+                contentView.pinToEdgesOfSuperview()
+
+                contentView.tiitleLabel.text = contentModel.text ?? ""
                 
                 cell!.addRightButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#0B1051"))
                 
@@ -143,8 +149,8 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 
                 
             }
-            cell!.showsLeftSlideIndicator = true
-            cell!.showsRightSlideIndicator = true
+            cell!.showsLeftSlideIndicator = false
+            cell!.showsRightSlideIndicator = false
             
             return cell!
         }
@@ -152,7 +158,32 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     }
 }
 
+// MARK: - Cell Call back Event.
 extension AIRequireContentViewController : SESlideTableViewCellDelegate{
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, canSlideToState slideState: SESlideTableViewCellSlideState) -> Bool {
+        return true
+    }
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, didSlideToState slideState: SESlideTableViewCellSlideState) {
+        
+    }
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
+        
+    }
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
+        
+    }
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, willSlideToState slideState: SESlideTableViewCellSlideState) {
+        
+    }
+    
+    func slideTableViewCell(cell: SESlideTableViewCell!, wilShowButtonsOfSide side: SESlideTableViewCellSide) {       
+        
+    }
     
 }
 

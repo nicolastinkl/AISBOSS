@@ -10,6 +10,7 @@ import Foundation
 
 class AIRACContentView: UIView {
     
+    @IBOutlet weak var tiitleLabel: UILabel!
     class func currentView()->AIRACContentView{
         
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIRACContentView", owner: self, options: nil).first  as! AIRACContentView
@@ -18,3 +19,4 @@ class AIRACContentView: UIView {
     }
     
 }
+

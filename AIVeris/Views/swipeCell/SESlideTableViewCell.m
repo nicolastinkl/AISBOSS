@@ -48,7 +48,7 @@ static UIImage* SECreateImageWithColor(UIColor* color, CGSize size) {
 - (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		m_color = [UIColor whiteColor];
+		m_color = [UIColor clearColor];
 		
 		self.clipsToBounds = YES;
 		UIImage* image = SECreateImageWithColor(m_color, CGSizeMake(1, 1));
@@ -594,6 +594,7 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 - (void)handlePanGesture:(UIPanGestureRecognizer*)gesture {
 	switch (gesture.state) {
 		case UIGestureRecognizerStateBegan: {
+            
 			[self cancelSlideAnimation];
 			m_panStartSnapshotViewOriginX = 0;
 			if (m_snapshotContainerView) {
@@ -746,10 +747,21 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 	}
 }
 
+- (void) prepareForHiddenCellContentView{
+    // left and right
+    self.contentView.subviews.firstObject.hidden = YES;
+}
+
+- (void) prepareForShowCellContentView{
+    // left and right
+    self.contentView.subviews.firstObject.hidden = NO;
+}
+
 - (void)prepareToSlideLeft {
 	if (m_preparedSlideStates & SESlideStateOptionLeft) {
 		return;
 	}
+    
 	if (m_delegate && [m_delegate respondsToSelector:@selector(slideTableViewCell:wilShowButtonsOfSide:)]) {
 		[m_delegate slideTableViewCell:self wilShowButtonsOfSide:SESlideTableViewCellSideLeft];
 	}
@@ -773,6 +785,8 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 	
 	[m_slideView addSubview:m_leftButtonGroupView];
 	
+    [self prepareForHiddenCellContentView];
+    
 	// constraints
 	NSLayoutConstraint* constraintL = [NSLayoutConstraint constraintWithItem:m_leftButtonGroupView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:m_snapshotContainerView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
 	constraintL.priority = UILayoutPriorityDefaultHigh;
@@ -788,6 +802,7 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 	if (m_preparedSlideStates & SESlideStateOptionRight) {
 		return;
 	}
+    
 	if (m_delegate && [m_delegate respondsToSelector:@selector(slideTableViewCell:wilShowButtonsOfSide:)]) {
 		[m_delegate slideTableViewCell:self wilShowButtonsOfSide:SESlideTableViewCellSideRight];
 	}
@@ -810,8 +825,10 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 	m_rightButtonGroupView.sectionIndexWidth = [self sectionIndexWidth];
 	
 	[m_slideView addSubview:m_rightButtonGroupView];
-
-	// constraints
+    
+    [self prepareForHiddenCellContentView];
+	
+    // constraints
 	NSLayoutConstraint* constraintL = [NSLayoutConstraint constraintWithItem:m_rightButtonGroupView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:m_snapshotContainerView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
 	constraintL.priority = UILayoutPriorityDefaultHigh;
 	[m_constraints addObject:constraintL];
@@ -862,6 +879,7 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 	uint32_t animationId = m_slideAnimationId;
 	
 	[UIView animateWithDuration:SE_ANIMATION_DURATION delay:0 usingSpringWithDamping:SE_ANIMATION_DUMPING initialSpringVelocity:initialVelocity options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState animations:^(){
+        
 		CGRect frame = snapshotView.frame;
 		frame.origin.x = targetPositionX;
 		snapshotView.frame = frame;
@@ -872,6 +890,11 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 			if (animationId != m_slideAnimationId) {
 				return;
 			}
+            
+            if (slideState == SESlideTableViewCellSlideStateCenter) {
+                [self prepareForShowCellContentView];
+            }
+            
 			m_slideState = slideState;
 			if (slideState == SESlideTableViewCellSlideStateCenter) {
 				m_preparedSlideStates = SESlideStateOptionNone;
