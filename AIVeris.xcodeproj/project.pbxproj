@@ -158,6 +158,8 @@
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
 		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
+		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
+		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
 		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
 		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
 		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
@@ -759,6 +761,8 @@
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
 		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
 		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
+		8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAndBuyerInfoView.swift; sourceTree = "<group>"; };
+		8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderAndBuyerInfoView.xib; sourceTree = "<group>"; };
 		849B0BCD1C202AC3008C0A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1997,6 +2001,8 @@
 			children = (
 				932DB08A1C8F01770024C40D /* AIRACContentView.swift */,
 				932DB08C1C8F01A80024C40D /* AIRACContentView.xib */,
+				8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */,
+				8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -3014,6 +3020,7 @@
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
 				93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
+				8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
@@ -3242,6 +3249,7 @@
 				9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
+				8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */,
 				845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */,
 				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
 				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,

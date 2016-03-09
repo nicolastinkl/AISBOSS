@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -24,22 +24,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIRequirebg2" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-fY-NPF">
                                 <rect key="frame" x="13" y="20" width="574" height="580"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xh-3L-WGI" customClass="DesignableView" customModule="Spring">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xh-3L-WGI" customClass="OrderAndBuyerInfoView" customModule="Veris">
                                 <rect key="frame" x="13" y="20" width="574" height="59"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIRequireIcon" translatesAutoresizingMaskIntoConstraints="NO" id="leZ-jf-Sa4">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="59"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="59" id="BXh-2t-atD"/>
-                                            <constraint firstAttribute="width" constant="56" id="rkW-Y6-nGZ"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Aco-iE-Ube"/>
-                                    <constraint firstItem="leZ-jf-Sa4" firstAttribute="leading" secondItem="4Xh-3L-WGI" secondAttribute="leading" id="H8C-vI-gTI"/>
-                                    <constraint firstItem="leZ-jf-Sa4" firstAttribute="top" secondItem="4Xh-3L-WGI" secondAttribute="top" id="YNI-6B-Q0v"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -497,7 +486,6 @@
         <image name="AIROAddNote" width="21" height="21"/>
         <image name="AIROAddTag" width="21" height="21"/>
         <image name="AIROAddTask" width="21" height="21"/>
-        <image name="AIRequireIcon" width="56" height="58"/>
         <image name="AIRequirebg1" width="621" height="1104"/>
         <image name="AIRequirebg2" width="581" height="1075"/>
         <image name="AIRequirebgback" width="32" height="32"/>
