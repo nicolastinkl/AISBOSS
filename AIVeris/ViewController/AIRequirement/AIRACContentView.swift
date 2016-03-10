@@ -25,3 +25,13 @@ class AIRACContentView: UIView {
     
 }
 
+
+/*
+let contentView = AIRACContentView.currentView()
+
+cell.contentView.addSubview(contentView)
+
+contentView.snp_makeConstraints(closure: { (make) -> Void in
+make.margins.equalTo(cell.contentView)
+})
+*/

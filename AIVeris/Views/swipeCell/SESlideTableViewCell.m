@@ -749,12 +749,23 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 
 - (void) prepareForHiddenCellContentView{
     // left and right
-    self.contentView.subviews.firstObject.hidden = YES;
+     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+         if (obj.tag > 10) {
+             obj.hidden = YES;
+         }
+     }];
+    
 }
 
 - (void) prepareForShowCellContentView{
     // left and right
-    self.contentView.subviews.firstObject.hidden = NO;
+    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.tag > 10) {
+            obj.hidden = NO;
+        }
+    }];
+    
+    
 }
 
 - (void)prepareToSlideLeft {

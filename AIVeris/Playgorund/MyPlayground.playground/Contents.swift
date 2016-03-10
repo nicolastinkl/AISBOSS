@@ -53,10 +53,13 @@ let newArrayssss = testArray.map({return "NO.\($0)"})
 newArrayssss
 
 
+let im = UIImage(named: "ai_rac_bg_normal_pop")
 
+let ss = im?.stretchableImageWithLeftCapWidth(0, topCapHeight: 12)
 
+let imsss = UIImageView(frame: CGRectMake(0, 0, 400, 200))
 
-
+imsss.image = ss
 
 
 

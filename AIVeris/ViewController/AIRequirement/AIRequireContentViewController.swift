@@ -74,7 +74,7 @@ class AIRequireContentViewController: UIViewController {
         c4.type = 4
         c4.bgImageUrl = ""
         c4.text = "Fasting blood glucos : 6MM mol /ml."
-        c4.content = "Anysls sadjlkfjaskldfjkl;asjf;ljkasdjfkl;dafjadsklf;a"
+        c4.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
         c4.childServerIconArray = [i1,i2,i3]
         dataModel.childServices = [c2,c3,c4]
         
@@ -167,13 +167,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     
     func configureCell(cell:SESlideTableViewCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
 
-        let contentView = AIRACContentView.currentView()
-        
-        cell.contentView.addSubview(contentView)
-        contentView.snp_makeConstraints(closure: { (make) -> Void in
-            make.margins.equalTo(cell.contentView)
-        })
-        
         var imageName = "ai_rac_bg_normal"
         switch contentModel.type ?? 0 {
         case 1 :
@@ -188,16 +181,105 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             break
         }
         
-        contentView.bgImageView.image = UIImage(named: imageName)
+        //Setup 1 : bg UIIamgeView.
+        let bgImageView = UIImageView(image: UIImage(named:imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
+        cell.contentView.addSubview(bgImageView)
+        
+        bgImageView.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.leading.trailing.equalTo(0)
+            make.bottom.equalTo(-3)
+        })
+        bgImageView.tag = 11
+        
+        
+        // Setup 2 : Title UILabel.
+        let titleLabel = UILabel()
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode =  NSLineBreakMode.ByCharWrapping
+        titleLabel.text = contentModel.text ?? ""
+        titleLabel.font = AITools.myriadLightSemiExtendedWithSize(16)
+        titleLabel.textColor = UIColor.whiteColor()
+        cell.contentView.addSubview(titleLabel)
+        titleLabel.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(10)
+            make.leading.equalTo(14)
+            make.trailing.equalTo(-14)
+            make.height.greaterThanOrEqualTo(20)
+        })
+        titleLabel.tag = 11
+        
+        // Setup 3: Description UILabel.
+        let desLabel = UILabel()
+        desLabel.numberOfLines = 0
+        desLabel.lineBreakMode =  NSLineBreakMode.ByCharWrapping
+        desLabel.text = contentModel.content ?? ""
+        desLabel.font = AITools.myriadLightSemiExtendedWithSize(16)
+        desLabel.textColor = UIColor.whiteColor()
+        cell.contentView.addSubview(desLabel)
+        
+        desLabel.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(titleLabel.snp_bottom).offset(5)
+            make.leading.equalTo(14)
+            make.trailing.equalTo(-14)
+            make.height.lessThanOrEqualTo(20)
+        })
+        desLabel.tag = 11
+        
+        // Setup 4: Line UIImageView.
+        let lineImageView = UIImageView(image: UIImage(named:"orderline"))
+        cell.contentView.addSubview(lineImageView)
+        var margeLeftOffset : CGFloat = 0
+        if (contentModel.type ?? 0) == 1 {
+            margeLeftOffset = 7
+        }
+        lineImageView.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(desLabel.snp_bottom).offset(5)
+            make.leading.trailing.equalTo(margeLeftOffset)
+            make.height.equalTo(1)
+            
+        })
+        lineImageView.tag = 11
+        
+        // Setup 5: Icon Arrays.
+        
+        let iconView = UIView()
+        cell.contentView.addSubview(iconView)
+        
+        if let models = contentModel.childServerIconArray {
+            var index: Int = 0
+            for model in models{
+                let imageV = AIImageView()
+                imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
+                iconView.addSubview(imageV)
                 
-        contentView.tiitleLabel.text = contentModel.text ?? ""
+                imageV.snp_makeConstraints(closure: { (make) -> Void in
+                    make.top.equalTo(iconView).offset(0)
+                    make.left.equalTo(iconView).offset(index * 25)
+                    make.width.height.equalTo(20)
+                })
+                index = index + 1
+                
+            }
+        }
+        
+        iconView.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(lineImageView.snp_bottom).offset(5)
+            make.leading.equalTo(14)
+            make.trailing.equalTo(-14)
+            make.height.greaterThanOrEqualTo(50)
+            make.bottom.equalTo(cell.contentView).offset(20)
+        })
+        iconView.tag = 11
+
         
         cell.addRightButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#0B1051"))
-        
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTask"), backgroundColor: UIColor(hexString: "#1E2089"))
         
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+
     }
 }
 
