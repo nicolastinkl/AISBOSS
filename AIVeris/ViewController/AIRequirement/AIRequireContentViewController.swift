@@ -59,7 +59,7 @@ class AIRequireContentViewController: UIViewController {
         c3.type = 1
         c3.bgImageUrl = ""
         c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation. Accompany and attend to Accompany and attend"
-        c3.childServerIconArray = [i1,i2,i3]
+        c3.childServerIconArray = [i1,i3]
         msgModel.childServices = [c3]
         
         
@@ -76,7 +76,16 @@ class AIRequireContentViewController: UIViewController {
         c4.text = "Fasting blood glucos : 6MM mol /ml."
         c4.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
         c4.childServerIconArray = [i1,i2,i3]
-        dataModel.childServices = [c2,c3,c4]
+        
+        var c5 = AIChildContentCellModel()
+        c5.id = 1
+        c5.type = 3
+        c5.bgImageUrl = ""
+        c5.text = "Fasting blood glucos : 6MM mol /ml."
+        c5.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
+        c5.childServerIconArray = [i3]
+        
+        dataModel.childServices = [c2,c3,c5,c4]
         
         return [conModel,msgModel,dataModel]
     }()
@@ -230,8 +239,14 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         cell.contentView.addSubview(lineImageView)
         var margeLeftOffset : CGFloat = 0
         if (contentModel.type ?? 0) == 1 {
-            margeLeftOffset = 7
+            margeLeftOffset = 6
         }
+        if contentModel.type >= 3 {
+            lineImageView.alpha = 0
+        }else{
+            lineImageView.alpha = 1
+        }
+        
         lineImageView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(desLabel.snp_bottom).offset(5)
             make.leading.trailing.equalTo(margeLeftOffset)
@@ -272,7 +287,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         iconView.tag = 11
 
         
-        cell.addRightButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#0B1051"))
+        cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTask"), backgroundColor: UIColor(hexString: "#1E2089"))
