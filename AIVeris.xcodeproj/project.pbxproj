@@ -286,6 +286,7 @@
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
+		934EEB191C916CAD00C4EE67 /* AIRACContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */; };
 		9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9350000A1BFF119500B8386B /* AICustomAudioNotesView.swift */; };
 		9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */; };
 		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; };
@@ -967,6 +968,7 @@
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
 		934C41B91BA7FFCE00002853 /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
+		934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACContentCell.swift; sourceTree = "<group>"; };
 		9350000A1BFF119500B8386B /* AICustomAudioNotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomAudioNotesView.swift; sourceTree = "<group>"; };
 		9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomAudioNotesView.xib; sourceTree = "<group>"; };
 		93508CAC1BE07C8200525512 /* MDCFocalPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCFocalPointView.h; sourceTree = "<group>"; };
@@ -1999,6 +2001,7 @@
 			children = (
 				8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */,
 				8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */,
+				934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -3442,6 +3445,7 @@
 				849B4B3A1C0EDFE300BEC179 /* FLEXFileBrowserFileOperationController.m in Sources */,
 				849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
+				934EEB191C916CAD00C4EE67 /* AIRACContentCell.swift in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */,
 				849B4B371C0EDFE300BEC179 /* FLEXWindow.m in Sources */,

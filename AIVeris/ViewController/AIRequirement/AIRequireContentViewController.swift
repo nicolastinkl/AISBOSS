@@ -90,6 +90,8 @@ class AIRequireContentViewController: UIViewController {
         return [conModel,msgModel,dataModel]
     }()
     
+    var editModel : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,10 +101,8 @@ class AIRequireContentViewController: UIViewController {
         // Reloading for the visible cells to layout correctly
         Async.main { () -> Void in
             self.tableview.reloadData()
-        }
-        
+        }        
     }
-    
 }
 
 extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSource {
@@ -145,11 +145,12 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             // Cache Cell...
             let CELL_ID = "Cell_\(currentCellModel?.id ?? 0 )_\(contentModel.id ?? 0)"
             
-            var cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID) as? SESlideTableViewCell
+            var cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID) as? AIRACContentCell
             if cell == nil {
-                cell = SESlideTableViewCell(style: .Default, reuseIdentifier: CELL_ID)
+                cell = AIRACContentCell(style: .Default, reuseIdentifier: CELL_ID)
                 cell!.selectionStyle = .None
                 cell!.delegate = self
+                cell!.aiDelegate = self
                 cell!.backgroundColor = UIColor.clearColor()
                 if let cell = cell {
                     configureCell(cell, atIndexPath:indexPath, contentModel:contentModel)
@@ -174,7 +175,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     
     // MARK: Misc
     
-    func configureCell(cell:SESlideTableViewCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
+    func configureCell(cell:AIRACContentCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
 
         var imageName = "ai_rac_bg_normal"
         switch contentModel.type ?? 0 {
@@ -259,9 +260,8 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         
         let iconView = UIView()
         cell.contentView.addSubview(iconView)
-        
+        var index: Int = 0
         if let models = contentModel.childServerIconArray {
-            var index: Int = 0
             for model in models{
                 let imageV = AIImageView()
                 imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
@@ -277,16 +277,45 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             }
         }
         
+        if editModel == true {
+            let editButton = UIButton(type: UIButtonType.Custom)
+            editButton.setImage(UIImage(named: "dt_add"), forState: UIControlState.Normal)
+            iconView.addSubview(editButton)
+            editButton.snp_makeConstraints(closure: { (make) -> Void in
+                make.top.equalTo(iconView).offset(0)
+                make.left.equalTo(iconView).offset(index * 25)
+                make.width.height.equalTo(20)
+            })
+            editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        
         iconView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
-            make.height.greaterThanOrEqualTo(50)
+            make.height.equalTo(50)
             make.bottom.equalTo(cell.contentView).offset(20)
+            
         })
         iconView.tag = 11
-
         
+        // Setup 6:  expendTableViewCell
+        /*
+        let expendView = UIView()
+        cell.contentView.addSubview(expendView)
+        expendView.backgroundColor = UIColor.whiteColor()
+        expendView.snp_makeConstraints { (make) -> Void in
+        make.top.equalTo(iconView).offset(5)
+        make.trailing.leading.equalTo(0)
+        if cell.hasExpend {
+        make.height.equalTo(80)
+        }else{
+        make.height.equalTo(0)
+        }
+        }
+        expendView.tag = 11
+        */
+         
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
@@ -296,13 +325,69 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         cell.layoutIfNeeded()
 
     }
+    
+    
 }
 
+
 // MARK: - Cell Call back Event.
+
+extension AIRequireContentViewController : ExpendTableViewCellDelegate{
+    
+    func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
+        
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        let contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
+        
+        cell.hasExpend = !cell.hasExpend
+        
+        // Dosome network to request arrays data.
+        
+        // expend change UI.
+        
+        _ = cell.contentView.subviews.filter { (cview) -> Bool in
+            cview.removeFromSuperview()
+            return false
+        }
+        configureCell(cell, atIndexPath: indexPath, contentModel: contentModel)
+
+        self.tableview.beginUpdates()
+        reloadRowAtIndexPath(indexPath)
+        self.tableview.endUpdates()
+        
+        /*
+        
+        let story = self.stories[indexPath.row]
+        let storyId = story.id
+        story.upvote()
+        LocalStore.setStoryAsUpvoted(storyId)
+        configureCell(cell, atIndexPath: indexPath)
+        
+        DesignerNewsService.upvoteStoryWithId(storyId, token: token) { successful in
+        if !successful {
+        story.downvote()
+        LocalStore.removeStoryFromUpvoted(storyId)
+        self.configureCell(cell, atIndexPath: indexPath)
+        }
+        }
+        */
+    }
+
+    // reload
+    func expendTableViewCellSizeDidChange(cell: AIRACContentCell) {
+        if let _ = tableview.indexPathForCell(cell) {
+            self.tableview.reloadData()
+        }
+    }
+    
+
+}
+
 extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     
     func slideTableViewCell(cell: SESlideTableViewCell!, canSlideToState slideState: SESlideTableViewCellSlideState) -> Bool {
-        return true
+        return !editModel
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didSlideToState slideState: SESlideTableViewCellSlideState) {

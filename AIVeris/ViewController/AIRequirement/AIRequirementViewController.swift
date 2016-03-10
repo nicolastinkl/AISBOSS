@@ -8,7 +8,7 @@
 //
 
 import Foundation
-
+import Spring
 // MARK: -
 // MARK: AIRequirementViewController
 // MARK: -
@@ -43,11 +43,18 @@ internal class AIRequirementViewController : UIViewController {
      
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
         
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
         // Init RightContent View
         
         withSwitchProfessionVC(1)
         
+    }
+    
+    func notifyShowRequireMentVC(notify: NSNotification){
+        SpringAnimation.springEaseIn(0.5) { () -> Void in
+            self.rightContentView.subviews.first?.alpha = 1
+        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
@@ -68,9 +75,13 @@ internal class AIRequirementViewController : UIViewController {
             self.addSubViewController(viewController)
             
         case 2 :
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
             
-            self.addSubViewController(viewController)
+            let viewController1 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+            let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+            viewController1.editModel = true
+            self.addSubViewControllers([viewController1,viewController2])
+            self.rightContentView.subviews.first?.alpha = 0
+            
             
         case 3 :
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICollContentViewController) as! AICollContentViewController
@@ -83,7 +94,6 @@ internal class AIRequirementViewController : UIViewController {
             break
         }
     }
-    
     
     // MARK: -> Internal methods
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil) {
@@ -100,6 +110,28 @@ internal class AIRequirementViewController : UIViewController {
             
         }
     }
+    
+    
+    func addSubViewControllers(viewController: [UIViewController], toView: UIView? = nil) {
+        _ = self.rightContentView.subviews.filter({ (cview) -> Bool in
+            cview.removeFromSuperview()
+            return false
+        })
+        for viewc in viewController {
+            
+            self.addChildViewController(viewc)
+            
+            if self.rightContentView != nil {
+                
+                viewc.view.frame = self.rightContentView.frame // reload frame.
+                self.rightContentView.addSubview(viewc.view)
+                viewc.didMoveToParentViewController(self)
+                viewc.view.pinToEdgesOfSuperview(offset: 20)
+                
+            }
+        }
+    }
+    
     
     
     // MARK: -> Internal methods    

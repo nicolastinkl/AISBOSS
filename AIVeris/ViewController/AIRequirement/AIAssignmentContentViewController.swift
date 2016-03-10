@@ -7,13 +7,25 @@
 //
 
 import Foundation
+import Spring
 
 
 
 class AIAssignmentContentViewController: UIViewController {
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
+    }
+    
+    @IBAction func dismissViewControllerToMain(sender: AnyObject) {
+        
+        SpringAnimation.springWithCompletion(0.5, animations: { () -> Void in
+            self.view.alpha = 0
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)            
+            }) { (complate) -> Void in
+            self.view.removeFromSuperview()
+                
+        }
         
     }
     
