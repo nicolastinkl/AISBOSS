@@ -119,6 +119,7 @@
 		8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */; };
 		8450D1221C0479AF00CD1D5B /* AIIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */; };
 		8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */; };
+		8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -710,6 +711,7 @@
 		8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITitleAndIconTextView.swift; sourceTree = "<group>"; };
 		8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIIconTextView.xib; sourceTree = "<group>"; };
 		8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconTextView.swift; sourceTree = "<group>"; };
+		8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
@@ -2576,6 +2578,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */,
 				849B4A8D1C0EDFE300BEC179 /* Flex */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
 				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
@@ -3286,6 +3289,7 @@
 				93CA11D61C463475008B1EE1 /* AIOrderDetailModel.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				849B4B571C0EDFE300BEC179 /* FLEXSetExplorerViewController.m in Sources */,
+				8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */,
