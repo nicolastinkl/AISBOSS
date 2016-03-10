@@ -69,6 +69,10 @@ struct AIApplication{
             static let AIPageBueryViewController    = "AIPageBueryViewController"
             static let AIServiceContentViewController   = "AIServiceContentViewController"
             static let AIRequirementViewController  = "AIRequirementViewController"
+            static let AIRequireContentViewController   = "AIRequireContentViewController"
+            static let AIAssignmentContentViewController = "AIAssignmentContentViewController"
+            static let AICollContentViewController = "AICollContentViewController"
+            
         }
         
         /*!
@@ -129,6 +133,7 @@ struct AIApplication{
             static let AICalendarViewController =   "AICalendarViewController"
             static let AIScanViewController = "AIScanViewController"
             
+            
         }
     }
     
@@ -151,6 +156,7 @@ struct AIApplication{
         
         static let AIDatePickerViewNotificationName  = "AIDatePickerViewNotificationName"
         static let AISinglePickerViewNotificationName  = "AISinglePickerViewNotificationName"
+        static let AIAIRequirementViewControllerNotificationName    = "AIAIRequirementViewControllerNotificationName"
     }
     
     // MARK: System theme's color
