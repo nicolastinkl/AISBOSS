@@ -119,6 +119,7 @@
 		8450D1201C045D3600CD1D5B /* AITitleAndIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */; };
 		8450D1221C0479AF00CD1D5B /* AIIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */; };
 		8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */; };
+		8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -158,6 +159,8 @@
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
 		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
+		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
+		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
 		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
 		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
 		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
@@ -716,6 +719,7 @@
 		8450D11F1C045D3600CD1D5B /* AITitleAndIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITitleAndIconTextView.swift; sourceTree = "<group>"; };
 		8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIIconTextView.xib; sourceTree = "<group>"; };
 		8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconTextView.swift; sourceTree = "<group>"; };
+		8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
@@ -759,6 +763,8 @@
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
 		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
 		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
+		8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAndBuyerInfoView.swift; sourceTree = "<group>"; };
+		8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderAndBuyerInfoView.xib; sourceTree = "<group>"; };
 		849B0BCD1C202AC3008C0A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1997,6 +2003,8 @@
 			children = (
 				932DB08A1C8F01770024C40D /* AIRACContentView.swift */,
 				932DB08C1C8F01A80024C40D /* AIRACContentView.xib */,
+				8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */,
+				8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -2608,6 +2616,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */,
 				849B4A8D1C0EDFE300BEC179 /* Flex */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
 				81D83ADA1BB29F7900BE2BA2 /* MJRefresh */,
@@ -3014,6 +3023,7 @@
 				93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */,
 				93DA9C121BFDCC4400E2DA3B /* UICustomsTags.xib in Resources */,
 				93B25A331B9D78B000CD1FEB /* MyriadProRegular.ttf in Resources */,
+				8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */,
 				93FA1DA71B9C2EAA009965C8 /* DSLCalendar-previousMonth.png in Resources */,
 				842FC8641BDA437C00A0517C /* customerOrderList.json in Resources */,
 				93CB8D821BF9F41C00C41DDE /* MyriadPro-LightSemiExt.otf in Resources */,
@@ -3242,6 +3252,7 @@
 				9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
+				8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */,
 				845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */,
 				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
 				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,
@@ -3325,6 +3336,7 @@
 				93CA11D61C463475008B1EE1 /* AIOrderDetailModel.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				849B4B571C0EDFE300BEC179 /* FLEXSetExplorerViewController.m in Sources */,
+				8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,
 				93B25A5E1B9D7A1D00CD1FEB /* AIShareViewController.m in Sources */,
 				84DDA9441BEAE60200CA5C83 /* UnderlineLabel.swift in Sources */,
