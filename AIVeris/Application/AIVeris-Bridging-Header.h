@@ -117,3 +117,5 @@
 #import "AIBaseTagsView.h"
 
 #import "SESlideTableViewCell.h"
+
+#import "YLProgressBar.h"
