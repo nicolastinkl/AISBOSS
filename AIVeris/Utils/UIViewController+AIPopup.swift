@@ -10,6 +10,282 @@ import UIKit
 import Accelerate
 import Cartography
 
+class ClosureWrapper {
+    var closure: (() -> Void)?
+    
+    init(_ closure: (() -> Void)?) {
+        self.closure = closure
+    }
+}
+
+// example:
+
+// let vc = SamplePopupViewController()
+// presentPopupViewController(vc, animated: true)
+
+// In SamplePopupViewController.swift
+// call self.parentViewController?.dismissPopupViewController(true, completion: nil) some where
+
+extension UIViewController {
+	private struct AssociatedKeys {
+		static var popupViewController = "popupViewController"
+		static var useBlurForPopup = "useBlurForPopup"
+		static var popupViewOffset = "popupViewOffset"
+		static var blurViewKey = "blurViewKey"
+		static var bottomConstraintKey = "bottomConstraintKey"
+        static var onClickCancelArea = "onClickCancelArea"
+	}
+	private struct Constants {
+		static let animationTime: Double = 0.25
+		static let statusBarSize: CGFloat = 22
+	}
+	
+	
+	// MARK: - public
+	var popupViewController: UIViewController? {
+		
+		set {
+			objc_setAssociatedObject(self, &AssociatedKeys.popupViewController, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		}
+		
+		get {
+			return objc_getAssociatedObject(self, &AssociatedKeys.popupViewController) as? UIViewController
+		}
+	}
+	
+	var useBlurForPopup: Bool? {
+		set {
+			objc_setAssociatedObject(self, &AssociatedKeys.useBlurForPopup, newValue, .OBJC_ASSOCIATION_ASSIGN)
+		}
+		
+		get {
+			return objc_getAssociatedObject(self, &AssociatedKeys.useBlurForPopup) as? Bool
+		}
+	}
+	
+	var popupViewOffset: CGPoint? {
+		set {
+			objc_setAssociatedObject(self, &AssociatedKeys.popupViewOffset, NSValue(CGPoint: newValue!), .OBJC_ASSOCIATION_ASSIGN)
+		}
+		
+		get {
+			return (objc_getAssociatedObject(self, &AssociatedKeys.popupViewOffset) as? NSValue)?.CGPointValue()
+		}
+	}
+	
+	var bottomConstraint: NSLayoutConstraint? {
+		set {
+			objc_setAssociatedObject(self, &AssociatedKeys.bottomConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		}
+		
+		get {
+			return objc_getAssociatedObject(self, &AssociatedKeys.bottomConstraintKey) as? NSLayoutConstraint
+		}
+	}
+    
+    var onClickCancelArea: (()->Void)? {
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.onClickCancelArea, ClosureWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        
+        get {
+            return (objc_getAssociatedObject(self, &AssociatedKeys.onClickCancelArea) as? ClosureWrapper)?.closure
+        }
+    }
+	
+    func presentPopupViewController(viewControllerToPresent: UIViewController, duration:Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (()->Void)? = nil) {
+		if popupViewController == nil {
+            self.onClickCancelArea = onClickCancelArea
+			popupViewController = viewControllerToPresent
+			popupViewController!.view.autoresizesSubviews = false
+			popupViewController!.view.autoresizingMask = .None
+			addChildViewController(viewControllerToPresent)
+			
+			// parallax setup
+			let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+			interpolationHorizontal.minimumRelativeValue = -10
+			interpolationHorizontal.maximumRelativeValue = 10
+			
+			let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+			interpolationHorizontal.minimumRelativeValue = -10
+			interpolationHorizontal.maximumRelativeValue = 10
+			
+			popupViewController!.view.addMotionEffect(interpolationHorizontal)
+			popupViewController!.view.addMotionEffect(interpolationVertical)
+			
+			// shadow setup
+			viewControllerToPresent.view.layer.shadowOffset = .zero
+			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
+			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
+			viewControllerToPresent.view.layer.cornerRadius = 5
+			
+			// blurView
+			addBlurView()
+			
+			let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
+			viewControllerToPresent.beginAppearanceTransition(true, animated: animated)
+			
+			let setupInitialConstraints = {
+				
+                constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
+                    subview.left == superView.left
+                    subview.right == superView.right
+                    subview.height == viewControllerToPresent.view.frame.size.height
+                    self.bottomConstraint = subview.bottom == superView.bottom + viewControllerToPresent.view.frame.size.height
+                })
+				
+				self.view.layoutIfNeeded()
+			}
+			if animated {
+				
+				var initialAlpha: CGFloat = 1
+				let finalAlpha: CGFloat = 1
+				
+				if modalTransitionStyle == .CrossDissolve {
+					initialAlpha = 0
+				}
+				
+				viewControllerToPresent.view.alpha = initialAlpha
+				
+				view.addSubview(viewControllerToPresent.view)
+				// setup initial constraints
+				
+				setupInitialConstraints()
+				
+				UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+					self.bottomConstraint?.constant = 0
+					viewControllerToPresent.view.alpha = finalAlpha
+					blurView.alpha = self.useBlurForPopup == true ? 1 : 0.4
+					
+					self.view.layoutIfNeeded()
+					}, completion: { (success) -> Void in
+					self.popupViewController?.didMoveToParentViewController(self)
+					self.popupViewController?.endAppearanceTransition()
+					if let completion = completion {
+						completion()
+					}
+				})
+			} else { // don't animate
+				view.addSubview(viewControllerToPresent.view)
+				
+				setupInitialConstraints()
+				
+				popupViewController?.didMoveToParentViewController(self)
+				popupViewController?.endAppearanceTransition()
+				if let completion = completion {
+					completion()
+				}
+			}
+			
+			NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+		}
+	}
+	
+	func dismissPopupViewController(animated: Bool, completion: (() -> Void)?) {
+		let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
+		popupViewController?.willMoveToParentViewController(nil)
+		popupViewController?.beginAppearanceTransition(false, animated: animated)
+		if animated {
+			
+			var finalAlpha: CGFloat = 1
+			if modalTransitionStyle == .CrossDissolve {
+				finalAlpha = 0
+			}
+			
+			view.layoutIfNeeded()
+			UIView.animateWithDuration(Constants.animationTime, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+				self.bottomConstraint?.constant = self.view.frame.size.height
+				self.popupViewController!.view.alpha = finalAlpha
+				blurView.alpha = 0
+				self.view.layoutIfNeeded()
+				}, completion: { (success) -> Void in
+				self.popupViewController?.removeFromParentViewController()
+				self.popupViewController?.endAppearanceTransition()
+				self.popupViewController!.view.removeFromSuperview()
+				blurView.removeFromSuperview()
+				self.popupViewController = nil
+				if let completion = completion {
+					completion()
+				}
+			})
+		}
+		
+		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillChangeFrameNotification, object: nil)
+	}
+	
+	// MARK: - private
+	
+	func keyboardWillChangeFrame(notification: NSNotification) {
+		var userInfo = notification.userInfo!
+		
+		let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+		let convertedFrameEnd = self.view.convertRect(frameEnd, fromView: nil)
+		let heightOffset = self.view.bounds.size.height - convertedFrameEnd.origin.y
+		bottomConstraint!.constant = -heightOffset
+		
+		let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
+		let options = UIViewAnimationOptions(rawValue: UInt(curve) << 16)
+		
+		UIView.animateWithDuration(
+			userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
+			delay: 0,
+			options: options,
+			animations: {
+				self.view.layoutIfNeeded()
+			},
+			completion: nil
+		)
+	}
+	
+	func addBlurView() {
+		let fadeView = UIImageView()
+		fadeView.frame = UIScreen.mainScreen().bounds
+		
+		if useBlurForPopup == true {
+			fadeView.image = getBlurredImage(getScreenImage())
+		} else {
+			fadeView.backgroundColor = UIColor.blackColor()
+		}
+		fadeView.alpha = 0
+		fadeView.userInteractionEnabled = true
+		view.addSubview(fadeView)
+		objc_setAssociatedObject(self, &AssociatedKeys.blurViewKey, fadeView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		
+		let tap = UITapGestureRecognizer(target: self, action: "blurViewDidTapped")
+		fadeView.addGestureRecognizer(tap)
+	}
+	
+	func blurViewDidTapped() {
+        view.endEditing(true)
+//        if let onClickCancelArea = onClickCancelArea {
+//            onClickCancelArea()
+//        }
+		dismissPopupViewController(true, completion: onClickCancelArea)
+	}
+	
+	func getBlurredImage(imageToBlur: UIImage) -> UIImage {
+		return imageToBlur.applyBlurWithRadius(10.0, tintColor: UIColor.clearColor(), saturationDeltaFactor: 1.0, maskImage: nil)!
+	}
+	
+	func getScreenImage() -> UIImage {
+		var frame: CGRect?
+		frame = UIScreen.mainScreen().bounds
+		
+		UIGraphicsBeginImageContext((frame?.size)!)
+		
+		let currentContext = UIGraphicsGetCurrentContext()
+		
+		view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+		
+		CGContextClipToRect(currentContext, frame!)
+		
+		let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+		
+		UIGraphicsEndImageContext()
+		return screenshot
+	}
+}
+
 public extension UIImage {
 	public func applyLightEffect() -> UIImage? {
 		return applyBlurWithRadius(30, tintColor: UIColor(white: 1.0, alpha: 0.3), saturationDeltaFactor: 1.8)
@@ -193,274 +469,5 @@ public extension UIImage {
 		UIGraphicsEndImageContext()
 		
 		return outputImage
-	}
-}
-
-class ClosureWrapper {
-	var closure: (() -> Void)?
-	
-	init(_ closure: (() -> Void)?) {
-		self.closure = closure
-	}
-}
-
-extension UIViewController {
-	private struct AssociatedKeys {
-		static var popupViewController = "popupViewController"
-		static var useBlurForPopup = "useBlurForPopup"
-		static var popupViewOffset = "popupViewOffset"
-		static var blurViewKey = "blurViewKey"
-		static var bottomConstraintKey = "bottomConstraintKey"
-		static var onClickCancelArea = "onClickCancelArea"
-	}
-	private struct Constants {
-		static let animationTime: Double = 1
-		static let statusBarSize: CGFloat = 22
-	}
-	
-	// MARK: - public
-	var popupViewController: UIViewController? {
-		
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.popupViewController, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-		}
-		
-		get {
-			return objc_getAssociatedObject(self, &AssociatedKeys.popupViewController) as? UIViewController
-		}
-	}
-	
-	var useBlurForPopup: Bool? {
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.useBlurForPopup, newValue, .OBJC_ASSOCIATION_ASSIGN)
-		}
-		
-		get {
-			return objc_getAssociatedObject(self, &AssociatedKeys.useBlurForPopup) as? Bool
-		}
-	}
-	
-	var popupViewOffset: CGPoint? {
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.popupViewOffset, NSValue(CGPoint: newValue!), .OBJC_ASSOCIATION_ASSIGN)
-		}
-		
-		get {
-			return (objc_getAssociatedObject(self, &AssociatedKeys.popupViewOffset) as? NSValue)?.CGPointValue()
-		}
-	}
-	
-	var bottomConstraint: NSLayoutConstraint? {
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.bottomConstraintKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-		}
-		
-		get {
-			return objc_getAssociatedObject(self, &AssociatedKeys.bottomConstraintKey) as? NSLayoutConstraint
-		}
-	}
-	
-	var onClickCancelArea: (() -> Void)? {
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.onClickCancelArea, ClosureWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-		}
-		
-		get {
-			return (objc_getAssociatedObject(self, &AssociatedKeys.onClickCancelArea) as? ClosureWrapper)?.closure
-		}
-	}
-	
-	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
-		if popupViewController == nil {
-			self.onClickCancelArea = onClickCancelArea
-			popupViewController = viewControllerToPresent
-			popupViewController!.view.autoresizesSubviews = false
-			popupViewController!.view.autoresizingMask = .None
-			addChildViewController(viewControllerToPresent)
-			
-			// parallax setup
-			let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-			interpolationHorizontal.minimumRelativeValue = -10
-			interpolationHorizontal.maximumRelativeValue = 10
-			
-			let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-			interpolationHorizontal.minimumRelativeValue = -10
-			interpolationHorizontal.maximumRelativeValue = 10
-			
-			popupViewController!.view.addMotionEffect(interpolationHorizontal)
-			popupViewController!.view.addMotionEffect(interpolationVertical)
-			
-			// shadow setup
-			viewControllerToPresent.view.layer.shadowOffset = .zero
-			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
-			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
-			viewControllerToPresent.view.layer.cornerRadius = 5
-			
-			// blurView
-			addBlurView()
-			
-			let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
-			viewControllerToPresent.beginAppearanceTransition(true, animated: animated)
-			
-			let setupInitialConstraints = {
-				
-				constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
-					subview.left == superView.left
-					subview.right == superView.right
-					subview.height == viewControllerToPresent.view.frame.size.height
-					self.bottomConstraint = subview.bottom == superView.bottom + viewControllerToPresent.view.frame.size.height
-				})
-				
-				self.view.layoutIfNeeded()
-			}
-			if animated {
-				
-				var initialAlpha: CGFloat = 1
-				let finalAlpha: CGFloat = 1
-				
-				if modalTransitionStyle == .CrossDissolve {
-					initialAlpha = 0
-				}
-				
-				viewControllerToPresent.view.alpha = initialAlpha
-				
-				view.addSubview(viewControllerToPresent.view)
-				// setup initial constraints
-				
-				setupInitialConstraints()
-				
-				UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
-					self.bottomConstraint?.constant = 0
-					viewControllerToPresent.view.alpha = finalAlpha
-					blurView.alpha = self.useBlurForPopup == true ? 1 : 0.4
-					
-					self.view.layoutIfNeeded()
-					}, completion: { (success) -> Void in
-					self.popupViewController?.didMoveToParentViewController(self)
-					self.popupViewController?.endAppearanceTransition()
-					if let completion = completion {
-						completion()
-					}
-				})
-			} else { // don't animate
-				view.addSubview(viewControllerToPresent.view)
-				
-				setupInitialConstraints()
-				
-				popupViewController?.didMoveToParentViewController(self)
-				popupViewController?.endAppearanceTransition()
-				if let completion = completion {
-					completion()
-				}
-			}
-			
-			NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-		}
-	}
-	
-	func dismissPopupViewController(animated: Bool, completion: (() -> Void)?) {
-		let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
-		popupViewController?.willMoveToParentViewController(nil)
-		
-		popupViewController?.beginAppearanceTransition(false, animated: animated)
-		
-		if animated {
-			
-			var finalAlpha: CGFloat = 1
-			if modalTransitionStyle == .CrossDissolve {
-				finalAlpha = 0
-			}
-			
-			view.layoutIfNeeded()
-			UIView.animateWithDuration(Constants.animationTime, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
-				self.bottomConstraint?.constant = self.view.frame.size.height
-				self.popupViewController!.view.alpha = finalAlpha
-				blurView.alpha = 0
-				self.view.layoutIfNeeded()
-				}, completion: { (success) -> Void in
-				self.popupViewController?.removeFromParentViewController()
-				self.popupViewController?.endAppearanceTransition()
-				self.popupViewController!.view.removeFromSuperview()
-				blurView.removeFromSuperview()
-				self.popupViewController = nil
-				if let completion = completion {
-					completion()
-				}
-			})
-		}
-		
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillChangeFrameNotification, object: nil)
-	}
-	
-	// MARK: - private
-	
-	func keyboardWillChangeFrame(notification: NSNotification) {
-		var userInfo = notification.userInfo!
-		
-		let frameEnd = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-		let convertedFrameEnd = self.view.convertRect(frameEnd, fromView: nil)
-		let heightOffset = self.view.bounds.size.height - convertedFrameEnd.origin.y
-		bottomConstraint!.constant = -heightOffset
-		
-		let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]!.unsignedIntValue
-		let options = UIViewAnimationOptions(rawValue: UInt(curve) << 16)
-		
-		UIView.animateWithDuration(
-			userInfo[UIKeyboardAnimationDurationUserInfoKey]!.doubleValue,
-			delay: 0,
-			options: options,
-			animations: {
-				self.view.layoutIfNeeded()
-			},
-			completion: nil
-		)
-	}
-	
-	func addBlurView() {
-		let fadeView = UIImageView()
-		fadeView.frame = UIScreen.mainScreen().bounds
-		
-		if useBlurForPopup == true {
-			fadeView.image = getBlurredImage(getScreenImage())
-		} else {
-			fadeView.backgroundColor = UIColor.blackColor()
-		}
-		fadeView.alpha = 0
-		fadeView.userInteractionEnabled = true
-		view.addSubview(fadeView)
-		objc_setAssociatedObject(self, &AssociatedKeys.blurViewKey, fadeView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-		
-		let tap = UITapGestureRecognizer(target: self, action: "blurViewDidTapped")
-		fadeView.addGestureRecognizer(tap)
-	}
-	
-	func blurViewDidTapped() {
-		view.endEditing(true)
-		if let onClickCancelArea = onClickCancelArea {
-			onClickCancelArea()
-		}
-		dismissPopupViewController(true, completion: nil)
-	}
-	
-	func getBlurredImage(imageToBlur: UIImage) -> UIImage {
-		return imageToBlur.applyBlurWithRadius(10.0, tintColor: UIColor.clearColor(), saturationDeltaFactor: 1.0, maskImage: nil)!
-	}
-	
-	func getScreenImage() -> UIImage {
-		var frame: CGRect?
-		frame = UIScreen.mainScreen().bounds
-		
-		UIGraphicsBeginImageContext((frame?.size)!)
-		
-		let currentContext = UIGraphicsGetCurrentContext()
-		
-		view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
-		
-		CGContextClipToRect(currentContext, frame!)
-		
-		let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-		
-		UIGraphicsEndImageContext()
-		return screenshot
 	}
 }
