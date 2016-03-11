@@ -26,9 +26,13 @@ class OrderAndBuyerInfoView: UIView {
     }
     */
     
-    override func awakeFromNib() {
-        messageNumber.layer.cornerRadius = messageNumber.frame.width / 2
-        messageNumber.layer.masksToBounds = true
+    static func createInstance() -> OrderAndBuyerInfoView {
+        let viewThis = NSBundle.mainBundle().loadNibNamed("OrderAndBuyerInfoView", owner: self, options: nil).first  as! OrderAndBuyerInfoView
+        
+        viewThis.messageNumber.layer.cornerRadius = viewThis.messageNumber.frame.width / 2
+        viewThis.messageNumber.layer.masksToBounds = true
+        return viewThis
     }
+    
 
 }

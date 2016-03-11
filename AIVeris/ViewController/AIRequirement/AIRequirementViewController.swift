@@ -27,6 +27,7 @@ internal class AIRequirementViewController : UIViewController {
     
     @IBOutlet weak var rightContentView: UIView!
     
+    @IBOutlet weak var TopUserInfoView: UIView!
     private var uid : Int = 1
     
     // MARK: -> Private type alias
@@ -45,9 +46,19 @@ internal class AIRequirementViewController : UIViewController {
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
+        // Init Top View
+        
+        let topView = OrderAndBuyerInfoView.createInstance()
+        TopUserInfoView.addSubview(topView)
+        topView.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(TopUserInfoView)
+        }
+        
         // Init RightContent View
         
         withSwitchProfessionVC(1)
+        
+        
         
     }
     
