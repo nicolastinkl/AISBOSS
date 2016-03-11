@@ -8,22 +8,28 @@
 
 import Foundation
 import SnapKit
+import Spring
 
 class AIRequireContentViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
+    
+    var sourceDelegate = AIRACClosureTableViewDataSource()
     
     private var dataSource : [AIContentCellModel]? = {
     
         
         var i1 = AIIconTagModel()
         i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
+        i1.content = " I can't use AnyObject as the value type for the dictionary "
         
         var i2 = AIIconTagModel()
         i2.iconUrl = "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png"
+        i2.content = "the closures are not AnyObject types. the closures are closure"
         
         var i3 = AIIconTagModel()
         i3.iconUrl = "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png"
+        i3.content = "ompleteBlock: unsafeBitCast(block, AnyObject.self))"
         
         var conModel = AIContentCellModel()
         conModel.id = 12
@@ -97,7 +103,7 @@ class AIRequireContentViewController: UIViewController {
         
         tableview.estimatedRowHeight = 140
         tableview.rowHeight = UITableViewAutomaticDimension
-        
+        tableview.showsVerticalScrollIndicator = false
         // Reloading for the visible cells to layout correctly
         Async.main { () -> Void in
             self.tableview.reloadData()
@@ -254,6 +260,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.height.equalTo(1)
             
         })
+        
         lineImageView.tag = 11
         
         // Setup 5: Icon Arrays.
@@ -297,24 +304,70 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
-        iconView.tag = 11
+        iconView.tag = 12
         
         // Setup 6:  expendTableViewCell
-        /*
+        
         let expendView = UIView()
         cell.contentView.addSubview(expendView)
-        expendView.backgroundColor = UIColor.whiteColor()
         expendView.snp_makeConstraints { (make) -> Void in
-        make.top.equalTo(iconView).offset(5)
-        make.trailing.leading.equalTo(0)
-        if cell.hasExpend {
-        make.height.equalTo(80)
-        }else{
-        make.height.equalTo(0)
+            make.top.equalTo(iconView.snp_top).offset(25)
+            make.trailing.leading.equalTo(0)
+            make.height.equalTo(0)
         }
+        
+        localCode { () -> () in
+            let cancelButton = DesignableButton(type: UIButtonType.Custom)
+            let distriButton = DesignableButton(type: UIButtonType.Custom)
+            
+            expendView.addSubview(cancelButton)
+            expendView.addSubview(distriButton)
+            cancelButton.hidden = true
+            distriButton.hidden = true
+            
+            cancelButton.backgroundColor = UIColor(hexString: "#0D85E8")
+            cancelButton.setTitle("cancel", forState: UIControlState.Normal)
+            cancelButton.titleLabel?.textColor = UIColor.whiteColor()
+            cancelButton.cornerRadius = 5
+            cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
+            cancelButton.snp_makeConstraints(closure: { (make) -> Void in
+                make.height.equalTo(20)
+                make.width.greaterThanOrEqualTo(120)
+                make.bottom.equalTo(bgImageView.snp_bottom).offset(-10)
+                make.leading.equalTo(15)
+            })
+
+            distriButton.backgroundColor = UIColor(hexString: "#0D85E8")
+            distriButton.titleLabel?.textColor = UIColor.whiteColor()
+            distriButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
+            distriButton.setTitle("distribution", forState: UIControlState.Normal)
+            distriButton.cornerRadius = 5
+            distriButton.snp_makeConstraints(closure: { (make) -> Void in
+                make.height.equalTo(20)
+                make.width.equalTo(cancelButton.snp_width)
+                make.bottom.equalTo(bgImageView.snp_bottom).offset(-10)
+                make.left.equalTo(cancelButton.snp_right).offset(20)
+                make.trailing.equalTo(-15)
+            })
+            
+            
+            
+            let stable = UITableView()
+            expendView.addSubview(stable)
+            stable.dataSource = self.sourceDelegate
+            stable.delegate = self.sourceDelegate
+            stable.backgroundColor = UIColor.clearColor()
+            stable.separatorStyle = UITableViewCellSeparatorStyle.None
+            stable.snp_makeConstraints(closure: { (make) -> Void in
+                make.top.equalTo(expendView.snp_top).offset(25)
+                make.leading.equalTo(14)
+                make.trailing.equalTo(-14)
+                make.height.equalTo(0)
+            })
+            stable.tag = 14
         }
-        expendView.tag = 11
-        */
+        
+        expendView.tag = 13
          
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
@@ -326,7 +379,60 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
 
     }
     
-    
+    func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
+        
+        let vheight = cell.contentView.viewWithTag(12)
+       
+        vheight?.snp_updateConstraints(closure: { (make) -> Void in
+            if cell.hasExpend == true {
+                make.height.equalTo(50 + 70 * (contentModel.childServerIconArray?.count ?? 0))
+            }else{
+                make.height.equalTo(50)
+            }
+        })
+        
+        let holdView = cell.contentView.viewWithTag(13)
+        
+        holdView?.snp_updateConstraints(closure: { (make) -> Void in
+            if cell.hasExpend == true {
+                make.height.equalTo(50 * (contentModel.childServerIconArray?.count ?? 0))
+            }else{
+                make.height.equalTo(0)
+            }
+        })
+        
+        if let models = contentModel.childServerIconArray {
+            
+            sourceDelegate.dataSections = models
+            let stable = holdView?.viewWithTag(14) as? UITableView
+            stable?.scrollEnabled = false
+            
+            stable?.snp_updateConstraints(closure: { (make) -> Void in
+                if cell.hasExpend == true {
+                    make.height.equalTo(33 * (contentModel.childServerIconArray?.count ?? 0))
+                }else{
+                    make.height.equalTo(0)
+                }
+            })
+            stable?.reloadData()
+            holdView?.updateConstraints()
+            holdView?.setNeedsLayout()
+        }
+        
+        
+        
+        _ = holdView?.subviews.filter({ (sview) -> Bool in
+            if cell.hasExpend == true {
+                sview.hidden = false
+            }else{
+                sview.hidden = true
+            }
+            return false
+        })
+        
+        cell.updateConstraints()
+        
+    }
 }
 
 
@@ -340,21 +446,20 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         let currentCellModel = dataSource?[indexPath.section]
         let contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
         
-        cell.hasExpend = !cell.hasExpend
+        cell.hasExpend = cell.hasExpend == false ? true : false
         
         // Dosome network to request arrays data.
         
         // expend change UI.
         
-        _ = cell.contentView.subviews.filter { (cview) -> Bool in
-            cview.removeFromSuperview()
-            return false
-        }
-        configureCell(cell, atIndexPath: indexPath, contentModel: contentModel)
-
-        self.tableview.beginUpdates()
-        reloadRowAtIndexPath(indexPath)
-        self.tableview.endUpdates()
+        configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
+// 1:
+        self.tableview.reloadData()
+     
+// 2:
+//        self.tableview.beginUpdates()
+//        reloadRowAtIndexPath(indexPath)
+//        self.tableview.endUpdates()
         
         /*
         

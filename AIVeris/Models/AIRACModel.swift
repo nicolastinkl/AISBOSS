@@ -108,6 +108,7 @@ internal struct AIIconTagModel : JSONJoy{
     var id: Int?
     var iconUrl : String?
     var content : String?
+    var hasSelected : Bool?
     
     init() {
         id = 1

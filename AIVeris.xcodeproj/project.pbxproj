@@ -272,6 +272,7 @@
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21B1C86F12B0070FF7A /* AIRACModel.swift */; };
 		9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */; };
+		932899271C92A8C60094C802 /* AIRACClosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */; };
 		93294B2E1C3FA20100EFF5FC /* AIUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */; };
 		93294B301C3FA5B100EFF5FC /* AIProviderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */; };
 		93294B321C3FA5D800EFF5FC /* AIProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93294B311C3FA5D800EFF5FC /* AIProviderView.xib */; };
@@ -441,6 +442,7 @@
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
 		93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */; };
 		93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */; };
+		93F0E2961C929B8600E1790E /* AIRACClosureTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */; };
 		93F7066C1C5224EC00AB6BFC /* ServiceCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
@@ -950,6 +952,7 @@
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		9326A21B1C86F12B0070FF7A /* AIRACModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACModel.swift; sourceTree = "<group>"; };
 		9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderMangerProtocol.swift; sourceTree = "<group>"; };
+		932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewCell.swift; sourceTree = "<group>"; };
 		93294B2D1C3FA20100EFF5FC /* AIUIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUIDevice.swift; sourceTree = "<group>"; };
 		93294B2F1C3FA5B100EFF5FC /* AIProviderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIProviderView.swift; sourceTree = "<group>"; };
 		93294B311C3FA5D800EFF5FC /* AIProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIProviderView.xib; sourceTree = "<group>"; };
@@ -1190,6 +1193,7 @@
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
 		93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDatePickerView.swift; sourceTree = "<group>"; };
 		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDatePickerView.xib; sourceTree = "<group>"; };
+		93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewDataSource.swift; sourceTree = "<group>"; };
 		93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardTextView.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -2002,6 +2006,8 @@
 				8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */,
 				8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */,
 				934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */,
+				93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */,
+				932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -3286,6 +3292,7 @@
 				849B4B251C0EDFE300BEC179 /* FLEXArgumentInputNotSupportedView.m in Sources */,
 				846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */,
 				849B4B331C0EDFE300BEC179 /* FLEXExplorerToolbar.m in Sources */,
+				932899271C92A8C60094C802 /* AIRACClosureTableViewCell.swift in Sources */,
 				93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */,
 				8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */,
 				93CA11D51C463475008B1EE1 /* AIModels.swift in Sources */,
@@ -3402,6 +3409,7 @@
 				93B25A3F1B9D796F00CD1FEB /* AINetEngine.m in Sources */,
 				81C092851BAFAC0D003FFF35 /* SDWebImageDecoder.m in Sources */,
 				93C33F201B9BEAFE007BF506 /* Player.swift in Sources */,
+				93F0E2961C929B8600E1790E /* AIRACClosureTableViewDataSource.swift in Sources */,
 				93C33F1B1B9BEAFE007BF506 /* AIUIViewUtils.swift in Sources */,
 				93FA1E5A1B9C3E12009965C8 /* AISwipeViewUtil.swift in Sources */,
 				849B4B471C0EDFE300BEC179 /* FLEXNetworkRecorder.m in Sources */,
