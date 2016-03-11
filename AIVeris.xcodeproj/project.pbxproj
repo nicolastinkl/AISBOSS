@@ -253,6 +253,9 @@
 		84DDA9571BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */; };
 		84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */; };
 		84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */; };
+		84E3B7A71C916D870006BE49 /* AITimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3B7A41C916D870006BE49 /* AITimePickerView.swift */; };
+		84E3B7A81C916D870006BE49 /* AITimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */; };
+		84E3B7A91C916D870006BE49 /* AITimePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */; };
 		84F0014E1C3A43CB000C93AF /* FLEXDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F001401C3A43CB000C93AF /* FLEXDatabaseManager.m */; };
 		84F0014F1C3A43CB000C93AF /* FLEXMultiColumnTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F001421C3A43CB000C93AF /* FLEXMultiColumnTableView.m */; };
 		84F001501C3A43CB000C93AF /* FLEXTableColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F001441C3A43CB000C93AF /* FLEXTableColumnHeader.m */; };
@@ -928,6 +931,9 @@
 		84DDA9561BEE0FCB00CA5C83 /* MiddleServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleServiceContainerView.swift; sourceTree = "<group>"; };
 		84DDA95A1BEE11FB00CA5C83 /* BottomServiceContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomServiceContainer.xib; sourceTree = "<group>"; };
 		84DDA95C1BEE123300CA5C83 /* BottomServiceContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomServiceContainerView.swift; sourceTree = "<group>"; };
+		84E3B7A41C916D870006BE49 /* AITimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimePickerView.swift; sourceTree = "<group>"; };
+		84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimePickerViewController.swift; sourceTree = "<group>"; };
+		84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITimePickerViewController.xib; sourceTree = "<group>"; };
 		84F0013F1C3A43CB000C93AF /* FLEXDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXDatabaseManager.h; sourceTree = "<group>"; };
 		84F001401C3A43CB000C93AF /* FLEXDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXDatabaseManager.m; sourceTree = "<group>"; };
 		84F001411C3A43CB000C93AF /* FLEXMultiColumnTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLEXMultiColumnTableView.h; sourceTree = "<group>"; };
@@ -2667,6 +2673,9 @@
 		93CD0D281C8E72E00047F4A7 /* AIRequirement */ = {
 			isa = PBXGroup;
 			children = (
+				84E3B7A41C916D870006BE49 /* AITimePickerView.swift */,
+				84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */,
+				84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */,
 				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
@@ -3037,6 +3046,7 @@
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
+				84E3B7A91C916D870006BE49 /* AITimePickerViewController.xib in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				84F001551C3A43CB000C93AF /* LICENSE in Resources */,
@@ -3362,6 +3372,7 @@
 				81D83AEC1BB29F7900BE2BA2 /* MJRefreshBaseView.m in Sources */,
 				8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */,
 				84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */,
+				84E3B7A81C916D870006BE49 /* AITimePickerViewController.swift in Sources */,
 				849B4B491C0EDFE300BEC179 /* FLEXNetworkTransaction.m in Sources */,
 				936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */,
 				12D794FC1BA80B2E00586011 /* HorizontalCardView.swift in Sources */,
@@ -3491,6 +3502,7 @@
 				93B25AA51B9D7A7B00CD1FEB /* JSONKeyMapper.m in Sources */,
 				849B4B201C0EDFE300BEC179 /* FLEXArgumentInputColorView.m in Sources */,
 				846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */,
+				84E3B7A71C916D870006BE49 /* AITimePickerView.swift in Sources */,
 				939F49FB1BDE04F800D07598 /* AIPopHoldView.swift in Sources */,
 				93FA1DD91B9C3001009965C8 /* ContentsCellView.swift in Sources */,
 				93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */,
