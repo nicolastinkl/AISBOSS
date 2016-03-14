@@ -182,11 +182,16 @@ extension UIViewController {
 	}
 	
 	func dismissPopupViewController(animated: Bool, completion: (() -> Void)?) {
+        
+        if popupViewController == nil {
+            parentViewController?.dismissPopupViewController(animated, completion: completion)
+            return
+        }
+        
 		let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
 		popupViewController?.willMoveToParentViewController(nil)
 		popupViewController?.beginAppearanceTransition(false, animated: animated)
 		if animated {
-			
 			var finalAlpha: CGFloat = 1
 			if modalTransitionStyle == .CrossDissolve {
 				finalAlpha = 0
