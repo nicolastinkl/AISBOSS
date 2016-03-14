@@ -11,7 +11,17 @@ import SnapKit
 import Spring
 
 class AIRequireContentViewController: UIViewController {
-
+    
+    // MARK: -> Internal enum
+    
+    enum ThisViewTag: Int {
+        case IConView = 12
+        case ExpendView = 13
+        case sTableView = 14
+    }
+    
+    private let stableCellHeight: Int = 40
+    
     @IBOutlet weak var tableview: UITableView!
     
     var sourceDelegate = AIRACClosureTableViewDataSource()
@@ -21,15 +31,15 @@ class AIRequireContentViewController: UIViewController {
         
         var i1 = AIIconTagModel()
         i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
-        i1.content = " I can't use AnyObject as the value type for the dictionary "
+        i1.content = "Maternity Consulting - Music Theray"
         
         var i2 = AIIconTagModel()
         i2.iconUrl = "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png"
-        i2.content = "the closures are not AnyObject types. the closures are closure"
+        i2.content = "Paramedk Cleaner"
         
         var i3 = AIIconTagModel()
         i3.iconUrl = "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png"
-        i3.content = "ompleteBlock: unsafeBitCast(block, AnyObject.self))"
+        i3.content = "hospital Appointment Booking"
         
         var conModel = AIContentCellModel()
         conModel.id = 12
@@ -304,7 +314,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
-        iconView.tag = 12
+        iconView.tag = ThisViewTag.IConView.rawValue
         
         // Setup 6:  expendTableViewCell
         
@@ -331,7 +341,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             cancelButton.cornerRadius = 5
             cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
             cancelButton.snp_makeConstraints(closure: { (make) -> Void in
-                make.height.equalTo(20)
+                make.height.equalTo(33)
                 make.width.greaterThanOrEqualTo(120)
                 make.bottom.equalTo(bgImageView.snp_bottom).offset(-10)
                 make.leading.equalTo(15)
@@ -343,14 +353,12 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             distriButton.setTitle("distribution", forState: UIControlState.Normal)
             distriButton.cornerRadius = 5
             distriButton.snp_makeConstraints(closure: { (make) -> Void in
-                make.height.equalTo(20)
+                make.height.equalTo(cancelButton.snp_height)
                 make.width.equalTo(cancelButton.snp_width)
                 make.bottom.equalTo(bgImageView.snp_bottom).offset(-10)
                 make.left.equalTo(cancelButton.snp_right).offset(20)
                 make.trailing.equalTo(-15)
             })
-            
-            
             
             let stable = UITableView()
             expendView.addSubview(stable)
@@ -359,15 +367,15 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             stable.backgroundColor = UIColor.clearColor()
             stable.separatorStyle = UITableViewCellSeparatorStyle.None
             stable.snp_makeConstraints(closure: { (make) -> Void in
-                make.top.equalTo(expendView.snp_top).offset(25)
+                make.top.equalTo(expendView.snp_top).offset(5)
                 make.leading.equalTo(14)
                 make.trailing.equalTo(-14)
                 make.height.equalTo(0)
             })
-            stable.tag = 14
+            stable.tag = ThisViewTag.sTableView.rawValue
         }
         
-        expendView.tag = 13
+        expendView.tag = ThisViewTag.ExpendView.rawValue
          
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
@@ -381,21 +389,21 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
         
-        let vheight = cell.contentView.viewWithTag(12)
-       
+        let vheight = cell.contentView.viewWithTag(ThisViewTag.IConView.rawValue)
+        
         vheight?.snp_updateConstraints(closure: { (make) -> Void in
             if cell.hasExpend == true {
-                make.height.equalTo(50 + 70 * (contentModel.childServerIconArray?.count ?? 0))
+                make.height.equalTo(50 + 70 + stableCellHeight * (contentModel.childServerIconArray?.count ?? 0))
             }else{
                 make.height.equalTo(50)
             }
         })
         
-        let holdView = cell.contentView.viewWithTag(13)
+        let holdView = cell.contentView.viewWithTag(ThisViewTag.ExpendView.rawValue)
         
         holdView?.snp_updateConstraints(closure: { (make) -> Void in
             if cell.hasExpend == true {
-                make.height.equalTo(50 * (contentModel.childServerIconArray?.count ?? 0))
+               make.height.equalTo(70 + stableCellHeight * (contentModel.childServerIconArray?.count ?? 0))
             }else{
                 make.height.equalTo(0)
             }
@@ -404,12 +412,12 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         if let models = contentModel.childServerIconArray {
             
             sourceDelegate.dataSections = models
-            let stable = holdView?.viewWithTag(14) as? UITableView
+            let stable = holdView?.viewWithTag(ThisViewTag.sTableView.rawValue) as? UITableView
             stable?.scrollEnabled = false
             
             stable?.snp_updateConstraints(closure: { (make) -> Void in
                 if cell.hasExpend == true {
-                    make.height.equalTo(33 * (contentModel.childServerIconArray?.count ?? 0))
+                    make.height.equalTo(holdView!.snp_height)
                 }else{
                     make.height.equalTo(0)
                 }
