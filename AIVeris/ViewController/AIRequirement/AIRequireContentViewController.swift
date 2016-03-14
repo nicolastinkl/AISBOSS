@@ -31,7 +31,7 @@ class AIRequireContentViewController: UIViewController {
         
         var i1 = AIIconTagModel()
         i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
-        i1.content = "Maternity Consulting - Music Theray"
+        i1.content = "Maternity Consulting "
         
         var i2 = AIIconTagModel()
         i2.iconUrl = "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png"
@@ -327,6 +327,10 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         
         localCode { () -> () in
+            let stable = UITableView()
+            expendView.addSubview(stable)
+
+            
             let cancelButton = DesignableButton(type: UIButtonType.Custom)
             let distriButton = DesignableButton(type: UIButtonType.Custom)
             
@@ -360,12 +364,14 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.trailing.equalTo(-15)
             })
             
-            let stable = UITableView()
-            expendView.addSubview(stable)
+            cancelButton.addTarget(self, action: "calcelAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            distriButton.addTarget(self, action: "distriAction:", forControlEvents: UIControlEvents.TouchUpInside)
+            
             stable.dataSource = self.sourceDelegate
             stable.delegate = self.sourceDelegate
             stable.backgroundColor = UIColor.clearColor()
             stable.separatorStyle = UITableViewCellSeparatorStyle.None
+            stable.allowsMultipleSelection = true
             stable.snp_makeConstraints(closure: { (make) -> Void in
                 make.top.equalTo(expendView.snp_top).offset(5)
                 make.leading.equalTo(14)
@@ -376,7 +382,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         
         expendView.tag = ThisViewTag.ExpendView.rawValue
-         
+        
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
@@ -384,10 +390,23 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-
+        
     }
     
-    func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath:NSIndexPath, contentModel : AIChildContentCellModel) {
+    func calcelAction(anyobj: AnyObject){
+        let button = anyobj as! UIButton
+        let cell = button.superview?.superview?.superview as! AIRACContentCell
+        expendTableViewCell(cell, expendButtonPressed: anyobj)
+    }
+    
+    func distriAction(anyobj: AnyObject){
+        let button = anyobj as! UIButton
+        let cell = button.superview?.superview?.superview as! AIRACContentCell
+        expendTableViewCell(cell, expendButtonPressed: anyobj)
+        
+    }
+    
+    func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel : AIChildContentCellModel) {
         
         let vheight = cell.contentView.viewWithTag(ThisViewTag.IConView.rawValue)
         
@@ -452,19 +471,35 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         
         let indexPath = tableview.indexPathForCell(cell)!
         let currentCellModel = dataSource?[indexPath.section]
-        let contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
+        var contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
         
         cell.hasExpend = cell.hasExpend == false ? true : false
         
-        // Dosome network to request arrays data.
         
-        // expend change UI.
+        if cell.hasExpend == true {
+            // Dosome network to request arrays data.
+            AIOrdeRequireServices().requestChildServices(contentModel) { models -> Void in
+                _ = models.filter({ (iconModel) -> Bool in
+                    contentModel.childServerIconArray?.append(iconModel)
+                    return false
+                })
+                
+                // expend change UI.
+                
+                self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
+                
+                self.tableview.reloadData()
+                
+            }
+        }else{
+            // expend change UI.
+            
+            self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
+            
+            self.tableview.reloadData()
+        }
         
-        configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
-// 1:
-        self.tableview.reloadData()
-     
-// 2:
+
 //        self.tableview.beginUpdates()
 //        reloadRowAtIndexPath(indexPath)
 //        self.tableview.endUpdates()

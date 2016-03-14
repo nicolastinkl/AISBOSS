@@ -10,9 +10,22 @@ import Foundation
 
 import Spring
 
-class AIRACClosureTableViewCell: UITableViewCell {
+protocol AIRACClosureTableViewCellProtocol: class {
+    
+    func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool)
+    
+}
 
+class AIRACClosureTableViewCell: UITableViewCell {
+    
     private var iconImage = AIImageView()
+    
+    private var currentModel: AIIconTagModel?
+    
+    private var isSelected: Bool = false
+    
+    weak var delegateCell: AIRACClosureTableViewCellProtocol?
+    
     private var contentLabel: UILabel = {
         let desLabel = UILabel()
         desLabel.numberOfLines = 1
@@ -26,7 +39,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     
     private var selectedddImage: DesignableLabel = {
         let bgLabel = DesignableLabel()
-        bgLabel.backgroundColor = UIColor.grayColor()
+        bgLabel.backgroundColor = UIColor.clearColor()
         bgLabel.cornerRadius = 6
         bgLabel.layer.masksToBounds = true
         return bgLabel
@@ -62,13 +75,15 @@ class AIRACClosureTableViewCell: UITableViewCell {
             make.top.equalTo(iconImage.top).offset(0)
             make.height.equalTo(35)
         }
-       
         
     }
-
     
     override func setSelected(selected: Bool, animated: Bool) {
-        if selected == true {
+        isSelected = !isSelected
+        
+        delegateCell?.withSelectedCell(currentModel!, isSelect: isSelected)
+        
+        if isSelected == true {
             selectedddImage.backgroundColor = UIColor(hex: "#1D86E5")
         }else{
             selectedddImage.backgroundColor = UIColor.clearColor()
@@ -76,6 +91,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     }
     
     func refereshData(model: AIIconTagModel){
+        currentModel = model
         self.iconImage.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlackHolder"))
         self.contentLabel.text = model.content ?? ""
     }

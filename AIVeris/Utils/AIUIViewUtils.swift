@@ -427,6 +427,21 @@ extension UIView {
     func setCornerOnNone(){
         self.layer.mask = nil
     }
+    
+    
+    /**
+     高效处理圆角
+     */
+    func cornerDrawWithRoundedCorner(radius radius: CGFloat,borderWidth: CGFloat,backgroundColor:UIColor,borderColor: UIColor){
+        
+//        let imageView = UIImageView(image: kt_drawRectWithRoundedCorner(radius: radius,
+//            borderWidth: borderWidth,
+//            backgroundColor: backgroundColor,
+//            borderColor: borderColor))
+//        self.insertSubview(imageView, atIndex: 0)
+    }
+    
+    
 }
 
 extension UITableViewCell{
@@ -452,5 +467,24 @@ extension UIImageView {
         
         self.sd_setImageWithURL(NSURL(string: "\(imgUrl)"))
      
+    }
+}
+
+extension UIImage {
+    func kt_drawRectWithRoundedCorner(radius radius: CGFloat, _ sizetoFit: CGSize) -> UIImage {
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: sizetoFit)
+        
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen().scale)
+        CGContextAddPath(UIGraphicsGetCurrentContext(),
+            UIBezierPath(roundedRect: rect, byRoundingCorners: UIRectCorner.AllCorners,
+                cornerRadii: CGSize(width: radius, height: radius)).CGPath)
+        CGContextClip(UIGraphicsGetCurrentContext())
+        
+        self.drawInRect(rect)
+        CGContextDrawPath(UIGraphicsGetCurrentContext(), .FillStroke)
+        let output = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return output
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AIRACClosureTableViewDataSource: NSObject {
+class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtocol {
     
     var dataSections: [AIIconTagModel]?
     var blockArrays: [(NSIndexPath) -> Void]?
@@ -18,9 +18,19 @@ class AIRACClosureTableViewDataSource: NSObject {
      
     //pragma mark Private Methods
     
+    func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool) {
+        
+        dataSections = dataSections?.filter({ (model) -> Bool in
+            if cellModel.id == model.id {
+                return false
+            }
+            return true
+        })
+        
+    }
     
     func addCell(cell: UITableViewCell, didSelectBlock:((NSIndexPath -> Void))){
-//        
+     
 //        let castedBlock: AnyObject = unsafeBitCast(didSelectBlock as @convention(block) (NSIndexPath) -> Void, AnyObject.self)
 //        let cellInfo = NSMutableDictionary()
 //        cellInfo["block"] = castedBlock
@@ -55,6 +65,7 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
             cell = AIRACClosureTableViewCell(style: .Default, reuseIdentifier: "cell")
         }
         cell?.refereshData(model!)
+        cell?.delegateCell = self
         return cell!
         
     }

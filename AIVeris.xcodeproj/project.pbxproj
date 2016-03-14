@@ -429,6 +429,7 @@
 		93CD0D2C1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93CD0D2B1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard */; };
 		93CD0D2E1C8E82950047F4A7 /* AIRequirementMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */; };
 		93CD0D301C8E83F50047F4A7 /* AIRequireProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */; };
+		93D47BAD1C96B8430064B238 /* AIOrdeRequireServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */; };
 		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */; };
 		93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */; };
@@ -1180,6 +1181,7 @@
 		93CD0D2B1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIRrequirementStoryboard.storyboard; sourceTree = "<group>"; };
 		93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementMenuViewController.swift; sourceTree = "<group>"; };
 		93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireProtocol.swift; sourceTree = "<group>"; };
+		93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrdeRequireServices.swift; sourceTree = "<group>"; };
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2299,6 +2301,7 @@
 				93FA1DDF1B9C302A009965C8 /* AIServicesRequester.swift */,
 				93FA1DE01B9C302A009965C8 /* AITransformManager.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
+				93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3261,6 +3264,7 @@
 				93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */,
 				81C092811BAFAC0D003FFF35 /* MKAnnotationView+WebCache.m in Sources */,
 				12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */,
+				93D47BAD1C96B8430064B238 /* AIOrdeRequireServices.swift in Sources */,
 				93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */,
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */,
