@@ -74,15 +74,31 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eut-op-aLe" userLabel="Bar">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eut-op-aLe" userLabel="ProgressBar" customClass="YLProgressBar">
                     <rect key="frame" x="70" y="42" width="273" height="16"/>
-                    <color key="backgroundColor" red="0.011764705882352941" green="0.066666666666666666" blue="0.15294117647058825" alpha="0.26000000000000001" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="PJ2-5i-hdq"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="progressTintColor">
+                            <color key="value" red="0.062745098040000002" green="0.76078431369999999" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hideStripes" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="trackTintColor">
+                            <color key="value" red="0.01176470588" green="0.066666666669999999" blue="0.1529411765" alpha="0.26000000000000001" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressBarInset">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hideGloss" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                            <real key="value" value="0.75"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="eut-op-aLe" firstAttribute="leading" secondItem="7Ca-Tr-VY2" secondAttribute="leading" id="0W5-Ps-rMT"/>
                 <constraint firstItem="8Oe-d5-5M5" firstAttribute="trailing" secondItem="d2G-FW-ckk" secondAttribute="trailing" constant="8" id="0qp-mW-DN2"/>
@@ -114,7 +130,17 @@
                     <exclude reference="Qfe-ch-bnT"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="393" y="344"/>
+            <connections>
+                <outlet property="buyerIcon" destination="d2G-FW-ckk" id="Uzl-aK-sOH"/>
+                <outlet property="buyerName" destination="7Ca-Tr-VY2" id="fmF-qH-iwF"/>
+                <outlet property="messageNumber" destination="8Oe-d5-5M5" id="tst-b0-ZJE"/>
+                <outlet property="percentageNumber" destination="frf-IX-tef" id="u12-O0-yfm"/>
+                <outlet property="price" destination="EVG-gC-gNw" id="Xuo-NS-WPd"/>
+                <outlet property="progressBar" destination="eut-op-aLe" id="RCi-ia-uVy"/>
+                <outlet property="serviceIcon" destination="V57-Sp-2fe" id="oGf-j0-AnK"/>
+                <outlet property="serviceName" destination="dTR-UH-I5I" id="BSL-zb-Pz0"/>
+            </connections>
+            <point key="canvasLocation" x="131" y="142"/>
         </view>
     </objects>
     <resources>
