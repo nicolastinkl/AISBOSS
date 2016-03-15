@@ -10,9 +10,22 @@ import Foundation
 
 import Spring
 
-class AIRACClosureTableViewCell: UITableViewCell {
+protocol AIRACClosureTableViewCellProtocol: class {
+    
+    func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool)
+    
+}
 
+class AIRACClosureTableViewCell: UITableViewCell {
+    
     private var iconImage = AIImageView()
+    
+    private var currentModel: AIIconTagModel?
+    
+    private var isSelected: Bool = false
+    
+    weak var delegateCell: AIRACClosureTableViewCellProtocol?
+    
     private var contentLabel: UILabel = {
         let desLabel = UILabel()
         desLabel.numberOfLines = 1
@@ -24,30 +37,61 @@ class AIRACClosureTableViewCell: UITableViewCell {
         return desLabel
     }()
     
+    private var selectedddImage: DesignableLabel = {
+        let bgLabel = DesignableLabel()
+        bgLabel.backgroundColor = UIColor.clearColor()
+        bgLabel.cornerRadius = 6
+        bgLabel.layer.masksToBounds = true
+        return bgLabel
+        }()
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.selectionStyle =  UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.clearColor()
         
+        self.contentView.addSubview(selectedddImage)
         self.contentView.addSubview(iconImage)
         self.contentView.addSubview(contentLabel)
 
         iconImage.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(self.contentView).offset(5)
-            make.leading.equalTo(14)
-            make.width.height.lessThanOrEqualTo(55)
+            make.leading.equalTo(10)
+            make.width.height.equalTo(25)
         })        
         
         contentLabel.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(self.contentView).offset(5)
             make.leading.equalTo(iconImage.snp_right).offset(10)
-            make.trailing.equalTo(-14)
+            make.width.greaterThanOrEqualTo(20)
+//            make.trailing.equalTo(-14)
             make.height.equalTo(25)
         })
         
+        selectedddImage.snp_makeConstraints { (make) -> Void in
+            make.leading.equalTo(iconImage.snp_left).offset(-5)
+            make.trailing.equalTo(contentLabel.snp_right).offset(10)
+            make.top.equalTo(iconImage.top).offset(0)
+            make.height.equalTo(35)
+        }
+        
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        isSelected = !isSelected
+        
+        delegateCell?.withSelectedCell(currentModel!, isSelect: isSelected)
+        
+        if isSelected == true {
+            selectedddImage.backgroundColor = UIColor(hex: "#1D86E5")
+        }else{
+            selectedddImage.backgroundColor = UIColor.clearColor()
+        }
     }
     
     func refereshData(model: AIIconTagModel){
+        currentModel = model
         self.iconImage.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlackHolder"))
         self.contentLabel.text = model.content ?? ""
     }

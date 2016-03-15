@@ -15,7 +15,6 @@ import Spring
 internal class AIRequirementViewController : UIViewController {
 
     
-    // MARK: -> Internal structs
     
     // MARK: -> Internal class
     
@@ -57,8 +56,6 @@ internal class AIRequirementViewController : UIViewController {
         // Init RightContent View
         
         withSwitchProfessionVC(1)
-        
-        
         
     }
     
