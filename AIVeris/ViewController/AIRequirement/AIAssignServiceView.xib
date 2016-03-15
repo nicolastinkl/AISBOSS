@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAssignServiceView" customModule="MyWholeDemos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="184"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_background" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-kT-1Ry" userLabel="backgroundImage">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="184"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Appointment Booking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBq-Ia-OuE" userLabel="curServiceName">
+                    <rect key="frame" x="33" y="21" width="233" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSE-kF-6KC" userLabel="nextServiceName">
+                    <rect key="frame" x="33" y="21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvi-9K-zDX" userLabel="ratingView">
+                    <rect key="frame" x="33" y="62" width="142" height="21"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="142" id="Pdr-4h-jIF"/>
+                        <constraint firstAttribute="height" constant="21" id="pgn-l2-Bld"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-iR-gEL" userLabel="limitButton">
+                    <rect key="frame" x="257" y="130" width="30" height="30"/>
+                    <state key="normal" title="limit"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-4N-v7e" userLabel="contactButton">
+                    <rect key="frame" x="479" y="130" width="53" height="30"/>
+                    <state key="normal" title="contact"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eku-ss-6Q3" userLabel="filterButton">
+                    <rect key="frame" x="553" y="130" width="32" height="30"/>
+                    <state key="normal" title="filter"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seller_Warning" translatesAutoresizingMaskIntoConstraints="NO" id="wip-5B-g6H" userLabel="limitIcon1">
+                    <rect key="frame" x="304" y="132" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="hHh-DO-tny"/>
+                        <constraint firstAttribute="height" constant="25" id="xdT-xI-e9h"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seller_Warning" translatesAutoresizingMaskIntoConstraints="NO" id="etf-3z-G2x" userLabel="limitIcon2">
+                    <rect key="frame" x="344" y="132" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="6bR-fF-n0b"/>
+                        <constraint firstAttribute="height" constant="25" id="tbJ-kJ-eqq"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seller_Warning" translatesAutoresizingMaskIntoConstraints="NO" id="BO1-VK-fNP" userLabel="limitIcon3">
+                    <rect key="frame" x="385" y="132" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Bvv-I5-cU7"/>
+                        <constraint firstAttribute="width" constant="25" id="rdM-1a-eQ8"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seller_Warning" translatesAutoresizingMaskIntoConstraints="NO" id="Srp-6n-dB4" userLabel="limitIcon4">
+                    <rect key="frame" x="426" y="132" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="Gvk-Rr-xLK"/>
+                        <constraint firstAttribute="height" constant="25" id="OUM-Oa-8B8"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="eku-ss-6Q3" firstAttribute="leading" secondItem="L1b-4N-v7e" secondAttribute="trailing" constant="21" id="0iC-GA-Z7E"/>
+                <constraint firstItem="L1b-4N-v7e" firstAttribute="baseline" secondItem="eku-ss-6Q3" secondAttribute="baseline" id="108-nx-8Im"/>
+                <constraint firstItem="BO1-VK-fNP" firstAttribute="baseline" secondItem="wip-5B-g6H" secondAttribute="baseline" id="2Zz-5C-xGa"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DSE-kF-6KC" secondAttribute="trailing" constant="20" id="3U1-ve-oDv"/>
+                <constraint firstItem="Srp-6n-dB4" firstAttribute="leading" secondItem="BO1-VK-fNP" secondAttribute="trailing" constant="16" id="4al-ib-gku"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="7Zx-vN-PZ5"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="leading" secondItem="oBq-Ia-OuE" secondAttribute="leading" id="Amt-kg-NDW"/>
+                <constraint firstItem="RF0-kT-1Ry" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Dhi-3y-Evt"/>
+                <constraint firstAttribute="trailing" secondItem="eku-ss-6Q3" secondAttribute="trailing" constant="15" id="HlP-lo-aXM"/>
+                <constraint firstAttribute="bottom" secondItem="eku-ss-6Q3" secondAttribute="bottom" constant="24" id="IFa-Np-CwG"/>
+                <constraint firstAttribute="bottom" secondItem="RF0-kT-1Ry" secondAttribute="bottom" id="LmT-x7-xhj"/>
+                <constraint firstItem="etf-3z-G2x" firstAttribute="leading" secondItem="wip-5B-g6H" secondAttribute="trailing" constant="15" id="O2r-rZ-fbi"/>
+                <constraint firstItem="kTv-iR-gEL" firstAttribute="baseline" secondItem="L1b-4N-v7e" secondAttribute="baseline" id="O9K-xc-a6W"/>
+                <constraint firstItem="wip-5B-g6H" firstAttribute="leading" secondItem="kTv-iR-gEL" secondAttribute="trailing" constant="17" id="U9W-TZ-b6T"/>
+                <constraint firstItem="Nvi-9K-zDX" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="20" id="Vs0-rW-0SK"/>
+                <constraint firstItem="Nvi-9K-zDX" firstAttribute="leading" secondItem="oBq-Ia-OuE" secondAttribute="leading" id="XG9-3n-E2h"/>
+                <constraint firstItem="oBq-Ia-OuE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="YmN-uL-bDL"/>
+                <constraint firstItem="L1b-4N-v7e" firstAttribute="leading" secondItem="Srp-6n-dB4" secondAttribute="trailing" constant="28" id="b1S-na-hyb"/>
+                <constraint firstItem="Srp-6n-dB4" firstAttribute="top" secondItem="BO1-VK-fNP" secondAttribute="top" id="daN-Yu-Osc"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="2" id="ep6-kV-hNt"/>
+                <constraint firstItem="RF0-kT-1Ry" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iQn-VC-moC"/>
+                <constraint firstAttribute="trailing" secondItem="RF0-kT-1Ry" secondAttribute="trailing" id="jXH-SH-b9v"/>
+                <constraint firstItem="BO1-VK-fNP" firstAttribute="leading" secondItem="etf-3z-G2x" secondAttribute="trailing" constant="16" id="kUT-zK-Zfu"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oBq-Ia-OuE" secondAttribute="trailing" constant="20" id="mQS-Rw-k7L"/>
+                <constraint firstItem="etf-3z-G2x" firstAttribute="baseline" secondItem="wip-5B-g6H" secondAttribute="baseline" id="p7L-gq-Z8H"/>
+                <constraint firstAttribute="bottom" secondItem="wip-5B-g6H" secondAttribute="bottom" constant="27" id="rHk-WA-7Du"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="33" id="sFb-M6-yYF"/>
+                <constraint firstItem="oBq-Ia-OuE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="33" id="vpk-0f-D85"/>
+                <constraint firstItem="wip-5B-g6H" firstAttribute="centerY" secondItem="kTv-iR-gEL" secondAttribute="centerY" id="wSc-2x-Knl"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="z8J-ic-5DK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="7Zx-vN-PZ5"/>
+                    <exclude reference="ep6-kV-hNt"/>
+                    <exclude reference="sFb-M6-yYF"/>
+                    <exclude reference="wSc-2x-Knl"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="contactButton" destination="L1b-4N-v7e" id="PFj-K2-BOj"/>
+                <outlet property="curServiceLabel" destination="oBq-Ia-OuE" id="A8n-QP-hYX"/>
+                <outlet property="curServiceTopConstraint" destination="YmN-uL-bDL" id="ebP-t5-gJF"/>
+                <outlet property="filterButton" destination="eku-ss-6Q3" id="oDW-gq-gMZ"/>
+                <outlet property="limitButton" destination="kTv-iR-gEL" id="XxC-X6-gbY"/>
+                <outlet property="limitIcon1" destination="wip-5B-g6H" id="ufh-2P-HTj"/>
+                <outlet property="limitIcon2" destination="etf-3z-G2x" id="1a1-Nd-uVQ"/>
+                <outlet property="limitIcon3" destination="BO1-VK-fNP" id="aos-iw-blz"/>
+                <outlet property="limitIcon4" destination="Srp-6n-dB4" id="bYS-aN-L6e"/>
+                <outlet property="nextServiceLabel" destination="DSE-kF-6KC" id="WVk-CV-UnV"/>
+                <outlet property="nextServiceTopConstraint" destination="7Zx-vN-PZ5" id="ezn-b4-ir0"/>
+                <outlet property="ratingView" destination="Nvi-9K-zDX" id="FN6-9U-gEh"/>
+            </connections>
+            <point key="canvasLocation" x="241" y="128"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Seller_Warning" width="16" height="16"/>
+        <image name="cell_background" width="581" height="1075"/>
+    </resources>
+</document>

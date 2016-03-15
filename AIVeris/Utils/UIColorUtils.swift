@@ -114,5 +114,64 @@ extension UIColor {
     }
     
     
-    
+    ///通过渐变类型，颜色值返回渐变颜色 add by liux at 20160312
+    static func colorWithGradientStyle(gradientStyle : UIGradientStyle, frame : CGRect , colors : [UIColor]) -> UIColor{
+        
+        let backgroundGradientLayer = CAGradientLayer()
+        backgroundGradientLayer.frame = frame
+        let cgColors = NSMutableArray()
+        for uiColor in colors{
+            cgColors.addObject(uiColor.CGColor)
+        }
+        
+        switch gradientStyle{
+        case UIGradientStyle.UIGradientStyleLeftToRight:
+            //Set out gradient's colors
+            backgroundGradientLayer.colors = cgColors as [AnyObject]
+            
+            //Specify the direction our gradient will take
+            backgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            backgroundGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            
+            //Convert our CALayer to a UIImage object
+            UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+            backgroundGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
+            let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return UIColor(patternImage: backgroundColorImage)
+            //TODO:还有两个实现没写完
+        case UIGradientStyle.UIGradientStyleRadial:
+            UIGraphicsBeginImageContextWithOptions(frame.size, false, UIScreen.mainScreen().scale)
+            //Specific the spread of the gradient (For now this gradient only takes 2 locations)
+            let locations : [CGFloat] = [0.0,1.0]
+            
+            //Default to the RGB Colorspace
+            let myColorspace = CGColorSpaceCreateDeviceRGB()
+            
+            //Create our Gradient
+            let myGradient = CGGradientCreateWithColors(myColorspace, cgColors, locations)
+            
+            // Normalise the 0-1 ranged inputs to the width of the image
+            let myCentrePoint = CGPoint(x: frame.size.width / 2, y: frame
+                .size.height / 2)
+            let myRadius = min(frame.size.height, frame.size.width)
+            CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), myGradient, myCentrePoint, 0, myCentrePoint, myRadius, CGGradientDrawingOptions.DrawsAfterEndLocation)
+            // Grab it as an Image
+            let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            // Clean up
+            UIGraphicsEndImageContext()
+            
+            return UIColor(patternImage: backgroundColorImage)
+            
+        case UIGradientStyle.UIGradientStyleTopToBottom:
+            return UIColor.redColor()
+        }
+    }
+
+}
+
+enum UIGradientStyle : Int{
+    case UIGradientStyleLeftToRight,UIGradientStyleRadial,UIGradientStyleTopToBottom
 }
