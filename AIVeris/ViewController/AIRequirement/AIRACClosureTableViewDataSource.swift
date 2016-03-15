@@ -11,11 +11,13 @@ import Foundation
 class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtocol {
     
     var dataSections: [AIIconTagModel]?
+    
     var blockArrays: [(NSIndexPath) -> Void]?
+
     override init() {
         super.init()
     }
-     
+    
     //pragma mark Private Methods
     
     func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool) {
