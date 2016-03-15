@@ -93,6 +93,15 @@ extension UIViewController {
         }
     }
 	
+    /**
+     模糊化present viewcontroller
+     
+     - parameter viewControllerToPresent: viewControllerToPresent
+     - parameter duration:                控制动画时间可空，默认0.25秒
+     - parameter animated:                是否动画
+     - parameter completion:              completion handler 可空
+     - parameter onClickCancelArea:       模糊区域点击 handler 可空
+     */
     func presentPopupViewController(viewControllerToPresent: UIViewController, duration:Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (()->Void)? = nil) {
 		if popupViewController == nil {
             self.onClickCancelArea = onClickCancelArea
@@ -181,19 +190,31 @@ extension UIViewController {
 		}
 	}
 	
-	func dismissPopupViewController(animated: Bool, completion: (() -> Void)?) {
+    /**
+     dismiss 方法
+     
+     - parameter animated:      是否动画
+     - parameter duration:      控制动画时间可空，默认0.25秒
+     - parameter completion:    completion handler
+     */
+	func dismissPopupViewController(animated: Bool, duration:Double = Constants.animationTime, completion: (() -> Void)?) {
+        
+        if popupViewController == nil {
+            parentViewController?.dismissPopupViewController(animated, completion: completion)
+            return
+        }
+        
 		let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
 		popupViewController?.willMoveToParentViewController(nil)
 		popupViewController?.beginAppearanceTransition(false, animated: animated)
 		if animated {
-			
 			var finalAlpha: CGFloat = 1
 			if modalTransitionStyle == .CrossDissolve {
 				finalAlpha = 0
 			}
 			
 			view.layoutIfNeeded()
-			UIView.animateWithDuration(Constants.animationTime, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
+			UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
 				self.bottomConstraint?.constant = self.view.frame.size.height
 				self.popupViewController!.view.alpha = finalAlpha
 				blurView.alpha = 0
