@@ -68,7 +68,9 @@ extension AIAssignServiceView{
         if !isRunAnimation{
             return
         }
-        
+        if nextServiceLabel.hidden {
+            nextServiceLabel.hidden = false
+        }
         let labelMoveHeightCur = curServiceLabel.frame.height / 2
         let labelMoveHeightNext = nextServiceLabel.frame.height / 2
         
