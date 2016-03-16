@@ -231,7 +231,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
             make.height.greaterThanOrEqualTo(20).priorityMedium()
-//            <SnapKit.LayoutConstraint:0x7fbf32eddd50@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#229 UILabel:0x7fbf35919880.height >= 20.0>
 
         })
         titleLabel.tag = 11
