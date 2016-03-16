@@ -402,6 +402,14 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     func distriAction(anyobj: AnyObject){
         let button = anyobj as! UIButton
         let cell = button.superview?.superview?.superview as! AIRACContentCell
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        var contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
+        
+        _ = sourceDelegate.selectedDataSections.filter { (tagModel) -> Bool in
+            contentModel.childServerIconArray?.append(tagModel)
+            return false
+        }
         expendTableViewCell(cell, expendButtonPressed: anyobj)
         
     }
@@ -445,8 +453,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             holdView?.updateConstraints()
             holdView?.setNeedsLayout()
         }
-        
-        
         
         _ = holdView?.subviews.filter({ (sview) -> Bool in
             if cell.hasExpend == true {
@@ -498,6 +504,8 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
             
             self.tableview.reloadData()
         }
+        cell.layoutSubviews()
+        cell.setNeedsLayout()
         
 
 //        self.tableview.beginUpdates()

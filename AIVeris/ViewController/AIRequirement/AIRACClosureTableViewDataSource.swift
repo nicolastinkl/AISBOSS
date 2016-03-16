@@ -12,6 +12,8 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
     
     var dataSections: [AIIconTagModel]?
     
+    var selectedDataSections: [AIIconTagModel] = []
+    
     var blockArrays: [(NSIndexPath) -> Void]?
 
     override init() {
@@ -22,12 +24,15 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
     
     func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool) {
         
+        selectedDataSections.append(cellModel)
+        
 //        dataSections = dataSections?.filter({ (model) -> Bool in
 //            if cellModel.id == model.id {
 //                return false
 //            }
 //            return true
 //        })
+        
         
     }
     
