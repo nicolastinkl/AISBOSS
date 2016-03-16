@@ -109,33 +109,3 @@ protocol VerticalScrollViewDelegate {
     func viewCellDidSelect(verticalScrollView : AIVerticalScrollView , index : Int , cellView : UIView)
 }
 
-//MARK: - 服务实例模型
-//class IconServiceIntModel : NSObject{
-//    var serviceInstId : Int
-//    var serviceIcon : String
-//    var serviceInstStatus : Int
-//    var executeProgress : Int
-//    var isSelected : Bool = false
-//    
-//    init(serviceInstId : Int , serviceIcon : String , serviceInstStatus : Int , executeProgress : Int){
-//        self.serviceInstId = serviceInstId
-//        self.serviceIcon = serviceIcon
-//        self.serviceInstStatus = serviceInstStatus
-//        self.executeProgress = executeProgress
-//    }
-//    
-//    ///判断是否需要派单
-//    class func isAllLanched(models : [IconServiceIntModel]) -> Bool {
-//        for model in models{
-//            let statusEnum = ServiceInstStatus(rawValue: model.serviceInstStatus)
-//            if statusEnum == ServiceInstStatus.Init {
-//                return true
-//            }
-//        }
-//        return false
-//    }
-//}
-//
-//enum ServiceInstStatus : Int {
-//    case Init,Assigned
-//}
