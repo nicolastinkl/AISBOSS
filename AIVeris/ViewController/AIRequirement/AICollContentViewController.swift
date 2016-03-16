@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AICollContentViewController: UIViewController {
     
@@ -16,8 +17,7 @@ class AICollContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //四边不要留距离
-        self.edgesForExtendedLayout = UIRectEdge.None
+        
         loadData()
         buildServiceInstView()
         buildLimitListView()
@@ -27,21 +27,36 @@ class AICollContentViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         var serviceInstViewFrame = view.bounds
-        serviceInstViewFrame.size.height = 200
+        serviceInstViewFrame.size.height = 120
         serviceInstView.frame = serviceInstViewFrame
+        serviceInstView.setLeft(-20)
+        serviceInstView.setTop(-20)
+        serviceInstView.setWidth(view.bounds.width + 40)
+        
+        var limitFrame = serviceInstView.frame
+        limitFrame.origin.y = CGRectGetMaxY(serviceInstView.frame)
+        limitFrame.size.height = 0
+        limitListView.frame = limitFrame
+        limitListView.loadData((assginServiceInsts?.first?.limits)!)
     }
     
     func buildLimitListView(){
-        var frame = view.bounds
-        frame.origin.y = CGRectGetMaxY(serviceInstView.frame)
-        frame.size.height = 0
-        limitListView = AILimitListView(frame: frame)
-        limitListView.loadData((assginServiceInsts?.first?.limits)!)
+        
+        limitListView = AILimitListView(frame: CGRectZero)
+        
         view.addSubview(limitListView)
     }
     
     func buildServiceInstView(){
         serviceInstView = AIAssignServiceView.currentView()
+        //layout
+//        serviceInstView.snp_makeConstraints { (make) -> Void in
+//            make.leading.equalTo(view).offset(-20)
+//            make.trailing.equalTo(view).offset(20)
+//            make.top.equalTo(0)
+//            make.height.equalTo(80)
+//        }
+        
         serviceInstView.delegate = self
         view.addSubview(serviceInstView)
         if let assginServiceInsts = assginServiceInsts{
