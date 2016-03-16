@@ -28,6 +28,18 @@ class AIAssignServiceView: UIView {
     var curModelNum : Int!
     var nextModelNum : Int!
     var beginTime : CFTimeInterval!
+    var delegate : AIAssignServiceViewDelegate?
+    var isRunAnimation = true
+    var repeatTimer : NSTimer?
+    
+    
+    @IBAction func limitButtonAction(sender: UIButton) {
+        if let delegate = delegate{
+            //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
+            switchAnimationState()
+            delegate.limitButtonAction(self, limitsModel : (models?.first?.limits)!)
+        }
+    }
     
     class func currentView()->AIAssignServiceView{
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIAssignServiceView", owner: self, options: nil).first  as! AIAssignServiceView
@@ -40,10 +52,11 @@ class AIAssignServiceView: UIView {
     
     func loadData(models : [AssignServiceInstModel]){
         self.models = models
-        
+        //limitListView.frame.size.height = 0
         //多于1个选中服务实例，才启动滚动动画
         if models.count > 1{
-            startAnimation()
+            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
+            repeatTimer = timer
         }
     }
 }
@@ -52,6 +65,10 @@ class AIAssignServiceView: UIView {
 extension AIAssignServiceView{
     
     func startAnimation(){
+        if !isRunAnimation{
+            return
+        }
+        
         let labelMoveHeightCur = curServiceLabel.frame.height / 2
         let labelMoveHeightNext = nextServiceLabel.frame.height / 2
         
@@ -61,7 +78,8 @@ extension AIAssignServiceView{
 
         curServiceLabel.alpha = 1
         curServiceLabel.transform = CGAffineTransformIdentity
-        UIView.animateWithDuration(0.5, delay: 1, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+        
+        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
             self.curServiceLabel.alpha = 0
             let rotateTransform1 = CGAffineTransformMakeScale(1.0, 0.5)
             let positionTransform1 = CGAffineTransformMakeTranslation(1.0, -labelMoveHeightCur)
@@ -83,36 +101,27 @@ extension AIAssignServiceView{
                 self.nextModelNum = self.nextModelNum + 1
             }
             self.curServiceLabel.text = self.models![self.curModelNum].serviceName
-            self.startAnimation()
+//            if self.isRunAnimation {
+//                self.startAnimation()
+//            }
+            
         })
     }
+    
+    func switchAnimationState(){
+        isRunAnimation = !isRunAnimation
+        if isRunAnimation{
+            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
+            repeatTimer = timer
+        }
+        else{
+            repeatTimer?.invalidate()
+            repeatTimer = nil
+        }
+    }
+    
 }
 
-//struct AssignServiceInstModel {
-//    var serviceInstId : Int
-//    var serviceName : String
-//    var ratingLevel : Float?
-//    var limits : [LimitModel]?
-//    
-//    init(serviceInstId : Int,serviceName : String,ratingLevel : Float,limits : [LimitModel]) {
-//        self.serviceInstId = serviceInstId
-//        self.serviceName = serviceName
-//        self.ratingLevel = ratingLevel
-//        self.limits = limits
-//    }
-//}
-//
-//struct LimitModel {
-//    var limitId : Int
-//    var limitName: String
-//    var limitIcon : String
-//    var hasLimit : Bool
-//    
-//    init(limitId : Int , limitName : String, limitIcon : String , hasLimit : Bool){
-//        self.limitId = limitId
-//        self.limitName = limitName
-//        self.limitIcon = limitIcon
-//        self.hasLimit = hasLimit
-//    }
-//    
-//}
+protocol AIAssignServiceViewDelegate {
+    func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel])
+}

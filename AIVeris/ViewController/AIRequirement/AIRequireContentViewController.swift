@@ -230,7 +230,9 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.top.equalTo(10)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
-            make.height.greaterThanOrEqualTo(20)
+            make.height.greaterThanOrEqualTo(20).priorityMedium()
+//            <SnapKit.LayoutConstraint:0x7fbf32eddd50@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#229 UILabel:0x7fbf35919880.height >= 20.0>
+
         })
         titleLabel.tag = 11
         
@@ -310,7 +312,8 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
-            make.height.equalTo(50)
+            make.height.equalTo(50).priorityMedium()
+//            <SnapKit.LayoutConstraint:0x7fbf35b24050@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#309 UIView:0x7fbf35b1fd80.height == 50.0>
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
