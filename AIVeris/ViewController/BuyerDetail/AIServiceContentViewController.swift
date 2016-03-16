@@ -592,14 +592,11 @@ internal class AIServiceContentViewController: UIViewController {
         let musicView = addMusicView(contentView)
         
         //TODO: Necessary public View.
-
+        //TODO: DisplayForSeller.
         if let preView = addCustomView(musicView){
-            
-                addAudioView(preView)
-            
+             addAudioView(preView)
         }
         
-        //TODO: DisplayForSeller.
         
     }
     
@@ -654,7 +651,7 @@ internal class AIServiceContentViewController: UIViewController {
             providerView.content.text = wish.intro ?? ""
             
             if displayForSeller == false {
-                if (wish.hope_list != nil) && wish.hope_list.count > 0 && wish.label_list.count > 0 {
+                if (wish.hope_list != nil) || (wish.hope_list.count > 0 && wish.label_list.count > 0) {
                     let custView =  AICustomView.currentView()
                     addNewSubView(custView, preView: viw)
                     viw = custView
