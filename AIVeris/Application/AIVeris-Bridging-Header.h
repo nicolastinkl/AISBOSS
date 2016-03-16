@@ -91,10 +91,10 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "OBShapedButton.h"
 #import "UIImage+Resize.h"
+
 #if DEBUG
 #import "FLEXManager.h"
 #endif
-
 
 #import "UIView+Toast.h"
 
@@ -107,6 +107,7 @@
 #import "AIServiceDetailUIModel.h"
 
 #import "YYFPSLabel.h"
+
 #import "AIProposalServiceParser.h"
 
 #import "AIDetailText.h"
@@ -114,8 +115,11 @@
 #import "AIServiceParamBaseView.h"
 
 // AITagView
+
 #import "AIBaseTagsView.h"
 
 #import "SESlideTableViewCell.h"
 
 #import "YLProgressBar.h"
+ 
+//#import "GIBadgeView.h"

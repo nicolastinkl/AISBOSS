@@ -5,6 +5,7 @@ PODS:
     - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.5)
   - AsyncDisplayKit/ASDealloc2MainObject (1.9.5)
   - Cartography (0.6.0)
+  - Sheriff (0.3.2)
   - SnapKit (0.18.0)
   - Spring (1.0.3)
   - SwiftyJSON (2.3.2)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - Alamofire (~> 3.1.4)
   - AsyncDisplayKit (~> 1.9.4)
   - Cartography (~> 0.6.0)
+  - Sheriff
   - SnapKit (~> 0.18.0)
   - Spring (from `https://github.com/asiainfomobile/Spring.git`, branch `swift2`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -43,6 +45,7 @@ SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
   AsyncDisplayKit: 9c55f1aadf4edc3eab9e27812171f500c13882c7
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  Sheriff: d3d03fe6d35aa781e3f42d48f3fb53ed7d04958d
   SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

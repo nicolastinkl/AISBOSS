@@ -52,6 +52,9 @@ internal class AIRequirementMenuViewController : UIViewController  {
         initFont(collLabel)
         initFont(assignLabel)
         
+        // Set Unread's view
+        // Create your badge and add it as a subview to whatever view you want to badgify.
+        
         
         
     }
