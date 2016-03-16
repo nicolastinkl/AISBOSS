@@ -74,14 +74,15 @@ class AIRACClosureTableViewCell: UITableViewCell {
             make.trailing.equalTo(contentLabel.snp_right).offset(10)
             make.top.equalTo(iconImage.top).offset(0)
             make.height.equalTo(35)
-        }
-        
+        }        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         isSelected = !isSelected
         
-        delegateCell?.withSelectedCell(currentModel!, isSelect: isSelected)
+        if selected == true {
+            delegateCell?.withSelectedCell(currentModel!, isSelect: isSelected)
+        }
         
         if isSelected == true {
             selectedddImage.backgroundColor = UIColor(hex: "#1D86E5")

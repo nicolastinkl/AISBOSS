@@ -34,6 +34,7 @@
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; };
+		810746B41C97B7A8003926CB /* AIOrderManagementModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 810746B31C97B7A8003926CB /* AIOrderManagementModels.m */; };
 		810870191C5A43BE00077008 /* AIServiceParamBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810870181C5A43BE00077008 /* AIServiceParamBaseView.m */; };
 		8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7831C4F908D001BB063 /* AIServiceParamView.swift */; };
 		8120B78C1C51C21F001BB063 /* AIPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78B1C51C21F001BB063 /* AIPriceView.swift */; };
@@ -588,6 +589,8 @@
 		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810746B21C97B7A8003926CB /* AIOrderManagementModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderManagementModels.h; sourceTree = "<group>"; };
+		810746B31C97B7A8003926CB /* AIOrderManagementModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderManagementModels.m; sourceTree = "<group>"; };
 		810870171C5A43BE00077008 /* AIServiceParamBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceParamBaseView.h; sourceTree = "<group>"; };
 		810870181C5A43BE00077008 /* AIServiceParamBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceParamBaseView.m; sourceTree = "<group>"; };
 		8120B7831C4F908D001BB063 /* AIServiceParamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceParamView.swift; sourceTree = "<group>"; };
@@ -2227,6 +2230,8 @@
 				849D3EF31BE070C60008949E /* ProposalProtocal.swift */,
 				842FC85E1BDA093900A0517C /* ServiceOrderDetailModel.h */,
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
+				810746B21C97B7A8003926CB /* AIOrderManagementModels.h */,
+				810746B31C97B7A8003926CB /* AIOrderManagementModels.m */,
 			);
 			path = ocModel;
 			sourceTree = "<group>";
@@ -3346,6 +3351,7 @@
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
 				846F741C1C15A87D00EDAE8D /* OBShapedImageView.m in Sources */,
 				93AE1E441C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift in Sources */,
+				810746B41C97B7A8003926CB /* AIOrderManagementModels.m in Sources */,
 				93C33F241B9BEAFE007BF506 /* UIImage+Effect.m in Sources */,
 				93DA9C091BFD62D100E2DA3B /* ReadmeViewController.swift in Sources */,
 				8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */,
