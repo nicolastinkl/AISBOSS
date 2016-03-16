@@ -78,8 +78,8 @@
                                                         <constraint firstAttribute="height" constant="13" id="gaY-3z-OYP"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-Am-rau">
-                                                    <rect key="frame" x="33" y="0.0" width="532" height="64"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-Am-rau">
+                                                    <rect key="frame" x="33" y="1" width="532" height="52"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -93,12 +93,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="Vv2-Zz-luE" secondAttribute="trailing" constant="14" id="eUg-be-2Ws"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" id="fgf-RO-3GM"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" constant="6" id="jMR-oR-LRb"/>
-                                                <constraint firstItem="ALy-Am-rau" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" id="jjR-lL-aDI"/>
+                                                <constraint firstItem="ALy-Am-rau" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" constant="1" id="jjR-lL-aDI"/>
                                                 <constraint firstItem="ALy-Am-rau" firstAttribute="leading" secondItem="Mv0-83-Itj" secondAttribute="leading" constant="33" id="mfv-UG-ODK"/>
                                                 <constraint firstItem="ALy-Am-rau" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" constant="13" id="tAD-Yq-qEv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vv2-Zz-luE" secondAttribute="trailing" constant="14" id="txn-oG-qTg"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="leading" secondItem="Mv0-83-Itj" secondAttribute="leading" constant="12" id="wt7-l0-dp5"/>
-                                                <constraint firstAttribute="bottom" secondItem="ALy-Am-rau" secondAttribute="bottom" constant="16" id="wvb-jv-qSh"/>
+                                                <constraint firstAttribute="bottom" secondItem="ALy-Am-rau" secondAttribute="bottom" constant="22" id="wvb-jv-qSh"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -440,7 +440,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="155" y="198"/>
+            <point key="canvasLocation" x="60" y="40"/>
         </scene>
         <!--Page Buery View Controller-->
         <scene sceneID="F25-Ic-djb">

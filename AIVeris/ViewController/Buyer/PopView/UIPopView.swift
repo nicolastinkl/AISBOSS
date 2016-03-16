@@ -63,6 +63,9 @@ import Spring
         var i: Int = 0
         if let _ = model.service_list {
             for server in  model.service_list {
+                if i == 8 {
+                    return
+                }
                 let logoModel = server as! AIBuyerBubbleProportModel
                 let position = centerForIconAtIndex(i)
                 let imageView = AIImageView()

@@ -16,7 +16,7 @@ struct AIOrdeRequireServices {
             
             var i1 = AIIconTagModel()
             i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
-            i1.content = "2. Maternity Consulting - Music Theray"
+            i1.content = "2. Maternity Consulting2"
             
             var i2 = AIIconTagModel()
             i2.iconUrl = "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png"

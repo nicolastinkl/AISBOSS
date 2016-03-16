@@ -15,6 +15,7 @@
 		120D68031C96D4D200E74D12 /* AIAssignServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D67FD1C96D4D200E74D12 /* AIAssignServiceView.swift */; };
 		120D68041C96D4D200E74D12 /* AICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D67FE1C96D4D200E74D12 /* AICircleProgressView.swift */; };
 		120D68051C96D4D200E74D12 /* AIVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D67FF1C96D4D200E74D12 /* AIVerticalScrollView.swift */; };
+		120D68091C98F15000E74D12 /* AILimitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D68081C98F15000E74D12 /* AILimitListView.swift */; };
 		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; };
 		1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6A1C925C1A00E72B41 /* AIModels.swift */; };
 		1261FF6F1C925C5F00E72B41 /* AIRequirmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */; };
@@ -565,6 +566,7 @@
 		120D67FD1C96D4D200E74D12 /* AIAssignServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAssignServiceView.swift; sourceTree = "<group>"; };
 		120D67FE1C96D4D200E74D12 /* AICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICircleProgressView.swift; sourceTree = "<group>"; };
 		120D67FF1C96D4D200E74D12 /* AIVerticalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIVerticalScrollView.swift; sourceTree = "<group>"; };
+		120D68081C98F15000E74D12 /* AILimitListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListView.swift; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
 		12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceCellModel.h; sourceTree = "<group>"; };
 		1261FF6A1C925C1A00E72B41 /* AIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModels.swift; sourceTree = "<group>"; };
@@ -2051,6 +2053,7 @@
 		932DB0891C8F01640024C40D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				120D68081C98F15000E74D12 /* AILimitListView.swift */,
 				120D67FA1C96D4D200E74D12 /* AITimelineCellBaseView.swift */,
 				120D67FB1C96D4D200E74D12 /* AIRotateView.swift */,
 				120D67FC1C96D4D200E74D12 /* AIAssignServiceView.xib */,
@@ -3274,6 +3277,7 @@
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
 				939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */,
 				93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */,
+				120D68091C98F15000E74D12 /* AILimitListView.swift in Sources */,
 				12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */,
 				843BAC291C17D598003E445E /* UIImage+Resize.m in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,

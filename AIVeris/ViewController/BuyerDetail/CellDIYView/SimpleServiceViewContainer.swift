@@ -325,7 +325,7 @@ class SimpleServiceViewContainer: UIView {
     private func createReviewView(rating: Int) {
         if rating < 0  {
             review.hidden = true
-            topHeight.constant = 34
+            topHeight.constant = 36
             topView.setNeedsUpdateConstraints()
             return
         }
@@ -337,7 +337,7 @@ class SimpleServiceViewContainer: UIView {
         
         constrain(starRateView, review) {star, review in
             star.left == review.right - 2
-            star.height == starRateView.height
+            star.height == starRateView.height + 1
             star.width == starRateView.width
             star.top == review.top + 1
         }

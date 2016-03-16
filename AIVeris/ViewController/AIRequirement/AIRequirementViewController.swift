@@ -15,7 +15,6 @@ import Spring
 internal class AIRequirementViewController : UIViewController {
 
     
-    
     // MARK: -> Internal class
     
     // MARK: -> Internal type alias

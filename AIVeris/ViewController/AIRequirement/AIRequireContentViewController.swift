@@ -15,9 +15,9 @@ class AIRequireContentViewController: UIViewController {
     // MARK: -> Internal enum
     
     enum ThisViewTag: Int {
-        case IConView = 12
+        case IconView = 12
         case ExpendView = 13
-        case sTableView = 14
+        case StableView = 14
     }
     
     private let stableCellHeight: Int = 40
@@ -230,7 +230,9 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.top.equalTo(10)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
-            make.height.greaterThanOrEqualTo(20)
+            make.height.greaterThanOrEqualTo(20).priorityMedium()
+//            <SnapKit.LayoutConstraint:0x7fbf32eddd50@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#229 UILabel:0x7fbf35919880.height >= 20.0>
+
         })
         titleLabel.tag = 11
         
@@ -310,11 +312,12 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
-            make.height.equalTo(50)
+            make.height.equalTo(50).priorityMedium()
+//            <SnapKit.LayoutConstraint:0x7fbf35b24050@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#309 UIView:0x7fbf35b1fd80.height == 50.0>
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
-        iconView.tag = ThisViewTag.IConView.rawValue
+        iconView.tag = ThisViewTag.IconView.rawValue
         
         // Setup 6:  expendTableViewCell
         
@@ -378,7 +381,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.trailing.equalTo(-14)
                 make.height.equalTo(0)
             })
-            stable.tag = ThisViewTag.sTableView.rawValue
+            stable.tag = ThisViewTag.StableView.rawValue
         }
         
         expendView.tag = ThisViewTag.ExpendView.rawValue
@@ -402,13 +405,21 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     func distriAction(anyobj: AnyObject){
         let button = anyobj as! UIButton
         let cell = button.superview?.superview?.superview as! AIRACContentCell
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        var contentModel : AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row-1])!
+        
+        _ = sourceDelegate.selectedDataSections.filter { (tagModel) -> Bool in
+            contentModel.childServerIconArray?.append(tagModel)
+            return false
+        }
         expendTableViewCell(cell, expendButtonPressed: anyobj)
         
     }
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel : AIChildContentCellModel) {
         
-        let vheight = cell.contentView.viewWithTag(ThisViewTag.IConView.rawValue)
+        let vheight = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
         
         vheight?.snp_updateConstraints(closure: { (make) -> Void in
             if cell.hasExpend == true {
@@ -431,7 +442,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         if let models = contentModel.childServerIconArray {
             
             sourceDelegate.dataSections = models
-            let stable = holdView?.viewWithTag(ThisViewTag.sTableView.rawValue) as? UITableView
+            let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
             stable?.scrollEnabled = false
             
             stable?.snp_updateConstraints(closure: { (make) -> Void in
@@ -445,8 +456,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             holdView?.updateConstraints()
             holdView?.setNeedsLayout()
         }
-        
-        
         
         _ = holdView?.subviews.filter({ (sview) -> Bool in
             if cell.hasExpend == true {
@@ -498,6 +507,8 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
             
             self.tableview.reloadData()
         }
+        cell.layoutSubviews()
+        cell.setNeedsLayout()
         
 
 //        self.tableview.beginUpdates()

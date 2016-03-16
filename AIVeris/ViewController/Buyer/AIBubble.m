@@ -120,7 +120,6 @@ typedef enum  {
     self.rotateImageView.alpha = kDefaultAlpha;
     self.rotateImageView.center =  CGPointMake(self.width/2, self.height/2);
     //[self addSubview:self.rotateImageView];
-
     
     CALayer* _contentLayer = [CALayer layer];
     _contentLayer.frame = self.bounds;

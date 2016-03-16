@@ -11,21 +11,28 @@ import Foundation
 class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtocol {
     
     var dataSections: [AIIconTagModel]?
+    
+    var selectedDataSections: [AIIconTagModel] = []
+    
     var blockArrays: [(NSIndexPath) -> Void]?
+
     override init() {
         super.init()
     }
-     
+    
     //pragma mark Private Methods
     
     func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool) {
         
-        dataSections = dataSections?.filter({ (model) -> Bool in
-            if cellModel.id == model.id {
-                return false
-            }
-            return true
-        })
+        selectedDataSections.append(cellModel)
+        
+//        dataSections = dataSections?.filter({ (model) -> Bool in
+//            if cellModel.id == model.id {
+//                return false
+//            }
+//            return true
+//        })
+        
         
     }
     
