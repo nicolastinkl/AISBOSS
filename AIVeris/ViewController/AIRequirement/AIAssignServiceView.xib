@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAssignServiceView" customModule="MyWholeDemos" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIAssignServiceView" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="184"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -37,6 +37,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-iR-gEL" userLabel="limitButton">
                     <rect key="frame" x="257" y="130" width="30" height="30"/>
                     <state key="normal" title="limit"/>
+                    <connections>
+                        <action selector="limitButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hXw-nQ-ZhF"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-4N-v7e" userLabel="contactButton">
                     <rect key="frame" x="479" y="130" width="53" height="30"/>
@@ -90,10 +93,12 @@
                 <constraint firstAttribute="bottom" secondItem="RF0-kT-1Ry" secondAttribute="bottom" id="LmT-x7-xhj"/>
                 <constraint firstItem="etf-3z-G2x" firstAttribute="leading" secondItem="wip-5B-g6H" secondAttribute="trailing" constant="15" id="O2r-rZ-fbi"/>
                 <constraint firstItem="kTv-iR-gEL" firstAttribute="baseline" secondItem="L1b-4N-v7e" secondAttribute="baseline" id="O9K-xc-a6W"/>
+                <constraint firstAttribute="bottom" secondItem="kTv-iR-gEL" secondAttribute="bottom" constant="24" id="QA9-Oo-9Gw"/>
                 <constraint firstItem="wip-5B-g6H" firstAttribute="leading" secondItem="kTv-iR-gEL" secondAttribute="trailing" constant="17" id="U9W-TZ-b6T"/>
                 <constraint firstItem="Nvi-9K-zDX" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="20" id="Vs0-rW-0SK"/>
                 <constraint firstItem="Nvi-9K-zDX" firstAttribute="leading" secondItem="oBq-Ia-OuE" secondAttribute="leading" id="XG9-3n-E2h"/>
                 <constraint firstItem="oBq-Ia-OuE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="YmN-uL-bDL"/>
+                <constraint firstAttribute="bottom" secondItem="wip-5B-g6H" secondAttribute="bottom" constant="27" id="Zh4-OJ-Njh"/>
                 <constraint firstItem="L1b-4N-v7e" firstAttribute="leading" secondItem="Srp-6n-dB4" secondAttribute="trailing" constant="28" id="b1S-na-hyb"/>
                 <constraint firstItem="Srp-6n-dB4" firstAttribute="top" secondItem="BO1-VK-fNP" secondAttribute="top" id="daN-Yu-Osc"/>
                 <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="2" id="ep6-kV-hNt"/>
@@ -114,7 +119,9 @@
                     <exclude reference="7Zx-vN-PZ5"/>
                     <exclude reference="ep6-kV-hNt"/>
                     <exclude reference="sFb-M6-yYF"/>
+                    <exclude reference="rHk-WA-7Du"/>
                     <exclude reference="wSc-2x-Knl"/>
+                    <exclude reference="IFa-Np-CwG"/>
                 </mask>
             </variation>
             <connections>
@@ -136,6 +143,6 @@
     </objects>
     <resources>
         <image name="Seller_Warning" width="16" height="16"/>
-        <image name="cell_background" width="581" height="1075"/>
+        <image name="cell_background" width="540" height="132"/>
     </resources>
 </document>
