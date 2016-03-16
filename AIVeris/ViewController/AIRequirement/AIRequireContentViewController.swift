@@ -15,9 +15,9 @@ class AIRequireContentViewController: UIViewController {
     // MARK: -> Internal enum
     
     enum ThisViewTag: Int {
-        case IConView = 12
+        case IconView = 12
         case ExpendView = 13
-        case sTableView = 14
+        case StableView = 14
     }
     
     private let stableCellHeight: Int = 40
@@ -317,7 +317,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
-        iconView.tag = ThisViewTag.IConView.rawValue
+        iconView.tag = ThisViewTag.IconView.rawValue
         
         // Setup 6:  expendTableViewCell
         
@@ -381,7 +381,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.trailing.equalTo(-14)
                 make.height.equalTo(0)
             })
-            stable.tag = ThisViewTag.sTableView.rawValue
+            stable.tag = ThisViewTag.StableView.rawValue
         }
         
         expendView.tag = ThisViewTag.ExpendView.rawValue
@@ -419,7 +419,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel : AIChildContentCellModel) {
         
-        let vheight = cell.contentView.viewWithTag(ThisViewTag.IConView.rawValue)
+        let vheight = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
         
         vheight?.snp_updateConstraints(closure: { (make) -> Void in
             if cell.hasExpend == true {
@@ -442,7 +442,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         if let models = contentModel.childServerIconArray {
             
             sourceDelegate.dataSections = models
-            let stable = holdView?.viewWithTag(ThisViewTag.sTableView.rawValue) as? UITableView
+            let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
             stable?.scrollEnabled = false
             
             stable?.snp_updateConstraints(closure: { (make) -> Void in
