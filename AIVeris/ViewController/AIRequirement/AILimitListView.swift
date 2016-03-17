@@ -82,7 +82,7 @@ class AILimitCellView: UIView {
     //position
     let iconSize : CGFloat = 20
     let viewPadding : CGFloat = 10
-    let confirmViewSize : CGFloat = 29
+    let confirmViewSize : CGFloat = 20
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,7 +100,9 @@ class AILimitCellView: UIView {
     }
     
     private func updateViewContent(){
-        iconView.image = UIImage(named: "iconView")
+        //TODO 设置为model传入的icon路径
+        let url = NSURL(string: (limitModel?.limitIcon)!)
+        iconView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "Seller_Location")!)
         contentLabel.text = limitModel?.limitName
         //根据是否有权限决定是选中还是未选中
         if let limitModel = limitModel{
@@ -128,9 +130,7 @@ class AILimitCellView: UIView {
     private func buildLeftIcon(){
         let y = (self.bounds.height - iconSize) / 2
         let frame = CGRect(x: 0, y: y, width: iconSize, height: iconSize)
-        //TODO 设置为model传入的icon路径
         iconView = UIImageView(frame: frame)
-        
         self.addSubview(iconView)
     }
     
@@ -153,8 +153,9 @@ class AILimitCellView: UIView {
     }
     
     private func buildConfirmView(){
+        let y = (self.bounds.height - confirmViewSize) / 2
         let x = CGRectGetMaxX(contentLabel.frame)
-        let frame = CGRect(x: x, y: 0, width: confirmViewSize, height: confirmViewSize)
+        let frame = CGRect(x: x, y: y, width: confirmViewSize, height: confirmViewSize)
         confirmView = UIImageView(frame: frame)
         
         self.addSubview(confirmView)

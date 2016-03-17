@@ -118,7 +118,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
 
 extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
-        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame) + 10, width: 65, height: 360)
+        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame) + 10, width: 65, height: 380)
         serviceInstsView = AIVerticalScrollView(frame: frame)
         serviceInstsView.userInteractionEnabled = true
         serviceInstsView.myDelegate = self
@@ -131,15 +131,15 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     }
     
     func loadData(){
-        models = [IconServiceIntModel(serviceInstId: 1, serviceIcon: "Seller_Warning", serviceInstStatus: 0, executeProgress: 2),
-            IconServiceIntModel(serviceInstId: 1, serviceIcon: "Seller_Warning", serviceInstStatus: 0, executeProgress: 3),
-            IconServiceIntModel(serviceInstId: 2, serviceIcon: "Seller_Warning", serviceInstStatus: 1, executeProgress: 4),
-            IconServiceIntModel(serviceInstId: 3, serviceIcon: "Seller_Warning", serviceInstStatus: 1, executeProgress: 5),
-            IconServiceIntModel(serviceInstId: 4, serviceIcon: "Seller_Warning", serviceInstStatus: 0, executeProgress: 6),
-            IconServiceIntModel(serviceInstId: 5, serviceIcon: "Seller_Warning", serviceInstStatus: 1, executeProgress: 7),
-            IconServiceIntModel(serviceInstId: 6, serviceIcon: "Seller_Warning", serviceInstStatus: 1, executeProgress: 8),
-            IconServiceIntModel(serviceInstId: 7, serviceIcon: "Seller_Warning", serviceInstStatus: 0, executeProgress: 2),
-            IconServiceIntModel(serviceInstId: 8, serviceIcon: "Seller_Warning", serviceInstStatus: 0, executeProgress: 2)]
+        models = [IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 3),
+            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 4),
+            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 5),
+            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 6),
+            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 7),
+            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 8),
+            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2)]
         
         
     }

@@ -20,18 +20,18 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSE-kF-6KC" userLabel="nextServiceName">
-                    <rect key="frame" x="20" y="21" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSE-kF-6KC" userLabel="nextServiceName">
+                    <rect key="frame" x="20" y="10" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvi-9K-zDX" userLabel="ratingView">
-                    <rect key="frame" x="20" y="51" width="142" height="21"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <rect key="frame" x="20" y="36" width="80" height="15"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="142" id="Pdr-4h-jIF"/>
-                        <constraint firstAttribute="height" constant="21" id="pgn-l2-Bld"/>
+                        <constraint firstAttribute="width" constant="80" id="Pdr-4h-jIF"/>
+                        <constraint firstAttribute="height" constant="15" id="pgn-l2-Bld"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kTv-iR-gEL" userLabel="limitButton">
@@ -95,7 +95,7 @@
                 <constraint firstItem="kTv-iR-gEL" firstAttribute="baseline" secondItem="L1b-4N-v7e" secondAttribute="baseline" id="O9K-xc-a6W"/>
                 <constraint firstAttribute="bottom" secondItem="kTv-iR-gEL" secondAttribute="bottom" id="QA9-Oo-9Gw"/>
                 <constraint firstItem="wip-5B-g6H" firstAttribute="leading" secondItem="kTv-iR-gEL" secondAttribute="trailing" constant="5" id="U9W-TZ-b6T"/>
-                <constraint firstItem="Nvi-9K-zDX" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="20" id="Vs0-rW-0SK"/>
+                <constraint firstItem="Nvi-9K-zDX" firstAttribute="top" secondItem="oBq-Ia-OuE" secondAttribute="bottom" constant="5" id="Vs0-rW-0SK"/>
                 <constraint firstItem="Nvi-9K-zDX" firstAttribute="leading" secondItem="oBq-Ia-OuE" secondAttribute="leading" id="XG9-3n-E2h"/>
                 <constraint firstItem="oBq-Ia-OuE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="YmN-uL-bDL"/>
                 <constraint firstAttribute="bottom" secondItem="wip-5B-g6H" secondAttribute="bottom" constant="8" id="Zh4-OJ-Njh"/>
@@ -111,7 +111,7 @@
                 <constraint firstItem="DSE-kF-6KC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="33" id="sFb-M6-yYF"/>
                 <constraint firstItem="oBq-Ia-OuE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="vpk-0f-D85"/>
                 <constraint firstItem="wip-5B-g6H" firstAttribute="centerY" secondItem="kTv-iR-gEL" secondAttribute="centerY" id="wSc-2x-Knl"/>
-                <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="21" id="z8J-ic-5DK"/>
+                <constraint firstItem="DSE-kF-6KC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="z8J-ic-5DK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
