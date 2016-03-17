@@ -26,6 +26,8 @@ class AIRequireContentViewController: UIViewController {
     
     var sourceDelegate = AIRACClosureTableViewDataSource()
     
+    private var placeholdCell: SESlideTableViewCell?
+    
     private var dataSource : [AIContentCellModel]? = {
     
         
@@ -549,11 +551,17 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didSlideToState slideState: SESlideTableViewCellSlideState) {
-        
+        if slideState != SESlideTableViewCellSlideState.Center {
+            self.tableview.scrollEnabled = false
+            placeholdCell = cell
+        }else{
+            self.tableview.scrollEnabled = true
+            placeholdCell = nil
+        }
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
-        
+
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
@@ -561,11 +569,16 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, willSlideToState slideState: SESlideTableViewCellSlideState) {
-        
+       
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, wilShowButtonsOfSide side: SESlideTableViewCellSide) {       
-        
+        if let preCell = placeholdCell {
+            if preCell != cell {
+                //同一个cell
+                preCell.setSlideState(SESlideTableViewCellSlideState.Center, animated: true)
+            }
+        }
     }
     
 }
