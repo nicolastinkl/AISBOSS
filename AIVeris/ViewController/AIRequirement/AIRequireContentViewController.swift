@@ -218,7 +218,13 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.bottom.equalTo(-3)
         })
         bgImageView.tag = 11
+        bgImageView.alpha = 0
         
+        
+        // PlaceHolder UIImageView.
+        let bgImageViewHolder = UIImageView(image: UIImage(named:imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
+        cell.contentView.addSubview(bgImageViewHolder)
+        bgImageViewHolder.tag = 11
         
         // Setup 2 : Title UILabel.
         let titleLabel = UILabel()
@@ -314,11 +320,17 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
             make.height.equalTo(50).priorityMedium()
-//            <SnapKit.LayoutConstraint:0x7fbf35b24050@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#309 UIView:0x7fbf35b1fd80.height == 50.0>
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
         iconView.tag = ThisViewTag.IconView.rawValue
+        
+        
+        bgImageViewHolder.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.leading.trailing.equalTo(0)
+            make.bottom.equalTo(iconView.snp_top).offset(25)
+        })
+        
         
         // Setup 6:  expendTableViewCell
         
