@@ -68,18 +68,10 @@ class AICircleProgressView: UIView {
         let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
         fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleLeftToRight, frame: frame, colors: [UIColor.whiteColor(),UIColor.redColor()]).CGColor
     }
-    
-    func bindTapEvent(){
-        let tapGuesture = UITapGestureRecognizer(target: self, action: "selectAction:")
-        self.addGestureRecognizer(tapGuesture)
-    }
-    
-    func selectAction(sender : UIGestureRecognizer){
-        isSelect = !isSelect
-        //触发delegate
-        if let delegate = delegate{
-            delegate.viewDidSelect(self)
-        }
+    //设置选中还是未选中状态
+    func changeSelect(isSelect : Bool){
+        self.isSelect = isSelect
+        
         if isSelect {
             //因为半径已经变了，所以frame不再从0开始
             let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
@@ -96,6 +88,20 @@ class AICircleProgressView: UIView {
                 fontLayer.path = nil
             }
         }
+    }
+    
+    func bindTapEvent(){
+        let tapGuesture = UITapGestureRecognizer(target: self, action: "selectAction:")
+        self.addGestureRecognizer(tapGuesture)
+    }
+    
+    func selectAction(sender : UIGestureRecognizer){
+        isSelect = !isSelect
+        //触发delegate
+        if let delegate = delegate{
+            delegate.viewDidSelect(self)
+        }
+        changeSelect(isSelect)
         
     }
 }
