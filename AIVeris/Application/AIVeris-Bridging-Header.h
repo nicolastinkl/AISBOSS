@@ -122,4 +122,5 @@
 
 #import "YLProgressBar.h"
  
-//#import "GIBadgeView.h"
+#import "GIBadgeView.h"
+

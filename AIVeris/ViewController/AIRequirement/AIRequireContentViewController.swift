@@ -486,6 +486,11 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         cell.hasExpend = cell.hasExpend == false ? true : false
         
         
+        func tableReload(){
+            self.tableview.reloadData()
+
+        }
+        
         if cell.hasExpend == true {
             // Dosome network to request arrays data.
             AIOrdeRequireServices().requestChildServices(contentModel) { models -> Void in
@@ -498,7 +503,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
                 
                 self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
                 
-                self.tableview.reloadData()
+                tableReload()
                 
             }
         }else{
@@ -506,7 +511,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
             
             self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
             
-            self.tableview.reloadData()
+            tableReload()
         }
         cell.layoutSubviews()
         cell.setNeedsLayout()

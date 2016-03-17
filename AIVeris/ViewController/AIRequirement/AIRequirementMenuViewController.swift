@@ -54,14 +54,21 @@ internal class AIRequirementMenuViewController : UIViewController  {
         initFont(collLabel)
         initFont(assignLabel)
         
-        // Set Unread's view
+        // Set Un Read's view
         // Create your badge and add it as a subview to whatever view you want to badgify.
         
-        
         buildServiceInstsView()
+        
+        let badge = GIBadgeView()
+        requireButton.addSubview(badge)
+        assignButton.addSubview(badge)
+        collaborationButton.addSubview(badge)
+        badge.badgeValue = 27
+        badge.topOffset = 5
+        badge.rightOffset = 12
+        badge.font = AITools.myriadLightSemiExtendedWithSize(12)
+        
     }
-    
-    
     
     @IBAction func targetForRequirementAction(anyobj: AnyObject){
         
