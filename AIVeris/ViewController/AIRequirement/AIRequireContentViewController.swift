@@ -286,6 +286,9 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         
         let iconView = UIView()
         cell.contentView.addSubview(iconView)
+        
+        refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell)
+        /*
         var index: Int = 0
         if let models = contentModel.childServerIconArray {
             for model in models{
@@ -314,7 +317,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             })
             editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-        
+        */
         iconView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
@@ -390,7 +393,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             stable.allowsMultipleSelection = true
             stable.snp_makeConstraints(closure: { (make) -> Void in
                 make.top.equalTo(expendView.snp_top).offset(5)
-                make.leading.equalTo(14)
+                make.leading.equalTo(10)
                 make.trailing.equalTo(-14)
                 make.height.equalTo(0)
             })
@@ -428,6 +431,57 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         expendTableViewCell(cell, expendButtonPressed: anyobj)
         
+        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+        
+        
+        _ = iconView?.subviews.filter({ (sview) -> Bool in
+            SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
+                    sview.alpha = 0
+                }, completion: { (complate) -> Void in
+                    sview.removeFromSuperview()
+            })
+            return false
+        })
+        
+        if let iconView = iconView {
+            refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell)
+        }
+        
+    }
+    
+    //TODO: Do something with refersh icon view's subviews data.
+    func refereshIconData(iconView: UIView,contentModel: [AIIconTagModel]?,cell: AIRACContentCell){
+        
+        var index: Int = 0
+        if let models = contentModel {
+            
+            for model in models{
+                let imageV = AIImageView()
+                imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
+                iconView.addSubview(imageV)
+                
+                imageV.snp_makeConstraints(closure: { (make) -> Void in
+                    make.top.equalTo(iconView).offset(0)
+                    make.left.equalTo(iconView).offset(index * 25)
+                    make.width.height.equalTo(20)
+                })
+                index = index + 1
+                
+            }
+        }
+        
+        if editModel == true {
+            let editButton = UIButton(type: UIButtonType.Custom)
+            editButton.setImage(UIImage(named: "dt_add"), forState: UIControlState.Normal)
+            iconView.addSubview(editButton)
+            editButton.snp_makeConstraints(closure: { (make) -> Void in
+                make.top.equalTo(iconView).offset(0)
+                make.left.equalTo(iconView).offset(index * 25)
+                make.width.height.equalTo(20)
+            })
+            editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+
     }
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel : AIChildContentCellModel) {
