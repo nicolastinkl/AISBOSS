@@ -84,16 +84,19 @@ internal class AIRequirementViewController : UIViewController {
         case 2 :
             
             let viewController1 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+            
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+            
             viewController1.editModel = true
-            self.addSubViewControllers([viewController1,viewController2])
+            
+            self.addSubViewControllers([viewController1, viewController2])
             self.rightContentView.subviews.first?.alpha = 0
             
             
         case 3 :
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICollContentViewController) as! AICollContentViewController
             
-            self.addSubViewController(viewController)
+            addSubViewController(viewController)
             
         case 4 :
             print("4")
@@ -120,18 +123,19 @@ internal class AIRequirementViewController : UIViewController {
     
     
     func addSubViewControllers(viewController: [UIViewController], toView: UIView? = nil) {
-        _ = self.rightContentView.subviews.filter({ (cview) -> Bool in
-            cview.removeFromSuperview()
-            return false
-        })
+        
+        for subView in rightContentView.subviews {
+            subView.removeFromSuperview()
+        }
+
         for viewc in viewController {
             
-            self.addChildViewController(viewc)
+            addChildViewController(viewc)
             
-            if self.rightContentView != nil {
+            if rightContentView != nil {
                 
-                viewc.view.frame = self.rightContentView.frame // reload frame.
-                self.rightContentView.addSubview(viewc.view)
+                viewc.view.frame = rightContentView.frame // reload frame.
+                rightContentView.addSubview(viewc.view)
                 viewc.didMoveToParentViewController(self)
                 viewc.view.pinToEdgesOfSuperview(offset: 20)
                 
