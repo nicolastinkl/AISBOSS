@@ -2,7 +2,7 @@
 //  OrderAndBuyerInfoView.swift
 //  AIVeris
 //
-//  Created by admin on 16/3/9.
+//  Created by Rocky on 16/3/9.
 //  Copyright © 2016年 ___ASIAINFO___. All rights reserved.
 //
 

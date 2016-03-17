@@ -55,9 +55,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frf-IX-tef" userLabel="Percentage">
-                    <rect key="frame" x="351" y="43" width="32" height="21"/>
+                    <rect key="frame" x="355" y="43" width="28" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="32" id="8uF-vc-KZC"/>
+                        <constraint firstAttribute="width" constant="28" id="8uF-vc-KZC"/>
                         <constraint firstAttribute="height" constant="21" id="lF4-jX-Z7Q"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -65,7 +65,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eut-op-aLe" userLabel="ProgressBar" customClass="YLProgressBar">
-                    <rect key="frame" x="70" y="49" width="273" height="9"/>
+                    <rect key="frame" x="70" y="49" width="283" height="9"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="9" id="PJ2-5i-hdq"/>
@@ -120,7 +120,7 @@
                 <constraint firstItem="frf-IX-tef" firstAttribute="trailing" secondItem="EVG-gC-gNw" secondAttribute="trailing" id="a8K-fI-ZZo"/>
                 <constraint firstItem="d2G-FW-ckk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ey4-U4-FDG"/>
                 <constraint firstItem="7Ca-Tr-VY2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="iG5-Vd-Kzt"/>
-                <constraint firstItem="frf-IX-tef" firstAttribute="leading" secondItem="eut-op-aLe" secondAttribute="trailing" constant="8" id="iiu-eu-naO"/>
+                <constraint firstItem="frf-IX-tef" firstAttribute="leading" secondItem="eut-op-aLe" secondAttribute="trailing" constant="2" id="iiu-eu-naO"/>
                 <constraint firstItem="V57-Sp-2fe" firstAttribute="leading" secondItem="7Ca-Tr-VY2" secondAttribute="leading" id="lLF-xH-YE6"/>
                 <constraint firstItem="d2G-FW-ckk" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="lOu-Pg-gOG"/>
                 <constraint firstItem="dTR-UH-I5I" firstAttribute="top" secondItem="V57-Sp-2fe" secondAttribute="top" id="m5d-yE-taS"/>
