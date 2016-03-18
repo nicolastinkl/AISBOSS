@@ -120,6 +120,9 @@
 		844282911C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282851C45EF95001C2DCB /* OAStackViewAlignmentStrategyBaseline.m */; };
 		844282921C45EF95001C2DCB /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */; };
 		844282931C45EF95001C2DCB /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 844282891C45EF95001C2DCB /* OATransformLayer.m */; };
+		8448B3D71C9BA15700CDFB61 /* DependOnNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */; };
+		8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */; };
+		8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */; };
 		844D70591C58975700975523 /* KBHTextFieldStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844D70581C58975700975523 /* KBHTextFieldStepper.swift */; };
 		844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */; };
 		844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */; };
@@ -131,6 +134,12 @@
 		8450D1221C0479AF00CD1D5B /* AIIconTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */; };
 		8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */; };
 		8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */; };
+		845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */; };
+		845320511C9A86C3003B984B /* AITaskEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204B1C9A86C3003B984B /* AITaskEditViewController.xib */; };
+		845320521C9A86C3003B984B /* AITaskRemarkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */; };
+		845320531C9A86C3003B984B /* AITaskRemarkInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */; };
+		845320541C9A86C3003B984B /* AITaskTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */; };
+		845320551C9A86C3003B984B /* AITaskTimeLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
 		8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */; };
 		8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */; };
@@ -173,6 +182,10 @@
 		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
 		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
 		849300891C92B27C00547322 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 849300881C92B27C00547322 /* YLProgressBar.m */; };
+		84959F8F1C9ADBB4006AA36A /* RRAddTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */; };
+		84959F901C9ADBB4006AA36A /* RRFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */; };
+		84959F911C9ADBB4006AA36A /* RRTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */; };
+		84959F921C9ADBB4006AA36A /* RRTagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8E1C9ADBB4006AA36A /* RRTagController.swift */; };
 		849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */; };
 		849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */; };
 		849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B0BD01C202B61008C0A23 /* UIHomeStoryboard.storyboard */; };
@@ -737,6 +750,9 @@
 		844282871C45EF95001C2DCB /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewDistributionStrategy.m; sourceTree = "<group>"; };
 		844282881C45EF95001C2DCB /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATransformLayer.h; sourceTree = "<group>"; };
 		844282891C45EF95001C2DCB /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATransformLayer.m; sourceTree = "<group>"; };
+		8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodeCell.swift; sourceTree = "<group>"; };
+		8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependOnNodeCell.xib; sourceTree = "<group>"; };
+		8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodePickerViewController.swift; sourceTree = "<group>"; };
 		844D70581C58975700975523 /* KBHTextFieldStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KBHTextFieldStepper.swift; sourceTree = "<group>"; };
 		844F01211BFC5EAC0004554A /* SimpleServiceViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleServiceViewContainer.xib; sourceTree = "<group>"; };
 		844F01231BFC6AF20004554A /* SimpleServiceViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleServiceViewContainer.swift; sourceTree = "<group>"; };
@@ -748,6 +764,12 @@
 		8450D1211C0479AF00CD1D5B /* AIIconTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIIconTextView.xib; sourceTree = "<group>"; };
 		8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconTextView.swift; sourceTree = "<group>"; };
 		8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
+		8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskEditViewController.swift; sourceTree = "<group>"; };
+		8453204B1C9A86C3003B984B /* AITaskEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskEditViewController.xib; sourceTree = "<group>"; };
+		8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskRemarkInputViewController.swift; sourceTree = "<group>"; };
+		8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskRemarkInputViewController.xib; sourceTree = "<group>"; };
+		8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskTimeLineView.swift; sourceTree = "<group>"; };
+		8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskTimeLineView.xib; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
 		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
@@ -795,6 +817,10 @@
 		8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderAndBuyerInfoView.xib; sourceTree = "<group>"; };
 		849300871C92B27C00547322 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		849300881C92B27C00547322 /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
+		84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRAddTagView.swift; sourceTree = "<group>"; };
+		84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRFlowLayout.swift; sourceTree = "<group>"; };
+		84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		84959F8E1C9ADBB4006AA36A /* RRTagController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRTagController.swift; sourceTree = "<group>"; };
 		849B0BCD1C202AC3008C0A23 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		849B0BCE1C202B61008C0A23 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849B0BCF1C202B61008C0A23 /* UICustomerStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UICustomerStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1749,6 +1775,17 @@
 			path = YLProgressBar;
 			sourceTree = "<group>";
 		};
+		84959F8A1C9ADBB4006AA36A /* RRTagController */ = {
+			isa = PBXGroup;
+			children = (
+				84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */,
+				84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */,
+				84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */,
+				84959F8E1C9ADBB4006AA36A /* RRTagController.swift */,
+			);
+			path = RRTagController;
+			sourceTree = "<group>";
+		};
 		849B4A8D1C0EDFE300BEC179 /* Flex */ = {
 			isa = PBXGroup;
 			children = (
@@ -2681,6 +2718,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				84959F8A1C9ADBB4006AA36A /* RRTagController */,
 				8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */,
 				849B4A8D1C0EDFE300BEC179 /* Flex */,
 				848081371C1EE748007806E7 /* Localize_Swift */,
@@ -2732,6 +2770,15 @@
 				84E3B7A41C916D870006BE49 /* AITimePickerView.swift */,
 				84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */,
 				84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */,
+				8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */,
+				8453204B1C9A86C3003B984B /* AITaskEditViewController.xib */,
+				8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */,
+				8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */,
+				8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */,
+				8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */,
+				8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */,
+				8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */,
+				8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */,
 				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
@@ -3102,6 +3149,7 @@
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
 				84E3B7A91C916D870006BE49 /* AITimePickerViewController.xib in Resources */,
+				845320511C9A86C3003B984B /* AITaskEditViewController.xib in Resources */,
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				84F001551C3A43CB000C93AF /* LICENSE in Resources */,
@@ -3109,6 +3157,7 @@
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
+				845320551C9A86C3003B984B /* AITaskTimeLineView.xib in Resources */,
 				84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */,
 				93FA1DA51B9C2EAA009965C8 /* DSLCalendar-nextMonth.png in Resources */,
 				939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */,
@@ -3123,6 +3172,7 @@
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */,
+				8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */,
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
@@ -3132,6 +3182,7 @@
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
+				845320531C9A86C3003B984B /* AITaskRemarkInputViewController.xib in Resources */,
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -3297,6 +3348,7 @@
 				84F001511C3A43CB000C93AF /* FLEXTableContentCell.m in Sources */,
 				849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
+				845320541C9A86C3003B984B /* AITaskTimeLineView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
 				84567F691C5222CA0032266C /* AITagsView.swift in Sources */,
 				93FA1DE41B9C302A009965C8 /* AIOrderService.swift in Sources */,
@@ -3459,6 +3511,7 @@
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93CA11D81C463475008B1EE1 /* AIServiceCatalogModel.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
+				8448B3D71C9BA15700CDFB61 /* DependOnNodeCell.swift in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
 				8120B78C1C51C21F001BB063 /* AIPriceView.swift in Sources */,
 				84DDA94F1BEDD58300CA5C83 /* ServiceContainerView.swift in Sources */,
@@ -3475,6 +3528,7 @@
 				844F01241BFC6AF20004554A /* SimpleServiceViewContainer.swift in Sources */,
 				849B4B581C0EDFE300BEC179 /* FLEXViewControllerExplorerViewController.m in Sources */,
 				81D83AF11BB29F7900BE2BA2 /* UIScrollView+MJRefresh.m in Sources */,
+				84959F921C9ADBB4006AA36A /* RRTagController.swift in Sources */,
 				120D68051C96D4D200E74D12 /* AIVerticalScrollView.swift in Sources */,
 				93A3B1861C10345D00DE7EBB /* AIBueryDetailCell.swift in Sources */,
 				8454E7001BB02F6100016AB3 /* JumpNumberLabel.swift in Sources */,
@@ -3494,6 +3548,7 @@
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
 				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
+				8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */,
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				9372C5341C23F0300097CC92 /* AIRemoteRequestQueue.swift in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
@@ -3506,6 +3561,7 @@
 				93FA1DD51B9C2F4F009965C8 /* AICardView.m in Sources */,
 				84567F681C5222CA0032266C /* AITagLabel.m in Sources */,
 				93FA1E4C1B9C3E12009965C8 /* AICustomerSwipeView.swift in Sources */,
+				84959F911C9ADBB4006AA36A /* RRTagCollectionViewCell.swift in Sources */,
 				937EA3891C030EAA00AF776B /* AITextMessageView.swift in Sources */,
 				8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */,
 				93B25AA21B9D7A7B00CD1FEB /* NSArray+JSONModel.m in Sources */,
@@ -3518,6 +3574,7 @@
 				934445E31C8ED37B00F86E5D /* AICollContentViewController.swift in Sources */,
 				120D68031C96D4D200E74D12 /* AIAssignServiceView.swift in Sources */,
 				81D83AEE1BB29F7900BE2BA2 /* MJRefreshFooterView.m in Sources */,
+				84959F901C9ADBB4006AA36A /* RRFlowLayout.swift in Sources */,
 				93FA1E641B9C3E12009965C8 /* TopMenuViewController.swift in Sources */,
 				93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */,
 				844282921C45EF95001C2DCB /* OAStackViewDistributionStrategy.m in Sources */,
@@ -3554,6 +3611,7 @@
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
+				845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
 				849B4B301C0EDFE300BEC179 /* FLEXIvarEditorViewController.m in Sources */,
@@ -3579,8 +3637,10 @@
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
+				84959F8F1C9ADBB4006AA36A /* RRAddTagView.swift in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
+				845320521C9A86C3003B984B /* AITaskRemarkInputViewController.swift in Sources */,
 				849B4B4C1C0EDFE300BEC179 /* FLEXNetworkObserver.m in Sources */,
 				93CD0D2E1C8E82950047F4A7 /* AIRequirementMenuViewController.swift in Sources */,
 				93CA11D21C463475008B1EE1 /* AICustomerModels.swift in Sources */,

@@ -8,7 +8,8 @@
 
 import UIKit
 
-let secondsInOneMinute: Int = 60
+let second: Int = 1
+let secondsInOneMinute: Int = 60 * second
 let secondsInOneHour: Int = 60 * secondsInOneMinute
 let secondsInOneDay: Int = 24 * secondsInOneHour
 

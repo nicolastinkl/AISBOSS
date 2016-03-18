@@ -126,7 +126,7 @@ extension UIViewController {
 			viewControllerToPresent.view.layer.shadowOffset = .zero
 			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
 			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
-			viewControllerToPresent.view.layer.cornerRadius = 5
+//			viewControllerToPresent.view.layer.cornerRadius = 5
 			
 			// blurView
 			addBlurView()

@@ -554,7 +554,26 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
-        
+        switch buttonIndex {
+        case 0:
+            // 转化标签
+            print(buttonIndex)
+            
+        case 1:
+            // 转化备注
+            print(buttonIndex)
+            
+        case 2:
+            // 转化任务节点
+            print(buttonIndex)
+            let vc = AITaskEditViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            presentViewController(nav, animated: true, completion: nil)
+            
+        default:
+            break
+        }
+
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
