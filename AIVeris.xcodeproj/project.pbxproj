@@ -3764,7 +3764,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
-				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
+				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3818,7 +3818,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3841,7 +3841,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
+				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
 				SWIFT_OBJC_BRIDGING_HEADER = "AIVeris/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
