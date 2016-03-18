@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITimePickerViewController" customModule="DimPresentViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITimePickerViewController" customModule="Veris" customModuleProvider="target">
             <connections>
                 <outlet property="datePicker" destination="p0n-id-nJd" id="Bt2-5N-h8Z"/>
                 <outlet property="view" destination="yih-1P-Cli" id="cHN-Qf-l5Y"/>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="564" height="274"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0n-id-nJd" customClass="AITimePickerView" customModule="DimPresentViewController" customModuleProvider="target">
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0n-id-nJd" customClass="AITimePickerView" customModule="Veris" customModuleProvider="target">
                     <rect key="frame" x="20" y="33" width="524" height="208"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="208" id="LNq-vm-wqs"/>
