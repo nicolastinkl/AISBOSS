@@ -34,6 +34,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
     @IBOutlet weak var collaborationButton: UIButton!
     @IBOutlet weak var assignButton: UIButton!
     
+    var serviceInstsView : AIVerticalScrollView!
+    var models : [IconServiceIntModel]?
     
     // MARK: -> Internal init methods
     
@@ -52,10 +54,21 @@ internal class AIRequirementMenuViewController : UIViewController  {
         initFont(collLabel)
         initFont(assignLabel)
         
+        // Set Un Read's view
+        // Create your badge and add it as a subview to whatever view you want to badgify.
         
+        buildServiceInstsView()
+        
+        let badge = GIBadgeView()
+        requireButton.addSubview(badge)
+        assignButton.addSubview(badge)
+        collaborationButton.addSubview(badge)
+        badge.badgeValue = 27
+        badge.topOffset = 5
+        badge.rightOffset = 12
+        badge.font = AITools.myriadLightSemiExtendedWithSize(12)
         
     }
-    
     
     @IBAction func targetForRequirementAction(anyobj: AnyObject){
         
@@ -68,19 +81,19 @@ internal class AIRequirementMenuViewController : UIViewController  {
                 requireButton.setImage(UIImage(named: "imcollable_selected"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                
+                serviceInstsView.hidden = true
             case 2:
                 
                 requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink_selected"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                
+                serviceInstsView.hidden = true
             case 3:
                 
                 requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe_selected"), forState: UIControlState.Normal)
-                
+                serviceInstsView.hidden = false
                 
             default :
 
@@ -100,5 +113,48 @@ internal class AIRequirementMenuViewController : UIViewController  {
         //withSwitchProfessionVC(4)
     }
     
+
+}
+
+extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
+    func buildServiceInstsView(){
+        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame) + 10, width: 65, height: 380)
+        serviceInstsView = AIVerticalScrollView(frame: frame)
+        serviceInstsView.userInteractionEnabled = true
+        serviceInstsView.myDelegate = self
+        //选择服务执行的时候才展现
+        serviceInstsView.hidden = true
+        view.addSubview(serviceInstsView)
+        
+        loadData()
+        serviceInstsView.loadData(models!)
+    }
+    
+    func loadData(){
+        models = [IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 3),
+            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 4),
+            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 5),
+            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 6),
+            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 7),
+            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 1, executeProgress: 8),
+            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2)]
+        
+        
+    }
+    
+    func viewCellDidSelect(verticalScrollView : AIVerticalScrollView , index : Int , cellView : UIView){
+        var message = ""
+        
+        for selectModel in verticalScrollView.getSelectedModels(){
+            message += "\(selectModel.serviceInstId), "
+        }
+        let alert = UIAlertController(title: "info", message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+        alert.addAction(alertAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
 
 }

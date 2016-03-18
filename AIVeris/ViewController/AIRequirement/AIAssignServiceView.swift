@@ -31,6 +31,7 @@ class AIAssignServiceView: UIView {
     var delegate : AIAssignServiceViewDelegate?
     var isRunAnimation = true
     var repeatTimer : NSTimer?
+    var starRateView : CWStarRateView!
     
     
     @IBAction func limitButtonAction(sender: UIButton) {
@@ -46,7 +47,7 @@ class AIAssignServiceView: UIView {
         
         selfview.curModelNum = 0
         selfview.nextModelNum = 1
-        
+        selfview.nextServiceLabel.alpha = 0
         return selfview
     }
     
@@ -58,6 +59,15 @@ class AIAssignServiceView: UIView {
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
+        initRatingView()
+    }
+    
+    func initRatingView(){
+        starRateView = CWStarRateView(frame: ratingView.bounds, numberOfStars: 5)
+        starRateView?.allowIncompleteStar = true
+        //TODO 这里应该从当前的model读取
+        starRateView!.scorePercent = 4
+        ratingView.addSubview(starRateView!)
     }
 }
 
