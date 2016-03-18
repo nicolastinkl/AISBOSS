@@ -288,36 +288,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         cell.contentView.addSubview(iconView)
         
         refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell)
-        /*
-        var index: Int = 0
-        if let models = contentModel.childServerIconArray {
-            for model in models{
-                let imageV = AIImageView()
-                imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
-                iconView.addSubview(imageV)
-                
-                imageV.snp_makeConstraints(closure: { (make) -> Void in
-                    make.top.equalTo(iconView).offset(0)
-                    make.left.equalTo(iconView).offset(index * 25)
-                    make.width.height.equalTo(20)
-                })
-                index = index + 1
-                
-            }
-        }
         
-        if editModel == true {
-            let editButton = UIButton(type: UIButtonType.Custom)
-            editButton.setImage(UIImage(named: "dt_add"), forState: UIControlState.Normal)
-            iconView.addSubview(editButton)
-            editButton.snp_makeConstraints(closure: { (make) -> Void in
-                make.top.equalTo(iconView).offset(0)
-                make.left.equalTo(iconView).offset(index * 25)
-                make.width.height.equalTo(20)
-            })
-            editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
-        }
-        */
         iconView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
@@ -395,7 +366,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.top.equalTo(expendView.snp_top).offset(5)
                 make.leading.equalTo(10)
                 make.trailing.equalTo(-14)
-                make.height.equalTo(0)
+//                make.height.equalTo(0)
             })
             stable.tag = ThisViewTag.StableView.rawValue
         }
@@ -506,10 +477,9 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         })
         
         if let models = contentModel.childServerIconArray {
-            sourceDelegate.selectedDataSections.removeAll()
-            sourceDelegate.dataSections = models
+
             let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
-            stable?.scrollEnabled = false
+            stable?.scrollEnabled = false            
             
             stable?.snp_updateConstraints(closure: { (make) -> Void in
                 if cell.hasExpend == true {
@@ -518,9 +488,12 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                     make.height.equalTo(0)
                 }
             })
+            
+            sourceDelegate.selectedDataSections.removeAll()
+            sourceDelegate.dataSections = models
+            
             stable?.reloadData()
-            holdView?.updateConstraints()
-            holdView?.setNeedsLayout()
+            
         }
         
         _ = holdView?.subviews.filter({ (sview) -> Bool in
@@ -532,8 +505,11 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             return false
         })
         
-        cell.updateConstraints()
-        
+//        holdView?.updateConstraints()
+//        vheight?.updateConstraints()
+//        
+//        holdView?.setNeedsLayout()
+//        vheight?.setNeedsLayout()
     }
 }
 
@@ -550,10 +526,15 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         
         cell.hasExpend = cell.hasExpend == false ? true : false
         
-        
         func tableReload(){
             self.tableview.reloadData()
 
+        }
+        
+        func tableAjaxReload(indexPath: NSIndexPath){
+            self.tableview.beginUpdates()
+            reloadRowAtIndexPath(indexPath)
+            self.tableview.endUpdates()
         }
         
         if cell.hasExpend == true {
@@ -580,28 +561,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         }
         cell.layoutSubviews()
         cell.setNeedsLayout()
-        
-
-//        self.tableview.beginUpdates()
-//        reloadRowAtIndexPath(indexPath)
-//        self.tableview.endUpdates()
-        
-        /*
-        
-        let story = self.stories[indexPath.row]
-        let storyId = story.id
-        story.upvote()
-        LocalStore.setStoryAsUpvoted(storyId)
-        configureCell(cell, atIndexPath: indexPath)
-        
-        DesignerNewsService.upvoteStoryWithId(storyId, token: token) { successful in
-        if !successful {
-        story.downvote()
-        LocalStore.removeStoryFromUpvoted(storyId)
-        self.configureCell(cell, atIndexPath: indexPath)
-        }
-        }
-        */
+    
     }
 
     // reload
