@@ -26,6 +26,8 @@ class AIRequireContentViewController: UIViewController {
     
     var sourceDelegate = AIRACClosureTableViewDataSource()
     
+    private var placeholdCell: SESlideTableViewCell?
+    
     private var dataSource : [AIContentCellModel]? = {
     
         
@@ -216,7 +218,13 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.bottom.equalTo(-3)
         })
         bgImageView.tag = 11
+        bgImageView.alpha = 0
         
+        
+        // PlaceHolder UIImageView.
+        let bgImageViewHolder = UIImageView(image: UIImage(named:imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
+        cell.contentView.addSubview(bgImageViewHolder)
+        bgImageViewHolder.tag = 11
         
         // Setup 2 : Title UILabel.
         let titleLabel = UILabel()
@@ -231,7 +239,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
             make.height.greaterThanOrEqualTo(20).priorityMedium()
-//            <SnapKit.LayoutConstraint:0x7fbf32eddd50@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#229 UILabel:0x7fbf35919880.height >= 20.0>
 
         })
         titleLabel.tag = 11
@@ -279,6 +286,9 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         
         let iconView = UIView()
         cell.contentView.addSubview(iconView)
+        
+        refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell)
+        /*
         var index: Int = 0
         if let models = contentModel.childServerIconArray {
             for model in models{
@@ -307,17 +317,23 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             })
             editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-        
+        */
         iconView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(lineImageView.snp_bottom).offset(5)
             make.leading.equalTo(14)
             make.trailing.equalTo(-14)
             make.height.equalTo(50).priorityMedium()
-//            <SnapKit.LayoutConstraint:0x7fbf35b24050@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#309 UIView:0x7fbf35b1fd80.height == 50.0>
             make.bottom.equalTo(cell.contentView).offset(20)
             
         })
         iconView.tag = ThisViewTag.IconView.rawValue
+        
+        
+        bgImageViewHolder.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.leading.trailing.equalTo(0)
+            make.bottom.equalTo(iconView.snp_top).offset(25)
+        })
+        
         
         // Setup 6:  expendTableViewCell
         
@@ -377,7 +393,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
             stable.allowsMultipleSelection = true
             stable.snp_makeConstraints(closure: { (make) -> Void in
                 make.top.equalTo(expendView.snp_top).offset(5)
-                make.leading.equalTo(14)
+                make.leading.equalTo(10)
                 make.trailing.equalTo(-14)
                 make.height.equalTo(0)
             })
@@ -415,6 +431,56 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         expendTableViewCell(cell, expendButtonPressed: anyobj)
         
+        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+        
+        _ = iconView?.subviews.filter({ (sview) -> Bool in
+            SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
+                    sview.alpha = 0
+                }, completion: { (complate) -> Void in
+                    sview.removeFromSuperview()
+            })
+            return false
+        })
+        
+        if let iconView = iconView {
+            refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell)
+        }
+        
+    }
+    
+    //TODO: Do something with refersh icon view's subviews data.
+    func refereshIconData(iconView: UIView,contentModel: [AIIconTagModel]?,cell: AIRACContentCell){
+        
+        var index: Int = 0
+        if let models = contentModel {
+            
+            for model in models{
+                let imageV = AIImageView()
+                imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
+                iconView.addSubview(imageV)
+                
+                imageV.snp_makeConstraints(closure: { (make) -> Void in
+                    make.top.equalTo(iconView).offset(0)
+                    make.left.equalTo(iconView).offset(index * 25)
+                    make.width.height.equalTo(20)
+                })
+                index = index + 1
+                
+            }
+        }
+        
+        if editModel == true {
+            let editButton = UIButton(type: UIButtonType.Custom)
+            editButton.setImage(UIImage(named: "dt_add"), forState: UIControlState.Normal)
+            iconView.addSubview(editButton)
+            editButton.snp_makeConstraints(closure: { (make) -> Void in
+                make.top.equalTo(iconView).offset(0)
+                make.left.equalTo(iconView).offset(index * 25)
+                make.width.height.equalTo(20)
+            })
+            editButton.addTarget(cell, action: "AddExpendCell:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+
     }
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel : AIChildContentCellModel) {
@@ -440,7 +506,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         })
         
         if let models = contentModel.childServerIconArray {
-            
+            sourceDelegate.selectedDataSections.removeAll()
             sourceDelegate.dataSections = models
             let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
             stable?.scrollEnabled = false
@@ -485,6 +551,11 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         cell.hasExpend = cell.hasExpend == false ? true : false
         
         
+        func tableReload(){
+            self.tableview.reloadData()
+
+        }
+        
         if cell.hasExpend == true {
             // Dosome network to request arrays data.
             AIOrdeRequireServices().requestChildServices(contentModel) { models -> Void in
@@ -497,7 +568,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
                 
                 self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
                 
-                self.tableview.reloadData()
+                tableReload()
                 
             }
         }else{
@@ -505,7 +576,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
             
             self.configureExpendCell(cell, atIndexPath: indexPath, contentModel: contentModel)
             
-            self.tableview.reloadData()
+            tableReload()
         }
         cell.layoutSubviews()
         cell.setNeedsLayout()
@@ -550,7 +621,13 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didSlideToState slideState: SESlideTableViewCellSlideState) {
-        
+        if slideState != SESlideTableViewCellSlideState.Center {
+            self.tableview.scrollEnabled = false
+            placeholdCell = cell
+        }else{
+            self.tableview.scrollEnabled = true
+            placeholdCell = nil
+        }
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
@@ -581,11 +658,16 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, willSlideToState slideState: SESlideTableViewCellSlideState) {
-        
+       
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, wilShowButtonsOfSide side: SESlideTableViewCellSide) {       
-        
+        if let preCell = placeholdCell {
+            if preCell != cell {
+                //同一个cell
+                preCell.setSlideState(SESlideTableViewCellSlideState.Center, animated: true)
+            }
+        }
     }
     
 }

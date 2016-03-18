@@ -350,6 +350,7 @@
 		93A742CE1BDF75FD001EF581 /* TDImageColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742C91BDF75FD001EF581 /* TDImageColors.m */; };
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
 		93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */; };
+		93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A91DB31C9AC61900F40A47 /* GIBadgeView.m */; };
 		93AE1E441C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */; };
 		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
@@ -1070,6 +1071,8 @@
 		93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TDAdditions.m"; sourceTree = "<group>"; };
 		93A742CC1BDF75FD001EF581 /* UIImage+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TDAdditions.h"; sourceTree = "<group>"; };
 		93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TDAdditions.m"; sourceTree = "<group>"; };
+		93A91DB21C9AC61900F40A47 /* GIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIBadgeView.h; sourceTree = "<group>"; };
+		93A91DB31C9AC61900F40A47 /* GIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIBadgeView.m; sourceTree = "<group>"; };
 		93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDeleteActionDelegate.swift; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
@@ -2449,6 +2452,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93A91DB11C9AC61900F40A47 /* Sheriff */,
 				849300861C92B27C00547322 /* YLProgressBar */,
 				934445E41C8EEF3100F86E5D /* swipeCell */,
 				12D795011BA9595B00586011 /* AIScrollLabel */,
@@ -2496,6 +2500,15 @@
 				93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */,
 			);
 			path = TDImageColors;
+			sourceTree = "<group>";
+		};
+		93A91DB11C9AC61900F40A47 /* Sheriff */ = {
+			isa = PBXGroup;
+			children = (
+				93A91DB21C9AC61900F40A47 /* GIBadgeView.h */,
+				93A91DB31C9AC61900F40A47 /* GIBadgeView.m */,
+			);
+			path = Sheriff;
 			sourceTree = "<group>";
 		};
 		93B00ED91BBBACBA000C402B /* Cell */ = {
@@ -3396,6 +3409,7 @@
 				937EA38F1C032E7B00AF776B /* AINavigationBarView.swift in Sources */,
 				93C33F1F1B9BEAFE007BF506 /* NSObjcetUtils.swift in Sources */,
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
+				93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */,
 				818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
@@ -3824,7 +3838,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "";
-				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
+				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3878,7 +3892,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Star VATS Technologies Inc.";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -3901,7 +3915,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
 				PRODUCT_NAME = Veris;
-				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
+				PROVISIONING_PROFILE = "6defedf0-7db7-4835-a59a-c8176b10d1b9";
 				SWIFT_OBJC_BRIDGING_HEADER = "AIVeris/Application/AIVeris-Bridging-Header.h";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";

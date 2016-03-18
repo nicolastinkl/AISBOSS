@@ -33,7 +33,7 @@ class AICollContentViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         var serviceInstViewFrame = view.bounds
-        serviceInstViewFrame.size.height = 120
+        serviceInstViewFrame.size.height = 100
         serviceInstView.frame = serviceInstViewFrame
         serviceInstView.setLeft(-20)
         serviceInstView.setTop(-20)
@@ -88,7 +88,7 @@ class AICollContentViewController: UIViewController {
     }
     
     func loadData(){
-        let limits = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "Seller_Warning", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "Seller_Warning", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "Seller_Warning", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "Seller_Warning", hasLimit: true)]
+        let limits = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         
         let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 7, limits: limits)
         let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 7, limits: limits)
