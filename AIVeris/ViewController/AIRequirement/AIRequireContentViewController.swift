@@ -433,7 +433,6 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         
         let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
         
-        
         _ = iconView?.subviews.filter({ (sview) -> Bool in
             SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
                     sview.alpha = 0
@@ -507,7 +506,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         })
         
         if let models = contentModel.childServerIconArray {
-            
+            sourceDelegate.selectedDataSections.removeAll()
             sourceDelegate.dataSections = models
             let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
             stable?.scrollEnabled = false
