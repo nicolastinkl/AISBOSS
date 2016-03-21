@@ -178,6 +178,7 @@
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
+		84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */; };
 		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
 		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
 		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
@@ -812,6 +813,7 @@
 		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
+		84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskTagViewController.swift; sourceTree = "<group>"; };
 		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
 		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
 		8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAndBuyerInfoView.swift; sourceTree = "<group>"; };
@@ -2792,6 +2794,7 @@
 				8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */,
 				8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */,
 				8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */,
+				84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */,
 				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
@@ -3625,6 +3628,7 @@
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
+				84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */,
 				845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,
