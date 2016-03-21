@@ -79,7 +79,7 @@ internal class AIRequirementViewController : UIViewController {
             
             let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
             
-            self.addSubViewController(viewController)
+            addSubViewController(viewController)
             
         case 2 :
             
@@ -89,8 +89,8 @@ internal class AIRequirementViewController : UIViewController {
             
             viewController1.editModel = true
             
-            self.addSubViewControllers([viewController1, viewController2])
-            self.rightContentView.subviews.first?.alpha = 0
+            addSubViewControllers([viewController1, viewController2])
+            rightContentView.subviews.first?.alpha = 0
             
             
         case 3 :

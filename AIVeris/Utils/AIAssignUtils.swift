@@ -39,7 +39,7 @@ extension String{
         let size = CGSizeMake(width,CGFloat.max)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .ByWordWrapping;
-        let  attributes = [NSFontAttributeName:font,
+        let attributes = [NSFontAttributeName:font,
             NSParagraphStyleAttributeName:paragraphStyle.copy()]
         
         let text = self as NSString
@@ -50,10 +50,10 @@ extension String{
     func dateStringFromTimestamp(timeStamp:NSString)->String
     {
         let ts = timeStamp.doubleValue
-        let  formatter = NSDateFormatter ()
+        let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy年MM月dd日 HH:MM:ss"
-        let date = NSDate(timeIntervalSince1970 : ts)
-        return  formatter.stringFromDate(date)
+        let date = NSDate(timeIntervalSince1970: ts)
+        return formatter.stringFromDate(date)
     }
     
     //add by liux at 20151117 根据字体大小计算占用空间

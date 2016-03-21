@@ -12,14 +12,24 @@ import UIKit
 
 class AICollContentViewController: UIViewController {
     
+    //models
     var assginServiceInsts : [AssignServiceInstModel]?
-    var serviceInstView : AIAssignServiceView!
-    var limitListView : AILimitListView!
-    var timeLineTable : UITableView!
-    
     var timelineModels : [AITimelineModel]!
     var cachedCells = Dictionary<Int,AITimelineCellBaseView>()
     
+    //IB views
+    var serviceInstView : AIAssignServiceView!
+    var limitListView : AILimitListView!
+    var timeLineTable : UITableView!
+    var launchButton : UIButton!
+    
+    //size constants
+    let LaunchButtonWidth : CGFloat = 180
+    let LaunchButtonHeight : CGFloat = 32
+    let buttonPadding : CGFloat = 10
+    
+    
+    // MARK: - override方法
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +37,7 @@ class AICollContentViewController: UIViewController {
         buildServiceInstView()
         buildLimitListView()
         initTable()
+        buildLaunchView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,12 +56,17 @@ class AICollContentViewController: UIViewController {
         limitListView.frame = limitFrame
         limitListView.loadData((assginServiceInsts?.first?.limits)!)
         
+        
+        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(limitListView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
+        launchButton.frame = buttonFrame
+        
         var tableFrame = serviceInstView.frame
-        tableFrame.origin.y = CGRectGetMaxY(serviceInstView.frame)
-        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(serviceInstView.frame)
+        tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
+        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
         timeLineTable.frame = tableFrame
     }
     
+    // MARK: - 构造subView
     func buildLimitListView(){
         
         limitListView = AILimitListView(frame: CGRectZero)
@@ -87,6 +103,17 @@ class AICollContentViewController: UIViewController {
         timeLineTable.backgroundView = backgroundImageView
     }
     
+    func buildLaunchView(){
+        
+        launchButton = UIButton()
+        launchButton.setTitle("Launch", forState: UIControlState.Normal)
+        launchButton.backgroundColor = UIColor(hex: "#146EE2")
+        launchButton.layer.cornerRadius = 8
+        launchButton.layer.masksToBounds = true
+        view.addSubview(launchButton)
+    }
+    
+    // MARK: - 加载数据
     func loadData(){
         let limits = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         
@@ -104,6 +131,7 @@ class AICollContentViewController: UIViewController {
 
 }
 
+// MARK: - delegate
 extension AICollContentViewController : AIAssignServiceViewDelegate{
     
     func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
@@ -119,6 +147,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
                 tableFrame.size.height -= frameHeight
                 tableFrame.origin.y += frameHeight
                 self.timeLineTable.frame = tableFrame
+                self.launchButton.frame.origin.y += frameHeight
             }
             else{
                 frame.size.height = 0
@@ -128,6 +157,8 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
                 tableFrame.size.height += frameHeight
                 tableFrame.origin.y -= frameHeight
                 self.timeLineTable.frame = tableFrame
+                
+                self.launchButton.frame.origin.y -= frameHeight
             }
             self.limitListView.frame = frame
             }) { (finished) -> Void in

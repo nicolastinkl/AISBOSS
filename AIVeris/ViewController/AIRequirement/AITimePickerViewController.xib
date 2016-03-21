@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITimePickerViewController" customModule="Veris" customModuleProvider="target">
             <connections>
                 <outlet property="datePicker" destination="p0n-id-nJd" id="Bt2-5N-h8Z"/>
+                <outlet property="determineButton" destination="wwm-1u-JYM" id="rVt-kj-a4b"/>
                 <outlet property="view" destination="yih-1P-Cli" id="cHN-Qf-l5Y"/>
             </connections>
         </placeholder>
@@ -23,8 +24,14 @@
                     </constraints>
                 </pickerView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwm-1u-JYM">
-                    <rect key="frame" x="246" y="244" width="72" height="30"/>
-                    <state key="normal" title="Determine"/>
+                    <rect key="frame" x="232" y="244" width="100" height="30"/>
+                    <color key="backgroundColor" red="0.074509803921568626" green="0.44313725490196076" blue="0.89411764705882357" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="FTc-eh-ky1"/>
+                    </constraints>
+                    <state key="normal" title="Determine">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="determineButtonPressed:" destination="-1" eventType="touchUpInside" id="rRi-mn-HFF"/>
                     </connections>
@@ -48,7 +55,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="383" y="307"/>
+            <point key="canvasLocation" x="186" y="230"/>
         </view>
     </objects>
 </document>
