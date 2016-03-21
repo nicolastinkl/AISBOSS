@@ -41,6 +41,7 @@
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
 		8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B79E1C564925001BB063 /* AIProposalServiceParser.m */; };
+		813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
@@ -178,6 +179,7 @@
 		8480813E1C1EE748007806E7 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848081391C1EE748007806E7 /* Localize.swift */; };
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
+		84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */; };
 		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
 		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
 		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
@@ -614,6 +616,7 @@
 		8120B7931C51CB11001BB063 /* AIInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInputView.swift; sourceTree = "<group>"; };
 		8120B79D1C564925001BB063 /* AIProposalServiceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceParser.h; sourceTree = "<group>"; };
 		8120B79E1C564925001BB063 /* AIProposalServiceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceParser.m; sourceTree = "<group>"; };
+		813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementHandler.swift; sourceTree = "<group>"; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFakeUser.m; sourceTree = "<group>"; };
 		815EAD791C488A8600D83780 /* AIOrderTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderTableModel.h; sourceTree = "<group>"; };
@@ -812,6 +815,7 @@
 		848081391C1EE748007806E7 /* Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
+		84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskTagViewController.swift; sourceTree = "<group>"; };
 		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
 		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
 		8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAndBuyerInfoView.swift; sourceTree = "<group>"; };
@@ -1415,6 +1419,7 @@
 			children = (
 				1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */,
 				1261FF701C92720300E72B41 /* AIBaseModel.swift */,
+				813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -2792,6 +2797,7 @@
 				8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */,
 				8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */,
 				8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */,
+				84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */,
 				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
@@ -3396,6 +3402,7 @@
 				93B25A981B9D7A7B00CD1FEB /* AFHTTPRequestOperationManager.m in Sources */,
 				93C33F171B9BEAFE007BF506 /* AIButtonUtils.swift in Sources */,
 				849B4B321C0EDFE300BEC179 /* FLEXPropertyEditorViewController.m in Sources */,
+				813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */,
 				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
 				818D8EC01C040D4100006408 /* AIServiceCoverage.m in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
@@ -3625,6 +3632,7 @@
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
+				84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */,
 				845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
 				93FA1E181B9C375A009965C8 /* UICollectionViewWaterfallLayout.m in Sources */,

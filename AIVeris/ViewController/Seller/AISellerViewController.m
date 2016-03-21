@@ -186,7 +186,7 @@
     
     for (AIOrderPreModel *model in self.listModel.order_list)
     {
-        NSString *sort = model.order_sort_time;
+        NSString *sort = [NSString stringWithFormat:@"%@",model.order_sort_time];
         AIOrderTableModel *tableModel = [_tableDictionary objectForKey:sort];
        
         if (tableModel == nil) {

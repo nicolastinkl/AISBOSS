@@ -28,6 +28,8 @@ class AIRequireContentViewController: UIViewController {
     
     private var placeholdCell: SESlideTableViewCell?
     
+    private var rememberCellButton: AnyObject?
+    
     private var dataSource : [AIContentCellModel]? = {
     
         
@@ -51,13 +53,13 @@ class AIRequireContentViewController: UIViewController {
         
         var c1 = AIChildContentCellModel()
         c1.id = 1
-        c1.type = 1
+        c1.type = 2
         c1.bgImageUrl = ""
-        c1.text = "9 weeks of pregnancy, action ooooo"
-        c1.childServerIconArray = [i1,i2,i3]
+        c1.text = "9 weeks of pregnancy, action inconvenience."
+        c1.childServerIconArray = [i1]
         
         var c2 = AIChildContentCellModel()
-        c2.id = 1
+        c2.id = 2
         c2.type = 2
         c2.bgImageUrl = ""
         c2.text = "Accompany and attend to Accompany and attend"
@@ -73,12 +75,24 @@ class AIRequireContentViewController: UIViewController {
         msgModel.typeName = "user message"
         
         var c3 = AIChildContentCellModel()
-        c3.id = 1
+        c3.id = 3
         c3.type = 1
         c3.bgImageUrl = ""
-        c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation. Accompany and attend to Accompany and attend"
+        c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation"
         c3.childServerIconArray = [i1,i3]
-        msgModel.childServices = [c3]
+        
+        
+        var c6 = AIChildContentCellModel()
+        c6.id = 6
+        c6.type = 1
+        c6.bgImageUrl = ""
+        c6.text = ""
+        c6.audioLengh = 4000
+        c6.audioUrl = "http://adskfhasjdhkflhjashflkahsldf"
+        
+        c6.childServerIconArray = [i3]
+        
+        msgModel.childServices = [c3,c6]
         
         
         var dataModel = AIContentCellModel()
@@ -88,7 +102,7 @@ class AIRequireContentViewController: UIViewController {
         dataModel.typeName = "user data"
         
         var c4 = AIChildContentCellModel()
-        c4.id = 1
+        c4.id = 4
         c4.type = 4
         c4.bgImageUrl = ""
         c4.text = "Fasting blood glucos : 6MM mol /ml."
@@ -96,14 +110,14 @@ class AIRequireContentViewController: UIViewController {
         c4.childServerIconArray = [i1,i2,i3]
         
         var c5 = AIChildContentCellModel()
-        c5.id = 1
+        c5.id = 5
         c5.type = 3
         c5.bgImageUrl = ""
         c5.text = "Fasting blood glucos : 6MM mol /ml."
         c5.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
         c5.childServerIconArray = [i3]
         
-        dataModel.childServices = [c2,c3,c5,c4]
+        dataModel.childServices = [c5,c4]
         
         return [conModel,msgModel,dataModel]
     }()
@@ -243,6 +257,32 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         })
         titleLabel.tag = 11
         
+        // Setup 2.1 : Audio View.
+        let lengthAudio = contentModel.audioLengh ?? 0
+        
+        let audioModel = AIProposalServiceDetailHopeModel()
+        audioModel.audio_url = contentModel.audioUrl ?? ""
+        audioModel.time = lengthAudio
+        let audio1 = AIAudioMessageView.currentView()
+//        audio1.audioDelegate = self
+        cell.contentView.addSubview(audio1)
+        audio1.tag = 11
+        audio1.fillData(audioModel)
+        audio1.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(2)
+            make.leading.equalTo(2)
+            make.trailing.equalTo(-14)
+            make.height.equalTo(30)
+        }
+        
+        if lengthAudio > 0 {
+            audio1.alpha = 1
+            titleLabel.text = ""
+        }else{
+            audio1.alpha = 0
+        }
+
+        
         // Setup 3: Description UILabel.
         let desLabel = UILabel()
         desLabel.numberOfLines = 0
@@ -372,7 +412,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         
         expendView.tag = ThisViewTag.ExpendView.rawValue
-        
+
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
@@ -465,7 +505,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.height.equalTo(50)
             }
         })
-        
+
         let holdView = cell.contentView.viewWithTag(ThisViewTag.ExpendView.rawValue)
         
         holdView?.snp_updateConstraints(closure: { (make) -> Void in
@@ -513,12 +553,17 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     }
 }
 
-
 // MARK: - Cell Call back Event.
 
 extension AIRequireContentViewController : ExpendTableViewCellDelegate{
     
     func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
+        
+        if let RCell = rememberCellButton {
+            if (RCell as! UIButton) != (sender as! UIButton) {
+//                calcelAction(RCell)
+            }
+        }
         
         let indexPath = tableview.indexPathForCell(cell)!
         let currentCellModel = dataSource?[indexPath.section]
@@ -528,7 +573,6 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         
         func tableReload(){
             self.tableview.reloadData()
-
         }
         
         func tableAjaxReload(indexPath: NSIndexPath){
@@ -561,7 +605,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         }
         cell.layoutSubviews()
         cell.setNeedsLayout()
-    
+        rememberCellButton = sender // Rememeber Cell's button...
     }
 
     // reload
@@ -595,6 +639,13 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
         case 0:
             // 转化标签
             print(buttonIndex)
+            let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
+                print(selectedTags)
+                }, blockCancel: { () -> () in
+                    print("tag select cancel")
+            })
+            let nav = UINavigationController(rootViewController: vc)
+            presentViewController(nav, animated: true, completion: nil)
             
         case 1:
             // 转化备注
