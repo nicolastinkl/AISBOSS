@@ -30,6 +30,8 @@ class AITimePickerView: UIPickerView {
 	var hours = [String]()
 	var minutes = [String]()
 	var data = [Int: [AnyObject]]()
+    var dateDescription: String?
+//	var dataTuple: (before: Bool, days: Int, hours: Int, minute: Int) = (false,0,0,0)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -82,41 +84,40 @@ class AITimePickerView: UIPickerView {
 		data[2] = hours
 		data[3] = minutes
 		
-        
-        reload()
+		reload()
 	}
-    
-    func reload() {
-        if let date = date {
-            // if has set date
-            let timeIntervalSinceNow = Int(fabs((date.timeIntervalSinceNow)))
-            let isFuture = date.timeIntervalSinceNow > 0
-            
-            let day = timeIntervalSinceNow / secondsInOneDay
-            let timeIntervalSinceNowWithoutDay = timeIntervalSinceNow - day * secondsInOneDay
-            let hour = timeIntervalSinceNowWithoutDay / secondsInOneHour
-            let timeIntervalSinceNowWithoutDayAndHour = timeIntervalSinceNowWithoutDay - hour * secondsInOneHour
-            let minute = timeIntervalSinceNowWithoutDayAndHour / secondsInOneMinute
-            
-            if Int(day) > days.count {
-                days.removeAll()
-                for i in 0 ..< Int(day) + 1 {
-                    var unit = "Days"
-                    if i <= 0 {
-                        unit = "Day"
-                    }
-                    let label = "\(i) \(unit)"
-                    days.append(label)
-                }
-                data[1] = days
-            }
-            
-            selectRow(isFuture ? 1 : 0, inComponent: 0, animated: false)
-            selectRow(day, inComponent: 1, animated: false)
-            selectRow(hour, inComponent: 2, animated: false)
-            selectRow(minute, inComponent: 3, animated: false)
-        }
-    }
+	
+	func reload() {
+		if let date = date {
+			// if has set date
+			let timeIntervalSinceNow = Int(fabs((date.timeIntervalSinceNow)))
+			let isFuture = date.timeIntervalSinceNow > 0
+			
+			let day = timeIntervalSinceNow / secondsInOneDay
+			let timeIntervalSinceNowWithoutDay = timeIntervalSinceNow - day * secondsInOneDay
+			let hour = timeIntervalSinceNowWithoutDay / secondsInOneHour
+			let timeIntervalSinceNowWithoutDayAndHour = timeIntervalSinceNowWithoutDay - hour * secondsInOneHour
+			let minute = timeIntervalSinceNowWithoutDayAndHour / secondsInOneMinute
+			
+			if Int(day) > days.count {
+				days.removeAll()
+				for i in 0 ..< Int(day) + 1 {
+					var unit = "Days"
+					if i <= 0 {
+						unit = "Day"
+					}
+					let label = "\(i) \(unit)"
+					days.append(label)
+				}
+				data[1] = days
+			}
+			
+			selectRow(isFuture ? 1 : 0, inComponent: 0, animated: false)
+			selectRow(day, inComponent: 1, animated: false)
+			selectRow(hour, inComponent: 2, animated: false)
+			selectRow(minute, inComponent: 3, animated: false)
+		}
+	}
 	
 	func labelWithString(string: String) -> UILabel {
 		let result = UILabel()
@@ -218,8 +219,30 @@ extension AITimePickerView: UIPickerViewDelegate {
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		var selectedRows = [Int]()
 		for i in 0 ..< 4 {
-			selectedRows.append(selectedRowInComponent(i))
+            let row = selectedRowInComponent(i)
+			selectedRows.append(row)
+
+//            switch i {
+//            case 0:
+//                dataTuple.before = row == 0
+//            case 1:
+//                dataTuple.days = row
+//            case 2:
+//                dataTuple.hours = row
+//            case 3:
+//                dataTuple.minute = row
+//            default:
+//                break
+//            }
 		}
+        let isBefore = selectedRowInComponent(0) == 0 ? "Before" : "After"
+        
+        let days = "\(selectedRowInComponent(1)) days"
+        let hours = "\(selectedRowInComponent(2)) hours"
+        let minutes = "\(selectedRowInComponent(3)) minutes"
+        
+        dateDescription = isBefore + " " + days + " " + hours + " " + minutes
+        
 		date = convertSelectedRowsToDate(selectedRows)
 	}
 }

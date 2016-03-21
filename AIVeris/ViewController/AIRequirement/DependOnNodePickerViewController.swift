@@ -156,15 +156,17 @@ class DependOnNodePickerViewController: UIViewController {
 	func setupDetermineButton() {
 		let button = UIButton()
 		button.setTitle("Determine", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15)
+        button.backgroundColor = UIColor ( red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0 )
 		button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		button.layer.cornerRadius = 20
+		button.layer.cornerRadius = 15
 		button.addTarget(self, action: "determineButtonPressed", forControlEvents: .TouchUpInside)
 		view.addSubview(button)
 		
 		button.snp_makeConstraints { (make) -> Void in
 			make.top.equalTo(tableView.snp_bottom).offset(8)
 			make.bottom.equalTo(view).offset(-8)
-			make.size.equalTo(CGSize(width: 120, height: 40))
+			make.size.equalTo(CGSize(width: 100, height: 30))
 			make.centerX.equalTo(view)
 		}
 	}
