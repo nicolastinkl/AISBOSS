@@ -266,19 +266,20 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         let audio1 = AIAudioMessageView.currentView()
 //        audio1.audioDelegate = self
         cell.contentView.addSubview(audio1)
+        audio1.tag = 11
         audio1.fillData(audioModel)
         audio1.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(0)
+            make.top.equalTo(2)
             make.leading.equalTo(2)
             make.trailing.equalTo(-14)
-            make.height.equalTo(36)
+            make.height.equalTo(30)
         }
         
         if lengthAudio > 0 {
-            audio1.hidden = false
+            audio1.alpha = 1
             titleLabel.text = ""
         }else{
-            audio1.hidden = true
+            audio1.alpha = 0
         }
 
         
