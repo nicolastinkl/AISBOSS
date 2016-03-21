@@ -41,6 +41,7 @@
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
 		8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B79E1C564925001BB063 /* AIProposalServiceParser.m */; };
+		813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
@@ -615,6 +616,7 @@
 		8120B7931C51CB11001BB063 /* AIInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInputView.swift; sourceTree = "<group>"; };
 		8120B79D1C564925001BB063 /* AIProposalServiceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceParser.h; sourceTree = "<group>"; };
 		8120B79E1C564925001BB063 /* AIProposalServiceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceParser.m; sourceTree = "<group>"; };
+		813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementHandler.swift; sourceTree = "<group>"; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFakeUser.m; sourceTree = "<group>"; };
 		815EAD791C488A8600D83780 /* AIOrderTableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderTableModel.h; sourceTree = "<group>"; };
@@ -1417,6 +1419,7 @@
 			children = (
 				1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */,
 				1261FF701C92720300E72B41 /* AIBaseModel.swift */,
+				813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -3399,6 +3402,7 @@
 				93B25A981B9D7A7B00CD1FEB /* AFHTTPRequestOperationManager.m in Sources */,
 				93C33F171B9BEAFE007BF506 /* AIButtonUtils.swift in Sources */,
 				849B4B321C0EDFE300BEC179 /* FLEXPropertyEditorViewController.m in Sources */,
+				813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */,
 				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
 				818D8EC01C040D4100006408 /* AIServiceCoverage.m in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
