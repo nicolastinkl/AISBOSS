@@ -15,11 +15,11 @@ protocol DependOnNodePickerViewControllerDelegate {
 
 class DependOnNodePickerViewController: UIViewController {
 	var delegate: DependOnNodePickerViewControllerDelegate?
-	var services: [DependOnService] = [] {
-		didSet {
-			updateServices()
-		}
-	}
+    var services: [DependOnService] = [DependOnService]() {
+        didSet {
+            updateServices()
+        }
+    }
 	
 	var allTasks: [TaskNode] {
 		// 取出所有选中的service 的tasks 组成一个数组
@@ -29,6 +29,7 @@ class DependOnNodePickerViewController: UIViewController {
 	
 	var selectedTask: TaskNode? {
 		didSet {
+			updateServices()
 			tableView?.reloadData()
 		}
 	}
@@ -43,23 +44,26 @@ class DependOnNodePickerViewController: UIViewController {
 		setupIconsContainerView()
 		setupTableView()
 		setupDetermineButton()
-        setupSelectedService()
+//		setupSelectedService()
 	}
 	
-	func setupSelectedService() {
-		if let selectedTask = selectedTask {
-			for (i, service) in services.enumerate() {
-				if service.tasks.contains(selectedTask) {
-					var s = services[i]
-					s.selected = true
-					services[i] = s
-                    updateServices()
-					tableView.reloadData()
-					break
-				}
-			}
-		}
-	}
+//	func setupSelectedService() {
+//		if let selectedTask = selectedTask {
+//			for (i, service) in services.enumerate() {
+//				let t = service.tasks.filter({ (task) -> Bool in
+//					return task.id == selectedTask.id
+//				}).first
+//				if t != nil {
+//					var s = services[i]
+//					s.selected = true
+//					services[i] = s
+//					updateServices()
+//					tableView.reloadData()
+//					break
+//				}
+//			}
+//		}
+//	}
 	
 	func setupIconsContainerView() {
 		logoContainerView = UIView()
@@ -156,8 +160,8 @@ class DependOnNodePickerViewController: UIViewController {
 	func setupDetermineButton() {
 		let button = UIButton()
 		button.setTitle("Determine", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(15)
-        button.backgroundColor = UIColor ( red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0 )
+		button.titleLabel?.font = UIFont.systemFontOfSize(15)
+		button.backgroundColor = UIColor(red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0)
 		button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 		button.layer.cornerRadius = 15
 		button.addTarget(self, action: "determineButtonPressed", forControlEvents: .TouchUpInside)
