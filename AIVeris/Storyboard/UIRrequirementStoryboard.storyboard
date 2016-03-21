@@ -109,6 +109,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="0cR-ji-97b"/>
                                     <constraint firstAttribute="width" constant="45" id="hcs-X4-JJ4"/>
+                                    <constraint firstAttribute="width" constant="45" id="luI-Sk-HRa"/>
                                     <constraint firstAttribute="height" constant="521" id="ryn-sG-yyB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -117,6 +118,7 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0cR-ji-97b"/>
+                                        <exclude reference="hcs-X4-JJ4"/>
                                         <exclude reference="ryn-sG-yyB"/>
                                     </mask>
                                 </variation>
@@ -168,6 +170,7 @@
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="leading" secondItem="8N7-Zf-nfU" secondAttribute="leadingMargin" constant="-7" id="PDT-sQ-dF2"/>
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="top" secondItem="mbV-3I-uIB" secondAttribute="bottom" id="edL-BA-IJU"/>
                             <constraint firstItem="wgQ-M1-8ue" firstAttribute="top" secondItem="r6s-Xx-gKj" secondAttribute="bottom" id="fpU-HC-ABi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r6s-Xx-gKj" secondAttribute="trailing" constant="-7" id="oBi-JP-Ris"/>
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="leading" secondItem="8N7-Zf-nfU" secondAttribute="leadingMargin" constant="-7" id="t0w-PL-a7z"/>
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="leading" secondItem="8N7-Zf-nfU" secondAttribute="leadingMargin" constant="-7" id="uhf-kU-OaR"/>
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="bottom" secondItem="wgQ-M1-8ue" secondAttribute="top" id="viC-tq-apL"/>
@@ -179,6 +182,7 @@
                                 <exclude reference="4Mq-Bm-dw1"/>
                                 <exclude reference="PDT-sQ-dF2"/>
                                 <exclude reference="edL-BA-IJU"/>
+                                <exclude reference="oBi-JP-Ris"/>
                                 <exclude reference="t0w-PL-a7z"/>
                                 <exclude reference="fpU-HC-ABi"/>
                             </mask>
