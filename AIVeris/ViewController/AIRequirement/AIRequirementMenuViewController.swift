@@ -60,9 +60,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
         buildServiceInstsView()
         
         let badge = GIBadgeView()
-        requireButton.addSubview(badge)
         assignButton.addSubview(badge)
-        collaborationButton.addSubview(badge)
+        //collaborationButton.addSubview(badge)
         badge.badgeValue = 27
         badge.topOffset = 5
         badge.rightOffset = 12

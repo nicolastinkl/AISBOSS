@@ -21,11 +21,19 @@ internal class AIRequirementViewController : UIViewController {
     
     // MARK: -> Internal static properties
     
+    private var tabRequireViewC: UIViewController?
+    
+    private var tabAssignViewC: UIViewController?
+    
+    private var tabCollViewC: UIViewController?
+    
+    private var currentTagIndex: Int = 0
     // MARK: -> Internal properties
     
     @IBOutlet weak var rightContentView: UIView!
     
     @IBOutlet weak var TopUserInfoView: UIView!
+
     private var uid : Int = 1
     
     // MARK: -> Private type alias
@@ -74,29 +82,49 @@ internal class AIRequirementViewController : UIViewController {
     
     func withSwitchProfessionVC(type: Int){
         
+        if currentTagIndex == type {
+            return
+        }
+        
+        currentTagIndex = type
         switch type {
         case 1 :
             
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+            if let vc = tabRequireViewC {
+                addSubViewController(vc)
+            }else{
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+                tabRequireViewC = viewController
+                addSubViewController(viewController)
+            }
             
-            addSubViewController(viewController)
             
         case 2 :
             
-            let viewController1 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
-            
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
             
-            viewController1.editModel = true
+            if let vc = tabAssignViewC {
+                addSubViewControllers([vc, viewController2])
+            }else{
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+                viewController.editModel = true
+                tabAssignViewC = viewController
+                addSubViewControllers([viewController, viewController2])
+            }
             
-            addSubViewControllers([viewController1, viewController2])
             rightContentView.subviews.first?.alpha = 0
             
             
         case 3 :
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICollContentViewController) as! AICollContentViewController
             
-            addSubViewController(viewController)
+            
+            if let vc = tabCollViewC {
+                addSubViewController(vc)
+            }else{
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AICollContentViewController) as! AICollContentViewController
+                tabCollViewC = viewController
+                addSubViewController(viewController)
+            }
             
         case 4 :
             print("4")
