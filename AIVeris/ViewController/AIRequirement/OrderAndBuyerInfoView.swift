@@ -33,6 +33,9 @@ class OrderAndBuyerInfoView: UIView {
     }
     
     override func awakeFromNib() {
+        
+        setBuyerIconCorner()
+        
         messageNumber.layer.cornerRadius = messageNumber.frame.width / 2
         messageNumber.layer.masksToBounds = true
         
@@ -52,6 +55,32 @@ class OrderAndBuyerInfoView: UIView {
         
         let percentage: Int = Int(progress * 100 + CGFloat(0.5))
         percentageNumber.text = NSString(format: "%d%%", percentage) as String
+    }
+    
+    private func setBuyerIconCorner() {
+        let iconBounds = buyerIcon.bounds
+        
+//        let maskView = UIImageView(frame: CGRect(x: buyerIcon.frame.origin.x, y: buyerIcon.frame.origin.y, width: iconBounds.width * 1.5, height: iconBounds.width * 1.5))
+//        
+//        maskView.frame.offsetInPlace(dx: iconBounds.width - maskView.frame.width, dy: (iconBounds.height - maskView.frame.height) / 2)
+//        
+//        maskView.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2)
+//        maskView.layer.cornerRadius = maskView.bounds.width / 2
+//        
+//        buyerIcon.addSubview(maskView)
+        
+        
+        let maskLayer = CAShapeLayer()
+        
+        
+        maskLayer.frame = CGRect(x: 0, y: 0, width: iconBounds.width * 1.5, height: iconBounds.width * 1.5)
+        
+        maskLayer.frame.offsetInPlace(dx: (iconBounds.width - maskLayer.frame.width), dy: (iconBounds.height - maskLayer.frame.height) / 2)
+        
+        let maskPath = UIBezierPath(roundedRect: maskLayer.bounds, byRoundingCorners: [.TopRight, .BottomRight], cornerRadii: CGSizeMake(maskLayer.frame.width / 2, maskLayer.frame.width / 2))
+        
+        maskLayer.path = maskPath.CGPath
+        buyerIcon.layer.mask = maskLayer
     }
     
 
