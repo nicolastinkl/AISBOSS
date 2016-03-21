@@ -33,15 +33,6 @@ class AIAssignServiceView: UIView {
     var repeatTimer : NSTimer?
     var starRateView : CWStarRateView!
     
-    
-    @IBAction func limitButtonAction(sender: UIButton) {
-        if let delegate = delegate{
-            //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
-            switchAnimationState()
-            delegate.limitButtonAction(self, limitsModel : (models?.first?.limits)!)
-        }
-    }
-    
     class func currentView()->AIAssignServiceView{
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIAssignServiceView", owner: self, options: nil).first  as! AIAssignServiceView
         
@@ -51,6 +42,31 @@ class AIAssignServiceView: UIView {
         return selfview
     }
     
+    @IBAction func limitButtonAction(sender: UIButton) {
+        if let delegate = delegate{
+            //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
+            switchAnimationState()
+            delegate.limitButtonAction(self, limitsModel : (models?.first?.limits)!)
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        initView()
+    }
+    
+    func initView(){
+        initRatingView()
+    }
+    
+    func initRatingView(){
+        starRateView = CWStarRateView(frame: ratingView.bounds, numberOfStars: 5)
+        starRateView?.allowIncompleteStar = true
+        ratingView.addSubview(starRateView!)
+    }
+    
+    
+    
     func loadData(models : [AssignServiceInstModel]){
         self.models = models
         //limitListView.frame.size.height = 0
@@ -59,15 +75,20 @@ class AIAssignServiceView: UIView {
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
-        initRatingView()
+        //加载rating数据
+        if let ratingLevel =  models[curModelNum].ratingLevel {
+            starRateView!.scorePercent = CGFloat(ratingLevel) / 10
+        }
+        //初始化轮播
+        curModelNum = 0
+        nextModelNum = 1
     }
     
-    func initRatingView(){
-        starRateView = CWStarRateView(frame: ratingView.bounds, numberOfStars: 5)
-        starRateView?.allowIncompleteStar = true
-        //TODO 这里应该从当前的model读取
-        starRateView!.scorePercent = 4
-        ratingView.addSubview(starRateView!)
+    //TODO
+    func loadServiceInstWith(model : AssignServiceInstModel){
+        if let ratingLevel =  model.ratingLevel {
+            starRateView!.scorePercent = CGFloat(ratingLevel) / 10
+        }
     }
 }
 
@@ -98,6 +119,11 @@ extension AIAssignServiceView{
             self.nextServiceLabel.alpha = 1
             self.nextServiceLabel.transform = CGAffineTransformIdentity
         },completion : { (finished) -> Void in
+            //触发事件
+            if let delegate = self.delegate{
+                delegate.serviceDidRotate!(self, curServiceInst: self.models![self.curModelNum])
+            }
+            self.loadServiceInstWith(self.models![self.curModelNum])
             if self.nextModelNum == (self.models?.count)! - 1{
                 self.curModelNum = self.nextModelNum
                 self.nextModelNum = 0
@@ -111,9 +137,7 @@ extension AIAssignServiceView{
                 self.nextModelNum = self.nextModelNum + 1
             }
             self.curServiceLabel.text = self.models![self.curModelNum].serviceName
-//            if self.isRunAnimation {
-//                self.startAnimation()
-//            }
+            
             
         })
     }
@@ -132,6 +156,9 @@ extension AIAssignServiceView{
     
 }
 
+@objc
 protocol AIAssignServiceViewDelegate {
     func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel])
+    
+    optional func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel)
 }

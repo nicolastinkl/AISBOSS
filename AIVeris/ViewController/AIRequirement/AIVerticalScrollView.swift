@@ -22,7 +22,7 @@ class AIVerticalScrollView: UIScrollView {
     let unCheckAllIcon = UIImage(named: "white-arrow")
     
     //position
-    let iconWidth : CGFloat = 30
+    let iconWidth : CGFloat = 28
     let iconPaddingTop : CGFloat = 10
     
     override init(frame: CGRect) {
