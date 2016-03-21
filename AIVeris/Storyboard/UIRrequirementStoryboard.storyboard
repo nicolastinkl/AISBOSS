@@ -104,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6s-Xx-gKj">
-                                <rect key="frame" x="5" y="0.0" width="38" height="521"/>
+                                <rect key="frame" x="9" y="0.0" width="33" height="521"/>
                                 <color key="backgroundColor" red="0.035294117647058823" green="0.047058823529411764" blue="0.19215686274509802" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -152,8 +152,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="r6s-Xx-gKj" secondAttribute="trailing" id="82a-UK-rBU"/>
-                            <constraint firstItem="r6s-Xx-gKj" firstAttribute="leading" secondItem="8N7-Zf-nfU" secondAttribute="leadingMargin" constant="-11" id="CsD-An-JGE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r6s-Xx-gKj" secondAttribute="trailing" constant="1" id="82a-UK-rBU"/>
+                            <constraint firstItem="r6s-Xx-gKj" firstAttribute="leading" secondItem="8N7-Zf-nfU" secondAttribute="leadingMargin" constant="-7" id="CsD-An-JGE"/>
                             <constraint firstItem="wgQ-M1-8ue" firstAttribute="top" secondItem="r6s-Xx-gKj" secondAttribute="bottom" id="KEg-ae-DjD"/>
                             <constraint firstItem="r6s-Xx-gKj" firstAttribute="top" secondItem="mbV-3I-uIB" secondAttribute="bottom" id="rdl-1u-Mse"/>
                         </constraints>
