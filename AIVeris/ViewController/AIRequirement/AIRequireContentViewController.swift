@@ -28,6 +28,8 @@ class AIRequireContentViewController: UIViewController {
     
     private var placeholdCell: SESlideTableViewCell?
     
+    private var rememberCellButton: AnyObject?
+    
     private var dataSource : [AIContentCellModel]? = {
     
         
@@ -372,7 +374,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         }
         
         expendView.tag = ThisViewTag.ExpendView.rawValue
-        
+
         cell.addRightButtonWithImage(UIImage(named: "racright"), backgroundColor: UIColor(hexString: "#0B1051"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
@@ -465,7 +467,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.height.equalTo(50)
             }
         })
-        
+
         let holdView = cell.contentView.viewWithTag(ThisViewTag.ExpendView.rawValue)
         
         holdView?.snp_updateConstraints(closure: { (make) -> Void in
@@ -513,12 +515,17 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
     }
 }
 
-
 // MARK: - Cell Call back Event.
 
 extension AIRequireContentViewController : ExpendTableViewCellDelegate{
     
     func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
+        
+        if let RCell = rememberCellButton {
+            if (RCell as! UIButton) != (sender as! UIButton) {
+                calcelAction(RCell)
+            }
+        }
         
         let indexPath = tableview.indexPathForCell(cell)!
         let currentCellModel = dataSource?[indexPath.section]
@@ -528,7 +535,6 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         
         func tableReload(){
             self.tableview.reloadData()
-
         }
         
         func tableAjaxReload(indexPath: NSIndexPath){
@@ -561,7 +567,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         }
         cell.layoutSubviews()
         cell.setNeedsLayout()
-    
+        rememberCellButton = sender // Rememeber Cell's button...
     }
 
     // reload
