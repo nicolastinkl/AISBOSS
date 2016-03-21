@@ -9,6 +9,7 @@
 import Foundation
 import SnapKit
 import Spring
+import Cartography
 
 class AIRequireContentViewController: UIViewController {
     
@@ -29,6 +30,8 @@ class AIRequireContentViewController: UIViewController {
     private var placeholdCell: SESlideTableViewCell?
     
     private var rememberCellButton: AnyObject?
+    
+    private var stableConstraint: NSLayoutConstraint? //stable's constraint
     
     private var dataSource : [AIContentCellModel]? = {
     
@@ -130,6 +133,9 @@ class AIRequireContentViewController: UIViewController {
         tableview.estimatedRowHeight = 140
         tableview.rowHeight = UITableViewAutomaticDimension
         tableview.showsVerticalScrollIndicator = false
+        
+        self.tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
+        
         // Reloading for the visible cells to layout correctly
         Async.main { () -> Void in
             self.tableview.reloadData()
@@ -406,8 +412,17 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
                 make.top.equalTo(expendView.snp_top).offset(5)
                 make.leading.equalTo(10)
                 make.trailing.equalTo(-14)
-//                make.height.equalTo(0)
+                make.height.equalTo(0)
             })
+            
+//            constrain(expendView, stable, block: { (expendView, stable) -> () in
+//                stable.top == expendView.top + 5
+//                stable.leading == stable.superview!.leading + 10
+//                stable.trailing == stable.superview!.trailing - 14
+//                stable.height == 0
+//            })
+            
+
             stable.tag = ThisViewTag.StableView.rawValue
         }
         
@@ -519,7 +534,7 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
         if let models = contentModel.childServerIconArray {
 
             let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
-            stable?.scrollEnabled = false            
+            stable?.scrollEnabled = false
             
             stable?.snp_updateConstraints(closure: { (make) -> Void in
                 if cell.hasExpend == true {
