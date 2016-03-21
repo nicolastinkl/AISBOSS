@@ -635,6 +635,13 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
         case 0:
             // 转化标签
             print(buttonIndex)
+            let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
+                print(selectedTags)
+                }, blockCancel: { () -> () in
+                    print("tag select cancel")
+            })
+            let nav = UINavigationController(rootViewController: vc)
+            presentViewController(nav, animated: true, completion: nil)
             
         case 1:
             // 转化备注

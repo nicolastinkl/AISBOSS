@@ -21,15 +21,15 @@ let colorTextSelectedTag = UIColor.whiteColor()
 
 class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
-	private var tags: Array<Tag>!
+	 var tags: Array<Tag>!
 	private var navigationBarItem: UINavigationItem!
 	private var leftButton: UIBarButtonItem!
 	private var rigthButton: UIBarButtonItem!
 	private var _totalTagsSelected = 0
-	private let addTagView = RRAddTagView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))
+	private let addTagView = RRAddTagView(frame: CGRectMake(0, -64, UIScreen.mainScreen().bounds.size.width, 64))
 	private var heightKeyboard: CGFloat = 0
 	
-	var blockFinih: ((selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> ())!
+	var blockFinish: ((selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> ())!
 	var blockCancel: (() -> ())!
 	
 	var totalTagsSelected: Int {
@@ -62,7 +62,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		layoutCollectionView.minimumLineSpacing = 10
 		layoutCollectionView.minimumInteritemSpacing = 5
 		let collectionTag = UICollectionView(frame: self.view.frame, collectionViewLayout: layoutCollectionView)
-		collectionTag.contentInset = UIEdgeInsets(top: 84, left: 0, bottom: 20, right: 0)
+		collectionTag.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 20, right: 0)
 		collectionTag.delegate = self
 		collectionTag.dataSource = self
 		collectionTag.backgroundColor = UIColor.clearColor()
@@ -74,7 +74,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		let addNewTagCell = RRTagCollectionViewCell()
 		addNewTagCell.contentView.addSubview(addNewTagCell.textContent)
 		addNewTagCell.textContent.text = "+"
-		addNewTagCell.frame.size = CGSizeMake(40, 40)
+		addNewTagCell.frame.size = RRTagCollectionViewCellAddTagSize
 		addNewTagCell.backgroundColor = UIColor.grayColor()
 		return addNewTagCell
 	}()
@@ -138,7 +138,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 			}
 		}
 		self.dismissViewControllerAnimated(true, completion: { () -> Void in
-			self.blockFinih(selectedTags: selected, unSelectedTags: unSelected)
+			self.blockFinish(selectedTags: selected, unSelectedTags: unSelected)
 		})
 	}
 	
@@ -146,7 +146,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		self.view.endEditing(true)
 		UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4,
 			initialSpringVelocity: 0.4, options: UIViewAnimationOptions(), animations: { () -> Void in
-				self.addTagView.frame.origin.y = 0
+				self.addTagView.frame.origin.y = -64
 				self.controlPanelEdition.frame.origin.y = UIScreen.mainScreen().bounds.size.height
 				self.collectionTag.alpha = 1
 		}) { (anim: Bool) -> Void in
@@ -175,14 +175,14 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 				
 				return result
 			}
-			return CGSizeMake(40, 40)
+			return RRTagCollectionViewCellAddTagSize
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		let selectedCell: RRTagCollectionViewCell? = collectionView.cellForItemAtIndexPath(indexPath) as? RRTagCollectionViewCell
 		
 		if indexPath.row < tags.count {
-			var currentTag = tags[indexPath.row]
+			_ = tags[indexPath.row]
 			
 			if tags[indexPath.row].isSelected == false {
 				tags[indexPath.row].isSelected = true
@@ -200,7 +200,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
 				options: UIViewAnimationOptions(), animations: { () -> Void in
 					self.collectionTag.alpha = 0.3
-					self.addTagView.frame.origin.y = 64
+					self.addTagView.frame.origin.y = 0
 				}, completion: { (anim: Bool) -> Void in
 					self.addTagView.textEdit.becomeFirstResponder()
 					print("", terminator: "")
@@ -252,10 +252,11 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		self.view.addSubview(collectionTag)
 		self.view.addSubview(addTagView)
 		self.view.addSubview(controlPanelEdition)
-		self.view.addSubview(navigationBar)
+//		self.view.addSubview(navigationBar)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
 	}
+    
 	
 	class func displayTagController(parentController parentController: UIViewController, tagsString: [String]?,
 		blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> (), blockCancel: () -> ()) {
@@ -267,7 +268,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 				}
 			}
 			tagController.blockCancel = blockCancel
-			tagController.blockFinih = blockFinish
+			tagController.blockFinish = blockFinish
 			parentController.presentViewController(tagController, animated: true, completion: nil)
 	}
 	
@@ -276,7 +277,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 			let tagController = RRTagController()
 			tagController.tags = tags
 			tagController.blockCancel = blockCancel
-			tagController.blockFinih = blockFinish
+			tagController.blockFinish = blockFinish
 			parentController.presentViewController(tagController, animated: true, completion: nil)
 	}
 }

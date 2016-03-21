@@ -9,6 +9,7 @@
 import UIKit
 
 let RRTagCollectionViewCellIdentifier = "RRTagCollectionViewCellIdentifier"
+let RRTagCollectionViewCellAddTagSize = CGSize(width:120, height:40)
 
 class RRTagCollectionViewCell: UICollectionViewCell {
     
@@ -37,12 +38,13 @@ class RRTagCollectionViewCell: UICollectionViewCell {
     
     func initAddButtonContent() {
         self.contentView.addSubview(textContent)
-        textContent.text = "+"
+        textContent.text = "Add Tag"
         textContent.sizeToFit()
-        textContent.frame.size = CGSizeMake(40, 40)
+        textContent.frame.size = RRTagCollectionViewCellAddTagSize
         textContent.backgroundColor = UIColor.clearColor()
-        self.textContent.layer.backgroundColor = UIColor.grayColor().CGColor
-        self.textContent.textColor = UIColor.whiteColor()
+//        self.textContent.layer.backgroundColor = UIColor.grayColor().CGColor
+        self.textContent.layer.backgroundColor = colorUnselectedTag.CGColor
+        self.textContent.textColor = colorTextUnSelectedTag
     }
     
     func animateSelection(selection: Bool) {

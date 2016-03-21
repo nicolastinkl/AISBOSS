@@ -71,10 +71,12 @@ class AITaskEditViewController: UIViewController {
 
 extension AITaskEditViewController: AITaskNavigationDelegate {
     func cancelButtonPressed(sender: UIButton) {
+        print("cancel button pressed")
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func saveButtonPressed(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: nil)
         print("save button pressed")
     }
 }
@@ -88,6 +90,8 @@ extension AITaskNavigationDelegate where Self: UIViewController {
     func setupNavigationToAppTheme() {
         let bar = navigationController?.navigationBar
         if let bar = bar {
+            bar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+            
             bar.setBackgroundImage(UIImage(named: "bg_top_0"), forBarPosition: .Any, barMetrics: .Default)
             
             let cancelButton = UIButton()
