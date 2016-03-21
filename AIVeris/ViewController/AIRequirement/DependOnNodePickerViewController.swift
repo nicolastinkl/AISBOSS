@@ -44,26 +44,32 @@ class DependOnNodePickerViewController: UIViewController {
 		setupIconsContainerView()
 		setupTableView()
 		setupDetermineButton()
-//		setupSelectedService()
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupSelectedService()
+    }
 	
-//	func setupSelectedService() {
-//		if let selectedTask = selectedTask {
-//			for (i, service) in services.enumerate() {
-//				let t = service.tasks.filter({ (task) -> Bool in
-//					return task.id == selectedTask.id
-//				}).first
-//				if t != nil {
-//					var s = services[i]
-//					s.selected = true
-//					services[i] = s
-//					updateServices()
-//					tableView.reloadData()
-//					break
-//				}
-//			}
-//		}
-//	}
+	func setupSelectedService() {
+		if let selectedTask = selectedTask {
+			for (i, service) in services.enumerate() {
+				let t = service.tasks.filter({ (task) -> Bool in
+					return task.id == selectedTask.id
+				}).first
+				if let t = t {
+					var s = services[i]
+					s.selected = true
+					services[i] = s
+					updateServices()
+					tableView.reloadData()
+//                    let index = allTasks.indexOf(t)
+//                    tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0), atScrollPosition: .Middle, animated: false)
+					break
+				}
+			}
+		}
+	}
 	
 	func setupIconsContainerView() {
 		logoContainerView = UIView()
@@ -153,7 +159,6 @@ class DependOnNodePickerViewController: UIViewController {
 			view.leading == tableView.leading
 			view.trailing == tableView.trailing
 			tableView.top == logoContainerView.bottom
-//			tableView.bottom == view.bottom
 		}
 	}
 	
@@ -193,6 +198,7 @@ class DependOnNodePickerViewController: UIViewController {
 	}
 }
 
+// MARK: - UITableViewDataSource
 extension DependOnNodePickerViewController: UITableViewDataSource {
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let task = allTasks[indexPath.row]
@@ -213,6 +219,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 	}
 }
 
+// MARK: - UITableViewDelegate
 extension DependOnNodePickerViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
