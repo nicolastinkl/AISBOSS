@@ -101,17 +101,17 @@ class AITaskTimeLineView: UIView {
 	func setupLines() {
 		line1 = CAShapeLayer()
 		line1.lineWidth = 2
-		line1.strokeColor = UIColor.blueColor().CGColor
+		line1.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
 		layer.addSublayer(line1)
 		
 		line2 = CAShapeLayer()
 		line2.lineWidth = 2
-		line2.strokeColor = UIColor.blueColor().CGColor
+		line2.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
 		layer.addSublayer(line2)
 		
 		line3 = CAShapeLayer()
 		line3.lineWidth = 2
-		line3.strokeColor = UIColor.blueColor().CGColor
+		line3.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
 		layer.addSublayer(line3)
 	}
 	
@@ -168,13 +168,18 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	@IBAction func middleTapped(sender: AnyObject) {
-		
+		guard label1.text?.characters.count > 0 else {
+			return
+		}
 		if let delegate = delegate {
 			delegate.taskTimeLineViewDidClickDatePickerLogo(self)
 		}
 	}
 	
 	@IBAction func bottomTapped(sender: AnyObject) {
+		guard label2.text?.characters.count > 0 else {
+			return
+		}
 		if let delegate = delegate {
 			delegate.taskTimeLineViewDidClickRemarkLogo(self)
 		}

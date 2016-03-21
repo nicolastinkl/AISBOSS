@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="hhE-2B-pyV" customClass="DependOnNodeCell" customModule="DimPresentViewController" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="82" id="hhE-2B-pyV" customClass="DependOnNodeCell" customModule="Veris" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hhE-2B-pyV" id="dvf-qT-l28">
@@ -16,19 +16,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LL-ns-r8A">
-                        <rect key="frame" x="70" y="30" width="42" height="21"/>
+                        <rect key="frame" x="74" y="32" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-jq-h63" customClass="CycleLabel" customModule="Veris" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="1gn-ns-Gbf"/>
+                            <constraint firstAttribute="width" constant="50" id="Pwj-YS-F1K"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-jq-h63">
-                        <rect key="frame" x="20" y="30" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FakeLogin_Checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="seV-H3-IvP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FakeLogin_Checked" translatesAutoresizingMaskIntoConstraints="NO" id="seV-H3-IvP">
                         <rect key="frame" x="278" y="28" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="5Ak-IQ-k0B"/>
+                            <constraint firstAttribute="width" constant="26" id="mUe-k9-PLk"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
@@ -38,7 +46,7 @@
                     <constraint firstItem="seV-H3-IvP" firstAttribute="centerY" secondItem="dvf-qT-l28" secondAttribute="centerY" id="cdU-35-mcZ"/>
                     <constraint firstItem="Qft-jq-h63" firstAttribute="centerY" secondItem="dvf-qT-l28" secondAttribute="centerY" id="ex4-3Q-XSd"/>
                     <constraint firstItem="seV-H3-IvP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7LL-ns-r8A" secondAttribute="trailing" constant="8" symbolic="YES" id="t05-N1-hnX"/>
-                    <constraint firstItem="Qft-jq-h63" firstAttribute="leading" secondItem="dvf-qT-l28" secondAttribute="leadingMargin" constant="12" id="uyZ-so-yai"/>
+                    <constraint firstItem="Qft-jq-h63" firstAttribute="leading" secondItem="dvf-qT-l28" secondAttribute="leadingMargin" constant="8" id="uyZ-so-yai"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -50,6 +58,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="FakeLogin_Checked.png" width="26" height="26"/>
+        <image name="FakeLogin_Checked" width="26" height="26"/>
     </resources>
 </document>
