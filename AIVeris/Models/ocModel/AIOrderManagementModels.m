@@ -13,43 +13,28 @@
 @end
 
 
+@implementation AICustomer @end
+
+@implementation AITaskProgress @end
+
+@implementation AIService @end
+
+@implementation AIServiceCategory @end
+
+@implementation AIServiceRights @end
+
+@implementation AIRights @end
+
+@implementation AIServiceProvider @end
+
+@implementation AIQueryBusinessInfos @end
 
 
-#pragma mark -
+@implementation AIRequirement @end
 
-@implementation customer @end
+@implementation AIOriginalRequirements @end
 
-#pragma mark -
 
 /*
 @implementation customer @end
-
-#pragma mark -
-@implementation customer @end
-
-#pragma mark -
-@implementation customer @end
-
-
-#pragma mark -
-@implementation customer @end
-
-
-#pragma mark -
-@implementation customer @end
-#pragma mark -
-@implementation customer @end
-#pragma mark -
-@implementation customer @end
-
-#pragma mark -
-@implementation customer @end
-
-#pragma mark -
-@implementation customer @end
-
-#pragma mark -
-
-@implementation customer @end
-
-*/
+ */

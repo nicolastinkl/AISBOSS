@@ -53,13 +53,13 @@ class AIRequireContentViewController: UIViewController {
         
         var c1 = AIChildContentCellModel()
         c1.id = 1
-        c1.type = 1
+        c1.type = 2
         c1.bgImageUrl = ""
-        c1.text = "9 weeks of pregnancy, action ooooo"
-        c1.childServerIconArray = [i1,i2,i3]
+        c1.text = "9 weeks of pregnancy, action inconvenience."
+        c1.childServerIconArray = [i1]
         
         var c2 = AIChildContentCellModel()
-        c2.id = 1
+        c2.id = 2
         c2.type = 2
         c2.bgImageUrl = ""
         c2.text = "Accompany and attend to Accompany and attend"
@@ -75,12 +75,24 @@ class AIRequireContentViewController: UIViewController {
         msgModel.typeName = "user message"
         
         var c3 = AIChildContentCellModel()
-        c3.id = 1
+        c3.id = 3
         c3.type = 1
         c3.bgImageUrl = ""
-        c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation. Accompany and attend to Accompany and attend"
+        c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation"
         c3.childServerIconArray = [i1,i3]
-        msgModel.childServices = [c3]
+        
+        
+        var c6 = AIChildContentCellModel()
+        c6.id = 6
+        c6.type = 1
+        c6.bgImageUrl = ""
+        c6.text = ""
+        c6.audioLengh = 4000
+        c6.audioUrl = "http://adskfhasjdhkflhjashflkahsldf"
+        
+        c6.childServerIconArray = [i3]
+        
+        msgModel.childServices = [c3,c6]
         
         
         var dataModel = AIContentCellModel()
@@ -90,7 +102,7 @@ class AIRequireContentViewController: UIViewController {
         dataModel.typeName = "user data"
         
         var c4 = AIChildContentCellModel()
-        c4.id = 1
+        c4.id = 4
         c4.type = 4
         c4.bgImageUrl = ""
         c4.text = "Fasting blood glucos : 6MM mol /ml."
@@ -98,14 +110,14 @@ class AIRequireContentViewController: UIViewController {
         c4.childServerIconArray = [i1,i2,i3]
         
         var c5 = AIChildContentCellModel()
-        c5.id = 1
+        c5.id = 5
         c5.type = 3
         c5.bgImageUrl = ""
         c5.text = "Fasting blood glucos : 6MM mol /ml."
         c5.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
         c5.childServerIconArray = [i3]
         
-        dataModel.childServices = [c2,c3,c5,c4]
+        dataModel.childServices = [c5,c4]
         
         return [conModel,msgModel,dataModel]
     }()
@@ -244,6 +256,32 @@ extension AIRequireContentViewController : UITableViewDelegate,UITableViewDataSo
 
         })
         titleLabel.tag = 11
+        
+        // Setup 2.1 : Audio View.
+        let lengthAudio = contentModel.audioLengh ?? 0
+        
+        let audioModel = AIProposalServiceDetailHopeModel()
+        audioModel.audio_url = contentModel.audioUrl ?? ""
+        audioModel.time = lengthAudio
+        let audio1 = AIAudioMessageView.currentView()
+//        audio1.audioDelegate = self
+        cell.contentView.addSubview(audio1)
+        audio1.tag = 11
+        audio1.fillData(audioModel)
+        audio1.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(2)
+            make.leading.equalTo(2)
+            make.trailing.equalTo(-14)
+            make.height.equalTo(30)
+        }
+        
+        if lengthAudio > 0 {
+            audio1.alpha = 1
+            titleLabel.text = ""
+        }else{
+            audio1.alpha = 0
+        }
+
         
         // Setup 3: Description UILabel.
         let desLabel = UILabel()
@@ -523,7 +561,7 @@ extension AIRequireContentViewController : ExpendTableViewCellDelegate{
         
         if let RCell = rememberCellButton {
             if (RCell as! UIButton) != (sender as! UIButton) {
-                calcelAction(RCell)
+//                calcelAction(RCell)
             }
         }
         
