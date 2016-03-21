@@ -101,17 +101,17 @@ class AITaskTimeLineView: UIView {
 	func setupLines() {
 		line1 = CAShapeLayer()
 		line1.lineWidth = 2
-		line1.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
+		line1.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
 		layer.addSublayer(line1)
 		
 		line2 = CAShapeLayer()
 		line2.lineWidth = 2
-		line2.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
+		line2.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
 		layer.addSublayer(line2)
 		
 		line3 = CAShapeLayer()
 		line3.lineWidth = 2
-		line3.strokeColor = UIColor ( red: 0.1137, green: 0.0902, blue: 0.3843, alpha: 1.0 ).CGColor
+		line3.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
 		layer.addSublayer(line3)
 	}
 	
@@ -152,9 +152,10 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	override func updateConstraints() {
-		topCenterXConstraint.constant = isTopLogoAtLeft ? -100 : 0
-		middleCenterXConstraint.constant = isMiddleLogoAtLeft ? -100 : 0
-		bottomCenterXConstraint.constant = isBottomLogoAtLeft ? -100 : 0
+        let constant: CGFloat = -130
+		topCenterXConstraint.constant = isTopLogoAtLeft ? constant : 0
+		middleCenterXConstraint.constant = isMiddleLogoAtLeft ? constant : 0
+		bottomCenterXConstraint.constant = isBottomLogoAtLeft ? constant : 0
 		label1.alpha = isTopLogoAtLeft ? 1 : 0
 		label2.alpha = isMiddleLogoAtLeft ? 1 : 0
 		label3.alpha = isBottomLogoAtLeft ? 1 : 0

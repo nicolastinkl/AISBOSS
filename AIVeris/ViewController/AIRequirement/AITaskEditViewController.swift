@@ -30,9 +30,9 @@ class AITaskEditViewController: UIViewController {
 			}
 		}
 	}
-	var date: NSDate? {
+	var dateNode: (date: NSDate, dateDescription: String)? {
 		didSet {
-			timeLineView?.label2?.text = "\(date)"
+			timeLineView?.label2?.text = dateNode?.dateDescription
 			timeLineView?.setNeedsUpdateConstraints()
 			timeLineView?.updateConstraintsIfNeeded()
 			UIView.animateWithDuration(0.25) { () -> Void in
@@ -142,12 +142,14 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 	}
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITimePickerViewController()
-		vc.date = date
+		if let dateNode = dateNode {
+			vc.date = dateNode.date
+		}
 		navigationController?.useBlurForPopup = true
 		
-		vc.onDetermineButtonClick = { date in
+		vc.onDetermineButtonClick = { date, dateDescription in
 			print(self)
-			self.date = date
+			self.dateNode = (date: date, dateDescription: dateDescription)
 		}
 		navigationController?.presentPopupViewController(vc, duration: 0.25, animated: true, completion: { () -> () in
 			}, onClickCancelArea: {

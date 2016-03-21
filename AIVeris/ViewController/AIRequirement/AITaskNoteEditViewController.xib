@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskNoteEditViewController" customModule="Veris" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey2-Rr-tz0">
+                    <rect key="frame" x="8" y="208" width="584" height="80"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ai_rac_bg_normal" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-jb-wzT">
+                            <rect key="frame" x="0.0" y="0.0" width="584" height="80"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 weeks of pregnancy, action inconvenient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9d-y3-6U7">
+                            <rect key="frame" x="8" y="8" width="275" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-amazon" translatesAutoresizingMaskIntoConstraints="NO" id="Bht-dB-ZTf">
+                            <rect key="frame" x="8" y="36" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="aBk-bU-fo3"/>
+                                <constraint firstAttribute="height" constant="36" id="aqq-cs-Rci"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Bht-dB-ZTf" secondAttribute="bottom" constant="8" id="93Y-YQ-uWt"/>
+                        <constraint firstItem="Bht-dB-ZTf" firstAttribute="leading" secondItem="ey2-Rr-tz0" secondAttribute="leading" constant="8" id="FMx-GP-Lcz"/>
+                        <constraint firstItem="m9d-y3-6U7" firstAttribute="top" secondItem="ey2-Rr-tz0" secondAttribute="top" constant="8" id="fW9-u3-qmh"/>
+                        <constraint firstAttribute="bottom" secondItem="jOu-jb-wzT" secondAttribute="bottom" id="jnO-Vh-RNz"/>
+                        <constraint firstItem="jOu-jb-wzT" firstAttribute="top" secondItem="ey2-Rr-tz0" secondAttribute="top" id="rBs-Jj-CeA"/>
+                        <constraint firstItem="m9d-y3-6U7" firstAttribute="leading" secondItem="ey2-Rr-tz0" secondAttribute="leading" constant="8" id="sHI-3L-hEV"/>
+                        <constraint firstItem="jOu-jb-wzT" firstAttribute="leading" secondItem="ey2-Rr-tz0" secondAttribute="leading" id="tPC-YR-Ps3"/>
+                        <constraint firstAttribute="height" constant="80" id="tdR-f8-UQc"/>
+                        <constraint firstAttribute="trailing" secondItem="jOu-jb-wzT" secondAttribute="trailing" id="yGj-8z-sWV"/>
+                    </constraints>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sde-yn-jiV" customClass="KMPlaceholderTextView" customModule="Veris" customModuleProvider="target">
+                    <rect key="frame" x="8" y="8" width="584" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="LN7-9L-NZ3"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="9 weeks of pregnancy, action inconvenient"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" red="0.15294117647058825" green="0.19215686274509805" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="0.10588235294117647" green="0.11372549019607843" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="ey2-Rr-tz0" firstAttribute="top" secondItem="Sde-yn-jiV" secondAttribute="bottom" constant="20" id="Dbq-zt-CVw"/>
+                <constraint firstItem="Sde-yn-jiV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="Pjm-FA-SYN"/>
+                <constraint firstAttribute="trailing" secondItem="Sde-yn-jiV" secondAttribute="trailing" constant="8" id="WIJ-bg-e78"/>
+                <constraint firstAttribute="trailing" secondItem="ey2-Rr-tz0" secondAttribute="trailing" constant="8" id="mh4-44-I65"/>
+                <constraint firstItem="ey2-Rr-tz0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="o7X-cE-TKl"/>
+                <constraint firstItem="Sde-yn-jiV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="y1m-t4-gbd"/>
+            </constraints>
+            <point key="canvasLocation" x="450" y="321"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ai_rac_bg_normal" width="341" height="66"/>
+        <image name="icon-amazon" width="56" height="56"/>
+    </resources>
+</document>

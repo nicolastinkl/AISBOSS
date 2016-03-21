@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -310,6 +310,9 @@
                                         <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="10"/>
                                         <state key="normal" title="Add Tag" image="AIROAddTag"/>
+                                        <connections>
+                                            <action selector="addTagButtonPressed" destination="nVn-6w-g5V" eventType="touchUpInside" id="nZB-aE-SPe"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnM-NG-772">
                                         <rect key="frame" x="245" y="0.0" width="110" height="55"/>
@@ -321,6 +324,9 @@
                                         <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="39" minY="0.0" maxX="0.0" maxY="10"/>
                                         <state key="normal" title="Add Note" image="AIROAddNote"/>
+                                        <connections>
+                                            <action selector="addNoteButtonPressed" destination="nVn-6w-g5V" eventType="touchUpInside" id="8oT-Wy-fYM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuR-hh-5Tp">
                                         <rect key="frame" x="355" y="0.0" width="110" height="55"/>
@@ -332,6 +338,9 @@
                                         <inset key="titleEdgeInsets" minX="-25" minY="30" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="10"/>
                                         <state key="normal" title="Add Task" image="AIROAddTask"/>
+                                        <connections>
+                                            <action selector="addTaskButtonPressed" destination="nVn-6w-g5V" eventType="touchUpInside" id="EFP-XX-MWa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.10588235294117647" blue="0.2196078431372549" alpha="0.75" colorSpace="calibratedRGB"/>

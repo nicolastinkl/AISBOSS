@@ -9,9 +9,9 @@
 import UIKit
 
 class AITimePickerViewController: UIViewController {
-    @IBOutlet weak var determineButton: UIButton!
+	@IBOutlet weak var determineButton: UIButton!
 	@IBOutlet weak var datePicker: AITimePickerView!
-	var onDetermineButtonClick: ((NSDate) -> ())?
+	var onDetermineButtonClick: ((date: NSDate, dateDescription: String) -> ())?
 	var date: NSDate?
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,12 +20,12 @@ class AITimePickerViewController: UIViewController {
 			datePicker?.date = date
 			datePicker?.reload()
 		}
-        determineButton.layer.cornerRadius = 15
+		determineButton.layer.cornerRadius = 15
 	}
 	@IBAction func determineButtonPressed(sender: AnyObject) {
 		dismissPopupViewController(true) { () -> Void in
-			if let onDetermineButtonClick = self.onDetermineButtonClick, date = self.datePicker.date {
-				onDetermineButtonClick(date)
+			if let onDetermineButtonClick = self.onDetermineButtonClick, date = self.datePicker.date, dateDescription = self.datePicker.dateDescription {
+                onDetermineButtonClick(date: date, dateDescription: dateDescription)
 			}
 		}
 	}

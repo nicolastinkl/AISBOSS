@@ -635,28 +635,23 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     }
     
     func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
+        
+        cell.setSlideState(.Center, animated: true)
         switch buttonIndex {
         case 0:
             // 转化标签
             print(buttonIndex)
-            let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
-                print(selectedTags)
-                }, blockCancel: { () -> () in
-                    print("tag select cancel")
-            })
-            let nav = UINavigationController(rootViewController: vc)
-            presentViewController(nav, animated: true, completion: nil)
+            addTagButtonPressed()
             
         case 1:
             // 转化备注
             print(buttonIndex)
+            addNoteButtonPressed()
             
         case 2:
             // 转化任务节点
             print(buttonIndex)
-            let vc = AITaskEditViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            presentViewController(nav, animated: true, completion: nil)
+            addTaskButtonPressed()
             
         default:
             break
@@ -683,5 +678,29 @@ extension AIRequireContentViewController : SESlideTableViewCellDelegate{
     
 }
 
+// MARK: - storyboard
+extension AIRequireContentViewController {
+    
+    @IBAction func addTagButtonPressed() {
+        let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
+            print(selectedTags)
+            }, blockCancel: { () -> () in
+                print("tag select cancel")
+        })
+        let nav = UINavigationController(rootViewController: vc)
+        presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    @IBAction func addNoteButtonPressed() {
+        let vc = AITaskNoteEditViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        presentViewController(nav, animated: true, completion: nil)
+    }
+    @IBAction func addTaskButtonPressed() {
+        let vc = AITaskEditViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        presentViewController(nav, animated: true, completion: nil)
+    }
+}
 
 
