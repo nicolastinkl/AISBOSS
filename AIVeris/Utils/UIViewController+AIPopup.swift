@@ -134,6 +134,19 @@ extension UIViewController {
 			viewControllerToPresent.beginAppearanceTransition(true, animated: animated)
 			
 			let setupInitialConstraints = {
+                // use system constraint functions setup function
+//                let subview = viewControllerToPresent.view
+//                let superview = self.view
+//                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Left, relatedBy: .Equal, toItem: subview, attribute: .Left, multiplier: 1, constant: 0))
+//                
+//                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Right, relatedBy: .Equal, toItem: subview, attribute: .Right, multiplier: 1, constant: 0))
+//                
+//                self.bottomConstraint = NSLayoutConstraint(item: subview, attribute: .Bottom, relatedBy: .Equal, toItem: superview, attribute: .Bottom, multiplier: 1, constant: subview.frame.size.height)
+//                
+//                superview.addConstraint(self.bottomConstraint!)
+//                
+//                let heightConstraint = NSLayoutConstraint(item: subview, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: subview.frame.size.height)
+//                subview.addConstraint(heightConstraint)
 				
 				constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
 					subview.left == superView.left
