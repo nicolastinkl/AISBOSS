@@ -9,11 +9,12 @@
 import UIKit
 
 class AITaskNoteEditViewController: UIViewController {
+    @IBOutlet weak var textView: KMPlaceholderTextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationToAppTheme()
-
+        textView.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
 
@@ -26,6 +27,7 @@ class AITaskNoteEditViewController: UIViewController {
 extension AITaskNoteEditViewController: AITaskNavigationDelegate {
    	func cancelButtonPressed(sender: UIButton) {
         print("cancel button pressed")
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
