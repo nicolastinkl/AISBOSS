@@ -125,11 +125,10 @@ class AIRequireContentViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		tableview.estimatedRowHeight = 140
+    
 		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 44.0
 		tableview.showsVerticalScrollIndicator = false
-        
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 		// Reloading for the visible cells to layout correctly
 		Async.main { () -> Void in
@@ -540,7 +539,15 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 		
 		if let RCell = rememberCellButton {
 			if (RCell as! UIButton) != (sender as! UIButton) {
-//                calcelAction(RCell)
+                /*
+                let preCell = RCell.superview!!.superview!.superview as! AIRACContentCell
+//                let indexPath = tableview.indexPathForCell(preCell)!
+//                
+//                let currentCellModel = dataSource?[indexPath.section]
+//                var contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+                cell.hasExpend = false
+               // self.configureExpendCell(preCell, atIndexPath: indexPath, contentModel: contentModel)
+                */
 			}
 		}
 		

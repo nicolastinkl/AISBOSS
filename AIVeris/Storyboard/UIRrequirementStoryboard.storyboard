@@ -366,27 +366,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gL-fd-Owj" customClass="DesignableView" customModule="Spring">
-                                <rect key="frame" x="180" y="39" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIAssignmentpng" translatesAutoresizingMaskIntoConstraints="NO" id="mRu-PC-0jU">
+                                <rect key="frame" x="150" y="65" width="300" height="296"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="1Sv-pK-c7h"/>
-                                    <constraint firstAttribute="height" constant="240" id="4Ls-r8-qxo"/>
+                                    <constraint firstAttribute="height" constant="296" id="Wgj-PX-81S"/>
+                                    <constraint firstAttribute="width" constant="300" id="pAT-rm-Rjn"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="120"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.79419584424083767" green="0.77097341740037184" blue="0.78651845676106125" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no requirement to allocate. click to edit the requirements at first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol2-MK-kP3">
-                                <rect key="frame" x="140" y="279" width="320" height="67"/>
+                                <rect key="frame" x="140" y="376" width="320" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="YRr-gI-B7I"/>
                                     <constraint firstAttribute="width" constant="320" id="jOC-Co-PN2"/>
@@ -396,11 +384,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUY-Zx-ZWr" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="20" y="388" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.22538402214334005" green="0.53623172329276536" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="20" y="515" width="560" height="43"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.52549019607843139" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="QJq-DM-LIg"/>
+                                    <constraint firstAttribute="height" constant="43" id="QJq-DM-LIg"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="start editing user requirements">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -416,15 +405,31 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2gL-fd-Owj" firstAttribute="centerX" secondItem="Nsk-aq-UdB" secondAttribute="centerX" id="GG6-Jf-maK"/>
-                            <constraint firstItem="Ol2-MK-kP3" firstAttribute="top" secondItem="2gL-fd-Owj" secondAttribute="bottom" id="LIa-il-mci"/>
+                            <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="mRu-PC-0jU" secondAttribute="bottom" constant="27" id="IXQ-h3-JRN"/>
+                            <constraint firstItem="Ol2-MK-kP3" firstAttribute="top" secondItem="mRu-PC-0jU" secondAttribute="bottom" constant="15" id="Lcb-jI-XZK"/>
+                            <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="Ol2-MK-kP3" secondAttribute="bottom" constant="72" id="MDv-hD-bjV"/>
+                            <constraint firstItem="czg-a5-VcX" firstAttribute="top" secondItem="iUY-Zx-ZWr" secondAttribute="bottom" constant="182" id="NTj-0r-ZVO"/>
                             <constraint firstItem="Ol2-MK-kP3" firstAttribute="centerX" secondItem="Nsk-aq-UdB" secondAttribute="centerX" id="X8O-9h-BLA"/>
-                            <constraint firstItem="2gL-fd-Owj" firstAttribute="top" secondItem="QgS-b6-0BQ" secondAttribute="bottom" constant="19" id="jJf-K4-l6l"/>
+                            <constraint firstItem="mRu-PC-0jU" firstAttribute="centerX" secondItem="Nsk-aq-UdB" secondAttribute="centerX" id="YY9-yL-4ul"/>
+                            <constraint firstItem="mRu-PC-0jU" firstAttribute="top" secondItem="QgS-b6-0BQ" secondAttribute="bottom" constant="45" id="hpG-tv-SED"/>
+                            <constraint firstItem="Ol2-MK-kP3" firstAttribute="centerX" secondItem="mRu-PC-0jU" secondAttribute="centerX" id="p3L-4Q-zN4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iUY-Zx-ZWr" secondAttribute="trailing" id="qul-8R-GlU"/>
                             <constraint firstAttribute="leadingMargin" secondItem="iUY-Zx-ZWr" secondAttribute="leading" id="sGk-uG-zb3"/>
                             <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="Ol2-MK-kP3" secondAttribute="bottom" constant="42" id="uRp-op-T94"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="p3L-4Q-zN4"/>
+                                <exclude reference="IXQ-h3-JRN"/>
+                                <exclude reference="uRp-op-T94"/>
+                                <exclude reference="NTj-0r-ZVO"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="contentLabel" destination="Ol2-MK-kP3" id="fvo-2U-tu2"/>
+                        <outlet property="tarButton" destination="iUY-Zx-ZWr" id="Xbv-ai-8e2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPU-eW-Gid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -450,6 +455,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AIAssignmentpng" width="301" height="296"/>
         <image name="AIROAddNote" width="21" height="21"/>
         <image name="AIROAddTag" width="21" height="21"/>
         <image name="AIROAddTask" width="21" height="21"/>
