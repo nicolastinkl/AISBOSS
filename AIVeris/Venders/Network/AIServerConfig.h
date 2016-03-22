@@ -12,6 +12,7 @@
 
 #define kURL_QuerySellerOrderList           @"http://171.221.254.231:3000/querySellerOrderList"
 
+#define kURL_Base                           @"http://171.221.254.231:8282/sboss/"
 // 关键字(字段名)
 #define kKey_ServiceID     @"serviceID"
 #define kKey_SchemeID      @"sheme_id"

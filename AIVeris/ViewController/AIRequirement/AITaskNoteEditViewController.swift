@@ -9,11 +9,12 @@
 import UIKit
 
 class AITaskNoteEditViewController: UIViewController {
+    @IBOutlet weak var textView: KMPlaceholderTextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationToAppTheme()
-
+        textView.becomeFirstResponder()
         // Do any additional setup after loading the view.
     }
 
@@ -21,23 +22,12 @@ class AITaskNoteEditViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension AITaskNoteEditViewController: AITaskNavigationDelegate {
    	func cancelButtonPressed(sender: UIButton) {
         print("cancel button pressed")
+        view.endEditing(true)
         dismissViewControllerAnimated(true, completion: nil)
     }
     

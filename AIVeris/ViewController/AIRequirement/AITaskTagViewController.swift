@@ -24,11 +24,31 @@ class AITaskTagViewController: RRTagController {
 			return tagController
 	}
 	
+	override func addTagDidClick() {
+		print("addTagDidClick")
+		let vc = AITaskRemarkInputViewController()
+        vc.delegate = self
+		navigationController?.presentPopupViewController(vc, animated: true)
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Tag"
 		setupNavigationToAppTheme()
 		// Do any additional setup after loading the view.
+	}
+}
+
+extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
+		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
+		if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
+			if strlen(contentTag) > 0 {
+				let newTag = Tag(isSelected: false, textContent: contentTag)
+				tags.insert(newTag, atIndex: tags.count)
+				collectionTag.reloadData()
+			}
+		}
 	}
 }
 
