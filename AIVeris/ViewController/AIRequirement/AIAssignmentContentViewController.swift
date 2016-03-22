@@ -13,8 +13,16 @@ import Spring
 
 class AIAssignmentContentViewController: UIViewController {
     
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    @IBOutlet weak var tarButton: DesignableButton!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
+        contentLabel.font = AITools.myriadLightSemiCondensedWithSize(17)
+        tarButton.titleLabel?.font = AITools.myriadLightWithSize(17)
+        
     }
     
     @IBAction func dismissViewControllerToMain(sender: AnyObject) {

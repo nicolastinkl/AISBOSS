@@ -125,11 +125,10 @@ class AIRequireContentViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		tableview.estimatedRowHeight = 140
+    
 		tableview.rowHeight = UITableViewAutomaticDimension
+		tableview.estimatedRowHeight = 44.0
 		tableview.showsVerticalScrollIndicator = false
-        
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 		// Reloading for the visible cells to layout correctly
 		Async.main { () -> Void in
@@ -540,7 +539,15 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 		
 		if let RCell = rememberCellButton {
 			if (RCell as! UIButton) != (sender as! UIButton) {
-//                calcelAction(RCell)
+                /*
+                let preCell = RCell.superview!!.superview!.superview as! AIRACContentCell
+//                let indexPath = tableview.indexPathForCell(preCell)!
+//                
+//                let currentCellModel = dataSource?[indexPath.section]
+//                var contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+                cell.hasExpend = false
+               // self.configureExpendCell(preCell, atIndexPath: indexPath, contentModel: contentModel)
+                */
 			}
 		}
 		
@@ -660,11 +667,26 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 extension AIRequireContentViewController {
 	
 	@IBAction func addTagButtonPressed() {
-		let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse", "Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
-			print(selectedTags)
-			}, blockCancel: { () -> () in
-			print("tag select cancel")
-		})
+       //fake data
+        let tagDescs = ["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède"]
+        var tags = [RequirementTag]()
+        for i in 0 ... tagDescs.count - 1 {
+            let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: tagDescs[i])
+           tags.append(tag)
+        }
+       // end fake
+        
+        
+        let vc = AITaskTagViewController()
+        vc.tags = tags
+
+        vc.onDidSelected = {selectedTags, unSelectedTags in
+            print("select tag : \(selectedTags)")
+        }
+        
+        vc.onDidCancel = {
+            print("select tag cancel")
+        }
 		let nav = UINavigationController(rootViewController: vc)
 		presentViewController(nav, animated: true, completion: nil)
 	}
@@ -680,4 +702,5 @@ extension AIRequireContentViewController {
 		presentViewController(nav, animated: true, completion: nil)
 	}
 }
+
 

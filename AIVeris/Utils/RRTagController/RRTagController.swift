@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct Tag {
-	var isSelected: Bool
-	var textContent: String
-}
-
 let colorUnselectedTag = UIColor.clearColor()
 let colorSelectedTag = UIColor(red: 0.1098, green: 0.4353, blue: 0.8706, alpha: 1.0)
 
@@ -21,16 +16,15 @@ let colorTextSelectedTag = UIColor.whiteColor()
 
 class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	
-	 var tags: Array<Tag>!
+	var tags: Array<RequirementTag> = []
 	private var navigationBarItem: UINavigationItem!
 	private var leftButton: UIBarButtonItem!
 	private var rigthButton: UIBarButtonItem!
 	private var _totalTagsSelected = 0
-	private let addTagView = RRAddTagView(frame: CGRectMake(0, -64, UIScreen.mainScreen().bounds.size.width, 64))
 	private var heightKeyboard: CGFloat = 0
 	
-	var blockFinish: ((selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> ())!
-	var blockCancel: (() -> ())!
+	var onDidSelected: ((selectedTags: Array<RequirementTag>, unSelectedTags: Array<RequirementTag>) -> ())!
+	var onDidCancel: (() -> ())!
 	
 	var totalTagsSelected: Int {
 		get {
@@ -61,8 +55,8 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		layoutCollectionView.itemSize = CGSizeMake(90, 20)
 		layoutCollectionView.minimumLineSpacing = 10
 		layoutCollectionView.minimumInteritemSpacing = 5
-        var frame = self.view.frame
-        frame.size.height -= 44
+		var frame = self.view.frame
+		frame.size.height -= 44
 		let collectionTag = UICollectionView(frame: frame, collectionViewLayout: layoutCollectionView)
 		collectionTag.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 20, right: 0)
 		collectionTag.delegate = self
@@ -123,16 +117,16 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 	
 	func cancelTagController() {
 		self.dismissViewControllerAnimated(true, completion: { () -> Void in
-			self.blockCancel()
+			self.onDidCancel()
 		})
 	}
 	
 	func finishTagController() {
-		var selected: Array<Tag> = Array()
-		var unSelected: Array<Tag> = Array()
+		var selected: Array<RequirementTag> = Array()
+		var unSelected: Array<RequirementTag> = Array()
 		
 		for currentTag in tags {
-			if currentTag.isSelected {
+			if currentTag.selected {
 				selected.append(currentTag)
 			}
 			else {
@@ -140,7 +134,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 			}
 		}
 		self.dismissViewControllerAnimated(true, completion: { () -> Void in
-			self.blockFinish(selectedTags: selected, unSelectedTags: unSelected)
+			self.onDidSelected(selectedTags: selected, unSelectedTags: unSelected)
 		})
 	}
 	
@@ -148,7 +142,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		self.view.endEditing(true)
 		UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4,
 			initialSpringVelocity: 0.4, options: UIViewAnimationOptions(), animations: { () -> Void in
-				self.addTagView.frame.origin.y = -64
+//				self.addTagView.frame.origin.y = -64
 				self.controlPanelEdition.frame.origin.y = UIScreen.mainScreen().bounds.size.height
 				self.collectionTag.alpha = 1
 		}) { (anim: Bool) -> Void in
@@ -156,13 +150,13 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 	}
 	
 	func createNewTag() {
-		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
-		let contentTag = addTagView.textEdit.text.stringByTrimmingCharactersInSet(spaceSet)
-		if strlen(contentTag) > 0 {
-			let newTag = Tag(isSelected: false, textContent: contentTag)
-			tags.insert(newTag, atIndex: tags.count)
-			collectionTag.reloadData()
-		}
+//		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
+//		let contentTag = addTagView.textEdit.text.stringByTrimmingCharactersInSet(spaceSet)
+//		if strlen(contentTag) > 0 {
+//			let newTag = Tag(isSelected: false, textContent: contentTag)
+//			tags.insert(newTag, atIndex: tags.count)
+//			collectionTag.reloadData()
+//		}
 		cancelEditTag()
 	}
 	
@@ -186,28 +180,33 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		if indexPath.row < tags.count {
 			_ = tags[indexPath.row]
 			
-			if tags[indexPath.row].isSelected == false {
-				tags[indexPath.row].isSelected = true
-				selectedCell?.animateSelection(tags[indexPath.row].isSelected)
+			if tags[indexPath.row].selected == false {
+				tags[indexPath.row].selected = true
+				selectedCell?.animateSelection(tags[indexPath.row].selected)
 				totalTagsSelected = 1
 			}
 			else {
-				tags[indexPath.row].isSelected = false
-				selectedCell?.animateSelection(tags[indexPath.row].isSelected)
+				tags[indexPath.row].selected = false
+				selectedCell?.animateSelection(tags[indexPath.row].selected)
 				totalTagsSelected = -1
 			}
 		}
 		else {
-			addTagView.textEdit.text = nil
-			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
-				options: UIViewAnimationOptions(), animations: { () -> Void in
-					self.collectionTag.alpha = 0.3
-					self.addTagView.frame.origin.y = 0
-				}, completion: { (anim: Bool) -> Void in
-					self.addTagView.textEdit.becomeFirstResponder()
-					print("", terminator: "")
-			})
+			addTagDidClick()
+//			addTagView.textEdit.text = nil
+//			UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
+//				options: UIViewAnimationOptions(), animations: { () -> Void in
+//					self.collectionTag.alpha = 0.3
+//					self.addTagView.frame.origin.y = 0
+//				}, completion: { (anim: Bool) -> Void in
+//					self.addTagView.textEdit.becomeFirstResponder()
+//					print("", terminator: "")
+//			})
 		}
+	}
+	
+	func addTagDidClick() {
+		fatalError("need subclass override this function")
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -247,39 +246,15 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		super.viewDidLoad()
 		self.view.backgroundColor = UIColor(red: 0.1059, green: 0.1098, blue: 0.4549, alpha: 1.0)
 		
-		leftButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Done, target: self, action: "cancelTagController")
+		leftButton = UIBarButtonItem(title: "Csfdaancel", style: UIBarButtonItemStyle.Done, target: self, action: "cancelTagController")
 		rigthButton = UIBarButtonItem(title: "OK", style: UIBarButtonItemStyle.Done, target: self, action: "finishTagController")
 		
 		totalTagsSelected = 0
 		self.view.addSubview(collectionTag)
-		self.view.addSubview(addTagView)
-		self.view.addSubview(controlPanelEdition)
+//		self.view.addSubview(addTagView)
+//		self.view.addSubview(controlPanelEdition)
 //		self.view.addSubview(navigationBar)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-	}
-    
-	
-	class func displayTagController(parentController parentController: UIViewController, tagsString: [String]?,
-		blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> (), blockCancel: () -> ()) {
-			let tagController = RRTagController()
-			tagController.tags = Array()
-			if tagsString != nil {
-				for currentTag in tagsString! {
-					tagController.tags.append(Tag(isSelected: false, textContent: currentTag))
-				}
-			}
-			tagController.blockCancel = blockCancel
-			tagController.blockFinish = blockFinish
-			parentController.presentViewController(tagController, animated: true, completion: nil)
-	}
-	
-	class func displayTagController(parentController parentController: UIViewController, tags: [Tag]?,
-		blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> (), blockCancel: () -> ()) {
-			let tagController = RRTagController()
-			tagController.tags = tags
-			tagController.blockCancel = blockCancel
-			tagController.blockFinish = blockFinish
-			parentController.presentViewController(tagController, animated: true, completion: nil)
 	}
 }

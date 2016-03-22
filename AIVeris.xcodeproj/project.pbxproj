@@ -185,7 +185,6 @@
 		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
 		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
 		849300891C92B27C00547322 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 849300881C92B27C00547322 /* YLProgressBar.m */; };
-		84959F8F1C9ADBB4006AA36A /* RRAddTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */; };
 		84959F901C9ADBB4006AA36A /* RRFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */; };
 		84959F911C9ADBB4006AA36A /* RRTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */; };
 		84959F921C9ADBB4006AA36A /* RRTagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959F8E1C9ADBB4006AA36A /* RRTagController.swift */; };
@@ -827,7 +826,6 @@
 		8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderAndBuyerInfoView.xib; sourceTree = "<group>"; };
 		849300871C92B27C00547322 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
 		849300881C92B27C00547322 /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
-		84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRAddTagView.swift; sourceTree = "<group>"; };
 		84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRFlowLayout.swift; sourceTree = "<group>"; };
 		84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		84959F8E1C9ADBB4006AA36A /* RRTagController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRTagController.swift; sourceTree = "<group>"; };
@@ -1794,7 +1792,6 @@
 		84959F8A1C9ADBB4006AA36A /* RRTagController */ = {
 			isa = PBXGroup;
 			children = (
-				84959F8B1C9ADBB4006AA36A /* RRAddTagView.swift */,
 				84959F8C1C9ADBB4006AA36A /* RRFlowLayout.swift */,
 				84959F8D1C9ADBB4006AA36A /* RRTagCollectionViewCell.swift */,
 				84959F8E1C9ADBB4006AA36A /* RRTagController.swift */,
@@ -3675,7 +3672,6 @@
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
 				844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
-				84959F8F1C9ADBB4006AA36A /* RRAddTagView.swift in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
 				845320521C9A86C3003B984B /* AITaskRemarkInputViewController.swift in Sources */,

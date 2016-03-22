@@ -138,7 +138,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		vc.view.frame = frame
 		vc.delegate = self
 		vc.services = self.dynamicType.fakeServices()
-		navigationController?.useBlurForPopup = true
+		navigationController?.useBlurForPopup = false
 		navigationController?.presentPopupViewController(vc, animated: true)
 	}
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
@@ -159,13 +159,16 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 	}
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITaskRemarkInputViewController()
+		vc.delegate = self
 		navigationController?.useBlurForPopup = true
 		navigationController?.presentPopupViewController(vc, duration: 0.1, animated: true)
 		vc.text = remark
-		
-		vc.onReturnButtonClick = { text in
-			self.remark = text
-		}
+	}
+}
+
+extension AITaskEditViewController: AITaskRemarkInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
+		self.remark = text
 	}
 }
 
@@ -192,7 +195,7 @@ extension AITaskEditViewController {
 	}
 	
 	class func randomTask() -> TaskNode {
-		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task description", id: random() % 100000)
+		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task descriptionTask descriptionTask description", id: random() % 100000)
 		return task
 	}
 }
