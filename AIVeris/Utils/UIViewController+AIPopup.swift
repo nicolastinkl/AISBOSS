@@ -11,11 +11,11 @@ import Accelerate
 import Cartography
 
 class ClosureWrapper {
-    var closure: (() -> Void)?
-    
-    init(_ closure: (() -> Void)?) {
-        self.closure = closure
-    }
+	var closure: (() -> Void)?
+	
+	init(_ closure: (() -> Void)?) {
+		self.closure = closure
+	}
 }
 
 // example:
@@ -33,13 +33,12 @@ extension UIViewController {
 		static var popupViewOffset = "popupViewOffset"
 		static var blurViewKey = "blurViewKey"
 		static var bottomConstraintKey = "bottomConstraintKey"
-        static var onClickCancelArea = "onClickCancelArea"
+		static var onClickCancelArea = "onClickCancelArea"
 	}
 	private struct Constants {
 		static let animationTime: Double = 0.25
 		static let statusBarSize: CGFloat = 22
 	}
-	
 	
 	// MARK: - public
 	var popupViewController: UIViewController? {
@@ -82,29 +81,29 @@ extension UIViewController {
 			return objc_getAssociatedObject(self, &AssociatedKeys.bottomConstraintKey) as? NSLayoutConstraint
 		}
 	}
-    
-    var onClickCancelArea: (()->Void)? {
-        set {
-            objc_setAssociatedObject(self, &AssociatedKeys.onClickCancelArea, ClosureWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        
-        get {
-            return (objc_getAssociatedObject(self, &AssociatedKeys.onClickCancelArea) as? ClosureWrapper)?.closure
-        }
-    }
 	
-    /**
-     模糊化present viewcontroller
-     
-     - parameter viewControllerToPresent: viewControllerToPresent
-     - parameter duration:                控制动画时间可空，默认0.25秒
-     - parameter animated:                是否动画
-     - parameter completion:              completion handler 可空
-     - parameter onClickCancelArea:       模糊区域点击 handler 可空
-     */
-    func presentPopupViewController(viewControllerToPresent: UIViewController, duration:Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (()->Void)? = nil) {
+	var onClickCancelArea: (() -> Void)? {
+		set {
+			objc_setAssociatedObject(self, &AssociatedKeys.onClickCancelArea, ClosureWrapper(newValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+		}
+		
+		get {
+			return (objc_getAssociatedObject(self, &AssociatedKeys.onClickCancelArea) as? ClosureWrapper)?.closure
+		}
+	}
+	
+	/**
+	 模糊化present viewcontroller
+
+	 - parameter viewControllerToPresent: viewControllerToPresent
+	 - parameter duration:                控制动画时间可空，默认0.25秒
+	 - parameter animated:                是否动画
+	 - parameter completion:              completion handler 可空
+	 - parameter onClickCancelArea:       模糊区域点击 handler 可空
+	 */
+	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
 		if popupViewController == nil {
-            self.onClickCancelArea = onClickCancelArea
+			self.onClickCancelArea = onClickCancelArea
 			popupViewController = viewControllerToPresent
 			popupViewController!.view.autoresizesSubviews = false
 			popupViewController!.view.autoresizingMask = .None
@@ -136,12 +135,12 @@ extension UIViewController {
 			
 			let setupInitialConstraints = {
 				
-                constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
-                    subview.left == superView.left
-                    subview.right == superView.right
-                    subview.height == viewControllerToPresent.view.frame.size.height
-                    self.bottomConstraint = subview.bottom == superView.bottom + viewControllerToPresent.view.frame.size.height
-                })
+				constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
+					subview.left == superView.left
+					subview.right == superView.right
+					subview.height == viewControllerToPresent.view.frame.size.height
+					self.bottomConstraint = subview.bottom == superView.bottom + viewControllerToPresent.view.frame.size.height
+				})
 				
 				self.view.layoutIfNeeded()
 			}
@@ -161,6 +160,7 @@ extension UIViewController {
 				
 				setupInitialConstraints()
 				
+				UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 				UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
 					self.bottomConstraint?.constant = 0
 					viewControllerToPresent.view.alpha = finalAlpha
@@ -170,6 +170,7 @@ extension UIViewController {
 					}, completion: { (success) -> Void in
 					self.popupViewController?.didMoveToParentViewController(self)
 					self.popupViewController?.endAppearanceTransition()
+					UIApplication.sharedApplication().endIgnoringInteractionEvents()
 					if let completion = completion {
 						completion()
 					}
@@ -190,20 +191,20 @@ extension UIViewController {
 		}
 	}
 	
-    /**
-     dismiss 方法
-     
-     - parameter animated:      是否动画
-     - parameter duration:      控制动画时间可空，默认0.25秒
-     - parameter completion:    completion handler
-     */
-	func dismissPopupViewController(animated: Bool, duration:Double = Constants.animationTime, completion: (() -> Void)?) {
-        
-        if popupViewController == nil {
-            parentViewController?.dismissPopupViewController(animated, completion: completion)
-            return
-        }
-        
+	/**
+	 dismiss 方法
+
+	 - parameter animated:      是否动画
+	 - parameter duration:      控制动画时间可空，默认0.25秒
+	 - parameter completion:    completion handler
+	 */
+	func dismissPopupViewController(animated: Bool, duration: Double = Constants.animationTime, completion: (() -> Void)?) {
+		
+		if popupViewController == nil {
+			parentViewController?.dismissPopupViewController(animated, completion: completion)
+			return
+		}
+		
 		let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
 		popupViewController?.willMoveToParentViewController(nil)
 		popupViewController?.beginAppearanceTransition(false, animated: animated)
@@ -214,6 +215,7 @@ extension UIViewController {
 			}
 			
 			view.layoutIfNeeded()
+			UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 			UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
 				self.bottomConstraint?.constant = self.view.frame.size.height
 				self.popupViewController!.view.alpha = finalAlpha
@@ -225,6 +227,7 @@ extension UIViewController {
 				self.popupViewController!.view.removeFromSuperview()
 				blurView.removeFromSuperview()
 				self.popupViewController = nil
+				UIApplication.sharedApplication().endIgnoringInteractionEvents()
 				if let completion = completion {
 					completion()
 				}
@@ -277,7 +280,7 @@ extension UIViewController {
 	}
 	
 	func blurViewDidTapped() {
-        view.endEditing(true)
+		view.endEditing(true)
 //        if let onClickCancelArea = onClickCancelArea {
 //            onClickCancelArea()
 //        }

@@ -15,11 +15,11 @@ protocol DependOnNodePickerViewControllerDelegate {
 
 class DependOnNodePickerViewController: UIViewController {
 	var delegate: DependOnNodePickerViewControllerDelegate?
-	var services: [DependOnService] = [] {
-		didSet {
-			updateServices()
-		}
-	}
+    var services: [DependOnService] = [DependOnService]() {
+        didSet {
+            updateServices()
+        }
+    }
 	
 	var allTasks: [TaskNode] {
 		// 取出所有选中的service 的tasks 组成一个数组
@@ -29,6 +29,7 @@ class DependOnNodePickerViewController: UIViewController {
 	
 	var selectedTask: TaskNode? {
 		didSet {
+			updateServices()
 			tableView?.reloadData()
 		}
 	}
@@ -43,18 +44,27 @@ class DependOnNodePickerViewController: UIViewController {
 		setupIconsContainerView()
 		setupTableView()
 		setupDetermineButton()
-        setupSelectedService()
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupSelectedService()
+    }
 	
 	func setupSelectedService() {
 		if let selectedTask = selectedTask {
 			for (i, service) in services.enumerate() {
-				if service.tasks.contains(selectedTask) {
+				let t = service.tasks.filter({ (task) -> Bool in
+					return task.id == selectedTask.id
+				}).first
+				if let t = t {
 					var s = services[i]
 					s.selected = true
 					services[i] = s
-                    updateServices()
+					updateServices()
 					tableView.reloadData()
+//                    let index = allTasks.indexOf(t)
+//                    tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0), atScrollPosition: .Middle, animated: false)
 					break
 				}
 			}
@@ -127,7 +137,7 @@ class DependOnNodePickerViewController: UIViewController {
 		// setup imageview with service
 		for (i, service) in services.enumerate() {
 			let imageView = serviceLogos[i]
-			imageView.asyncLoadImage(service.serviceIcon)
+			imageView.asyncLoadImage(service.icon)
 			imageView.selected = service.selected
 			let tap = UITapGestureRecognizer(target: self, action: "logoTapped:")
 			imageView.addGestureRecognizer(tap)
@@ -149,15 +159,14 @@ class DependOnNodePickerViewController: UIViewController {
 			view.leading == tableView.leading
 			view.trailing == tableView.trailing
 			tableView.top == logoContainerView.bottom
-//			tableView.bottom == view.bottom
 		}
 	}
 	
 	func setupDetermineButton() {
 		let button = UIButton()
 		button.setTitle("Determine", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(15)
-        button.backgroundColor = UIColor ( red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0 )
+		button.titleLabel?.font = UIFont.systemFontOfSize(15)
+		button.backgroundColor = UIColor(red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0)
 		button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 		button.layer.cornerRadius = 15
 		button.addTarget(self, action: "determineButtonPressed", forControlEvents: .TouchUpInside)
@@ -189,6 +198,7 @@ class DependOnNodePickerViewController: UIViewController {
 	}
 }
 
+// MARK: - UITableViewDataSource
 extension DependOnNodePickerViewController: UITableViewDataSource {
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let task = allTasks[indexPath.row]
@@ -209,6 +219,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 	}
 }
 
+// MARK: - UITableViewDelegate
 extension DependOnNodePickerViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -221,27 +232,7 @@ extension DependOnNodePickerViewController: UITableViewDelegate {
 	}
 }
 
-func == (lhs: TaskNode, rhs: TaskNode) -> Bool {
-	return lhs.id == rhs.id
-}
 
-func == (lhs: DependOnService, rhs: DependOnService) -> Bool {
-	return lhs.serviceId == rhs.serviceId
-}
-
-struct TaskNode: Equatable {
-	var date: NSDate
-	var desc: String
-	var id: Int
-}
-
-struct DependOnService: Equatable {
-	var serviceId: Int
-	var serviceIcon: String
-	var desc: String
-	var tasks: [TaskNode]
-	var selected: Bool
-}
 
 class CycleImageView: UIImageView {
 	var selected: Bool = false {

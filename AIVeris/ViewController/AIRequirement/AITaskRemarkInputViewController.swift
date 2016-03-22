@@ -8,14 +8,17 @@
 
 import UIKit
 
+protocol AITaskRemarkInputViewControllerDelegate: NSObjectProtocol {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?)
+}
+
 class AITaskRemarkInputViewController: UIViewController {
-    
+	weak var delegate: AITaskRemarkInputViewControllerDelegate?
 	var text: String? {
 		didSet {
 			textField.text = text
 		}
 	}
-	var onReturnButtonClick: ((inputText: String?) -> ())? = nil
 	@IBOutlet weak var textField: UITextField!
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,8 +35,8 @@ extension AITaskRemarkInputViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
 		textField.endEditing(true)
 		dismissPopupViewController(true) { () -> Void in
-			if let onReturnButtonClick = self.onReturnButtonClick {
-				onReturnButtonClick(inputText: textField.text)
+			if let delegate = self.delegate {
+				delegate.remarkInputViewControllerDidEndEditing(self, text: textField.text)
 			}
 		}
 		return true

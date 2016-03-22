@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskNoteEditViewController" customModule="Veris" customModuleProvider="target">
             <connections>
+                <outlet property="textView" destination="Sde-yn-jiV" id="7gW-1u-WaE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
