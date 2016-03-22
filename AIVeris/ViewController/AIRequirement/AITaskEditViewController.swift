@@ -184,7 +184,7 @@ extension AITaskEditViewController {
 				tasks.append(randomTask())
 			}
 			
-			let service = DependOnService(serviceId: random() % 100, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", desc: "Service description", tasks: tasks, selected: false)
+			let service = DependOnService(id: random() % 100, icon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", desc: "Service description", tasks: tasks, selected: false)
 			result.append(service)
 		}
 		fakeServiceResult = result
