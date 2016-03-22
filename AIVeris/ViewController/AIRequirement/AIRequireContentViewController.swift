@@ -129,6 +129,8 @@ class AIRequireContentViewController: UIViewController {
 		tableview.estimatedRowHeight = 140
 		tableview.rowHeight = UITableViewAutomaticDimension
 		tableview.showsVerticalScrollIndicator = false
+        
+        tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 		// Reloading for the visible cells to layout correctly
 		Async.main { () -> Void in
 			self.tableview.reloadData()
@@ -232,7 +234,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		// PlaceHolder UIImageView.
 		let bgImageViewHolder = UIImageView(image: UIImage(named: imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
 		cell.contentView.addSubview(bgImageViewHolder)
-		bgImageViewHolder.tag = 11
+		bgImageViewHolder.tag = 18
 		
 		// Setup 2 : Title UILabel.
 		let titleLabel = UILabel()
@@ -633,6 +635,12 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 	}
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
+        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+        imageView.image = img
+        cell.setSlideState(.Center, animated: true)
+        cell.setNeedsDisplay()
+        
 	}
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, willSlideToState slideState: SESlideTableViewCellSlideState) {
