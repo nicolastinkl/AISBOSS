@@ -277,6 +277,11 @@ struct AIApplication{
         case submitOrderByService
         // 查询价格
         case findServicePrice
+        
+        // 查询需求管理初始化信息
+        case queryBusinessInfo
+        
+        
         // 一键恢复订单
         var description: String {
             
@@ -306,6 +311,7 @@ struct AIApplication{
             case .submitOrderByService:   return AIApplication.KURL_ReleaseURL + "/submitOrderByService"
             case .findServiceDetailNew: return AIApplication.KURL_ReleaseURL+"/findServiceDetailNew"
             case .findServicePrice: return AIApplication.KURL_ReleaseURL + "/findServicePrice"
+            case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             }
             
         }
