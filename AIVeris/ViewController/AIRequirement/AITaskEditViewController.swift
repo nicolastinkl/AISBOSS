@@ -192,7 +192,7 @@ extension AITaskEditViewController {
 	}
 	
 	class func randomTask() -> TaskNode {
-		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task description", id: random() % 100000)
+		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task descriptionTask descriptionTask description", id: random() % 100000)
 		return task
 	}
 }
