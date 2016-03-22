@@ -22,9 +22,9 @@ class AIRequirementHandler: NSObject {
     }
     
     
-    func queryOriginalRequirement(params : [String : NSObject])  {
+    func queryOriginalRequirement(proposalID : NSNumber, roleType : NSNumber)  {
         
-        
+
      
     }
     
