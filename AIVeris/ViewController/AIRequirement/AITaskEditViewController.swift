@@ -132,11 +132,12 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		if let dependOnTask = dependOnTask {
 			vc.selectedTask = dependOnTask
 		}
+		
 		var frame = vc.view.frame
 		frame.size.height = 400
 		vc.view.frame = frame
 		vc.delegate = self
-		vc.services = fakeServices()
+		vc.services = self.dynamicType.fakeServices()
 		navigationController?.useBlurForPopup = true
 		navigationController?.presentPopupViewController(vc, animated: true)
 	}
@@ -170,7 +171,12 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 
 // MARK: - fake data
 extension AITaskEditViewController {
-	func fakeServices() -> [DependOnService] {
+	static var fakeServiceResult: [DependOnService]?
+	class func fakeServices() -> [DependOnService] {
+		if let result = fakeServiceResult {
+			return result
+		}
+		
 		var result = [DependOnService]()
 		for _ in 0 ... 7 {
 			var tasks = [TaskNode]()
@@ -181,10 +187,11 @@ extension AITaskEditViewController {
 			let service = DependOnService(serviceId: random() % 100, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", desc: "Service description", tasks: tasks, selected: false)
 			result.append(service)
 		}
+		fakeServiceResult = result
 		return result
 	}
 	
-	func randomTask() -> TaskNode {
+	class func randomTask() -> TaskNode {
 		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task description", id: random() % 100000)
 		return task
 	}

@@ -61,7 +61,9 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 		layoutCollectionView.itemSize = CGSizeMake(90, 20)
 		layoutCollectionView.minimumLineSpacing = 10
 		layoutCollectionView.minimumInteritemSpacing = 5
-		let collectionTag = UICollectionView(frame: self.view.frame, collectionViewLayout: layoutCollectionView)
+        var frame = self.view.frame
+        frame.size.height -= 44
+		let collectionTag = UICollectionView(frame: frame, collectionViewLayout: layoutCollectionView)
 		collectionTag.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 20, right: 0)
 		collectionTag.delegate = self
 		collectionTag.dataSource = self

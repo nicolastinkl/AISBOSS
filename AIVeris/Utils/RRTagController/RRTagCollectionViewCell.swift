@@ -18,7 +18,7 @@ class RRTagCollectionViewCell: UICollectionViewCell {
         textContent.layer.masksToBounds = true
         textContent.layer.cornerRadius = 20
         textContent.layer.borderWidth = 2
-        textContent.layer.borderColor = UIColor(red:0.1059, green:0.2902, blue:0.6549, alpha:1.0).CGColor
+        textContent.layer.borderColor = UIColor(red: 0.1098, green: 0.4353, blue: 0.8706, alpha: 1.0).CGColor
         textContent.font = UIFont.boldSystemFontOfSize(17)
         textContent.textAlignment = NSTextAlignment.Center
         return textContent
