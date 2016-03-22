@@ -660,7 +660,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 extension AIRequireContentViewController {
 	
 	@IBAction func addTagButtonPressed() {
-		let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse", "Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède", "Suisse"], blockFinish: { (selectedTags, unSelectedTags) -> () in
+		let vc = AITaskTagViewController.tagController(["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède"], blockFinish: { (selectedTags, unSelectedTags) -> () in
 			print(selectedTags)
 			}, blockCancel: { () -> () in
 			print("tag select cancel")
