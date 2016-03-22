@@ -116,7 +116,7 @@ static UIImage* SECreateImageWithColor(UIColor* color, CGSize size) {
 	[super layoutSubviews];
 	
 	CGSize size = self.frame.size;
-	m_colorView.frame = CGRectMake(0, 0, size.width, size.height);
+	m_colorView.frame = CGRectMake(0, 0, size.width, size.height-5);
 	
 	if (m_buttonView) {
 		switch (m_side) {
