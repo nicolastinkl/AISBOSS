@@ -137,7 +137,7 @@ class DependOnNodePickerViewController: UIViewController {
 		// setup imageview with service
 		for (i, service) in services.enumerate() {
 			let imageView = serviceLogos[i]
-			imageView.asyncLoadImage(service.serviceIcon)
+			imageView.asyncLoadImage(service.icon)
 			imageView.selected = service.selected
 			let tap = UITapGestureRecognizer(target: self, action: "logoTapped:")
 			imageView.addGestureRecognizer(tap)
@@ -232,27 +232,7 @@ extension DependOnNodePickerViewController: UITableViewDelegate {
 	}
 }
 
-func == (lhs: TaskNode, rhs: TaskNode) -> Bool {
-	return lhs.id == rhs.id
-}
 
-func == (lhs: DependOnService, rhs: DependOnService) -> Bool {
-	return lhs.serviceId == rhs.serviceId
-}
-
-struct TaskNode: Equatable {
-	var date: NSDate
-	var desc: String
-	var id: Int
-}
-
-struct DependOnService: Equatable {
-	var serviceId: Int
-	var serviceIcon: String
-	var desc: String
-	var tasks: [TaskNode]
-	var selected: Bool
-}
 
 class CycleImageView: UIImageView {
 	var selected: Bool = false {

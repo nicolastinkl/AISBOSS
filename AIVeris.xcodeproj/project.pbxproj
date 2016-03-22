@@ -172,6 +172,7 @@
 		8472CBD41BCCAC900084A926 /* PriceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD21BCCAC900084A926 /* PriceItem.swift */; };
 		8472CBD61BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; };
 		8472CBD71BCCAD300084A926 /* PriceAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472CBD51BCCAD300084A926 /* PriceAccount.swift */; };
+		84751CCE1CA0E183008A99CD /* AITaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */; };
 		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
 		847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F69231C1EAF1D008A7804 /* Localizable.strings */; };
@@ -810,6 +811,7 @@
 		847115FA1BCD02940032C210 /* AICoverFlowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICoverFlowCell.swift; sourceTree = "<group>"; };
 		8472CBD21BCCAC900084A926 /* PriceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceItem.swift; sourceTree = "<group>"; };
 		8472CBD51BCCAD300084A926 /* PriceAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceAccount.swift; sourceTree = "<group>"; };
+		84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskDataModel.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
 		847F69241C1EAF37008A7804 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -2793,6 +2795,7 @@
 			isa = PBXGroup;
 			children = (
 				84E3B7A41C916D870006BE49 /* AITimePickerView.swift */,
+				84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */,
 				84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */,
 				84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */,
 				8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */,
@@ -3617,6 +3620,7 @@
 				849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				934EEB191C916CAD00C4EE67 /* AIRACContentCell.swift in Sources */,
+				84751CCE1CA0E183008A99CD /* AITaskDataModel.swift in Sources */,
 				81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */,
 				8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */,
 				849B4B371C0EDFE300BEC179 /* FLEXWindow.m in Sources */,
