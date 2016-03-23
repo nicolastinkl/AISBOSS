@@ -480,6 +480,7 @@
 		93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */; };
 		93F0E2961C929B8600E1790E /* AIRACClosureTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */; };
 		93F7066C1C5224EC00AB6BFC /* ServiceCardTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */; };
+		93F873AD1CA239AD00912A40 /* AISelectedServiceTableVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F873AC1CA239AD00912A40 /* AISelectedServiceTableVController.swift */; };
 		93FA1D7C1B9C2E8D009965C8 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */; };
 		93FA1D7F1B9C2E9D009965C8 /* JTSScrollIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */; };
 		93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1D821B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m */; };
@@ -1270,6 +1271,7 @@
 		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDatePickerView.xib; sourceTree = "<group>"; };
 		93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewDataSource.swift; sourceTree = "<group>"; };
 		93F7066B1C5224EC00AB6BFC /* ServiceCardTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardTextView.swift; sourceTree = "<group>"; };
+		93F873AC1CA239AD00912A40 /* AISelectedServiceTableVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISelectedServiceTableVController.swift; sourceTree = "<group>"; };
 		93FA1D7A1B9C2E8D009965C8 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		93FA1D7B1B9C2E8D009965C8 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		93FA1D7D1B9C2E9D009965C8 /* JTSScrollIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTSScrollIndicator.h; sourceTree = "<group>"; };
@@ -2796,6 +2798,7 @@
 		93CD0D281C8E72E00047F4A7 /* AIRequirement */ = {
 			isa = PBXGroup;
 			children = (
+				932DB0891C8F01640024C40D /* SubViews */,
 				84E3B7A41C916D870006BE49 /* AITimePickerView.swift */,
 				84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */,
 				84E3B7A51C916D870006BE49 /* AITimePickerViewController.swift */,
@@ -2812,7 +2815,6 @@
 				84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */,
 				84C0F1621C9FF91700BA7266 /* AITaskNoteEditViewController.swift */,
 				84C0F1631C9FF91700BA7266 /* AITaskNoteEditViewController.xib */,
-				932DB0891C8F01640024C40D /* SubViews */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
 				93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */,
@@ -2820,6 +2822,7 @@
 				934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */,
 				934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */,
 				120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */,
+				93F873AC1CA239AD00912A40 /* AISelectedServiceTableVController.swift */,
 			);
 			path = AIRequirement;
 			sourceTree = "<group>";
@@ -3434,6 +3437,7 @@
 				84B62B181BD891670081ABDF /* ImageContent.swift in Sources */,
 				93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */,
 				818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */,
+				93F873AD1CA239AD00912A40 /* AISelectedServiceTableVController.swift in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
