@@ -20,8 +20,10 @@ class AIAssignmentContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentLabel.font = AITools.myriadLightSemiCondensedWithSize(17)
-        tarButton.titleLabel?.font = AITools.myriadLightWithSize(17)
+        
+        contentLabel.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(52))
+        
+        tarButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(52))
         
     }
     
