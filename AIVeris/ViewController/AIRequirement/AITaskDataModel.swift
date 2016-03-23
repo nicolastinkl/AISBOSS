@@ -36,6 +36,6 @@ struct DependOnService: Equatable {
 
 struct RequirementTag: Equatable {
     var id: Int
-    var desc: String
     var selected: Bool
+    var textContent: String
 }

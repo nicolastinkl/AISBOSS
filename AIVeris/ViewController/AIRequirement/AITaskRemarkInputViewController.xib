@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskRemarkInputViewController" customModule="DimPresentViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskRemarkInputViewController" customModule="Veris" customModuleProvider="target">
             <connections>
-                <outlet property="textField" destination="5RB-mW-xGg" id="Isi-Pg-V3k"/>
+                <outlet property="textField" destination="TpN-Dm-CFm" id="x9D-wg-I8F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,21 +16,22 @@
             <rect key="frame" x="0.0" y="0.0" width="641" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RB-mW-xGg">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TpN-Dm-CFm" customClass="KMPlaceholderTextView" customModule="Veris" customModuleProvider="target">
                     <rect key="frame" x="8" y="8" width="625" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <connections>
-                        <outlet property="delegate" destination="-1" id="bwq-YY-YnA"/>
+                        <outlet property="delegate" destination="-1" id="Eps-pg-6rv"/>
                     </connections>
-                </textField>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.050980392156862744" green="0.058823529411764705" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="5RB-mW-xGg" secondAttribute="trailing" constant="8" id="8Rx-dg-qxL"/>
-                <constraint firstItem="5RB-mW-xGg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="g3C-sW-h1z"/>
-                <constraint firstAttribute="bottom" secondItem="5RB-mW-xGg" secondAttribute="bottom" constant="8" id="oZc-aw-5mg"/>
-                <constraint firstItem="5RB-mW-xGg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="sVf-CB-sgG"/>
+                <constraint firstAttribute="bottom" secondItem="TpN-Dm-CFm" secondAttribute="bottom" constant="8" id="LhW-fr-M4i"/>
+                <constraint firstAttribute="trailing" secondItem="TpN-Dm-CFm" secondAttribute="trailing" constant="8" id="Pd8-9k-Rfg"/>
+                <constraint firstItem="TpN-Dm-CFm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Zym-RF-Ui2"/>
+                <constraint firstItem="TpN-Dm-CFm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="aha-5I-Y4D"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
