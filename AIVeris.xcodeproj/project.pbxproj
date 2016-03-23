@@ -157,6 +157,7 @@
 		845751CD1CA24574008A342A /* BuyerRequirmentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */; };
 		845751CF1CA2876B008A342A /* BuyerMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845751CE1CA2876B008A342A /* BuyerMessageCell.xib */; };
 		845751D11CA287F7008A342A /* BuyerMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845751D01CA287F7008A342A /* BuyerMessageCell.swift */; };
+		845751D31CA29A2E008A342A /* BuyerOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845751D21CA29A2E008A342A /* BuyerOrderModel.swift */; };
 		8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */; };
 		8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */; };
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
@@ -802,6 +803,7 @@
 		845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerRequirmentMessageViewController.xib; sourceTree = "<group>"; };
 		845751CE1CA2876B008A342A /* BuyerMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerMessageCell.xib; sourceTree = "<group>"; };
 		845751D01CA287F7008A342A /* BuyerMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerMessageCell.swift; sourceTree = "<group>"; };
+		845751D21CA29A2E008A342A /* BuyerOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerOrderModel.swift; sourceTree = "<group>"; };
 		8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRestoreToolBar.swift; sourceTree = "<group>"; };
 		8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceRestoreToolBar.xib; sourceTree = "<group>"; };
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
@@ -1440,6 +1442,7 @@
 				1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */,
 				1261FF701C92720300E72B41 /* AIBaseModel.swift */,
 				813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */,
+				845751D21CA29A2E008A342A /* BuyerOrderModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -3431,6 +3434,7 @@
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
 				8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */,
+				845751D31CA29A2E008A342A /* BuyerOrderModel.swift in Sources */,
 				845E4D171C44D5B900FB32E5 /* AIDropdownBrandView.swift in Sources */,
 				93FA1E611B9C3E12009965C8 /* AISellerModel.m in Sources */,
 				93FA1E131B9C375A009965C8 /* AIUINavigationController.m in Sources */,
