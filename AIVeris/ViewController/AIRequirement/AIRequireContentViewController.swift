@@ -536,20 +536,12 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 	
 	func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
-		
-		if let RCell = rememberCellButton {
-			if (RCell as! UIButton) != (sender as! UIButton) {
-                /*
-                let preCell = RCell.superview!!.superview!.superview as! AIRACContentCell
-//                let indexPath = tableview.indexPathForCell(preCell)!
-//                
-//                let currentCellModel = dataSource?[indexPath.section]
-//                var contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
-                cell.hasExpend = false
-               // self.configureExpendCell(preCell, atIndexPath: indexPath, contentModel: contentModel)
-                */
-			}
-		}
+        
+        let vc = AITaskRemarkInputViewController()         
+        self.useBlurForPopup = true
+        self.presentPopupViewController(vc, duration: 0.1, animated: true)
+        
+        /*
 		
 		let indexPath = tableview.indexPathForCell(cell)!
 		let currentCellModel = dataSource?[indexPath.section]
@@ -591,6 +583,7 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 		cell.layoutSubviews()
 		cell.setNeedsLayout()
 		rememberCellButton = sender // Rememeber Cell's button...
+        */
 	}
 	
 	// reload
