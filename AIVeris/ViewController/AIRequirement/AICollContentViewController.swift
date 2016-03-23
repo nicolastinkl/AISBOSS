@@ -19,7 +19,6 @@ class AICollContentViewController: UIViewController {
     
     //IB views
     var serviceInstView : AIAssignServiceView!
-    var limitListView : AILimitListView!
     var timeLineTable : UITableView!
     var launchButton : UIButton!
     
@@ -35,7 +34,6 @@ class AICollContentViewController: UIViewController {
         
         loadData()
         buildServiceInstView()
-        buildLimitListView()
         initTable()
         buildLaunchView()
     }
@@ -50,14 +48,14 @@ class AICollContentViewController: UIViewController {
         serviceInstView.setTop(-20)
         serviceInstView.setWidth(view.bounds.width + 40)
         
-        var limitFrame = serviceInstView.frame
-        limitFrame.origin.y = CGRectGetMaxY(serviceInstView.frame)
-        limitFrame.size.height = 0
-        limitListView.frame = limitFrame
-        limitListView.loadData((assginServiceInsts?.first?.limits)!)
+//        var limitFrame = serviceInstView.frame
+//        limitFrame.origin.y = CGRectGetMaxY(serviceInstView.frame)
+//        limitFrame.size.height = 0
+//        limitListView.frame = limitFrame
+//        limitListView.loadData((assginServiceInsts?.first?.limits)!)
         
         
-        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(limitListView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
+        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
         launchButton.frame = buttonFrame
         
         var tableFrame = serviceInstView.frame
@@ -67,12 +65,6 @@ class AICollContentViewController: UIViewController {
     }
     
     // MARK: - 构造subView
-    func buildLimitListView(){
-        
-        limitListView = AILimitListView(frame: CGRectZero)
-        
-        view.addSubview(limitListView)
-    }
     
     func buildServiceInstView(){
         serviceInstView = AIAssignServiceView.currentView()
@@ -135,39 +127,50 @@ class AICollContentViewController: UIViewController {
 extension AICollContentViewController : AIAssignServiceViewDelegate{
     
     func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
-        limitListView.refreshLimits(limitsModel)
-        let frameHeight = limitListView.getFrameHeight()
-        UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-            var frame = self.limitListView.frame
-            if(self.limitListView.frame.height == 0){
-                frame.size.height = frameHeight
-                
-                self.limitListView.alpha = 1
-                var tableFrame = self.timeLineTable.frame
-                tableFrame.size.height -= frameHeight
-                tableFrame.origin.y += frameHeight
-                self.timeLineTable.frame = tableFrame
-                self.launchButton.frame.origin.y += frameHeight
-            }
-            else{
-                frame.size.height = 0
-                self.limitListView.alpha = 0
-                
-                var tableFrame = self.timeLineTable.frame
-                tableFrame.size.height += frameHeight
-                tableFrame.origin.y -= frameHeight
-                self.timeLineTable.frame = tableFrame
-                
-                self.launchButton.frame.origin.y -= frameHeight
-            }
-            self.limitListView.frame = frame
-            }) { (finished) -> Void in
-                //
-        }
+//        limitListView.refreshLimits(limitsModel)
+//        let frameHeight = limitListView.getFrameHeight()
+//        UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+//            var frame = self.limitListView.frame
+//            if(self.limitListView.frame.height == 0){
+//                frame.size.height = frameHeight
+//                
+//                self.limitListView.alpha = 1
+//                var tableFrame = self.timeLineTable.frame
+//                tableFrame.size.height -= frameHeight
+//                tableFrame.origin.y += frameHeight
+//                self.timeLineTable.frame = tableFrame
+//                self.launchButton.frame.origin.y += frameHeight
+//            }
+//            else{
+//                frame.size.height = 0
+//                self.limitListView.alpha = 0
+//                
+//                var tableFrame = self.timeLineTable.frame
+//                tableFrame.size.height += frameHeight
+//                tableFrame.origin.y -= frameHeight
+//                self.timeLineTable.frame = tableFrame
+//                
+//                self.launchButton.frame.origin.y -= frameHeight
+//            }
+//            self.limitListView.frame = frame
+//            }) { (finished) -> Void in
+//                //
+//        }
+        let limitVC = AILimitListViewController()
+        limitVC.loadData(limitsModel)
+        limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
+        let height = limitVC.limitListView.getFrameHeight()
+        limitVC.view.frame.size.height = height
+        navigationController?.useBlurForPopup = false
+        navigationController?.presentPopupViewController(limitVC, animated: true,onClickCancelArea : {
+            () -> Void in
+            //关闭弹窗时，继续轮播
+            self.serviceInstView.switchAnimationState(true)
+        })
     }
     
     func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel){
-        print(curServiceInst)
+        //print(curServiceInst)
     }
 }
 
