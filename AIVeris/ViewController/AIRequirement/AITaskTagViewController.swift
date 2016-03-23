@@ -14,7 +14,7 @@ class AITaskTagViewController: RRTagController {
 		print("addTagDidClick")
 		let vc = AITaskRemarkInputViewController()
 		vc.delegate = self
-		navigationController?.presentPopupViewController(vc, animated: true)
+		presentPopupViewController(vc, animated: true)
 	}
 	
 	override func viewDidLoad() {

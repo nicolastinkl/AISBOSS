@@ -161,8 +161,8 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = limitVC.limitListView.getFrameHeight()
         limitVC.view.frame.size.height = height
-        navigationController?.useBlurForPopup = false
-        navigationController?.presentPopupViewController(limitVC, animated: true,onClickCancelArea : {
+//        navigationController?.useBlurForPopup = false
+        presentPopupViewController(limitVC, animated: true,onClickCancelArea : {
             () -> Void in
             //关闭弹窗时，继续轮播
             self.serviceInstView.switchAnimationState(true)
