@@ -138,15 +138,13 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		vc.view.frame = frame
 		vc.delegate = self
 		vc.services = self.dynamicType.fakeServices()
-//		navigationController?.useBlurForPopup = false
 		presentPopupViewController(vc, animated: true)
 	}
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
-		let vc = AITimePickerViewController()
+		let vc = AITimePickerViewController.initFromNib()
 		if let dateNode = dateNode {
 			vc.date = dateNode.date
 		}
-//		navigationController?.useBlurForPopup = true
 		
 		vc.onDetermineButtonClick = { date, dateDescription in
 			print(self)
@@ -158,7 +156,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		})
 	}
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
-		let vc = AITaskRemarkInputViewController()
+		let vc = AITaskRemarkInputViewController.initFromNib()
 		vc.delegate = self
 //		navigationController?.useBlurForPopup = true
 		presentPopupViewController(vc, duration: 0.1, animated: true)

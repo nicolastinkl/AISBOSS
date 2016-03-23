@@ -12,7 +12,7 @@ class AITaskTagViewController: RRTagController {
 
 	override func addTagDidClick() {
 		print("addTagDidClick")
-		let vc = AITaskRemarkInputViewController()
+		let vc = AITaskRemarkInputViewController.initFromNib()
 		vc.delegate = self
 		presentPopupViewController(vc, animated: true)
 	}

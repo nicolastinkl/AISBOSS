@@ -29,7 +29,7 @@ class AITaskRemarkInputViewController: UIViewController {
 	}
 	
 	override func viewDidAppear(animated: Bool) {
-		textField.becomeFirstResponder()
+		textField?.becomeFirstResponder()
 		super.viewDidAppear(animated)
 	}
 }

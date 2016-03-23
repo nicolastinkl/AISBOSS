@@ -350,7 +350,9 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			expendView.addSubview(stable)
 			
 			let cancelButton = DesignableButton(type: UIButtonType.Custom)
+            cancelButton.translatesAutoresizingMaskIntoConstraints = false
 			let distriButton = DesignableButton(type: UIButtonType.Custom)
+            distriButton.translatesAutoresizingMaskIntoConstraints = false
 			
 			expendView.addSubview(cancelButton)
 			expendView.addSubview(distriButton)
@@ -364,7 +366,9 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
 			cancelButton.snp_makeConstraints(closure: { (make) -> Void in
 				make.height.equalTo(33)
-				make.width.greaterThanOrEqualTo(120)
+                //                Will attempt to recover by breaking constraint
+//                <SnapKit.LayoutConstraint:0x1744a9840@/Users/admin/Documents/Project/AISBOSS/AIVeris/ViewController/AIRequirement/AIRequireContentViewController.swift#365 Spring.DesignableButton:0x1410520d0.width >= 120.0>
+//				make.width.greaterThanOrEqualTo(120)
 				make.bottom.equalTo(bgImageView.snp_bottom).offset(-10)
 				make.leading.equalTo(15)
 			})
@@ -537,7 +541,7 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 	
 	func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
         
-        let vc = AITaskRemarkInputViewController()
+        let vc = AITaskRemarkInputViewController.initFromNib()
         presentPopupViewController(vc, animated: true)
         
         /*
