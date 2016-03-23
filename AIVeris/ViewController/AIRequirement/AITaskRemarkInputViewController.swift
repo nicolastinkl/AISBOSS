@@ -19,13 +19,13 @@ class AITaskRemarkInputViewController: UIViewController {
 	
 	var text: String? {
 		didSet {
-			textField.text = text
+			textField?.text = text
 		}
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		textField.text = text
+		textField?.text = text
 	}
 	
 	override func viewDidAppear(animated: Bool) {
