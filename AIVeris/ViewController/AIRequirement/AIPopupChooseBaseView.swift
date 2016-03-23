@@ -11,9 +11,17 @@ import UIKit
 class AIPopupChooseBaseView: UIView {
 
     var cellViews = [AIPopupChooseCellView]()
-    var itemModels : [AIPopupChooseModel]?
+    var cancelButton : UIButton!
+    var confirmButton : UIButton!
     
-    let cellViewHeight : CGFloat = 30
+    var itemModels : [AIPopupChooseModel]?
+    var delegate : AIPopupChooseViewDelegate?
+    
+    let cellViewHeight : CGFloat = 40
+    let buttonPaddingTop : CGFloat = 10
+    let buttonWidth : CGFloat = 100
+    let buttonHeight : CGFloat = 30
+    let buttonCorner : CGFloat = 8
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,13 +34,15 @@ class AIPopupChooseBaseView: UIView {
     }
     
     func initView(){
-        self.backgroundColor = UIColor(patternImage: UIImage(named: "cell_background")!)
-        self.clipsToBounds = true
+        self.backgroundColor = UIColor(patternImage: UIImage(named: "AIRequirebg1")!)
+        //self.clipsToBounds = true
     }
     
     func loadData(models : [AIPopupChooseModel]){
         itemModels = models
         buildView()
+        buildHandleButtons()
+        bindEvents()
         fixFrame()
     }
     
@@ -43,9 +53,10 @@ class AIPopupChooseBaseView: UIView {
     }
     
     func fixFrame(){
-        if let lastCellView = cellViews.last{
-            self.frame.size.height = CGRectGetMaxY(lastCellView.frame)
+        if(cancelButton != nil){
+            self.frame.size.height = CGRectGetMaxY(cancelButton.frame) + buttonPaddingTop
         }
+        
     }
     
     private func buildView(){
@@ -66,11 +77,56 @@ class AIPopupChooseBaseView: UIView {
         
     }
     
-    func getFrameHeight() -> CGFloat{
-        if let lastCellView = cellViews.last{
-            return CGRectGetMaxY(lastCellView.frame)
+    private func buildHandleButtons(){
+        var y : CGFloat = buttonPaddingTop
+        if let lastCell = cellViews.last{
+            y = CGRectGetMaxY(lastCell.frame) + buttonPaddingTop
         }
-        return 0
+        let x1 = (self.width / 2 - buttonWidth) / 2
+        let cancelFrame = CGRect(x: x1, y: y, width: buttonWidth, height: buttonHeight)
+        cancelButton = UIButton(frame: cancelFrame)
+        cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
+        cancelButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        cancelButton.backgroundColor = UIColor(hex: "#146EE2")
+        cancelButton.titleLabel?.textColor = UIColor.whiteColor()
+        cancelButton.layer.cornerRadius = buttonCorner
+        cancelButton.layer.masksToBounds = true
+        self.addSubview(cancelButton)
+        
+        let x2 = (self.width / 2 + self.width - buttonWidth) / 2
+        let submitFrame = CGRect(x: x2, y: y, width: buttonWidth, height: buttonHeight)
+        confirmButton = UIButton(frame: submitFrame)
+        confirmButton.setTitle("Save", forState: UIControlState.Normal)
+        confirmButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        confirmButton.backgroundColor = UIColor(hex: "#146EE2")
+        confirmButton.titleLabel?.textColor = UIColor.whiteColor()
+        confirmButton.layer.cornerRadius = buttonCorner
+        confirmButton.layer.masksToBounds = true
+        self.addSubview(confirmButton)
+
+    }
+    
+    private func bindEvents(){
+        let cancelTapGuesture = UITapGestureRecognizer(target: self, action: "cancelAction")
+        cancelButton.addGestureRecognizer(cancelTapGuesture)
+        let confirmGuesture = UITapGestureRecognizer(target: self, action: "confirmAction")
+        confirmButton.addGestureRecognizer(confirmGuesture)
+    }
+    
+    func cancelAction(){
+        if let delegate = delegate{
+            delegate.didCancel(self)
+        }
+    }
+    
+    func confirmAction(){
+        if let delegate = delegate{
+            delegate.didConfirm(self)
+        }
+    }
+    
+    func getFrameHeight() -> CGFloat{
+        return CGRectGetMaxY(cancelButton.frame) + buttonPaddingTop
     }
 
 
@@ -125,7 +181,7 @@ class AIPopupChooseCellView: UIView {
     
     private func buildView(){
         self.backgroundColor = UIColor.clearColor()
-        self.clipsToBounds = true
+        //self.clipsToBounds = true
         buildLeftIcon()
         buildContentLabel()
         buildConfirmView()
@@ -174,6 +230,7 @@ class AIPopupChooseCellView: UIView {
     
     func tapAction(sender : AnyObject){
         isSelect = !isSelect
+        itemModel?.isSelect = isSelect
         if isSelect{
             confirmView.image = UIImage(named: "Type_On")
         }
@@ -181,4 +238,10 @@ class AIPopupChooseCellView: UIView {
             confirmView.image = UIImage(named: "Type_Off")
         }
     }
+}
+
+protocol AIPopupChooseViewDelegate {
+    func didConfirm(view : AIPopupChooseBaseView)
+    
+    func didCancel(view : AIPopupChooseBaseView)
 }
