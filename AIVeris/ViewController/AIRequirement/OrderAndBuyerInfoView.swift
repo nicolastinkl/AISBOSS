@@ -9,6 +9,8 @@
 import UIKit
 
 class OrderAndBuyerInfoView: UIView {
+    
+    var delegate: OrderAndBuyerInfoViewDelegate?
 
     @IBOutlet weak var buyerIcon: UIImageView!
     @IBOutlet weak var messageNumber: UILabel!
@@ -47,6 +49,9 @@ class OrderAndBuyerInfoView: UIView {
         
         let barColors = [UIColor(hex: "#0b82c5"), UIColor(hex: "#10c2dd")]
         progressBar.progressTintColors = barColors
+        
+        
+        buyerIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "buyerIconClicked:"))
     }
     
     func setProgress(progress: CGFloat) {
@@ -57,18 +62,14 @@ class OrderAndBuyerInfoView: UIView {
         percentageNumber.text = NSString(format: "%d%%", percentage) as String
     }
     
+    
+    func buyerIconClicked(sender : UIGestureRecognizer){
+        delegate?.buyerIconClicked?()
+    }
+    
+    
     private func setBuyerIconCorner() {
         let iconBounds = buyerIcon.bounds
-        
-//        let maskView = UIImageView(frame: CGRect(x: buyerIcon.frame.origin.x, y: buyerIcon.frame.origin.y, width: iconBounds.width * 1.5, height: iconBounds.width * 1.5))
-//        
-//        maskView.frame.offsetInPlace(dx: iconBounds.width - maskView.frame.width, dy: (iconBounds.height - maskView.frame.height) / 2)
-//        
-//        maskView.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.2)
-//        maskView.layer.cornerRadius = maskView.bounds.width / 2
-//        
-//        buyerIcon.addSubview(maskView)
-        
         
         let maskLayer = CAShapeLayer()
         
@@ -82,6 +83,8 @@ class OrderAndBuyerInfoView: UIView {
         maskLayer.path = maskPath.CGPath
         buyerIcon.layer.mask = maskLayer
     }
-    
+}
 
+@objc protocol OrderAndBuyerInfoViewDelegate {
+    optional func buyerIconClicked()
 }

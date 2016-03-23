@@ -153,6 +153,10 @@
 		84567F691C5222CA0032266C /* AITagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84567F631C5222CA0032266C /* AITagsView.swift */; };
 		84567F6A1C5222CA0032266C /* multiLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 84567F641C5222CA0032266C /* multiLabels.json */; };
 		8457064B1C61F05B00216D70 /* AIStepperParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457064A1C61F05B00216D70 /* AIStepperParamView.swift */; };
+		845751CB1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845751CA1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift */; };
+		845751CD1CA24574008A342A /* BuyerRequirmentMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */; };
+		845751CF1CA2876B008A342A /* BuyerMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845751CE1CA2876B008A342A /* BuyerMessageCell.xib */; };
+		845751D11CA287F7008A342A /* BuyerMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845751D01CA287F7008A342A /* BuyerMessageCell.swift */; };
 		8458D08E1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */; };
 		8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */; };
 		845BE0081BE88E080001716A /* ProposalViewTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BE0071BE88E080001716A /* ProposalViewTest.storyboard */; };
@@ -794,6 +798,10 @@
 		84567F631C5222CA0032266C /* AITagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITagsView.swift; sourceTree = "<group>"; };
 		84567F641C5222CA0032266C /* multiLabels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = multiLabels.json; sourceTree = "<group>"; };
 		8457064A1C61F05B00216D70 /* AIStepperParamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIStepperParamView.swift; sourceTree = "<group>"; };
+		845751CA1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerRequirmentMessageViewController.swift; sourceTree = "<group>"; };
+		845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerRequirmentMessageViewController.xib; sourceTree = "<group>"; };
+		845751CE1CA2876B008A342A /* BuyerMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyerMessageCell.xib; sourceTree = "<group>"; };
+		845751D01CA287F7008A342A /* BuyerMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerMessageCell.swift; sourceTree = "<group>"; };
 		8458D08D1C1032BC00DF8E7A /* ServiceRestoreToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRestoreToolBar.swift; sourceTree = "<group>"; };
 		8458D08F1C1032D000DF8E7A /* ServiceRestoreToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceRestoreToolBar.xib; sourceTree = "<group>"; };
 		845BE0071BE88E080001716A /* ProposalViewTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProposalViewTest.storyboard; sourceTree = "<group>"; };
@@ -2122,6 +2130,8 @@
 				93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */,
 				932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */,
 				120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */,
+				845751CE1CA2876B008A342A /* BuyerMessageCell.xib */,
+				845751D01CA287F7008A342A /* BuyerMessageCell.swift */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -2823,6 +2833,8 @@
 				934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */,
 				120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */,
 				93F873AE1CA2427A00912A40 /* AISelectedServiceTableVController.swift */,
+				845751CA1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift */,
+				845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */,
 			);
 			path = AIRequirement;
 			sourceTree = "<group>";
@@ -3213,6 +3225,7 @@
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
 				93C33F2B1B9C1071007BF506 /* AIErrorRetryView.xib in Resources */,
+				845751CD1CA24574008A342A /* BuyerRequirmentMessageViewController.xib in Resources */,
 				93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */,
 				93CB8D811BF9F41C00C41DDE /* MyriadPro-LightSemiCn.otf in Resources */,
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
@@ -3242,6 +3255,7 @@
 				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,
 				930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */,
 				849B0BD51C202B61008C0A23 /* UIHomeStoryboard.storyboard in Resources */,
+				845751CF1CA2876B008A342A /* BuyerMessageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3343,6 +3357,7 @@
 				847F69261C1EB337008A7804 /* AILocalizationManager.swift in Sources */,
 				930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */,
 				9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */,
+				845751CB1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift in Sources */,
 				934445E71C8EEF3100F86E5D /* SESlideTableViewCell.m in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
 				8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */,
@@ -3726,6 +3741,7 @@
 				81A5BE551BD87D2900019802 /* AIBubble.m in Sources */,
 				81C092831BAFAC0D003FFF35 /* SDImageCache.m in Sources */,
 				93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */,
+				845751D11CA287F7008A342A /* BuyerMessageCell.swift in Sources */,
 				8465731E1C435E04008ADA0B /* PriceAndStepperView.swift in Sources */,
 				93FA1DAF1B9C2EB8009965C8 /* GBSlideOutToUnlockView.m in Sources */,
 				93DF036E1C10384000C797C4 /* AISuperSwipeableCell.m in Sources */,
