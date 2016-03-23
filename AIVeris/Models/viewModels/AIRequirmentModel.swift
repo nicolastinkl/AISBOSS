@@ -25,6 +25,21 @@ class AILimitModel : AIBaseViewModel {
     }
 }
 
+//把权限列表设置的view抽象出来，还能用于filter选择
+class AIPopupChooseModel : AIBaseViewModel{
+    var itemId : Int
+    var itemTitle : String
+    var itemIcon : String
+    var isSelect : Bool
+    
+    init(itemId : Int, itemTitle : String , itemIcon : String , isSelect : Bool){
+        self.itemId = itemId
+        self.itemTitle = itemTitle
+        self.itemIcon = itemIcon
+        self.isSelect = isSelect
+    }
+}
+
 ///派单界面服务实例模型
 class AssignServiceInstModel : AIBaseViewModel {
     var serviceInstId : Int

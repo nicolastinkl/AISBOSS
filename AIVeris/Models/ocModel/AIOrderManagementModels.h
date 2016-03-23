@@ -157,9 +157,9 @@
 
 
 #pragma mark - AIOriginalRequirements
-@protocol AIOriginalRequirements @end
+@protocol AICommonRequirements @end
 
-@interface AIOriginalRequirements : JSONModel
+@interface AICommonRequirements : JSONModel
 
 @property (nonatomic, strong) NSString<Optional> *block_title;
 @property (nonatomic, strong) NSString<Optional> *block_desc;

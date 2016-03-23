@@ -45,7 +45,7 @@ class AIAssignServiceView: UIView {
     @IBAction func limitButtonAction(sender: UIButton) {
         if let delegate = delegate{
             //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
-            switchAnimationState()
+            switchAnimationState(false)
             delegate.limitButtonAction(self, limitsModel : (models?.first?.limits)!)
         }
     }
@@ -142,8 +142,8 @@ extension AIAssignServiceView{
         })
     }
     
-    func switchAnimationState(){
-        isRunAnimation = !isRunAnimation
+    func switchAnimationState(isRunAnimation : Bool){
+        //isRunAnimation = !isRunAnimation
         if isRunAnimation{
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer

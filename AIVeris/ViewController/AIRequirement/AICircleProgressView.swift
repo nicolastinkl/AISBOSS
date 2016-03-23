@@ -76,8 +76,13 @@ class AICircleProgressView: UIView {
             //因为半径已经变了，所以frame不再从0开始
             let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
             let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
+            //改变颜色时不需要动画，用这个禁用
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
             fontLayer.path = path.CGPath
             fontLayer.strokeColor = UIColor.blueColor().CGColor
+            CATransaction.commit()
+            
         }
         else {
             if let progress = progress{
