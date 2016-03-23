@@ -537,9 +537,8 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 	
 	func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
         
-        let vc = AITaskRemarkInputViewController()         
-        self.useBlurForPopup = true
-        self.presentPopupViewController(vc, duration: 0.1, animated: true)
+        let vc = UIViewController()
+        presentPopupViewController(vc, animated: true)
         
         /*
 		
