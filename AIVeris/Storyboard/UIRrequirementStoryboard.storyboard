@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xAz-8s-QX1">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -366,31 +366,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIAssignmentpng" translatesAutoresizingMaskIntoConstraints="NO" id="mRu-PC-0jU">
-                                <rect key="frame" x="150" y="65" width="300" height="296"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIAssignmentpng" translatesAutoresizingMaskIntoConstraints="NO" id="mRu-PC-0jU">
+                                <rect key="frame" x="160" y="80" width="280" height="270"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="296" id="Wgj-PX-81S"/>
-                                    <constraint firstAttribute="width" constant="300" id="pAT-rm-Rjn"/>
+                                    <constraint firstAttribute="height" constant="270" id="Wgj-PX-81S"/>
+                                    <constraint firstAttribute="width" constant="280" id="pAT-rm-Rjn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no requirement to allocate. click to edit the requirements at first." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol2-MK-kP3">
-                                <rect key="frame" x="140" y="376" width="320" height="67"/>
+                                <rect key="frame" x="140" y="355" width="320" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="YRr-gI-B7I"/>
+                                    <constraint firstAttribute="height" constant="55" id="YRr-gI-B7I"/>
                                     <constraint firstAttribute="width" constant="320" id="jOC-Co-PN2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUY-Zx-ZWr" customClass="DesignableButton" customModule="Spring">
-                                <rect key="frame" x="20" y="515" width="560" height="43"/>
+                                <rect key="frame" x="20" y="470" width="560" height="43"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.52549019607843139" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="QJq-DM-LIg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="start editing user requirements">
+                                <state key="normal" title="Start editing user requirements">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -406,12 +406,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="mRu-PC-0jU" secondAttribute="bottom" constant="27" id="IXQ-h3-JRN"/>
-                            <constraint firstItem="Ol2-MK-kP3" firstAttribute="top" secondItem="mRu-PC-0jU" secondAttribute="bottom" constant="15" id="Lcb-jI-XZK"/>
-                            <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="Ol2-MK-kP3" secondAttribute="bottom" constant="72" id="MDv-hD-bjV"/>
+                            <constraint firstItem="Ol2-MK-kP3" firstAttribute="top" secondItem="mRu-PC-0jU" secondAttribute="bottom" constant="5" id="Lcb-jI-XZK"/>
+                            <constraint firstItem="iUY-Zx-ZWr" firstAttribute="top" secondItem="Ol2-MK-kP3" secondAttribute="bottom" constant="60" id="MDv-hD-bjV"/>
                             <constraint firstItem="czg-a5-VcX" firstAttribute="top" secondItem="iUY-Zx-ZWr" secondAttribute="bottom" constant="182" id="NTj-0r-ZVO"/>
                             <constraint firstItem="Ol2-MK-kP3" firstAttribute="centerX" secondItem="Nsk-aq-UdB" secondAttribute="centerX" id="X8O-9h-BLA"/>
                             <constraint firstItem="mRu-PC-0jU" firstAttribute="centerX" secondItem="Nsk-aq-UdB" secondAttribute="centerX" id="YY9-yL-4ul"/>
-                            <constraint firstItem="mRu-PC-0jU" firstAttribute="top" secondItem="QgS-b6-0BQ" secondAttribute="bottom" constant="45" id="hpG-tv-SED"/>
+                            <constraint firstItem="mRu-PC-0jU" firstAttribute="top" secondItem="QgS-b6-0BQ" secondAttribute="bottom" constant="60" id="hpG-tv-SED"/>
                             <constraint firstItem="Ol2-MK-kP3" firstAttribute="centerX" secondItem="mRu-PC-0jU" secondAttribute="centerX" id="p3L-4Q-zN4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iUY-Zx-ZWr" secondAttribute="trailing" id="qul-8R-GlU"/>
                             <constraint firstAttribute="leadingMargin" secondItem="iUY-Zx-ZWr" secondAttribute="leading" id="sGk-uG-zb3"/>
