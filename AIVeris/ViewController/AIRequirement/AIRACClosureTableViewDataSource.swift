@@ -39,19 +39,7 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
 //        })
         
         
-    }
-    
-    func addCell(cell: UITableViewCell, didSelectBlock:((NSIndexPath -> Void))){
-     
-//        let castedBlock: AnyObject = unsafeBitCast(didSelectBlock as @convention(block) (NSIndexPath) -> Void, AnyObject.self)
-//        let cellInfo = NSMutableDictionary()
-//        cellInfo["block"] = castedBlock
-//        cellInfo["cell"] = cell
-//        dataSections.addObject(cellInfo)
-//        return cell
-        
-    }
-    
+    }     
  
 }
 
