@@ -588,7 +588,7 @@
 /* Begin PBXFileReference section */
 		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
 		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
-		12096C671CA2881400514E6C /* AITimelineFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineFilterViewController.swift; sourceTree = "<group>"; };
+		12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineFilterViewController.swift; sourceTree = "<group>"; };
 		120D67FA1C96D4D200E74D12 /* AITimelineCellBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineCellBaseView.swift; sourceTree = "<group>"; };
 		120D67FB1C96D4D200E74D12 /* AIRotateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRotateView.swift; sourceTree = "<group>"; };
 		120D67FC1C96D4D200E74D12 /* AIAssignServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAssignServiceView.xib; sourceTree = "<group>"; };
@@ -2813,6 +2813,7 @@
 		93CD0D281C8E72E00047F4A7 /* AIRequirement */ = {
 			isa = PBXGroup;
 			children = (
+				12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */,
 				932DB0891C8F01640024C40D /* SubViews */,
 				84E3B7A41C916D870006BE49 /* AITimePickerView.swift */,
 				84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */,
@@ -3394,6 +3395,7 @@
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				81B5476F1C27D7460062CB55 /* AIWishMessageView.swift in Sources */,
+				12096C6A1CA3AA4600514E6C /* AITimelineFilterViewController.swift in Sources */,
 				93FA1DC51B9C2F0F009965C8 /* BubbleView.m in Sources */,
 				93C33F181B9BEAFE007BF506 /* AIKinectButton.swift in Sources */,
 				93CA11D31C463475008B1EE1 /* AIFavoriteContentModel.swift in Sources */,
@@ -3704,7 +3706,6 @@
 				937EA38B1C0316D600AF776B /* AIDetailTopMenuView.swift in Sources */,
 				93C33F221B9BEAFE007BF506 /* TableViewCellBackgroundView.m in Sources */,
 				81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */,
-				12096C681CA2881400514E6C /* AITimelineFilterViewController.swift in Sources */,
 				844282901C45EF95001C2DCB /* OAStackViewAlignmentStrategy.m in Sources */,
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
