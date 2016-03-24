@@ -17,7 +17,7 @@ class AISelectedServiceTableVController: UIViewController {
 
     var sourceDelegate = AIRACClosureTableViewDataSource()
     
-    private let stableCellHeight: Int = 40
+    private let stableCellHeight: Int = 52
     
     var childModel: AIChildContentCellModel?
     

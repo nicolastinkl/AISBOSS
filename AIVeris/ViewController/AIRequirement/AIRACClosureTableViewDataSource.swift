@@ -47,7 +47,7 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
     
     //pragma mark UITableViewDataSource/Delegate Methods
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
+        return 52
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
