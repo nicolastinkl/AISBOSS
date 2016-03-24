@@ -9,6 +9,13 @@
 import Foundation
 
 //MARK: - view模型
+
+
+
+
+
+
+
 ///权限设置模型
 class AILimitModel : AIBaseViewModel {
     
@@ -107,4 +114,14 @@ enum TimelineStatus : Int {
 enum ServiceInstStatus : Int {
     case Init,Assigned
 }
+
+
+//MARK: 基本信息模型
+
+class AIBusinessInfoModel: AIBaseViewModel {
+    var serviceModels : IconServiceIntModel
+    
+}
+
+
 
