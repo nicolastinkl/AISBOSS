@@ -16,6 +16,7 @@ class AICollContentViewController: UIViewController {
     var assginServiceInsts : [AssignServiceInstModel]?
     var timelineModels : [AITimelineModel]!
     var cachedCells = Dictionary<Int,AITimelineCellBaseView>()
+    var filterModels : [AIPopupChooseModel]!
     
     //IB views
     var serviceInstView : AIAssignServiceView!
@@ -47,13 +48,6 @@ class AICollContentViewController: UIViewController {
         serviceInstView.setLeft(-20)
         serviceInstView.setTop(-20)
         serviceInstView.setWidth(view.bounds.width + 40)
-        
-//        var limitFrame = serviceInstView.frame
-//        limitFrame.origin.y = CGRectGetMaxY(serviceInstView.frame)
-//        limitFrame.size.height = 0
-//        limitListView.frame = limitFrame
-//        limitListView.loadData((assginServiceInsts?.first?.limits)!)
-        
         
         let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
         launchButton.frame = buttonFrame
@@ -119,6 +113,14 @@ class AICollContentViewController: UIViewController {
             AITimelineModel(timestamp: 1457403751, id: 1, title: "title2 wantsor", desc: "content2 needreply",status: 0),
             AITimelineModel(timestamp: 1457403751, id: 1, title: "title3 wantsor", desc: "content3 needreply",status: 1),
             AITimelineModel(timestamp: 1457403751, id: 1, title: "title4 wantsor", desc: "content4 needreply",status: 0)]
+        
+        filterModels = [AIPopupChooseModel(itemId: 1, itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Order information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Send message", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: 1, itemTitle: "Service remind", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false)]
     }
 
 }
@@ -161,12 +163,24 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = limitVC.limitListView.getFrameHeight()
         limitVC.view.frame.size.height = height
-        navigationController?.useBlurForPopup = false
-        navigationController?.presentPopupViewController(limitVC, animated: true,onClickCancelArea : {
+        presentPopupViewController(limitVC, animated: true,onClickCancelArea : {
             () -> Void in
             //关闭弹窗时，继续轮播
             self.serviceInstView.switchAnimationState(true)
         })
+    }
+    
+    func filterButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
+        
+        let vc = AITimelineFilterViewController()
+        vc.loadData(filterModels)
+        vc.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
+        let height = vc.popupChooseView.getFrameHeight()
+        vc.view.frame.size.height = height
+        presentPopupViewController(vc, animated: true)
+    }
+    func contactButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
+        
     }
     
     func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel){

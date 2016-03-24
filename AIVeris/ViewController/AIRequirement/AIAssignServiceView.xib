@@ -44,10 +44,16 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-4N-v7e" userLabel="contactButton">
                     <rect key="frame" x="479" y="154" width="53" height="30"/>
                     <state key="normal" title="contact"/>
+                    <connections>
+                        <action selector="contactButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="1VY-n8-mEY"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eku-ss-6Q3" userLabel="filterButton">
                     <rect key="frame" x="553" y="154" width="32" height="30"/>
                     <state key="normal" title="filter"/>
+                    <connections>
+                        <action selector="filterButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="CSP-va-xuq"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seller_Warning" translatesAutoresizingMaskIntoConstraints="NO" id="wip-5B-g6H" userLabel="limitIcon1">
                     <rect key="frame" x="369" y="161" width="15" height="15"/>

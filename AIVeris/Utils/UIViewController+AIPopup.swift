@@ -29,7 +29,7 @@ class ClosureWrapper {
 extension UIViewController {
 	private struct AssociatedKeys {
 		static var popupViewController = "popupViewController"
-		static var useBlurForPopup = "useBlurForPopup"
+//		static var useBlurForPopup = "useBlurForPopup"
 		static var popupViewOffset = "popupViewOffset"
 		static var blurViewKey = "blurViewKey"
 		static var bottomConstraintKey = "bottomConstraintKey"
@@ -52,15 +52,15 @@ extension UIViewController {
 		}
 	}
 	
-	var useBlurForPopup: Bool? {
-		set {
-			objc_setAssociatedObject(self, &AssociatedKeys.useBlurForPopup, newValue, .OBJC_ASSOCIATION_ASSIGN)
-		}
-		
-		get {
-			return objc_getAssociatedObject(self, &AssociatedKeys.useBlurForPopup) as? Bool
-		}
-	}
+//	var useBlurForPopup: Bool? {
+//		set {
+//			objc_setAssociatedObject(self, &AssociatedKeys.useBlurForPopup, newValue, .OBJC_ASSOCIATION_ASSIGN)
+//		}
+//
+//		get {
+//			return objc_getAssociatedObject(self, &AssociatedKeys.useBlurForPopup) as? Bool
+//		}
+//	}
 	
 	var popupViewOffset: CGPoint? {
 		set {
@@ -101,7 +101,11 @@ extension UIViewController {
 	 - parameter completion:              completion handler 可空
 	 - parameter onClickCancelArea:       模糊区域点击 handler 可空
 	 */
-	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
+	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, useBlurForPopup: Bool = false, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
+		if let navigationController = navigationController {
+			navigationController.presentPopupViewController(viewControllerToPresent, duration: duration, useBlurForPopup: useBlurForPopup, animated: animated, completion: completion, onClickCancelArea: onClickCancelArea)
+			return
+		}
 		if popupViewController == nil {
 			self.onClickCancelArea = onClickCancelArea
 			popupViewController = viewControllerToPresent
@@ -128,23 +132,25 @@ extension UIViewController {
 //			viewControllerToPresent.view.layer.cornerRadius = 5
 			
 			// blurView
-			addBlurView()
+//			addBlurView()
+			
+			addMaskView(useBlurForPopup: useBlurForPopup)
 			
 			let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
 			viewControllerToPresent.beginAppearanceTransition(true, animated: animated)
 			
 			let setupInitialConstraints = {
-                // use system constraint functions setup function
+				// use system constraint functions setup function
 //                let subview = viewControllerToPresent.view
 //                let superview = self.view
 //                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Left, relatedBy: .Equal, toItem: subview, attribute: .Left, multiplier: 1, constant: 0))
-//                
+//
 //                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Right, relatedBy: .Equal, toItem: subview, attribute: .Right, multiplier: 1, constant: 0))
-//                
+//
 //                self.bottomConstraint = NSLayoutConstraint(item: subview, attribute: .Bottom, relatedBy: .Equal, toItem: superview, attribute: .Bottom, multiplier: 1, constant: subview.frame.size.height)
-//                
+//
 //                superview.addConstraint(self.bottomConstraint!)
-//                
+//
 //                let heightConstraint = NSLayoutConstraint(item: subview, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: subview.frame.size.height)
 //                subview.addConstraint(heightConstraint)
 				
@@ -177,7 +183,7 @@ extension UIViewController {
 				UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
 					self.bottomConstraint?.constant = 0
 					viewControllerToPresent.view.alpha = finalAlpha
-					blurView.alpha = self.useBlurForPopup == true ? 1 : 0.4
+					blurView.alpha = useBlurForPopup == true ? 1 : 0.4
 					
 					self.view.layoutIfNeeded()
 					}, completion: { (success) -> Void in
@@ -274,7 +280,7 @@ extension UIViewController {
 		)
 	}
 	
-	func addBlurView() {
+	func addMaskView(useBlurForPopup useBlurForPopup: Bool) {
 		let fadeView = UIImageView()
 		fadeView.frame = UIScreen.mainScreen().bounds
 		
