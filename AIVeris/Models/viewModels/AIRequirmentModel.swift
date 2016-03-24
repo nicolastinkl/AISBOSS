@@ -119,7 +119,7 @@ enum ServiceInstStatus : Int {
 //MARK: 基本信息模型
 
 class AIBusinessInfoModel: AIBaseViewModel {
-    var serviceModels : IconServiceIntModel
+    //var serviceModels : IconServiceIntModel
     
 }
 
