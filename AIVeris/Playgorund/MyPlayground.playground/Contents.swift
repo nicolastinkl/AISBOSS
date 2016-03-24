@@ -118,14 +118,28 @@ class people : Hello {
 people().sayHello()
 
 
-
-
-
-
 func sayHello() {
     print("people say hello")
 }
 
+
+
+protocol Named {
+    var name: String { get }
+}
+protocol Aged {
+    var age: Int { get }
+}
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+typealias nameAgaProtocol = protocol<Named, Aged>
+func wishHappyBirthday(celebrator: nameAgaProtocol) {
+    print("Happy birthday \(celebrator.name) - you're \(celebrator.age)!")
+}
+let birthdayPerson = Person(name: "Malcolm", age: 21)
+wishHappyBirthday(birthdayPerson)
 
 
 
