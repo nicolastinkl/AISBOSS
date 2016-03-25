@@ -76,9 +76,18 @@ extension ErrorPopoverRenderer where Self : UIViewController {
     }
 }
 
+
 //基于UIView
 extension ErrorPopoverRenderer where Self : UIView {
     func presentError(errorOptions: NSError){
+        // print("在这里加默认实现，并提供ErrorView的默认参数。")
+    }
+}
+
+//基于UIView
+extension ErrorPopoverRenderer where Self : TinklView {
+    func presentError(errorOptions: NSError){
+        print(someProp)
         // print("在这里加默认实现，并提供ErrorView的默认参数。")
     }
 }
@@ -93,7 +102,7 @@ class TinklViewController: UIViewController, ErrorPopoverRenderer {
 }
 
 class TinklView : UIView, ErrorPopoverRenderer {
-    
+    var someProp: String = "string"
     func failedToEatHuman() {
         //抛出error
         presentError(NSError(domain: "asiainfo.com/userinfo/get", code: 1, userInfo: nil))
