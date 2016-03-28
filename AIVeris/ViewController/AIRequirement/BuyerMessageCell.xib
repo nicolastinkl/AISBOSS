@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="186" id="yic-AQ-xpR" customClass="BuyerMessageCell" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="186"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yic-AQ-xpR" id="onu-1J-n2Q">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="185"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fZc-Kq-zWy">
+                        <rect key="frame" x="8" y="8" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fZc-Kq-zWy" secondAttribute="height" multiplier="1:1" id="aFa-p0-woA"/>
+                            <constraint firstAttribute="width" constant="40" id="txH-P7-nEv"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital Appointment Booking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSF-SK-wFS" userLabel="Title">
+                        <rect key="frame" x="58" y="17" width="429" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7Ye-NY-TXW"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhL-J6-ljN" userLabel="Content">
+                        <rect key="frame" x="58" y="48" width="429" height="80"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0r-eF-XWs">
+                        <rect key="frame" x="221" y="132" width="148" height="30"/>
+                        <state key="normal" title="Refuse"/>
+                        <connections>
+                            <action selector="refuseAction:" destination="yic-AQ-xpR" eventType="touchUpInside" id="87X-A2-zxy"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HW-Lp-N9B">
+                        <rect key="frame" x="58" y="132" width="148" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="148" id="0xE-PF-wyv"/>
+                            <constraint firstAttribute="height" constant="30" id="xyI-ex-C8z"/>
+                        </constraints>
+                        <state key="normal" title="Accept"/>
+                        <connections>
+                            <action selector="acceptAction:" destination="yic-AQ-xpR" eventType="touchUpInside" id="Vv2-C7-vgI"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="9HW-Lp-N9B" secondAttribute="bottom" constant="15" id="FDo-Pz-QSS"/>
+                    <constraint firstItem="t0r-eF-XWs" firstAttribute="width" secondItem="9HW-Lp-N9B" secondAttribute="width" id="IKI-yz-R9K"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="t0r-eF-XWs" secondAttribute="trailing" constant="8" id="LlL-LJ-CI2"/>
+                    <constraint firstItem="fZc-Kq-zWy" firstAttribute="top" secondItem="onu-1J-n2Q" secondAttribute="topMargin" id="OHs-2j-1du"/>
+                    <constraint firstItem="FhL-J6-ljN" firstAttribute="leading" secondItem="mSF-SK-wFS" secondAttribute="leading" id="TTe-r1-cl8"/>
+                    <constraint firstItem="t0r-eF-XWs" firstAttribute="height" secondItem="9HW-Lp-N9B" secondAttribute="height" id="Tcj-D2-Xqu"/>
+                    <constraint firstItem="9HW-Lp-N9B" firstAttribute="leading" secondItem="FhL-J6-ljN" secondAttribute="leading" id="WGs-Rk-XQc"/>
+                    <constraint firstItem="t0r-eF-XWs" firstAttribute="leading" secondItem="9HW-Lp-N9B" secondAttribute="trailing" constant="15" id="ZGE-JO-zkB"/>
+                    <constraint firstItem="FhL-J6-ljN" firstAttribute="width" secondItem="mSF-SK-wFS" secondAttribute="width" id="a0H-xv-CuH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mSF-SK-wFS" secondAttribute="trailing" constant="5" id="eEG-AN-rTo"/>
+                    <constraint firstItem="mSF-SK-wFS" firstAttribute="centerY" secondItem="fZc-Kq-zWy" secondAttribute="centerY" id="edc-99-ptj"/>
+                    <constraint firstItem="9HW-Lp-N9B" firstAttribute="top" secondItem="FhL-J6-ljN" secondAttribute="bottom" constant="4" id="i0r-Qc-cWx"/>
+                    <constraint firstItem="FhL-J6-ljN" firstAttribute="top" secondItem="mSF-SK-wFS" secondAttribute="bottom" constant="10" id="j3W-TV-By9"/>
+                    <constraint firstItem="t0r-eF-XWs" firstAttribute="centerY" secondItem="9HW-Lp-N9B" secondAttribute="centerY" id="jZA-eB-IQT"/>
+                    <constraint firstItem="fZc-Kq-zWy" firstAttribute="leading" secondItem="onu-1J-n2Q" secondAttribute="leadingMargin" id="vel-hv-bQr"/>
+                    <constraint firstItem="mSF-SK-wFS" firstAttribute="leading" secondItem="fZc-Kq-zWy" secondAttribute="trailing" constant="10" id="wkF-XN-fXg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="acceptButton" destination="9HW-Lp-N9B" id="o51-Op-pVm"/>
+                <outlet property="refuseButton" destination="t0r-eF-XWs" id="ORt-fa-JdG"/>
+                <outlet property="serviceImage" destination="fZc-Kq-zWy" id="G0n-RR-LRc"/>
+                <outlet property="serviceTitle" destination="mSF-SK-wFS" id="K1N-PZ-oDw"/>
+                <outlet property="servviceContent" destination="FhL-J6-ljN" id="uJP-U0-BXr"/>
+            </connections>
+            <point key="canvasLocation" x="426" y="303"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="serviceIcon" width="20" height="20"/>
+    </resources>
+</document>

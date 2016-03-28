@@ -29,8 +29,8 @@ class AITaskRemarkInputViewController: UIViewController {
 	}
 	
 	override func viewDidAppear(animated: Bool) {
-		textField?.becomeFirstResponder()
 		super.viewDidAppear(animated)
+		textField?.becomeFirstResponder()
 	}
 }
 
@@ -52,7 +52,7 @@ extension AITaskRemarkInputViewController: UITextViewDelegate {
 		let viewHeightConstraint = view.constraints.filter { (c) -> Bool in
 			return c.firstAttribute == .Height
 		}.first
-        
+		
 		if let viewHeightConstraint = viewHeightConstraint {
 			viewHeightConstraint.constant = textView.contentSize.height + 17 // magic number
 			view.setNeedsUpdateConstraints()

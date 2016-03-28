@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyerRequirmentMessageViewController" customModule="Veris" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="zcj-YM-MMx" id="nht-KP-Jz3"/>
+                <outlet property="topView" destination="nOS-Jr-UhQ" id="Sl0-Rl-bAZ"/>
+                <outlet property="view" destination="iN0-l3-epB" id="bvZ-b7-Abu"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIRequirebg2" translatesAutoresizingMaskIntoConstraints="NO" id="vbF-he-FfO">
+                    <rect key="frame" x="13" y="20" width="574" height="580"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOS-Jr-UhQ" userLabel="TopView">
+                    <rect key="frame" x="13" y="20" width="574" height="59"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="PLW-J5-uLF"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq9-1g-mKu" userLabel="BackButton">
+                    <rect key="frame" x="16" y="543" width="39" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="39" id="6oh-bA-hhy"/>
+                        <constraint firstAttribute="height" constant="39" id="Srr-OV-HHL"/>
+                    </constraints>
+                    <state key="normal" image="AIRequirebgback"/>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="v5j-Y6-VzC"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zcj-YM-MMx">
+                    <rect key="frame" x="13" y="106" width="574" height="434"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.058823529409999999" green="0.52549019610000003" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="S0y-FK-rWj"/>
+                        <outlet property="delegate" destination="-1" id="hdM-4E-gvQ"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vbF-he-FfO" secondAttribute="bottom" id="3hu-fi-3Wb"/>
+                <constraint firstItem="nOS-Jr-UhQ" firstAttribute="width" secondItem="vbF-he-FfO" secondAttribute="width" id="3mg-xO-zMU"/>
+                <constraint firstItem="vbF-he-FfO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="F6L-mv-af7"/>
+                <constraint firstAttribute="bottom" secondItem="lq9-1g-mKu" secondAttribute="bottom" constant="18" id="NBO-dz-D2A"/>
+                <constraint firstItem="nOS-Jr-UhQ" firstAttribute="top" secondItem="vbF-he-FfO" secondAttribute="top" id="P9D-UY-31W"/>
+                <constraint firstItem="lq9-1g-mKu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Wbh-Qr-Zod"/>
+                <constraint firstItem="zcj-YM-MMx" firstAttribute="trailing" secondItem="vbF-he-FfO" secondAttribute="trailing" id="bBz-Hr-XTV"/>
+                <constraint firstItem="zcj-YM-MMx" firstAttribute="leading" secondItem="vbF-he-FfO" secondAttribute="leading" id="co4-gy-uRe"/>
+                <constraint firstAttribute="trailing" secondItem="vbF-he-FfO" secondAttribute="trailing" constant="13" id="fFx-UN-VHx"/>
+                <constraint firstItem="zcj-YM-MMx" firstAttribute="top" secondItem="nOS-Jr-UhQ" secondAttribute="bottom" constant="27" id="fwT-YI-UBF"/>
+                <constraint firstItem="nOS-Jr-UhQ" firstAttribute="leading" secondItem="vbF-he-FfO" secondAttribute="leading" id="gQG-85-15Z"/>
+                <constraint firstItem="vbF-he-FfO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="pVO-FL-HlA"/>
+                <constraint firstItem="zcj-YM-MMx" firstAttribute="bottom" secondItem="vbF-he-FfO" secondAttribute="bottom" constant="-60" id="v5W-b0-nq3"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="AIRequirebg2" width="581" height="1075"/>
+        <image name="AIRequirebgback" width="32" height="32"/>
+    </resources>
+</document>

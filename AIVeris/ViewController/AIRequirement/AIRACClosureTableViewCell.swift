@@ -31,7 +31,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         desLabel.numberOfLines = 1
         desLabel.lineBreakMode =  NSLineBreakMode.ByCharWrapping
         desLabel.text = ""
-        desLabel.font = AITools.myriadLightSemiExtendedWithSize(16)
+        desLabel.font = AITools.myriadLightSemiExtendedWithSize(14)
         desLabel.textColor = UIColor.whiteColor()
         desLabel.textAlignment = NSTextAlignment.Left
         return desLabel
@@ -58,14 +58,13 @@ class AIRACClosureTableViewCell: UITableViewCell {
         iconImage.snp_makeConstraints(closure: { (make) -> Void in
             make.top.equalTo(self.contentView).offset(5)
             make.leading.equalTo(10)
-            make.width.height.equalTo(25)
+            make.width.height.equalTo(30)
         })        
         
         contentLabel.snp_makeConstraints(closure: { (make) -> Void in
-            make.top.equalTo(self.contentView).offset(5)
+            make.top.equalTo(self.contentView).offset(9)
             make.leading.equalTo(iconImage.snp_right).offset(10)
             make.width.greaterThanOrEqualTo(20)
-//            make.trailing.equalTo(-14)
             make.height.equalTo(25)
         })
         
@@ -73,11 +72,12 @@ class AIRACClosureTableViewCell: UITableViewCell {
             make.leading.equalTo(iconImage.snp_left).offset(-5)
             make.trailing.equalTo(contentLabel.snp_right).offset(10)
             make.top.equalTo(iconImage.top).offset(0)
-            make.height.equalTo(35)
+            make.height.equalTo(42)
         }        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
+        
         isSelected = !isSelected
         
         if selected == true {
@@ -85,7 +85,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         }
         
         if isSelected == true {
-            selectedddImage.backgroundColor = UIColor(hex: "#1D86E5")
+            selectedddImage.backgroundColor = UIColor(hex: "#0f86E5")
         }else{
             selectedddImage.backgroundColor = UIColor.clearColor()
         }

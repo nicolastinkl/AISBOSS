@@ -281,6 +281,35 @@ struct AIApplication{
         // 查询需求管理初始化信息
         case queryBusinessInfo
         
+        // 原始需求列表
+        case queryOriginalRequirements
+        
+        // 直接保存为待分配状态
+        case saveAsTask
+        
+        // 查询待分配标签列表接口
+        case queryUnassignedRequirements
+        
+        // 转化为标签
+        case saveTagsAsTask
+        
+        // 转化为备注
+        case addNewTag
+        
+        // 保存新增备注
+        case addNewNote
+        
+        //MARK: 增加新的任务节点
+        case addNewTask
+        
+        //MARK: 设置权限
+        case setServiceProviderRights
+        
+        //MARK: 派单
+        case assginTask
+        
+        //MARK: 查询子服务默认标签列表
+        case queryServiceDefaultTags
         
         // 一键恢复订单
         var description: String {
@@ -312,6 +341,18 @@ struct AIApplication{
             case .findServiceDetailNew: return AIApplication.KURL_ReleaseURL+"/findServiceDetailNew"
             case .findServicePrice: return AIApplication.KURL_ReleaseURL + "/findServicePrice"
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
+                // 原始需求列表
+            case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryWishListInfo"
+            case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionState"
+            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
+            case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTags"
+            case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTags"
+            case addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTags"
+            case addNewTask : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTags"
+            case setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermission"
+            case assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
+            case queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagList"
+                
             }
             
         }

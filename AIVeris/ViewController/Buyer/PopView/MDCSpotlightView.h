@@ -28,6 +28,7 @@
 
 @interface MDCSpotlightView : MDCFocalPointView
 
+- (id)initWithFocalView:(UIView *)focalView;
 @property (nonatomic, strong) UIColor * bgColor;
 
 @end

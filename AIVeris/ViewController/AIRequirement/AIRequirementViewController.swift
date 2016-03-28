@@ -56,6 +56,8 @@ internal class AIRequirementViewController : UIViewController {
         
         let topView = OrderAndBuyerInfoView.createInstance()
         TopUserInfoView.addSubview(topView)
+        topView.delegate = self
+        
         topView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(TopUserInfoView)
         }
@@ -183,4 +185,11 @@ internal class AIRequirementViewController : UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+}
+
+extension AIRequirementViewController: OrderAndBuyerInfoViewDelegate {
+    func buyerIconClicked() {
+        let vc = BuyerRequirmentMessageViewController(nibName: "BuyerRequirmentMessageViewController", bundle: nil)
+        presentViewController(vc, animated: true, completion: nil)
+    }
 }

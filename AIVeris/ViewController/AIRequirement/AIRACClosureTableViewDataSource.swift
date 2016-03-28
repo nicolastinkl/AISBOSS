@@ -39,19 +39,7 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
 //        })
         
         
-    }
-    
-    func addCell(cell: UITableViewCell, didSelectBlock:((NSIndexPath -> Void))){
-     
-//        let castedBlock: AnyObject = unsafeBitCast(didSelectBlock as @convention(block) (NSIndexPath) -> Void, AnyObject.self)
-//        let cellInfo = NSMutableDictionary()
-//        cellInfo["block"] = castedBlock
-//        cellInfo["cell"] = cell
-//        dataSections.addObject(cellInfo)
-//        return cell
-        
-    }
-    
+    }     
  
 }
 
@@ -59,7 +47,7 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
     
     //pragma mark UITableViewDataSource/Delegate Methods
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
+        return 52
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
