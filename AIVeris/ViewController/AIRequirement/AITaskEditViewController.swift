@@ -25,6 +25,7 @@ class AITaskEditViewController: UIViewController {
 			timeLineView.setNeedsUpdateConstraints()
 			timeLineView.updateConstraintsIfNeeded()
 			UIView.animateWithDuration(0.25) { () -> Void in
+                self.timeLineView?.logo2.highlighted = self.timeLineView!.isTopLogoAtLeft
 				self.timeLineView?.layoutIfNeeded()
 				self.timeLineView?.animationLines()
 			}
@@ -36,6 +37,7 @@ class AITaskEditViewController: UIViewController {
 			timeLineView?.setNeedsUpdateConstraints()
 			timeLineView?.updateConstraintsIfNeeded()
 			UIView.animateWithDuration(0.25) { () -> Void in
+                self.timeLineView?.logo3.highlighted = self.timeLineView!.isMiddleLogoAtLeft
 				self.timeLineView?.layoutIfNeeded()
 				self.timeLineView?.animationLines()
 			}
@@ -142,6 +144,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 	}
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITimePickerViewController.initFromNib()
+		vc.taskDate = dependOnTask!.date
 		if let dateNode = dateNode {
 			vc.date = dateNode.date
 		}

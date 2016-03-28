@@ -10,10 +10,7 @@ import Foundation
 
 class AISelectedServiceTableVController: UIViewController {
     
-    func viewDidLoad(){
+    override func viewDidLoad(){
         super.viewDidLoad()
-        
     }
-    
-    
 }

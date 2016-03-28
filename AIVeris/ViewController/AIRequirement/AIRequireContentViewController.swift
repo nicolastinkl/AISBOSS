@@ -541,7 +541,10 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate {
 	
 	func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
         
+//        let vc = AITaskRemarkInputViewController() // ios8 UIViewController直接new 初始化不能从xib获取vc
         let vc = AITaskRemarkInputViewController.initFromNib()
+        
+        
         presentPopupViewController(vc, animated: true)
         
         /*
