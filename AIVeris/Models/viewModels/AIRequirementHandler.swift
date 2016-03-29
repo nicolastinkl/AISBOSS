@@ -31,7 +31,7 @@ class AIRequirementHandler: NSObject {
     }
     
     //MARK: 基本信息查询
-    func queryBusinessInfo(proposalID : NSNumber, roleType : NSNumber, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
+    func queryBusinessInfo(proposalID : NSNumber, roleType : NSNumber, success : (businessInfo : AIQueryBusinessInfos)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["role_type" : roleType, "proposal_id" : proposalID], "data_mode" : "0", "digest" : ""]
@@ -62,14 +62,9 @@ class AIRequirementHandler: NSObject {
     }
     
     
-    func parseBusinessInfo(requirements : AIQueryBusinessInfos, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
-        
-        
-        
-        
-        
-        
-        
+    func parseBusinessInfo(requirements : AIQueryBusinessInfos, success : (businessInfo : AIQueryBusinessInfos)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+   
+
     }
     
     

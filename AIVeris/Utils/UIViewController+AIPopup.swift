@@ -96,16 +96,22 @@ extension UIViewController {
 	 模糊化present viewcontroller
 
 	 - parameter viewControllerToPresent: viewControllerToPresent
-	 - parameter duration:                控制动画时间可空，默认0.25秒
+	 - parameter duration:                控制动画时间默认0.25秒 可空
+	 - parameter useBlurForPopup:         是否模糊 可空
 	 - parameter animated:                是否动画
 	 - parameter completion:              completion handler 可空
 	 - parameter onClickCancelArea:       模糊区域点击 handler 可空
 	 */
 	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, useBlurForPopup: Bool = false, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
-		if let navigationController = navigationController {
-			navigationController.presentPopupViewController(viewControllerToPresent, duration: duration, useBlurForPopup: useBlurForPopup, animated: animated, completion: completion, onClickCancelArea: onClickCancelArea)
-			return
-		}
+        if self is UINavigationController {
+            
+        } else {
+            if let navigationController = navigationController {
+                navigationController.presentPopupViewController(viewControllerToPresent, duration: duration, useBlurForPopup: useBlurForPopup, animated: animated, completion: completion, onClickCancelArea: onClickCancelArea)
+                return
+            }
+        }
+
 		if popupViewController == nil {
 			self.onClickCancelArea = onClickCancelArea
 			popupViewController = viewControllerToPresent
@@ -114,21 +120,21 @@ extension UIViewController {
 			addChildViewController(viewControllerToPresent)
 			
 			// parallax setup
-			let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-			interpolationHorizontal.minimumRelativeValue = -10
-			interpolationHorizontal.maximumRelativeValue = 10
-			
-			let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-			interpolationHorizontal.minimumRelativeValue = -10
-			interpolationHorizontal.maximumRelativeValue = 10
-			
-			popupViewController!.view.addMotionEffect(interpolationHorizontal)
-			popupViewController!.view.addMotionEffect(interpolationVertical)
+//			let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+//			interpolationHorizontal.minimumRelativeValue = -10
+//			interpolationHorizontal.maximumRelativeValue = 10
+//			
+//			let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+//			interpolationHorizontal.minimumRelativeValue = -10
+//			interpolationHorizontal.maximumRelativeValue = 10
+//			
+//			popupViewController!.view.addMotionEffect(interpolationHorizontal)
+//			popupViewController!.view.addMotionEffect(interpolationVertical)
 			
 			// shadow setup
-			viewControllerToPresent.view.layer.shadowOffset = .zero
-			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
-			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
+//			viewControllerToPresent.view.layer.shadowOffset = .zero
+//			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
+//			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
 //			viewControllerToPresent.view.layer.cornerRadius = 5
 			
 			// blurView

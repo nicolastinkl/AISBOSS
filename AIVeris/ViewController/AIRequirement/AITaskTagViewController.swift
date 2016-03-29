@@ -12,17 +12,17 @@ class AITaskTagViewController: RRTagController {
 
 	override func addTagDidClick() {
 		print("addTagDidClick")
-		let vc = AITaskRemarkInputViewController()
+		let vc = AITaskRemarkInputViewController.initFromNib()
 		vc.delegate = self
 		presentPopupViewController(vc, animated: true)
 	}
 	
 	override func viewDidLoad() {
+        
+		setupNavigationAndBackgroundImage()
 		super.viewDidLoad()
 		title = "Tag"
-		
         collectionTag.reloadData()
-		setupNavigationToAppTheme()
 		// Do any additional setup after loading the view.
 	}
 }
@@ -40,8 +40,8 @@ extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
 	}
 }
 
-extension AITaskTagViewController: AITaskNavigationDelegate {
-	func cancelButtonPressed(sender: UIButton) {
+extension AITaskTagViewController: AITaskNavigationBarDelegate {
+	func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed: UIButton) {
 		print("cancel button pressed")
 		if let onDidCancel = onDidCancel {
 			onDidCancel()
@@ -49,7 +49,7 @@ extension AITaskTagViewController: AITaskNavigationDelegate {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	func saveButtonPressed(sender: UIButton) {
+	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
 		var selected: Array<RequirementTag> = Array()
 		var unSelected: Array<RequirementTag> = Array()
 		

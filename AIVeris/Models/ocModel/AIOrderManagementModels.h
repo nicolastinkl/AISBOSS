@@ -88,6 +88,9 @@
 
 @interface AIRights : JSONModel
 
+@property (nonatomic, strong) NSString<Optional> *rightID;
+
+@property (nonatomic, strong) NSString<Optional> *rightValue;
 
 
 @end

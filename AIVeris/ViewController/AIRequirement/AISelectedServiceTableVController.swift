@@ -201,6 +201,4 @@ class AISelectedServiceTableVController: UIViewController {
         })
         
     }
-    
-    
 }
