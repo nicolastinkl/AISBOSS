@@ -58,10 +58,10 @@ class AITaskTimeLineView: UIView {
 	var line1: CAShapeLayer!
 	var line2: CAShapeLayer!
 	var line3: CAShapeLayer!
-    
-    var radiusOfLogo: CGFloat {
-        return logo1.width / 2
-    }
+	
+	var radiusOfLogo: CGFloat {
+		return logo1.width / 2
+	}
 	
 	var path1: CGPath {
 		var point1 = CGPoint(x: CGRectGetMidX(subLabel1.frame), y: CGRectGetMaxY(subLabel1.frame))
@@ -143,19 +143,20 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	func setupUI() {
+		let color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.18).CGColor
 		line1 = CAShapeLayer()
 		line1.lineWidth = 2
-		line1.strokeColor = UIColor(red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0).CGColor
+		line1.strokeColor = color
 		layer.addSublayer(line1)
 		
 		line2 = CAShapeLayer()
 		line2.lineWidth = 2
-		line2.strokeColor = UIColor(red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0).CGColor
+		line2.strokeColor = color
 		layer.addSublayer(line2)
 		
 		line3 = CAShapeLayer()
 		line3.lineWidth = 2
-		line3.strokeColor = UIColor(red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0).CGColor
+		line3.strokeColor = color
 		layer.addSublayer(line3)
 	}
 	
