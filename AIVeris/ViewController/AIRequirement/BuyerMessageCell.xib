@@ -78,6 +78,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="acceptButton" destination="9HW-Lp-N9B" id="o51-Op-pVm"/>
+                <outlet property="refuseButton" destination="t0r-eF-XWs" id="ORt-fa-JdG"/>
                 <outlet property="serviceImage" destination="fZc-Kq-zWy" id="G0n-RR-LRc"/>
                 <outlet property="serviceTitle" destination="mSF-SK-wFS" id="K1N-PZ-oDw"/>
                 <outlet property="servviceContent" destination="FhL-J6-ljN" id="uJP-U0-BXr"/>

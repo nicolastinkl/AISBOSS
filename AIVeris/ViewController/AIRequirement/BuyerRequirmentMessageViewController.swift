@@ -12,6 +12,13 @@ class BuyerRequirmentMessageViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,16 +47,11 @@ extension BuyerRequirmentMessageViewController: UITableViewDataSource, UITableVi
         return 2;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {    
-        if let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? BuyerMessageCell {
-
-            return cell
-        } else {
-            // never goes here
-            let cell = DependOnNodeCell(style: .Default, reuseIdentifier: "cell")
-            return cell
-        }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as!BuyerMessageCell
+        
+        return cell
     }
     
     /*

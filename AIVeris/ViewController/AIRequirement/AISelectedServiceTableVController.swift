@@ -17,7 +17,7 @@ class AISelectedServiceTableVController: UIViewController {
 
     var sourceDelegate = AIRACClosureTableViewDataSource()
     
-    private let stableCellHeight: Int = 40
+    private let stableCellHeight: Int = 52
     
     var childModel: AIChildContentCellModel?
     
@@ -25,6 +25,8 @@ class AISelectedServiceTableVController: UIViewController {
     
     weak var delegate: AISelectedServiceTableVControllerDelegate?
     
+    private let borderOffset: Int = 10
+
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -32,14 +34,24 @@ class AISelectedServiceTableVController: UIViewController {
             
             let expendView = UIView()
             view.addSubview(expendView)
+            let bgImageView = UIImageView(image: UIImage(named: "AIRequirebg2"))
+            expendView.addSubview(bgImageView)
             
             let tableHeight = stableCellHeight * (childModel?.childServerIconArray?.count ?? 0)
             expendView.snp_makeConstraints { (make) -> Void in
-                make.bottom.equalTo(0)
+                make.bottom.equalTo(borderOffset)
                 make.trailing.leading.equalTo(0)
-                make.height.equalTo(tableHeight+70)
+                make.height.equalTo(tableHeight+110)
             }
             
+            bgImageView.snp_makeConstraints { (make) -> Void in
+                make.bottom.equalTo(0)
+                make.trailing.leading.equalTo(0)
+                make.height.equalTo(self.view.snp_height)
+            }
+            
+            expendView.layer.cornerRadius = 8
+            expendView.layer.masksToBounds = true
             localCode { () -> () in
                 let stable = UITableView()
                 expendView.addSubview(stable)
@@ -50,29 +62,31 @@ class AISelectedServiceTableVController: UIViewController {
                 expendView.addSubview(cancelButton)
                 expendView.addSubview(distriButton)
                 
-                cancelButton.backgroundColor = UIColor(hexString: "#0D85E8")
+                cancelButton.backgroundColor = UIColor(hexString: "#3055ab")
                 cancelButton.setTitle("cancel", forState: UIControlState.Normal)
                 cancelButton.titleLabel?.textColor = UIColor.whiteColor()
                 cancelButton.cornerRadius = 5
-                cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
+                cancelButton.alpha = 0.65
+                cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(24)
                 cancelButton.snp_makeConstraints(closure: { (make) -> Void in
-                    make.height.equalTo(33)
-                    make.width.greaterThanOrEqualTo(120)
-                    make.bottom.equalTo(-10)
-                    make.leading.equalTo(15)
+                    make.height.equalTo(51)
+                    make.width.greaterThanOrEqualTo(189)
+                    make.bottom.equalTo(-27)
+                    make.leading.equalTo(13)
                 })
                 
                 distriButton.backgroundColor = UIColor(hexString: "#0D85E8")
                 distriButton.titleLabel?.textColor = UIColor.whiteColor()
-                distriButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(14)
-                distriButton.setTitle("distribution", forState: UIControlState.Normal)
+                distriButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(24)
+                distriButton.setTitle("  distribution", forState: UIControlState.Normal)
                 distriButton.cornerRadius = 5
+                distriButton.setImage(UIImage(named: "aiselectDistrButton"), forState: UIControlState.Normal)
                 distriButton.snp_makeConstraints(closure: { (make) -> Void in
                     make.height.equalTo(cancelButton.snp_height)
                     make.width.equalTo(cancelButton.snp_width)
-                    make.bottom.equalTo(-10)
-                    make.left.equalTo(cancelButton.snp_right).offset(20)
-                    make.trailing.equalTo(-15)
+                    make.bottom.equalTo(cancelButton.snp_bottom)
+                    make.left.equalTo(cancelButton.snp_right).offset(7)
+                    make.trailing.equalTo(-13)
                 })
                 
                 cancelButton.addTarget(self, action: "calcelAction:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -84,8 +98,8 @@ class AISelectedServiceTableVController: UIViewController {
                 stable.separatorStyle = UITableViewCellSeparatorStyle.None
                 stable.allowsMultipleSelection = true
                 stable.snp_makeConstraints(closure: { (make) -> Void in
-                    make.bottom.equalTo(distriButton.snp_top).offset(-10)
-                    make.leading.equalTo(10)
+                    make.bottom.equalTo(distriButton.snp_top).offset(-18)
+                    make.leading.equalTo(21)
                     make.trailing.equalTo(-14)
                     make.height.equalTo(tableHeight)
                 })

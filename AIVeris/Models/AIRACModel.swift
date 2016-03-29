@@ -22,8 +22,6 @@ internal struct AIRACModel : JSONJoy {
     init(_ decoder: JSONDecoder) {
         
     }
-   
-
 }
 
 
@@ -46,7 +44,6 @@ internal struct AILeftMenuModel : JSONJoy {
     }
     
 }
-
 
 /**
  *  @author tinkl, 16-03-03 14:03:01
