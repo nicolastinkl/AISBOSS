@@ -342,6 +342,13 @@
     return displaySize;
 }
 
++ (CGFloat)displaySizeFrom1242DesignSize:(CGFloat)size
+{
+    CGFloat displaySize;
+    displaySize = size / 3;
+    return displaySize;
+}
+
 
 + (CGSize)imageDisplaySizeFrom1080DesignSize:(CGSize)size
 {

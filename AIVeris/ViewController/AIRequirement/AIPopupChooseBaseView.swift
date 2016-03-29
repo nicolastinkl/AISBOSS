@@ -13,14 +13,17 @@ class AIPopupChooseBaseView: UIView {
     var cellViews = [AIPopupChooseCellView]()
     var cancelButton : UIButton!
     var confirmButton : UIButton!
+    var bgView : UIImageView!
     
     var itemModels : [AIPopupChooseModel]?
     var delegate : AIPopupChooseViewDelegate?
     
-    let cellViewHeight : CGFloat = 40
-    let buttonPaddingTop : CGFloat = 10
-    let buttonWidth : CGFloat = 100
-    let buttonHeight : CGFloat = 30
+    let cellViewHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(70)
+    let viewTopPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(60)
+    let cellViewPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(83)
+    let buttonPaddingTop : CGFloat = AITools.displaySizeFrom1242DesignSize(116)
+    let buttonWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(568)
+    let buttonHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(154)
     let buttonCorner : CGFloat = 8
     
     override init(frame: CGRect) {
@@ -34,13 +37,14 @@ class AIPopupChooseBaseView: UIView {
     }
     
     func initView(){
-        self.backgroundColor = UIColor(patternImage: UIImage(named: "AIRequirebg1")!)
+        //self.backgroundColor = UIColor(patternImage: UIImage(named: "popup-bg")!)
         //self.clipsToBounds = true
+        buildBackgroundView()
     }
     
     func loadData(models : [AIPopupChooseModel]){
         itemModels = models
-        buildView()
+        buildCellViews()
         buildHandleButtons()
         bindEvents()
         fixFrame()
@@ -55,19 +59,24 @@ class AIPopupChooseBaseView: UIView {
     func fixFrame(){
         if(cancelButton != nil){
             self.frame.size.height = CGRectGetMaxY(cancelButton.frame) + buttonPaddingTop
+            bgView.frame = self.bounds
         }
         
     }
     
-    private func buildView(){
+    private func buildCellViews(){
         //先清除所有的subView，才能重复构造
         for subView in self.subviews{
-            subView.removeFromSuperview()
+            if subView.isKindOfClass(AIPopupChooseCellView) {
+                subView.removeFromSuperview()
+            }
+            
         }
         cellViews.removeAll()
+        
         if let itemModels = itemModels{
             for (index,itemModels) in itemModels.enumerate(){
-                let frame = CGRect(x: 0, y: cellViewHeight * CGFloat(index), width: self.frame.width, height: cellViewHeight)
+                let frame = CGRect(x: 0, y: viewTopPadding + (cellViewHeight + cellViewPadding) * CGFloat(index), width: self.frame.width, height: cellViewHeight)
                 let cellView = AIPopupChooseCellView(frame: frame)
                 cellView.loadData(itemModels)
                 self.addSubview(cellView)
@@ -75,6 +84,13 @@ class AIPopupChooseBaseView: UIView {
             }
         }
         
+    }
+    
+    private func buildBackgroundView(){
+        bgView = UIImageView(frame: self.bounds)
+        bgView.contentMode = .ScaleToFill
+        bgView.image = UIImage(named: "popup-bg")
+        self.addSubview(bgView)
     }
     
     private func buildHandleButtons(){
@@ -87,8 +103,9 @@ class AIPopupChooseBaseView: UIView {
         cancelButton = UIButton(frame: cancelFrame)
         cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        cancelButton.backgroundColor = UIColor(hex: "#146EE2")
+        cancelButton.backgroundColor = UIColor(hex: "#3055ab")
         cancelButton.titleLabel?.textColor = UIColor.whiteColor()
+        cancelButton.alpha = 0.6
         cancelButton.layer.cornerRadius = buttonCorner
         cancelButton.layer.masksToBounds = true
         self.addSubview(cancelButton)
@@ -98,7 +115,7 @@ class AIPopupChooseBaseView: UIView {
         confirmButton = UIButton(frame: submitFrame)
         confirmButton.setTitle("Save", forState: UIControlState.Normal)
         confirmButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        confirmButton.backgroundColor = UIColor(hex: "#146EE2")
+        confirmButton.backgroundColor = UIColor(hex: "#0f86e8")
         confirmButton.titleLabel?.textColor = UIColor.whiteColor()
         confirmButton.layer.cornerRadius = buttonCorner
         confirmButton.layer.masksToBounds = true
@@ -142,9 +159,17 @@ class AIPopupChooseCellView: UIView {
     var isSelect = false
     
     //position
-    let iconSize : CGFloat = 20
-    let viewPadding : CGFloat = 10
-    let confirmViewSize : CGFloat = 20
+    let iconSize : CGFloat = AITools.displaySizeFrom1242DesignSize(58)
+    
+    let confirmViewSize : CGFloat = AITools.displaySizeFrom1242DesignSize(70)
+    let iconLeftPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(54)
+    let iconRightPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(20)
+    let confirmFrameRightPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(54)
+    let contentFontUnselect = AITools.myriadLightSemiCondensedWithSize(42 / 3)
+    let contentFontSelect = AITools.myriadSemiCondensedWithSize(42 / 3)
+    
+    let iconSelect = UIImage(named: "popup-select")
+    let iconUnselect = UIImage(named: "popup-unselect")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -169,11 +194,13 @@ class AIPopupChooseCellView: UIView {
         //根据是否有权限决定是选中还是未选中
         if let itemModel = itemModel{
             if itemModel.isSelect {
-                confirmView.image = UIImage(named: "Type_On")
+                confirmView.image = iconSelect
+                contentLabel.font = contentFontSelect
                 isSelect = true
             }
             else{
-                confirmView.image = UIImage(named: "Type_Off")
+                confirmView.image = iconUnselect
+                contentLabel.font = contentFontUnselect
                 isSelect = false
             }
         }
@@ -191,17 +218,17 @@ class AIPopupChooseCellView: UIView {
     
     private func buildLeftIcon(){
         let y = (self.bounds.height - iconSize) / 2
-        let frame = CGRect(x: 0, y: y, width: iconSize, height: iconSize)
+        let frame = CGRect(x: iconLeftPadding, y: y, width: iconSize, height: iconSize)
         iconView = UIImageView(frame: frame)
         self.addSubview(iconView)
     }
     
     private func buildContentLabel(){
-        let frame = CGRect(x: iconSize + viewPadding, y: 0, width: self.bounds.width - iconSize - confirmViewSize - viewPadding * 2, height: self.bounds.height)
+        let width = self.bounds.width - confirmViewSize - confirmFrameRightPadding - (CGRectGetMaxX(iconView.frame) + iconRightPadding)
+        let frame = CGRect(x: CGRectGetMaxX(iconView.frame) + iconRightPadding, y: 0, width: width, height: self.bounds.height)
         contentLabel = UILabel(frame: frame)
         contentLabel.textColor = UIColor.whiteColor()
-        //TODO 设置为市场部给的字体
-        contentLabel.font = UIFont.systemFontOfSize(14)
+        
         
         self.addSubview(contentLabel)
     }
@@ -216,7 +243,7 @@ class AIPopupChooseCellView: UIView {
     
     private func buildConfirmView(){
         let y = (self.bounds.height - confirmViewSize) / 2
-        let x = CGRectGetMaxX(contentLabel.frame)
+        let x = self.bounds.width - confirmViewSize - confirmFrameRightPadding
         let frame = CGRect(x: x, y: y, width: confirmViewSize, height: confirmViewSize)
         confirmView = UIImageView(frame: frame)
         
