@@ -43,7 +43,7 @@ class AICollContentViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         var serviceInstViewFrame = view.bounds
-        serviceInstViewFrame.size.height = 100
+        serviceInstViewFrame.size.height = 83
         serviceInstView.frame = serviceInstViewFrame
         serviceInstView.setLeft(-20)
         serviceInstView.setTop(-20)
@@ -101,12 +101,15 @@ class AICollContentViewController: UIViewController {
     
     // MARK: - 加载数据
     func loadData(){
-        let limits = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
+        let limits1 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
+        let limits2 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
+        let limits3 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
+        let limits4 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         
-        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, limits: limits)
-        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, limits: limits)
-        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, limits: limits)
-        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits)
+        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, limits: limits1)
+        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, limits: limits2)
+        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, limits: limits3)
+        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits4)
         assginServiceInsts = [model1,model2,model3,model4]
         
         timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "title1 wantsor", desc: "content1 needreply",status: 0),
