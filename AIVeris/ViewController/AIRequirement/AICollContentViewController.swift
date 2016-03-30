@@ -29,6 +29,7 @@ class AICollContentViewController: UIViewController {
     let LaunchButtonHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(103)
     let LaunchButtonBgWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(761)
     let LaunchButtonBgHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(127)
+    let TitleLeftPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(35)
     let buttonPadding : CGFloat = 10
     
     
@@ -73,10 +74,11 @@ class AICollContentViewController: UIViewController {
         timeLineTable.delegate = self
         timeLineTable.dataSource = self
         timeLineTable.separatorStyle = UITableViewCellSeparatorStyle.None
-        let backgroundImageView = UIImageView(frame: timeLineTable.bounds)
-        let backgroundImage = UIImage(named: "cell_background")
-        backgroundImageView.image = backgroundImage
-        timeLineTable.backgroundView = backgroundImageView
+        timeLineTable.backgroundColor = UIColor.clearColor()
+//        let backgroundImageView = UIImageView(frame: timeLineTable.bounds)
+//        let backgroundImage = UIImage(named: "cell_background")
+//        backgroundImageView.image = backgroundImage
+//        timeLineTable.backgroundView = backgroundImageView
     }
     
     func buildLaunchView(){
@@ -129,10 +131,10 @@ class AICollContentViewController: UIViewController {
         let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits4)
         assginServiceInsts = [model1,model2,model3,model4]
         
-        timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "title1 wantsor", desc: "content1 needreply",status: 0),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title2 wantsor", desc: "content2 needreply",status: 0),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title3 wantsor", desc: "content3 needreply",status: 1),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title4 wantsor", desc: "content4 needreply",status: 0)]
+        timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "Launch language to Ms.Customer A", desc: "Ms.Customer A has an answer to the language requirements of the",status: 0),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "Failed to launch the Ms.Customer A language", desc: "Ms.Customer A no response to the language requirements of the",status: 0),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "A request from a nutrition to you.", desc: "Ms.Customer A out of contact,Please help me get in touch with him.",status: 1),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         filterModels = [AIPopupChooseModel(itemId: 1, itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
         AIPopupChooseModel(itemId: 1, itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),

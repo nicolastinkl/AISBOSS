@@ -166,7 +166,20 @@ extension UIColor {
             return UIColor(patternImage: backgroundColorImage)
             
         case UIGradientStyle.UIGradientStyleTopToBottom:
-            return UIColor.redColor()
+            //Set out gradient's colors
+            backgroundGradientLayer.colors = cgColors as [AnyObject]
+            
+            //Specify the direction our gradient will take
+            backgroundGradientLayer.startPoint = CGPoint(x: 1, y: 0.5)
+            backgroundGradientLayer.endPoint = CGPoint(x: 0.5, y: 0.5)
+            
+            //Convert our CALayer to a UIImage object
+            UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+            backgroundGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
+            let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            return UIColor(patternImage: backgroundColorImage)
         }
     }
 
