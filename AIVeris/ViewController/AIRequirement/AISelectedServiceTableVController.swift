@@ -70,7 +70,7 @@ class AISelectedServiceTableVController: UIViewController {
             cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(24)
             cancelButton.snp_makeConstraints(closure: { (make) -> Void in
                 make.height.equalTo(51)
-                make.width.greaterThanOrEqualTo(189)
+                //make.width.greaterThanOrEqualTo(189)
                 make.bottom.equalTo(-27)
                 make.leading.equalTo(13)
             })
