@@ -34,6 +34,7 @@ class DependOnNodeCell: UITableViewCell {
 		contentView.backgroundColor = UIColor.clearColor()
 		layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 		separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        descLabel.font = AITools.myriadSemiCondensedWithSize(16)
 	}
 	
 	@IBOutlet weak var checkMarkImageView: UIImageView!
@@ -41,7 +42,8 @@ class DependOnNodeCell: UITableViewCell {
 	@IBOutlet weak var dateLabel: CycleLabel!
 	override var selected: Bool {
 		didSet {
-			checkMarkImageView.image = selected ? UIImage(named: "FakeLogin_Checked") : UIImage(named: "orange")
+			checkMarkImageView.hidden = !selected
+            backgroundColor = selected ? UIColorFromHex(0x79c2ff, alpha: 0.28) : UIColor.clearColor()
 		}
 	}
 }
@@ -59,11 +61,11 @@ class CycleLabel: UILabel {
 	}
 	
 	func setup() {
-		cycleColor = UIColor(red: 0.1216, green: 0.4157, blue: 0.7922, alpha: 1.0)
+        font = AITools.myriadLightSemiCondensedWithSize(12)
+		cycleColor = UIColorFromHex(0x2a9fff)
 		layer.borderWidth = 1
 		textAlignment = .Center
-		textColor = UIColor(red: 0.1216, green: 0.4157, blue: 0.7922, alpha: 1.0)
-		font = UIFont.systemFontOfSize(14)
+		textColor = UIColorFromHex(0x2a9fff)
 	}
 	
 	var cycleColor: UIColor? {

@@ -93,7 +93,7 @@ class AITaskNavigationBar: UIView {
 }
 
 extension AITaskNavigationBarDelegate where Self: UIViewController {
-	func setupNavigationAndBackgroundImage() {
+    func setupNavigationAndBackgroundImage(backgroundColor backgroundColor:UIColor? = nil) {
 		edgesForExtendedLayout = .None
 		let imageView = UIImageView(image: UIImage(named: "taskEditBg"))
 		view.addSubview(imageView)
@@ -108,6 +108,16 @@ extension AITaskNavigationBarDelegate where Self: UIViewController {
 			make.height.equalTo(74)
 			make.top.leading.trailing.equalTo(view)
 		}
+        
+        if let backgroundColor = backgroundColor {
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = backgroundColor
+            view.addSubview(backgroundView)
+            backgroundView.snp_makeConstraints(closure: { (make) in
+                make.top.equalTo(bar.snp_bottom)
+                make.leading.bottom.trailing.equalTo(view)
+            })
+        }
 	}
 	
 	var navigationBar: AITaskNavigationBar {
