@@ -17,12 +17,19 @@ class AITimePickerView: UIPickerView {
 	
 	var date: NSDate?
 	
+	var taskDate: NSDate?
+	
 	enum AIPickerComponent: Int {
 		case Image, Day, Hour, Minute
 	}
 	
 	struct Constants {
-		static var imageComponentWidth: CGFloat = 50
+		static let imageComponentWidth: CGFloat = 44 + 23.333333333
+		static let cellLabelTag = 131234
+		static let cellIconTag = 1123421
+		static let hugeNumber = 10000
+		static let font = AITools.myriadSemiCondensedWithSize(72 / 3)
+		static let textColor = UIColorFromHex(0x219bff)
 	}
 	
 	var spots = [UIImage]()
@@ -30,8 +37,42 @@ class AITimePickerView: UIPickerView {
 	var hours = [String]()
 	var minutes = [String]()
 	var data = [Int: [AnyObject]]()
-    var dateDescription: String?
-//	var dataTuple: (before: Bool, days: Int, hours: Int, minute: Int) = (false,0,0,0)
+	var dateDescription: String?
+	
+	lazy var dayUnitLabel: UILabel = {
+		let result = UILabel()
+		result.text = "days"
+		result.font = Constants.font
+		result.textColor = Constants.textColor
+		result.sizeToFit()
+		return result
+	}()
+	
+	lazy var hourUnitLabel: UILabel = {
+		let result = UILabel()
+		result.text = "hours"
+		result.font = Constants.font
+		result.textColor = Constants.textColor
+		result.sizeToFit()
+		return result
+	}()
+	
+	lazy var minuteUnitLabel: UILabel = {
+		let result = UILabel()
+		result.text = "minutes"
+		result.font = Constants.font
+		result.textColor = Constants.textColor
+		result.sizeToFit()
+		return result
+	}()
+	
+	lazy var imageColumnView: CustomPickerColumnView = {
+		[unowned self] in
+		let result = CustomPickerColumnView()
+		result.delegate = self
+		self.addSubview(result)
+		return result
+	}()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -45,38 +86,27 @@ class AITimePickerView: UIPickerView {
 	
 	func setup() {
 		clipsToBounds = false
-		backgroundColor = UIColor(red: 0.0392, green: 0.1137, blue: 0.3765, alpha: 1.0)
+		backgroundColor = UIColor.clearColor()
 		delegate = self
 		dataSource = self
-		let images = ["blue", "orange"]
+		let images = ["taskIconSmall", "taskIconSmall", "taskIconSmall"]
+//		let bg = ["taskTimePickerNodeTopBg", "taskTimePickerNodeMiddleBg", "taskTimePickerNodeBottomBg"]
 		for image in images {
 			spots.append(UIImage(named: image)!)
 		}
 		
-		for i in 0 ..< 20 {
-			var unit = "Days"
-			if i <= 0 {
-				unit = "Day"
-			}
-			let label = "\(i) \(unit)"
+		for i in 0 ..< 100 {
+			let label = "\(i)"
 			days.append(label)
 		}
 		
 		for i in 0 ..< 24 {
-			var unit = "Hours"
-			if i <= 0 {
-				unit = "Hour"
-			}
-			let label = "\(i) \(unit)"
+			let label = String(format: "%.2d", arguments: [i])
 			hours.append(label)
 		}
 		
 		for i in 0 ..< 60 {
-			var unit = "Minutes"
-			if i <= 0 {
-				unit = "Minute"
-			}
-			let label = "\(i) \(unit)"
+			let label = String(format: "%.2d", arguments: [i])
 			minutes.append(label)
 		}
 		data[0] = spots
@@ -86,11 +116,65 @@ class AITimePickerView: UIPickerView {
 		
 		reload()
 	}
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		bringSubviewToFront(imageColumnView)
+		let height = CGRectGetHeight(bounds)
+		imageColumnView.frame = CGRect(x: 0, y: 0, width: Constants.imageComponentWidth, height: height - 40)
+		imageColumnView.setCenterY(height / 2)
+		
+		var lines = subviews.filter { (v) -> Bool in
+			return v.frame.size.height < 2
+		}
+		
+		if lines.count == 2 {
+			var topLine: UIView?
+			var bottomLine: UIView?
+			if lines[0].y > lines[1].y {
+				topLine = lines[0]
+				bottomLine = lines[1]
+			} else {
+				topLine = lines[1]
+				bottomLine = lines[0]
+			}
+			
+			topLine?.backgroundColor = UIColorFromHex(0xacdaff, alpha: 0.28)
+			bottomLine?.backgroundColor = UIColorFromHex(0xacdaff, alpha: 0.28)
+			bringSubviewToFront(topLine!)
+			bringSubviewToFront(bottomLine!)
+			
+			addSubview(dayUnitLabel)
+			addSubview(hourUnitLabel)
+			addSubview(minuteUnitLabel)
+			
+			let dayValueLabel: UIView! = viewForRow(selectedRowInComponent(1), forComponent: 1)?.viewWithTag(Constants.cellLabelTag)
+			let hourValueLabel: UIView! = viewForRow(selectedRowInComponent(2), forComponent: 2)?.viewWithTag(Constants.cellLabelTag)
+			let minuteValueLabel: UIView! = viewForRow(selectedRowInComponent(3), forComponent: 3)?.viewWithTag(Constants.cellLabelTag)
+			
+			let dayValueLabelFrameOnSelf = dayValueLabel.convertRect(dayValueLabel.bounds, toView: self)
+			let hourValueLabelFrameOnSelf = hourValueLabel.convertRect(hourValueLabel.bounds, toView: self)
+			let minuteValueLabelFrameOnSelf = minuteValueLabel.convertRect(minuteValueLabel.bounds, toView: self)
+			
+			let space: CGFloat = 4
+			dayUnitLabel.setX(CGRectGetMaxX(dayValueLabelFrameOnSelf) + space)
+			hourUnitLabel.setX(CGRectGetMaxX(hourValueLabelFrameOnSelf) + space)
+			minuteUnitLabel.setX(CGRectGetMaxX(minuteValueLabelFrameOnSelf) + space)
+			
+			dayUnitLabel.setY(CGRectGetMinY(dayValueLabelFrameOnSelf))
+			hourUnitLabel.setY(CGRectGetMinY(dayValueLabelFrameOnSelf))
+			minuteUnitLabel.setY(CGRectGetMinY(dayValueLabelFrameOnSelf))
+		}
+	}
 	
 	func reload() {
-		if let date = date {
+		let multiplier = Constants.hugeNumber / 2
+		let startRowImage = 1
+		let startRowDay = 0
+		let startRowHour = 24 * multiplier
+		let startRowMinute = 60 * multiplier
+		if let date = date, taskDate = taskDate {
 			// if has set date
-			let timeIntervalSinceNow = Int(fabs((date.timeIntervalSinceNow)))
+			let timeIntervalSinceNow = Int(fabs((date.timeIntervalSinceDate(taskDate))))
 			let isFuture = date.timeIntervalSinceNow > 0
 			
 			let day = timeIntervalSinceNow / secondsInOneDay
@@ -102,11 +186,7 @@ class AITimePickerView: UIPickerView {
 			if Int(day) > days.count {
 				days.removeAll()
 				for i in 0 ..< Int(day) + 1 {
-					var unit = "Days"
-					if i <= 0 {
-						unit = "Day"
-					}
-					let label = "\(i) \(unit)"
+					let label = "\(i)"
 					days.append(label)
 				}
 				data[1] = days
@@ -116,14 +196,41 @@ class AITimePickerView: UIPickerView {
 			selectRow(day, inComponent: 1, animated: false)
 			selectRow(hour, inComponent: 2, animated: false)
 			selectRow(minute, inComponent: 3, animated: false)
+		} else {
+			selectRow(startRowImage, inComponent: 0, animated: false)
+			selectRow(startRowDay, inComponent: 1, animated: false)
+			selectRow(startRowHour, inComponent: 2, animated: false)
+			selectRow(startRowMinute, inComponent: 3, animated: false)
 		}
 	}
 	
-	func labelWithString(string: String) -> UILabel {
-		let result = UILabel()
-		result.text = string
-		result.textColor = UIColor(red: 0.1216, green: 0.5255, blue: 0.9961, alpha: 1.0)
-		result.sizeToFit()
+	func imageViewAtRow(row: Int) -> UIView {
+		let result = UIView()
+		let imageView = UIImageView(image: spots[row])
+		imageView.sizeToFit()
+		imageView.tag = Constants.cellIconTag
+		result.frame = imageView.bounds
+		result.addSubview(imageView)
+		return result
+	}
+	
+	func labelWithString(string: String, labelX: CGFloat) -> UIView {
+		let label = UILabel()
+		label.textAlignment = .Left
+		label.font = Constants.font
+		label.textColor = Constants.textColor
+		
+		label.text = "00"
+		label.sizeToFit()
+		label.text = string
+		label.setX(labelX)
+		label.tag = Constants.cellLabelTag
+		
+		let result = UIView()
+		result.bounds = label.bounds
+		result.setWidth((CGRectGetWidth(bounds) - Constants.imageComponentWidth) / 3)
+		result.addSubview(label)
+		
 		return result
 	}
 	
@@ -155,6 +262,14 @@ class AITimePickerView: UIPickerView {
 		let result = NSDate(timeIntervalSinceNow: Double(timeIntervalSinceNow))
 		return result
 	}
+	
+	override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+		if CGRectContainsPoint(imageColumnView.frame, point) {
+			return imageColumnView.hitTest(point, withEvent: event)
+		} else {
+			return super.hitTest(point, withEvent: event)
+		}
+	}
 }
 
 extension AITimePickerView: UIPickerViewDataSource {
@@ -164,7 +279,16 @@ extension AITimePickerView: UIPickerViewDataSource {
 	}
 	
 	func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return (data[component]?.count)!
+		let c = AIPickerComponent(rawValue: component)!
+		switch c {
+		case .Image:
+			return 0
+		case .Day:
+			return (data[1]?.count)!
+		case .Hour: fallthrough
+		case .Minute:
+			return (data[component]?.count)! * Constants.hugeNumber
+		}
 	}
 }
 
@@ -175,39 +299,43 @@ extension AITimePickerView: UIPickerViewDelegate {
 		
 		switch c {
 		case .Image:
-			
-			if let imageView = view as? UIImageView {
+			if let view = view {
+				let imageView = view.viewWithTag(Constants.cellIconTag) as! UIImageView
 				imageView.image = spots[row]
-				return imageView
+				return view
 			} else {
-				let imageView = UIImageView(image: spots[row])
-				imageView.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-				return imageView
+				let result = imageViewAtRow(row)
+				return result
 			}
 			
 		case .Day: fallthrough
 		case .Hour: fallthrough
 		case .Minute:
-			let text = data[component]![row] as! String
-			if let label = view as? UILabel {
+			let text = (data[component]![row % (data[component]?.count)!]) as! String
+			if let label = view?.viewWithTag(Constants.cellLabelTag) as? UILabel {
 				label.text = text
-				return label
+				return view!
 			} else {
-				let label = labelWithString(text)
-				return label
+				let labelXs: [CGFloat] = [70 / 3, 30 / 3, 30 / 3]
+				let containerView = labelWithString(text, labelX: labelXs[component - 1])
+				return containerView
 			}
 		}
 	}
 	
+	func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+		return 160 / 3
+	}
+	
 	func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
 		if let component = AIPickerComponent(rawValue: component) {
+			let magicNumber: CGFloat = 20
 			switch component {
 			case .Image:
 				return Constants.imageComponentWidth
-			case .Day:
-				return (pickerView.frame.width - Constants.imageComponentWidth) / 3 - 10
+			case .Day: fallthrough
 			case .Hour:
-				return (pickerView.frame.width - Constants.imageComponentWidth) / 3
+				return (pickerView.frame.width - Constants.imageComponentWidth) / 3 - magicNumber
 			case .Minute:
 				return (pickerView.frame.width - Constants.imageComponentWidth) / 3
 			}
@@ -219,30 +347,35 @@ extension AITimePickerView: UIPickerViewDelegate {
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		var selectedRows = [Int]()
 		for i in 0 ..< 4 {
-            let row = selectedRowInComponent(i)
+			let row = selectedRowInComponent(i)
 			selectedRows.append(row)
-
-//            switch i {
-//            case 0:
-//                dataTuple.before = row == 0
-//            case 1:
-//                dataTuple.days = row
-//            case 2:
-//                dataTuple.hours = row
-//            case 3:
-//                dataTuple.minute = row
-//            default:
-//                break
-//            }
 		}
-        let isBefore = selectedRowInComponent(0) == 0 ? "Before" : "After"
-        
-        let days = "\(selectedRowInComponent(1)) days"
-        let hours = "\(selectedRowInComponent(2)) hours"
-        let minutes = "\(selectedRowInComponent(3)) minutes"
-        
-        dateDescription = isBefore + " " + days + " " + hours + " " + minutes
-        
+		let isBefore = (component == 0 ? row : selectedRowInComponent(0)) == 0
+		let isBeforeString = isBefore ? "Before" : "After"
+		
+		let days = "\(selectedRowInComponent(1)) days"
+		let hours = "\(selectedRowInComponent(2) % (data[component]?.count)!) hours"
+		let minutes = "\(selectedRowInComponent(3) % (data[component]?.count)!) minutes"
+		
+		dateDescription = isBeforeString + " " + days + " " + hours + " " + minutes
 		date = convertSelectedRowsToDate(selectedRows)
+	}
+	
+	func viewInUIPickerTableView(atRow row: Int, tableView: UITableView) -> UIView? {
+		return tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0))?.subviews.last
+	}
+	
+	override func selectedRowInComponent(component: Int) -> Int {
+		if component > 0 {
+			return super.selectedRowInComponent(component)
+		} else {
+			return imageColumnView.row
+		}
+	}
+}
+
+extension AITimePickerView: CustomPickerColumnViewDelegate {
+	func customPickerView(customPickerView: CustomPickerColumnView, didSelectRow row: Int) {
+		pickerView(self, didSelectRow: row, inComponent: 0)
 	}
 }
