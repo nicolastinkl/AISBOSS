@@ -20,7 +20,8 @@ class AITimelineCellBaseView: UITableViewCell {
     
     let timeViewWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(132)
     let timeViewBallSize : CGFloat = AITools.displaySizeFrom1242DesignSize(25)
-    let titleLabelHeight : CGFloat = 50
+    let titleLabelHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(45)
+    let timeLabelPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(8)
     let timeLabelSize : CGFloat = 50
     var rightViewWidth : CGFloat!
     
