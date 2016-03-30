@@ -488,7 +488,7 @@ extension AIRequireContentViewController {
 	
 	@IBAction func addTagButtonPressed() {
        //fake data
-        let tagDescs = ["Albanie", "Allemagne", "Andorre", "Autriche-Hongrie", "Belgique", "Bulgarie", "Danemark", "Espagne", "France", "Grèce", "Italie", "Liechtenstein", "Luxembourg", "Monaco", "Monténégro", "Norvège", "Pays-Bas", "Portugal", "Roumanie", "Royaume-Uni", "Russie", "Saint-Marin", "Serbie", "Suède"]
+        let tagDescs = ["Accompnay and attend to", "About the car", "Nutritional meal", "Fitness regime", "Psychotherapy", "Accompnay and attend to", "About the car"]
         var tags = [RequirementTag]()
         for i in 0 ... tagDescs.count - 1 {
             let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: tagDescs[i])
@@ -507,8 +507,8 @@ extension AIRequireContentViewController {
         vc.onDidCancel = {
             print("select tag cancel")
         }
-		let nav = UINavigationController(rootViewController: vc)
-		presentViewController(nav, animated: true, completion: nil)
+    
+		presentViewController(vc, animated: true, completion: nil)
 	}
 	
 	@IBAction func addNoteButtonPressed() {
