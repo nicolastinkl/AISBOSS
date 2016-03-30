@@ -143,7 +143,7 @@ class DependOnNodePickerViewController: UIViewController {
         logoContainerView.addSubview(line)
         line.snp_makeConstraints { (make) in
             make.bottom.leading.trailing.equalTo(logoContainerView)
-            make.height.equalTo(1)
+            make.height.equalTo(1 / UIScreen.mainScreen().scale)
         }
         
 	}

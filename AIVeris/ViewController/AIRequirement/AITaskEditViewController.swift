@@ -58,8 +58,13 @@ class AITaskEditViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupNavigationAndBackgroundImage()
+        navigationBar.titleLabel.text = "Task"
 		saveButtonEnabled = false
-		title = "Task"
+		
+		setupTimeLineView()
+	}
+	
+	func setupTimeLineView() {
 		timeLineView = UINib(nibName: "AITaskTimeLineView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! AITaskTimeLineView
 		view.addSubview(timeLineView)
 		timeLineView.snp_makeConstraints { (make) in
@@ -79,12 +84,6 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
 		dismissViewControllerAnimated(true, completion: nil)
 		print("save button pressed")
-	}
-	
-	override var title: String? {
-		didSet {
-			navigationBar.titleLabel.text = title
-		}
 	}
 }
 
@@ -142,13 +141,13 @@ extension AITaskEditViewController: AITaskRemarkInputViewControllerDelegate {
 }
 
 // MARK: - fake data
-extension AITaskEditViewController  {
-    
+extension AITaskEditViewController {
+	
 	static var fakeServiceResult: [DependOnService]?
-
-    class func fakeServices() -> [DependOnService] {
-
-        if let result = fakeServiceResult {
+	
+	class func fakeServices() -> [DependOnService] {
+		
+		if let result = fakeServiceResult {
 			return result
 		}
 		
@@ -164,8 +163,7 @@ extension AITaskEditViewController  {
 		}
 		fakeServiceResult = result
 		
-        return result
-        
+		return result
 	}
 	
 	class func randomTask() -> TaskNode {

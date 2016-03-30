@@ -9,7 +9,7 @@
 import UIKit
 
 class AITaskTagViewController: RRTagController {
-
+	
 	override func addTagDidClick() {
 		print("addTagDidClick")
 		let vc = AITaskRemarkInputViewController.initFromNib()
@@ -18,12 +18,19 @@ class AITaskTagViewController: RRTagController {
 	}
 	
 	override func viewDidLoad() {
-        
-		setupNavigationAndBackgroundImage()
+        setupNavigationAndBackgroundImage(backgroundColor: UIColorFromHex(0x558bdc, alpha: 0.22))
+		navigationBar.titleLabel.text = "Tag"
 		super.viewDidLoad()
-		title = "Tag"
-        collectionTag.reloadData()
-		// Do any additional setup after loading the view.
+		setupCollectionView()
+	}
+	
+	func setupCollectionView() {
+//		collectionTag.backgroundColor = UIColorFromHex(0x558bdc, alpha: 0.22)
+		collectionTag.reloadData()
+        collectionTag.snp_remakeConstraints { (make) in
+            make.top.equalTo(navigationBar.snp_bottom)
+            make.leading.bottom.trailing.equalTo(view)
+        }
 	}
 }
 
@@ -32,7 +39,7 @@ extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
 		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
 		if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
 			if strlen(contentTag) > 0 {
-				let newTag = RequirementTag(id: random() % 10000,selected: false, textContent: contentTag)
+				let newTag = RequirementTag(id: random() % 10000, selected: false, textContent: contentTag)
 				tags.insert(newTag, atIndex: tags.count)
 				collectionTag.reloadData()
 			}
