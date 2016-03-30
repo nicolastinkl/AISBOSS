@@ -7,13 +7,29 @@ protocol CustomPickerColumnViewDelegate: NSObjectProtocol {
 }
 
 class CustomPickerColumnView: UIView {
-	var row: Int {
-		let height = CGRectGetHeight(bounds) / 3
-		return Int(scrollView.contentOffset.y / height) + 1
-	}
+	var row: Int = 1
+//    {
+//		get {
+//			let height = CGRectGetHeight(bounds) / 3
+//			return Int(scrollView.contentOffset.y / height) + 1
+//		}
+//
+//		set {
+//			let height = CGRectGetHeight(bounds) / 3
+//			scrollView.contentOffset = CGPoint(x: 0, y: CGFloat(newValue - 1) * height)
+//		}
+//	}
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		setup()
+	}
+	
+	func setup() {
 		clipsToBounds = true
+		if row != 1 {
+			let height = CGRectGetHeight(bounds) / 3
+			scrollView.contentOffset = CGPoint(x: 0, y: CGFloat(row - 1) * height)
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -41,8 +57,7 @@ class CustomPickerColumnView: UIView {
 		return result
 	}()
 	
-	lazy var verticalLineView: UIImageView = {
-		[unowned self] in
+	lazy var verticalLineView: UIImageView = { [unowned self] in
 		let result = UIImageView(image: UIImage(named: "datePickerLine"))
 		self.scrollView.addSubview(result)
 		return result
@@ -83,7 +98,6 @@ class CustomPickerColumnView: UIView {
 					let scale = CABasicAnimation(keyPath: "transform.scale")
 					scale.fromValue = 0.25 as NSNumber
 					scale.toValue = 1 as NSNumber
-					
 					
 					let color = CAKeyframeAnimation(keyPath: "backgroundColor")
 					color.values = [
