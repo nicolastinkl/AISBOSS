@@ -81,7 +81,7 @@ public class KBHTextFieldStepper: UIControl, UITextFieldDelegate {
 	}
 	
 	private func setup() {
-		let width = frame.size.width
+		_ = frame.size.width
 		let height = frame.size.height
 		let buttonWidth = height
 		let buttonHeight = height

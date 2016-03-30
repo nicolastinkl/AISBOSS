@@ -57,7 +57,7 @@ class DependOnNodePickerViewController: UIViewController {
 				let t = service.tasks.filter({ (task) -> Bool in
 					return task.id == selectedTask.id
 				}).first
-				if let t = t {
+				if let _ = t {
 					var s = services[i]
 					s.selected = true
 					services[i] = s
