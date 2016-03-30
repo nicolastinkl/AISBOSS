@@ -65,6 +65,15 @@
     //Chaged UserID.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterUserChanged) name:kShouldUpdataUserDataNotification object:nil];
     
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleClick)];
+    tap.numberOfTapsRequired = 2;
+    [self.tableView addGestureRecognizer:tap];
+    
+}
+
+- (void) doubleClick{
+    AIRequirementViewController * requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
+    [self.navigationController pushViewController:requirementVC animated:YES];    
 }
 
 
@@ -556,7 +565,6 @@
      */
     
     AIRequirementViewController * requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
-    
     [self.navigationController pushViewController:requirementVC animated:YES];
     
     

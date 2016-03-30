@@ -173,10 +173,13 @@ extension AITaskEditViewController: AITaskRemarkInputViewControllerDelegate {
 }
 
 // MARK: - fake data
-extension AITaskEditViewController {
+extension AITaskEditViewController  {
+    
 	static var fakeServiceResult: [DependOnService]?
-	class func fakeServices() -> [DependOnService] {
-		if let result = fakeServiceResult {
+
+    class func fakeServices() -> [DependOnService] {
+
+        if let result = fakeServiceResult {
 			return result
 		}
 		
@@ -191,7 +194,9 @@ extension AITaskEditViewController {
 			result.append(service)
 		}
 		fakeServiceResult = result
-		return result
+		
+        return result
+        
 	}
 	
 	class func randomTask() -> TaskNode {
