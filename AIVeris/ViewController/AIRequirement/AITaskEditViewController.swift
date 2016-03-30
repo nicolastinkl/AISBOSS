@@ -103,7 +103,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		}
 		
 		var frame = vc.view.frame
-		frame.size.height = 400
+		frame.size.height = 500
 		vc.view.frame = frame
 		vc.delegate = self
 		vc.services = self.dynamicType.fakeServices()
