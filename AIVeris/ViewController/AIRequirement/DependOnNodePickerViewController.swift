@@ -80,7 +80,7 @@ class DependOnNodePickerViewController: UIViewController {
 			view.top == logoContainerView.top
 			view.leading == logoContainerView.leading
 			view.trailing == logoContainerView.trailing
-			logoContainerView.height == 64
+			logoContainerView.height == 218/3
 		}
 		
 		for i in 0 ... 7 {
@@ -93,7 +93,7 @@ class DependOnNodePickerViewController: UIViewController {
 			serviceLogos.append(imageView)
 		}
 		
-		let margin = 12
+		let margin = 51 / 3
 		var previousView: CycleImageView!
 		
 		for (i, imageView) in serviceLogos.enumerate() {

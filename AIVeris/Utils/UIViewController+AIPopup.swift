@@ -189,7 +189,7 @@ extension UIViewController {
 				UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
 					self.bottomConstraint?.constant = 0
 					viewControllerToPresent.view.alpha = finalAlpha
-					blurView.alpha = useBlurForPopup == true ? 1 : 0.4
+					blurView.alpha = useBlurForPopup == true ? 1 : 0.5
 					
 					self.view.layoutIfNeeded()
 					}, completion: { (success) -> Void in
