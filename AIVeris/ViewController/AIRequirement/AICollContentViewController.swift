@@ -22,10 +22,13 @@ class AICollContentViewController: UIViewController {
     var serviceInstView : AIAssignServiceView!
     var timeLineTable : UITableView!
     var launchButton : UIButton!
+    var launchButtonBgView : UIView!
     
     //size constants
-    let LaunchButtonWidth : CGFloat = 180
-    let LaunchButtonHeight : CGFloat = 32
+    let LaunchButtonWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(738)
+    let LaunchButtonHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(103)
+    let LaunchButtonBgWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(761)
+    let LaunchButtonBgHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(127)
     let buttonPadding : CGFloat = 10
     
     
@@ -42,20 +45,7 @@ class AICollContentViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var serviceInstViewFrame = view.bounds
-        serviceInstViewFrame.size.height = 83
-        serviceInstView.frame = serviceInstViewFrame
-        serviceInstView.setLeft(-20)
-        serviceInstView.setTop(-20)
-        serviceInstView.setWidth(view.bounds.width + 40)
-        
-        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
-        launchButton.frame = buttonFrame
-        
-        var tableFrame = serviceInstView.frame
-        tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
-        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
-        timeLineTable.frame = tableFrame
+        layoutViews()
     }
     
     // MARK: - 构造subView
@@ -91,12 +81,39 @@ class AICollContentViewController: UIViewController {
     
     func buildLaunchView(){
         
+        launchButtonBgView = UIView()
+        launchButtonBgView.backgroundColor = UIColor(hexString: "#0f86e8")
+        launchButtonBgView.alpha = 0.2
+        launchButtonBgView.layer.cornerRadius = 5
+        launchButtonBgView.layer.masksToBounds = true
+        view.addSubview(launchButtonBgView)
+         
         launchButton = UIButton()
         launchButton.setTitle("Launch", forState: UIControlState.Normal)
-        launchButton.backgroundColor = UIColor(hex: "#146EE2")
-        launchButton.layer.cornerRadius = 8
+        launchButton.backgroundColor = UIColor(hex: "#0f86e8")
+        launchButton.layer.cornerRadius = 5
         launchButton.layer.masksToBounds = true
         view.addSubview(launchButton)
+    }
+    
+    func layoutViews(){
+        var serviceInstViewFrame = view.bounds
+        serviceInstViewFrame.size.height = 83
+        serviceInstView.frame = serviceInstViewFrame
+        serviceInstView.setLeft(-20)
+        serviceInstView.setTop(-20)
+        serviceInstView.setWidth(view.bounds.width + 40)
+        
+        
+        let buttonBgViewFrame = CGRect(x: (view.bounds.width - LaunchButtonBgWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonBgWidth, height: LaunchButtonBgHeight)
+        launchButtonBgView.frame = buttonBgViewFrame
+        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: buttonBgViewFrame.origin.y + (LaunchButtonBgHeight - LaunchButtonHeight) / 2, width: LaunchButtonWidth, height: LaunchButtonHeight)
+        launchButton.frame = buttonFrame
+        
+        var tableFrame = serviceInstView.frame
+        tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
+        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
+        timeLineTable.frame = tableFrame
     }
     
     // MARK: - 加载数据

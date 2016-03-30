@@ -345,7 +345,8 @@
 + (CGFloat)displaySizeFrom1242DesignSize:(CGFloat)size
 {
     CGFloat displaySize;
-    displaySize = size / 3;
+    UIScreen *screen = [UIScreen mainScreen];
+    displaySize = size * screen.bounds.size.width / 1242;
     return displaySize;
 }
 

@@ -18,7 +18,8 @@ class AITimelineCellBaseView: UITableViewCell {
     var model : AITimelineModel?
     var isLast = false
     
-    let timeViewWidth : CGFloat = 55
+    let timeViewWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(132)
+    let timeViewBallSize : CGFloat = AITools.displaySizeFrom1242DesignSize(25)
     let titleLabelHeight : CGFloat = 50
     let timeLabelSize : CGFloat = 50
     var rightViewWidth : CGFloat!
@@ -35,7 +36,7 @@ class AITimelineCellBaseView: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - 外部调用方法
+
     ///传入生成view所需数据，并渲染view
     func setContent(model : AITimelineModel,isLast : Bool){
         self.model = model
