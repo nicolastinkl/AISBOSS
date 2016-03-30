@@ -497,9 +497,7 @@
        [contentVC loadDataNecessary];
        [self presentViewController:contentVC animated:YES completion:nil];
      */
-
     AIRequirementViewController *requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
-
     [self.navigationController pushViewController:requirementVC animated:YES];
 }
 
