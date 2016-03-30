@@ -17,6 +17,8 @@ class BuyerMessageCell: UITableViewCell {
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var refuseButton: UIButton!
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,12 +29,15 @@ class BuyerMessageCell: UITableViewCell {
         serviceImage.layer.cornerRadius = serviceImage.bounds.width / 2
         
         acceptButton.layer.cornerRadius = 5
-        acceptButton.layer.borderWidth = 1
-        acceptButton.layer.borderColor = UIColor.blueColor().CGColor
         
         refuseButton.layer.cornerRadius = 5
         refuseButton.layer.borderWidth = 1
-        refuseButton.layer.borderColor = UIColor.blueColor().CGColor
+        refuseButton.layer.borderColor = UIColor(hex: "#0f86e8").CGColor
+        
+        serviceTitle.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(52))
+        servviceContent.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+        acceptButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(52))
+        refuseButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(52))
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

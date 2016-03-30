@@ -31,7 +31,7 @@ class BuyerRequirmentMessageViewController: UIViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44.0
-        tableView.tableFooterView = UIView()
+
         let cellNib = UINib(nibName: "BuyerMessageCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
 
@@ -53,17 +53,4 @@ extension BuyerRequirmentMessageViewController: UITableViewDataSource, UITableVi
         
         return cell
     }
-    
-    /*
-    - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-    {
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-    [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-    [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-    }
-*/
 }
