@@ -73,6 +73,9 @@
 + (UIFont *) myriadSemiCondensedWithSize:(CGFloat)size;
 
 + (CGFloat)displaySizeFrom1080DesignSize:(CGFloat)size;
+//1242像素转为point单位
++ (CGFloat)displaySizeFrom1242DesignSize:(CGFloat)size;
+
 + (UIFont *) myriadCondWithSize:(CGFloat)size;
 + (UIFont *) myriadBlackWithSize:(CGFloat)size;
 + (UIFont *) myriadLightWithSize:(CGFloat)size;

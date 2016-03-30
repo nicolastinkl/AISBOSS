@@ -11,7 +11,8 @@ import UIKit
 class AICircleProgressView: UIView {
     
     var fontLayer : CAShapeLayer!
-    var strokWidth : CGFloat = 2
+    var strokWidth : CGFloat = 3.3
+    var circlePadding : CGFloat = 1
     var isSelect : Bool = false
     var progress : CGFloat?
     var delegate : CircleProgressViewDelegate?
@@ -43,7 +44,7 @@ class AICircleProgressView: UIView {
     func refreshProgress(progress : CGFloat){
         self.progress = progress
         let centerPoint = CGPoint(x: self.bounds.size.width * 0.5, y: self.bounds.size.height * 0.5)
-        let radius = (CGRectGetWidth(self.bounds) + strokWidth + 5) / 2
+        let radius = (CGRectGetWidth(self.bounds) + strokWidth + circlePadding) / 2
         let endAngle = CGFloat(2*M_PI)*progress - CGFloat(M_PI_2)
         let path = UIBezierPath(arcCenter: centerPoint , radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
         fontLayer.path = path.CGPath
@@ -65,7 +66,7 @@ class AICircleProgressView: UIView {
     
     func makeGradientColor(){
         //fontLayer.strokeColor = UIColor.greenColor().CGColor
-        let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
         fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleLeftToRight, frame: frame, colors: [UIColor.whiteColor(),UIColor.redColor()]).CGColor
     }
     //设置选中还是未选中状态
@@ -74,7 +75,7 @@ class AICircleProgressView: UIView {
         
         if isSelect {
             //因为半径已经变了，所以frame不再从0开始
-            let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
+            let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
             let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
             //改变颜色时不需要动画，用这个禁用
             CATransaction.begin()

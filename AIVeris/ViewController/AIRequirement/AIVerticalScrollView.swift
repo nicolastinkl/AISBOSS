@@ -18,12 +18,12 @@ class AIVerticalScrollView: UIScrollView {
     //全选按钮
     var checkAllView : UIImageView!
     var isSelectAll = false
-    let checkAllIcon = UIImage(named: "white-arrow-down")
-    let unCheckAllIcon = UIImage(named: "white-arrow")
+    let checkAllIcon = UIImage(named: "checkall")
+    let unCheckAllIcon = UIImage(named: "checkall")
     
     //position
-    let iconWidth : CGFloat = 28
-    let iconPaddingTop : CGFloat = 10
+    let iconWidth : CGFloat = 86 / 3
+    let iconPaddingTop : CGFloat = 8
     
     override init(frame: CGRect) {
         super.init(frame: frame)
