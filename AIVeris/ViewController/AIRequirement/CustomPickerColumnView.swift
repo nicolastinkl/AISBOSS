@@ -23,8 +23,8 @@ class CustomPickerColumnView: UIView {
 	struct Constants {
 		static let taskBallsize: CGFloat = 44
 		static let blueBallSize: CGFloat = 118 / 3
-        static let blueColor = UIColor(red: 0.1294, green: 0.6078, blue: 1.0, alpha: 1.0)
-        static let grayColor = UIColor(red: 0.7569, green: 0.8549, blue: 0.9373, alpha: 1.0)
+		static let blueColor = UIColor(red: 0.1294, green: 0.6078, blue: 1.0, alpha: 1.0)
+		static let grayColor = UIColor(red: 0.2314, green: 0.2196, blue: 0.4902, alpha: 1.0)
 	}
 	
 	weak var delegate: CustomPickerColumnViewDelegate?
@@ -75,27 +75,24 @@ class CustomPickerColumnView: UIView {
 				view.layer.addAnimation(animation, forKey: nil)
 			} else {
 				let size = Constants.blueBallSize
-                let blueColor = Constants.blueColor
-                let grayColor = Constants.grayColor
+				let blueColor = Constants.blueColor
+				let grayColor = Constants.grayColor
 				view.frame = CGRect(x: 0, y: 0, width: size, height: size)
-                view.backgroundColor = blueColor
+				view.backgroundColor = blueColor
 				let animation: CAAnimationGroup = {
 					let scale = CABasicAnimation(keyPath: "transform.scale")
 					scale.fromValue = 0.25 as NSNumber
 					scale.toValue = 1 as NSNumber
 					
-					let alpha = CABasicAnimation(keyPath: "opacity")
-					alpha.fromValue = 0.2 as NSNumber
-					alpha.toValue = 1 as NSNumber
 					
 					let color = CAKeyframeAnimation(keyPath: "backgroundColor")
 					color.values = [
 						grayColor.CGColor,
 						blueColor.CGColor
-                    ]
+					]
 					
 					let group = CAAnimationGroup()
-					group.animations = [color, alpha, scale]
+					group.animations = [color, scale]
 					return group
 				}()
 				view.layer.addAnimation(animation, forKey: nil)

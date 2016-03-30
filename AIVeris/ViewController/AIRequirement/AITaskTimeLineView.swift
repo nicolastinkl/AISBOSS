@@ -39,6 +39,10 @@ class AITaskTimeLineView: UIView {
 	@IBOutlet weak var middleCenterXConstraint: NSLayoutConstraint!
 	@IBOutlet weak var bottomCenterXConstraint: NSLayoutConstraint!
 	
+	@IBOutlet weak var topLeftConstraint: NSLayoutConstraint!
+	@IBOutlet weak var middleLeftConstraint: NSLayoutConstraint!
+	@IBOutlet weak var bottomLeftConstraint: NSLayoutConstraint!
+	
 	@IBOutlet var subLabels: [UILabel]!
 	
 	weak var delegate: AITaskTimeLineViewDelegate?
@@ -59,13 +63,17 @@ class AITaskTimeLineView: UIView {
 	var line2: CAShapeLayer!
 	var line3: CAShapeLayer!
 	
+	struct Constants {
+		static let spaceOfLine: CGFloat = 10 / 3 //  is the space of design
+	}
+	
 	var radiusOfLogo: CGFloat {
-		return logo1.width / 2
+		return logo1.width / 2 + Constants.spaceOfLine
 	}
 	
 	var path1: CGPath {
 		var point1 = CGPoint(x: CGRectGetMidX(subLabel1.frame), y: CGRectGetMaxY(subLabel1.frame))
-		var point2 = CGPoint(x: CGRectGetMidX(logo2.frame), y: CGRectGetMinY(logo2.frame))
+		var point2 = CGPoint(x: CGRectGetMidX(logo2.frame), y: CGRectGetMinY(logo2.frame) - Constants.spaceOfLine)
 		if isTopLogoAtLeft && !isMiddleLogoAtLeft {
 			point1 = logo1.center
 			point1.x += radiusOfLogo / sqrt(2)
@@ -85,7 +93,7 @@ class AITaskTimeLineView: UIView {
 	
 	var path2: CGPath {
 		var point3 = CGPoint(x: CGRectGetMidX(subLabel2.frame), y: CGRectGetMaxY(subLabel2.frame))
-		var point4 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetMinY(logo3.frame))
+		var point4 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetMinY(logo3.frame) - Constants.spaceOfLine)
 		if isMiddleLogoAtLeft && !isBottomLogoAtLeft {
 			point3 = logo2.center
 			point3.x += radiusOfLogo / sqrt(2)
@@ -197,10 +205,14 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	override func updateConstraints() {
-		let constant: CGFloat = -130
-		topCenterXConstraint.constant = isTopLogoAtLeft ? constant : 0
-		middleCenterXConstraint.constant = isMiddleLogoAtLeft ? constant : 0
-		bottomCenterXConstraint.constant = isBottomLogoAtLeft ? constant : 0
+		topCenterXConstraint.active = !isTopLogoAtLeft
+		middleCenterXConstraint.active = !isMiddleLogoAtLeft
+		bottomCenterXConstraint.active = !isBottomLogoAtLeft
+		
+		topLeftConstraint.active = isTopLogoAtLeft
+		middleLeftConstraint.active = isMiddleLogoAtLeft
+		bottomLeftConstraint.active = isBottomLogoAtLeft
+		
 		label1.alpha = isTopLogoAtLeft ? 1 : 0
 		label2.alpha = isMiddleLogoAtLeft ? 1 : 0
 		label3.alpha = isBottomLogoAtLeft ? 1 : 0
