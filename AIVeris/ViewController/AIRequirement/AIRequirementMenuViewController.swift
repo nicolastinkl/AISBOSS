@@ -117,7 +117,10 @@ internal class AIRequirementMenuViewController : UIViewController  {
 
 extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
-        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame) + 10, width: 65, height: 380)
+        
+        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - 180        
+        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
+        
         serviceInstsView = AIVerticalScrollView(frame: frame)
         serviceInstsView.userInteractionEnabled = true
         serviceInstsView.myDelegate = self
@@ -130,13 +133,13 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     }
     
     func loadData(){
-        models = [IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: 0, executeProgress: 2),
+        models = [IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: 0, executeProgress: 0),
             IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: 0, executeProgress: 3),
             IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: 1, executeProgress: 4),
             IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: 1, executeProgress: 5),
             IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: 0, executeProgress: 6),
-            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: 1, executeProgress: 7),
-            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: 1, executeProgress: 8),
+            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: 1, executeProgress: 10),
+            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: 1, executeProgress: 10),
             IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: 0, executeProgress: 2),
             IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: 0, executeProgress: 2)]
         
@@ -149,10 +152,10 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
         for selectModel in verticalScrollView.getSelectedModels(){
             message += "\(selectModel.serviceInstId), "
         }
-        let alert = UIAlertController(title: "info", message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
-        alert.addAction(alertAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "info", message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
+//        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+//        alert.addAction(alertAction)
+//        self.presentViewController(alert, animated: true, completion: nil)
         
     }
 

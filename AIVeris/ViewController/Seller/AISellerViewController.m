@@ -64,7 +64,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterUserChanged) name:kShouldUpdataUserDataNotification object:nil];
 #if DEBUG
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewTapped)];
-    [self.view addGestureRecognizer:tap];
+    tap.numberOfTapsRequired = 2;
+    [self.tableView addGestureRecognizer:tap];
 #endif
 }
 
