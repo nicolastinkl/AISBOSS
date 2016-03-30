@@ -26,6 +26,10 @@ class AITaskRemarkInputViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		textField?.text = text
+		textField.backgroundColor = UIColorFromHex(0xddecff)
+		textField.font = AITools.myriadSemiCondensedWithSize(16)
+		textField.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
+		textField.layer.cornerRadius = 6
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -54,7 +58,7 @@ extension AITaskRemarkInputViewController: UITextViewDelegate {
 		}.first
 		
 		if let viewHeightConstraint = viewHeightConstraint {
-			viewHeightConstraint.constant = textView.contentSize.height + 17 // magic number
+			viewHeightConstraint.constant = textView.contentSize.height + 47 // magic number
 			view.setNeedsUpdateConstraints()
 			view.updateConstraintsIfNeeded()
 			view.setNeedsLayout()
