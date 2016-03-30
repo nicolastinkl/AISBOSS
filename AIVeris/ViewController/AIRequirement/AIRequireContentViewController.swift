@@ -513,8 +513,7 @@ extension AIRequireContentViewController {
 	
 	@IBAction func addNoteButtonPressed() {
 		let vc = AITaskNoteEditViewController()
-		let nav = UINavigationController(rootViewController: vc)
-		presentViewController(nav, animated: true, completion: nil)
+		presentViewController(vc, animated: true, completion: nil)
 	}
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()

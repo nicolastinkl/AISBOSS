@@ -277,7 +277,6 @@
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
 		84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
 		84C0F1641C9FF91700BA7266 /* AITaskNoteEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0F1621C9FF91700BA7266 /* AITaskNoteEditViewController.swift */; };
-		84C0F1651C9FF91700BA7266 /* AITaskNoteEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C0F1631C9FF91700BA7266 /* AITaskNoteEditViewController.xib */; };
 		84C0F1671C9FFAE300BA7266 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0F1661C9FFAE300BA7266 /* KMPlaceholderTextView.swift */; };
 		84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */; };
 		84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */; };
@@ -1000,7 +999,6 @@
 		84B62B1A1BD8E1290081ABDF /* ProposalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalModel.h; sourceTree = "<group>"; };
 		84B62B1B1BD8E1290081ABDF /* ProposalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalModel.m; sourceTree = "<group>"; };
 		84C0F1621C9FF91700BA7266 /* AITaskNoteEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskNoteEditViewController.swift; sourceTree = "<group>"; };
-		84C0F1631C9FF91700BA7266 /* AITaskNoteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskNoteEditViewController.xib; sourceTree = "<group>"; };
 		84C0F1661C9FFAE300BA7266 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceDetailTool.swift; sourceTree = "<group>"; };
 		84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceSubmitModel.h; sourceTree = "<group>"; };
@@ -2842,7 +2840,6 @@
 				8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */,
 				84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */,
 				84C0F1621C9FF91700BA7266 /* AITaskNoteEditViewController.swift */,
-				84C0F1631C9FF91700BA7266 /* AITaskNoteEditViewController.xib */,
 				93CD0D291C8E72F60047F4A7 /* AIRequirementViewController.swift */,
 				93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */,
 				93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */,
@@ -3253,7 +3250,6 @@
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
-				84C0F1651C9FF91700BA7266 /* AITaskNoteEditViewController.xib in Resources */,
 				843F890E1BF0B88700BFC57E /* FlightServiceView.xib in Resources */,
 				93E7BFB41BFEBA5300A6C906 /* AICustomView.xib in Resources */,
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,

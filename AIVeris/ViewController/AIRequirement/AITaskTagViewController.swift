@@ -18,14 +18,14 @@ class AITaskTagViewController: RRTagController {
 	}
 	
 	override func viewDidLoad() {
-		setupNavigationAndBackgroundImage()
+        setupNavigationAndBackgroundImage(backgroundColor: UIColorFromHex(0x558bdc, alpha: 0.22))
 		navigationBar.titleLabel.text = "Tag"
 		super.viewDidLoad()
 		setupCollectionView()
 	}
 	
 	func setupCollectionView() {
-		collectionTag.backgroundColor = UIColorFromHex(0x558bdc, alpha: 0.22)
+//		collectionTag.backgroundColor = UIColorFromHex(0x558bdc, alpha: 0.22)
 		collectionTag.reloadData()
         collectionTag.snp_remakeConstraints { (make) in
             make.top.equalTo(navigationBar.snp_bottom)

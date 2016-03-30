@@ -46,6 +46,6 @@
         </view>
     </objects>
     <resources>
-        <image name="taskInputBg" width="414" height="85"/>
+        <image name="taskInputBg" width="341" height="66"/>
     </resources>
 </document>
