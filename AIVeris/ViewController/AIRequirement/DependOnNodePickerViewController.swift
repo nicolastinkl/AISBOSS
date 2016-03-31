@@ -53,7 +53,7 @@ class DependOnNodePickerViewController: UIViewController {
 	}
 	
 	func setupBackgroundImageView() {
-		let imageView = UIImageView(image: UIImage(named: "taskEditBg"))
+		let imageView = UIImageView(image: UIImage(named: "taskSelectBg"))
 		view.addSubview(imageView)
 		imageView.snp_makeConstraints { (make) in
 			make.edges.equalTo(view)

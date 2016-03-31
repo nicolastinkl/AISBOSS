@@ -168,6 +168,7 @@ class AITimelineCellBaseView: UITableViewCell {
         contentLabel.textColor = contentViewTextColor
         contentLabel.attributedText = textAttribute
         contentLabel.numberOfLines = 2
+        contentLabel.sizeToFit()
         scheduleContentView.addSubview(contentLabel)
         //如果有处理的，还要加上按钮
         //TODO 什么时候要加按钮的逻辑还没有

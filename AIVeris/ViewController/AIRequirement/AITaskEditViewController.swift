@@ -124,6 +124,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 			print("cancel")
 		})
 	}
+    
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITaskRemarkInputViewController.initFromNib()
 		vc.delegate = self

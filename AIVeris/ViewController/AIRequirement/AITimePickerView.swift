@@ -32,8 +32,8 @@ class AITimePickerView: UIPickerView {
 		static let textColor = UIColorFromHex(0x219bff)
 	}
 	
-	var spots = [UIImage]()
-	var days = [String]()
+
+    var days = [String]()
 	var hours = [String]()
 	var minutes = [String]()
 	var data = [Int: [AnyObject]]()
@@ -89,12 +89,7 @@ class AITimePickerView: UIPickerView {
 		backgroundColor = UIColor.clearColor()
 		delegate = self
 		dataSource = self
-		let images = ["taskIconSmall", "taskIconSmall", "taskIconSmall"]
-//		let bg = ["taskTimePickerNodeTopBg", "taskTimePickerNodeMiddleBg", "taskTimePickerNodeBottomBg"]
-		for image in images {
-			spots.append(UIImage(named: image)!)
-		}
-		
+
 		for i in 0 ..< 100 {
 			let label = "\(i)"
 			days.append(label)
@@ -109,7 +104,7 @@ class AITimePickerView: UIPickerView {
 			let label = String(format: "%.2d", arguments: [i])
 			minutes.append(label)
 		}
-		data[0] = spots
+        
 		data[1] = days
 		data[2] = hours
 		data[3] = minutes
@@ -174,14 +169,14 @@ class AITimePickerView: UIPickerView {
 		let startRowMinute = 60 * multiplier
 		if let date = date, taskDate = taskDate {
 			// if has set date
-			let timeIntervalSinceNow = Int(fabs((date.timeIntervalSinceDate(taskDate))))
-			let isFuture = date.timeIntervalSinceNow > 0
+			let timeIntervalSinceTaskDate = Int(fabs((date.timeIntervalSinceDate(taskDate))))
+			let isFuture = date.timeIntervalSinceDate(taskDate) > 0
 			
-			let day = timeIntervalSinceNow / secondsInOneDay
-			let timeIntervalSinceNowWithoutDay = timeIntervalSinceNow - day * secondsInOneDay
-			let hour = timeIntervalSinceNowWithoutDay / secondsInOneHour
-			let timeIntervalSinceNowWithoutDayAndHour = timeIntervalSinceNowWithoutDay - hour * secondsInOneHour
-			let minute = timeIntervalSinceNowWithoutDayAndHour / secondsInOneMinute
+			let day = timeIntervalSinceTaskDate / secondsInOneDay
+			let timeIntervalSinceTaskDateWithoutDay = timeIntervalSinceTaskDate - day * secondsInOneDay
+			let hour = timeIntervalSinceTaskDateWithoutDay / secondsInOneHour
+			let timeIntervalSinceTaskDateWithoutDayAndHour = timeIntervalSinceTaskDateWithoutDay - hour * secondsInOneHour
+			let minute = timeIntervalSinceTaskDateWithoutDayAndHour / secondsInOneMinute
 			
 			if Int(day) > days.count {
 				days.removeAll()
@@ -202,16 +197,6 @@ class AITimePickerView: UIPickerView {
 			selectRow(startRowHour, inComponent: 2, animated: false)
 			selectRow(startRowMinute, inComponent: 3, animated: false)
 		}
-	}
-	
-	func imageViewAtRow(row: Int) -> UIView {
-		let result = UIView()
-		let imageView = UIImageView(image: spots[row])
-		imageView.sizeToFit()
-		imageView.tag = Constants.cellIconTag
-		result.frame = imageView.bounds
-		result.addSubview(imageView)
-		return result
 	}
 	
 	func labelWithString(string: String, labelX: CGFloat) -> UIView {
@@ -262,6 +247,14 @@ class AITimePickerView: UIPickerView {
 		let result = NSDate(timeIntervalSinceNow: Double(timeIntervalSinceNow))
 		return result
 	}
+    
+    override func selectRow(row: Int, inComponent component: Int, animated: Bool) {
+        if component == 0 {
+            imageColumnView.row = row
+        } else {
+            super.selectRow(row, inComponent: component, animated: animated)
+        }
+    }
 	
 	override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
 		if CGRectContainsPoint(imageColumnView.frame, point) {
@@ -299,14 +292,7 @@ extension AITimePickerView: UIPickerViewDelegate {
 		
 		switch c {
 		case .Image:
-			if let view = view {
-				let imageView = view.viewWithTag(Constants.cellIconTag) as! UIImageView
-				imageView.image = spots[row]
-				return view
-			} else {
-				let result = imageViewAtRow(row)
-				return result
-			}
+			return UIView() // avoid compiler warning
 			
 		case .Day: fallthrough
 		case .Hour: fallthrough
