@@ -201,7 +201,7 @@ class AITimelineCellBaseView: UITableViewCell {
         
         let acceptButtonFrame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonViewHeight)
         let acceptButton = UIButton(frame: acceptButtonFrame)
-        acceptButton.backgroundColor = acceptButtonBgColor
+        acceptButton.setBackgroundImage(acceptButtonBgColor.imageWithColor(), forState: UIControlState.Normal)
         acceptButton.setTitleColor(acceptButtonTextColor, forState: UIControlState.Normal)
         acceptButton.setTitle("accept", forState: UIControlState.Normal)
         acceptButton.titleLabel?.font = buttonTextFont
@@ -211,7 +211,7 @@ class AITimelineCellBaseView: UITableViewCell {
         
         let ignoreButtonFrame = CGRect(x: CGRectGetMaxX(acceptButton.frame) + buttonsPadding, y: 0, width: buttonWidth, height: buttonViewHeight)
         let ignoreButton = UIButton(frame: ignoreButtonFrame)
-        ignoreButton.backgroundColor = UIColor.clearColor()
+        ignoreButton.setBackgroundImage(UIColor.clearColor().imageWithColor(), forState: UIControlState.Normal)
         ignoreButton.setTitleColor(acceptButtonBgColor, forState: UIControlState.Normal)
         ignoreButton.setTitle("ignore", forState: UIControlState.Normal)
         ignoreButton.titleLabel?.font = buttonTextFont

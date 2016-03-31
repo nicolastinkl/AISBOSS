@@ -92,7 +92,7 @@ class AICollContentViewController: UIViewController {
          
         launchButton = UIButton()
         launchButton.setTitle("Launch", forState: UIControlState.Normal)
-        launchButton.backgroundColor = UIColor(hex: "#0f86e8")
+        launchButton.setBackgroundImage(UIColor(hex: "#0f86e8").imageWithColor(), forState: UIControlState.Normal)
         launchButton.layer.cornerRadius = 5
         launchButton.layer.masksToBounds = true
         view.addSubview(launchButton)
@@ -116,6 +116,11 @@ class AICollContentViewController: UIViewController {
         tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
         tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
         timeLineTable.frame = tableFrame
+    }
+    
+    //处理点击事件
+    func handleNotification(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
     }
     
     // MARK: - 加载数据

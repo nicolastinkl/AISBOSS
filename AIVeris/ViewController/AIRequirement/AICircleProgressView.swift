@@ -10,12 +10,15 @@ import UIKit
 
 class AICircleProgressView: UIView {
     
+    var backLayer : CAShapeLayer!
     var fontLayer : CAShapeLayer!
     var strokWidth : CGFloat = 3.3
     var circlePadding : CGFloat = 1
     var isSelect : Bool = false
     var progress : CGFloat?
     var delegate : CircleProgressViewDelegate?
+    
+    let backLayerColor = UIColor(hex: "#0b038")
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,21 +30,32 @@ class AICircleProgressView: UIView {
     }
     
     func setUp(){
+        backLayer = CAShapeLayer()
+        backLayer.fillColor = nil
+        backLayer.frame = self.bounds
+        backLayer.lineWidth = strokWidth
         
         fontLayer = CAShapeLayer()
         fontLayer.fillColor = nil
         fontLayer.frame = self.bounds
+        fontLayer.lineWidth = strokWidth
         fontLayer.lineCap = kCALineCapRound
         fontLayer.lineJoin = kCALineJoinRound
         
+        self.layer.addSublayer(backLayer)
         self.layer.addSublayer(fontLayer)
+        
         setCircleLayer()
     }
 
     func setCircleLayer(){
         makeGradientColor()
-        fontLayer.lineWidth = strokWidth
         bindTapEvent()
+        
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
+        let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
+        backLayer.path = path.CGPath
+        backLayer.strokeColor = backLayerColor.CGColor
     }
     
     func refreshProgress(progress : CGFloat){
@@ -55,29 +69,29 @@ class AICircleProgressView: UIView {
         startAnimation()
     }
     
-    func generationGradientLayer(){
-        let gradientLayer = CALayer()
-        
-        //Color 1:
-        let color1 = CAGradientLayer()
-        color1.frame = CGRectMake(0, 0, self.width, self.height/2)
-        color1.colors = [UIColor(hex: "2477e8").CGColor]
-        color1.locations = [0.5,0.9,1]
-        color1.startPoint = CGPointMake(0.5, 1)
-        color1.endPoint = CGPointMake(0.5, 0)
-        
-        //Color 2:        
-        let color2 = CAGradientLayer()
-        color2.frame = CGRectMake(0, self.height/2, self.width, self.height/2)
-        color2.colors = [UIColor(hex: "e30ab2").CGColor]
-        color2.locations = [0.1,0.5,1]
-        color2.startPoint = CGPointMake(0.5, 1)
-        color2.endPoint = CGPointMake(0.5, 0)
-        
-        gradientLayer.addSublayer(color1)
-        gradientLayer.addSublayer(color2)
-        self.layer.addSublayer(gradientLayer)
-    }
+//    func generationGradientLayer(){
+//        let gradientLayer = CALayer()
+//        
+//        //Color 1:
+//        let color1 = CAGradientLayer()
+//        color1.frame = CGRectMake(0, 0, self.width, self.height/2)
+//        color1.colors = [UIColor(hex: "2477e8").CGColor]
+//        color1.locations = [0.5,0.9,1]
+//        color1.startPoint = CGPointMake(0.5, 1)
+//        color1.endPoint = CGPointMake(0.5, 0)
+//        
+//        //Color 2:        
+//        let color2 = CAGradientLayer()
+//        color2.frame = CGRectMake(0, self.height/2, self.width, self.height/2)
+//        color2.colors = [UIColor(hex: "e30ab2").CGColor]
+//        color2.locations = [0.1,0.5,1]
+//        color2.startPoint = CGPointMake(0.5, 1)
+//        color2.endPoint = CGPointMake(0.5, 0)
+//        
+//        gradientLayer.addSublayer(color1)
+//        gradientLayer.addSublayer(color2)
+//        self.layer.addSublayer(gradientLayer)
+//    }
     
     func startAnimation(){
         
@@ -92,7 +106,7 @@ class AICircleProgressView: UIView {
     }
     
     func makeGradientColor(){
-        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth*2 + circlePadding, height: self.bounds.height + strokWidth*2 + circlePadding)
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + (strokWidth + circlePadding) * 2, height: self.bounds.height + (strokWidth + circlePadding) * 2)
         fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleTopToBottom, frame: frame, colors: [UIColor(hex: "e30ab2"),UIColor(hex: "7B40D3"),UIColor(hex: "2477e8")]).CGColor
     }
     //设置选中还是未选中状态
@@ -122,7 +136,7 @@ class AICircleProgressView: UIView {
                 CATransaction.begin()
                 CATransaction.setDisableActions(true)
                 fontLayer.path = path.CGPath
-                fontLayer.strokeColor = UIColor.blackColor().CGColor
+                fontLayer.strokeColor = UIColor.clearColor().CGColor
                 CATransaction.commit()
             }
         }

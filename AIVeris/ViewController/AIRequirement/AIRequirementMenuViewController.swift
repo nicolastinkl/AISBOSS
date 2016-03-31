@@ -152,10 +152,9 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
         for selectModel in verticalScrollView.getSelectedModels(){
             message += "\(selectModel.serviceInstId), "
         }
-//        let alert = UIAlertController(title: "info", message: message, preferredStyle: UIAlertControllerStyle.ActionSheet)
-//        let alertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
-//        alert.addAction(alertAction)
-//        self.presentViewController(alert, animated: true, completion: nil)
+        
+        //点击后发通知
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: message)
         
     }
 
