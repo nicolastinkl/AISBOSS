@@ -7,7 +7,7 @@ protocol CustomPickerColumnViewDelegate: NSObjectProtocol {
 }
 
 class CustomPickerColumnView: UIView {
-	var row: Int = 1
+    var row: Int = 1
 //    {
 //		get {
 //			let height = CGRectGetHeight(bounds) / 3
@@ -141,7 +141,11 @@ class CustomPickerColumnView: UIView {
 		verticalLineView.center = center
 		scrollView.sendSubviewToBack(verticalLineView)
 		
-		scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true) // tricky call scrollViewDidScroll
+        if row != 1 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: CGFloat(row - 1) * height), animated: true)
+        } else {
+            scrollView.setContentOffset(CGPoint(x: 0, y: 1), animated: true) // tricky call scrollViewDidScroll
+        }
 	}
 	
 	override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
@@ -171,6 +175,7 @@ extension CustomPickerColumnView: UIScrollViewDelegate {
 	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 		let height = CGRectGetHeight(bounds) / 3
 		let row = Int(scrollView.contentOffset.y / height) + 1
+        self.row = row
 		if let delegate = delegate {
 			delegate.customPickerView(self, didSelectRow: row)
 		}
