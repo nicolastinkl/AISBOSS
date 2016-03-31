@@ -142,8 +142,8 @@
 		8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */; };
 		8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */; };
 		845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */; };
-		845320521C9A86C3003B984B /* AITaskRemarkInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */; };
-		845320531C9A86C3003B984B /* AITaskRemarkInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */; };
+		845320521C9A86C3003B984B /* AITaskInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204C1C9A86C3003B984B /* AITaskInputViewController.swift */; };
+		845320531C9A86C3003B984B /* AITaskInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204D1C9A86C3003B984B /* AITaskInputViewController.xib */; };
 		845320541C9A86C3003B984B /* AITaskTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */; };
 		845320551C9A86C3003B984B /* AITaskTimeLineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */; };
 		8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */; };
@@ -273,6 +273,7 @@
 		849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4B1F1C0EDFE300BEC179 /* FLEXImagePreviewViewController.m */; };
 		849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF11BE0632B0008949E /* ProposalEnum.swift */; };
 		849D3EF41BE070C60008949E /* ProposalProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D3EF31BE070C60008949E /* ProposalProtocal.swift */; };
+		849EDFFD1CACFB8400700C8C /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849EDFFC1CACFB8400700C8C /* UIView+Shake.swift */; };
 		84B62B181BD891670081ABDF /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B171BD891670081ABDF /* ImageContent.swift */; };
 		84B62B1C1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
 		84B62B1D1BD8E1290081ABDF /* ProposalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B62B1B1BD8E1290081ABDF /* ProposalModel.m */; };
@@ -790,8 +791,8 @@
 		8450D1231C047A6B00CD1D5B /* AIIconTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconTextView.swift; sourceTree = "<group>"; };
 		8451A4751C910991002FE8D2 /* UIViewController+AIPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AIPopup.swift"; sourceTree = "<group>"; };
 		8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskEditViewController.swift; sourceTree = "<group>"; };
-		8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskRemarkInputViewController.swift; sourceTree = "<group>"; };
-		8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskRemarkInputViewController.xib; sourceTree = "<group>"; };
+		8453204C1C9A86C3003B984B /* AITaskInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskInputViewController.swift; sourceTree = "<group>"; };
+		8453204D1C9A86C3003B984B /* AITaskInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskInputViewController.xib; sourceTree = "<group>"; };
 		8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskTimeLineView.swift; sourceTree = "<group>"; };
 		8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskTimeLineView.xib; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
@@ -995,6 +996,7 @@
 		849B4B1F1C0EDFE300BEC179 /* FLEXImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXImagePreviewViewController.m; sourceTree = "<group>"; };
 		849D3EF11BE0632B0008949E /* ProposalEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalEnum.swift; sourceTree = "<group>"; };
 		849D3EF31BE070C60008949E /* ProposalProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalProtocal.swift; sourceTree = "<group>"; };
+		849EDFFC1CACFB8400700C8C /* UIView+Shake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		84B62B171BD891670081ABDF /* ImageContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
 		84B62B1A1BD8E1290081ABDF /* ProposalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalModel.h; sourceTree = "<group>"; };
 		84B62B1B1BD8E1290081ABDF /* ProposalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalModel.m; sourceTree = "<group>"; };
@@ -2770,6 +2772,7 @@
 			isa = PBXGroup;
 			children = (
 				84467F741CA4D26B004F42A7 /* UIDeviceExtension.swift */,
+				849EDFFC1CACFB8400700C8C /* UIView+Shake.swift */,
 				84467F781CA525DE004F42A7 /* CGAffineTransform.swift */,
 				84467F761CA52388004F42A7 /* CATransform3D.swift */,
 				84C0F1661C9FFAE300BA7266 /* KMPlaceholderTextView.swift */,
@@ -2831,8 +2834,8 @@
 				84E3B7A61C916D870006BE49 /* AITimePickerViewController.xib */,
 				8453204A1C9A86C3003B984B /* AITaskEditViewController.swift */,
 				84E9D52F1CA9471600E8FBDA /* AITaskNavigationBar.swift */,
-				8453204C1C9A86C3003B984B /* AITaskRemarkInputViewController.swift */,
-				8453204D1C9A86C3003B984B /* AITaskRemarkInputViewController.xib */,
+				8453204C1C9A86C3003B984B /* AITaskInputViewController.swift */,
+				8453204D1C9A86C3003B984B /* AITaskInputViewController.xib */,
 				8453204E1C9A86C3003B984B /* AITaskTimeLineView.swift */,
 				8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */,
 				8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */,
@@ -3246,7 +3249,7 @@
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
-				845320531C9A86C3003B984B /* AITaskRemarkInputViewController.xib in Resources */,
+				845320531C9A86C3003B984B /* AITaskInputViewController.xib in Resources */,
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -3631,6 +3634,7 @@
 				9372C5341C23F0300097CC92 /* AIRemoteRequestQueue.swift in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,
+				849EDFFD1CACFB8400700C8C /* UIView+Shake.swift in Sources */,
 				84F001501C3A43CB000C93AF /* FLEXTableColumnHeader.m in Sources */,
 				849B4B361C0EDFE300BEC179 /* FLEXToolbarItem.m in Sources */,
 				849B4B541C0EDFE300BEC179 /* FLEXLayerExplorerViewController.m in Sources */,
@@ -3720,7 +3724,7 @@
 				93C33EF71B9BEA75007BF506 /* CustomMethod.m in Sources */,
 				939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */,
 				818D8EBE1C040D4100006408 /* AIDetailText.m in Sources */,
-				845320521C9A86C3003B984B /* AITaskRemarkInputViewController.swift in Sources */,
+				845320521C9A86C3003B984B /* AITaskInputViewController.swift in Sources */,
 				849B4B4C1C0EDFE300BEC179 /* FLEXNetworkObserver.m in Sources */,
 				93CD0D2E1C8E82950047F4A7 /* AIRequirementMenuViewController.swift in Sources */,
 				93CA11D21C463475008B1EE1 /* AICustomerModels.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  AITaskRemarkInputViewController.swift
+//  AITaskInputViewController.swift
 //  DimPresentViewController
 //
 //  Created by admin on 3/15/16.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-protocol AITaskRemarkInputViewControllerDelegate: NSObjectProtocol {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?)
+@objc protocol AITaskInputViewControllerDelegate: NSObjectProtocol {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?)
+    optional func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool
 }
 
-class AITaskRemarkInputViewController: UIViewController {
+class AITaskInputViewController: UIViewController {
 	@IBOutlet weak var textField: KMPlaceholderTextView!
 	
-	weak var delegate: AITaskRemarkInputViewControllerDelegate?
+	weak var delegate: AITaskInputViewControllerDelegate?
 	
 	var text: String? {
 		didSet {
@@ -38,9 +39,17 @@ class AITaskRemarkInputViewController: UIViewController {
 	}
 }
 
-extension AITaskRemarkInputViewController: UITextViewDelegate {
+extension AITaskInputViewController: UITextViewDelegate {
 	func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
 		if (text == "\n") {
+            if let textViewShouldEndEditing = delegate?.remarkInputViewControllerShouldEndEditing?(self, text: textView.text) {
+                if !textViewShouldEndEditing {
+                    textView.shake(.Horizontal, numberOfTimes: 10, totalDuration: 0.6, completion: {
+                        // do something after animation finishes
+                    })
+                    return false
+                }
+            }
 			textView.resignFirstResponder()
 			dismissPopupViewController(true) { () -> Void in
 				if let delegate = self.delegate {
