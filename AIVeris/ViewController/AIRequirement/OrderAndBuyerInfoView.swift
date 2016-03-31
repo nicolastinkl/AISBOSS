@@ -20,18 +20,36 @@ class OrderAndBuyerInfoView: UIView {
     @IBOutlet weak var serviceName: UILabel!
     @IBOutlet weak var percentageNumber: UILabel!
     @IBOutlet weak var progressBar: YLProgressBar!
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     static func createInstance() -> OrderAndBuyerInfoView {
         let viewThis = NSBundle.mainBundle().loadNibNamed("OrderAndBuyerInfoView", owner: self, options: nil).first  as! OrderAndBuyerInfoView
         
         return viewThis
+    }
+    
+    var model: BuyerOrderModel? {
+        didSet {
+            if let m = model {
+                if let url = m.avatarUrl {
+                    buyerIcon.asyncLoadImage(url);
+                }
+                
+                if let name = m.buyerName {
+                    buyerName.text = name
+                }
+                
+                if let service = m.serviceName {
+                    serviceName.text = service
+                }
+                
+                setProgress(m.completion != nil ? CGFloat(m.completion!) : 0)
+                
+                
+                price.text = m.price != nil ? NSString(format: "%.1f", m.price!) as String : "0"
+                
+                messageNumber.text = m.messageNumber != nil ? String(m.messageNumber!) : "0"
+            }
+        }
     }
     
     override func awakeFromNib() {
