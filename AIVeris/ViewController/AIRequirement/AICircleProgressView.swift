@@ -86,7 +86,7 @@ class AICircleProgressView: UIView {
         animation.toValue = NSNumber(float: 1)
         animation.fillMode = kCAFillModeForwards
         animation.removedOnCompletion = true
-        animation.duration = 0.5
+        animation.duration = 0.5 + Double((self.progress ?? 0) / 10) //Default Value: 0.5
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         fontLayer.addAnimation(animation, forKey: nil)
     }

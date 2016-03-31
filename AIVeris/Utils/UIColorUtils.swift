@@ -170,8 +170,8 @@ extension UIColor {
             backgroundGradientLayer.colors = cgColors as [AnyObject]
             
             //Specify the direction our gradient will take
-            backgroundGradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            backgroundGradientLayer.endPoint = CGPoint(x: 1, y: 1)
+            backgroundGradientLayer.startPoint = CGPoint(x: 1, y: 0)
+            backgroundGradientLayer.endPoint = CGPoint(x: 0.8, y: 0.8)
             backgroundGradientLayer.masksToBounds = true
             //Convert our CALayer to a UIImage object
             UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
