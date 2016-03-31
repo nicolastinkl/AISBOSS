@@ -157,6 +157,7 @@ extension UIColor {
                 .size.height / 2)
             let myRadius = min(frame.size.height, frame.size.width)
             CGContextDrawRadialGradient(UIGraphicsGetCurrentContext(), myGradient, myCentrePoint, 0, myCentrePoint, myRadius, CGGradientDrawingOptions.DrawsAfterEndLocation)
+            
             // Grab it as an Image
             let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
             
@@ -166,19 +167,21 @@ extension UIColor {
             return UIColor(patternImage: backgroundColorImage)
             
         case UIGradientStyle.UIGradientStyleTopToBottom:
+            
+            //Convert our CALayer to a UIImage object
+            UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+            
             //Set out gradient's colors
             backgroundGradientLayer.colors = cgColors as [AnyObject]
             
             //Specify the direction our gradient will take
-            backgroundGradientLayer.startPoint = CGPoint(x: 1, y: 0.5)
-            backgroundGradientLayer.endPoint = CGPoint(x: 0.5, y: 0.5)
-            
-            //Convert our CALayer to a UIImage object
-            UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size, false, UIScreen.mainScreen().scale)
+            backgroundGradientLayer.startPoint = CGPoint(x: 1, y: 0)
+            backgroundGradientLayer.endPoint = CGPoint(x: 1, y: 1)
+
             backgroundGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)
             let backgroundColorImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            
+
             return UIColor(patternImage: backgroundColorImage)
         }
     }

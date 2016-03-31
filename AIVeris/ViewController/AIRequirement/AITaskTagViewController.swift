@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AIAlertView
 
 class AITaskTagViewController: RRTagController {
 	
 	override func addTagDidClick() {
 		print("addTagDidClick")
-		let vc = AITaskRemarkInputViewController.initFromNib()
+		let vc = AITaskInputViewController.initFromNib()
 		vc.delegate = self
 		presentPopupViewController(vc, animated: true)
 	}
@@ -25,7 +26,6 @@ class AITaskTagViewController: RRTagController {
 	}
 	
 	func setupCollectionView() {
-//		collectionTag.backgroundColor = UIColorFromHex(0x558bdc, alpha: 0.22)
 		collectionTag.reloadData()
         collectionTag.snp_remakeConstraints { (make) in
             make.top.equalTo(navigationBar.snp_bottom)
@@ -34,8 +34,8 @@ class AITaskTagViewController: RRTagController {
 	}
 }
 
-extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
+extension AITaskTagViewController: AITaskInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
 		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
 		if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
 			if strlen(contentTag) > 0 {
@@ -45,6 +45,10 @@ extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
 			}
 		}
 	}
+    
+    func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
+        return text?.length < 51
+    }
 }
 
 extension AITaskTagViewController: AITaskNavigationBarDelegate {

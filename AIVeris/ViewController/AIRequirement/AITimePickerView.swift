@@ -27,7 +27,7 @@ class AITimePickerView: UIPickerView {
 		static let imageComponentWidth: CGFloat = 44 + 23.333333333
 		static let cellLabelTag = 131234
 		static let cellIconTag = 1123421
-        static let hugeNumber = 10000
+		static let hugeNumber = 10000
 		static let font = AITools.myriadSemiCondensedWithSize(72 / 3)
 		static let textColor = UIColorFromHex(0x219bff)
 	}
@@ -168,11 +168,19 @@ class AITimePickerView: UIPickerView {
 		let startRowMinute = 60 * multiplier
 		if let date = date, taskDate = taskDate {
 			// if has set date
-			let timeIntervalSinceTaskDate = Int(fabs((date.timeIntervalSinceDate(taskDate))))
-			let isFuture = date.timeIntervalSinceDate(taskDate) > 0
-			
-			let day = timeIntervalSinceTaskDate / secondsInOneDay
-			let timeIntervalSinceTaskDateWithoutDay = timeIntervalSinceTaskDate - day * secondsInOneDay
+			let timeIntervalSinceTaskDateAbs = Int(fabs((date.timeIntervalSinceDate(taskDate))))
+			let timeIntervalSinceTaskDate = date.timeIntervalSinceDate(taskDate)
+
+            if timeIntervalSinceTaskDate > 0 {
+                imageColumnView.row = 2
+            } else if timeIntervalSinceTaskDate == 0 {
+                imageColumnView.row = 1
+            } else {
+                imageColumnView.row = 0
+            }
+
+			let day = timeIntervalSinceTaskDateAbs / secondsInOneDay
+			let timeIntervalSinceTaskDateWithoutDay = timeIntervalSinceTaskDateAbs - day * secondsInOneDay
 			let hour = timeIntervalSinceTaskDateWithoutDay / secondsInOneHour
 			let timeIntervalSinceTaskDateWithoutDayAndHour = timeIntervalSinceTaskDateWithoutDay - hour * secondsInOneHour
 			let minute = timeIntervalSinceTaskDateWithoutDayAndHour / secondsInOneMinute
@@ -186,7 +194,6 @@ class AITimePickerView: UIPickerView {
 				data[1] = days
 			}
 			
-            imageColumnView.row = isFuture ? 1 : 0
 			selectRow(day, inComponent: 1, animated: false)
 			selectRow(hour + startRowHour, inComponent: 2, animated: false)
 			selectRow(minute + startRowMinute, inComponent: 3, animated: false)
@@ -236,7 +243,7 @@ class AITimePickerView: UIPickerView {
 	}
 	
 	func convertSelectedRowsToDate(selectedRows: [Int]) -> NSDate {
-		let isFuture = selectedRows[0] == 1
+		let isFuture = selectedRows[0] == 2
 		let day = selectedRows[1]
 		let hour = selectedRows[2]
 		let minute = selectedRows[3]
@@ -245,20 +252,6 @@ class AITimePickerView: UIPickerView {
 		let result = NSDate(timeInterval: Double(timeIntervalSinceTaskDate), sinceDate: taskDate!)
 		return result
 	}
-	
-//	override func selectRow(row: Int, inComponent component: Int, animated: Bool) {
-//		let pickerComponent = AIPickerComponent(rawValue: component)!
-//		
-//		switch pickerComponent {
-//		case .Image:
-//			imageColumnView.row = row
-//		case .Day:
-//			super.selectRow(row, inComponent: component, animated: animated)
-//		case .Hour: fallthrough
-//		case .Minute:
-//			super.selectRow(row + Constants.hugeNumber / 2 * (data[component]?.count)!, inComponent: component, animated: animated)
-//		}
-//	}
 	
 	override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
 		if CGRectContainsPoint(imageColumnView.frame, point) {
@@ -333,23 +326,28 @@ extension AITimePickerView: UIPickerViewDelegate {
 	
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		var selectedRows = [Int]()
+		let isBefore = component == 0 ? row : imageColumnView.row
+		
 		for i in 0 ..< 4 {
-            if i != 0 {
-                let selectedRow = selectedRowInComponent(i) % (data[i]?.count)!
-                selectedRows.append(selectedRow)
-            } else {
-                selectedRows.append(imageColumnView.row)
-            }
-
+			if i != 0 {
+				if isBefore == 1 {
+					selectedRows.append(0)
+				} else {
+					let selectedRow = selectedRowInComponent(i) % (data[i]?.count)!
+					selectedRows.append(selectedRow)
+				}
+			} else {
+				selectedRows.append(imageColumnView.row)
+			}
 		}
-		let isBefore = (component == 0 ? row : imageColumnView.row) == 0
-		let isBeforeString = isBefore ? "Before" : "After"
+		let isBeforeStrings = ["Before ", "", "After "]
+		let isBeforeString = isBeforeStrings[isBefore]
 		
 		let days = "\(selectedRows[1]) days"
 		let hours = "\(selectedRows[2]) hours"
 		let minutes = "\(selectedRows[3]) minutes"
 		
-		dateDescription = isBeforeString + " " + days + " " + hours + " " + minutes
+		dateDescription = isBeforeString + "" + days + " " + hours + " " + minutes
 		date = convertSelectedRowsToDate(selectedRows)
 	}
 	

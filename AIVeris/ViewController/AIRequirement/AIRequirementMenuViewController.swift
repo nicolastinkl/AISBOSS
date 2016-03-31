@@ -119,11 +119,12 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
         
         let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - 180        
-        let frame = CGRect(x: 0, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
+        let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
         
         serviceInstsView = AIVerticalScrollView(frame: frame)
         serviceInstsView.userInteractionEnabled = true
         serviceInstsView.myDelegate = self
+        serviceInstsView.showsVerticalScrollIndicator = false
         //选择服务执行的时候才展现
         serviceInstsView.hidden = true
         view.addSubview(serviceInstsView)

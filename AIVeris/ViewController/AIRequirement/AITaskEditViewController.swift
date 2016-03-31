@@ -126,15 +126,15 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 	}
     
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
-		let vc = AITaskRemarkInputViewController.initFromNib()
+		let vc = AITaskInputViewController.initFromNib()
 		vc.delegate = self
 		presentPopupViewController(vc, duration: 0.1, animated: true)
 		vc.text = remark
 	}
 }
 
-extension AITaskEditViewController: AITaskRemarkInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
+extension AITaskEditViewController: AITaskInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
 		remark = text
 		// update save button enable
 		saveButtonEnabled = text?.length > 0
