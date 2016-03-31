@@ -64,7 +64,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataAfterUserChanged) name:kShouldUpdataUserDataNotification object:nil];
 #if DEBUG
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(viewTapped)];
-    [self.view addGestureRecognizer:tap];
+    tap.numberOfTapsRequired = 2;
+    [self.tableView addGestureRecognizer:tap];
 #endif
 }
 
@@ -497,9 +498,7 @@
        [contentVC loadDataNecessary];
        [self presentViewController:contentVC animated:YES completion:nil];
      */
-
     AIRequirementViewController *requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
-
     [self.navigationController pushViewController:requirementVC animated:YES];
 }
 

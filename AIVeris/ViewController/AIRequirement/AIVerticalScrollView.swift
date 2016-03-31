@@ -18,17 +18,15 @@ class AIVerticalScrollView: UIScrollView {
     //全选按钮
     var checkAllView : UIImageView!
     var isSelectAll = false
-    let checkAllIcon = UIImage(named: "white-arrow-down")
-    let unCheckAllIcon = UIImage(named: "white-arrow")
+    let checkAllIcon = UIImage(named: "checkall")
+    let unCheckAllIcon = UIImage(named: "checkall")
     
     //position
-    let iconWidth : CGFloat = 28
-    let iconPaddingTop : CGFloat = 10
+    let iconWidth : CGFloat = 86 / 3
+    let iconPaddingTop : CGFloat = 12 //8
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -100,12 +98,22 @@ class AIVerticalScrollView: UIScrollView {
         self.addSubview(iconView)
         //进度条
         iconView.userInteractionEnabled = true
+        
         let circleProgressView = AICircleProgressView(frame: iconView.bounds)
         circleProgressView.refreshProgress(CGFloat(model.executeProgress)/10)
         circleProgressView.delegate = self
         iconView.addSubview(circleProgressView)
         
         iconViews.append(iconView)
+         
+        if model.serviceInstStatus == 0 {
+            //  为选中
+            circleProgressView.changeSelect(false)
+        }else{
+            //  选中            
+            circleProgressView.changeSelect(true)
+        }
+        
     }
     
     //让外部获取当前选中的信息

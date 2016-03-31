@@ -21,7 +21,6 @@ class AILimitListViewController: UIViewController,AIPopupChooseViewDelegate {
         if let limitModelArray = limitModelArray{
             limitListView.loadData(limitListModel: limitModelArray)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {

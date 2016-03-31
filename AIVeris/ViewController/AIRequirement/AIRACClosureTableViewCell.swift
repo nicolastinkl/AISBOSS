@@ -55,25 +55,27 @@ class AIRACClosureTableViewCell: UITableViewCell {
         self.contentView.addSubview(iconImage)
         self.contentView.addSubview(contentLabel)
 
+        
         iconImage.snp_makeConstraints(closure: { (make) -> Void in
-            make.top.equalTo(self.contentView).offset(5)
+            make.top.equalTo(5)
             make.leading.equalTo(10)
             make.width.height.equalTo(30)
-        })        
+        })
         
         contentLabel.snp_makeConstraints(closure: { (make) -> Void in
-            make.top.equalTo(self.contentView).offset(9)
-            make.leading.equalTo(iconImage.snp_right).offset(10)
+            make.top.equalTo(9)
+            make.leading.equalTo(50)
             make.width.greaterThanOrEqualTo(20)
             make.height.equalTo(25)
         })
-        
+                
         selectedddImage.snp_makeConstraints { (make) -> Void in
-            make.leading.equalTo(iconImage.snp_left).offset(-5)
-            make.trailing.equalTo(contentLabel.snp_right).offset(10)
-            make.top.equalTo(iconImage.top).offset(0)
+            make.leading.equalTo(5)
+            make.trailing.equalTo(contentLabel).offset(10)
+            make.top.equalTo(0)
             make.height.equalTo(42)
-        }        
+        }
+        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
@@ -95,6 +97,8 @@ class AIRACClosureTableViewCell: UITableViewCell {
         currentModel = model
         self.iconImage.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlackHolder"))
         self.contentLabel.text = model.content ?? ""
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

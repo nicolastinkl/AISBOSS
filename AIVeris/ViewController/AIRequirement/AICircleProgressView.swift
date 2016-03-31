@@ -11,7 +11,8 @@ import UIKit
 class AICircleProgressView: UIView {
     
     var fontLayer : CAShapeLayer!
-    var strokWidth : CGFloat = 2
+    var strokWidth : CGFloat = 3.3
+    var circlePadding : CGFloat = 1
     var isSelect : Bool = false
     var progress : CGFloat?
     var delegate : CircleProgressViewDelegate?
@@ -30,6 +31,9 @@ class AICircleProgressView: UIView {
         fontLayer = CAShapeLayer()
         fontLayer.fillColor = nil
         fontLayer.frame = self.bounds
+        fontLayer.lineCap = kCALineCapRound
+        fontLayer.lineJoin = kCALineJoinRound
+        
         self.layer.addSublayer(fontLayer)
         setCircleLayer()
     }
@@ -43,12 +47,36 @@ class AICircleProgressView: UIView {
     func refreshProgress(progress : CGFloat){
         self.progress = progress
         let centerPoint = CGPoint(x: self.bounds.size.width * 0.5, y: self.bounds.size.height * 0.5)
-        let radius = (CGRectGetWidth(self.bounds) + strokWidth + 5) / 2
+        let radius = (CGRectGetWidth(self.bounds) + strokWidth + circlePadding) / 2
         let endAngle = CGFloat(2*M_PI)*progress - CGFloat(M_PI_2)
         let path = UIBezierPath(arcCenter: centerPoint , radius: radius, startAngle: CGFloat(-M_PI_2), endAngle: endAngle, clockwise: true)
         fontLayer.path = path.CGPath
         //fontLayer.strokeEnd = 0
         startAnimation()
+    }
+    
+    func generationGradientLayer(){
+        let gradientLayer = CALayer()
+        
+        //Color 1:
+        let color1 = CAGradientLayer()
+        color1.frame = CGRectMake(0, 0, self.width, self.height/2)
+        color1.colors = [UIColor(hex: "2477e8").CGColor]
+        color1.locations = [0.5,0.9,1]
+        color1.startPoint = CGPointMake(0.5, 1)
+        color1.endPoint = CGPointMake(0.5, 0)
+        
+        //Color 2:        
+        let color2 = CAGradientLayer()
+        color2.frame = CGRectMake(0, self.height/2, self.width, self.height/2)
+        color2.colors = [UIColor(hex: "e30ab2").CGColor]
+        color2.locations = [0.1,0.5,1]
+        color2.startPoint = CGPointMake(0.5, 1)
+        color2.endPoint = CGPointMake(0.5, 0)
+        
+        gradientLayer.addSublayer(color1)
+        gradientLayer.addSublayer(color2)
+        self.layer.addSublayer(gradientLayer)
     }
     
     func startAnimation(){
@@ -64,33 +92,38 @@ class AICircleProgressView: UIView {
     }
     
     func makeGradientColor(){
-        //fontLayer.strokeColor = UIColor.greenColor().CGColor
-        let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
-        fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleLeftToRight, frame: frame, colors: [UIColor.whiteColor(),UIColor.redColor()]).CGColor
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth*2 + circlePadding, height: self.bounds.height + strokWidth*2 + circlePadding)
+        fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleTopToBottom, frame: frame, colors: [UIColor(hex: "e30ab2"),UIColor(hex: "7B40D3"),UIColor(hex: "2477e8")]).CGColor
     }
     //设置选中还是未选中状态
     func changeSelect(isSelect : Bool){
         self.isSelect = isSelect
-        
+        //因为半径已经变了，所以frame不再从0开始
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
+        let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
         if isSelect {
-            //因为半径已经变了，所以frame不再从0开始
-            let frame = CGRect(x: -(strokWidth + 5) / 2, y:-(strokWidth + 5) / 2, width: self.bounds.width + strokWidth + 5, height: self.bounds.height + strokWidth + 5)
-            let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
+            
             //改变颜色时不需要动画，用这个禁用
             CATransaction.begin()
             CATransaction.setDisableActions(true)
             fontLayer.path = path.CGPath
-            fontLayer.strokeColor = UIColor.blueColor().CGColor
+            fontLayer.strokeColor = UIColor(hex: "0f86e8").CGColor
             CATransaction.commit()
             
         }
         else {
-            if let progress = progress{
-                refreshProgress(progress)
+            let progressCurrent = progress ?? 0
+            if progressCurrent > 0 {
+                refreshProgress(progressCurrent)
                 makeGradientColor()
             }
             else{
-                fontLayer.path = nil
+                //改变颜色时不需要动画，用这个禁用
+                CATransaction.begin()
+                CATransaction.setDisableActions(true)
+                fontLayer.path = path.CGPath
+                fontLayer.strokeColor = UIColor.blackColor().CGColor
+                CATransaction.commit()
             }
         }
     }

@@ -14,12 +14,16 @@ protocol DependOnNodePickerViewControllerDelegate {
 }
 
 class DependOnNodePickerViewController: UIViewController {
+	struct Constants {
+		static let cellHeight: CGFloat = 160 / 3
+        static let separatorColor = UIColorFromHex(0xacdaff, alpha: 0.28)
+	}
 	var delegate: DependOnNodePickerViewControllerDelegate?
-    var services: [DependOnService] = [DependOnService]() {
-        didSet {
-            updateServices()
-        }
-    }
+	var services: [DependOnService] = [DependOnService]() {
+		didSet {
+			updateServices()
+		}
+	}
 	
 	var allTasks: [TaskNode] {
 		// 取出所有选中的service 的tasks 组成一个数组
@@ -37,19 +41,29 @@ class DependOnNodePickerViewController: UIViewController {
 	var serviceLogos = [CycleImageView]()
 	var logoContainerView: UIView!
 	var tableView: UITableView!
+	var gradientLayer: CAGradientLayer!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = UIColor(red: 0.0392, green: 0.1137, blue: 0.3765, alpha: 1.0)
+		setupBackgroundImageView()
 		setupIconsContainerView()
 		setupTableView()
+		setupGradientLayer()
 		setupDetermineButton()
 	}
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        setupSelectedService()
-    }
+	
+	func setupBackgroundImageView() {
+		let imageView = UIImageView(image: UIImage(named: "taskEditBg"))
+		view.addSubview(imageView)
+		imageView.snp_makeConstraints { (make) in
+			make.edges.equalTo(view)
+		}
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		setupSelectedService()
+	}
 	
 	func setupSelectedService() {
 		if let selectedTask = selectedTask {
@@ -57,14 +71,12 @@ class DependOnNodePickerViewController: UIViewController {
 				let t = service.tasks.filter({ (task) -> Bool in
 					return task.id == selectedTask.id
 				}).first
-				if let t = t {
+				if t != nil {
 					var s = services[i]
 					s.selected = true
 					services[i] = s
 					updateServices()
 					tableView.reloadData()
-//                    let index = allTasks.indexOf(t)
-//                    tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: index!, inSection: 0), atScrollPosition: .Middle, animated: false)
 					break
 				}
 			}
@@ -80,20 +92,20 @@ class DependOnNodePickerViewController: UIViewController {
 			view.top == logoContainerView.top
 			view.leading == logoContainerView.leading
 			view.trailing == logoContainerView.trailing
-			logoContainerView.height == 64
+			logoContainerView.height == 218 / 3
 		}
 		
 		for i in 0 ... 7 {
 			let imageView = CycleImageView()
 			imageView.tag = i
 			imageView.userInteractionEnabled = true
-			imageView.cycleColor = UIColor(red: 0.1216, green: 0.4157, blue: 0.7922, alpha: 1.0)
+			imageView.cycleColor = UIColorFromHex(0x0f86e8)
 			logoContainerView.addSubview(imageView)
 			
 			serviceLogos.append(imageView)
 		}
 		
-		let margin = 12
+		let margin = 51 / 3
 		var previousView: CycleImageView!
 		
 		for (i, imageView) in serviceLogos.enumerate() {
@@ -123,6 +135,17 @@ class DependOnNodePickerViewController: UIViewController {
 			
 			previousView = imageView
 		}
+        
+        
+        // add bottom line
+        let line = UIView()
+        line.backgroundColor = Constants.separatorColor
+        logoContainerView.addSubview(line)
+        line.snp_makeConstraints { (make) in
+            make.bottom.leading.trailing.equalTo(logoContainerView)
+            make.height.equalTo(1 / UIScreen.mainScreen().scale)
+        }
+        
 	}
 	
 	func updateServices() {
@@ -145,37 +168,77 @@ class DependOnNodePickerViewController: UIViewController {
 	}
 	
 	func setupTableView() {
+		let tableViewContainer = UIView()
 		tableView = UITableView(frame: .zero, style: .Plain)
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constants.cellHeight, right: 0)
 		tableView.backgroundColor = UIColor.clearColor()
+		tableView.separatorColor = Constants.separatorColor
 		let cellNib = UINib(nibName: "DependOnNodeCell", bundle: nil)
 		tableView.registerNib(cellNib, forCellReuseIdentifier: "cell")
-		view.addSubview(tableView)
+		tableViewContainer.addSubview(tableView)
+		view.addSubview(tableViewContainer)
 		
 		tableView.tableFooterView = UIView() // remove empty cells
 		
-		constrain(view, tableView, logoContainerView) { (view, tableView, logoContainerView) -> () in
-			view.leading == tableView.leading
-			view.trailing == tableView.trailing
-			tableView.top == logoContainerView.bottom
+		constrain(view, tableViewContainer, logoContainerView) { (view, tableViewContainer, logoContainerView) -> () in
+			view.leading == tableViewContainer.leading
+			view.trailing == tableViewContainer.trailing
+			tableViewContainer.top == logoContainerView.bottom
 		}
+		
+		tableView.snp_makeConstraints { (make) in
+			make.edges.equalTo(tableViewContainer)
+		}
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		gradientLayer.frame = tableView.superview!.bounds
+		let height = gradientLayer.frame.size.height
+		let halfCellHeight = Constants.cellHeight / 2
+		
+		let radio = 1 - halfCellHeight / height
+		
+		gradientLayer.locations = [
+			0.25,
+			0.75,
+			radio,
+			1.0
+		]
+	}
+	
+	func setupGradientLayer() {
+		// http://stackoverflow.com/questions/25355058/apply-vertical-alpha-gradient-to-uitableview
+		
+		gradientLayer = CAGradientLayer()
+		gradientLayer.frame = tableView.superview?.bounds ?? CGRectNull
+		
+		gradientLayer.colors = [
+			UIColor.blackColor().CGColor,
+			UIColor.blackColor().CGColor,
+			UIColor.clearColor().CGColor,
+			UIColor.clearColor().CGColor
+		]
+		
+		tableView.superview?.layer.mask = gradientLayer
 	}
 	
 	func setupDetermineButton() {
 		let button = UIButton()
 		button.setTitle("Determine", forState: .Normal)
-		button.titleLabel?.font = UIFont.systemFontOfSize(15)
-		button.backgroundColor = UIColor(red: 0.0745, green: 0.4431, blue: 0.8941, alpha: 1.0)
+		button.titleLabel?.font = AITools.myriadSemiCondensedWithSize(16)
+		button.backgroundColor = UIColorFromHex(0x0f86e8)
 		button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		button.layer.cornerRadius = 15
+		button.layer.cornerRadius = 20
 		button.addTarget(self, action: "determineButtonPressed", forControlEvents: .TouchUpInside)
 		view.addSubview(button)
 		
 		button.snp_makeConstraints { (make) -> Void in
 			make.top.equalTo(tableView.snp_bottom).offset(8)
-			make.bottom.equalTo(view).offset(-8)
-			make.size.equalTo(CGSize(width: 100, height: 30))
+			make.bottom.equalTo(view).offset(-54)
+			make.size.equalTo(CGSize(width: 107, height: 40))
 			make.centerX.equalTo(view)
 		}
 	}
@@ -223,7 +286,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 extension DependOnNodePickerViewController: UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-		return 80
+		return Constants.cellHeight
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -232,12 +295,21 @@ extension DependOnNodePickerViewController: UITableViewDelegate {
 	}
 }
 
-
-
 class CycleImageView: UIImageView {
+	lazy var imageView: UIImageView = { [unowned self] in
+		let result = UIImageView()
+		self.addSubview(result)
+		result.snp_makeConstraints(closure: { (make) in
+			make.center.equalTo(self)
+			make.top.equalTo(4)
+			make.leading.equalTo(4)
+		})
+		return result
+	}()
+	
 	var selected: Bool = false {
 		didSet {
-			layer.borderWidth = selected ? 1 : 0
+			layer.borderWidth = selected ? 10 / 3: 0
 		}
 	}
 	
@@ -247,6 +319,10 @@ class CycleImageView: UIImageView {
 				layer.borderColor = cycleColor.CGColor
 			}
 		}
+	}
+	
+	override func asyncLoadImage(imgUrl: String) {
+		imageView.asyncLoadImage(imgUrl)
 	}
 	
 	override func layoutSubviews() {

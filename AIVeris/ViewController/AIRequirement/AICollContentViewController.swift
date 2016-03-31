@@ -22,10 +22,14 @@ class AICollContentViewController: UIViewController {
     var serviceInstView : AIAssignServiceView!
     var timeLineTable : UITableView!
     var launchButton : UIButton!
+    var launchButtonBgView : UIView!
     
     //size constants
-    let LaunchButtonWidth : CGFloat = 180
-    let LaunchButtonHeight : CGFloat = 32
+    let LaunchButtonWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(738)
+    let LaunchButtonHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(103)
+    let LaunchButtonBgWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(761)
+    let LaunchButtonBgHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(127)
+    let TitleLeftPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(35)
     let buttonPadding : CGFloat = 10
     
     
@@ -42,20 +46,7 @@ class AICollContentViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        var serviceInstViewFrame = view.bounds
-        serviceInstViewFrame.size.height = 100
-        serviceInstView.frame = serviceInstViewFrame
-        serviceInstView.setLeft(-20)
-        serviceInstView.setTop(-20)
-        serviceInstView.setWidth(view.bounds.width + 40)
-        
-        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonWidth, height: LaunchButtonHeight)
-        launchButton.frame = buttonFrame
-        
-        var tableFrame = serviceInstView.frame
-        tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
-        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
-        timeLineTable.frame = tableFrame
+        layoutViews()
     }
     
     // MARK: - 构造subView
@@ -83,36 +74,67 @@ class AICollContentViewController: UIViewController {
         timeLineTable.delegate = self
         timeLineTable.dataSource = self
         timeLineTable.separatorStyle = UITableViewCellSeparatorStyle.None
-        let backgroundImageView = UIImageView(frame: timeLineTable.bounds)
-        let backgroundImage = UIImage(named: "cell_background")
-        backgroundImageView.image = backgroundImage
-        timeLineTable.backgroundView = backgroundImageView
+        timeLineTable.backgroundColor = UIColor.clearColor()
+//        let backgroundImageView = UIImageView(frame: timeLineTable.bounds)
+//        let backgroundImage = UIImage(named: "cell_background")
+//        backgroundImageView.image = backgroundImage
+//        timeLineTable.backgroundView = backgroundImageView
     }
     
     func buildLaunchView(){
         
+        launchButtonBgView = UIView()
+        launchButtonBgView.backgroundColor = UIColor(hexString: "#0f86e8")
+        launchButtonBgView.alpha = 0.2
+        launchButtonBgView.layer.cornerRadius = 5
+        launchButtonBgView.layer.masksToBounds = true
+        view.addSubview(launchButtonBgView)
+         
         launchButton = UIButton()
         launchButton.setTitle("Launch", forState: UIControlState.Normal)
-        launchButton.backgroundColor = UIColor(hex: "#146EE2")
-        launchButton.layer.cornerRadius = 8
+        launchButton.backgroundColor = UIColor(hex: "#0f86e8")
+        launchButton.layer.cornerRadius = 5
         launchButton.layer.masksToBounds = true
         view.addSubview(launchButton)
     }
     
+    func layoutViews(){
+        var serviceInstViewFrame = view.bounds
+        serviceInstViewFrame.size.height = 83
+        serviceInstView.frame = serviceInstViewFrame
+        serviceInstView.setLeft(-20)
+        serviceInstView.setTop(-20)
+        serviceInstView.setWidth(view.bounds.width + 40)
+        
+        
+        let buttonBgViewFrame = CGRect(x: (view.bounds.width - LaunchButtonBgWidth) / 2, y: CGRectGetMaxY(serviceInstView.frame) + buttonPadding, width: LaunchButtonBgWidth, height: LaunchButtonBgHeight)
+        launchButtonBgView.frame = buttonBgViewFrame
+        let buttonFrame = CGRect(x: (view.bounds.width - LaunchButtonWidth) / 2, y: buttonBgViewFrame.origin.y + (LaunchButtonBgHeight - LaunchButtonHeight) / 2, width: LaunchButtonWidth, height: LaunchButtonHeight)
+        launchButton.frame = buttonFrame
+        
+        var tableFrame = serviceInstView.frame
+        tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
+        tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
+        timeLineTable.frame = tableFrame
+    }
+    
     // MARK: - 加载数据
     func loadData(){
-        let limits = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
+        let limits1 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
+        let limits2 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
+        let limits3 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
+        let limits4 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         
-        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, limits: limits)
-        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, limits: limits)
-        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, limits: limits)
-        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits)
+        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, limits: limits1)
+        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, limits: limits2)
+        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, limits: limits3)
+        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits4)
         assginServiceInsts = [model1,model2,model3,model4]
         
-        timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "title1 wantsor", desc: "content1 needreply",status: 0),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title2 wantsor", desc: "content2 needreply",status: 0),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title3 wantsor", desc: "content3 needreply",status: 1),
-            AITimelineModel(timestamp: 1457403751, id: 1, title: "title4 wantsor", desc: "content4 needreply",status: 0)]
+        timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "Launch language to Ms.Customer A", desc: "Ms.Customer A has an answer to the language requirements of the",status: 0),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "Failed to launch the Ms.Customer A language", desc: "Ms.Customer A no response to the language requirements of the",status: 0),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "A request from a nutrition to you.", desc: "Ms.Customer A out of contact,Please help me get in touch with him.",status: 1),
+            AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         filterModels = [AIPopupChooseModel(itemId: 1, itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
         AIPopupChooseModel(itemId: 1, itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
