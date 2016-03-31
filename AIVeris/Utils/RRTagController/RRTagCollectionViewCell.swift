@@ -27,6 +27,8 @@ class RRTagCollectionViewCell: UICollectionViewCell {
 		textContent.textAlignment = NSTextAlignment.Center
 		return textContent
 	}()
+    
+    var addIcon: UIImageView = UIImageView(image: UIImage(named: "addTag"))
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -45,6 +47,7 @@ class RRTagCollectionViewCell: UICollectionViewCell {
 	
 	func initContent(tag: RequirementTag) {
 		contentView.addSubview(textContent)
+        addIcon.hidden = true
 		textContent.text = tag.textContent
 		textContent.sizeToFit()
 		textContent.frame.size.width = textContent.frame.size.width + 30
@@ -64,13 +67,14 @@ class RRTagCollectionViewCell: UICollectionViewCell {
 		contentView.addSubview(textContent)
 		textContent.text = "Add Tag"
 		textContent.sizeToFit()
-//		textContent.frame.size = RRTagCollectionViewCellAddTagSize
+		textContent.frame.size = RRTagCollectionViewCellAddTagSize
 		backgroundColor = UIColor.clearColor()
-		let imageView = UIImageView(image: UIImage(named: "addTag"))
-		contentView.addSubview(imageView)
-		imageView.setOrigin(CGPoint(x: 4, y: 4))
-		textContent.setX(imageView.right + 8)
-		textContent.setCenterY(imageView.centerY)
+
+        addIcon.hidden = false
+		contentView.addSubview(addIcon)
+		addIcon.setOrigin(CGPoint(x: 4, y: 4))
+		textContent.setX(addIcon.right + 8)
+		textContent.setCenterY(addIcon.centerY)
 		textContent.layer.backgroundColor = colorUnselectedTag.CGColor
 		textContent.textColor = colorTextUnSelectedTag
 	}

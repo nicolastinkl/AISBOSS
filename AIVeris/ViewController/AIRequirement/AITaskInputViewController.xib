@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskRemarkInputViewController" customModule="Veris" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AITaskInputViewController" customModule="Veris" customModuleProvider="target">
             <connections>
                 <outlet property="textField" destination="TpN-Dm-CFm" id="x9D-wg-I8F"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -46,6 +46,6 @@
         </view>
     </objects>
     <resources>
-        <image name="taskInputBg" width="341" height="66"/>
+        <image name="taskInputBg" width="414" height="85"/>
     </resources>
 </document>
