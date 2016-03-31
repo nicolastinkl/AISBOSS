@@ -488,7 +488,8 @@ extension AIRequireContentViewController {
 	
 	@IBAction func addTagButtonPressed() {
        //fake data
-        let tagDescs = ["Accompnay and attend to", "About the car", "Nutritional meal", "Fitness regime", "Psychotherapy", "Accompnay and attend to", "About the car"]
+//        let tagDescs = ["Accompnay and attend to", "About the car", "Nutritional meal", "Fitness regime", "Psychotherapy", "Accompnay and attend to", "About the car"]
+        let tagDescs = ["Dsfadfsaafsdfsda","Dsfadfsaafsdfsda","Fsdasdfafsdasadfsadfdsfa","Safddfsadfsasadfdfsa"]
         var tags = [RequirementTag]()
         for i in 0 ... tagDescs.count - 1 {
             let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: tagDescs[i])

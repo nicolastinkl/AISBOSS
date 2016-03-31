@@ -18,18 +18,23 @@ class RRTagCollectionViewCell: UICollectionViewCell {
 		static let blue = UIColorFromHex(0x0f86e8)
 	}
 	
-	lazy var textContent: UILabel! = {
+	lazy var textContent: UILabel! = { [unowned self] in
 		let textContent = UILabel(frame: CGRectZero)
 		textContent.layer.masksToBounds = true
 		
 		textContent.layer.borderColor = Constants.blue.CGColor
 		textContent.font = Constants.font
 		textContent.textAlignment = NSTextAlignment.Center
+        self.contentView.addSubview(textContent)
 		return textContent
 	}()
-    
-    var addIcon: UIImageView = UIImageView(image: UIImage(named: "addTag"))
 	
+	lazy var addIcon: UIImageView = { [unowned self] in
+		let result = UIImageView(image: UIImage(named: "addTag")!)
+		self.contentView.addSubview(result)
+		return result
+	}()
+		
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		setup()
@@ -40,54 +45,43 @@ class RRTagCollectionViewCell: UICollectionViewCell {
 	}
 	
 	func setup() {
-//        textContent.layer.borderWidth = 2 / 3
+        _ = textContent
+        _ = addIcon
 		layer.borderWidth = 2 / 3
-        layer.borderColor = Constants.blue.CGColor
+		layer.borderColor = Constants.blue.CGColor
 	}
 	
 	func initContent(tag: RequirementTag) {
-		contentView.addSubview(textContent)
-        addIcon.hidden = true
+		addIcon.hidden = true
 		textContent.text = tag.textContent
-		textContent.sizeToFit()
-		textContent.frame.size.width = textContent.frame.size.width + 30
-		textContent.frame.size.height = textContent.frame.size.height + 20
 		selected = tag.selected
-		backgroundColor = UIColor.clearColor()
-		layer.backgroundColor = (selected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
-		textContent.textColor = (selected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
+        animateSelection(tag.selected)
 	}
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		layer.cornerRadius = CGRectGetHeight(bounds) / 2
+		if addIcon.hidden == false {
+            textContent.sizeToFit()
+            addIcon.setOrigin(CGPoint(x: 4, y: 4))
+            textContent.setX(addIcon.right + 8)
+            textContent.setCenterY(addIcon.centerY)
+		} else {
+            textContent.frame = bounds
+		}
 	}
 	
 	func initAddButtonContent() {
-		contentView.addSubview(textContent)
 		textContent.text = "Add Tag"
-		textContent.sizeToFit()
-		textContent.frame.size = RRTagCollectionViewCellAddTagSize
-		backgroundColor = UIColor.clearColor()
-
-        addIcon.hidden = false
-		contentView.addSubview(addIcon)
-		addIcon.setOrigin(CGPoint(x: 4, y: 4))
-		textContent.setX(addIcon.right + 8)
-		textContent.setCenterY(addIcon.centerY)
-		textContent.layer.backgroundColor = colorUnselectedTag.CGColor
-		textContent.textColor = colorTextUnSelectedTag
+        selected = false
+        animateSelection(false)
+		addIcon.hidden = false
 	}
 	
 	func animateSelection(selection: Bool) {
 		selected = selection
-		
-		textContent.frame.size = CGSizeMake(textContent.frame.size.width - 20, textContent.frame.size.height - 20)
-		textContent.frame.origin = CGPointMake(textContent.frame.origin.x + 10, textContent.frame.origin.y + 10)
 		layer.backgroundColor = (selected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
 		textContent.textColor = (selected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
-		textContent.frame.size = CGSizeMake(textContent.frame.size.width + 20, textContent.frame.size.height + 20)
-		textContent.center = CGPointMake(contentView.frame.size.width / 2, contentView.frame.size.height / 2)
 	}
 	
 	class func contentHeight(content: String, maxWidth: CGFloat) -> CGSize {

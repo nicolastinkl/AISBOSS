@@ -47,8 +47,7 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
 	}
     
     func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
-        
-        return text?.length < 20
+        return text?.length < 51
     }
 }
 
