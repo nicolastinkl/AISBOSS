@@ -92,7 +92,7 @@ class AICircleProgressView: UIView {
     }
     
     func makeGradientColor(){
-        let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2 , y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding )
         fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleTopToBottom, frame: frame, colors: [UIColor(hex: "e30ab2"),UIColor(hex: "7B40D3"),UIColor(hex: "2477e8")]).CGColor
     }
     //设置选中还是未选中状态
@@ -114,8 +114,9 @@ class AICircleProgressView: UIView {
         else {
             let progressCurrent = progress ?? 0
             if progressCurrent > 0 {
-                refreshProgress(progressCurrent)
+                
                 makeGradientColor()
+                refreshProgress(progressCurrent)
             }
             else{
                 //改变颜色时不需要动画，用这个禁用
