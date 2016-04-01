@@ -9,62 +9,62 @@
 import Foundation
 import UIKit
 /*!
-*  @author tinkl, 15-04-01 17:04:36
-*
-*  solve : The "hook" mechanism change NavigationBar's or tabbar's background.
-*  NOTICE:Changing this property’s value provides visual feedback in the user interface, including the running of any associated animations. The selected item displays the tab bar item’s selectedImage image, using the tab bar’s selectedImageTintColor value. To prevent system coloring of an item, provide images using the UIImageRenderingModeAlwaysOriginal rendering mode.
-*/
-extension UIViewController {    
-    
-    func viewDidLoadForChangeTitleColor() {
-        self.viewDidLoadForChangeTitleColor()
-        //setNeedsStatusBarAppearanceUpdate()
-        if self.isKindOfClass(UINavigationController.classForCoder()) {
-            self.changeNavigationBarTextColor(self as! UINavigationController)
-        }
-    }
-    
-    func changeNavigationBarTextColor(navController: UINavigationController) {
-        let nav = navController as UINavigationController
-        let dic = NSDictionary(object: UIColor.applicationMainColor(),
-            forKey:NSForegroundColorAttributeName)
-        nav.navigationBar.titleTextAttributes = dic as? [String : AnyObject]
-        nav.navigationBar.tintColor = UIColor.applicationMainColor()
-        //nav.navigationBar.lt_setBackgroundColor(
-        //UIColor.applicationMainColor().colorWithAlphaComponent(0))
-        //nav.setNavigationBarHidden(true, animated: true)
-        self.title = ""
-        UINavigationBar.appearance().shadowImage = UIColor.clearColor().clearImage()
-    }
-    
-    func viewWillDisappearForHiddenBottomBar(animated: Bool){
-        self.viewWillDisappearForHiddenBottomBar(animated)
-    }
-    
-    func viewWillAppearForShowBottomBar(animated: Bool){
-        self.viewWillAppearForShowBottomBar(animated)
-        
-
-    }
-    
-    func showMenuViewController(){
-        
-    }
-    
-    /*!
-        the local coding scope.
-    */
-    override func localCode(closeure:()->()){
-        closeure()
-    }
-    
-    // 显示搜索主界面
-    func showSearchMainViewController() {
+ *  @author tinkl, 15-04-01 17:04:36
+ *
+ *  solve : The "hook" mechanism change NavigationBar's or tabbar's background.
+ *  NOTICE:Changing this property’s value provides visual feedback in the user interface, including the running of any associated animations. The selected item displays the tab bar item’s selectedImage image, using the tab bar’s selectedImageTintColor value. To prevent system coloring of an item, provide images using the UIImageRenderingModeAlwaysOriginal rendering mode.
+ */
+extension UIViewController {
+	
+	class func initFromNib() -> Self {
+		let name = NSStringFromClass(classForCoder()).componentsSeparatedByString(".").last
+		return self.init(nibName: name, bundle: nil)
+	}
+	
+	func viewDidLoadForChangeTitleColor() {
+		self.viewDidLoadForChangeTitleColor()
+		// setNeedsStatusBarAppearanceUpdate()
+		if self.isKindOfClass(UINavigationController.classForCoder()) {
+			self.changeNavigationBarTextColor(self as! UINavigationController)
+		}
+	}
+	
+	func changeNavigationBarTextColor(navController: UINavigationController) {
+		let nav = navController as UINavigationController
+		let dic = NSDictionary(object: UIColor.applicationMainColor(),
+			forKey: NSForegroundColorAttributeName)
+		nav.navigationBar.titleTextAttributes = dic as? [String: AnyObject]
+		nav.navigationBar.tintColor = UIColor.applicationMainColor()
+		// nav.navigationBar.lt_setBackgroundColor(
+		// UIColor.applicationMainColor().colorWithAlphaComponent(0))
+		// nav.setNavigationBarHidden(true, animated: true)
+		self.title = ""
+		UINavigationBar.appearance().shadowImage = UIColor.clearColor().clearImage()
+	}
+	
+	func viewWillDisappearForHiddenBottomBar(animated: Bool) {
+		self.viewWillDisappearForHiddenBottomBar(animated)
+	}
+	
+	func viewWillAppearForShowBottomBar(animated: Bool) {
+		self.viewWillAppearForShowBottomBar(animated)
+	}
+	
+	func showMenuViewController() {
+	}
+	
+	/*!
+	 the local coding scope.
+	 */
+	override func localCode(closeure: () -> ()) {
+		closeure()
+	}
+	
+	// 显示搜索主界面
+	func showSearchMainViewController() {
 //        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AISearchStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AISearchServiceCollectionViewController) as SearchServiceViewController
 //        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
 //        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
 //        self.showDetailViewController(viewController, sender: self)
-        
-    }
-    
+	}
 }

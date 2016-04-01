@@ -18,17 +18,15 @@ class AIVerticalScrollView: UIScrollView {
     //全选按钮
     var checkAllView : UIImageView!
     var isSelectAll = false
-    let checkAllIcon = UIImage(named: "white-arrow-down")
-    let unCheckAllIcon = UIImage(named: "white-arrow")
+    let checkAllIcon = UIImage(named: "checkall")
+    let unCheckAllIcon = UIImage(named: "checkall")
     
     //position
-    let iconWidth : CGFloat = 28
-    let iconPaddingTop : CGFloat = 10
+    let iconWidth : CGFloat = 86 / 3
+    let iconPaddingTop : CGFloat = 12 //8
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -58,19 +56,25 @@ class AIVerticalScrollView: UIScrollView {
     
     func checkAllAction(sender : AnyObject){
         isSelectAll = !isSelectAll
+        
         if isSelectAll{
             checkAllView.image = checkAllIcon
         }
         else{
             checkAllView.image = unCheckAllIcon
         }
-        for iconView in iconViews{
+        for (index,iconView) in iconViews.enumerate(){
             let subViews = iconView.subviews.filter({ (subView) -> Bool in
                 subView.isKindOfClass(AICircleProgressView)
             })
             if let circleView = subViews.first as? AICircleProgressView{
                 circleView.changeSelect(isSelectAll)
+                //TODO 这里逻辑不太清晰，是要更新model的isSelect状态，根据circleView是否选中
+                models![index].isSelected = circleView.isSelect
             }
+        }
+        if let myDelegate = myDelegate{
+            myDelegate.viewCellDidSelect(self, index: -1, cellView: checkAllView)
         }
     }
     
@@ -100,12 +104,25 @@ class AIVerticalScrollView: UIScrollView {
         self.addSubview(iconView)
         //进度条
         iconView.userInteractionEnabled = true
+        
         let circleProgressView = AICircleProgressView(frame: iconView.bounds)
-        circleProgressView.refreshProgress(CGFloat(model.executeProgress)/10)
+        //TODO 这里需要做状态判断，已派单的才需要刷新进度
+        if model.serviceInstStatus == ServiceInstStatus.Init{
+            circleProgressView.refreshProgress(CGFloat(model.executeProgress)/10)
+        }
         circleProgressView.delegate = self
         iconView.addSubview(circleProgressView)
         
         iconViews.append(iconView)
+         
+        if model.serviceInstStatus == ServiceInstStatus.Init {
+            //  为选中
+            circleProgressView.changeSelect(false)
+        }else{
+            //  选中            
+            circleProgressView.changeSelect(true)
+        }
+        
     }
     
     //让外部获取当前选中的信息

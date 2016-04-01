@@ -25,6 +25,7 @@ class AITaskEditViewController: UIViewController {
 			timeLineView.setNeedsUpdateConstraints()
 			timeLineView.updateConstraintsIfNeeded()
 			UIView.animateWithDuration(0.25) { () -> Void in
+				self.timeLineView?.logo2.highlighted = self.timeLineView!.isTopLogoAtLeft
 				self.timeLineView?.layoutIfNeeded()
 				self.timeLineView?.animationLines()
 			}
@@ -36,6 +37,7 @@ class AITaskEditViewController: UIViewController {
 			timeLineView?.setNeedsUpdateConstraints()
 			timeLineView?.updateConstraintsIfNeeded()
 			UIView.animateWithDuration(0.25) { () -> Void in
+				self.timeLineView?.logo3.highlighted = self.timeLineView!.isMiddleLogoAtLeft
 				self.timeLineView?.layoutIfNeeded()
 				self.timeLineView?.animationLines()
 			}
@@ -55,67 +57,33 @@ class AITaskEditViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		edgesForExtendedLayout = .None
-		view.backgroundColor = UIColor(red: 0.0392, green: 0.1137, blue: 0.3765, alpha: 1.0)
-		setupNavigationToAppTheme()
+		setupNavigationAndBackgroundImage()
+        navigationBar.titleLabel.text = "Task"
+		saveButtonEnabled = false
 		
+		setupTimeLineView()
+	}
+	
+	func setupTimeLineView() {
 		timeLineView = UINib(nibName: "AITaskTimeLineView", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! AITaskTimeLineView
 		view.addSubview(timeLineView)
-		constrain(view, timeLineView) { (view, timeLineView) -> () in
-			timeLineView.edges == view.edges
+		timeLineView.snp_makeConstraints { (make) in
+			make.leading.trailing.bottom.equalTo(view)
+			make.top.equalTo(navigationBar.snp_bottom)
 		}
 		
 		timeLineView.delegate = self
 	}
 }
 
-extension AITaskEditViewController: AITaskNavigationDelegate {
-	func cancelButtonPressed(sender: UIButton) {
-		print("cancel button pressed")
+extension AITaskEditViewController: AITaskNavigationBarDelegate {
+	func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed: UIButton) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	func saveButtonPressed(sender: UIButton) {
+	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
 		dismissViewControllerAnimated(true, completion: nil)
 		print("save button pressed")
-	}
-}
-
-protocol AITaskNavigationDelegate {
-	func cancelButtonPressed(sender: UIButton)
-	func saveButtonPressed(sender: UIButton)
-}
-// MARK: - AITaskNavigationDelegate where Self: UIViewController
-extension AITaskNavigationDelegate where Self: UIViewController {
-	func setupNavigationToAppTheme() {
-		let bar = navigationController?.navigationBar
-		if let bar = bar {
-			bar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-			
-			bar.setBackgroundImage(UIImage(named: "bg_top_0"), forBarPosition: .Any, barMetrics: .Default)
-			
-			let cancelButton = UIButton()
-			cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-			cancelButton.setTitle("Cancel", forState: .Normal)
-			cancelButton.addTarget(self, action: "cancelButtonPressed:", forControlEvents: .TouchUpInside)
-			cancelButton.sizeToFit()
-			let cancelBarButtonItem = UIBarButtonItem(customView: cancelButton)
-			
-			navigationItem.leftBarButtonItem = cancelBarButtonItem
-			
-			let saveButton = UIButton()
-			saveButton.setTitle("Save", forState: .Normal)
-			saveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-			saveButton.addTarget(self, action: "saveButtonPressed:", forControlEvents: .TouchUpInside)
-			saveButton.backgroundColor = UIColor(red: 0.0784, green: 0.4353, blue: 0.8863, alpha: 1.0)
-			saveButton.layer.cornerRadius = 4
-			saveButton.sizeToFit()
-			var frame = saveButton.frame
-			frame.size.width += 20
-			saveButton.frame = frame
-			let saveBarButtonItem = UIBarButtonItem(customView: saveButton)
-			navigationItem.rightBarButtonItem = saveBarButtonItem
-		}
 	}
 }
 
@@ -134,19 +102,18 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		}
 		
 		var frame = vc.view.frame
-		frame.size.height = 400
+		frame.size.height = 500
 		vc.view.frame = frame
 		vc.delegate = self
 		vc.services = self.dynamicType.fakeServices()
-//		navigationController?.useBlurForPopup = false
 		presentPopupViewController(vc, animated: true)
 	}
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
-		let vc = AITimePickerViewController()
+		let vc = AITimePickerViewController.initFromNib()
+		vc.taskDate = dependOnTask!.date
 		if let dateNode = dateNode {
 			vc.date = dateNode.date
 		}
-//		navigationController?.useBlurForPopup = true
 		
 		vc.onDetermineButtonClick = { date, dateDescription in
 			print(self)
@@ -157,25 +124,30 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 			print("cancel")
 		})
 	}
+    
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
-		let vc = AITaskRemarkInputViewController()
+		let vc = AITaskInputViewController.initFromNib()
 		vc.delegate = self
-//		navigationController?.useBlurForPopup = true
 		presentPopupViewController(vc, duration: 0.1, animated: true)
 		vc.text = remark
 	}
 }
 
-extension AITaskEditViewController: AITaskRemarkInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
-		self.remark = text
+extension AITaskEditViewController: AITaskInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
+		remark = text
+		// update save button enable
+		saveButtonEnabled = text?.length > 0
 	}
 }
 
 // MARK: - fake data
 extension AITaskEditViewController {
+	
 	static var fakeServiceResult: [DependOnService]?
+	
 	class func fakeServices() -> [DependOnService] {
+		
 		if let result = fakeServiceResult {
 			return result
 		}
@@ -191,6 +163,7 @@ extension AITaskEditViewController {
 			result.append(service)
 		}
 		fakeServiceResult = result
+		
 		return result
 	}
 	

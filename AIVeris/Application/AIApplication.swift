@@ -158,6 +158,8 @@ struct AIApplication{
         static let AISinglePickerViewNotificationName  = "AISinglePickerViewNotificationName"
         static let AIAIRequirementViewControllerNotificationName    = "AIAIRequirementViewControllerNotificationName"
         static let AIAIRequirementShowViewControllerNotificationName    = "AIAIRequirementShowViewControllerNotificationName"
+        //服务执行页选择一个服务实例的通知 add by liux at 20160330
+        static let AIRequirementSelectServiceInstNotificationName = "AIRequirementSelectServiceInstNotificationName"
     }
     
     // MARK: System theme's color

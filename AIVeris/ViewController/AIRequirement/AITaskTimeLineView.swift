@@ -23,9 +23,27 @@ class AITaskTimeLineView: UIView {
 	@IBOutlet weak var label2: UILabel!
 	@IBOutlet weak var label3: UILabel!
 	
+	var subLabel1: UILabel! {
+		return subLabels[0]
+	}
+	
+	var subLabel2: UILabel! {
+		return subLabels[1]
+	}
+	
+	var subLabel3: UILabel! {
+		return subLabels[2]
+	}
+	
 	@IBOutlet weak var topCenterXConstraint: NSLayoutConstraint!
 	@IBOutlet weak var middleCenterXConstraint: NSLayoutConstraint!
 	@IBOutlet weak var bottomCenterXConstraint: NSLayoutConstraint!
+	
+	@IBOutlet weak var topLeftConstraint: NSLayoutConstraint!
+	@IBOutlet weak var middleLeftConstraint: NSLayoutConstraint!
+	@IBOutlet weak var bottomLeftConstraint: NSLayoutConstraint!
+	
+	@IBOutlet var subLabels: [UILabel]!
 	
 	weak var delegate: AITaskTimeLineViewDelegate?
 	
@@ -45,9 +63,26 @@ class AITaskTimeLineView: UIView {
 	var line2: CAShapeLayer!
 	var line3: CAShapeLayer!
 	
+	struct Constants {
+		static let spaceOfLine: CGFloat = 10 / 3 //  is the space of design
+	}
+	
+	var radiusOfLogo: CGFloat {
+		return logo1.width / 2 + Constants.spaceOfLine
+	}
+	
 	var path1: CGPath {
-		let point1 = CGPoint(x: CGRectGetMidX(logo1.frame), y: CGRectGetMaxY(logo1.frame))
-		let point2 = CGPoint(x: CGRectGetMidX(logo2.frame), y: CGRectGetMinY(logo2.frame))
+		var point1 = CGPoint(x: CGRectGetMidX(subLabel1.frame), y: CGRectGetMaxY(subLabel1.frame))
+		var point2 = CGPoint(x: CGRectGetMidX(logo2.frame), y: CGRectGetMinY(logo2.frame) - Constants.spaceOfLine)
+		if isTopLogoAtLeft && !isMiddleLogoAtLeft {
+			point1 = logo1.center
+			point1.x += radiusOfLogo / sqrt(2)
+			point1.y += radiusOfLogo / sqrt(2)
+			
+			point2 = logo2.center
+			point2.x -= radiusOfLogo / sqrt(2)
+			point2.y -= radiusOfLogo / sqrt(2)
+		}
 		
 		let path1 = UIBezierPath()
 		path1.moveToPoint(point1)
@@ -57,9 +92,17 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	var path2: CGPath {
-		let point3 = CGPoint(x: CGRectGetMidX(logo2.frame), y: CGRectGetMaxY(logo2.frame))
-		let point4 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetMinY(logo3.frame))
-		
+		var point3 = CGPoint(x: CGRectGetMidX(subLabel2.frame), y: CGRectGetMaxY(subLabel2.frame))
+		var point4 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetMinY(logo3.frame) - Constants.spaceOfLine)
+		if isMiddleLogoAtLeft && !isBottomLogoAtLeft {
+			point3 = logo2.center
+			point3.x += radiusOfLogo / sqrt(2)
+			point3.y += radiusOfLogo / sqrt(2)
+			
+			point4 = logo3.center
+			point4.x -= radiusOfLogo / sqrt(2)
+			point4.y -= radiusOfLogo / sqrt(2)
+		}
 		let path2 = UIBezierPath()
 		path2.moveToPoint(point3)
 		path2.addLineToPoint(point4)
@@ -68,7 +111,7 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	var path3: CGPath {
-		let point5 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetMaxY(logo3.frame))
+		let point5 = CGPoint(x: CGRectGetMidX(subLabel3.frame), y: CGRectGetMaxY(subLabel3.frame))
 		let point6 = CGPoint(x: CGRectGetMidX(logo3.frame), y: CGRectGetHeight(bounds))
 		
 		let path3 = UIBezierPath()
@@ -80,14 +123,23 @@ class AITaskTimeLineView: UIView {
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-		setupLines()
+		setupUI()
 	}
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		if line1.path == nil {
+			// do once
 			line1.path = path1
 			line2.path = path2
 			line3.path = path3
+			
+			let texts = ["Select task", "Set time", "Create task"]
+			for (i, label) in subLabels.enumerate() {
+				label.font = AITools.myriadSemiCondensedWithSize(16)
+				label.alpha = 0.5
+				label.text = texts[i]
+				label.textColor = UIColor.whiteColor()
+			}
 		}
 	}
 	
@@ -98,20 +150,21 @@ class AITaskTimeLineView: UIView {
 		line3.path = path3
 	}
 	
-	func setupLines() {
+	func setupUI() {
+		let color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.18).CGColor
 		line1 = CAShapeLayer()
 		line1.lineWidth = 2
-		line1.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
+		line1.strokeColor = color
 		layer.addSublayer(line1)
 		
 		line2 = CAShapeLayer()
 		line2.lineWidth = 2
-		line2.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
+		line2.strokeColor = color
 		layer.addSublayer(line2)
 		
 		line3 = CAShapeLayer()
 		line3.lineWidth = 2
-		line3.strokeColor = UIColor ( red: 0.1412, green: 0.0706, blue: 0.4784, alpha: 1.0 ).CGColor
+		line3.strokeColor = color
 		layer.addSublayer(line3)
 	}
 	
@@ -152,10 +205,14 @@ class AITaskTimeLineView: UIView {
 	}
 	
 	override func updateConstraints() {
-        let constant: CGFloat = -130
-		topCenterXConstraint.constant = isTopLogoAtLeft ? constant : 0
-		middleCenterXConstraint.constant = isMiddleLogoAtLeft ? constant : 0
-		bottomCenterXConstraint.constant = isBottomLogoAtLeft ? constant : 0
+		topCenterXConstraint.active = !isTopLogoAtLeft
+		middleCenterXConstraint.active = !isMiddleLogoAtLeft
+		bottomCenterXConstraint.active = !isBottomLogoAtLeft
+		
+		topLeftConstraint.active = isTopLogoAtLeft
+		middleLeftConstraint.active = isMiddleLogoAtLeft
+		bottomLeftConstraint.active = isBottomLogoAtLeft
+		
 		label1.alpha = isTopLogoAtLeft ? 1 : 0
 		label2.alpha = isMiddleLogoAtLeft ? 1 : 0
 		label3.alpha = isBottomLogoAtLeft ? 1 : 0

@@ -7,41 +7,52 @@
 //
 
 import UIKit
+import AIAlertView
 
 class AITaskTagViewController: RRTagController {
-
+	
 	override func addTagDidClick() {
 		print("addTagDidClick")
-		let vc = AITaskRemarkInputViewController()
+		let vc = AITaskInputViewController.initFromNib()
 		vc.delegate = self
 		presentPopupViewController(vc, animated: true)
 	}
 	
 	override func viewDidLoad() {
+        setupNavigationAndBackgroundImage(backgroundColor: UIColorFromHex(0x558bdc, alpha: 0.22))
+		navigationBar.titleLabel.text = "Tag"
 		super.viewDidLoad()
-		title = "Tag"
-		
-        collectionTag.reloadData()
-		setupNavigationToAppTheme()
-		// Do any additional setup after loading the view.
+		setupCollectionView()
+	}
+	
+	func setupCollectionView() {
+		collectionTag.reloadData()
+        collectionTag.snp_remakeConstraints { (make) in
+            make.top.equalTo(navigationBar.snp_bottom)
+            make.leading.bottom.trailing.equalTo(view)
+        }
 	}
 }
 
-extension AITaskTagViewController: AITaskRemarkInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskRemarkInputViewController, text: String?) {
+extension AITaskTagViewController: AITaskInputViewControllerDelegate {
+	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
 		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
 		if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
 			if strlen(contentTag) > 0 {
-				let newTag = RequirementTag(id: random() % 10000,selected: false, textContent: contentTag)
+				let newTag = RequirementTag(id: random() % 10000, selected: false, textContent: contentTag)
 				tags.insert(newTag, atIndex: tags.count)
 				collectionTag.reloadData()
 			}
 		}
 	}
+    
+    func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
+        return text?.length < 51
+    }
 }
 
-extension AITaskTagViewController: AITaskNavigationDelegate {
-	func cancelButtonPressed(sender: UIButton) {
+extension AITaskTagViewController: AITaskNavigationBarDelegate {
+	func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed: UIButton) {
 		print("cancel button pressed")
 		if let onDidCancel = onDidCancel {
 			onDidCancel()
@@ -49,7 +60,7 @@ extension AITaskTagViewController: AITaskNavigationDelegate {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	func saveButtonPressed(sender: UIButton) {
+	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
 		var selected: Array<RequirementTag> = Array()
 		var unSelected: Array<RequirementTag> = Array()
 		

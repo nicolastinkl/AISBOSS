@@ -45,9 +45,9 @@ public class KMPlaceholderTextView: UITextView {
         }
     }
     
-    override public var font: UIFont! {
+    public var placeholderFont: UIFont! {
         didSet {
-            placeholderLabel.font = font
+            placeholderLabel.font = placeholderFont
         }
     }
     
@@ -91,7 +91,7 @@ public class KMPlaceholderTextView: UITextView {
             name: UITextViewTextDidChangeNotification,
             object: nil)
         
-        placeholderLabel.font = font
+        placeholderLabel.font = placeholderFont ?? font
         placeholderLabel.textColor = placeholderColor
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.text = placeholder

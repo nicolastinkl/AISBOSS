@@ -33,6 +33,11 @@ class AIAssignServiceView: UIView {
     var repeatTimer : NSTimer?
     var starRateView : CWStarRateView!
     
+    var limitIconArray = Array<UIImageView>()
+    let limitIconOnArray = [UIImage(named: "limit01-on"),UIImage(named: "limit02-on"),UIImage(named: "limit03-on"),UIImage(named: "limit04-on")]
+    let limitIconOffArray = [UIImage(named: "limit01-off"),UIImage(named: "limit02-off"),UIImage(named: "limit03-off"),UIImage(named: "limit04-off")]
+    let serviceNameFontSize : CGFloat = 48 / 3
+    
     class func currentView()->AIAssignServiceView{
         let selfview =  NSBundle.mainBundle().loadNibNamed("AIAssignServiceView", owner: self, options: nil).first  as! AIAssignServiceView
         
@@ -72,6 +77,9 @@ class AIAssignServiceView: UIView {
     
     func initView(){
         initRatingView()
+        limitIconArray = [limitIcon1,limitIcon2,limitIcon3,limitIcon4]
+        curServiceLabel.font = AITools.myriadLightSemiCondensedWithSize(serviceNameFontSize)
+        nextServiceLabel.font = AITools.myriadLightSemiCondensedWithSize(serviceNameFontSize)
     }
     
     func initRatingView(){
@@ -80,23 +88,47 @@ class AIAssignServiceView: UIView {
         ratingView.addSubview(starRateView!)
     }
     
-    
+    //TODO 因为在界面写死了是4个权限图标，所以这里只能循环里面写死
+    func refreshLimitIcon(){
+        if let models = models {
+            if let limitListModel = models[curModelNum].limits {
+                for (index,limitModel) in limitListModel.enumerate(){
+                    if limitModel.hasLimit{
+                        limitIconArray[index].image = limitIconOnArray[index]
+                    }
+                    else{
+                        limitIconArray[index].image = limitIconOffArray[index]
+                    }
+                }
+            }
+            
+        }
+        
+    }
     
     func loadData(models : [AssignServiceInstModel]){
+        //TODO 是否需要先清空？？
+        self.models?.removeAll()
         self.models = models
+        //重置定时器
+        repeatTimer?.invalidate()
+        repeatTimer = nil
         //limitListView.frame.size.height = 0
         //多于1个选中服务实例，才启动滚动动画
         if models.count > 1{
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
+        //初始化轮播
+        curModelNum = 0
+        nextModelNum = 1
+        
         //加载rating数据
         if let ratingLevel =  models[curModelNum].ratingLevel {
             starRateView!.scorePercent = CGFloat(ratingLevel) / 10
         }
-        //初始化轮播
-        curModelNum = 0
-        nextModelNum = 1
+        //初始化权限图标
+        refreshLimitIcon()
     }
     
     //TODO
@@ -152,7 +184,7 @@ extension AIAssignServiceView{
                 self.nextModelNum = self.nextModelNum + 1
             }
             self.curServiceLabel.text = self.models![self.curModelNum].serviceName
-            
+            self.refreshLimitIcon()
             
         })
     }

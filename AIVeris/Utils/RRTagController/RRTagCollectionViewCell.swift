@@ -13,60 +13,83 @@ let RRTagCollectionViewCellAddTagSize = CGSize(width: 120, height: 40)
 
 class RRTagCollectionViewCell: UICollectionViewCell {
 	
-	lazy var textContent: UILabel! = {
+	struct Constants {
+		static let font = AITools.myriadSemiCondensedWithSize(58 / 3)
+		static let blue = UIColorFromHex(0x0f86e8)
+	}
+	
+	lazy var textContent: UILabel! = { [unowned self] in
 		let textContent = UILabel(frame: CGRectZero)
 		textContent.layer.masksToBounds = true
-		textContent.layer.cornerRadius = 20
-		textContent.layer.borderWidth = 2
-		textContent.layer.borderColor = UIColor(red: 0.1098, green: 0.4353, blue: 0.8706, alpha: 1.0).CGColor
-		textContent.font = UIFont.boldSystemFontOfSize(17)
+		
+		textContent.layer.borderColor = Constants.blue.CGColor
+		textContent.font = Constants.font
 		textContent.textAlignment = NSTextAlignment.Center
+        self.contentView.addSubview(textContent)
 		return textContent
 	}()
 	
+	lazy var addIcon: UIImageView = { [unowned self] in
+		let result = UIImageView(image: UIImage(named: "addTag")!)
+		self.contentView.addSubview(result)
+		return result
+	}()
+		
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		setup()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	func setup() {
+        _ = textContent
+        _ = addIcon
+		layer.borderWidth = 2 / 3
+		layer.borderColor = Constants.blue.CGColor
+	}
+	
 	func initContent(tag: RequirementTag) {
-		self.contentView.addSubview(textContent)
+		addIcon.hidden = true
 		textContent.text = tag.textContent
-		textContent.sizeToFit()
-		textContent.frame.size.width = textContent.frame.size.width + 30
-		textContent.frame.size.height = textContent.frame.size.height + 20
 		selected = tag.selected
-		textContent.backgroundColor = UIColor.clearColor()
-		self.textContent.layer.backgroundColor = (self.selected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
-		self.textContent.textColor = (self.selected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
+        animateSelection(tag.selected)
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		layer.cornerRadius = CGRectGetHeight(bounds) / 2
+		if addIcon.hidden == false {
+            textContent.sizeToFit()
+            addIcon.setOrigin(CGPoint(x: 4, y: 4))
+            textContent.setX(addIcon.right + 8)
+            textContent.setCenterY(addIcon.centerY)
+		} else {
+            textContent.frame = bounds
+		}
 	}
 	
 	func initAddButtonContent() {
-		self.contentView.addSubview(textContent)
 		textContent.text = "Add Tag"
-		textContent.sizeToFit()
-		textContent.frame.size = RRTagCollectionViewCellAddTagSize
-		textContent.backgroundColor = UIColor.clearColor()
-//        self.textContent.layer.backgroundColor = UIColor.grayColor().CGColor
-		self.textContent.layer.backgroundColor = colorUnselectedTag.CGColor
-		self.textContent.textColor = colorTextUnSelectedTag
+        selected = false
+        animateSelection(false)
+		addIcon.hidden = false
 	}
 	
 	func animateSelection(selection: Bool) {
 		selected = selection
-		
-			self.textContent.frame.size = CGSizeMake(self.textContent.frame.size.width - 20, self.textContent.frame.size.height - 20)
-			self.textContent.frame.origin = CGPointMake(self.textContent.frame.origin.x + 10, self.textContent.frame.origin.y + 10)
-			// UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.4, options: UIViewAnimationOptions(), animations: { () -> Void in
-			self.textContent.layer.backgroundColor = (self.selected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
-			self.textContent.textColor = (self.selected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
-			self.textContent.frame.size = CGSizeMake(self.textContent.frame.size.width + 20, self.textContent.frame.size.height + 20)
-			self.textContent.center = CGPointMake(self.contentView.frame.size.width / 2, self.contentView.frame.size.height / 2)
-//        }, completion: nil)
+		layer.backgroundColor = (selected == true) ? colorSelectedTag.CGColor : colorUnselectedTag.CGColor
+		textContent.textColor = (selected == true) ? colorTextSelectedTag : colorTextUnSelectedTag
 	}
 	
 	class func contentHeight(content: String, maxWidth: CGFloat) -> CGSize {
 		let styleText = NSMutableParagraphStyle()
 		styleText.alignment = NSTextAlignment.Center
-		let attributs = [NSParagraphStyleAttributeName: styleText, NSFontAttributeName: UIFont.boldSystemFontOfSize(17)]
+		let attributs = [NSParagraphStyleAttributeName: styleText, NSFontAttributeName: Constants.font]
 		let sizeBoundsContent = content.boundingRectWithSize(CGSizeMake(maxWidth,
 			UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
 		return CGSizeMake(sizeBoundsContent.width + 30, sizeBoundsContent.height + 20)
 	}
 }
-
