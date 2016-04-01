@@ -535,6 +535,7 @@
 }
 
 
+
 #pragma mark - TableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -556,6 +557,7 @@
      */
     
     AIRequirementViewController * requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
+    requirementVC.orderPreModel = model;
     
     [self.navigationController pushViewController:requirementVC animated:YES];
     

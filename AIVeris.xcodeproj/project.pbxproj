@@ -49,6 +49,8 @@
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
 		815F218C1BEAF386002EB473 /* UIView+MaterialDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 815F218B1BEAF386002EB473 /* UIView+MaterialDesign.m */; };
 		816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */; };
+		8175F4D51CAB7A510050F2FF /* AIRequirementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175F4D41CAB7A510050F2FF /* AIRequirementViewModel.swift */; };
+		8175F4DD1CABB7A60050F2FF /* AIInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175F4DC1CABB7A60050F2FF /* AIInterfaceTest.swift */; };
 		818811781BECF09A001C162B /* AIServiceContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818811771BECF09A001C162B /* AIServiceContentViewController.swift */; };
 		818D8EA71C02F8B200006408 /* AIBuyerModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA61C02F8B200006408 /* AIBuyerModels.m */; };
 		818D8EAA1C040C2F00006408 /* AIMusicTherapyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */; };
@@ -641,6 +643,8 @@
 		816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFakeLoginView.h; sourceTree = "<group>"; };
 		816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFakeLoginView.m; sourceTree = "<group>"; };
 		816E3B891C1FBD6D00A061DD /* AINotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AINotifications.h; sourceTree = "<group>"; };
+		8175F4D41CAB7A510050F2FF /* AIRequirementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementViewModel.swift; sourceTree = "<group>"; };
+		8175F4DC1CABB7A60050F2FF /* AIInterfaceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInterfaceTest.swift; sourceTree = "<group>"; };
 		818811771BECF09A001C162B /* AIServiceContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceContentViewController.swift; sourceTree = "<group>"; };
 		818D8EA51C02F8B200006408 /* AIBuyerModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBuyerModels.h; sourceTree = "<group>"; };
 		818D8EA61C02F8B200006408 /* AIBuyerModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIBuyerModels.m; sourceTree = "<group>"; };
@@ -1445,6 +1449,8 @@
 				1261FF701C92720300E72B41 /* AIBaseModel.swift */,
 				813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */,
 				845751D21CA29A2E008A342A /* BuyerOrderModel.swift */,
+				8175F4D41CAB7A510050F2FF /* AIRequirementViewModel.swift */,
+				8175F4DC1CABB7A60050F2FF /* AIInterfaceTest.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -2841,7 +2847,6 @@
 				93F873AE1CA2427A00912A40 /* AISelectedServiceTableVController.swift */,
 				845751CA1CA244DF008A342A /* BuyerRequirmentMessageViewController.swift */,
 				845751CC1CA24574008A342A /* BuyerRequirmentMessageViewController.xib */,
-				12096C671CA2881400514E6C /* AITimelineFilterViewController.swift */,
 			);
 			path = AIRequirement;
 			sourceTree = "<group>";
@@ -3501,6 +3506,7 @@
 				93B25AA41B9D7A7B00CD1FEB /* JSONModelError.m in Sources */,
 				815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */,
 				93CA11DA1C463475008B1EE1 /* AITagModel.swift in Sources */,
+				8175F4DD1CABB7A60050F2FF /* AIInterfaceTest.swift in Sources */,
 				93FA1DC41B9C2F0F009965C8 /* AIViews.m in Sources */,
 				84F0014E1C3A43CB000C93AF /* FLEXDatabaseManager.m in Sources */,
 				81A5BE4F1BD78CD300019802 /* AIBubblesView.m in Sources */,
@@ -3676,6 +3682,7 @@
 				8440091A1C16702F0031E2F7 /* JSSAlertView-Extension.swift in Sources */,
 				12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */,
 				845087D71C3B6E8B00E93937 /* VerticalIconLabel.swift in Sources */,
+				8175F4D51CAB7A510050F2FF /* AIRequirementViewModel.swift in Sources */,
 				936EDC971BCB4C4100ED160F /* AITest.swift in Sources */,
 				849B4B5A1C0EDFE300BEC179 /* FLEXHeapEnumerator.m in Sources */,
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
