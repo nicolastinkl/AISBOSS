@@ -125,14 +125,11 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 			vc.date = dateNode.date
 		}
 		
-		vc.onDetermineButtonClick = { date, dateDescription in
-			print(self)
-			self.dateNode = (date: date, dateDescription: dateDescription)
+		vc.onDetermineButtonClick = { [weak self] date, dateDescription in
+//			print(self)
+			self?.dateNode = (date: date, dateDescription: dateDescription)
 		}
-		presentPopupViewController(vc, duration: 0.25, animated: true, completion: { () -> () in
-			}, onClickCancelArea: {
-			print("cancel")
-		})
+		presentPopupViewController(vc, animated: true)
 	}
 	
 //    点击remark logo

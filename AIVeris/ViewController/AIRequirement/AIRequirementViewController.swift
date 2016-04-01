@@ -67,7 +67,6 @@ internal class AIRequirementViewController : UIViewController {
         // Init RightContent View
         
         withSwitchProfessionVC(1)
-        testInterface()
     }
     
     

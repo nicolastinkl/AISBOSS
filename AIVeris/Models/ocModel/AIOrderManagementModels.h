@@ -146,6 +146,17 @@
 @end
 
 
+#pragma mark - AIRequirementTag
+@protocol AIRequirementTag @end
+
+@interface AIRequirementTag : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *type;
+@property (nonatomic, strong) NSString<Optional> *desc;
+@property (nonatomic, strong) NSString<Optional> *icon;
+@property (nonatomic, strong) NSString<Optional> *status;
+@end
+
 #pragma mark - AIRequirement
 @protocol AIRequirement @end
 

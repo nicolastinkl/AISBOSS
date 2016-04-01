@@ -27,8 +27,8 @@ class AITimePickerViewController: UIViewController {
 		determineButton.layer.cornerRadius = determineButton.height / 2
 	}
 	@IBAction func determineButtonPressed(sender: AnyObject) {
-		dismissPopupViewController(true) { () -> Void in
-			if let onDetermineButtonClick = self.onDetermineButtonClick, date = self.datePicker.date, dateDescription = self.datePicker.dateDescription {
+		dismissPopupViewController(true) { [weak self] () -> Void in
+			if let onDetermineButtonClick = self?.onDetermineButtonClick, date = self?.datePicker.date, dateDescription = self?.datePicker.dateDescription {
 				onDetermineButtonClick(date: date, dateDescription: dateDescription)
 			}
 		}

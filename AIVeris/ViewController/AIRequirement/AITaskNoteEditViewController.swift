@@ -10,10 +10,11 @@ import UIKit
 
 class AITaskNoteEditViewController: UIViewController {
 	
+	var requirementItem: AIRequirementItem?
 	var textView: KMPlaceholderTextView!
-    
-    var iconImageView: UIImageView!
-//    var
+	var iconLabel: UILabel!
+	
+	var iconImageView: UIImageView!
 	
 	struct Constants {
 		static let textViewLeadingSpace: CGFloat = 35 / 3
@@ -30,6 +31,19 @@ class AITaskNoteEditViewController: UIViewController {
 		navigationBar.titleLabel.text = "Note"
 		setupTextView()
 		setupIconView()
+		updateUI()
+	}
+	
+	func updateUI() {
+		if let requirementItem = requirementItem {
+			if let desc = (requirementItem.requirement.first as? AIRequirement)?.desc {
+				textView?.placeholder = desc
+			}
+			iconLabel?.text = textView?.placeholder
+			if let url = requirementItem.service_provider_icons.first as? String {
+				iconImageView.asyncLoadImage(url)
+			}
+		}
 	}
 	
 	func setupTextView() {
@@ -61,38 +75,36 @@ class AITaskNoteEditViewController: UIViewController {
 			make.height.equalTo(Constants.iconContainerHeight)
 		}
 		
-		let textLabel = UILabel()
-		textLabel.text = "9 weeks of pregnancy, action inconvenient"
-		textLabel.font = Constants.placeholderFont
-		textLabel.textColor = textView.textColor
-		iconContainerView.addSubview(textLabel)
+		iconLabel = UILabel()
+		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
+		iconLabel.font = Constants.placeholderFont
+		iconLabel.textColor = textView.textColor
+		iconContainerView.addSubview(iconLabel)
 		
-		textLabel.snp_makeConstraints { (make) in
+		iconLabel.snp_makeConstraints { (make) in
 			make.leading.equalTo(40 / 3)
 			make.top.equalTo(30 / 3)
 			make.trailing.equalTo(iconContainerView).offset(-40 / 3)
 		}
 		
-        let line = UIImageView(image: UIImage(named: "orderline"))
+		let line = UIImageView(image: UIImage(named: "orderline"))
 		iconContainerView.addSubview(line)
 		line.snp_makeConstraints { (make) in
 			make.height.equalTo(1)
 			make.leading.trailing.equalTo(iconContainerView)
 			make.top.equalTo(110 / 3)
 		}
-        
-        
-        iconImageView = UIImageView(image: UIImage(named: "icon-amazon"))
-        iconImageView.layer.cornerRadius = 10
-        iconImageView.backgroundColor = UIColor.redColor()
-        iconContainerView.addSubview(iconImageView)
-        
-        iconImageView.snp_makeConstraints { (make) in
-            make.bottom.equalTo(iconContainerView).offset(-5)
-            make.leading.equalTo(textLabel)
-            make.size.equalTo(CGSize(width: 20, height: 20))
-        }
-        
+		
+		iconImageView = UIImageView(image: UIImage(named: "icon-amazon"))
+		iconImageView.layer.cornerRadius = 10
+		iconImageView.backgroundColor = UIColor.redColor()
+		iconContainerView.addSubview(iconImageView)
+		
+		iconImageView.snp_makeConstraints { (make) in
+			make.bottom.equalTo(iconContainerView).offset(-5)
+			make.leading.equalTo(iconLabel)
+			make.size.equalTo(CGSize(width: 20, height: 20))
+		}
 	}
 }
 
@@ -106,7 +118,7 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
 	}
 	
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed sender: UIButton) {
-        view.endEditing(true)
+		view.endEditing(true)
 		dismissViewControllerAnimated(true, completion: nil)
 		print("save button pressed")
 	}

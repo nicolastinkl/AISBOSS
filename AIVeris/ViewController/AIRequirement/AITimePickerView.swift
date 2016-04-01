@@ -170,15 +170,15 @@ class AITimePickerView: UIPickerView {
 			// if has set date
 			let timeIntervalSinceTaskDateAbs = Int(fabs((date.timeIntervalSinceDate(taskDate))))
 			let timeIntervalSinceTaskDate = date.timeIntervalSinceDate(taskDate)
-
-            if timeIntervalSinceTaskDate > 0 {
-                imageColumnView.row = 2
-            } else if timeIntervalSinceTaskDate == 0 {
-                imageColumnView.row = 1
-            } else {
-                imageColumnView.row = 0
-            }
-
+			
+			if timeIntervalSinceTaskDate > 0 {
+				imageColumnView.row = 2
+			} else if timeIntervalSinceTaskDate == 0 {
+				imageColumnView.row = 1
+			} else {
+				imageColumnView.row = 0
+			}
+			
 			let day = timeIntervalSinceTaskDateAbs / secondsInOneDay
 			let timeIntervalSinceTaskDateWithoutDay = timeIntervalSinceTaskDateAbs - day * secondsInOneDay
 			let hour = timeIntervalSinceTaskDateWithoutDay / secondsInOneHour
@@ -243,7 +243,7 @@ class AITimePickerView: UIPickerView {
 	}
 	
 	func convertSelectedRowsToDate(selectedRows: [Int]) -> NSDate {
-		let isFuture = selectedRows[0] == 1
+		let isFuture = selectedRows[0] == 2
 		let day = selectedRows[1]
 		let hour = selectedRows[2]
 		let minute = selectedRows[3]
@@ -326,17 +326,13 @@ extension AITimePickerView: UIPickerViewDelegate {
 	
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		var selectedRows = [Int]()
-        // before 0 , now 1 after 2
+		// before 0 , now 1 after 2
 		let isBefore = component == 0 ? row : imageColumnView.row
 		
 		for i in 0 ..< 4 {
 			if i != 0 {
-				if isBefore == 1 {
-					selectedRows.append(0)
-				} else {
-					let selectedRow = selectedRowInComponent(i) % (data[i]?.count)!
-					selectedRows.append(selectedRow)
-				}
+				let selectedRow = selectedRowInComponent(i) % (data[i]?.count)!
+				selectedRows.append(selectedRow)
 			} else {
 				selectedRows.append(imageColumnView.row)
 			}
@@ -344,6 +340,11 @@ extension AITimePickerView: UIPickerViewDelegate {
 		let isBeforeStrings = ["Before ", "", "After "]
 		let isBeforeString = isBeforeStrings[isBefore]
 		
+        if isBefore == 1 {
+            selectedRows[1] = 0
+            selectedRows[2] = 0
+            selectedRows[3] = 0
+        }
 		let days = "\(selectedRows[1]) days"
 		let hours = "\(selectedRows[2]) hours"
 		let minutes = "\(selectedRows[3]) minutes"
