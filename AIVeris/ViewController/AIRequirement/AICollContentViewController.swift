@@ -9,11 +9,13 @@
 
 import Foundation
 import UIKit
+import Spring
 
 class AICollContentViewController: UIViewController {
     
     //models
-    var assginServiceInsts : [AssignServiceInstModel]?
+    var assginServiceInsts = [AssignServiceInstModel]()
+    var allServiceInsts : Dictionary<Int,AssignServiceInstModel>?
     var timelineModels : [AITimelineModel]!
     var cachedCells = Dictionary<Int,AITimelineCellBaseView>()
     var filterModels : [AIPopupChooseModel]!
@@ -41,6 +43,7 @@ class AICollContentViewController: UIViewController {
         buildServiceInstView()
         initTable()
         buildLaunchView()
+        handleNotification()
     }
     
     override func viewDidLayoutSubviews() {
@@ -63,9 +66,7 @@ class AICollContentViewController: UIViewController {
         
         serviceInstView.delegate = self
         view.addSubview(serviceInstView)
-        if let assginServiceInsts = assginServiceInsts{
-            serviceInstView.loadData(assginServiceInsts)
-        }
+        serviceInstView.loadData(assginServiceInsts)
     }
     
     func initTable(){
@@ -75,10 +76,6 @@ class AICollContentViewController: UIViewController {
         timeLineTable.dataSource = self
         timeLineTable.separatorStyle = UITableViewCellSeparatorStyle.None
         timeLineTable.backgroundColor = UIColor.clearColor()
-//        let backgroundImageView = UIImageView(frame: timeLineTable.bounds)
-//        let backgroundImage = UIImage(named: "cell_background")
-//        backgroundImageView.image = backgroundImage
-//        timeLineTable.backgroundView = backgroundImageView
     }
     
     func buildLaunchView(){
@@ -92,7 +89,7 @@ class AICollContentViewController: UIViewController {
          
         launchButton = UIButton()
         launchButton.setTitle("Launch", forState: UIControlState.Normal)
-        launchButton.backgroundColor = UIColor(hex: "#0f86e8")
+        launchButton.setBackgroundImage(UIColor(hex: "#0f86e8").imageWithColor(), forState: UIControlState.Normal)
         launchButton.layer.cornerRadius = 5
         launchButton.layer.masksToBounds = true
         view.addSubview(launchButton)
@@ -118,24 +115,88 @@ class AICollContentViewController: UIViewController {
         timeLineTable.frame = tableFrame
     }
     
+    //处理点击事件
+    private func handleNotification(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchServiceInst:", name: AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: nil)
+    }
+    
+    func notifySwitchServiceInst(notify: NSNotification){
+        let serviceInstIds = notify.object as! Array<Int>
+        print(serviceInstIds)
+        //先清空服务实例列表，再从通知过来的id中筛选
+        assginServiceInsts.removeAll()
+        for serviceInstId in serviceInstIds{
+            if let serviceInst = allServiceInsts![serviceInstId]{
+                assginServiceInsts.append(serviceInst)
+            }
+        }
+        if assginServiceInsts.count == 0{
+            assginServiceInsts.append(allServiceInsts![0]!)
+        }
+        serviceInstView.loadData(assginServiceInsts)
+        changeLaunchButtonStatus()
+    }
+    
+    private func changeLaunchButtonStatus(){
+        var needLaunch = false
+        for assignServiceInst in assginServiceInsts {
+            if assignServiceInst.serviceInstStatus == ServiceInstStatus.Init{
+                needLaunch = true
+                break
+            }
+        }
+        //TODO 逻辑还有问题
+        if launchButton.alpha == 1 && needLaunch{
+            
+        }
+        if needLaunch {
+            if launchButton.alpha == 0{
+                SpringAnimation.spring(0.25, animations: { () -> Void in
+                    self.launchButtonBgView.frame.size.height = self.LaunchButtonBgHeight
+                    self.launchButton.frame.size.height = self.LaunchButtonHeight
+                    self.launchButtonBgView.alpha = 1
+                    self.launchButton.alpha = 1
+                    self.timeLineTable.frame.origin.y += self.LaunchButtonBgHeight
+                })
+            }
+            
+        }
+        else{
+            if launchButton.alpha == 1{
+                SpringAnimation.spring(0.25, animations: { () -> Void in
+                    self.launchButtonBgView.frame.size.height = 0
+                    self.launchButton.frame.size.height = 0
+                    self.launchButtonBgView.alpha = 0
+                    self.launchButton.alpha = 0
+                    self.timeLineTable.frame.origin.y -= self.LaunchButtonBgHeight
+                })
+            }
+        }
+    }
+    
     // MARK: - 加载数据
     func loadData(){
+        //权限列表
         let limits1 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
         let limits2 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         let limits3 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
         let limits4 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
+        //服务实例
+        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, serviceInstStatus: .Init, limits: limits1)
+        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, serviceInstStatus: .Assigned,limits: limits2)
+        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, serviceInstStatus: .Assigned,limits: limits3)
+        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, serviceInstStatus: .Init,limits: limits4)
+        assginServiceInsts = [model1]
         
-        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, limits: limits1)
-        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, limits: limits2)
-        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, limits: limits3)
-        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, limits: limits4)
-        assginServiceInsts = [model1,model2,model3,model4]
+        allServiceInsts = [0:model1,1:model1,2:model2,3:model3,4:model4,5:model1,6:model2,7:model3]
         
+        //时间线model
         timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "Launch language to Ms.Customer A", desc: "Ms.Customer A has an answer to the language requirements of the",status: 0),
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Failed to launch the Ms.Customer A language", desc: "Ms.Customer A no response to the language requirements of the",status: 0),
             AITimelineModel(timestamp: 1457403751, id: 1, title: "A request from a nutrition to you.", desc: "Ms.Customer A out of contact,Please help me get in touch with him.",status: 1),
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
+        //过滤弹出框model
         filterModels = [AIPopupChooseModel(itemId: 1, itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
         AIPopupChooseModel(itemId: 1, itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
         AIPopupChooseModel(itemId: 1, itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
@@ -151,35 +212,6 @@ class AICollContentViewController: UIViewController {
 extension AICollContentViewController : AIAssignServiceViewDelegate{
     
     func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
-//        limitListView.refreshLimits(limitsModel)
-//        let frameHeight = limitListView.getFrameHeight()
-//        UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-//            var frame = self.limitListView.frame
-//            if(self.limitListView.frame.height == 0){
-//                frame.size.height = frameHeight
-//                
-//                self.limitListView.alpha = 1
-//                var tableFrame = self.timeLineTable.frame
-//                tableFrame.size.height -= frameHeight
-//                tableFrame.origin.y += frameHeight
-//                self.timeLineTable.frame = tableFrame
-//                self.launchButton.frame.origin.y += frameHeight
-//            }
-//            else{
-//                frame.size.height = 0
-//                self.limitListView.alpha = 0
-//                
-//                var tableFrame = self.timeLineTable.frame
-//                tableFrame.size.height += frameHeight
-//                tableFrame.origin.y -= frameHeight
-//                self.timeLineTable.frame = tableFrame
-//                
-//                self.launchButton.frame.origin.y -= frameHeight
-//            }
-//            self.limitListView.frame = frame
-//            }) { (finished) -> Void in
-//                //
-//        }
         let limitVC = AILimitListViewController()
         limitVC.loadData(limitsModel)
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)

@@ -480,6 +480,7 @@
     return cell;
 }
 
+
 #pragma mark - TableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -498,7 +499,10 @@
        [contentVC loadDataNecessary];
        [self presentViewController:contentVC animated:YES completion:nil];
      */
-    AIRequirementViewController *requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
+    
+    AIRequirementViewController * requirementVC = [UIStoryboard storyboardWithName:@"UIRrequirementStoryboard" bundle:nil].instantiateInitialViewController;
+    requirementVC.orderPreModel = model;
+    
     [self.navigationController pushViewController:requirementVC animated:YES];
 }
 

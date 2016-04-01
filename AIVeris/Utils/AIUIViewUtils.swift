@@ -488,3 +488,9 @@ extension UIImage {
         return output
     }
 }
+
+extension UIButton{
+    func setHighlightedBackgroundImage(){
+        self.setImage(UIColor(hex: "0d3e83").imageWithColor(), forState: UIControlState.Highlighted)
+    }
+}

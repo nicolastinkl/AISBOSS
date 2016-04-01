@@ -103,9 +103,9 @@ class AIPopupChooseBaseView: UIView {
         cancelButton = UIButton(frame: cancelFrame)
         cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        cancelButton.backgroundColor = UIColor(hex: "#3055ab")
+        cancelButton.setBackgroundImage(UIColor(hex: "#3055ab").imageWithColor(), forState: UIControlState.Normal)
         cancelButton.titleLabel?.textColor = UIColor.whiteColor()
-        cancelButton.alpha = 0.6
+        cancelButton.alpha = 0.65
         cancelButton.layer.cornerRadius = buttonCorner
         cancelButton.layer.masksToBounds = true
         self.addSubview(cancelButton)
@@ -115,7 +115,7 @@ class AIPopupChooseBaseView: UIView {
         confirmButton = UIButton(frame: submitFrame)
         confirmButton.setTitle("Save", forState: UIControlState.Normal)
         confirmButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        confirmButton.backgroundColor = UIColor(hex: "#0f86e8")
+        confirmButton.setBackgroundImage(UIColor(hex: "#0f86e8").imageWithColor(), forState: UIControlState.Normal)
         confirmButton.titleLabel?.textColor = UIColor.whiteColor()
         confirmButton.layer.cornerRadius = buttonCorner
         confirmButton.layer.masksToBounds = true
@@ -259,10 +259,12 @@ class AIPopupChooseCellView: UIView {
         isSelect = !isSelect
         itemModel?.isSelect = isSelect
         if isSelect{
-            confirmView.image = UIImage(named: "Type_On")
+            confirmView.image = iconSelect
+            contentLabel.font = contentFontSelect
         }
         else{
-            confirmView.image = UIImage(named: "Type_Off")
+            confirmView.image = iconUnselect
+            contentLabel.font = contentFontUnselect
         }
     }
 }
