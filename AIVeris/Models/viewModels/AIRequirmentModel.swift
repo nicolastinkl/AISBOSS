@@ -11,11 +11,6 @@ import Foundation
 //MARK: - view模型
 
 
-
-
-
-
-
 ///权限设置模型
 class AILimitModel : AIBaseViewModel {
     

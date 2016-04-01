@@ -243,7 +243,7 @@ class AITimePickerView: UIPickerView {
 	}
 	
 	func convertSelectedRowsToDate(selectedRows: [Int]) -> NSDate {
-		let isFuture = selectedRows[0] == 2
+		let isFuture = selectedRows[0] == 1
 		let day = selectedRows[1]
 		let hour = selectedRows[2]
 		let minute = selectedRows[3]
@@ -326,6 +326,7 @@ extension AITimePickerView: UIPickerViewDelegate {
 	
 	func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		var selectedRows = [Int]()
+        // before 0 , now 1 after 2
 		let isBefore = component == 0 ? row : imageColumnView.row
 		
 		for i in 0 ..< 4 {
