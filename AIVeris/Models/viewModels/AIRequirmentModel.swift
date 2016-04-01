@@ -52,12 +52,14 @@ class AssignServiceInstModel : AIBaseViewModel {
     var serviceInstId : Int
     var serviceName : String
     var ratingLevel : Float?
+    var serviceInstStatus : ServiceInstStatus
     var limits : [AILimitModel]?
     
-    init(serviceInstId : Int,serviceName : String,ratingLevel : Float,limits : [AILimitModel]) {
+    init(serviceInstId : Int,serviceName : String,ratingLevel : Float,serviceInstStatus : ServiceInstStatus , limits : [AILimitModel]) {
         self.serviceInstId = serviceInstId
         self.serviceName = serviceName
         self.ratingLevel = ratingLevel
+        self.serviceInstStatus = serviceInstStatus
         self.limits = limits
     }
 }
@@ -82,11 +84,11 @@ class AITimelineModel : AIBaseViewModel {
 class IconServiceIntModel : AIBaseViewModel{
     var serviceInstId : Int
     var serviceIcon : String
-    var serviceInstStatus : Int
+    var serviceInstStatus : ServiceInstStatus
     var executeProgress : Int
     var isSelected : Bool = false
     
-    init(serviceInstId : Int , serviceIcon : String , serviceInstStatus : Int , executeProgress : Int){
+    init(serviceInstId : Int , serviceIcon : String , serviceInstStatus : ServiceInstStatus , executeProgress : Int){
         self.serviceInstId = serviceInstId
         self.serviceIcon = serviceIcon
         self.serviceInstStatus = serviceInstStatus
@@ -96,8 +98,7 @@ class IconServiceIntModel : AIBaseViewModel{
     ///判断是否需要派单
     class func isAllLanched(models : [IconServiceIntModel]) -> Bool {
         for model in models{
-            let statusEnum = ServiceInstStatus(rawValue: model.serviceInstStatus)
-            if statusEnum == ServiceInstStatus.Init {
+            if model.serviceInstStatus == ServiceInstStatus.Init {
                 return true
             }
         }
