@@ -11,11 +11,6 @@ import Foundation
 //MARK: - view模型
 
 
-
-
-
-
-
 ///权限设置模型
 class AILimitModel : AIBaseViewModel {
     
@@ -135,22 +130,6 @@ enum TimelineStatus : Int {
 enum ServiceInstStatus : Int {
     case Init,Assigned
 }
-
-//MARK: 全局模型
-
-
-
-
-//MARK: 基本信息模型
-//进入需求分析界面时，从服务器中获取的数据，包含三个部分。
-
-class AIBusinessInfoModel: AIBaseViewModel {
-    var serviceModels : [IconServiceIntModel]?
-    var customerModel : BuyerOrderModel?
-    var allServiceRights : [AIRights]?
-}
-
-
 
 
 

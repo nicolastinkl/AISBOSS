@@ -32,7 +32,11 @@
 
 @implementation AIRequirement @end
 
+@implementation AIRequirementItem @end
+
 @implementation AICommonRequirements @end
+
+@implementation AIOriginalRequirementsList @end
 
 
 /*

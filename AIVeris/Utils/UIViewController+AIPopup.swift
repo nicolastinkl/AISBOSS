@@ -103,15 +103,14 @@ extension UIViewController {
 	 - parameter onClickCancelArea:       模糊区域点击 handler 可空
 	 */
 	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, useBlurForPopup: Bool = false, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
-        if self is UINavigationController {
-            
-        } else {
-            if let navigationController = navigationController {
-                navigationController.presentPopupViewController(viewControllerToPresent, duration: duration, useBlurForPopup: useBlurForPopup, animated: animated, completion: completion, onClickCancelArea: onClickCancelArea)
-                return
-            }
-        }
-
+		if self is UINavigationController {
+		} else {
+			if let navigationController = navigationController {
+				navigationController.presentPopupViewController(viewControllerToPresent, duration: duration, useBlurForPopup: useBlurForPopup, animated: animated, completion: completion, onClickCancelArea: onClickCancelArea)
+				return
+			}
+		}
+		
 		if popupViewController == nil {
 			self.onClickCancelArea = onClickCancelArea
 			popupViewController = viewControllerToPresent
@@ -119,46 +118,12 @@ extension UIViewController {
 			popupViewController!.view.autoresizingMask = .None
 			addChildViewController(viewControllerToPresent)
 			
-			// parallax setup
-//			let interpolationHorizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-//			interpolationHorizontal.minimumRelativeValue = -10
-//			interpolationHorizontal.maximumRelativeValue = 10
-//			
-//			let interpolationVertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-//			interpolationHorizontal.minimumRelativeValue = -10
-//			interpolationHorizontal.maximumRelativeValue = 10
-//			
-//			popupViewController!.view.addMotionEffect(interpolationHorizontal)
-//			popupViewController!.view.addMotionEffect(interpolationVertical)
-			
-			// shadow setup
-//			viewControllerToPresent.view.layer.shadowOffset = .zero
-//			viewControllerToPresent.view.layer.shadowColor = UIColor.blackColor().CGColor
-//			viewControllerToPresent.view.layer.shadowPath = UIBezierPath(rect: viewControllerToPresent.view.layer.bounds).CGPath
-//			viewControllerToPresent.view.layer.cornerRadius = 5
-			
-			// blurView
-//			addBlurView()
-			
 			addMaskView(useBlurForPopup: useBlurForPopup)
 			
 			let blurView = objc_getAssociatedObject(self, &AssociatedKeys.blurViewKey) as! UIView
 			viewControllerToPresent.beginAppearanceTransition(true, animated: animated)
 			
 			let setupInitialConstraints = {
-				// use system constraint functions setup function
-//                let subview = viewControllerToPresent.view
-//                let superview = self.view
-//                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Left, relatedBy: .Equal, toItem: subview, attribute: .Left, multiplier: 1, constant: 0))
-//
-//                superview.addConstraint(NSLayoutConstraint(item: superview, attribute: .Right, relatedBy: .Equal, toItem: subview, attribute: .Right, multiplier: 1, constant: 0))
-//
-//                self.bottomConstraint = NSLayoutConstraint(item: subview, attribute: .Bottom, relatedBy: .Equal, toItem: superview, attribute: .Bottom, multiplier: 1, constant: subview.frame.size.height)
-//
-//                superview.addConstraint(self.bottomConstraint!)
-//
-//                let heightConstraint = NSLayoutConstraint(item: subview, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: subview.frame.size.height)
-//                subview.addConstraint(heightConstraint)
 				
 				constrain(self.view, viewControllerToPresent.view, block: { (superView, subview) -> () in
 					subview.left == superView.left
@@ -179,7 +144,6 @@ extension UIViewController {
 				}
 				
 				viewControllerToPresent.view.alpha = initialAlpha
-				
 				view.addSubview(viewControllerToPresent.view)
 				// setup initial constraints
 				

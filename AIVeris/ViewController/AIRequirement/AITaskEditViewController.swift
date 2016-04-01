@@ -11,6 +11,8 @@ import Cartography
 
 class AITaskEditViewController: UIViewController {
 	
+	var services: [DependOnService]?
+	
 	var timeLineView: AITaskTimeLineView!
 	var dependOnTask: TaskNode? {
 		didSet {
@@ -58,7 +60,7 @@ class AITaskEditViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupNavigationAndBackgroundImage()
-        navigationBar.titleLabel.text = "Task"
+		navigationBar.titleLabel.text = "Task"
 		saveButtonEnabled = false
 		
 		setupTimeLineView()
@@ -95,6 +97,8 @@ extension AITaskEditViewController: DependOnNodePickerViewControllerDelegate {
 
 // MARK: - AITaskTimeLineViewDelegate
 extension AITaskEditViewController: AITaskTimeLineViewDelegate {
+	
+	// 点击依赖节点logo
 	func taskTimeLineViewDidClickDependOnNodeLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = DependOnNodePickerViewController()
 		if let dependOnTask = dependOnTask {
@@ -105,9 +109,15 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		frame.size.height = 500
 		vc.view.frame = frame
 		vc.delegate = self
-		vc.services = self.dynamicType.fakeServices()
+		if let services = services {
+			vc.services = services
+		} else {
+			vc.services = self.dynamicType.fakeServices()
+		}
 		presentPopupViewController(vc, animated: true)
 	}
+	
+//    点击时间picker logo
 	func taskTimeLineViewDidClickDatePickerLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITimePickerViewController.initFromNib()
 		vc.taskDate = dependOnTask!.date
@@ -115,16 +125,14 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 			vc.date = dateNode.date
 		}
 		
-		vc.onDetermineButtonClick = { date, dateDescription in
-			print(self)
-			self.dateNode = (date: date, dateDescription: dateDescription)
+		vc.onDetermineButtonClick = { [weak self] date, dateDescription in
+//			print(self)
+			self?.dateNode = (date: date, dateDescription: dateDescription)
 		}
-		presentPopupViewController(vc, duration: 0.25, animated: true, completion: { () -> () in
-			}, onClickCancelArea: {
-			print("cancel")
-		})
+		presentPopupViewController(vc, animated: true)
 	}
-    
+	
+//    点击remark logo
 	func taskTimeLineViewDidClickRemarkLogo(taskTimeLineView: AITaskTimeLineView) {
 		let vc = AITaskInputViewController.initFromNib()
 		vc.delegate = self
