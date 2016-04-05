@@ -72,7 +72,7 @@ class AIRequirementHandler: NSObject {
         
         parsedBusinessInfo.serviceModels = iconServiceInst
         parsedBusinessInfo.customerModel = nil
-        
+        parsedBusinessInfo.baseJsonValue = requirements
         success(businessInfo: parsedBusinessInfo)
 
     }

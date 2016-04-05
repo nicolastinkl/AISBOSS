@@ -12,6 +12,11 @@ import Spring
 // MARK: -
 // MARK: AIRequirementViewController
 // MARK: -
+
+class AIRequirementViewPublicValue{
+    static var bussinessModel: AIBusinessInfoModel?
+}
+
 internal class AIRequirementViewController : UIViewController {
 
     
@@ -101,6 +106,7 @@ internal class AIRequirementViewController : UIViewController {
             
             self!.view.hideProgressViewLoading()
             
+            AIRequirementViewPublicValue.bussinessModel = businessInfo
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
             

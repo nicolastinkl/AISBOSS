@@ -12,7 +12,7 @@ import Spring
 
 protocol AIRACClosureTableViewCellProtocol: class {
     
-    func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool)
+    func withSelectedCell(cellModel: AIServiceProvider, isSelect: Bool)
     
 }
 
@@ -20,7 +20,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     
     private var iconImage = AIImageView()
     
-    private var currentModel: AIIconTagModel?
+    private var currentModel: AIServiceProvider?
     
     private var isSelected: Bool = false
     
@@ -93,11 +93,13 @@ class AIRACClosureTableViewCell: UITableViewCell {
         }
     }
     
-    func refereshData(model: AIIconTagModel){
+    func refereshData(model: AIServiceProvider){
         currentModel = model
-        self.iconImage.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlackHolder"))
-        self.contentLabel.text = model.content ?? ""
+        self.iconImage.setURL(NSURL(string: "\(model.portrait_icon)"), placeholderImage: UIImage(named: "PlackHolder"))
         
+        self.contentLabel.text = "\(model.relservice_desc)pregnancy assistant"
+        
+        self.associatedName = "\(model.relservice_id.integerValue)"
         
     }
     
