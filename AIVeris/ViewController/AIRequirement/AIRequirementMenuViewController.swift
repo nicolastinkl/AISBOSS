@@ -37,6 +37,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
     var serviceInstsView : AIVerticalScrollView!
     var models : [IconServiceIntModel]?
     
+    let scrollViewBottomPadding = AITools.displaySizeFrom1242DesignSize(150)
+    
     // MARK: -> Internal init methods
     
     override func viewDidLoad() {
@@ -118,7 +120,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
 extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
         
-        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - 180        
+        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding
         let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
         
         serviceInstsView = AIVerticalScrollView(frame: frame)
@@ -144,7 +146,7 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
 //            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
         
         AIRequirementHandler.defaultHandler().queryBusinessInfo(1, roleType: 1, success: { (businessInfo) -> Void in
-            self.models = IconServiceIntModel.getInstanceArray(businessInfo)
+            self.models = businessInfo.serviceModels
             self.buildServiceInstsView()
             }) { (errType, errDes) -> Void in
                 print(errDes)

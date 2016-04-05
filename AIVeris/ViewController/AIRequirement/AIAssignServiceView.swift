@@ -143,7 +143,7 @@ class AIAssignServiceView: UIView {
 extension AIAssignServiceView{
     
     func startAnimation(){
-        if !isRunAnimation{
+        if !isRunAnimation && models?.count < 2{
             return
         }
         
