@@ -514,6 +514,8 @@ extension AIRequireContentViewController {
 	
 	@IBAction func addNoteButtonPressed() {
 		let vc = AITaskNoteEditViewController()
+        // pass AIRequirementItem into vc
+//        vc.requirementItem = AIRequirementItem
 		presentViewController(vc, animated: true, completion: nil)
 	}
 	@IBAction func addTaskButtonPressed() {

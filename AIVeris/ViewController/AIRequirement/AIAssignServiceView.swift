@@ -110,19 +110,23 @@ class AIAssignServiceView: UIView {
         //TODO 是否需要先清空？？
         self.models?.removeAll()
         self.models = models
+        //重置定时器
+        repeatTimer?.invalidate()
+        repeatTimer = nil
         //limitListView.frame.size.height = 0
         //多于1个选中服务实例，才启动滚动动画
         if models.count > 1{
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
+        //初始化轮播
+        curModelNum = 0
+        nextModelNum = 1
+        
         //加载rating数据
         if let ratingLevel =  models[curModelNum].ratingLevel {
             starRateView!.scorePercent = CGFloat(ratingLevel) / 10
         }
-        //初始化轮播
-        curModelNum = 0
-        nextModelNum = 1
         //初始化权限图标
         refreshLimitIcon()
     }

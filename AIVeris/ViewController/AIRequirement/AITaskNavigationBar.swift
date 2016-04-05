@@ -110,6 +110,7 @@ extension AITaskNavigationBarDelegate where Self: UIViewController {
 		}
         
         if let backgroundColor = backgroundColor {
+            // 有backgroundcolor 就添加一个层在 navigationbar 下面
             let backgroundView = UIView()
             backgroundView.backgroundColor = backgroundColor
             view.addSubview(backgroundView)

@@ -61,7 +61,7 @@
 
 @end
 
-#pragma mark -
+#pragma mark - AIServiceCategory
 @protocol AIServiceCategory @end
 
 @interface AIServiceCategory : JSONModel
@@ -72,7 +72,7 @@
 
 @end
 
-#pragma mark -
+#pragma mark - AIServiceRights
 @protocol AIServiceRights @end
 
 @interface AIServiceRights : JSONModel
@@ -83,7 +83,7 @@
 @end
 
 
-#pragma mark -
+#pragma mark - AIRights
 @protocol AIRights @end
 
 @interface AIRights : JSONModel
@@ -95,7 +95,7 @@
 
 @end
 
-#pragma mark -
+#pragma mark - AIServiceProvider
 @protocol AIServiceProvider @end
 
 @interface AIServiceProvider : JSONModel
@@ -127,13 +127,13 @@
 @property (nonatomic, strong) NSString<Optional> *proposal_name;
 @property (nonatomic, strong) AITaskProgress<Optional> *service_progress;
 
-@property (nonatomic, strong) AITaskProgress<Optional> *customer;
+@property (nonatomic, strong) AICustomer<Optional> *customer;
 
 @property (nonatomic, strong) AIService<Optional> *service;
 
 @property (nonatomic, strong) AIServiceCategory<Optional> *service_category;
 
-@property (nonatomic, strong) AIServiceRights<Optional> *right_list;
+@property (nonatomic, strong) NSArray<Optional, AIServiceRights> *right_list;
 
 @property (nonatomic, strong) NSArray<Optional, AIServiceProvider> *rel_serv_rolelist;
 
@@ -145,6 +145,17 @@
 
 @end
 
+
+#pragma mark - AIRequirementTag
+@protocol AIRequirementTag @end
+
+@interface AIRequirementTag : JSONModel
+
+@property (nonatomic, strong) NSString<Optional> *type;
+@property (nonatomic, strong) NSString<Optional> *desc;
+@property (nonatomic, strong) NSString<Optional> *icon;
+@property (nonatomic, strong) NSString<Optional> *status;
+@end
 
 #pragma mark - AIRequirement
 @protocol AIRequirement @end
@@ -159,6 +170,17 @@
 @end
 
 
+#pragma mark - AIRequirementItem
+@protocol AIRequirementItem @end
+
+@interface AIRequirementItem : JSONModel
+
+@property (nonatomic, strong) NSArray<Optional, AIRequirement> *requirement;
+@property (nonatomic, strong) NSArray<Optional> *service_provider_icons;
+
+@end
+
+
 #pragma mark - AIOriginalRequirements
 @protocol AICommonRequirements @end
 
@@ -169,20 +191,21 @@
 @property (nonatomic, strong) NSString<Optional> *block_icon;
 @property (nonatomic, strong) NSString<Optional> *block_category;
 
-@property (nonatomic, strong) NSArray<Optional, AIRequirement> *requirements;
+@property (nonatomic, strong) NSArray<Optional, AIRequirementItem> *requirements;
 
-@property (nonatomic, strong) NSArray<Optional> *service_provider_icons;
+
 
 
 @end
 
-/*
+
 #pragma mark -
-@protocol customer @end
+@protocol AIOriginalRequirementsList @end
 
-@interface customer : JSONModel
+@interface AIOriginalRequirementsList : JSONModel
 
+@property (nonatomic, strong) NSString<Optional> *wish_id;
+
+@property (nonatomic, strong) NSArray<Optional, AICommonRequirements> *requirement_list;
 
 @end
-
-*/

@@ -21,6 +21,8 @@ internal class AIRequirementViewController : UIViewController {
     
     // MARK: -> Internal static properties
     
+    var orderPreModel : AIOrderPreModel?
+    
     private var tabRequireViewC: UIViewController?
     
     private var tabAssignViewC: UIViewController?
@@ -65,9 +67,35 @@ internal class AIRequirementViewController : UIViewController {
         // Init RightContent View
         
         withSwitchProfessionVC(1)
-        
     }
     
+    
+    //MARK: 接口测试
+    
+    func testInterface() -> Void {
+        let handler = AIRequirementHandler.defaultHandler()
+        
+        //
+        
+//        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { (businessInfo) -> Void in
+//            print("\(businessInfo)")
+//            }) { (errType, errDes) -> Void in
+//                print("\(errDes)")
+//        }
+        
+        //
+        
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, roleType: 1, success: { (requirements) -> Void in
+            print("\(requirements)")
+            }) { (errType, errDes) -> Void in
+                print("\(errDes)")
+        }
+    }
+    
+    
+    //MARK:-----------
+    
+
     func notifyShowRequireMentVC(notify: NSNotification){
         SpringAnimation.springEaseIn(0.5) { () -> Void in
             self.rightContentView.subviews.first?.alpha = 1
