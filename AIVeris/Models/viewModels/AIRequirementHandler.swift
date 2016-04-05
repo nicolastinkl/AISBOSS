@@ -64,10 +64,15 @@ class AIRequirementHandler: NSObject {
     
     
     func parseBusinessInfo(requirements : AIQueryBusinessInfos, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+        
+        ///  左侧服务图片列表
         let iconServiceInst = IconServiceIntModel.getInstanceArray(requirements)
+
         let parsedBusinessInfo = AIBusinessInfoModel()
         
         parsedBusinessInfo.serviceModels = iconServiceInst
+        parsedBusinessInfo.customerModel = nil
+        
         success(businessInfo: parsedBusinessInfo)
 
     }
@@ -132,26 +137,43 @@ class AIRequirementHandler: NSObject {
     
     //MARK: 查询待分配标签列表接口
 
-    func queryUnassignedRequirements(proposalID : NSNumber, roleType : NSNumber, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryUnassignedRequirements(proposalID : NSNumber, roleType : NSNumber, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["role_type" : roleType, "proposal_id" : proposalID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryUnassignedRequirements.description as String
         
-        weak var weakSelf = self
-        
+//        weak var weakSelf = self
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
-            do {
-                let dic = response as! [NSObject : AnyObject]
-                let originalRequirements = try AIOriginalRequirementsList(dictionary: dic)
+            if let responseJSON: AnyObject = response{
                 
-                weakSelf!.parseOriginalRequirements(originalRequirements, success: success, fail: fail)
+                let dic = responseJSON as! [NSString : AnyObject]
+                let jsondata = JSONDecoder(dic)
+                var arrayContent = Array<AIContentCellModel>()
+                
+                for dicData in jsondata["requirement_list"].array ?? [] {
+                    let dataContent = AIContentCellModel(dicData)
+                    arrayContent.append(dataContent)
+                }
+                success(requirements: arrayContent)
+                
+                
+            }else{
+                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
+            }
+            
+            
+            /*
+            do {
+                //let originalRequirements = try AIOriginalRequirementsList(dictionary: dic)
+            
+                //weakSelf!.parseOriginalRequirements(originalRequirements, success: success, fail: fail)
                 
             } catch {
                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
-            }
+            }*/
             
             
             }) { (error: AINetError, errorDes: String!) -> Void in

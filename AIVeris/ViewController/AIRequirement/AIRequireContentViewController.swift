@@ -11,10 +11,20 @@ import SnapKit
 import Spring
 import Cartography
 
-class AIRequireContentViewController: UIViewController {
-
+class AIWrapperAIContentModelClass{
     
-	
+    var cellmodel: AIContentCellModel
+    
+    init(theModel: AIContentCellModel){
+        cellmodel = theModel
+    }
+    
+}
+
+
+
+class AIRequireContentViewController: UIViewController {
+    
 	// MARK: -> Internal enum
 	
 	enum ThisViewTag: Int {
@@ -22,7 +32,9 @@ class AIRequireContentViewController: UIViewController {
 		case ExpendView = 13
 		case StableView = 14
 	}
-	
+    
+    var orderPreModel : AIOrderPreModel?
+    
 	private let stableCellHeight: Int = 40
 	
 	@IBOutlet weak var tableview: UITableView!
@@ -31,7 +43,9 @@ class AIRequireContentViewController: UIViewController {
 	
 	private var rememberCellButton: AnyObject?
 	
-	private var dataSource: [AIContentCellModel]? = {
+    var dataSource: [AIContentCellModel]?
+    
+    /*= {
 		
 		var i1 = AIIconTagModel()
 		i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
@@ -118,21 +132,61 @@ class AIRequireContentViewController: UIViewController {
 		
 		return [conModel, msgModel, dataModel]
 	}()
-	
+	*/
 	var editModel: Bool = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-    
+        
 		tableview.rowHeight = UITableViewAutomaticDimension
 		tableview.estimatedRowHeight = 44.0
 		tableview.showsVerticalScrollIndicator = false
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
-		// Reloading for the visible cells to layout correctly
-		Async.main { () -> Void in
-			self.tableview.reloadData()
-		}
+
+        tableview.addHeaderWithCallback { () -> Void in
+            Async.main(after: 1.5, block: { () -> Void in
+                self.tableview.reloadData()
+                self.tableview.headerEndRefreshing()
+            })
+        }
+        
+        // requets data:
+        
+        if editModel == false {
+            requestData()
+        }else{
+            Async.main { () -> Void in
+                self.tableview.reloadData()
+                
+            }
+        }
+       
 	}
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if editModel == true {
+            self.tableview.reloadData()
+        }
+    }
+    
+    func requestData(){
+        let handler = AIRequirementHandler.defaultHandler()
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, roleType: 1, success: { [weak self](requirements) -> Void in
+            print("\(requirements)")
+            
+            self!.dataSource  = requirements
+            
+            // Reloading for the visible cells to layout correctly
+            Async.main { () -> Void in
+                self!.tableview.reloadData()
+            }
+            
+            }) { (errType, errDes) -> Void in
+                print("\(errDes)")
+        }
+    }
     
 }
 
@@ -159,8 +213,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			let cell = tableView.dequeueReusableCellWithIdentifier("cellTitleIDentity")
 			let signImgView = cell?.contentView.viewWithTag(3) as! UIImageView
 			let signTextView = cell?.contentView.viewWithTag(2) as! UILabel
-			
-			signImgView.image = UIImage(named: currentCellModel?.typeImageUrl ?? "")
+			signImgView.setImageWithURL(NSURL(string: currentCellModel?.typeImageUrl ?? "")!)
 			signTextView.text = currentCellModel?.typeName ?? ""
 			signTextView.textColor = UIColor(hexString: "ffffff", alpha: 0.75)
 			signTextView.font = AITools.myriadLightSemiExtendedWithSize(14)
@@ -467,6 +520,17 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         imageView.image = img
         cell.setSlideState(.Center, animated: true)
         cell.setNeedsDisplay()
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+        
+        var cellModel: AIContentCellModel = currentCellModel!
+        cellModel.childServices = nil
+        cellModel.childServices = [contentModel]
+        
+        
+        let obj = AIWrapperAIContentModelClass(theModel: cellModel)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
         
 	}
 	

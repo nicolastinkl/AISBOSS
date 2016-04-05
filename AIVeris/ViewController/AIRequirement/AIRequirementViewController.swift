@@ -23,6 +23,8 @@ internal class AIRequirementViewController : UIViewController {
     
     var orderPreModel : AIOrderPreModel?
     
+    var bussinessModel: AIBusinessInfoModel?
+    
     private var tabRequireViewC: UIViewController?
     
     private var tabAssignViewC: UIViewController?
@@ -35,8 +37,12 @@ internal class AIRequirementViewController : UIViewController {
     @IBOutlet weak var rightContentView: UIView!
     
     @IBOutlet weak var TopUserInfoView: UIView!
+    
+    @IBOutlet weak var LeftMenuInfoView: UIView!
 
     private var uid : Int = 1
+    
+    private var notifyChangeAIContentCellModel: [AIContentCellModel] = Array<AIContentCellModel>()
     
     // MARK: -> Private type alias
     
@@ -52,7 +58,9 @@ internal class AIRequirementViewController : UIViewController {
      
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
         
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)        
         
         // Init Top View
         
@@ -64,42 +72,55 @@ internal class AIRequirementViewController : UIViewController {
             make.edges.equalTo(TopUserInfoView)
         }
         
-        // Init RightContent View
-        
-        withSwitchProfessionVC(1)
-        
         // Init Request networking..
+        self.view.showProgressViewLoading()
         
-        testInterface()
+        requestDataInterface()
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Init RightContent View
+        withSwitchProfessionVC(1)
+    }
     
-    //MARK: 接口测试
     
-    func testInterface() {
+    /**
+     数据请求
+     */
+    func requestDataInterface() {
+        
         let handler = AIRequirementHandler.defaultHandler()
         
-        //
-        
-        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { (businessInfo) -> Void in
-            print("\(businessInfo)")
-            }) { (errType, errDes) -> Void in
+        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { [weak self](businessInfo) -> Void in
+            
+            // Reload 
+            self!.bussinessModel = businessInfo
+            
+            self!.view.hideProgressViewLoading()
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
+            
+            
+            }) { [weak self] (errType, errDes) -> Void in
                 print("\(errDes)")
+                self!.view.hideProgressViewLoading()
         }
         
-        //
         
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, roleType: 1, success: { (requirements) -> Void in
-            print("\(requirements)")
-            }) { (errType, errDes) -> Void in
-                print("\(errDes)")
-        }
     }
-    
     
     //MARK:-----------
     
+    func  notifyOperateCell(notify: NSNotification){
+        if let dic = notify.userInfo {
+            if let cellModel = dic.values.first as? AIWrapperAIContentModelClass {
+                self.notifyChangeAIContentCellModel.append(cellModel.cellmodel)
+            }
+        }
+    }
 
     func notifyShowRequireMentVC(notify: NSNotification){
         SpringAnimation.springEaseIn(0.5) { () -> Void in
@@ -129,7 +150,9 @@ internal class AIRequirementViewController : UIViewController {
                 addSubViewController(vc)
             }else{
                 let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+                viewController.orderPreModel = self.orderPreModel
                 tabRequireViewC = viewController
+                
                 addSubViewController(viewController)
             }
             
@@ -138,17 +161,37 @@ internal class AIRequirementViewController : UIViewController {
             
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
             
-            if let vc = tabAssignViewC {
-                addSubViewControllers([vc, viewController2])
+            
+            if notifyChangeAIContentCellModel.count == 0 {
+                if let vc = tabAssignViewC {
+                    addSubViewControllers([vc, viewController2])
+                }else{
+                    let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+                    viewController.editModel = true
+                    viewController.orderPreModel = self.orderPreModel
+                    tabAssignViewC = viewController
+                    addSubViewControllers([viewController, viewController2])
+                }
+                
+                rightContentView.subviews.first?.alpha = 0
+                
             }else{
-                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
-                viewController.editModel = true
-                tabAssignViewC = viewController
-                addSubViewControllers([viewController, viewController2])
+                if let vc = tabAssignViewC {
+                    let newvc = vc as! AIRequireContentViewController
+                    newvc.dataSource = self.notifyChangeAIContentCellModel
+                    addSubViewController(newvc)
+                    
+                }else{
+                    let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+                    viewController.editModel = true
+                    viewController.orderPreModel = self.orderPreModel
+                    tabAssignViewC = viewController
+                    viewController.dataSource = self.notifyChangeAIContentCellModel
+                    addSubViewController(viewController)
+                }
             }
             
-            rightContentView.subviews.first?.alpha = 0
-            
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyClearNumberCellNotificationName, object: nil)
             
         case 3 :
             
@@ -162,7 +205,7 @@ internal class AIRequirementViewController : UIViewController {
             }
             
         case 4 :
-            print("4")
+            print("")
         default:
             break
         }

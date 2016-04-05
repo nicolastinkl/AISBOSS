@@ -31,15 +31,6 @@
                                     <constraint firstAttribute="height" constant="59" id="Aco-iE-Ube"/>
                                 </constraints>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-fJ-KWs">
-                                <rect key="frame" x="0.0" y="79" width="59" height="521"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="59" id="XTp-Nn-gcM"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="UTQ-k0-OTq" kind="embed" id="AvG-ee-GZu"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI6-lY-ikB">
                                 <rect key="frame" x="16" y="543" width="39" height="39"/>
                                 <constraints>
@@ -55,6 +46,15 @@
                                 <rect key="frame" x="58" y="79" width="529" height="521"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uff-fJ-KWs">
+                                <rect key="frame" x="0.0" y="79" width="59" height="521"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="XTp-Nn-gcM"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="UTQ-k0-OTq" kind="embed" id="AvG-ee-GZu"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -83,6 +83,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="LeftMenuInfoView" destination="uff-fJ-KWs" id="fny-aE-rHb"/>
                         <outlet property="TopUserInfoView" destination="4Xh-3L-WGI" id="Pf3-Io-cIs"/>
                         <outlet property="rightContentView" destination="sIx-t4-f04" id="lsG-am-sjQ"/>
                     </connections>

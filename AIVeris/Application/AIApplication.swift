@@ -158,6 +158,9 @@ struct AIApplication{
         static let AISinglePickerViewNotificationName  = "AISinglePickerViewNotificationName"
         static let AIAIRequirementViewControllerNotificationName    = "AIAIRequirementViewControllerNotificationName"
         static let AIAIRequirementShowViewControllerNotificationName    = "AIAIRequirementShowViewControllerNotificationName"
+        static let AIAIRequirementNotifyOperateCellNotificationName    = "AIAIRequirementNotifyOperateCellNotificationName"
+        static let AIAIRequirementNotifyClearNumberCellNotificationName    = "AIAIRequirementNotifyClearNumberCellNotificationName"
+        static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
         //服务执行页选择一个服务实例的通知 add by liux at 20160330
         static let AIRequirementSelectServiceInstNotificationName = "AIRequirementSelectServiceInstNotificationName"
     }
@@ -373,4 +376,15 @@ struct AIApplication{
     }
     
 }
+
+/*
+增加class泛型工具 一般在引用传递时使用.
+*/
+class AIWrapper<T> {
+    var wrappedValue: T
+    init(theValue: T) {
+        wrappedValue = theValue
+    }
+}
+
 
