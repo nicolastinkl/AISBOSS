@@ -67,21 +67,26 @@ internal class AIRequirementViewController : UIViewController {
         // Init RightContent View
         
         withSwitchProfessionVC(1)
+        
+        // Init Request networking..
+        
+        testInterface()
+        
     }
     
     
     //MARK: 接口测试
     
-    func testInterface() -> Void {
+    func testInterface() {
         let handler = AIRequirementHandler.defaultHandler()
         
         //
         
-//        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { (businessInfo) -> Void in
-//            print("\(businessInfo)")
-//            }) { (errType, errDes) -> Void in
-//                print("\(errDes)")
-//        }
+        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { (businessInfo) -> Void in
+            print("\(businessInfo)")
+            }) { (errType, errDes) -> Void in
+                print("\(errDes)")
+        }
         
         //
         
