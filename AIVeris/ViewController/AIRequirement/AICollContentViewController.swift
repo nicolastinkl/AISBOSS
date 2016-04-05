@@ -182,13 +182,13 @@ class AICollContentViewController: UIViewController {
         let limits3 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
         let limits4 = [AILimitModel(limitId: 1, limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: 1, limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
         //服务实例
-        let model1 = AssignServiceInstModel(serviceInstId: 1, serviceName: "Pregnancy Grocery", ratingLevel: 4, serviceInstStatus: .Init, limits: limits1)
-        let model2 = AssignServiceInstModel(serviceInstId: 2, serviceName: "Household Cleaner", ratingLevel: 5, serviceInstStatus: .Assigned,limits: limits2)
-        let model3 = AssignServiceInstModel(serviceInstId: 3, serviceName: "Paramedic Freelancer", ratingLevel: 6, serviceInstStatus: .Assigned,limits: limits3)
-        let model4 = AssignServiceInstModel(serviceInstId: 4, serviceName: "Hospital Appointment Booking", ratingLevel: 8, serviceInstStatus: .Init,limits: limits4)
+        let model1 = AssignServiceInstModel(serviceInstId: 900001001001, serviceName: "Pregnancy Grocery", ratingLevel: 4, serviceInstStatus: .Init, limits: limits1)
+        let model2 = AssignServiceInstModel(serviceInstId: 900001001002, serviceName: "Household Cleaner", ratingLevel: 5, serviceInstStatus: .Assigned,limits: limits2)
+        let model3 = AssignServiceInstModel(serviceInstId: 900001001003, serviceName: "Paramedic Freelancer", ratingLevel: 6, serviceInstStatus: .Assigned,limits: limits3)
+        let model4 = AssignServiceInstModel(serviceInstId: 900001001004, serviceName: "Hospital Appointment Booking", ratingLevel: 8, serviceInstStatus: .Init,limits: limits4)
         assginServiceInsts = [model1]
         
-        allServiceInsts = [0:model1,1:model1,2:model2,3:model3,4:model4,5:model1,6:model2,7:model3]
+        allServiceInsts = [900001001001:model1,900001001002:model1,900001001003:model2,900001001004:model3,4:model4,5:model1,6:model2,7:model3]
         
         //时间线model
         timelineModels = [AITimelineModel(timestamp: 1457403751, id: 1, title: "Launch language to Ms.Customer A", desc: "Ms.Customer A has an answer to the language requirements of the",status: 0),
