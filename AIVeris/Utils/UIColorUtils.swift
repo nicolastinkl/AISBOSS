@@ -179,7 +179,7 @@ extension UIColor {
             backgroundGradientLayer.endPoint = CGPoint(x: 1, y: 1)
             
             //Set color split line.
-            backgroundGradientLayer.locations  = [(0.25), (0.5), (0.75)]
+            backgroundGradientLayer.locations  = [(0.05), (0.16), (0.65),(0.81)]
             backgroundGradientLayer.position = CGPointMake(frame.size.width/2, frame.size.height/2)
 
             backgroundGradientLayer.renderInContext(UIGraphicsGetCurrentContext()!)

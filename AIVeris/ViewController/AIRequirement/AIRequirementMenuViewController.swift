@@ -135,7 +135,7 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     
     func loadData(){
         models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
-            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 9),
             IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
             IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
             IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
