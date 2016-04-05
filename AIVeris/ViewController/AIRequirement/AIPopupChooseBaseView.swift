@@ -134,12 +134,16 @@ class AIPopupChooseBaseView: UIView {
         if let delegate = delegate{
             delegate.didCancel(self)
         }
+        //点击后发关闭通知
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
     }
     
     func confirmAction(){
         if let delegate = delegate{
             delegate.didConfirm(self)
         }
+        //点击后发关闭通知
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
     }
     
     func getFrameHeight() -> CGFloat{

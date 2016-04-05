@@ -103,7 +103,7 @@ class AICircleProgressView: UIView {
         animation.removedOnCompletion = true
         animation.duration = 0.5 + Double((self.progress ?? 0) / 10) //Default Value: 0.5
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        fontLayer.addAnimation(animation, forKey: nil)
+        fontLayer.addAnimation(animation, forKey: "strokeEnd")
     }
     
     func makeGradientColor(){
@@ -120,6 +120,8 @@ class AICircleProgressView: UIView {
         //因为半径已经变了，所以frame不再从0开始
         let frame = CGRect(x: -(strokWidth + circlePadding) / 2, y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding)
         let path = UIBezierPath(roundedRect: frame, cornerRadius: frame.width / 2)
+        //需要remove吗
+        fontLayer.removeAllAnimations()
         if isSelect {
             
             //改变颜色时不需要动画，用这个禁用

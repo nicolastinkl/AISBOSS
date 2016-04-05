@@ -118,6 +118,8 @@ class AICollContentViewController: UIViewController {
     //处理点击事件
     private func handleNotification(){
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchServiceInst:", name: AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: nil)
+        //弹出框的关闭通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "closePopupWindow:", name: AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
     }
     
     func notifySwitchServiceInst(notify: NSNotification){
@@ -130,11 +132,22 @@ class AICollContentViewController: UIViewController {
                 assginServiceInsts.append(serviceInst)
             }
         }
+        //如果没选择默认选中第一条
         if assginServiceInsts.count == 0{
-            assginServiceInsts.append(allServiceInsts![0]!)
+            if let allServiceInsts = allServiceInsts{
+                let keyArray = Array(allServiceInsts.keys)
+                if keyArray.count > 0 {
+                    assginServiceInsts.append(allServiceInsts[keyArray[0]]!)
+                }
+            }
+            
         }
         serviceInstView.loadData(assginServiceInsts)
         changeLaunchButtonStatus()
+    }
+    //关闭弹出框时要继续动画
+    func closePopupWindow(notify : NSNotification){
+        serviceInstView.switchAnimationState(true)
     }
     
     private func changeLaunchButtonStatus(){
