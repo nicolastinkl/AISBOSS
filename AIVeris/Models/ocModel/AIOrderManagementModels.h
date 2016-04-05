@@ -205,8 +205,6 @@
 
 @interface AIOriginalRequirementsList : JSONModel
 
-@property (nonatomic, strong) NSString<Optional> *wish_id;
-
 @property (nonatomic, strong) NSArray<Optional, AICommonRequirements> *requirement_list;
 
 @end
