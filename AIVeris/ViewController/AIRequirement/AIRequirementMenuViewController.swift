@@ -206,7 +206,7 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
         */
         
         
-        self.models = bussinessModel?.serviceModels
+        self.models = bussinessModel?.serviceModels //AIRequirementViewPublicValue.bussinessModel
         self.buildServiceInstsView()
 
     }

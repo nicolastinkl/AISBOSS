@@ -53,7 +53,7 @@
 @protocol AIService @end
 
 @interface AIService : JSONModel
-@property (nonatomic, strong) NSNumber<Optional> *service_rating_level;
+
 @property (nonatomic, strong) NSNumber<Optional> *service_price;
 @property (nonatomic, strong) NSString<Optional> *service_name;
 @property (nonatomic, strong) NSNumber<Optional> *service_id;
@@ -107,6 +107,7 @@
 @property (nonatomic, strong) NSNumber<Optional> *relservice_roleid;
 @property (nonatomic, strong) NSDictionary<Optional> *relservice_progress;
 @property (nonatomic, strong) NSArray<Optional, AIServiceRights> *own_right_id;
+@property (nonatomic, strong) NSNumber<Optional> *service_rating_level;
 
 @end
 
@@ -203,8 +204,6 @@
 @protocol AIOriginalRequirementsList @end
 
 @interface AIOriginalRequirementsList : JSONModel
-
-@property (nonatomic, strong) NSString<Optional> *wish_id;
 
 @property (nonatomic, strong) NSArray<Optional, AICommonRequirements> *requirement_list;
 

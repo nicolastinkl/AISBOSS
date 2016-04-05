@@ -163,6 +163,8 @@ struct AIApplication{
         static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
         //服务执行页选择一个服务实例的通知 add by liux at 20160330
         static let AIRequirementSelectServiceInstNotificationName = "AIRequirementSelectServiceInstNotificationName"
+        //关闭弹出框UI的通知
+        static let AIRequirementClosePopupNotificationName = "AIRequirementClosePopupNotificationName"
     }
     
     // MARK: System theme's color

@@ -112,22 +112,32 @@ class AIRequirementHandler: NSObject {
     
     func parseOriginalRequirements(requirements : AIOriginalRequirementsList, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         
-
+        success(requirements: requirements)
         
     }
     
     
     //MARK: 直接保存为待分配状态
     
+    /**
+    providerID	        复合服务提供者ID
+    customID	        买家ID
+    orderID   	        订单ID
+    requirementType	    原始需求条目类型
+    requirementID	    原始需求ID
+    toType	            订单ID
+    requirementList		传入需要转化的原始需求id
+    */
+
     
-    func saveAsTask(requirementID : NSNumber, requirementType : String, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveAsTask(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["requirement_id" : requirementID, "requirement_type" : requirementType], "data_mode" : "0", "digest" : ""]
+        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveAsTask.description as String
      
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-
+        
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
