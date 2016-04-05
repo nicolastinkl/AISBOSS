@@ -31,12 +31,13 @@ class AICircleProgressView: UIView {
     
     func setUp(){
         backLayer = CAShapeLayer()
-        backLayer.fillColor = nil
+        backLayer.fillColor = UIColor.clearColor().CGColor
         backLayer.frame = self.bounds
         backLayer.lineWidth = strokWidth
+        backLayer.backgroundColor = UIColor.clearColor().CGColor
         
         fontLayer = CAShapeLayer()
-        fontLayer.fillColor = nil
+        fontLayer.fillColor = UIColor.clearColor().CGColor
         fontLayer.frame = self.bounds
         fontLayer.lineWidth = strokWidth
         fontLayer.lineCap = kCALineCapRound
@@ -107,9 +108,11 @@ class AICircleProgressView: UIView {
     
     func makeGradientColor(){
 
-        let frame = CGRect(x: -(strokWidth + circlePadding) / 2 , y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding )
+        let frame = CGRect(x: -(strokWidth + circlePadding) / 2 , y:-(strokWidth + circlePadding) / 2, width: self.bounds.width + strokWidth + circlePadding, height: self.bounds.height + strokWidth + circlePadding + 10)
 
-        fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleTopToBottom, frame: frame, colors: [UIColor(hex: "e30ab2"),UIColor(hex: "7B40D3"),UIColor(hex: "2477e8")]).CGColor
+        fontLayer.strokeColor = UIColor.colorWithGradientStyle(UIGradientStyle.UIGradientStyleTopToBottom, frame: frame, colors: [UIColor(hex: "2477e8"),UIColor(hex: "e30ab2"),UIColor(hex: "7B40D3"),UIColor(hex: "2477e8")]).CGColor
+        fontLayer.setNeedsDisplay()
+
     }
     //设置选中还是未选中状态
     func changeSelect(isSelect : Bool){

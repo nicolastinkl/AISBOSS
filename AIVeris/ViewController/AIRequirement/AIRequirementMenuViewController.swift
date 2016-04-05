@@ -135,23 +135,23 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     }
     
     func loadData(){
-//        models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
-//            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
-//            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
-//            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
-//            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
-//            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
-//            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
-//            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
-//            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
-        
-        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, roleType: 1, success: { (businessInfo) -> Void in
-            self.models = businessInfo.serviceModels
-            self.buildServiceInstsView()
-            }) { (errType, errDes) -> Void in
-                print(errDes)
-        }
-        
+        models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
+            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
+            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
+            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
+            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
+            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
+            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
+        self.buildServiceInstsView()
+//        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, roleType: 1, success: { (businessInfo) -> Void in
+//            self.models = businessInfo.serviceModels
+//            self.buildServiceInstsView()
+//            }) { (errType, errDes) -> Void in
+//                print(errDes)
+//        }
+
     }
     
     func viewCellDidSelect(verticalScrollView : AIVerticalScrollView , index : Int , cellView : UIView){
