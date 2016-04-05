@@ -64,7 +64,11 @@ class AIRequirementHandler: NSObject {
     
     
     func parseBusinessInfo(requirements : AIQueryBusinessInfos, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
-   
+        let iconServiceInst = IconServiceIntModel.getInstanceArray(requirements)
+        let parsedBusinessInfo = AIBusinessInfoModel()
+        
+        parsedBusinessInfo.serviceModels = iconServiceInst
+        success(businessInfo: parsedBusinessInfo)
 
     }
     

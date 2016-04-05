@@ -37,6 +37,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
     var serviceInstsView : AIVerticalScrollView!
     var models : [IconServiceIntModel]?
     
+    let scrollViewBottomPadding = AITools.displaySizeFrom1242DesignSize(150)
+    
     // MARK: -> Internal init methods
     
     override func viewDidLoad() {
@@ -57,7 +59,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
         // Set Un Read's view
         // Create your badge and add it as a subview to whatever view you want to badgify.
         
-        buildServiceInstsView()
+        loadData()
         
         let badge = GIBadgeView()
         assignButton.addSubview(badge)
@@ -118,7 +120,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
 extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
         
-        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - 180        
+        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding
         let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
         
         serviceInstsView = AIVerticalScrollView(frame: frame)
@@ -128,14 +130,13 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
         //选择服务执行的时候才展现
         serviceInstsView.hidden = true
         view.addSubview(serviceInstsView)
-        
-        loadData()
+    
         serviceInstsView.loadData(models!)
     }
     
     func loadData(){
         models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
-            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 9),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
             IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
             IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
             IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
@@ -143,8 +144,14 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
             IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
             IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
             IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
-        
-        
+        self.buildServiceInstsView()
+//        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, roleType: 1, success: { (businessInfo) -> Void in
+//            self.models = businessInfo.serviceModels
+//            self.buildServiceInstsView()
+//            }) { (errType, errDes) -> Void in
+//                print(errDes)
+//        }
+
     }
     
     func viewCellDidSelect(verticalScrollView : AIVerticalScrollView , index : Int , cellView : UIView){

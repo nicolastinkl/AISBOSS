@@ -77,17 +77,37 @@ class AITimelineModel : AIBaseViewModel {
 
 //MARK: - 服务实例模型
 class IconServiceIntModel : AIBaseViewModel{
-    var serviceInstId : Int
-    var serviceIcon : String
-    var serviceInstStatus : ServiceInstStatus
-    var executeProgress : Int
+    var serviceInstId : Int!
+    var serviceIcon : String!
+    var serviceInstStatus : ServiceInstStatus!
+    var executeProgress : Int!
     var isSelected : Bool = false
+    
+    override init() {
+        super.init()
+    }
     
     init(serviceInstId : Int , serviceIcon : String , serviceInstStatus : ServiceInstStatus , executeProgress : Int){
         self.serviceInstId = serviceInstId
         self.serviceIcon = serviceIcon
         self.serviceInstStatus = serviceInstStatus
         self.executeProgress = executeProgress
+    }
+    
+    class func getInstanceArray(jsonModel : AIQueryBusinessInfos) -> [IconServiceIntModel]{
+        var iconServiceInstArray = [IconServiceIntModel]()
+        for serviceInst : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
+            let iconServiceInst = IconServiceIntModel()
+            iconServiceInst.serviceIcon = serviceInst.portrait_icon
+            iconServiceInst.serviceInstId = serviceInst.relservice_id.integerValue
+            let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
+            let status = ServiceInstStatus(rawValue: jsonModelProgress.objectForKey("status") as! Int)
+            iconServiceInst.serviceInstStatus = status!
+            let progress = (jsonModelProgress.objectForKey("percentage") as! Int) * 100
+            iconServiceInst.executeProgress = progress
+            iconServiceInstArray.append(iconServiceInst)
+        }
+        return iconServiceInstArray
     }
     
     ///判断是否需要派单
