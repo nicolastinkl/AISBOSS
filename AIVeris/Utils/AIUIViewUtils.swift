@@ -491,6 +491,8 @@ extension UIImage {
 
 extension UIButton{
     func setHighlightedBackgroundImage(){
-        self.setImage(UIColor(hex: "0d3e83").imageWithColor(), forState: UIControlState.Highlighted)
+        self.setBackgroundImage(UIColor(hex: "0d3e83").imageWithColor(), forState: UIControlState.Highlighted)
+        self.layer.cornerRadius = 5
+
     }
 }

@@ -89,6 +89,9 @@ class AISelectedServiceTableVController: UIViewController {
                 make.trailing.equalTo(-13)
             })
             
+            cancelButton.setHighlightedBackgroundImage()
+            distriButton.setHighlightedBackgroundImage()
+            
             cancelButton.addTarget(self, action: "calcelAction:", forControlEvents: UIControlEvents.TouchUpInside)
             distriButton.addTarget(self, action: "distriAction:", forControlEvents: UIControlEvents.TouchUpInside)
             
@@ -97,6 +100,7 @@ class AISelectedServiceTableVController: UIViewController {
             stable.backgroundColor = UIColor.clearColor()
             stable.separatorStyle = UITableViewCellSeparatorStyle.None
             stable.allowsMultipleSelection = true
+            stable.scrollEnabled = false
             stable.snp_makeConstraints(closure: { (make) -> Void in
                 make.bottom.equalTo(distriButton.snp_top).offset(-18)
                 make.leading.equalTo(21)
