@@ -69,8 +69,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
         assignButton.addSubview(badge)
         //collaborationButton.addSubview(badge)
         badge.badgeValue = 0
-        badge.topOffset = 5
-        badge.rightOffset = 12
+        badge.topOffset = 18
+        badge.rightOffset = 9
         badge.font = AITools.myriadLightSemiExtendedWithSize(12)
         
         
