@@ -216,7 +216,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			signImgView.setImageWithURL(NSURL(string: currentCellModel?.typeImageUrl ?? "")!)
 			signTextView.text = currentCellModel?.typeName ?? ""
 			signTextView.textColor = UIColor(hexString: "ffffff", alpha: 0.75)
-			signTextView.font = AITools.myriadLightSemiCondensedWithSize(14)
+			signTextView.font = AITools.myriadLightSemiCondensedWithSize(13)
 			
 			return cell!
 		} else {
@@ -285,22 +285,55 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		let bgImageViewHolder = UIImageView(image: UIImage(named: imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
 		cell.contentView.addSubview(bgImageViewHolder)
 		bgImageViewHolder.tag = 18
-		
-		// Setup 2 : Title UILabel.
-		let titleLabel = UILabel()
-		titleLabel.numberOfLines = 0
-		titleLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-		titleLabel.text = contentModel.text ?? ""
-		titleLabel.font = AITools.myriadLightSemiCondensedWithSize(16)
-		titleLabel.textColor = UIColor.whiteColor()
-		cell.contentView.addSubview(titleLabel)
-		titleLabel.snp_makeConstraints(closure: { (make) -> Void in
-			make.top.equalTo(10)
-			make.leading.equalTo(14)
-			make.trailing.equalTo(-14)
-			make.height.greaterThanOrEqualTo(20).priorityMedium()
-		})
-		titleLabel.tag = 11
+        
+		// list ImageViews. Support the NSAttributedString.
+        var leftOffset = 0
+        let urlArray = contentModel.requirement_icon?.componentsSeparatedByString(",")
+        if let urlArray = urlArray {
+            //Has image url.
+            var offsetHeight = 10
+            for url in urlArray {
+                let urlImage = AIImageView()
+                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: UIImage(named: "Placehold"))
+                urlImage.tag = 11
+                cell.contentView.addSubview(urlImage)
+                
+                urlImage.snp_makeConstraints(closure: { (make) -> Void in
+                    make.top.equalTo(offsetHeight)
+                    make.leading.equalTo(14)
+                    make.width.height.equalTo(13)
+                })
+                
+                offsetHeight += 15
+            }
+            
+            if urlArray.first?.length > 5 {
+                leftOffset = 15
+            }else{
+                leftOffset = 0
+            }
+            
+            
+        }else{
+            leftOffset = 0
+        }
+        
+        // Setup 2 : Title UILabel.
+        let titleLabel = UILabel()
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        titleLabel.text = contentModel.text ?? ""
+        titleLabel.font = AITools.myriadLightSemiCondensedWithSize(15)
+        titleLabel.textColor = UIColor.whiteColor()
+        cell.contentView.addSubview(titleLabel)
+        titleLabel.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(10)
+            make.leading.equalTo(14+leftOffset)
+            make.trailing.equalTo(-14)
+            make.height.greaterThanOrEqualTo(20).priorityMedium()
+        })
+        titleLabel.tag = 11
+        
 		
 		// Setup 2.1 : Audio View.
 		let lengthAudio = contentModel.audioLengh ?? 0
@@ -332,7 +365,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		desLabel.numberOfLines = 0
 		desLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
 		desLabel.text = contentModel.content ?? ""
-		desLabel.font = AITools.myriadLightSemiExtendedWithSize(16)
+		desLabel.font = AITools.myriadLightSemiCondensedWithSize(15)
 		desLabel.textColor = UIColor.whiteColor()
 		cell.contentView.addSubview(desLabel)
 		
