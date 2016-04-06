@@ -89,12 +89,6 @@ internal class AIRequirementViewController : UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    
     /**
      数据请求
      */
@@ -135,9 +129,12 @@ internal class AIRequirementViewController : UIViewController {
     }
 
     func notifyShowRequireMentVC(notify: NSNotification){
-        SpringAnimation.springEaseIn(0.5) { () -> Void in
-            self.rightContentView.subviews.first?.alpha = 1
-        }
+        
+        withSwitchProfessionVC(1)
+        
+//        SpringAnimation.springEaseIn(0.5) { () -> Void in
+//            self.rightContentView.subviews.first?.alpha = 1
+//        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
