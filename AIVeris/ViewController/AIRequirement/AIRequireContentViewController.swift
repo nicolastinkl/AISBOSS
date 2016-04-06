@@ -159,8 +159,7 @@ class AIRequireContentViewController: UIViewController {
                 self.tableview.reloadData()
                 
             }
-        }
-       
+        }       
 	}
     
     override func viewDidAppear(animated: Bool) {
@@ -169,11 +168,12 @@ class AIRequireContentViewController: UIViewController {
         if editModel == true {
             self.tableview.reloadData()
         }
+        
     }
     
     func requestData(){
         let handler = AIRequirementHandler.defaultHandler()
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, roleType: 1, success: { [weak self](requirements) -> Void in
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: 1, customID: 1, success: { [weak self](requirements) -> Void in
             print("\(requirements)")
             
             self!.dataSource  = requirements

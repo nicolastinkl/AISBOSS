@@ -69,8 +69,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
         assignButton.addSubview(badge)
         //collaborationButton.addSubview(badge)
         badge.badgeValue = 0
-        badge.topOffset = 5
-        badge.rightOffset = 12
+        badge.topOffset = 18
+        badge.rightOffset = 9
         badge.font = AITools.myriadLightSemiExtendedWithSize(12)
         
         
@@ -80,7 +80,12 @@ internal class AIRequirementMenuViewController : UIViewController  {
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyGenerateModel:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
         
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
+    }
+    
+    func notifyShowRequireMentVC(notify: NSNotification){
+        selectButton(1)
     }
     
     func  notifyGenerateModel(notify: NSNotification){
@@ -113,45 +118,44 @@ internal class AIRequirementMenuViewController : UIViewController  {
         badge.badgeValue = 0
     }
     
+    func selectButton(tag : Int){
+        
+        switch tag {
+        case 1:
+            requireButton.setImage(UIImage(named: "imcollable_selected"), forState: UIControlState.Normal)
+            assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
+            collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
+            if serviceInstsView != nil {
+                serviceInstsView.hidden = true
+            }
+        case 2:
+            
+            requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
+            assignButton.setImage(UIImage(named: "imLink_selected"), forState: UIControlState.Normal)
+            collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
+            if serviceInstsView != nil {
+                serviceInstsView.hidden = true
+            }
+        case 3:
+            
+            requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
+            assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
+            collaborationButton.setImage(UIImage(named: "imexe_selected"), forState: UIControlState.Normal)
+            
+            if serviceInstsView != nil {
+                serviceInstsView.hidden = false
+            }
+            
+        default :
+            
+            break
+        }
+        
+    }
     
     @IBAction func targetForRequirementAction(anyobj: AnyObject){
         
         let button = anyobj as! UIButton
-        
-        func selectButton(tag : Int){
-            
-            switch tag {
-            case 1:
-                requireButton.setImage(UIImage(named: "imcollable_selected"), forState: UIControlState.Normal)
-                assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
-                collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                if serviceInstsView != nil {
-                    serviceInstsView.hidden = true
-                }
-            case 2:
-                
-                requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
-                assignButton.setImage(UIImage(named: "imLink_selected"), forState: UIControlState.Normal)
-                collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                if serviceInstsView != nil {
-                    serviceInstsView.hidden = true
-                }
-            case 3:
-                
-                requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
-                assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
-                collaborationButton.setImage(UIImage(named: "imexe_selected"), forState: UIControlState.Normal)
-                
-                if serviceInstsView != nil {
-                    serviceInstsView.hidden = false
-                }
-                
-            default :
-
-                break
-            }
-            
-        }
         
         selectButton(button.tag)
         

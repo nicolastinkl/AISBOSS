@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) NSNumber<Optional> *customer_id;
 
-@property (nonatomic, strong) NSString<Optional> *user_portrait_icon;
+@property (nonatomic, strong) NSString<Optional> *customized_portrait_url;
 
 @property (nonatomic, strong) NSString<Optional> *user_name;
 
@@ -61,9 +61,14 @@
 
 @interface AIService : JSONModel
 
-@property (nonatomic, strong) NSNumber<Optional> *service_price;
-@property (nonatomic, strong) NSString<Optional> *service_name;
+
+@property (nonatomic, strong) NSString<Optional> *service_catalog;
+
+@property (nonatomic, strong) NSString<Optional> *service_progress;
+
 @property (nonatomic, strong) NSNumber<Optional> *service_id;
+@property (nonatomic, strong) NSString<Optional> *service_price;
+@property (nonatomic, strong) NSString<Optional> *service_thumbnail_url;
 
 
 @end
@@ -106,15 +111,26 @@
 @protocol AIServiceProvider @end
 
 @interface AIServiceProvider : JSONModel
+@property (nonatomic, strong) NSString<Optional> *provider_portrait_url;
 
-@property (nonatomic, strong) NSString<Optional> *portrait_icon;
 @property (nonatomic, strong) NSString<Optional> *relservice_desc;
+
 @property (nonatomic, strong) NSNumber<Optional> *relservice_id;
+
 @property (nonatomic, strong) NSString<Optional> *relservice_name;
-@property (nonatomic, strong) NSNumber<Optional> *relservice_roleid;
-@property (nonatomic, strong) NSDictionary<Optional> *relservice_progress;
-@property (nonatomic, strong) NSArray<Optional> *own_right_id;
+
+@property (nonatomic, strong) NSNumber<Optional> *relservice_instance_id;
+
+@property (nonatomic, strong) NSNumber<Optional> *reluser_id;
+
+@property (nonatomic, strong) NSNumber<Optional> *service_item_id;
+
 @property (nonatomic, strong) NSNumber<Optional> *service_rating_level;
+
+@property (nonatomic, strong) NSDictionary<Optional> *relservice_progress;
+
+@property (nonatomic, strong) NSArray<Optional> *own_right_id;
+
 
 @end
 
@@ -125,25 +141,19 @@
 @interface AIQueryBusinessInfos : JSONModel
 
 
-@property (nonatomic, strong) NSNumber<Optional> *order_id;
+@property (nonatomic, strong) NSString<Optional> *order_id;
 
 @property (nonatomic, strong) NSString<Optional> *order_state;
 
-@property (nonatomic, strong) NSString<Optional> *order_number;
 @property (nonatomic, strong) NSString<Optional> *order_create_time;
-@property (nonatomic, strong) NSNumber<Optional> *proposal_id;
-@property (nonatomic, strong) NSString<Optional> *proposal_name;
+
+@property (nonatomic, strong) NSNumber<Optional> *comp_service_id;
+
+@property (nonatomic, strong) NSString<Optional> *comp_user_id;
 
 @property (nonatomic, strong) AICustomer<Optional> *customer;
 
-//@property (nonatomic, strong) AITaskProgress<Optional> *service_progress;
-
-//@property (nonatomic, strong) AIService<Optional> *service;
-
-//@property (nonatomic, strong) AIServiceCategory<Optional> *service_category;
-
-
-@property (nonatomic, strong) AITaskProgress<Optional> *service;
+@property (nonatomic, strong) AIService<Optional> *service;
 
 @property (nonatomic, strong) NSArray<Optional, AIServiceRights> *right_list;
 

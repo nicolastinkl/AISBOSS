@@ -148,7 +148,7 @@ class IconServiceIntModel : AIBaseViewModel{
         var iconServiceInstArray = [IconServiceIntModel]()
         for serviceInst : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
             let iconServiceInst = IconServiceIntModel()
-            iconServiceInst.serviceIcon = serviceInst.portrait_icon
+            iconServiceInst.serviceIcon = serviceInst.provider_portrait_url
             iconServiceInst.serviceInstId = serviceInst.relservice_id.integerValue
             let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
             let statusInt = jsonModelProgress.objectForKey("status") as! Int

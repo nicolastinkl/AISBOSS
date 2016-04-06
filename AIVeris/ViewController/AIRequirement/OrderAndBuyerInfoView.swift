@@ -45,9 +45,17 @@ class OrderAndBuyerInfoView: UIView {
                 setProgress(m.completion != nil ? CGFloat(m.completion!) : 0)
                 
                 
-                price.text = m.price != nil ? NSString(format: "%.1f", m.price!) as String : "0"
+            //    price.text = m.price != nil ? NSString(format: "%.1f", m.price!) as String : "0"
+                price.text = m.price != nil ? m.price! : "0"
+                if let number = m.messageNumber {
+                    messageNumber.hidden = false
+                    messageNumber.text = String(number)
+                }
                 
-                messageNumber.text = m.messageNumber != nil ? String(m.messageNumber!) : "0"
+                if let serviceIconUrl = m.serviceIcon {
+                    serviceIcon.asyncLoadImage(serviceIconUrl)
+                }
+                
             }
         }
     }

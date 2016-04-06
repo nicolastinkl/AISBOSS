@@ -44,6 +44,8 @@ internal class AIRequirementViewController : UIViewController {
     @IBOutlet weak var TopUserInfoView: UIView!
     
     @IBOutlet weak var LeftMenuInfoView: UIView!
+    
+    private var userInfoView: OrderAndBuyerInfoView?
 
     private var uid : Int = 1
     
@@ -69,28 +71,23 @@ internal class AIRequirementViewController : UIViewController {
         
         // Init Top View
         
-        let topView = OrderAndBuyerInfoView.createInstance()
-        TopUserInfoView.addSubview(topView)
-        topView.delegate = self
+        userInfoView = OrderAndBuyerInfoView.createInstance()
+        TopUserInfoView.addSubview(userInfoView!)
+        userInfoView?.delegate = self
         
-        topView.snp_makeConstraints { (make) -> Void in
+        userInfoView?.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(TopUserInfoView)
         }
         
         // Init Request networking..
         self.view.showProgressViewLoading()
         
-        requestDataInterface()
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        requestDataInterface()        
         
         // Init RightContent View
         withSwitchProfessionVC(1)
+        
     }
-    
     
     /**
      数据请求
@@ -107,7 +104,9 @@ internal class AIRequirementViewController : UIViewController {
             self!.view.hideProgressViewLoading()
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
-            
+
+            self!.userInfoView?.model = businessInfo.customerModel
+                
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
             
@@ -130,9 +129,12 @@ internal class AIRequirementViewController : UIViewController {
     }
 
     func notifyShowRequireMentVC(notify: NSNotification){
-        SpringAnimation.springEaseIn(0.5) { () -> Void in
-            self.rightContentView.subviews.first?.alpha = 1
-        }
+        
+        withSwitchProfessionVC(1)
+        
+//        SpringAnimation.springEaseIn(0.5) { () -> Void in
+//            self.rightContentView.subviews.first?.alpha = 1
+//        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
@@ -275,6 +277,7 @@ internal class AIRequirementViewController : UIViewController {
 extension AIRequirementViewController: OrderAndBuyerInfoViewDelegate {
     func buyerIconClicked() {
         let vc = BuyerRequirmentMessageViewController(nibName: "BuyerRequirmentMessageViewController", bundle: nil)
+        vc.buyerAndOrderModel = userInfoView?.model
         presentViewController(vc, animated: true, completion: nil)
     }
 }
