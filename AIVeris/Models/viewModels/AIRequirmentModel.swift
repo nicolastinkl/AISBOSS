@@ -14,41 +14,59 @@ import Foundation
 ///权限设置模型
 class AILimitModel : AIBaseViewModel {
     
-    var limitId : Int
+    var limitId : String
     var limitName: String
     var limitIcon : String
     var hasLimit : Bool
     
-    init(limitId : Int , limitName : String, limitIcon : String , hasLimit : Bool){
+    init(limitId : String , limitName : String, limitIcon : String , hasLimit : Bool){
         self.limitId = limitId
         self.limitName = limitName
         self.limitIcon = limitIcon
         self.hasLimit = hasLimit
     }
+    
+    //根据拥有权限的id列表输出当前权限是否拥有
+    func handleHasLimitWith(ownRightList : NSArray) -> Bool{
+        for ownRight in ownRightList{
+            let ownRightString = (ownRight as! NSNumber).stringValue
+            if self.limitId == ownRightString{
+                return true
+            }
+        }
+        return false
+    }
 }
 
 //把权限列表设置的view抽象出来，还能用于filter选择
 class AIPopupChooseModel : AIBaseViewModel{
-    var itemId : Int
+    var itemId : String
     var itemTitle : String
     var itemIcon : String
     var isSelect : Bool
     
-    init(itemId : Int, itemTitle : String , itemIcon : String , isSelect : Bool){
+    init(itemId : String, itemTitle : String , itemIcon : String , isSelect : Bool){
         self.itemId = itemId
         self.itemTitle = itemTitle
         self.itemIcon = itemIcon
         self.isSelect = isSelect
     }
+    
 }
 
 ///派单界面服务实例模型
 class AssignServiceInstModel : AIBaseViewModel {
-    var serviceInstId : Int
-    var serviceName : String
+    var serviceInstId : Int!
+    var serviceName : String!
     var ratingLevel : Float?
-    var serviceInstStatus : ServiceInstStatus
+    var serviceInstStatus : ServiceInstStatus!
     var limits : [AILimitModel]?
+    
+    override init() {
+        ratingLevel = 10
+        limits = [AILimitModel]()
+        super.init()
+    }
     
     init(serviceInstId : Int,serviceName : String,ratingLevel : Float,serviceInstStatus : ServiceInstStatus , limits : [AILimitModel]) {
         self.serviceInstId = serviceInstId
@@ -57,6 +75,31 @@ class AssignServiceInstModel : AIBaseViewModel {
         self.serviceInstStatus = serviceInstStatus
         self.limits = limits
     }
+    
+    class func getInstanceArray(jsonModel : AIQueryBusinessInfos) -> [AssignServiceInstModel]{
+        var assignServiceInstModels = [AssignServiceInstModel]()
+        for serviceInstJSONModel : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
+            let assignServiceInst = AssignServiceInstModel()
+            //TODO 这里需要的是serviceInstId
+            assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_id.integerValue
+            assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
+            assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
+            
+            //给limits赋值
+            
+            for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
+                let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: "", hasLimit: false)
+                let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+                
+                limit.hasLimit = limit.handleHasLimitWith(ownRightList)
+                assignServiceInst.limits?.append(limit)
+            }
+            assignServiceInstModels.append(assignServiceInst)
+        }
+        
+        return assignServiceInstModels
+    }
+
 }
 
 class AITimelineModel : AIBaseViewModel {
@@ -101,8 +144,10 @@ class IconServiceIntModel : AIBaseViewModel{
             iconServiceInst.serviceIcon = serviceInst.portrait_icon
             iconServiceInst.serviceInstId = serviceInst.relservice_id.integerValue
             let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
-            let status = ServiceInstStatus(rawValue: jsonModelProgress.objectForKey("status") as! Int)
-            iconServiceInst.serviceInstStatus = status!
+            let statusInt = jsonModelProgress.objectForKey("status") as! Int
+            
+            let status = ServiceInstStatus(rawValue: (statusInt + 0))
+            iconServiceInst.serviceInstStatus = status
             let progress = (jsonModelProgress.objectForKey("percentage") as! Int) * 100
             iconServiceInst.executeProgress = progress
             iconServiceInstArray.append(iconServiceInst)
@@ -128,7 +173,7 @@ enum TimelineStatus : Int {
 }
 
 enum ServiceInstStatus : Int {
-    case Init,Assigned
+    case Init = -1 ,Assigned = 100, Error = 101,Finished = 102
 }
 
 

@@ -47,6 +47,13 @@
 @property (nonatomic, strong) NSNumber<Optional> *operation;
 @property (nonatomic, strong) NSString<Optional> *icon;
 
+@property (nonatomic, strong) NSNumber<Optional> *service_id;
+@property (nonatomic, strong) NSString<Optional> *service_catalog;
+@property (nonatomic, strong) NSString<Optional> *service_progress;
+@property (nonatomic, strong) NSString<Optional> *service_price;
+@property (nonatomic, strong) NSString<Optional> *service_thumbnail_url;
+
+
 @end
 
 #pragma mark - Service
@@ -126,13 +133,17 @@
 @property (nonatomic, strong) NSString<Optional> *order_create_time;
 @property (nonatomic, strong) NSNumber<Optional> *proposal_id;
 @property (nonatomic, strong) NSString<Optional> *proposal_name;
-@property (nonatomic, strong) AITaskProgress<Optional> *service_progress;
 
 @property (nonatomic, strong) AICustomer<Optional> *customer;
 
-@property (nonatomic, strong) AIService<Optional> *service;
+//@property (nonatomic, strong) AITaskProgress<Optional> *service_progress;
 
-@property (nonatomic, strong) AIServiceCategory<Optional> *service_category;
+//@property (nonatomic, strong) AIService<Optional> *service;
+
+//@property (nonatomic, strong) AIServiceCategory<Optional> *service_category;
+
+
+@property (nonatomic, strong) AITaskProgress<Optional> *service;
 
 @property (nonatomic, strong) NSArray<Optional, AIServiceRights> *right_list;
 

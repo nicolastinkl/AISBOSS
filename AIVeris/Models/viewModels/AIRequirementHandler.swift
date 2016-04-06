@@ -72,11 +72,12 @@ class AIRequirementHandler: NSObject {
         
         ///  左侧服务图片列表
         let iconServiceInst = IconServiceIntModel.getInstanceArray(requirements)
-
+        let assignServiceInstModels = AssignServiceInstModel.getInstanceArray(requirements)
         let parsedBusinessInfo = AIBusinessInfoModel()
         
         parsedBusinessInfo.serviceModels = iconServiceInst
         parsedBusinessInfo.customerModel = nil
+        parsedBusinessInfo.assignServiceInstModels = assignServiceInstModels
         parsedBusinessInfo.baseJsonValue = requirements
         success(businessInfo: parsedBusinessInfo)
 

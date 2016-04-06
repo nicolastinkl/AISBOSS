@@ -42,7 +42,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
     
     let badge = GIBadgeView()
     
-    let scrollViewBottomPadding = AITools.displaySizeFrom1242DesignSize(150)
+    let scrollViewBottomPadding = AITools.displaySizeFrom1242DesignSize(165)
     
     // MARK: -> Internal init methods
     
@@ -64,7 +64,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
         // Set Un Read's view
         // Create your badge and add it as a subview to whatever view you want to badgify.
         
-        loadData()
+        //loadData()
         
         assignButton.addSubview(badge)
         //collaborationButton.addSubview(badge)
@@ -81,7 +81,6 @@ internal class AIRequirementMenuViewController : UIViewController  {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyGenerateModel:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
         
         
-        
     }
     
     func  notifyGenerateModel(notify: NSNotification){
@@ -90,7 +89,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
             if let cellModel = dic.values.first {
                 let wrapper = cellModel as? AIWrapper<AIBusinessInfoModel>
                 bussinessModel = wrapper?.wrappedValue
-                
+                loadData()
             }
         }
         

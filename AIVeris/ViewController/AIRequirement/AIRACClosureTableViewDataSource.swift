@@ -12,7 +12,7 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
     
     var dataSections: [AIServiceProvider]?
     
-    var selectedDataSections: [AIServiceProvider] = []
+    var selectedDataSections = Array<AIServiceProvider>()
     
     var blockArrays: [(NSIndexPath) -> Void]?
 
@@ -27,18 +27,11 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
         if isSelect == true {
             selectedDataSections.append(cellModel)
         }else{
+            if selectedDataSections.count > 0 {
+                selectedDataSections.removeLast()
+            }
             
-        }
-        
-        
-//        dataSections = dataSections?.filter({ (model) -> Bool in
-//            if cellModel.id == model.id {
-//                return false
-//            }
-//            return true
-//        })
-        
-        
+        }        
     }     
  
 }
