@@ -82,13 +82,15 @@ internal class AIRequirementViewController : UIViewController {
         
         requestDataInterface()
         
+        
+        // Init RightContent View
+        withSwitchProfessionVC(1)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Init RightContent View
-        withSwitchProfessionVC(1)
     }
     
     

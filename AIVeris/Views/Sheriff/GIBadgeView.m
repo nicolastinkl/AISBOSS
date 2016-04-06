@@ -8,9 +8,9 @@
 
 #import "GIBadgeView.h"
 
-static CGFloat const kBadgeViewMinimumSize = 20.0;
-static CGFloat const kBadgeViewPadding = 2.0;
-static CGFloat const kBadgeViewDefaultFontSize = 12.0;
+static CGFloat const kBadgeViewMinimumSize = 10.0;
+static CGFloat const kBadgeViewPadding = 1.0;
+static CGFloat const kBadgeViewDefaultFontSize = 10.0;
 
 @interface GIBadgeView ()
 

@@ -159,8 +159,7 @@ class AIRequireContentViewController: UIViewController {
                 self.tableview.reloadData()
                 
             }
-        }
-       
+        }       
 	}
     
     override func viewDidAppear(animated: Bool) {
@@ -169,6 +168,7 @@ class AIRequireContentViewController: UIViewController {
         if editModel == true {
             self.tableview.reloadData()
         }
+        
     }
     
     func requestData(){
