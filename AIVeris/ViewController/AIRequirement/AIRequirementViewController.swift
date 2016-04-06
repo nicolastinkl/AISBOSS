@@ -44,6 +44,8 @@ internal class AIRequirementViewController : UIViewController {
     @IBOutlet weak var TopUserInfoView: UIView!
     
     @IBOutlet weak var LeftMenuInfoView: UIView!
+    
+    private var userInfoView: OrderAndBuyerInfoView?
 
     private var uid : Int = 1
     
@@ -69,11 +71,11 @@ internal class AIRequirementViewController : UIViewController {
         
         // Init Top View
         
-        let topView = OrderAndBuyerInfoView.createInstance()
-        TopUserInfoView.addSubview(topView)
-        topView.delegate = self
+        userInfoView = OrderAndBuyerInfoView.createInstance()
+        TopUserInfoView.addSubview(userInfoView!)
+        userInfoView?.delegate = self
         
-        topView.snp_makeConstraints { (make) -> Void in
+        userInfoView?.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(TopUserInfoView)
         }
         
@@ -109,7 +111,9 @@ internal class AIRequirementViewController : UIViewController {
             self!.view.hideProgressViewLoading()
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
-            
+
+            self!.userInfoView?.model = businessInfo.customerModel
+                
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
             
