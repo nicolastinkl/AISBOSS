@@ -66,7 +66,7 @@ class AIAssignServiceView: UIView {
         if let delegate = delegate{
             //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
             switchAnimationState(false)
-            delegate.limitButtonAction(self, limitsModel : (models?[curModelNum].limits)!)
+            delegate.limitButtonAction(self, serviceInstModel : (models![curModelNum]))
         }
     }
     
@@ -205,7 +205,7 @@ extension AIAssignServiceView{
 
 @objc
 protocol AIAssignServiceViewDelegate {
-    func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel])
+    func limitButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel)
     //TODO 这里要确认下到底是过滤当前服务实例还是所有的
     
     func filterButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel)

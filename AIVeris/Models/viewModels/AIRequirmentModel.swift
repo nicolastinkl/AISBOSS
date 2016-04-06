@@ -86,7 +86,7 @@ class AssignServiceInstModel : AIBaseViewModel {
             assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_id.integerValue
             assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
             assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
-            //assignServiceInst.customerUserId = serviceInstJSONModel.relservice_id
+            assignServiceInst.customerUserId = serviceInstJSONModel.reluser_id.integerValue
             let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
             let statusInt = jsonModelProgress.objectForKey("status") as! Int
             

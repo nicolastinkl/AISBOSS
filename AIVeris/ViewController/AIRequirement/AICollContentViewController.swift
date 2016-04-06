@@ -19,6 +19,7 @@ class AICollContentViewController: UIViewController {
     var timelineModels : [AITimelineModel]!
     var cachedCells = Dictionary<Int,AITimelineCellBaseView>()
     var filterModels : [AIPopupChooseModel]!
+    var curAssignServiceInst : AssignServiceInstModel?
     
     //IB views
     var serviceInstView : AIAssignServiceView!
@@ -231,9 +232,11 @@ class AICollContentViewController: UIViewController {
 // MARK: - delegate
 extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupChooseViewDelegate{
     
-    func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
+    func limitButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
         let limitVC = AILimitListViewController()
-        limitVC.loadData(limitsModel)
+        limitVC.loadData(serviceInstModel)
         //传递一个delegate过去
         limitVC.popupDelegate = self
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
@@ -247,7 +250,8 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
     }
     
     func filterButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
-        
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
         let vc = AITimelineFilterViewController()
         vc.popupChooseDelegate = self
         vc.loadData(filterModels)
@@ -257,7 +261,8 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
         presentPopupViewController(vc, animated: true)
     }
     func contactButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
-        
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
     }
     
     func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel){
@@ -269,7 +274,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
         
         //权限设置的保存在这里处理
         if view.businessType == PopupBusinessType.LimitConfig{
-            
+            submitPermissionConfig(itemModels)
         }
         print(AIBaseViewModel.printArrayModelContent(itemModels))
     }
@@ -279,10 +284,25 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
     }
     
     // MARK: - business logic
+    // TODO 这里有逻辑问题，关闭弹出window后就开始继续滚动，那这里取当前number就有问题的，应该弹出时就把需要的参数赋值在vc中
     func submitPermissionConfig(itemModels : [AIPopupChooseModel]){
         if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
             let customerId = bussinessModel.baseJsonValue?.customer.customer_id
-            //let providerId = bussinessModel.baseJsonValue?.rel_serv_rolelist[serviceInstView.curModelNum].
+            let providerId = curAssignServiceInst!.customerUserId
+            var permissions = [NSNumber]()
+            for itemModel in itemModels {
+                if itemModel.isSelect{
+                    if let permissionId = NSNumberFormatter().numberFromString(itemModel.itemId){
+                        permissions.append(permissionId)
+                    }
+                    
+                }
+            }
+            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!, rightsList: permissions, success: { () -> Void in
+                    print(" save permissions success! ")
+                }, fail: { (errType, errDes) -> Void in
+                    print("\(errDes)")
+            })
         }
     }
 }
