@@ -85,6 +85,11 @@ class AssignServiceInstModel : AIBaseViewModel {
             assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
             assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
             
+            let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
+            let statusInt = jsonModelProgress.objectForKey("status") as! Int
+            
+            let status = ServiceInstStatus(rawValue: statusInt)
+            assignServiceInst.serviceInstStatus = status
             //给limits赋值
             
             for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {

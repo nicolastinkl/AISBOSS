@@ -158,10 +158,6 @@ class AICollContentViewController: UIViewController {
                 break
             }
         }
-        //TODO 逻辑还有问题
-        if launchButton.alpha == 1 && needLaunch{
-            
-        }
         if needLaunch {
             if launchButton.alpha == 0{
                 SpringAnimation.spring(0.25, animations: { () -> Void in
