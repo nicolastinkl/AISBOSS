@@ -99,7 +99,7 @@ internal class AIRequirementViewController : UIViewController {
         
         let handler = AIRequirementHandler.defaultHandler()
         
-        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { [weak self](businessInfo) -> Void in
+        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, customID: 1, orderID: 1, success: { [weak self](businessInfo) -> Void in
             
             // Reload 
             self!.bussinessModel = businessInfo
@@ -114,7 +114,7 @@ internal class AIRequirementViewController : UIViewController {
                 print("\(errDes)")
                 self!.view.hideProgressViewLoading()
         }
-        
+
         
     }
     
