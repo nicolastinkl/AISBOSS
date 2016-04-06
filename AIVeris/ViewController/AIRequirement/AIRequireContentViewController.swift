@@ -497,6 +497,7 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
         let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
         let vc = AISelectedServiceTableVController()
         vc.childModel = contentModel
+        vc.contentModel = currentCellModel
         vc.preCell = cell
         vc.delegate = self
         presentPopupViewController(vc, animated: true)
