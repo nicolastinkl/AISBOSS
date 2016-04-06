@@ -63,7 +63,8 @@ static CGFloat const kBadgeViewDefaultFontSize = 8.0;
     [self addSubview:self.valueLabel];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont fontWithName:@"MyriadPro-LightSemiExt" size:8];//[UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
+    self.font = [UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
+    //[UIFont fontWithName:@"MyriadPro-LightSemiExt" size:8];//
     
     // Defaults for the corner offset
     self.topOffset = 0.0f;
