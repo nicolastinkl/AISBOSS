@@ -144,8 +144,10 @@ class IconServiceIntModel : AIBaseViewModel{
             iconServiceInst.serviceIcon = serviceInst.portrait_icon
             iconServiceInst.serviceInstId = serviceInst.relservice_id.integerValue
             let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
-            let status = ServiceInstStatus(rawValue: jsonModelProgress.objectForKey("status") as! Int)
-            iconServiceInst.serviceInstStatus = status!
+            let statusInt = jsonModelProgress.objectForKey("status") as! Int
+            
+            let status = ServiceInstStatus(rawValue: (statusInt + 0))
+            iconServiceInst.serviceInstStatus = status
             let progress = (jsonModelProgress.objectForKey("percentage") as! Int) * 100
             iconServiceInst.executeProgress = progress
             iconServiceInstArray.append(iconServiceInst)

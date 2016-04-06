@@ -134,7 +134,15 @@ class AISelectedServiceTableVController: UIViewController {
     
     func distriAction(anyobj: AnyObject) {
         
-        delegate?.refereshCell(preCell!, contentModel: self.childModel?.childServerIconArray ?? [])
+        var array = Array<AIIconTagModel>()
+        for obj in sourceDelegate.selectedDataSections {
+            //AIServiceProvider
+            var tabModel = AIIconTagModel()
+            tabModel.iconUrl = "\(obj.portrait_icon)"
+            array.append(tabModel)            
+        }
+        
+        delegate?.refereshCell(preCell!, contentModel: array)
         dismissPopupViewController(true, completion: { () -> Void in
         })
        

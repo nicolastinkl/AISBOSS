@@ -25,7 +25,16 @@
 
 @implementation AIRights @end
 
-@implementation AIServiceProvider @end
+@implementation AIServiceProvider
+
++(JSONKeyMapper*)keyMapper
+{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{
+                                                       @"provider_portrait_url": @"portrait_icon"}];
+}
+
+
+@end
 
 @implementation AIQueryBusinessInfos @end
 
