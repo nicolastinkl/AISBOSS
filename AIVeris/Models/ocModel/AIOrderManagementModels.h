@@ -67,6 +67,8 @@
 @property (nonatomic, strong) NSString<Optional> *service_progress;
 
 @property (nonatomic, strong) NSNumber<Optional> *service_id;
+@property (nonatomic, strong) NSString<Optional> *service_price;
+@property (nonatomic, strong) NSString<Optional> *service_thumbnail_url;
 
 
 @end
@@ -139,7 +141,7 @@
 @interface AIQueryBusinessInfos : JSONModel
 
 
-@property (nonatomic, strong) NSNumber<Optional> *order_id;
+@property (nonatomic, strong) NSString<Optional> *order_id;
 
 @property (nonatomic, strong) NSString<Optional> *order_state;
 

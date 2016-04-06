@@ -18,7 +18,8 @@ class BuyerOrderModel : AIBaseModel {
     
     // order info:
     var serviceName: String?
-    var orderNumber: String?
+    var serviceIcon: String?
+    var orderID: String?
     var completion: Float?
     var price: String?
 
@@ -42,16 +43,17 @@ class BuyerOrderModel : AIBaseModel {
         
         buyerModel.serviceName = jsonModel.service?.service_catalog
         
-        /*
-        buyerModel.orderNumber = jsonModel.order_number
         
-        if let percentage = jsonModel.service?.service_progress?.percentage {
+        buyerModel.orderID = jsonModel.order_id
+        
+        if let percentage = jsonModel.service?.service_progress {
             buyerModel.completion = Float(percentage)
         }
         
         buyerModel.price = jsonModel.service?.service_price
+        buyerModel.serviceIcon = jsonModel.service?.service_thumbnail_url
 
-        */
+        
         return buyerModel
     }
 
