@@ -107,6 +107,7 @@ internal class AIRequirementViewController : UIViewController {
             self!.view.hideProgressViewLoading()
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
+            
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
             
@@ -182,6 +183,7 @@ internal class AIRequirementViewController : UIViewController {
                 rightContentView.subviews.first?.alpha = 0
                 
             }else{
+                
                 if let vc = tabAssignViewC {
                     let newvc = vc as! AIRequireContentViewController
                     newvc.dataSource = self.notifyChangeAIContentCellModel
@@ -195,6 +197,7 @@ internal class AIRequirementViewController : UIViewController {
                     viewController.dataSource = self.notifyChangeAIContentCellModel
                     addSubViewController(viewController)
                 }
+                rightContentView.subviews.first?.alpha = 1
             }
             
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyClearNumberCellNotificationName, object: nil)

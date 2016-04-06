@@ -81,7 +81,6 @@ internal class AIRequirementMenuViewController : UIViewController  {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyGenerateModel:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
         
         
-        
     }
     
     func  notifyGenerateModel(notify: NSNotification){

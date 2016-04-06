@@ -22,7 +22,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     
     private var currentModel: AIServiceProvider?
     
-    private var isSelected: Bool = false
+    private var isSelected: Bool = true
     
     weak var delegateCell: AIRACClosureTableViewCellProtocol?
     
@@ -95,9 +95,10 @@ class AIRACClosureTableViewCell: UITableViewCell {
     
     func refereshData(model: AIServiceProvider){
         currentModel = model
-        self.iconImage.setURL(NSURL(string: "\(model.portrait_icon)"), placeholderImage: UIImage(named: "PlackHolder"))
+
+        self.iconImage.setURL(NSURL(string: "\(model.portrait_icon)"), placeholderImage: UIImage(named: "PlaceHold"))
         
-        self.contentLabel.text = "\(model.relservice_desc)pregnancy assistant"
+        self.contentLabel.text = "\(model.relservice_desc)"
         
         self.associatedName = "\(model.relservice_id.integerValue)"
         
