@@ -40,16 +40,18 @@ class BuyerOrderModel : AIBaseModel {
         
         buyerModel.buyerName = customer.user_name
         
-        buyerModel.serviceName = jsonModel.service?.service_name
+        buyerModel.serviceName = jsonModel.service?.service_catalog
+        
+        /*
         buyerModel.orderNumber = jsonModel.order_number
         
-        if let percentage = jsonModel.service_progress?.percentage {
+        if let percentage = jsonModel.service?.service_progress?.percentage {
             buyerModel.completion = Float(percentage)
         }
         
         buyerModel.price = jsonModel.service?.service_price
 
-        
+        */
         return buyerModel
     }
 

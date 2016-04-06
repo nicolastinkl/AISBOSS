@@ -138,8 +138,9 @@ class AISelectedServiceTableVController: UIViewController {
         for obj in sourceDelegate.selectedDataSections {
             //AIServiceProvider
             var tabModel = AIIconTagModel()
-            tabModel.iconUrl = "\(obj.portrait_icon)"
-            array.append(tabModel)
+            tabModel.iconUrl = "\(obj.provider_portrait_url)"
+            array.append(tabModel)            
+
         }
         
         delegate?.refereshCell(preCell!, contentModel: array)

@@ -96,7 +96,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     func refereshData(model: AIServiceProvider){
         currentModel = model
 
-        self.iconImage.setURL(NSURL(string: "\(model.portrait_icon)"), placeholderImage: UIImage(named: "PlaceHold"))
+        self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: UIImage(named: "PlaceHold"))
         
         self.contentLabel.text = "\(model.relservice_desc)"
         
