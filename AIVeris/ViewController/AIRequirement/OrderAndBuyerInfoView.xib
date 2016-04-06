@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -12,13 +12,13 @@
             <rect key="frame" x="0.0" y="0.0" width="388" height="58"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIRequireIcon" translatesAutoresizingMaskIntoConstraints="NO" id="d2G-FW-ckk" userLabel="BuyerIcon">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d2G-FW-ckk" userLabel="BuyerIcon">
                     <rect key="frame" x="0.0" y="0.0" width="56" height="58"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="d2G-FW-ckk" secondAttribute="height" multiplier="28:29" id="1aU-HZ-dP7"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oe-d5-5M5" userLabel="MessageNumber">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Oe-d5-5M5" userLabel="MessageNumber">
                     <rect key="frame" x="48" y="21" width="16" height="16"/>
                     <color key="backgroundColor" red="1" green="0.30980392159999998" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -29,7 +29,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ms.Customer A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-Tr-VY2" userLabel="BuyerName">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-Tr-VY2" userLabel="BuyerName">
                     <rect key="frame" x="70" y="8" width="226" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="hFO-Vq-Dfa"/>
@@ -38,14 +38,14 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AIROAddTag" translatesAutoresizingMaskIntoConstraints="NO" id="V57-Sp-2fe" userLabel="ServiceIcon">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V57-Sp-2fe" userLabel="ServiceIcon">
                     <rect key="frame" x="70" y="31" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="14" id="gDf-yW-rMd"/>
                         <constraint firstAttribute="height" constant="14" id="iJT-ap-a5u"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hot Mom pregnancy assistant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-UH-I5I" userLabel="ServiceName">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTR-UH-I5I" userLabel="ServiceName">
                     <rect key="frame" x="88" y="28" width="208" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="sBb-bx-CFb"/>
@@ -54,7 +54,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="75%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frf-IX-tef" userLabel="Percentage">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frf-IX-tef" userLabel="Percentage">
                     <rect key="frame" x="355" y="43" width="28" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="28" id="8uF-vc-KZC"/>
@@ -83,11 +83,11 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="hideGloss" value="YES"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                            <real key="value" value="0.75"/>
+                            <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€888" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-gC-gNw" userLabel="Price">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVG-gC-gNw" userLabel="Price">
                     <rect key="frame" x="313" y="7" width="70" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="SHM-tf-Eu3"/>
@@ -149,8 +149,4 @@
             <point key="canvasLocation" x="131" y="142"/>
         </view>
     </objects>
-    <resources>
-        <image name="AIROAddTag" width="21" height="21"/>
-        <image name="AIRequireIcon" width="56" height="58"/>
-    </resources>
 </document>
