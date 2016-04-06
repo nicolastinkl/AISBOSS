@@ -28,6 +28,6 @@ class AILimitListView: AIPopupChooseBaseView {
             let itemModel = AIPopupChooseModel(itemId: limitModel.limitId, itemTitle: limitModel.limitName, itemIcon: limitModel.limitIcon, isSelect: limitModel.hasLimit)
             itemModels?.append(itemModel)
         }
-        super.loadData(itemModels!)
+        super.loadData(itemModels! , businessType: PopupBusinessType.LimitConfig)
     }
 }

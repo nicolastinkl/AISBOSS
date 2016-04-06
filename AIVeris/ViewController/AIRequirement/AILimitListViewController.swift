@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AILimitListViewController: UIViewController,AIPopupChooseViewDelegate {
+class AILimitListViewController: UIViewController {
     
     var limitListView : AILimitListView!
     var limitModelArray : [AILimitModel]?
+    var popupDelegate : AIPopupChooseViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +37,9 @@ class AILimitListViewController: UIViewController,AIPopupChooseViewDelegate {
     func buildLimitListView(){
         let limitFrame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         limitListView = AILimitListView(frame: limitFrame)
-        limitListView.delegate = self
+        limitListView.delegate = popupDelegate
         view.addSubview(limitListView)
     }
-
-    
-    // MARK: - delegate
-    func didConfirm(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
-        print(AIBaseViewModel.printArrayModelContent(limitListView.itemModels!))
-    }
-    
-    func didCancel(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
-    }
-    
     
 }
+

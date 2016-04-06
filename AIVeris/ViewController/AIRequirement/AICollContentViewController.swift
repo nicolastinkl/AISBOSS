@@ -229,11 +229,13 @@ class AICollContentViewController: UIViewController {
 }
 
 // MARK: - delegate
-extension AICollContentViewController : AIAssignServiceViewDelegate{
+extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupChooseViewDelegate{
     
     func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
         let limitVC = AILimitListViewController()
         limitVC.loadData(limitsModel)
+        //传递一个delegate过去
+        limitVC.popupDelegate = self
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = limitVC.limitListView.getFrameHeight()
         limitVC.view.frame.size.height = height
@@ -247,6 +249,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
     func filterButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
         
         let vc = AITimelineFilterViewController()
+        vc.popupChooseDelegate = self
         vc.loadData(filterModels)
         vc.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = vc.popupChooseView.getFrameHeight()
@@ -259,6 +262,28 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
     
     func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel){
         //print(curServiceInst)
+    }
+    
+    func didConfirm(view : AIPopupChooseBaseView , itemModels : [AIPopupChooseModel]){
+        self.dismissPopupViewController(true, completion: nil)
+        
+        //权限设置的保存在这里处理
+        if view.businessType == PopupBusinessType.LimitConfig{
+            
+        }
+        print(AIBaseViewModel.printArrayModelContent(itemModels))
+    }
+    
+    func didCancel(view : AIPopupChooseBaseView){
+        self.dismissPopupViewController(true, completion: nil)
+    }
+    
+    // MARK: - business logic
+    func submitPermissionConfig(itemModels : [AIPopupChooseModel]){
+        if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
+            let customerId = bussinessModel.baseJsonValue?.customer.customer_id
+            //let providerId = bussinessModel.baseJsonValue?.rel_serv_rolelist[serviceInstView.curModelNum].
+        }
     }
 }
 
