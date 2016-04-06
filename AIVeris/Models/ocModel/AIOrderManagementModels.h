@@ -146,6 +146,22 @@
 
 @end
 
+#pragma mark - AIDefaultTag
+@protocol AIDefaultTag @end
+
+@interface AIDefaultTag : JSONModel
+
+@property (nonatomic, strong) NSNumber<Optional> *tag_id;
+@property (nonatomic, strong) NSString<Optional> *tag_type;
+@property (nonatomic, strong) NSString<Optional> *tag_content;
+
+@end
+
+
+
+
+
+
 
 #pragma mark - AIRequirementTag
 @protocol AIRequirementTag @end

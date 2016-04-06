@@ -31,11 +31,16 @@ class AIRequirementHandler: NSObject {
     }
     
     //MARK: 基本信息查询
+    /**
+    orderID 	    订单id
+    customID	    买家id
+    proposalID      方案ID
+    */
     
-    func queryBusinessInfo(proposalID : NSNumber, roleType : NSNumber, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
+    func queryBusinessInfo(proposalID : NSNumber, customID : NSNumber, orderID : NSNumber, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["role_type" : roleType, "proposal_id" : proposalID], "data_mode" : "0", "digest" : ""]
+        let body : NSDictionary = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryBusinessInfo.description as String
         
@@ -75,10 +80,14 @@ class AIRequirementHandler: NSObject {
     
     
     //MARK: 原始需求列表
-    
-    func queryOriginalRequirements(proposalID : NSNumber, roleType : NSNumber, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    /**
+    customID	      买家用户id
+    orderID     	  服务ID
+
+    */
+    func queryOriginalRequirements(customID : NSNumber, orderID : NSNumber, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["role_type" : roleType, "proposal_id" : proposalID], "data_mode" : "0", "digest" : ""]
+        let body : NSDictionary = ["data" : ["customer_id" : customID, "customerOrderId" : orderID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryOriginalRequirements.description as String
         
@@ -132,8 +141,12 @@ class AIRequirementHandler: NSObject {
         message.url = AIApplication.AIApplicationServerURL.saveAsTask.description as String
      
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-        
-            
+            let code : NSNumber = response["result_code"] as! NSNumber
+            if code == NSNumber(integer: 1) {
+                let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
+                success(unassignedNum: unassignedNum)
+            }
+
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
@@ -157,7 +170,7 @@ class AIRequirementHandler: NSObject {
                 let dic = response as! [NSObject : AnyObject]
                 let originalRequirements = try AIOriginalRequirementsList(dictionary: dic)
                 
-                weakSelf!.parseOriginalRequirements(originalRequirements, success: success, fail: fail)
+                weakSelf!.parseUnassignedRequirements(originalRequirements, success: success, fail: fail)
                 
             } catch {
                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
@@ -171,9 +184,9 @@ class AIRequirementHandler: NSObject {
     }
     
     
-    func parseUnassignedRequirements(requirements : AICommonRequirements, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func parseUnassignedRequirements(requirements : AIOriginalRequirementsList, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         
-        
+        success(requirements: requirements)
         
     }
 
@@ -291,11 +304,13 @@ class AIRequirementHandler: NSObject {
     
     
     //MARK: 查询子服务默认标签列表
-
+    /**
+     serviceID 服务id
+     */
     
-    func queryServiceDefaultTags(serviceID : NSNumber, wishID : NSNumber, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryServiceDefaultTags(serviceID : NSNumber, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["service_id" : serviceID, "wish_id" : wishID], "data_mode" : "0", "digest" : ""]
+        let body : NSDictionary = ["data" : ["service_id" : serviceID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
         

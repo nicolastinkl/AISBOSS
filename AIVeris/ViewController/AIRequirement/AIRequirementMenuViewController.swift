@@ -145,7 +145,7 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
 //            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
 //            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
 //        self.buildServiceInstsView()
-        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, roleType: 1, success: { (businessInfo) -> Void in
+        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, customID: 1, orderID: 1, success: { (businessInfo) -> Void in
             self.models = businessInfo.serviceModels
             self.buildServiceInstsView()
             }) { (errType, errDes) -> Void in

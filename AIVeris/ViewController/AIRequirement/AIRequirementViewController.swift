@@ -82,11 +82,12 @@ internal class AIRequirementViewController : UIViewController {
         
         //
         
-        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, roleType: 1, success: { (businessInfo) -> Void in
+        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, customID: 1, orderID: 1, success: { (businessInfo) -> Void in
             print("\(businessInfo)")
             }) { (errType, errDes) -> Void in
                 print("\(errDes)")
         }
+        
         
         //
         
