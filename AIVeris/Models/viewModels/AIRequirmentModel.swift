@@ -14,12 +14,12 @@ import Foundation
 ///权限设置模型
 class AILimitModel : AIBaseViewModel {
     
-    var limitId : Int
+    var limitId : String
     var limitName: String
     var limitIcon : String
     var hasLimit : Bool
     
-    init(limitId : Int , limitName : String, limitIcon : String , hasLimit : Bool){
+    init(limitId : String , limitName : String, limitIcon : String , hasLimit : Bool){
         self.limitId = limitId
         self.limitName = limitName
         self.limitIcon = limitIcon
@@ -27,9 +27,10 @@ class AILimitModel : AIBaseViewModel {
     }
     
     //根据拥有权限的id列表输出当前权限是否拥有
-    func handleHasLimitWith(ownRightList : [Int]) -> Bool{
-        for ownRight : Int in ownRightList{
-            if self.limitId == ownRight{
+    func handleHasLimitWith(ownRightList : NSArray) -> Bool{
+        for ownRight in ownRightList{
+            let ownRightString = (ownRight as! NSNumber).stringValue
+            if self.limitId == ownRightString{
                 return true
             }
         }
@@ -39,12 +40,12 @@ class AILimitModel : AIBaseViewModel {
 
 //把权限列表设置的view抽象出来，还能用于filter选择
 class AIPopupChooseModel : AIBaseViewModel{
-    var itemId : Int
+    var itemId : String
     var itemTitle : String
     var itemIcon : String
     var isSelect : Bool
     
-    init(itemId : Int, itemTitle : String , itemIcon : String , isSelect : Bool){
+    init(itemId : String, itemTitle : String , itemIcon : String , isSelect : Bool){
         self.itemId = itemId
         self.itemTitle = itemTitle
         self.itemIcon = itemIcon
@@ -87,8 +88,11 @@ class AssignServiceInstModel : AIBaseViewModel {
             //给limits赋值
             
             for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
-                let limit = AILimitModel(limitId: Int(limitJSONModel.right_id)!, limitName: limitJSONModel.right_value, limitIcon: "", hasLimit: false)
-                //limit.hasLimit = limit.handleHasLimitWith(serviceInstJSONModel.own_right_id)
+                let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: "", hasLimit: false)
+                let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+                
+                limit.hasLimit = limit.handleHasLimitWith(ownRightList)
+                assignServiceInst.limits?.append(limit)
             }
             assignServiceInstModels.append(assignServiceInst)
         }
@@ -167,7 +171,7 @@ enum TimelineStatus : Int {
 }
 
 enum ServiceInstStatus : Int {
-    case Init,Assigned
+    case Init = -1 ,Assigned = 100, Error = 101,Finished = 102
 }
 
 
