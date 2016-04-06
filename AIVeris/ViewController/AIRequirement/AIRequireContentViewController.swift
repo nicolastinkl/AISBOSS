@@ -173,7 +173,7 @@ class AIRequireContentViewController: UIViewController {
     
     func requestData(){
         let handler = AIRequirementHandler.defaultHandler()
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, roleType: 1, success: { [weak self](requirements) -> Void in
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: 1, customID: 1, success: { [weak self](requirements) -> Void in
             print("\(requirements)")
             
             self!.dataSource  = requirements
