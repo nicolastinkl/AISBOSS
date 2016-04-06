@@ -289,7 +289,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
+        message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
@@ -320,7 +320,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
+        message.url = AIApplication.AIApplicationServerURL.addNewTask.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
@@ -349,7 +349,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["provider_id" : providerID, "permission_list" : rightsList, "customer_id" : customID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
+        message.url = AIApplication.AIApplicationServerURL.setServiceProviderRights.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             success()
@@ -370,7 +370,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["work_order_param_list" : taskList], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
+        message.url = AIApplication.AIApplicationServerURL.assginTask.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             success()
@@ -394,7 +394,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["service_id" : serviceID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
+        message.url = AIApplication.AIApplicationServerURL.queryServiceDefaultTags.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             

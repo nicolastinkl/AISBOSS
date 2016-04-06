@@ -8,10 +8,11 @@
 
 import UIKit
 
-class AITimelineFilterViewController: UIViewController,AIPopupChooseViewDelegate {
+class AITimelineFilterViewController: UIViewController {
 
     var popupChooseView : AIPopupChooseBaseView!
     var itemModelArray : [AIPopupChooseModel]?
+    var popupChooseDelegate : AIPopupChooseViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class AITimelineFilterViewController: UIViewController,AIPopupChooseViewDelegate
         // Do any additional setup after loading the view.
         buildLimitListView()
         if let itemModelArray = itemModelArray{
-            popupChooseView.loadData(itemModelArray)
+            popupChooseView.loadData(itemModelArray , businessType: PopupBusinessType.TimelineFilter)
         }
         
     }
@@ -37,19 +38,8 @@ class AITimelineFilterViewController: UIViewController,AIPopupChooseViewDelegate
     func buildLimitListView(){
         let limitFrame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         popupChooseView = AIPopupChooseBaseView(frame: limitFrame)
-        popupChooseView.delegate = self
+        popupChooseView.delegate = popupChooseDelegate
         view.addSubview(popupChooseView)
-    }
-    
-    
-    // MARK: - delegate
-    func didConfirm(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
-        print(AIBaseViewModel.printArrayModelContent(popupChooseView.itemModels!))
-    }
-    
-    func didCancel(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
     }
 
 

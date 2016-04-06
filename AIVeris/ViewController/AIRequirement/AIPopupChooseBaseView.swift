@@ -17,6 +17,7 @@ class AIPopupChooseBaseView: UIView {
     
     var itemModels : [AIPopupChooseModel]?
     var delegate : AIPopupChooseViewDelegate?
+    var businessType : PopupBusinessType!
     
     let cellViewHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(70)
     let viewTopPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(60)
@@ -42,8 +43,9 @@ class AIPopupChooseBaseView: UIView {
         buildBackgroundView()
     }
     
-    func loadData(models : [AIPopupChooseModel]){
+    func loadData(models : [AIPopupChooseModel] , businessType : PopupBusinessType){
         itemModels = models
+        self.businessType = businessType
         buildCellViews()
         buildHandleButtons()
         bindEvents()
@@ -75,10 +77,10 @@ class AIPopupChooseBaseView: UIView {
         cellViews.removeAll()
         
         if let itemModels = itemModels{
-            for (index,itemModels) in itemModels.enumerate(){
+            for (index,itemModel) in itemModels.enumerate(){
                 let frame = CGRect(x: 0, y: viewTopPadding + (cellViewHeight + cellViewPadding) * CGFloat(index), width: self.frame.width, height: cellViewHeight)
                 let cellView = AIPopupChooseCellView(frame: frame)
-                cellView.loadData(itemModels)
+                cellView.loadData(itemModel)
                 self.addSubview(cellView)
                 cellViews.append(cellView)
             }
@@ -140,7 +142,7 @@ class AIPopupChooseBaseView: UIView {
     
     func confirmAction(){
         if let delegate = delegate{
-            delegate.didConfirm(self)
+            delegate.didConfirm(self,itemModels: itemModels!)
         }
         //点击后发关闭通知
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
@@ -261,6 +263,7 @@ class AIPopupChooseCellView: UIView {
     
     func tapAction(sender : AnyObject){
         isSelect = !isSelect
+        //给itemModel重新复制
         itemModel?.isSelect = isSelect
         if isSelect{
             confirmView.image = iconSelect
@@ -274,7 +277,11 @@ class AIPopupChooseCellView: UIView {
 }
 
 protocol AIPopupChooseViewDelegate {
-    func didConfirm(view : AIPopupChooseBaseView)
+    func didConfirm(view : AIPopupChooseBaseView, itemModels : [AIPopupChooseModel])
     
     func didCancel(view : AIPopupChooseBaseView)
+}
+
+enum PopupBusinessType : Int{
+    case LimitConfig = 1 , TimelineFilter
 }

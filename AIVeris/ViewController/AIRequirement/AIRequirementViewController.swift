@@ -277,6 +277,7 @@ internal class AIRequirementViewController : UIViewController {
 extension AIRequirementViewController: OrderAndBuyerInfoViewDelegate {
     func buyerIconClicked() {
         let vc = BuyerRequirmentMessageViewController(nibName: "BuyerRequirmentMessageViewController", bundle: nil)
+        vc.buyerAndOrderModel = userInfoView?.model
         presentViewController(vc, animated: true, completion: nil)
     }
 }
