@@ -29,6 +29,9 @@
 
 @implementation AIQueryBusinessInfos @end
 
+@implementation AIRequirementTag @end
+
+@implementation AIDefaultTag @end
 
 @implementation AIRequirement @end
 
