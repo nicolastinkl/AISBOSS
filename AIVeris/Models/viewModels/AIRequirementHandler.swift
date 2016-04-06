@@ -71,7 +71,7 @@ class AIRequirementHandler: NSObject {
         let parsedBusinessInfo = AIBusinessInfoModel()
         
         parsedBusinessInfo.serviceModels = iconServiceInst
-        parsedBusinessInfo.customerModel = nil
+        parsedBusinessInfo.customerModel = BuyerOrderModel.getInstance(requirements)
         parsedBusinessInfo.baseJsonValue = requirements
         success(businessInfo: parsedBusinessInfo)
 

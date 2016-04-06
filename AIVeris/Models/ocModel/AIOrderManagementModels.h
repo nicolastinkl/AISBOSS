@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) NSNumber<Optional> *customer_id;
 
-@property (nonatomic, strong) NSString<Optional> *user_portrait_icon;
+@property (nonatomic, strong) NSString<Optional> *customized_portrait_url;
 
 @property (nonatomic, strong) NSString<Optional> *user_name;
 
@@ -54,7 +54,7 @@
 
 @interface AIService : JSONModel
 
-@property (nonatomic, strong) NSNumber<Optional> *service_price;
+@property (nonatomic, strong) NSString<Optional> *service_price;
 @property (nonatomic, strong) NSString<Optional> *service_name;
 @property (nonatomic, strong) NSNumber<Optional> *service_id;
 
