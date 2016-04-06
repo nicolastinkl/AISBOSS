@@ -106,7 +106,7 @@
 @property (nonatomic, strong) NSString<Optional> *relservice_name;
 @property (nonatomic, strong) NSNumber<Optional> *relservice_roleid;
 @property (nonatomic, strong) NSDictionary<Optional> *relservice_progress;
-@property (nonatomic, strong) NSArray<Optional, AIServiceRights> *own_right_id;
+@property (nonatomic, strong) NSArray<Optional> *own_right_id;
 @property (nonatomic, strong) NSNumber<Optional> *service_rating_level;
 
 @end
