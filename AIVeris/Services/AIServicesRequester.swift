@@ -40,7 +40,6 @@ class AIServicesRequester {
                 completion(data: [])
             }
         }
-        
     }
     
     func next(completion: (services:[AIServiceTopicListModel]) ->()) {

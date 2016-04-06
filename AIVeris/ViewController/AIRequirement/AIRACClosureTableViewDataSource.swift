@@ -10,9 +10,9 @@ import Foundation
 
 class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtocol {
     
-    var dataSections: [AIIconTagModel]?
+    var dataSections: [AIServiceProvider]?
     
-    var selectedDataSections: [AIIconTagModel] = []
+    var selectedDataSections: [AIServiceProvider] = []
     
     var blockArrays: [(NSIndexPath) -> Void]?
 
@@ -22,7 +22,7 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
     
     //pragma mark Private Methods
     
-    func withSelectedCell(cellModel: AIIconTagModel, isSelect: Bool) {
+    func withSelectedCell(cellModel: AIServiceProvider, isSelect: Bool) {
         
         if isSelect == true {
             selectedDataSections.append(cellModel)

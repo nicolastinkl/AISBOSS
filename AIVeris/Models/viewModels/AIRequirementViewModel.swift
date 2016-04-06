@@ -19,6 +19,8 @@ class AIBusinessInfoModel: AIBaseViewModel {
     var serviceModels : [IconServiceIntModel]?
     var customerModel : BuyerOrderModel?
     var allServiceRights : [AIRights]?
+    
+    var baseJsonValue : AIQueryBusinessInfos?
 }
 
 

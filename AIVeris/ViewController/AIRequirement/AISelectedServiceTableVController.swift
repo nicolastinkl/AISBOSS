@@ -30,14 +30,14 @@ class AISelectedServiceTableVController: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        func configureExpend(){
+        func configureExpend(count: Int){
             
             let expendView = UIView()
             view.addSubview(expendView)
             let bgImageView = UIImageView(image: UIImage(named: "AIRequirebg2"))
             expendView.addSubview(bgImageView)
             
-            let tableHeight = stableCellHeight * (childModel?.childServerIconArray?.count ?? 0)
+            let tableHeight = stableCellHeight * count
             expendView.snp_makeConstraints { (make) -> Void in
                 make.bottom.equalTo(borderOffset)
                 make.trailing.leading.equalTo(0)
@@ -111,22 +111,18 @@ class AISelectedServiceTableVController: UIViewController {
             
         }
         
-        if let contentModel = childModel {
-            
-            // Dosome network to request arrays data.
-            AIOrdeRequireServices().requestChildServices(contentModel) { models -> Void in
-                _ = models.filter({ (iconModel) -> Bool in
-                    self.childModel?.childServerIconArray?.append(iconModel)
-                    return false
-                })
-                
-                // expend change UI.
-                self.sourceDelegate.dataSections = self.childModel?.childServerIconArray ?? []
-                configureExpend()
-                
-            }
-        }
         
+        // Dosome network to request arrays data.
+        
+        let arrayAIServiceProvider = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
+        
+        // expend change UI.
+        self.sourceDelegate.dataSections = arrayAIServiceProvider
+        if let arrayAIServiceProvider = arrayAIServiceProvider{
+            configureExpend(arrayAIServiceProvider.count)
+        }else{
+            configureExpend(0)
+        }
         
     }
     
@@ -143,7 +139,6 @@ class AISelectedServiceTableVController: UIViewController {
         })
        
     }
-    
     
     func configureExpendCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel: AIChildContentCellModel) {
         
@@ -176,24 +171,22 @@ class AISelectedServiceTableVController: UIViewController {
             }
         })
         
-        if let models = contentModel.childServerIconArray {
-            
-            let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
-            stable?.scrollEnabled = false
-            
-            stable?.snp_updateConstraints(closure: { (make) -> Void in
-                if cell.hasExpend == true {
-                    make.height.equalTo(holdView!.snp_height)
-                } else {
-                    make.height.equalTo(0)
-                }
-            })
-            
-            sourceDelegate.selectedDataSections.removeAll()
-            sourceDelegate.dataSections = models
-            
-            stable?.reloadData()
-        }
+        let stable = holdView?.viewWithTag(ThisViewTag.StableView.rawValue) as? UITableView
+        stable?.scrollEnabled = false
+        
+        stable?.snp_updateConstraints(closure: { (make) -> Void in
+            if cell.hasExpend == true {
+                make.height.equalTo(holdView!.snp_height)
+            } else {
+                make.height.equalTo(0)
+            }
+        })
+        
+        sourceDelegate.selectedDataSections.removeAll()
+        let arrayAIServiceProvider = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
+        sourceDelegate.dataSections = arrayAIServiceProvider
+        
+        stable?.reloadData()
         
         _ = holdView?.subviews.filter({ (sview) -> Bool in
             if cell.hasExpend == true {

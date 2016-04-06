@@ -63,6 +63,30 @@ internal struct AIContentCellModel : JSONJoy{
     
     init(_ decoder: JSONDecoder) {
         
+        let requirement_category = decoder["requirement_category"].string ?? ""
+        id = Int(requirement_category)
+
+        if requirement_category == "tags" || requirement_category == "notes" || requirement_category == "task" {
+            type = 2
+        }else if requirement_category == "message" {
+            type = 1
+        }else if requirement_category == "data" {
+            type = 3
+        }else{
+            type = 2
+        }
+        
+        
+        typeName = decoder["requirement_title"].string ?? ""
+        typeImageUrl = decoder["requirement_category_icon"].string ?? ""
+        
+        if let addrs = decoder["requirements"].array {
+            childServices = Array<AIChildContentCellModel>()
+            for addrDecoder in addrs {
+                childServices?.append(AIChildContentCellModel(addrDecoder))
+            }
+        }
+        
     }
     
 }
@@ -79,18 +103,54 @@ internal struct AIChildContentCellModel : JSONJoy{
     var audioUrl : String?
     var audioLengh : Int?
     var bgImageUrl : String?
-    var text : String?
-    var content : String?
+    var text : String?      //title
+    var content : String?   //content
     var childServerIconArray : [AIIconTagModel]?
     var leftActionImages : [String]?
     var rightActionImages : [String]?
-    
+    var requirement_icon : String?
     
     init() {
         id = 1
     }
     
     init(_ decoder: JSONDecoder) {
+        
+        var holderString = ""
+        if let requirement = decoder["requirement"].array {
+            for requirementAddrDecoder in requirement {
+                id = requirementAddrDecoder["requirement_id"].integer ?? 0
+                let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
+                if holderString == "" {
+                    holderString = "\(desc)"
+                }else{
+                    holderString = "\(holderString)\n\(desc)"
+                }
+                
+                let typeName = requirementAddrDecoder["requirement_type"].string ?? ""
+                if typeName == "text" {
+                    type = 2
+                }else{
+                    type = 1
+                }
+                
+                requirement_icon = requirementAddrDecoder["requirement_icon"].string ?? ""
+                
+                
+            }
+        }
+        
+        text = holderString
+        
+        if let icons = decoder["service_provider_icons"].array {
+            childServerIconArray = Array<AIIconTagModel>()
+            for addrDecoder in icons {
+                var icontag = AIIconTagModel()
+                icontag.iconUrl = addrDecoder.string ?? ""
+                childServerIconArray?.append(icontag)
+            }
+        }
+        
         
     }
     

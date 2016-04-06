@@ -22,6 +22,8 @@ internal class AIRequirementMenuViewController : UIViewController  {
     
     // MARK: -> Internal static properties
     
+    var bussinessModel: AIBusinessInfoModel?
+    
     @IBOutlet weak var labelRequire: UILabel!
     
     @IBOutlet weak var assignLabel: UILabel!
@@ -35,7 +37,10 @@ internal class AIRequirementMenuViewController : UIViewController  {
     @IBOutlet weak var assignButton: UIButton!
     
     var serviceInstsView : AIVerticalScrollView!
+
     var models : [IconServiceIntModel]?
+    
+    let badge = GIBadgeView()
     
     let scrollViewBottomPadding = AITools.displaySizeFrom1242DesignSize(150)
     
@@ -61,15 +66,54 @@ internal class AIRequirementMenuViewController : UIViewController  {
         
         loadData()
         
-        let badge = GIBadgeView()
         assignButton.addSubview(badge)
         //collaborationButton.addSubview(badge)
-        badge.badgeValue = 27
+        badge.badgeValue = 0
         badge.topOffset = 5
         badge.rightOffset = 12
         badge.font = AITools.myriadLightSemiExtendedWithSize(12)
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyClearNumber", name: AIApplication.Notification.AIAIRequirementNotifyClearNumberCellNotificationName, object: nil)
+       
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyGenerateModel:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
+        
+        
+        
     }
+    
+    func  notifyGenerateModel(notify: NSNotification){
+        
+        if let dic = notify.userInfo {
+            if let cellModel = dic.values.first {
+                let wrapper = cellModel as? AIWrapper<AIBusinessInfoModel>
+                bussinessModel = wrapper?.wrappedValue
+                
+            }
+        }
+        
+    }
+    
+    
+    func  notifyOperateCell(notify: NSNotification){
+        if let _ = notify.userInfo {
+            var badgeNumber = badge.badgeValue
+            
+            badgeNumber = badgeNumber + 1
+
+            badge.badgeValue = badgeNumber
+            
+            
+        }
+    }
+    
+    func notifyClearNumber(){
+        
+        badge.badgeValue = 0
+    }
+    
     
     @IBAction func targetForRequirementAction(anyobj: AnyObject){
         
@@ -82,19 +126,26 @@ internal class AIRequirementMenuViewController : UIViewController  {
                 requireButton.setImage(UIImage(named: "imcollable_selected"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                serviceInstsView.hidden = true
+                if serviceInstsView != nil {
+                    serviceInstsView.hidden = true
+                }
             case 2:
                 
                 requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink_selected"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe"), forState: UIControlState.Normal)
-                serviceInstsView.hidden = true
+                if serviceInstsView != nil {
+                    serviceInstsView.hidden = true
+                }
             case 3:
                 
                 requireButton.setImage(UIImage(named: "imcollable"), forState: UIControlState.Normal)
                 assignButton.setImage(UIImage(named: "imLink"), forState: UIControlState.Normal)
                 collaborationButton.setImage(UIImage(named: "imexe_selected"), forState: UIControlState.Normal)
-                serviceInstsView.hidden = false
+                
+                if serviceInstsView != nil {
+                    serviceInstsView.hidden = false
+                }
                 
             default :
 
@@ -120,37 +171,43 @@ internal class AIRequirementMenuViewController : UIViewController  {
 extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
         
-        let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding
-        let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
+        if let models = models {
+            let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding
+            let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
+            
+            serviceInstsView = AIVerticalScrollView(frame: frame)
+            serviceInstsView.userInteractionEnabled = true
+            serviceInstsView.myDelegate = self
+            serviceInstsView.showsVerticalScrollIndicator = false
+            //选择服务执行的时候才展现
+            serviceInstsView.hidden = true
+            view.addSubview(serviceInstsView)
+            
+            serviceInstsView.loadData(models)
+        }
         
-        serviceInstsView = AIVerticalScrollView(frame: frame)
-        serviceInstsView.userInteractionEnabled = true
-        serviceInstsView.myDelegate = self
-        serviceInstsView.showsVerticalScrollIndicator = false
-        //选择服务执行的时候才展现
-        serviceInstsView.hidden = true
-        view.addSubview(serviceInstsView)
-    
-        serviceInstsView.loadData(models!)
+        
     }
     
     func loadData(){
-//        models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
-//            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
-//            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
-//            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
-//            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
-//            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
-//            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
-//            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
-//            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
-//        self.buildServiceInstsView()
-        AIRequirementHandler.defaultHandler().queryBusinessInfo(1, customID: 1, orderID: 1, success: { (businessInfo) -> Void in
-            self.models = businessInfo.serviceModels
-            self.buildServiceInstsView()
-            }) { (errType, errDes) -> Void in
-                print(errDes)
-        }
+        /*
+        models = [IconServiceIntModel(serviceInstId: 0, serviceIcon: "http://171.221.254.231:3000/upload/proposal/YPIHMPynGR2xY.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 0),
+            IconServiceIntModel(serviceInstId: 1, serviceIcon: "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 3),
+            IconServiceIntModel(serviceInstId: 2, serviceIcon: "http://171.221.254.231:3000/upload/proposal/zqfE5Ih4FILC3.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 4),
+            IconServiceIntModel(serviceInstId: 3, serviceIcon: "http://171.221.254.231:3000/upload/proposal/ZwTgxOj4Z8B8J.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 5),
+            IconServiceIntModel(serviceInstId: 4, serviceIcon: "http://171.221.254.231:3000/upload/proposal/bEDQ3qHoDSb6L.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 6),
+            IconServiceIntModel(serviceInstId: 5, serviceIcon: "http://171.221.254.231:3000/upload/proposal/4tkjgr4v2fknW.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
+            IconServiceIntModel(serviceInstId: 6, serviceIcon: "http://171.221.254.231:3000/upload/proposal/Insf2PI1QT8ta.png", serviceInstStatus: ServiceInstStatus.Assigned, executeProgress: 10),
+            IconServiceIntModel(serviceInstId: 7, serviceIcon: "http://171.221.254.231:3000/upload/proposal/NKfG9YRqfEZq3.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2),
+            IconServiceIntModel(serviceInstId: 8, serviceIcon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", serviceInstStatus: ServiceInstStatus.Init, executeProgress: 2)]
+
+        
+        self.buildServiceInstsView()
+        */
+        
+        
+        self.models = bussinessModel?.serviceModels //AIRequirementViewPublicValue.bussinessModel
+        self.buildServiceInstsView()
 
     }
     
