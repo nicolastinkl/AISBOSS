@@ -68,14 +68,16 @@ class AIAssignmentContentViewController: UIViewController {
     }
     
     @IBAction func dismissViewControllerToMain(sender: AnyObject) {
-        timer?.invalidate()
+         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
+        
+        /*timer?.invalidate()
         SpringAnimation.springWithCompletion(0.5, animations: { () -> Void in
             self.view.alpha = 0
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)            
             }) { (complate) -> Void in
             self.view.removeFromSuperview()
                 
-        }
+        }*/
         
     }
     

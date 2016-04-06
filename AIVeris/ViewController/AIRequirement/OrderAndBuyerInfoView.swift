@@ -52,6 +52,10 @@ class OrderAndBuyerInfoView: UIView {
                     messageNumber.text = String(number)
                 }
                 
+                if let serviceIconUrl = m.serviceIcon {
+                    serviceIcon.asyncLoadImage(serviceIconUrl)
+                }
+                
             }
         }
     }

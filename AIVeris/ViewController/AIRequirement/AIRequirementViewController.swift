@@ -82,19 +82,12 @@ internal class AIRequirementViewController : UIViewController {
         // Init Request networking..
         self.view.showProgressViewLoading()
         
-        requestDataInterface()
-        
+        requestDataInterface()        
         
         // Init RightContent View
         withSwitchProfessionVC(1)
         
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     
     /**
      数据请求
@@ -136,9 +129,12 @@ internal class AIRequirementViewController : UIViewController {
     }
 
     func notifyShowRequireMentVC(notify: NSNotification){
-        SpringAnimation.springEaseIn(0.5) { () -> Void in
-            self.rightContentView.subviews.first?.alpha = 1
-        }
+        
+        withSwitchProfessionVC(1)
+        
+//        SpringAnimation.springEaseIn(0.5) { () -> Void in
+//            self.rightContentView.subviews.first?.alpha = 1
+//        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
@@ -281,6 +277,7 @@ internal class AIRequirementViewController : UIViewController {
 extension AIRequirementViewController: OrderAndBuyerInfoViewDelegate {
     func buyerIconClicked() {
         let vc = BuyerRequirmentMessageViewController(nibName: "BuyerRequirmentMessageViewController", bundle: nil)
+        vc.buyerAndOrderModel = userInfoView?.model
         presentViewController(vc, animated: true, completion: nil)
     }
 }

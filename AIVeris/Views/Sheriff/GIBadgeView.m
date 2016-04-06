@@ -10,7 +10,7 @@
 
 static CGFloat const kBadgeViewMinimumSize = 10.0;
 static CGFloat const kBadgeViewPadding = 1.0;
-static CGFloat const kBadgeViewDefaultFontSize = 10.0;
+static CGFloat const kBadgeViewDefaultFontSize = 8.0;
 
 @interface GIBadgeView ()
 
@@ -63,7 +63,7 @@ static CGFloat const kBadgeViewDefaultFontSize = 10.0;
     [self addSubview:self.valueLabel];
 
     self.textColor = [UIColor whiteColor];
-    self.font = [UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
+    self.font = [UIFont fontWithName:@"MyriadPro-LightSemiExt" size:8];//[UIFont boldSystemFontOfSize:kBadgeViewDefaultFontSize];
     
     // Defaults for the corner offset
     self.topOffset = 0.0f;

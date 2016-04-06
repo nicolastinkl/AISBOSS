@@ -12,6 +12,8 @@ class BuyerRequirmentMessageViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var buyerAndOrderModel: BuyerOrderModel?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nil)
     }
@@ -23,6 +25,7 @@ class BuyerRequirmentMessageViewController: UIViewController {
         super.viewDidLoad()
         
         let orderAndBuyerInfoView = OrderAndBuyerInfoView.createInstance()
+        orderAndBuyerInfoView.model = buyerAndOrderModel
         topView.addSubview(orderAndBuyerInfoView)
         
         orderAndBuyerInfoView.snp_makeConstraints { (orderView) -> Void in
