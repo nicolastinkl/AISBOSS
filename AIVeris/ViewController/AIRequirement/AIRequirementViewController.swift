@@ -82,8 +82,7 @@ internal class AIRequirementViewController : UIViewController {
         // Init Request networking..
         self.view.showProgressViewLoading()
         
-        requestDataInterface()
-        
+        requestDataInterface()        
         
         // Init RightContent View
         withSwitchProfessionVC(1)
