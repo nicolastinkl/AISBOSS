@@ -25,6 +25,16 @@ class AILimitModel : AIBaseViewModel {
         self.limitIcon = limitIcon
         self.hasLimit = hasLimit
     }
+    
+    //根据拥有权限的id列表输出当前权限是否拥有
+    func handleHasLimitWith(ownRightList : [Int]) -> Bool{
+        for ownRight : Int in ownRightList{
+            if self.limitId == ownRight{
+                return true
+            }
+        }
+        return false
+    }
 }
 
 //把权限列表设置的view抽象出来，还能用于filter选择
@@ -40,15 +50,22 @@ class AIPopupChooseModel : AIBaseViewModel{
         self.itemIcon = itemIcon
         self.isSelect = isSelect
     }
+    
 }
 
 ///派单界面服务实例模型
 class AssignServiceInstModel : AIBaseViewModel {
-    var serviceInstId : Int
-    var serviceName : String
+    var serviceInstId : Int!
+    var serviceName : String!
     var ratingLevel : Float?
-    var serviceInstStatus : ServiceInstStatus
+    var serviceInstStatus : ServiceInstStatus!
     var limits : [AILimitModel]?
+    
+    override init() {
+        ratingLevel = 10
+        limits = [AILimitModel]()
+        super.init()
+    }
     
     init(serviceInstId : Int,serviceName : String,ratingLevel : Float,serviceInstStatus : ServiceInstStatus , limits : [AILimitModel]) {
         self.serviceInstId = serviceInstId
@@ -57,6 +74,28 @@ class AssignServiceInstModel : AIBaseViewModel {
         self.serviceInstStatus = serviceInstStatus
         self.limits = limits
     }
+    
+    class func getInstanceArray(jsonModel : AIQueryBusinessInfos) -> [AssignServiceInstModel]{
+        var assignServiceInstModels = [AssignServiceInstModel]()
+        for serviceInstJSONModel : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
+            let assignServiceInst = AssignServiceInstModel()
+            //TODO 这里需要的是serviceInstId
+            assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_id.integerValue
+            assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
+            assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
+            
+            //给limits赋值
+            
+            for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
+                let limit = AILimitModel(limitId: Int(limitJSONModel.right_id)!, limitName: limitJSONModel.right_value, limitIcon: "", hasLimit: false)
+                //limit.hasLimit = limit.handleHasLimitWith(serviceInstJSONModel.own_right_id)
+            }
+            assignServiceInstModels.append(assignServiceInst)
+        }
+        
+        return assignServiceInstModels
+    }
+
 }
 
 class AITimelineModel : AIBaseViewModel {
