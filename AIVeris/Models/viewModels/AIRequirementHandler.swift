@@ -214,15 +214,29 @@ class AIRequirementHandler: NSObject {
 
     
     //MARK: 转化为标签
+    /**
+    providerID	        复合服务提供者ID
+    customID	        买家ID
+    orderID   	        订单ID
+    requirementType	    原始需求条目类型
+    requirementID	    原始需求ID
+    toType	            订单ID
+    requirementList		传入需要转化的原始需求id
+    */
     
-    func saveTagsAsTask(requirementID : NSNumber, requirementType : String, tags : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveTagsAsTask(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["requirement_id" : requirementID, "tags_list" : tags], "data_mode" : "0", "digest" : ""]
+        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
+            let code : NSNumber = response["result_code"] as! NSNumber
+            if code == NSNumber(integer: 1) {
+                let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
+                success(unassignedNum: unassignedNum)
+            }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
@@ -231,18 +245,23 @@ class AIRequirementHandler: NSObject {
     
     
     //MARK: 增加新标签
+    /**
+    tag_type	标签类型
+    tag_content	标签内容
+    */
     
     
-    
-    func addNewTag(requirementID : NSNumber, tagName : String, tagType : String, tagContent : String, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func addNewTag(requirementID : NSNumber, tagName : String, tagType : String, tagContent : String, success : (newTag : AIDefaultTag)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["requirement_id" : requirementID, "tag_name" : tagName, "tag_type" : tagType, "tag_content" : tagContent], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTag.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            
-            
+            let tag = AIDefaultTag()
+            tag.tag_id = response["tag_id"] as! NSNumber
+            tag.tag_content = response["tag_content"] as! String
+            success(newTag: tag)
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
