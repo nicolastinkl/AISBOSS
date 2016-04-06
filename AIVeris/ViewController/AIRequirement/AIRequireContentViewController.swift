@@ -216,7 +216,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			signImgView.setImageWithURL(NSURL(string: currentCellModel?.typeImageUrl ?? "")!)
 			signTextView.text = currentCellModel?.typeName ?? ""
 			signTextView.textColor = UIColor(hexString: "ffffff", alpha: 0.75)
-			signTextView.font = AITools.myriadLightSemiExtendedWithSize(14)
+			signTextView.font = AITools.myriadLightSemiCondensedWithSize(14)
 			
 			return cell!
 		} else {
@@ -291,7 +291,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		titleLabel.numberOfLines = 0
 		titleLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
 		titleLabel.text = contentModel.text ?? ""
-		titleLabel.font = AITools.myriadLightSemiExtendedWithSize(16)
+		titleLabel.font = AITools.myriadLightSemiCondensedWithSize(16)
 		titleLabel.textColor = UIColor.whiteColor()
 		cell.contentView.addSubview(titleLabel)
 		titleLabel.snp_makeConstraints(closure: { (make) -> Void in

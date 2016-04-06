@@ -31,17 +31,6 @@
                                     <constraint firstAttribute="height" constant="59" id="Aco-iE-Ube"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI6-lY-ikB">
-                                <rect key="frame" x="16" y="543" width="39" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Vad-Sr-Z8i"/>
-                                    <constraint firstAttribute="width" constant="39" id="WLd-Ma-tW9"/>
-                                </constraints>
-                                <state key="normal" image="AIRequirebgback"/>
-                                <connections>
-                                    <action selector="dissMissViewController:" destination="xAz-8s-QX1" eventType="touchUpInside" id="gOu-h4-pew"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIx-t4-f04">
                                 <rect key="frame" x="58" y="79" width="529" height="521"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -55,6 +44,17 @@
                                     <segue destination="UTQ-k0-OTq" kind="embed" id="AvG-ee-GZu"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI6-lY-ikB">
+                                <rect key="frame" x="16" y="543" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Vad-Sr-Z8i"/>
+                                    <constraint firstAttribute="width" constant="39" id="WLd-Ma-tW9"/>
+                                </constraints>
+                                <state key="normal" image="AIRequirebgback"/>
+                                <connections>
+                                    <action selector="dissMissViewController:" destination="xAz-8s-QX1" eventType="touchUpInside" id="gOu-h4-pew"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
