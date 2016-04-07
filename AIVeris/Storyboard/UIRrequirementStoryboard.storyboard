@@ -354,7 +354,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="noteButton" destination="gnM-NG-772" id="huc-n7-4gU"/>
                         <outlet property="tableview" destination="VKz-qx-O0Y" id="RRd-Ta-cNK"/>
+                        <outlet property="tagButton" destination="2Li-KN-HhV" id="5pz-9s-8MR"/>
+                        <outlet property="taskButton" destination="fuR-hh-5Tp" id="XyN-Aj-zF5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nC-Kv-7yM" userLabel="First Responder" sceneMemberID="firstResponder"/>

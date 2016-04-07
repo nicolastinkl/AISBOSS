@@ -13,7 +13,10 @@ import Cartography
 
 class AIWrapperAIContentModelClass{
     
+    /// here is record current beClick cell.
     var cellContent: AIRACContentCell?
+
+    /// here is record current beClick cell's model.
     var cellmodel: AIContentCellModel
     
     init(theModel: AIContentCellModel){
@@ -39,6 +42,10 @@ class AIRequireContentViewController: UIViewController {
 	private let stableCellHeight: Int = 40
 	
 	@IBOutlet weak var tableview: UITableView!
+    
+    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var noteButton: UIButton!
+    @IBOutlet weak var taskButton: UIButton!
 	
 	private var placeholdCell: SESlideTableViewCell?
 	
@@ -71,11 +78,15 @@ class AIRequireContentViewController: UIViewController {
         // requets data:
         tableview.headerBeginRefreshing()
         
-        
+        // settings notify:
         if self.editModel == false {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell", name: AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
         }
         
+        // settings UI:
+        tagButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(12)
+        taskButton.titleLabel?.font = tagButton.titleLabel?.font
+        noteButton.titleLabel?.font = tagButton.titleLabel?.font
 	}
     
     /**
