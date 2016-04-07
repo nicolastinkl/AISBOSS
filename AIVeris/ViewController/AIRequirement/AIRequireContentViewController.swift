@@ -565,22 +565,30 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         cellModel.childServices = nil
         cellModel.childServices = [contentModel]
         
-        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
-        imageView.image = img
-        cell.setSlideState(.Center, animated: true)
-        cell.setNeedsDisplay()
         
+        let custID =  AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0
+        let orderID = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.order_id ?? ""
         
-        let obj = AIWrapperAIContentModelClass(theModel: cellModel)
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
+        let comp_user_id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? ""
         
         
         self.view.showLoadingWithMessage("请稍候...")
-        AIRequirementHandler.defaultHandler().saveAsTask("", customID: "", orderID: "", requirementID: "", requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+        AIRequirementHandler.defaultHandler().saveAsTask(comp_user_id, customID: "\(custID)", orderID: orderID, requirementID: contentModel.requirement_id ?? "", requirementType: cellModel.category ?? "", toType: cellModel.category ?? "", requirementList: [contentModel.requirement_id ?? ""], success: { (unassignedNum) -> Void in
+            
+            self.view.hideProgressViewLoading()            
+            
+            let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+            let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+            imageView.image = img
+            cell.setSlideState(.Center, animated: true)
+            cell.setNeedsDisplay()
+            
+            
+            let obj = AIWrapperAIContentModelClass(theModel: cellModel)
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
             
             }) { (errType, errDes) -> Void in
-                
+                self.view.hideProgressViewLoading()
         }
         
         
