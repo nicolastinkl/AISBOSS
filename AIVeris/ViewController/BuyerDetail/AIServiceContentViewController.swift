@@ -651,13 +651,15 @@ internal class AIServiceContentViewController: UIViewController {
             providerView.content.text = wish.intro ?? ""
             
             if displayForSeller == false {
-                if (wish.hope_list != nil) || (wish.hope_list.count > 0 && wish.label_list.count > 0) {
-                    let custView =  AICustomView.currentView()
-                    addNewSubView(custView, preView: viw)
-                    viw = custView
-                    custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
-                    if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
-                        custView.fillTags(labelList, isNormal: true)
+                if wish.label_list != nil && (wish.hope_list != nil) {
+                    if    (wish.hope_list.count > 0 && wish.label_list.count > 0) {
+                        let custView =  AICustomView.currentView()
+                        addNewSubView(custView, preView: viw)
+                        viw = custView
+                        custView.wish_id = self.currentDatasource?.wish_list.wish_id ?? 0
+                        if let labelList = wish.label_list as? [AIProposalServiceDetailLabelModel] {
+                            custView.fillTags(labelList, isNormal: true)
+                        }
                     }
                 }
             }

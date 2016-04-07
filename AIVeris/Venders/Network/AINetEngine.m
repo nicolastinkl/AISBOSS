@@ -91,11 +91,9 @@
         if (responseObject) {
             NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
             NSLog(@"responseObject lenght:%ld",(long)length);
-            if (length > 180 && [responseObject isKindOfClass:[NSDictionary class]]) {
-//            NSInteger length = [[NSString stringWithFormat:@"%@",responseObject] length];
-//            if (length > 200 && [responseObject isKindOfClass:[NSDictionary class]]) {
-            //长度200 判断不准确，长度200以下也可能是成功的
-
+            if (length > 170 && [responseObject isKindOfClass:[NSDictionary class]]) {
+                //长度200 判断不准确，长度200以下也可能是成功的  {"data":{"result":"1"},"desc":{"result_code":"200","result_msg":"success","data_mode":"0","digest":""}}
+                
                 [weakSelf parseSuccessResponseWithTask:task
                                         responseObject:responseObject
                                                success:success
