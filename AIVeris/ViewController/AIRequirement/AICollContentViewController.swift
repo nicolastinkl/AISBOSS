@@ -236,7 +236,7 @@ class AICollContentViewController: UIViewController {
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         //过滤弹出框model
-        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "171.221.254.231:3000/upload/requirement/filter-remaind-off.png", itemIconHighlight: "171.221.254.231:3000/upload/requirement/filter-remaind-on.png", isSelect: false),
+        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "171.221.254.231:3000/upload/requirement/filter-notification-off.png", itemIconHighlight: "171.221.254.231:3000/upload/requirement/filter-notification-on.png", isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-map-off.png", itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-map-on.png",  isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-auth-off.png", itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-auth-on.png",  isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-serviceoder-off.png",itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-serviceoder-on.png",  isSelect: false),
@@ -311,6 +311,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
         if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
             let customerId = bussinessModel.baseJsonValue?.customer.customer_id
             let providerId = curAssignServiceInst!.providerUserId
+            let serviceInstId = curAssignServiceInst!.serviceInstId
             var permissions = [NSNumber]()
             for itemModel in itemModels {
                 if itemModel.isSelect{
@@ -320,7 +321,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
                     
                 }
             }
-            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!, rightsList: permissions, success: { () -> Void in
+            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!,serviceInstId: NSNumber(integer: serviceInstId), rightsList: permissions, success: { () -> Void in
                     print(" save permissions success! ")
                 }, fail: { (errType, errDes) -> Void in
                     print("\(errDes)")

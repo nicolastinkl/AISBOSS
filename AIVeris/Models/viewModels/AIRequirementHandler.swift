@@ -359,9 +359,9 @@ class AIRequirementHandler: NSObject {
 
     */
 
-    func setServiceProviderRights(providerID : NSNumber, customID : NSNumber, rightsList : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func setServiceProviderRights(providerID : NSNumber, customID : NSNumber, serviceInstId : NSNumber , rightsList : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["provider_id" : providerID, "permission_list" : rightsList, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["provider_id" : providerID, "permission_list" : rightsList, "customer_id" : customID , "service_inst_id" : serviceInstId], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.setServiceProviderRights.description as String
         
