@@ -20,11 +20,13 @@
 
 - (void)showLoadingWithMessage:(NSString *)message
 {
-    self.userInteractionEnabled = NO;
+
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
     
-    UIView *toastView = [[UIView alloc] initWithFrame:self.bounds];
+    UIView *toastView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     toastView.tag = kLoadingTag;
-    [self addSubview:toastView];
+    toastView.userInteractionEnabled = NO;
+    [keyWindow addSubview:toastView];
     
     // add bg
     UIView *bgView = [[UIView alloc] initWithFrame:toastView.bounds];
@@ -49,9 +51,8 @@
 
 - (void)dismissLoading
 {
-    self.userInteractionEnabled = YES;
-    
-    UIView *view = [self viewWithTag:kLoadingTag];
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    UIView *view = [keyWindow viewWithTag:kLoadingTag];
     [view removeFromSuperview];
 }
 

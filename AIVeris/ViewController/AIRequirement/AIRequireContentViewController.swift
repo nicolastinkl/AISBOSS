@@ -184,7 +184,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			let cell = tableView.dequeueReusableCellWithIdentifier("cellTitleIDentity")
 			let signImgView = cell?.contentView.viewWithTag(3) as! UIImageView
 			let signTextView = cell?.contentView.viewWithTag(2) as! UILabel
-			signImgView.setImageWithURL(NSURL(string: currentCellModel?.typeImageUrl ?? "")!)
+			signImgView.sd_setImageWithURL(NSURL(string: currentCellModel?.typeImageUrl ?? "")!)
 			signTextView.text = currentCellModel?.typeName ?? ""
 			signTextView.textColor = UIColor(hexString: "ffffff", alpha: 0.75)
 			signTextView.font = AITools.myriadLightSemiCondensedWithSize(13)
@@ -581,59 +581,64 @@ extension AIRequireContentViewController {
         
         // Get the default tags
         
-//        AIRequirementHandler.defaultHandler().queryServiceDefaultTags(<#T##serviceID: NSNumber##NSNumber#>, success: { (tags) -> Void in
-//            
-//            let defaultTags : [RequirementTag] = tags
-//            
-//            var tags = [RequirementTag]()
-//            for i in 0 ... defaultTags.count - 1 {
-//                
-//                let defaultTag = defaultTags[i]
-//                
-//                let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
-//                tags.append(tag)
-//            }
-//            
-//            }, fail: { (errType, errDes) -> Void in
-//                
-//        })
-        
-        // Show tag view
+        self.view.showLoadingWithMessage("请稍候...")
         
         
-        
-        
-        
-        
-       //fake data
-        let tagDescs = ["Accompnay and attend to", "About the car", "Nutritional meal", "Fitness regime", "Psychotherapy", "Accompnay and attend to", "About the car"]
-//        let tagDescs = ["Dsfadfsaafsdfsda","Dsfadfsaafsdfsda","Fsdasdfafsdasadfsadfdsfa","Safddfsadfsasadfdfsa"]
-        var tags = [RequirementTag]()
-        for i in 0 ... tagDescs.count - 1 {
-            let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: tagDescs[i])
-           tags.append(tag)
-        }
-       // end fake
-        
-        
-        let vc = AITaskTagViewController()
-        //vc.tags = tags
+        //
+ /*
+        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+            
+            if let cell = cellWrapperModel.cellContent {
+                
+            }
+            
+            AIRequirementHandler.defaultHandler().queryServiceDefaultTags(<#T##serviceID: NSNumber##NSNumber#>, success: { (tags) -> Void in
+                
+                view.dismissLoading()
+                
+                // parse data
+                let defaultTags : [RequirementTag] = tags
+                
+                var tags = [RequirementTag]()
+                for i in 0 ... defaultTags.count - 1 {
+                    
+                    let defaultTag = defaultTags[i]
+                    
+                    let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                    tags.append(tag)
+                }
+                
+                // show TagViewController
+                
+                let vc = AITaskTagViewController()
+                vc.tags = tags
+                
+                vc.onDidSelected = {selectedTags, unSelectedTags in
+                    print("select tag : \(selectedTags)")
+                }
+                
+                vc.onDidCancel = {
+                    print("select tag cancel")
+                }
+                
+                presentViewController(vc, animated: true, completion: nil)
+                
+                
+                }, fail: { (errType, errDes) -> Void in
+                    
+            })
 
-        vc.onDidSelected = {selectedTags, unSelectedTags in
-            print("select tag : \(selectedTags)")
+            
         }
+*/
         
-        vc.onDidCancel = {
-            print("select tag cancel")
-        }
-    
-		presentViewController(vc, animated: true, completion: nil)
+        
 	}
 	
 	@IBAction func addNoteButtonPressed() {
 		let vc = AITaskNoteEditViewController()
         // pass AIRequirementItem into vc
-//        vc.requirementItem = AIRequirementItem
+        //vc.requirementItem = AIRequirementItem
 		presentViewController(vc, animated: true, completion: nil)
 	}
 	@IBAction func addTaskButtonPressed() {
