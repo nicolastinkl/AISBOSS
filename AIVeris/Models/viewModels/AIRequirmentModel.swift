@@ -92,18 +92,20 @@ class AssignServiceInstModel : AIBaseViewModel {
             assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
             assignServiceInst.providerUserId = Int(serviceInstJSONModel.reluser_id)
             let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
-            let statusInt = jsonModelProgress.objectForKey("status") as! Int
-            
-            let status = ServiceInstStatus(rawValue: statusInt)
-            assignServiceInst.serviceInstStatus = status
-            //给limits赋值
-            
-            for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
-                let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: limitJSONModel.right_icon_url,limitIconHighlight: limitJSONModel.own_right_icon, hasLimit: false)
-                let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+            if jsonModelProgress.objectForKey("status") != nil{
+                let statusInt = jsonModelProgress.objectForKey("status") as! Int
                 
-                limit.hasLimit = limit.handleHasLimitWith(ownRightList)
-                assignServiceInst.limits?.append(limit)
+                let status = ServiceInstStatus(rawValue: statusInt)
+                assignServiceInst.serviceInstStatus = status
+                //给limits赋值
+                
+                for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
+                    let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: limitJSONModel.right_icon_url,limitIconHighlight: limitJSONModel.own_right_icon, hasLimit: false)
+                    let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+                    
+                    limit.hasLimit = limit.handleHasLimitWith(ownRightList)
+                    assignServiceInst.limits?.append(limit)
+                }
             }
             assignServiceInstModels.append(assignServiceInst)
         }
@@ -155,13 +157,16 @@ class IconServiceIntModel : AIBaseViewModel{
             iconServiceInst.serviceIcon = serviceInst.provider_portrait_url
             iconServiceInst.serviceInstId = serviceInst.relservice_instance_id.integerValue
             let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
-            let statusInt = jsonModelProgress.objectForKey("status") as! Int
-            
-            let status = ServiceInstStatus(rawValue: (statusInt + 0))
-            iconServiceInst.serviceInstStatus = status
-            let progress = (jsonModelProgress.objectForKey("percentage") as! Int) * 100
-            iconServiceInst.executeProgress = progress
-            iconServiceInstArray.append(iconServiceInst)
+            if jsonModelProgress.objectForKey("status") != nil {
+                
+                let statusInt = jsonModelProgress.objectForKey("status") as! Int
+                
+                let status = ServiceInstStatus(rawValue: (statusInt + 0))
+                iconServiceInst.serviceInstStatus = status
+                let progress = (jsonModelProgress.objectForKey("percentage") as! Int) * 100
+                iconServiceInst.executeProgress = progress
+                iconServiceInstArray.append(iconServiceInst)
+            }
         }
         return iconServiceInstArray
     }

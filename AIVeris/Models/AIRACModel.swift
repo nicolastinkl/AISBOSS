@@ -111,6 +111,8 @@ internal struct AIChildContentCellModel : JSONJoy{
     var rightActionImages : [String]?
     var requirement_icon : String?
     var requirement_id: String?
+    var wish_result_id: String?
+    
     init() {
         id = 1
     }
@@ -122,6 +124,8 @@ internal struct AIChildContentCellModel : JSONJoy{
         if let requirement = decoder["requirement"].array {
             for requirementAddrDecoder in requirement {
                 requirement_id = requirementAddrDecoder["requirement_id"].string ?? ""
+                wish_result_id = requirementAddrDecoder["wish_result_id"].string ?? ""
+                
                 let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
                 if holderString == "" {
                     holderString = "\(desc)"
@@ -130,7 +134,7 @@ internal struct AIChildContentCellModel : JSONJoy{
                 }
                 
                 let typeName = requirementAddrDecoder["requirement_type"].string ?? ""
-                if typeName == "text" {
+                if typeName == "Text" {
                     type = 2
                 }else{
                     type = 1
@@ -156,7 +160,8 @@ internal struct AIChildContentCellModel : JSONJoy{
             childServerIconArray = Array<AIIconTagModel>()
             for addrDecoder in icons {
                 var icontag = AIIconTagModel()
-                icontag.iconUrl = addrDecoder.string ?? ""
+                icontag.iconUrl = addrDecoder["icon"].string ?? ""
+                icontag.id =  addrDecoder["id"].integer ?? 0
                 childServerIconArray?.append(icontag)
             }
         }
