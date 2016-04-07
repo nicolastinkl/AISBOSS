@@ -14,6 +14,8 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
     
     var selectedDataSections = Array<AIServiceProvider>()
     
+    var hasExecTagModel : [AIIconTagModel]?
+    
     var blockArrays: [(NSIndexPath) -> Void]?
 
     override init() {
@@ -58,6 +60,7 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
             cell = AIRACClosureTableViewCell(style: .Default, reuseIdentifier: "cell")
         }
         cell?.refereshData(model!)
+        cell?.hasExecTagModel = hasExecTagModel        
         cell?.delegateCell = self
         return cell!
         

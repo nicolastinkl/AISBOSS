@@ -240,7 +240,6 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 	// MARK: Misc
 	
 	func configureCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel: AIChildContentCellModel) {
-		
 		var imageName = "ai_rac_bg_normal"
 		switch contentModel.type ?? 0 {
 		case 1:
