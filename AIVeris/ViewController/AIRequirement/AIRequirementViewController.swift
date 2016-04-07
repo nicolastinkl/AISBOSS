@@ -73,9 +73,9 @@ internal class AIRequirementViewController : UIViewController {
         // Init Status Bar.
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-     
-        
+             
         // Register NSNotificationCenter.
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
@@ -93,14 +93,15 @@ internal class AIRequirementViewController : UIViewController {
         }
         
         // Init Request networking.
-        self.view.showProgressViewLoading()
         
         requestDataInterface()        
         
         // Voluation Model.
+        
         AIRequirementViewPublicValue.orderPreModel = self.orderPreModel!
         
         // Init RightContent View.
+        
         withSwitchProfessionVC(1)
         
     }
@@ -109,6 +110,8 @@ internal class AIRequirementViewController : UIViewController {
      数据请求
      */
     func requestDataInterface() {
+        
+        self.view.showProgressViewLoading()
         
         let handler = AIRequirementHandler.defaultHandler()
         
@@ -148,9 +151,6 @@ internal class AIRequirementViewController : UIViewController {
         
         withSwitchProfessionVC(1)
         
-//        SpringAnimation.springEaseIn(0.5) { () -> Void in
-//            self.rightContentView.subviews.first?.alpha = 1
-//        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
@@ -160,7 +160,11 @@ internal class AIRequirementViewController : UIViewController {
         }
     }
     
-    
+    /**
+     切换参数
+     
+     - parameter type: <#type description#>
+     */
     func withSwitchProfessionVC(type: Int){
         
         if currentTagIndex == type {
@@ -184,7 +188,6 @@ internal class AIRequirementViewController : UIViewController {
         case 2 :
             
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
-            
             
             if notifyChangeAIContentCellModel.count == 0 {
                 if let vc = tabAssignViewC {

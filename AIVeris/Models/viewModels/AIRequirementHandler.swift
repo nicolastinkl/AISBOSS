@@ -40,7 +40,10 @@ class AIRequirementHandler: NSObject {
     func queryBusinessInfo(proposalID : NSNumber, customID : NSNumber, orderID : NSNumber, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
+//        var body  = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
+        
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryBusinessInfo.description as String
         
