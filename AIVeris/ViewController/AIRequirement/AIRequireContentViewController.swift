@@ -618,7 +618,7 @@ extension AIRequireContentViewController {
                         
                         let defaultTag = defaultTags[i]
                         
-                        let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                        let tag = RequirementTag(id: defaultTag.id,selected: false, textContent: defaultTag.textContent)
                         tags.append(tag)
                     }
                     

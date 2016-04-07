@@ -268,7 +268,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 		if let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? DependOnNodeCell {
 			cell.desc = task.desc
 			cell.date = task.date
-			cell.selected = task == selectedTask
+			cell.selected = task == selectedTask!
 			return cell
 		} else {
 			// never goes here
