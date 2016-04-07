@@ -596,13 +596,16 @@ extension AIRequireContentViewController {
         
         
         
-        
         //
         weak var wf = self
         
         if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
             
             if let model = cellWrapperModel.cellmodel {
+                
+                //model.childServices?.first?.requirement_id
+                //model.childServices?.first?.wish_result_id
+                
                 
                 self.view.showLoadingWithMessage("请稍候...")
                 AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tagsModel) -> Void in
