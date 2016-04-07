@@ -22,7 +22,7 @@ extension NSObject{
     }
     
     func largePlace() -> UIImage!{
-        return UIImage(named: "PlaceHold")
+        return smallPlace()
     }
     
 }

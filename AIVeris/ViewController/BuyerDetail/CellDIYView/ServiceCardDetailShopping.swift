@@ -305,7 +305,7 @@ class SCDShoppingListCellView : UIView {
         layoutView()
         
         let url = dataSource?.item_icon
-        imageView.sd_setImageWithURL(url!.toURL(), placeholderImage: UIImage(named: "Placehold"))
+        imageView.sd_setImageWithURL(url!.toURL(), placeholderImage: smallPlace())
         let text = dataSource?.item_intro
         descLabel.text = text
         

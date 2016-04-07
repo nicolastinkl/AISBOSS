@@ -42,9 +42,9 @@ class PurchasedServiceView: UIView, Measureable {
             serviceOrderModel = newValue
             
             if let model = newValue {
-                logo.image = UIImage(named: "Placehold")
+                logo.image = smallPlace()
                 //print("\(model.service_thumbnail_icon)")
-                logo.sd_setImageWithURL("\(model.service_thumbnail_icon)".toURL(), placeholderImage: UIImage(named: "Placehold"))
+                logo.sd_setImageWithURL("\(model.service_thumbnail_icon)".toURL(), placeholderImage: smallPlace())
                 
                 if model.arrange_script_info != nil {
                     title.text = model.arrange_script_info.info_title
@@ -130,7 +130,7 @@ class PurchasedServiceView: UIView, Measureable {
         
         logo.layer.cornerRadius = PurchasedViewDimention.LOGO_WIDTH / 2
         logo.layer.masksToBounds = true
-        logo.image = UIImage(named: "Placehold")
+        logo.image = smallPlace()
         addSubview(logo)
         
         constrain(logo) { logView in

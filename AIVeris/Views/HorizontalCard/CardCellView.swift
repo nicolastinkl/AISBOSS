@@ -108,14 +108,14 @@ class CardCellView: UIView {
         serviceRatingView.addSubview(starRateView!)
         
         if let url = serviceModel.service_intro_img {
-            serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: UIImage(named: "Placehold"),completed:{
+            serviceImg.sd_setImageWithURL(url.toURL() , placeholderImage: smallPlace(),completed:{
                 (image,error,cacheType,imageURL) -> Void in
                 if let _ = image {
                     self.originBackgroundImg = image
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
                 }
                 else{
-                    self.originBackgroundImg = UIImage(named: "Placehold")
+                    self.originBackgroundImg = self.smallPlace()
                     self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
                 }
                 //
@@ -137,14 +137,14 @@ class CardCellView: UIView {
         let price = serviceModel.service_price?.price_show ?? ""
         servicePriceLabel.text = price
         starRateView!.scorePercent = CGFloat(serviceModel.service_rating ?? 0)
-        serviceImg.sd_setImageWithURL(serviceModel.service_intro_img?.toURL()!, placeholderImage: UIImage(named: "Placehold"),completed:{
+        serviceImg.sd_setImageWithURL(serviceModel.service_intro_img?.toURL()!, placeholderImage: smallPlace(),completed:{
             (image,error,cacheType,imageURL) -> Void in
             if let _ = image {
                 self.originBackgroundImg = image
                 self.grayBackgroundImg = AITools.convertImageToGrayScale(image)
             }
             else{
-                self.originBackgroundImg = UIImage(named: "Placehold")
+                self.originBackgroundImg = self.smallPlace()
                 self.grayBackgroundImg = AITools.convertImageToGrayScale(self.originBackgroundImg)
             }
             if !self.selected {

@@ -105,9 +105,9 @@ class AIRACClosureTableViewCell: UITableViewCell {
 
         if  "\(model.provider_portrait_url)".length > 10 {
             
-            self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: UIImage(named: "PlaceHold"))
+            self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: smallPlace())
         }else{
-            self.iconImage.image = UIImage(named: "PlaceHold")
+            self.iconImage.image = smallPlace()
         }
         
         self.contentLabel.text = "\(model.relservice_desc)"
