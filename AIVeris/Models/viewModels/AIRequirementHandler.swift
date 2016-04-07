@@ -377,7 +377,7 @@ class AIRequirementHandler: NSObject {
     
     */
 
-    func assginTask(taskList : [NSDictionary], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func assginTask(taskList : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["work_order_param_list" : taskList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
@@ -401,26 +401,40 @@ class AIRequirementHandler: NSObject {
      serviceID 服务id
      */
     
-    func queryServiceDefaultTags(serviceID : NSNumber, success : (tags : [RequirementTag])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryServiceDefaultTags(serviceID : NSNumber, success : (tagsModel : OriginalTagsModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["service_id" : serviceID], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id" : "900001001201"], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryServiceDefaultTags.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
-            let base : NSArray = NSArray(array: response as! NSArray)
+            let requirementID : NSNumber = response["reqiurement_id"] as! NSNumber
+            
+            let tagList : NSArray = NSArray(array: response["tag_list"] as! NSArray)
  
             var returnTags = [RequirementTag]()
             
-            for i in 0 ... base.count - 1 {
-                let tag : AIDefaultTag = base[i] as! AIDefaultTag
-                let rTag = RequirementTag(id: tag.tag_id.integerValue,selected:false, textContent: tag.tag_content)
-                //rTag.id
-                returnTags.append(rTag)
+            for i in 0 ... tagList.count - 1 {
+              
+                do {
+                    let tag : AIDefaultTag = try AIDefaultTag(dictionary: tagList[i] as! [NSObject : AnyObject])
+                    let rTag = RequirementTag(id: tag.tag_id.integerValue,selected:false, textContent: tag.tag_content)
+                    //rTag.id
+                    returnTags.append(rTag)
+                } catch {
+                    
+                }
+                
+                
             }
             
-            success(tags: returnTags)
+            var tagsModel = OriginalTagsModel()
+            
+            tagsModel.requirementID = requirementID.integerValue
+            tagsModel.tagList = returnTags
+            
+            success(tagsModel: tagsModel)
  
             
             }) { (error: AINetError, errorDes: String!) -> Void in

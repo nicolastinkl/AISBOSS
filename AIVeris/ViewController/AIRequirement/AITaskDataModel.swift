@@ -39,3 +39,9 @@ struct RequirementTag: Equatable {
     var selected: Bool
     var textContent: String
 }
+
+struct OriginalTagsModel {
+    var tagList : [RequirementTag]?
+    var requirementID : Int?
+    
+}
