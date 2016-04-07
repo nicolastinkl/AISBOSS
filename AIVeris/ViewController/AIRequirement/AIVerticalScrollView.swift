@@ -115,13 +115,13 @@ class AIVerticalScrollView: UIScrollView {
         
         iconViews.append(iconView)
          
-        if model.serviceInstStatus == ServiceInstStatus.Init {
-            //  为选中
-            circleProgressView.changeSelect(false)
-        }else{
-            //  选中            
-            circleProgressView.changeSelect(true)
-        }
+//        if model.serviceInstStatus == ServiceInstStatus.Init {
+//            //  为选中
+//            circleProgressView.changeSelect(false)
+//        }else{
+//            //  选中            
+//            circleProgressView.changeSelect(true)
+//        }
         
     }
     
