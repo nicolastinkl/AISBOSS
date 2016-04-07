@@ -318,6 +318,9 @@ struct AIApplication{
         //MARK: 查询子服务默认标签列表
         case queryServiceDefaultTags
         
+        //MARK: 将需求共享给其它子服务
+        case distributeRequirement
+        
         // 一键恢复订单
         var description: String {
             
@@ -361,7 +364,7 @@ struct AIApplication{
             case setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermissionFake"
             case assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrderFake"
             case queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
-                
+            case distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
             }
             
         }

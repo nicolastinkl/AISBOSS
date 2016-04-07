@@ -139,7 +139,7 @@ class AIRequireContentViewController: UIViewController {
 		super.viewDidLoad()
         
 		tableview.rowHeight = UITableViewAutomaticDimension
-		tableview.estimatedRowHeight = 44.0
+		tableview.estimatedRowHeight = 44
 		tableview.showsVerticalScrollIndicator = false
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 
@@ -291,7 +291,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         let urlArray = contentModel.requirement_icon?.componentsSeparatedByString(",")
         if let urlArray = urlArray {
             //Has image url.
-            var offsetHeight = 10
+            var offsetHeight = 10-3
             for url in urlArray {
                 let urlImage = AIImageView()
                 urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: UIImage(named: "Placehold"))
@@ -327,7 +327,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         titleLabel.textColor = UIColor.whiteColor()
         cell.contentView.addSubview(titleLabel)
         titleLabel.snp_makeConstraints(closure: { (make) -> Void in
-            make.top.equalTo(10)
+            make.top.equalTo(10-3)
             make.leading.equalTo(14+leftOffset)
             make.trailing.equalTo(-14)
             make.height.greaterThanOrEqualTo(20).priorityMedium()
@@ -350,7 +350,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			make.top.equalTo(2)
 			make.leading.equalTo(2)
 			make.trailing.equalTo(-14)
-			make.height.equalTo(30)
+			make.height.equalTo(22)
 		}
 		
 		if lengthAudio > 0 {
@@ -391,7 +391,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		}
 		
 		lineImageView.snp_makeConstraints(closure: { (make) -> Void in
-			make.top.equalTo(desLabel.snp_bottom).offset(5)
+			make.top.equalTo(desLabel.snp_bottom).offset(0)
 			make.leading.trailing.equalTo(margeLeftOffset)
 			make.height.equalTo(1)
 		})
@@ -441,7 +441,10 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 				let imageV = AIImageView()
 				imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
 				iconView.addSubview(imageV)
-				
+				imageV.layer.borderColor = UIColor.whiteColor().CGColor
+                imageV.layer.borderWidth =  1
+                imageV.layer.masksToBounds = true
+                imageV.layer.cornerRadius  = 10
 				imageV.snp_makeConstraints(closure: { (make) -> Void in
 					make.top.equalTo(iconView).offset(0)
 					make.left.equalTo(iconView).offset(index * 25)
@@ -494,6 +497,7 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
         let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
         let vc = AISelectedServiceTableVController()
         vc.childModel = contentModel
+        vc.contentModel = currentCellModel
         vc.preCell = cell
         vc.delegate = self
         presentPopupViewController(vc, animated: true)
