@@ -133,7 +133,7 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
             
             
             }) { (errType, errDes) -> Void in
-                
+                wf!.view.dismissLoading()
         }
  
 	}

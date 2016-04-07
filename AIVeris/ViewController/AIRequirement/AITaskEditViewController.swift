@@ -97,7 +97,7 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
             
             
             }) { (errType, errDes) -> Void in
-                
+                wf!.view.dismissLoading()
         }
         
 	}

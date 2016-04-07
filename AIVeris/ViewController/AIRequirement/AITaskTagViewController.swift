@@ -53,7 +53,7 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
             }
             
             }) { (errType, errDes) -> Void in
-                
+                wf!.view.dismissLoading()
         }
         
 		
@@ -101,7 +101,7 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
 
             
             }) { (errType, errDes) -> Void in
-                
+                wf!.view.dismissLoading()
         }
         
         

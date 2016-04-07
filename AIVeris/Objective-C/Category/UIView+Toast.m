@@ -40,7 +40,7 @@
     [indicatorView startAnimating];
     
     // add message
-    CGRect messageFrame = CGRectMake(kTextSideMargin, indicatorView.center.y + CGRectGetHeight(indicatorView.frame) / 2, CGRectGetWidth(self.frame) - kTextSideMargin * 2, 100);
+    CGRect messageFrame = CGRectMake(kTextSideMargin, indicatorView.center.y + CGRectGetHeight(indicatorView.frame) / 2, CGRectGetWidth(keyWindow.bounds) - kTextSideMargin * 2, 100);
     UPLabel *messageLabel = [AIViews wrapLabelWithFrame:messageFrame text:message fontSize:kTextFontSize color:[UIColor whiteColor]];
     messageLabel.font = [AITools myriadSemiCondensedWithSize:kTextFontSize];
     messageLabel.textAlignment = NSTextAlignmentCenter;

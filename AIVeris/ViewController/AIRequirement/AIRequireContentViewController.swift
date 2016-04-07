@@ -581,7 +581,7 @@ extension AIRequireContentViewController {
         
         // Get the default tags
         
-        self.view.showLoadingWithMessage("请稍候...")
+        
         
         
         //
@@ -591,6 +591,7 @@ extension AIRequireContentViewController {
             
             if let model = cellWrapperModel.cellmodel {
                 
+                self.view.showLoadingWithMessage("请稍候...")
                 AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tags) -> Void in
                     
                     wf!.view.dismissLoading()
@@ -624,7 +625,7 @@ extension AIRequireContentViewController {
                     
                     
                     }, fail: { (errType, errDes) -> Void in
-                        
+                        wf!.view.dismissLoading()
                 })
 
             }
