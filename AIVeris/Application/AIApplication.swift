@@ -359,7 +359,7 @@ struct AIApplication{
             // 原始需求列表
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
-            case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
+            case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionState"
             case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
             case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"

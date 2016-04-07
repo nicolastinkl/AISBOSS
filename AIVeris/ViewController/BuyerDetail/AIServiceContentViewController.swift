@@ -663,7 +663,6 @@ internal class AIServiceContentViewController: UIViewController {
                     }
                 }
             }
-            
         }
         if view == preView {
             return nil

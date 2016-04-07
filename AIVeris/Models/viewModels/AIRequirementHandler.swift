@@ -143,7 +143,7 @@ class AIRequirementHandler: NSObject {
     */
 
     
-    func saveAsTask(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveAsTask(providerID : String, customID : String, orderID : String, requirementID : String, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
@@ -408,9 +408,9 @@ class AIRequirementHandler: NSObject {
      serviceID 服务id
      */
     
-    func queryServiceDefaultTags(serviceID : NSNumber, success : (tagsModel : OriginalTagsModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryServiceDefaultTags(serviceID : String, success : (tagsModel : OriginalTagsModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["service_id" : "900001001201"], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id" : serviceID], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryServiceDefaultTags.description as String
         
