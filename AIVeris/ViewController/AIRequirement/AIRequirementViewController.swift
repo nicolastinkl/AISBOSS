@@ -130,7 +130,7 @@ internal class AIRequirementViewController : UIViewController {
     func  notifyOperateCell(notify: NSNotification){
         if let dic = notify.userInfo {
             if let cellModel = dic.values.first as? AIWrapperAIContentModelClass {
-                self.notifyChangeAIContentCellModel.append(cellModel.cellmodel)
+                self.notifyChangeAIContentCellModel.append(cellModel.cellmodel!)
             }
         }
     }
