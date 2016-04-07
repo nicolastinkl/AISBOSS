@@ -278,7 +278,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
             var offsetHeight = 10-3
             for url in urlArray {
                 let urlImage = AIImageView()
-                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: UIImage(named: "Placehold"))
+                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: smallPlace())
                 urlImage.tag = 11
                 cell.contentView.addSubview(urlImage)
                 
