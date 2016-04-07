@@ -17,7 +17,7 @@ class AIWrapperAIContentModelClass{
     var cellContent: AIRACContentCell?
 
     /// here is record current beClick cell's model.
-    var cellmodel: AIContentCellModel
+    var cellmodel: AIContentCellModel?
     
     //  default init.
     init(theModel: AIContentCellModel){
@@ -593,61 +593,69 @@ extension AIRequireContentViewController {
         
         
         //
- /*
+        weak var wf = self
+        
         if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
             
-            if let cell = cellWrapperModel.cellContent {
+            if let model = cellWrapperModel.cellmodel {
                 
+                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tags) -> Void in
+                    
+                    wf!.view.dismissLoading()
+                    
+                    // parse data
+                    let defaultTags : [RequirementTag] = tags
+                    
+                    var tags = [RequirementTag]()
+                    for i in 0 ... defaultTags.count - 1 {
+                        
+                        let defaultTag = defaultTags[i]
+                        
+                        let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                        tags.append(tag)
+                    }
+                    
+                    // show TagViewController
+                    
+                    let vc = AITaskTagViewController()
+                    vc.tags = tags
+                    
+                    vc.onDidSelected = {selectedTags, unSelectedTags in
+                        print("select tag : \(selectedTags)")
+                    }
+                    
+                    vc.onDidCancel = {
+                        print("select tag cancel")
+                    }
+                    
+                    wf!.presentViewController(vc, animated: true, completion: nil)
+                    
+                    
+                    }, fail: { (errType, errDes) -> Void in
+                        
+                })
+
             }
             
-            AIRequirementHandler.defaultHandler().queryServiceDefaultTags(<#T##serviceID: NSNumber##NSNumber#>, success: { (tags) -> Void in
-                
-                view.dismissLoading()
-                
-                // parse data
-                let defaultTags : [RequirementTag] = tags
-                
-                var tags = [RequirementTag]()
-                for i in 0 ... defaultTags.count - 1 {
-                    
-                    let defaultTag = defaultTags[i]
-                    
-                    let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
-                    tags.append(tag)
-                }
-                
-                // show TagViewController
-                
-                let vc = AITaskTagViewController()
-                vc.tags = tags
-                
-                vc.onDidSelected = {selectedTags, unSelectedTags in
-                    print("select tag : \(selectedTags)")
-                }
-                
-                vc.onDidCancel = {
-                    print("select tag cancel")
-                }
-                
-                presentViewController(vc, animated: true, completion: nil)
-                
-                
-                }, fail: { (errType, errDes) -> Void in
-                    
-            })
-
+            
             
         }
-*/
-        
-        
+
 	}
 	
 	@IBAction func addNoteButtonPressed() {
-		let vc = AITaskNoteEditViewController()
-        // pass AIRequirementItem into vc
-        //vc.requirementItem = AIRequirementItem
-		presentViewController(vc, animated: true, completion: nil)
+        
+        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+            
+            if let model = cellWrapperModel.cellmodel {
+                let vc = AITaskNoteEditViewController()
+                // pass AIRequirementItem into vc
+                //vc.requirementItem = AIRequirementItem
+                presentViewController(vc, animated: true, completion: nil)
+            }
+            
+        }
+
 	}
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()
