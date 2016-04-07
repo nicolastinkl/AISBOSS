@@ -546,8 +546,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 	}
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
-        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+
 /*// 这里是处理重复操作
         if let oldImg = imageView.image {
             
@@ -557,9 +556,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             }
         }
   */
-        imageView.image = img
-        cell.setSlideState(.Center, animated: true)
-        cell.setNeedsDisplay()
+        
         let indexPath = tableview.indexPathForCell(cell)!
         let currentCellModel = dataSource?[indexPath.section]
         let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
@@ -568,8 +565,25 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         cellModel.childServices = nil
         cellModel.childServices = [contentModel]
         
+        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+        imageView.image = img
+        cell.setSlideState(.Center, animated: true)
+        cell.setNeedsDisplay()
+        
+        
         let obj = AIWrapperAIContentModelClass(theModel: cellModel)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
+        
+        
+        self.view.showLoadingWithMessage("请稍候...")
+        AIRequirementHandler.defaultHandler().saveAsTask("", customID: "", orderID: "", requirementID: "", requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+            
+            }) { (errType, errDes) -> Void in
+                
+        }
+        
+        
         
 	}
 	
@@ -602,12 +616,8 @@ extension AIRequireContentViewController {
             
             if let model = cellWrapperModel.cellmodel {
                 
-                //model.childServices?.first?.requirement_id
-                //model.childServices?.first?.wish_result_id
-                
-                
                 self.view.showLoadingWithMessage("请稍候...")
-                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tagsModel) -> Void in
+                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(model.childServices?.first?.service_id ?? "", success: { (tagsModel) -> Void in
                     
                     wf!.view.dismissLoading()
                     
@@ -619,7 +629,7 @@ extension AIRequireContentViewController {
                         
                         let defaultTag = defaultTags[i]
                         
-                        let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                        let tag = RequirementTag(id: defaultTag.id,selected: false, textContent: defaultTag.textContent)
                         tags.append(tag)
                     }
                     

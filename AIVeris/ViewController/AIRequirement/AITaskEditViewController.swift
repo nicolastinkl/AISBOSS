@@ -13,6 +13,8 @@ class AITaskEditViewController: UIViewController {
 	
 	var services: [DependOnService]?
 	
+    var serviceRoles : [AIServiceProvider]?
+    
 	var timeLineView: AITaskTimeLineView!
 	var dependOnTask: TaskNode? {
 		didSet {
@@ -126,7 +128,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		if let services = services {
 			vc.services = services
 		} else {
-			vc.services = self.dynamicType.fakeServices()
+			vc.services = self.fakeServices()
 		}
 		presentPopupViewController(vc, animated: true)
 	}
@@ -168,28 +170,39 @@ extension AITaskEditViewController {
 	
 	static var fakeServiceResult: [DependOnService]?
 	
-	class func fakeServices() -> [DependOnService] {
+    func fakeServices() -> [DependOnService] {
 		
-		if let result = fakeServiceResult {
-			return result
-		}
-		
-		var result = [DependOnService]()
-		for _ in 0 ... 7 {
-			var tasks = [TaskNode]()
-			for _ in 0 ... 4 {
-				tasks.append(randomTask())
-			}
-			
-			let service = DependOnService(id: random() % 100, icon: "http://171.221.254.231:3000/upload/shoppingcart/3CHKvIhwNsH0T.png", desc: "Service description", tasks: tasks, selected: false)
-			result.append(service)
-		}
-		fakeServiceResult = result
-		
-		return result
+        
+        self.view.showLoadingWithMessage("请稍候...")
+        
+        var services = [DependOnService]()
+        
+        var postCount = 0
+        
+        if let roles = serviceRoles {
+            for i in 0 ... roles.count - 1 {
+                
+                let role = roles[i] as AIServiceProvider
+                
+                AIRequirementHandler.defaultHandler().queryTaskList("\(role.relservice_instance_id)", serviceIcon: role.provider_portrait_url, success: { (task) -> Void in
+                    services.append(task)
+                    postCount++
+                    }, fail: { (errType, errDes) -> Void in
+                    postCount++
+                })
+            }
+        }
+        
+        while (postCount != serviceRoles?.count) {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+        }
+        
+        self.view.dismissLoading()
+
+		return services
 	}
 	
-	class func randomTask() -> TaskNode {
+	func randomTask() -> TaskNode {
 		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task descriptionTask descriptionTask description", id: random() % 100000)
 		return task
 	}

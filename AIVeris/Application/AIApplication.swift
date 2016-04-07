@@ -326,6 +326,9 @@ struct AIApplication{
         //MARK: 将需求共享给其它子服务
         case distributeRequirement
         
+        //MARK: 查询所有的任务节点
+        case queryTaskList
+        
         // 一键恢复订单
         var description: String {
             
@@ -359,7 +362,7 @@ struct AIApplication{
             // 原始需求列表
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
-            case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
+            case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionState"
             case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
             case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
@@ -368,7 +371,10 @@ struct AIApplication{
             case .setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermission"
             case .assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
             case .queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
-            case .distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
+            case .distributeRequirement : return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
+            case .queryTaskList: return AIApplication.KURL_ReleaseURL + "/queryTimeLineList"
+
+
             }
             
         }

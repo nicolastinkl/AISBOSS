@@ -143,7 +143,7 @@ class AIRequirementHandler: NSObject {
     */
 
     
-    func saveAsTask(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveAsTask(providerID : String, customID : String, orderID : String, requirementID : String, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
@@ -408,9 +408,9 @@ class AIRequirementHandler: NSObject {
      serviceID 服务id
      */
     
-    func queryServiceDefaultTags(serviceID : NSNumber, success : (tagsModel : OriginalTagsModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryServiceDefaultTags(serviceID : String, success : (tagsModel : OriginalTagsModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["service_id" : "900001001201"], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id" : serviceID], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryServiceDefaultTags.description as String
         
@@ -468,6 +468,55 @@ class AIRequirementHandler: NSObject {
                 fail(errType: error, errDes: errorDes)
         }
     }
+    
+    //MARK: 查询任务节点
+    /**
+    service_inst_list    服务实例ID列表
+    
+    */
+    func queryTaskList(serviceInstanceID : String, serviceIcon : String, success : (task : DependOnService)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        
+        let body : NSDictionary = ["data" : ["service_inst_list" : [serviceInstanceID]], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.queryTaskList.description as String
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            var task = DependOnService(id: serviceInstanceID, icon: "", desc: "", tasks: [TaskNode](), selected: false)
+            task.icon = serviceIcon
+            
+            let list = response["task_node_list"] as! [NSDictionary]
+            
+            for i in 0 ... list.count - 1 {
+                
+                let node : NSDictionary = list[i]
+                
+                let date : NSString = node["timestamp"] as! NSString
+                
+                let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue)
+                
+                task.tasks.append(taskNode)
+                task.desc = node["node_summary"] as! String
+                
+            }
+            
+            success(task: task)
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 }
