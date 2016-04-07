@@ -91,6 +91,8 @@
 
 @property (nonatomic, strong) NSString<Optional> *right_id;
 @property (nonatomic, strong) NSString<Optional> *right_value;
+@property (nonatomic, strong) NSString<Optional> *right_icon_url;
+@property (nonatomic, strong) NSString<Optional> *own_right_icon;
 
 @end
 
