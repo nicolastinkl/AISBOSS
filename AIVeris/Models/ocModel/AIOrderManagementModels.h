@@ -123,7 +123,7 @@
 
 @property (nonatomic, strong) NSNumber<Optional> *relservice_instance_id;
 
-@property (nonatomic, strong) NSNumber<Optional> *reluser_id;
+@property (nonatomic, strong) NSString<Optional> *reluser_id;
 
 @property (nonatomic, strong) NSNumber<Optional> *service_item_id;
 
