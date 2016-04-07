@@ -390,7 +390,7 @@ class AIRequirementHandler: NSObject {
      serviceID 服务id
      */
     
-    func queryServiceDefaultTags(serviceID : NSNumber, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryServiceDefaultTags(serviceID : NSNumber, success : (tags : [RequirementTag])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["service_id" : serviceID], "data_mode" : "0", "digest" : ""]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
@@ -398,6 +398,19 @@ class AIRequirementHandler: NSObject {
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
+            let base : NSArray = NSArray(array: response as! NSArray)
+ 
+            var returnTags = [RequirementTag]()
+            
+            for i in 0 ... base.count - 1 {
+                let tag : AIDefaultTag = base[i] as! AIDefaultTag
+                let rTag = RequirementTag(id: tag.tag_id.integerValue,selected:false, textContent: tag.tag_content)
+                //rTag.id
+                returnTags.append(rTag)
+            }
+            
+            success(tags: returnTags)
+ 
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)

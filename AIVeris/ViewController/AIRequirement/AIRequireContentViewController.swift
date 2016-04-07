@@ -148,6 +148,7 @@ class AIRequireContentViewController: UIViewController {
                 self.tableview.reloadData()
                 self.tableview.headerEndRefreshing()
             })
+  
         }
         
         // requets data:
@@ -584,6 +585,33 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 extension AIRequireContentViewController {
 	
 	@IBAction func addTagButtonPressed() {
+        
+        // Get the default tags
+        
+//        AIRequirementHandler.defaultHandler().queryServiceDefaultTags(<#T##serviceID: NSNumber##NSNumber#>, success: { (tags) -> Void in
+//            
+//            let defaultTags : [RequirementTag] = tags
+//            
+//            var tags = [RequirementTag]()
+//            for i in 0 ... defaultTags.count - 1 {
+//                
+//                let defaultTag = defaultTags[i]
+//                
+//                let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+//                tags.append(tag)
+//            }
+//            
+//            }, fail: { (errType, errDes) -> Void in
+//                
+//        })
+        
+        // Show tag view
+        
+        
+        
+        
+        
+        
        //fake data
         let tagDescs = ["Accompnay and attend to", "About the car", "Nutritional meal", "Fitness regime", "Psychotherapy", "Accompnay and attend to", "About the car"]
 //        let tagDescs = ["Dsfadfsaafsdfsda","Dsfadfsaafsdfsda","Fsdasdfafsdasadfsadfdsfa","Safddfsadfsasadfdfsa"]
@@ -596,7 +624,7 @@ extension AIRequireContentViewController {
         
         
         let vc = AITaskTagViewController()
-        vc.tags = tags
+        //vc.tags = tags
 
         vc.onDidSelected = {selectedTags, unSelectedTags in
             print("select tag : \(selectedTags)")
