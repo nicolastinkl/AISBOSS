@@ -19,12 +19,15 @@ class AIWrapperAIContentModelClass{
     /// here is record current beClick cell's model.
     var cellmodel: AIContentCellModel?
     
+    //  default init.
     init(theModel: AIContentCellModel){
         cellmodel = theModel
     }
     
 }
 
+
+// MARK: -> Internal class
 
 
 class AIRequireContentViewController: UIViewController {
@@ -36,6 +39,8 @@ class AIRequireContentViewController: UIViewController {
 		case ExpendView = 13
 		case StableView = 14
 	}
+     
+    // MARK: -> Internal Properties
     
     var orderPreModel : AIOrderPreModel?
     
@@ -55,9 +60,13 @@ class AIRequireContentViewController: UIViewController {
     
 	var editModel: Bool = false
 	
+    
+    // MARK: -> Internal init class
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        // init tableview:
 		tableview.rowHeight = UITableViewAutomaticDimension
 		tableview.estimatedRowHeight = 44
 		tableview.showsVerticalScrollIndicator = false
@@ -89,51 +98,19 @@ class AIRequireContentViewController: UIViewController {
         noteButton.titleLabel?.font = tagButton.titleLabel?.font
 	}
     
-    /**
-     处理左侧点击事情
-     */
-    func notifyOperateCell(){
-        if self.editModel == true {
-            return
-        }
-        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
-            
-            if let cell = cellWrapperModel.cellContent {
-                
-                //cell.setSlideState(.Center, animated: true)
-                
-                // referesh UI.
-                Async.main({ () -> Void in
-                    
-                    let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-                    let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
-                    imageView.image = img
-                    cell.setNeedsDisplay()
-                })
-                
-            }
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":cellWrapperModel])
-        }
-        
-        
-    }
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         if editModel == true {
             self.tableview.reloadData()
         }
-        
     }
     
     func requestData(){
         let handler = AIRequirementHandler.defaultHandler()
+                
         let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"
-        
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: Int(cuserId) ?? 0, customID: AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0, success: { [weak self](requirements) -> Void in
+        handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0, success: { [weak self](requirements) -> Void in
             self!.dataSource  = requirements
             
             // Reloading for the visible cells to layout correctly
@@ -147,6 +124,40 @@ class AIRequireContentViewController: UIViewController {
             self!.tableview.headerEndRefreshing()
         }
     }
+    
+    
+    /**
+     处理左侧点击事情
+     */
+    func notifyOperateCell(){
+        if self.editModel == true {
+            return
+        }
+        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+            
+            if let cell = cellWrapperModel.cellContent {
+                
+                // referesh UI.
+                Async.main({ () -> Void in
+                    
+                    let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+                    let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+                    imageView.image = img
+                    cell.setNeedsDisplay()
+                })
+            }
+            
+            /**
+            Notify : asssignment界面刷新未读和界面
+            */
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":cellWrapperModel])
+        }
+        
+        
+    }
+    
+    
+    
     
 }
 

@@ -10,6 +10,7 @@
 import Foundation
 import UIKit
 import Spring
+import AIAlertView
 
 class AICollContentViewController: UIViewController {
     
@@ -93,6 +94,8 @@ class AICollContentViewController: UIViewController {
         launchButton.setBackgroundImage(UIColor(hex: "#0f86e8").imageWithColor(), forState: UIControlState.Normal)
         launchButton.layer.cornerRadius = 5
         launchButton.layer.masksToBounds = true
+        //绑定点击事件
+        launchButton.addTarget(self, action: "launchAction:", forControlEvents: UIControlEvents.TouchUpInside)
         view.addSubview(launchButton)
     }
     
@@ -116,7 +119,7 @@ class AICollContentViewController: UIViewController {
         timeLineTable.frame = tableFrame
     }
     
-    //处理点击事件
+    // MARK: - 事件处理
     private func handleNotification(){
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchServiceInst:", name: AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: nil)
         //弹出框的关闭通知
@@ -181,6 +184,18 @@ class AICollContentViewController: UIViewController {
                     self.timeLineTable.frame.origin.y -= self.LaunchButtonBgHeight
                 })
             }
+        }
+    }
+    
+    func launchAction(target : AnyObject){
+        var submitServiceInstIds = [NSNumber]()
+        for assignServiceInst in assginServiceInsts{
+            submitServiceInstIds.append(NSNumber(integer: assignServiceInst.serviceInstId))
+        }
+        AIRequirementHandler.defaultHandler().assginTask(submitServiceInstIds, success: { () -> Void in
+            AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+            }) { (errType, errDes) -> Void in
+                print("assignTask faild, errorInfo: \(errDes)")
         }
     }
     

@@ -9,26 +9,32 @@
 
 import Foundation
 import Spring
+
+/// application public AIRequirementViewPublicValue value.
+class AIRequirementViewPublicValue{
+    
+    
+    // MARK: -> Internal static properties
+    
+    /// Default 基本信息模型 进入需求分析界面时，从服务器中获取的数据，包含三个部分。
+    static var bussinessModel: AIBusinessInfoModel?
+
+    /// Default Cell obj and Model obj.
+    static var cellContentTransferValue: AIWrapperAIContentModelClass?
+
+    /// Default pre order model.
+    static var orderPreModel : AIOrderPreModel?
+    
+}
+
+
 // MARK: -
 // MARK: AIRequirementViewController
 // MARK: -
 
-class AIRequirementViewPublicValue{
-    static var bussinessModel: AIBusinessInfoModel?
-    
-    static var cellContentTransferValue: AIWrapperAIContentModelClass?
-    
-    static var orderPreModel : AIOrderPreModel?
-}
-
 internal class AIRequirementViewController : UIViewController {
 
-    
     // MARK: -> Internal class
-    
-    // MARK: -> Internal type alias
-    
-    // MARK: -> Internal static properties
     
     var orderPreModel : AIOrderPreModel?
     
@@ -41,6 +47,7 @@ internal class AIRequirementViewController : UIViewController {
     private var tabCollViewC: UIViewController?
     
     private var currentTagIndex: Int = 0
+    
     // MARK: -> Internal properties
     
     @IBOutlet weak var rightContentView: UIView!
@@ -63,17 +70,19 @@ internal class AIRequirementViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Init Status Bar
+        // Init Status Bar.
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
-     
+             
+        // Register NSNotificationCenter.
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)        
         
-        // Init Top View
+        // Init Top View.
         
         userInfoView = OrderAndBuyerInfoView.createInstance()
         TopUserInfoView.addSubview(userInfoView!)
@@ -83,16 +92,17 @@ internal class AIRequirementViewController : UIViewController {
             make.edges.equalTo(TopUserInfoView)
         }
         
-        // Init Request networking..
-        self.view.showProgressViewLoading()
+        // Init Request networking.
         
         requestDataInterface()        
         
-        AIRequirementViewPublicValue.orderPreModel = self.orderPreModel
+        // Voluation Model.
         
-        // Init RightContent View
+        AIRequirementViewPublicValue.orderPreModel = self.orderPreModel!
+        
+        // Init RightContent View.
+        
         withSwitchProfessionVC(1)
-        
         
     }
     
@@ -100,6 +110,8 @@ internal class AIRequirementViewController : UIViewController {
      数据请求
      */
     func requestDataInterface() {
+        
+        self.view.showProgressViewLoading()
         
         let handler = AIRequirementHandler.defaultHandler()
         
@@ -113,7 +125,7 @@ internal class AIRequirementViewController : UIViewController {
             AIRequirementViewPublicValue.bussinessModel = businessInfo
 
             self!.userInfoView?.model = businessInfo.customerModel
-                
+            
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
             
@@ -139,9 +151,6 @@ internal class AIRequirementViewController : UIViewController {
         
         withSwitchProfessionVC(1)
         
-//        SpringAnimation.springEaseIn(0.5) { () -> Void in
-//            self.rightContentView.subviews.first?.alpha = 1
-//        }
     }
     
     func notifySwitchProfessionVC(notify: NSNotification){
@@ -151,7 +160,11 @@ internal class AIRequirementViewController : UIViewController {
         }
     }
     
-    
+    /**
+     切换参数
+     
+     - parameter type: <#type description#>
+     */
     func withSwitchProfessionVC(type: Int){
         
         if currentTagIndex == type {
@@ -168,7 +181,6 @@ internal class AIRequirementViewController : UIViewController {
                 let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
                 viewController.orderPreModel = self.orderPreModel
                 tabRequireViewC = viewController
-                
                 addSubViewController(viewController)
             }
             
@@ -176,7 +188,6 @@ internal class AIRequirementViewController : UIViewController {
         case 2 :
             
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
-            
             
             if notifyChangeAIContentCellModel.count == 0 {
                 if let vc = tabAssignViewC {
