@@ -188,9 +188,12 @@ class AICollContentViewController: UIViewController {
     }
     
     func launchAction(target : AnyObject){
-        var submitServiceInstIds = [NSNumber]()
+        var submitServiceInstIds = [NSDictionary]()
         for assignServiceInst in assginServiceInsts{
-            submitServiceInstIds.append(NSNumber(integer: assignServiceInst.serviceInstId))
+            let submitInfo = NSMutableDictionary()
+            submitInfo.setObject(assignServiceInst.serviceInstId, forKey: "service_inst_id")
+            submitInfo.setObject(assignServiceInst.providerUserId, forKey: "provider_user_id")
+            submitServiceInstIds.append(submitInfo)
         }
         AIRequirementHandler.defaultHandler().assginTask(submitServiceInstIds, success: { () -> Void in
             AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
@@ -307,7 +310,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
     func submitPermissionConfig(itemModels : [AIPopupChooseModel]){
         if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
             let customerId = bussinessModel.baseJsonValue?.customer.customer_id
-            let providerId = curAssignServiceInst!.customerUserId
+            let providerId = curAssignServiceInst!.providerUserId
             var permissions = [NSNumber]()
             for itemModel in itemModels {
                 if itemModel.isSelect{

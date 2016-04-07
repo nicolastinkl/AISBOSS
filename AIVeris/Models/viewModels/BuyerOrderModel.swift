@@ -27,6 +27,9 @@ class BuyerOrderModel : AIBaseModel {
     class func getInstance(jsonModel : AIQueryBusinessInfos) -> BuyerOrderModel{
         
         let customer = jsonModel.customer
+        if customer  == nil {
+            return BuyerOrderModel()
+        }
         let buyerModel = BuyerOrderModel()
         
         if let id = customer.customer_id {
