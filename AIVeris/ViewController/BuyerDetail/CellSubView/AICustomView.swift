@@ -37,11 +37,13 @@ internal class AICustomView : UIView{
             根据model个数计算高度
         */
         
-        if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
-            if models.count >= 6 {
-                self.setHeight(191 + 80)//318
-            }
-        }
+//        if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
+//            if models.count >= 6 {
+//                self.setHeight(191 + 80)//318
+//            }
+//        }
+//        
+        self.setHeight(191 + CGFloat(models.count * 15))
         
         var cacheArray = Array<UIView>()
         
@@ -87,7 +89,7 @@ internal class AICustomView : UIView{
             let ramdHeigth:CGFloat = 35
             
             //print("\(x + CGFloat(ramdWidth) + tagMargin)   \((self.width - tagMargin*4))")
-            if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin*4) {
+            if (x + CGFloat(ramdWidth) + tagMargin) > (self.width - tagMargin*5) {
                
                 n = 0
                 x = tagMargin
@@ -98,7 +100,8 @@ internal class AICustomView : UIView{
                     x = x + tagMargin
                 }
             }
-            
+
+            /*
             if  y < 10 && n < 3 {
                 currentX = x
                 
@@ -109,7 +112,7 @@ internal class AICustomView : UIView{
             }
             
             //iphone 6 plus
-            
+           
             if AIApplication.IPHONEOS.IS_IPHONE6PLUS {
                 if y > ramdHeigth*2 {
                     tags.setOrigin(CGPointMake(currentX + tagMargin*4 + CGFloat(ramdWidth), currentY))
@@ -120,6 +123,9 @@ internal class AICustomView : UIView{
             }else{
                 tags.setOrigin(CGPointMake(x, y))
             }
+            */
+            
+            tags.setOrigin(CGPointMake(x, y))
             
             
             n = n + 1  //   Add 1

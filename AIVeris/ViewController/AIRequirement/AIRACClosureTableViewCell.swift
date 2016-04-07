@@ -22,6 +22,8 @@ class AIRACClosureTableViewCell: UITableViewCell {
     
     private var currentModel: AIServiceProvider?
     
+    var hasExecTagModel : [AIIconTagModel]?
+    
     private var isSelected: Bool = true
     
     weak var delegateCell: AIRACClosureTableViewCellProtocol?
@@ -101,11 +103,27 @@ class AIRACClosureTableViewCell: UITableViewCell {
     func refereshData(model: AIServiceProvider){
         currentModel = model
 
-        self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: UIImage(named: "PlaceHold"))
+        if  "\(model.provider_portrait_url)".length > 10 {
+            
+            self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: smallPlace())
+        }else{
+            self.iconImage.image = smallPlace()
+        }
         
         self.contentLabel.text = "\(model.relservice_desc)"
         
         self.associatedName = "\(model.relservice_id.integerValue)"
+        
+        let relservice_instance_id =  model.relservice_instance_id.integerValue ?? 0
+        
+        _ = self.hasExecTagModel?.filter({ (tagmodel) -> Bool in
+            if let id = tagmodel.id {
+                if id == relservice_instance_id {
+                    isSelected = false
+                }
+            }
+            return false
+        })
         
     }
     

@@ -120,7 +120,7 @@ class AIRequireContentViewController: UIViewController {
         let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         if let baseModel = baseModel {
               
-                let customID = baseModel.customer == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+                let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
                 let cuserId = baseModel.comp_user_id ?? "0"
                 handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: customID, success: { (requirements) -> Void in
                 self.dataSource  = requirements
@@ -132,7 +132,6 @@ class AIRequireContentViewController: UIViewController {
                 self.tableview.headerEndRefreshing()
                 
                 }) {  (errType, errDes) -> Void in
-
                     self.tableview.headerEndRefreshing()
             }
         }
@@ -240,7 +239,6 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 	// MARK: Misc
 	
 	func configureCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel: AIChildContentCellModel) {
-		
 		var imageName = "ai_rac_bg_normal"
 		switch contentModel.type ?? 0 {
 		case 1:
@@ -279,7 +277,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
             var offsetHeight = 10-3
             for url in urlArray {
                 let urlImage = AIImageView()
-                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: UIImage(named: "Placehold"))
+                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: nil)
                 urlImage.tag = 11
                 cell.contentView.addSubview(urlImage)
                 
@@ -424,7 +422,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			
 			for model in models {
 				let imageV = AIImageView()
-				imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
+				imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: smallPlace())
 				iconView.addSubview(imageV)
 				imageV.layer.borderColor = UIColor.whiteColor().CGColor
                 imageV.layer.borderWidth =  1
@@ -548,8 +546,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 	}
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
-        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+
 /*// 这里是处理重复操作
         if let oldImg = imageView.image {
             
@@ -559,9 +556,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             }
         }
   */
-        imageView.image = img
-        cell.setSlideState(.Center, animated: true)
-        cell.setNeedsDisplay()
+        
         let indexPath = tableview.indexPathForCell(cell)!
         let currentCellModel = dataSource?[indexPath.section]
         let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
@@ -570,8 +565,25 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         cellModel.childServices = nil
         cellModel.childServices = [contentModel]
         
+        let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+        let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+        imageView.image = img
+        cell.setSlideState(.Center, animated: true)
+        cell.setNeedsDisplay()
+        
+        
         let obj = AIWrapperAIContentModelClass(theModel: cellModel)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
+        
+        
+        self.view.showLoadingWithMessage("请稍候...")
+        AIRequirementHandler.defaultHandler().saveAsTask("", customID: "", orderID: "", requirementID: "", requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+            
+            }) { (errType, errDes) -> Void in
+                
+        }
+        
+        
         
 	}
 	
@@ -597,7 +609,6 @@ extension AIRequireContentViewController {
         
         
         
-        
         //
         weak var wf = self
         
@@ -606,7 +617,7 @@ extension AIRequireContentViewController {
             if let model = cellWrapperModel.cellmodel {
                 
                 self.view.showLoadingWithMessage("请稍候...")
-                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tagsModel) -> Void in
+                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(model.childServices?.first?.service_id ?? "", success: { (tagsModel) -> Void in
                     
                     wf!.view.dismissLoading()
                     

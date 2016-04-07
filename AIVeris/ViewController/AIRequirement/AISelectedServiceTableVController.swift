@@ -21,6 +21,7 @@ class AISelectedServiceTableVController: UIViewController {
     private let stableCellHeight: Int = 52
     
     var childModel: AIChildContentCellModel?
+    
     var contentModel: AIContentCellModel?
     
     var preCell:AIRACContentCell?
@@ -114,13 +115,14 @@ class AISelectedServiceTableVController: UIViewController {
             
         }
         
-        
         // Dosome network to request arrays data.
         
         let arrayAIServiceProvider = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
         
         // expend change UI.
-        self.sourceDelegate.dataSections = arrayAIServiceProvider
+        sourceDelegate.dataSections = arrayAIServiceProvider
+        sourceDelegate.hasExecTagModel = childModel?.childServerIconArray
+        
         if let arrayAIServiceProvider = arrayAIServiceProvider{
             configureExpend(arrayAIServiceProvider.count)
         }else{
@@ -154,8 +156,10 @@ class AISelectedServiceTableVController: UIViewController {
         self.view.showLoading()
 
         let handler = AIRequirementHandler.defaultHandler()
-        
-        handler.distributeRequirementRequset("1", wish_item_type: self.contentModel?.category ?? "", wish_item_id: childModel?.requirement_id ?? "", service_inst_id: ridArray, success: { () -> Void in
+        handler.distributeRequirementRequset(self.contentModel?.childServices?.first?.wish_result_id ?? "",
+            wish_item_type: self.contentModel?.category ?? "",
+            wish_item_id: childModel?.requirement_id ?? "",
+            service_inst_id: ridArray, success: { () -> Void in
             self.view.hideLoading()
             self.delegate?.refereshCell(self.preCell!, contentModel: array)
             self.dismissPopupViewController(true, completion: { () -> Void in
@@ -214,6 +218,7 @@ class AISelectedServiceTableVController: UIViewController {
         sourceDelegate.selectedDataSections.removeAll()
         let arrayAIServiceProvider = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
         sourceDelegate.dataSections = arrayAIServiceProvider
+        sourceDelegate.hasExecTagModel = childModel?.childServerIconArray
         
         stable?.reloadData()
         
