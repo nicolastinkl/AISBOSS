@@ -371,9 +371,13 @@ class AIRequirementHandler: NSObject {
     //MARK: 派单
     /**
     work_order_param_list	工作单ID列表
+    service_inst_id         服务实例ID
+    
+    provider_user_id        接受者ID
+    
     */
 
-    func assginTask(taskList : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func assginTask(taskList : [NSDictionary], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["work_order_param_list" : taskList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])

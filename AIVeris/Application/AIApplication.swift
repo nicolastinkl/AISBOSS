@@ -360,7 +360,7 @@ struct AIApplication{
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
             case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
-            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
+            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementListFake"
             case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
