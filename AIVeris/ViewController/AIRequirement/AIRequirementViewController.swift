@@ -9,6 +9,7 @@
 
 import Foundation
 import Spring
+import AIAlertView
 
 /// application public AIRequirementViewPublicValue value.
 class AIRequirementViewPublicValue{
@@ -70,6 +71,8 @@ internal class AIRequirementViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Init UI Settings.
+        springAnimationSpale(0)
         
         // Voluation Model.
         
@@ -107,36 +110,50 @@ internal class AIRequirementViewController : UIViewController {
         
     }
     
+    func springAnimationSpale(alpha: CGFloat){
+        
+        self.rightContentView.alpha = alpha
+        self.TopUserInfoView.alpha = alpha
+        self.LeftMenuInfoView.alpha = alpha
+        
+
+    }
+    
     /**
      数据请求
      */
     func requestDataInterface() {
         
-        self.view.showProgressViewLoading()
+        self.view.showLoadingWithMessage("")
         
         let handler = AIRequirementHandler.defaultHandler()
         
-        handler.queryBusinessInfo(orderPreModel?.proposal_id ?? 0, customID: orderPreModel?.customer.user_id ?? 0, orderID: orderPreModel?.order_id ?? 0, success: { [weak self](businessInfo) -> Void in
+        handler.queryBusinessInfo(orderPreModel?.proposal_id ?? 0, customID: orderPreModel?.customer.user_id ?? 0, orderID: orderPreModel?.order_id ?? 0, success: { (businessInfo) -> Void in
             
             // Reload 
-            self!.bussinessModel = businessInfo
+            self.bussinessModel = businessInfo
             
-            self!.view.hideProgressViewLoading()
+            self.view.dismissLoading()
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
 
-            self!.userInfoView?.model = businessInfo.customerModel
+            self.userInfoView?.model = businessInfo.customerModel
             
-            if let viewReqeuire = self!.tabRequireViewC as? AIRequireContentViewController {
+            if let viewReqeuire = self.tabRequireViewC as? AIRequireContentViewController {
                 viewReqeuire.startingRequest()
             }
             
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
+            SpringAnimation.springEaseIn(0.2, animations: { () -> Void in
+                self.springAnimationSpale(1)
+            })
+
             
-            }) { [weak self] (errType, errDes) -> Void in
-                print("\(errDes)")
-                self!.view.hideProgressViewLoading()
+            }) { (errType, errDes) -> Void in
+                self.view.dismissLoading()
+                self.springAnimationSpale(0)
+                AIAlertView().showError("error", subTitle: "网络请求失败")
         }
 
         
