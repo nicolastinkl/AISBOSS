@@ -667,6 +667,7 @@ extension AIRequireContentViewController {
             
             if let model = cellWrapperModel.cellmodel {
                 let vc = AITaskNoteEditViewController()
+                vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
                 // pass AIRequirementItem into vc
                 //vc.requirementItem = AIRequirementItem
                 presentViewController(vc, animated: true, completion: nil)
@@ -677,6 +678,7 @@ extension AIRequireContentViewController {
 	}
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()
+        vc.serviceRoles = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
 		presentViewController(vc, animated: true, completion: nil)
 	}
 }
