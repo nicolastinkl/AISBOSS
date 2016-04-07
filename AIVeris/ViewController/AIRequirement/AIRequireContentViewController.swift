@@ -600,12 +600,12 @@ extension AIRequireContentViewController {
             if let model = cellWrapperModel.cellmodel {
                 
                 self.view.showLoadingWithMessage("请稍候...")
-                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tags) -> Void in
+                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tagsModel) -> Void in
                     
                     wf!.view.dismissLoading()
                     
                     // parse data
-                    let defaultTags : [RequirementTag] = tags
+                    let defaultTags : [RequirementTag] = tagsModel.tagList!
                     
                     var tags = [RequirementTag]()
                     for i in 0 ... defaultTags.count - 1 {
@@ -620,7 +620,7 @@ extension AIRequireContentViewController {
                     
                     let vc = AITaskTagViewController()
                     vc.tags = tags
-                    
+                    vc.requirementID = tagsModel.requirementID!
                     vc.onDidSelected = {selectedTags, unSelectedTags in
                         print("select tag : \(selectedTags)")
                     }
