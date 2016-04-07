@@ -30,9 +30,6 @@ class OrderAndBuyerInfoView: UIView {
     var model: BuyerOrderModel? {
         didSet {
             if let m = model {
-                if let url = m.avatarUrl {
-                    buyerIcon.asyncLoadImage(url);
-                }
                 
                 if let name = m.buyerName {
                     buyerName.text = name
@@ -51,7 +48,8 @@ class OrderAndBuyerInfoView: UIView {
                     messageNumber.hidden = false
                     messageNumber.text = String(number)
                 }
-                
+                let imageUrl = "\(AIRequirementViewPublicValue.orderPreModel?.customer.user_portrait_icon ?? "")"
+                buyerIcon.asyncLoadImage(imageUrl)
                 if let serviceIconUrl = m.serviceIcon {
                     serviceIcon.asyncLoadImage(serviceIconUrl)
                 }
@@ -67,9 +65,9 @@ class OrderAndBuyerInfoView: UIView {
         messageNumber.layer.cornerRadius = messageNumber.frame.width / 2
         messageNumber.layer.masksToBounds = true
         
-        buyerName.font = AITools.myriadSemiboldSemiCnWithSize(AITools.displaySizeFrom1080DesignSize(63))
+        buyerName.font = AITools.myriadSemiboldSemiCnWithSize(AITools.displaySizeFrom1080DesignSize(60))
         price.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(70))
-        messageNumber.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(43))
+        messageNumber.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(40))
         serviceName.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(36))
         percentageNumber.font = AITools.myriadLightWithSize(AITools.displaySizeFrom1080DesignSize(36))
         
@@ -95,6 +93,7 @@ class OrderAndBuyerInfoView: UIView {
     
     
     private func setBuyerIconCorner() {
+        /*
         let iconBounds = buyerIcon.bounds
         
         let maskLayer = CAShapeLayer()
@@ -108,6 +107,7 @@ class OrderAndBuyerInfoView: UIView {
         
         maskLayer.path = maskPath.CGPath
         buyerIcon.layer.mask = maskLayer
+        */
     }
 }
 
