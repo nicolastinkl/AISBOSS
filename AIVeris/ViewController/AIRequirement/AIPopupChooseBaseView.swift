@@ -205,14 +205,14 @@ class AIPopupChooseCellView: UIView {
                 confirmView.image = iconSelect
                 contentLabel.font = contentFontSelect
                 let hightlightUrl = NSURL(string: (itemModel.itemIconHighlight))
-                iconView.sd_setImageWithURL(hightlightUrl, placeholderImage: UIImage(named: "Seller_Location")!)
+                iconView.sd_setImageWithURL(hightlightUrl)
                 isSelect = true
             }
             else{
                 confirmView.image = iconUnselect
                 contentLabel.font = contentFontUnselect
                 let url = NSURL(string: (itemModel.itemIcon))
-                iconView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "Seller_Location")!)
+                iconView.sd_setImageWithURL(url)
                 isSelect = false
             }
         }
@@ -274,10 +274,15 @@ class AIPopupChooseCellView: UIView {
         if isSelect{
             confirmView.image = iconSelect
             contentLabel.font = contentFontSelect
+            let hightlightUrl = NSURL(string: (itemModel!.itemIconHighlight))
+            iconView.sd_setImageWithURL(hightlightUrl)
+            
         }
         else{
             confirmView.image = iconUnselect
             contentLabel.font = contentFontUnselect
+            let url = NSURL(string: (itemModel!.itemIcon))
+            iconView.sd_setImageWithURL(url)            
         }
     }
 }
