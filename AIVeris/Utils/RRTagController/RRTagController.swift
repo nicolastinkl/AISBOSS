@@ -18,6 +18,8 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 	
 	var tags: Array<RequirementTag> = []
 	
+    var requirementID : Int?
+    
 	private var _totalTagsSelected = 0
 	private var heightKeyboard: CGFloat = 0
 	
