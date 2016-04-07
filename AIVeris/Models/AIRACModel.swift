@@ -65,7 +65,7 @@ internal struct AIContentCellModel : JSONJoy{
         
         category = decoder["requirement_category"].string ?? ""
         let requirement_category = decoder["requirement_category"].string ?? ""
-        id = Int(requirement_category)
+        id = 1
 
         if requirement_category == "tags" || requirement_category == "notes" || requirement_category == "task" {
             type = 2
