@@ -84,9 +84,6 @@ class AIRequireContentViewController: UIViewController {
             }
         }
         
-        // requets data:
-        tableview.headerBeginRefreshing()
-        
         // settings notify:
         if self.editModel == false {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell", name: AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
@@ -106,7 +103,18 @@ class AIRequireContentViewController: UIViewController {
         }
     }
     
+    func startingRequest(){
+        // requets data:
+        tableview.headerBeginRefreshing()
+        
+    }
+    
+    /**
+      Request Data:
+     */
     func requestData(){
+        
+        
         let handler = AIRequirementHandler.defaultHandler()
                 
         let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"

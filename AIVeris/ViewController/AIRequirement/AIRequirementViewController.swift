@@ -70,6 +70,11 @@ internal class AIRequirementViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Voluation Model.
+        
+        AIRequirementViewPublicValue.orderPreModel = self.orderPreModel!
+        
         // Init Status Bar.
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.None)
@@ -92,17 +97,13 @@ internal class AIRequirementViewController : UIViewController {
             make.edges.equalTo(TopUserInfoView)
         }
         
-        // Init Request networking.
-        
-        requestDataInterface()        
-        
-        // Voluation Model.
-        
-        AIRequirementViewPublicValue.orderPreModel = self.orderPreModel!
-        
         // Init RightContent View.
         
         withSwitchProfessionVC(1)
+        
+        // Init Request networking.
+        
+        requestDataInterface()
         
     }
     
@@ -125,6 +126,10 @@ internal class AIRequirementViewController : UIViewController {
             AIRequirementViewPublicValue.bussinessModel = businessInfo
 
             self!.userInfoView?.model = businessInfo.customerModel
+            
+            if let viewReqeuire = self!.tabRequireViewC as? AIRequireContentViewController {
+                viewReqeuire.startingRequest()
+            }
             
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil, userInfo: ["data":AIWrapper(theValue: businessInfo)])
             
