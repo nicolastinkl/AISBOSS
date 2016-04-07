@@ -64,13 +64,13 @@ class AssignServiceInstModel : AIBaseViewModel {
     var serviceName : String!
     var ratingLevel : Float?
     var serviceInstStatus : ServiceInstStatus!
-    var customerUserId : Int!
+    var providerUserId : Int!
     var limits : [AILimitModel]?
     
     override init() {
         ratingLevel = 10
         limits = [AILimitModel]()
-        customerUserId = 0
+        providerUserId = 0
         super.init()
     }
     
@@ -87,10 +87,10 @@ class AssignServiceInstModel : AIBaseViewModel {
         for serviceInstJSONModel : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
             let assignServiceInst = AssignServiceInstModel()
             //TODO 这里需要的是serviceInstId
-            assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_id.integerValue
+            assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_instance_id.integerValue
             assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
             assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
-            assignServiceInst.customerUserId = serviceInstJSONModel.reluser_id.integerValue
+            assignServiceInst.providerUserId = serviceInstJSONModel.reluser_id.integerValue
             let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
             let statusInt = jsonModelProgress.objectForKey("status") as! Int
             
@@ -153,7 +153,7 @@ class IconServiceIntModel : AIBaseViewModel{
         for serviceInst : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
             let iconServiceInst = IconServiceIntModel()
             iconServiceInst.serviceIcon = serviceInst.provider_portrait_url
-            iconServiceInst.serviceInstId = serviceInst.relservice_id.integerValue
+            iconServiceInst.serviceInstId = serviceInst.relservice_instance_id.integerValue
             let jsonModelProgress = serviceInst.relservice_progress as NSDictionary
             let statusInt = jsonModelProgress.objectForKey("status") as! Int
             
