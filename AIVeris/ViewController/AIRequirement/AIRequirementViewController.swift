@@ -17,6 +17,8 @@ class AIRequirementViewPublicValue{
     static var bussinessModel: AIBusinessInfoModel?
     
     static var cellContentTransferValue: AIWrapperAIContentModelClass?
+    
+    static var orderPreModel : AIOrderPreModel?
 }
 
 internal class AIRequirementViewController : UIViewController {
@@ -86,8 +88,11 @@ internal class AIRequirementViewController : UIViewController {
         
         requestDataInterface()        
         
+        AIRequirementViewPublicValue.orderPreModel = self.orderPreModel
+        
         // Init RightContent View
         withSwitchProfessionVC(1)
+        
         
     }
     
@@ -98,7 +103,7 @@ internal class AIRequirementViewController : UIViewController {
         
         let handler = AIRequirementHandler.defaultHandler()
         
-        handler.queryBusinessInfo((orderPreModel?.proposal_id)!, customID: 1, orderID: 1, success: { [weak self](businessInfo) -> Void in
+        handler.queryBusinessInfo(orderPreModel?.proposal_id ?? 0, customID: orderPreModel?.customer.user_id ?? 0, orderID: orderPreModel?.order_id ?? 0, success: { [weak self](businessInfo) -> Void in
             
             // Reload 
             self!.bussinessModel = businessInfo

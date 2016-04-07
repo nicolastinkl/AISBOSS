@@ -205,7 +205,7 @@ class AICollContentViewController: UIViewController {
                 for assignServiceInstModel in assignServiceInstModels{
                     allServiceInsts![assignServiceInstModel.serviceInstId] = assignServiceInstModel
                 }
-                assginServiceInsts = [assignServiceInstModels[0]]
+                assginServiceInsts = [assignServiceInstModels.first ?? AssignServiceInstModel()]
             }
             
         }

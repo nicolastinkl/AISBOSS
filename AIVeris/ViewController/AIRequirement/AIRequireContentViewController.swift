@@ -120,9 +120,9 @@ class AIRequireContentViewController: UIViewController {
     
     func requestData(){
         let handler = AIRequirementHandler.defaultHandler()
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: 1, customID: 1, success: { [weak self](requirements) -> Void in
-            print("\(requirements)")
-            
+        let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"
+        
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: Int(cuserId) ?? 0, customID: AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0, success: { [weak self](requirements) -> Void in
             self!.dataSource  = requirements
             
             // Reloading for the visible cells to layout correctly
