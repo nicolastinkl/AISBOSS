@@ -84,8 +84,22 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
 	}
 	
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
-		dismissViewControllerAnimated(true, completion: nil)
+
+        // save here
+        view.showLoadingWithMessage("请稍候...")
+        weak var wf = self
+        
+        AIRequirementHandler.defaultHandler().addNewTask(1, customID: 1, orderID: 1, requirementID: 1, requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+            wf!.view.dismissLoading()
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+            
+            wf!.dismissViewControllerAnimated(true, completion: nil)
+            
+            
+            }) { (errType, errDes) -> Void in
+                wf!.view.dismissLoading()
+        }
+        
 	}
 }
 

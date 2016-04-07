@@ -17,7 +17,7 @@ class AIWrapperAIContentModelClass{
     var cellContent: AIRACContentCell?
 
     /// here is record current beClick cell's model.
-    var cellmodel: AIContentCellModel
+    var cellmodel: AIContentCellModel?
     
     //  default init.
     init(theModel: AIContentCellModel){
@@ -84,9 +84,6 @@ class AIRequireContentViewController: UIViewController {
             }
         }
         
-        // requets data:
-        tableview.headerBeginRefreshing()
-        
         // settings notify:
         if self.editModel == false {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell", name: AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
@@ -106,7 +103,18 @@ class AIRequireContentViewController: UIViewController {
         }
     }
     
+    func startingRequest(){
+        // requets data:
+        tableview.headerBeginRefreshing()
+        
+    }
+    
+    /**
+      Request Data:
+     */
     func requestData(){
+        
+        
         let handler = AIRequirementHandler.defaultHandler()
                 
         let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"
@@ -581,65 +589,74 @@ extension AIRequireContentViewController {
         
         // Get the default tags
         
-        self.view.showLoadingWithMessage("请稍候...")
+        
         
         
         //
- /*
+        weak var wf = self
+        
         if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
             
-            if let cell = cellWrapperModel.cellContent {
+            if let model = cellWrapperModel.cellmodel {
                 
+                self.view.showLoadingWithMessage("请稍候...")
+                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tags) -> Void in
+                    
+                    wf!.view.dismissLoading()
+                    
+                    // parse data
+                    let defaultTags : [RequirementTag] = tags
+                    
+                    var tags = [RequirementTag]()
+                    for i in 0 ... defaultTags.count - 1 {
+                        
+                        let defaultTag = defaultTags[i]
+                        
+                        let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                        tags.append(tag)
+                    }
+                    
+                    // show TagViewController
+                    
+                    let vc = AITaskTagViewController()
+                    vc.tags = tags
+                    
+                    vc.onDidSelected = {selectedTags, unSelectedTags in
+                        print("select tag : \(selectedTags)")
+                    }
+                    
+                    vc.onDidCancel = {
+                        print("select tag cancel")
+                    }
+                    
+                    wf!.presentViewController(vc, animated: true, completion: nil)
+                    
+                    
+                    }, fail: { (errType, errDes) -> Void in
+                        wf!.view.dismissLoading()
+                })
+
             }
             
-            AIRequirementHandler.defaultHandler().queryServiceDefaultTags(<#T##serviceID: NSNumber##NSNumber#>, success: { (tags) -> Void in
-                
-                view.dismissLoading()
-                
-                // parse data
-                let defaultTags : [RequirementTag] = tags
-                
-                var tags = [RequirementTag]()
-                for i in 0 ... defaultTags.count - 1 {
-                    
-                    let defaultTag = defaultTags[i]
-                    
-                    let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
-                    tags.append(tag)
-                }
-                
-                // show TagViewController
-                
-                let vc = AITaskTagViewController()
-                vc.tags = tags
-                
-                vc.onDidSelected = {selectedTags, unSelectedTags in
-                    print("select tag : \(selectedTags)")
-                }
-                
-                vc.onDidCancel = {
-                    print("select tag cancel")
-                }
-                
-                presentViewController(vc, animated: true, completion: nil)
-                
-                
-                }, fail: { (errType, errDes) -> Void in
-                    
-            })
-
+            
             
         }
-*/
-        
-        
+
 	}
 	
 	@IBAction func addNoteButtonPressed() {
-		let vc = AITaskNoteEditViewController()
-        // pass AIRequirementItem into vc
-        //vc.requirementItem = AIRequirementItem
-		presentViewController(vc, animated: true, completion: nil)
+        
+        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+            
+            if let model = cellWrapperModel.cellmodel {
+                let vc = AITaskNoteEditViewController()
+                // pass AIRequirementItem into vc
+                //vc.requirementItem = AIRequirementItem
+                presentViewController(vc, animated: true, completion: nil)
+            }
+            
+        }
+
 	}
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()

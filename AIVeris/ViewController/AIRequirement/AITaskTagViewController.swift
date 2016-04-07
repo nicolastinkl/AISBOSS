@@ -36,14 +36,27 @@ class AITaskTagViewController: RRTagController {
 
 extension AITaskTagViewController: AITaskInputViewControllerDelegate {
 	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
-		let spaceSet = NSCharacterSet.whitespaceCharacterSet()
-		if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
-			if strlen(contentTag) > 0 {
-				let newTag = RequirementTag(id: random() % 10000, selected: false, textContent: contentTag)
-				tags.insert(newTag, atIndex: tags.count)
-				collectionTag.reloadData()
-			}
-		}
+        
+        // save here
+        view.showLoadingWithMessage("请稍候...")
+        weak var wf = self
+        
+        AIRequirementHandler.defaultHandler().addNewTag(1, tagName: "", tagType: "", tagContent: "", success: { (newTag) -> Void in
+            
+            let spaceSet = NSCharacterSet.whitespaceCharacterSet()
+            if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
+                if strlen(contentTag) > 0 {
+                    let newTag = RequirementTag(id: newTag.tag_id.integerValue, selected: false, textContent: newTag.tag_content)
+                    wf!.tags.insert(newTag, atIndex: wf!.tags.count)
+                    wf!.collectionTag.reloadData()
+                }
+            }
+            
+            }) { (errType, errDes) -> Void in
+                wf!.view.dismissLoading()
+        }
+        
+		
 	}
     
     func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
@@ -73,12 +86,26 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
 			}
 		}
         
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        // save here
+        view.showLoadingWithMessage("请稍候...")
+        weak var wf = self
+        AIRequirementHandler.defaultHandler().saveTagsAsTask(1, customID: 1, orderID: 1, requirementID: 1, requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+            wf!.view.dismissLoading()
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+            
+            wf!.dismissViewControllerAnimated(true, completion: { () -> Void in
+                if let onDidSelected = wf!.onDidSelected {
+                    onDidSelected(selectedTags: selected, unSelectedTags: unSelected)
+                }
+            })
+
+            
+            }) { (errType, errDes) -> Void in
+                wf!.view.dismissLoading()
+        }
         
-		dismissViewControllerAnimated(true, completion: { () -> Void in
-			if let onDidSelected = self.onDidSelected {
-				onDidSelected(selectedTags: selected, unSelectedTags: unSelected)
-			}
-		})
-	}
+        
+        
+        
+        	}
 }
