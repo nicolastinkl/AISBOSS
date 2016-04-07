@@ -72,6 +72,9 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
 				unSelected.append(currentTag)
 			}
 		}
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        
 		dismissViewControllerAnimated(true, completion: { () -> Void in
 			if let onDidSelected = self.onDidSelected {
 				onDidSelected(selectedTags: selected, unSelectedTags: unSelected)

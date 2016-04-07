@@ -161,8 +161,13 @@ struct AIApplication{
         static let AIAIRequirementNotifyOperateCellNotificationName    = "AIAIRequirementNotifyOperateCellNotificationName"
         static let AIAIRequirementNotifyClearNumberCellNotificationName    = "AIAIRequirementNotifyClearNumberCellNotificationName"
         static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
+        static let AIRequireContentViewControllerCellWrappNotificationName    = "AIRequireContentViewControllerCellWrappNotificationName"
+        
+        
+        
         //服务执行页选择一个服务实例的通知 add by liux at 20160330
         static let AIRequirementSelectServiceInstNotificationName = "AIRequirementSelectServiceInstNotificationName"
+        
         //关闭弹出框UI的通知
         static let AIRequirementClosePopupNotificationName = "AIRequirementClosePopupNotificationName"
     }
@@ -350,13 +355,12 @@ struct AIApplication{
             case .submitOrderByService:   return AIApplication.KURL_ReleaseURL + "/submitOrderByService"
             case .findServiceDetailNew: return AIApplication.KURL_ReleaseURL+"/findServiceDetailNew"
             case .findServicePrice: return AIApplication.KURL_ReleaseURL + "/findServicePrice"
-                
-                // 原始需求列表
-            case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverListFake"
-                
+              
+            // 原始需求列表
+            case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
             case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
-            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementListFake"
+            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
             case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
@@ -365,6 +369,7 @@ struct AIApplication{
             case assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrderFake"
             case queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
             case distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
+            
             }
             
         }

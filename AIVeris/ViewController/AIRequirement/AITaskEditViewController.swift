@@ -84,8 +84,8 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
 	}
 	
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
 		dismissViewControllerAnimated(true, completion: nil)
-		print("save button pressed")
 	}
 }
 

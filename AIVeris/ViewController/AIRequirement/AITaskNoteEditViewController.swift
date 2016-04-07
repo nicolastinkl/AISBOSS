@@ -119,7 +119,7 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
 	
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed sender: UIButton) {
 		view.endEditing(true)
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
 		dismissViewControllerAnimated(true, completion: nil)
-		print("save button pressed")
 	}
 }

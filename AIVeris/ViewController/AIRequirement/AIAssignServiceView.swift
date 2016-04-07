@@ -120,6 +120,16 @@ class AIAssignServiceView: UIView {
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
+
+        /*
+        if models.count > 0 {
+            //加载rating数据
+            if let ratingLevel =  models[curModelNum].ratingLevel {
+                starRateView!.scorePercent = CGFloat(ratingLevel) / 10
+            }
+            //初始化权限图标
+            refreshLimitIcon()
+        }*/
         
     }
     

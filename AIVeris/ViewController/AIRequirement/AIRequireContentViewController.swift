@@ -13,6 +13,10 @@ import Cartography
 
 class AIWrapperAIContentModelClass{
     
+    /// here is record current beClick cell.
+    var cellContent: AIRACContentCell?
+
+    /// here is record current beClick cell's model.
     var cellmodel: AIContentCellModel
     
     init(theModel: AIContentCellModel){
@@ -38,6 +42,10 @@ class AIRequireContentViewController: UIViewController {
 	private let stableCellHeight: Int = 40
 	
 	@IBOutlet weak var tableview: UITableView!
+    
+    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var noteButton: UIButton!
+    @IBOutlet weak var taskButton: UIButton!
 	
 	private var placeholdCell: SESlideTableViewCell?
 	
@@ -45,94 +53,6 @@ class AIRequireContentViewController: UIViewController {
 	
     var dataSource: [AIContentCellModel]?
     
-    /*= {
-		
-		var i1 = AIIconTagModel()
-		i1.iconUrl = "http://171.221.254.231:3000/upload/proposal/3e7Sx8n4vozQj.png"
-		i1.content = "Maternity Consulting "
-		
-		var i2 = AIIconTagModel()
-		i2.iconUrl = "http://171.221.254.231:3000/upload/proposal/LATsJIV2vKdgp.png"
-		i2.content = "Paramedk Cleaner"
-		
-		var i3 = AIIconTagModel()
-		i3.iconUrl = "http://171.221.254.231:3000/upload/proposal/EZwliZwHINGpm.png"
-		i3.content = "hospital Appointment Booking"
-		
-		var conModel = AIContentCellModel()
-		conModel.id = 12
-		conModel.type = 1
-		conModel.typeImageUrl = "user-note--0"
-		conModel.typeName = "user note"
-		
-		var c1 = AIChildContentCellModel()
-		c1.id = 1
-		c1.type = 2
-		c1.bgImageUrl = ""
-		c1.text = "9 weeks of pregnancy, action inconvenience."
-		c1.childServerIconArray = [i1]
-		
-		var c2 = AIChildContentCellModel()
-		c2.id = 2
-		c2.type = 2
-		c2.bgImageUrl = ""
-		c2.text = "Accompany and attend to Accompany and attend"
-		c2.childServerIconArray = [i1, i2, i3]
-		
-		conModel.childServices = [c1, c2]
-		
-		var msgModel = AIContentCellModel()
-		msgModel.id = 13
-		msgModel.type = 2
-		msgModel.typeImageUrl = "user-message-0"
-		msgModel.typeName = "user message"
-		
-		var c3 = AIChildContentCellModel()
-		c3.id = 3
-		c3.type = 1
-		c3.bgImageUrl = ""
-		c3.text = "Body is weak,can not cary heavy , pay attention to nuturetion collocation"
-		c3.childServerIconArray = [i1, i3]
-		
-		var c6 = AIChildContentCellModel()
-		c6.id = 6
-		c6.type = 1
-		c6.bgImageUrl = ""
-		c6.text = ""
-		c6.audioLengh = 4000
-		c6.audioUrl = "http://adskfhasjdhkflhjashflkahsldf"
-		
-		c6.childServerIconArray = [i3]
-		
-		msgModel.childServices = [c3, c6]
-		
-		var dataModel = AIContentCellModel()
-		dataModel.id = 14
-		dataModel.type = 3
-		dataModel.typeImageUrl = "user-data-0"
-		dataModel.typeName = "user data"
-		
-		var c4 = AIChildContentCellModel()
-		c4.id = 4
-		c4.type = 4
-		c4.bgImageUrl = ""
-		c4.text = "Fasting blood glucos : 6MM mol /ml."
-		c4.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
-		c4.childServerIconArray = [i1, i2, i3]
-		
-		var c5 = AIChildContentCellModel()
-		c5.id = 5
-		c5.type = 3
-		c5.bgImageUrl = ""
-		c5.text = "Fasting blood glucos : 6MM mol /ml."
-		c5.content = "Anysls sadFasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml.Fasting blood glucos : 6MM mol /ml."
-		c5.childServerIconArray = [i3]
-		
-		dataModel.childServices = [c5, c4]
-		
-		return [conModel, msgModel, dataModel]
-	}()
-	*/
 	var editModel: Bool = false
 	
 	override func viewDidLoad() {
@@ -144,24 +64,61 @@ class AIRequireContentViewController: UIViewController {
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 
         tableview.addHeaderWithCallback { () -> Void in
-            Async.main(after: 1.5, block: { () -> Void in
-                self.tableview.reloadData()
-                self.tableview.headerEndRefreshing()
-            })
-  
+
+            if self.editModel == false {
+                self.requestData()
+            }else{
+                Async.main { () -> Void in
+                    self.tableview.reloadData()
+                    self.tableview.headerEndRefreshing()
+                }
+            }
         }
         
         // requets data:
+        tableview.headerBeginRefreshing()
         
-        if editModel == false {
-            requestData()
-        }else{
-            Async.main { () -> Void in
-                self.tableview.reloadData()
+        // settings notify:
+        if self.editModel == false {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell", name: AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        }
+        
+        // settings UI:
+        tagButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(12)
+        taskButton.titleLabel?.font = tagButton.titleLabel?.font
+        noteButton.titleLabel?.font = tagButton.titleLabel?.font
+	}
+    
+    /**
+     处理左侧点击事情
+     */
+    func notifyOperateCell(){
+        if self.editModel == true {
+            return
+        }
+        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+            
+            if let cell = cellWrapperModel.cellContent {
+                
+                //cell.setSlideState(.Center, animated: true)
+                
+                // referesh UI.
+                Async.main({ () -> Void in
+                    
+                    let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+                    let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+                    imageView.image = img
+                    cell.setNeedsDisplay()
+                })
                 
             }
-        }       
-	}
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":cellWrapperModel])
+        }
+        
+        
+    }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -174,18 +131,20 @@ class AIRequireContentViewController: UIViewController {
     
     func requestData(){
         let handler = AIRequirementHandler.defaultHandler()
-        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: 1, customID: 1, success: { [weak self](requirements) -> Void in
-            print("\(requirements)")
-            
+        let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"
+        
+        handler.queryUnassignedRequirements((orderPreModel?.proposal_id)!, providerID: Int(cuserId) ?? 0, customID: AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0, success: { [weak self](requirements) -> Void in
             self!.dataSource  = requirements
             
             // Reloading for the visible cells to layout correctly
             Async.main { () -> Void in
                 self!.tableview.reloadData()
             }
+            self!.tableview.headerEndRefreshing()
             
-            }) { (errType, errDes) -> Void in
+            }) {  [weak self](errType, errDes) -> Void in
                 print("\(errDes)")
+            self!.tableview.headerEndRefreshing()
         }
     }
     
@@ -534,27 +493,47 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 		switch buttonIndex {
 		case 0:
 			// 转化标签
-			print(buttonIndex)
 			addTagButtonPressed()
 			
 		case 1:
 			// 转化备注
-			print(buttonIndex)
 			addNoteButtonPressed()
 			
 		case 2:
 			// 转化任务节点
-			print(buttonIndex)
 			addTaskButtonPressed()
 			
 		default:
 			break
 		}
+        
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+        
+        var cellModel: AIContentCellModel = currentCellModel!
+        cellModel.childServices = nil
+        cellModel.childServices = [contentModel]
+        
+        let cellWrapperModel = AIWrapperAIContentModelClass(theModel: cellModel)
+        cellWrapperModel.cellContent = cell as? AIRACContentCell
+        AIRequirementViewPublicValue.cellContentTransferValue = nil
+        AIRequirementViewPublicValue.cellContentTransferValue = cellWrapperModel
+        
 	}
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerRightButton buttonIndex: Int) {
         let imageView = cell.contentView.viewWithTag(18) as! UIImageView
         let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+/*// 这里是处理重复操作
+        if let oldImg = imageView.image {
+            
+            if UIImagePNGRepresentation(img!) == UIImagePNGRepresentation(oldImg) {
+                cell.setSlideState(.Center, animated: true)
+                //return
+            }
+        }
+  */
         imageView.image = img
         cell.setSlideState(.Center, animated: true)
         cell.setNeedsDisplay()
@@ -565,7 +544,6 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         var cellModel: AIContentCellModel = currentCellModel!
         cellModel.childServices = nil
         cellModel.childServices = [contentModel]
-        
         
         let obj = AIWrapperAIContentModelClass(theModel: cellModel)
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
