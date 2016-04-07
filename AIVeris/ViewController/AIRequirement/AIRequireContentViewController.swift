@@ -120,7 +120,7 @@ class AIRequireContentViewController: UIViewController {
         let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         if let baseModel = baseModel {
               
-                let customID = baseModel.customer == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+                let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
                 let cuserId = baseModel.comp_user_id ?? "0"
                 handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: customID, success: { (requirements) -> Void in
                 self.dataSource  = requirements
@@ -132,7 +132,6 @@ class AIRequireContentViewController: UIViewController {
                 self.tableview.headerEndRefreshing()
                 
                 }) {  (errType, errDes) -> Void in
-
                     self.tableview.headerEndRefreshing()
             }
         }
@@ -278,7 +277,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
             var offsetHeight = 10-3
             for url in urlArray {
                 let urlImage = AIImageView()
-                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: UIImage(named: "Placehold"))
+                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: nil)
                 urlImage.tag = 11
                 cell.contentView.addSubview(urlImage)
                 
@@ -423,7 +422,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			
 			for model in models {
 				let imageV = AIImageView()
-				imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: UIImage(named: "PlaceHolder"))
+				imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: smallPlace())
 				iconView.addSubview(imageV)
 				imageV.layer.borderColor = UIColor.whiteColor().CGColor
                 imageV.layer.borderWidth =  1
@@ -596,13 +595,16 @@ extension AIRequireContentViewController {
         
         
         
-        
         //
         weak var wf = self
         
         if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
             
             if let model = cellWrapperModel.cellmodel {
+                
+                //model.childServices?.first?.requirement_id
+                //model.childServices?.first?.wish_result_id
+                
                 
                 self.view.showLoadingWithMessage("请稍候...")
                 AIRequirementHandler.defaultHandler().queryServiceDefaultTags(NSNumber(integer: model.id!), success: { (tagsModel) -> Void in

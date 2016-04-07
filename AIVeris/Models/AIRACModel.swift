@@ -107,11 +107,15 @@ internal struct AIChildContentCellModel : JSONJoy{
     var text : String?      //title
     var content : String?   //content
     var childServerIconArray : [AIIconTagModel]?
+    
     var leftActionImages : [String]?
     var rightActionImages : [String]?
+    // add new .
     var requirement_icon : String?
     var requirement_id: String?
     var wish_result_id: String?
+    var service_inst_id: String?
+    var service_id: String?
     
     init() {
         id = 1
@@ -125,6 +129,8 @@ internal struct AIChildContentCellModel : JSONJoy{
             for requirementAddrDecoder in requirement {
                 requirement_id = requirementAddrDecoder["requirement_id"].string ?? ""
                 wish_result_id = requirementAddrDecoder["wish_result_id"].string ?? ""
+                service_inst_id = requirementAddrDecoder["service_inst_id"].string ?? ""
+                service_id = requirementAddrDecoder["service_id"].string ?? ""
                 
                 let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
                 if holderString == "" {

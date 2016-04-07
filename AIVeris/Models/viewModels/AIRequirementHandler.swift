@@ -42,7 +42,7 @@ class AIRequirementHandler: NSObject {
         let message = AIMessage()
 //        var body  = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
         
-        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000029219"], "desc":["data_mode" : "0", "digest" : ""]]
+        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
         
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryBusinessInfo.description as String

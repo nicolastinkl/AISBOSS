@@ -450,7 +450,7 @@
 
 
     AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
-    [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+    [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     cell.sellerName.text = model.customer.user_name;
     cell.price.text = model.service.service_price;
 

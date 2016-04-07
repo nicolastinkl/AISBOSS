@@ -79,9 +79,17 @@ public class AIImageView: UIImageView {
     
     public func setURL(url: NSURL?, placeholderImage: UIImage?) {
         self.placeholderImage = placeholderImage
-        
-        self.url = url
-        
+        if url?.URLString.length > 10 {
+            self.url = url
+        }else{
+            self.alpha=0.2;
+            self.image = placeholderImage
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(0.5)
+            self.setNeedsDisplay()
+            self.alpha = 1;
+            UIView.commitAnimations()
+        }
         
     }
     

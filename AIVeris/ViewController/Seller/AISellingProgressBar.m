@@ -76,7 +76,7 @@
 
     
     if (model.icon.length > 0) {
-        [_progressIndicator sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+        [_progressIndicator sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     }
     else
     {

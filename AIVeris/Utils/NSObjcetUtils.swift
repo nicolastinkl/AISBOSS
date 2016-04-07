@@ -16,4 +16,13 @@ extension NSObject{
     func localCode(closeure:()->()){
         closeure()
     }
+    
+    func smallPlace() -> UIImage!{
+        return UIImage(named: "defaultIcon")
+    }
+    
+    func largePlace() -> UIImage!{
+        return smallPlace()
+    }
+    
 }

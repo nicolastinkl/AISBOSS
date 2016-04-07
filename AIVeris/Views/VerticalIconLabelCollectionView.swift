@@ -122,7 +122,7 @@ extension VerticalIconLabelCollectionView: UICollectionViewDelegate, UICollectio
 
         let model = modelDataSource![indexPath.item] 
         
-        cell.iconLabel.imageView.sd_setImageWithURL(NSURL(string: "\(model.param_icon)"), placeholderImage: UIImage(named: "Placehold"))
+        cell.iconLabel.imageView.sd_setImageWithURL(NSURL(string: "\(model.param_icon)"), placeholderImage: smallPlace())
         cell.iconLabel.text = model.param_value
         
         return cell

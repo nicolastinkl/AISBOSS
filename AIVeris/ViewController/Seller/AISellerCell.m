@@ -599,7 +599,7 @@
 - (void)setServiceCategory:(AIOrderPreModel *)model
 {
     if (model.service_category.category_icon) {
-        [_goodsIndicator sd_setImageWithURL:[NSURL URLWithString:model.service_category.category_icon] placeholderImage:[UIImage imageNamed:@"Placehold"]];
+        [_goodsIndicator sd_setImageWithURL:[NSURL URLWithString:model.service_category.category_icon] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     }
     else
     {
@@ -635,7 +635,7 @@
     CGFloat yoffset = 1.5;
     CGFloat width = CGRectGetWidth(_boardView.frame);
     // indicator
-    UIImage *indicator = [UIImage imageNamed:@"Placehold"];
+    UIImage *indicator = [UIImage imageNamed:@"defaultIcon"];
     _goodsIndicator = [[UIImageView alloc] initWithImage:indicator];
     _goodsIndicator.frame = CGRectMake(x, containerHeight + (containerHeight-kSmallImageSize)/2 - yoffset, kSmallImageSize, kSmallImageSize);
     [_boardView addSubview:_goodsIndicator];
