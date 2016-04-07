@@ -48,7 +48,7 @@ class AIAssignServiceView: UIView {
     }
     
     @IBAction func filterButtonAction(sender: UIButton) {
-        
+        switchAnimationState(false)
         if let delegate = delegate{
             delegate.filterButtonAction(self, serviceInstModel : models![curModelNum])
         }
@@ -63,9 +63,9 @@ class AIAssignServiceView: UIView {
     
     
     @IBAction func limitButtonAction(sender: UIButton) {
+        switchAnimationState(false)
         if let delegate = delegate{
             //TODO 这里应该传当前轮播到的那个服务的limit列表，并且这里应该停止滚动动画
-            switchAnimationState(false)
             delegate.limitButtonAction(self, serviceInstModel : (models![curModelNum]))
         }
     }
@@ -89,40 +89,39 @@ class AIAssignServiceView: UIView {
     }
     
     //TODO 因为在界面写死了是4个权限图标，所以这里只能循环里面写死
-    func refreshLimitIcon(){
-        if let models = models {
-            if let limitListModel = models[curModelNum].limits {
-                for (index,limitModel) in limitListModel.enumerate(){
-                    if limitModel.hasLimit{
-                        limitIconArray[index].image = limitIconOnArray[index]
-                    }
-                    else{
-                        limitIconArray[index].image = limitIconOffArray[index]
-                    }
+    func refreshLimitIcon(model : AssignServiceInstModel){
+        if let limitListModel = model.limits {
+            for (index,limitModel) in limitListModel.enumerate(){
+                if limitModel.hasLimit{
+                    limitIconArray[index].image = limitIconOnArray[index]
+                }
+                else{
+                    limitIconArray[index].image = limitIconOffArray[index]
                 }
             }
-            
         }
-        
     }
     
     func loadData(models : [AssignServiceInstModel]){
         //TODO 是否需要先清空？？
         self.models?.removeAll()
         self.models = models
+        //初始化轮播
+        curModelNum = 0
+        nextModelNum = 1
+        if models.count > 0 {
+            loadServiceInstWith(models[0])
+        }
         //重置定时器
         repeatTimer?.invalidate()
         repeatTimer = nil
-        //limitListView.frame.size.height = 0
-        //多于1个选中服务实例，才启动滚动动画
+        //多于1个选中服务实例，才启动滚动动画,但是当只选中一个的时候不启动动画也需要更新显示
         if models.count > 1{
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
         }
-        //初始化轮播
-        curModelNum = 0
-        nextModelNum = 1
-        
+
+        /*
         if models.count > 0 {
             //加载rating数据
             if let ratingLevel =  models[curModelNum].ratingLevel {
@@ -130,15 +129,17 @@ class AIAssignServiceView: UIView {
             }
             //初始化权限图标
             refreshLimitIcon()
-        }
+        }*/
         
     }
     
-    //TODO
+    //当需要刷新本View内容时调用的
     func loadServiceInstWith(model : AssignServiceInstModel){
         if let ratingLevel =  model.ratingLevel {
             starRateView!.scorePercent = CGFloat(ratingLevel) / 10
         }
+        refreshLimitIcon(model)
+        curServiceLabel.text = model.serviceName
     }
 }
 
@@ -173,7 +174,6 @@ extension AIAssignServiceView{
             if let delegate = self.delegate{
                 delegate.serviceDidRotate!(self, curServiceInst: self.models![self.curModelNum])
             }
-            self.loadServiceInstWith(self.models![self.curModelNum])
             if self.nextModelNum == (self.models?.count)! - 1{
                 self.curModelNum = self.nextModelNum
                 self.nextModelNum = 0
@@ -186,8 +186,9 @@ extension AIAssignServiceView{
                 self.curModelNum = self.curModelNum + 1
                 self.nextModelNum = self.nextModelNum + 1
             }
-            self.curServiceLabel.text = self.models![self.curModelNum].serviceName
-            self.refreshLimitIcon()
+            //翻转完成后，应该显示的是新服务的评级，权限等数据，还需要刷新当前显示的text，
+            let curModel = self.models![self.curModelNum]
+            self.loadServiceInstWith(curModel)
             
         })
     }

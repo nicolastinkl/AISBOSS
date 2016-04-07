@@ -218,13 +218,13 @@ class AICollContentViewController: UIViewController {
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         //过滤弹出框model
-        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Order information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Send message", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Service remind", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false)]
+        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Order information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Send message", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Service remind", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false)]
     }
 
 }
@@ -258,7 +258,11 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
         vc.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = vc.popupChooseView.getFrameHeight()
         vc.view.frame.size.height = height
-        presentPopupViewController(vc, animated: true)
+        presentPopupViewController(vc, animated: true,onClickCancelArea : {
+            () -> Void in
+            //关闭弹窗时，继续轮播
+            self.serviceInstView.switchAnimationState(true)
+        })
     }
     func contactButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
         //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作

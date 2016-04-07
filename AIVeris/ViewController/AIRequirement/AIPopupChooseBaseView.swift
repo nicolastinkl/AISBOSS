@@ -162,6 +162,7 @@ class AIPopupChooseCellView: UIView {
     var iconView : UIImageView!
     var contentLabel : UILabel!
     var confirmView : UIImageView!
+    var iconNormalImage , iconHighlightImage : UIImage!
     var isSelect = false
     
     //position
@@ -194,19 +195,24 @@ class AIPopupChooseCellView: UIView {
     
     private func updateViewContent(){
         //TODO 设置为model传入的icon路径
-        let url = NSURL(string: (itemModel?.itemIcon)!)
-        iconView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "Seller_Location")!)
+        
+        
+        
         contentLabel.text = itemModel?.itemTitle
         //根据是否有权限决定是选中还是未选中
         if let itemModel = itemModel{
             if itemModel.isSelect {
                 confirmView.image = iconSelect
                 contentLabel.font = contentFontSelect
+                let hightlightUrl = NSURL(string: (itemModel.itemIconHighlight))
+                iconView.sd_setImageWithURL(hightlightUrl, placeholderImage: UIImage(named: "Seller_Location")!)
                 isSelect = true
             }
             else{
                 confirmView.image = iconUnselect
                 contentLabel.font = contentFontUnselect
+                let url = NSURL(string: (itemModel.itemIcon))
+                iconView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "Seller_Location")!)
                 isSelect = false
             }
         }
