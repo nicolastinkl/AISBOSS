@@ -365,7 +365,7 @@ struct AIApplication{
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewTask : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
-            case .setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermissionFake"
+            case .setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermission"
             case .assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
             case .queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
             case .distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
