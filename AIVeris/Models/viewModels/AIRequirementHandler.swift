@@ -164,16 +164,16 @@ class AIRequirementHandler: NSObject {
     
     //MARK: 查询待分配标签列表接口
     /**
-    customorderID	服务方案ID列表
-    analyser_id	分析者Id
-    customer_id	客户Id
+    orderId	服务方案ID列表  order_Id
+    analyser_id	分析者Id           comp_user_id
+    customer_id	客户Id             customer.customer_id
 
     */
 
-    func queryUnassignedRequirements(customorderID : NSNumber, providerID : NSNumber, customID : NSNumber, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryUnassignedRequirements(orderId : NSNumber, providerID : NSNumber, customID : NSNumber, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : [
-            "custOrder_id" : customorderID,
+            "custOrder_id" : orderId,
             "analyser_id" : providerID,
             "customer_id" : customID,
             "isHandled":true],
