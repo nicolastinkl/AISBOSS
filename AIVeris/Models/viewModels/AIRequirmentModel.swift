@@ -17,12 +17,14 @@ class AILimitModel : AIBaseViewModel {
     var limitId : String
     var limitName: String
     var limitIcon : String
+    var limitIconHighlight : String
     var hasLimit : Bool
     
-    init(limitId : String , limitName : String, limitIcon : String , hasLimit : Bool){
+    init(limitId : String , limitName : String, limitIcon : String , limitIconHighlight : String , hasLimit : Bool){
         self.limitId = limitId
         self.limitName = limitName
         self.limitIcon = limitIcon
+        self.limitIconHighlight = limitIconHighlight
         self.hasLimit = hasLimit
     }
     
@@ -43,12 +45,14 @@ class AIPopupChooseModel : AIBaseViewModel{
     var itemId : String
     var itemTitle : String
     var itemIcon : String
+    var itemIconHighlight : String
     var isSelect : Bool
     
-    init(itemId : String, itemTitle : String , itemIcon : String , isSelect : Bool){
+    init(itemId : String, itemTitle : String , itemIcon : String , itemIconHighlight : String , isSelect : Bool){
         self.itemId = itemId
         self.itemTitle = itemTitle
         self.itemIcon = itemIcon
+        self.itemIconHighlight = itemIconHighlight
         self.isSelect = isSelect
     }
     
@@ -60,11 +64,13 @@ class AssignServiceInstModel : AIBaseViewModel {
     var serviceName : String!
     var ratingLevel : Float?
     var serviceInstStatus : ServiceInstStatus!
+    var customerUserId : Int!
     var limits : [AILimitModel]?
     
     override init() {
         ratingLevel = 10
         limits = [AILimitModel]()
+        customerUserId = 0
         super.init()
     }
     
@@ -84,11 +90,16 @@ class AssignServiceInstModel : AIBaseViewModel {
             assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_id.integerValue
             assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
             assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
+            assignServiceInst.customerUserId = serviceInstJSONModel.reluser_id.integerValue
+            let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
+            let statusInt = jsonModelProgress.objectForKey("status") as! Int
             
+            let status = ServiceInstStatus(rawValue: statusInt)
+            assignServiceInst.serviceInstStatus = status
             //给limits赋值
             
             for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
-                let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: "", hasLimit: false)
+                let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: limitJSONModel.right_icon_url,limitIconHighlight: limitJSONModel.own_right_icon, hasLimit: false)
                 let ownRightList = serviceInstJSONModel.own_right_id as NSArray
                 
                 limit.hasLimit = limit.handleHasLimitWith(ownRightList)

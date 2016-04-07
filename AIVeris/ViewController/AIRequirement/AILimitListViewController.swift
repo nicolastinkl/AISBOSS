@@ -8,18 +8,22 @@
 
 import UIKit
 
-class AILimitListViewController: UIViewController,AIPopupChooseViewDelegate {
+class AILimitListViewController: UIViewController {
     
     var limitListView : AILimitListView!
-    var limitModelArray : [AILimitModel]?
+    var serviceInstModel : AssignServiceInstModel?
+    var popupDelegate : AIPopupChooseViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         buildLimitListView()
-        if let limitModelArray = limitModelArray{
-            limitListView.loadData(limitListModel: limitModelArray)
+        if let serviceInstModel = serviceInstModel{
+            if let limitModelArray = serviceInstModel.limits{
+                limitListView.loadData(limitListModel: limitModelArray)
+            }
+            
         }
     }
 
@@ -28,28 +32,17 @@ class AILimitListViewController: UIViewController,AIPopupChooseViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadData(limitModelArray : [AILimitModel]){
-        self.limitModelArray = limitModelArray
+    func loadData(serviceInstModel : AssignServiceInstModel){
+        self.serviceInstModel = serviceInstModel
         
     }
     
     func buildLimitListView(){
         let limitFrame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         limitListView = AILimitListView(frame: limitFrame)
-        limitListView.delegate = self
+        limitListView.delegate = popupDelegate
         view.addSubview(limitListView)
     }
-
-    
-    // MARK: - delegate
-    func didConfirm(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
-        print(AIBaseViewModel.printArrayModelContent(limitListView.itemModels!))
-    }
-    
-    func didCancel(view : AIPopupChooseBaseView){
-        self.dismissPopupViewController(true, completion: nil)
-    }
-    
     
 }
+

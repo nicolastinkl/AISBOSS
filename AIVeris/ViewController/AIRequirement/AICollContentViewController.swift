@@ -19,6 +19,7 @@ class AICollContentViewController: UIViewController {
     var timelineModels : [AITimelineModel]!
     var cachedCells = Dictionary<Int,AITimelineCellBaseView>()
     var filterModels : [AIPopupChooseModel]!
+    var curAssignServiceInst : AssignServiceInstModel?
     
     //IB views
     var serviceInstView : AIAssignServiceView!
@@ -158,10 +159,6 @@ class AICollContentViewController: UIViewController {
                 break
             }
         }
-        //TODO 逻辑还有问题
-        if launchButton.alpha == 1 && needLaunch{
-            
-        }
         if needLaunch {
             if launchButton.alpha == 0{
                 SpringAnimation.spring(0.25, animations: { () -> Void in
@@ -221,23 +218,27 @@ class AICollContentViewController: UIViewController {
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         //过滤弹出框model
-        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Order information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Send message", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
-        AIPopupChooseModel(itemId: "1", itemTitle: "Service remind", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false)]
+        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Order information", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Send message", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false),
+        AIPopupChooseModel(itemId: "1", itemTitle: "Service remind", itemIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",itemIconHighlight: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png",  isSelect: false)]
     }
 
 }
 
 // MARK: - delegate
-extension AICollContentViewController : AIAssignServiceViewDelegate{
+extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupChooseViewDelegate{
     
-    func limitButtonAction(view : AIAssignServiceView , limitsModel : [AILimitModel]){
+    func limitButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
         let limitVC = AILimitListViewController()
-        limitVC.loadData(limitsModel)
+        limitVC.loadData(serviceInstModel)
+        //传递一个delegate过去
+        limitVC.popupDelegate = self
         limitVC.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = limitVC.limitListView.getFrameHeight()
         limitVC.view.frame.size.height = height
@@ -249,20 +250,64 @@ extension AICollContentViewController : AIAssignServiceViewDelegate{
     }
     
     func filterButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
-        
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
         let vc = AITimelineFilterViewController()
+        vc.popupChooseDelegate = self
         vc.loadData(filterModels)
         vc.view.frame = CGRect(x: 0, y: 0, width: view.width, height: 0)
         let height = vc.popupChooseView.getFrameHeight()
         vc.view.frame.size.height = height
-        presentPopupViewController(vc, animated: true)
+        presentPopupViewController(vc, animated: true,onClickCancelArea : {
+            () -> Void in
+            //关闭弹窗时，继续轮播
+            self.serviceInstView.switchAnimationState(true)
+        })
     }
     func contactButtonAction(view : AIAssignServiceView , serviceInstModel : AssignServiceInstModel){
-        
+        //赋值一个当前操作的服务实例，用于后面的filter，设置权限等操作
+        curAssignServiceInst = serviceInstModel
     }
     
     func serviceDidRotate(view : AIAssignServiceView , curServiceInst : AssignServiceInstModel){
         //print(curServiceInst)
+    }
+    
+    func didConfirm(view : AIPopupChooseBaseView , itemModels : [AIPopupChooseModel]){
+        self.dismissPopupViewController(true, completion: nil)
+        
+        //权限设置的保存在这里处理
+        if view.businessType == PopupBusinessType.LimitConfig{
+            submitPermissionConfig(itemModels)
+        }
+        print(AIBaseViewModel.printArrayModelContent(itemModels))
+    }
+    
+    func didCancel(view : AIPopupChooseBaseView){
+        self.dismissPopupViewController(true, completion: nil)
+    }
+    
+    // MARK: - business logic
+    // TODO 这里有逻辑问题，关闭弹出window后就开始继续滚动，那这里取当前number就有问题的，应该弹出时就把需要的参数赋值在vc中
+    func submitPermissionConfig(itemModels : [AIPopupChooseModel]){
+        if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
+            let customerId = bussinessModel.baseJsonValue?.customer.customer_id
+            let providerId = curAssignServiceInst!.customerUserId
+            var permissions = [NSNumber]()
+            for itemModel in itemModels {
+                if itemModel.isSelect{
+                    if let permissionId = NSNumberFormatter().numberFromString(itemModel.itemId){
+                        permissions.append(permissionId)
+                    }
+                    
+                }
+            }
+            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!, rightsList: permissions, success: { () -> Void in
+                    print(" save permissions success! ")
+                }, fail: { (errType, errDes) -> Void in
+                    print("\(errDes)")
+            })
+        }
     }
 }
 

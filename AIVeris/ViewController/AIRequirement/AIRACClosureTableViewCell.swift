@@ -31,7 +31,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         desLabel.numberOfLines = 1
         desLabel.lineBreakMode =  NSLineBreakMode.ByCharWrapping
         desLabel.text = ""
-        desLabel.font = AITools.myriadLightSemiExtendedWithSize(14)
+        desLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
         desLabel.textColor = UIColor.whiteColor()
         desLabel.textAlignment = NSTextAlignment.Left
         return desLabel
@@ -50,6 +50,11 @@ class AIRACClosureTableViewCell: UITableViewCell {
         
         self.selectionStyle =  UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.clearColor()
+        
+        iconImage.layer.cornerRadius = 15
+        iconImage.layer.borderWidth = 1
+        iconImage.layer.borderColor = UIColor.whiteColor().CGColor
+        iconImage.layer.masksToBounds = true
         
         self.contentView.addSubview(selectedddImage)
         self.contentView.addSubview(iconImage)

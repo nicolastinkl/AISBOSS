@@ -25,9 +25,9 @@ class AILimitListView: AIPopupChooseBaseView {
     func loadData(limitListModel limitListModel: [AILimitModel]) {
         itemModels = [AIPopupChooseModel]()
         for limitModel in limitListModel{
-            let itemModel = AIPopupChooseModel(itemId: limitModel.limitId, itemTitle: limitModel.limitName, itemIcon: limitModel.limitIcon, isSelect: limitModel.hasLimit)
+            let itemModel = AIPopupChooseModel(itemId: limitModel.limitId, itemTitle: limitModel.limitName, itemIcon: limitModel.limitIcon, itemIconHighlight: limitModel.limitIconHighlight, isSelect: limitModel.hasLimit)
             itemModels?.append(itemModel)
         }
-        super.loadData(itemModels!)
+        super.loadData(itemModels! , businessType: PopupBusinessType.LimitConfig)
     }
 }

@@ -422,6 +422,29 @@ class AIRequirementHandler: NSObject {
     
     
     
+    //MARK: 将需求共享给其它子服务
+    /**
+    serviceID 服务id
+    */
+    
+    func distributeRequirementRequset(wish_result_id : String,wish_item_type: String,wish_item_id:String,service_inst_id: Array<String>, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        let body : NSDictionary = ["data" : ["wish_result_id" : wish_result_id,"wish_item_type":wish_item_type,"wish_item_id":wish_item_id,"service_inst_id":service_inst_id], "data_mode" : "0", "digest" : ""]
+        message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.distributeRequirement.description as String
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+                success()            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     
 

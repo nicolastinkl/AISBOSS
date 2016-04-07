@@ -8,6 +8,7 @@
 
 import Foundation
 import Spring
+import AIAlertView
 
 protocol AISelectedServiceTableVControllerDelegate: class {
     func refereshCell(cell: AIRACContentCell,contentModel: [AIIconTagModel]?)
@@ -20,6 +21,7 @@ class AISelectedServiceTableVController: UIViewController {
     private let stableCellHeight: Int = 52
     
     var childModel: AIChildContentCellModel?
+    var contentModel: AIContentCellModel?
     
     var preCell:AIRACContentCell?
     
@@ -28,6 +30,7 @@ class AISelectedServiceTableVController: UIViewController {
     private let borderOffset: Int = 10
 
     override func viewDidLoad(){
+        
         super.viewDidLoad()
         
         func configureExpend(count: Int){
@@ -134,6 +137,7 @@ class AISelectedServiceTableVController: UIViewController {
     
     func distriAction(anyobj: AnyObject) {
         
+        var ridArray = Array<String>()
         var array = Array<AIIconTagModel>()
         for obj in sourceDelegate.selectedDataSections {
             //AIServiceProvider
@@ -141,11 +145,27 @@ class AISelectedServiceTableVController: UIViewController {
             tabModel.iconUrl = "\(obj.provider_portrait_url)"
             array.append(tabModel)            
 
+            ridArray.append("\(obj.relservice_instance_id.intValue)")
+            
         }
         
-        delegate?.refereshCell(preCell!, contentModel: array)
-        dismissPopupViewController(true, completion: { () -> Void in
-        })
+        //let bussinessModel = AIRequirementViewPublicValue.bussinessModel
+        
+        self.view.showLoading()
+
+        let handler = AIRequirementHandler.defaultHandler()
+        
+        handler.distributeRequirementRequset("1", wish_item_type: self.contentModel?.category ?? "", wish_item_id: childModel?.requirement_id ?? "", service_inst_id: ridArray, success: { () -> Void in
+            self.view.hideLoading()
+            self.delegate?.refereshCell(self.preCell!, contentModel: array)
+            self.dismissPopupViewController(true, completion: { () -> Void in
+            })
+
+            }) { (errType, errDes) -> Void in
+                self.view.hideLoading()
+                AIAlertView().showError("error", subTitle: "网络请求失败")
+        }
+
        
     }
     

@@ -55,7 +55,7 @@ internal struct AIContentCellModel : JSONJoy{
     var typeName : String?
     var typeImageUrl : String?
     var childServices : [AIChildContentCellModel]?
-
+    var category : String?
     
     init() {
         id = 1
@@ -63,6 +63,7 @@ internal struct AIContentCellModel : JSONJoy{
     
     init(_ decoder: JSONDecoder) {
         
+        category = decoder["requirement_category"].string ?? ""
         let requirement_category = decoder["requirement_category"].string ?? ""
         id = Int(requirement_category)
 
@@ -109,7 +110,7 @@ internal struct AIChildContentCellModel : JSONJoy{
     var leftActionImages : [String]?
     var rightActionImages : [String]?
     var requirement_icon : String?
-    
+    var requirement_id: String?
     init() {
         id = 1
     }
@@ -120,7 +121,7 @@ internal struct AIChildContentCellModel : JSONJoy{
         var holderUrl = ""
         if let requirement = decoder["requirement"].array {
             for requirementAddrDecoder in requirement {
-                id = requirementAddrDecoder["requirement_id"].integer ?? 0
+                requirement_id = requirementAddrDecoder["requirement_id"].string ?? ""
                 let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
                 if holderString == "" {
                     holderString = "\(desc)"
