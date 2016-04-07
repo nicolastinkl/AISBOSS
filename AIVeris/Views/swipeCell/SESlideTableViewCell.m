@@ -249,7 +249,7 @@ static UIImage* SECreateImageWithColor(UIColor* color, CGSize size) {
 #define INDICATOR_LINE_HEIGHT0 ((CGFloat)3.0)
 #define INDICATOR_LINE_HEIGHT1 ((CGFloat)7.0)
 #define INDICATOR_HEIGHT (INDICATOR_LINE_HEIGHT1)
-#define INDICATOR_OUT_MERGIN ((CGFloat)4.0)
+#define INDICATOR_OUT_MERGIN ((CGFloat)0.0)
 
 typedef NS_OPTIONS(NSUInteger, SESlideIndicatorSideOption) {
 	SESlideIndicatorSideOptionNone	= 0,

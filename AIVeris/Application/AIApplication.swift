@@ -161,8 +161,13 @@ struct AIApplication{
         static let AIAIRequirementNotifyOperateCellNotificationName    = "AIAIRequirementNotifyOperateCellNotificationName"
         static let AIAIRequirementNotifyClearNumberCellNotificationName    = "AIAIRequirementNotifyClearNumberCellNotificationName"
         static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
+        static let AIRequireContentViewControllerCellWrappNotificationName    = "AIRequireContentViewControllerCellWrappNotificationName"
+        
+        
+        
         //服务执行页选择一个服务实例的通知 add by liux at 20160330
         static let AIRequirementSelectServiceInstNotificationName = "AIRequirementSelectServiceInstNotificationName"
+        
         //关闭弹出框UI的通知
         static let AIRequirementClosePopupNotificationName = "AIRequirementClosePopupNotificationName"
     }
@@ -353,7 +358,6 @@ struct AIApplication{
                 
                 // 原始需求列表
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverListFake"
-                
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
             case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
             case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementListFake"

@@ -15,6 +15,8 @@ import Spring
 
 class AIRequirementViewPublicValue{
     static var bussinessModel: AIBusinessInfoModel?
+    
+    static var cellContentTransferValue: AIWrapperAIContentModelClass?
 }
 
 internal class AIRequirementViewController : UIViewController {

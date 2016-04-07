@@ -123,12 +123,15 @@ class AIAssignServiceView: UIView {
         curModelNum = 0
         nextModelNum = 1
         
-        //加载rating数据
-        if let ratingLevel =  models[curModelNum].ratingLevel {
-            starRateView!.scorePercent = CGFloat(ratingLevel) / 10
+        if models.count > 0 {
+            //加载rating数据
+            if let ratingLevel =  models[curModelNum].ratingLevel {
+                starRateView!.scorePercent = CGFloat(ratingLevel) / 10
+            }
+            //初始化权限图标
+            refreshLimitIcon()
         }
-        //初始化权限图标
-        refreshLimitIcon()
+        
     }
     
     //TODO
