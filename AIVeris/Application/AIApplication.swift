@@ -360,7 +360,7 @@ struct AIApplication{
             case .queryBusinessInfo: return AIApplication.KURL_ReleaseURL + "/queryCustomerInfoSubserverList"
             case .queryOriginalRequirements: return AIApplication.KURL_ReleaseURL + "/queryOriginalRequirementsFake"
             case .saveAsTask: return AIApplication.KURL_ReleaseURL + "/updateDistributionStateFake"
-            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementListFake"
+            case .queryUnassignedRequirements: return AIApplication.KURL_ReleaseURL + "/queryUnDistributeRequirementList"
             case .saveTagsAsTask: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case .addNewNote: return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
             case addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
@@ -369,12 +369,12 @@ struct AIApplication{
             case assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
             case queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
             case distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
-            case .addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
-            case .addNewTask : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
-            case .setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermissionFake"
-            case .assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
-            case .queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
-            case .distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
+            case addNewTag : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
+            case addNewTask : return AIApplication.KURL_ReleaseURL + "/saveSelDistributionTagsFake"
+            case setServiceProviderRights : return AIApplication.KURL_ReleaseURL + "/updateAccessPermissionFake"
+            case assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
+            case queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagListFake"
+            case distributeRequirement: return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
             
             }
             

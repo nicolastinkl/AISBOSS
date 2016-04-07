@@ -116,21 +116,27 @@ class AIRequireContentViewController: UIViewController {
         
         
         let handler = AIRequirementHandler.defaultHandler()
+        
+        let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+        if let baseModel = baseModel {
+              
+                let customID = baseModel.customer == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+                let cuserId = baseModel.comp_user_id ?? "0"
+                handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: customID, success: { (requirements) -> Void in
+                self.dataSource  = requirements
                 
-        let cuserId = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? "0"
-        handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0, success: { [weak self](requirements) -> Void in
-            self!.dataSource  = requirements
-            
-            // Reloading for the visible cells to layout correctly
-            Async.main { () -> Void in
-                self!.tableview.reloadData()
+                // Reloading for the visible cells to layout correctly
+                Async.main { () -> Void in
+                    self.tableview.reloadData()
+                }
+                self.tableview.headerEndRefreshing()
+                
+                }) {  (errType, errDes) -> Void in
+
+                    self.tableview.headerEndRefreshing()
             }
-            self!.tableview.headerEndRefreshing()
-            
-            }) {  [weak self](errType, errDes) -> Void in
-                print("\(errDes)")
-            self!.tableview.headerEndRefreshing()
         }
+        
     }
     
     

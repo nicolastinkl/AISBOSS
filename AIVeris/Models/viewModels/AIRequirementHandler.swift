@@ -172,12 +172,19 @@ class AIRequirementHandler: NSObject {
 
     func queryUnassignedRequirements(orderId : NSNumber, providerID : NSNumber, customID : NSNumber, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : [
+        var body : NSDictionary = ["data" : [
             "custOrder_id" : orderId,
             "analyser_id" : providerID,
             "customer_id" : customID,
             "isHandled":true],
             "desc":["data_mode" : "0", "digest" : ""]]
+        
+        body   = ["data" : [
+        "custOrder_id" : 100000029231,
+        "analyser_id" : 1,
+        "customer_id" : 1,
+        "isHandled":true],
+        "desc":["data_mode" : "0", "digest" : ""]]
         
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryUnassignedRequirements.description as String
@@ -377,7 +384,7 @@ class AIRequirementHandler: NSObject {
     
     */
 
-    func assginTask(taskList : [NSNumber], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func assginTask(taskList : [NSDictionary], success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["work_order_param_list" : taskList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
