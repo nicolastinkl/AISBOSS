@@ -33,7 +33,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         desLabel.numberOfLines = 1
         desLabel.lineBreakMode =  NSLineBreakMode.ByCharWrapping
         desLabel.text = ""
-        desLabel.font = AITools.myriadLightSemiCondensedWithSize(13)
+        desLabel.font = AITools.myriadLightSemiCondensedWithSize(15)
         desLabel.textColor = UIColor.whiteColor()
         desLabel.textAlignment = NSTextAlignment.Left
         return desLabel

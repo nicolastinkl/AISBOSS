@@ -71,7 +71,7 @@ class AISelectedServiceTableVController: UIViewController {
             cancelButton.titleLabel?.textColor = UIColor.whiteColor()
             cancelButton.cornerRadius = 5
             cancelButton.alpha = 0.65
-            cancelButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(24)
+            cancelButton.titleLabel?.font = AITools.myriadSemiboldSemiCnWithSize(24)
             cancelButton.snp_makeConstraints(closure: { (make) -> Void in
                 make.height.equalTo(51)
                 //make.width.greaterThanOrEqualTo(189)
@@ -81,7 +81,7 @@ class AISelectedServiceTableVController: UIViewController {
             
             distriButton.backgroundColor = UIColor(hexString: "#0D85E8")
             distriButton.titleLabel?.textColor = UIColor.whiteColor()
-            distriButton.titleLabel?.font = AITools.myriadLightSemiCondensedWithSize(24)
+            distriButton.titleLabel?.font = AITools.myriadSemiboldSemiCnWithSize(24)
             distriButton.setTitle("  distribution", forState: UIControlState.Normal)
             distriButton.cornerRadius = 5
             distriButton.setImage(UIImage(named: "aiselectDistrButton"), forState: UIControlState.Normal)

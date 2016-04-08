@@ -446,11 +446,8 @@
     }
 
     AIOrderTableModel *tableModel = [_tableDictionary objectForKey:[_tableHeaderList objectAtIndex:indexPath.section]];
-
-
-
     AIOrderPreModel *model = [tableModel.orderList objectAtIndex:indexPath.row];
-    [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
+    [cell.sellerIcon sd_setImageWithURL:[NSURL URLWithString:model.customer.user_portrait_icon] placeholderImage:nil];
     cell.sellerName.text = model.customer.user_name;
     cell.price.text = model.service.service_price;
 
