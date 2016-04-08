@@ -91,10 +91,16 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         view.showLoadingWithMessage("请稍候...")
         weak var wf = self
         
-        let customID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
-
-        AIRequirementHandler.defaultHandler().addNewTask((cellWrapperModel?.comp_user_id)!, customer_id: customID, order_id: (cellWrapperModel?.order_id)!, requirement_id: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!, requirement_type: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
+        let comp_user_id = (cellWrapperModel?.comp_user_id)!
+        let customer_id : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        let order_id = (cellWrapperModel?.order_id)!
+        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!
+        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!
+        
+        
+        
+        AIRequirementHandler.defaultHandler().addNewTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
             wf!.view.dismissLoading()
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
             
