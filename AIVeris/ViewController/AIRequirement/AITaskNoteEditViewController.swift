@@ -124,17 +124,26 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
         // save here
         view.showLoadingWithMessage("请稍候...")
         weak var wf = self
-  
-        AIRequirementHandler.defaultHandler().addNewNote(1, customID: 1, orderID: 1, requirementID: 1, requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+        
+        let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+        let comp_user_id = (cellWrapperModel?.comp_user_id)!
+        let customer_id : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        let order_id = (cellWrapperModel?.order_id)!
+        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!
+        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!
+        
+        
+        AIRequirementHandler.defaultHandler().addNewNote(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
             wf!.view.dismissLoading()
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
             
             wf!.dismissViewControllerAnimated(true, completion: nil)
             
-            
             }) { (errType, errDes) -> Void in
                 wf!.view.dismissLoading()
         }
+        
+
  
 	}
 }

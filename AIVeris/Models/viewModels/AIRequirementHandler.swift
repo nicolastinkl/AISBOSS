@@ -237,18 +237,18 @@ class AIRequirementHandler: NSObject {
     
     //MARK: 转化为标签
     /**
-    providerID	        复合服务提供者ID
-    customID	        买家ID
-    orderID   	        订单ID
-    requirementType	    原始需求条目类型
-    requirementID	    原始需求ID
-    toType	            订单ID
-    requirementList		传入需要转化的原始需求id
+    comp_user_id	    复合服务提供者ID
+    customer_id	        买家ID
+    order_id	        订单ID
+    requirement_type	原始需求条目类型
+    requirement_id	    原始需求ID
+    analysis_type	    订单ID
+    analysis_ids
     */
     
-    func saveTagsAsTask(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveTagsAsTask(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String, requirement_type : String, analysis_type : String, analysis_ids : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "analysis_ids" : analysis_ids], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
         
@@ -273,9 +273,9 @@ class AIRequirementHandler: NSObject {
     */
     
     
-    func addNewTag(requirementID : NSNumber, tagName : String, tagType : String, tagContent : String, success : (newTag : AIDefaultTag)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func addNewTag(tag_type : String, tag_content : String, success : (newTag : AIDefaultTag)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["requirement_id" : requirementID, "tag_name" : tagName, "tag_type" : tagType, "tag_content" : tagContent], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["tag_type" : tag_type, "tag_content" : tag_content], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTag.description as String
         
@@ -291,18 +291,18 @@ class AIRequirementHandler: NSObject {
     
     //MARK: 保存新增备注
     /**
-    providerID	        复合服务提供者ID
-    customID	        买家ID
-    orderID   	        订单ID
-    requirementType	    原始需求条目类型
-    requirementID	    原始需求ID
-    toType	            订单ID
-    requirementList		传入需要转化的原始需求id
+    comp_user_id	复合服务提供者ID
+    customer_id	买家ID
+    order_id	订单ID
+    requirement_type	原始需求条目类型
+    requirement_id	原始需求ID
+    analysis_type	订单ID
+    note_content	备注文本
     */
     
-    func addNewNote(providerID : NSNumber, customID : NSNumber, orderID : NSNumber, requirementID : NSNumber, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func addNewNote(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String, requirement_type : String, analysis_type : String, note_content : String, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "note_content" : note_content], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
         
@@ -503,8 +503,8 @@ class AIRequirementHandler: NSObject {
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
-            var task = DependOnService(id: serviceInstanceID, icon: "", desc: "", tasks: [TaskNode](), selected: false)
-            task.icon = serviceIcon
+            var task = DependOnService(id: serviceInstanceID, icon: serviceIcon, desc: "", tasks: [TaskNode](), selected: false)
+            
             
             let list = response["task_node_list"] as! [NSDictionary]
             

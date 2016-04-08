@@ -646,13 +646,7 @@ extension AIRequireContentViewController {
                     let vc = AITaskTagViewController()
                     vc.tags = tags
                     vc.requirementID = tagsModel.requirementID!
-                    vc.onDidSelected = {selectedTags, unSelectedTags in
-                        print("select tag : \(selectedTags)")
-                    }
                     
-                    vc.onDidCancel = {
-                        print("select tag cancel")
-                    }
                     
                     wf!.presentViewController(vc, animated: true, completion: nil)
                     
