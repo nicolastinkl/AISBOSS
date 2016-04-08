@@ -330,6 +330,10 @@ class AIRequirementHandler: NSObject {
                 let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
                 success(unassignedNum: unassignedNum)
             }
+            else
+            {
+                fail(errType: AINetError.Failed, errDes: "save error")
+            }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
@@ -519,22 +523,26 @@ class AIRequirementHandler: NSObject {
             var task = DependOnService(id: serviceInstanceID, icon: serviceIcon, desc: "", tasks: [TaskNode](), selected: false)
             
             
-            let list = response["task_node_list"] as! [NSDictionary]
-            
-            for i in 0 ... list.count - 1 {
+            if let list = response["task_node_list"] as? [NSDictionary] {
+                for i in 0 ... list.count - 1 {
+                    
+                    let node : NSDictionary = list[i]
+                    
+                    let date : NSString = node["timestamp"] as! NSString
+                    
+                    let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: node["service_inst_id"] as! String)
+                    
+                    task.tasks.append(taskNode)
+                    task.desc = node["node_summary"] as! String
+                    
+                }
                 
-                let node : NSDictionary = list[i]
-                
-                let date : NSString = node["timestamp"] as! NSString
-                
-                let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: node["service_inst_id"] as! String)
-                
-                task.tasks.append(taskNode)
-                task.desc = node["node_summary"] as! String
-                
+                success(task: task)
             }
-            
-            success(task: task)
+            else {
+                fail(errType: AINetError.Failed, errDes: "bad data")
+            }
+        
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
