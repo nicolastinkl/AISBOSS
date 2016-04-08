@@ -287,12 +287,13 @@ class AIRequirementHandler: NSObject {
     /**
     tag_type	标签类型
     tag_content	标签内容
+    service_id
     */
     
     
-    func addNewTag(tag_type : String, tag_content : String, success : (newTag : AIDefaultTag)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func addNewTag(service_id : String, tag_type : String, tag_content : String, success : (newTag : AIDefaultTag)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["tag_type" : tag_type, "tag_content" : tag_content], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id" : service_id, "tag_type" : tag_type, "tag_content" : tag_content], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTag.description as String
         
@@ -352,7 +353,7 @@ class AIRequirementHandler: NSObject {
     task_desc	节点描述
     offset_time	偏移的时间量
     node_id	参考节点ID
-    node_inst_id	参考节点所属流程ID
+    arrangement_id	参考节点所属流程ID
     
     
     
@@ -367,12 +368,12 @@ class AIRequirementHandler: NSObject {
         task_desc : String,
         offset_time : String,
         node_id : String,
-        node_inst_id : String,
+        arrangement_id : String,
         success : (unassignedNum : NSNumber)-> Void,
         fail : (errType: AINetError, errDes: String) -> Void) {
             
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "node_inst_id" : node_inst_id], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "arrangement_id" : arrangement_id], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTask.description as String
         
@@ -532,9 +533,9 @@ class AIRequirementHandler: NSObject {
                         
                         let date : NSNumber = node["timestamp"] as! NSNumber
                         let insID : String = "\(node["service_inst_id"])"
+                        let arrageID : String = node["arrangement_id"] as! String
                         
-                        
-                        let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: insID)
+                        let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: insID, arrageID : arrageID)
                         
                         task.tasks.append(taskNode)
                         task.desc = node["node_summary"] as! String

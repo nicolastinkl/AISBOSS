@@ -174,7 +174,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
     
     func contentViewWillDismiss() {
 
-        self.view.showLoadingWithMessage("")
+        view.showLoading()
         
         // handle parameter upload actio here
         
@@ -212,7 +212,7 @@ extension AIPageBueryViewController : AIServiceContentDelegate {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
         }
         
-        self.view.dismissLoading()
+        view.hideLoading()
         self.dismissViewControllerAnimated(true, completion: nil)
         // http request, get each model from submitDataDic, do upload
         

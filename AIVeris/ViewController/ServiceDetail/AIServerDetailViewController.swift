@@ -295,13 +295,13 @@ class AIServerDetailViewController: UIViewController {
     @IBAction func submitOrderAction(sender: AnyObject) {
         //
         let paramServieID = self.paramsService.allValues as! [String]
-        self.view.showLoadingWithMessage("")
+        view.showLoading()
         Async.userInitiated {
             let dataObtainer = BDKSchemeDataObtainer()
             
             dataObtainer.submitParamsOrderServiceSchemes(paramServieID, success: { (isComplate) -> Void in
                 
-                self.view.dismissLoading()
+                self.view.hideLoading()
                 
                 if isComplate == true {
                     
@@ -318,7 +318,7 @@ class AIServerDetailViewController: UIViewController {
                 
                 }, fail: { (errType, errDes) -> Void in
                     
-                    self.view.dismissLoading()
+                    self.view.hideLoading()
                     AIAlertView().showInfo("AIServerDetailViewController.error".localized, subTitle:"AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
             })
             

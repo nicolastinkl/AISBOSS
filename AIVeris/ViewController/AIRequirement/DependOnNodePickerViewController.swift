@@ -270,7 +270,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 			cell.date = task.date
             cell.selected = false
             if let _ = selectedTask {
-                cell.selected = task.id == selectedTask?.id
+                cell.selected = (task.id == selectedTask?.id && task.arrageID == selectedTask?.arrageID)
             }
    
 			return cell

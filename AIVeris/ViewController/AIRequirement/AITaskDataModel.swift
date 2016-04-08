@@ -25,6 +25,7 @@ struct TaskNode: Equatable {
 	var desc: String
 	var id: Int
     var insID : String
+    var arrageID : String
 }
 
 struct DependOnService: Equatable {

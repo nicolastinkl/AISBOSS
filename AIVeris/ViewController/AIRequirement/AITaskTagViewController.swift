@@ -42,9 +42,12 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
         }
         
         // save here
-        view.showLoadingWithMessage("请稍候...")
+        view.showLoading()
         weak var wf = self
-        AIRequirementHandler.defaultHandler().addNewTag("", tag_content: text!, success: { (newTag) -> Void in
+        
+        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id
+        
+        AIRequirementHandler.defaultHandler().addNewTag(service_id!, tag_type: "Text", tag_content: text!, success: { (newTag) -> Void in
             
             let spaceSet = NSCharacterSet.whitespaceCharacterSet()
             if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
@@ -52,12 +55,12 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
                     let newTag = RequirementTag(id: newTag.tag_id.integerValue, selected: false, textContent: newTag.tag_content)
                     wf!.tags.insert(newTag, atIndex: wf!.tags.count)
                     wf!.collectionTag.reloadData()
-                    wf!.view.dismissLoading()
+                    wf!.view.hideLoading()
                 }
             }
             
             }) { (errType, errDes) -> Void in
-                wf!.view.dismissLoading()
+                wf!.view.hideLoading()
         }
         
 		
@@ -91,7 +94,7 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
 		}
         
         // save here
-        view.showLoadingWithMessage("请稍候...")
+        view.showLoading()
         weak var wf = self
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         let comp_user_id = (cellWrapperModel?.comp_user_id)!
@@ -110,7 +113,7 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
     }
     
     func shouldDismissSelf (didSuccess : Bool) {
-        self.view.dismissLoading()
+        view.hideLoading()
         
         if didSuccess {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
