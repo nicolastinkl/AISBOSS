@@ -470,5 +470,54 @@ class AIRequirementHandler: NSObject {
         }
     }
     
+    //MARK: 查询任务节点
+    /**
+    service_inst_list    服务实例ID列表
+    
+    */
+    func queryTaskList(serviceInstanceID : String, serviceIcon : String, success : (task : DependOnService)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+        let message = AIMessage()
+        
+        let body : NSDictionary = ["data" : ["service_inst_list" : [serviceInstanceID]], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.queryTaskList.description as String
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            var task = DependOnService(id: serviceInstanceID, icon: "", desc: "", tasks: [TaskNode](), selected: false)
+            task.icon = serviceIcon
+            
+            let list = response["task_node_list"] as! [NSDictionary]
+            
+            for i in 0 ... list.count - 1 {
+                
+                let node : NSDictionary = list[i]
+                
+                let date : NSString = node["timestamp"] as! NSString
+                
+                let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue)
+                
+                task.tasks.append(taskNode)
+                task.desc = node["node_summary"] as! String
+                
+            }
+            
+            success(task: task)
+            
+            }) { (error: AINetError, errorDes: String!) -> Void in
+                fail(errType: error, errDes: errorDes)
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

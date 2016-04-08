@@ -108,9 +108,10 @@ class AIAssignServiceView: UIView {
         self.models = models
         //初始化轮播
         curModelNum = 0
-        nextModelNum = 1
+        //TODO:默认都赋值为0，在只有一条记录的时候保证不报错
+        nextModelNum = 0
         if models.count > 0 {
-            loadServiceInstWith(models[0])
+            loadServiceInstWith(models.first!)
         }
         //重置定时器
         repeatTimer?.invalidate()
@@ -119,6 +120,7 @@ class AIAssignServiceView: UIView {
         if models.count > 1{
             let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
             repeatTimer = timer
+            nextModelNum = 1
         }
 
         /*
@@ -139,7 +141,13 @@ class AIAssignServiceView: UIView {
             starRateView!.scorePercent = CGFloat(ratingLevel) / 10
         }
         refreshLimitIcon(model)
-        curServiceLabel.text = model.serviceName
+        if curServiceLabel.alpha == 0{
+            nextServiceLabel.text = model.serviceName
+        }
+        else{
+            curServiceLabel.text = model.serviceName
+        }
+        
     }
 }
 

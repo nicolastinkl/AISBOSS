@@ -13,7 +13,7 @@ class AITaskNoteEditViewController: UIViewController {
 	var requirementItem: AIRequirementItem?
 	var textView: KMPlaceholderTextView!
 	var iconLabel: UILabel!
-	
+	var businessModel : AIQueryBusinessInfos?
 	var iconImageView: UIImageView!
 	
 	struct Constants {

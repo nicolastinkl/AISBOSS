@@ -27,7 +27,7 @@ struct TaskNode: Equatable {
 }
 
 struct DependOnService: Equatable {
-	var id: Int
+	var id: String
 	var icon: String
 	var desc: String
 	var tasks: [TaskNode]

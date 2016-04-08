@@ -637,7 +637,7 @@ extension AIRequireContentViewController {
                         
                         let defaultTag = defaultTags[i]
                         
-                        let tag = RequirementTag(id: random()%10000,selected: i % 2 == 0, textContent: defaultTag.textContent)
+                        let tag = RequirementTag(id: defaultTag.id,selected: false, textContent: defaultTag.textContent)
                         tags.append(tag)
                     }
                     
@@ -675,6 +675,7 @@ extension AIRequireContentViewController {
             
             if let model = cellWrapperModel.cellmodel {
                 let vc = AITaskNoteEditViewController()
+                vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
                 // pass AIRequirementItem into vc
                 //vc.requirementItem = AIRequirementItem
                 presentViewController(vc, animated: true, completion: nil)
@@ -685,6 +686,7 @@ extension AIRequireContentViewController {
 	}
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()
+        vc.serviceRoles = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
 		presentViewController(vc, animated: true, completion: nil)
 	}
 }

@@ -190,10 +190,12 @@ class AICollContentViewController: UIViewController {
     func launchAction(target : AnyObject){
         var submitServiceInstIds = [NSDictionary]()
         for assignServiceInst in assginServiceInsts{
-            let submitInfo = NSMutableDictionary()
-            submitInfo.setObject(assignServiceInst.serviceInstId, forKey: "service_inst_id")
-            submitInfo.setObject(assignServiceInst.providerUserId, forKey: "provider_user_id")
-            submitServiceInstIds.append(submitInfo)
+            if assignServiceInst.serviceInstStatus == ServiceInstStatus.Init{
+                let submitInfo = NSMutableDictionary()
+                submitInfo.setObject(assignServiceInst.serviceInstId, forKey: "service_inst_id")
+                submitInfo.setObject(assignServiceInst.providerUserId, forKey: "provider_user_id")
+                submitServiceInstIds.append(submitInfo)
+            }
         }
         AIRequirementHandler.defaultHandler().assginTask(submitServiceInstIds, success: { () -> Void in
             AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)

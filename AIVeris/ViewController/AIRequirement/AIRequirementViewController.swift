@@ -26,6 +26,7 @@ class AIRequirementViewPublicValue{
     /// Default pre order model.
     static var orderPreModel : AIOrderPreModel?
     
+    
 }
 
 
