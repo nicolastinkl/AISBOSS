@@ -100,14 +100,18 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
         let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!
         
         AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selected, success: { (unassignedNum) -> Void in
-            wf!.view.dismissLoading()
-            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
-            wf!.dismissViewControllerAnimated(true, completion: nil)
+            wf!.shouldDismissSelf()
             }) { (errType, errDes) -> Void in
-                wf!.view.dismissLoading()
+                wf!.shouldDismissSelf()
         }
 
         
+    }
+    
+    func shouldDismissSelf () {
+        self.view.dismissLoading()
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
