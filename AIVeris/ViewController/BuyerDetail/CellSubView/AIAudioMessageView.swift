@@ -58,7 +58,7 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
         let scale : CGFloat = 0.8
         audioBgConstrain.constant = 16.5
         loadingView.alpha = 0
-        audioBg.cornerRadius = 8
+        audioBg.cornerRadius = 9
         audioGifImageView.transform = CGAffineTransformMakeScale(scale, scale)
         audioLength.transform = CGAffineTransformMakeScale(scale, scale)
         
