@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, AINetError) {
     AINetErrorFormat,                         // 报文格式错误
     AINetErrorBadNet,                         // 网络请求失败
     AINetErrorCancelled,                      // 网络请求取消
+    AINetErrorFailed,
 };
 
 typedef void(^net_success_block)(id responseObject);

@@ -101,10 +101,10 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         
         
         AIRequirementHandler.defaultHandler().addNewTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
-            wf!.shouldDismissSelf()
+            wf!.shouldDismissSelf(true)
             
             }) { (errType, errDes) -> Void in
-                wf!.shouldDismissSelf()
+                wf!.shouldDismissSelf(false)
         }
         
 
@@ -112,9 +112,13 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
 	}
     
     
-    func shouldDismissSelf () {
+    func shouldDismissSelf (didSuccess : Bool) {
         self.view.dismissLoading()
-        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        
+        if didSuccess {
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+        }
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
