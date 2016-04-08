@@ -171,15 +171,12 @@ class AIRequireContentViewController: UIViewController {
         if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
             
             if let cell = cellWrapperModel.cellContent {
-                
-                // referesh UI.
-                Async.main({ () -> Void in
+                Async.main{(
                     
-                    let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-                    let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
-                    imageView.image = img
-                    cell.setNeedsDisplay()
-                })
+                    // referesh UI.
+                    self.settingsSelected(cell, cellModel: cellWrapperModel.cellmodel!)
+                    
+                    )}
             }
             
             /**
@@ -188,7 +185,25 @@ class AIRequireContentViewController: UIViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":cellWrapperModel])
         }
         
-        
+    }
+    
+    
+    func settingsSelected(cell: AIRACContentCell,cellModel: AIContentCellModel){
+        var imageName = ""
+        if let type = cellModel.type {
+            if type == 2 {
+                imageName = "racselectedbg"
+            }else if type == 1 {
+                imageName = "ai_rac_bg_normal_popSelect"
+            }
+        }
+        if imageName.length > 0 {
+            let imageView = cell.contentView.viewWithTag(18) as! UIImageView
+            let img = UIImage(named: imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
+            imageView.image = img
+            cell.setNeedsDisplay()
+        }
+
     }
     
     
@@ -612,12 +627,9 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             
             self.view.hideLoading()
             
-            let imageView = cell.contentView.viewWithTag(18) as! UIImageView
-            let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
-            imageView.image = img
-            cell.setSlideState(.Center, animated: true)
-            cell.setNeedsDisplay()
+            self.settingsSelected(cell as! AIRACContentCell, cellModel: cellModel)
             
+            cell.setSlideState(SESlideTableViewCellSlideState.Center, animated: true)
             
             let obj = AIWrapperAIContentModelClass(theModel: cellModel)
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])

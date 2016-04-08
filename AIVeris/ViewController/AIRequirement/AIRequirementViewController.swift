@@ -91,6 +91,8 @@ internal class AIRequirementViewController : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestDataInterface", name: AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil)
+        
         // Init Top View.
         
         userInfoView = OrderAndBuyerInfoView.createInstance()

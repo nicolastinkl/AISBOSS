@@ -40,9 +40,9 @@ class AIRequirementHandler: NSObject {
     func queryBusinessInfo(proposalID : NSNumber, customID : NSNumber, orderID : NSNumber, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         
         let message = AIMessage()
-//        var body  = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
+        let body  = ["data" : ["order_id" : orderID, "proposal_id" : proposalID, "customer_id" : customID], "desc":["data_mode" : "0", "digest" : ""]]
         
-        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
+//        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
         
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryBusinessInfo.description as String
@@ -191,20 +191,20 @@ class AIRequirementHandler: NSObject {
 
     func queryUnassignedRequirements(orderId : NSNumber, providerID : NSNumber, customID : NSNumber, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        var body : NSDictionary = ["data" : [
+        let body : NSDictionary = ["data" : [
             "custOrder_id" : orderId,
             "analyser_id" : providerID,
             "customer_id" : customID,
             "isHandled":true],
             "desc":["data_mode" : "0", "digest" : ""]]
-        
+       /*
         body   = ["data" : [
         "custOrder_id" : 100000029231,
         "analyser_id" : 1,
         "customer_id" : 1,
         "isHandled":true],
         "desc":["data_mode" : "0", "digest" : ""]]
-        
+        */
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryUnassignedRequirements.description as String
         
