@@ -89,7 +89,7 @@ internal class AIRequirementViewController : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
         
         // Init Top View.
         
@@ -229,7 +229,7 @@ internal class AIRequirementViewController : UIViewController {
                 
                 if let vc = tabAssignViewC {
                     let newvc = vc as! AIRequireContentViewController
-                    newvc.dataSource = self.notifyChangeAIContentCellModel
+                    //newvc.dataSource = self.notifyChangeAIContentCellModel
                     addSubViewController(newvc)
                     
                 }else{
@@ -237,7 +237,7 @@ internal class AIRequirementViewController : UIViewController {
                     viewController.editModel = true
                     viewController.orderPreModel = self.orderPreModel
                     tabAssignViewC = viewController
-                    viewController.dataSource = self.notifyChangeAIContentCellModel
+                    //viewController.dataSource = self.notifyChangeAIContentCellModel
                     addSubViewController(viewController)
                 }
                 rightContentView.subviews.first?.alpha = 1
