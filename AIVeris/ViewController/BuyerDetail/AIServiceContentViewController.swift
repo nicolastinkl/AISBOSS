@@ -208,11 +208,11 @@ internal class AIServiceContentViewController: UIViewController {
         message.body.addEntriesFromDictionary(["desc":["data_mode":"0","digest":""],"data":data])
         print(message.body)
         message.url = AIApplication.AIApplicationServerURL.saveServiceParameters.description
-        self.view.showLoadingWithMessage("")
+        view.showLoading()
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            self.view.dismissLoading()
+            self.view.hideLoading()
             }, fail: { [weak self] (ErrorType : AINetError, error : String!) -> Void in
-                self?.view.dismissLoading()
+                self?.view.hideLoading()
                 self?.serviceContentModel?.service_id = serviceid
                 if let c = completion {
                     c()
@@ -1065,7 +1065,7 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         
         let noteView = cell as? AIWishMessageView
         self.view.userInteractionEnabled = false
-        self.view.showLoadingWithMessage("")
+        self.view.showLoading()
         let message = AIMessageWrapper.deleteWishNoteWithWishID((noteView?.wishID)!, noteID: (noteView?.noteID)!)
         message.url = AIApplication.AIApplicationServerURL.delWishListNote.description
         
@@ -1073,10 +1073,10 @@ extension AIServiceContentViewController : AIDeleteActionDelegate {
         AINetEngine.defaultEngine().postMessage(message, success: { (response ) -> Void in
             print(response)
             weakSelf!.deleteAnimation(cell)
-            weakSelf!.view.dismissLoading()
+            weakSelf!.view.hideLoading()
             weakSelf!.view.userInteractionEnabled = true
             }, fail: { (errorType : AINetError, errorStr:String!) -> Void in
-                weakSelf!.view.dismissLoading()
+                weakSelf!.view.hideLoading()
                 weakSelf!.view.userInteractionEnabled = true
                 AIAlertView().showInfo("AIAudioMessageView.info".localized, subTitle:"AIServiceContentViewController.wishDeleteError".localized , closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                 
@@ -1133,21 +1133,21 @@ extension AIServiceContentViewController : UITextViewDelegate {
             
             // add
             self.view.userInteractionEnabled = false
-            self.view.showLoadingWithMessage("")
+            view.showLoading()
             weak var weakSelf = self
             let message = AIMessageWrapper.addWishNoteWithWishID(currentDatasource?.wish_list.wish_id ?? 0, type: "Text", content: newText.content.text, duration: 0)
             message.url = AIApplication.AIApplicationServerURL.addWishListNote.description      
             newText.wishID = currentDatasource?.wish_list.wish_id ?? 0
             AIRemoteRequestQueue().asyncRequset(newText, message: message, successRequst: { (subView,response) -> Void in
                 if let eView = subView as? AITextMessageView {
-                    weakSelf!.view.dismissLoading()
+                    weakSelf!.view.hideLoading()
                     let NoteId = response["NoteId"] as? String ?? "0"
                     eView.noteID = Int(NoteId) ?? 0
                 }
                 weakSelf!.view.userInteractionEnabled = true
                 
                 }, fail: { (errorView, error) -> Void in
-                    weakSelf!.view.dismissLoading()
+                    weakSelf!.view.hideLoading()
                     AIAlertView().showInfo("AIErrorRetryView.NetError".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle: "AIAudioMessageView.close".localized, duration: 3)
                     weakSelf!.view.userInteractionEnabled = true
             })
@@ -1205,13 +1205,13 @@ extension AIServiceContentViewController:AIServiceParamViewDelegate {
         let message = AIMessage()
         message.body = paramView.priceRelatedParam(body)
         message.url = AIApplication.AIApplicationServerURL.findServicePrice.description
-        self.view.showLoadingWithMessage("")
+        self.view.showLoading()
         AINetEngine.defaultEngine().postMessage(message, success: {[weak self] (response) -> Void in
-            self?.view.dismissLoading()
+            self?.view.hideLoading()
                 paramView.modifyPrice(response)
             
             }, fail: {[weak self]  (ErrorType : AINetError, error : String!) -> Void in
-                self?.view.dismissLoading()
+                self?.view.hideLoading()
         })
     }
 }

@@ -88,7 +88,7 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
 
         // save here
-        view.showLoadingWithMessage("请稍候...")
+        view.showLoading()
         weak var wf = self
         
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
@@ -100,7 +100,7 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         
         
         
-        AIRequirementHandler.defaultHandler().addNewTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
+        AIRequirementHandler.defaultHandler().addNewTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", arrangement_id: (dependOnTask?.arrageID)!, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
             
             }) { (errType, errDes) -> Void in
@@ -113,7 +113,7 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
     
     
     func shouldDismissSelf (didSuccess : Bool) {
-        self.view.dismissLoading()
+        view.hideLoading()
         
         if didSuccess {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
@@ -191,7 +191,7 @@ extension AITaskEditViewController {
     func fakeServices() -> [DependOnService] {
 		
         
-        self.view.showLoadingWithMessage("请稍候...")
+        view.showLoading()
         
         var services = [DependOnService]()
         
@@ -201,7 +201,7 @@ extension AITaskEditViewController {
             for i in 0 ... roles.count - 1 {
                 
                 let role = roles[i] as AIServiceProvider
-                
+                print("insID" + "\(role.relservice_instance_id)")
                 AIRequirementHandler.defaultHandler().queryTaskList("\(role.relservice_instance_id)", serviceIcon: role.provider_portrait_url, success: { (task) -> Void in
                     services.append(task)
                     postCount++
@@ -215,7 +215,7 @@ extension AITaskEditViewController {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
         }
         
-        self.view.dismissLoading()
+        view.hideLoading()
 
 		return services
 	}

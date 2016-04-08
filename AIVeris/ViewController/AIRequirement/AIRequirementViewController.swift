@@ -127,7 +127,7 @@ internal class AIRequirementViewController : UIViewController {
      */
     func requestDataInterface() {
         
-        self.view.showLoadingWithMessage("")
+        view.showLoading()
         
         let handler = AIRequirementHandler.defaultHandler()
         
@@ -136,7 +136,7 @@ internal class AIRequirementViewController : UIViewController {
             // Reload 
             self.bussinessModel = businessInfo
             
-            self.view.dismissLoading()
+            self.view.hideLoading()
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
 
@@ -154,7 +154,7 @@ internal class AIRequirementViewController : UIViewController {
 
             
             }) { (errType, errDes) -> Void in
-                self.view.dismissLoading()
+                self.view.hideLoading()
                 self.springAnimationSpale(0)
                 AIAlertView().showError("error", subTitle: "网络请求失败")
         }

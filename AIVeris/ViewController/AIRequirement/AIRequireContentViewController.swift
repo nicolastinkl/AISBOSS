@@ -669,10 +669,11 @@ extension AIRequireContentViewController {
             
             if let model = cellWrapperModel.cellmodel {
                 
-                self.view.showLoadingWithMessage("请稍候...")
+                view.showLoading()
+                
                 AIRequirementHandler.defaultHandler().queryServiceDefaultTags(model.childServices?.first?.service_id ?? "", success: { (tagsModel) -> Void in
                     
-                    wf!.view.dismissLoading()
+                    wf!.view.hideLoading()
                     
                     // parse data
                     let defaultTags : [RequirementTag] = tagsModel.tagList!
@@ -692,7 +693,7 @@ extension AIRequireContentViewController {
                     wf!.presentViewController(vc, animated: true, completion: nil)
                     
                     }, fail: { (errType, errDes) -> Void in
-                        wf!.view.dismissLoading()
+                        wf!.view.hideLoading()
             
                         // show TagViewController
                         let vc = AITaskTagViewController()

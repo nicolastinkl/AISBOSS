@@ -122,7 +122,7 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
         
         
         // save here
-        view.showLoadingWithMessage("请稍候...")
+        view.showLoading()
         weak var wf = self
         
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
@@ -145,7 +145,7 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
 	}
     
     func shouldDismissSelf (didSuccess : Bool) {
-        self.view.dismissLoading()
+        view.hideLoading()
         
         if didSuccess {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
