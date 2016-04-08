@@ -170,6 +170,9 @@ struct AIApplication{
         
         //关闭弹出框UI的通知
         static let AIRequirementClosePopupNotificationName = "AIRequirementClosePopupNotificationName"
+        
+        //更新查询需求分析数据的通知
+        static let AIRequirementReloadDataNotificationName = "AIRequirementReloadDataNotificationName"
     }
     
     // MARK: System theme's color

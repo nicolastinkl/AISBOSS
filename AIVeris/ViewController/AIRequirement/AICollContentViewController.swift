@@ -227,23 +227,13 @@ class AICollContentViewController: UIViewController {
         AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
         timeLineMaskView.hidden = false
         changeLaunchButtonStatus(false)
+        //发通知更新数据
+        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
     }
     
     // MARK: - 加载数据
     func loadData(){
         //权限列表
-//        let limits1 = [AILimitModel(limitId: "1", limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: "1", limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: "1", limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: "1", limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
-//        let limits2 = [AILimitModel(limitId: "1", limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: "1", limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
-//        let limits3 = [AILimitModel(limitId: "1", limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false),AILimitModel(limitId: "1", limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: false)]
-//        let limits4 = [AILimitModel(limitId: "1", limitName: "Direct contact with consumbers", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct access with consumber address", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Initiate an authorization request directly to the customer", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true),AILimitModel(limitId: "1", limitName: "Direct modification of service execution strategies", limitIcon: "http://171.221.254.231:3000/upload/shoppingcart/EFETwRsHI90Vi.png", hasLimit: true)]
-        //服务实例
-//        let model1 = AssignServiceInstModel(serviceInstId: 900001001001, serviceName: "Pregnancy Grocery", ratingLevel: 4, serviceInstStatus: .Init, limits: limits1)
-//        let model2 = AssignServiceInstModel(serviceInstId: 900001001002, serviceName: "Household Cleaner", ratingLevel: 5, serviceInstStatus: .Assigned,limits: limits2)
-//        let model3 = AssignServiceInstModel(serviceInstId: 900001001003, serviceName: "Paramedic Freelancer", ratingLevel: 6, serviceInstStatus: .Assigned,limits: limits3)
-//        let model4 = AssignServiceInstModel(serviceInstId: 900001001004, serviceName: "Hospital Appointment Booking", ratingLevel: 8, serviceInstStatus: .Init,limits: limits4)
-//        assginServiceInsts = [model1]
-        
-        //allServiceInsts = [900001001001:model1,900001001002:model1,900001001003:model2,900001001004:model3,4:model4,5:model1,6:model2,7:model3]
         if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
             if let assignServiceInstModels = bussinessModel.assignServiceInstModels{
                 allServiceInsts = Dictionary<Int,AssignServiceInstModel>()
@@ -350,6 +340,8 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
             }
             AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!,serviceInstId: NSNumber(integer: serviceInstId), rightsList: permissions, success: { () -> Void in
                     print(" save permissions success! ")
+                //发通知更新数据
+                NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
                 }, fail: { (errType, errDes) -> Void in
                     print("\(errDes)")
             })
