@@ -134,11 +134,17 @@ class AICollContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchServiceInst:", name: AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: nil)
         //弹出框的关闭通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "closePopupWindow:", name: AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
+        //数据加载完成通知， 如果有重新请求数据，就要刷新界面
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadAllData:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
     }
     
     func notifySwitchServiceInst(notify: NSNotification){
         let serviceInstIds = notify.object as! Array<Int>
         print(serviceInstIds)
+        reloadServiceInstView(serviceInstIds)
+    }
+    
+    func reloadServiceInstView(serviceInstIds : Array<Int>){
         //先清空服务实例列表，再从通知过来的id中筛选
         assginServiceInsts.removeAll()
         for serviceInstId in serviceInstIds{
@@ -162,9 +168,24 @@ class AICollContentViewController: UIViewController {
         //确定是否需要遮罩
         timeLineMaskView.hidden = !needLaunch
     }
+    
     //关闭弹出框时要继续动画
     func closePopupWindow(notify : NSNotification){
         serviceInstView.switchAnimationState(true)
+    }
+    
+    func reloadAllData(notify : NSNotification){
+        //权限列表
+        if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
+            if let assignServiceInstModels = bussinessModel.assignServiceInstModels{
+                allServiceInsts = Dictionary<Int,AssignServiceInstModel>()
+                for assignServiceInstModel in assignServiceInstModels{
+                    allServiceInsts![assignServiceInstModel.serviceInstId] = assignServiceInstModel
+                }
+            }
+            
+        }
+        reloadServiceInstView([])
     }
     
     private func changeLaunchButtonStatus(shouldDisplay : Bool){
