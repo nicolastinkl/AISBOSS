@@ -69,7 +69,7 @@ class DependOnNodePickerViewController: UIViewController {
 		if let selectedTask = selectedTask {
 			for (i, service) in services.enumerate() {
 				let t = service.tasks.filter({ (task) -> Bool in
-					return task.id == selectedTask.id
+					return task.id == selectedTask.id && task.arrageID == selectedTask.arrageID
 				}).first
 				if t != nil {
 					var s = services[i]

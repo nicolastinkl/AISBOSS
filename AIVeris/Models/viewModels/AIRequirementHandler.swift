@@ -276,6 +276,10 @@ class AIRequirementHandler: NSObject {
                 let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
                 success(unassignedNum: unassignedNum)
             }
+            else
+            {
+                fail(errType: AINetError.Failed, errDes: "save error")
+            }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
@@ -383,6 +387,10 @@ class AIRequirementHandler: NSObject {
             if code == NSNumber(integer: 1) {
                 let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
                 success(unassignedNum: unassignedNum)
+            }
+            else
+            {
+                fail(errType: AINetError.Failed, errDes: "save error")
             }
             
             }) { (error: AINetError, errorDes: String!) -> Void in
@@ -533,9 +541,10 @@ class AIRequirementHandler: NSObject {
                         
                         let date : NSNumber = node["timestamp"] as! NSNumber
                         let insID : String = "\(node["service_inst_id"])"
+                        let id : String =  node["task_node_id"] as! String
                         let arrageID : String = node["arrangement_id"] as! String
                         
-                        let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: insID, arrageID : arrageID)
+                        let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id:id, insID: insID, arrageID : arrageID)
                         
                         task.tasks.append(taskNode)
                         task.desc = node["node_summary"] as! String
