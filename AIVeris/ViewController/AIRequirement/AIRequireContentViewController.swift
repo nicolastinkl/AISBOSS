@@ -357,7 +357,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			make.trailing.equalTo(-14)
 			make.height.equalTo(22)
 		}
-        audio1.transform = CGAffineTransformMakeScale(0.6, 0.6)
+        audio1.smallMode()
         
 		if lengthAudio > 0 {
 			audio1.alpha = 1
