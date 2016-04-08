@@ -94,7 +94,7 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         let customID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
 
-        AIRequirementHandler.defaultHandler().addNewTask((cellWrapperModel?.comp_user_id)!, customer_id: customID, order_id: (cellWrapperModel?.order_id)!, requirement_id: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!, requirement_type: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_icon)!, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
+        AIRequirementHandler.defaultHandler().addNewTask((cellWrapperModel?.comp_user_id)!, customer_id: customID, order_id: (cellWrapperModel?.order_id)!, requirement_id: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!, requirement_type: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
             wf!.view.dismissLoading()
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
             

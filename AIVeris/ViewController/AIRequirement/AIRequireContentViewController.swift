@@ -683,7 +683,7 @@ extension AIRequireContentViewController {
                 var requires = [AIRequirement]()
                 let require = AIRequirement()
                 require.rid = model.childServices?.first?.requirement_id?.toInt()
-                //require.type = model.childServices?.first?.type
+                require.type = model.childServices?.first?.requirement_type
                 require.desc = model.childServices?.first?.text
                 require.icon = model.childServices?.first?.requirement_icon
                 
