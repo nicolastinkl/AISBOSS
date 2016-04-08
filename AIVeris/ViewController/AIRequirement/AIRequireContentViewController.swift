@@ -689,7 +689,6 @@ extension AIRequireContentViewController {
                     // show TagViewController
                     let vc = AITaskTagViewController()
                     vc.tags = tags
-                    vc.requirementID = tagsModel.requirementID!
                     wf!.presentViewController(vc, animated: true, completion: nil)
                     
                     }, fail: { (errType, errDes) -> Void in
