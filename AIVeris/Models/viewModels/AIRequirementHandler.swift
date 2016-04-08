@@ -102,7 +102,6 @@ class AIRequirementHandler: NSObject {
         
         weak var weakSelf = self
         
-        
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
