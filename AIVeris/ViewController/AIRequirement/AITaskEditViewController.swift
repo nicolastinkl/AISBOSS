@@ -91,7 +91,10 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         view.showLoadingWithMessage("请稍候...")
         weak var wf = self
         
-        AIRequirementHandler.defaultHandler().addNewTask(1, customID: 1, orderID: 1, requirementID: 1, requirementType: "", toType: "", requirementList: [], success: { (unassignedNum) -> Void in
+        let customID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+
+        AIRequirementHandler.defaultHandler().addNewTask((cellWrapperModel?.comp_user_id)!, customer_id: customID, order_id: (cellWrapperModel?.order_id)!, requirement_id: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!, requirement_type: (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_icon)!, analysis_type: "TaskNode", task_desc: remark!, offset_time: "\(dependOnTask?.date.timeIntervalSince1970)", node_id: "\(dependOnTask?.id)", node_inst_id: (dependOnTask?.insID)!, success: { (unassignedNum) -> Void in
             wf!.view.dismissLoading()
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
             
@@ -101,6 +104,8 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
             }) { (errType, errDes) -> Void in
                 wf!.view.dismissLoading()
         }
+        
+
         
 	}
 }
@@ -202,8 +207,5 @@ extension AITaskEditViewController {
 		return services
 	}
 	
-	func randomTask() -> TaskNode {
-		let task = TaskNode(date: NSDate(timeIntervalSinceNow: Double(random() % 24 * 3600)), desc: "Task descriptionTask descriptionTask description", id: random() % 100000)
-		return task
-	}
+
 }
