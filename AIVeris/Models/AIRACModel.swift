@@ -69,12 +69,14 @@ internal struct AIContentCellModel : JSONJoy{
        
         if let category = category {
             
-            if category == "tags" || category == "notes" || category == "task" {
+            if category == "tags" || category == "task" {
                 type = 2
             }else if category == "message" {
                 type = 1
             }else if category == "userData" {
                 type = 3
+            }else if category == "notes"{
+                type = 1
             }
         }
         typeName = decoder["requirement_title"].string ?? decoder["block_title"].string ?? ""
@@ -101,7 +103,7 @@ internal struct AIContentCellModel : JSONJoy{
  */
 internal struct AIChildContentCellModel : JSONJoy{
     
-    var backImgType: Int?
+    var backImgType: Int? // tags ? notes ? message ？ data?
     var type : Int?  //text or audio
     var audioUrl : String?
     var audioLengh : Int?
@@ -160,6 +162,15 @@ internal struct AIChildContentCellModel : JSONJoy{
                     holderUrl = "\(holderUrl),\(newrequirement_icon)"
                 }
 
+                
+                if let title = title{
+                    // A Audio message.
+                    if  title.containsString(".aac") {
+                        audioUrl = title
+                        audioLengh = 1
+                    }
+                    
+                }
                 
             }
         }

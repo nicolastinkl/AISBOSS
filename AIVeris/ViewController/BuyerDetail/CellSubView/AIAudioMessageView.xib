@@ -81,6 +81,7 @@
                 <constraint firstItem="mUv-jG-rsx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="Fmm-OP-LxN"/>
                 <constraint firstItem="uS6-8Z-Mna" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="38" id="G68-bU-9n7"/>
                 <constraint firstItem="yiH-fW-3EU" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="40" id="GWD-uA-qkL"/>
+                <constraint firstItem="typ-Nl-fJ8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HDv-45-0vq"/>
                 <constraint firstItem="yiH-fW-3EU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="I6Z-Ln-FPi"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="Ny8-Ua-fIo"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="top" secondItem="typ-Nl-fJ8" secondAttribute="bottom" constant="-22" id="QTi-mL-Da8"/>
@@ -89,6 +90,7 @@
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="iKs-I3-MT3"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="leading" id="mud-u2-Izv"/>
                 <constraint firstItem="mUv-jG-rsx" firstAttribute="leading" secondItem="GVU-D7-HP9" secondAttribute="trailing" constant="4" id="obK-vJ-3nj"/>
+                <constraint firstItem="mUv-jG-rsx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="p2m-Rk-Wiz"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="top" secondItem="GVU-D7-HP9" secondAttribute="top" id="s0L-RZ-PDg"/>
                 <constraint firstItem="GVU-D7-HP9" firstAttribute="leading" secondItem="typ-Nl-fJ8" secondAttribute="trailing" constant="-21" id="tW4-eN-SYD"/>
                 <constraint firstItem="UBl-GC-vKK" firstAttribute="width" secondItem="GVU-D7-HP9" secondAttribute="width" id="xKF-4b-d8D"/>
@@ -98,12 +100,15 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="QTi-mL-Da8"/>
                     <exclude reference="Vqq-i6-cc7"/>
                     <exclude reference="fZx-b7-BKx"/>
+                    <exclude reference="Fmm-OP-LxN"/>
                 </mask>
             </variation>
             <connections>
                 <outlet property="audioBg" destination="GVU-D7-HP9" id="sEc-cq-mKS"/>
+                <outlet property="audioBgConstrain" destination="E07-Mm-oha" id="7Wx-c8-0oN"/>
                 <outlet property="audioGifImageView" destination="typ-Nl-fJ8" id="GiI-Po-2Qb"/>
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
                 <outlet property="errorButton" destination="uS6-8Z-Mna" id="fgF-nY-nYb"/>
@@ -111,7 +116,7 @@
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
                 <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-959" y="568"/>
+            <point key="canvasLocation" x="-1378" y="547"/>
         </view>
     </objects>
     <resources>
