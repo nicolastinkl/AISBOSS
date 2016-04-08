@@ -707,7 +707,23 @@ extension AIRequireContentViewController {
                 let vc = AITaskNoteEditViewController()
                 vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
                 // pass AIRequirementItem into vc
-                //vc.requirementItem = AIRequirementItem
+                
+                let item = AIRequirementItem()
+                
+                var requires = [AIRequirement]()
+                let require = AIRequirement()
+                require.rid = model.childServices?.first?.requirement_id?.toInt()
+                require.type = model.childServices?.first?.requirement_type
+                require.desc = model.childServices?.first?.text
+                require.icon = model.childServices?.first?.requirement_icon
+                
+                requires.append(require)
+                
+                item.requirement = requires
+                item.service_provider_icons = [(model.childServices?.first?.childServerIconArray?.first?.iconUrl)!]
+                
+                
+                vc.requirementItem = item
                 presentViewController(vc, animated: true, completion: nil)
             }
             

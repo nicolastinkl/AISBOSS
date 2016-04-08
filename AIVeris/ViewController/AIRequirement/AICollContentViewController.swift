@@ -27,6 +27,7 @@ class AICollContentViewController: UIViewController {
     var timeLineTable : UITableView!
     var launchButton : UIButton!
     var launchButtonBgView : UIView!
+    var timeLineMaskView : UIView!
     
     //size constants
     let LaunchButtonWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(738)
@@ -44,6 +45,7 @@ class AICollContentViewController: UIViewController {
         loadData()
         buildServiceInstView()
         initTable()
+        buildTimelineMaskView()
         buildLaunchView()
         handleNotification()
     }
@@ -78,6 +80,13 @@ class AICollContentViewController: UIViewController {
         timeLineTable.dataSource = self
         timeLineTable.separatorStyle = UITableViewCellSeparatorStyle.None
         timeLineTable.backgroundColor = UIColor.clearColor()
+    }
+    
+    func buildTimelineMaskView(){
+        timeLineMaskView = UIView()
+        timeLineMaskView.backgroundColor = UIColor(hex: "#1E2463")
+        timeLineMaskView.alpha = 0.5
+        view.addSubview(timeLineMaskView)
     }
     
     func buildLaunchView(){
@@ -117,6 +126,7 @@ class AICollContentViewController: UIViewController {
         tableFrame.origin.y = CGRectGetMaxY(buttonFrame) + buttonPadding
         tableFrame.size.height = view.bounds.height - CGRectGetMaxY(buttonFrame)
         timeLineTable.frame = tableFrame
+        timeLineMaskView.frame = tableFrame
     }
     
     // MARK: - 事件处理
@@ -147,22 +157,18 @@ class AICollContentViewController: UIViewController {
             
         }
         serviceInstView.loadData(assginServiceInsts)
-        changeLaunchButtonStatus()
+        let needLaunch = judgeNeedLaunch()
+        changeLaunchButtonStatus(needLaunch)
+        //确定是否需要遮罩
+        timeLineMaskView.hidden = !needLaunch
     }
     //关闭弹出框时要继续动画
     func closePopupWindow(notify : NSNotification){
         serviceInstView.switchAnimationState(true)
     }
     
-    private func changeLaunchButtonStatus(){
-        var needLaunch = false
-        for assignServiceInst in assginServiceInsts {
-            if assignServiceInst.serviceInstStatus == ServiceInstStatus.Init{
-                needLaunch = true
-                break
-            }
-        }
-        if needLaunch {
+    private func changeLaunchButtonStatus(shouldDisplay : Bool){
+        if shouldDisplay {
             if launchButton.alpha == 0{
                 SpringAnimation.spring(0.25, animations: { () -> Void in
                     self.launchButtonBgView.frame.size.height = self.LaunchButtonBgHeight
@@ -187,6 +193,17 @@ class AICollContentViewController: UIViewController {
         }
     }
     
+    private func judgeNeedLaunch() -> Bool{
+        var needLaunch = false
+        for assignServiceInst in assginServiceInsts {
+            if assignServiceInst.serviceInstStatus == ServiceInstStatus.Init{
+                needLaunch = true
+                break
+            }
+        }
+        return needLaunch
+    }
+    
     func launchAction(target : AnyObject){
         var submitServiceInstIds = [NSDictionary]()
         for assignServiceInst in assginServiceInsts{
@@ -198,10 +215,18 @@ class AICollContentViewController: UIViewController {
             }
         }
         AIRequirementHandler.defaultHandler().assginTask(submitServiceInstIds, success: { () -> Void in
-            AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+            self.finishLaunchAction()
             }) { (errType, errDes) -> Void in
                 print("assignTask faild, errorInfo: \(errDes)")
         }
+    }
+    
+    //完成派单的操作1.取消时间线的遮罩，2.隐藏派单按钮，3.发更新网络请求数据的通知
+    
+    func finishLaunchAction(){
+        AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
+        timeLineMaskView.hidden = false
+        changeLaunchButtonStatus(false)
     }
     
     // MARK: - 加载数据

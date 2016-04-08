@@ -24,6 +24,7 @@ struct TaskNode: Equatable {
 	var date: NSDate
 	var desc: String
 	var id: Int
+    var insID : String
 }
 
 struct DependOnService: Equatable {
