@@ -375,7 +375,7 @@ struct AIApplication{
             case .assginTask : return AIApplication.KURL_ReleaseURL + "/submitWorkOrder"
             case .queryServiceDefaultTags : return AIApplication.KURL_ReleaseURL + "/queryDistributionTagList"
             case .distributeRequirement : return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
-            case .queryTaskList: return AIApplication.KURL_ReleaseURL + "/queryTimeLineList"
+            case .queryTaskList: return AIApplication.KURL_ReleaseURL + "/queryTaskNodeList"
 
 
             }

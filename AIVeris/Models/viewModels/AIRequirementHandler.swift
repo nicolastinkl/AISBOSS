@@ -523,7 +523,7 @@ class AIRequirementHandler: NSObject {
             var task = DependOnService(id: serviceInstanceID, icon: serviceIcon, desc: "", tasks: [TaskNode](), selected: false)
             
             
-            if let list = response["task_node_list"] as? [NSDictionary] {
+            if let list = response["time_line_list"] as? [NSDictionary] {
                 for i in 0 ... list.count - 1 {
                     
                     let node : NSDictionary = list[i]
@@ -537,12 +537,10 @@ class AIRequirementHandler: NSObject {
                     
                 }
                 
-                success(task: task)
+                
             }
-            else {
-                fail(errType: AINetError.Failed, errDes: "bad data")
-            }
-        
+
+            success(task: task)
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
