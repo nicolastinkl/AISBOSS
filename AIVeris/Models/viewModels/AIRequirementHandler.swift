@@ -94,16 +94,33 @@ class AIRequirementHandler: NSObject {
     orderID     	  服务ID
 
     */
-    func queryOriginalRequirements(customID : NSNumber, orderID : NSNumber, success : (requirements : AIOriginalRequirementsList)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func queryOriginalRequirements(customID : Int, orderID : Int, success : (requirements : [AIContentCellModel])-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         let body : NSDictionary = ["data" : ["customer_id" : customID, "customerOrderId" : orderID], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.queryOriginalRequirements.description as String
         
-        weak var weakSelf = self
+        //weak var weakSelf = self
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
+            if let responseJSON: AnyObject = response{
+                
+                let dic = responseJSON as! [NSString : AnyObject]
+                let jsondata = JSONDecoder(dic)
+                var arrayContent = Array<AIContentCellModel>()
+                
+                for dicData in jsondata["requirement_list"].array ?? [] {
+                    let dataContent = AIContentCellModel(dicData)
+                    arrayContent.append(dataContent)
+                }
+                success(requirements: arrayContent)
+                
+            }else{
+                fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
+            }
+            
+            /*
             do {
                 let dic = response as! [NSObject : AnyObject]
                 let originalRequirements = try AIOriginalRequirementsList(dictionary: dic)
@@ -113,7 +130,7 @@ class AIRequirementHandler: NSObject {
             } catch {
                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
             }
-            
+            */
             
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
@@ -154,8 +171,9 @@ class AIRequirementHandler: NSObject {
 //                let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
 //                success(unassignedNum: unassignedNum)
                 success(unassignedNum: NSNumber(integer: 1))
+            }else{
+                success(unassignedNum: NSNumber(integer: 0))
             }
-            
 
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
@@ -208,7 +226,6 @@ class AIRequirementHandler: NSObject {
             }else{
                  fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
             }
-            
             
             /*
             do {

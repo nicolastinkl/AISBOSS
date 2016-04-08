@@ -56,7 +56,6 @@ internal struct AIContentCellModel : JSONJoy{
     var typeImageUrl : String?
     var childServices : [AIChildContentCellModel]?
     var category : String?
-
     
     init() {
         id = 1
@@ -64,28 +63,29 @@ internal struct AIContentCellModel : JSONJoy{
     
     init(_ decoder: JSONDecoder) {
         
-        category = decoder["requirement_category"].string ?? ""
-        let requirement_category = decoder["requirement_category"].string ?? ""
-        id = 1
-
-        if requirement_category == "tags" || requirement_category == "notes" || requirement_category == "task" {
-            type = 2
-        }else if requirement_category == "message" {
-            type = 1
-        }else if requirement_category == "data" {
-            type = 3
-        }else{
-            type = 2
+        category = decoder["requirement_category"].string ?? decoder["block_category"].string
+         ?? ""
+        id = random()/100000000 // identity the cell Cache.
+       
+        if let category = category {
+            
+            if category == "tags" || category == "notes" || category == "task" {
+                type = 2
+            }else if category == "message" {
+                type = 1
+            }else if category == "userData" {
+                type = 3
+            }
         }
-        
-        
-        typeName = decoder["requirement_title"].string ?? ""
-        typeImageUrl = decoder["requirement_category_icon"].string ?? ""
+        typeName = decoder["requirement_title"].string ?? decoder["block_title"].string ?? ""
+        typeImageUrl = decoder["requirement_category_icon"].string ?? decoder["block_icon"].string ?? ""
         
         if let addrs = decoder["requirements"].array {
             childServices = Array<AIChildContentCellModel>()
             for addrDecoder in addrs {
-                childServices?.append(AIChildContentCellModel(addrDecoder))
+                var childModel = AIChildContentCellModel(addrDecoder)
+                childModel.backImgType = type
+                childServices?.append(childModel)
             }
         }
         
@@ -100,13 +100,14 @@ internal struct AIContentCellModel : JSONJoy{
  *  内容cell 数据 Model
  */
 internal struct AIChildContentCellModel : JSONJoy{
-    var id: Int?
+    
+    var backImgType: Int?
     var type : Int?  //text or audio
     var audioUrl : String?
     var audioLengh : Int?
     var bgImageUrl : String?
-    var text : String?      //title
-    var content : String?   //content
+    var title : String?
+    var text : String?
     var childServerIconArray : [AIIconTagModel]?
     
     var leftActionImages : [String]?
@@ -118,39 +119,41 @@ internal struct AIChildContentCellModel : JSONJoy{
     var service_inst_id: String?
     var service_id: String?
     var requirement_type: String?
+    
     init() {
-        id = 1
+        
     }
     
     init(_ decoder: JSONDecoder) {
         
         var holderString = ""
         var holderUrl = ""
+        var childServerIcon = ""
         if let requirement = decoder["requirement"].array {
             for requirementAddrDecoder in requirement {
-                requirement_id = "\(requirementAddrDecoder["requirement_id"].integer ?? 0)"
+                requirement_id = "\(requirementAddrDecoder["requirement_id"].integer ?? requirementAddrDecoder["id"].integer  ?? 0)"
                 wish_result_id = "\(requirementAddrDecoder["wish_result_id"].integer ?? 0)"
-                service_inst_id = "\(requirementAddrDecoder["service_inst_id"].integer ?? 0)"
+                service_inst_id = "\(requirementAddrDecoder["service_instance_id"].integer ?? 0)"
                 service_id = "\(requirementAddrDecoder["service_id"].integer ?? 0)"
                 
-                let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
-
+                let desc = requirementAddrDecoder["requirement_desc"].string ?? requirementAddrDecoder["desc"].string ?? ""
+                 title = requirementAddrDecoder["title"].string ?? ""
                 if holderString == "" {
                     holderString = "\(desc)"
                 }else{
                     holderString = "\(holderString)\n\(desc)"
                 }
                 
-                let typeName = requirementAddrDecoder["requirement_type"].string ?? ""
+                let typeName = requirementAddrDecoder["requirement_type"].string ?? requirementAddrDecoder["type"].string ?? ""
                 requirement_type =  typeName
-                if typeName == "Text" {
+                if typeName == "Text" || typeName == "text" {
                     type = 2
                 }else{
                     type = 1
                 }
                 
                 let newrequirement_icon = requirementAddrDecoder["requirement_icon"].string ?? ""
-                
+                childServerIcon = requirementAddrDecoder["service_icon"].string ?? ""
                 if holderUrl == "" {
                     holderUrl = "\(newrequirement_icon)"
                 }else{
@@ -162,9 +165,9 @@ internal struct AIChildContentCellModel : JSONJoy{
         }
         
         text = holderString
+        
         requirement_icon = holderUrl
 
-        
         if let icons = decoder["service_provider_icons"].array {
             childServerIconArray = Array<AIIconTagModel>()
             for addrDecoder in icons {
@@ -173,6 +176,11 @@ internal struct AIChildContentCellModel : JSONJoy{
                 icontag.id =  addrDecoder["id"].integer ?? 0
                 childServerIconArray?.append(icontag)
             }
+        }else{
+            childServerIconArray = Array<AIIconTagModel>()
+            var icontag = AIIconTagModel()
+            icontag.iconUrl = childServerIcon
+            childServerIconArray?.append(icontag)
         }
         
         

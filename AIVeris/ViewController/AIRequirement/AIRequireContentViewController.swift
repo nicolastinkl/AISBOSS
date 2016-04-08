@@ -73,14 +73,10 @@ class AIRequireContentViewController: UIViewController {
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
 
         tableview.addHeaderWithCallback { () -> Void in
-
-            if self.editModel == false {
+            if self.editModel == true {
                 self.requestData()
             }else{
-                Async.main { () -> Void in
-                    self.tableview.reloadData()
-                    self.tableview.headerEndRefreshing()
-                }
+                self.requestDataWithOriginalRequirements()
             }
         }
         
@@ -99,18 +95,17 @@ class AIRequireContentViewController: UIViewController {
         super.viewDidAppear(animated)
         
         if editModel == true {
-            self.tableview.reloadData()
+            self.startingRequest()
         }
     }
     
     func startingRequest(){
         // requets data:
         tableview.headerBeginRefreshing()
-        
     }
     
     /**
-      Request Data:
+      Request Data: queryUnDistributeRequirementList
      */
     func requestData(){
         
@@ -136,6 +131,33 @@ class AIRequireContentViewController: UIViewController {
             }
         }
         
+    }
+    
+    /**
+     Request Data: queryUnDistributeRequirementList
+     */
+    func requestDataWithOriginalRequirements(){
+        let handler = AIRequirementHandler.defaultHandler()
+        
+        let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+        if let baseModel = baseModel {
+            
+            let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+            handler.queryOriginalRequirements(customID, orderID: AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0 , success: { (requirements) -> Void in
+                
+                self.dataSource  = requirements
+                
+                // Reloading for the visible cells to layout correctly
+                Async.main { () -> Void in
+                    self.tableview.reloadData()
+                }
+                    self.tableview.headerEndRefreshing()
+                }, fail: { (errType, errDes) -> Void in
+                     self.tableview.headerEndRefreshing()
+            })
+            
+            }
+    
     }
     
     
@@ -207,8 +229,8 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			// Content Cell  Info.
 			let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
 			// Cache Cell...
-			let CELL_ID = "Cell_\(currentCellModel?.id ?? 0 )_\(contentModel.id ?? 0)"
-			
+			let CELL_ID = "Cell_\(currentCellModel?.id ?? 0 )_\(contentModel.requirement_id ?? "")"
+
 			var cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID) as? AIRACContentCell
 			if cell == nil {
 				cell = AIRACContentCell(style: .Default, reuseIdentifier: CELL_ID)
@@ -240,7 +262,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 	
 	func configureCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel: AIChildContentCellModel) {
 		var imageName = "ai_rac_bg_normal"
-		switch contentModel.type ?? 0 {
+		switch contentModel.backImgType ?? 0 {
 		case 1:
 			imageName = "ai_rac_bg_normal_pop"
 		case 2:
@@ -347,13 +369,12 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		let desLabel = UILabel()
 		desLabel.numberOfLines = 0
 		desLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-		desLabel.text = contentModel.content ?? ""
 		desLabel.font = AITools.myriadLightSemiCondensedWithSize(15)
 		desLabel.textColor = UIColor.whiteColor()
 		cell.contentView.addSubview(desLabel)
 		
 		desLabel.snp_makeConstraints(closure: { (make) -> Void in
-			make.top.equalTo(titleLabel.snp_bottom).offset(5)
+			make.top.equalTo(titleLabel.snp_bottom).offset(1)
 			make.leading.equalTo(14)
 			make.trailing.equalTo(-14)
 			make.height.lessThanOrEqualTo(20)
@@ -409,6 +430,18 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
 		cell.addLeftButtonWithImage(UIImage(named: "AIROAddTask"), backgroundColor: UIColor(hexString: "#1E2089"))
 		
+        if contentModel.backImgType! >= 3 {
+            desLabel.text = contentModel.title ?? ""
+            lineImageView.alpha = 0
+            titleLabel.textColor = UIColor(hexString: "#71340c", alpha: 0.80)
+            
+        }else{
+            desLabel.text = ""
+            lineImageView.alpha = 1
+            titleLabel.textColor = UIColor.whiteColor()
+        }
+        
+        
 		cell.setNeedsLayout()
 		cell.layoutIfNeeded()
 	}
@@ -565,17 +598,16 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         cellModel.childServices = nil
         cellModel.childServices = [contentModel]
         
-        
         let custID =  AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.customer.customer_id.integerValue ?? 0
         let orderID = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.order_id ?? ""
         
         let comp_user_id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? ""
         
         
-        self.view.showLoadingWithMessage("请稍候...")
+        self.view.showLoading()
         AIRequirementHandler.defaultHandler().saveAsTask(comp_user_id, customID: "\(custID)", orderID: orderID, requirementID: contentModel.requirement_id ?? "", requirementType: cellModel.category ?? "", toType: cellModel.category ?? "", requirementList: [contentModel.requirement_id ?? ""], success: { (unassignedNum) -> Void in
             
-            self.view.hideProgressViewLoading()            
+            self.view.hideLoading()
             
             let imageView = cell.contentView.viewWithTag(18) as! UIImageView
             let img = UIImage(named: "racselectedbg")?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10)
@@ -588,7 +620,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
             
             }) { (errType, errDes) -> Void in
-                self.view.hideProgressViewLoading()
+                self.view.hideLoading()
         }
         
         
@@ -614,8 +646,6 @@ extension AIRequireContentViewController {
 	@IBAction func addTagButtonPressed() {
         
         // Get the default tags
-        
-        
         
         //
         weak var wf = self
