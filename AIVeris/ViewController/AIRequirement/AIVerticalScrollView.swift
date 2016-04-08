@@ -12,7 +12,7 @@ import UIKit
 class AIVerticalScrollView: UIScrollView {
     
     var iconViews = [UIView]()
-   
+    
     var models : [IconServiceIntModel]?
     var myDelegate : VerticalScrollViewDelegate?
     //全选按钮

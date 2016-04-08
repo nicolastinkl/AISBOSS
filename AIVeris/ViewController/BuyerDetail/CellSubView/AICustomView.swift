@@ -43,7 +43,7 @@ internal class AICustomView : UIView{
 //            }
 //        }
 //        
-        self.setHeight(191 + CGFloat(models.count * 15))
+        self.setHeight(191 + CGFloat(models.count * 25))
         
         var cacheArray = Array<UIView>()
         
