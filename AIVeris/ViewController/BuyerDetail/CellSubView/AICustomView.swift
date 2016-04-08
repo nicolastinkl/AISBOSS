@@ -52,8 +52,8 @@ internal class AICustomView : UIView{
         var x:CGFloat = tagMargin
         var y:CGFloat = 0
         var n = 0
-        var currentX:CGFloat = 0
-        var currentY:CGFloat = 0
+//        var currentX:CGFloat = 0
+//        var currentY:CGFloat = 0
         
         if isNormal {
             

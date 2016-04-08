@@ -357,7 +357,8 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			make.trailing.equalTo(-14)
 			make.height.equalTo(22)
 		}
-		
+        audio1.transform = CGAffineTransformMakeScale(0.6, 0.6)
+        
 		if lengthAudio > 0 {
 			audio1.alpha = 1
 			titleLabel.text = ""
@@ -545,6 +546,21 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 	
 	func slideTableViewCell(cell: SESlideTableViewCell!, didTriggerLeftButton buttonIndex: Int) {
 		
+        
+        let indexPath = tableview.indexPathForCell(cell)!
+        let currentCellModel = dataSource?[indexPath.section]
+        let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+        
+        var cellModel: AIContentCellModel = currentCellModel!
+        cellModel.childServices = nil
+        cellModel.childServices = [contentModel]
+        
+        let cellWrapperModel = AIWrapperAIContentModelClass(theModel: cellModel)
+        cellWrapperModel.cellContent = cell as? AIRACContentCell
+        AIRequirementViewPublicValue.cellContentTransferValue = nil
+        AIRequirementViewPublicValue.cellContentTransferValue = cellWrapperModel
+        
+        
 		cell.setSlideState(.Center, animated: true)
 		switch buttonIndex {
 		case 0:
@@ -562,19 +578,6 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 		default:
 			break
 		}
-        
-        let indexPath = tableview.indexPathForCell(cell)!
-        let currentCellModel = dataSource?[indexPath.section]
-        let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
-        
-        var cellModel: AIContentCellModel = currentCellModel!
-        cellModel.childServices = nil
-        cellModel.childServices = [contentModel]
-        
-        let cellWrapperModel = AIWrapperAIContentModelClass(theModel: cellModel)
-        cellWrapperModel.cellContent = cell as? AIRACContentCell
-        AIRequirementViewPublicValue.cellContentTransferValue = nil
-        AIRequirementViewPublicValue.cellContentTransferValue = cellWrapperModel
         
 	}
 	

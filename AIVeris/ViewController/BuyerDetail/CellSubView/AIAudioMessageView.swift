@@ -40,6 +40,7 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
 
     weak var deleteDelegate:AIDeleteActionDelegate?
 
+    @IBOutlet weak var audioBgConstrain: NSLayoutConstraint!
     var messageCache:AIMessage?
     
     class func currentView()->AIAudioMessageView{
@@ -50,6 +51,14 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
         selfView.addGestureRecognizer(longPressGes)
         
         return selfView
+    }
+    
+    func smallMode(){
+        
+        audioBgConstrain.constant = 18
+        loadingView.alpha = 0
+        audioBg.cornerRadius = 4
+        
     }
     
     func handleLongPress(longPressRecognizer:UILongPressGestureRecognizer){
