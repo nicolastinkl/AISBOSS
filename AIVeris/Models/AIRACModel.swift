@@ -167,7 +167,7 @@ internal struct AIChildContentCellModel : JSONJoy{
                     // A Audio message.
                     if  title.containsString(".aac") {
                         audioUrl = title
-                        audioLengh = 0
+                        audioLengh = 1
                     }
                     
                 }
