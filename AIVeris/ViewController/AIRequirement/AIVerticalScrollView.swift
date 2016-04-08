@@ -114,15 +114,6 @@ class AIVerticalScrollView: UIScrollView {
         iconView.addSubview(circleProgressView)
         
         iconViews.append(iconView)
-         
-//        if model.serviceInstStatus == ServiceInstStatus.Init {
-//            //  为选中
-//            circleProgressView.changeSelect(false)
-//        }else{
-//            //  选中            
-//            circleProgressView.changeSelect(true)
-//        }
-        
     }
     
     //让外部获取当前选中的信息
