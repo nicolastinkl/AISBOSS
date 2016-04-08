@@ -523,21 +523,25 @@ class AIRequirementHandler: NSObject {
             var task = DependOnService(id: serviceInstanceID, icon: serviceIcon, desc: "", tasks: [TaskNode](), selected: false)
             
             
-            if let list = response["time_line_list"] as? [NSDictionary] {
-                for i in 0 ... list.count - 1 {
-                    
-                    let node : NSDictionary = list[i]
-                    
-                    let date : NSString = node["timestamp"] as! NSString
-                    
-                    let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: node["service_inst_id"] as! String)
-                    
-                    task.tasks.append(taskNode)
-                    task.desc = node["node_summary"] as! String
-                    
+            if let list = response["task_node_list"] as? [NSDictionary] {
+                
+                if list.count > 0 {
+                    for i in 0 ... list.count - 1 {
+                        
+                        let node : NSDictionary = list[i]
+                        
+                        let date : NSNumber = node["timestamp"] as! NSNumber
+                        let insID : String = "\(node["service_inst_id"])"
+                        
+                        
+                        let taskNode = TaskNode(date: NSDate(timeIntervalSinceNow: date.doubleValue), desc: node["node_desc"] as! String, id: node["task_node_id"]!.integerValue, insID: insID)
+                        
+                        task.tasks.append(taskNode)
+                        task.desc = node["node_summary"] as! String
+                        
+                    }
                 }
-                
-                
+ 
             }
 
             success(task: task)
