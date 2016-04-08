@@ -272,8 +272,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
             if let _ = selectedTask {
                 cell.selected = task.id == selectedTask?.id
             }
-            
-			print("\n -- "+"\(cell.selected)")
+   
 			return cell
 		} else {
 			// never goes here
