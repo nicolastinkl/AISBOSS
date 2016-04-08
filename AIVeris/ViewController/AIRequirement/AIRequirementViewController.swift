@@ -127,7 +127,9 @@ internal class AIRequirementViewController : UIViewController {
      */
     func requestDataInterface() {
         
+
         view.showLoading()
+
         
         let handler = AIRequirementHandler.defaultHandler()
         
