@@ -451,10 +451,8 @@ class AIRequirementHandler: NSObject {
         message.url = AIApplication.AIApplicationServerURL.queryServiceDefaultTags.description as String
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            
-            let requirementID : NSNumber = response["reqiurement_id"] as! NSNumber
-            
-            let tagList : NSArray = NSArray(array: response["tag_list"] as! NSArray)
+
+            let tagList : NSArray = NSArray(array: response as! NSArray)
  
             var returnTags = [RequirementTag]()
             
@@ -473,10 +471,8 @@ class AIRequirementHandler: NSObject {
             }
             
             var tagsModel = OriginalTagsModel()
-            
-            tagsModel.requirementID = requirementID.integerValue
             tagsModel.tagList = returnTags
-            
+    
             success(tagsModel: tagsModel)
  
             

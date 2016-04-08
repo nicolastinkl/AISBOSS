@@ -20,8 +20,6 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 	
     var businessModel : AIQueryBusinessInfos?
     
-    var requirementID : Int?
-    
 	private var _totalTagsSelected = 0
 	private var heightKeyboard: CGFloat = 0
 	
