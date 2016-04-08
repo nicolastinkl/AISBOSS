@@ -102,7 +102,6 @@ class AIRequirementHandler: NSObject {
         
         weak var weakSelf = self
         
-        
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
             do {
@@ -152,9 +151,11 @@ class AIRequirementHandler: NSObject {
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             let code : NSNumber = response["result_code"] as! NSNumber
             if code == NSNumber(integer: 1) {
-                let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
-                success(unassignedNum: unassignedNum)
+//                let unassignedNum : NSNumber = response["distribution_count"] as! NSNumber
+//                success(unassignedNum: unassignedNum)
+                success(unassignedNum: NSNumber(integer: 1))
             }
+            
 
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
