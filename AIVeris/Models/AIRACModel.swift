@@ -117,7 +117,7 @@ internal struct AIChildContentCellModel : JSONJoy{
     var wish_result_id: String?
     var service_inst_id: String?
     var service_id: String?
-    
+    var requirement_type: String?
     init() {
         id = 1
     }
@@ -134,6 +134,7 @@ internal struct AIChildContentCellModel : JSONJoy{
                 service_id = "\(requirementAddrDecoder["service_id"].integer ?? 0)"
                 
                 let desc = requirementAddrDecoder["requirement_desc"].string ?? ""
+
                 if holderString == "" {
                     holderString = "\(desc)"
                 }else{
@@ -141,6 +142,7 @@ internal struct AIChildContentCellModel : JSONJoy{
                 }
                 
                 let typeName = requirementAddrDecoder["requirement_type"].string ?? ""
+                requirement_type =  typeName
                 if typeName == "Text" {
                     type = 2
                 }else{
