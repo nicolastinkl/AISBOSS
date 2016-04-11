@@ -66,7 +66,6 @@ class AIRequirementHandler: NSObject {
             }) { (error: AINetError, errorDes: String!) -> Void in
                 fail(errType: error, errDes: errorDes)
         }
-
      
     }
     
@@ -523,7 +522,7 @@ class AIRequirementHandler: NSObject {
     func distributeRequirementRequset(wish_result_id : String,wish_item_type: String,wish_item_id:String,service_inst_id: Array<String>, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
         
-        let body : NSDictionary = ["data" : ["wish_result_id" : wish_result_id,"wish_item_type":wish_item_type,"wish_item_id":wish_item_id,"service_inst_id":service_inst_id], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["wish_result_id" : wish_result_id,"wish_item_type":getReType(wish_item_type),"wish_item_id":wish_item_id,"service_inst_id":service_inst_id], "desc":["data_mode" : "0", "digest" : ""]]
 
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.distributeRequirement.description as String

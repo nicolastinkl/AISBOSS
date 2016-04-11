@@ -374,7 +374,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		}
         audio1.smallMode()
         
-		if lengthAudio > 0 ||  contentModel.type! == 1{
+		if lengthAudio > 0 || contentModel.type! == 1{
 			audio1.alpha = 1
 			titleLabel.text = ""
 		} else {
