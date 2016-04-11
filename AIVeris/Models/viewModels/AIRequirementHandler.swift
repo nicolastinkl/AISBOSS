@@ -145,6 +145,26 @@ class AIRequirementHandler: NSObject {
         
     }
     
+    /**
+     转化状态
+     
+     - parameter type: type
+     
+     - returns: type right
+     */
+    func getReType(type: String) -> String{
+        if type == "notes"{
+            return "WishNote"
+        }else if type == "tags"{
+            return "WishTag"
+        }else if type == "task"{
+            return "TaskNode"
+        }else if type == "userData"{
+            return "UserData"
+        }
+        
+        return ""
+    }
     
     //MARK: 直接保存为待分配状态
     
@@ -160,8 +180,9 @@ class AIRequirementHandler: NSObject {
 
     
     func saveAsTask(providerID : String, customID : String, orderID : String, requirementID : String, requirementType : String, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+        
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : requirementType, "requirement_id" : requirementID, "analysis_type" : toType, "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : getReType(requirementType), "requirement_id" : requirementID, "analysis_type" : getReType(toType), "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveAsTask.description as String
      

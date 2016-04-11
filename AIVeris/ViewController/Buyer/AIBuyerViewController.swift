@@ -89,6 +89,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         setupUIWithCurrentLanguage()
         
         self.tableView.headerBeginRefreshing()
+        
+        
     }
     
     // MARK: - 构造列表区域

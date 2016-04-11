@@ -131,8 +131,29 @@ class AIBuyerDetailViewController : UIViewController {
         
         // Default request frist networking from asiainfo server.
         self.tableView.headerBeginRefreshing()
+       
         
+    }
+    
+    func initProderView(){
         
+        let providerView =  AIProviderView.currentView()
+        let custView =  AICustomView.currentView()
+        
+        let views = UIView()
+        
+        views.addSubview(providerView)
+        views.addSubview(custView)
+        views.setHeight(custView.height + providerView.height)
+
+        custView.setWidth(views.width)
+        custView.setTop(providerView.height)
+        
+        providerView.setWidth(views.width) 
+        
+        custView.backgroundColor = UIColor.clearColor()
+        providerView.backgroundColor = UIColor.clearColor()
+        self.tableView.tableFooterView = views
     }
     
     func initDeletedTableView() {
@@ -439,6 +460,8 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()
+                        
+                        viewController.initProderView()
                         
                         /**
                         *  @author tinkl, 16-01-22 10:01:25
