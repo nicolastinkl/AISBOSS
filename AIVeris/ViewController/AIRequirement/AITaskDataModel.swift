@@ -23,7 +23,7 @@ func == (lhs: RequirementTag, rhs: RequirementTag) -> Bool {
 struct TaskNode: Equatable {
 	var date: NSDate
 	var desc: String
-	var id: Int
+	var id: String
     var insID : String
     var arrageID : String
 }
