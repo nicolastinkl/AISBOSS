@@ -22,7 +22,9 @@ class AIPopupChooseBaseView: UIView {
     let cellViewHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(70)
     let viewTopPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(60)
     let cellViewPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(83)
-    let buttonPaddingTop : CGFloat = AITools.displaySizeFrom1242DesignSize(116)
+    let buttonPaddingButtom : CGFloat = AITools.displaySizeFrom1242DesignSize(83)
+    let buttonPaddingTop : CGFloat = AITools.displaySizeFrom1242DesignSize(113)
+    let buttonPaddingLeft : CGFloat = AITools.displaySizeFrom1242DesignSize(40)
     let buttonWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(568)
     let buttonHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(154)
     let buttonCorner : CGFloat = 8
@@ -100,7 +102,7 @@ class AIPopupChooseBaseView: UIView {
         if let lastCell = cellViews.last{
             y = CGRectGetMaxY(lastCell.frame) + buttonPaddingTop
         }
-        let x1 = (self.width / 2 - buttonWidth) / 2
+        let x1 = buttonPaddingLeft
         let cancelFrame = CGRect(x: x1, y: y, width: buttonWidth, height: buttonHeight)
         cancelButton = UIButton(frame: cancelFrame)
         cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
@@ -112,7 +114,7 @@ class AIPopupChooseBaseView: UIView {
         cancelButton.layer.masksToBounds = true
         self.addSubview(cancelButton)
         
-        let x2 = (self.width / 2 + self.width - buttonWidth) / 2
+        let x2 = self.width - buttonWidth - buttonPaddingLeft
         let submitFrame = CGRect(x: x2, y: y, width: buttonWidth, height: buttonHeight)
         confirmButton = UIButton(frame: submitFrame)
         confirmButton.setTitle("Save", forState: UIControlState.Normal)
@@ -149,7 +151,7 @@ class AIPopupChooseBaseView: UIView {
     }
     
     func getFrameHeight() -> CGFloat{
-        return CGRectGetMaxY(cancelButton.frame) + buttonPaddingTop
+        return CGRectGetMaxY(cancelButton.frame) + buttonPaddingButtom
     }
 
 

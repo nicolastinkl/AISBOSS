@@ -35,7 +35,7 @@ class AICollContentViewController: UIViewController {
     let LaunchButtonBgWidth : CGFloat = AITools.displaySizeFrom1242DesignSize(761)
     let LaunchButtonBgHeight : CGFloat = AITools.displaySizeFrom1242DesignSize(127)
     let TitleLeftPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(35)
-    let buttonPadding : CGFloat = 10
+    let buttonPadding : CGFloat = AITools.displaySizeFrom1242DesignSize(39)
     
     
     // MARK: - override方法
