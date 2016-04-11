@@ -146,8 +146,6 @@ internal class AIRequirementViewController : UIViewController {
                 let newPriceModel = priceModel
                 newPriceModel.price = self.orderPreModel?.service.service_price
                 self.userInfoView?.model = newPriceModel
-                
-                
             }
             
             if let viewReqeuire = self.tabRequireViewC as? AIRequireContentViewController {
