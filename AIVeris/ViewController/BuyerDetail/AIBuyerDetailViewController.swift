@@ -94,7 +94,7 @@ class AIBuyerDetailViewController : UIViewController {
     func initTableView(){
         
         self.tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 250.0, 0)
 
         /* Here's a test for me to use autoLayout in tableView interface the autoheight.
         self.tableView.estimatedRowHeight = 150.0
@@ -144,12 +144,15 @@ class AIBuyerDetailViewController : UIViewController {
         
         views.addSubview(providerView)
         views.addSubview(custView)
-        views.setHeight(custView.height + providerView.height)
+        views.setHeight(custView.height)
 
         custView.setWidth(views.width)
         custView.setTop(providerView.height)
         
-        providerView.setWidth(views.width) 
+        providerView.setWidth(views.width)
+        
+        providerView.setHeight(providerView.height)
+        custView.setHeight(custView.height)
         
         custView.backgroundColor = UIColor.clearColor()
         providerView.backgroundColor = UIColor.clearColor()
@@ -453,6 +456,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.dataSource = responseData
                         
                         // initControl Data
+                        viewController.initProderView()
                         viewController.initController()
                         viewController.tableView.reloadData()
                         
@@ -460,8 +464,6 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.initBottomView()
                         
                         viewController.tableView.headerEndRefreshing()
-                        
-                        viewController.initProderView()
                         
                         /**
                         *  @author tinkl, 16-01-22 10:01:25
@@ -488,7 +490,6 @@ class AIBuyerDetailViewController : UIViewController {
                                 return true
                             })
                         }
-                       
                         
                     }
                     

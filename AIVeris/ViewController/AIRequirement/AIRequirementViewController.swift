@@ -142,7 +142,13 @@ internal class AIRequirementViewController : UIViewController {
             
             AIRequirementViewPublicValue.bussinessModel = businessInfo
 
-            self.userInfoView?.model = businessInfo.customerModel
+            if let priceModel = businessInfo.customerModel {
+                let newPriceModel = priceModel
+                newPriceModel.price = self.orderPreModel?.service.service_price
+                self.userInfoView?.model = newPriceModel
+                
+                
+            }
             
             if let viewReqeuire = self.tabRequireViewC as? AIRequireContentViewController {
                 viewReqeuire.startingRequest()
