@@ -277,18 +277,34 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 	
 	func configureCell(cell: AIRACContentCell, atIndexPath indexPath: NSIndexPath, contentModel: AIChildContentCellModel) {
 		var imageName = "ai_rac_bg_normal"
-		switch contentModel.backImgType ?? 0 {
-		case 1:
-			imageName = "ai_rac_bg_normal_pop"
-		case 2:
-			imageName = "ai_rac_bg_normal"
-		case 3:
-			imageName = "ai_rac_bg_normal1"
-		case 4:
-			imageName = "ai_rac_bg_normal2"
-		default:
-			break
-		}
+        
+        if contentModel.requirement_status! == 0 {
+            switch contentModel.backImgType ?? 0 {
+            case 1:
+                imageName = "ai_rac_bg_normal_pop"
+            case 2:
+                imageName = "ai_rac_bg_normal"
+            case 3:
+                imageName = "ai_rac_bg_normal1"
+            case 4:
+                imageName = "ai_rac_bg_normal2"
+            default:
+                break
+            }
+        }else if contentModel.requirement_status! == 1{
+            switch contentModel.backImgType ?? 0 {
+            case 1:
+                imageName = "ai_rac_bg_normal_popSelect"
+            case 2:
+                imageName = "racselectedbg"
+            case 3:
+                imageName = "ai_rac_bg_normal1"
+            case 4:
+                imageName = "ai_rac_bg_normal2"
+            default:
+                break
+            }
+        } 
 		
 		// Setup 1 : bg UIIamgeView.
 		let bgImageView = UIImageView(image: UIImage(named: imageName)?.stretchableImageWithLeftCapWidth(0, topCapHeight: 10))
@@ -445,7 +461,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 		cell.addLeftButtonWithImage(UIImage(named: "AIROAddTag"), backgroundColor: UIColor(hexString: "#0D0F51"))
 		cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
 		cell.addLeftButtonWithImage(UIImage(named: "AIROAddTask"), backgroundColor: UIColor(hexString: "#1E2089"))
-		
+
         if contentModel.backImgType! >= 3 {
             desLabel.text = contentModel.text ?? ""
             titleLabel.text = contentModel.title ?? ""
@@ -510,9 +526,9 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
     
     func refereshCell(cell: AIRACContentCell, contentModel: [AIIconTagModel]?) {
         // fill data:
-        
+        /*
         if let contentModel = contentModel {
-           /*
+           
             let indexPath = tableview.indexPathForCell(cell)!
             var currentCellModel = dataSource?[indexPath.section]
             var child: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
@@ -523,8 +539,8 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
             child.childServerIconArray = array
             
             currentCellModel?.childServices?[indexPath.row - 1] = child
-            */
-        }
+
+        }  */
         
         
         let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)

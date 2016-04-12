@@ -94,7 +94,7 @@ class AIBuyerDetailViewController : UIViewController {
     func initTableView(){
         
         self.tableView.registerClass(AIBueryDetailCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 250.0, 0)
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50.0, 0)
 
         /* Here's a test for me to use autoLayout in tableView interface the autoheight.
         self.tableView.estimatedRowHeight = 150.0
