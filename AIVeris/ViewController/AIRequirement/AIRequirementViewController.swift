@@ -48,6 +48,12 @@ internal class AIRequirementViewController : UIViewController {
     
     private var tabCollViewC: UIViewController?
     
+    private var tabToastVC: AIAssignmentContentViewController = {
+    
+         let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+        return viewController2
+    }()
+    
     private var currentTagIndex: Int = 0
     
     // MARK: -> Internal properties
@@ -122,9 +128,7 @@ internal class AIRequirementViewController : UIViewController {
     
     func showAssignToast(){
         
-         let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
-        
-        addToastViewController(viewController2)
+        addToastViewController(tabToastVC)
         
         rightContentView.subviews.first?.alpha = 0
     }
@@ -233,7 +237,7 @@ internal class AIRequirementViewController : UIViewController {
             
         case 2 :
             
-            let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+            let viewController2 = tabToastVC
             var countVC: Int = 0
             if let vc = tabAssignViewC {
                 let newvc = vc as! AIRequireContentViewController
