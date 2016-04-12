@@ -124,15 +124,7 @@ internal class AIRequirementViewController : UIViewController {
         
          let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
         
-        if let vc = tabAssignViewC {
-            addSubViewControllers([vc, viewController2])
-        }else{
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
-            viewController.editModel = true
-            viewController.orderPreModel = self.orderPreModel
-            tabAssignViewC = viewController
-            addSubViewControllers([viewController, viewController2])
-        }
+        addToastViewController(viewController2)
         
         rightContentView.subviews.first?.alpha = 0
     }
@@ -302,6 +294,20 @@ internal class AIRequirementViewController : UIViewController {
     }
     
     // MARK: -> Internal methods
+    
+    func addToastViewController(viewController: UIViewController, toView: UIView? = nil) {
+        self.addChildViewController(viewController)
+        if self.rightContentView != nil {
+            viewController.view.frame = self.rightContentView.frame // reload frame.
+            self.rightContentView.addSubview(viewController.view)
+            viewController.didMoveToParentViewController(self)
+            viewController.view.pinToEdgesOfSuperview(offset: 20)
+            
+        }
+    }
+    
+    
+    
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil) {
         self.addChildViewController(viewController)
         if self.rightContentView != nil {
