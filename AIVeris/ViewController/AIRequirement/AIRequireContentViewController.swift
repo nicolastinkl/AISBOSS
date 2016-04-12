@@ -132,9 +132,13 @@ class AIRequireContentViewController: UIViewController {
                 }
                 self.tableview.headerEndRefreshing()
                 
-                if self.editModel == true {
+                if self.editModel == true{
                     // NOTIFY SHOW TOAST.
-                    NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+                    
+                    if self.dataSource == nil || self.dataSource?.count == 0  {
+                        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+                    }
+                    
                 }
                     
                 }) {  (errType, errDes) -> Void in
