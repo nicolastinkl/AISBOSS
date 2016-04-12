@@ -694,8 +694,9 @@ extension AIRequireContentViewController {
         if let cellmodel = cellWrapperModel?.cellmodel {
            id = cellmodel.childServices?.first?.service_id
         } else {
+            id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_service_id
         }
-            
+        
         view.showLoading()
         
         AIRequirementHandler.defaultHandler().queryServiceDefaultTags(id ?? "", success: { (tagsModel) -> Void in
@@ -716,6 +717,7 @@ extension AIRequireContentViewController {
             
             // show TagViewController
             let vc = AITaskTagViewController()
+            vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
             vc.tags = tags
             wf!.presentViewController(vc, animated: true, completion: nil)
             
@@ -724,6 +726,7 @@ extension AIRequireContentViewController {
                 
                 // show TagViewController
                 let vc = AITaskTagViewController()
+                vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
                 wf!.presentViewController(vc, animated: true, completion: nil)
         })
         
@@ -758,7 +761,8 @@ extension AIRequireContentViewController {
             vc.requirementItem = item
             presentViewController(vc, animated: true, completion: nil)
         }else {
-           let vc = AITaskNoteEditViewController()
+            let vc = AITaskNoteEditViewController()
+            vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
             presentViewController(vc, animated: true, completion: nil)
         }
     }

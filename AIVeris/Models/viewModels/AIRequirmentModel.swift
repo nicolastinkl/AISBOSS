@@ -82,35 +82,35 @@ class AssignServiceInstModel : AIBaseViewModel {
         self.limits = limits
     }
     
-    class func getInstanceArray(jsonModel : AIQueryBusinessInfos) -> [AssignServiceInstModel]{
-        var assignServiceInstModels = [AssignServiceInstModel]()
-        for serviceInstJSONModel : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
-            let assignServiceInst = AssignServiceInstModel()
-            //TODO 这里需要的是serviceInstId
-            assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_instance_id.integerValue
-            assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
-            assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
-            assignServiceInst.providerUserId = Int(serviceInstJSONModel.reluser_id)
-            let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
-            if jsonModelProgress.objectForKey("status") != nil{
-                let statusInt = jsonModelProgress.objectForKey("status") as! Int
-                
-                let status = ServiceInstStatus(rawValue: statusInt)
-                assignServiceInst.serviceInstStatus = status
-                //给limits赋值
-                
-                for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
-                    let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: limitJSONModel.right_icon_url,limitIconHighlight: limitJSONModel.own_right_icon, hasLimit: false)
-                    let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+        class func getInstanceArray(jsonModel : AIQueryBusinessInfos) -> [AssignServiceInstModel]{
+            var assignServiceInstModels = [AssignServiceInstModel]()
+            for serviceInstJSONModel : AIServiceProvider in jsonModel.rel_serv_rolelist as! [AIServiceProvider]{
+                let assignServiceInst = AssignServiceInstModel()
+                //TODO 这里需要的是serviceInstId
+                assignServiceInst.serviceInstId = serviceInstJSONModel.relservice_instance_id.integerValue
+                assignServiceInst.serviceName = serviceInstJSONModel.relservice_name
+                assignServiceInst.ratingLevel = serviceInstJSONModel.service_rating_level?.floatValue
+                assignServiceInst.providerUserId = Int(serviceInstJSONModel.reluser_id)
+                let jsonModelProgress = serviceInstJSONModel.relservice_progress as NSDictionary
+                if jsonModelProgress.objectForKey("status") != nil{
+                    let statusInt = jsonModelProgress.objectForKey("status") as! Int
                     
-                    limit.hasLimit = limit.handleHasLimitWith(ownRightList)
-                    assignServiceInst.limits?.append(limit)
+                    let status = ServiceInstStatus(rawValue: statusInt)
+                    assignServiceInst.serviceInstStatus = status
+                    //给limits赋值
+                    
+                    for limitJSONModel : AIServiceRights in jsonModel.right_list as! [AIServiceRights] {
+                        let limit = AILimitModel(limitId: limitJSONModel.right_id, limitName: limitJSONModel.right_value, limitIcon: limitJSONModel.right_icon_url,limitIconHighlight: limitJSONModel.own_right_icon, hasLimit: false)
+                        let ownRightList = serviceInstJSONModel.own_right_id as NSArray
+                        
+                        limit.hasLimit = limit.handleHasLimitWith(ownRightList)
+                        assignServiceInst.limits?.append(limit)
+                    }
                 }
+                assignServiceInstModels.append(assignServiceInst)
             }
-            assignServiceInstModels.append(assignServiceInst)
-        }
-        
-        return assignServiceInstModels
+            
+            return assignServiceInstModels
     }
 
 }

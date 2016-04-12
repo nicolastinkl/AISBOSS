@@ -10,32 +10,33 @@ import UIKit
 import AIAlertView
 
 class AITaskTagViewController: RRTagController {
-	
-	override func addTagDidClick() {
-		print("addTagDidClick")
-		let vc = AITaskInputViewController.initFromNib()
-		vc.delegate = self
-		presentPopupViewController(vc, animated: true)
-	}
-	
-	override func viewDidLoad() {
+    var businessModel : AIQueryBusinessInfos?
+    
+    override func addTagDidClick() {
+        print("addTagDidClick")
+        let vc = AITaskInputViewController.initFromNib()
+        vc.delegate = self
+        presentPopupViewController(vc, animated: true)
+    }
+    
+    override func viewDidLoad() {
         setupNavigationAndBackgroundImage(backgroundColor: UIColorFromHex(0x558bdc, alpha: 0.22))
-		navigationBar.titleLabel.text = "Tag"
-		super.viewDidLoad()
-		setupCollectionView()
-	}
-	
-	func setupCollectionView() {
-		collectionTag.reloadData()
+        navigationBar.titleLabel.text = "Tag"
+        super.viewDidLoad()
+        setupCollectionView()
+    }
+    
+    func setupCollectionView() {
+        collectionTag.reloadData()
         collectionTag.snp_remakeConstraints { (make) in
             make.top.equalTo(navigationBar.snp_bottom)
             make.leading.bottom.trailing.equalTo(view)
         }
-	}
+    }
 }
 
 extension AITaskTagViewController: AITaskInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
+    func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
         
         guard let _ = text else {
             return
@@ -45,9 +46,9 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
         view.showLoading()
         weak var wf = self
         
-        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id
+        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
         
-        AIRequirementHandler.defaultHandler().addNewTag(service_id!, tag_type: "Text", tag_content: text!, success: { (newTag) -> Void in
+        AIRequirementHandler.defaultHandler().addNewTag(service_id, tag_type: "Text", tag_content: text!, success: { (newTag) -> Void in
             
             let spaceSet = NSCharacterSet.whitespaceCharacterSet()
             if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
@@ -59,12 +60,10 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
                 }
             }
             
-            }) { (errType, errDes) -> Void in
-                wf!.view.hideLoading()
+        }) { (errType, errDes) -> Void in
+            wf!.view.hideLoading()
         }
-        
-		
-	}
+    }
     
     func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
         return text?.length < 51
@@ -72,26 +71,26 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
 }
 
 extension AITaskTagViewController: AITaskNavigationBarDelegate {
-	func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed: UIButton) {
-		print("cancel button pressed")
-		if let onDidCancel = onDidCancel {
-			onDidCancel()
-		}
-		dismissViewControllerAnimated(true, completion: nil)
-	}
-	
-	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
-		var selected: Array<String> = Array()
-		var unSelected: Array<RequirementTag> = Array()
-		
-		for currentTag in tags {
-			if currentTag.selected {
-				selected.append("\(currentTag.id)")
-			}
-			else {
-				unSelected.append(currentTag)
-			}
-		}
+    func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed: UIButton) {
+        print("cancel button pressed")
+        if let onDidCancel = onDidCancel {
+            onDidCancel()
+        }
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
+        var selected: Array<String> = Array()
+        var unSelected: Array<RequirementTag> = Array()
+        
+        for currentTag in tags {
+            if currentTag.selected {
+                selected.append("\(currentTag.id)")
+            }
+            else {
+                unSelected.append(currentTag)
+            }
+        }
         
         // save here
         view.showLoading()
@@ -105,10 +104,10 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
         
         AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selected, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
-            }) { (errType, errDes) -> Void in
-                wf!.shouldDismissSelf(false)
+        }) { (errType, errDes) -> Void in
+            wf!.shouldDismissSelf(false)
         }
-
+        
         
     }
     

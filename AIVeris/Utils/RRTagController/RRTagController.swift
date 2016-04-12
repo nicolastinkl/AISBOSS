@@ -18,7 +18,6 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
 	
 	var tags: Array<RequirementTag> = []
 	
-    var businessModel : AIQueryBusinessInfos?
     
 	private var _totalTagsSelected = 0
 	private var heightKeyboard: CGFloat = 0
