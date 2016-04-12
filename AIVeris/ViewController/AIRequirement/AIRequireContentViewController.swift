@@ -509,8 +509,26 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelectedServiceTableVControllerDelegate {
     
     func refereshCell(cell: AIRACContentCell, contentModel: [AIIconTagModel]?) {
-        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+        // fill data:
         
+        if let contentModel = contentModel {
+           /*
+            let indexPath = tableview.indexPathForCell(cell)!
+            var currentCellModel = dataSource?[indexPath.section]
+            var child: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+            var array = Array<AIIconTagModel>()
+            array = contentModel.filter({ (model) -> Bool in
+                return true
+            })
+            child.childServerIconArray = array
+            
+            currentCellModel?.childServices?[indexPath.row - 1] = child
+            */
+        }
+        
+        
+        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+
         _ = iconView?.subviews.filter({ (sview) -> Bool in
             SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
                 sview.alpha = 0
@@ -521,8 +539,11 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
         })
         
         if let iconView = iconView {
+            
              refereshIconData(iconView, contentModel: contentModel, cell: cell)
-        } 
+        }
+        
+        
     }
 	
 	func expendTableViewCell(cell: AIRACContentCell, expendButtonPressed sender: AnyObject) {
