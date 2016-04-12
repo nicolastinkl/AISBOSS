@@ -225,12 +225,8 @@ internal class AIRequirementViewController : UIViewController {
                 countVC = newvc.dataSource?.count ?? 0
             }
             
-            /**
-            *  @author tinkl, 16-04-11 18:04:29
-            *
-            *  第二次切换时显示列表
-            */
-            if notifyChangeAIContentCellModel.count == 0 && countVC == 0 {
+            /**第二次切换时显示列表*/
+            if notifyChangeAIContentCellModel.count == 0 && countVC == 10000 {
                 if let vc = tabAssignViewC {
                     addSubViewControllers([vc, viewController2])
                 }else{
