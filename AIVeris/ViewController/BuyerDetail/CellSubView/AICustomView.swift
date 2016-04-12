@@ -36,14 +36,7 @@ internal class AICustomView : UIView{
         /**
             根据model个数计算高度
         */
-        
-//        if AIApplication.IPHONEOS.IS_IPHONE6PLUS == false{
-//            if models.count >= 6 {
-//                self.setHeight(191 + 80)//318
-//            }
-//        }
-//        
-        self.setHeight(191 + CGFloat(models.count * 25))
+         
         
         var cacheArray = Array<UIView>()
         

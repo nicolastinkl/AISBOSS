@@ -55,7 +55,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frf-IX-tef" userLabel="Percentage">
-                    <rect key="frame" x="355" y="43" width="28" height="21"/>
+                    <rect key="frame" x="355" y="41" width="28" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="28" id="8uF-vc-KZC"/>
                         <constraint firstAttribute="height" constant="21" id="lF4-jX-Z7Q"/>
@@ -65,7 +65,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eut-op-aLe" userLabel="ProgressBar" customClass="YLProgressBar">
-                    <rect key="frame" x="70" y="49" width="283" height="9"/>
+                    <rect key="frame" x="70" y="47" width="283" height="9"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="9" id="PJ2-5i-hdq"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="EVG-gC-gNw" firstAttribute="centerY" secondItem="7Ca-Tr-VY2" secondAttribute="centerY" id="CAg-71-ZIc"/>
                 <constraint firstItem="frf-IX-tef" firstAttribute="height" secondItem="dTR-UH-I5I" secondAttribute="height" id="DUc-Ty-f1A"/>
                 <constraint firstAttribute="bottom" secondItem="frf-IX-tef" secondAttribute="bottom" constant="-2" id="GlW-xb-FOe"/>
-                <constraint firstAttribute="bottom" secondItem="eut-op-aLe" secondAttribute="bottom" id="H3k-fw-xlB"/>
+                <constraint firstAttribute="bottom" secondItem="eut-op-aLe" secondAttribute="bottom" constant="2" id="H3k-fw-xlB"/>
                 <constraint firstItem="d2G-FW-ckk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KeL-VD-qBh"/>
                 <constraint firstItem="frf-IX-tef" firstAttribute="centerY" secondItem="eut-op-aLe" secondAttribute="centerY" id="NU4-Kp-aVc"/>
                 <constraint firstItem="dTR-UH-I5I" firstAttribute="centerY" secondItem="V57-Sp-2fe" secondAttribute="centerY" id="P99-br-cIm"/>
@@ -146,7 +146,7 @@
                 <outlet property="serviceIcon" destination="V57-Sp-2fe" id="oGf-j0-AnK"/>
                 <outlet property="serviceName" destination="dTR-UH-I5I" id="BSL-zb-Pz0"/>
             </connections>
-            <point key="canvasLocation" x="131" y="142"/>
+            <point key="canvasLocation" x="-315" y="119"/>
         </view>
     </objects>
 </document>
