@@ -50,7 +50,8 @@ class DependOnNodePickerViewController: UIViewController {
 		setupTableView()
 		setupGradientLayer()
 		setupDetermineButton()
-	}
+	
+    }
 	
 	func setupBackgroundImageView() {
 		let imageView = UIImageView(image: UIImage(named: "taskSelectBg"))
@@ -58,9 +59,11 @@ class DependOnNodePickerViewController: UIViewController {
 		imageView.snp_makeConstraints { (make) in
 			make.edges.equalTo(view)
 		}
-	}
+	
+    }
 	
 	override func viewWillAppear(animated: Bool) {
+        
 		super.viewWillAppear(animated)
 		setupSelectedService()
 	}
@@ -81,9 +84,12 @@ class DependOnNodePickerViewController: UIViewController {
 				}
 			}
 		}
-	}
+	
+    }
+    
 	
 	func setupIconsContainerView() {
+        
 		logoContainerView = UIView()
 		logoContainerView.backgroundColor = UIColor.clearColor()
 		view.addSubview(logoContainerView)
@@ -165,9 +171,11 @@ class DependOnNodePickerViewController: UIViewController {
 			let tap = UITapGestureRecognizer(target: self, action: "logoTapped:")
 			imageView.addGestureRecognizer(tap)
 		}
-	}
+	
+    }
 	
 	func setupTableView() {
+        
 		let tableViewContainer = UIView()
 		tableView = UITableView(frame: .zero, style: .Plain)
 		tableView.delegate = self
@@ -207,7 +215,8 @@ class DependOnNodePickerViewController: UIViewController {
 			radio,
 			1.0
 		]
-	}
+	
+    }
 	
 	func setupGradientLayer() {
 		// http://stackoverflow.com/questions/25355058/apply-vertical-alpha-gradient-to-uitableview
@@ -283,7 +292,7 @@ extension DependOnNodePickerViewController: UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return allTasks.count
-	}
+    }
 }
 
 // MARK: - UITableViewDelegate
