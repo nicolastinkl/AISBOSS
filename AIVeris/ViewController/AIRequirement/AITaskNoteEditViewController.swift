@@ -137,6 +137,8 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
         AIRequirementHandler.defaultHandler().addNewNote(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
             
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: [AIApplication.JSONREPONSE.unassignedNum:unassignedNum])
+            
             }) { (errType, errDes) -> Void in
                 wf!.shouldDismissSelf(false)
         }

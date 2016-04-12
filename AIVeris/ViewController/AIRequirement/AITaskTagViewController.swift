@@ -105,6 +105,10 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
         
         AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selected, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: [AIApplication.JSONREPONSE.unassignedNum:unassignedNum])
+            
+            
             }) { (errType, errDes) -> Void in
                 wf!.shouldDismissSelf(false)
         }

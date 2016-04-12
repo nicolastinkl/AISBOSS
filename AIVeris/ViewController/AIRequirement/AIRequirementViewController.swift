@@ -113,6 +113,11 @@ internal class AIRequirementViewController : UIViewController {
         
     }
     
+    deinit{
+        logInfo("deinit")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     func springAnimationSpale(alpha: CGFloat){
         
         self.rightContentView.alpha = alpha

@@ -672,7 +672,8 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             cell.setSlideState(SESlideTableViewCellSlideState.Center, animated: true)
             
             let obj = AIWrapperAIContentModelClass(theModel: cellModel)
-            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj])
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: ["data":obj,AIApplication.JSONREPONSE.unassignedNum:unassignedNum])
             
             }) { (errType, errDes) -> Void in
                 self.view.hideLoading()
