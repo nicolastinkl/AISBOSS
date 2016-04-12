@@ -33,6 +33,13 @@ struct AIApplication{
         static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width >= 414
     }
     
+    
+    // MARK JSON RESPONSE
+    
+    struct JSONREPONSE {
+        internal static let unassignedNum   =  "unassignedNum"  //未读执行条数
+    }
+    
     // MARK: All the ViewController Identifiers
     struct MainStoryboard {
         
@@ -162,6 +169,8 @@ struct AIApplication{
         static let AIAIRequirementNotifyClearNumberCellNotificationName    = "AIAIRequirementNotifyClearNumberCellNotificationName"
         static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
         static let AIRequireContentViewControllerCellWrappNotificationName    = "AIRequireContentViewControllerCellWrappNotificationName"
+        
+        static let AIRequirementViewShowAssignToastNotificationName    = "AIRequirementViewShowAssignToastNotificationName"
         
         
         

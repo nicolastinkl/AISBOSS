@@ -46,7 +46,7 @@ internal class AIServiceContentViewController: UIViewController {
     
     var customID : String?
     
-    private let redColor : String = "b32b1d"
+    private let redColor : String = "#b32b1d"
     
     var serviceContentModel: AIProposalServiceModel?
     

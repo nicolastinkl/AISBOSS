@@ -93,6 +93,8 @@ internal class AIRequirementViewController : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestDataInterface", name: AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAssignToast", name: AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+        
         // Init Top View.
         
         userInfoView = OrderAndBuyerInfoView.createInstance()
@@ -112,6 +114,21 @@ internal class AIRequirementViewController : UIViewController {
         requestDataInterface()
         
     }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
+    func showAssignToast(){
+        
+         let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+        
+        addToastViewController(viewController2)
+        
+        rightContentView.subviews.first?.alpha = 0
+    }
+    
     
     func springAnimationSpale(alpha: CGFloat){
         
@@ -164,8 +181,6 @@ internal class AIRequirementViewController : UIViewController {
                 self.springAnimationSpale(0)
                 AIAlertView().showError("error", subTitle: "网络请求失败")
         }
-
-        
     }
     
     //MARK:-----------
@@ -279,6 +294,20 @@ internal class AIRequirementViewController : UIViewController {
     }
     
     // MARK: -> Internal methods
+    
+    func addToastViewController(viewController: UIViewController, toView: UIView? = nil) {
+        self.addChildViewController(viewController)
+        if self.rightContentView != nil {
+            viewController.view.frame = self.rightContentView.frame // reload frame.
+            self.rightContentView.addSubview(viewController.view)
+            viewController.didMoveToParentViewController(self)
+            viewController.view.pinToEdgesOfSuperview(offset: 20)
+            
+        }
+    }
+    
+    
+    
     func addSubViewController(viewController: UIViewController, toView: UIView? = nil) {
         self.addChildViewController(viewController)
         if self.rightContentView != nil {

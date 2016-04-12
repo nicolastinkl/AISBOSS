@@ -325,9 +325,12 @@ class SimpleServiceViewContainer: UIView {
     private func createReviewView(rating: Int) {
         if rating < 0  {
             review.hidden = true
-            topHeight.constant = 36
+            topHeight.constant = 32.5
             topView.setNeedsUpdateConstraints()
             return
+        }else{
+            topHeight.constant = 41
+            topView.setNeedsUpdateConstraints()
         }
         
         let starRateView = CWStarRateView(frameAndImage: CGRectMake(0, 0, 60, 10), numberOfStars: 5, foreground: "review_star_yellow", background: "review_star_gray")

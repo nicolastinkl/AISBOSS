@@ -57,7 +57,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
     class func currentView()->AIAudioInputView{
         let selfView = NSBundle.mainBundle().loadNibNamed("AIAudioInputView", owner: self, options: nil).first  as! AIAudioInputView
         selfView.timeText.font = AITools.myriadSemiCondensedWithSize(58/PurchasedViewDimention.CONVERT_FACTOR)
-        selfView.timeText.textColor = UIColor(hex:"6a6a6a")
+        selfView.timeText.textColor = UIColor(hex:"#6a6a6a")
         selfView.inputTextView.font = AITools.myriadSemiCondensedWithSize(42/PurchasedViewDimention.CONVERT_FACTOR)
 
         selfView.setNeedsUpdateConstraints()
