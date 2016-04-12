@@ -161,8 +161,8 @@ extension AIAssignServiceView{
         
         let labelMoveHeightCur = curServiceLabel.frame.height / 2
         let labelMoveHeightNext = nextServiceLabel.frame.height / 2
-        
-        nextServiceLabel.text = models![nextModelNum].serviceName
+        guard let nextModel =  models?[nextModelNum] else {return}
+        nextServiceLabel.text = nextModel.serviceName
         nextServiceLabel.alpha = 0
         nextServiceLabel.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0,0.1),CGAffineTransformMakeTranslation(1.0,labelMoveHeightNext))
 
