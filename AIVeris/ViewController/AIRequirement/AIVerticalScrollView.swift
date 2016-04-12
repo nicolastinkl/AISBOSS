@@ -106,14 +106,26 @@ class AIVerticalScrollView: UIScrollView {
         iconView.userInteractionEnabled = true
         
         let circleProgressView = AICircleProgressView(frame: iconView.bounds)
-        //TODO 这里需要做状态判断，已派单的才需要刷新进度
-        if model.serviceInstStatus == ServiceInstStatus.Init{
-            circleProgressView.refreshProgress(CGFloat(model.executeProgress)/10)
-        }
+        
         circleProgressView.delegate = self
         iconView.addSubview(circleProgressView)
         
         iconViews.append(iconView)
+    }
+    
+    //单独刷新进度信息，
+    func refreshProgress(){
+        for (index,model) in models!.enumerate(){
+            //这里需要做状态判断，已派单的才需要刷新进度
+            if model.serviceInstStatus != ServiceInstStatus.Init{
+                //进度是0-1
+                if let circleProgressView = iconViews[index].subviews.first as? AICircleProgressView{
+                    circleProgressView.refreshProgress(CGFloat(model.executeProgress))
+                }
+                
+            }
+        }
+        
     }
     
     //让外部获取当前选中的信息

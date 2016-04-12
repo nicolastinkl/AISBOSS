@@ -247,8 +247,14 @@ class AICollContentViewController: UIViewController {
     func finishLaunchAction(){
         AIAlertView().showInfo("AIBuyerDetailViewController.SubmitSuccess".localized, subTitle: "AIAudioMessageView.info".localized, closeButtonTitle:nil, duration: 2)
         timeLineMaskView.hidden = false
-        changeLaunchButtonStatus(false)
-        //发通知更新数据
+        //changeLaunchButtonStatus(false)
+        self.launchButtonBgView.frame.size.height = 0
+        self.launchButton.frame.size.height = 0
+        self.launchButtonBgView.alpha = 0
+        self.launchButton.alpha = 0
+        self.timeLineTable.frame.origin.y -= self.LaunchButtonBgHeight
+        
+        //TODO:发通知更新数据. 暂时屏蔽，更新的那个动画覆盖了
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
     }
     

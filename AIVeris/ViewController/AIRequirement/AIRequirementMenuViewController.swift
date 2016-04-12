@@ -144,6 +144,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
             
             if serviceInstsView != nil {
                 serviceInstsView.hidden = false
+                serviceInstsView.refreshProgress()
             }
             
         default :

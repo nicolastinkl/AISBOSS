@@ -15,6 +15,7 @@ class AICircleProgressView: UIView {
     var strokWidth : CGFloat = 3.3
     var circlePadding : CGFloat = 1
     var isSelect : Bool = false
+    //取值为0-1
     var progress : CGFloat?
     var delegate : CircleProgressViewDelegate?
     
