@@ -118,7 +118,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         let relservice_instance_id =  model.relservice_instance_id.integerValue ?? 0
         
         _ = self.hasExecTagModel?.filter({ (tagmodel) -> Bool in
-            if let id = tagmodel.id {
+            if let id = tagmodel.id  {
                 if id == relservice_instance_id {
                     delegateCell?.withSelectedCell(model, isSelect: true)
                     isSelected = false

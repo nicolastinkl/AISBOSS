@@ -110,8 +110,6 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
                 wf!.shouldDismissSelf(false)
         }
         
-
-        
 	}
     
     
@@ -207,9 +205,9 @@ extension AITaskEditViewController {
                 print("insID" + "\(role.relservice_instance_id)")
                 AIRequirementHandler.defaultHandler().queryTaskList("\(role.relservice_instance_id)", serviceIcon: role.provider_portrait_url, success: { (task) -> Void in
                     services.append(task)
-                    postCount++
+                    postCount += 1
                     }, fail: { (errType, errDes) -> Void in
-                    postCount++
+                    postCount += 1
                 })
             }
         }
