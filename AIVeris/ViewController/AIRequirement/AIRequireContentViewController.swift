@@ -280,6 +280,14 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
 			// manually set the frame to it's parent's bounds
 			cell!.frame = tableview.bounds
 			
+            // Refersh Data:
+            
+            let iconView = cell?.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+            if let iconView = iconView {
+                refereshIconData(iconView, contentModel: contentModel.childServerIconArray, cell: cell!)
+            }
+            
+            
 			return cell!
 		}
 	}
@@ -556,12 +564,9 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
             currentCellModel?.childServices?[indexPath.row - 1] = child
 
         }  */
+         /*
+        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
         
-        
-        
-        
-         let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
-
         _ = iconView?.subviews.filter({ (sview) -> Bool in
             SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
                 sview.alpha = 0
@@ -573,9 +578,9 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
         
         if let iconView = iconView {
             
-             refereshIconData(iconView, contentModel: contentModel, cell: cell)
-        }
-        
+            refereshIconData(iconView, contentModel: contentModel, cell: cell)
+        }*/
+
         self.tableview.headerBeginRefreshing()
         
     }
