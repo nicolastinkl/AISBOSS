@@ -12,6 +12,8 @@ import AIAlertView
 class AITaskTagViewController: RRTagController {
     var businessModel : AIQueryBusinessInfos?
     
+    var shouldShowInputTextField = false
+    
     override func addTagDidClick() {
         print("addTagDidClick")
         let vc = AITaskInputViewController.initFromNib()
@@ -24,6 +26,13 @@ class AITaskTagViewController: RRTagController {
         navigationBar.titleLabel.text = "Tag"
         super.viewDidLoad()
         setupCollectionView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if shouldShowInputTextField {
+            addTagDidClick()
+        }
     }
     
     func setupCollectionView() {

@@ -47,6 +47,7 @@ class AITaskNoteEditViewController: UIViewController {
 			}
         } else {
             iconContainerView.hidden = true
+//            textView?.placeholder = ""
         }
 	}
 	
@@ -57,7 +58,7 @@ class AITaskNoteEditViewController: UIViewController {
 		textView.textColor = UIColor.whiteColor()
 		textView.placeholderFont = Constants.placeholderFont
 		textView.placeholderColor = UIColorFromHex(0xffffff, alpha: 0.28)
-		textView.placeholder = "9 weeks of pregnancy, action inconvenient"
+//		textView.placeholder = "9 weeks of pregnancy, action inconvenient"
 		view.addSubview(textView)
 		
 		textView.snp_makeConstraints { (make) in
@@ -80,7 +81,7 @@ class AITaskNoteEditViewController: UIViewController {
 		}
 		
 		iconLabel = UILabel()
-		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
+//		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
 		iconLabel.font = Constants.placeholderFont
 		iconLabel.textColor = textView.textColor
 		iconContainerView.addSubview(iconLabel)
