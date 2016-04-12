@@ -558,7 +558,9 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
         }  */
         
         
-        let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
+        
+        
+         let iconView = cell.contentView.viewWithTag(ThisViewTag.IconView.rawValue)
 
         _ = iconView?.subviews.filter({ (sview) -> Bool in
             SpringAnimation.springWithCompletion(0.3, animations: { () -> Void in
@@ -574,6 +576,7 @@ extension AIRequireContentViewController: ExpendTableViewCellDelegate,AISelected
              refereshIconData(iconView, contentModel: contentModel, cell: cell)
         }
         
+        self.tableview.headerBeginRefreshing()
         
     }
 	
