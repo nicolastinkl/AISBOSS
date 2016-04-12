@@ -32,6 +32,7 @@ class AITaskNoteEditViewController: UIViewController {
 		setupTextView()
 		setupIconView()
 		updateUI()
+        textView.becomeFirstResponder()
 	}
 	
 	func updateUI() {
@@ -139,8 +140,6 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
             }) { (errType, errDes) -> Void in
                 wf!.shouldDismissSelf(false)
         }
-        
-        
  
 	}
     

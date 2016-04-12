@@ -583,14 +583,14 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 		switch buttonIndex {
 		case 0:
 			// 转化标签
-			addTagButtonPressed()
-			
+            addTagForModel(cellWrapperModel)
 		case 1:
 			// 转化备注
-			addNoteButtonPressed()
+            addNoteForModel(cellWrapperModel)
 			
 		case 2:
 			// 转化任务节点
+            convertToTaskFromModel(cellWrapperModel)
 			addTaskButtonPressed()
 			
 		default:
@@ -661,92 +661,99 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
 // MARK: - storyboard
 extension AIRequireContentViewController {
 	
-	@IBAction func addTagButtonPressed() {
+    func addTagForModel(cellWrapperModel: AIWrapperAIContentModelClass?) {
         
         // Get the default tags
         
         //
         weak var wf = self
         
-        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
+        
+        var id: String? = nil
+        if let cellmodel = cellWrapperModel?.cellmodel {
+           id = cellmodel.childServices?.first?.service_id
+        } else {
+        }
             
-            if let model = cellWrapperModel.cellmodel {
-                
-                view.showLoading()
-                
-                AIRequirementHandler.defaultHandler().queryServiceDefaultTags(model.childServices?.first?.service_id ?? "", success: { (tagsModel) -> Void in
-                    
-                    wf!.view.hideLoading()
-                    
-                    // parse data
-                    let defaultTags : [RequirementTag] = tagsModel.tagList!
-                    
-                    var tags = [RequirementTag]()
-                    for i in 0 ... defaultTags.count - 1 {
-                        
-                        let defaultTag = defaultTags[i]
-                        
-                        let tag = RequirementTag(id: defaultTag.id,selected: false, textContent: defaultTag.textContent)
-                        tags.append(tag)
-                    }
-                    
-                    // show TagViewController
-                    let vc = AITaskTagViewController()
-                    vc.tags = tags
-                    wf!.presentViewController(vc, animated: true, completion: nil)
-                    
-                    }, fail: { (errType, errDes) -> Void in
-                        wf!.view.hideLoading()
+        view.showLoading()
+        
+        AIRequirementHandler.defaultHandler().queryServiceDefaultTags(id ?? "", success: { (tagsModel) -> Void in
             
-                        // show TagViewController
-                        let vc = AITaskTagViewController()
-                        wf!.presentViewController(vc, animated: true, completion: nil)
-                })
-
+            wf!.view.hideLoading()
+            
+            // parse data
+            let defaultTags : [RequirementTag] = tagsModel.tagList!
+            
+            var tags = [RequirementTag]()
+            for i in 0 ... defaultTags.count - 1 {
+                
+                let defaultTag = defaultTags[i]
+                
+                let tag = RequirementTag(id: defaultTag.id,selected: false, textContent: defaultTag.textContent)
+                tags.append(tag)
             }
             
+            // show TagViewController
+            let vc = AITaskTagViewController()
+            vc.tags = tags
+            wf!.presentViewController(vc, animated: true, completion: nil)
             
-            
-        }
-
+            }, fail: { (errType, errDes) -> Void in
+                wf!.view.hideLoading()
+                
+                // show TagViewController
+                let vc = AITaskTagViewController()
+                wf!.presentViewController(vc, animated: true, completion: nil)
+        })
+        
+    }
+    
+	@IBAction func addTagButtonPressed() {
+        addTagForModel(nil)
 	}
+    
+    func addNoteForModel(cellWrapperModel: AIWrapperAIContentModelClass?) {
+        
+        if let cellmodel = cellWrapperModel?.cellmodel {
+            let vc = AITaskNoteEditViewController()
+            vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+            // pass AIRequirementItem into vc
+            
+            let item = AIRequirementItem()
+            
+            var requires = [AIRequirement]()
+            let require = AIRequirement()
+            require.rid = cellmodel.childServices?.first?.requirement_id?.toInt()
+            require.type = cellmodel.childServices?.first?.requirement_type
+            require.desc = cellmodel.childServices?.first?.text
+            require.icon = cellmodel.childServices?.first?.requirement_icon
+            
+            requires.append(require)
+            
+            item.requirement = requires
+            item.service_provider_icons = [(cellmodel.childServices?.first?.childServerIconArray?.first?.iconUrl)!]
+            
+            
+            vc.requirementItem = item
+            presentViewController(vc, animated: true, completion: nil)
+        }else {
+           let vc = AITaskNoteEditViewController()
+            presentViewController(vc, animated: true, completion: nil)
+        }
+    }
 	
 	@IBAction func addNoteButtonPressed() {
-        
-        if let cellWrapperModel = AIRequirementViewPublicValue.cellContentTransferValue {
-            
-            if let model = cellWrapperModel.cellmodel {
-                let vc = AITaskNoteEditViewController()
-                vc.businessModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
-                // pass AIRequirementItem into vc
-                
-                let item = AIRequirementItem()
-                
-                var requires = [AIRequirement]()
-                let require = AIRequirement()
-                require.rid = model.childServices?.first?.requirement_id?.toInt()
-                require.type = model.childServices?.first?.requirement_type
-                require.desc = model.childServices?.first?.text
-                require.icon = model.childServices?.first?.requirement_icon
-                
-                requires.append(require)
-                
-                item.requirement = requires
-                item.service_provider_icons = [(model.childServices?.first?.childServerIconArray?.first?.iconUrl)!]
-                
-                
-                vc.requirementItem = item
-                presentViewController(vc, animated: true, completion: nil)
-            }
-            
-        }
-
+       addNoteForModel(nil)
 	}
+    
+    func convertToTaskFromModel(model: AIWrapperAIContentModelClass?) {
+        
+    }
+    
 	@IBAction func addTaskButtonPressed() {
 		let vc = AITaskEditViewController()
         vc.serviceRoles = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.rel_serv_rolelist as? [AIServiceProvider]
 		presentViewController(vc, animated: true, completion: nil)
 	}
 }
-
 
