@@ -93,6 +93,8 @@ internal class AIRequirementViewController : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestDataInterface", name: AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAssignToast", name: AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+        
         // Init Top View.
         
         userInfoView = OrderAndBuyerInfoView.createInstance()
@@ -114,9 +116,27 @@ internal class AIRequirementViewController : UIViewController {
     }
     
     deinit{
-        logInfo("deinit")
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
+    
+    func showAssignToast(){
+        
+         let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+        
+        if let vc = tabAssignViewC {
+            addSubViewControllers([vc, viewController2])
+        }else{
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIRequireContentViewController) as! AIRequireContentViewController
+            viewController.editModel = true
+            viewController.orderPreModel = self.orderPreModel
+            tabAssignViewC = viewController
+            addSubViewControllers([viewController, viewController2])
+        }
+        
+        rightContentView.subviews.first?.alpha = 0
+    }
+    
     
     func springAnimationSpale(alpha: CGFloat){
         
@@ -169,8 +189,6 @@ internal class AIRequirementViewController : UIViewController {
                 self.springAnimationSpale(0)
                 AIAlertView().showError("error", subTitle: "网络请求失败")
         }
-
-        
     }
     
     //MARK:-----------

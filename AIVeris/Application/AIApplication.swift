@@ -170,6 +170,8 @@ struct AIApplication{
         static let AIAIRequirementNotifynotifyGenerateModelNotificationName    = "AIAIRequirementNotifynotifyGenerateModelNotificationName"
         static let AIRequireContentViewControllerCellWrappNotificationName    = "AIRequireContentViewControllerCellWrappNotificationName"
         
+        static let AIRequirementViewShowAssignToastNotificationName    = "AIRequirementViewShowAssignToastNotificationName"
+        
         
         
         //服务执行页选择一个服务实例的通知 add by liux at 20160330

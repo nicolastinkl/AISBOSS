@@ -104,6 +104,12 @@ class AIRequireContentViewController: UIViewController {
         tableview.headerBeginRefreshing()
     }
     
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
     /**
       Request Data: queryUnDistributeRequirementList
      */
@@ -126,6 +132,11 @@ class AIRequireContentViewController: UIViewController {
                 }
                 self.tableview.headerEndRefreshing()
                 
+                if self.editModel == true {
+                    // NOTIFY SHOW TOAST.
+                    NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+                }
+                    
                 }) {  (errType, errDes) -> Void in
                     self.tableview.headerEndRefreshing()
             }

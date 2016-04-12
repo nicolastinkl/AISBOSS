@@ -45,6 +45,12 @@ class AIAssignmentContentViewController: UIViewController {
         
     }
     
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         

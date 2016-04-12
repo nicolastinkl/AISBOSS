@@ -84,6 +84,12 @@ internal class AIRequirementMenuViewController : UIViewController  {
         
     }
     
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    
     func notifyShowRequireMentVC(notify: NSNotification){
         selectButton(1)
     }
@@ -105,8 +111,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
             
             if let number = data[AIApplication.JSONREPONSE.unassignedNum]  as? Int{
                 badge.badgeValue = number
-            }
-            
+            }            
         }
     }
     
