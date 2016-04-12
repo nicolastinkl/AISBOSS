@@ -98,10 +98,10 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
         weak var wf = self
         let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         let comp_user_id = (cellWrapperModel?.comp_user_id)!
-        let customer_id : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        let customer_id : String = (cellWrapperModel?.customer.customer_id.stringValue)! as String
         let order_id = (cellWrapperModel?.order_id)!
         let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!
-        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_type)!
+        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)!
         
         AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selected, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
