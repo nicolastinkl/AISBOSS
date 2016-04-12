@@ -59,9 +59,11 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
         if cell == nil {
             cell = AIRACClosureTableViewCell(style: .Default, reuseIdentifier: "cell")
         }
-        cell?.refereshData(model!)
-        cell?.hasExecTagModel = hasExecTagModel        
+        
         cell?.delegateCell = self
+        cell?.hasExecTagModel = hasExecTagModel
+        cell?.refereshData(model!)
+
         return cell!
         
     }

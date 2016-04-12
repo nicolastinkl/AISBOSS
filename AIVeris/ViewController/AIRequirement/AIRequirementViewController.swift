@@ -219,8 +219,14 @@ internal class AIRequirementViewController : UIViewController {
         case 2 :
             
             let viewController2 = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIRrequirementStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAssignmentContentViewController) as! AIAssignmentContentViewController
+            var countVC: Int = 0
+            if let vc = tabAssignViewC {
+                let newvc = vc as! AIRequireContentViewController
+                countVC = newvc.dataSource?.count ?? 0
+            }
             
-            if notifyChangeAIContentCellModel.count == 0 {
+            /**第二次切换时显示列表*/
+            if notifyChangeAIContentCellModel.count == 0 && countVC == 10000 {
                 if let vc = tabAssignViewC {
                     addSubViewControllers([vc, viewController2])
                 }else{
@@ -238,6 +244,7 @@ internal class AIRequirementViewController : UIViewController {
                 if let vc = tabAssignViewC {
                     let newvc = vc as! AIRequireContentViewController
                     //newvc.dataSource = self.notifyChangeAIContentCellModel
+                    
                     addSubViewController(newvc)
                     
                 }else{

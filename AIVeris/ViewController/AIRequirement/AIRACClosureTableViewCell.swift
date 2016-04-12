@@ -101,6 +101,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
     }
     
     func refereshData(model: AIServiceProvider){
+
         currentModel = model
 
         if  "\(model.provider_portrait_url)".length > 10 {
@@ -119,6 +120,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         _ = self.hasExecTagModel?.filter({ (tagmodel) -> Bool in
             if let id = tagmodel.id {
                 if id == relservice_instance_id {
+                    delegateCell?.withSelectedCell(model, isSelect: true)
                     isSelected = false
                 }
             }

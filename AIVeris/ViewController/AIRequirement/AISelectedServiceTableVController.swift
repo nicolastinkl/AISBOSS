@@ -128,7 +128,6 @@ class AISelectedServiceTableVController: UIViewController {
         }else{
             configureExpend(0)
         }
-        
     }
     
     
@@ -144,10 +143,11 @@ class AISelectedServiceTableVController: UIViewController {
         for obj in sourceDelegate.selectedDataSections {
             //AIServiceProvider
             var tabModel = AIIconTagModel()
+            tabModel.id = obj.relservice_instance_id.integerValue ?? 0
             tabModel.iconUrl = "\(obj.provider_portrait_url)"
             array.append(tabModel)            
 
-            ridArray.append("\(obj.relservice_instance_id.intValue)")
+            ridArray.append("\(obj.relservice_instance_id.integerValue)")
             
         }
         

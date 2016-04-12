@@ -456,7 +456,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.dataSource = responseData
                         
                         // initControl Data
-                        viewController.initProderView()
+                        //viewController.initProderView()
                         viewController.initController()
                         viewController.tableView.reloadData()
                         
