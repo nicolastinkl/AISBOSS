@@ -285,7 +285,7 @@ class AIRequirementHandler: NSObject {
     
     func saveTagsAsTask(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String, requirement_type : String, analysis_type : String, analysis_ids : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "analysis_ids" : analysis_ids], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id, "analysis_type" : analysis_type, "analysis_ids" : analysis_ids], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
         
@@ -344,7 +344,7 @@ class AIRequirementHandler: NSObject {
     
     func addNewNote(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String, requirement_type : String, analysis_type : String, note_content : String, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "note_content" : note_content], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id, "analysis_type" : analysis_type, "note_content" : note_content], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
         
@@ -397,7 +397,7 @@ class AIRequirementHandler: NSObject {
         fail : (errType: AINetError, errDes: String) -> Void) {
             
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : requirement_type, "requirement_id" : requirement_id, "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "arrangement_id" : arrangement_id], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id, "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "arrangement_id" : arrangement_id], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTask.description as String
         
