@@ -22,7 +22,7 @@ class AIRequirementViewPublicValue{
 
     /// Default Cell obj and Model obj.
     static var cellContentTransferValue: AIWrapperAIContentModelClass?
-
+  
     /// Default pre order model.
     static var orderPreModel : AIOrderPreModel?
     
