@@ -15,6 +15,7 @@ class AITaskNoteEditViewController: UIViewController {
 	var iconLabel: UILabel!
 	var businessModel : AIQueryBusinessInfos?
 	var iconImageView: UIImageView!
+    var iconContainerView: UIView!
 	
 	struct Constants {
 		static let textViewLeadingSpace: CGFloat = 35 / 3
@@ -44,7 +45,9 @@ class AITaskNoteEditViewController: UIViewController {
 			if let url = requirementItem.service_provider_icons.first as? String {
 				iconImageView.asyncLoadImage(url)
 			}
-		}
+        } else {
+            iconContainerView.hidden = true
+        }
 	}
 	
 	func setupTextView() {
@@ -67,7 +70,7 @@ class AITaskNoteEditViewController: UIViewController {
 	
 	func setupIconView() {
 		
-		let iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
+		iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
 		view.addSubview(iconContainerView)
 		iconContainerView.snp_makeConstraints { (make) in
 			make.top.equalTo(textView.snp_bottom)

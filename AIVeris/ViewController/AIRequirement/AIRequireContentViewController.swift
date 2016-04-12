@@ -734,7 +734,7 @@ extension AIRequireContentViewController {
         if let cellmodel = cellWrapperModel?.cellmodel {
            id = cellmodel.childServices?.first?.service_id
         } else {
-            id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_service_id
+//            id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_service_id
         }
         
         view.showLoading()
