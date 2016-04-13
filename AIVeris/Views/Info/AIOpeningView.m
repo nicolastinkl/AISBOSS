@@ -101,8 +101,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 - (void)versionTap
 {
-    NSString *version = @"V0.20160328.003";
-    NSString *content = @"需求内容:\n孕期助理购物车，及其子服务音乐疗养、医院全程陪护的功能需求开发\n更新内容:\nUI优化";
+    NSString *version = @"V0.20160328.004";
+    NSString *content = @"需求内容:\n订单管理需求\n更新内容:\n接口调优\n界面优化";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:version message:content delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
