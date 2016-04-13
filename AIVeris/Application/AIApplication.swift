@@ -30,7 +30,7 @@ struct AIApplication{
     internal static let XUNFEIAPPID  = "551ba83b"
     
     struct IPHONEOS {
-        static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width >= 414
+        static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width > 375
     }
     
     
