@@ -21,6 +21,7 @@ protocol tagCellDelegate:class {
     func signTag(sender: AnyObject, parent: AICellIdentityCell?)
 }
 
+
 class AICellIdentityCell:SwipeableCell {
 
     @IBOutlet weak var view_Tags: SpringView!
@@ -28,6 +29,10 @@ class AICellIdentityCell:SwipeableCell {
     @IBOutlet weak var view_Content: SpringView!
     
     weak var signDelegate: tagCellDelegate?
+    
+    class func currentCell() -> AICellIdentityCell {
+         return NSBundle.mainBundle().loadNibNamed("AICellIdentityCell", owner: self, options: nil).first  as! AICellIdentityCell
+    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

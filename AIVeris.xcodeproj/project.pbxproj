@@ -317,6 +317,7 @@
 		930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */; };
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
+		931E84121CBE245500F24329 /* AICellIdentityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 931E84111CBE245500F24329 /* AICellIdentityCell.xib */; };
 		9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21B1C86F12B0070FF7A /* AIRACModel.swift */; };
 		9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */; };
 		932899271C92A8C60094C802 /* AIRACClosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */; };
@@ -1048,6 +1049,7 @@
 		930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITIMELINESDTITLEView.xib; sourceTree = "<group>"; };
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
+		931E84111CBE245500F24329 /* AICellIdentityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICellIdentityCell.xib; sourceTree = "<group>"; };
 		9326A21B1C86F12B0070FF7A /* AIRACModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACModel.swift; sourceTree = "<group>"; };
 		9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderMangerProtocol.swift; sourceTree = "<group>"; };
 		932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewCell.swift; sourceTree = "<group>"; };
@@ -2245,6 +2247,7 @@
 				93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */,
 				93FA1E431B9C3E12009965C8 /* UITransViewController.swift */,
 				93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */,
+				931E84111CBE245500F24329 /* AICellIdentityCell.xib */,
 			);
 			path = AITimeAndHome;
 			sourceTree = "<group>";
@@ -3200,6 +3203,7 @@
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,
 				93B25A311B9D78B000CD1FEB /* collectionData.plist in Resources */,
 				849B0BD41C202B61008C0A23 /* UICustomerStoryboard.storyboard in Resources */,
+				931E84121CBE245500F24329 /* AICellIdentityCell.xib in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
 				93CB8D881BFB098600C41DDE /* AITestUI.xib in Resources */,

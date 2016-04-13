@@ -2491,7 +2491,7 @@
         <image name="close-btn" width="10" height="10"/>
         <image name="colorball_orange" width="10" height="10"/>
         <image name="dot_pink" width="19" height="19"/>
-        <image name="dt_add" width="23" height="23"/>
+        <image name="dt_add" width="30" height="30"/>
         <image name="item_bigstar" width="20" height="19"/>
         <image name="item_button_book" width="20" height="20"/>
         <image name="item_button_delete" width="17" height="21"/>

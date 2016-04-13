@@ -668,29 +668,12 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-    
-    // MARK: cellForRowAtIndexPath..
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-            
-        let cell =  tableView.dequeueReusableCellWithIdentifier("AICellIdentity") as! AICellIdentityCell
+    func configCell(cell: AICellIdentityCell, model: AITransformContentModel,indexPath: NSIndexPath){
         cell.delegate = self
         cell.signDelegate = self
-        for subview in cell.view_Content.subviews as [UIView] {
-            if subview.tag >= 1 && subview.tag <= 5{}else {
-                subview.hidden = true
-//                subview.removeFromSuperview()
-            }
-        }
-        
-        if indexPath.section >= dataSource?.count {
-            return UITableViewCell()
-        }
-        
-        let model = dataSource![indexPath.section]
- 
         for index  in 1...5 {
             if let button = cell.view_Tags.viewWithTag(index) as? UIButton{
-                    button.setImage(UIImage(named: "scrollball_\(index)"), forState: UIControlState.Normal)
+                button.setImage(UIImage(named: "scrollball_\(index)"), forState: UIControlState.Normal)
             }
         }
         
@@ -824,7 +807,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 }
                 
-            } 
+            }
             
         }
         
@@ -849,18 +832,18 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     view1.height == 55
                     view1.left == view1.superview!.left
                     view1.top == view1.superview!.top + 10
- 
+                    
                     view2.width == view2.superview!.width
                     view2.top == view1.bottom
                     view2.height == 60
                     view2.left == view1.left
                     
-                     
+                    
                 }
                 
                 
             }else{
-            
+                
                 let tView =  AITopInfoView.currentView()
                 fillAITopInfoView(model, topView: tView, indexPath: indexPath)
                 cell.view_Content.addSubview(tView)
@@ -898,9 +881,27 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 }
             }
+        }   
+    }
+    
+    // MARK: cellForRowAtIndexPath..
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
+        let model = dataSource![indexPath.section]
+        
+        let CELL_ID = "Cell_\(model.id  ?? 0)"
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(CELL_ID) as? AICellIdentityCell
+        if cell == nil {
+            cell = AICellIdentityCell.currentCell()
+            configCell(cell!, model: model, indexPath: indexPath)
         }
         
-        return cell
+        if indexPath.section >= dataSource?.count {
+            return UITableViewCell()
+        }
+        
+        return cell!
     }
     
     private func heightForContent(content:String?) -> CGFloat{
