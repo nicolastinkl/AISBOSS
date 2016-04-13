@@ -15,6 +15,7 @@ class AITaskNoteEditViewController: UIViewController {
 	var iconLabel: UILabel!
 	var businessModel : AIQueryBusinessInfos?
 	var iconImageView: UIImageView!
+    var iconContainerView: UIView!
 	
 	struct Constants {
 		static let textViewLeadingSpace: CGFloat = 35 / 3
@@ -44,7 +45,10 @@ class AITaskNoteEditViewController: UIViewController {
 			if let url = requirementItem.service_provider_icons.first as? String {
 				iconImageView.asyncLoadImage(url)
 			}
-		}
+        } else {
+            iconContainerView.hidden = true
+//            textView?.placeholder = ""
+        }
 	}
 	
 	func setupTextView() {
@@ -54,7 +58,7 @@ class AITaskNoteEditViewController: UIViewController {
 		textView.textColor = UIColor.whiteColor()
 		textView.placeholderFont = Constants.placeholderFont
 		textView.placeholderColor = UIColorFromHex(0xffffff, alpha: 0.28)
-		textView.placeholder = "9 weeks of pregnancy, action inconvenient"
+//		textView.placeholder = "9 weeks of pregnancy, action inconvenient"
 		view.addSubview(textView)
 		
 		textView.snp_makeConstraints { (make) in
@@ -67,7 +71,7 @@ class AITaskNoteEditViewController: UIViewController {
 	
 	func setupIconView() {
 		
-		let iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
+		iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
 		view.addSubview(iconContainerView)
 		iconContainerView.snp_makeConstraints { (make) in
 			make.top.equalTo(textView.snp_bottom)
@@ -77,7 +81,7 @@ class AITaskNoteEditViewController: UIViewController {
 		}
 		
 		iconLabel = UILabel()
-		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
+//		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
 		iconLabel.font = Constants.placeholderFont
 		iconLabel.textColor = textView.textColor
 		iconContainerView.addSubview(iconLabel)
@@ -130,8 +134,8 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
         let comp_user_id = (cellWrapperModel?.comp_user_id)!
         let customer_id : String = (cellWrapperModel?.customer.customer_id.stringValue)! as String
         let order_id = (cellWrapperModel?.order_id)!
-        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!
-        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)!
+        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
+        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
         
         
         AIRequirementHandler.defaultHandler().addNewNote(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in

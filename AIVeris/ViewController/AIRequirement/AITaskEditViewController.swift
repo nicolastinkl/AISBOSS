@@ -61,6 +61,7 @@ class AITaskEditViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        fetchServices()
 		setupNavigationAndBackgroundImage()
 		navigationBar.titleLabel.text = "Task"
 		saveButtonEnabled = false
@@ -95,8 +96,8 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         let comp_user_id = (cellWrapperModel?.comp_user_id)!
         let customer_id : String = (cellWrapperModel?.customer.customer_id.stringValue)! as String
         let order_id = (cellWrapperModel?.order_id)!
-        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)!
-        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)!
+        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
+        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
         let dateNum = NSNumber(double: dateNode!.date.timeIntervalSince1970)
         let offset_time_int : Int = dateNum.integerValue
         let offset_time : String = String(format: "%ld", arguments: [offset_time_int])
@@ -149,8 +150,6 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 		vc.delegate = self
 		if let services = services {
 			vc.services = services
-		} else {
-			vc.services = self.fakeServices()
 		}
 		presentPopupViewController(vc, animated: true)
 	}
@@ -192,9 +191,8 @@ extension AITaskEditViewController {
 	
 	static var fakeServiceResult: [DependOnService]?
 	
-    func fakeServices() -> [DependOnService] {
+    func fetchServices() {
 		
-        
         view.showLoading()
         
         var services = [DependOnService]()
@@ -219,9 +217,9 @@ extension AITaskEditViewController {
             NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
         }
         
+        self.services = services
         view.hideLoading()
 
-		return services
 	}
 	
 

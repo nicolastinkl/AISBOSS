@@ -149,7 +149,7 @@
 
 @property (nonatomic, strong) NSString<Optional> *order_create_time;
 
-@property (nonatomic, strong) NSNumber<Optional> *comp_service_id;
+@property (nonatomic, strong) NSString<Optional> *comp_service_id;
 
 @property (nonatomic, strong) NSString<Optional> *comp_user_id;
 
