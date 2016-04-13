@@ -115,7 +115,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
     
     func  notifyOperateCell(notify: NSNotification){
         if let data = notify.userInfo {
-            if let number = data[AIApplication.JSONREPONSE.unassignedNum]  as? Int{
+            if let _ = data[AIApplication.JSONREPONSE.unassignedNum]  as? Int{
                 var newN = badge.badgeValue
                 newN = newN + 1
                 badge.badgeValue = newN
