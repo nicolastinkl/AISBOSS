@@ -45,15 +45,20 @@ class OrderAndBuyerInfoView: UIView {
             //    price.text = m.price != nil ? NSString(format: "%.1f", m.price!) as String : "0"
                 price.text = m.price != nil ? m.price! : "0"
                 if let number = m.messageNumber {
-                    messageNumber.hidden = false
-                    messageNumber.text = String(number)
+                    if number > 0 {
+                        messageNumber.hidden = false
+                        messageNumber.text = String(number)
+                    } else {
+                        messageNumber.hidden = true
+                    }
                 }
+                
                 let imageUrl = "\(AIRequirementViewPublicValue.orderPreModel?.customer.user_portrait_icon ?? "")"
                 buyerIcon.asyncLoadImage(imageUrl)
+                
                 if let serviceIconUrl = m.serviceIcon {
                     serviceIcon.asyncLoadImage(serviceIconUrl)
                 }
-                
             }
         }
     }
