@@ -183,15 +183,17 @@ class AICollContentViewController: UIViewController {
                     allServiceInsts![assignServiceInstModel.serviceInstId] = assignServiceInstModel
                 }
             }
-            
+            //这里要把原有的assginServiceInsts找到，然后匹配新的model数据
+            var updatedServiceInstIds = [Int]()
+            for assignServiceInst in assginServiceInsts{
+                if let serviceInstId = assignServiceInst.serviceInstId{
+                    updatedServiceInstIds.append(serviceInstId)
+                }
+                
+            }
+            reloadServiceInstView(updatedServiceInstIds)
         }
-        //这里要把原有的assginServiceInsts找到，然后匹配新的model数据
-        var updatedServiceInstIds = [Int]()
-        for assignServiceInst in assginServiceInsts{
-            let serviceInstId = assignServiceInst.serviceInstId
-            updatedServiceInstIds.append(serviceInstId!)
-        }
-        reloadServiceInstView(updatedServiceInstIds)
+        
     }
     
     private func changeLaunchButtonStatus(shouldDisplay : Bool){

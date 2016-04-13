@@ -31,6 +31,7 @@ internal class AIRequirementMenuViewController : UIViewController  {
     @IBOutlet weak var collLabel: UILabel!
     
     // MARK: -> Internal properties
+    @IBOutlet weak var rightOffset: NSLayoutConstraint!
     
     @IBOutlet weak var requireButton: UIButton!
     @IBOutlet weak var collaborationButton: UIButton!
@@ -82,6 +83,12 @@ internal class AIRequirementMenuViewController : UIViewController  {
         
          NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
+        
+        initLayout()
+    }
+    
+    func initLayout(){
+        
     }
     
     
@@ -108,9 +115,10 @@ internal class AIRequirementMenuViewController : UIViewController  {
     
     func  notifyOperateCell(notify: NSNotification){
         if let data = notify.userInfo {
-            
-            if let number = data[AIApplication.JSONREPONSE.unassignedNum]  as? Int{
-                badge.badgeValue = number
+            if let _ = data[AIApplication.JSONREPONSE.unassignedNum]  as? Int{
+                var newN = badge.badgeValue
+                newN = newN + 1
+                badge.badgeValue = newN
             }            
         }
     }
@@ -178,8 +186,8 @@ extension AIRequirementMenuViewController : VerticalScrollViewDelegate{
     func buildServiceInstsView(){
         
         if let models = models {
-            let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding
-            let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight)
+            let scorllViewheight = self.view.height - collaborationButton.top  - collaborationButton.height - scrollViewBottomPadding - 10
+            let frame = CGRect(x: 3, y: CGRectGetMaxY(collLabel.frame)-10, width: 65, height: scorllViewheight )
             
             serviceInstsView = AIVerticalScrollView(frame: frame)
             serviceInstsView.userInteractionEnabled = true

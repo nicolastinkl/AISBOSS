@@ -156,7 +156,8 @@ class AISelectedServiceTableVController: UIViewController {
         self.view.showLoading()
 
         let handler = AIRequirementHandler.defaultHandler()
-        handler.distributeRequirementRequset(self.contentModel?.childServices?.first?.wish_result_id ?? "",
+        
+        handler.distributeRequirementRequset(childModel?.wish_result_id ?? "",
             wish_item_type: self.contentModel?.category ?? "",
             wish_item_id: childModel?.requirement_id ?? "",
             service_inst_id: ridArray, success: { () -> Void in

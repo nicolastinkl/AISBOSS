@@ -33,11 +33,7 @@ internal class AICustomView : UIView{
      TODO: 处理数据填充和标签初始化
      */
     func fillTags(models:[AIProposalServiceDetailLabelModel],isNormal:Bool){
-        /**
-            根据model个数计算高度
-        */
-         
-        
+       
         var cacheArray = Array<UIView>()
         
         allTagsArray = models //fill data..
