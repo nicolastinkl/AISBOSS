@@ -67,14 +67,14 @@ static CGFloat const kBounceValue = 20.0f;
         case UIGestureRecognizerStateChanged: {
             CGPoint currentPoint = [recognizer translationInView:self.myContentView];
             CGFloat deltaX = currentPoint.x - self.panStartPoint.x;
-//            NSLog(@"deltaX  : %f",deltaX);
-            
+            CGFloat contentX = self.myContentView.frame.origin.x;
             if (deltaX > 0) {
                 // open
-                [self.delegate cellDidAimationFrame:(deltaX + 20) cell:self];
+               
+                [self.delegate cellDidAimationFrame:(contentX + 20) cell:self];
             }else{
                 //close
-                [self.delegate cellDidAimationFrame:((220.0 + deltaX) + 20) cell:self];
+                [self.delegate cellDidAimationFrame:((220.0 + contentX) + 20) cell:self];
             }
             
             

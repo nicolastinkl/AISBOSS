@@ -395,16 +395,17 @@ extension UITransViewController: SwipeableCellDelegate{
             superCell.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
         }
         
+        print(position)
         var viewtag:Int = 0
-        if (position >= 195 && position <= 200) {
+        if (position >= 200 && position <= 230) {
             viewtag = 1
-        }else if (position >= 152 && position <= 157) {
+        }else if (position >= 162 && position <= 199) {
             viewtag = 2
-        }else if (position >= 109 && position <= 114) {
+        }else if (position >= 120 && position <= 160) {
             viewtag = 3
-        }else if (position >= 72 && position <= 77) {
+        }else if (position >= 80 && position <= 100) {
             viewtag = 4
-        }else if (position >= 30 && position <= 35) {
+        }else if (position >= 30 && position <= 60) {
             viewtag = 6
         }
         if viewtag > 0 {
@@ -421,10 +422,8 @@ extension UITransViewController: SwipeableCellDelegate{
             
             tagPreButton = button //Cache ..
             
+            button.setBackgroundImage(UIImage(named: "tags_select"), forState: UIControlState.Normal)
             
-            SpringAnimation.spring(0.3, animations: {
-                button.setBackgroundImage(UIImage(named: "tags_select"), forState: UIControlState.Normal)
-            })
         }
     }
     
@@ -662,7 +661,6 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 let height = self.heightForContent(model.favoriteDes)
                 return 135 + height
             }
-            
         }
         
         return 0
@@ -881,7 +879,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 }
             }
-        }   
+        }
     }
     
     // MARK: cellForRowAtIndexPath..
@@ -1306,11 +1304,9 @@ extension UITransViewController: ActionCellDelegate {
 
 // MARK: ColorIndicatorDelegate Delegate
 extension UITransViewController: ColorIndicatorDelegate {
+    
     func onButtonClick(sender: AnyObject, colorFlag: AIColorFlag) {
         
-        // MARK: NO
-        
-
         selectedColor = colorFlag
         
         // MARK: Top View Animation
@@ -1319,62 +1315,6 @@ extension UITransViewController: ColorIndicatorDelegate {
         } else {
             self.transformManager?.queryCollectedContents(1, pageSize: 10, tags: nil, origin: nil, favoriteFlag: nil, colorFlags: [colorFlag], completion: self.loadData)
         }
-
-//        if colorFlag == AIColorFlag.Blue {
-//            button = swipeView.blueBtn
-//        }else{
-//            swipeView.blueBtn.setImage(UIImage(named: "scrollball_5"), forState: UIControlState.Normal)
-//        }
-//        
-//        if colorFlag == AIColorFlag.Cyan {
-//            button = swipeView.cyanBtn
-//        }else{
-//            swipeView.cyanBtn.setImage(UIImage(named: "scrollball_3"), forState: UIControlState.Normal)
-//        }
- 
-        
-//        var button: UIButton?
-//        // Mark Preseure Tags..
-//        if colorFlag == AIColorFlag.Red {
-//            button = swipeView.redBtn
-//        }else{
-//            swipeView.redBtn.setImage(UIImage(named: "scrollball_1"), forState: UIControlState.Normal)
-//        }
-//        
-//        
-//
-//        if colorFlag == AIColorFlag.Blue {
-//            button = swipeView.blueBtn
-//        }else{
-//            swipeView.blueBtn.setImage(UIImage(named: "scrollball_5"), forState: UIControlState.Normal)
-//        }
-//        
-//        if colorFlag == AIColorFlag.Cyan {
-//            button = swipeView.cyanBtn
-//        }else{
-//            swipeView.cyanBtn.setImage(UIImage(named: "scrollball_3"), forState: UIControlState.Normal)
-//        }
-//        
-//        if colorFlag == AIColorFlag.Green {
-//            button = swipeView.greenBtn
-//        }else{
-//            swipeView.greenBtn.setImage(UIImage(named: "scrollball_4"), forState: UIControlState.Normal)
-//        }
-//        
-//        if colorFlag == AIColorFlag.Orange {
-//            button = swipeView.orangeBtn
-//        }else{
-//            swipeView.orangeBtn.setImage(UIImage(named: "scrollball_2"), forState: UIControlState.Normal)
-//        }
-        
-        // Changed Current Tags..
-        
-        if AILocalStore.getAccessMenuTag() != 0 {
-            //NULL
-            //button.setImage(UIImage(named: "scrollball_\(AILocalStore.getAccessMenuTag())"), forState: UIControlState.Normal)
-        }
-        
-   //     button?.setImage(UIImage(named: "tags_mark_\(colorFlag.intValue())"), forState: UIControlState.Normal)
         
         AILocalStore.setAccessMenuTag(colorFlag.intValue())
         lastExpandedCell = 0

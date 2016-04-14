@@ -132,6 +132,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
     
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        let path = url.lastPathComponent
+        
+        print(path)
+        return true
+    }
+    
     func showRootViewControllerReal() {
         //创建Root
         let root = AIRootViewController()

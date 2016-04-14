@@ -20,6 +20,17 @@
 	<string>V0.20160408.004</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>cn.leancloud.xkz4nhs9rmvw3awnolcu3effmdkvynztt1umggatbrx72krk</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>3373</string>
 	<key>LSRequiresIPhoneOS</key>
