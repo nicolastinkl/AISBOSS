@@ -1277,7 +1277,7 @@ extension UITransViewController: ActionCellDelegate {
             if let url = model.favoriteFromWhereURL {
                  webView.currentUrl = NSURL(string: url)
             }else{
-                webView.currentUrl = NSURL(string: "http://www.baidu.com")
+                webView.currentUrl = NSURL(string: "http://www.asiainfo.com")
             }
             
             showViewController(webView, sender: self)
