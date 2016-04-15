@@ -401,7 +401,6 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         audioModel.audio_url = contentModel.audioUrl ?? ""
         audioModel.time = lengthAudio
         let audio1 = AIAudioMessageView.currentView()
-        //        audio1.audioDelegate = self
         cell.contentView.addSubview(audio1)
         audio1.tag = 11
         audio1.fillData(audioModel)

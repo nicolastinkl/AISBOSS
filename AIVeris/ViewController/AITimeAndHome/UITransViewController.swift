@@ -394,7 +394,7 @@ extension UITransViewController: SwipeableCellDelegate{
             self.tableView.scrollEnabled = false
             superCell.backgroundColor = UIColor(patternImage: UIImage(named: "item_card_black_bgcun")!)
         }
-         
+        
         var viewtag:Int = 0
         if (position >= 200 && position <= 230) {
             viewtag = 1
