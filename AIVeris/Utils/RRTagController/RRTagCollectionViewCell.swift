@@ -67,7 +67,7 @@ class RRTagCollectionViewCell: UICollectionViewCell {
             textContent.setX(addIcon.right + 8)
             textContent.setCenterY(addIcon.centerY)
 		} else {
-            textContent.frame = bounds
+            textContent.frame = CGRectOffset(bounds, 0, 0)
 		}
 	}
 	

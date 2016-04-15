@@ -9,8 +9,8 @@
 import UIKit
 
 @objc protocol AITaskInputViewControllerDelegate: NSObjectProtocol {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?)
-    optional func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool
+	func inputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?)
+    optional func inputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool
 }
 
 class AITaskInputViewController: UIViewController {
@@ -42,7 +42,7 @@ class AITaskInputViewController: UIViewController {
 extension AITaskInputViewController: UITextViewDelegate {
 	func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
 		if (text == "\n") {
-            if let textViewShouldEndEditing = delegate?.remarkInputViewControllerShouldEndEditing?(self, text: textView.text) {
+            if let textViewShouldEndEditing = delegate?.inputViewControllerShouldEndEditing?(self, text: textView.text) {
                 if !textViewShouldEndEditing {
                     textView.shake(.Horizontal, numberOfTimes: 10, totalDuration: 0.6, completion: {
                         // do something after animation finishes
@@ -53,7 +53,7 @@ extension AITaskInputViewController: UITextViewDelegate {
 			textView.resignFirstResponder()
 			dismissPopupViewController(true) { () -> Void in
 				if let delegate = self.delegate {
-					delegate.remarkInputViewControllerDidEndEditing(self, text: textView.text)
+					delegate.inputViewControllerDidEndEditing(self, text: textView.text)
 				}
 			}
 			return false
