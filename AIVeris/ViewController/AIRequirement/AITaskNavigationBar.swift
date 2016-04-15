@@ -10,7 +10,7 @@ import UIKit
 
 protocol AITaskNavigationBarDelegate: NSObjectProtocol {
 	var navigationBar: AITaskNavigationBar { get }
-    
+	
 	func navigationBar(navigationBar: AITaskNavigationBar, cancelButtonPressed sender: UIButton)
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed sender: UIButton)
 }
@@ -19,6 +19,7 @@ class AITaskNavigationBar: UIView {
 	
 	struct Constants {
 		static let margin: CGFloat = 40 / 3
+		static let saveButtonTop: CGFloat = 66 / 3
 		static let saveButtonHeight: CGFloat = 78 / 3
 		static let saveButtonWidth: CGFloat = 156 / 3
 	}
@@ -44,14 +45,14 @@ class AITaskNavigationBar: UIView {
 		saveButton.setTitle("save", forState: .Normal)
 		saveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 		saveButton.addTarget(self, action: "saveButtonPressed:", forControlEvents: .TouchUpInside)
-		saveButton.backgroundColor = UIColor(red: 0.0784, green: 0.4353, blue: 0.8863, alpha: 1.0)
+		saveButton.backgroundColor = UIColor(red: 0.0588, green: 0.5255, blue: 0.9098, alpha: 1.0)
 		saveButton.layer.cornerRadius = 4
 		saveButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(20)
 		
 		self.addSubview(saveButton)
 		saveButton.snp_makeConstraints { (make) in
 			make.trailing.equalTo(self).offset(-Constants.margin)
-			make.centerY.equalTo(self)
+			make.top.equalTo(Constants.saveButtonTop)
 			make.width.equalTo(Constants.saveButtonWidth)
 			make.height.equalTo(Constants.saveButtonHeight)
 		}
@@ -93,7 +94,7 @@ class AITaskNavigationBar: UIView {
 }
 
 extension AITaskNavigationBarDelegate where Self: UIViewController {
-    func setupNavigationAndBackgroundImage(backgroundColor backgroundColor:UIColor? = nil) {
+	func setupNavigationAndBackgroundImage(backgroundColor backgroundColor: UIColor? = nil) {
 		edgesForExtendedLayout = .None
 		let imageView = UIImageView(image: UIImage(named: "taskEditBg"))
 		view.addSubview(imageView)
@@ -105,33 +106,33 @@ extension AITaskNavigationBarDelegate where Self: UIViewController {
 		bar.delegate = self
 		view.addSubview(bar)
 		bar.snp_makeConstraints { (make) in
-			make.height.equalTo(74)
+			make.height.equalTo(64)
 			make.top.leading.trailing.equalTo(view)
 		}
-        
-        if let backgroundColor = backgroundColor {
-            // 有backgroundcolor 就添加一个层在 navigationbar 下面
-            let backgroundView = UIView()
-            backgroundView.backgroundColor = backgroundColor
-            view.addSubview(backgroundView)
-            backgroundView.snp_makeConstraints(closure: { (make) in
-                make.top.equalTo(bar.snp_bottom)
-                make.leading.bottom.trailing.equalTo(view)
-            })
-        }
+		
+		if let backgroundColor = backgroundColor {
+			// 有backgroundcolor 就添加一个层在 navigationbar 下面
+			let backgroundView = UIView()
+			backgroundView.backgroundColor = backgroundColor
+			view.addSubview(backgroundView)
+			backgroundView.snp_makeConstraints(closure: { (make) in
+				make.top.equalTo(bar.snp_bottom)
+				make.leading.bottom.trailing.equalTo(view)
+			})
+		}
 	}
 	
 	var navigationBar: AITaskNavigationBar {
 		return view.viewWithTag(765) as! AITaskNavigationBar
 	}
-
-    var saveButtonEnabled: Bool {
-        set {
-            navigationBar.saveButton.enabled = newValue
-            navigationBar.saveButton.alpha = newValue ? 1 : 0.4
-        }
-        get {
-            return navigationBar.saveButton.enabled
-        }
-    }
+	
+	var saveButtonEnabled: Bool {
+		set {
+			navigationBar.saveButton.enabled = newValue
+			navigationBar.saveButton.alpha = newValue ? 1 : 0.4
+		}
+		get {
+			return navigationBar.saveButton.enabled
+		}
+	}
 }
