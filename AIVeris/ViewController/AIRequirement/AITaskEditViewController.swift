@@ -179,7 +179,7 @@ extension AITaskEditViewController: AITaskTimeLineViewDelegate {
 }
 
 extension AITaskEditViewController: AITaskInputViewControllerDelegate {
-	func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
+	func inputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
 		remark = text
 		// update save button enable
 		saveButtonEnabled = text?.length > 0

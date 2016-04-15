@@ -45,7 +45,7 @@ class AITaskTagViewController: RRTagController {
 }
 
 extension AITaskTagViewController: AITaskInputViewControllerDelegate {
-    func remarkInputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
+    func inputViewControllerDidEndEditing(sender: AITaskInputViewController, text: String?) {
         
         guard let _ = text else {
             return
@@ -55,17 +55,23 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
         view.showLoading()
         weak var wf = self
         
-        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
+        var service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
         
-        AIRequirementHandler.defaultHandler().addNewTag(service_id, tag_type: "Text", tag_content: text!, success: { (newTag) -> Void in
+        if shouldShowInputTextField {
+            service_id = "0"
+        }
+        AIRequirementHandler.defaultHandler().addNewTag(service_id, tag_type: "Text", tag_content: text!, success: { [unowned self] (newTag) -> Void in
             
             let spaceSet = NSCharacterSet.whitespaceCharacterSet()
             if let contentTag = text?.stringByTrimmingCharactersInSet(spaceSet) {
                 if strlen(contentTag) > 0 {
-                    let newTag = RequirementTag(id: newTag.tag_id.integerValue, selected: false, textContent: newTag.tag_content)
+                    let newTag = RequirementTag(id: newTag.tag_id.integerValue, selected: self.shouldShowInputTextField, textContent: newTag.tag_content)
                     wf!.tags.insert(newTag, atIndex: wf!.tags.count)
                     wf!.collectionTag.reloadData()
                     wf!.view.hideLoading()
+                    if self.shouldShowInputTextField {
+                       self.navigationBar(self.navigationBar, saveButtonPressed: self.navigationBar.saveButton)
+                    }
                 }
             }
             
@@ -74,7 +80,7 @@ extension AITaskTagViewController: AITaskInputViewControllerDelegate {
         }
     }
     
-    func remarkInputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
+    func inputViewControllerShouldEndEditing(sender: AITaskInputViewController, text: String?) -> Bool {
         return text?.length < 51
     }
 }
@@ -89,15 +95,13 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
     }
     
     func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed: UIButton) {
-        var selected: Array<String> = Array()
-        var unSelected: Array<RequirementTag> = Array()
+        var selectedTagIds: Array<String> = Array()
         
         for currentTag in tags {
             if currentTag.selected {
-                selected.append("\(currentTag.id)")
+                selectedTagIds.append("\(currentTag.id)")
             }
             else {
-                unSelected.append(currentTag)
             }
         }
         
@@ -111,7 +115,7 @@ extension AITaskTagViewController: AITaskNavigationBarDelegate {
         let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
         let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
         
-        AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selected, success: { (unassignedNum) -> Void in
+        AIRequirementHandler.defaultHandler().saveTagsAsTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishTag", analysis_ids: selectedTagIds, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
             
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: [AIApplication.JSONREPONSE.unassignedNum:unassignedNum])

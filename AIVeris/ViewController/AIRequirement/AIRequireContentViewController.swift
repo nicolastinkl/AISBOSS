@@ -645,7 +645,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
             addTagForModel(cellWrapperModel)
         case 1:
             // 转化备注
-            addNoteForModel(cellWrapperModel)
+            addNoteForModel(cellWrapperModel, indexPath: indexPath)
             
         case 2:
             // 转化任务节点
@@ -779,7 +779,7 @@ extension AIRequireContentViewController {
         addTagForModel(nil)
     }
     
-    func addNoteForModel(cellWrapperModel: AIWrapperAIContentModelClass?) {
+    func addNoteForModel(cellWrapperModel: AIWrapperAIContentModelClass?, indexPath: NSIndexPath? = nil) {
         
         if let cellmodel = cellWrapperModel?.cellmodel {
             let vc = AITaskNoteEditViewController()
@@ -802,6 +802,13 @@ extension AIRequireContentViewController {
             
             
             vc.requirementItem = item
+            
+            if let indexPath = indexPath {
+                let currentCellModel = dataSource?[indexPath.section]
+                
+                let contentModel: AIChildContentCellModel = (currentCellModel?.childServices?[indexPath.row - 1])!
+                vc.contentModel = contentModel
+            }
             presentViewController(vc, animated: true, completion: nil)
         }else {
             let vc = AITaskNoteEditViewController()

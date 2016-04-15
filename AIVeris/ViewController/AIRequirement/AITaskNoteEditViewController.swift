@@ -10,12 +10,13 @@ import UIKit
 
 class AITaskNoteEditViewController: UIViewController {
 	
+	var contentModel: AIChildContentCellModel?
 	var requirementItem: AIRequirementItem?
 	var textView: KMPlaceholderTextView!
 	var iconLabel: UILabel!
-	var businessModel : AIQueryBusinessInfos?
+	var businessModel: AIQueryBusinessInfos?
 	var iconImageView: UIImageView!
-    var iconContainerView: UIView!
+	var iconContainerView: UIView!
 	
 	struct Constants {
 		static let textViewLeadingSpace: CGFloat = 35 / 3
@@ -32,8 +33,9 @@ class AITaskNoteEditViewController: UIViewController {
 		navigationBar.titleLabel.text = "Note"
 		setupTextView()
 		setupIconView()
+		
 		updateUI()
-        textView.becomeFirstResponder()
+		textView.becomeFirstResponder()
 	}
 	
 	func updateUI() {
@@ -45,9 +47,12 @@ class AITaskNoteEditViewController: UIViewController {
 			if let url = requirementItem.service_provider_icons.first as? String {
 				iconImageView.asyncLoadImage(url)
 			}
-        } else {
-            iconContainerView.hidden = true
-//            textView?.placeholder = ""
+		} else {
+			iconContainerView.hidden = true
+		}
+        
+        if contentModel != nil {
+            textView?.placeholder = ""
         }
 	}
 	
@@ -58,7 +63,6 @@ class AITaskNoteEditViewController: UIViewController {
 		textView.textColor = UIColor.whiteColor()
 		textView.placeholderFont = Constants.placeholderFont
 		textView.placeholderColor = UIColorFromHex(0xffffff, alpha: 0.28)
-//		textView.placeholder = "9 weeks of pregnancy, action inconvenient"
 		view.addSubview(textView)
 		
 		textView.snp_makeConstraints { (make) in
@@ -73,15 +77,14 @@ class AITaskNoteEditViewController: UIViewController {
 		
 		iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
 		view.addSubview(iconContainerView)
-		iconContainerView.snp_makeConstraints { (make) in
-			make.top.equalTo(textView.snp_bottom)
-			make.leading.equalTo(view).offset(Constants.iconContainerLeadingSpace)
-			make.trailing.equalTo(view).offset(-Constants.iconContainerLeadingSpace)
-			make.height.equalTo(Constants.iconContainerHeight)
-		}
+        iconContainerView.snp_makeConstraints { (make) in
+            make.top.equalTo(textView.snp_bottom)
+            make.leading.equalTo(view).offset(Constants.iconContainerLeadingSpace)
+            make.trailing.equalTo(view).offset(-Constants.iconContainerLeadingSpace)
+            make.height.equalTo(Constants.iconContainerHeight)
+        }
 		
 		iconLabel = UILabel()
-//		iconLabel.text = "9 weeks of pregnancy, action inconvenient"
 		iconLabel.font = Constants.placeholderFont
 		iconLabel.textColor = textView.textColor
 		iconContainerView.addSubview(iconLabel)
@@ -90,6 +93,26 @@ class AITaskNoteEditViewController: UIViewController {
 			make.leading.equalTo(40 / 3)
 			make.top.equalTo(30 / 3)
 			make.trailing.equalTo(iconContainerView).offset(-40 / 3)
+		}
+		
+		if let contentModel = contentModel {
+			iconLabel.hidden = true
+			let lengthAudio = contentModel.audioLengh ?? 0
+			
+			let audioModel = AIProposalServiceDetailHopeModel()
+			audioModel.audio_url = contentModel.audioUrl ?? ""
+			audioModel.time = lengthAudio
+			let audio1 = AIAudioMessageView.currentView()
+			iconContainerView.addSubview(audio1)
+			audio1.tag = 11
+			audio1.fillData(audioModel)
+			audio1.snp_makeConstraints { (make) in
+				make.leading.equalTo(0)
+				make.top.equalTo(30 / 3)
+				make.trailing.equalTo(iconContainerView).offset(-40 / 3)
+                make.height.equalTo(22)
+			}
+			audio1.smallMode()
 		}
 		
 		let line = UIImageView(image: UIImage(named: "orderline"))
@@ -124,38 +147,34 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
 	
 	func navigationBar(navigationBar: AITaskNavigationBar, saveButtonPressed sender: UIButton) {
 		view.endEditing(true)
-        
-        
-        // save here
-        view.showLoading()
-        weak var wf = self
-        
-        let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
-        let comp_user_id = (cellWrapperModel?.comp_user_id)!
-        let customer_id : String = (cellWrapperModel?.customer.customer_id.stringValue)! as String
-        let order_id = (cellWrapperModel?.order_id)!
-        let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
-        let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
-        
-        
-        AIRequirementHandler.defaultHandler().addNewNote(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
-            wf!.shouldDismissSelf(true)
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: [AIApplication.JSONREPONSE.unassignedNum:unassignedNum])
-            
-            }) { (errType, errDes) -> Void in
-                wf!.shouldDismissSelf(false)
-        }
- 
+		
+		// save here
+		view.showLoading()
+		weak var wf = self
+		
+		let cellWrapperModel = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
+		let comp_user_id = (cellWrapperModel?.comp_user_id)!
+		let customer_id: String = (cellWrapperModel?.customer.customer_id.stringValue)! as String
+		let order_id = (cellWrapperModel?.order_id)!
+		let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
+		let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
+		
+		AIRequirementHandler.defaultHandler().addNewNote(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
+			wf!.shouldDismissSelf(true)
+			
+			NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil, userInfo: [AIApplication.JSONREPONSE.unassignedNum: unassignedNum])
+		}) { (errType, errDes) -> Void in
+			wf!.shouldDismissSelf(false)
+		}
 	}
-    
-    func shouldDismissSelf (didSuccess : Bool) {
-        view.hideLoading()
-        
-        if didSuccess {
-            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
-        }
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+	
+	func shouldDismissSelf(didSuccess: Bool) {
+		view.hideLoading()
+		
+		if didSuccess {
+			NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequireContentViewControllerCellWrappNotificationName, object: nil)
+		}
+		
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
 }
