@@ -104,7 +104,9 @@ extension AITaskEditViewController: AITaskNavigationBarDelegate {
         let node_id : String = (dependOnTask?.id)!
         
         
-        AIRequirementHandler.defaultHandler().addNewTask(comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: offset_time, node_id: node_id, arrangement_id: (dependOnTask?.arrageID)!, success: { (unassignedNum) -> Void in
+        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
+        
+        AIRequirementHandler.defaultHandler().addNewTask(service_id,comp_user_id: comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id:requirement_id, requirement_type: requirement_type, analysis_type: "TaskNode", task_desc: remark!, offset_time: offset_time, node_id: node_id, arrangement_id: (dependOnTask?.arrageID)!, success: { (unassignedNum) -> Void in
             wf!.shouldDismissSelf(true)
             
             NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil,userInfo: [AIApplication.JSONREPONSE.unassignedNum:unassignedNum])

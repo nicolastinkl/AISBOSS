@@ -178,10 +178,10 @@ class AIRequirementHandler: NSObject {
     */
 
     
-    func saveAsTask(providerID : String, customID : String, orderID : String, requirementID : String?, requirementType : String?, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveAsTask(service_id: String,providerID : String, customID : String, orderID : String, requirementID : String?, requirementType : String?, toType : String, requirementList : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : getReType(requirementType), "requirement_id" : requirementID ?? "0", "analysis_type" : getReType(toType), "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id":service_id,"comp_user_id" : providerID, "customer_id" : customID, "order_id" : orderID, "requirement_type" : getReType(requirementType), "requirement_id" : requirementID ?? "0", "analysis_type" : getReType(toType), "analysis_ids" : requirementList], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveAsTask.description as String
      
@@ -282,9 +282,9 @@ class AIRequirementHandler: NSObject {
     analysis_ids
     */
     
-    func saveTagsAsTask(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String?, requirement_type : String?, analysis_type : String, analysis_ids : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func saveTagsAsTask(service_id:String,comp_user_id : String, customer_id : String, order_id : String, requirement_id : String?, requirement_type : String?, analysis_type : String, analysis_ids : NSArray, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0" , "analysis_type" : analysis_type, "analysis_ids" : analysis_ids], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id":service_id,"comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0" , "analysis_type" : analysis_type, "analysis_ids" : analysis_ids], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.saveTagsAsTask.description as String
         
@@ -341,9 +341,9 @@ class AIRequirementHandler: NSObject {
     note_content	备注文本
     */
     
-    func addNewNote(comp_user_id : String, customer_id : String, order_id : String, requirement_id : String?, requirement_type : String?, analysis_type : String, note_content : String, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
+    func addNewNote(service_id:String,comp_user_id : String, customer_id : String, order_id : String, requirement_id : String?, requirement_type : String?, analysis_type : String, note_content : String, success : (unassignedNum : NSNumber)-> Void, fail : (errType: AINetError, errDes: String) -> Void) {
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0", "analysis_type" : analysis_type, "note_content" : note_content], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id":service_id,"comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0", "analysis_type" : analysis_type, "note_content" : note_content], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewNote.description as String
         
@@ -382,7 +382,9 @@ class AIRequirementHandler: NSObject {
     
     */
     
-    func addNewTask(comp_user_id : String,
+    func addNewTask(
+        service_id: String,
+        comp_user_id : String,
         customer_id : String,
         order_id : String,
         requirement_id : String?,
@@ -396,7 +398,7 @@ class AIRequirementHandler: NSObject {
         fail : (errType: AINetError, errDes: String) -> Void) {
             
         let message = AIMessage()
-        let body : NSDictionary = ["data" : ["comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0" , "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "arrangement_id" : arrangement_id], "desc":["data_mode" : "0", "digest" : ""]]
+        let body : NSDictionary = ["data" : ["service_id":service_id,"comp_user_id" : comp_user_id, "customer_id" : customer_id, "order_id" : order_id, "requirement_type" : getReType(requirement_type), "requirement_id" : requirement_id ?? "0" , "analysis_type" : analysis_type, "task_desc" : task_desc, "offset_time" : offset_time, "node_id" : node_id, "arrangement_id" : arrangement_id], "desc":["data_mode" : "0", "digest" : ""]]
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.addNewTask.description as String
         

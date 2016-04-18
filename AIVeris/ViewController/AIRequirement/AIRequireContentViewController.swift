@@ -683,9 +683,11 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         
         let comp_user_id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? ""
         
+        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
+
         
         self.view.showLoading()
-        AIRequirementHandler.defaultHandler().saveAsTask(comp_user_id, customID: "\(custID)", orderID: orderID, requirementID: contentModel.requirement_id ?? "", requirementType: cellModel.category ?? "", toType: cellModel.category ?? "", requirementList: [contentModel.requirement_id ?? ""], success: { (unassignedNum) -> Void in
+        AIRequirementHandler.defaultHandler().saveAsTask(service_id,providerID:comp_user_id, customID: "\(custID)", orderID: orderID, requirementID: contentModel.requirement_id ?? "", requirementType: cellModel.category ?? "", toType: cellModel.category ?? "", requirementList: [contentModel.requirement_id ?? ""], success: { (unassignedNum) -> Void in
             
             self.view.hideLoading()
             
