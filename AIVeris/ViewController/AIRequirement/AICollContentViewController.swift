@@ -131,12 +131,19 @@ class AICollContentViewController: UIViewController {
     
     // MARK: - 事件处理
     private func handleNotification(){
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchServiceInst:", name: AIApplication.Notification.AIRequirementSelectServiceInstNotificationName, object: nil)
         //弹出框的关闭通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "closePopupWindow:", name: AIApplication.Notification.AIRequirementClosePopupNotificationName, object: nil)
         //数据加载完成通知， 如果有重新请求数据，就要刷新界面
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadAllData:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
     }
+    
+    //TODO 手工remove通知，正常写法应该是怎么处理的？
+    func removeAllObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self)    
+    }
+    
     
     func notifySwitchServiceInst(notify: NSNotification){
         let serviceInstIds = notify.object as! Array<Int>

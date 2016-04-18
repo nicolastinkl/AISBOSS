@@ -120,7 +120,7 @@ internal class AIRequirementViewController : UIViewController {
         requestDataInterface()
         
     }
-    
+   
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -358,6 +358,21 @@ internal class AIRequirementViewController : UIViewController {
     }
     
     @IBAction func dissMissViewController(sender: AnyObject) {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        if let tabCollViewC = tabCollViewC as? AICollContentViewController {
+            tabCollViewC.removeAllObserver()
+        }
+        
+        if let tabAssignViewC = tabAssignViewC as? AIRequireContentViewController {
+            tabAssignViewC.removeAllObserver()
+        }
+        
+        if let tabRequireViewC = tabRequireViewC as? AIAssignmentContentViewController {
+            tabRequireViewC.removeAllObserver()
+        }
+        
         self.navigationController?.popViewControllerAnimated(true)
     }
     

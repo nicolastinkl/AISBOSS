@@ -104,6 +104,9 @@ class AIRequireContentViewController: UIViewController {
         tableview.headerBeginRefreshing()
     }
     
+    func removeAllObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
