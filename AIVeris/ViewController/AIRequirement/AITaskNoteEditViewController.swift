@@ -74,8 +74,8 @@ class AITaskNoteEditViewController: UIViewController {
 	}
 	
 	func setupIconView() {
-		
 		iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
+        iconContainerView.userInteractionEnabled = true
 		view.addSubview(iconContainerView)
         iconContainerView.snp_makeConstraints { (make) in
             make.top.equalTo(textView.snp_bottom)
