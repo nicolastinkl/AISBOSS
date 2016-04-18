@@ -45,6 +45,9 @@ class AIAssignmentContentViewController: UIViewController {
         
     }
     
+    func removeAllObserver(){
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
