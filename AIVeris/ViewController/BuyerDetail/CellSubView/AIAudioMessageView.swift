@@ -34,6 +34,8 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
     private var currentModelss:AIProposalServiceDetailHopeModel?
     @IBOutlet weak var widthAudioBgConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var audioConstantY: NSLayoutConstraint!
+    @IBOutlet weak var gifConstantY: NSLayoutConstraint!
     @IBOutlet weak var errorButton: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     weak var audioDelegate:AIAudioMessageViewDelegate?
@@ -55,12 +57,14 @@ class AIAudioMessageView: AIWishMessageView,AVAudioPlayerDelegate {
     
     func smallMode(){
         
-        let scale : CGFloat = 0.8
-        audioBgConstrain.constant = 16.5
+        //let scale : CGFloat = 0.8
+        audioBgConstrain.constant = 21.5 //16.5
+        gifConstantY.constant = 3.3
+        audioConstantY.constant = 4
         loadingView.alpha = 0
-        audioBg.cornerRadius = 8
-        audioGifImageView.transform = CGAffineTransformMakeScale(scale, scale)
-        audioLength.transform = CGAffineTransformMakeScale(scale, scale)
+        audioBg.cornerRadius = 10
+        //audioGifImageView.transform = CGAffineTransformMakeScale(scale, scale)
+        //audioLength.transform = CGAffineTransformMakeScale(scale, scale)
         
     }
     
