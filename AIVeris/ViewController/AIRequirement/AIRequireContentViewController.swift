@@ -118,13 +118,12 @@ class AIRequireContentViewController: UIViewController {
      */
     func requestData(){
         
-        
         let handler = AIRequirementHandler.defaultHandler()
         
         let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         if let baseModel = baseModel {
-            
-            let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+            let customID = baseModel.customer.user_id.integerValue ?? 0
+            //let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
             let cuserId = baseModel.comp_user_id ?? "0"
             handler.queryUnassignedRequirements(AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0, providerID: Int(cuserId) ?? 0, customID: customID, success: { (requirements) -> Void in
                 self.dataSource  = requirements
@@ -160,7 +159,8 @@ class AIRequireContentViewController: UIViewController {
         let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
         if let baseModel = baseModel {
             
-            let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+//            let customID = baseModel.customer.customer_id == nil ? 1 : (baseModel.customer.customer_id.integerValue ?? 0)
+            let customID = baseModel.customer.user_id.integerValue ?? 0
             handler.queryOriginalRequirements(customID, orderID: AIRequirementViewPublicValue.orderPreModel?.order_id ?? 0 , success: { (requirements) -> Void in
                 
                 self.dataSource  = requirements
