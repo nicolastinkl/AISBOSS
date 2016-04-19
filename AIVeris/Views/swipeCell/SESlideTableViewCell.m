@@ -961,7 +961,7 @@ typedef NS_OPTIONS(NSUInteger, SESlideStateOptions) {
 
 #pragma mark - 
 
-#define BUTTON_MARGIN	20
+#define BUTTON_MARGIN	20+11
 
 @implementation SESlideTableViewCell (ButtonUtility)
 

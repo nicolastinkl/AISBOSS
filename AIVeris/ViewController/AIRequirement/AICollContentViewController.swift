@@ -295,7 +295,7 @@ class AICollContentViewController: UIViewController {
             AITimelineModel(timestamp: 1457403751, id: 1, title: "Paramedic Freelancer Requests Authorization", desc: "A customer's home",status: 0)]
         
         //过滤弹出框model
-        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "171.221.254.231:3000/upload/requirement/filter-notification-off.png", itemIconHighlight: "171.221.254.231:3000/upload/requirement/filter-notification-on.png", isSelect: false),
+        filterModels = [AIPopupChooseModel(itemId: "1", itemTitle: "Delivery / arrival notification", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-notification-off.png", itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-notification-on.png", isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Map", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-map-off.png", itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-map-on.png",  isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Authorization information", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-auth-off.png", itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-auth-on.png",  isSelect: false),
         AIPopupChooseModel(itemId: "1", itemTitle: "Service orders", itemIcon: "http://171.221.254.231:3000/upload/requirement/filter-serviceoder-off.png",itemIconHighlight: "http://171.221.254.231:3000/upload/requirement/filter-serviceoder-on.png",  isSelect: false),

@@ -338,7 +338,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         
         bgImageView.snp_makeConstraints(closure: { (make) -> Void in
             make.top.leading.trailing.equalTo(0)
-            make.bottom.equalTo(-3)
+            make.bottom.equalTo(-4)
         })
         bgImageView.tag = 11
         bgImageView.alpha = 0
@@ -408,10 +408,10 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         audio1.tag = 11
         audio1.fillData(audioModel)
         audio1.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(2)
+            make.top.equalTo(3)
             make.leading.equalTo(2)
             make.trailing.equalTo(-14)
-            make.height.equalTo(22)
+            make.height.equalTo(21.3)
         }
         audio1.smallMode()
         
@@ -452,7 +452,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         }
         
         lineImageView.snp_makeConstraints(closure: { (make) -> Void in
-            make.top.equalTo(desLabel.snp_bottom).offset(0)
+            make.top.equalTo(desLabel.snp_bottom).offset(5.3)
             make.leading.trailing.equalTo(margeLeftOffset)
             make.height.equalTo(1)
         })

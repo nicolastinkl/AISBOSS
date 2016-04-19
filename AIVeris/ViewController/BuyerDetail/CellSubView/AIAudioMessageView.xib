@@ -109,14 +109,16 @@
             <connections>
                 <outlet property="audioBg" destination="GVU-D7-HP9" id="sEc-cq-mKS"/>
                 <outlet property="audioBgConstrain" destination="E07-Mm-oha" id="7Wx-c8-0oN"/>
+                <outlet property="audioConstantY" destination="p2m-Rk-Wiz" id="5a9-cS-YEr"/>
                 <outlet property="audioGifImageView" destination="typ-Nl-fJ8" id="GiI-Po-2Qb"/>
                 <outlet property="audioLength" destination="mUv-jG-rsx" id="S1d-Xd-866"/>
                 <outlet property="errorButton" destination="uS6-8Z-Mna" id="fgF-nY-nYb"/>
+                <outlet property="gifConstantY" destination="HDv-45-0vq" id="uIT-Dq-WOZ"/>
                 <outlet property="loadingView" destination="yiH-fW-3EU" id="jLG-8e-tmt"/>
                 <outlet property="playButton" destination="UBl-GC-vKK" id="qRV-vg-kra"/>
                 <outlet property="widthAudioBgConstraint" destination="Zd1-c5-d47" id="ucd-oT-rsd"/>
             </connections>
-            <point key="canvasLocation" x="-1378" y="547"/>
+            <point key="canvasLocation" x="-1470" y="487"/>
         </view>
     </objects>
     <resources>
