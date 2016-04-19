@@ -58,11 +58,11 @@
                                     <constraint firstAttribute="height" constant="358" id="5yB-Co-cIV"/>
                                 </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="ChH-Wq-IbU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mv0-83-Itj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
                                             <subviews>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yinhaoUp" translatesAutoresizingMaskIntoConstraints="NO" id="0TZ-1A-H3W">
                                                     <rect key="frame" x="12" y="2" width="16" height="13"/>
@@ -89,7 +89,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="77" id="1FP-x8-I28"/>
-                                                <constraint firstAttribute="bottom" secondItem="Vv2-Zz-luE" secondAttribute="bottom" constant="8" id="DOh-hz-NK0"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vv2-Zz-luE" secondAttribute="bottom" constant="5" id="DOh-hz-NK0"/>
                                                 <constraint firstAttribute="trailing" secondItem="ALy-Am-rau" secondAttribute="trailing" constant="35" id="Qqh-Z0-weP"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vv2-Zz-luE" secondAttribute="trailing" constant="14" id="eUg-be-2Ws"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" id="fgf-RO-3GM"/>
@@ -99,7 +99,7 @@
                                                 <constraint firstItem="ALy-Am-rau" firstAttribute="top" secondItem="Mv0-83-Itj" secondAttribute="top" constant="13" id="tAD-Yq-qEv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Vv2-Zz-luE" secondAttribute="trailing" constant="14" id="txn-oG-qTg"/>
                                                 <constraint firstItem="0TZ-1A-H3W" firstAttribute="leading" secondItem="Mv0-83-Itj" secondAttribute="leading" constant="12" id="wt7-l0-dp5"/>
-                                                <constraint firstAttribute="bottom" secondItem="ALy-Am-rau" secondAttribute="bottom" constant="12" id="wvb-jv-qSh"/>
+                                                <constraint firstAttribute="bottom" secondItem="ALy-Am-rau" secondAttribute="bottom" constant="9" id="wvb-jv-qSh"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -121,7 +121,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellTwo" id="796-Px-HdP">
-                                        <rect key="frame" x="0.0" y="98" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="95" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="796-Px-HdP" id="b5V-ug-T1R">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -129,7 +129,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="96" id="s1q-Ff-gJs" customClass="AIBueryDetailCell" customModule="Veris" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="142" width="600" height="96"/>
+                                        <rect key="frame" x="0.0" y="139" width="600" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s1q-Ff-gJs" id="JGc-gM-WNP">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
@@ -328,7 +328,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-nq-FDD">
-                                <rect key="frame" x="0.0" y="468" width="600" height="132"/>
+                                <rect key="frame" x="0.0" y="463" width="600" height="137"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyerBottomCurve" translatesAutoresizingMaskIntoConstraints="NO" id="zaF-rO-J1m" customClass="OBShapedImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -362,9 +362,9 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyerBottom" translatesAutoresizingMaskIntoConstraints="NO" id="7yl-DR-RPR">
-                                        <rect key="frame" x="0.0" y="57" width="600" height="75"/>
+                                        <rect key="frame" x="0.0" y="57" width="600" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="k7q-xs-69S"/>
+                                            <constraint firstAttribute="height" constant="80" id="k7q-xs-69S"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
