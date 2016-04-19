@@ -125,10 +125,23 @@ class ServiceCardDetailFlag: ServiceParamlView {
         flagLabel.layer.masksToBounds = true
         flagLabel.textAlignment = NSTextAlignment.Center
         //MARK: - TODO
-        flagLabel.backgroundColor = colorArray[number]
+        if let index = colorInfo.indexOf(text) {
+            flagLabel.backgroundColor = colorArray[index]
+        } else {
+            flagLabel.backgroundColor = colorArray[number]
+        }
         flagContainer.addSubview(flagLabel)
         return flagLabel.frame
     }
+    
+    let colorInfo = [
+        "Medicine Pickup ",
+        "Queuing ",
+        "Calling for Taxi ",
+        "Check-in ",
+        "Paramedic ",
+        "Test Results Pick"
+    ]
     
     func fixFrame(){
         self.frame.size.height = flagContainer.frame.maxY
