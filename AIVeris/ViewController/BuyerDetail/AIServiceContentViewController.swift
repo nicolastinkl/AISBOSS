@@ -651,8 +651,8 @@ internal class AIServiceContentViewController: UIViewController {
             providerView.content.text = wish.intro ?? ""
             
             if displayForSeller == false {
-                if wish.label_list != nil && (wish.hope_list != nil) {
-                    if    (wish.hope_list.count > 0 && wish.label_list.count > 0) {
+                if wish.label_list != nil || (wish.hope_list != nil) {
+                    if    (wish.hope_list.count > 0 || wish.label_list.count > 0) {
                         let custView =  AICustomView.currentView()
                         let heisss = 191 + wish.label_list.count * 15
                         custView.setHeight(CGFloat(heisss))

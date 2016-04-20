@@ -182,7 +182,7 @@ class SimpleServiceViewContainer: UIView {
     
     
     private func hasHopeList() -> Bool {
-        return dataModel!.wish_list != nil && dataModel!.wish_list.hope_list != nil && dataModel!.wish_list.hope_list.count > 0
+        return dataModel!.wish_list != nil && (dataModel!.wish_list.hope_list != nil || dataModel!.wish_list.label_list != nil)
     }
     
     private func createHopeList() {
