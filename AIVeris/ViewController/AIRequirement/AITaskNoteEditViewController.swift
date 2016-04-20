@@ -51,7 +51,7 @@ class AITaskNoteEditViewController: UIViewController {
 			iconContainerView.hidden = true
 		}
         
-        if contentModel != nil {
+        if let _ = contentModel!.audioLengh, _ = contentModel?.audioUrl {
             textView?.placeholder = ""
         }
 	}
@@ -75,14 +75,14 @@ class AITaskNoteEditViewController: UIViewController {
 	
 	func setupIconView() {
 		iconContainerView = UIImageView(image: UIImage(named: "ai_rac_bg_normal"))
-        iconContainerView.userInteractionEnabled = true
+		iconContainerView.userInteractionEnabled = true
 		view.addSubview(iconContainerView)
-        iconContainerView.snp_makeConstraints { (make) in
-            make.top.equalTo(textView.snp_bottom)
-            make.leading.equalTo(view).offset(Constants.iconContainerLeadingSpace)
-            make.trailing.equalTo(view).offset(-Constants.iconContainerLeadingSpace)
-            make.height.equalTo(Constants.iconContainerHeight)
-        }
+		iconContainerView.snp_makeConstraints { (make) in
+			make.top.equalTo(textView.snp_bottom)
+			make.leading.equalTo(view).offset(Constants.iconContainerLeadingSpace)
+			make.trailing.equalTo(view).offset(-Constants.iconContainerLeadingSpace)
+			make.height.equalTo(Constants.iconContainerHeight)
+		}
 		
 		iconLabel = UILabel()
 		iconLabel.font = Constants.placeholderFont
@@ -95,12 +95,12 @@ class AITaskNoteEditViewController: UIViewController {
 			make.trailing.equalTo(iconContainerView).offset(-40 / 3)
 		}
 		
-		if let contentModel = contentModel {
+		if let audioLengh = contentModel!.audioLengh, audioULR = contentModel?.audioUrl {
 			iconLabel.hidden = true
-			let lengthAudio = contentModel.audioLengh ?? 0
+			let lengthAudio = audioLengh ?? 0
 			
 			let audioModel = AIProposalServiceDetailHopeModel()
-			audioModel.audio_url = contentModel.audioUrl ?? ""
+			audioModel.audio_url = audioULR
 			audioModel.time = lengthAudio
 			let audio1 = AIAudioMessageView.currentView()
 			iconContainerView.addSubview(audio1)
@@ -110,7 +110,7 @@ class AITaskNoteEditViewController: UIViewController {
 				make.leading.equalTo(0)
 				make.top.equalTo(30 / 3)
 				make.trailing.equalTo(iconContainerView).offset(-40 / 3)
-                make.height.equalTo(22)
+				make.height.equalTo(22)
 			}
 			audio1.smallMode()
 		}
@@ -158,11 +158,10 @@ extension AITaskNoteEditViewController: AITaskNavigationBarDelegate {
 		let order_id = (cellWrapperModel?.order_id)!
 		let requirement_id = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.requirement_id)
 		let requirement_type = (AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.category)
-        
-        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
-
 		
-        AIRequirementHandler.defaultHandler().addNewNote(service_id,comp_user_id:comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
+		let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
+		
+		AIRequirementHandler.defaultHandler().addNewNote(service_id, comp_user_id: comp_user_id, customer_id: customer_id, order_id: order_id, requirement_id: requirement_id, requirement_type: requirement_type, analysis_type: "WishNote", note_content: textView.text, success: { (unassignedNum) -> Void in
 			wf!.shouldDismissSelf(true)
 			
 			NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil, userInfo: [AIApplication.JSONREPONSE.unassignedNum: unassignedNum])
