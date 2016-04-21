@@ -228,7 +228,10 @@
         success(returnResponseObject);
     } else {
         NSString *errorDes = [des objectForKey:kKeyForResultMsg];
-        fail(AINetErrorFormat, errorDes);
+        if (fail) {
+            fail(AINetErrorFormat, errorDes);
+        }
+        
     }
 }
 

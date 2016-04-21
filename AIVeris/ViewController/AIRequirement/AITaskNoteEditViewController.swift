@@ -51,7 +51,7 @@ class AITaskNoteEditViewController: UIViewController {
 			iconContainerView.hidden = true
 		}
         
-        if let _ = contentModel!.audioLengh, _ = contentModel?.audioUrl {
+        if let _ = contentModel?.audioLengh, _ = contentModel?.audioUrl {
             textView?.placeholder = ""
         }
 	}
@@ -95,7 +95,7 @@ class AITaskNoteEditViewController: UIViewController {
 			make.trailing.equalTo(iconContainerView).offset(-40 / 3)
 		}
 		
-		if let audioLengh = contentModel!.audioLengh, audioULR = contentModel?.audioUrl {
+		if let audioLengh = contentModel?.audioLengh, audioULR = contentModel?.audioUrl {
 			iconLabel.hidden = true
 			let lengthAudio = audioLengh ?? 0
 			
