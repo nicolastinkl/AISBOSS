@@ -686,7 +686,7 @@ extension AIRequireContentViewController: SESlideTableViewCellDelegate {
         
         let comp_user_id = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue?.comp_user_id ?? ""
         
-        let service_id = AIRequirementViewPublicValue.cellContentTransferValue?.cellmodel?.childServices?.first?.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
+        let service_id = contentModel.service_id ?? (AIRequirementViewPublicValue.bussinessModel?.baseJsonValue!.comp_service_id)!
 
         
         self.view.showLoading()
