@@ -218,8 +218,31 @@ var result: [Float] = [0, 0, 0, 0]
 
 
 
+class ClassA {
+    let numA: Int
+    required init(num: Int) {
+        numA = num
+    }
+    
+    convenience init(bigNum: Bool) {
+        self.init(num: bigNum ? 10000 : 1)
+    }
+}
+
+class ClassB: ClassA {
+    let numB: Int
+    
+    required init(num: Int) {
+        numB = num + 1
+        super.init(num: num)
+    }
+}
 
 
+let cA = ClassA(num: 1)
+cA.numA
+
+ClassB(bigNum: false).numB
 
 
 
