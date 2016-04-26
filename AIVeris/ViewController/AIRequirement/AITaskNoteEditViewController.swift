@@ -24,7 +24,6 @@ class AITaskNoteEditViewController: UIViewController {
 		static let textViewHeight: CGFloat = 490 / 3
 		static let placeholderFont = AITools.myriadLightSemiCondensedWithSize(48 / 3)
 		static let iconContainerLeadingSpace: CGFloat = 40 / 3
-		static let iconContainerHeight: CGFloat = 200 / 3
 	}
 	
 	override func viewDidLoad() {
@@ -81,11 +80,11 @@ class AITaskNoteEditViewController: UIViewController {
 			make.top.equalTo(textView.snp_bottom)
 			make.leading.equalTo(view).offset(Constants.iconContainerLeadingSpace)
 			make.trailing.equalTo(view).offset(-Constants.iconContainerLeadingSpace)
-			make.height.equalTo(Constants.iconContainerHeight)
 		}
 		
 		iconLabel = UILabel()
 		iconLabel.font = Constants.placeholderFont
+        iconLabel.numberOfLines = 0
 		iconLabel.textColor = textView.textColor
 		iconContainerView.addSubview(iconLabel)
 		
@@ -120,7 +119,7 @@ class AITaskNoteEditViewController: UIViewController {
 		line.snp_makeConstraints { (make) in
 			make.height.equalTo(1)
 			make.leading.trailing.equalTo(iconContainerView)
-			make.top.equalTo(110 / 3)
+			make.top.equalTo(iconLabel.snp_bottom).offset(10)
 		}
 		
 		iconImageView = UIImageView(image: UIImage(named: "icon-amazon"))
@@ -129,6 +128,7 @@ class AITaskNoteEditViewController: UIViewController {
 		iconContainerView.addSubview(iconImageView)
 		
 		iconImageView.snp_makeConstraints { (make) in
+            make.top.equalTo(line.snp_bottom).offset(5)
 			make.bottom.equalTo(iconContainerView).offset(-5)
 			make.leading.equalTo(iconLabel)
 			make.size.equalTo(CGSize(width: 20, height: 20))
