@@ -5,6 +5,7 @@
 
 // MARK: 引入AVOS 头文件
 #import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudCrashReporting/AVOSCloudCrashReporting.h>
 
 // MARK: operation navigationbar, while scrollview's
 #import "UINavigationBar+Awesome.h"

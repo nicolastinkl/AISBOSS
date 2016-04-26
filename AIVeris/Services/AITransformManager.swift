@@ -243,7 +243,7 @@ class AIHttpTransformManager: AIMockTransformManager {
                 strongSelf.isLoading = false
             }
             if let responseJSON: AnyObject = response {
-                print(responseJSON)
+            
                 listModel =  AIFavoritesContentsResult(JSONDecoder(responseJSON))
             }
             

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,19 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var sellerData : NSDictionary?
     var buyerListData : ProposalOrderListModel?
     var buyerProposalData : AIProposalPopListModel?
-    //
-
+    
+   
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
         //AVOS
-        AVOSCloud.setApplicationId(AIApplication.AVOSCLOUDID,
-            clientKey: AIApplication.AVOSCLOUDKEY)
-        
-        // Register IM
+        configAVOSCloud()
         
         
-        // DEBUG
-        AVAnalytics.setCrashReportEnabled(true)
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert,.Badge,.Sound], categories: nil))
+        application.registerForRemoteNotifications()
+        
         
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -67,6 +67,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
 
     }
+    
+    /**
+     config lean Cloud.
+     */
+    func configAVOSCloud(){
+        
+        AVOSCloudCrashReporting.enable()
+        
+        AVOSCloud.setApplicationId(AIApplication.AVOSCLOUDID,
+                                   clientKey: AIApplication.AVOSCLOUDKEY)
+        
+        
+        AVOSCloud.registerForRemoteNotification()
+        
+        
+        /*
+         let installation = AVInstallation.currentInstallation()
+         installation.addUniqueObject("tinkl", forKey: "channels")
+         installation.saveInBackground()
+         
+         let push = AVPush()
+         push.setChannel("tinkl")
+         push.setMessage("hello")
+         push.sendPushInBackground()
+         */
+        
+        
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        logError(args: error.userInfo)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        logInfo("\(userInfo)")
+        
+         AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = AVInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        logInfo("DeviceToken OK")
+        
+        
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -84,6 +136,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        let num = application.applicationIconBadgeNumber
+        if num > 0 {
+            let install = AVInstallation.currentInstallation()
+            install.badge = 0
+            install.saveEventually()
+            application.applicationIconBadgeNumber=0
+        }
+        application.cancelAllLocalNotifications()
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {
