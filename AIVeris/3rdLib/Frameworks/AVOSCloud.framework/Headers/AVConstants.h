@@ -2,30 +2,15 @@
 // Copyright 2013 AVOS, Inc. All rights reserved.
 
 #import <Foundation/Foundation.h>
+#import "AVAvailability.h"
+
 @class AVObject;
 @class AVUser;
 @class AVFile;
 
-//! Project version number for AVOSCloud.
-FOUNDATION_EXPORT double AVOSCloudVersionNumber;
-
-//! Project version string for AVOSCloud.
-FOUNDATION_EXPORT const unsigned char AVOSCloudVersionString[];
-
-// Version
-#define AVOSCLOUD_VERSION @"1.0.0"
-
-extern NSInteger const AVOSCLOUD_API_VERSION;
-
-// Platform
-#define PARSE_IOS_ONLY (TARGET_OS_IPHONE)
-#define PARSE_OSX_ONLY (TARGET_OS_MAC && !(TARGET_OS_IPHONE))
-
-extern NSString *const kPFDeviceType;
-
-#if PARSE_IOS_ONLY
+#if AV_IOS_ONLY
 #import <UIKit/UIKit.h>
-#else
+#elif AV_OSX_ONLY
 #import <Cocoa/Cocoa.h>
 @compatibility_alias UIImage NSImage;
 @compatibility_alias UIColor NSColor;
@@ -43,33 +28,25 @@ typedef enum : NSUInteger {
 #define kAVVerboseAuto kAVVerboseNone
 #endif
 /// Cache policies
-typedef NS_ENUM(int, AVCachePolicy){
-    ///Ignore Cache
+typedef NS_ENUM(int, AVCachePolicy) {
+    /// Query from server and do not save result to the local cache.
     kAVCachePolicyIgnoreCache = 0,
     
-    ///Cache Only
+    /// Only query from the local cache.
     kAVCachePolicyCacheOnly,
     
-    ///Network Only
+    /// Only query from server, and save result to the local cache.
     kAVCachePolicyNetworkOnly,
     
-    ///CacheElseNetwork
+    /// Firstly query from the local cache, if fails, query from server.
     kAVCachePolicyCacheElseNetwork,
     
-    ///NetworkElseCache
+    /// Firstly query from server, if fails, query the local cache.
     kAVCachePolicyNetworkElseCache,
     
-    ///CacheThenNetwork
+    /// Firstly query from the local cache, return result. Then query from server, return result. The callback will be called twice.
     kAVCachePolicyCacheThenNetwork,
 } ;
-
-typedef AVCachePolicy PFCachePolicy;
-#define kPFCachePolicyIgnoreCache kAVCachePolicyIgnoreCache
-#define kPFCachePolicyCacheOnly kAVCachePolicyCacheOnly
-#define kPFCachePolicyNetworkOnly kAVCachePolicyNetworkOnly
-#define kPFCachePolicyCacheElseNetwork kAVCachePolicyCacheElseNetwork
-#define kPFCachePolicyNetworkElseCache kAVCachePolicyNetworkElseCache
-#define kPFCachePolicyCacheThenNetwork kAVCachePolicyCacheThenNetwork
 
 // Errors
 
@@ -164,8 +141,6 @@ extern NSInteger const kAVErrorUserWithEmailNotFound;
 extern NSInteger const kAVErrorUserCannotBeAlteredWithoutSession;
 /*! @abstract 207: Users can only be created through sign up */
 extern NSInteger const kAVErrorUserCanOnlyBeCreatedThroughSignUp;
-/*! @abstract 208: An existing Facebook account already linked to another user. */
-extern NSInteger const kAVErrorFacebookAccountAlreadyLinked;
 /*! @abstract 208: An existing account already linked to another user. */
 extern NSInteger const kAVErrorAccountAlreadyLinked;
 /*! @abstract 209: User ID mismatch */
@@ -174,107 +149,32 @@ extern NSInteger const kAVErrorUserIdMismatch;
 extern NSInteger const kAVErrorUsernamePasswordMismatch;
 /*! @abstract 211: Could not find user. */
 extern NSInteger const kAVErrorUserNotFound;
-/*! @abstract 250: Facebook id missing from request */
-extern NSInteger const kAVErrorFacebookIdMissing;
+/*! @abstract 212: The mobile phone number is missing, and must be specified. */
+extern NSInteger const kAVErrorUserMobilePhoneMissing;
+/*! @abstract 213: An user with the specified mobile phone number was not found. */
+extern NSInteger const kAVErrorUserWithMobilePhoneNotFound;
+/*! @abstract 214: Mobile phone number has already been taken. */
+extern NSInteger const kAVErrorUserMobilePhoneNumberTaken;
+/*! @abstract 215: Mobile phone number isn't verified. */
+extern NSInteger const kAVErrorUserMobilePhoneNotVerified;
 /*! @abstract 250: Linked id missing from request */
 extern NSInteger const kAVErrorLinkedIdMissing;
-/*! @abstract 251: Invalid Facebook session */
-extern NSInteger const kAVErrorFacebookInvalidSession;
 /*! @abstract 251: Invalid linked session */
 extern NSInteger const kAVErrorInvalidLinkedSession;
 
-
-
-
-
-#define kPFErrorInternalServer kAVErrorInternalServer
-#define kPFErrorConnectionFailed kAVErrorConnectionFailed
-#define kPFErrorObjectNotFound kAVErrorObjectNotFound
-#define kPFErrorInvalidQuery kAVErrorInvalidQuery
-#define kPFErrorInvalidClassName kAVErrorInvalidClassName
-#define kPFErrorMissingObjectId kAVErrorMissingObjectId
-#define kPFErrorInvalidKeyName kAVErrorInvalidKeyName
-#define kPFErrorInvalidPointer kAVErrorInvalidPointer
-#define kPFErrorInvalidJSON kAVErrorInvalidJSON
-#define kPFErrorCommandUnavailable kAVErrorCommandUnavailable
-#define kPFErrorIncorrectType kAVErrorIncorrectType
-#define kPFErrorInvalidChannelName kAVErrorInvalidChannelName
-#define kPFErrorInvalidDeviceToken kAVErrorInvalidDeviceToken
-#define kPFErrorPushMisconfigured kAVErrorPushMisconfigured
-#define kPFErrorObjectTooLarge kAVErrorObjectTooLarge
-#define kPFErrorOperationForbidden kAVErrorOperationForbidden
-#define kPFErrorCacheMiss kAVErrorCacheMiss
-#define kPFErrorInvalidNestedKey kAVErrorInvalidNestedKey
-#define kPFErrorInvalidFileName kAVErrorInvalidFileName
-#define kPFErrorInvalidACL kAVErrorInvalidACL
-#define kPFErrorTimeout kAVErrorTimeout
-#define kPFErrorInvalidEmailAddress kAVErrorInvalidEmailAddress
-#define kPFErrorDuplicateValue kAVErrorDuplicateValue
-#define kPFErrorInvalidRoleName kAVErrorInvalidRoleName
-#define kPFErrorExceededQuota kAVErrorExceededQuota
-#define kPFScriptError kAVScriptError
-#define kPFValidationError kAVValidationError
-#define kPFErrorReceiptMissing kAVErrorReceiptMissing
-#define kPFErrorInvalidPurchaseReceipt kAVErrorInvalidPurchaseReceipt
-#define kPFErrorPaymentDisabled kAVErrorPaymentDisabled
-#define kPFErrorInvalidProductIdentifier kAVErrorInvalidProductIdentifier
-#define kPFErrorProductNotFoundInAppStore kAVErrorProductNotFoundInAppStore
-#define kPFErrorInvalidServerResponse kAVErrorInvalidServerResponse
-#define kPFErrorProductDownloadFileSystemFailure kAVErrorProductDownloadFileSystemFailure
-#define kPFErrorInvalidImageData kAVErrorInvalidImageData
-#define kPFErrorUnsavedFile kAVErrorUnsavedFile
-#define kPFErrorFileDeleteFailure kAVErrorFileDeleteFailure
-#define kPFErrorUsernameMissing kAVErrorUsernameMissing
-#define kPFErrorUserPasswordMissing kAVErrorUserPasswordMissing
-#define kPFErrorUsernameTaken kAVErrorUsernameTaken
-#define kPFErrorUserEmailTaken kAVErrorUserEmailTaken
-#define kPFErrorUserEmailMissing kAVErrorUserEmailMissing
-#define kPFErrorUserWithEmailNotFound kAVErrorUserWithEmailNotFound
-#define kPFErrorUserCannotBeAlteredWithoutSession kAVErrorUserCannotBeAlteredWithoutSession
-#define kPFErrorUserCanOnlyBeCreatedThroughSignUp kAVErrorUserCanOnlyBeCreatedThroughSignUp
-#define kPFErrorFacebookAccountAlreadyLinked kAVErrorFacebookAccountAlreadyLinked
-#define kPFErrorAccountAlreadyLinked kAVErrorAccountAlreadyLinked
-#define kPFErrorUserIdMismatch kAVErrorUserIdMismatch
-#define kPFErrorUsernamePasswordMismatch kAVErrorUsernamePasswordMismatch
-#define kPFErrorUserNotFound kAVErrorUserNotFound
-#define kPFErrorFacebookIdMissing kAVErrorFacebookIdMissing
-#define kPFErrorLinkedIdMissing kAVErrorLinkedIdMissing
-#define kPFErrorFacebookInvalidSession kAVErrorFacebookInvalidSession
-#define kPFErrorInvalidLinkedSession kAVErrorInvalidLinkedSession
-
-#define kPFErrorInvalidMobilePhoneNumber kAVErrorInvalidMobilePhoneNumber
-#define kPFErrorUserMobilePhoneMissing kAVErrorUserMobilePhoneMissing
-#define kPFErrorUserWithMobilePhoneNotFound kAVErrorUserWithMobilePhoneNotFound
-#define kPFErrorUserMobilePhoneNumberTaken kAVErrorUserMobilePhoneNumberTaken
-#define kPFErrorUserMobilePhoneNotVerified kAVErrorUserMobilePhoneNotVerified
-
-typedef void (^PFBooleanResultBlock)(BOOL succeeded, NSError *error);
-typedef void (^PFIntegerResultBlock)(NSInteger number, NSError *error);
-typedef void (^PFArrayResultBlock)(NSArray *objects, NSError *error);
-typedef void (^PFObjectResultBlock)(AVObject *object, NSError *error);
-typedef void (^PFSetResultBlock)(NSSet *channels, NSError *error);
-typedef void (^PFUserResultBlock)(AVUser *user, NSError *error);
-typedef void (^PFDataResultBlock)(NSData *data, NSError *error);
-typedef void (^PFImageResultBlock)(UIImage * image, NSError *error);
-typedef void (^PFDataStreamResultBlock)(NSInputStream *stream, NSError *error);
-typedef void (^PFStringResultBlock)(NSString *string, NSError *error);
-typedef void (^PFIdResultBlock)(id object, NSError *error);
-typedef void (^PFProgressBlock)(NSInteger percentDone);
-typedef void (^PFFileResultBlock)(AVFile * file, NSError *error);
+typedef void (^AVBooleanResultBlock)(BOOL succeeded, NSError *error);
+typedef void (^AVIntegerResultBlock)(NSInteger number, NSError *error);
+typedef void (^AVArrayResultBlock)(NSArray *objects, NSError *error);
+typedef void (^AVObjectResultBlock)(AVObject *object, NSError *error);
+typedef void (^AVSetResultBlock)(NSSet *channels, NSError *error);
+typedef void (^AVUserResultBlock)(AVUser *user, NSError *error);
+typedef void (^AVDataResultBlock)(NSData *data, NSError *error);
+typedef void (^AVImageResultBlock)(UIImage * image, NSError *error);
+typedef void (^AVDataStreamResultBlock)(NSInputStream *stream, NSError *error);
+typedef void (^AVStringResultBlock)(NSString *string, NSError *error);
+typedef void (^AVIdResultBlock)(id object, NSError *error);
+typedef void (^AVProgressBlock)(NSInteger percentDone);
+typedef void (^AVFileResultBlock)(AVFile * file, NSError *error);
 typedef void (^AVDictionaryResultBlock)(NSDictionary * dict, NSError *error);
 
-typedef PFBooleanResultBlock AVBooleanResultBlock;
-typedef PFIntegerResultBlock AVIntegerResultBlock;
-typedef PFArrayResultBlock AVArrayResultBlock;
-typedef PFObjectResultBlock AVObjectResultBlock;
-typedef PFSetResultBlock AVSetResultBlock;
-typedef PFUserResultBlock AVUserResultBlock;
-typedef PFDataResultBlock AVDataResultBlock;
-typedef PFImageResultBlock AVImageResultBlock;
-typedef PFDataStreamResultBlock AVDataStreamResultBlock;
-typedef PFStringResultBlock AVStringResultBlock;
-typedef PFIdResultBlock AVIdResultBlock;
-typedef PFProgressBlock AVProgressBlock;
-typedef PFFileResultBlock AVFileResultBlock;
-
-#define AVDeprecated(explain) __attribute__((deprecated(explain)))
+#define AV_DEPRECATED(explain) __attribute__((deprecated(explain)))

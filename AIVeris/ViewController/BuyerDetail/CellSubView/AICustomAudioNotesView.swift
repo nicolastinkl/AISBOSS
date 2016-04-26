@@ -188,7 +188,8 @@ internal class AICustomAudioNotesView : UIView,AVAudioRecorderDelegate{
             
             /// 处理文件存储
             weak var weakSelf = self
-            let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+            
+            let videoFile = AVFile(name: "\(NSDate().timeIntervalSince1970).aac", data:data)
             videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
                 print("saveInBackgroundWithBlock : \(videoFile.url)")
                 weakSelf?.notifyEndRecordWithUrl(videoFile.url)

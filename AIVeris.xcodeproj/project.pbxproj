@@ -318,6 +318,8 @@
 		930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */; };
 		930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */; };
 		931E84121CBE245500F24329 /* AICellIdentityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 931E84111CBE245500F24329 /* AICellIdentityCell.xib */; };
+		9324A4701CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */; };
+		9324A4711CCF50AD00A0A397 /* AVOSCloudIM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9324A46F1CCF50AD00A0A397 /* AVOSCloudIM.framework */; };
 		9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21B1C86F12B0070FF7A /* AIRACModel.swift */; };
 		9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */; };
 		932899271C92A8C60094C802 /* AIRACClosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */; };
@@ -1050,6 +1052,8 @@
 		930B27301B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDContentViewCell.swift; sourceTree = "<group>"; };
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		931E84111CBE245500F24329 /* AICellIdentityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICellIdentityCell.xib; sourceTree = "<group>"; };
+		9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloudCrashReporting.framework; sourceTree = "<group>"; };
+		9324A46F1CCF50AD00A0A397 /* AVOSCloudIM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloudIM.framework; sourceTree = "<group>"; };
 		9326A21B1C86F12B0070FF7A /* AIRACModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACModel.swift; sourceTree = "<group>"; };
 		9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderMangerProtocol.swift; sourceTree = "<group>"; };
 		932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewCell.swift; sourceTree = "<group>"; };
@@ -1439,8 +1443,10 @@
 				93B25AB11B9D7E5D00CD1FEB /* libz.1.dylib in Frameworks */,
 				93B25AB21B9D7E5D00CD1FEB /* libsqlite3.dylib in Frameworks */,
 				93B25AAA1B9D7B7D00CD1FEB /* ImageIO.framework in Frameworks */,
+				9324A4711CCF50AD00A0A397 /* AVOSCloudIM.framework in Frameworks */,
 				93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */,
 				93C33F371B9C2813007BF506 /* QuartzCore.framework in Frameworks */,
+				9324A4701CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework in Frameworks */,
 				93C33F331B9C27B1007BF506 /* CoreText.framework in Frameworks */,
 				93B25AA71B9D7A7B00CD1FEB /* libWeiboSDK.a in Frameworks */,
 				93C33F311B9C25F8007BF506 /* Foundation.framework in Frameworks */,
@@ -2954,6 +2960,8 @@
 		93E890C81BB92A5D00A7BBEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */,
+				9324A46F1CCF50AD00A0A397 /* AVOSCloudIM.framework */,
 				93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */,
 			);
 			path = Frameworks;

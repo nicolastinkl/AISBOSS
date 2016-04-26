@@ -59,18 +59,8 @@
 + (instancetype)object;
 
 /*!
- Creates a reference to an existing AVObject for use in creating associations between AVObjects.  Calling isDataAvailable on this
- object will return NO until fetchIfNeeded or refresh has been called.  No network request will be made.
- This method can only be called on subclasses which conform to AVSubclassing.
- A default implementation is provided by AVObject which should always be sufficient.
- @param objectId The object id for the referenced object.
- @return A AVObject without data.
- */
-+ (instancetype)objectWithoutDataWithObjectId:(NSString *)objectId;
-
-/*!
- Registers an Objective-C class for AVOS Cloud to use for representing a given AVOS Cloud class.
- Once this is called on a AVObject subclass, any AVObject AVOS Cloud creates with a class
+ Registers an Objective-C class for LeanCloud to use for representing a given LeanCloud class.
+ Once this is called on a AVObject subclass, any AVObject LeanCloud creates with a class
  name matching [self parseClassName] will be an instance of subclass.
  This method can only be called on subclasses which conform to AVSubclassing.
  A default implementation is provided by AVObject which should always be sufficient.

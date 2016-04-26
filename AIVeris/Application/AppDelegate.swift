@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVOSCloud.setApplicationId(AIApplication.AVOSCLOUDID,
             clientKey: AIApplication.AVOSCLOUDKEY)
         
+        // Register IM
+        
+        
         // DEBUG
         AVAnalytics.setCrashReportEnabled(true)
         

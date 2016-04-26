@@ -6,15 +6,26 @@
 
 @class AVRelation;
 @class AVACL;
+@class AVSaveOption;
 
 /*!
- An object that is a local representation of data persisted to the AVOS Cloud. This is the
+ An object that is a local representation of data persisted to the LeanCloud. This is the
  main class that is used to interact with objects in your app.
 */
 
 @interface AVObject : NSObject
 
 #pragma mark Constructors
+
+/*!
+ Creates a reference to an existing AVObject with an object ID.
+
+ Calling isDataAvailable on this object will return NO until fetchIfNeeded or refresh has been called.
+
+ @param objectId The object ID.
+ @return An object with the given object ID.
+ */
++ (instancetype)objectWithObjectId:(NSString *)objectId;
 
 /*! @name Creating a AVObject */
 
@@ -26,15 +37,15 @@
 + (instancetype)objectWithClassName:(NSString *)className;
 
 /*!
- Creates a reference to an existing AVObject for use in creating associations between AVObjects.  Calling isDataAvailable on this
- object will return NO until fetchIfNeeded or refresh has been called.  No network request will be made.
+ Creates a reference to an existing AVObject for use in creating associations between AVObjects.
 
- @param className The object's class.
- @param objectId The object id for the referenced object.
- @return A AVObject without data.
+ Calling isDataAvailable on this object will return NO until fetchIfNeeded or refresh has been called.
+
+ @param className The object's class name.
+ @param objectId The object ID for the referenced object.
+ @return An object with the given class name and object ID.
  */
-+ (instancetype)objectWithoutDataWithClassName:(NSString *)className
-                                    objectId:(NSString *)objectId;
++ (instancetype)objectWithClassName:(NSString *)className objectId:(NSString *)objectId;
 
 /*!
  Creates a new AVObject with a class name, initialized with data constructed from the specified set of objects and keys.
@@ -49,10 +60,18 @@
  @param newClassName A class name can be any alphanumeric string that begins with a letter. It represents an object in your app, like a User or a Document.
  @return the object that is instantiated with the given class name.
  */
-- (id)initWithClassName:(NSString *)newClassName;
+- (instancetype)initWithClassName:(NSString *)newClassName;
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Bahaviour Control
+
+/**
+ *  If YES, Null value will be converted to nil when getting object for key. Because [NSNull null] is truthy value in Objective-C. Default is YES and suggested.
+ *  @param yesOrNo default is YES.
+ *  @warning It takes effects only when getting object for key. You can still use Null in setObject:forKey.
+ */
++ (void)setConvertingNullToNil:(BOOL)yesOrNo;
+
+#pragma mark - Properties
 
 /*! @name Managing Object Properties */
 
@@ -128,7 +147,7 @@
  Returns the relation object associated with the given key
  @param key The key that the relation is associated with.
  */
-- (AVRelation *)relationforKey:(NSString *)key;
+- (AVRelation *)relationForKey:(NSString *)key;
 
 #pragma mark -
 #pragma mark Array add and remove
@@ -200,7 +219,7 @@
 #pragma mark -
 #pragma mark Save
 
-/*! @name Saving an Object to AVOS Cloud */
+/*! @name Saving an Object to LeanCloud */
 
 /*!
  Saves the AVObject.
@@ -216,6 +235,24 @@
 - (BOOL)save:(NSError **)error;
 
 /*!
+ * Saves the AVObject with option and sets an error if it occurs.
+ * @param option Option for current save.
+ * @param error  A pointer to an NSError that will be set if necessary.
+ * @return Whether the save succeeded.
+ */
+- (BOOL)saveWithOption:(AVSaveOption *)option error:(NSError **)error;
+
+/*!
+ * Saves the AVObject with option and sets an error if it occurs.
+ * @param option     Option for current save.
+ * @param eventually Whether save in eventually or not.
+ * @param error      A pointer to an NSError that will be set if necessary.
+ * @return Whether the save succeeded.
+ * @note If eventually is specified to YES, request will be stored locally in an on-disk cache until it can be delivered to server.
+ */
+- (BOOL)saveWithOption:(AVSaveOption *)option eventually:(BOOL)eventually error:(NSError **)error;
+
+/*!
  Saves the AVObject asynchronously.
  */
 - (void)saveInBackground;
@@ -227,6 +264,21 @@
 - (void)saveInBackgroundWithBlock:(AVBooleanResultBlock)block;
 
 /*!
+ * Saves the AVObject with option asynchronously and executes the given callback block.
+ * @param option Option for current save.
+ * @param block  The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ */
+- (void)saveInBackgroundWithOption:(AVSaveOption *)option block:(AVBooleanResultBlock)block;
+
+/*!
+ * Saves the AVObject with option asynchronously and executes the given callback block.
+ * @param option Option for current save.
+ * @param eventually Whether save in eventually or not.
+ * @param block  The block to execute. The block should have the following argument signature: (BOOL succeeded, NSError *error)
+ */
+- (void)saveInBackgroundWithOption:(AVSaveOption *)option eventually:(BOOL)eventually block:(AVBooleanResultBlock)block;
+
+/*!
  Saves the AVObject asynchronously and calls the given callback.
  @param target The object to call selector on.
  @param selector The selector to call. It should have the following signature: (void)callbackWithResult:(NSNumber *)result error:(NSError *)error. error will be nil on success and set if there was an error. [result boolValue] will tell you whether the call succeeded or not.
@@ -234,17 +286,25 @@
 - (void)saveInBackgroundWithTarget:(id)target selector:(SEL)selector;
 
 /*!
+ * Saves the AVObject with option asynchronously and calls the given callback.
+ * @param option   Option for current save.
+ * @param target   The object to call selector on.
+ * @param selector The selector to call. It should have the following signature: (void)callbackWithResult:(NSNumber *)result error:(NSError *)error. error will be nil on success and set if there was an error. [result boolValue] will tell you whether the call succeeded or not.
+ */
+- (void)saveInBackgroundWithOption:(AVSaveOption *)option target:(id)target selector:(SEL)selector;
+
+/*!
   @see saveEventually:
  */
 - (void)saveEventually;
 
 /*!
- Saves this object to the server at some unspecified time in the future, even if AVOS Cloud is currently inaccessible.
+ Saves this object to the server at some unspecified time in the future, even if LeanCloud is currently inaccessible.
  Use this when you may not have a solid network connection, and don't need to know when the save completes.
  If there is some problem with the object such that it can't be saved, it will be silently discarded.  If the save
  completes successfully while the object is still in memory, then callback will be called.
 
- Objects saved with this method will be stored locally in an on-disk cache until they can be delivered to AVOS Cloud.
+ Objects saved with this method will be stored locally in an on-disk cache until they can be delivered to LeanCloud.
  They will be sent immediately if possible.  Otherwise, they will be sent the next time a network connection is
  available.  Objects saved this way will persist even after the app is closed, in which case they will be sent the
  next time the app is opened.  If more than 10MB of data is waiting to be sent, subsequent calls to saveEventually
@@ -259,7 +319,7 @@
 #pragma mark -
 #pragma mark Save All
 
-/*! @name Saving Many Objects to AVOS Cloud */
+/*! @name Saving Many Objects to LeanCloud */
 
 /*!
  Saves a collection of objects all at once.
@@ -300,10 +360,9 @@
                      target:(id)target
                    selector:(SEL)selector;
 
-#pragma mark -
-#pragma mark Refresh
+#pragma mark - Refresh
 
-/*! @name Getting an Object from AVOS Cloud */
+/*! @name Getting an Object from LeanCloud */
 
 /*!
  Gets whether the AVObject has been fetched.
@@ -311,7 +370,7 @@
  */
 - (BOOL)isDataAvailable;
 
-#if PARSE_IOS_ONLY
+#if AV_IOS_ONLY
 // Deprecated and intentionally not available on the new OS X SDK
 
 /*!
@@ -354,10 +413,12 @@
 - (void)refreshInBackgroundWithTarget:(id)target selector:(SEL)selector;
 #endif
 
+#pragma mark - Fetch
+
 /*!
  Fetches the AVObject with the current data from the server.
  */
-- (void)fetch;
+- (BOOL)fetch;
 /*!
  Fetches the AVObject with the current data from the server and sets an error if it occurs.
  @param error Pointer to an NSError that will be set if necessary.
@@ -440,7 +501,7 @@
 - (void)fetchIfNeededInBackgroundWithTarget:(id)target
                                    selector:(SEL)selector;
 
-/*! @name Getting Many Objects from AVOS Cloud */
+/*! @name Getting Many Objects from LeanCloud */
 
 /*!
  Fetches all of the AVObjects with the current data from the server
@@ -507,10 +568,9 @@
                               target:(id)target
                             selector:(SEL)selector;
 
-#pragma mark -
-#pragma mark Delete
+#pragma mark - Delete
 
-/*! @name Removing an Object from AVOS Cloud */
+/*! @name Removing an Object from LeanCloud */
 
 /*!
  Deletes the AVObject.
@@ -545,12 +605,12 @@
                             selector:(SEL)selector;
 
 /*!
- Deletes this object from the server at some unspecified time in the future, even if AVOS Cloud is currently inaccessible.
+ Deletes this object from the server at some unspecified time in the future, even if LeanCloud is currently inaccessible.
  Use this when you may not have a solid network connection, and don't need to know when the delete completes.
  If there is some problem with the object such that it can't be deleted, the request will be silently discarded.
 
  Delete instructions made with this method will be stored locally in an on-disk cache until they can be transmitted
- to AVOS Cloud. They will be sent immediately if possible.  Otherwise, they will be sent the next time a network connection
+ to LeanCloud. They will be sent immediately if possible.  Otherwise, they will be sent the next time a network connection
  is available. Delete requests will persist even after the app is closed, in which case they will be sent the
  next time the app is opened.  If more than 10MB of saveEventually or deleteEventually commands are waiting to be sent,
  subsequent calls to saveEventually or deleteEventually will cause old requests to be silently discarded until the
@@ -564,6 +624,22 @@
  @param block The block to execute.
  */
 - (void)deleteEventuallyWithBlock:(AVIdResultBlock)block;
+
+
+/*!
+ *  Deletes all objects specified in object array.
+ *  @param objects object array
+ *  @return whether the delete succeeded
+ */
++ (BOOL)deleteAll:(NSArray *)objects;
+
+/*!
+ *  Deletes all objects specified in object array.
+ *  @param objects object array
+ *  @param error Pointer to an NSError that will be set if necessary.
+ *  @return whether the delete succeeded.
+ */
++ (BOOL)deleteAll:(NSArray *)objects error:(NSError **)error;
 
 /**
  *  Deletes all objects specified in object array. The element of objects array is AVObject or its subclass.
@@ -582,6 +658,12 @@
  */
 -(NSMutableDictionary *)dictionaryForObject;
 
+/*!
+ * Construct an AVObject or its subclass object with dictionary.
+ * @param dictionary A dictionary to construct an AVObject. The dictionary should have className key which helps to create proper class.
+ */
++ (AVObject *)objectWithDictionary:(NSDictionary *)dictionary;
+
 /**
  *  Load object properties from JSON dictionary.
  *
@@ -589,5 +671,16 @@
  */
 -(void)objectFromDictionary:(NSDictionary *)dict;
 
+@end
+
+#pragma mark - Deprecated API
+
+@interface AVObject (AVDeprecated)
+
++ (instancetype)objectWithoutDataWithObjectId:(NSString *)objectId AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.9. Use +[AVObject objectWithObjectId:] instead.");
+
++ (instancetype)objectWithoutDataWithClassName:(NSString *)className objectId:(NSString *)objectId AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.9. Use +[AVObject objectWithClassName:objectId:] instead.");
+
+- (AVRelation *)relationforKey:(NSString *)key AV_DEPRECATED("Deprecated in AVOSCloud SDK 3.2.3. Use -[AVObject relationForKey:] instead.");
 
 @end

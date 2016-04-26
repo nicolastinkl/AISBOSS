@@ -209,7 +209,8 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
             Async.background({ () -> Void in
                 
                 weak var weakSelf = self
-                let videoFile = AVFile.fileWithName("\(NSDate().timeIntervalSince1970).aac", data:data) as! AVFile
+                
+                let videoFile = AVFile(name: "\(NSDate().timeIntervalSince1970).aac", data:data)
                 videoFile.saveInBackgroundWithBlock({ (success, error) -> Void in
                     
                     self.audioButtonRecord.hideProgressViewLoading()

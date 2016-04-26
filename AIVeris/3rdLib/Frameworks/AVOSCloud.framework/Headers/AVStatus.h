@@ -78,6 +78,25 @@ typedef void (^AVStatusResultBlock)(AVStatus *status, NSError *error);
 +(void)deleteStatusWithID:(NSString*)objectId andCallback:(AVBooleanResultBlock)callback;
 
 /**
+ * 删除收件箱中的状态
+ *
+ * @param messageId 状态的 messageId
+ * @param inboxType 收件箱类型
+ * @param receiver  收件人的 objectId
+ */
++ (BOOL)deleteInboxStatusForMessageId:(NSUInteger)messageId inboxType:(NSString *)inboxType receiver:(NSString *)receiver error:(NSError **)error;
+
+/**
+ * 删除收件箱中的状态，异步执行
+ *
+ * @param messageId 状态的 messageId
+ * @param inboxType 收件箱类型
+ * @param receiver  收件人的 objectId
+ * @param block     回调 block
+ */
++ (void)deleteInboxStatusInBackgroundForMessageId:(NSUInteger)messageId inboxType:(NSString *)inboxType receiver:(NSString *)receiver block:(AVBooleanResultBlock)block;
+
+/**
  *  设置受众群体
  *
  *  @param query 限定条件
@@ -117,7 +136,7 @@ typedef void (^AVStatusResultBlock)(AVStatus *status, NSError *error);
  *  @param limit    需要返回的条数 默认`100`，最大`100`
  *  @param callback 回调结果
  */
-+(void)getStatusesWithType:(AVStatusType*)type skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AVDeprecated("2.3.2以后不再需要，请使用inboxQuery类方法");
++(void)getStatusesWithType:(AVStatusType*)type skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AV_DEPRECATED("2.3.2以后不再需要，请使用inboxQuery类方法");
 
 /**
  *  获取当前用户发布的状态
@@ -127,7 +146,7 @@ typedef void (^AVStatusResultBlock)(AVStatus *status, NSError *error);
  *  @param limit    需要返回的条数 默认`100`，最大`100`
  *  @param callback 回调结果
  */
-+(void) getStatusesFromCurrentUserWithType:(AVStatusType*)type skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AVDeprecated("2.3.2以后不再需要，请使用statusQuery类方法");
++(void) getStatusesFromCurrentUserWithType:(AVStatusType*)type skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AV_DEPRECATED("2.3.2以后不再需要，请使用statusQuery类方法");
 
 /**
  *  通过用户ID获取其发布的公开的状态列表
@@ -137,7 +156,7 @@ typedef void (^AVStatusResultBlock)(AVStatus *status, NSError *error);
  *  @param limit    需要返回的条数 默认`100`，最大`100`
  *  @param callback 回调结果
  */
-+(void) getStatusesFromUser:(NSString*)userId skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AVDeprecated("2.3.2以后不再需要，请使用statusQuery");
++(void) getStatusesFromUser:(NSString*)userId skip:(NSUInteger)skip limit:(NSUInteger)limit andCallback:(AVArrayResultBlock)callback AV_DEPRECATED("2.3.2以后不再需要，请使用statusQuery");
 
 /** @name 发送状态 */
 
