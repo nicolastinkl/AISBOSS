@@ -129,3 +129,8 @@
 
 #import "MDCFocalPointView.h"
 #import "MDCSpotlightView.h"
+
+
+// YYImage
+#import "YYImage/YYImage.h"
+#import "YYImage/YYAnimatedImageView.h"

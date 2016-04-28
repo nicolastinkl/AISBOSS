@@ -30,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //AVOS
         configAVOSCloud()
-        
+        AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        AVAnalytics.setChannel("App Store")
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert,.Badge,.Sound], categories: nil))
         application.registerForRemoteNotifications()
@@ -81,23 +82,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AVOSCloud.registerForRemoteNotification()
         
+        AVAnalytics.setAnalyticsEnabled(true)
         
-        /*
-         let installation = AVInstallation.currentInstallation()
-         installation.addUniqueObject("tinkl", forKey: "channels")
-         installation.saveInBackground()
-         
-         let push = AVPush()
-         push.setChannel("tinkl")
-         push.setMessage("hello")
-         push.sendPushInBackground()
-         */
+        
+        let installation = AVInstallation.currentInstallation()
+        installation.addUniqueObject("tinkl", forKey: "channels")
+        installation.saveInBackground()
+        
+        let push = AVPush()
+        push.setChannel("tinkl")
+        push.setMessage("hello")
+        push.sendPushInBackground()
         
         
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        logError(args: error.userInfo)
+        logError("\(error.userInfo)")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {

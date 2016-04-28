@@ -5,10 +5,12 @@
 //  Created by 王坜 on 15/7/15.
 //  Copyright (c) 2015年 Wang Li. All rights reserved.
 //
-#import <MediaPlayer/MediaPlayer.h>
+
+//#import <MediaPlayer/MediaPlayer.h>
 #import "AIOpeningView.h"
 #import "AIFakeLoginView.h"
 #import "Veris-Swift.h"
+
 
 typedef NS_ENUM(NSInteger, AIMovementDirection) {
     AIMovementNone = 0,
@@ -29,7 +31,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 @interface AIOpeningView ()
 {
-    MPMoviePlayerController *_moviewPlayer;
+    //MPMoviePlayerController *_moviewPlayer;
+    YYAnimatedImageView *_moviewPlayer;
     UIImageView *_logoView;
     UIView *_maskView;
     UIView *_tapView;
@@ -60,7 +63,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor blackColor];
         
     }
     
@@ -244,9 +247,6 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 #pragma mark - Main Function
 
-
-
-
 - (void)show
 {
     [self cleanAllProperties];
@@ -282,7 +282,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished) {
-        [_moviewPlayer stop];
+//        [_moviewPlayer stop];
         [self removeFromSuperview];
     }];
 }
@@ -327,7 +327,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 {
     if (_canTap) {
         self.userInteractionEnabled = NO;
-        [_moviewPlayer stop];
+//        [_moviewPlayer stop];
         [self removeTouchedBackgroundView];
         [self handleLogoTapEvent];
     }
@@ -373,7 +373,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
             
                 [UIView animateWithDuration:kAnimationDuration*3 animations:^{
                     view.frame = frame;
-                    _moviewPlayer.view.alpha = 0;
+                    _moviewPlayer.alpha = 0;
                 } completion:^(BOOL finished) {
                     weakSelf.centerTappedView.userInteractionEnabled = YES;
                 }];
@@ -491,6 +491,13 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
  @method 播放电影
  */
 -(void)playMovie:(NSString *)fileName{
+    
+    YYImage *image = [YYImage imageNamed:@"start"];
+    _moviewPlayer = [[YYAnimatedImageView alloc] initWithImage:image];
+    [self addSubview:_moviewPlayer];
+    _moviewPlayer.frame = self.frame;
+    
+    /*
     //视频文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"mp4"];
     //视频URL
@@ -504,6 +511,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     _moviewPlayer.scalingMode = MPMovieScalingModeAspectFill;
     [self addSubview:_moviewPlayer.view];
     [_moviewPlayer play];
+     */
 }
 
 
@@ -512,7 +520,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     _backgroundView = [[UIView alloc]initWithFrame:self.bounds];
     _backgroundView.backgroundColor = [UIColor blackColor];
    
-    [self insertSubview:_backgroundView aboveSubview:_moviewPlayer.view];
+    [self insertSubview:_backgroundView aboveSubview:_moviewPlayer];
 }
 
 - (void)removeTouchedBackgroundView
@@ -585,7 +593,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
         _canTap = YES;
         _firstTouchPoint = CGPointZero;
         _currentDirection = AIMovementNone;
-        [_moviewPlayer play];
+        //[_moviewPlayer play];
         [self removeTouchedBackgroundView];
         
         [self removeLogoView];

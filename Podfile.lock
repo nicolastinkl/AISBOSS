@@ -8,6 +8,9 @@ PODS:
   - SnapKit (0.18.0)
   - Spring (1.0.3)
   - SwiftyJSON (2.3.2)
+  - YYImage (1.0.1):
+    - YYImage/Core (= 1.0.1)
+  - YYImage/Core (1.0.1)
 
 DEPENDENCIES:
   - AIAlertView (from `https://github.com/asiainfomobile/AIAlertView.git`)
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - SnapKit (~> 0.18.0)
   - Spring (from `https://github.com/asiainfomobile/Spring.git`, branch `swift2`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - YYImage (~> 1.0.1)
 
 EXTERNAL SOURCES:
   AIAlertView:
@@ -46,5 +50,6 @@ SPEC CHECKSUMS:
   SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
 
 COCOAPODS: 0.39.0

@@ -24,6 +24,8 @@ pod 'SnapKit', '~> 0.18.0'
 
 pod 'AIAlertView', :git => 'https://github.com/asiainfomobile/AIAlertView.git'
 
+pod 'YYImage', '~> 1.0.1'
+
 # iOS System Facebook
 
 pod 'AsyncDisplayKit', '~> 1.9.4'

@@ -25,14 +25,12 @@ struct AIApplication{
     internal static let KURL_ReleaseURL =  "http://171.221.254.231:3000"  //正式地址
     internal static let KURL_DebugURL   =  "http://171.221.254.231:3000"  //测试地址
     
-    
     // MARK: XUNFEI APPID
     internal static let XUNFEIAPPID  = "551ba83b"
     
     struct IPHONEOS {
         static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width > 375
     }
-    
     
     // MARK JSON RESPONSE
     

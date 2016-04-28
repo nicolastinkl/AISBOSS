@@ -122,7 +122,7 @@ class UITransViewController: UIViewController {
         topMenuDiyView.setWidth(self.view.width)
         
         self.videoView.hidden = true
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "PlayerPlaybackDidFinish", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UITransViewController.PlayerPlaybackDidFinish), name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
 
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0)
         
@@ -143,7 +143,7 @@ class UITransViewController: UIViewController {
     }
     
     func setupLanguageNotification() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setupUIWithCurrentLanguage", name: LCLLanguageChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UITransViewController.setupUIWithCurrentLanguage), name: LCLLanguageChangeNotification, object: nil)
     }
     
     func setupUIWithCurrentLanguage() {
