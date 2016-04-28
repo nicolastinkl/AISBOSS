@@ -250,7 +250,6 @@
 		849B4B4A1C0EDFE300BEC179 /* FLEXNetworkTransactionDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AEA1C0EDFE300BEC179 /* FLEXNetworkTransactionDetailTableViewController.m */; };
 		849B4B4B1C0EDFE300BEC179 /* FLEXNetworkTransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AEC1C0EDFE300BEC179 /* FLEXNetworkTransactionTableViewCell.m */; };
 		849B4B4C1C0EDFE300BEC179 /* FLEXNetworkObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AEF1C0EDFE300BEC179 /* FLEXNetworkObserver.m */; };
-		849B4B4D1C0EDFE300BEC179 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 849B4AF01C0EDFE300BEC179 /* LICENSE */; };
 		849B4B4E1C0EDFE300BEC179 /* FLEXArrayExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AF31C0EDFE300BEC179 /* FLEXArrayExplorerViewController.m */; };
 		849B4B4F1C0EDFE300BEC179 /* FLEXClassExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AF51C0EDFE300BEC179 /* FLEXClassExplorerViewController.m */; };
 		849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849B4AF71C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m */; };
@@ -310,8 +309,6 @@
 		84F001551C3A43CB000C93AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84F0014D1C3A43CB000C93AF /* LICENSE */; };
 		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
-		930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A261B9D3C2200CD1FEB /* loading.mp4 */; };
-		930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 93B25A271B9D3C2200CD1FEB /* start.mp4 */; };
 		930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */; };
 		930B272E1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */; };
 		930B272F1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 930B272D1B9EBBE10011EE73 /* AITIMELINESDTITLEView.xib */; };
@@ -1139,8 +1136,6 @@
 		93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDeleteActionDelegate.swift; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
-		93B25A261B9D3C2200CD1FEB /* loading.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loading.mp4; sourceTree = "<group>"; };
-		93B25A271B9D3C2200CD1FEB /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
 		93B25A291B9D78B000CD1FEB /* AINote.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = AINote.strings; sourceTree = "<group>"; };
 		93B25A2A1B9D78B000CD1FEB /* collectionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collectionData.json; sourceTree = "<group>"; };
 		93B25A2B1B9D78B000CD1FEB /* collectionData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = collectionData.plist; sourceTree = "<group>"; };
@@ -2471,8 +2466,6 @@
 		93A5A59B1B9BD5E1001DE36D /* Videos */ = {
 			isa = PBXGroup;
 			children = (
-				93B25A261B9D3C2200CD1FEB /* loading.mp4 */,
-				93B25A271B9D3C2200CD1FEB /* start.mp4 */,
 				93642B3B1CD1A776000338AB /* start.gif */,
 				93642B3D1CD1A96F000338AB /* loading.gif */,
 			);
@@ -3199,9 +3192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				930B27261B9D8E2A0011EE73 /* loading.mp4 in Resources */,
 				937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */,
-				930B27271B9D8E2A0011EE73 /* start.mp4 in Resources */,
 				8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */,
 				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
 				84567F6A1C5222CA0032266C /* multiLabels.json in Resources */,
@@ -3224,7 +3215,6 @@
 				840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */,
-				849B4B4D1C0EDFE300BEC179 /* LICENSE in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
 				12A9625B1BEA0A5000732E23 /* BusinessTravel.json in Resources */,
 				93B25A341B9D78B000CD1FEB /* Seller.plist in Resources */,

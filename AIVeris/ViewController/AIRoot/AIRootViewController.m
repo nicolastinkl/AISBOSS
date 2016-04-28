@@ -176,6 +176,8 @@
     [AIOpeningView instance].rootView = self.view;
     [AIOpeningView instance].centerTappedView = self.centerTapViewController.view;
     [[AIOpeningView instance] show];
+    
 }
+
 
 @end

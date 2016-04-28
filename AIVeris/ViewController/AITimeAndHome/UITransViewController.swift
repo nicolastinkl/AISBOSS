@@ -13,6 +13,8 @@ import MediaPlayer
 import AIAlertView
 import Cartography
 import MediaPlayer
+import YYImage
+
 /*!
 Cell identifier
 */
@@ -58,8 +60,12 @@ class UITransViewController: UIViewController {
     
     private var lastExpandedCell = -1
     private var selectedColor: AIColorFlag?
-    private var player:MPMoviePlayerController?
-    private var playedCount:NSInteger?
+    private var player:YYAnimatedImageView = {
+        let image = YYImage(imageLiteral: "loading")
+        let imageView = YYAnimatedImageView(image: image)
+        imageView.backgroundColor = UIColor.blackColor()
+        return imageView
+    }()
     
     let gradientLayer = CAGradientLayer()
     var tableViewFrameY:CGFloat?
@@ -208,45 +214,22 @@ class UITransViewController: UIViewController {
     func startLoading()
     {
         self.view.userInteractionEnabled = false
-        self.player = AITools.playMovieNamed("loading", type: "mp4", onView: self.view)
+        self.view.addSubview(player)
+        player.frame = self.view.frame
         
-        playedCount = 0
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayBackDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
-    }
-    
-    func moviePlayBackDidFinish(notification:NSNotification)
-    {
-        playedCount?++
-        if playedCount == 2 { // 播放两遍
-            
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
-            
-            weak var weakSelf = self
-            UIView.animateWithDuration(0.25, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
-                if let blockSelf = weakSelf {
-                    blockSelf.player?.view.alpha = 0;
-                }
-                }, completion: {(Bool) -> Void in
-                    if let blockSelf = weakSelf {
-                        blockSelf.player?.stop()
-                        blockSelf.player?.view.removeFromSuperview()
-                        blockSelf.showNextViewController()
-                    }
+        Async.main(after: 2.5) {
+            SpringAnimation.springWithCompletion(1, animations: {
+                }, completion: { (ss) in
+                    self.player.removeFromSuperview()
             })
-        }else {
-            self.player?.play()
+            
+            self.showNextViewController()
         }
+        
     }
-    
 
     @IBAction func targetSeverParseAction(sender: AnyObject) {
-        
-        #if DEBUG
-            showNextViewController()
-        #else
-            startLoading()
-        #endif
-        
+        startLoading()
     }
     
     override func prefersStatusBarHidden() -> Bool {

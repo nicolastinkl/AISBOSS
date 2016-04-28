@@ -123,7 +123,7 @@ internal class AIServiceContentViewController: UIViewController {
         makeTopView()
         
         //SCI
-        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: "scrollViewBottom")
+        makeButtonWithFrame(CGRectMake( self.view.width - 90, 50, 50, 50), action: #selector(AIServiceContentViewController.scrollViewBottom))
         
         // Add Pull To Referesh..
         weak var weakSelf = self
@@ -147,7 +147,7 @@ internal class AIServiceContentViewController: UIViewController {
             weakSelf?.isStepperEditing = Bool(NSNotificationOBJ.object as! Int)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serviceParamsViewHeightChanged:", name: "kServiceParamsViewHeightChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.serviceParamsViewHeightChanged(_:)), name: "kServiceParamsViewHeightChanged", object: nil)
     }
     
     // 缓存输入信息
@@ -260,15 +260,15 @@ internal class AIServiceContentViewController: UIViewController {
     // MARK: 键盘事件
     
     func addKeyboardNotifications () {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardDidHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardDidHide(_:)), name: UIKeyboardDidHideNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidChange:", name: UIKeyboardDidChangeFrameNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardDidChange(_:)), name: UIKeyboardDidChangeFrameNotification, object: nil)
     }
     
     
@@ -486,7 +486,7 @@ internal class AIServiceContentViewController: UIViewController {
         topView.setWidth(self.view.width)
         scrollView.frame = CGRectMake(0, topView.height , self.view.width, self.view.height-topView.height)
         
-        topView.backButton.addTarget(self, action: "backAction", forControlEvents: UIControlEvents.TouchUpInside)
+        topView.backButton.addTarget(self, action: #selector(AIServiceContentViewController.backAction), forControlEvents: UIControlEvents.TouchUpInside)
         
         //init recording view
         /*
@@ -1169,16 +1169,13 @@ extension AIServiceContentViewController : UITextViewDelegate {
         }
     }
     
-
-    
-    
     func moveViewsBelow(view : UIView, offset : CGFloat) {
         let validateViews = scrollViewSubviews
         let anchor = validateViews.indexOf(view)! + 1
 
         // move
         
-        for var index : Int = anchor; index < scrollViewSubviews.count; index++ {
+        for index : Int in anchor ..< scrollViewSubviews.count {
             let sview : UIView = scrollViewSubviews[index]
             if let v = sview as? AIMusicTherapyView {
                 print(v)

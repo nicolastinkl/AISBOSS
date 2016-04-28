@@ -247,6 +247,16 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 #pragma mark - Main Function
 
+- (void)loading
+{
+    [self cleanAllProperties];
+    [self.rootView addSubview:self];
+    
+    [self playMovie:@"loading"];
+    
+}
+
+
 - (void)show
 {
     [self cleanAllProperties];
@@ -492,7 +502,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
  */
 -(void)playMovie:(NSString *)fileName{
     
-    YYImage *image = [YYImage imageNamed:@"start"];
+    YYImage *image = [YYImage imageNamed:fileName];
     _moviewPlayer = [[YYAnimatedImageView alloc] initWithImage:image];
     [self addSubview:_moviewPlayer];
     _moviewPlayer.frame = self.frame;

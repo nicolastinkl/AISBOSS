@@ -35,4 +35,6 @@
 
 - (void)hide;
 
+- (void)loading;
+
 @end

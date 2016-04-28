@@ -35,7 +35,8 @@ class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate {
     
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
         //create new view if no view is available for recycling
-        if (view == nil) {
+        var newView = view
+        if (newView == nil) {
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later

@@ -76,9 +76,9 @@ var AILogDateFormatter: NSDateFormatter = {
 #endif
 
 func logVerbose(logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+    file: String = #file,
+    line: UInt = #line,
+    function: String = #function,
     args: CVarArgType...)
 {
     if AILogLevel.Verbose.rawValue >= logLevel.rawValue {
@@ -86,10 +86,7 @@ func logVerbose(logText: String = "",
     }
 }
 
-func logInfo(logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+func logInfo(logText: String = "", file: String = #file, line: UInt = #line, function: String = #function,
     args: CVarArgType...)
 {
     if AILogLevel.Info.rawValue >= logLevel.rawValue {
@@ -98,9 +95,7 @@ func logInfo(logText: String = "",
 }
 
 func logDebug(logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+    file: String = #file, line: UInt = #line, function: String = #function,
     args: CVarArgType...)
 {
     if AILogLevel.Debug.rawValue >= logLevel.rawValue {
@@ -108,10 +103,7 @@ func logDebug(logText: String = "",
     }
 }
 
-func logWarning(logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+func logWarning(logText: String = "", file: String = #file, line: UInt = #line, function: String = #function,
     args: CVarArgType...)
 {
     if AILogLevel.Warning.rawValue >= logLevel.rawValue {
@@ -120,9 +112,9 @@ func logWarning(logText: String = "",
 }
 
 func logError(logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+    file: String = #file,
+    line: UInt = #line,
+    function: String = #function,
     args: CVarArgType...)
 {
     if AILogLevel.Error.rawValue >= logLevel.rawValue {
@@ -133,9 +125,9 @@ func logError(logText: String = "",
 func logWithLevel(level: AILogLevel,
     _
     logText: String = "",
-    file: String = __FILE__,
-    line: UInt = __LINE__,
-    function: String = __FUNCTION__,
+    file: String = #file,
+    line: UInt = #line,
+    function: String = #function,
     args: CVarArgType...)
 {
     if level.rawValue >= logLevel.rawValue {
@@ -143,7 +135,7 @@ func logWithLevel(level: AILogLevel,
     }
 }
 
-private func log(level: AILogLevel, file: String = __FILE__, var function: String = __FUNCTION__, line: UInt = __LINE__, format: String, args: CVaListPointer) {
+private func log(level: AILogLevel, file: String = #file, var function: String = #function, line: UInt = #line, format: String, args: CVaListPointer) {
     let time: String = AILogShowDateTime ? (AILogUsingNSLog ? "" : "\(AILogDateFormatter.stringFromDate(NSDate())) ") : ""
     let level: String = AILogShowLogLevel ? "[\(AILogLevel.logLevelString(level))] " : ""
     var fileLine: String = ""
