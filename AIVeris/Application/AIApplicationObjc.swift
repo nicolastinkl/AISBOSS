@@ -19,6 +19,4 @@ import Foundation
     private override init(){}
 
     
-
-    
 }

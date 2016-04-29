@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="zqn-y0-tHp">
+            <objects>
+                <viewController storyboardIdentifier="AIAlertViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qb-9H-gNp" customClass="AIAlertViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LAZ-Eb-PJ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Ru-3N-WVa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r0a-wG-2gH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS7-JQ-zI9" customClass="DesignableLabel" customModule="Spring">
+                                <rect key="frame" x="0.0" y="248" width="600" height="165"/>
+                                <color key="backgroundColor" white="1" alpha="0.84239250886524819" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="165" id="iWO-TN-W1a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcq-QJ-hDF">
+                                <rect key="frame" x="20" y="325" width="560" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="vuj-Q7-OWI"/>
+                                </constraints>
+                                <string key="text">Pregnant women need to accompany the birth, induding number , querning,payment, to brtaoken incoluding number ,que, payment,to betoken.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramedic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gm5-Lt-BTq">
+                                <rect key="frame" x="204" y="309" width="192" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="U8a-UO-sKD"/>
+                                    <constraint firstAttribute="width" constant="192" id="bCi-z8-q5s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramedic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dl0-s3-0mE">
+                                <rect key="frame" x="83" y="415" width="467" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8j0-PG-74e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V21-cj-kNR" customClass="DesignableButton" customModule="Spring">
+                                <rect key="frame" x="30" y="545" width="541" height="41"/>
+                                <color key="backgroundColor" red="0.0" green="0.46666666666666667" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="2T4-ox-58A"/>
+                                </constraints>
+                                <state key="normal" title="Answer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="L7y-pk-2Dp" customClass="DesignableImageView" customModule="Spring">
+                                <rect key="frame" x="20" y="386" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="gOV-qh-R4B"/>
+                                    <constraint firstAttribute="width" constant="55" id="zJq-NS-kbb"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-en-bR9" customClass="DesignableImageView" customModule="Spring">
+                                <rect key="frame" x="245" y="193" width="110" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="SQT-Ge-usc"/>
+                                    <constraint firstAttribute="height" constant="110" id="Tob-CA-bEq"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paramedic" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVX-SL-AJX">
+                                <rect key="frame" x="40" y="449" width="356" height="65"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.25969636524822692" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gm5-Lt-BTq" firstAttribute="centerX" secondItem="r0a-wG-2gH" secondAttribute="centerX" id="53l-Jw-gfB"/>
+                            <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="V21-cj-kNR" secondAttribute="bottom" constant="14" id="86e-sc-UCj"/>
+                            <constraint firstItem="V21-cj-kNR" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="10" id="FXH-m7-cGW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OS7-JQ-zI9" secondAttribute="trailing" constant="-20" id="FXb-Fh-zPt"/>
+                            <constraint firstItem="L7y-pk-2Dp" firstAttribute="top" secondItem="OS7-JQ-zI9" secondAttribute="bottom" constant="-27" id="IH4-1W-mrI"/>
+                            <constraint firstItem="Ted-en-bR9" firstAttribute="centerX" secondItem="r0a-wG-2gH" secondAttribute="centerX" id="IV6-1T-IVG"/>
+                            <constraint firstItem="V21-cj-kNR" firstAttribute="top" secondItem="iVX-SL-AJX" secondAttribute="bottom" constant="31" id="Kir-3x-S17"/>
+                            <constraint firstItem="Gm5-Lt-BTq" firstAttribute="top" secondItem="Ted-en-bR9" secondAttribute="bottom" constant="6" id="UhK-8w-Oxx"/>
+                            <constraint firstItem="iVX-SL-AJX" firstAttribute="top" secondItem="L7y-pk-2Dp" secondAttribute="bottom" constant="8" id="VUu-DD-R0B"/>
+                            <constraint firstItem="Xcq-QJ-hDF" firstAttribute="top" secondItem="Gm5-Lt-BTq" secondAttribute="bottom" constant="-5" id="Vij-na-I9e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dl0-s3-0mE" secondAttribute="trailing" constant="30" id="aUy-u0-wsn"/>
+                            <constraint firstItem="Xcq-QJ-hDF" firstAttribute="top" secondItem="OS7-JQ-zI9" secondAttribute="bottom" constant="-88" id="ebD-wO-dlY"/>
+                            <constraint firstItem="dl0-s3-0mE" firstAttribute="leading" secondItem="L7y-pk-2Dp" secondAttribute="trailing" constant="8" id="fIr-rt-8Ik"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V21-cj-kNR" secondAttribute="trailing" constant="9" id="kIo-XP-ThA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="L7y-pk-2Dp" secondAttribute="leading" id="p0r-9m-3SH"/>
+                            <constraint firstItem="iVX-SL-AJX" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="20" id="puG-Lp-3G3"/>
+                            <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="L7y-pk-2Dp" secondAttribute="bottom" constant="159" id="rqV-F1-IEZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xcq-QJ-hDF" secondAttribute="trailing" id="sc5-jz-EIW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Xcq-QJ-hDF" secondAttribute="leading" id="v0L-cS-XR7"/>
+                            <constraint firstItem="dl0-s3-0mE" firstAttribute="bottom" secondItem="L7y-pk-2Dp" secondAttribute="bottom" constant="-5" id="vrQ-Tp-Csm"/>
+                            <constraint firstItem="OS7-JQ-zI9" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="-20" id="xtx-Ai-JXn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iVX-SL-AJX" secondAttribute="trailing" constant="184" id="ycy-KU-U7p"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Rf-S2-GsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="404"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fmo-bK-4jA">
+            <objects>
+                <viewController id="q3p-Xn-7OG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HW2-8v-uju"/>
+                        <viewControllerLayoutGuide type="bottom" id="fI1-ZV-HS3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wmB-0h-4Gi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ms-0c-nth" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150" y="404"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Avatorbibo" width="98" height="98"/>
+    </resources>
+</document>

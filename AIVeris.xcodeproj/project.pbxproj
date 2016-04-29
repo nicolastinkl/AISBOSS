@@ -318,6 +318,8 @@
 		9324A4701CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */; };
 		9324A4731CCF58EF00A0A397 /* AVOSCloudCrashReporting.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9324A4741CCF58EF00A0A397 /* AVOSCloud.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9324DDD01CD1FF33007D3DBE /* AIAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9324DDCF1CD1FF33007D3DBE /* AIAlertViewController.swift */; };
+		9324DDD21CD30385007D3DBE /* AIAlertStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9324DDD11CD30385007D3DBE /* AIAlertStoryboard.storyboard */; };
 		9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21B1C86F12B0070FF7A /* AIRACModel.swift */; };
 		9326A21E1C8825210070FF7A /* AIOrderMangerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */; };
 		932899271C92A8C60094C802 /* AIRACClosureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */; };
@@ -1067,6 +1069,8 @@
 		930B27311B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTimesViewCell.swift; sourceTree = "<group>"; };
 		931E84111CBE245500F24329 /* AICellIdentityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICellIdentityCell.xib; sourceTree = "<group>"; };
 		9324A46E1CCF50AD00A0A397 /* AVOSCloudCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloudCrashReporting.framework; sourceTree = "<group>"; };
+		9324DDCF1CD1FF33007D3DBE /* AIAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAlertViewController.swift; sourceTree = "<group>"; };
+		9324DDD11CD30385007D3DBE /* AIAlertStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AIAlertStoryboard.storyboard; sourceTree = "<group>"; };
 		9326A21B1C86F12B0070FF7A /* AIRACModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACModel.swift; sourceTree = "<group>"; };
 		9326A21D1C8825210070FF7A /* AIOrderMangerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderMangerProtocol.swift; sourceTree = "<group>"; };
 		932899261C92A8C60094C802 /* AIRACClosureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewCell.swift; sourceTree = "<group>"; };
@@ -2146,6 +2150,14 @@
 			path = DatabaseBrowser;
 			sourceTree = "<group>";
 		};
+		9324DDCE1CD1FF23007D3DBE /* AlertViewContr */ = {
+			isa = PBXGroup;
+			children = (
+				9324DDCF1CD1FF33007D3DBE /* AIAlertViewController.swift */,
+			);
+			path = AlertViewContr;
+			sourceTree = "<group>";
+		};
 		9326A21A1C86F0DB0070FF7A /* RACViewC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2482,6 +2494,7 @@
 				849B0BD11C202B61008C0A23 /* UIMainStoryboard.storyboard */,
 				849B0BD21C202B61008C0A23 /* UITimeLineStoryboard.storyboard */,
 				93CD0D2B1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard */,
+				9324DDD11CD30385007D3DBE /* AIAlertStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -2499,6 +2512,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9324DDCE1CD1FF23007D3DBE /* AlertViewContr */,
 				93CD0D281C8E72E00047F4A7 /* AIRequirement */,
 				9350000E1BFF245C00B8386B /* AICustom */,
 				935000101BFF248B00B8386B /* AIRoot */,
@@ -3204,6 +3218,7 @@
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
 				937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */,
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
+				9324DDD21CD30385007D3DBE /* AIAlertStoryboard.storyboard in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				93CD0D2C1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard in Resources */,
 				847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */,
@@ -3567,6 +3582,7 @@
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
 				93CA11D61C463475008B1EE1 /* AIOrderDetailModel.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
+				9324DDD01CD1FF33007D3DBE /* AIAlertViewController.swift in Sources */,
 				849B4B571C0EDFE300BEC179 /* FLEXSetExplorerViewController.m in Sources */,
 				8451A4761C910991002FE8D2 /* UIViewController+AIPopup.swift in Sources */,
 				93FA1E151B9C375A009965C8 /* ENSideMenu.swift in Sources */,

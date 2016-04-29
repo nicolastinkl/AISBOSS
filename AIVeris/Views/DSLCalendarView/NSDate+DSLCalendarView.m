@@ -8,7 +8,6 @@
 
 #import "NSDate+DSLCalendarView.h"
 
-
 @implementation NSDate (DSLCalendarView)
 
 - (NSDateComponents*)dslCalendarView_dayWithCalendar:(NSCalendar*)calendar {
@@ -16,7 +15,8 @@
 }
 
 - (NSDateComponents*)dslCalendarView_monthWithCalendar:(NSCalendar*)calendar {
-    return [calendar components:NSCalendarCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
+
+    return [calendar components: NSCalendarCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
 }
 
 @end

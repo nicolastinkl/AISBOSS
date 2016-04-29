@@ -58,6 +58,7 @@ struct AIApplication{
             static let UIMainStoryboard             = "UIMainStoryboard"
             static let UIBuyerStoryboard            = "UIBuyerStoryboard"
             static let UIRrequirementStoryboard     = "UIRrequirementStoryboard"
+            static let AIAlertStoryboard            = "AIAlertStoryboard"
             
         }
         
@@ -77,6 +78,7 @@ struct AIApplication{
             static let AIRequireContentViewController   = "AIRequireContentViewController"
             static let AIAssignmentContentViewController = "AIAssignmentContentViewController"
             static let AICollContentViewController = "AICollContentViewController"
+            static let AIAlertViewController = "AIAlertViewController"
             
         }
         
@@ -398,6 +400,21 @@ struct AIApplication{
         if let loadingXibView = UIApplication.sharedApplication().keyWindow!.viewWithTag(AIApplication.AIViewTags.AIMessageUnReadViewTag) {
             loadingXibView.hidden = true
         }
+    }
+    
+    
+    static func showAlertView(){
+        let viewAlert = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAlertViewController) as! AIAlertViewController
+        
+        if let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController {
+            if rootVc.isKindOfClass(UINavigationController.self) {
+                //rootVc.pop
+            }else{
+                
+            }
+            rootVc.presentPopupViewController(viewAlert, animated: true)
+        }
+        
     }
     
 }
