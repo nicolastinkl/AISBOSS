@@ -370,7 +370,7 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
         if let bussinessModel = AIRequirementViewPublicValue.bussinessModel{
             let customerId = bussinessModel.baseJsonValue?.customer.customer_id
             let providerId = curAssignServiceInst!.providerUserId
-            let serviceInstId = curAssignServiceInst!.serviceInstId
+            //let serviceInstId = curAssignServiceInst!.serviceInstId
             var permissions = [NSNumber]()
             for itemModel in itemModels {
                 if itemModel.isSelect{
@@ -380,13 +380,27 @@ extension AICollContentViewController : AIAssignServiceViewDelegate , AIPopupCho
                     
                 }
             }
-            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!,serviceInstId: NSNumber(integer: serviceInstId), rightsList: permissions, success: { () -> Void in
+            
+            //mod by liux at 20160504 改成选择了几个服务实例就批量修改多少个服务实例的权限。
+            for (index,assginServiceInst) in assginServiceInsts.enumerate(){
+                let serviceInstId = assginServiceInst.serviceInstId
+                AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!,serviceInstId: NSNumber(integer: serviceInstId), rightsList: permissions, success: { () -> Void in
                     print(" save permissions success! ")
-                //发通知更新数据
-                NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
-                }, fail: { (errType, errDes) -> Void in
-                    print("\(errDes)")
-            })
+                    //发通知更新数，最后一次才发通知
+                    if index == self.assginServiceInsts.count - 1{
+                        NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
+                    }
+                    }, fail: { (errType, errDes) -> Void in
+                        print("\(errDes)")
+                })
+            }
+            //            AIRequirementHandler.defaultHandler().setServiceProviderRights(NSNumber(integer: providerId), customID: customerId!,serviceInstId: NSNumber(integer: serviceInstId), rightsList: permissions, success: { () -> Void in
+            //                    print(" save permissions success! ")
+            //                //发通知更新数据
+            //                NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
+            //                }, fail: { (errType, errDes) -> Void in
+            //                    print("\(errDes)")
+            //            })
         }
     }
 }

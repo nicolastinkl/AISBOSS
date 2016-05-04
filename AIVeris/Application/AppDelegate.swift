@@ -66,9 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //fetchPreSellerAndBuyerData()
         
         
-        Async.main(after: 4) { 
-            AIApplication.showAlertView()
-        }
+//        Async.main(after: 4) { 
+//            AIApplication.showAlertView()
+//        }
         return true
 
     }
