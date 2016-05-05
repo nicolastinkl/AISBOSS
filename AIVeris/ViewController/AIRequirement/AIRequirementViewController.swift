@@ -91,15 +91,15 @@ internal class AIRequirementViewController : UIViewController {
              
         // Register NSNotificationCenter.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifySwitchProfessionVC:", name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementViewController.notifySwitchProfessionVC(_:)), name: AIApplication.Notification.AIAIRequirementViewControllerNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementViewController.notifyShowRequireMentVC(_:)), name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementViewController.notifyOperateCell(_:)), name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestDataInterface", name: AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementViewController.requestDataInterface), name: AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showAssignToast", name: AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementViewController.showAssignToast), name: AIApplication.Notification.AIRequirementViewShowAssignToastNotificationName, object: nil)
         
         // Init Top View.
         

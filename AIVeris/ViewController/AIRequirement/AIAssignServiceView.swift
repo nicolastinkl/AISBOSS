@@ -118,7 +118,7 @@ class AIAssignServiceView: UIView {
         repeatTimer = nil
         //多于1个选中服务实例，才启动滚动动画,但是当只选中一个的时候不启动动画也需要更新显示
         if models.count > 1{
-            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
+            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(AIAssignServiceView.startAnimation), userInfo: nil, repeats: true)
             repeatTimer = timer
             nextModelNum = 1
         }
@@ -165,7 +165,8 @@ extension AIAssignServiceView{
         nextServiceLabel.text = nextModel.serviceName
         nextServiceLabel.alpha = 0
         nextServiceLabel.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0,0.1),CGAffineTransformMakeTranslation(1.0,labelMoveHeightNext))
-
+        
+        curServiceLabel.text = models?[curModelNum].serviceName
         curServiceLabel.alpha = 1
         curServiceLabel.transform = CGAffineTransformIdentity
         
@@ -182,10 +183,12 @@ extension AIAssignServiceView{
             if let delegate = self.delegate{
                 delegate.serviceDidRotate!(self, curServiceInst: self.models![self.curModelNum])
             }
+            //当下一个是最后一个时，要从头开始，所以next改为0
             if self.nextModelNum == (self.models?.count)! - 1{
                 self.curModelNum = self.nextModelNum
                 self.nextModelNum = 0
             }
+            //当当前一个是最后一个时，重新开始循环
             else if self.curModelNum == (self.models?.count)! - 1 {
                 self.curModelNum = 0
                 self.nextModelNum = 1
@@ -204,7 +207,7 @@ extension AIAssignServiceView{
     func switchAnimationState(isRunAnimation : Bool){
         //isRunAnimation = !isRunAnimation
         if isRunAnimation{
-            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "startAnimation", userInfo: nil, repeats: true)
+            let timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(AIAssignServiceView.startAnimation), userInfo: nil, repeats: true)
             repeatTimer = timer
         }
         else{
