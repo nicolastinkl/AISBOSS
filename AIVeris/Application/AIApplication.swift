@@ -79,7 +79,7 @@ struct AIApplication{
             static let AIAssignmentContentViewController = "AIAssignmentContentViewController"
             static let AICollContentViewController = "AICollContentViewController"
             static let AIAlertViewController = "AIAlertViewController"
-            
+            static let AIGladOrderViewController    =   "AIGladOrderViewController"
         }
         
         /*!
@@ -414,8 +414,25 @@ struct AIApplication{
             }
             rootVc.presentPopupViewController(viewAlert, animated: true)
         }
+    }
+    
+    static func showGladOrderView(){
+        let viewAlert = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIGladOrderViewController) as! AIGladOrderViewController
+        
+        if let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController {
+            logInfo("\(rootVc.dynamicType)")
+
+            if rootVc.isKindOfClass(UINavigationController.self) {
+                //rootVc.pop
+            }else{
+                
+            }
+            rootVc.presentPopupViewController(viewAlert, animated: true)
+        }
         
     }
+    
+    
     
 }
 

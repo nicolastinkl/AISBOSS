@@ -98,7 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         push.setMessage("hello")
         push.sendPushInBackground()
         
-        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

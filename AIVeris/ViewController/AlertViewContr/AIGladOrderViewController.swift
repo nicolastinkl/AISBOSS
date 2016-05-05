@@ -1,5 +1,5 @@
 //
-//  AIAlertViewController.swift
+//  AIGladOrderViewController.swift
 //  AIVeris
 //
 // Copyright (c) 2016 ___ASIAINFO___
@@ -23,16 +23,7 @@
 // THE SOFTWARE.
 
 import Foundation
-import UIKit
 
-class AIAlertViewController: UIViewController {
-    
-    
-    @IBAction func answerAction(sender: AnyObject) {
-//        self.dismissViewControllerAnimated(<#T##flag: Bool##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-        
-        AIApplication.showGladOrderView()
-        
-    }
+class AIGladOrderViewController: UIViewController {
     
 }

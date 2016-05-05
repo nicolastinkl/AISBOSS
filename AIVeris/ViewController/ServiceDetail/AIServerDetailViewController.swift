@@ -66,6 +66,7 @@ class AIServerDetailViewController: UIViewController {
     
     private var schemeModel: AIServiceSchemeModel?
     
+    
     private var priceAccount = SimpleAccumulativeAccount()
 
     private var airTicketsViewHeight: CGFloat = 0
@@ -81,7 +82,7 @@ class AIServerDetailViewController: UIViewController {
         
         loadSchemeData()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeDateViewNotification", name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServerDetailViewController.changeDateViewNotification), name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "motifyParamsNotification:", name: AIApplication.Notification.UIAIASINFOmotifyParamsNotification, object: nil)
         
