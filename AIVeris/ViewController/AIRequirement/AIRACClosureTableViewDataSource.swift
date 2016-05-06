@@ -30,7 +30,11 @@ class AIRACClosureTableViewDataSource: NSObject, AIRACClosureTableViewCellProtoc
             selectedDataSections.append(cellModel)
         }else{
             if selectedDataSections.count > 0 {
-                selectedDataSections.removeLast()
+                
+                if let index = selectedDataSections.indexOf(cellModel) {
+                    selectedDataSections.removeAtIndex(index)
+                    
+                }
             }
             
         }        
@@ -64,6 +68,7 @@ extension AIRACClosureTableViewDataSource: UITableViewDataSource, UITableViewDel
         cell?.hasExecTagModel = hasExecTagModel
         cell?.refereshData(model!)
 
+        
         return cell!
         
     }

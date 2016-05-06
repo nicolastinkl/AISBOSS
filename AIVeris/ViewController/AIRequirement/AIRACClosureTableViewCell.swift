@@ -91,13 +91,14 @@ class AIRACClosureTableViewCell: UITableViewCell {
         
         if selected == true {
             delegateCell?.withSelectedCell(currentModel!, isSelect: isSelected)
-        }
+        }        
         
         if isSelected == true {
             selectedddImage.backgroundColor = UIColor(hex: "#0f86E5")
         }else{
             selectedddImage.backgroundColor = UIColor.clearColor()
         }
+        
     }
     
     func refereshData(model: AIServiceProvider){
@@ -115,7 +116,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
         
         self.associatedName = "\(model.relservice_id.integerValue)"
         
-        let relservice_instance_id =  model.relservice_instance_id.integerValue ?? 0
+        let relservice_instance_id = model.relservice_instance_id.integerValue ?? 0
         
         _ = self.hasExecTagModel?.filter({ (tagmodel) -> Bool in
             if let id = tagmodel.id  {
@@ -125,7 +126,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
                 }
             }
             return false
-        })
+        })         
         
     }
     

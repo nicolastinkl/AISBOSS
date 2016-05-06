@@ -118,6 +118,9 @@ class AIRequireContentViewController: UIViewController {
      */
     func requestData(){
         
+//        self.dataSource?.removeAll()
+//        self.tableview.reloadData()
+        
         let handler = AIRequirementHandler.defaultHandler()
         
         let baseModel:AIQueryBusinessInfos? = AIRequirementViewPublicValue.bussinessModel?.baseJsonValue
