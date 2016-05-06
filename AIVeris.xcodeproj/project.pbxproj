@@ -344,7 +344,6 @@
 		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; };
 		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; };
 		9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */; };
-		93642B3C1CD1A776000338AB /* start.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3B1CD1A776000338AB /* start.gif */; };
 		93642B3E1CD1A96F000338AB /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3D1CD1A96F000338AB /* loading.gif */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
@@ -1101,7 +1100,6 @@
 		93508CAE1BE07C8200525512 /* MDCSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSpotlightView.h; sourceTree = "<group>"; };
 		93508CAF1BE07C8200525512 /* MDCSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSpotlightView.m; sourceTree = "<group>"; };
 		9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireContentViewController.swift; sourceTree = "<group>"; };
-		93642B3B1CD1A776000338AB /* start.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = start.gif; sourceTree = "<group>"; };
 		93642B3D1CD1A96F000338AB /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioInputView.swift; sourceTree = "<group>"; };
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
@@ -2479,7 +2477,6 @@
 		93A5A59B1B9BD5E1001DE36D /* Videos */ = {
 			isa = PBXGroup;
 			children = (
-				93642B3B1CD1A776000338AB /* start.gif */,
 				93642B3D1CD1A96F000338AB /* loading.gif */,
 				937EF7931CDCA6CD006B98BE /* start.mp4 */,
 			);
@@ -3262,7 +3259,6 @@
 				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				84F001551C3A43CB000C93AF /* LICENSE in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
-				93642B3C1CD1A776000338AB /* start.gif in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
 				8458D0901C1032D000DF8E7A /* ServiceRestoreToolBar.xib in Resources */,
