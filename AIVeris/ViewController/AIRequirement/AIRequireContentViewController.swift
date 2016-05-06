@@ -487,12 +487,11 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddNote"), backgroundColor: UIColor(hexString: "#1C2071"))
         cell.addLeftButtonWithImage(UIImage(named: "AIROAddTask"), backgroundColor: UIColor(hexString: "#1E2089"))
         
-        if contentModel.backImgType! >= 3 {
+        if (contentModel.backImgType ?? 0) >= 3 {
             desLabel.text = contentModel.text ?? ""
             titleLabel.text = contentModel.title ?? ""
             lineImageView.alpha = 0
             titleLabel.textColor = UIColor(hexString: "#71340c", alpha: 0.80)
-            
             
             
         }else{
