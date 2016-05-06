@@ -31,8 +31,8 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 
 @interface AIOpeningView ()
 {
-    //MPMoviePlayerController *_moviewPlayer;
-    YYAnimatedImageView *_moviewPlayer;
+    MPMoviePlayerController *_moviewPlayer;
+    //YYAnimatedImageView *_moviewPlayer;
     UIImageView *_logoView;
     UIView *_maskView;
     UIView *_tapView;
@@ -292,7 +292,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.alpha = 0;
     } completion:^(BOOL finished) {
-//        [_moviewPlayer stop];
+        [_moviewPlayer stop];
         [self removeFromSuperview];
     }];
 }
@@ -337,7 +337,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
 {
     if (_canTap) {
         self.userInteractionEnabled = NO;
-//        [_moviewPlayer stop];
+        [_moviewPlayer stop];
         [self removeTouchedBackgroundView];
         [self handleLogoTapEvent];
     }
@@ -383,7 +383,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
             
                 [UIView animateWithDuration:kAnimationDuration*3 animations:^{
                     view.frame = frame;
-                    _moviewPlayer.alpha = 0;
+                    _moviewPlayer.view.alpha = 0;
                 } completion:^(BOOL finished) {
                     weakSelf.centerTappedView.userInteractionEnabled = YES;
                 }];
@@ -501,13 +501,13 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
  @method 播放电影
  */
 -(void)playMovie:(NSString *)fileName{
-    
+    /*
     YYImage *image = [YYImage imageNamed:fileName];
     _moviewPlayer = [[YYAnimatedImageView alloc] initWithImage:image];
     [self addSubview:_moviewPlayer];
     _moviewPlayer.frame = self.frame;
+     */
     
-    /*
     //视频文件路径
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"mp4"];
     //视频URL
@@ -521,7 +521,7 @@ typedef NS_ENUM(NSInteger, AIMovementDirection) {
     _moviewPlayer.scalingMode = MPMovieScalingModeAspectFill;
     [self addSubview:_moviewPlayer.view];
     [_moviewPlayer play];
-     */
+    
 }
 
 

@@ -112,14 +112,10 @@ class AIRequireContentViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    
     /**
      Request Data: queryUnDistributeRequirementList
      */
     func requestData(){
-        
-//        self.dataSource?.removeAll()
-//        self.tableview.reloadData()
         
         let handler = AIRequirementHandler.defaultHandler()
         
