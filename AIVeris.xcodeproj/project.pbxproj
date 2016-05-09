@@ -44,6 +44,7 @@
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
 		8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B79E1C564925001BB063 /* AIProposalServiceParser.m */; };
+		812C610D1CE06F110054815C /* AIRemoteNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */; };
 		813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
@@ -656,6 +657,7 @@
 		8120B7931C51CB11001BB063 /* AIInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInputView.swift; sourceTree = "<group>"; };
 		8120B79D1C564925001BB063 /* AIProposalServiceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceParser.h; sourceTree = "<group>"; };
 		8120B79E1C564925001BB063 /* AIProposalServiceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceParser.m; sourceTree = "<group>"; };
+		812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRemoteNotificationHandler.swift; sourceTree = "<group>"; };
 		813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementHandler.swift; sourceTree = "<group>"; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFakeUser.m; sourceTree = "<group>"; };
@@ -2477,6 +2479,7 @@
 				93FA1DE01B9C302A009965C8 /* AITransformManager.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
 				93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */,
+				812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3536,6 +3539,7 @@
 				93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */,
 				818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
+				812C610D1CE06F110054815C /* AIRemoteNotificationHandler.swift in Sources */,
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
