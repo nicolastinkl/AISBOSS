@@ -154,7 +154,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let userID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as? String {
             defaultUserID = userID
-            defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
+            
+            if NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) != nil {
+                defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
+            }
             print("Default UserID is " + userID)
         }
         else {
