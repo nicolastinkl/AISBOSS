@@ -247,13 +247,13 @@
 
         if (user.userType == FakeUserSeller) {
             [installation setObject:user.userID forKey:@"ProviderIdentifier"];
-            [installation addUniqueObject:@"ProviferChannel" forKey:@"channels"];
+            [installation addUniqueObject:@"ProviderChannel" forKey:@"channels"];
             [[NSUserDefaults standardUserDefaults] setObject:@"100" forKey:kDefault_UserType];
         }
         else
         {
             [installation removeObjectForKey:@"ProviderIdentifier"];
-            [installation removeObject:@"ProviferChannel" forKey:@"channels"];
+            [installation removeObject:@"ProviderChannel" forKey:@"channels"];
             [[NSUserDefaults standardUserDefaults] setObject:@"101" forKey:kDefault_UserType];
         }
         

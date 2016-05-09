@@ -89,15 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAnalytics.setAnalyticsEnabled(true)
         
         
-        let installation = AVInstallation.currentInstallation()
-        installation.addUniqueObject("tinkl", forKey: "channels")
-        installation.saveInBackground()
-        
-        let push = AVPush()
-        push.setChannel("tinkl")
-        push.setMessage("hello")
-        push.sendPushInBackground()
-        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -176,13 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (defaultUserType == "100") {
             installation.setObject(defaultUserID, forKey: AIApplication.DirectionalPush.ProviderIdentifier)
-            installation.addUniqueObject(AIApplication.DirectionalPush.ProviferChannel, forKey: "channels")
+            installation.addUniqueObject(AIApplication.DirectionalPush.ProviderChannel, forKey: "channels")
 
         }
         else
         {
             installation.removeObjectForKey(AIApplication.DirectionalPush.ProviderIdentifier)
-            installation.removeObject(AIApplication.DirectionalPush.ProviferChannel, forKey: "channels")
+            installation.removeObject(AIApplication.DirectionalPush.ProviderChannel, forKey: "channels")
         }
         
         installation.saveInBackground()

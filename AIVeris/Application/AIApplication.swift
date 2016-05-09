@@ -36,7 +36,7 @@ struct AIApplication{
     
     struct DirectionalPush {
         static let ProviderIdentifier = "ProviderIdentifier"      // 高级定向推送给当前的Provider,用于语音协助
-        static let ProviferChannel = "ProviferChannel"            // 抢单用的频道，输入gai
+        static let ProviderChannel = "ProviderChannel"            // 抢单用的频道，输入gai
     }
     
     
