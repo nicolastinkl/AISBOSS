@@ -17,6 +17,9 @@
 		120D68041C96D4D200E74D12 /* AICircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D67FE1C96D4D200E74D12 /* AICircleProgressView.swift */; };
 		120D68051C96D4D200E74D12 /* AIVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D67FF1C96D4D200E74D12 /* AIVerticalScrollView.swift */; };
 		120D68091C98F15000E74D12 /* AILimitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120D68081C98F15000E74D12 /* AILimitListView.swift */; };
+		120F07611CE03672008FCBB3 /* AIContestSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */; };
+		120F07641CE0398D008FCBB3 /* AICustomerBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */; };
+		120F07661CE039A5008FCBB3 /* AICustomerBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */; };
 		120F21AB1CA13E4100B7ED7E /* AILimitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */; };
 		120F21AD1CA1706600B7ED7E /* AIPopupChooseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */; };
 		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; };
@@ -620,6 +623,9 @@
 		120D67FE1C96D4D200E74D12 /* AICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICircleProgressView.swift; sourceTree = "<group>"; };
 		120D67FF1C96D4D200E74D12 /* AIVerticalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIVerticalScrollView.swift; sourceTree = "<group>"; };
 		120D68081C98F15000E74D12 /* AILimitListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListView.swift; sourceTree = "<group>"; };
+		120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIContestSuccessViewController.swift; sourceTree = "<group>"; };
+		120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomerBannerView.swift; sourceTree = "<group>"; };
+		120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomerBannerView.xib; sourceTree = "<group>"; };
 		120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListViewController.swift; sourceTree = "<group>"; };
 		120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopupChooseBaseView.swift; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
@@ -1472,6 +1478,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		120F07621CE03887008FCBB3 /* ServiceExcute */ = {
+			isa = PBXGroup;
+			children = (
+				120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */,
+				120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */,
+			);
+			path = ServiceExcute;
+			sourceTree = "<group>";
+		};
 		1261FF691C925BEE00E72B41 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -2154,6 +2169,7 @@
 			children = (
 				9324DDCF1CD1FF33007D3DBE /* AIAlertViewController.swift */,
 				9324DDD31CD34EEA007D3DBE /* AIGladOrderViewController.swift */,
+				120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */,
 			);
 			path = AlertViewContr;
 			sourceTree = "<group>";
@@ -2511,6 +2527,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				120F07621CE03887008FCBB3 /* ServiceExcute */,
 				9324DDCE1CD1FF23007D3DBE /* AlertViewContr */,
 				93CD0D281C8E72E00047F4A7 /* AIRequirement */,
 				9350000E1BFF245C00B8386B /* AICustom */,
@@ -3204,6 +3221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120F07661CE039A5008FCBB3 /* AICustomerBannerView.xib in Resources */,
 				937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */,
 				8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */,
 				93CB8D7F1BF9F41C00C41DDE /* MyriadPro-Bold.otf in Resources */,
@@ -3401,6 +3419,7 @@
 				93B25AA01B9D7A7B00CD1FEB /* JSONModel.m in Sources */,
 				84F001541C3A43CB000C93AF /* FLEXTableListViewController.m in Sources */,
 				93C33F271B9C0F46007BF506 /* AIApplication.swift in Sources */,
+				120F07611CE03672008FCBB3 /* AIContestSuccessViewController.swift in Sources */,
 				9326A21C1C86F12B0070FF7A /* AIRACModel.swift in Sources */,
 				84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */,
 				93FA1DD41B9C2F4F009965C8 /* AICardCell.m in Sources */,
@@ -3435,6 +3454,7 @@
 				9324DDD41CD34EEA007D3DBE /* AIGladOrderViewController.swift in Sources */,
 				12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */,
 				93FA1DC61B9C2F0F009965C8 /* CurveModel.m in Sources */,
+				120F07641CE0398D008FCBB3 /* AICustomerBannerView.swift in Sources */,
 				81C0928C1BAFAC0D003FFF35 /* UIImage+MultiFormat.m in Sources */,
 				845F817B1C5B68C600867272 /* NullSafe.m in Sources */,
 				93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */,
