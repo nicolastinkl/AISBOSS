@@ -102,6 +102,8 @@
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		842B64331CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */; };
+		842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B64341CE07B33007F2A91 /* IconLabel.xib */; };
+		842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B64361CE07D3F007F2A91 /* IconLabel.swift */; };
 		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
 		842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
@@ -763,6 +765,8 @@
 		8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Veris_Tests.swift; sourceTree = "<group>"; };
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaskExecuteStoryboard.storyboard; sourceTree = "<group>"; };
+		842B64341CE07B33007F2A91 /* IconLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconLabel.xib; sourceTree = "<group>"; };
+		842B64361CE07D3F007F2A91 /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
 		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
 		842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabelCollectionView.swift; sourceTree = "<group>"; };
@@ -821,7 +825,7 @@
 		8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskTimeLineView.xib; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
-		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
+		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JumpNumberLabel.swift; path = ../JumpNumberLabel/JumpNumberLabel.swift; sourceTree = "<group>"; };
 		84567F5D1C5222CA0032266C /* AIBaseTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBaseTagsView.h; sourceTree = "<group>"; };
 		84567F5E1C5222CA0032266C /* AIBaseTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIBaseTagsView.m; sourceTree = "<group>"; };
 		84567F5F1C5222CA0032266C /* AISingleLineTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISingleLineTagView.swift; sourceTree = "<group>"; };
@@ -1696,14 +1700,6 @@
 			path = TimeLine;
 			sourceTree = "<group>";
 		};
-		840FD40D1BABD2B8000C6033 /* JumpNumberLabel */ = {
-			isa = PBXGroup;
-			children = (
-				8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */,
-			);
-			path = JumpNumberLabel;
-			sourceTree = "<group>";
-		};
 		8423E56B1BB4E4EE006DC73B /* Veris Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1749,8 +1745,11 @@
 		8450D1161BFEB76000CD1D5B /* Label */ = {
 			isa = PBXGroup;
 			children = (
+				8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */,
 				8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */,
 				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
+				842B64341CE07B33007F2A91 /* IconLabel.xib */,
+				842B64361CE07D3F007F2A91 /* IconLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -2561,7 +2560,6 @@
 				847D93721BAF93C4000FAE69 /* Flight */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				93FA1DB61B9C2F0F009965C8 /* Info */,
-				840FD40D1BABD2B8000C6033 /* JumpNumberLabel */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				848690241C3BB1A600D177BC /* PKYStepper */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
@@ -3310,6 +3308,7 @@
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
 				845320531C9A86C3003B984B /* AITaskInputViewController.xib in Resources */,
+				842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */,
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -3525,6 +3524,7 @@
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
+				842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				849B4B3B1C0EDFE300BEC179 /* FLEXFileBrowserSearchOperation.m in Sources */,
