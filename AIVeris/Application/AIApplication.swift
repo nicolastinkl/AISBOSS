@@ -32,6 +32,14 @@ struct AIApplication{
         static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width > 375
     }
     
+    // MARK: Advanced directional push notification 
+    
+    struct DirectionalPush {
+        static let ProviderIdentifier = "ProviderIdentifier"      // 高级定向推送给当前的Provider,用于语音协助
+        static let ProviferChannel = "ProviferChannel"            // 抢单用的频道，输入gai
+    }
+    
+    
     // MARK JSON RESPONSE
     
     struct JSONREPONSE {

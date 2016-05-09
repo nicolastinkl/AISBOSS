@@ -116,11 +116,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = AVInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
-        installation.saveInBackground()
+      
+        AVOSCloud .handleRemoteNotificationsWithDeviceToken(deviceToken)
         logInfo("DeviceToken OK")
-        
         
     }
 
@@ -157,15 +155,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func configDefaultUser () {
     
+        
+        var defaultUserID = "100000002410"
+        var defaultUserType = "101"
+        
+        
         if let userID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as? String {
+            defaultUserID = userID
+            defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
             print("Default UserID is " + userID)
         }
         else {
-            NSUserDefaults.standardUserDefaults().setObject("100000002410", forKey: kDefault_UserID)
+            NSUserDefaults.standardUserDefaults().setObject(defaultUserID, forKey: kDefault_UserID)
+            NSUserDefaults.standardUserDefaults().setObject(defaultUserType, forKey: kDefault_UserType)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
         
+        // 配置语音协助定向推送
+        let installation = AVInstallation .currentInstallation()
         
+        if (defaultUserType == "100") {
+            installation.setObject(defaultUserID, forKey: AIApplication.DirectionalPush.ProviderIdentifier)
+            installation.addUniqueObject(AIApplication.DirectionalPush.ProviferChannel, forKey: "channels")
+
+        }
+        else
+        {
+            installation.removeObjectForKey(AIApplication.DirectionalPush.ProviderIdentifier)
+            installation.removeObject(AIApplication.DirectionalPush.ProviferChannel, forKey: "channels")
+        }
+        
+        installation.saveInBackground()
     }
     
     private func initNetEngine() {

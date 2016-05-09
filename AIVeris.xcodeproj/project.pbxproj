@@ -1533,6 +1533,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		812C610B1CE022D60054815C /* AudioAssistant */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AudioAssistant;
+			sourceTree = "<group>";
+		};
 		815F21891BEAF386002EB473 /* MaterialDesign */ = {
 			isa = PBXGroup;
 			children = (
@@ -2511,6 +2518,7 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				812C610B1CE022D60054815C /* AudioAssistant */,
 				9324DDCE1CD1FF23007D3DBE /* AlertViewContr */,
 				93CD0D281C8E72E00047F4A7 /* AIRequirement */,
 				9350000E1BFF245C00B8386B /* AICustom */,

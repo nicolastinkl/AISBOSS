@@ -12,6 +12,7 @@
 #import "AINetEngine.h"
 #import "AINotifications.h"
 #import "AIFakeUser.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 #define kMargin 20
 
@@ -240,7 +241,26 @@
     [self makeStatusWithUserType:user.userType];
     
     if (user.userID) {
+        // 配置语音协助定向推送
+        // 配置频道
+        AVInstallation *installation = [AVInstallation currentInstallation];
+
+        if (user.userType == FakeUserSeller) {
+            [installation setObject:user.userID forKey:@"ProviderIdentifier"];
+            [installation addUniqueObject:@"ProviferChannel" forKey:@"channels"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"100" forKey:kDefault_UserType];
+        }
+        else
+        {
+            [installation removeObjectForKey:@"ProviderIdentifier"];
+            [installation removeObject:@"ProviferChannel" forKey:@"channels"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"101" forKey:kDefault_UserType];
+        }
         
+        [installation saveInBackground];
+        
+        
+        // 保存到本地
         [[NSUserDefaults standardUserDefaults] setObject:user.userID forKey:kDefault_UserID];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
@@ -254,7 +274,10 @@
     [self hideSelf];
 }
 
-
+/*
+ 
+ 
+ */
 
 
 
