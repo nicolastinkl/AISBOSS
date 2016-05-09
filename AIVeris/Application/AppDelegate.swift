@@ -98,7 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         logInfo("\(userInfo)")
         
-         AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+        AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
         
     }
     
@@ -153,7 +154,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let userID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as? String {
             defaultUserID = userID
-            defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
+            
+            if NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) != nil {
+                defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
+            }
             print("Default UserID is " + userID)
         }
         else {
@@ -196,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var headerContent : String = "";
         
         
-        for(var i = 0; i < splitedarray.count ; i++) {
+        for(var i = 0; i < splitedarray.count ; i += 1) {
             let str = splitedarray[i]
             headerContent += str
             
