@@ -146,13 +146,26 @@
                                     <constraint firstAttribute="height" constant="70" id="IAf-wb-IfE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48d-dp-bg2">
+                                <rect key="frame" x="79" y="78" width="446" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="48d-dp-bg2" firstAttribute="leading" secondItem="dOS-8R-KPF" secondAttribute="leadingMargin" constant="59" id="IjY-aN-f5A"/>
                             <constraint firstItem="QTw-wI-Z1j" firstAttribute="top" secondItem="gYn-6y-LYU" secondAttribute="bottom" constant="-20" id="WhU-DB-4dN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QTw-wI-Z1j" secondAttribute="trailing" constant="-20" id="by0-G0-5Zb"/>
                             <constraint firstItem="QTw-wI-Z1j" firstAttribute="leading" secondItem="dOS-8R-KPF" secondAttribute="leadingMargin" constant="-20" id="dFI-EP-hfY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="48d-dp-bg2" secondAttribute="trailing" constant="55" id="ha1-jx-zMW"/>
+                            <constraint firstItem="48d-dp-bg2" firstAttribute="centerX" secondItem="dOS-8R-KPF" secondAttribute="centerX" id="mUK-pa-trI"/>
+                            <constraint firstItem="48d-dp-bg2" firstAttribute="top" secondItem="QTw-wI-Z1j" secondAttribute="bottom" constant="8" id="x3r-ey-rce"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mUK-pa-trI"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qyw-i7-qaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
