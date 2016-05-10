@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IdG-Q5-FRk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--CustomerAuthorizationViewController-->
@@ -26,7 +29,7 @@
         <!--TaskDetailViewController-->
         <scene sceneID="kV0-hc-uhl">
             <objects>
-                <viewController id="IdG-Q5-FRk" userLabel="TaskDetailViewController" sceneMemberID="viewController">
+                <viewController id="IdG-Q5-FRk" userLabel="TaskDetailViewController" customClass="TaskDetailViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mmY-Qo-jrB"/>
                         <viewControllerLayoutGuide type="bottom" id="myT-Jx-6RY"/>
@@ -34,8 +37,110 @@
                     <view key="view" contentMode="scaleToFill" id="RAv-3A-A9F">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up8-Rb-dvv" userLabel="CustomerView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="tSh-xU-HOc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iln-jC-B5L" userLabel="TaskDivider">
+                                <rect key="frame" x="90" y="100" width="420" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Iln-jC-B5L" secondAttribute="height" multiplier="447:22" id="fg9-P4-Q1p"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVg-tx-vBz" userLabel="CheckIn">
+                                <rect key="frame" x="253" y="143" width="94" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgw-EZ-OVg" userLabel="DetailsDivider">
+                                <rect key="frame" x="90" y="194" width="420" height="20"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="365" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-bV-AFI" userLabel="TimeIconLabel" customClass="IconLabel" customModule="Veris" customModuleProvider="target">
+                                <rect key="frame" x="118" y="230" width="365" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="365" id="8CQ-ay-lOW"/>
+                                    <constraint firstAttribute="height" constant="25" id="y0o-GN-YqC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8CQ-ay-lOW"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="M5J-Hx-FKW" userLabel="LocationIconLabel" customClass="IconLabel" customModule="Veris" customModuleProvider="target">
+                                <rect key="frame" x="90" y="260" width="420" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="495" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-Fa-Q4p" userLabel="QRCodeView" customClass="ServiceQRCodeView" customModule="Veris" customModuleProvider="target">
+                                <rect key="frame" x="32" y="302" width="536" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check in for Ms. Customer A with the QR code above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-4s-4DV">
+                                <rect key="frame" x="32" y="451" width="536" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUq-Wr-ny2" userLabel="BottomButton">
+                                <rect key="frame" x="30" y="516" width="540" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Aec-kd-gq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tTF-Fa-Q4p" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="12" id="0Kp-l5-faf"/>
+                            <constraint firstItem="Iln-jC-B5L" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="3OD-uq-bN2"/>
+                            <constraint firstItem="yUq-Wr-ny2" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="10" id="3fb-wL-44x"/>
+                            <constraint firstItem="Fgw-EZ-OVg" firstAttribute="height" secondItem="Iln-jC-B5L" secondAttribute="height" id="9Wm-EZ-cad"/>
+                            <constraint firstItem="M5J-Hx-FKW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="8" id="AeO-oP-pc9"/>
+                            <constraint firstItem="M5J-Hx-FKW" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="BNQ-cX-d2w"/>
+                            <constraint firstItem="myT-Jx-6RY" firstAttribute="top" secondItem="yUq-Wr-ny2" secondAttribute="bottom" constant="34" id="BkX-9z-GAf"/>
+                            <constraint firstItem="Fgw-EZ-OVg" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="CJs-OP-jwm"/>
+                            <constraint firstItem="Fgw-EZ-OVg" firstAttribute="width" secondItem="Iln-jC-B5L" secondAttribute="width" id="FNr-30-PjO"/>
+                            <constraint firstItem="zVg-tx-vBz" firstAttribute="top" secondItem="Iln-jC-B5L" secondAttribute="bottom" constant="22" id="HmW-7C-pvl"/>
+                            <constraint firstItem="tTF-Fa-Q4p" firstAttribute="top" secondItem="M5J-Hx-FKW" secondAttribute="bottom" constant="17" id="Hxu-Up-328"/>
+                            <constraint firstItem="zVg-tx-vBz" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="MYc-EL-TqZ"/>
+                            <constraint firstItem="tTF-Fa-Q4p" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="OlY-E8-fuG"/>
+                            <constraint firstItem="Up8-Rb-dvv" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="-20" id="OpR-rQ-VOQ"/>
+                            <constraint firstItem="4Sc-4s-4DV" firstAttribute="top" secondItem="tTF-Fa-Q4p" secondAttribute="bottom" constant="21" id="Pc2-z3-kzg"/>
+                            <constraint firstItem="hbR-bV-AFI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="8" id="XNg-m3-6kV"/>
+                            <constraint firstItem="M5J-Hx-FKW" firstAttribute="top" secondItem="hbR-bV-AFI" secondAttribute="bottom" constant="5" id="Y74-IP-0OG"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hbR-bV-AFI" secondAttribute="trailing" constant="8" id="YZg-cA-lAB"/>
+                            <constraint firstItem="Up8-Rb-dvv" firstAttribute="top" secondItem="mmY-Qo-jrB" secondAttribute="bottom" constant="-20" id="aIP-5H-ecS"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="M5J-Hx-FKW" secondAttribute="trailing" constant="8" id="akx-wk-V4B"/>
+                            <constraint firstItem="hbR-bV-AFI" firstAttribute="top" secondItem="Fgw-EZ-OVg" secondAttribute="top" constant="36" id="cV2-NB-Xyd"/>
+                            <constraint firstItem="4Sc-4s-4DV" firstAttribute="width" secondItem="tTF-Fa-Q4p" secondAttribute="width" id="gEh-j9-h6U"/>
+                            <constraint firstItem="Iln-jC-B5L" firstAttribute="width" secondItem="Up8-Rb-dvv" secondAttribute="width" multiplier="0.7" id="iCz-aj-eyw"/>
+                            <constraint firstItem="Fgw-EZ-OVg" firstAttribute="top" secondItem="zVg-tx-vBz" secondAttribute="bottom" constant="22" id="iF8-cC-Brs"/>
+                            <constraint firstItem="4Sc-4s-4DV" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="ite-Q7-9s2"/>
+                            <constraint firstItem="Iln-jC-B5L" firstAttribute="top" secondItem="Up8-Rb-dvv" secondAttribute="bottom" id="lKx-xM-xt0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tTF-Fa-Q4p" secondAttribute="trailing" constant="12" id="nPw-KI-zeB"/>
+                            <constraint firstItem="hbR-bV-AFI" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="vpT-Pj-afv"/>
+                            <constraint firstItem="Up8-Rb-dvv" firstAttribute="width" secondItem="RAv-3A-A9F" secondAttribute="width" id="xy1-oL-0ay"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yUq-Wr-ny2" secondAttribute="trailing" constant="10" id="zbZ-6K-Qwa"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="QRCodeImage" destination="tTF-Fa-Q4p" id="fKR-jk-n3T"/>
+                        <outlet property="bottomButton" destination="yUq-Wr-ny2" id="il8-Xt-YPq"/>
+                        <outlet property="promptCheckIn" destination="4Sc-4s-4DV" id="rmO-xY-1uu"/>
+                        <outlet property="serviceLocation" destination="M5J-Hx-FKW" id="Xhf-tn-Uc7"/>
+                        <outlet property="serviceTime" destination="hbR-bV-AFI" id="AXT-zI-fd1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-HX-w4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

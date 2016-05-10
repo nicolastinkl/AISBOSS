@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
         //AVOS
         configAVOSCloud()
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -99,6 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logInfo("\(userInfo)")
         
         AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+
+        AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
+
         
     }
     
@@ -199,7 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var headerContent : String = "";
         
         
-        for(var i = 0; i < splitedarray.count ; i++) {
+        for(var i = 0; i < splitedarray.count ; i += 1) {
             let str = splitedarray[i]
             headerContent += str
             

@@ -47,6 +47,7 @@
 		8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B78E1C51C42D001BB063 /* AIServiceDetailUIModel.m */; };
 		8120B7941C51CB11001BB063 /* AIInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7931C51CB11001BB063 /* AIInputView.swift */; };
 		8120B79F1C564925001BB063 /* AIProposalServiceParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120B79E1C564925001BB063 /* AIProposalServiceParser.m */; };
+		812C610D1CE06F110054815C /* AIRemoteNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */; };
 		813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */; };
 		815EAD781C47817000D83780 /* AIFakeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD771C47817000D83780 /* AIFakeUser.m */; };
 		815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 815EAD7A1C488A8600D83780 /* AIOrderTableModel.m */; };
@@ -105,6 +106,12 @@
 		8423E5651BB4E1A8006DC73B /* AIOrderPreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8423E5641BB4E1A8006DC73B /* AIOrderPreModel.m */; };
 		8423E56D1BB4E4EE006DC73B /* Veris_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */; };
 		842B64331CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */; };
+		842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B64341CE07B33007F2A91 /* IconLabel.xib */; };
+		842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B64361CE07D3F007F2A91 /* IconLabel.swift */; };
+		842B643A1CE080D1007F2A91 /* ServiceQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */; };
+		842B643C1CE080FF007F2A91 /* ServiceQRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */; };
+		842B643E1CE08CD0007F2A91 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */; };
+		842B64401CE175BE007F2A91 /* CustomXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B643F1CE175BE007F2A91 /* CustomXibView.swift */; };
 		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
 		842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
@@ -662,6 +669,7 @@
 		8120B7931C51CB11001BB063 /* AIInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIInputView.swift; sourceTree = "<group>"; };
 		8120B79D1C564925001BB063 /* AIProposalServiceParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceParser.h; sourceTree = "<group>"; };
 		8120B79E1C564925001BB063 /* AIProposalServiceParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceParser.m; sourceTree = "<group>"; };
+		812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRemoteNotificationHandler.swift; sourceTree = "<group>"; };
 		813CD8D51C9FD5CC0041C73E /* AIRequirementHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirementHandler.swift; sourceTree = "<group>"; };
 		815EAD761C47817000D83780 /* AIFakeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIFakeUser.h; sourceTree = "<group>"; };
 		815EAD771C47817000D83780 /* AIFakeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIFakeUser.m; sourceTree = "<group>"; };
@@ -769,6 +777,12 @@
 		8423E56C1BB4E4EE006DC73B /* Veris_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Veris_Tests.swift; sourceTree = "<group>"; };
 		8423E56E1BB4E4EE006DC73B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaskExecuteStoryboard.storyboard; sourceTree = "<group>"; };
+		842B64341CE07B33007F2A91 /* IconLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconLabel.xib; sourceTree = "<group>"; };
+		842B64361CE07D3F007F2A91 /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
+		842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceQRCodeView.swift; sourceTree = "<group>"; };
+		842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceQRCodeView.xib; sourceTree = "<group>"; };
+		842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		842B643F1CE175BE007F2A91 /* CustomXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomXibView.swift; sourceTree = "<group>"; };
 		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
 		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
 		842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabelCollectionView.swift; sourceTree = "<group>"; };
@@ -827,7 +841,7 @@
 		8453204F1C9A86C3003B984B /* AITaskTimeLineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITaskTimeLineView.xib; sourceTree = "<group>"; };
 		8454E6F91BAFEA6D00016AB3 /* SwitchServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchServiceView.swift; sourceTree = "<group>"; };
 		8454E6FB1BAFEAAF00016AB3 /* SwitchServiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchServiceView.xib; sourceTree = "<group>"; };
-		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpNumberLabel.swift; sourceTree = "<group>"; };
+		8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JumpNumberLabel.swift; path = ../JumpNumberLabel/JumpNumberLabel.swift; sourceTree = "<group>"; };
 		84567F5D1C5222CA0032266C /* AIBaseTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIBaseTagsView.h; sourceTree = "<group>"; };
 		84567F5E1C5222CA0032266C /* AIBaseTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIBaseTagsView.m; sourceTree = "<group>"; };
 		84567F5F1C5222CA0032266C /* AISingleLineTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISingleLineTagView.swift; sourceTree = "<group>"; };
@@ -1553,8 +1567,32 @@
 		812C610B1CE022D60054815C /* AudioAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				812C61101CE1BC470054815C /* Views */,
+				812C610F1CE1BC3B0054815C /* ViewControllers */,
+				812C610E1CE1BC320054815C /* Models */,
 			);
 			name = AudioAssistant;
+			sourceTree = "<group>";
+		};
+		812C610E1CE1BC320054815C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		812C610F1CE1BC3B0054815C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		812C61101CE1BC470054815C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		815F21891BEAF386002EB473 /* MaterialDesign */ = {
@@ -1711,14 +1749,6 @@
 			path = TimeLine;
 			sourceTree = "<group>";
 		};
-		840FD40D1BABD2B8000C6033 /* JumpNumberLabel */ = {
-			isa = PBXGroup;
-			children = (
-				8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */,
-			);
-			path = JumpNumberLabel;
-			sourceTree = "<group>";
-		};
 		8423E56B1BB4E4EE006DC73B /* Veris Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1732,8 +1762,18 @@
 			isa = PBXGroup;
 			children = (
 				842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */,
+				842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */,
 			);
 			path = TaskExecute;
+			sourceTree = "<group>";
+		};
+		842B64381CE0808B007F2A91 /* Barcode */ = {
+			isa = PBXGroup;
+			children = (
+				842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */,
+				842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */,
+			);
+			path = Barcode;
 			sourceTree = "<group>";
 		};
 		844282761C45EF95001C2DCB /* OAStackView */ = {
@@ -1764,8 +1804,11 @@
 		8450D1161BFEB76000CD1D5B /* Label */ = {
 			isa = PBXGroup;
 			children = (
+				8454E6FF1BB02F6100016AB3 /* JumpNumberLabel.swift */,
 				8450D1171BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift */,
 				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
+				842B64341CE07B33007F2A91 /* IconLabel.xib */,
+				842B64361CE07D3F007F2A91 /* IconLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -2493,6 +2536,7 @@
 				93FA1DE01B9C302A009965C8 /* AITransformManager.swift */,
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
 				93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */,
+				812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2544,7 +2588,6 @@
 		93A5A59E1B9BD5E1001DE36D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-
 				120F07621CE03887008FCBB3 /* ServiceExcute */,
 				812C610B1CE022D60054815C /* AudioAssistant */,
 				842B64311CE03C7D007F2A91 /* TaskExecute */,
@@ -2569,6 +2612,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				842B64381CE0808B007F2A91 /* Barcode */,
 				93A91DB11C9AC61900F40A47 /* Sheriff */,
 				849300861C92B27C00547322 /* YLProgressBar */,
 				934445E41C8EEF3100F86E5D /* swipeCell */,
@@ -2579,7 +2623,6 @@
 				847D93721BAF93C4000FAE69 /* Flight */,
 				12D794F81BA80A5500586011 /* HorizontalCard */,
 				93FA1DB61B9C2F0F009965C8 /* Info */,
-				840FD40D1BABD2B8000C6033 /* JumpNumberLabel */,
 				8450D1161BFEB76000CD1D5B /* Label */,
 				848690241C3BB1A600D177BC /* PKYStepper */,
 				845BE0061BE88DBF0001716A /* ProposalDetail */,
@@ -2602,6 +2645,7 @@
 				93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
 				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
+				842B643F1CE175BE007F2A91 /* CustomXibView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3317,6 +3361,7 @@
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */,
+				842B643C1CE080FF007F2A91 /* ServiceQRCodeView.xib in Resources */,
 				8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */,
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
@@ -3329,6 +3374,7 @@
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
 				845320531C9A86C3003B984B /* AITaskInputViewController.xib in Resources */,
+				842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */,
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
@@ -3520,6 +3566,7 @@
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */,
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
+				842B643A1CE080D1007F2A91 /* ServiceQRCodeView.swift in Sources */,
 				81C092881BAFAC0D003FFF35 /* SDWebImageManager.m in Sources */,
 				930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */,
 				8442828B1C45EF95001C2DCB /* _OALayoutGuide.m in Sources */,
@@ -3546,6 +3593,7 @@
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
+				842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				849B4B3B1C0EDFE300BEC179 /* FLEXFileBrowserSearchOperation.m in Sources */,
@@ -3557,6 +3605,7 @@
 				93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */,
 				818D8EBF1C040D4100006408 /* AIHorizontalBarChart.m in Sources */,
 				81C0928E1BAFAC0D003FFF35 /* UIImageView+HighlightedWebCache.m in Sources */,
+				812C610D1CE06F110054815C /* AIRemoteNotificationHandler.swift in Sources */,
 				93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */,
 				93FA1E171B9C375A009965C8 /* RAReorderableLayout.swift in Sources */,
 				93FA1E531B9C3E12009965C8 /* AIMenuTopView.swift in Sources */,
@@ -3636,6 +3685,7 @@
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				8480813E1C1EE748007806E7 /* Localize.swift in Sources */,
+				842B64401CE175BE007F2A91 /* CustomXibView.swift in Sources */,
 				93CA11D01C463475008B1EE1 /* AIBuyServiceModel.swift in Sources */,
 				849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */,
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
@@ -3780,6 +3830,7 @@
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
+				842B643E1CE08CD0007F2A91 /* TaskDetailViewController.swift in Sources */,
 				84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */,
 				845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
