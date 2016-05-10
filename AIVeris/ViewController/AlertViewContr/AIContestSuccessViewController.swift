@@ -10,10 +10,16 @@ import UIKit
 
 class AIContestSuccessViewController: UIViewController {
 
+    
+    @IBOutlet weak var seperateViewUser: AIDottedLineLabelView!
+    @IBOutlet weak var customerBannerView: AICustomerBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        customerBannerView.loadData()
+        seperateViewUser.loadData("Single success")
     }
 
     override func didReceiveMemoryWarning() {
