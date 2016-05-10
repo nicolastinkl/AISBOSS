@@ -1582,8 +1582,32 @@
 		812C610B1CE022D60054815C /* AudioAssistant */ = {
 			isa = PBXGroup;
 			children = (
+				812C61101CE1BC470054815C /* Views */,
+				812C610F1CE1BC3B0054815C /* ViewControllers */,
+				812C610E1CE1BC320054815C /* Models */,
 			);
 			name = AudioAssistant;
+			sourceTree = "<group>";
+		};
+		812C610E1CE1BC320054815C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		812C610F1CE1BC3B0054815C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		812C61101CE1BC470054815C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		815F21891BEAF386002EB473 /* MaterialDesign */ = {

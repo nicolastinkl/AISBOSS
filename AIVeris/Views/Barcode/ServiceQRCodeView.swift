@@ -10,6 +10,10 @@ import UIKit
 
 class ServiceQRCodeView: UIView {
 
+    @IBOutlet weak var codeImage: UIImageView!
+    @IBOutlet weak var serviceName: UILabel!
+    @IBOutlet weak var item1: UILabel!
+    @IBOutlet weak var item2: UILabel!
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -17,5 +21,11 @@ class ServiceQRCodeView: UIView {
         // Drawing code
     }
     */
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        initSelfFromXib()
+    }
 
 }

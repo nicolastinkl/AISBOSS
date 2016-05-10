@@ -8,15 +8,14 @@
 
 import UIKit
 
-
 extension UIView {
-    // load xib file to init view, and let this custom view can be used in another xib view
-    func initSelfFromXib(xibName: String) {
-        let view = UINib.init(nibName: xibName, bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first as! UIView
-        addSubview(view)
-
-        view.snp_makeConstraints { (make) in
-            make.edges.equalTo(self)
-        }
-    }
+	// load xib file to init view, and let this custom view can be used in another xib view
+	func initSelfFromXib() {
+		let storyboardName = NSStringFromClass(self.dynamicType).componentsSeparatedByString(".").last!
+		let view = UINib.init(nibName: storyboardName, bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first as! UIView
+		addSubview(view)
+		view.snp_makeConstraints { (make) in
+			make.edges.equalTo(self)
+		}
+	}
 }
