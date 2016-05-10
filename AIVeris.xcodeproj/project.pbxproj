@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120059421CE1D0A800029A66 /* AIIconLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059411CE1D0A800029A66 /* AIIconLabelView.swift */; };
 		12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */; };
 		12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */; };
 		12096C6A1CA3AA4600514E6C /* AITimelineFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */; };
@@ -622,6 +623,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		120059411CE1D0A800029A66 /* AIIconLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconLabelView.swift; sourceTree = "<group>"; };
 		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
 		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
 		12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineFilterViewController.swift; sourceTree = "<group>"; };
@@ -632,10 +634,10 @@
 		120D67FE1C96D4D200E74D12 /* AICircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICircleProgressView.swift; sourceTree = "<group>"; };
 		120D67FF1C96D4D200E74D12 /* AIVerticalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIVerticalScrollView.swift; sourceTree = "<group>"; };
 		120D68081C98F15000E74D12 /* AILimitListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListView.swift; sourceTree = "<group>"; };
-		120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIContestSuccessViewController.swift; sourceTree = "<group>"; };
-		120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomerBannerView.swift; sourceTree = "<group>"; };
-		120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomerBannerView.xib; sourceTree = "<group>"; };
-		120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDottedLineLabelView.swift; sourceTree = "<group>"; };
+		120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIContestSuccessViewController.swift; path = ../AlertViewContr/AIContestSuccessViewController.swift; sourceTree = "<group>"; };
+		120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AICustomerBannerView.swift; path = ../AICustomerBannerView.swift; sourceTree = "<group>"; };
+		120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AICustomerBannerView.xib; path = ../AICustomerBannerView.xib; sourceTree = "<group>"; };
+		120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIDottedLineLabelView.swift; path = ../AIDottedLineLabelView.swift; sourceTree = "<group>"; };
 		120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListViewController.swift; sourceTree = "<group>"; };
 		120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopupChooseBaseView.swift; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
@@ -1496,12 +1498,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		120F07621CE03887008FCBB3 /* ServiceExcute */ = {
+		120059401CE1D03D00029A66 /* views */ = {
 			isa = PBXGroup;
 			children = (
 				120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */,
 				120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */,
 				120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */,
+				120059411CE1D0A800029A66 /* AIIconLabelView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		120F07621CE03887008FCBB3 /* ServiceExcute */ = {
+			isa = PBXGroup;
+			children = (
+				120059401CE1D03D00029A66 /* views */,
+				120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */,
 			);
 			path = ServiceExcute;
 			sourceTree = "<group>";
@@ -2208,7 +2220,6 @@
 			children = (
 				9324DDCF1CD1FF33007D3DBE /* AIAlertViewController.swift */,
 				9324DDD31CD34EEA007D3DBE /* AIGladOrderViewController.swift */,
-				120F07601CE03672008FCBB3 /* AIContestSuccessViewController.swift */,
 			);
 			path = AlertViewContr;
 			sourceTree = "<group>";
@@ -3575,6 +3586,7 @@
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
 				842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
+				120059421CE1D0A800029A66 /* AIIconLabelView.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				849B4B3B1C0EDFE300BEC179 /* FLEXFileBrowserSearchOperation.m in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,

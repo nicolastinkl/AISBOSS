@@ -29,20 +29,10 @@ class AIAlertViewController: UIViewController {
     
     
     @IBAction func answerAction(sender: AnyObject) {
-        self.dismissPopupViewController(true) { 
-            //AIApplication.showGladOrderView()
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
-            
-            if let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController {
-                if rootVc.isKindOfClass(UINavigationController.self) {
-                    //rootVc.pop
-                }else{
-                    
-                }
-                rootVc.presentViewController(viewController, animated: true, completion: nil)
-            }
-
-        }
+        //AIApplication.showGladOrderView()
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     

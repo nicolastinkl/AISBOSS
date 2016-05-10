@@ -23,10 +23,11 @@ class AIDottedLineLabelView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        buildSubViews()
     }
     
     override func awakeFromNib() {
-        buildSubViews()
+        //buildSubViews()
     }
     
     //便利构造方法
@@ -60,19 +61,21 @@ class AIDottedLineLabelView: UIView {
         rightLineImage.image = dottedLineImage
         self.addSubview(rightLineImage)
         rightLineImage.snp_makeConstraints { (make) in
-            make.centerY.leading.equalTo(self)
+            make.centerY.trailing.equalTo(self)
             make.height.equalTo(1)
         }
     }
     
     private func buildTextLabel(){
         textLabel = UILabel()
+        textLabel.text = "label"
         self.addSubview(textLabel)
         textLabel.snp_makeConstraints { (make) in
             make.leading.equalTo(leftLineImage.snp_trailing).offset(10)
-            make.trailing.equalTo(rightLineImage.snp_leading).offset(10)
-            make.centerY.equalTo(self)
+            make.trailing.equalTo(rightLineImage.snp_leading).offset(-10)
+            make.centerY.centerX.equalTo(self)
         }
+        textLabel.setContentCompressionResistancePriority(UILayoutPriorityRequired, forAxis: .Horizontal)
     }
     
 }

@@ -9,16 +9,24 @@
 import UIKit
 
 class AICustomerBannerView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    
+//    override init(coder: aDecoder)
+    @IBOutlet weak var userIconImageView: UIImageView!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var customerDescLabel: UILabel!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initSelfFromXib("AICustomerBannerView")
     }
-    */
-    override func awakeFromNib() {
-        super.awakeFromNib()
+ 
+    
+    init() {
+        super.init(frame: .zero)
+        self.initSelfFromXib("AICustomerBannerView")
     }
-
+    
+    func loadData(){
+        userIconImageView.image = UIImage(named: "Avatorbibo")
+    }
 }
