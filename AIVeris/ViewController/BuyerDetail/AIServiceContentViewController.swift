@@ -541,7 +541,7 @@ internal class AIServiceContentViewController: UIViewController {
         if self.currentDatasource?.service_name?.length > 0 {
              topNaviView?.backButton.setTitle(self.currentDatasource?.service_name  ?? "", forState: .Normal)
         }
- 
+        
         addGalleryView()
         
         var contentView : UIView
@@ -588,8 +588,16 @@ internal class AIServiceContentViewController: UIViewController {
             contentView = serviceContentView!
         }
         
+        //TODO: Add Routine Path View.
+        let routeView = addRoutineView()
+        addNewSubView(routeView, preView: contentView)
+        routeView.backgroundColor = UIColor.clearColor()
+        
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(AIServiceContentViewController.clickRouteViewEvent))
+        routeView.addGestureRecognizer(tapGes)
+        
         //TODO: Add helpfull views.
-        let musicView = addMusicView(contentView)
+        let musicView = addMusicView(routeView)
         
         //TODO: Necessary public View.
         //TODO: DisplayForSeller.
@@ -597,8 +605,64 @@ internal class AIServiceContentViewController: UIViewController {
              addAudioView(preView)
         }
         
+    }
+    
+    func clickRouteViewEvent(){
         
     }
+    
+    /**
+      路径规划
+     
+     */
+    private func addRoutineView() -> UIView {
+        
+        let routeView = UIView()
+        routeView.frame = CGRectMake(0, 0, self.view.width, 100)
+        routeView.backgroundColor = UIColor.clearColor()
+        
+        let line = UILabel()
+        routeView.addSubview(line)
+        line.backgroundColor = UIColor(hex: "#302F4D")
+        constrain(line) { (titleLayout) in
+            titleLayout.left == titleLayout.superview!.left
+            titleLayout.right == titleLayout.superview!.right
+            titleLayout.top == titleLayout.superview!.top + 1
+            titleLayout.height == 0.5
+        }
+        
+        
+        
+        let titleLabel = UILabel()
+        routeView.addSubview(titleLabel)
+        titleLabel.text = "Routine"
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.font = AITools.myriadSemiCondensedWithSize(15)
+        
+        constrain(titleLabel) { (titleLayout) in
+            titleLayout.left == titleLayout.superview!.left + 10
+            titleLayout.top == titleLayout.superview!.top + 5
+            titleLayout.height == 20
+            titleLayout.width == 100
+        }
+        
+        
+        let indicator = UIImageView()
+        routeView.addSubview(indicator)
+        indicator.image = UIImage(named: "right_triangle")
+        constrain(indicator) { (indicatorlayout) in
+            indicatorlayout.right == indicatorlayout.superview!.right - 20
+            indicatorlayout.top == indicatorlayout.superview!.top + 5
+            indicatorlayout.height == 20
+            indicatorlayout.width == 10
+        }
+        
+        
+        return routeView
+        
+    }
+    
+    
     
     private func addBrandView()-> AIDropdownBrandView? {
         brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128",321)], selectedIndex: 0, frame: view.frame)
