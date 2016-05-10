@@ -109,6 +109,10 @@
 		842B64331CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */; };
 		842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B64341CE07B33007F2A91 /* IconLabel.xib */; };
 		842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B64361CE07D3F007F2A91 /* IconLabel.swift */; };
+		842B643A1CE080D1007F2A91 /* ServiceQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */; };
+		842B643C1CE080FF007F2A91 /* ServiceQRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */; };
+		842B643E1CE08CD0007F2A91 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */; };
+		842B64401CE175BE007F2A91 /* CustomXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B643F1CE175BE007F2A91 /* CustomXibView.swift */; };
 		842BE94E1C3CF99900865153 /* ProposalServiceDetailBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */; };
 		842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */; };
 		842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */; };
@@ -777,6 +781,10 @@
 		842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TaskExecuteStoryboard.storyboard; sourceTree = "<group>"; };
 		842B64341CE07B33007F2A91 /* IconLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconLabel.xib; sourceTree = "<group>"; };
 		842B64361CE07D3F007F2A91 /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
+		842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceQRCodeView.swift; sourceTree = "<group>"; };
+		842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceQRCodeView.xib; sourceTree = "<group>"; };
+		842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		842B643F1CE175BE007F2A91 /* CustomXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomXibView.swift; sourceTree = "<group>"; };
 		842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalServiceDetailBaseView.h; sourceTree = "<group>"; };
 		842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalServiceDetailBaseView.m; sourceTree = "<group>"; };
 		842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalIconLabelCollectionView.swift; sourceTree = "<group>"; };
@@ -1733,8 +1741,18 @@
 			isa = PBXGroup;
 			children = (
 				842B64321CE03C9A007F2A91 /* TaskExecuteStoryboard.storyboard */,
+				842B643D1CE08CD0007F2A91 /* TaskDetailViewController.swift */,
 			);
 			path = TaskExecute;
+			sourceTree = "<group>";
+		};
+		842B64381CE0808B007F2A91 /* Barcode */ = {
+			isa = PBXGroup;
+			children = (
+				842B64391CE080D1007F2A91 /* ServiceQRCodeView.swift */,
+				842B643B1CE080FF007F2A91 /* ServiceQRCodeView.xib */,
+			);
+			path = Barcode;
 			sourceTree = "<group>";
 		};
 		844282761C45EF95001C2DCB /* OAStackView */ = {
@@ -2573,6 +2591,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				842B64381CE0808B007F2A91 /* Barcode */,
 				93A91DB11C9AC61900F40A47 /* Sheriff */,
 				849300861C92B27C00547322 /* YLProgressBar */,
 				934445E41C8EEF3100F86E5D /* swipeCell */,
@@ -2605,6 +2624,7 @@
 				93FA1D7E1B9C2E9D009965C8 /* JTSScrollIndicator.m */,
 				845087D61C3B6E8B00E93937 /* VerticalIconLabel.swift */,
 				842BE94F1C3E3B6700865153 /* VerticalIconLabelCollectionView.swift */,
+				842B643F1CE175BE007F2A91 /* CustomXibView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3320,6 +3340,7 @@
 				93FA1D9F1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.xib in Resources */,
 				93FA1E541B9C3E12009965C8 /* AIMenuTopView.xib in Resources */,
 				849B0BD31C202B61008C0A23 /* LaunchScreen.storyboard in Resources */,
+				842B643C1CE080FF007F2A91 /* ServiceQRCodeView.xib in Resources */,
 				8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */,
 				937EA3871C030EA200AF776B /* AITextMessageView.xib in Resources */,
 				849B0BD61C202B61008C0A23 /* UIMainStoryboard.storyboard in Resources */,
@@ -3525,6 +3546,7 @@
 				93FA1E161B9C375A009965C8 /* ENSideMenuNavigationController.swift in Sources */,
 				849B4B441C0EDFE300BEC179 /* FLEXSystemLogTableViewController.m in Sources */,
 				93C33EF91B9BEA75007BF506 /* NSAttributedString+Attributes.m in Sources */,
+				842B643A1CE080D1007F2A91 /* ServiceQRCodeView.swift in Sources */,
 				81C092881BAFAC0D003FFF35 /* SDWebImageManager.m in Sources */,
 				930B27321B9EBC8E0011EE73 /* AITIMELINESDContentViewCell.swift in Sources */,
 				8442828B1C45EF95001C2DCB /* _OALayoutGuide.m in Sources */,
@@ -3643,6 +3665,7 @@
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
 				93C33F1C1B9BEAFE007BF506 /* KMActivityIndicator.m in Sources */,
 				8480813E1C1EE748007806E7 /* Localize.swift in Sources */,
+				842B64401CE175BE007F2A91 /* CustomXibView.swift in Sources */,
 				93CA11D01C463475008B1EE1 /* AIBuyServiceModel.swift in Sources */,
 				849B4B501C0EDFE300BEC179 /* FLEXDefaultsExplorerViewController.m in Sources */,
 				84DDA95D1BEE123300CA5C83 /* BottomServiceContainerView.swift in Sources */,
@@ -3787,6 +3810,7 @@
 				93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */,
 				93C33F231B9BEAFE007BF506 /* UIColorUtils.swift in Sources */,
 				849B4B591C0EDFE300BEC179 /* FLEXViewExplorerViewController.m in Sources */,
+				842B643E1CE08CD0007F2A91 /* TaskDetailViewController.swift in Sources */,
 				84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */,
 				845320501C9A86C3003B984B /* AITaskEditViewController.swift in Sources */,
 				818D8EBD1C040D4100006408 /* AICommentCell.m in Sources */,
