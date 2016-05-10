@@ -12,6 +12,7 @@ import UIKit
 class ServiceSettingView: UIView {
 
     @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var messageIcon: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageViewHeight: NSLayoutConstraint!
     
@@ -42,11 +43,25 @@ class ServiceSettingView: UIView {
     func loadData(model data: AIProposalHopeModel) {
         self.model = data
         
-        if data.hope_list != nil && data.hope_list.count > 0 {
+        var count = 0
+        if data.label_list != nil {
+            count = data.label_list.count
+        }
+        
+        var hopeCount = 0
+        if data.hope_list != nil {
+            hopeCount = data.hope_list.count
+        }
+         
+        if hopeCount > 0 {
             let hopeModel = data.hope_list.first as! AIProposalHopeAudioTextModel
             message.text = hopeModel.text ?? ""
-            
+            messageIcon.hidden = false
             adjustTwoLineMessageSize()
+        }else{
+            messageIcon.hidden = true
+            messageViewHeight.constant = 0
+            
         }
         
         frame.size.height = messageViewHeight.constant + ServiceSettingView.TAG_HEIGHT * CGFloat(estimateRowCount()) + ServiceSettingView.BOTTOM_PADDING
