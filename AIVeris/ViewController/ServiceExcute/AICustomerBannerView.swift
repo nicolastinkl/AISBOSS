@@ -17,5 +17,8 @@ class AICustomerBannerView: UIView {
         // Drawing code
     }
     */
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
 }

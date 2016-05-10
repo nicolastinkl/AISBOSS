@@ -130,7 +130,7 @@
         <!--Contest Success View Controller-->
         <scene sceneID="Iaz-R4-6ih">
             <objects>
-                <viewController id="2dG-LH-JQI" customClass="AIContestSuccessViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AIContestSuccessViewController" id="2dG-LH-JQI" customClass="AIContestSuccessViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gYn-6y-LYU"/>
                         <viewControllerLayoutGuide type="bottom" id="DT5-3T-Hya"/>
@@ -146,9 +146,12 @@
                                     <constraint firstAttribute="height" constant="70" id="IAf-wb-IfE"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="48d-dp-bg2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48d-dp-bg2">
                                 <rect key="frame" x="79" y="78" width="446" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1o0-3b-Wud"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

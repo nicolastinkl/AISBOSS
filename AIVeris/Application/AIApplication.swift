@@ -88,6 +88,7 @@ struct AIApplication{
             static let AICollContentViewController = "AICollContentViewController"
             static let AIAlertViewController = "AIAlertViewController"
             static let AIGladOrderViewController    =   "AIGladOrderViewController"
+            static let AIContestSuccessViewController = "AIContestSuccessViewController"
         }
         
         /*!
