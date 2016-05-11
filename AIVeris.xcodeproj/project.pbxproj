@@ -222,6 +222,7 @@
 		8480813F1C1EE748007806E7 /* UIButton+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813A1C1EE748007806E7 /* UIButton+Localize.swift */; };
 		848081411C1EE748007806E7 /* UILabel+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480813C1C1EE748007806E7 /* UILabel+Localize.swift */; };
 		84810BA41C9F89CC0099C7E4 /* AITaskTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */; };
+		848380361CE32F0100D7A084 /* BuildInCameraUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848380351CE32F0100D7A084 /* BuildInCameraUtils.swift */; };
 		848690271C3BB1A600D177BC /* PKYStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848690261C3BB1A600D177BC /* PKYStepper.m */; };
 		8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */; };
 		8493007F1C900FF400547322 /* OrderAndBuyerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8493007E1C900FF400547322 /* OrderAndBuyerInfoView.xib */; };
@@ -923,6 +924,7 @@
 		8480813A1C1EE748007806E7 /* UIButton+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Localize.swift"; sourceTree = "<group>"; };
 		8480813C1C1EE748007806E7 /* UILabel+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Localize.swift"; sourceTree = "<group>"; };
 		84810BA31C9F89CC0099C7E4 /* AITaskTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskTagViewController.swift; sourceTree = "<group>"; };
+		848380351CE32F0100D7A084 /* BuildInCameraUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInCameraUtils.swift; sourceTree = "<group>"; };
 		848690251C3BB1A600D177BC /* PKYStepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKYStepper.h; sourceTree = "<group>"; };
 		848690261C3BB1A600D177BC /* PKYStepper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKYStepper.m; sourceTree = "<group>"; };
 		8493007C1C900FE500547322 /* OrderAndBuyerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderAndBuyerInfoView.swift; sourceTree = "<group>"; };
@@ -1970,6 +1972,14 @@
 			path = Localize_Swift;
 			sourceTree = "<group>";
 		};
+		848380341CE32F0100D7A084 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				848380351CE32F0100D7A084 /* BuildInCameraUtils.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		848690241C3BB1A600D177BC /* PKYStepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -2960,6 +2970,7 @@
 		93C33EFD1B9BEAFE007BF506 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				848380341CE32F0100D7A084 /* Camera */,
 				84467F741CA4D26B004F42A7 /* UIDeviceExtension.swift */,
 				849EDFFC1CACFB8400700C8C /* UIView+Shake.swift */,
 				84467F781CA525DE004F42A7 /* CGAffineTransform.swift */,
@@ -3958,6 +3969,7 @@
 				93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */,
 				93CA11D41C463475008B1EE1 /* AIFavoritesServicesModel.swift in Sources */,
 				81C092861BAFAC0D003FFF35 /* SDWebImageDownloader.m in Sources */,
+				848380361CE32F0100D7A084 /* BuildInCameraUtils.swift in Sources */,
 				842B64461CE1E6D4007F2A91 /* TaskDetailViewController.swift in Sources */,
 				84567F671C5222CA0032266C /* AITagDescView.swift in Sources */,
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
