@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		120059421CE1D0A800029A66 /* AIIconLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059411CE1D0A800029A66 /* AIIconLabelView.swift */; };
+		120059421CE1D0A800029A66 /* AIIconLabeVerticallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */; };
+		120059441CE1E4B400029A66 /* AIServiceExcuteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */; };
 		12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */; };
 		12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */; };
 		12096C6A1CA3AA4600514E6C /* AITimelineFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */; };
@@ -623,7 +624,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		120059411CE1D0A800029A66 /* AIIconLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconLabelView.swift; sourceTree = "<group>"; };
+		120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconLabeVerticallView.swift; sourceTree = "<group>"; };
+		120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceExcuteModel.swift; sourceTree = "<group>"; };
 		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
 		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
 		12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineFilterViewController.swift; sourceTree = "<group>"; };
@@ -1504,7 +1506,7 @@
 				120F07631CE0398D008FCBB3 /* AICustomerBannerView.swift */,
 				120F07651CE039A5008FCBB3 /* AICustomerBannerView.xib */,
 				120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */,
-				120059411CE1D0A800029A66 /* AIIconLabelView.swift */,
+				120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1527,6 +1529,7 @@
 				845751D21CA29A2E008A342A /* BuyerOrderModel.swift */,
 				8175F4D41CAB7A510050F2FF /* AIRequirementViewModel.swift */,
 				8175F4DC1CABB7A60050F2FF /* AIInterfaceTest.swift */,
+				120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -3610,7 +3613,7 @@
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
 				842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
-				120059421CE1D0A800029A66 /* AIIconLabelView.swift in Sources */,
+				120059421CE1D0A800029A66 /* AIIconLabeVerticallView.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
 				849B4B3B1C0EDFE300BEC179 /* FLEXFileBrowserSearchOperation.m in Sources */,
 				930B27331B9EBC8E0011EE73 /* AITIMELINESDTimesViewCell.swift in Sources */,
@@ -3778,6 +3781,7 @@
 				93FA1D9B1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.m in Sources */,
 				81C092841BAFAC0D003FFF35 /* SDWebImageCompat.m in Sources */,
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
+				120059441CE1E4B400029A66 /* AIServiceExcuteModel.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
 				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
 				8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */,
