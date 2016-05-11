@@ -89,6 +89,7 @@ struct AIApplication{
             static let AIAlertViewController = "AIAlertViewController"
             static let AIGladOrderViewController    =   "AIGladOrderViewController"
             static let AIContestSuccessViewController = "AIContestSuccessViewController"
+            static let AIServiceRouteViewController     = "AIServiceRouteViewController"
         }
         
         /*!
@@ -195,7 +196,8 @@ struct AIApplication{
     
     // MARK: System theme's color
     struct AIColor {
-        static let MainTextColor     = "#41414C"
+        static let MainTextColor     = "#FFFFFF"
+//        static let MainTextColor     = "#41414C"
         static let MainTabBarBgColor = "#00cec0"
         static let MainYellowBgColor = "#f0ff00"
         static let MainGreenBgColor  = "#5fc30d"

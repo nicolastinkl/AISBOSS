@@ -323,6 +323,7 @@
 		84F001541C3A43CB000C93AF /* FLEXTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0014C1C3A43CB000C93AF /* FLEXTableListViewController.m */; };
 		84F001551C3A43CB000C93AF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 84F0014D1C3A43CB000C93AF /* LICENSE */; };
 		84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */; };
+		93018AF91CE2CC6F00BEA66B /* AIServiceRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */; };
 		9306F2651BB0E7990092D827 /* AIServiceSchemeModelTEST.json in Resources */ = {isa = PBXBuildFile; fileRef = 9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */; };
 		930B272B1B9EBB960011EE73 /* AITimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */; };
 		930B272E1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */; };
@@ -1090,6 +1091,7 @@
 		84F0014C1C3A43CB000C93AF /* FLEXTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXTableListViewController.m; sourceTree = "<group>"; };
 		84F0014D1C3A43CB000C93AF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
+		93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceRouteViewController.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineViewController.swift; sourceTree = "<group>"; };
 		930B272C1B9EBBE10011EE73 /* AITIMELINESDTITLEView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITIMELINESDTITLEView.swift; sourceTree = "<group>"; };
@@ -2238,6 +2240,14 @@
 			path = DatabaseBrowser;
 			sourceTree = "<group>";
 		};
+		93018AF71CE2CC4100BEA66B /* ChildCart */ = {
+			isa = PBXGroup;
+			children = (
+				93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */,
+			);
+			path = ChildCart;
+			sourceTree = "<group>";
+		};
 		9324DDCE1CD1FF23007D3DBE /* AlertViewContr */ = {
 			isa = PBXGroup;
 			children = (
@@ -2284,8 +2294,9 @@
 				93DA9C0C1BFDB66700E2DA3B /* CellSubView */,
 				9395FDAF1C57885600D95F54 /* ContentSubView */,
 				93A3B1841C1033E700DE7EBB /* InterfaceCell */,
-				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
+				93018AF71CE2CC4100BEA66B /* ChildCart */,
 				81A0A5621C180811007DD9F8 /* AIBuyerParamsDelegate.h */,
+				93306BCF1BE85FE800F68FD8 /* AIBuyerDetailViewController.swift */,
 				93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */,
 				818D8EA81C040C2F00006408 /* AIMusicTherapyView.h */,
 				818D8EA91C040C2F00006408 /* AIMusicTherapyView.m */,
@@ -3671,6 +3682,7 @@
 				842FC8691BDDC99900A0517C /* ExpandContentViewFactory.swift in Sources */,
 				849B4B281C0EDFE300BEC179 /* FLEXArgumentInputStructView.m in Sources */,
 				93B25A461B9D799E00CD1FEB /* UP_NSString+Format.mm in Sources */,
+				93018AF91CE2CC6F00BEA66B /* AIServiceRouteViewController.swift in Sources */,
 				846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */,
 				93C33F161B9BEAFE007BF506 /* AIAssignUtils.swift in Sources */,
 				93FA1D9E1B9C2EA9009965C8 /* DSLCalendarMonthSelectorView.m in Sources */,
