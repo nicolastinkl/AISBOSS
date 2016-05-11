@@ -137,3 +137,9 @@
 // YYImage
 #import "YYImage/YYImage.h"
 #import "YYImage/YYAnimatedImageView.h"
+
+// 远程协助
+#import <OpenTok/OpenTok.h>
+#import "TBScreenCapture.h"
+
+
