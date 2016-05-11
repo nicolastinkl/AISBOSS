@@ -241,17 +241,7 @@ class AIBuyerDetailViewController : UIViewController {
      */
     @IBAction func startVideoAction(sender: AnyObject) {
         
-        // Create our Installation query
-        let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIApplication.DirectionalPush.ProviderChannel)
-        
-        // Send push notification to query
-        let push = AVPush()
-        //push.setChannel(AIApplication.DirectionalPush.ProviderChannel)
-        push.setQuery(pushQuery) // Set our Installation query
-        push.setMessage("There is a new oder !")
-        push.sendPushInBackground()
-
+        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification([AIRemoteNotificationKeys.MessageKey : "开始抢单啦！"])
   
     }
     // MARK: 提交订单
