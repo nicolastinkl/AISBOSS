@@ -27,18 +27,20 @@ class TaskResultCommitViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func questButtonClicked(sender: AnyObject) {
+        BuildInCameraUtils.startCameraControllerFromViewController(self, delegate: self)
     }
-    */
+}
 
+extension TaskResultCommitViewController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension TaskResultCommitViewController: UINavigationControllerDelegate {
+    
 }
