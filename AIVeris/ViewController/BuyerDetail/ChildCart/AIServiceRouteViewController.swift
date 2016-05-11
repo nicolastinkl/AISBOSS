@@ -25,12 +25,66 @@
 import Foundation
 import UIKit
 
+import Cartography
+import Spring
+import AIAlertView
+
 class  AIServiceRouteViewController: UIViewController {
+     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    private var preCacheView: UIView?
+    
+    private var buttonSelected: UIButton = {
+        let button = UIButton(type: .Custom)
+        button.titleLabel?.textColor = UIColor.whiteColor()
+        button.titleLabel?.font = AITools.myriadSemiCondensedWithSize(15)
+        button.setHeight(50)
+        button.addBottomWholeSSBorderLine()
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.contentSize.height = 20
+        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Add Destination View and Departure View.
+        
+        if let routeView = AIServiceRouteView.initFromNib() {
+            addNewSubView(routeView)
+            (routeView as! AIServiceRouteView).refereshLine()
+        }
+        
+        if let sview = AIDepartReahCityView.initFromNib() {
+            addNewSubView(sview)
+        }
+        
+        if let sview = AIStartEndTimeView.initFromNib() {
+            addNewSubView(sview)
+        }
+        
+        if let sview = AIEventCapacityView.initFromNib() {
+            addNewSubView(sview)
+        }
+        
+    }
+    
+    func addNewSubView(cview:UIView){
+        scrollView.addSubview(cview)
+        cview.setWidth(self.view.width)
+        cview.setTop(scrollView.contentSize.height)
+        cview.backgroundColor = UIColor.clearColor()
+        scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), cview.top + cview.height)
+        preCacheView = cview
+        
+    }
     
     func finishExecEvent(){
         self.cancelClick()

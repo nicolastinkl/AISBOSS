@@ -57,6 +57,14 @@ extension UIViewController {
     
     func showMenuTitleViewController(navi: UINavigationController, title: String) {
         
+        // Set Background Using Mask.
+        let myLayer = CALayer()
+        let myImage = UIImage(named: "Background_ChildService_Buy")?.CGImage
+        myLayer.frame = view.bounds
+        myLayer.contents = myImage
+        view.layer.insertSublayer(myLayer, atIndex: 0)
+        
+        // Set UINavigationBar.
         if let item = navi.navigationBar.items?.first {
             
             let bar = UIBarButtonItem(title: "cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.cancelClick))

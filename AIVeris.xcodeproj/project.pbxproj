@@ -377,12 +377,22 @@
 		937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3921C04076500AF776B /* AIAudioRecordView.xib */; };
 		937EA3951C04076D00AF776B /* AIAudioRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3941C04076D00AF776B /* AIAudioRecordView.swift */; };
 		937EF7941CDCA6CD006B98BE /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 937EF7931CDCA6CD006B98BE /* start.mp4 */; };
+		938E507F1CE321B50019E3C1 /* AIServiceRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */; };
+		938E50811CE321C30019E3C1 /* AIServiceRouteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */; };
 		9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9394B2931C52188200F80344 /* AIEvent_Planning.json */; };
 		9395FDB11C5788B300D95F54 /* AIEventTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395FDB01C5788B300D95F54 /* AIEventTimerView.swift */; };
 		9395FDB31C5788D800D95F54 /* AIEventTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9395FDB21C5788D800D95F54 /* AIEventTimerView.xib */; };
 		9395FDB51C57982600D95F54 /* AISinglePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395FDB41C57982600D95F54 /* AISinglePickerView.swift */; };
 		9395FDB71C57983500D95F54 /* AISinglePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9395FDB61C57983500D95F54 /* AISinglePickerView.xib */; };
 		9395FDB91C579C5B00D95F54 /* AISingleSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395FDB81C579C5B00D95F54 /* AISingleSelectView.swift */; };
+		939B51571CE3336900CF2FA1 /* AIDepartReahCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939B51561CE3336900CF2FA1 /* AIDepartReahCityView.swift */; };
+		939B51591CE3337600CF2FA1 /* AIDepartReahCityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939B51581CE3337600CF2FA1 /* AIDepartReahCityView.xib */; };
+		939B515B1CE333C600CF2FA1 /* AIStartEndTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939B515A1CE333C600CF2FA1 /* AIStartEndTimeView.swift */; };
+		939B515D1CE333E200CF2FA1 /* AIStartEndTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939B515C1CE333E200CF2FA1 /* AIStartEndTimeView.xib */; };
+		939B515F1CE335FF00CF2FA1 /* AIEventCapacityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939B515E1CE335FF00CF2FA1 /* AIEventCapacityView.xib */; };
+		939B51611CE3360800CF2FA1 /* AIEventCapacityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939B51601CE3360800CF2FA1 /* AIEventCapacityView.swift */; };
+		939B51631CE3388F00CF2FA1 /* AINumberCountControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939B51621CE3388F00CF2FA1 /* AINumberCountControl.swift */; };
+		939B51651CE3389D00CF2FA1 /* AINumberCountControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939B51641CE3389D00CF2FA1 /* AINumberCountControl.xib */; };
 		939F49F51BDDD67E00D07598 /* UIPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F41BDDD67E00D07598 /* UIPopView.swift */; };
 		939F49F71BDDD92600D07598 /* UIImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F49F61BDDD92600D07598 /* UIImageUtils.swift */; };
 		939F49F91BDDFE0700D07598 /* UIPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F49F81BDDFE0700D07598 /* UIPopView.xib */; };
@@ -1151,12 +1161,22 @@
 		937EA3921C04076500AF776B /* AIAudioRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioRecordView.xib; sourceTree = "<group>"; };
 		937EA3941C04076D00AF776B /* AIAudioRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioRecordView.swift; sourceTree = "<group>"; };
 		937EF7931CDCA6CD006B98BE /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
+		938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceRouteView.swift; sourceTree = "<group>"; };
+		938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIServiceRouteView.xib; sourceTree = "<group>"; };
 		9394B2931C52188200F80344 /* AIEvent_Planning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIEvent_Planning.json; sourceTree = "<group>"; };
 		9395FDB01C5788B300D95F54 /* AIEventTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIEventTimerView.swift; sourceTree = "<group>"; };
 		9395FDB21C5788D800D95F54 /* AIEventTimerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIEventTimerView.xib; sourceTree = "<group>"; };
 		9395FDB41C57982600D95F54 /* AISinglePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISinglePickerView.swift; sourceTree = "<group>"; };
 		9395FDB61C57983500D95F54 /* AISinglePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AISinglePickerView.xib; sourceTree = "<group>"; };
 		9395FDB81C579C5B00D95F54 /* AISingleSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISingleSelectView.swift; sourceTree = "<group>"; };
+		939B51561CE3336900CF2FA1 /* AIDepartReahCityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDepartReahCityView.swift; sourceTree = "<group>"; };
+		939B51581CE3337600CF2FA1 /* AIDepartReahCityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDepartReahCityView.xib; sourceTree = "<group>"; };
+		939B515A1CE333C600CF2FA1 /* AIStartEndTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIStartEndTimeView.swift; sourceTree = "<group>"; };
+		939B515C1CE333E200CF2FA1 /* AIStartEndTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIStartEndTimeView.xib; sourceTree = "<group>"; };
+		939B515E1CE335FF00CF2FA1 /* AIEventCapacityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIEventCapacityView.xib; sourceTree = "<group>"; };
+		939B51601CE3360800CF2FA1 /* AIEventCapacityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIEventCapacityView.swift; sourceTree = "<group>"; };
+		939B51621CE3388F00CF2FA1 /* AINumberCountControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AINumberCountControl.swift; sourceTree = "<group>"; };
+		939B51641CE3389D00CF2FA1 /* AINumberCountControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AINumberCountControl.xib; sourceTree = "<group>"; };
 		939F49F41BDDD67E00D07598 /* UIPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPopView.swift; sourceTree = "<group>"; };
 		939F49F61BDDD92600D07598 /* UIImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageUtils.swift; sourceTree = "<group>"; };
 		939F49F81BDDFE0700D07598 /* UIPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPopView.xib; sourceTree = "<group>"; };
@@ -2247,6 +2267,16 @@
 			isa = PBXGroup;
 			children = (
 				93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */,
+				938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */,
+				938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */,
+				939B51561CE3336900CF2FA1 /* AIDepartReahCityView.swift */,
+				939B51581CE3337600CF2FA1 /* AIDepartReahCityView.xib */,
+				939B515A1CE333C600CF2FA1 /* AIStartEndTimeView.swift */,
+				939B515C1CE333E200CF2FA1 /* AIStartEndTimeView.xib */,
+				939B51601CE3360800CF2FA1 /* AIEventCapacityView.swift */,
+				939B515E1CE335FF00CF2FA1 /* AIEventCapacityView.xib */,
+				939B51621CE3388F00CF2FA1 /* AINumberCountControl.swift */,
+				939B51641CE3389D00CF2FA1 /* AINumberCountControl.xib */,
 			);
 			path = ChildCart;
 			sourceTree = "<group>";
@@ -3311,6 +3341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939B515D1CE333E200CF2FA1 /* AIStartEndTimeView.xib in Resources */,
 				120F07661CE039A5008FCBB3 /* AICustomerBannerView.xib in Resources */,
 				937EA3851C03098700AF776B /* AIAudioMessageView.xib in Resources */,
 				8450D11E1C045CF800CD1D5B /* AITitleAndIconTextView.xib in Resources */,
@@ -3321,12 +3352,14 @@
 				93B25A601B9D7A1D00CD1FEB /* sdk_weibo_logo.png in Resources */,
 				93FA1DB51B9C2EF5009965C8 /* AIServiceSearchView.xib in Resources */,
 				93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */,
+				938E50811CE321C30019E3C1 /* AIServiceRouteView.xib in Resources */,
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
 				937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */,
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
 				9324DDD21CD30385007D3DBE /* AIAlertStoryboard.storyboard in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				93CD0D2C1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard in Resources */,
+				939B51591CE3337600CF2FA1 /* AIDepartReahCityView.xib in Resources */,
 				847F69211C1EAF1D008A7804 /* Localizable.strings in Resources */,
 				937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */,
 				12D794FE1BA80B6000586011 /* CardCellView.xib in Resources */,
@@ -3404,7 +3437,9 @@
 				93CB8D861BF9F57300C41DDE /* MyriadPro-Cond.otf in Resources */,
 				93FA1DA91B9C2EAA009965C8 /* DSLCalendarDayCallout.png in Resources */,
 				93FA1E591B9C3E12009965C8 /* AISwipeView.xib in Resources */,
+				939B51651CE3389D00CF2FA1 /* AINumberCountControl.xib in Resources */,
 				843F890E1BF0B88700BFC57E /* FlightServiceView.xib in Resources */,
+				939B515F1CE335FF00CF2FA1 /* AIEventCapacityView.xib in Resources */,
 				93E7BFB41BFEBA5300A6C906 /* AICustomView.xib in Resources */,
 				93FA1E4B1B9C3E12009965C8 /* AICustomerCollectionCellView.xib in Resources */,
 				12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */,
@@ -3531,6 +3566,7 @@
 				934445E71C8EEF3100F86E5D /* SESlideTableViewCell.m in Sources */,
 				93B25A471B9D799E00CD1FEB /* UP_NSString+Size.m in Sources */,
 				8450D1241C047A6B00CD1D5B /* AIIconTextView.swift in Sources */,
+				938E507F1CE321B50019E3C1 /* AIServiceRouteView.swift in Sources */,
 				84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */,
 				847115FB1BCD02940032C210 /* AICoverFlowCell.swift in Sources */,
 				849B4B561C0EDFE300BEC179 /* FLEXObjectExplorerViewController.m in Sources */,
@@ -3670,6 +3706,7 @@
 				849B4B4E1C0EDFE300BEC179 /* FLEXArrayExplorerViewController.m in Sources */,
 				93C33EE91B9BE4C9007BF506 /* AIHttpEngine.swift in Sources */,
 				93FA1DE51B9C302A009965C8 /* AIServicesRequester.swift in Sources */,
+				939B515B1CE333C600CF2FA1 /* AIStartEndTimeView.swift in Sources */,
 				849B4B421C0EDFE300BEC179 /* FLEXSystemLogMessage.m in Sources */,
 				93B25AA41B9D7A7B00CD1FEB /* JSONModelError.m in Sources */,
 				815EAD7B1C488A8600D83780 /* AIOrderTableModel.m in Sources */,
@@ -3740,6 +3777,7 @@
 				81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */,
 				849B4B2A1C0EDFE300BEC179 /* FLEXArgumentInputTextView.m in Sources */,
 				8450D1181BFEB7E200CD1D5B /* AIHorizontalLineLabel.swift in Sources */,
+				939B51611CE3360800CF2FA1 /* AIEventCapacityView.swift in Sources */,
 				84D8ECDE1BB143440010E981 /* AIProviderDataObtainer.swift in Sources */,
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
 				849B4B291C0EDFE300BEC179 /* FLEXArgumentInputSwitchView.m in Sources */,
@@ -3794,6 +3832,7 @@
 				81C092841BAFAC0D003FFF35 /* SDWebImageCompat.m in Sources */,
 				93DA9C0E1BFDB68000E2DA3B /* AIGalleryView.swift in Sources */,
 				120059441CE1E4B400029A66 /* AIServiceExcuteModel.swift in Sources */,
+				939B51571CE3336900CF2FA1 /* AIDepartReahCityView.swift in Sources */,
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
 				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
 				8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */,
@@ -3897,6 +3936,7 @@
 				93CA11D21C463475008B1EE1 /* AICustomerModels.swift in Sources */,
 				842BE9501C3E3B6700865153 /* VerticalIconLabelCollectionView.swift in Sources */,
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
+				939B51631CE3388F00CF2FA1 /* AINumberCountControl.swift in Sources */,
 				1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */,
 				93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
