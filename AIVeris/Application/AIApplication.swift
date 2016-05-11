@@ -88,6 +88,7 @@ struct AIApplication{
             static let AICollContentViewController = "AICollContentViewController"
             static let AIAlertViewController = "AIAlertViewController"
             static let AIGladOrderViewController    =   "AIGladOrderViewController"
+            static let AIContestSuccessViewController = "AIContestSuccessViewController"
         }
         
         /*!
@@ -412,7 +413,8 @@ struct AIApplication{
     
     
     static func showAlertView(){
-        let viewAlert = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAlertViewController) as! AIAlertViewController
+        
+        let viewAlert = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateInitialViewController()// .instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAlertViewController) as! AIAlertViewController
         
         if let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController {
             if rootVc.isKindOfClass(UINavigationController.self) {
@@ -420,7 +422,7 @@ struct AIApplication{
             }else{
                 
             }
-            rootVc.presentPopupViewController(viewAlert, animated: true)
+            rootVc.presentPopupViewController(viewAlert!, animated: true)
         }
     }
     

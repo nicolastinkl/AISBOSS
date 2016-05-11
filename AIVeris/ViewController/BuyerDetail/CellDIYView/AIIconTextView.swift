@@ -21,7 +21,6 @@ class AIIconTextView: UIView {
     private var paramsCount = 1
     private var iconTextDic: [[UIImageView: UILabel]]!
     
-    
     override func awakeFromNib() {
         firstText.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(31))
     }
@@ -54,7 +53,7 @@ class AIIconTextView: UIView {
         var preIcon = firstIcon
         var preLabel = firstText
         
-        for var index = 0; index < paramList.count; ++index {
+        for index in 0 ..< paramList.count {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {

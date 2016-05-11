@@ -202,7 +202,27 @@ class SimpleServiceViewContainer: UIView {
             view.edges == container.edges
         }
         
-        divider.hidden = false
+        if dataModel!.wish_list != nil {
+            var labelCount = 0
+            
+            if dataModel!.wish_list.label_list != nil {
+                labelCount = dataModel!.wish_list.label_list.count
+            }
+            
+            var hopeCount = 0
+            if dataModel!.wish_list.hope_list != nil {
+                hopeCount = dataModel!.wish_list.hope_list.count
+            }
+            
+            if (labelCount + hopeCount) == 0 {
+                divider.hidden = true
+            }else{
+                divider.hidden = false
+            }
+        }else{
+            divider.hidden = true
+        }
+        
         dividerHeight.constant = 0.5
         divider.setNeedsUpdateConstraints()
         frame.size.height = totalHeight()

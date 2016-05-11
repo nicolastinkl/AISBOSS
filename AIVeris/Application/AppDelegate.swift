@@ -99,7 +99,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logInfo("\(userInfo)")
         
         AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+
         AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
+
         
     }
     
@@ -109,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
       
-        AVOSCloud .handleRemoteNotificationsWithDeviceToken(deviceToken)
+        AVOSCloud.handleRemoteNotificationsWithDeviceToken(deviceToken)
         logInfo("DeviceToken OK")
         
     }

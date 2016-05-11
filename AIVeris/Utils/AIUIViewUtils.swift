@@ -11,6 +11,8 @@ import Spring
 
 extension UIView {
     
+    typealias ComplateClosure = (Void) -> (Void)
+    
     /*
     enum objc_AssociationPolicy : UInt {
     
@@ -439,8 +441,8 @@ extension UIView {
 //            backgroundColor: backgroundColor,
 //            borderColor: borderColor))
 //        self.insertSubview(imageView, atIndex: 0)
+        
     }
-    
     
 }
 

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "right_triangle.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "dottedLine2.png",
       "scale" : "2x"
     },
     {
