@@ -29,9 +29,10 @@ class AIAlertViewController: UIViewController {
     
     
     @IBAction func answerAction(sender: AnyObject) {
-//        self.dismissViewControllerAnimated(<#T##flag: Bool##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        //AIApplication.showGladOrderView()
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
-        AIApplication.showGladOrderView()
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     

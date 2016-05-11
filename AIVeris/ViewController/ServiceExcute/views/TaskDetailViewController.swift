@@ -16,6 +16,8 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var promptCheckIn: UILabel!
     @IBOutlet weak var bottomButton: UIButton!
     
+    @IBOutlet weak var authorizationBg: UIImageView!
+    @IBOutlet weak var promptAuthorization: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,15 @@ class TaskDetailViewController: UIViewController {
     }
     
 
+    private func showAuthorization() {
+        promptAuthorization.hidden = false
+        authorizationBg.hidden = false
+    }
+    
+    private func hideAuthorization() {
+        promptAuthorization.hidden = true
+        authorizationBg.hidden = true
+    }
     /*
     // MARK: - Navigation
 

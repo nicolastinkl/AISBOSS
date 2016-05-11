@@ -25,7 +25,7 @@ class ServiceQRCodeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        initSelfFromXib("ServiceQRCodeView")
+        initSelfFromXib()
     }
 
 }
