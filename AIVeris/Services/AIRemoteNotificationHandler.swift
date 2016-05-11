@@ -15,7 +15,20 @@ import UIKit
 struct AIRemoteNotificationKeys {
     static let MessageKey = "alert"                         // APNS规定字段，不能修改
     static let ServiceOrderID = "ServiceOrderID"            // 待抢的服务单号
+    static let Channels = "channels"                        // 频道字段，不能修改
     
+}
+
+
+// MARK: Advanced directional push notification
+
+/**
+ * 推送常量
+ *
+ */
+struct AIRemoteNotificationParameters {
+    static let ProviderIdentifier = "ProviderIdentifier"      // 高级定向推送给当前的Provider,用于语音协助
+    static let ProviderChannel = "ProviderChannel"            // 抢单用的频道，输入gai
 }
 
 
@@ -25,6 +38,11 @@ struct AIRemoteNotificationKeys {
  */
 class AIRemoteNotificationHandler: NSObject {
 
+    
+    var keys = AIRemoteNotificationKeys()
+    
+    var parameters = AIRemoteNotificationParameters()
+    
     
     //MARK: 单例方法
     
@@ -60,7 +78,7 @@ class AIRemoteNotificationHandler: NSObject {
     func sendGrabOrderNotification(notification : [String : AnyObject]) {
         // Create our Installation query
         let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIApplication.DirectionalPush.ProviderChannel)
+        pushQuery.whereKey("channels", equalTo: AIRemoteNotificationParameters.ProviderChannel)
         
         // Send push notification to query
         let push = AVPush()
@@ -81,7 +99,7 @@ class AIRemoteNotificationHandler: NSObject {
     func sendAudioAssistantNotification(notification : [String : AnyObject]) {
         // Create our Installation query
         let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIApplication.DirectionalPush.ProviderChannel)
+        pushQuery.whereKey("channels", equalTo: AIRemoteNotificationParameters.ProviderChannel)
         
         // Send push notification to query
         let push = AVPush()
@@ -119,4 +137,34 @@ class AIRemoteNotificationHandler: NSObject {
     }
     
     
+    //MARK: 设置推送可用
+    
+    /**
+     * 设置推送可用
+     *
+     *
+     */
+    func addNotificationForUser(user : String) {
+        
+        let installation = AVInstallation .currentInstallation()
+        installation.setObject(user, forKey: AIRemoteNotificationParameters.ProviderIdentifier)
+        installation.addUniqueObject(AIRemoteNotificationParameters.ProviderChannel, forKey: AIRemoteNotificationKeys.Channels)
+        installation.saveInBackground()
+    }
+    
+    
+    //MARK: 取消推送功能
+    
+    /**
+     * 取消推送功能
+     *
+     *
+     */
+    func removeNotificationForUser(user : String) {
+        
+        let installation = AVInstallation .currentInstallation()
+        installation.removeObjectForKey(AIRemoteNotificationParameters.ProviderIdentifier)
+        installation.removeObject(AIRemoteNotificationParameters.ProviderChannel, forKey: AIRemoteNotificationKeys.Channels)
+        installation.saveInBackground()
+    }
 }
