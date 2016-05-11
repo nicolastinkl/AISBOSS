@@ -50,7 +50,7 @@
                     <state key="normal" title="Button"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="FJp-bi-2Yo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1Qa-5c-PhI"/>
                 <constraint firstItem="IT3-f0-gs5" firstAttribute="leading" secondItem="dKg-1y-0Ny" secondAttribute="leading" id="5xV-Xo-BB4"/>

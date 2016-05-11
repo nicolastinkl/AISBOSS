@@ -69,6 +69,7 @@ class AIDottedLineLabelView: UIView {
     private func buildTextLabel(){
         textLabel = UILabel()
         textLabel.text = "label"
+        textLabel.textColor = UIColor.lightGrayColor()
         self.addSubview(textLabel)
         textLabel.snp_makeConstraints { (make) in
             make.leading.equalTo(leftLineImage.snp_trailing).offset(10)

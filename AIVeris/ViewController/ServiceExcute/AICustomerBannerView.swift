@@ -17,7 +17,6 @@ class AICustomerBannerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        initSelfFromXib("AICustomerBannerView")
         initSelfFromXib()
     }
  
@@ -25,7 +24,6 @@ class AICustomerBannerView: UIView {
     init() {
         super.init(frame: .zero)
         initSelfFromXib()
-//        self.initSelfFromXib("AICustomerBannerView")
     }
     
     func loadData(){
