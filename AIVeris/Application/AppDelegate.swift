@@ -33,10 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         AVAnalytics.setChannel("App Store")
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert,.Badge,.Sound], categories: nil))
-        application.registerForRemoteNotifications()
-        
-        
+
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
