@@ -145,5 +145,3 @@
 #import <OpenTok/OpenTok.h>
 #import "TBScreenCapture.h"
 
-
->>>>>>> 571d0f82a5cb91c6c7b6154a4658d59084ff6f5c
