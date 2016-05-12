@@ -35,19 +35,19 @@ class AILocationSelectHeadView: UIView {
         super.awakeFromNib()
         
         
-        for index in 1...3 {
+        for index in 0...2 {
             let imageView = DesignableImageView()
             let label = UILabel()
             
-            imageView.frame = CGRectMake(CGFloat(30 + index*80), 0, 80, 80)
-            label.frame = CGRectMake(CGFloat(50 + index*80), 90, 80, 80)
+            imageView.frame = CGRectMake(CGFloat((15 + 80) * index), 5, 65, 65)
+            label.frame = CGRectMake(imageView.left, 70, 65, 20)
             scrollview.addSubview(imageView)
             scrollview.addSubview(label)
             
             label.text = "Beijing"
             label.textColor = UIColor.whiteColor()
             label.font = AITools.myriadLightWithSize(14)
-            
+            label.textAlignment  = .Center
             imageView.image = UIImage(named: "icon-mia")
         }
         
