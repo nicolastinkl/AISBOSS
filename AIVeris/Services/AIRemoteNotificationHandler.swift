@@ -127,21 +127,29 @@ struct AIRemoteNotificationParameters {
      */
     func didReceiveRemoteNotificationUserInfo(userinfo : [NSObject : AnyObject]) {
         
+        //如果是抢单通知
+        let key = AIRemoteNotificationKeys.MessageKey
         
-        
-        let alertViewController = UIAlertController(title: "新消息", message: "用户Traston想购买您的打车服务，是否查看？", preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            alertViewController.dismissViewControllerAnimated(true, completion: nil)
+        if let value : String = userinfo[key] as? String{
+            if value == "Grab" {
+                AIApplication.showAlertView()
+            }
         }
-        
-        let cancelAction = UIAlertAction(title: "NO", style: .Cancel) { (action) in
-            alertViewController.dismissViewControllerAnimated(true, completion: nil)
+        else {
+            let alertViewController = UIAlertController(title: "新消息", message: "用户Traston想购买您的打车服务，是否查看？", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                alertViewController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            let cancelAction = UIAlertAction(title: "NO", style: .Cancel) { (action) in
+                alertViewController.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            alertViewController.addAction(okAction)
+            alertViewController.addAction(cancelAction)
+            let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController
+            rootViewController?.presentViewController(alertViewController, animated: true, completion: nil)
         }
-        
-        alertViewController.addAction(okAction)
-        alertViewController.addAction(cancelAction)
-        let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController
-        rootViewController?.presentViewController(alertViewController, animated: true, completion: nil)
     }
     
     

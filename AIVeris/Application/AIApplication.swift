@@ -437,7 +437,8 @@ struct AIApplication{
         
     }
     
-    
+    //MARK: - Case0服务，官方唯一指定抢单任务
+    static let AIServiceIdCase0 = "900001001003"
     
 }
 

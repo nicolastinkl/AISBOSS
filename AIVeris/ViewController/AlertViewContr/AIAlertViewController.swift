@@ -27,6 +27,18 @@ import UIKit
 
 class AIAlertViewController: UIViewController {
     
+    @IBOutlet weak var timerControl: DDHTimerControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //timerControl = DDHTimerControl.init(type: DDHTimerType.EqualElements)
+        timerControl.color = UIColor.yellowColor()
+        timerControl.highlightColor = UIColor.redColor()
+        timerControl.minutesOrSeconds = 59
+        timerControl.titleLabel.text = "sec"
+        timerControl.userInteractionEnabled = false
+    }
     
     @IBAction func answerAction(sender: AnyObject) {
         //AIApplication.showGladOrderView()
