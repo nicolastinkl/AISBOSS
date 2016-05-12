@@ -277,16 +277,9 @@ class AICollContentViewController: UIViewController {
     
     //发起抢单推送
     func initContestService(){
-        // Create our Installation query
-        let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIApplication.DirectionalPush.ProviderChannel)
         
-        // Send push notification to query
-        let push = AVPush()
-        //push.setChannel(AIApplication.DirectionalPush.ProviderChannel)
-        push.setQuery(pushQuery) // Set our Installation query
-        push.setMessage("contest")
-        push.sendPushInBackground()
+        let notificationDic = [AIRemoteNotificationKeys.MessageKey : "Grab" , AIRemoteNotificationKeys.ServiceOrderID : AIApplication.AIServiceIdCase0]
+        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification(notificationDic)
 
     }
     

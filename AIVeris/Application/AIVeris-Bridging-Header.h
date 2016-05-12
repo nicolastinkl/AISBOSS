@@ -134,3 +134,6 @@
 // YYImage
 #import "YYImage/YYImage.h"
 #import "YYImage/YYAnimatedImageView.h"
+
+//DDHTimerControl
+#import "DDHTimerControl.h"
