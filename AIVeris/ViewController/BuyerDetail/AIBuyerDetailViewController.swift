@@ -360,13 +360,27 @@ class AIBuyerDetailViewController : UIViewController {
                 }
         }
     }
-
     
     @IBAction func closeThisViewController() {
         delegate?.closeAIBDetailViewController()
         dismissViewControllerAnimated(false, completion: nil)
     }
     
+    @IBAction func remoteAssistantButtonPressed(sender: AnyObject) {
+        let actionSheet = UIAlertController(title: "Share Screen", message: nil, preferredStyle: .ActionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Do Publish", style: .Default, handler: { (action) in
+            AudioAssistantManager.sharedInstance.doPublish()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Connection To AudioAssiastant Room", style: .Default, handler: { (action) in
+            AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        }))
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
     
     func refershData() {
         
