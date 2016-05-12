@@ -2682,7 +2682,6 @@
 			children = (
 				84687EA41CE180EF00921C6A /* AudioAssistant */,
 				120F07621CE03887008FCBB3 /* ServiceExcute */,
-				842B64311CE03C7D007F2A91 /* TaskExecute */,
 				812C610B1CE022D60054815C /* AudioAssistant */,
 				9324DDCE1CD1FF23007D3DBE /* AlertViewContr */,
 				93CD0D281C8E72E00047F4A7 /* AIRequirement */,
