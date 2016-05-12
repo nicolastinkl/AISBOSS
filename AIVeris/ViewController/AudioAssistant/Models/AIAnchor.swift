@@ -12,6 +12,7 @@ enum AIAnchorType {
     case Before              // 事前
     case executing           // 事中
     case After               // 事后
+    
 }
 
 

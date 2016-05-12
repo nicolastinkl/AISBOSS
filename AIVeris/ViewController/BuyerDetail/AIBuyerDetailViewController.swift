@@ -241,17 +241,7 @@ class AIBuyerDetailViewController : UIViewController {
      */
     @IBAction func startVideoAction(sender: AnyObject) {
         
-        // Create our Installation query
-        let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIApplication.DirectionalPush.ProviderChannel)
-        
-        // Send push notification to query
-        let push = AVPush()
-        //push.setChannel(AIApplication.DirectionalPush.ProviderChannel)
-        push.setQuery(pushQuery) // Set our Installation query
-        push.setMessage("There is a new oder !")
-        push.sendPushInBackground()
-
+        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification([AIRemoteNotificationKeys.MessageKey : "开始抢单啦！"])
   
     }
     // MARK: 提交订单
@@ -370,13 +360,27 @@ class AIBuyerDetailViewController : UIViewController {
                 }
         }
     }
-
     
     @IBAction func closeThisViewController() {
         delegate?.closeAIBDetailViewController()
         dismissViewControllerAnimated(false, completion: nil)
     }
     
+    @IBAction func remoteAssistantButtonPressed(sender: AnyObject) {
+        let actionSheet = UIAlertController(title: "Share Screen", message: nil, preferredStyle: .ActionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Do Publish", style: .Default, handler: { (action) in
+            AudioAssistantManager.sharedInstance.doPublish()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Connection To AudioAssiastant Room", style: .Default, handler: { (action) in
+            AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        }))
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
     
     func refershData() {
         
@@ -800,4 +804,16 @@ extension AIBuyerDetailViewController : AIProposalDelegate {
         self.tableView.headerBeginRefreshing()
     }
 }
+
+
+extension AIBuyerDetailViewController {
+    
+
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let view = touch.view
+            
+            //print("\(view.clas)")
+        }
+    }}
 
