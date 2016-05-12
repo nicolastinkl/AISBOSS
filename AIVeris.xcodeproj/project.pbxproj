@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		120059421CE1D0A800029A66 /* AIIconLabeVerticallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */; };
 		120059441CE1E4B400029A66 /* AIServiceExcuteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */; };
+		1200594A1CE330B100029A66 /* DDHTimerControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 120059491CE330B100029A66 /* DDHTimerControl.m */; };
 		12070ADC1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */; };
 		12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */; };
 		12096C6A1CA3AA4600514E6C /* AITimelineFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */; };
@@ -641,6 +642,8 @@
 /* Begin PBXFileReference section */
 		120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconLabeVerticallView.swift; sourceTree = "<group>"; };
 		120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceExcuteModel.swift; sourceTree = "<group>"; };
+		120059481CE330B100029A66 /* DDHTimerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHTimerControl.h; sourceTree = "<group>"; };
+		120059491CE330B100029A66 /* DDHTimerControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHTimerControl.m; sourceTree = "<group>"; };
 		12070ADB1BDA2F5000ABAAF0 /* AIOrderCellEShopSubView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrderCellEShopSubView.swift; sourceTree = "<group>"; };
 		12070ADD1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIOrderCellEShopSubView.xib; sourceTree = "<group>"; };
 		12096C691CA3AA4600514E6C /* AITimelineFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineFilterViewController.swift; sourceTree = "<group>"; };
@@ -1547,6 +1550,15 @@
 				120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		120059471CE330B100029A66 /* DDHTimerControl */ = {
+			isa = PBXGroup;
+			children = (
+				120059481CE330B100029A66 /* DDHTimerControl.h */,
+				120059491CE330B100029A66 /* DDHTimerControl.m */,
+			);
+			path = DDHTimerControl;
 			sourceTree = "<group>";
 		};
 		120F07621CE03887008FCBB3 /* ServiceExcute */ = {
@@ -2838,6 +2850,7 @@
 		93B25A641B9D7A6F00CD1FEB /* 3rdLib */ = {
 			isa = PBXGroup;
 			children = (
+				120059471CE330B100029A66 /* DDHTimerControl */,
 				93B25A651B9D7A7B00CD1FEB /* AFNetworking */,
 				93E890C81BB92A5D00A7BBEF /* Frameworks */,
 				93B25A791B9D7A7B00CD1FEB /* JSONModel */,
@@ -3886,6 +3899,7 @@
 				84467F771CA52389004F42A7 /* CATransform3D.swift in Sources */,
 				846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */,
 				849B4B3A1C0EDFE300BEC179 /* FLEXFileBrowserFileOperationController.m in Sources */,
+				1200594A1CE330B100029A66 /* DDHTimerControl.m in Sources */,
 				849B4B431C0EDFE300BEC179 /* FLEXSystemLogTableViewCell.m in Sources */,
 				93FA1E631B9C3E12009965C8 /* AISellingProgressBar.m in Sources */,
 				934EEB191C916CAD00C4EE67 /* AIRACContentCell.swift in Sources */,

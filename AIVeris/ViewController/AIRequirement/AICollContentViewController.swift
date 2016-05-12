@@ -271,6 +271,16 @@ class AICollContentViewController: UIViewController {
         
         //TODO:发通知更新数据. 暂时屏蔽，更新的那个动画覆盖了
         NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRequirementReloadDataNotificationName, object: nil, userInfo: nil)
+        //发起抢单
+        initContestService()
+    }
+    
+    //发起抢单推送
+    func initContestService(){
+        
+        let notificationDic = [AIRemoteNotificationKeys.MessageKey : "Grab" , AIRemoteNotificationKeys.ServiceOrderID : AIApplication.AIServiceIdCase0]
+        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification(notificationDic)
+
     }
     
     // MARK: - 加载数据

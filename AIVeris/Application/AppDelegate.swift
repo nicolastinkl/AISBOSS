@@ -66,9 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //fetchPreSellerAndBuyerData()
         
         
-//        Async.main(after: 4) { 
-//            AIApplication.showAlertView()
-//        }
+        Async.main(after: 2) { 
+            AIApplication.showAlertView()
+        }
         return true
 
     }
@@ -157,8 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let userID : String = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as? String {
             defaultUserID = userID
             
-            if NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) != nil {
-                defaultUserType = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) as! String
+            if let type = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserType) {
+                defaultUserType = type as! String
             }
             print("Default UserID is " + userID)
         }
@@ -169,20 +169,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // 配置语音协助定向推送
-        let installation = AVInstallation .currentInstallation()
-        
         if (defaultUserType == "100") {
-            installation.setObject(defaultUserID, forKey: AIApplication.DirectionalPush.ProviderIdentifier)
-            installation.addUniqueObject(AIApplication.DirectionalPush.ProviderChannel, forKey: "channels")
-
+            AIRemoteNotificationHandler.defaultHandler().addNotificationForUser(defaultUserID)
         }
         else
         {
-            installation.removeObjectForKey(AIApplication.DirectionalPush.ProviderIdentifier)
-            installation.removeObject(AIApplication.DirectionalPush.ProviderChannel, forKey: "channels")
+            AIRemoteNotificationHandler.defaultHandler().removeNotificationForUser(defaultUserID)
         }
-        
-        installation.saveInBackground()
     }
     
     private func initNetEngine() {
