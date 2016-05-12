@@ -37,6 +37,9 @@
                     <state key="normal" title="Nanjing">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="locationSelectAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="FEt-6y-MUo"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reach the city" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2n-48-1zy">
                     <rect key="frame" x="486" y="7" width="106" height="21"/>
@@ -64,6 +67,9 @@
                     <state key="normal" title="Nanjing">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="locationSelectAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="kkS-ZX-OQW"/>
+                    </connections>
                 </button>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="dt_add" translatesAutoresizingMaskIntoConstraints="NO" id="xm3-gi-Qi1">
                     <rect key="frame" x="285" y="29" width="30" height="30"/>

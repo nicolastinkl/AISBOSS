@@ -23,7 +23,32 @@
 // THE SOFTWARE.
 
 import Foundation
+import Spring
 
 class AINumberCountControl: UIView {
+    
+    @IBOutlet weak var subtractButton: DesignableButton!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var addButton: DesignableButton!
+    @IBOutlet weak var textInput: UITextField!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let keboard = PMCustomKeyboard()
+        keboard.textView = textInput
+        
+    }
+    
+    @IBAction func subStractAction(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func addAction(sender: AnyObject) {
+        
+    }
+    
+    
+     
     
 }

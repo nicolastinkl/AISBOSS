@@ -1,5 +1,5 @@
 //
-//  AIEventCapacityView.swift
+//  AILocationSelectHeadView.swift
 //  AIVeris
 //
 // Copyright (c) 2016 ___ASIAINFO___
@@ -23,34 +23,38 @@
 // THE SOFTWARE.
 
 import Foundation
+import Spring
 
-import Cartography
-
-class AIEventCapacityView: UIView {
+class AILocationSelectHeadView: UIView {
+    @IBOutlet weak var nearView: UIView!
     
-    @IBOutlet weak var eTitle: UILabel!
-    
-    @IBOutlet weak var eControlView: UIView!
+    @IBOutlet weak var historyView: UIView!
+    @IBOutlet weak var scrollview: UIScrollView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if let sview = AINumberCountControl.initFromNib() {
-            eControlView.addSubview(sview)
+        
+        for index in 1...3 {
+            let imageView = DesignableImageView()
+            let label = UILabel()
             
-            constrain(sview) { (layout) in
-                
-                layout.right == layout.superview!.right
-                layout.top == layout.superview!.top
-                layout.height == 30
-                layout.width == 160
-            }
+            imageView.frame = CGRectMake(CGFloat(30 + index*80), 0, 80, 80)
+            label.frame = CGRectMake(CGFloat(50 + index*80), 90, 80, 80)
+            scrollview.addSubview(imageView)
+            scrollview.addSubview(label)
             
+            label.text = "Beijing"
+            label.textColor = UIColor.whiteColor()
+            label.font = AITools.myriadLightWithSize(14)
             
-            
+            imageView.image = UIImage(named: "icon-mia")
         }
         
+        
     }
-
+    
+    
+    
     
 }

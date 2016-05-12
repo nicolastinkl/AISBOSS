@@ -130,6 +130,7 @@
 #import "MDCFocalPointView.h"
 #import "MDCSpotlightView.h"
 
+#import "PMCustomKeyboard.h"
 
 // YYImage
 #import "YYImage/YYImage.h"

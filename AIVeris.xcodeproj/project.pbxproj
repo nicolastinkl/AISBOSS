@@ -361,6 +361,12 @@
 		93508CB01BE07C8200525512 /* MDCFocalPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAD1BE07C8200525512 /* MDCFocalPointView.m */; };
 		93508CB11BE07C8200525512 /* MDCSpotlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93508CAF1BE07C8200525512 /* MDCSpotlightView.m */; };
 		9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */; };
+		935589711CE42F3B00AF1E75 /* PMCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */; };
+		935589721CE42F3B00AF1E75 /* PMCustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */; };
+		935589741CE4363800AF1E75 /* AIPathRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */; };
+		935589761CE461EF00AF1E75 /* AILocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */; };
+		935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */; };
+		9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */; };
 		93642B3E1CD1A96F000338AB /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3D1CD1A96F000338AB /* loading.gif */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
@@ -1144,6 +1150,13 @@
 		93508CAE1BE07C8200525512 /* MDCSpotlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSpotlightView.h; sourceTree = "<group>"; };
 		93508CAF1BE07C8200525512 /* MDCSpotlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCSpotlightView.m; sourceTree = "<group>"; };
 		9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireContentViewController.swift; sourceTree = "<group>"; };
+		9355896E1CE42F3B00AF1E75 /* PMCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCustomKeyboard.h; sourceTree = "<group>"; };
+		9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCustomKeyboard.m; sourceTree = "<group>"; };
+		935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMCustomKeyboard.xib; sourceTree = "<group>"; };
+		935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPathRouteViewController.swift; sourceTree = "<group>"; };
+		935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectViewController.swift; sourceTree = "<group>"; };
+		935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectHeadView.swift; sourceTree = "<group>"; };
+		935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AILocationSelectHeadView.xib; sourceTree = "<group>"; };
 		93642B3D1CD1A96F000338AB /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioInputView.swift; sourceTree = "<group>"; };
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
@@ -2267,6 +2280,10 @@
 			isa = PBXGroup;
 			children = (
 				93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */,
+				935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */,
+				935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */,
+				935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */,
+				935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */,
 				938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */,
 				938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */,
 				939B51561CE3336900CF2FA1 /* AIDepartReahCityView.swift */,
@@ -2424,6 +2441,16 @@
 				93FA1E301B9C3E12009965C8 /* AISwipeViewUtil.swift */,
 			);
 			path = AIRoot;
+			sourceTree = "<group>";
+		};
+		9355896D1CE42F3B00AF1E75 /* KeyBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				9355896E1CE42F3B00AF1E75 /* PMCustomKeyboard.h */,
+				9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */,
+				935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */,
+			);
+			path = KeyBoardView;
 			sourceTree = "<group>";
 		};
 		9364FA4D1BA12120005EFB0F /* Views */ = {
@@ -2668,6 +2695,7 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9355896D1CE42F3B00AF1E75 /* KeyBoardView */,
 				842B64381CE0808B007F2A91 /* Barcode */,
 				93A91DB11C9AC61900F40A47 /* Sheriff */,
 				849300861C92B27C00547322 /* YLProgressBar */,
@@ -3378,6 +3406,7 @@
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
 				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
+				9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */,
 				844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */,
 				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
 				9395FDB71C57983500D95F54 /* AISinglePickerView.xib in Resources */,
@@ -3392,6 +3421,7 @@
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
 				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
 				9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */,
+				935589721CE42F3B00AF1E75 /* PMCustomKeyboard.xib in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
@@ -3641,6 +3671,7 @@
 				93B25A991B9D7A7B00CD1FEB /* AFHTTPSessionManager.m in Sources */,
 				849B4B611C0EDFE300BEC179 /* FLEXHierarchyTableViewCell.m in Sources */,
 				9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */,
+				935589741CE4363800AF1E75 /* AIPathRouteViewController.swift in Sources */,
 				93DA9C0B1BFDAB2600E2DA3B /* AISwiftTemplete.swift in Sources */,
 				818D8EAD1C040C8B00006408 /* AIParamedicView.m in Sources */,
 				8493007D1C900FE500547322 /* OrderAndBuyerInfoView.swift in Sources */,
@@ -3654,6 +3685,7 @@
 				813CD8D61C9FD5CC0041C73E /* AIRequirementHandler.swift in Sources */,
 				847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */,
 				818D8EC01C040D4100006408 /* AIServiceCoverage.m in Sources */,
+				935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */,
 				93B25A3E1B9D796F00CD1FEB /* AIMessageWrapper.m in Sources */,
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
@@ -3748,6 +3780,7 @@
 				849B4B401C0EDFE300BEC179 /* FLEXLiveObjectsTableViewController.m in Sources */,
 				81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */,
 				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
+				935589711CE42F3B00AF1E75 /* PMCustomKeyboard.m in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				848690271C3BB1A600D177BC /* PKYStepper.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,
@@ -3958,6 +3991,7 @@
 				93FA1E5F1B9C3E12009965C8 /* AIWebViewController.swift in Sources */,
 				840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */,
 				93FA1E4E1B9C3E12009965C8 /* AICustomHomeViewController.swift in Sources */,
+				935589761CE461EF00AF1E75 /* AILocationSelectViewController.swift in Sources */,
 				8468E2651CA8E18B000C40B3 /* CustomPickerColumnView.swift in Sources */,
 				934445E11C8ED36500F86E5D /* AIAssignmentContentViewController.swift in Sources */,
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
