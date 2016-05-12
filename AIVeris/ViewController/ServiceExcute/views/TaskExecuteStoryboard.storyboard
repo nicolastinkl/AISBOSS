@@ -179,12 +179,24 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="89" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="rKG-Of-V5V" userLabel="CheckIcon">
                                 <rect key="frame" x="256" y="49" width="89" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="76" id="9Aw-N1-K6g"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="89" id="oc8-2E-1U9"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="88" placeholderIntrinsicHeight="78" translatesAutoresizingMaskIntoConstraints="NO" id="Chn-Aj-sbn" userLabel="WriteIcon">
                                 <rect key="frame" x="256" y="161" width="88" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="88" id="Bvr-a7-ctD"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="78" id="uQK-V0-G5F"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="85" translatesAutoresizingMaskIntoConstraints="NO" id="9dj-Mt-82x" userLabel="CameraIcon">
                                 <rect key="frame" x="254" y="279" width="92" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="85" id="f22-qc-RJl"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="92" id="ghc-Ul-Mz7"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-Pv-wfH" userLabel="QuestButton">
                                 <rect key="frame" x="29" y="519" width="542" height="54"/>
