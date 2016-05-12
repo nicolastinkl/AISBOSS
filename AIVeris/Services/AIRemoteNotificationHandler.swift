@@ -36,14 +36,8 @@ struct AIRemoteNotificationParameters {
  * 发送和接受远程推送通知
  *
  */
-class AIRemoteNotificationHandler: NSObject {
+@objc class AIRemoteNotificationHandler : NSObject {
 
-    
-    var keys = AIRemoteNotificationKeys()
-    
-    var parameters = AIRemoteNotificationParameters()
-    
-    
     //MARK: 单例方法
     
     /**
@@ -51,7 +45,7 @@ class AIRemoteNotificationHandler: NSObject {
      *
      */
     
-    internal class func defaultHandler () -> AIRemoteNotificationHandler {
+    class func defaultHandler () -> AIRemoteNotificationHandler {
         struct AISingleton{
             static var predicate : dispatch_once_t = 0
             static var instance : AIRemoteNotificationHandler? = nil
@@ -75,7 +69,12 @@ class AIRemoteNotificationHandler: NSObject {
      * 发送抢单通知
      *
      */
-    func sendGrabOrderNotification(notification : [String : AnyObject]) {
+    func sendGrabOrderNotification(notification : [String : AnyObject]) -> Bool {
+        
+        guard notification.isEmpty != true else {
+            return false
+        }
+        
         // Create our Installation query
         let pushQuery = AVInstallation.query()
         pushQuery.whereKey("channels", equalTo: AIRemoteNotificationParameters.ProviderChannel)
@@ -86,6 +85,7 @@ class AIRemoteNotificationHandler: NSObject {
         push.setData(notification)
         push.sendPushInBackground()
 
+        return true
     }
     
     
@@ -96,16 +96,24 @@ class AIRemoteNotificationHandler: NSObject {
      *
      *
      */
-    func sendAudioAssistantNotification(notification : [String : AnyObject]) {
+    func sendAudioAssistantNotification(notification : [String : AnyObject], toUser : String) -> Bool {
+        
+        guard toUser.isEmpty != true else {
+            return false
+        }
+        
+        
         // Create our Installation query
         let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIRemoteNotificationParameters.ProviderChannel)
+        pushQuery.whereKey(AIRemoteNotificationParameters.ProviderIdentifier, equalTo: toUser)
         
         // Send push notification to query
         let push = AVPush()
         push.setQuery(pushQuery) // Set our Installation query
         push.setData(notification)
         push.sendPushInBackground()
+        
+        return true
 
     }
     
