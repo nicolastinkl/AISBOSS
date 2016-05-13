@@ -35,6 +35,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DK-HO-Zbf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="248"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ieO-HD-Ix4" appends="YES" id="Xdz-E8-oOe"/>
+                                </connections>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-xr-3Zm">
                                 <rect key="frame" x="0.0" y="248" width="600" height="352"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="63x-4z-BA9">
@@ -195,13 +201,17 @@
                             <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="V21-cj-kNR" secondAttribute="bottom" constant="14" id="86e-sc-UCj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sMN-w8-e7a" secondAttribute="trailing" constant="-13" id="CAC-UC-mWx"/>
                             <constraint firstItem="x4E-LP-N5A" firstAttribute="top" secondItem="dgK-xr-3Zm" secondAttribute="top" id="Ccf-PD-Pdd"/>
+                            <constraint firstItem="x4E-LP-N5A" firstAttribute="top" secondItem="5DK-HO-Zbf" secondAttribute="bottom" id="Ctc-QZ-yKk"/>
                             <constraint firstAttribute="trailing" secondItem="x4E-LP-N5A" secondAttribute="trailing" id="DKw-2m-yxj"/>
+                            <constraint firstItem="5DK-HO-Zbf" firstAttribute="top" secondItem="r0a-wG-2gH" secondAttribute="top" id="F1c-a9-pzX"/>
                             <constraint firstItem="V21-cj-kNR" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="10" id="FXH-m7-cGW"/>
                             <constraint firstItem="Ted-en-bR9" firstAttribute="centerX" secondItem="r0a-wG-2gH" secondAttribute="centerX" id="IV6-1T-IVG"/>
                             <constraint firstItem="XbS-Bs-btI" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="10" id="JN1-45-maU"/>
                             <constraint firstItem="Gm5-Lt-BTq" firstAttribute="top" secondItem="Ted-en-bR9" secondAttribute="bottom" constant="6" id="UhK-8w-Oxx"/>
+                            <constraint firstItem="5DK-HO-Zbf" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leading" id="VB6-qR-R6Z"/>
                             <constraint firstItem="Xcq-QJ-hDF" firstAttribute="top" secondItem="Gm5-Lt-BTq" secondAttribute="bottom" constant="-5" id="Vij-na-I9e"/>
                             <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="dgK-xr-3Zm" secondAttribute="bottom" id="VyM-7C-J23"/>
+                            <constraint firstAttribute="trailing" secondItem="5DK-HO-Zbf" secondAttribute="trailing" id="XU8-AG-bXt"/>
                             <constraint firstItem="Xcq-QJ-hDF" firstAttribute="top" secondItem="x4E-LP-N5A" secondAttribute="bottom" constant="-88" id="YVC-K0-sBa"/>
                             <constraint firstItem="dgK-xr-3Zm" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leading" id="Z5U-tr-MzP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dl0-s3-0mE" secondAttribute="trailing" constant="30" id="aUy-u0-wsn"/>
@@ -233,7 +243,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Rf-S2-GsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ieO-HD-Ix4">
                     <connections>
-                        <action selector="backgroundDidTapped:" destination="0qb-9H-gNp" id="cjv-uY-Ddp"/>
+                        <action selector="backgroundDidTapped:" destination="0qb-9H-gNp" id="Je2-8i-tBw"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="rGl-4S-2ai">
