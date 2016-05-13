@@ -38,8 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Override point for customization after application launch.
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+        self.window = CustomWindow(frame: UIScreen.mainScreen().bounds)
         configDefaultUser()
         initNetEngine()
         
@@ -64,13 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showRootViewControllerReal()
         
         //fetchPreSellerAndBuyerData()
-        
-        
-        Async.main(after: 2) { 
-            AIApplication.showAlertView()
-        }
         return true
 
+    }
+    
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        #if !DEBUG //debug 模式 才会启动
+        if motion == .MotionShake {
+            AIApplication.showAlertView()
+        }
+        #endif
     }
     
     /**

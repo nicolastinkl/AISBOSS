@@ -57,6 +57,11 @@ class AudioAssistantManager: NSObject {
 	func sendString(string: String, type: String) {
 		_session?.signalWithType(type, string: string, connection: nil, error: nil)
 	}
+    
+    func sendAnchor(anchor: AIAnchor) {
+        let string = JSONSerializer.toJson(anchor)
+        _session?.signalWithType("AIAnchor", string: string, connection: nil, error: nil)
+    }
 }
 
 extension AudioAssistantManager: OTSessionDelegate {
