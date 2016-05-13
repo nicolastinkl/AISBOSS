@@ -29,7 +29,8 @@ import Spring
 class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     
     
-    @IBOutlet weak var customerDescLabel: DesignableLabel!
+
+    @IBOutlet weak var customerDescView: UIView!
     @IBOutlet weak var timerControl: DDHTimerControl!
     
     override func viewDidLoad() {
@@ -58,7 +59,8 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
         timerControl.titleLabel.text = "sec"
         timerControl.userInteractionEnabled = false
         
-        customerDescLabel.setCornerOnTop()
+        customerDescView.setCornerOnTop()
+        customerDescView.clipsToBounds = true
         
         self.navigationController?.delegate = self
     }
