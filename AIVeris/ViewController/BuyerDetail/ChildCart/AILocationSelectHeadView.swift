@@ -34,7 +34,6 @@ class AILocationSelectHeadView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
         for index in 0...2 {
             let imageView = DesignableImageView()
             let label = UILabel()

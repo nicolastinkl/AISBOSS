@@ -115,7 +115,7 @@ class JumpNumberLabel: UILabel {
     }
     
     private func startChangeFloat(duration: NSTimeInterval) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(changeTimeInterval, target: self, selector: "decideNextStep:", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(changeTimeInterval, target: self, selector: #selector(JumpNumberLabel.decideNextStep(_:)), userInfo: nil, repeats: true)
     }
     
     func decideNextStep(timer: NSTimer) {

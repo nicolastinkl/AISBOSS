@@ -75,13 +75,13 @@ internal class AIRequirementMenuViewController : UIViewController  {
         badge.font = AITools.myriadLightSemiExtendedWithSize(12)
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyOperateCell:", name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementMenuViewController.notifyOperateCell(_:)), name: AIApplication.Notification.AIAIRequirementNotifyOperateCellNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyClearNumber", name: AIApplication.Notification.AIAIRequirementNotifyClearNumberCellNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementMenuViewController.notifyClearNumber), name: AIApplication.Notification.AIAIRequirementNotifyClearNumberCellNotificationName, object: nil)
        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyGenerateModel:", name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementMenuViewController.notifyGenerateModel(_:)), name: AIApplication.Notification.AIAIRequirementNotifynotifyGenerateModelNotificationName, object: nil)
         
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifyShowRequireMentVC:", name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIRequirementMenuViewController.notifyShowRequireMentVC(_:)), name: AIApplication.Notification.AIAIRequirementShowViewControllerNotificationName, object: nil)
         
         
         initLayout()
