@@ -391,11 +391,11 @@ class HalfRoundedCornerLabel: UILabel {
 	}
 	
 	func setupCorners() {
-		let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: Constants.cornerRadii)
+		let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.TopLeft, .TopRight], cornerRadii: Constants.cornerRadii)
 		let maskLayer = CAShapeLayer()
-		maskLayer.frame = self.bounds
+		maskLayer.frame = bounds
 		maskLayer.path = maskPath.CGPath
-		self.layer.mask = maskLayer
+		layer.mask = maskLayer
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

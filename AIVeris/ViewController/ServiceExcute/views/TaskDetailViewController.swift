@@ -2,7 +2,7 @@
 //  TaskDetailViewController.swift
 //  AIVeris
 //
-//  Created by admin on 16/5/9.
+//  Created by Rocky on 16/5/9.
 //  Copyright © 2016年 ___ASIAINFO___. All rights reserved.
 //
 
@@ -19,6 +19,8 @@ class TaskDetailViewController: UIViewController {
     
     @IBOutlet weak var authorizationBg: UIImageView!
     @IBOutlet weak var promptAuthorization: UILabel!
+    @IBOutlet weak var waitingIcon: UIImageView!
+    @IBOutlet weak var waitingMask: UIVisualEffectView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,7 @@ class TaskDetailViewController: UIViewController {
         promptCheckIn.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
         checkInLabel.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(80))
         bottomButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(72))
+        promptAuthorization.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(80))
         
     }
 
