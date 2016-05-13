@@ -129,8 +129,9 @@ struct AIRemoteNotificationParameters {
         
         //如果是抢单通知
         let key = AIRemoteNotificationKeys.MessageKey
+        let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
         
-        if let value : String = userinfo[key] as? String{
+        if let value : String = msgDic[key] as? String{
             if value == "Grab" {
                 AIApplication.showAlertView()
             }

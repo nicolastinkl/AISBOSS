@@ -29,7 +29,7 @@ class AITaskNavigationBar: UIView {
 		let cancelButton = UIButton()
 		cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 		cancelButton.setTitle("cancel", forState: .Normal)
-		cancelButton.addTarget(self, action: "cancelButtonPressed:", forControlEvents: .TouchUpInside)
+		cancelButton.addTarget(self, action: #selector(AITaskNavigationBar.cancelButtonPressed(_:)), forControlEvents: .TouchUpInside)
 		cancelButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(20)
 		
 		self.addSubview(cancelButton)
@@ -44,7 +44,7 @@ class AITaskNavigationBar: UIView {
 		let saveButton = UIButton()
 		saveButton.setTitle("save", forState: .Normal)
 		saveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		saveButton.addTarget(self, action: "saveButtonPressed:", forControlEvents: .TouchUpInside)
+		saveButton.addTarget(self, action: #selector(AITaskNavigationBar.saveButtonPressed(_:)), forControlEvents: .TouchUpInside)
 		saveButton.backgroundColor = UIColor(red: 0.0588, green: 0.5255, blue: 0.9098, alpha: 1.0)
 		saveButton.layer.cornerRadius = 4
 		saveButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(20)

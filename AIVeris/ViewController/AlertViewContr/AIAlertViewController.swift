@@ -24,20 +24,23 @@
 
 import Foundation
 import UIKit
+import Spring
 
-class AIAlertViewController: UIViewController {
+class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     
+    
+    @IBOutlet weak var customerDescLabel: DesignableLabel!
     @IBOutlet weak var timerControl: DDHTimerControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //timerControl = DDHTimerControl.init(type: DDHTimerType.EqualElements)
-        timerControl.color = UIColor.yellowColor()
-        timerControl.highlightColor = UIColor.redColor()
-        timerControl.minutesOrSeconds = 59
-        timerControl.titleLabel.text = "sec"
-        timerControl.userInteractionEnabled = false
+        initViews()
+    }
+    @IBAction func arvatarDidTapped(sender: AnyObject) {
+    }
+    @IBAction func backgroundDidTapped(sender: AnyObject) {
+        dismissPopupViewController(true, completion: nil)
     }
     
     @IBAction func answerAction(sender: AnyObject) {
@@ -45,6 +48,29 @@ class AIAlertViewController: UIViewController {
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
         self.navigationController?.pushViewController(viewController, animated: true)
+        
+    }
+    
+    func initViews(){
+        timerControl.color = UIColor.yellowColor()
+        timerControl.highlightColor = UIColor.redColor()
+        timerControl.minutesOrSeconds = 59
+        timerControl.titleLabel.text = "sec"
+        timerControl.userInteractionEnabled = false
+        
+        customerDescLabel.setCornerOnTop()
+        
+        self.navigationController?.delegate = self
+    }
+    
+    
+    //MARK: - delegate
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        let navigationBar = navigationController.navigationBar
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.backgroundColor = UIColor.clearColor()
+        navigationBar.translucent = true
         
     }
     

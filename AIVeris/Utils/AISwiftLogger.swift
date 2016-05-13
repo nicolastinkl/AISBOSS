@@ -135,7 +135,7 @@ func logWithLevel(level: AILogLevel,
     }
 }
 
-private func log(level: AILogLevel, file: String = #file, var function: String = #function, line: UInt = #line, format: String, args: CVaListPointer) {
+private func log(level: AILogLevel, file: String = #file, function: String = #function, line: UInt = #line, format: String, args: CVaListPointer) {
     let time: String = AILogShowDateTime ? (AILogUsingNSLog ? "" : "\(AILogDateFormatter.stringFromDate(NSDate())) ") : ""
     let level: String = AILogShowLogLevel ? "[\(AILogLevel.logLevelString(level))] " : ""
     var fileLine: String = ""
@@ -146,7 +146,7 @@ private func log(level: AILogLevel, file: String = #file, var function: String =
         }
         fileLine += "] "
     }
-    if !AILogShowFunctionName { function = "" }
+//    if !AILogShowFunctionName { function = "" }
     let message = NSString(format: format, arguments: args) as String
     let logText = "\(time)\(level)\(fileLine)\(function): \(message)"
     
