@@ -91,10 +91,10 @@ public class KBHTextFieldStepper: UIControl, UITextFieldDelegate {
 		let minus = KBHTextFieldStepperButton(frame: CGRectMake(0, 0, buttonWidth, buttonHeight), type: .Minus)
 		let plusFrame = CGRect(origin: CGPointMake(frame.size.width - minus.frame.size.width, 0), size: CGSizeMake(buttonWidth, buttonHeight))
 		let plus = KBHTextFieldStepperButton(frame: plusFrame, type: .Plus)
-		minus.addTarget(self, action: "minusTouchDown:", forControlEvents: .TouchDown)
-		minus.addTarget(self, action: "minusTouchUp:", forControlEvents: .TouchUpInside)
-		plus.addTarget(self, action: "plusTouchDown:", forControlEvents: .TouchDown)
-		plus.addTarget(self, action: "plusTouchUp:", forControlEvents: .TouchUpInside)
+		minus.addTarget(self, action: #selector(KBHTextFieldStepper.minusTouchDown(_:)), forControlEvents: .TouchDown)
+		minus.addTarget(self, action: #selector(KBHTextFieldStepper.minusTouchUp(_:)), forControlEvents: .TouchUpInside)
+		plus.addTarget(self, action: #selector(KBHTextFieldStepper.plusTouchDown(_:)), forControlEvents: .TouchDown)
+		plus.addTarget(self, action: #selector(KBHTextFieldStepper.plusTouchUp(_:)), forControlEvents: .TouchUpInside)
 		
 		// Dividers
 		leftDivider = UIView(frame: CGRectMake(minus.frame.size.width, 0, 1.5, height))
@@ -141,8 +141,8 @@ public class KBHTextFieldStepper: UIControl, UITextFieldDelegate {
 	
 	// MARK: Actions
 	
-	internal func minusTouchDown(sender: KBHTextFieldStepperButton) { buttonTouchDown(sender, selector: "decrement") }
-	internal func plusTouchDown(sender: KBHTextFieldStepperButton) { buttonTouchDown(sender, selector: "increment") }
+	internal func minusTouchDown(sender: KBHTextFieldStepperButton) { buttonTouchDown(sender, selector: #selector(KBHTextFieldStepper.decrement)) }
+	internal func plusTouchDown(sender: KBHTextFieldStepperButton) { buttonTouchDown(sender, selector: #selector(KBHTextFieldStepper.increment)) }
 	
 	private func buttonTouchDown(sender: KBHTextFieldStepperButton, selector: Selector) {
 		sender.backgroundColor = tintColor.colorWithAlphaComponent(0.15)
@@ -250,7 +250,7 @@ public class KBHTextFieldStepper: UIControl, UITextFieldDelegate {
             let effect = UIBlurEffect(style: .Light)
             effectView = UIVisualEffectView(effect: effect)
             effectView.frame = window.bounds
-            let tap = UITapGestureRecognizer(target: self, action: "removeEffectView")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(KBHTextFieldStepper.removeEffectView))
             effectView.addGestureRecognizer(tap)
             
             inputTextField = UITextField(frame: CGRectMake(x, y, textWidth, textHeight))
