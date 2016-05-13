@@ -382,6 +382,12 @@ class AIBuyerDetailViewController : UIViewController {
             AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom()
         }))
         
+        actionSheet.addAction(UIAlertAction(title: "Send test anchor", style: .Default, handler: { (action) in
+            let anchor = AIAnchor()
+            anchor.type = .Normal
+            AudioAssistantManager.sharedInstance.sendAnchor(anchor)
+        }))
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
         }))
         
