@@ -22,12 +22,7 @@ class TaskDetailViewController: UIViewController {
         super.viewDidLoad()
         
         bottomButton.layer.cornerRadius = bottomButton.height / 2
-
-        serviceTime.label.text = "dfasfasdfafad"
-        serviceTime.icon.image = UIImage(named: "airplane")
-        
-        serviceLocation.label.text = "ga bvqujencuqewncwech vqeirchnqwcc evcqcqewcewccewc qveqcwecq3exqtbhynymu"
-        serviceLocation.icon.image = UIImage(named: "ai_custom_diy")
+        promptCheckIn.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
     }
 
     override func didReceiveMemoryWarning() {

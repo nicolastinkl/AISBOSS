@@ -9,11 +9,21 @@
 import UIKit
 
 extension UIView {
+    
+    class func initFromNib() -> UIView? {
+        
+        let name = NSStringFromClass(classForCoder()).componentsSeparatedByString(".").last
+        
+        return NSBundle.mainBundle().loadNibNamed(name ?? "", owner: self, options: nil).first as? UIView
+    }
+    
+    
 	// load xib file to init view, and let this custom view can be used in another xib view
 	func initSelfFromXib() {
 		let storyboardName = NSStringFromClass(self.dynamicType).componentsSeparatedByString(".").last!
 		let view = UINib.init(nibName: storyboardName, bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first as! UIView
-		addSubview(view)
+//		addSubview(view)
+        insertSubview(view, atIndex: 0)
 		view.snp_makeConstraints { (make) in
 			make.edges.equalTo(self)
 		}

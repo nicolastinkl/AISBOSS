@@ -51,8 +51,50 @@ extension UIViewController {
 	}
 	
 	func showMenuViewController() {
-	}
 	
+    }
+	
+    
+    func showMenuTitleViewController(navi: UINavigationController, title: String) {
+        
+        // Set Background Using Mask.
+        let myLayer = CALayer()
+        let myImage = UIImage(named: "Background_ChildService_Buy")?.CGImage
+        myLayer.frame = view.bounds
+        myLayer.contents = myImage
+        view.layer.insertSublayer(myLayer, atIndex: 0)
+        
+        // Set UINavigationBar.
+        if let item = navi.navigationBar.items?.first {
+            
+            let bar = UIBarButtonItem(title: "cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UIViewController.cancelClick))
+            bar.tintColor = UIColor.whiteColor()
+            item.setLeftBarButtonItem(bar, animated: false)
+            
+            let barRight = UIBarButtonItem(title: "done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(UIViewController.doneClick))
+            barRight.tintColor = UIColor(hex: "#275BBA")
+            item.setRightBarButtonItem(barRight, animated: false)
+            
+            navi.navigationBar.setBackgroundImage(UIColor(hex: "#1C1B39").imageWithColor(), forBarMetrics: UIBarMetrics.Default)
+            navi.navigationBar.barTintColor = UIColor.applicationMainColor()
+            
+            let dic = NSDictionary(object: UIColor.applicationMainColor(),
+                                   forKey: NSForegroundColorAttributeName)
+            navi.navigationBar.titleTextAttributes = dic as? [String: AnyObject]
+            
+        }
+        self.title = title
+        
+    }
+    
+    func cancelClick(){
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func doneClick(){
+        AIApplication().SendAction("finishExecEvent", ownerName: self)
+    }
+    
 	/*!
 	 the local coding scope.
 	 */

@@ -136,6 +136,18 @@ extension UIView {
     }
     
     /*!
+     Cell下线满格处理
+     */
+    func addBottomWholeSSBorderLine(colors: String) {
+        let color = UIColor(hex: colors)
+        let lineLayer =  CALayer()
+        lineLayer.backgroundColor = color.CGColor
+        
+        lineLayer.frame = CGRectMake(0, self.height-1, self.width, 0.5)
+        self.layer.addSublayer(lineLayer)
+    }
+    
+    /*!
     Cell上线处理
     */
     func addTopBorderLine() {

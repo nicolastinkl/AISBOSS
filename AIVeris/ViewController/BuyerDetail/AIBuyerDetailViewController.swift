@@ -805,3 +805,15 @@ extension AIBuyerDetailViewController : AIProposalDelegate {
     }
 }
 
+
+extension AIBuyerDetailViewController {
+    
+
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first {
+            let view = touch.view
+            
+            //print("\(view.clas)")
+        }
+    }}
+

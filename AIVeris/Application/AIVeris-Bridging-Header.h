@@ -133,6 +133,7 @@
 #import "MDCFocalPointView.h"
 #import "MDCSpotlightView.h"
 
+#import "PMCustomKeyboard.h"
 
 // YYImage
 #import "YYImage/YYImage.h"
@@ -144,5 +145,4 @@
 // 远程协助
 #import <OpenTok/OpenTok.h>
 #import "TBScreenCapture.h"
-
 

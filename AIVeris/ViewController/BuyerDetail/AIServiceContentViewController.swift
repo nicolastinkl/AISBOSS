@@ -608,7 +608,10 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func clickRouteViewEvent(){
-        
+        let vc = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceRouteViewController)
+        let navigation = UINavigationController(rootViewController: vc)
+        self.presentViewController(navigation, animated: true, completion: nil)
+        vc.showMenuTitleViewController(navigation,title: "Select")
     }
     
     /**
@@ -631,8 +634,6 @@ internal class AIServiceContentViewController: UIViewController {
             titleLayout.height == 0.5
         }
         
-        
-        
         let titleLabel = UILabel()
         routeView.addSubview(titleLabel)
         titleLabel.text = "Routine"
@@ -653,10 +654,9 @@ internal class AIServiceContentViewController: UIViewController {
         constrain(indicator) { (indicatorlayout) in
             indicatorlayout.right == indicatorlayout.superview!.right - 20
             indicatorlayout.top == indicatorlayout.superview!.top + 5
-            indicatorlayout.height == 20
-            indicatorlayout.width == 10
+            indicatorlayout.height == 15
+            indicatorlayout.width == 8
         }
-        
         
         return routeView
         
