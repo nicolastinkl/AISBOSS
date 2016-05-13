@@ -148,6 +148,8 @@
 		8448B3D71C9BA15700CDFB61 /* DependOnNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */; };
 		8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */; };
 		8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */; };
+		844A635C1CE57E47006CD8C7 /* SeparatorLineLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */; };
+		844A635E1CE57E71006CD8C7 /* SeparatorLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */; };
 		844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA1C1CE1D6A900C58B1C /* OpenTok.framework */; };
 		844AFA1F1CE1DA4700C58B1C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA1E1CE1DA4700C58B1C /* AudioToolbox.framework */; };
 		844AFA211CE1DA5900C58B1C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA201CE1DA5900C58B1C /* CoreMedia.framework */; };
@@ -865,6 +867,8 @@
 		8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodeCell.swift; sourceTree = "<group>"; };
 		8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependOnNodeCell.xib; sourceTree = "<group>"; };
 		8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodePickerViewController.swift; sourceTree = "<group>"; };
+		844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorLineLabel.xib; sourceTree = "<group>"; };
+		844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLineLabel.swift; sourceTree = "<group>"; };
 		844AFA1C1CE1D6A900C58B1C /* OpenTok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenTok.framework; sourceTree = "<group>"; };
 		844AFA1E1CE1DA4700C58B1C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		844AFA201CE1DA5900C58B1C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1881,6 +1885,8 @@
 				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
 				842B64341CE07B33007F2A91 /* IconLabel.xib */,
 				842B64361CE07D3F007F2A91 /* IconLabel.swift */,
+				844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */,
+				844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -3506,6 +3512,7 @@
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				84F001551C3A43CB000C93AF /* LICENSE in Resources */,
+				844A635C1CE57E47006CD8C7 /* SeparatorLineLabel.xib in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
@@ -3711,6 +3718,7 @@
 				93CA11D31C463475008B1EE1 /* AIFavoriteContentModel.swift in Sources */,
 				816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
+				844A635E1CE57E71006CD8C7 /* SeparatorLineLabel.swift in Sources */,
 				849B4B4F1C0EDFE300BEC179 /* FLEXClassExplorerViewController.m in Sources */,
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
