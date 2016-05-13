@@ -16,5 +16,26 @@ class IconLabel: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSelfFromXib()
+        
+        label.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+    }
+    
+    
+    @IBInspectable var iconImage: UIImage? {
+        set {
+            icon.image = newValue
+        }
+        get {
+            return icon.image
+        }
+    }
+    
+    @IBInspectable var labelContent: String? {
+        set {
+            label.text = newValue
+        }
+        get {
+            return label.text
+        }
     }
 }

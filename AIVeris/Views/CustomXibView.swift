@@ -22,7 +22,8 @@ extension UIView {
 	func initSelfFromXib() {
 		let storyboardName = NSStringFromClass(self.dynamicType).componentsSeparatedByString(".").last!
 		let view = UINib.init(nibName: storyboardName, bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first as! UIView
-		addSubview(view)
+//		addSubview(view)
+        insertSubview(view, atIndex: 0)
 		view.snp_makeConstraints { (make) in
 			make.edges.equalTo(self)
 		}

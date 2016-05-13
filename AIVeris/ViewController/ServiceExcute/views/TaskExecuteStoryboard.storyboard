@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1GN-eQ-Iij">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IdG-Q5-FRk">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,9 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up8-Rb-dvv" userLabel="CustomerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up8-Rb-dvv" userLabel="CustomerView" customClass="AICustomerBannerView" customModule="Veris" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="tSh-xU-HOc"/>
                                 </constraints>
@@ -51,6 +50,10 @@
                                     <constraint firstAttribute="width" constant="365" id="8CQ-ay-lOW"/>
                                     <constraint firstAttribute="height" constant="25" id="y0o-GN-YqC"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="clockIcon"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelContent" value="09:00-09:30, Nov 9th 2015"/>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="8CQ-ay-lOW"/>
@@ -60,18 +63,22 @@
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="420" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="M5J-Hx-FKW" userLabel="LocationIconLabel" customClass="IconLabel" customModule="Veris" customModuleProvider="target">
                                 <rect key="frame" x="90" y="260" width="420" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="labelContent" value="Maternity&amp;Child Care Institution, Haidian District"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="locationIcon"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="495" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-Fa-Q4p" userLabel="QRCodeView" customClass="ServiceQRCodeView" customModule="Veris" customModuleProvider="target">
-                                <rect key="frame" x="32" y="302" width="536" height="128"/>
+                                <rect key="frame" x="28" y="302" width="544" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please check in for Ms. Customer A with the QR code above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-4s-4DV">
-                                <rect key="frame" x="32" y="451" width="536" height="21"/>
+                                <rect key="frame" x="28" y="466" width="544" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urx-E7-6s3">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urx-E7-6s3">
                                 <rect key="frame" x="-1" y="319" width="601" height="281"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ynb-Mt-VaY">
                                     <rect key="frame" x="0.0" y="0.0" width="601" height="281"/>
@@ -102,7 +109,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tTF-Fa-Q4p" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="12" id="0Kp-l5-faf"/>
+                            <constraint firstItem="tTF-Fa-Q4p" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="8" id="0Kp-l5-faf"/>
                             <constraint firstItem="eD3-38-jiq" firstAttribute="bottom" secondItem="tTF-Fa-Q4p" secondAttribute="bottom" constant="-58" id="2Tq-Gq-aEr"/>
                             <constraint firstItem="Iln-jC-B5L" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="3OD-uq-bN2"/>
                             <constraint firstItem="yUq-Wr-ny2" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="10" id="3fb-wL-44x"/>
@@ -122,7 +129,7 @@
                             <constraint firstItem="Up8-Rb-dvv" firstAttribute="leading" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="-20" id="OpR-rQ-VOQ"/>
                             <constraint firstItem="eD3-38-jiq" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="OuG-UR-k6j"/>
                             <constraint firstItem="Urx-E7-6s3" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="OuJ-gM-oOq"/>
-                            <constraint firstItem="4Sc-4s-4DV" firstAttribute="top" secondItem="tTF-Fa-Q4p" secondAttribute="bottom" constant="21" id="Pc2-z3-kzg"/>
+                            <constraint firstItem="4Sc-4s-4DV" firstAttribute="top" secondItem="tTF-Fa-Q4p" secondAttribute="bottom" constant="36" id="Pc2-z3-kzg"/>
                             <constraint firstItem="hbR-bV-AFI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RAv-3A-A9F" secondAttribute="leadingMargin" constant="8" id="XNg-m3-6kV"/>
                             <constraint firstItem="M5J-Hx-FKW" firstAttribute="top" secondItem="hbR-bV-AFI" secondAttribute="bottom" constant="5" id="Y74-IP-0OG"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="hbR-bV-AFI" secondAttribute="trailing" constant="8" id="YZg-cA-lAB"/>
@@ -139,7 +146,7 @@
                             <constraint firstItem="Urx-E7-6s3" firstAttribute="width" secondItem="RAv-3A-A9F" secondAttribute="width" id="kQh-l1-uV7"/>
                             <constraint firstItem="Iln-jC-B5L" firstAttribute="top" secondItem="Up8-Rb-dvv" secondAttribute="bottom" id="lKx-xM-xt0"/>
                             <constraint firstItem="yUq-Wr-ny2" firstAttribute="top" secondItem="Urx-E7-6s3" secondAttribute="bottom" id="m1B-MM-618"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tTF-Fa-Q4p" secondAttribute="trailing" constant="12" id="nPw-KI-zeB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tTF-Fa-Q4p" secondAttribute="trailing" constant="8" id="nPw-KI-zeB"/>
                             <constraint firstItem="eD3-38-jiq" firstAttribute="width" secondItem="RAv-3A-A9F" secondAttribute="width" constant="1" id="rQ0-fL-HHL"/>
                             <constraint firstItem="hbR-bV-AFI" firstAttribute="centerX" secondItem="RAv-3A-A9F" secondAttribute="centerX" id="vpT-Pj-afv"/>
                             <constraint firstItem="Up8-Rb-dvv" firstAttribute="width" secondItem="RAv-3A-A9F" secondAttribute="width" id="xy1-oL-0ay"/>
@@ -271,4 +278,8 @@
             <point key="canvasLocation" x="1407" y="340"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clockIcon" width="16" height="16"/>
+        <image name="locationIcon" width="16" height="16"/>
+    </resources>
 </document>

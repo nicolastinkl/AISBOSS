@@ -26,6 +26,10 @@ class ServiceQRCodeView: UIView {
         super.init(coder: aDecoder)
         
         initSelfFromXib()
+        
+        serviceName.font = AITools.myriadSemiboldSemiCnWithSize(AITools.displaySizeFrom1080DesignSize(55))
+        item1.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(30))
+        item2.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(30))
     }
 
 }
