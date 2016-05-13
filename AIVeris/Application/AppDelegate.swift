@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         Async.main(after: 2) { 
-            AIApplication.showAlertView()
+            //AIApplication.showAlertView()
         }
         return true
 
