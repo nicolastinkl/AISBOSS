@@ -66,6 +66,11 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     }
     
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        customerDescView.setCornerOnTop()
+    }
+    
     //MARK: - delegate
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
         let navigationBar = navigationController.navigationBar

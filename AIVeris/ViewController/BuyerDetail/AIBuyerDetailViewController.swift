@@ -384,7 +384,7 @@ class AIBuyerDetailViewController : UIViewController {
         
         actionSheet.addAction(UIAlertAction(title: "Send test anchor", style: .Default, handler: { (action) in
             let anchor = AIAnchor()
-            anchor.type = .Before
+            anchor.type = .Normal
             AudioAssistantManager.sharedInstance.sendAnchor(anchor)
         }))
         
