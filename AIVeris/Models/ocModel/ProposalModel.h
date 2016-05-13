@@ -259,6 +259,8 @@ typedef NS_ENUM(NSInteger, ParamSettingFlag) {
 @property (assign, nonatomic) NSInteger is_main_flag;
 @property (assign, nonatomic) NSInteger is_delemode;
 
+@property (assign, nonatomic) NSInteger is_expend;
+
 @property (strong, nonatomic) NSString<Optional> * service_thumbnail_icon;
 @property (strong, nonatomic) NSString<Optional> * service_desc;
 @property (strong, nonatomic) NSString<Optional> * service_rating_icon;
