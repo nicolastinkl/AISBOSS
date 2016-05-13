@@ -182,7 +182,6 @@
                                     <constraint firstAttribute="width" constant="60" id="yt6-eB-Npd"/>
                                 </constraints>
                             </view>
-<<<<<<< 2a87969604730e3950d062c6394a5e6eb5953dc1
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-eu-Eie">
                                 <rect key="frame" x="0.0" y="64" width="600" height="184"/>
                                 <gestureRecognizers/>
@@ -190,8 +189,6 @@
                                     <outletCollection property="gestureRecognizers" destination="ieO-HD-Ix4" appends="YES" id="gGg-pI-jum"/>
                                 </connections>
                             </view>
-=======
->>>>>>> #update 解决冲突
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.10588235294117647" blue="0.2196078431372549" alpha="0.25969636524822692" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -221,11 +218,8 @@
                             <constraint firstItem="dl0-s3-0mE" firstAttribute="leading" secondItem="L7y-pk-2Dp" secondAttribute="trailing" constant="8" id="fIr-rt-8Ik"/>
                             <constraint firstItem="V21-cj-kNR" firstAttribute="top" secondItem="sMN-w8-e7a" secondAttribute="bottom" constant="8" id="fMu-r6-c58"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V21-cj-kNR" secondAttribute="trailing" constant="9" id="kIo-XP-ThA"/>
-<<<<<<< 2a87969604730e3950d062c6394a5e6eb5953dc1
                             <constraint firstItem="OS7-JQ-zI9" firstAttribute="top" secondItem="0yV-eu-Eie" secondAttribute="bottom" id="mry-Ef-AX4"/>
                             <constraint firstItem="0yV-eu-Eie" firstAttribute="top" secondItem="LAZ-Eb-PJ8" secondAttribute="bottom" id="oBb-U4-Di9"/>
-=======
->>>>>>> #update 解决冲突
                             <constraint firstAttribute="leadingMargin" secondItem="L7y-pk-2Dp" secondAttribute="leading" id="p0r-9m-3SH"/>
                             <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="L7y-pk-2Dp" secondAttribute="bottom" constant="159" id="rqV-F1-IEZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xcq-QJ-hDF" secondAttribute="trailing" id="sc5-jz-EIW"/>
