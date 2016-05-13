@@ -84,6 +84,14 @@ class AIConfirmOrderViewController: UIViewController {
         
         self.priceLabel.textColor = AITools.colorWithR(253, g: 225, b: 50)
         
+        let footView = UIView()
+        let providerView =  AIProviderView.currentView()
+        tableView.tableFooterView = footView
+        providerView.content.text = dataSource.proposal_desc ?? ""
+        
+        footView.addSubview(providerView)
+        
+        
     }
     
     @IBAction func dissMissView(sender: AnyObject) {
