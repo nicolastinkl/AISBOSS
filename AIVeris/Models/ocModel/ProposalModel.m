@@ -65,6 +65,7 @@
     
     if (self) {
         _service_rating_level = -1;
+        _is_expend = 0;
     }
     
     return self;

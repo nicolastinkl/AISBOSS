@@ -403,7 +403,7 @@ extension UIView {
      On Top
     */
     func setCornerOnTop(){
-        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: (UIRectCorner.TopLeft), cornerRadii: CGSizeMake(8.0, 8.0))
+        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: ([UIRectCorner.TopLeft,UIRectCorner.TopRight]), cornerRadii: CGSizeMake(8.0, 8.0))
         //UIRectCorner.TopRight
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds

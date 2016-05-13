@@ -257,6 +257,12 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func bottomTapAction () {
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AIConfirmOrderViewController") as? AIConfirmOrderViewController{
+            vc.dataSource = self.dataSource
+            self.showViewController(vc, sender: self)
+        }
+        return
+        
         if let anyServiceNotSelected = current_service_list?.contains({ (obj) -> Bool in
             return obj.param_setting_flag == 0 ? true : false
         }) {
