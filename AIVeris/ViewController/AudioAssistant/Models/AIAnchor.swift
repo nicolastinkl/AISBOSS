@@ -19,6 +19,12 @@ enum AIAnchorStep : String {
     static let allValues = [Before, Executing, After, Hold]
 }
 
+class CustomWindow: UIWindow {
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, withEvent: event)
+        return view
+    }
+}
 
 enum AIAnchorType : String {
     case Touch = "Touch"             // Touch事件
@@ -27,12 +33,6 @@ enum AIAnchorType : String {
     static let allValues = [Touch, Normal]
 }
 
-class CustomWindow: UIWindow {
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, withEvent: event)
-        return view
-    }
-}
 
 struct AIAnchorKeys {
     static let Type = "Type"
