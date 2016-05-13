@@ -26,7 +26,13 @@ class AADataReceiverParser: NSObject {
 			} else if let tap = view?.gestureRecognizers?.first as? UITapGestureRecognizer {
 				handleGesture(tap, location: location)
 			}
-		}
+        } else {
+            let jsonObject = try? NSJSONSerialization.JSONObjectWithData(string.dataUsingEncoding(NSUTF8StringEncoding)!, options: .MutableContainers)
+            if let jsonObject = jsonObject {
+                let anchor = AIAnchor(JSONDecoder(jsonObject))
+                print(anchor.className)
+            }
+        }
 	}
 }
 
