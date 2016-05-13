@@ -403,7 +403,7 @@ extension UIView {
      On Top
     */
     func setCornerOnTop(){
-        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: (UIRectCorner.TopLeft), cornerRadii: CGSizeMake(8.0, 8.0))
+        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.TopLeft,.TopRight], cornerRadii: CGSizeMake(8.0, 8.0))
         //UIRectCorner.TopRight
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
@@ -416,7 +416,7 @@ extension UIView {
       On Buttom
     */
     func setCornerOnBottom(){
-        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: (UIRectCorner.BottomLeft), cornerRadii: CGSizeMake(8.0, 8.0))
+        let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [UIRectCorner.BottomLeft,UIRectCorner.BottomRight], cornerRadii: CGSizeMake(8.0, 8.0))
         //UIRectCorner.BottomRight
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
