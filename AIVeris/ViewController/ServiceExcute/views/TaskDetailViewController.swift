@@ -10,6 +10,7 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
 
+    @IBOutlet weak var checkInLabel: UILabel!
     @IBOutlet weak var serviceTime: IconLabel!
     @IBOutlet weak var serviceLocation: IconLabel!
     @IBOutlet weak var QRCodeImage: ServiceQRCodeView!
@@ -23,6 +24,9 @@ class TaskDetailViewController: UIViewController {
         
         bottomButton.layer.cornerRadius = bottomButton.height / 2
         promptCheckIn.font = AITools.myriadLightSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(48))
+        checkInLabel.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(80))
+        bottomButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(72))
+        
     }
 
     override func didReceiveMemoryWarning() {
