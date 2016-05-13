@@ -8,15 +8,21 @@
 
 import UIKit
 
-enum AIAnchorType {
-    case Before              // 事前
-    case executing           // 事中
-    case After               // 事后
+
+enum AIAnchorType : String {
+    case Before = "Before"             // 事前
+    case Executing = "Executing"       // 事中
+    case After = "After"               // 事后
     
+    static let allValues = [Before, Executing, After]
 }
 
 
-
+struct AIAnchorKeys {
+    static let Type = "Type"
+    
+    
+}
 
 
 
