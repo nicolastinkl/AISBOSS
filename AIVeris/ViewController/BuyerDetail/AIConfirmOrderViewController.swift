@@ -91,7 +91,6 @@ class AIConfirmOrderViewController: UIViewController {
         
         footView.addSubview(providerView)
         
-        
     }
     
     @IBAction func dissMissView(sender: AnyObject) {
@@ -136,10 +135,13 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
         
         let model = current_service_list?.objectAtIndex(indexPath.row) as? AIProposalServiceModel
         
-        var tempCell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
+        
+        let CELL_ID = "UITableViewCell\(model?.service_id  ?? 0)"
+        
+        var tempCell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CELL_ID)
         
         if tempCell == nil {
-            tempCell = UITableViewCell(style: .Default, reuseIdentifier: "UITableViewCell")
+            tempCell = UITableViewCell(style: .Default, reuseIdentifier: CELL_ID)
             
         }
         tempCell?.selectionStyle = .None
@@ -164,7 +166,17 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
             if let orderCellView = tempCell?.viewWithTag(1) as? AIConfirmOrderCellView{
                 orderCellView.hidden = false
                 orderCellView.initData(model!)
+                
+                
+                if indexPath.row % 2 == 0 {
+                    orderCellView.backgroundColor = UIColor(hexString: "#5E504D", alpha: 0.3)
+                }else{
+                    orderCellView.backgroundColor = UIColor(hexString: "#5E546E", alpha: 0.3)
+                }
+                
             }
+            
+            
             
         }else{
             //expend
