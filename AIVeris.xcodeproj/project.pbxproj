@@ -148,6 +148,8 @@
 		8448B3D71C9BA15700CDFB61 /* DependOnNodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */; };
 		8448B3D81C9BA15700CDFB61 /* DependOnNodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */; };
 		8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */; };
+		844A635C1CE57E47006CD8C7 /* SeparatorLineLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */; };
+		844A635E1CE57E71006CD8C7 /* SeparatorLineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */; };
 		844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA1C1CE1D6A900C58B1C /* OpenTok.framework */; };
 		844AFA1F1CE1DA4700C58B1C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA1E1CE1DA4700C58B1C /* AudioToolbox.framework */; };
 		844AFA211CE1DA5900C58B1C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844AFA201CE1DA5900C58B1C /* CoreMedia.framework */; };
@@ -366,6 +368,8 @@
 		934445E11C8ED36500F86E5D /* AIAssignmentContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E01C8ED36500F86E5D /* AIAssignmentContentViewController.swift */; };
 		934445E31C8ED37B00F86E5D /* AICollContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */; };
 		934445E71C8EEF3100F86E5D /* SESlideTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 934445E61C8EEF3100F86E5D /* SESlideTableViewCell.m */; };
+		934772CE1CE585FB00518333 /* AIConfirmOrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934772CD1CE585FB00518333 /* AIConfirmOrderCellView.swift */; };
+		934772D01CE5860A00518333 /* AIConfirmOrderCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934772CF1CE5860A00518333 /* AIConfirmOrderCellView.xib */; };
 		934C41B41BA7F16C00002853 /* UICoverFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B31BA7F16C00002853 /* UICoverFlowView.swift */; };
 		934C41B61BA7F3D400002853 /* UICoverFlowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934C41B51BA7F3D400002853 /* UICoverFlowView.xib */; };
 		934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C41B91BA7FFCE00002853 /* CWStarRateView.m */; };
@@ -422,6 +426,7 @@
 		93A742CF1BDF75FD001EF581 /* UIColor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CB1BDF75FD001EF581 /* UIColor+TDAdditions.m */; };
 		93A742D01BDF75FD001EF581 /* UIImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */; };
 		93A91DB41C9AC61900F40A47 /* GIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A91DB31C9AC61900F40A47 /* GIBadgeView.m */; };
+		93ABC6AC1CE579C800965310 /* AIConfirmOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ABC6AB1CE579C800965310 /* AIConfirmOrderViewController.swift */; };
 		93AE1E441C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */; };
 		93B00EDB1BBBACCD000C402B /* AICoverFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */; };
 		93B00EDD1BBBAE39000C402B /* AITableCellHolder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */; };
@@ -865,6 +870,8 @@
 		8448B3D41C9BA15700CDFB61 /* DependOnNodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodeCell.swift; sourceTree = "<group>"; };
 		8448B3D51C9BA15700CDFB61 /* DependOnNodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DependOnNodeCell.xib; sourceTree = "<group>"; };
 		8448B3D61C9BA15700CDFB61 /* DependOnNodePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependOnNodePickerViewController.swift; sourceTree = "<group>"; };
+		844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeparatorLineLabel.xib; sourceTree = "<group>"; };
+		844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorLineLabel.swift; sourceTree = "<group>"; };
 		844AFA1C1CE1D6A900C58B1C /* OpenTok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenTok.framework; sourceTree = "<group>"; };
 		844AFA1E1CE1DA4700C58B1C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		844AFA201CE1DA5900C58B1C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1168,6 +1175,8 @@
 		934445E21C8ED37B00F86E5D /* AICollContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICollContentViewController.swift; sourceTree = "<group>"; };
 		934445E51C8EEF3100F86E5D /* SESlideTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SESlideTableViewCell.h; sourceTree = "<group>"; };
 		934445E61C8EEF3100F86E5D /* SESlideTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SESlideTableViewCell.m; sourceTree = "<group>"; };
+		934772CD1CE585FB00518333 /* AIConfirmOrderCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIConfirmOrderCellView.swift; sourceTree = "<group>"; };
+		934772CF1CE5860A00518333 /* AIConfirmOrderCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIConfirmOrderCellView.xib; sourceTree = "<group>"; };
 		934C41B31BA7F16C00002853 /* UICoverFlowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverFlowView.swift; sourceTree = "<group>"; };
 		934C41B51BA7F3D400002853 /* UICoverFlowView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverFlowView.xib; sourceTree = "<group>"; };
 		934C41B81BA7FFCE00002853 /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
@@ -1233,6 +1242,7 @@
 		93A742CD1BDF75FD001EF581 /* UIImage+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TDAdditions.m"; sourceTree = "<group>"; };
 		93A91DB21C9AC61900F40A47 /* GIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIBadgeView.h; sourceTree = "<group>"; };
 		93A91DB31C9AC61900F40A47 /* GIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIBadgeView.m; sourceTree = "<group>"; };
+		93ABC6AB1CE579C800965310 /* AIConfirmOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIConfirmOrderViewController.swift; sourceTree = "<group>"; };
 		93AE1E431C1560EF00D9A3C9 /* AIDeleteActionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDeleteActionDelegate.swift; sourceTree = "<group>"; };
 		93B00EDA1BBBACCD000C402B /* AICoverFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICoverFlowCell.xib; sourceTree = "<group>"; };
 		93B00EDC1BBBAE39000C402B /* AITableCellHolder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AITableCellHolder.xib; sourceTree = "<group>"; };
@@ -1881,6 +1891,8 @@
 				84DDA9431BEAE60200CA5C83 /* UnderlineLabel.swift */,
 				842B64341CE07B33007F2A91 /* IconLabel.xib */,
 				842B64361CE07D3F007F2A91 /* IconLabel.swift */,
+				844A635B1CE57E47006CD8C7 /* SeparatorLineLabel.xib */,
+				844A635D1CE57E71006CD8C7 /* SeparatorLineLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -2367,6 +2379,8 @@
 				939B515E1CE335FF00CF2FA1 /* AIEventCapacityView.xib */,
 				939B51621CE3388F00CF2FA1 /* AINumberCountControl.swift */,
 				939B51641CE3389D00CF2FA1 /* AINumberCountControl.xib */,
+				934772CD1CE585FB00518333 /* AIConfirmOrderCellView.swift */,
+				934772CF1CE5860A00518333 /* AIConfirmOrderCellView.xib */,
 			);
 			path = ChildCart;
 			sourceTree = "<group>";
@@ -2431,6 +2445,7 @@
 				842BE94C1C3CF99900865153 /* ProposalServiceDetailBaseView.h */,
 				842BE94D1C3CF99900865153 /* ProposalServiceDetailBaseView.m */,
 				93CB8D891BFB23A900C41DDE /* UIBezierPageView.swift */,
+				93ABC6AB1CE579C800965310 /* AIConfirmOrderViewController.swift */,
 			);
 			path = BuyerDetail;
 			sourceTree = "<group>";
@@ -3498,6 +3513,7 @@
 				9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */,
 				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
 				9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */,
+				934772D01CE5860A00518333 /* AIConfirmOrderCellView.xib in Resources */,
 				935589721CE42F3B00AF1E75 /* PMCustomKeyboard.xib in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
@@ -3506,6 +3522,7 @@
 				93FA1DAA1B9C2EAA009965C8 /* DSLCalendarDayCallout@2x.png in Resources */,
 				849B0BD71C202B61008C0A23 /* UITimeLineStoryboard.storyboard in Resources */,
 				84F001551C3A43CB000C93AF /* LICENSE in Resources */,
+				844A635C1CE57E47006CD8C7 /* SeparatorLineLabel.xib in Resources */,
 				93FA1E471B9C3E12009965C8 /* AICollectionTableViewCell.xib in Resources */,
 				93FA1E521B9C3E12009965C8 /* AIMenuActionView.xib in Resources */,
 				93B25A621B9D7A1D00CD1FEB /* sdk_weibo_logo@3x.png in Resources */,
@@ -3711,6 +3728,7 @@
 				93CA11D31C463475008B1EE1 /* AIFavoriteContentModel.swift in Sources */,
 				816E3B881C1ED6C800A061DD /* AIFakeLoginView.m in Sources */,
 				93B25AA11B9D7A7B00CD1FEB /* JSONModelArray.m in Sources */,
+				844A635E1CE57E71006CD8C7 /* SeparatorLineLabel.swift in Sources */,
 				849B4B4F1C0EDFE300BEC179 /* FLEXClassExplorerViewController.m in Sources */,
 				934C41BA1BA7FFCE00002853 /* CWStarRateView.m in Sources */,
 				93FA1E4A1B9C3E12009965C8 /* AICustomerCollectionCellView.swift in Sources */,
@@ -3769,6 +3787,7 @@
 				93FA1E5D1B9C3E12009965C8 /* AITopMsgView.swift in Sources */,
 				84DDA9511BEDD8A300CA5C83 /* TopServiceContainerView.swift in Sources */,
 				842B64371CE07D3F007F2A91 /* IconLabel.swift in Sources */,
+				93ABC6AC1CE579C800965310 /* AIConfirmOrderViewController.swift in Sources */,
 				93C33F191B9BEAFE007BF506 /* AISwiftLogger.swift in Sources */,
 				120059421CE1D0A800029A66 /* AIIconLabeVerticallView.swift in Sources */,
 				93FA1E561B9C3E12009965C8 /* AIScanViewController.swift in Sources */,
@@ -3846,6 +3865,7 @@
 				9395FDB11C5788B300D95F54 /* AIEventTimerView.swift in Sources */,
 				84C0F1671C9FFAE300BA7266 /* KMPlaceholderTextView.swift in Sources */,
 				81D83AEF1BB29F7900BE2BA2 /* MJRefreshHeaderView.m in Sources */,
+				934772CE1CE585FB00518333 /* AIConfirmOrderCellView.swift in Sources */,
 				93CA11D61C463475008B1EE1 /* AIOrderDetailModel.swift in Sources */,
 				93C33F251B9BEAFE007BF506 /* UIViewControllerUtils.swift in Sources */,
 				9324DDD01CD1FF33007D3DBE /* AIAlertViewController.swift in Sources */,

@@ -176,7 +176,7 @@ class AIBuyerDetailViewController : UIViewController {
         }
         overlayView.hidden = true;
         
-        let tap = UITapGestureRecognizer(target: self, action: "deletedOverlayTapped:")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AIBuyerDetailViewController.deletedOverlayTapped(_:)))
         overlayView.addGestureRecognizer(tap)
     }
     
@@ -216,7 +216,7 @@ class AIBuyerDetailViewController : UIViewController {
     func makeBuyButton() {
         let button = UIButton(type: .Custom)
         button.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - 100, CGRectGetWidth(self.view.frame), 100)
-        button.addTarget(self, action: "showNextViewController", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(AIBuyerDetailViewController.showNextViewController), forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
     }
     
@@ -250,13 +250,19 @@ class AIBuyerDetailViewController : UIViewController {
         let frame : CGRect = CGRectMake((CGRectGetWidth(view.frame)-width) / 2, 0, width, CGRectGetHeight(view.frame))
         
         let tapView = UIView(frame: frame)
-        tapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "bottomTapAction"))
+        tapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(AIBuyerDetailViewController.bottomTapAction)))
         view.addSubview(tapView)
         
         view.userInteractionEnabled = true
     }
     
     func bottomTapAction () {
+        if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("AIConfirmOrderViewController") as? AIConfirmOrderViewController{
+            vc.dataSource = self.dataSource
+            self.showViewController(vc, sender: self)
+        }
+        return
+        
         if let anyServiceNotSelected = current_service_list?.contains({ (obj) -> Bool in
             return obj.param_setting_flag == 0 ? true : false
         }) {
@@ -816,10 +822,10 @@ extension AIBuyerDetailViewController {
     
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches.first {
-            let view = touch.view
-            
-            //print("\(view.clas)")
-        }
+//        if let touch = touches.first {
+//            let view = touch.view
+//            
+//            //print("\(view.clas)")
+//        }
     }}
 
