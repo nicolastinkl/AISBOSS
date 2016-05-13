@@ -106,12 +106,16 @@
                                     <constraint firstAttribute="width" constant="55" id="zJq-NS-kbb"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-en-bR9" userLabel="serviceIconView" customClass="DesignableImageView" customModule="Spring">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-en-bR9" customClass="DesignableImageView" customModule="Spring">
                                 <rect key="frame" x="245" y="193" width="110" height="110"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="SQT-Ge-usc"/>
                                     <constraint firstAttribute="height" constant="110" id="Tob-CA-bEq"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rGl-4S-2ai" appends="YES" id="Fn1-I0-IWS"/>
+                                </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbS-Bs-btI">
                                 <rect key="frame" x="30" y="446" width="460" height="91"/>
@@ -172,6 +176,13 @@
                                     <constraint firstAttribute="width" constant="60" id="yt6-eB-Npd"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yV-eu-Eie">
+                                <rect key="frame" x="0.0" y="64" width="600" height="184"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ieO-HD-Ix4" appends="YES" id="gGg-pI-jum"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.11764705882352941" green="0.10588235294117647" blue="0.2196078431372549" alpha="0.25969636524822692" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -185,6 +196,7 @@
                             <constraint firstItem="V21-cj-kNR" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="10" id="FXH-m7-cGW"/>
                             <constraint firstItem="Ted-en-bR9" firstAttribute="centerX" secondItem="r0a-wG-2gH" secondAttribute="centerX" id="IV6-1T-IVG"/>
                             <constraint firstItem="XbS-Bs-btI" firstAttribute="leading" secondItem="r0a-wG-2gH" secondAttribute="leadingMargin" constant="10" id="JN1-45-maU"/>
+                            <constraint firstAttribute="trailing" secondItem="0yV-eu-Eie" secondAttribute="trailing" id="Qf6-VK-xux"/>
                             <constraint firstItem="Gm5-Lt-BTq" firstAttribute="top" secondItem="Ted-en-bR9" secondAttribute="bottom" constant="6" id="UhK-8w-Oxx"/>
                             <constraint firstItem="Xcq-QJ-hDF" firstAttribute="top" secondItem="Gm5-Lt-BTq" secondAttribute="bottom" constant="-5" id="Vij-na-I9e"/>
                             <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="dgK-xr-3Zm" secondAttribute="bottom" id="VyM-7C-J23"/>
@@ -197,6 +209,8 @@
                             <constraint firstItem="dl0-s3-0mE" firstAttribute="leading" secondItem="L7y-pk-2Dp" secondAttribute="trailing" constant="8" id="fIr-rt-8Ik"/>
                             <constraint firstItem="V21-cj-kNR" firstAttribute="top" secondItem="sMN-w8-e7a" secondAttribute="bottom" constant="8" id="fMu-r6-c58"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V21-cj-kNR" secondAttribute="trailing" constant="9" id="kIo-XP-ThA"/>
+                            <constraint firstAttribute="top" secondItem="0yV-eu-Eie" secondAttribute="bottom" id="mry-Ef-AX4"/>
+                            <constraint firstItem="0yV-eu-Eie" firstAttribute="top" secondItem="LAZ-Eb-PJ8" secondAttribute="bottom" id="oBb-U4-Di9"/>
                             <constraint firstAttribute="leadingMargin" secondItem="L7y-pk-2Dp" secondAttribute="leading" id="p0r-9m-3SH"/>
                             <constraint firstItem="2Ru-3N-WVa" firstAttribute="top" secondItem="L7y-pk-2Dp" secondAttribute="bottom" constant="159" id="rqV-F1-IEZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xcq-QJ-hDF" secondAttribute="trailing" id="sc5-jz-EIW"/>
@@ -212,6 +226,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Rf-S2-GsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ieO-HD-Ix4">
+                    <connections>
+                        <action selector="backgroundDidTapped:" destination="0qb-9H-gNp" id="cjv-uY-Ddp"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="rGl-4S-2ai">
+                    <connections>
+                        <action selector="arvatarDidTapped:" destination="0qb-9H-gNp" id="LWP-BO-5bG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="466" y="404"/>
         </scene>

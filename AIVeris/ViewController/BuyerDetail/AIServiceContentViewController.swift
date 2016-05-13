@@ -245,7 +245,6 @@ internal class AIServiceContentViewController: UIViewController {
                 params["save_data"] = serviceContentView?.getAllParams()
             }
         }
-
         
         return params
     }
@@ -270,7 +269,6 @@ internal class AIServiceContentViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServiceContentViewController.keyboardDidChange(_:)), name: UIKeyboardDidChangeFrameNotification, object: nil)
     }
-    
     
     func removeKeyboardNotifications() {
         let names = [UIKeyboardWillShowNotification,
@@ -692,12 +690,12 @@ internal class AIServiceContentViewController: UIViewController {
         galleryView.setTop(5)
     }
     
-    private func addEscortView(var preView: UIView?) -> UIView {
-        preView = preView ?? galleryView
-        let paramedicFrame = CGRectMake(0, preView!.bottom, CGRectGetWidth(scrollView.frame), 600)
+    private func addEscortView(preView: UIView?) -> UIView {
+        let preView = preView ?? galleryView
+        let paramedicFrame = CGRectMake(0, preView.bottom, CGRectGetWidth(scrollView.frame), 600)
         paramedicView = AIParamedicView(frame: paramedicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
 
-        addNewSubView(paramedicView!, preView: preView!)
+        addNewSubView(paramedicView!, preView: preView)
         paramedicView!.backgroundColor = UIColor.clearColor()
         return paramedicView!
     }
@@ -736,11 +734,11 @@ internal class AIServiceContentViewController: UIViewController {
         return viw
     }
     
-    private func addMusicView(var preView: UIView?) -> UIView {
-        preView = preView ?? galleryView
-        let musicFrame = CGRectMake(0, preView!.top + preView!.height, CGRectGetWidth(scrollView.frame), 0)
+    private func addMusicView(preView: UIView?) -> UIView {
+        var preView = preView ?? galleryView
+        let musicFrame = CGRectMake(0, preView.top + preView.height, CGRectGetWidth(scrollView.frame), 0)
         musicView = AIMusicTherapyView(frame: musicFrame, model: currentDatasource, shouldShowParams: serviceContentType != .None)
-        addNewSubView(musicView!, preView: preView!)
+        addNewSubView(musicView!, preView: preView)
         musicView!.backgroundColor = UIColor.clearColor()
         return musicView!
     }

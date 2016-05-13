@@ -38,6 +38,11 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
         
         initViews()
     }
+    @IBAction func arvatarDidTapped(sender: AnyObject) {
+    }
+    @IBAction func backgroundDidTapped(sender: AnyObject) {
+        dismissPopupViewController(true, completion: nil)
+    }
     
     @IBAction func answerAction(sender: AnyObject) {
         //AIApplication.showGladOrderView()

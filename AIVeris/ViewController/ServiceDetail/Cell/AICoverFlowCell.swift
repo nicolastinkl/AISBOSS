@@ -33,24 +33,20 @@ class CoverFlowCell: UITableViewCell ,iCarouselDataSource, iCarouselDelegate {
         return 0
     }
     
-    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView! {
+    func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         //create new view if no view is available for recycling
-        var newView = view
-        if (newView == nil) {
+        if ( view == nil) {
             //don't do anything specific to the index within
             //this `if (view == nil) {...}` statement because the view will be
             //recycled and used with other index values later
             let coverView = UICoverFlowView.currentView()
-            
-            
             if let data = dataSource {
-                
                 let comt:Service = data[index] as Service
                 coverView.fillDataWithModel(comt)
-                view = coverView
+                return coverView
             }
-            
         }
+        
         /*
         //ONE:
         view.layer.shadowColor = UIColor.blackColor().CGColor
