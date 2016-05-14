@@ -14,9 +14,9 @@ enum AIAnchorStep : String {
     case Before = "Before"             // 事前
     case Executing = "Executing"       // 事中
     case After = "After"               // 事后
-    case Hold = "Hold"                 // 独占
-    case UnHold = "UnHold"             // 解除独占
-    static let allValues = [Before, Executing, After, Hold]
+    case Lock = "Lock"                 // 独占
+    case UnLock = "UnLock"             // 解除独占
+    static let allValues = [Before, Executing, After, Lock, UnLock]
 }
 
 class CustomWindow: UIWindow {
@@ -29,6 +29,7 @@ class CustomWindow: UIWindow {
 enum AIAnchorType : String {
     case Touch = "Touch"             // Touch事件
     case Normal = "Normal"           // 普通Anchor事件
+    case Lock = "Lock"               // Lock事件
 
     static let allValues = [Touch, Normal]
 }
@@ -53,15 +54,38 @@ class AIAnchor: NSObject {
     
     
     
+    class func lock() -> AIAnchor {
+        let anchor = AIAnchor()
+        anchor.type = AIAnchorType.Lock
+        anchor.step = AIAnchorStep.Lock
+        
+        return anchor
+    }
+    
+    class func unLock() -> AIAnchor {
+        let anchor = AIAnchor()
+        anchor.type = AIAnchorType.Lock
+        anchor.step = AIAnchorStep.UnLock
+        
+        return anchor
+    }
     
     
-    class func handleAnchorWithType(type:AIAnchorType, selector:String, parameters:[AnyObject]) -> String {
+    class func touchAnchorWithClassName(className : String, selector : String, parameters : [AnyObject]) -> AIAnchor {
+        let anchor = AIAnchor()
+        anchor.type = AIAnchorType.Touch
         
+        return anchor
+    }
+    
+    
+    
+    class func normalAnchorWithClassName(className : String, selector : String, parameters : [AnyObject]) -> AIAnchor {
+        let anchor = AIAnchor()
+        anchor.type = AIAnchorType.Normal
         
+        return anchor
         
-        
-        
-        return ""
     }
     
     

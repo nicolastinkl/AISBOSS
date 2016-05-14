@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="width" constant="55" id="zJq-NS-kbb"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-en-bR9" customClass="DesignableImageView" customModule="Spring">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatorbibo" translatesAutoresizingMaskIntoConstraints="NO" id="Ted-en-bR9" userLabel="serviceIconView" customClass="DesignableImageView" customModule="Spring">
                                 <rect key="frame" x="245" y="193" width="110" height="110"/>
                                 <gestureRecognizers/>
                                 <constraints>

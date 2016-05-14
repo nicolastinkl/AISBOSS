@@ -63,6 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         showRootViewControllerReal()
         
         //fetchPreSellerAndBuyerData()
+        
+        Async.main(after: 2) { 
+            //AIApplication.showAlertView()
+        }
+        
         return true
 
     }
