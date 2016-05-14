@@ -20,6 +20,7 @@ class AIContestSuccessViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //self.navigationController?.navigationBar.
         customerBannerView.loadData()
         seperateViewNeeds.loadData("User needs")
         seperateViewUser.loadData("Single success")
