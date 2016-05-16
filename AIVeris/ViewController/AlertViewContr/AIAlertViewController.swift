@@ -33,6 +33,8 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     @IBOutlet weak var customerDescView: UIView!
     @IBOutlet weak var timerControl: DDHTimerControl!
     
+    let TIMER_TEXT_FONT = AITools.myriadSemiCondensedWithSize(70 / 3)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,10 +55,10 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     }
     
     func initViews(){
-        timerControl.color = UIColor.yellowColor()
-        timerControl.highlightColor = UIColor.redColor()
+        timerControl.color = UIColor(hex: "#49bf1f")
+        //timerControl.highlightColor = UIColor.redColor()
         timerControl.minutesOrSeconds = 59
-        timerControl.titleLabel.text = "sec"
+        timerControl.titleLabel.text = ""
         timerControl.userInteractionEnabled = false
         
         customerDescView.setCornerOnTop()

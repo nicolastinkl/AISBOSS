@@ -166,8 +166,8 @@ const CGFloat kDDHInsetY = kDDHInsetX;
     
     NSMutableParagraphStyle* labelStyle = NSMutableParagraphStyle.defaultParagraphStyle.mutableCopy;
     labelStyle.alignment = NSTextAlignmentCenter;
-
-    NSDictionary *labelFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"HelveticaNeue-Light" size:self.fontSize], NSForegroundColorAttributeName:self.color, NSParagraphStyleAttributeName: labelStyle};
+    //TODO modified the font ...
+    NSDictionary *labelFontAttributes = @{NSFontAttributeName: [UIFont fontWithName: @"MyriadPro-SemiCn" size:self.fontSize], NSForegroundColorAttributeName:self.color, NSParagraphStyleAttributeName: labelStyle};
     
     self.minutesOrSecondsLabel.attributedText = [[NSAttributedString alloc] initWithString:expression attributes:labelFontAttributes];
 }

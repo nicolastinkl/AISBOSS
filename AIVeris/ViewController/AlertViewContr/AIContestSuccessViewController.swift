@@ -20,7 +20,7 @@ class AIContestSuccessViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //self.navigationController?.navigationBar.
+        buildNavigationTitleLabel()
         customerBannerView.loadData()
         seperateViewNeeds.loadData("User needs")
         seperateViewUser.loadData("Single success")
@@ -30,6 +30,16 @@ class AIContestSuccessViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func buildNavigationTitleLabel(){
+        let NAVIGATION_TITLE = AITools.myriadSemiCondensedWithSize(80 / 3)
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 44)
+        let titleLabel = UILabel(frame: frame)
+        titleLabel.font = NAVIGATION_TITLE
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.text = "Service detail"
+        self.navigationItem.titleView = titleLabel
     }
     
     func loadData(){
