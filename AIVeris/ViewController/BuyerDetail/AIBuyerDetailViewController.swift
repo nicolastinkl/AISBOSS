@@ -240,6 +240,19 @@ class AIBuyerDetailViewController : UIViewController {
      Video Button Click         
      */
     @IBAction func startVideoAction(sender: AnyObject) {
+
+        
+        var jsonString = "{\"type\":\"Lock\", \"step\":\"after\", \"className\":\"AIBuerDetaiViewController\", \"selector\":\"getTask\"}"
+
+        
+        let anchor = AIAnchor.anchorFromJsonString(jsonString)
+        
+        jsonString = anchor.toJsonString()
+        
+        
+        
+        
+        
         
         AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification([AIRemoteNotificationKeys.MessageKey : "开始抢单啦！"])
   
@@ -373,6 +386,7 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     @IBAction func remoteAssistantButtonPressed(sender: AnyObject) {
+    
         let actionSheet = UIAlertController(title: "Share Screen", message: nil, preferredStyle: .ActionSheet)
         actionSheet.addAction(UIAlertAction(title: "Do Publish", style: .Default, handler: { (action) in
             AudioAssistantManager.sharedInstance.doPublish()
@@ -384,7 +398,7 @@ class AIBuyerDetailViewController : UIViewController {
         
         actionSheet.addAction(UIAlertAction(title: "Send test anchor", style: .Default, handler: { (action) in
             let anchor = AIAnchor()
-            anchor.type = .Normal
+            anchor.type = AIAnchorType.Normal
             AudioAssistantManager.sharedInstance.sendAnchor(anchor)
         }))
         
@@ -764,6 +778,10 @@ extension AIBuyerDetailViewController: AISuperSwipeableCellDelegate {
         self.openCell = true
         curretCell = cell as? AIBueryDetailCell
 //        self.tableView.userInteractionEnabled = false
+        
+        //// anchor
+        
+        AIAnchor.executingAnchorWithClassName("AIBuyerDetailViewController", selector: "cellDidOpen", parameters: nil)
     }
 }
 
