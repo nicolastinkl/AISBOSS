@@ -36,9 +36,11 @@ class AIConfirmOrderCellView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        self.title.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.title.font = AITools.myriadLightSemiCondensedWithSize(48 / PurchasedViewDimention.CONVERT_FACTOR)
         
-        self.price.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
+        self.price.font = AITools.myriadLightSemiCondensedWithSize(56 / PurchasedViewDimention.CONVERT_FACTOR)
+        
+        self.price.textColor = UIColor(hexString: "fee300", alpha: 1)
         
     }
     
@@ -46,7 +48,7 @@ class AIConfirmOrderCellView: UIView {
         
         title.text = model.service_desc
         
-        price.text = "\(model.real_price)"
+        price.text = "\(model.service_price.original)"
         
         imageview.setImageWithURL(NSURL(string: "\(model.service_thumbnail_icon)"))
         
