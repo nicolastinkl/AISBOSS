@@ -26,10 +26,13 @@ class AADataReceiverParser: NSObject {
 			} else if let tap = view?.gestureRecognizers?.first as? UITapGestureRecognizer {
 				handleGesture(tap, location: location)
 			}
+		} else {
+			let anchor = AIAnchor.anchorFromJsonString(string)
+			print(anchor.className)
 		}
 	}
 }
 
 private func handleGesture(gesture: UITapGestureRecognizer, location: CGPoint) {
-    gesture.performTap(atPoint: location)
+	gesture.performTap(atPoint: location)
 }
