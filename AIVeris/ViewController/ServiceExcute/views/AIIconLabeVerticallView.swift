@@ -82,7 +82,7 @@ class AIIconLabelVerticalView: UIView {
         self.addSubview(labelView)
         iconImageView.snp_makeConstraints { (make) in
             make.centerX.top.equalTo(self)
-            make.bottom.equalTo(labelView.snp_top).offset(5)
+            make.bottom.equalTo(labelView.snp_top).offset(-10)
         }
         labelView.snp_makeConstraints { (make) in
             make.leading.trailing.equalTo(self)
@@ -92,5 +92,8 @@ class AIIconLabelVerticalView: UIView {
     func loadData(model : AIIconLabelViewModel){
         self.model = model
         labelView.text = model.labelText
-        iconImageView.sd_setImageWithURL(NSURL(string: model.iconUrl), placeholderImage: UIImage(named: "icon_price_big"))    }
+        //TODO暂时为了ui效果设置成本地图片
+        iconImageView.image = UIImage(named: "se_time_icon_big")
+        //iconImageView.sd_setImageWithURL(NSURL(string: model.iconUrl), placeholderImage: UIImage(named: "icon_price_big"))    
+    }
 }

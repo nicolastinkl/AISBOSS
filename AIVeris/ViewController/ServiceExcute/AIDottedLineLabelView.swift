@@ -15,7 +15,11 @@ class AIDottedLineLabelView: UIView {
     var textLabel : UILabel!
     
     //Constants
-    let dottedLineImage = UIImage(named: "dottedLine2")
+    let dottedLineImage = UIImage(named: "se_dotline")
+    
+    let TEXT_FONT = AITools.myriadLightSemiCondensedWithSize(48/3)
+    let TEXT_COLOR = UIColor(hex: "#fefefe")
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -69,7 +73,9 @@ class AIDottedLineLabelView: UIView {
     private func buildTextLabel(){
         textLabel = UILabel()
         textLabel.text = "label"
-        textLabel.textColor = UIColor.lightGrayColor()
+        textLabel.textColor = TEXT_COLOR
+        textLabel.alpha = 0.34
+        textLabel.font = TEXT_FONT
         self.addSubview(textLabel)
         textLabel.snp_makeConstraints { (make) in
             make.leading.equalTo(leftLineImage.snp_trailing).offset(10)
