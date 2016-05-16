@@ -12,6 +12,7 @@ class AIIconLabelVerticalContainerView: UIView {
 
     var models : [AIIconLabelViewModel]?
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -55,6 +56,10 @@ class AIIconLabelVerticalView: UIView {
     
     var model : AIIconLabelViewModel?
     
+    //Constants
+    let TEXT_FONT = AITools.myriadLightSemiCondensedWithSize(48 / 3)
+
+    
     var iconImageView : UIImageView!
     var labelView : UILabel!
     
@@ -76,9 +81,10 @@ class AIIconLabelVerticalView: UIView {
         iconImageView = UIImageView()
         self.addSubview(iconImageView)
         labelView = UILabel()
+        labelView.font = TEXT_FONT
         labelView.textColor = UIColor.whiteColor()
         labelView.textAlignment = NSTextAlignment.Center
-        labelView.numberOfLines = 2
+        labelView.numberOfLines = 3
         self.addSubview(labelView)
         iconImageView.snp_makeConstraints { (make) in
             make.centerX.top.equalTo(self)
@@ -92,6 +98,10 @@ class AIIconLabelVerticalView: UIView {
     func loadData(model : AIIconLabelViewModel){
         self.model = model
         labelView.text = model.labelText
+        //如果文本比较长，就从左边对其
+//        if model.labelText.length > 10 {
+//            labelView.textAlignment = NSTextAlignment.Left
+//        }
         //TODO暂时为了ui效果设置成本地图片
         iconImageView.image = UIImage(named: "se_time_icon_big")
         //iconImageView.sd_setImageWithURL(NSURL(string: model.iconUrl), placeholderImage: UIImage(named: "icon_price_big"))    

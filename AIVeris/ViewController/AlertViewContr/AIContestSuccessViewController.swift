@@ -41,6 +41,13 @@ class AIContestSuccessViewController: UIViewController {
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.text = "Service detail"
         self.navigationItem.titleView = titleLabel
+        let backImage = UIImage(named: "se_back")
+        let leftButtonItem = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AIContestSuccessViewController.backAction(_:)))
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+    }
+    
+    func backAction(button : UIBarButtonItem){
+        self.dismissPopupViewController(true, completion: nil)
     }
     
     func loadData(){

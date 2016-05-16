@@ -52,8 +52,11 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     @IBAction func answerAction(sender: AnyObject) {
         //AIApplication.showGladOrderView()
         //点抢单按钮后就不再倒计时
-        self.timer!.invalidate()
-        self.timer = nil
+        if timer != nil{
+            timer!.invalidate()
+            timer = nil
+        }
+        
         
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
