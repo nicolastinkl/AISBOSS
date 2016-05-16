@@ -12,9 +12,14 @@ class AudioAssistantManager: NSObject {
 	var _session: OTSession?
 	var _publisher: OTPublisherKit?
 	var _subscriber: OTSubscriber?
+    private var _roomNumber: String?
+    private var _sessionDidConnectHandler: (()->())?
 	
-	func connectionToAudioAssiastantRoom() {
-		let roomURLString = "https://opentokrtc.com/htejlta.json"
+    func connectionToAudioAssiastantRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (()->())? = nil) {
+        _roomNumber = roomNumber
+        _sessionDidConnectHandler = sessionDidConnectHandler
+        
+		let roomURLString = String(format: "https://opentokrtc.com/%@.json", roomNumber)
 		let roomURL = NSURL(string: roomURLString)!
 		let request = NSMutableURLRequest(URL: roomURL, cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
 		request.HTTPMethod = "GET"
@@ -22,7 +27,7 @@ class AudioAssistantManager: NSObject {
 		NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { [unowned self](response, data, error) in
 			if error != nil {
 				print("Error, \(error?.localizedDescription), \(roomURLString)")
-                self.connectionToAudioAssiastantRoom()
+                self.connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: sessionDidConnectHandler)
 			} else {
 				if let roomInfo = try?NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary {
 					if let roomInfo = roomInfo {
@@ -37,6 +42,7 @@ class AudioAssistantManager: NSObject {
 		}
 	}
 	
+    /// 发布屏幕流
 	func doPublish() {
         print(#function + " called")
 		_publisher = OTPublisherKit(delegate: self, name: UIDevice.currentDevice().name, audioTrack: true, videoTrack: true)
@@ -49,6 +55,7 @@ class AudioAssistantManager: NSObject {
 		_session?.publish(_publisher, error: nil)
 	}
 	
+    /// 订阅视频流
 	func doSubscribe(stream: OTStream) {
 		_subscriber = OTSubscriber(stream: stream, delegate: self)
 		_session?.subscribe(_subscriber, error: nil)
@@ -74,6 +81,9 @@ extension AudioAssistantManager: OTSessionDelegate {
 	 * @param session The <OTSession> instance that sent this message.
 	 */
 	func sessionDidConnect(session: OTSession!) {
+        if let sessionDidConnectHandler = _sessionDidConnectHandler {
+           sessionDidConnectHandler()
+        }
 		print(#function + " called")
 	}
 	
@@ -84,7 +94,9 @@ extension AudioAssistantManager: OTSessionDelegate {
 	 */
 	func sessionDidDisconnect(session: OTSession!) {
 		print(#function + " called")
-        connectionToAudioAssiastantRoom()
+        if let roomNumber = _roomNumber {
+            connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: _sessionDidConnectHandler)
+        }
 	}
 	
 	/**

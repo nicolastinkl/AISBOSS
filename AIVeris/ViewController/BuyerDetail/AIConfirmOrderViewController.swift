@@ -30,6 +30,8 @@ class AIConfirmOrderViewController: UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var confirmButton: UIButton!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var priceLabel: UILabel!
@@ -62,10 +64,12 @@ class AIConfirmOrderViewController: UIViewController {
         
         tableView.reloadData()
         
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
     }
     
     func InitData(){
         
+        self.confirmButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(52 / PurchasedViewDimention.CONVERT_FACTOR)
         self.backButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(60 / PurchasedViewDimention.CONVERT_FACTOR)
         self.priceLabel.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
         
@@ -86,10 +90,28 @@ class AIConfirmOrderViewController: UIViewController {
         
         let footView = UIView()
         let providerView =  AIProviderView.currentView()
-        tableView.tableFooterView = footView
         providerView.content.text = dataSource.proposal_desc ?? ""
-        
         footView.addSubview(providerView)
+        providerView.setTop(17.3)
+        footView.setHeight(17.3 + providerView.height)
+        providerView.setWidth(self.view.width)
+        tableView.tableFooterView = footView
+        
+        
+        let bgFootView = UIView()
+        bgFootView.backgroundColor = UIColor(hexString: "#0F0A2E", alpha: 1)
+        footView.addSubview(bgFootView)
+        bgFootView.setWidth(self.view.width)
+        bgFootView.setHeight(17)
+        bgFootView.setTop(0)
+        
+        let line = UIView()
+        line.backgroundColor = UIColor(hexString: "#ffffff", alpha: 0.2)
+        footView.addSubview(line)
+        line.setWidth(self.view.width)
+        line.setHeight(0.4)
+        line.setTop(17)
+        
         
     }
     
@@ -135,7 +157,6 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
         
         let model = current_service_list?.objectAtIndex(indexPath.row) as? AIProposalServiceModel
         
-        
         let CELL_ID = "UITableViewCell\(model?.service_id  ?? 0)"
         
         var tempCell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CELL_ID)
@@ -143,127 +164,163 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
         if tempCell == nil {
             tempCell = UITableViewCell(style: .Default, reuseIdentifier: CELL_ID)
             
-        }
-        tempCell?.selectionStyle = .None
+            //default:
+            if let cellView = AIConfirmOrderCellView.initFromNib(){
+                tempCell?.contentView.addSubview(cellView)
+                cellView.tag = 1
+                cellView.hidden = true
+            }
+            
+            //Service:
+            if let cellView = SimpleServiceViewContainer.initFromNib() as? SimpleServiceViewContainer {
+                tempCell?.contentView.addSubview(cellView)
+                cellView.tag = 2
+                cellView.hidden = true
+                cellView.settingState.hidden = true
+                cellView.loadData(model!)
+            }
+            
+            
+            let leftTop = UIImageView()
+            let rightTop = UIImageView()
+            let leftBottom = UIImageView()
+            let rightBottom = UIImageView()
+            
+            tempCell?.contentView.addSubview(leftTop)
+            tempCell?.contentView.addSubview(rightTop)
+            tempCell?.contentView.addSubview(leftBottom)
+            tempCell?.contentView.addSubview(rightBottom)
+            
+            leftTop.tag = 5
+            rightTop.tag = 6
+            leftBottom.tag = 7
+            rightBottom.tag = 8
+            
+            leftTop.image = UIImage(named: "fanshaped4")
+            rightTop.image = UIImage(named: "fanshaped3")
+            leftBottom.image = UIImage(named: "fanshaped2")
+            rightBottom.image = UIImage(named: "fanshaped1")
+            
+            
+            let indicator = UIImageView()
+            tempCell?.contentView.addSubview(indicator)
+            indicator.image = UIImage(named: "top_triangle")
+            indicator.tag = 10
         
-        tempCell?.backgroundColor = UIColor.clearColor()
-        tempCell?.contentView.backgroundColor = UIColor.clearColor()
+            
+        }
+        
+        localCode {
+            tempCell?.selectionStyle = .None
+            tempCell?.backgroundColor = UIColor.clearColor()
+            tempCell?.contentView.backgroundColor = UIColor.clearColor()
+        }
         
         if model?.is_expend == 0 {
             
-            tempCell?.viewWithTag(2)?.hidden = true
+            tempCell?.contentView.viewWithTag(10)?.hidden = true
+            tempCell?.contentView.viewWithTag(2)?.hidden = true
             
-            if let _ = tempCell?.viewWithTag(1) {
-                
-            }else{
-                //default
-                if let cellView = AIConfirmOrderCellView.initFromNib(){
-                    tempCell?.addSubview(cellView)
-                    cellView.tag = 1
-                }
-            }
-            
-            if let orderCellView = tempCell?.viewWithTag(1) as? AIConfirmOrderCellView{
+            if let orderCellView = tempCell?.contentView.viewWithTag(1) as? AIConfirmOrderCellView{
                 orderCellView.hidden = false
                 orderCellView.initData(model!)
                 
-                
-                if indexPath.row % 2 == 0 {
-                    orderCellView.backgroundColor = UIColor(hexString: "#5E504D", alpha: 0.3)
-                }else{
-                    orderCellView.backgroundColor = UIColor(hexString: "#5E546E", alpha: 0.3)
+                constrain(orderCellView, tempCell!) {(view, container) ->() in
+                    view.left == container.left
+                    view.top == container.top
+                    view.bottom == container.bottom - 0.7
+                    view.right == container.right
                 }
                 
+                if indexPath.row % 2 == 0 {
+                    orderCellView.backgroundColor = UIColor(hexString: "#d6d5f6", alpha: 0.18)
+                }else{
+                    orderCellView.backgroundColor = UIColor(hexString: "#d6d5f6", alpha: 0.28)
+                }
             }
-            
-            
             
         }else{
             //expend
             
-            tempCell?.viewWithTag(1)?.hidden = true
             
-            if let _ = tempCell?.viewWithTag(2) {
+            if let v = tempCell?.contentView.viewWithTag(10) {
+                v.hidden = false
                 
-            }else{
-                //default
-                if let cellView = SimpleServiceViewContainer.initFromNib() {
-                    tempCell?.addSubview(cellView)
-                    cellView.tag = 2
+                constrain(v) { (indicatorlayout) in
+                    indicatorlayout.centerX == indicatorlayout.superview!.centerX
+                    indicatorlayout.bottom == indicatorlayout.superview!.bottom - 5
+                    indicatorlayout.height == 8
+                    indicatorlayout.width == 15
                 }
+                
             }
+            
+            
+            
+            tempCell?.contentView.viewWithTag(1)?.hidden = true
                         
-            if let serviceView = tempCell?.viewWithTag(2) as? SimpleServiceViewContainer {
+            if let serviceView = tempCell?.contentView.viewWithTag(2) as? SimpleServiceViewContainer {
                 serviceView.hidden = false
                 //serviceView.settingState.tag = indexPath.row
                 //serviceView.settingButtonDelegate = self
-                serviceView.loadData(model!)
+                
                 heightDic["\(model?.service_id)"] = serviceView.selfHeight()
                 
                 // Add constrain
                 constrain(serviceView, tempCell!) {(view, container) ->() in
                     view.left == container.left
                     view.top == container.top
-                    view.bottom == container.bottom
+                    view.bottom == container.bottom - 0.7
                     view.right == container.right
                 }
                 
             }
-            
         }
         
-        /*
-        if let _ = tempCell?.viewWithTag(4) {
-        }else{
-            let leftTop = DesignableView()
-            let rightTop = DesignableView()
-            let leftBottom = DesignableView()
-            let rightBottom = DesignableView()
-            
-            tempCell?.addSubview(leftTop)
-            tempCell?.addSubview(rightTop)
-            tempCell?.addSubview(leftBottom)
-            tempCell?.addSubview(rightBottom)
+        if let leftTop = tempCell?.contentView.viewWithTag(5) , rightTop = tempCell?.contentView.viewWithTag(6), leftBottom = tempCell?.contentView.viewWithTag(7), rightBottom =  tempCell?.contentView.viewWithTag(8) {
+        
+            if indexPath.row == 0 {
+                leftTop.hidden = true
+                rightTop.hidden = true
+            }else{
+                
+                leftTop.hidden = false
+                rightTop.hidden = false
+            }
             
             constrain([leftTop,rightTop,leftBottom,rightBottom], block: { (layouts) in
                 let layoutLT = layouts[0]
-                layoutLT.leading == layoutLT.superview!.leading - 15
-                layoutLT.top == layoutLT.superview!.top - 15
+                layoutLT.leading == layoutLT.superview!.leading
+                layoutLT.top == layoutLT.superview!.top
                 
                 let layoutRT = layouts[1]
-                layoutRT.leading == layoutRT.superview!.trailing - 15
-                layoutRT.top == layoutRT.superview!.top - 15
+                layoutRT.leading == layoutRT.superview!.trailing - 10
+                layoutRT.top == layoutRT.superview!.top
                 
                 let layoutLB = layouts[2]
-                layoutLB.leading == layoutLB.superview!.leading - 15
-                layoutLB.bottom == layoutLB.superview!.bottom - 15
+                layoutLB.leading == layoutLB.superview!.leading
+                layoutLB.bottom == layoutLB.superview!.bottom
                 
                 let layoutRB = layouts[3]
-                layoutRB.leading == layoutRB.superview!.trailing - 15
-                layoutRB.bottom == layoutRB.superview!.bottom - 15
+                layoutRB.leading == layoutRB.superview!.trailing - 10
+                layoutRB.bottom == layoutRB.superview!.bottom
                 
             })
             
             settingsBlackColor([leftTop,rightTop,leftBottom,rightBottom])
         }
         
-        */
         
         return tempCell ?? UITableViewCell()
     }
     
-    func settingsBlackColor(sviews: [DesignableView]){
+    func settingsBlackColor(sviews: [UIView]){
         
         for sview in sviews {
-            
-            sview.clipsToBounds = true
-            sview.tag = 4
-            sview.backgroundColor = UIColor.blackColor()
-            sview.cornerRadius = 15
-            
+//            sview.alpha = 0.7
             constrain(sview) { (layout) in
-                layout.width == 30
-                layout.height == 30
+                layout.width == 10
+                layout.height == 10
             }
         }
     }
@@ -272,9 +329,9 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
         
         let model = current_service_list?.objectAtIndex(indexPath.row) as? AIProposalServiceModel
         if model?.is_expend == 0 {
-            return 50
+            return 64
         }else{
-            return heightDic["\(model?.service_id)"] ?? 0
+            return (heightDic["\(model?.service_id)"] ?? 0) + 10.0
         }
     
     }
