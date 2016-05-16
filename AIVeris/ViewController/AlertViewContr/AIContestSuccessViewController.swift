@@ -16,6 +16,7 @@ class AIContestSuccessViewController: UIViewController {
     @IBOutlet weak var seperateViewUser: AIDottedLineLabelView!
     @IBOutlet weak var customerBannerView: AICustomerBannerView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

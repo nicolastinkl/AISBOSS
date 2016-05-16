@@ -85,7 +85,8 @@ const CGFloat kDDHInsetY = kDDHInsetX;
     _radius = CGRectGetWidth(_timerElementRect) / 2;
 
     _staticLableRect = CGRectInset(self.bounds, kDDHInsetX + floorf(0.18*frame.size.width), kDDHInsetY + floorf(0.18*frame.size.height));
-    _staticLableRect.origin.y -= floorf(0.1*frame.size.height);
+    //TODO : 改成直接在中间显示
+    //_staticLableRect.origin.y -= floorf(0.1*frame.size.height);
     _minutesOrSecondsLabel.frame = _staticLableRect;
 
     CGFloat height = _staticLableRect.size.height;
