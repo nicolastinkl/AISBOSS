@@ -388,12 +388,11 @@ class AIBuyerDetailViewController : UIViewController {
     @IBAction func remoteAssistantButtonPressed(sender: AnyObject) {
     
         let actionSheet = UIAlertController(title: "Share Screen", message: nil, preferredStyle: .ActionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Do Publish", style: .Default, handler: { (action) in
-            AudioAssistantManager.sharedInstance.doPublish()
-        }))
         
         actionSheet.addAction(UIAlertAction(title: "Connection To AudioAssiastant Room", style: .Default, handler: { (action) in
-            AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom()
+            AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom(roomNumber: "tesetjkljaf", sessionDidConnectHandler: {
+                print("did connected")
+            })
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Send test anchor", style: .Default, handler: { (action) in
