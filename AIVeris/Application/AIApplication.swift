@@ -8,6 +8,7 @@
 
 import Foundation
 import Cartography
+import UIKit
 
 /*!
 *  @author tinkl, 15-03-30 15:03:35
@@ -412,6 +413,13 @@ struct AIApplication{
     static func showAlertView(){
         
         let viewAlert = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateInitialViewController()// .instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIAlertViewController) as! AIAlertViewController
+        //设置navigation item title字体
+        let NAVIGATION_TITLE = AITools.myriadSemiCondensedWithSize(80 / 3)
+        
+//        if let navigationController = viewAlert?.navigationController{
+//            let navigationBar = navigationController.navigationBar
+//            navigationBar.titleTextAttributes = [NSFontAttributeName : NAVIGATION_TITLE , NSForegroundColorAttributeName : UIColor.whiteColor()]
+//        }
         
         if let rootVc = UIApplication.sharedApplication().keyWindow?.rootViewController {
             if rootVc.isKindOfClass(UINavigationController.self) {
