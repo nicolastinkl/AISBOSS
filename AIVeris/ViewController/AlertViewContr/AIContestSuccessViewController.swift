@@ -16,6 +16,7 @@ class AIContestSuccessViewController: UIViewController {
     @IBOutlet weak var seperateViewUser: AIDottedLineLabelView!
     @IBOutlet weak var customerBannerView: AICustomerBannerView!
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +44,14 @@ class AIContestSuccessViewController: UIViewController {
         self.navigationItem.titleView = titleLabel
         let backImage = UIImage(named: "se_back")
         let leftButtonItem = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AIContestSuccessViewController.backAction(_:)))
+        leftButtonItem.tintColor = UIColor.lightGrayColor()
         self.navigationItem.leftBarButtonItem = leftButtonItem
     }
     
     func backAction(button : UIBarButtonItem){
         self.dismissPopupViewController(true, completion: nil)
     }
+    
     
     func loadData(){
         
@@ -57,4 +60,10 @@ class AIContestSuccessViewController: UIViewController {
     }
     
 
+    // MARK: - IBActions
+    @IBAction func startWorkAction(sender: AnyObject) {
+        let taskDetailVC = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.TaskExecuteStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.TaskDetailViewController) as! TaskDetailViewController
+        
+        self.navigationController?.pushViewController(taskDetailVC, animated: true)
+    }
 }

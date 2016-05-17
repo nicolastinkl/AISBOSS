@@ -63,6 +63,7 @@ struct AIApplication{
             static let UIBuyerStoryboard            = "UIBuyerStoryboard"
             static let UIRrequirementStoryboard     = "UIRrequirementStoryboard"
             static let AIAlertStoryboard            = "AIAlertStoryboard"
+            static let TaskExecuteStoryboard        = "TaskExecuteStoryboard"
             
         }
         
@@ -86,6 +87,8 @@ struct AIApplication{
             static let AIGladOrderViewController    =   "AIGladOrderViewController"
             static let AIContestSuccessViewController = "AIContestSuccessViewController"
             static let AIServiceRouteViewController     = "AIServiceRouteViewController"
+            static let TaskDetailViewController = "TaskDetailViewController"
+            static let TaskResultCommitViewController = "TaskResultCommitViewController"
         }
         
         /*!
