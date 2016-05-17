@@ -84,8 +84,9 @@ const CGFloat kDDHInsetY = kDDHInsetX;
     _timerElementRect = CGRectInset(frame, kDDHInsetX, kDDHInsetY);
     _radius = CGRectGetWidth(_timerElementRect) / 2;
 
-    _staticLableRect = CGRectInset(self.bounds, kDDHInsetX + floorf(0.18*frame.size.width), kDDHInsetY + floorf(0.18*frame.size.height));
-    _staticLableRect.origin.y -= floorf(0.1*frame.size.height);
+    _staticLableRect = CGRectInset(self.bounds, 0, kDDHInsetY + floorf(0.18*frame.size.height));
+    //TODO : 改成直接在中间显示
+    //_staticLableRect.origin.y -= floorf(0.1*frame.size.height);
     _minutesOrSecondsLabel.frame = _staticLableRect;
 
     CGFloat height = _staticLableRect.size.height;
@@ -102,7 +103,8 @@ const CGFloat kDDHInsetY = kDDHInsetX;
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    NSString* expression = [NSString stringWithFormat: @"%ld", (long)round(self.minutesOrSeconds)];
+    //TODO mod by Shawn ,change format
+    NSString* expression = [NSString stringWithFormat: @"0.%ld", (long)round(self.minutesOrSeconds)];
     
     //// TimerElement Drawing
     CGFloat startAngle = 3 * M_PI/2;

@@ -15,7 +15,8 @@ class AIDottedLineLabelView: UIView {
     var textLabel : UILabel!
     
     //Constants
-    let dottedLineImage = UIImage(named: "se_dotline")
+    
+    var dottedLineImage = UIImage(named: "se_dotline")
     
     let TEXT_FONT = AITools.myriadLightSemiCondensedWithSize(48/3)
     let TEXT_COLOR = UIColor(hex: "#fefefe")
@@ -52,8 +53,9 @@ class AIDottedLineLabelView: UIView {
     }
     
     private func buildLineView(){
+        
         leftLineImage = UIImageView()
-        leftLineImage.image = dottedLineImage
+        leftLineImage.backgroundColor = UIColor(patternImage: dottedLineImage!)
         self.addSubview(leftLineImage)
         
         leftLineImage.snp_makeConstraints { (make) in
@@ -62,7 +64,8 @@ class AIDottedLineLabelView: UIView {
         }
         
         rightLineImage = UIImageView()
-        rightLineImage.image = dottedLineImage
+        //rightLineImage.image = dottedLineImage
+        rightLineImage.backgroundColor = UIColor(patternImage: dottedLineImage!)
         self.addSubview(rightLineImage)
         rightLineImage.snp_makeConstraints { (make) in
             make.centerY.trailing.equalTo(self)
