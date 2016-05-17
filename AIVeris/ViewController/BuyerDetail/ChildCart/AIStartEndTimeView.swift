@@ -27,4 +27,8 @@ import Foundation
 /// 开始时间和结束时间选择器
 class AIStartEndTimeView: UIView {
     
+    
+    @IBOutlet weak var startCity: UIButton!
+    @IBOutlet weak var endCity: UIButton!
+    
 }

@@ -33,6 +33,9 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     @IBOutlet weak var customerDescView: UIView!
     @IBOutlet weak var timerControl: DDHTimerControl!
     
+    var timerEndDate : NSDate!
+    var timer : NSTimer?
+    
     let TIMER_TEXT_FONT = AITools.myriadSemiCondensedWithSize(70 / 3)
     
     override func viewDidLoad() {
@@ -48,6 +51,13 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     
     @IBAction func answerAction(sender: AnyObject) {
         //AIApplication.showGladOrderView()
+        //点抢单按钮后就不再倒计时
+        if timer != nil{
+            timer!.invalidate()
+            timer = nil
+        }
+        
+        
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -60,11 +70,27 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
         timerControl.minutesOrSeconds = 59
         timerControl.titleLabel.text = ""
         timerControl.userInteractionEnabled = false
+        timerEndDate = NSDate(timeIntervalSinceNow: 60)
+        if let timer = timer {
+            timer.invalidate()
+        }
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(AIAlertViewController.changeTimer(_:)), userInfo: nil, repeats: true)
         
         customerDescView.setCornerOnTop()
         customerDescView.clipsToBounds = true
         
         self.navigationController?.delegate = self
+    }
+    
+    func changeTimer(timer : NSTimer){
+        let timerInterval = timerEndDate.timeIntervalSinceNow
+        timerControl.minutesOrSeconds = NSInteger(timerInterval) % 60
+        //倒计时结束的时候
+        if timerControl.minutesOrSeconds == 0{
+            self.timer!.invalidate()
+            self.timer = nil
+            self.dismissPopupViewController(true, completion: nil)
+        }
     }
     
     

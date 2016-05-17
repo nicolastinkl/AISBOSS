@@ -36,7 +36,10 @@ class TaskResultCommitViewController: UIViewController {
     }
     
     @IBAction func questButtonClicked(sender: AnyObject) {
-        BuildInCameraUtils.startCameraControllerFromViewController(self, delegate: self)
+   //     BuildInCameraUtils.startCameraControllerFromViewController(self, delegate: self)
+    //    let asset = BuildInCameraUtils.getLastPhotoAsset()
+        
+        BuildInCameraUtils.getFirstImageInfoFromLibrary()
     }
 }
 
@@ -58,14 +61,44 @@ extension TaskResultCommitViewController: UIImagePickerControllerDelegate {
                 imageToSave = originalImage
             }
             
+            if picker.sourceType == .Camera {
+                let imageMetadata = info[UIImagePickerControllerMediaMetadata] as! NSDictionary
+                print("")
+            }
+            
+            
+            
             if let image = imageToSave {
                 cameraIcon.image = image
-//                writeIcon.image = image
-//                checkIcon.image = image
             }
         }
         
         picker.dismissViewControllerAnimated(true, completion: nil)
+        
+        /*
+         // Get the image metadata
+         UIImagePickerControllerSourceType pickerType = picker.sourceType;
+         if(pickerType == UIImagePickerControllerSourceTypeCamera)
+         {
+         NSDictionary *imageMetadata = [info objectForKey:
+         UIImagePickerControllerMediaMetadata];
+         // Get the assets library
+         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+         ALAssetsLibraryWriteImageCompletionBlock imageWriteCompletionBlock =
+         ^(NSURL *newURL, NSError *error) {
+         if (error) {
+         NSLog( @"Error writing image with metadata to Photo Library: %@", error );
+         } else {
+         NSLog( @"Wrote image with metadata to Photo Library");
+         }
+         };
+         
+         // Save the new image (original or edited) to the Camera Roll
+         [library writeImageToSavedPhotosAlbum:[imageToSave CGImage]
+         metadata:imageMetadata
+         completionBlock:imageWriteCompletionBlock];
+         }
+        */
         
         
         /*

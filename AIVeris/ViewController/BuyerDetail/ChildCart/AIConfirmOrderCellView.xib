@@ -8,18 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIConfirmOrderCellView" customModule="Veris" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Ql-qO-Orc">
-                    <rect key="frame" x="20" y="6" width="30" height="30"/>
+                    <rect key="frame" x="13" y="22" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="TW2-S3-R2S"/>
-                        <constraint firstAttribute="height" constant="30" id="rpz-t3-rqz"/>
+                        <constraint firstAttribute="width" constant="20" id="TW2-S3-R2S"/>
+                        <constraint firstAttribute="height" constant="20" id="rpz-t3-rqz"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgG-9o-32M">
-                    <rect key="frame" x="65" y="11" width="408" height="21"/>
+                    <rect key="frame" x="50" y="22" width="454" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="dtN-TW-YyN"/>
                     </constraints>
@@ -27,10 +27,10 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba6-Ad-X9i">
-                    <rect key="frame" x="481" y="11" width="111" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdds" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ba6-Ad-X9i">
+                    <rect key="frame" x="512" y="22" width="80" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="111" id="8h7-z7-MRO"/>
+                        <constraint firstAttribute="width" constant="80" id="8h7-z7-MRO"/>
                         <constraint firstAttribute="height" constant="21" id="tNH-Wq-9AJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -41,8 +41,8 @@
             <color key="backgroundColor" white="1" alpha="0.19957890070921985" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Ba6-Ad-X9i" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="08R-bV-YoW"/>
-                <constraint firstItem="cgG-9o-32M" firstAttribute="leading" secondItem="7Ql-qO-Orc" secondAttribute="trailing" constant="15" id="QM2-Dd-Cy8"/>
-                <constraint firstItem="7Ql-qO-Orc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="S9T-Pa-AFj"/>
+                <constraint firstItem="cgG-9o-32M" firstAttribute="leading" secondItem="7Ql-qO-Orc" secondAttribute="trailing" constant="17" id="QM2-Dd-Cy8"/>
+                <constraint firstItem="7Ql-qO-Orc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="S9T-Pa-AFj"/>
                 <constraint firstItem="7Ql-qO-Orc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ags-yX-lzN"/>
                 <constraint firstItem="cgG-9o-32M" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pjg-XC-HTw"/>
                 <constraint firstAttribute="trailing" secondItem="Ba6-Ad-X9i" secondAttribute="trailing" constant="8" id="uhv-Iq-5bN"/>
@@ -54,7 +54,7 @@
                 <outlet property="price" destination="Ba6-Ad-X9i" id="SKm-VY-0rW"/>
                 <outlet property="title" destination="cgG-9o-32M" id="SIS-CW-Awu"/>
             </connections>
-            <point key="canvasLocation" x="127" y="403"/>
+            <point key="canvasLocation" x="-402" y="499"/>
         </view>
     </objects>
 </document>
