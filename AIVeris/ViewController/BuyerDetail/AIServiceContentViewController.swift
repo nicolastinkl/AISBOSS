@@ -304,6 +304,9 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func keyboardWillShow(notification : NSNotification) {
+        if self.parentViewController == nil {
+            return
+        }
         
         let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
         parentVC.pageScrollView.scrollEnabled = false
@@ -358,6 +361,10 @@ internal class AIServiceContentViewController: UIViewController {
     }    
     
     func keyboardDidHide(notification : NSNotification) {
+        
+        if self.parentViewController == nil {
+            return
+        }
         
         let parentVC : AIPageBueryViewController = self.parentViewController as! AIPageBueryViewController
         parentVC.pageScrollView.scrollEnabled = true
