@@ -37,9 +37,23 @@ class CustomWindow: UIWindow {
 
 struct AIAnchorKeys {
     static let Type = "Type"
-    
-    
+    static let ClassName = "ClassName"
+    static let UIComponent = "UIComponent"
+    static let Selector = "Selector"
+    static let RowIndex = "RowIndex"
+    static let PageIndex = "PageIndex"
 }
+
+
+
+struct AIAnchorUIComponent {
+    static let DTableCell = "Table"
+    static let DTableCellConfigure = "TableCellConfigure"
+    static let DTableCellSwipe = "DTableCellSwipe"
+}
+
+
+
 
 protocol Reflectable {
     func propertys()->[String]
@@ -62,7 +76,7 @@ extension Reflectable
 }
 
 
-class AIAnchor: JSONModel {
+class AIAnchor: NSObject {
     
     var type : String?                // 锚点类型
     var step : String?                // 锚点步骤
@@ -87,6 +101,14 @@ class AIAnchor: JSONModel {
         anchor.type = AIAnchorType.Lock
         anchor.step = AIAnchorStep.UnLock
         AudioAssistantManager.sharedInstance.sendAnchor(anchor)
+        return anchor
+    }
+    
+    class func touchAnchor(anchor : [String : AnyObject]) -> AIAnchor {
+        let anchor = AIAnchor()
+        anchor.type = AIAnchorType.Touch
+        AudioAssistantManager.sharedInstance.sendAnchor(anchor)
+
         return anchor
     }
     
