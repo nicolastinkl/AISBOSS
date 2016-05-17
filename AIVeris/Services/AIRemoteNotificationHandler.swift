@@ -16,7 +16,7 @@ struct AIRemoteNotificationKeys {
     static let MessageKey = "alert"                         // APNS规定字段，不能修改
     static let ServiceOrderID = "ServiceOrderID"            // 待抢的服务单号
     static let Channels = "channels"                        // 频道字段，不能修改
-    
+    static let NotificationType = "NotificationType"                                // 通知类型
 }
 
 
@@ -29,6 +29,8 @@ struct AIRemoteNotificationKeys {
 struct AIRemoteNotificationParameters {
     static let ProviderIdentifier = "ProviderIdentifier"      // 高级定向推送给当前的Provider,用于语音协助
     static let ProviderChannel = "ProviderChannel"            // 抢单用的频道，输入gai
+    static let GrabOrderType = "GrabOrderType"
+    static let AudioAssistantType = "AudioAssistantType"
 }
 
 
@@ -128,11 +130,11 @@ struct AIRemoteNotificationParameters {
     func didReceiveRemoteNotificationUserInfo(userinfo : [NSObject : AnyObject]) {
         
         //如果是抢单通知
-        let key = AIRemoteNotificationKeys.MessageKey
+        let key = AIRemoteNotificationKeys.NotificationType
         let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
         
         if let value : String = msgDic[key] as? String{
-            if value == "Grab" {
+            if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
         }

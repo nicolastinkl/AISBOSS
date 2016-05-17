@@ -41,7 +41,14 @@ class AIServiceRouteView: UIView {
         
         cityArray = ["Beijing","Tianjin","Qingdao","Anhui","Wuhan","Qingdao"]
         
-        
+        self.userInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AIServiceRouteView.selectCity))
+        self.addGestureRecognizer(tap)
+    }
+    
+    
+    func selectCity(){
+        AIApplication().SendAction("selectCountryAction", ownerName: self)
     }
     
     func refereshCitys(){
