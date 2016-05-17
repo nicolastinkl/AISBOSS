@@ -35,6 +35,8 @@ class  AIServiceRouteViewController: UIViewController {
     
     private var preCacheView: UIView?
     
+    private var hasLoad: Bool = false
+    
     private var buttonSelected: UIButton = {
         let button = UIButton(type: .Custom)
         button.titleLabel?.textColor = UIColor.whiteColor()
@@ -49,30 +51,59 @@ class  AIServiceRouteViewController: UIViewController {
         super.viewDidLoad()
         
         scrollView.contentSize.height = 20
-      
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        initloadView()
     }
     
     func initloadView(){
         // Add Destination View and Departure View.
         
-        if let routeView = AIServiceRouteView.initFromNib() {
-            addNewSubView(routeView)
-            (routeView as! AIServiceRouteView).refereshLine()
-        }
-        
-        if let sview = AIDepartReahCityView.initFromNib() {
-            addNewSubView(sview)
-        }
-        
-        if let sview = AIStartEndTimeView.initFromNib() {
-            addNewSubView(sview)
-        }
-        
-        if let sview = AIEventCapacityView.initFromNib() {
-            addNewSubView(sview)
-        }
+        if hasLoad == false {
+            hasLoad = true
+            
+            if let routeView = AIServiceRouteView.initFromNib() {                
+                addNewSubView(routeView)
+                Async.main(after: 0.1, block: {
+                    (routeView as! AIServiceRouteView).refereshCitys()
+                    routeView.addBottomWholeSSBorderLine("#F4F4F4")
+                })
+            }
+            
+            if let sview = AIDepartReahCityView.initFromNib() as? AIDepartReahCityView {
+                addNewSubView(sview)
+                
+                Async.main(after: 0.1, block: {
+                    sview.startCity.addBottomWholeSSBorderLine("#F4F4F4")
+                    sview.endCity.addBottomWholeSSBorderLine("#F4F4F4")
 
+                })
+                
+            }
+            
+            if let sview = AIStartEndTimeView.initFromNib() as? AIStartEndTimeView{
+                addNewSubView(sview)
+                
+                Async.main(after: 0.1, block: {
+                    sview.startCity.addBottomWholeSSBorderLine("#F4F4F4")
+                    sview.endCity.addBottomWholeSSBorderLine("#F4F4F4")
+                    
+                })
+                
+            }
+            
+            if let sview = AIEventCapacityView.initFromNib() {
+                addNewSubView(sview)
+                sview.addBottomWholeSSBorderLine("#F4F4F4")
+            }
+        }
+        
     }
+    
     
     func selectCountryAction(){
         // Optional: To pick from custom countries list
@@ -90,12 +121,6 @@ class  AIServiceRouteViewController: UIViewController {
         vc.didSelectCountryClosure =  { (name, code) in
             print(code)
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        initloadView()
     }
     
     func addNewSubView(cview:UIView){

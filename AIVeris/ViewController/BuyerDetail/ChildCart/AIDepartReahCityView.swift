@@ -27,6 +27,9 @@ import Foundation
 /// 起点终点-选择控件，选择前后字体颜色有变化
 class AIDepartReahCityView: UIView {
     
+    @IBOutlet weak var startCity: UIButton!
+    @IBOutlet weak var endCity: UIButton!
+    
     @IBAction func locationSelectAction(sender: AnyObject) {
         AIApplication().SendAction("selectCountryAction", ownerName: self)
     }

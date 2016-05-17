@@ -71,17 +71,18 @@ class AIConfirmOrderViewController: UIViewController {
         
         self.confirmButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(52 / PurchasedViewDimention.CONVERT_FACTOR)
         self.backButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(60 / PurchasedViewDimention.CONVERT_FACTOR)
-        self.priceLabel.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
+        //self.priceLabel.font = AITools.myriadLightSemiCondensedWithSize(39 / PurchasedViewDimention.CONVERT_FACTOR)
         
         let name = dataSource?.proposal_name ?? ""
         self.backButton.setTitle(name, forState: UIControlState.Normal)
+        
         if NSString(string: name).containsString("AIBuyerDetailViewController.pregnancy".localized) {
+            
             // 处理字体
             let price = dataSource?.proposal_price ?? ""
             let richText = NSMutableAttributedString(string:(price))
             richText.addAttribute(NSFontAttributeName, value: AITools.myriadLightSemiCondensedWithSize(45 / PurchasedViewDimention.CONVERT_FACTOR) , range: NSMakeRange(price.length - 6, 6)) // 设置字体大小
             self.priceLabel.attributedText = richText
-            
         } else {
             self.priceLabel.text = dataSource?.proposal_price
         }
@@ -90,13 +91,12 @@ class AIConfirmOrderViewController: UIViewController {
         
         let footView = UIView()
         let providerView =  AIProviderView.currentView()
-        providerView.content.text = dataSource.proposal_desc ?? ""
+        providerView.content.text = ""
         footView.addSubview(providerView)
         providerView.setTop(17.3)
         footView.setHeight(17.3 + providerView.height)
         providerView.setWidth(self.view.width)
         tableView.tableFooterView = footView
-        
         
         let bgFootView = UIView()
         bgFootView.backgroundColor = UIColor(hexString: "#0F0A2E", alpha: 1)
@@ -112,6 +112,10 @@ class AIConfirmOrderViewController: UIViewController {
         line.setHeight(0.4)
         line.setTop(17)
         
+//        let tagView = UIView()
+//        footView.addSubview(tagView)
+//        tagView.setWidth(self.view.width)
+//        tagView.setTop(90)
         
     }
     
@@ -254,8 +258,6 @@ extension AIConfirmOrderViewController: UITableViewDelegate,UITableViewDataSourc
                 }
                 
             }
-            
-            
             
             tempCell?.contentView.viewWithTag(1)?.hidden = true
                         
