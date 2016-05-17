@@ -48,7 +48,7 @@
                 <outlet property="eControlView" destination="hdd-tn-vGf" id="0Is-ek-0kU"/>
                 <outlet property="eTitle" destination="ZWL-7U-wvB" id="A1g-gg-Yxr"/>
             </connections>
-            <point key="canvasLocation" x="365" y="123"/>
+            <point key="canvasLocation" x="121" y="193"/>
         </view>
     </objects>
 </document>

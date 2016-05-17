@@ -70,7 +70,7 @@ class  AIServiceRouteViewController: UIViewController {
                 addNewSubView(routeView)
                 Async.main(after: 0.1, block: {
                     (routeView as! AIServiceRouteView).refereshCitys()
-                    routeView.addBottomWholeSSBorderLine("#F4F4F4")
+                    routeView.addBottomWholeSSBorderLine("#6441D9")
                 })
             }
             
@@ -78,8 +78,8 @@ class  AIServiceRouteViewController: UIViewController {
                 addNewSubView(sview)
                 
                 Async.main(after: 0.1, block: {
-                    sview.startCity.addBottomWholeSSBorderLine("#F4F4F4")
-                    sview.endCity.addBottomWholeSSBorderLine("#F4F4F4")
+                    sview.startCity.addBottomWholeSSBorderLine("#6441D9")
+                    sview.endCity.addBottomWholeSSBorderLine("#6441D9")
 
                 })
                 
@@ -89,8 +89,8 @@ class  AIServiceRouteViewController: UIViewController {
                 addNewSubView(sview)
                 
                 Async.main(after: 0.1, block: {
-                    sview.startCity.addBottomWholeSSBorderLine("#F4F4F4")
-                    sview.endCity.addBottomWholeSSBorderLine("#F4F4F4")
+                    sview.startCity.addBottomWholeSSBorderLine("#6441D9")
+                    sview.endCity.addBottomWholeSSBorderLine("#6441D9")
                     
                 })
                 
@@ -98,11 +98,12 @@ class  AIServiceRouteViewController: UIViewController {
             
             if let sview = AIEventCapacityView.initFromNib() {
                 addNewSubView(sview)
-                sview.addBottomWholeSSBorderLine("#F4F4F4")
+                sview.addBottomWholeSSBorderLine("#6441D9")
             }
         }
         
     }
+    
     
     
     func selectCountryAction(){

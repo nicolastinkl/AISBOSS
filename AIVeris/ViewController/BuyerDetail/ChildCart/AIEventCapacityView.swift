@@ -30,7 +30,7 @@ class AIEventCapacityView: UIView {
     
     @IBOutlet weak var eTitle: UILabel!
     
-    @IBOutlet weak var eControlView: UIView!
+    @IBOutlet weak var eControlView: UIView!    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,8 +45,6 @@ class AIEventCapacityView: UIView {
                 layout.height == 30
                 layout.width == 160
             }
-            
-            
             
         }
         
