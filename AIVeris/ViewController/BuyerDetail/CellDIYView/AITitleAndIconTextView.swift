@@ -66,7 +66,7 @@ class AITitleAndIconTextView: ServiceParamlView {
         var preIcon = firstIcon
         var preLabel = firstText
         
-        for var index = 0; index < paramList.count; ++index {
+        for index in 0 ..< paramList.count {
             let model = paramList[index] as! ServiceCellStadandParamModel
             
             if index == 0 {

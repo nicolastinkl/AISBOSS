@@ -80,7 +80,7 @@ struct AIRemoteNotificationParameters {
         
         // Create our Installation query
         let pushQuery = AVInstallation.query()
-        pushQuery.whereKey("channels", equalTo: AIRemoteNotificationParameters.ProviderChannel)
+        pushQuery.whereKey(AIRemoteNotificationKeys.Channels, equalTo: AIRemoteNotificationParameters.ProviderChannel)
         
         // Send push notification to query
         let push = AVPush()
@@ -132,23 +132,22 @@ struct AIRemoteNotificationParameters {
         
         //如果是抢单通知
         let key = AIRemoteNotificationKeys.NotificationType
-        let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
-        
-        if let value : String = msgDic[key] as? String{
+        print("\(userinfo)")
+        if let value : String = userinfo[key] as? String{
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
-        }
-        else {
-           // 语音协助的 接受
-            let topVC = topViewController()
-            let buyerDetailVC = AIBuyerViewController.createBuyerDetailViewController()
-            let vc = AAProviderDialogViewController.initFromNib()
-            let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! String
-            vc.roomNumber = roomNumber
-            topVC.presentViewController(buyerDetailVC, animated: false, completion: {
-                buyerDetailVC.presentViewController(vc, animated: true, completion: nil)
-            })
+            else{
+                // 语音协助的 接受
+                let topVC = topViewController()
+                let buyerDetailVC = AIBuyerViewController.createBuyerDetailViewController()
+                let vc = AAProviderDialogViewController.initFromNib()
+                let roomNumber = userinfo[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
+                vc.roomNumber = String(format: "%d", roomNumber)
+                topVC.presentViewController(buyerDetailVC, animated: false, completion: {
+                    buyerDetailVC.presentViewController(vc, animated: true, completion: nil)
+                })
+            }
         }
     }
     
