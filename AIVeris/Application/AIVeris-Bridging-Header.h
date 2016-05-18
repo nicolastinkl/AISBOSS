@@ -136,7 +136,7 @@
 #import "PMCustomKeyboard.h"
 
 // YYImage
-#import "YYImage/YYImage.h"
+#import <YYImage/YYImage.h>
 #import "YYImage/YYAnimatedImageView.h"
 
 //DDHTimerControl
@@ -145,4 +145,6 @@
 // 远程协助
 #import <OpenTok/OpenTok.h>
 #import "TBScreenCapture.h"
-
+#define IG_VIEWQUERY_USE_SHORTHAND
+#import "IGViewQuery.h"
+#import "IGViewWrapper.h"

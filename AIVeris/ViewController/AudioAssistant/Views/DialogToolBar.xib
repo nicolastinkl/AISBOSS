@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogToolBar" customModule="Veris" customModuleProvider="target">
+            <connections>
+                <outletCollection property="toolBarViews" destination="iFw-bY-gzv" collectionClass="NSMutableArray" id="BRb-cX-06f"/>
+                <outletCollection property="toolBarViews" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="MyV-P5-UZy"/>
+                <outletCollection property="toolBarViews" destination="qLx-4c-bPY" collectionClass="NSMutableArray" id="u4u-D0-b3g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="g17-kJ-DUb">
+            <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLx-4c-bPY">
+                    <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bB-6O-kbn">
+                            <rect key="frame" x="0.0" y="0.0" width="273" height="74"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7e-6F-YfS">
+                                    <rect key="frame" x="100" y="0.0" width="74" height="74"/>
+                                    <state key="normal" image="aa_hang"/>
+                                    <connections>
+                                        <action selector="hangUpButtonPressed:" destination="-1" eventType="touchUpInside" id="w3m-73-pvp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="a7e-6F-YfS" firstAttribute="top" secondItem="6bB-6O-kbn" secondAttribute="top" id="DPA-Ex-hvy"/>
+                                <constraint firstItem="a7e-6F-YfS" firstAttribute="centerX" secondItem="6bB-6O-kbn" secondAttribute="centerX" id="xeO-HM-rCf"/>
+                                <constraint firstAttribute="bottom" secondItem="a7e-6F-YfS" secondAttribute="bottom" id="zFp-aS-kph"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ao9-BK-IVe">
+                            <rect key="frame" x="273" y="0.0" width="272" height="74"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vn-Iq-pcz">
+                                    <rect key="frame" x="99" y="0.0" width="74" height="74"/>
+                                    <state key="normal" image="aa_pickup"/>
+                                    <connections>
+                                        <action selector="pickUpButtonPressed:" destination="-1" eventType="touchUpInside" id="3dX-KJ-5FW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="3vn-Iq-pcz" firstAttribute="centerX" secondItem="ao9-BK-IVe" secondAttribute="centerX" id="jgV-DO-loR"/>
+                                <constraint firstItem="3vn-Iq-pcz" firstAttribute="top" secondItem="ao9-BK-IVe" secondAttribute="top" id="o3C-px-mIX"/>
+                                <constraint firstAttribute="bottom" secondItem="3vn-Iq-pcz" secondAttribute="bottom" id="p7h-nR-U8m"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ao9-BK-IVe" firstAttribute="width" secondItem="6bB-6O-kbn" secondAttribute="width" id="DmT-4w-ofy"/>
+                        <constraint firstAttribute="trailing" secondItem="ao9-BK-IVe" secondAttribute="trailing" id="GSd-zJ-mch"/>
+                        <constraint firstItem="ao9-BK-IVe" firstAttribute="centerY" secondItem="6bB-6O-kbn" secondAttribute="centerY" id="LcV-6n-pVt"/>
+                        <constraint firstAttribute="bottom" secondItem="ao9-BK-IVe" secondAttribute="bottom" id="Y1Q-0o-Czf"/>
+                        <constraint firstItem="ao9-BK-IVe" firstAttribute="leading" secondItem="6bB-6O-kbn" secondAttribute="trailing" id="YR1-bi-VVP"/>
+                        <constraint firstItem="ao9-BK-IVe" firstAttribute="top" secondItem="qLx-4c-bPY" secondAttribute="top" id="cUH-Eu-5Fd"/>
+                        <constraint firstItem="6bB-6O-kbn" firstAttribute="leading" secondItem="qLx-4c-bPY" secondAttribute="leading" id="nG6-UI-bsF"/>
+                        <constraint firstItem="6bB-6O-kbn" firstAttribute="top" secondItem="qLx-4c-bPY" secondAttribute="top" id="oVL-F2-E7F"/>
+                        <constraint firstAttribute="bottom" secondItem="6bB-6O-kbn" secondAttribute="bottom" id="vuC-XZ-fVJ"/>
+                        <constraint firstItem="ao9-BK-IVe" firstAttribute="leading" secondItem="6bB-6O-kbn" secondAttribute="trailing" id="yGH-i6-Lrv"/>
+                    </constraints>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qj5-wX-ZBz">
+                            <rect key="frame" x="235" y="0.0" width="74" height="74"/>
+                            <state key="normal" image="aa_hang"/>
+                            <connections>
+                                <action selector="hangUpButtonPressed:" destination="-1" eventType="touchUpInside" id="dVj-VU-7bZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjp-Ou-9Eq">
+                            <rect key="frame" x="40" y="0.0" width="74" height="74"/>
+                            <state key="normal" image="aa_silence"/>
+                            <connections>
+                                <action selector="silenceButtonPressed:" destination="-1" eventType="touchUpInside" id="xR2-g6-dcB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W77-fU-cSh">
+                            <rect key="frame" x="431" y="0.0" width="74" height="74"/>
+                            <state key="normal" image="aa_voice"/>
+                            <connections>
+                                <action selector="voiceButtonPressed:" destination="-1" eventType="touchUpInside" id="Lvl-It-Qo4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="W77-fU-cSh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0BK-RT-tOQ"/>
+                        <constraint firstAttribute="bottom" secondItem="W77-fU-cSh" secondAttribute="bottom" id="8LZ-HJ-t2B"/>
+                        <constraint firstItem="mjp-Ou-9Eq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XjJ-rW-SPi"/>
+                        <constraint firstItem="Qj5-wX-ZBz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y3T-bG-m3R"/>
+                        <constraint firstAttribute="trailing" secondItem="W77-fU-cSh" secondAttribute="trailing" constant="40" id="dDL-Gv-pap"/>
+                        <constraint firstItem="mjp-Ou-9Eq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="lRJ-7g-KF8"/>
+                        <constraint firstAttribute="bottom" secondItem="Qj5-wX-ZBz" secondAttribute="bottom" id="s21-T6-iRF"/>
+                        <constraint firstItem="Qj5-wX-ZBz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t2a-mI-ya6"/>
+                        <constraint firstAttribute="bottom" secondItem="mjp-Ou-9Eq" secondAttribute="bottom" id="zwS-uF-OUI"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-bY-gzv">
+                    <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDD-xn-w7x">
+                            <rect key="frame" x="235" y="0.0" width="74" height="74"/>
+                            <state key="normal" image="aa_hang"/>
+                            <connections>
+                                <action selector="hangUpButtonPressed:" destination="-1" eventType="touchUpInside" id="UQg-fA-RU7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="sDD-xn-w7x" secondAttribute="bottom" id="AzU-cC-b6G"/>
+                        <constraint firstItem="sDD-xn-w7x" firstAttribute="top" secondItem="iFw-bY-gzv" secondAttribute="top" id="cGg-8T-00D"/>
+                        <constraint firstItem="sDD-xn-w7x" firstAttribute="centerX" secondItem="iFw-bY-gzv" secondAttribute="centerX" id="glH-mF-sjn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="6Qh-hq-N4P"/>
+                <constraint firstItem="iFw-bY-gzv" firstAttribute="leading" secondItem="g17-kJ-DUb" secondAttribute="leading" id="7wS-O2-3q4"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="g17-kJ-DUb" secondAttribute="leading" id="FXW-gT-tVL"/>
+                <constraint firstItem="qLx-4c-bPY" firstAttribute="leading" secondItem="g17-kJ-DUb" secondAttribute="leading" id="JkV-Cq-Xuu"/>
+                <constraint firstAttribute="trailing" secondItem="iFw-bY-gzv" secondAttribute="trailing" id="Kd3-Pp-eZ9"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="g17-kJ-DUb" secondAttribute="top" id="S4L-Kc-bh7"/>
+                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="UF5-PE-bkM"/>
+                <constraint firstItem="qLx-4c-bPY" firstAttribute="top" secondItem="g17-kJ-DUb" secondAttribute="top" id="XBu-qp-HB0"/>
+                <constraint firstAttribute="bottom" secondItem="qLx-4c-bPY" secondAttribute="bottom" id="nyf-vK-zwP"/>
+                <constraint firstAttribute="trailing" secondItem="qLx-4c-bPY" secondAttribute="trailing" id="qVu-cd-PJL"/>
+                <constraint firstAttribute="bottom" secondItem="iFw-bY-gzv" secondAttribute="bottom" id="tfc-h3-ELt"/>
+                <constraint firstItem="iFw-bY-gzv" firstAttribute="top" secondItem="g17-kJ-DUb" secondAttribute="top" id="v6R-pJ-TdM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="354.5" y="515"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="aa_hang" width="74" height="74"/>
+        <image name="aa_pickup" width="74" height="74"/>
+        <image name="aa_silence" width="74" height="74"/>
+        <image name="aa_voice" width="74" height="74"/>
+    </resources>
+</document>

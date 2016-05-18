@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Override point for customization after application launch.
-        self.window = CustomWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = AACustomWindow(frame: UIScreen.mainScreen().bounds)
         configDefaultUser()
         initNetEngine()
         
