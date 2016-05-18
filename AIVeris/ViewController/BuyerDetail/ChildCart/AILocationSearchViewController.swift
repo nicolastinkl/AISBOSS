@@ -78,7 +78,10 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        try? searchFeild.becomeFirstResponder()  
+        if searchFeild.canBecomeFirstResponder() {
+            searchFeild.becomeFirstResponder()
+        }
+        
         
     }
     
@@ -95,7 +98,7 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     }
     
     @IBAction func doneAction(sender: AnyObject) {
-        
+        searchFeild.resignFirstResponder()
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
@@ -174,8 +177,10 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             textDescription.font = AITools.myriadSemiCondensedWithSize(15)
             textDescription.textColor = UIColor(hexString: "#9A99ED")
             if let model = dataSource?[indexPath.row] {
-                textTitle.text = model.name?.toPinyin()
-                textDescription.text = model.address?.toPinyin()
+                
+//                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
+                textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
             }            
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
