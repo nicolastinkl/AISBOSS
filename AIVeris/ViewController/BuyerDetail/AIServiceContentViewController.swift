@@ -731,7 +731,7 @@ internal class AIServiceContentViewController: UIViewController {
                 if wish.label_list != nil || (wish.hope_list != nil) {
                     if    (wish.hope_list.count > 0 || wish.label_list.count > 0) {
                         let custView =  AICustomView.currentView()
-                        let heisss = 191 + wish.label_list.count * 15
+                        let heisss = 200 + wish.label_list.count * 16
                         custView.setHeight(CGFloat(heisss))
                         addNewSubView(custView, preView: viw)
                         viw = custView

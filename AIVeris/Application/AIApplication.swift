@@ -89,6 +89,7 @@ struct AIApplication{
             static let AIServiceRouteViewController     = "AIServiceRouteViewController"
             static let TaskDetailViewController = "TaskDetailViewController"
             static let TaskResultCommitViewController = "TaskResultCommitViewController"
+            static let AILocationSearchViewController = "AILocationSearchViewController"
         }
         
         /*!
@@ -206,6 +207,8 @@ struct AIApplication{
         static let MainSystemBlueColor   = "#625885"//"#00CEC3"
         static let MainSystemBlackColor  = "#848484"
         static let MainSystemGreenColor  = "#00cec0"
+        
+        static let MainSystemLineColor  = "#F1F1F1"
     }
     
     struct AIViewTags {

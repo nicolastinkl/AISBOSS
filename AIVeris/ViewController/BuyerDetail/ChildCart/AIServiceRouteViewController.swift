@@ -113,7 +113,7 @@ class  AIServiceRouteViewController: UIViewController {
             print(code)
         }
         
-        vc.customCountriesCode = ["EG", "US", "AF", "AQ", "AX"]
+        vc.customCountriesCode = ["VEG", "WUS", "CAF", "AQ", "BAX","EG", "MUS", "AF", "AQ", "AX","EG", "US", "AF", "AF", "ADX","ECG", "UVS", "AGF", "AHQ", "AJX","EJG", "ULS", "APF", "AOQ", "AUX","EUG", "UYS", "ATF", "ARQ", "AEX"]
         
         let navigation = UINavigationController(rootViewController: vc)
         self.presentViewController(navigation, animated: true, completion: nil)

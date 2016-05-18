@@ -55,6 +55,9 @@ class AILocationSelectHeadView: UIView {
     }
     
     
+    @IBAction func openSearchView(){
+        AIApplication().SendAction("showSearchViewController", ownerName: self)
+    }
     
     
 }

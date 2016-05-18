@@ -380,6 +380,7 @@
 		934D47571CEC087F007809F7 /* AIShoppingListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934D47561CEC087F007809F7 /* AIShoppingListViewCell.xib */; };
 		934D47591CEC0889007809F7 /* AIShoppingListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D47581CEC0889007809F7 /* AIShoppingListViewCell.swift */; };
 		934D475B1CEC0D77007809F7 /* AIModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D475A1CEC0D77007809F7 /* AIModelTest.swift */; };
+		934D475D1CEC5788007809F7 /* AILocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934D475C1CEC5788007809F7 /* AILocationSearchViewController.swift */; };
 		934EEB191C916CAD00C4EE67 /* AIRACContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */; };
 		9350000B1BFF119500B8386B /* AICustomAudioNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9350000A1BFF119500B8386B /* AICustomAudioNotesView.swift */; };
 		9350000D1BFF11A100B8386B /* AICustomAudioNotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */; };
@@ -392,6 +393,9 @@
 		935589761CE461EF00AF1E75 /* AILocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */; };
 		935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */; };
 		9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */; };
+		9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
+		9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
+		9356C9921CEC65100069D047 /* HanziPinyin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93642B3E1CD1A96F000338AB /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3D1CD1A96F000338AB /* loading.gif */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
 		936A20261C1EE6DE00295BC8 /* AIAudioInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */; };
@@ -662,6 +666,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9324A4731CCF58EF00A0A397 /* AVOSCloudCrashReporting.framework in CopyFiles */,
+				9356C9921CEC65100069D047 /* HanziPinyin.framework in CopyFiles */,
 				9324A4741CCF58EF00A0A397 /* AVOSCloud.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1195,6 +1200,7 @@
 		934D47561CEC087F007809F7 /* AIShoppingListViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIShoppingListViewCell.xib; sourceTree = "<group>"; };
 		934D47581CEC0889007809F7 /* AIShoppingListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIShoppingListViewCell.swift; sourceTree = "<group>"; };
 		934D475A1CEC0D77007809F7 /* AIModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModelTest.swift; sourceTree = "<group>"; };
+		934D475C1CEC5788007809F7 /* AILocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSearchViewController.swift; sourceTree = "<group>"; };
 		934EEB181C916CAD00C4EE67 /* AIRACContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACContentCell.swift; sourceTree = "<group>"; };
 		9350000A1BFF119500B8386B /* AICustomAudioNotesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomAudioNotesView.swift; sourceTree = "<group>"; };
 		9350000C1BFF11A100B8386B /* AICustomAudioNotesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AICustomAudioNotesView.xib; sourceTree = "<group>"; };
@@ -1210,6 +1216,7 @@
 		935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectViewController.swift; sourceTree = "<group>"; };
 		935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectHeadView.swift; sourceTree = "<group>"; };
 		935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AILocationSelectHeadView.xib; sourceTree = "<group>"; };
+		9356C98F1CEC65060069D047 /* HanziPinyin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HanziPinyin.framework; sourceTree = "<group>"; };
 		93642B3D1CD1A96F000338AB /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioInputView.swift; sourceTree = "<group>"; };
 		936A20251C1EE6DE00295BC8 /* AIAudioInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioInputView.xib; sourceTree = "<group>"; };
@@ -1594,6 +1601,8 @@
 				93C33F2F1B9C25EC007BF506 /* UIKit.framework in Frameworks */,
 				7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */,
 				844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */,
+				9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */,
+				9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2383,6 +2392,7 @@
 				93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */,
 				935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */,
 				935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */,
+				934D475C1CEC5788007809F7 /* AILocationSearchViewController.swift */,
 				935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */,
 				935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */,
 				938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */,
@@ -2559,6 +2569,14 @@
 				935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */,
 			);
 			path = KeyBoardView;
+			sourceTree = "<group>";
+		};
+		9356C98E1CEC65060069D047 /* Pinyin */ = {
+			isa = PBXGroup;
+			children = (
+				9356C98F1CEC65060069D047 /* HanziPinyin.framework */,
+			);
+			path = Pinyin;
 			sourceTree = "<group>";
 		};
 		9364FA4D1BA12120005EFB0F /* Views */ = {
@@ -2955,6 +2973,7 @@
 		93B25A641B9D7A6F00CD1FEB /* 3rdLib */ = {
 			isa = PBXGroup;
 			children = (
+				9356C98E1CEC65060069D047 /* Pinyin */,
 				120059471CE330B100029A66 /* DDHTimerControl */,
 				93B25A651B9D7A7B00CD1FEB /* AFNetworking */,
 				93E890C81BB92A5D00A7BBEF /* Frameworks */,
@@ -4128,6 +4147,7 @@
 				93B25AA61B9D7A7B00CD1FEB /* JSONValueTransformer.m in Sources */,
 				849300891C92B27C00547322 /* YLProgressBar.m in Sources */,
 				81C092891BAFAC0D003FFF35 /* SDWebImagePrefetcher.m in Sources */,
+				934D475D1CEC5788007809F7 /* AILocationSearchViewController.swift in Sources */,
 				849B4B5C1C0EDFE300BEC179 /* FLEXKeyboardShortcutManager.m in Sources */,
 				120D68041C96D4D200E74D12 /* AICircleProgressView.swift in Sources */,
 				93FA1DF71B9C306E009965C8 /* AICatalogServicesModel.swift in Sources */,
@@ -4306,6 +4326,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -4349,6 +4370,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
