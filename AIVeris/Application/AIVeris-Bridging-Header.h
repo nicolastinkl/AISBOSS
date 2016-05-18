@@ -145,6 +145,12 @@
 // 远程协助
 #import <OpenTok/OpenTok.h>
 #import "TBScreenCapture.h"
+
+// 抢单模型
+#import "AIExecuteServiceModel.h"
+
+
 #define IG_VIEWQUERY_USE_SHORTHAND
 #import "IGViewQuery.h"
 #import "IGViewWrapper.h"
+
