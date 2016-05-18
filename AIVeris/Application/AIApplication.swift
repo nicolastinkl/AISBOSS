@@ -354,6 +354,9 @@ struct AIApplication{
         //MARK: 查询所有的任务节点
         case queryTaskList
         
+        //MARK: 提交抢单
+        case grabOrder
+        
         // 一键恢复订单
         var description: String {
             
@@ -399,7 +402,8 @@ struct AIApplication{
             case .distributeRequirement : return AIApplication.KURL_ReleaseURL + "/distributeRequirement"
             case .queryTaskList: return AIApplication.KURL_ReleaseURL + "/queryTaskNodeList"
 
-
+            //抢单接口
+            case .grabOrder: return AIApplication.KURL_ReleaseURL + "/grabOrder"
             }
             
         }

@@ -449,6 +449,17 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         return viewController
     }
     
+    class func  createBuyerDetailViewController() -> AIBuyerDetailViewController {
+        
+        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+        
+        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
+        
+        return viewController
+    }
+    
     // MARK: - 构造顶部Bar
     
     func makeTopBar () {

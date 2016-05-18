@@ -236,29 +236,37 @@ class AIBuyerDetailViewController : UIViewController {
         addTapActionForView(buyerBottom)
     }
     
+    
+    @IBAction func infoButtonPressed(sender: AnyObject) {
+
+    }
+    
+    
     /**
      Video Button Click         
      */
     @IBAction func startVideoAction(sender: AnyObject) {
-
         
-        var jsonString = "{\"type\":\"Lock\", \"step\":\"after\", \"className\":\"AIBuerDetaiViewController\", \"selector\":\"getTask\"}"
-
+    let vc = AACustomerDialogViewController.initFromNib()
+    presentViewController(vc, animated: true, completion: nil)
         
-        let anchor = AIAnchor.anchorFromJsonString(jsonString)
-        
-        jsonString = anchor.toJsonString()
-        
-        
-        
-        
-        
-        
-        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification([AIRemoteNotificationKeys.MessageKey : "开始抢单啦！"])
+//        var jsonString = "{\"type\":\"Lock\", \"step\":\"after\", \"className\":\"AIBuerDetaiViewController\", \"selector\":\"getTask\"}"
+//
+//        
+//        let anchor = AIAnchor.anchorFromJsonString(jsonString)
+//        
+//        jsonString = anchor.toJsonString()
+//        
+//        
+//        
+//        
+//        
+//        
+//        AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification([AIRemoteNotificationKeys.MessageKey : "开始抢单啦！"])
   
     }
     // MARK: 提交订单
-    func addTapActionForView(view:UIView) {
+    func addTapActionForView(view: UIView) {
         let width :CGFloat = 100
         let frame : CGRect = CGRectMake((CGRectGetWidth(view.frame)-width) / 2, 0, width, CGRectGetHeight(view.frame))
         
@@ -385,27 +393,6 @@ class AIBuyerDetailViewController : UIViewController {
         dismissViewControllerAnimated(false, completion: nil)
     }
     
-    @IBAction func remoteAssistantButtonPressed(sender: AnyObject) {
-    
-        let actionSheet = UIAlertController(title: "Share Screen", message: nil, preferredStyle: .ActionSheet)
-        
-        actionSheet.addAction(UIAlertAction(title: "Connection To AudioAssiastant Room", style: .Default, handler: { (action) in
-            AudioAssistantManager.sharedInstance.connectionToAudioAssiastantRoom(roomNumber: "tesetjkljaf", sessionDidConnectHandler: {
-                print("did connected")
-            })
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Send test anchor", style: .Default, handler: { (action) in
-            let anchor = AIAnchor()
-            anchor.type = AIAnchorType.Normal
-            AudioAssistantManager.sharedInstance.sendAnchor(anchor)
-        }))
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
-        }))
-        
-        presentViewController(actionSheet, animated: true, completion: nil)
-    }
     
     func refershData() {
         

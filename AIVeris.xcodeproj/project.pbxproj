@@ -26,6 +26,7 @@
 		120F07681CE06F70008FCBB3 /* AIDottedLineLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */; };
 		120F21AB1CA13E4100B7ED7E /* AILimitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */; };
 		120F21AD1CA1706600B7ED7E /* AIPopupChooseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */; };
+		121694521CEC639800A4B7C1 /* AIExecuteServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */; };
 		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; };
 		1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6A1C925C1A00E72B41 /* AIModels.swift */; };
 		1261FF6F1C925C5F00E72B41 /* AIRequirmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */; };
@@ -43,7 +44,9 @@
 		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; };
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
+		12FD041C1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD041B1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift */; };
 		7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503E6327D0C6936333F981D4 /* Pods.framework */; };
+
 		810746B41C97B7A8003926CB /* AIOrderManagementModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 810746B31C97B7A8003926CB /* AIOrderManagementModels.m */; };
 		810870191C5A43BE00077008 /* AIServiceParamBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810870181C5A43BE00077008 /* AIServiceParamBaseView.m */; };
 		8120B7841C4F908D001BB063 /* AIServiceParamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8120B7831C4F908D001BB063 /* AIServiceParamView.swift */; };
@@ -206,6 +209,9 @@
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; };
+		846E80D91CE99D55009E0B0F /* AACustomWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E80D81CE99D55009E0B0F /* AACustomWindow.swift */; };
+		846E80DF1CE9A451009E0B0F /* IGViewQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DC1CE9A450009E0B0F /* IGViewQuery.m */; };
+		846E80E01CE9A451009E0B0F /* IGViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */; };
 		846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F74151C15A68100EDAE8D /* OBShapedButton.m */; };
 		846F74191C15A68100EDAE8D /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F74171C15A68100EDAE8D /* UIImage+ColorAtPixel.m */; };
 		846F741C1C15A87D00EDAE8D /* OBShapedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F741B1C15A87D00EDAE8D /* OBShapedImageView.m */; };
@@ -316,6 +322,12 @@
 		84C0F1671C9FFAE300BA7266 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0F1661C9FFAE300BA7266 /* KMPlaceholderTextView.swift */; };
 		84C2A58E1C21551800CBDFAC /* AIServiceDetailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */; };
 		84C2A5911C21615100CBDFAC /* AIServiceSubmitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */; };
+		84C57E741CEAB72B0034D6EB /* AACustomerDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */; };
+		84C57E761CEAB8390034D6EB /* AACustomerDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */; };
+		84C57E791CEAC6450034D6EB /* AAProviderDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */; };
+		84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */; };
+		84C57E811CEAEF6F0034D6EB /* DialogToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */; };
+		84C57E821CEAEF6F0034D6EB /* DialogToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
 		84CB0B401BA905CC005F16D0 /* SwitchExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */; };
 		84D8ECDC1BB143370010E981 /* ProviderOrdersJsonTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */; };
@@ -646,6 +658,7 @@
 		93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */; };
 		93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E431B9C3E12009965C8 /* UITransViewController.swift */; };
 		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
+		DC58EE1F04D6139812355B50 /* Pods_AIVeris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8735884D7A0B67325EDB70AC /* Pods_AIVeris.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -674,6 +687,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		083098FC3DB8868E1391FC27 /* Pods-AIVeris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIVeris.release.xcconfig"; path = "Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris.release.xcconfig"; sourceTree = "<group>"; };
 		120059411CE1D0A800029A66 /* AIIconLabeVerticallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIIconLabeVerticallView.swift; sourceTree = "<group>"; };
 		120059431CE1E4B400029A66 /* AIServiceExcuteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceExcuteModel.swift; sourceTree = "<group>"; };
 		120059481CE330B100029A66 /* DDHTimerControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHTimerControl.h; sourceTree = "<group>"; };
@@ -694,6 +708,7 @@
 		120F07671CE06F70008FCBB3 /* AIDottedLineLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIDottedLineLabelView.swift; path = ../AIDottedLineLabelView.swift; sourceTree = "<group>"; };
 		120F21AA1CA13E4100B7ED7E /* AILimitListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILimitListViewController.swift; sourceTree = "<group>"; };
 		120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPopupChooseBaseView.swift; sourceTree = "<group>"; };
+		121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIExecuteServiceModel.m; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
 		12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceCellModel.h; sourceTree = "<group>"; };
 		1261FF6A1C925C1A00E72B41 /* AIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModels.swift; sourceTree = "<group>"; };
@@ -714,7 +729,10 @@
 		12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailIcon.swift; sourceTree = "<group>"; };
 		12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCardDetailIcon.xib; sourceTree = "<group>"; };
 		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
+		12FD041B1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceExecuteRequester.swift; sourceTree = "<group>"; };
+		12FD041D1CEC1DCC00CA744C /* AIExecuteServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIExecuteServiceModel.h; sourceTree = "<group>"; };
 		2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810746B21C97B7A8003926CB /* AIOrderManagementModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIOrderManagementModels.h; sourceTree = "<group>"; };
 		810746B31C97B7A8003926CB /* AIOrderManagementModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIOrderManagementModels.m; sourceTree = "<group>"; };
@@ -942,6 +960,11 @@
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
 		846DAD9E1BD736F70054F058 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		846E80D81CE99D55009E0B0F /* AACustomWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AACustomWindow.swift; sourceTree = "<group>"; };
+		846E80DB1CE9A450009E0B0F /* IGViewQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewQuery.h; sourceTree = "<group>"; };
+		846E80DC1CE9A450009E0B0F /* IGViewQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewQuery.m; sourceTree = "<group>"; };
+		846E80DD1CE9A450009E0B0F /* IGViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewWrapper.h; sourceTree = "<group>"; };
+		846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewWrapper.m; sourceTree = "<group>"; };
 		846F74141C15A68100EDAE8D /* OBShapedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShapedButton.h; sourceTree = "<group>"; };
 		846F74151C15A68100EDAE8D /* OBShapedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShapedButton.m; sourceTree = "<group>"; };
 		846F74161C15A68100EDAE8D /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
@@ -1127,6 +1150,12 @@
 		84C2A58D1C21551800CBDFAC /* AIServiceDetailTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceDetailTool.swift; sourceTree = "<group>"; };
 		84C2A58F1C21615100CBDFAC /* AIServiceSubmitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIServiceSubmitModel.h; sourceTree = "<group>"; };
 		84C2A5901C21615100CBDFAC /* AIServiceSubmitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIServiceSubmitModel.m; sourceTree = "<group>"; };
+		84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AACustomerDialogViewController.swift; sourceTree = "<group>"; };
+		84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AACustomerDialogViewController.xib; sourceTree = "<group>"; };
+		84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAProviderDialogViewController.swift; sourceTree = "<group>"; };
+		84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAProviderDialogViewController.xib; sourceTree = "<group>"; };
+		84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogToolBar.swift; sourceTree = "<group>"; };
+		84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogToolBar.xib; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
 		84CB0B3F1BA905CC005F16D0 /* SwitchExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchExampleViewController.swift; sourceTree = "<group>"; };
 		84D8ECDB1BB143370010E981 /* ProviderOrdersJsonTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ProviderOrdersJsonTest.json; sourceTree = "<group>"; };
@@ -1160,6 +1189,7 @@
 		84F0014C1C3A43CB000C93AF /* FLEXTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLEXTableListViewController.m; sourceTree = "<group>"; };
 		84F0014D1C3A43CB000C93AF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		84F8F7A31C1FEB7200FDDD10 /* UITextField+Localize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Localize.swift"; sourceTree = "<group>"; };
+		8735884D7A0B67325EDB70AC /* Pods_AIVeris.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIVeris.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93018AF81CE2CC6F00BEA66B /* AIServiceRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceRouteViewController.swift; sourceTree = "<group>"; };
 		9306F2641BB0E7990092D827 /* AIServiceSchemeModelTEST.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIServiceSchemeModelTEST.json; sourceTree = "<group>"; };
 		930B272A1B9EBB960011EE73 /* AITimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimelineViewController.swift; sourceTree = "<group>"; };
@@ -1558,7 +1588,7 @@
 		93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHomeViewController.swift; sourceTree = "<group>"; };
 		93FA1E431B9C3E12009965C8 /* UITransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewController.swift; sourceTree = "<group>"; };
 		93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewControllerExtention.swift; sourceTree = "<group>"; };
-		F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F968A668E0CC6829EA8B698F /* Pods-AIVeris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIVeris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1599,10 +1629,10 @@
 				93B25AA71B9D7A7B00CD1FEB /* libWeiboSDK.a in Frameworks */,
 				93C33F311B9C25F8007BF506 /* Foundation.framework in Frameworks */,
 				93C33F2F1B9C25EC007BF506 /* UIKit.framework in Frameworks */,
-				7070D9F1516B8A4CB05EC1A1 /* Pods.framework in Frameworks */,
 				844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */,
 				9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */,
 				9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */,
+				DC58EE1F04D6139812355B50 /* Pods_AIVeris.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1705,6 +1735,7 @@
 				93C33F2E1B9C25EC007BF506 /* UIKit.framework */,
 				93C33F2C1B9C256F007BF506 /* libicucore.tbd */,
 				503E6327D0C6936333F981D4 /* Pods.framework */,
+				8735884D7A0B67325EDB70AC /* Pods_AIVeris.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1984,6 +2015,17 @@
 			path = PurchasedService;
 			sourceTree = "<group>";
 		};
+		846E80DA1CE9A450009E0B0F /* IGViewQuery */ = {
+			isa = PBXGroup;
+			children = (
+				846E80DB1CE9A450009E0B0F /* IGViewQuery.h */,
+				846E80DC1CE9A450009E0B0F /* IGViewQuery.m */,
+				846E80DD1CE9A450009E0B0F /* IGViewWrapper.h */,
+				846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */,
+			);
+			path = IGViewQuery;
+			sourceTree = "<group>";
+		};
 		846F74131C15A68100EDAE8D /* OBShapedButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2023,6 +2065,10 @@
 		84756B9C1CE337F900C2AC9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */,
+				84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */,
+				84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */,
+				84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2030,6 +2076,9 @@
 		84756B9E1CE337F900C2AC9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */,
+				84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */,
+				846E80D81CE99D55009E0B0F /* AACustomWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2636,6 +2685,8 @@
 				842FC85B1BDA091B00A0517C /* ServiceOrderDetailModel.m */,
 				810746B21C97B7A8003926CB /* AIOrderManagementModels.h */,
 				810746B31C97B7A8003926CB /* AIOrderManagementModels.m */,
+				12FD041D1CEC1DCC00CA744C /* AIExecuteServiceModel.h */,
+				121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */,
 			);
 			path = ocModel;
 			sourceTree = "<group>";
@@ -2691,6 +2742,7 @@
 		93A5A5971B9BD5E1001DE36D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				846E80DA1CE9A450009E0B0F /* IGViewQuery */,
 				84687EAF1CE1B85B00921C6A /* OpenTok */,
 				84687EAB1CE188D700921C6A /* JSONSerializer.swift */,
 				93C33EEA1B9BEA75007BF506 /* CoreText */,
@@ -2750,6 +2802,7 @@
 				842FC85F1BDA3E3B00A0517C /* ProposalService.swift */,
 				93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */,
 				812C610C1CE06F110054815C /* AIRemoteNotificationHandler.swift */,
+				12FD041B1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -3199,9 +3252,9 @@
 			children = (
 				93D5A34B1B709C1C00DDB158 /* AIVeris */,
 				61647BAFC7200B01794A2E67 /* Frameworks */,
-				9EBD244A350E2B6E580DEF64 /* Pods */,
 				93D5A34A1B709C1C00DDB158 /* Products */,
 				8423E56B1BB4E4EE006DC73B /* Veris Tests */,
+				DA9F72896661016CFF11C0E1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3388,11 +3441,11 @@
 			path = Seller;
 			sourceTree = "<group>";
 		};
-		9EBD244A350E2B6E580DEF64 /* Pods */ = {
+		DA9F72896661016CFF11C0E1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */,
-				2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */,
+				F968A668E0CC6829EA8B698F /* Pods-AIVeris.debug.xcconfig */,
+				083098FC3DB8868E1391FC27 /* Pods-AIVeris.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -3422,13 +3475,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93D5A3711B709C1D00DDB158 /* Build configuration list for PBXNativeTarget "AIVeris" */;
 			buildPhases = (
-				6DA50057C5F5AD017E487884 /* Check Pods Manifest.lock */,
+				9367A38C3EB2513F03B86757 /* 📦 Check Pods Manifest.lock */,
 				9324A4721CCF58DF00A0A397 /* CopyFiles */,
 				93D5A3451B709C1C00DDB158 /* Sources */,
 				93D5A3461B709C1C00DDB158 /* Frameworks */,
 				93D5A3471B709C1C00DDB158 /* Resources */,
-				BE13F8A047272C818E183B81 /* Embed Pods Frameworks */,
-				7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */,
+				13C65FA095CF27FFCE912A4D /* 📦 Embed Pods Frameworks */,
+				254E65C76A45CA1D5C7DBA22 /* 📦 Copy Pods Resources */,
+				98EE3358B27A194FE68FA1A9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3516,6 +3570,8 @@
 				93B25A301B9D78B000CD1FEB /* collectionData.json in Resources */,
 				937EA3911C032E9400AF776B /* AINavigationBarView.xib in Resources */,
 				93CB8D841BF9F41C00C41DDE /* MyriadPro-SemiCn.otf in Resources */,
+				84C57E761CEAB8390034D6EB /* AACustomerDialogViewController.xib in Resources */,
+				84C57E821CEAEF6F0034D6EB /* DialogToolBar.xib in Resources */,
 				9324DDD21CD30385007D3DBE /* AIAlertStoryboard.storyboard in Resources */,
 				93B25A2F1B9D78B000CD1FEB /* AINote.strings in Resources */,
 				93CD0D2C1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard in Resources */,
@@ -3618,6 +3674,7 @@
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
+				84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewController.xib in Resources */,
 				120D68021C96D4D200E74D12 /* AIAssignServiceView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,
@@ -3631,14 +3688,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6DA50057C5F5AD017E487884 /* Check Pods Manifest.lock */ = {
+		13C65FA095CF27FFCE912A4D /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		254E65C76A45CA1D5C7DBA22 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9367A38C3EB2513F03B86757 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3646,22 +3733,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7FDD3FFF4C83F4293879C08B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE13F8A047272C818E183B81 /* Embed Pods Frameworks */ = {
+		98EE3358B27A194FE68FA1A9 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3673,7 +3745,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3745,6 +3817,7 @@
 				846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */,
 				93FA1DA11B9C2EA9009965C8 /* DSLCalendarRange.m in Sources */,
 				849B4B311C0EDFE300BEC179 /* FLEXMethodCallingViewController.m in Sources */,
+				121694521CEC639800A4B7C1 /* AIExecuteServiceModel.m in Sources */,
 				93FA1DB41B9C2EF5009965C8 /* AIServiceSearchView.swift in Sources */,
 				93FA1E5B1B9C3E12009965C8 /* AITopInfoView.swift in Sources */,
 				849B4B2F1C0EDFE300BEC179 /* FLEXFieldEditorViewController.m in Sources */,
@@ -3779,6 +3852,7 @@
 				845BE0101BE8CEC60001716A /* TransportService.swift in Sources */,
 				84F001511C3A43CB000C93AF /* FLEXTableContentCell.m in Sources */,
 				849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */,
+				846E80E01CE9A451009E0B0F /* IGViewWrapper.m in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				845320541C9A86C3003B984B /* AITaskTimeLineView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
@@ -3808,6 +3882,7 @@
 				93FA1DE31B9C302A009965C8 /* AIOrderDetailService.swift in Sources */,
 				849B4B241C0EDFE300BEC179 /* FLEXArgumentInputJSONObjectView.m in Sources */,
 				93B25A991B9D7A7B00CD1FEB /* AFHTTPSessionManager.m in Sources */,
+				84C57E811CEAEF6F0034D6EB /* DialogToolBar.swift in Sources */,
 				849B4B611C0EDFE300BEC179 /* FLEXHierarchyTableViewCell.m in Sources */,
 				9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */,
 				935589741CE4363800AF1E75 /* AIPathRouteViewController.swift in Sources */,
@@ -3958,6 +4033,7 @@
 				81C0928A1BAFAC0D003FFF35 /* UIButton+WebCache.m in Sources */,
 				849B4B291C0EDFE300BEC179 /* FLEXArgumentInputSwitchView.m in Sources */,
 				849B4B4A1C0EDFE300BEC179 /* FLEXNetworkTransactionDetailTableViewController.m in Sources */,
+				84C57E791CEAC6450034D6EB /* AAProviderDialogViewController.swift in Sources */,
 				849B4B5E1C0EDFE300BEC179 /* FLEXResources.m in Sources */,
 				93FA1E581B9C3E12009965C8 /* AISwipeView.swift in Sources */,
 				93FA1E551B9C3E12009965C8 /* AIRootViewController.m in Sources */,
@@ -4019,10 +4095,12 @@
 				9372C5341C23F0300097CC92 /* AIRemoteRequestQueue.swift in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,
+				846E80DF1CE9A451009E0B0F /* IGViewQuery.m in Sources */,
 				849EDFFD1CACFB8400700C8C /* UIView+Shake.swift in Sources */,
 				84F001501C3A43CB000C93AF /* FLEXTableColumnHeader.m in Sources */,
 				849B4B361C0EDFE300BEC179 /* FLEXToolbarItem.m in Sources */,
 				849B4B541C0EDFE300BEC179 /* FLEXLayerExplorerViewController.m in Sources */,
+				12FD041C1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift in Sources */,
 				842FC8601BDA3E3B00A0517C /* ProposalService.swift in Sources */,
 				84F001521C3A43CB000C93AF /* FLEXTableContentViewController.m in Sources */,
 				93FA1DD51B9C2F4F009965C8 /* AICardView.m in Sources */,
@@ -4031,6 +4109,7 @@
 				84959F911C9ADBB4006AA36A /* RRTagCollectionViewCell.swift in Sources */,
 				934D475B1CEC0D77007809F7 /* AIModelTest.swift in Sources */,
 				937EA3891C030EAA00AF776B /* AITextMessageView.swift in Sources */,
+				846E80D91CE99D55009E0B0F /* AACustomWindow.swift in Sources */,
 				8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */,
 				93B25AA21B9D7A7B00CD1FEB /* NSArray+JSONModel.m in Sources */,
 				844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */,
@@ -4066,6 +4145,7 @@
 				8457064B1C61F05B00216D70 /* AIStepperParamView.swift in Sources */,
 				93306BD01BE85FE800F68FD8 /* AIBuyerDetailViewController.swift in Sources */,
 				93CD0D301C8E83F50047F4A7 /* AIRequireProtocol.swift in Sources */,
+				84C57E741CEAB72B0034D6EB /* AACustomerDialogViewController.swift in Sources */,
 				81C0928B1BAFAC0D003FFF35 /* UIImage+GIF.m in Sources */,
 				93441E9E1C50784E003F6833 /* YYWeakProxy.m in Sources */,
 				1261FF6F1C925C5F00E72B41 /* AIRequirmentModel.swift in Sources */,
@@ -4312,7 +4392,7 @@
 		};
 		93D5A3721B709C1D00DDB158 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4D52EFD6684A104D352464D /* Pods.debug.xcconfig */;
+			baseConfigurationReference = F968A668E0CC6829EA8B698F /* Pods-AIVeris.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
@@ -4357,7 +4437,7 @@
 		};
 		93D5A3731B709C1D00DDB158 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D91993BB2601FC318F507A9 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 083098FC3DB8868E1391FC27 /* Pods-AIVeris.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
