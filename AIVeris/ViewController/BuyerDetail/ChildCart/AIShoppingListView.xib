@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AIShoppingListView" customModule="Veris" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aRM-eo-TKm">
+                    <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcO-U6-BLl">
+                    <rect key="frame" x="8" y="15" width="327" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="327" id="17s-hk-hX6"/>
+                        <constraint firstAttribute="height" constant="34" id="V78-is-W5C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-du-RgG">
+                    <rect key="frame" x="0.0" y="49" width="600" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="9Bt-Pg-a9S"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jLT-du-RgG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KsW-nt-lC9"/>
+                <constraint firstAttribute="trailing" secondItem="jLT-du-RgG" secondAttribute="trailing" id="SuC-IH-ceH"/>
+                <constraint firstItem="xcO-U6-BLl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="Z9m-Tj-qax"/>
+                <constraint firstItem="aRM-eo-TKm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="aTo-aA-5R6"/>
+                <constraint firstItem="aRM-eo-TKm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pGZ-2y-3gc"/>
+                <constraint firstItem="xcO-U6-BLl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="pYY-uf-0xv"/>
+                <constraint firstAttribute="trailing" secondItem="aRM-eo-TKm" secondAttribute="trailing" id="pcE-86-KeL"/>
+                <constraint firstItem="jLT-du-RgG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="49" id="wIc-eQ-87s"/>
+                <constraint firstAttribute="bottom" secondItem="aRM-eo-TKm" secondAttribute="bottom" id="wix-IV-BZV"/>
+            </constraints>
+            <connections>
+                <outlet property="lineView" destination="jLT-du-RgG" id="63t-f0-Q6i"/>
+                <outlet property="tableView" destination="aRM-eo-TKm" id="TFj-FI-PY7"/>
+                <outlet property="titleLabel" destination="xcO-U6-BLl" id="Bod-d7-pqk"/>
+            </connections>
+            <point key="canvasLocation" x="-19" y="245"/>
+        </view>
+    </objects>
+</document>
