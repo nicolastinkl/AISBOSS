@@ -75,15 +75,18 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    /*override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if searchFeild.canBecomeFirstResponder() {
-            searchFeild.becomeFirstResponder()
+        if self.searchFeild.canBecomeFirstResponder() {
+//            self.searchFeild.becomeFirstResponder()
         }
-        
-        
+    }*/
+    
+    deinit {
+        self.searchFeild.delegate = nil
+        self.searchFeild.removeFromSuperview()
     }
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
