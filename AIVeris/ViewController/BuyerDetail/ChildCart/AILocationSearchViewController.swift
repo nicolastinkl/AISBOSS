@@ -55,6 +55,7 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchFeild.placeholder = "Tap here to search your location"
         searchFeild.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -75,18 +76,19 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
         
     }
     
-    /*override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.searchFeild.canBecomeFirstResponder() {
-//            self.searchFeild.becomeFirstResponder()
-        }
-    }*/
-    
-    deinit {
+    deinit{
+        debugPrint(self.classForCoder)
         self.searchFeild.delegate = nil
-        self.searchFeild.removeFromSuperview()
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.searchFeild.canBecomeFirstResponder() {
+            self.searchFeild.becomeFirstResponder()
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -102,6 +104,7 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     
     @IBAction func doneAction(sender: AnyObject) {
         searchFeild.resignFirstResponder()
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
