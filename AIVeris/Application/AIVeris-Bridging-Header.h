@@ -146,3 +146,6 @@
 #import <OpenTok/OpenTok.h>
 #import "TBScreenCapture.h"
 
+// 抢单模型
+#import "AIExecuteServiceModel.h"
+
