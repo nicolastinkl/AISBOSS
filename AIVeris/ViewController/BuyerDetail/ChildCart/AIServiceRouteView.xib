@@ -18,17 +18,40 @@
                         <constraint firstAttribute="height" constant="21" id="Mwn-Lw-70L"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.71699044940000001" green="0.67555014859999996" blue="0.73468185379999995" alpha="0.67173648050000001" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="0.7590868794326241" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="dt_add" translatesAutoresizingMaskIntoConstraints="NO" id="bAM-1e-aKE">
+                    <rect key="frame" x="577" y="18" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="GLp-4G-WfA"/>
+                        <constraint firstAttribute="width" constant="15" id="zpm-YV-SbR"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ip4-jd-vxa">
+                    <rect key="frame" x="124" y="5" width="450" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="bAM-1e-aKE" firstAttribute="leading" secondItem="ip4-jd-vxa" secondAttribute="trailing" constant="3" id="08c-4k-0wU"/>
+                <constraint firstItem="ip4-jd-vxa" firstAttribute="leading" secondItem="1Zl-pw-Nti" secondAttribute="trailing" constant="10" id="MM3-cK-NIJ"/>
+                <constraint firstItem="bAM-1e-aKE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="VDp-Hd-ku2"/>
+                <constraint firstItem="ip4-jd-vxa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="WNe-gx-dAM"/>
+                <constraint firstAttribute="trailing" secondItem="bAM-1e-aKE" secondAttribute="trailing" constant="8" id="Wcd-jb-lqT"/>
+                <constraint firstAttribute="bottom" secondItem="ip4-jd-vxa" secondAttribute="bottom" constant="5" id="aSk-nI-NDr"/>
                 <constraint firstItem="1Zl-pw-Nti" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="jLS-zH-vh3"/>
                 <constraint firstItem="1Zl-pw-Nti" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="xbf-Fe-53v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="287" y="185"/>
+            <connections>
+                <outlet property="tagView" destination="ip4-jd-vxa" id="IhG-YO-vv4"/>
+            </connections>
+            <point key="canvasLocation" x="-126" y="390"/>
         </view>
     </objects>
+    <resources>
+        <image name="dt_add" width="30" height="30"/>
+    </resources>
 </document>

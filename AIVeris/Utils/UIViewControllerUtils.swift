@@ -61,7 +61,9 @@ extension UIViewController {
         let myLayer = CALayer()
         let myImage = UIImage(named: "Background_ChildService_Buy")?.CGImage
         myLayer.frame = view.bounds
+        myLayer.transform = CATransform3DMakeScale(1.1, 1.1, 1.0)
         myLayer.contents = myImage
+        
         view.layer.insertSublayer(myLayer, atIndex: 0)
         
         // Set UINavigationBar.

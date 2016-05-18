@@ -18,7 +18,7 @@
                         <constraint firstAttribute="width" constant="106" id="qie-95-TT7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.71699044940000001" green="0.67555014859999996" blue="0.73468185379999995" alpha="0.67173648050000001" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="0.75908687939999997" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdd-tn-vGf">
@@ -48,7 +48,7 @@
                 <outlet property="eControlView" destination="hdd-tn-vGf" id="0Is-ek-0kU"/>
                 <outlet property="eTitle" destination="ZWL-7U-wvB" id="A1g-gg-Yxr"/>
             </connections>
-            <point key="canvasLocation" x="365" y="123"/>
+            <point key="canvasLocation" x="121" y="193"/>
         </view>
     </objects>
 </document>

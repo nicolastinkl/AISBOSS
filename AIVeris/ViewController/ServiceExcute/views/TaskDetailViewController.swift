@@ -30,7 +30,29 @@ class TaskDetailViewController: UIViewController {
         bottomButton.titleLabel?.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(72))
         promptAuthorization.font = AITools.myriadSemiCondensedWithSize(AITools.displaySizeFrom1080DesignSize(80))
         
+        buildNavigationTitleLabel()
+        
     }
+    
+    func buildNavigationTitleLabel(){
+        let NAVIGATION_TITLE = AITools.myriadSemiCondensedWithSize(80 / 3)
+        let frame = CGRect(x: 0, y: 0, width: 100, height: 44)
+        let titleLabel = UILabel(frame: frame)
+        titleLabel.font = NAVIGATION_TITLE
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.text = "Service detail"
+        self.navigationItem.titleView = titleLabel
+        let backImage = UIImage(named: "se_back")
+        
+        let leftButtonItem = UIBarButtonItem(image: backImage, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AIContestSuccessViewController.backAction(_:)))
+        leftButtonItem.tintColor = UIColor.lightGrayColor()
+        self.navigationItem.leftBarButtonItem = leftButtonItem
+    }
+    
+    func backAction(button : UIBarButtonItem){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,14 +69,13 @@ class TaskDetailViewController: UIViewController {
         promptAuthorization.hidden = true
         authorizationBg.hidden = true
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func startWorkAction(sender: AnyObject) {
+        let taskResultCommitlVC = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.TaskExecuteStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.TaskResultCommitViewController) as! TaskResultCommitViewController
+        
+        self.navigationController?.pushViewController(taskResultCommitlVC, animated: true)
+        
     }
-    */
+    
 
 }

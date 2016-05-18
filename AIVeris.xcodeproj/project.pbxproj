@@ -102,6 +102,8 @@
 		81D83AF21BB29F7900BE2BA2 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D83AEA1BB29F7900BE2BA2 /* UIView+MJExtension.m */; };
 		81DC18E91BD622DD0081D131 /* AIBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */; };
 		81DC18EC1BD66EB70081D131 /* UIIMage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */; };
+		81E674261CE9AD6800AAEE77 /* AIAnchorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674251CE9AD6800AAEE77 /* AIAnchorManager.swift */; };
+		81E674281CEB052200AAEE77 /* AIUtilityTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674271CEB052200AAEE77 /* AIUtilityTools.swift */; };
 		81F000311BF08F6D00EE66F3 /* AITimeLineMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */; };
 		840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */; };
 		840C5A391BFB566D00C3AF95 /* ServiceSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */; };
@@ -537,7 +539,6 @@
 		93CD0D2E1C8E82950047F4A7 /* AIRequirementMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD0D2D1C8E82950047F4A7 /* AIRequirementMenuViewController.swift */; };
 		93CD0D301C8E83F50047F4A7 /* AIRequireProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */; };
 		93D47BAD1C96B8430064B238 /* AIOrdeRequireServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */; };
-		93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D5A3531B709C1C00DDB158 /* Assets.xcassets */; };
 		93DA33271C2ACCE0000C9D7A /* AIApplicationObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */; };
 		93DA9C021BFC744500E2DA3B /* KGNAutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */; };
 		93DA9C061BFC74F500E2DA3B /* AIPageBueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA9C051BFC74F500E2DA3B /* AIPageBueryViewController.swift */; };
@@ -552,6 +553,7 @@
 		93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E890C91BB92A5D00A7BBEF /* AVOSCloud.framework */; };
 		93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */; };
 		93EAC36F1BB2918C00483205 /* AISellserAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */; };
+		93EE9DD81CE9B4EB006FE273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93EE9DD71CE9B4EB006FE273 /* Assets.xcassets */; };
 		93EFFD291C55FD3F00602909 /* AIDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */; };
 		93EFFD2B1C55FE4D00602909 /* AIDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */; };
 		93F0E2961C929B8600E1790E /* AIRACClosureTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */; };
@@ -822,6 +824,8 @@
 		81DC18E81BD622DD0081D131 /* AIBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBuyerViewController.swift; sourceTree = "<group>"; };
 		81DC18EA1BD66EB70081D131 /* UIIMage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIIMage+Color.h"; sourceTree = "<group>"; };
 		81DC18EB1BD66EB70081D131 /* UIIMage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIIMage+Color.m"; sourceTree = "<group>"; };
+		81E674251CE9AD6800AAEE77 /* AIAnchorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAnchorManager.swift; sourceTree = "<group>"; };
+		81E674271CEB052200AAEE77 /* AIUtilityTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIUtilityTools.swift; sourceTree = "<group>"; };
 		81F000301BF08F6D00EE66F3 /* AITimeLineMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITimeLineMainViewController.swift; sourceTree = "<group>"; };
 		840C5A361BFB553600C3AF95 /* ServiceSettingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettingView.xib; sourceTree = "<group>"; };
 		840C5A381BFB566D00C3AF95 /* ServiceSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSettingView.swift; sourceTree = "<group>"; };
@@ -1421,7 +1425,6 @@
 		93CD0D2F1C8E83F50047F4A7 /* AIRequireProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireProtocol.swift; sourceTree = "<group>"; };
 		93D47BAC1C96B8430064B238 /* AIOrdeRequireServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIOrdeRequireServices.swift; sourceTree = "<group>"; };
 		93D5A3491B709C1C00DDB158 /* Veris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Veris.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		93D5A3531B709C1C00DDB158 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D5A3581B709C1C00DDB158 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93DA33261C2ACCE0000C9D7A /* AIApplicationObjc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIApplicationObjc.swift; sourceTree = "<group>"; };
 		93DA9C011BFC744500E2DA3B /* KGNAutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KGNAutoLayout.swift; sourceTree = "<group>"; };
@@ -1440,6 +1443,7 @@
 		93EAC36B1BB107FE00483205 /* AISchemeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AISchemeProtocol.swift; sourceTree = "<group>"; };
 		93EAC36D1BB2918C00483205 /* AISellserAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AISellserAnimationView.h; sourceTree = "<group>"; };
 		93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AISellserAnimationView.m; sourceTree = "<group>"; };
+		93EE9DD71CE9B4EB006FE273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93EFFD281C55FD3F00602909 /* AIDatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIDatePickerView.swift; sourceTree = "<group>"; };
 		93EFFD2A1C55FE4D00602909 /* AIDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIDatePickerView.xib; sourceTree = "<group>"; };
 		93F0E2951C929B8600E1790E /* AIRACClosureTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRACClosureTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -2024,6 +2028,8 @@
 				84756B971CE337C600C2AC9D /* AAGesturesParser.swift */,
 				84756B981CE337C600C2AC9D /* AudioAssistantManager.swift */,
 				84756B941CE337A300C2AC9D /* AIAnchor.swift */,
+				81E674251CE9AD6800AAEE77 /* AIAnchorManager.swift */,
+				81E674271CEB052200AAEE77 /* AIUtilityTools.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3231,8 +3237,8 @@
 				93A5A59D1B9BD5E1001DE36D /* Venders */,
 				93A5A59E1B9BD5E1001DE36D /* ViewController */,
 				93A5A59F1B9BD5E1001DE36D /* Views */,
-				93D5A3531B709C1C00DDB158 /* Assets.xcassets */,
 				93D5A3581B709C1C00DDB158 /* Info.plist */,
+				93EE9DD71CE9B4EB006FE273 /* Assets.xcassets */,
 				847F69231C1EAF1D008A7804 /* Localizable.strings */,
 				1299023E1C083B0D00316580 /* Veris.entitlements */,
 			);
@@ -3531,6 +3537,7 @@
 				93B25A631B9D7A1D00CD1FEB /* weibo_logo.png in Resources */,
 				84DDA9551BEE0EDA00CA5C83 /* MiddleServiceContainer.xib in Resources */,
 				840C5A371BFB553600C3AF95 /* ServiceSettingView.xib in Resources */,
+				93EE9DD81CE9B4EB006FE273 /* Assets.xcassets in Resources */,
 				93FA1DA41B9C2EAA009965C8 /* arraw_right.png in Resources */,
 				84DDA9531BEDDC9500CA5C83 /* TopServiceContainer.xib in Resources */,
 				93B25AA81B9D7A7B00CD1FEB /* WeiboSDK.bundle in Resources */,
@@ -3541,7 +3548,6 @@
 				931E84121CBE245500F24329 /* AICellIdentityCell.xib in Resources */,
 				93FA1D9C1B9C2EA9009965C8 /* DSLCalendarDayCalloutView.xib in Resources */,
 				93CB8D7E1BF9F41C00C41DDE /* MyriadPro-Black.otf in Resources */,
-				93D5A3541B709C1C00DDB158 /* Assets.xcassets in Resources */,
 				9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */,
 				844F01221BFC5EAC0004554A /* SimpleServiceViewContainer.xib in Resources */,
 				93CB8D801BF9F41C00C41DDE /* MyriadPro-Light.otf in Resources */,
@@ -3987,6 +3993,7 @@
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93CA11D81C463475008B1EE1 /* AIServiceCatalogModel.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
+				81E674281CEB052200AAEE77 /* AIUtilityTools.swift in Sources */,
 				84756B9B1CE337C600C2AC9D /* AudioAssistantManager.swift in Sources */,
 				8448B3D71C9BA15700CDFB61 /* DependOnNodeCell.swift in Sources */,
 				93DA9C101BFDCC2600E2DA3B /* UICustomsTags.swift in Sources */,
@@ -4032,6 +4039,7 @@
 				126B2A1A1BD7952200146BBE /* AIFoldedCellView.swift in Sources */,
 				84F8F7A41C1FEB7200FDDD10 /* UITextField+Localize.swift in Sources */,
 				8448B3D91C9BA15700CDFB61 /* DependOnNodePickerViewController.swift in Sources */,
+				81E674261CE9AD6800AAEE77 /* AIAnchorManager.swift in Sources */,
 				93FA1DC71B9C2F0F009965C8 /* CurveView.m in Sources */,
 				9372C5341C23F0300097CC92 /* AIRemoteRequestQueue.swift in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,

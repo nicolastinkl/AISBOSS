@@ -26,6 +26,7 @@ import Foundation
 import Spring
 
 class AILocationSelectHeadView: UIView {
+    
     @IBOutlet weak var nearView: UIView!
     
     @IBOutlet weak var historyView: UIView!

@@ -19,7 +19,7 @@
                         <constraint firstAttribute="width" constant="106" id="Z4f-mH-wAb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.71699044940000001" green="0.67555014859999996" blue="0.73468185379999995" alpha="0.67173648050000001" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="0.75908687939999997" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -49,7 +49,7 @@
                         <constraint firstAttribute="height" constant="21" id="n5o-VX-f1A"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.71699044940000001" green="0.67555014859999996" blue="0.73468185379999995" alpha="0.67173648050000001" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="0.75908687939999997" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -95,7 +95,11 @@
                 <constraint firstAttribute="trailing" secondItem="rzw-sq-TkK" secondAttribute="trailing" id="ym8-Or-s3w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="213" y="205.5"/>
+            <connections>
+                <outlet property="endCity" destination="rzw-sq-TkK" id="cBv-B8-4p8"/>
+                <outlet property="startCity" destination="BAh-90-MRb" id="ecl-Jo-mc5"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="401.5"/>
         </view>
     </objects>
     <resources>

@@ -42,10 +42,31 @@ class AINumberCountControl: UIView {
     
     @IBAction func subStractAction(sender: AnyObject) {
         
+        let text = textInput.text ?? ""
+        var float = Int(text) ?? 0
+        if float == 1 {
+            return
+        }
+        
+        if float > 0 {
+            float = float - 1
+            textInput.text = "\(float)"
+        }
+        
+        if float == 1 {
+            subtractButton.enabled = false
+        }
     }
     
     @IBAction func addAction(sender: AnyObject) {
+        let text = textInput.text ?? ""
+        var float = Int(text) ?? 0
+        float = float + 1
+        textInput.text = "\(float)"
         
+        if float > 1 {
+            subtractButton.enabled = true
+        }
     }
     
     
