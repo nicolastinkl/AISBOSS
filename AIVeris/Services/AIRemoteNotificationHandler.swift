@@ -31,6 +31,7 @@ struct AIRemoteNotificationParameters {
     static let ProviderChannel = "ProviderChannel"            // 抢单用的频道，输入gai
     static let GrabOrderType = "GrabOrderType"
     static let AudioAssistantType = "AudioAssistantType"
+    static let AudioAssistantRoomNumber = "AudioAssistantRoomNumber"
 }
 
 
@@ -139,19 +140,15 @@ struct AIRemoteNotificationParameters {
             }
         }
         else {
-            let alertViewController = UIAlertController(title: "新消息", message: "用户Traston想购买您的打车服务，是否查看？", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-                alertViewController.dismissViewControllerAnimated(true, completion: nil)
-            }
-            
-            let cancelAction = UIAlertAction(title: "NO", style: .Cancel) { (action) in
-                alertViewController.dismissViewControllerAnimated(true, completion: nil)
-            }
-            
-            alertViewController.addAction(okAction)
-            alertViewController.addAction(cancelAction)
-            let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController
-            rootViewController?.presentViewController(alertViewController, animated: true, completion: nil)
+           // 语音协助的 接受
+            let topVC = topViewController()
+            let buyerDetailVC = AIBuyerViewController.createBuyerDetailViewController()
+            let vc = AAProviderDialogViewController.initFromNib()
+            let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! String
+            vc.roomNumber = roomNumber
+            topVC.presentViewController(buyerDetailVC, animated: false, completion: {
+                buyerDetailVC.presentViewController(vc, animated: true, completion: nil)
+            })
         }
     }
     
@@ -186,4 +183,16 @@ struct AIRemoteNotificationParameters {
         installation.removeObject(AIRemoteNotificationParameters.ProviderChannel, forKey: AIRemoteNotificationKeys.Channels)
         installation.saveInBackground()
     }
+}
+
+/// 返回当前最上面的viewcontroller
+func topViewController() -> UIViewController {
+    let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController!
+    var presentedVC = rootVC
+    
+    while let vc = presentedVC?.presentedViewController {
+        presentedVC = vc
+    }
+    
+    return presentedVC!
 }

@@ -278,7 +278,7 @@ class AICollContentViewController: UIViewController {
     //发起抢单推送
     func initContestService(){
         
-        let notificationDic = [AIRemoteNotificationKeys.MessageKey : "Grab" , AIRemoteNotificationKeys.ServiceOrderID : AIApplication.AIServiceIdCase0]
+        let notificationDic = [AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.GrabOrderType , AIRemoteNotificationKeys.ServiceOrderID : AIApplication.AIServiceIdCase0]
         AIRemoteNotificationHandler.defaultHandler().sendGrabOrderNotification(notificationDic)
 
     }

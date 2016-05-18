@@ -9,6 +9,25 @@
 import Foundation
 import SwiftyJSON
 
+
+struct AIShoppingModel : JSONJoy {
+    
+    var shopping_id : Int?
+    var shopping_number : Int?
+    var shopping_state : Int?
+    var shopping_image_url : String?
+    var shopping_title : String?
+    var shopping_price : String?
+    
+    init(){
+        
+    }
+    
+    init(_ decoder: JSONDecoder) {
+        
+    }
+    
+}
 //订单列表model
 struct AIOrderListModel : JSONJoy {
     var orderArray: Array<AIOrderListItemModel>?

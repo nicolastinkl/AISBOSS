@@ -25,9 +25,11 @@ class TaskResultCommitViewController: UIViewController {
 
         questButton.layer.cornerRadius = questButton.height / 2
         
-//        checkIcon.image = UIImage(named: "timer_button_selected")
-//        writeIcon.image = UIImage(named: "ai_audioButton_default")
-//        cameraIcon.image = UIImage(named: "Seller_Icon")
+        
+        let cameraSelector =
+            #selector(TaskResultCommitViewController.cameraAction(_:))
+        let cameraTap = UITapGestureRecognizer(target: self, action: cameraSelector)
+        cameraIcon.addGestureRecognizer(cameraTap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,10 +38,33 @@ class TaskResultCommitViewController: UIViewController {
     }
     
     @IBAction func questButtonClicked(sender: AnyObject) {
-   //     BuildInCameraUtils.startCameraControllerFromViewController(self, delegate: self)
-    //    let asset = BuildInCameraUtils.getLastPhotoAsset()
+
+    }
+    
+    func cameraAction(sender : UIGestureRecognizer) {
+        startImagePickController()
+    }
+    
+    private func startImagePickController() {
         
-        BuildInCameraUtils.getFirstImageInfoFromLibrary()
+        let alert = UIAlertController(title: nil, message: "选择图片来源", preferredStyle: .ActionSheet)
+        
+        let actionCamera = UIAlertAction(title: "相机", style: .Default) { (UIAlertAction) in
+            BuildInCameraUtils.startCameraControllerFromViewController(self, delegate: self)
+        }
+        
+        let actionPhotosAlbum = UIAlertAction(title: "相册", style: .Default) { (UIAlertAction) in
+            BuildInCameraUtils.startMediaBrowserFromViewController(self, delegate: self)
+        }
+        
+        let actionCancel = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        
+        alert.addAction(actionCamera)
+        alert.addAction(actionPhotosAlbum)
+        alert.addAction(actionCancel)
+        
+        presentViewController(alert, animated: true, completion: nil)
+
     }
 }
 

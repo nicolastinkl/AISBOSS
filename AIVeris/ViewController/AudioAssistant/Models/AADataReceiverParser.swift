@@ -13,26 +13,41 @@ class AADataReceiverParser: NSObject {
 	static let sharedInstance = AADataReceiverParser()
 	
 	func parseString(string: String, type: String) {
-		print(#function + " called")
-		// todo parse string
-		if type == "tap" {
-			let location = CGPointFromString(string)
-			print(location)
-			let window = UIApplication.sharedApplication().keyWindow!
-			let view = window.hitTest(location, withEvent: nil)
-			print(view)
-			if let control = view as? UIControl {
-				control.sendActionsForControlEvents(.TouchUpInside)
-			} else if let tap = view?.gestureRecognizers?.first as? UITapGestureRecognizer {
-				handleGesture(tap, location: location)
+		
+		let stringType = AudioAssistantStringType(rawValue: type)
+		
+		if let stringType = stringType {
+			switch stringType {
+			case .Message:
+				parseMessage(string)
+			case .Command:
+				parseCommand(string)
+			case .Anchor:
+				parseAnchorString(string)
 			}
-		} else {
-			let anchor = AIAnchor.anchorFromJsonString(string)
-			print(anchor.className)
+			
 		}
 	}
-}
-
-private func handleGesture(gesture: UITapGestureRecognizer, location: CGPoint) {
-	gesture.performTap(atPoint: location)
+	
+	func parseAnchorString(anchorString: String) {
+		let anchor = AIAnchor.anchorFromJsonString(anchorString)
+		print(anchor.viewQuery)
+		let window = UIApplication.sharedApplication().keyWindow
+		if let viewQuery = anchor.viewQuery {
+		}
+	}
+	
+	func parseCommand(command: String) {
+        switch command {
+        case AudioAssistantString.HangUp:
+            AudioAssistantManager.sharedInstance.providerHangUpRoom(silence: true)
+        default:
+            break
+        }
+	}
+	
+	func parseMessage(message: String) {
+		// notify ui with message
+	}
+	
 }

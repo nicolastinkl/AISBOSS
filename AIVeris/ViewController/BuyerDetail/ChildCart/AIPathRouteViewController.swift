@@ -24,6 +24,7 @@
 
 import Foundation
 
+/// CanMoveRow Path Route
 class AIPathRouteViewController: UIViewController {
     
     private let tableview = UITableView()
@@ -38,7 +39,7 @@ class AIPathRouteViewController: UIViewController {
         tableview.dataSource = self
         tableview.estimatedRowHeight = 50
         tableview.reloadData()
-        
+        tableview.editing = true
         
         tableview.backgroundColor = UIColor.clearColor()
         tableview.separatorStyle = .None
@@ -48,6 +49,9 @@ class AIPathRouteViewController: UIViewController {
         footView.frame = CGRectMake(0, 0, self.view.width, 50)
         footView.setTitle("+", forState: UIControlState.Normal)
         footView.addBottomWholeSSBorderLine("#6441D9")
+        
+       
+        
     }
     
 }
@@ -65,18 +69,20 @@ extension AIPathRouteViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if let deCell = tableview.dequeueReusableCellWithIdentifier("row") {
+            
             return deCell
         }else{
             
             let cell = UITableViewCell(style: .Default, reuseIdentifier: "row")
-            if let sview = AIEventCapacityView.initFromNib() {
+            if let sview = AIEventCapacityView.initFromNib() as? AIEventCapacityView {
                 cell.addSubview(sview)
                 sview.frame = cell.frame
                 sview.backgroundColor = UIColor.clearColor()
-                cell.addBottomWholeSSBorderLine("#6441D9")
+                cell.addBottomWholeSSBorderLine("#6441D9")                
             }
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = .None
+            
             return cell
         }
         
@@ -87,6 +93,14 @@ extension AIPathRouteViewController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = tableview.cellForRowAtIndexPath(indexPath)
+        cell?.subviews.forEach { (sview) in
+            let name = NSStringFromClass(sview.classForCoder)
+            if name == "UITableViewCellEditControl" {
+                sview.hidden = true
+            }
+            
+        }
         return 50
     }
     

@@ -121,7 +121,7 @@ public class AILocationSelectViewController: UITableViewController {
         createSearchBar()
         tableView.reloadData()
         
-         tableView.subviews.forEach { (sview) in
+        tableView.subviews.forEach { (sview) in
             let name = NSStringFromClass(sview.classForCoder)//.componentsSeparatedByString(".").last
             if name == "UITableViewIndex" {
                 //sview.performSelector(Selector("setIndexColor:"), withObject: UIColor.clearColor())
@@ -250,7 +250,6 @@ extension AILocationSelectViewController {
             country = filteredList[indexPath.row]
         } else {
             country = sections[indexPath.section].countries[indexPath.row]
-            
         }
         delegate?.countryPicker(self, didSelectCountryWithName: country.name, code: country.code)
         didSelectCountryClosure?(country.name, country.code)

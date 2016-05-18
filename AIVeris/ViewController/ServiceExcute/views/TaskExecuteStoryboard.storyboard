@@ -11,7 +11,7 @@
         <!--TaskDetailViewController-->
         <scene sceneID="kV0-hc-uhl">
             <objects>
-                <viewController id="IdG-Q5-FRk" userLabel="TaskDetailViewController" customClass="TaskDetailViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskDetailViewController" id="IdG-Q5-FRk" userLabel="TaskDetailViewController" customClass="TaskDetailViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mmY-Qo-jrB"/>
                         <viewControllerLayoutGuide type="bottom" id="myT-Jx-6RY"/>
@@ -97,6 +97,9 @@
                                 <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startWorkAction:" destination="IdG-Q5-FRk" eventType="touchUpInside" id="yQd-nD-Wua"/>
+                                </connections>
                             </button>
                             <visualEffectView hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Urx-E7-6s3" userLabel="WaitingMask">
                                 <rect key="frame" x="-1" y="340" width="601" height="260"/>
@@ -209,7 +212,7 @@
         <!--TaskResultCommitViewController-->
         <scene sceneID="9Hj-GK-LDX">
             <objects>
-                <viewController id="1GN-eQ-Iij" userLabel="TaskResultCommitViewController" customClass="TaskResultCommitViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskResultCommitViewController" id="1GN-eQ-Iij" userLabel="TaskResultCommitViewController" customClass="TaskResultCommitViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O42-o9-763"/>
                         <viewControllerLayoutGuide type="bottom" id="vHl-jI-e1W"/>
@@ -247,7 +250,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="85" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="9dj-Mt-82x" userLabel="CameraIcon">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="85" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="9dj-Mt-82x" userLabel="CameraIcon">
                                 <rect key="frame" x="254" y="329" width="92" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="85" id="f22-qc-RJl"/>

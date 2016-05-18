@@ -13,32 +13,44 @@ import AssetsLibrary
 
 class BuildInCameraUtils {
     class func startCameraControllerFromViewController<T where T: UIImagePickerControllerDelegate, T:UINavigationControllerDelegate>(viewController: UIViewController, delegate: T) -> Bool {
-        if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
+
+        return startImagePickViewControllerFromViewController(.Camera, viewController: viewController, delegate: delegate)
+    }
+    
+    class func startMediaBrowserFromViewController<T where T: UIImagePickerControllerDelegate, T:UINavigationControllerDelegate>(viewController: UIViewController, delegate: T) -> Bool {
+        
+        return startImagePickViewControllerFromViewController(.SavedPhotosAlbum, viewController: viewController, delegate: delegate)
+    }
+    
+    private class func startImagePickViewControllerFromViewController<T where T: UIImagePickerControllerDelegate, T:UINavigationControllerDelegate>(sourceType: UIImagePickerControllerSourceType, viewController: UIViewController, delegate: T) -> Bool {
+        
+        if !UIImagePickerController.isSourceTypeAvailable(sourceType) {
             return false
         }
         
-        let cameraUI = UIImagePickerController()
+        let mediaUI = UIImagePickerController()
         
-        cameraUI.sourceType = .Camera
-
+        mediaUI.sourceType = sourceType
         
-        if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera) {
-            if mediaTypes.contains( kUTTypeImage as String) {
-                cameraUI.mediaTypes = [ kUTTypeImage as String]
+        
+        if let mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(sourceType) {
+            if mediaTypes.contains(kUTTypeImage as String) {
+                mediaUI.mediaTypes = [kUTTypeImage as String]
             } else {
-                cameraUI.mediaTypes = mediaTypes
+                mediaUI.mediaTypes = mediaTypes
             }
             
-            cameraUI.delegate = delegate;
-            cameraUI.allowsEditing = false
+            mediaUI.delegate = delegate;
+            mediaUI.allowsEditing = false
             
-            viewController.presentViewController(cameraUI, animated: true, completion: nil)
+            viewController.presentViewController(mediaUI, animated: true, completion: nil)
         } else {
             return false
         }
-
+        
         return true
     }
+
     
     class func getLastPhotoAsset() -> PHAsset{
         let options = PHFetchOptions()
@@ -99,6 +111,15 @@ class BuildInCameraUtils {
         
         return info
     }
+    
+    /*
+     let options = PHContentEditingInputRequestOptions()
+     options.networkAccessAllowed = true
+     asset.requestContentEditingInputWithOptions(options) { (contentEditingInput : PHContentEditingInput?, _) in
+     let fullImage = CIImage(contentsOfURL: contentEditingInput!.fullSizeImageURL!)
+     print(fullImage?.properties)
+     }
+    */
     
     /*
      // Get the assets library
