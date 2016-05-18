@@ -610,6 +610,14 @@ internal class AIServiceContentViewController: UIViewController {
              addAudioView(preView)
         }
         
+        //TODO: Add AIShoppingListView
+        if let sview = AIShoppingListView.initFromNib() as? AIShoppingListView {
+            let array = AIModelTest.testShoppingListModel()
+            sview.setHeight(CGFloat(array.count * 100) + 50)
+            addNewSubView(sview)
+            sview.dataSource = array
+            sview.backgroundColor = UIColor.clearColor()
+        }
     }
     
     func clickRouteViewEvent(){
