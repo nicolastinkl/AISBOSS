@@ -7,9 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogToolBar" customModule="Veris" customModuleProvider="target">
             <connections>
-                <outletCollection property="toolBarViews" destination="iFw-bY-gzv" collectionClass="NSMutableArray" id="BRb-cX-06f"/>
-                <outletCollection property="toolBarViews" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="MyV-P5-UZy"/>
-                <outletCollection property="toolBarViews" destination="qLx-4c-bPY" collectionClass="NSMutableArray" id="u4u-D0-b3g"/>
+                <outletCollection property="toolBarViews" destination="iFw-bY-gzv" collectionClass="NSMutableArray" id="ZwY-UK-K4m"/>
+                <outletCollection property="toolBarViews" destination="qLx-4c-bPY" collectionClass="NSMutableArray" id="LZm-gH-Bwa"/>
+                <outletCollection property="toolBarViews" destination="iN0-l3-epB" collectionClass="NSMutableArray" id="hmM-j4-cQT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,6 +17,23 @@
             <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-bY-gzv">
+                    <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDD-xn-w7x">
+                            <rect key="frame" x="235" y="0.0" width="74" height="74"/>
+                            <state key="normal" image="aa_hang"/>
+                            <connections>
+                                <action selector="hangUpButtonPressed:" destination="-1" eventType="touchUpInside" id="UQg-fA-RU7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="sDD-xn-w7x" secondAttribute="bottom" id="AzU-cC-b6G"/>
+                        <constraint firstItem="sDD-xn-w7x" firstAttribute="top" secondItem="iFw-bY-gzv" secondAttribute="top" id="cGg-8T-00D"/>
+                        <constraint firstItem="sDD-xn-w7x" firstAttribute="centerX" secondItem="iFw-bY-gzv" secondAttribute="centerX" id="glH-mF-sjn"/>
+                    </constraints>
+                </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLx-4c-bPY">
                     <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
                     <subviews>
@@ -103,23 +120,6 @@
                         <constraint firstAttribute="bottom" secondItem="Qj5-wX-ZBz" secondAttribute="bottom" id="s21-T6-iRF"/>
                         <constraint firstItem="Qj5-wX-ZBz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="t2a-mI-ya6"/>
                         <constraint firstAttribute="bottom" secondItem="mjp-Ou-9Eq" secondAttribute="bottom" id="zwS-uF-OUI"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFw-bY-gzv">
-                    <rect key="frame" x="0.0" y="0.0" width="545" height="74"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDD-xn-w7x">
-                            <rect key="frame" x="235" y="0.0" width="74" height="74"/>
-                            <state key="normal" image="aa_hang"/>
-                            <connections>
-                                <action selector="hangUpButtonPressed:" destination="-1" eventType="touchUpInside" id="UQg-fA-RU7"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="sDD-xn-w7x" secondAttribute="bottom" id="AzU-cC-b6G"/>
-                        <constraint firstItem="sDD-xn-w7x" firstAttribute="top" secondItem="iFw-bY-gzv" secondAttribute="top" id="cGg-8T-00D"/>
-                        <constraint firstItem="sDD-xn-w7x" firstAttribute="centerX" secondItem="iFw-bY-gzv" secondAttribute="centerX" id="glH-mF-sjn"/>
                     </constraints>
                 </view>
             </subviews>

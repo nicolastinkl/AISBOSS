@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="dialogToolBar" destination="sT8-dx-5kA" id="yhB-zX-hAZ"/>
                 <outlet property="view" destination="JLD-qz-CDq" id="1fr-8d-SNm"/>
+                <outlet property="zoomButton" destination="4PS-LT-CdZ" id="1hb-52-yoI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

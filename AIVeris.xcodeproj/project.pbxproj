@@ -321,7 +321,7 @@
 		84C57E741CEAB72B0034D6EB /* AACustomerDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */; };
 		84C57E761CEAB8390034D6EB /* AACustomerDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */; };
 		84C57E791CEAC6450034D6EB /* AAProviderDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */; };
-		84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E781CEAC6450034D6EB /* AAProviderDialogViewControllerViewController.xib */; };
+		84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */; };
 		84C57E811CEAEF6F0034D6EB /* DialogToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */; };
 		84C57E821CEAEF6F0034D6EB /* DialogToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */; };
 		84CB0B3E1BA90563005F16D0 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */; };
@@ -1134,7 +1134,7 @@
 		84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AACustomerDialogViewController.swift; sourceTree = "<group>"; };
 		84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AACustomerDialogViewController.xib; sourceTree = "<group>"; };
 		84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAProviderDialogViewController.swift; sourceTree = "<group>"; };
-		84C57E781CEAC6450034D6EB /* AAProviderDialogViewControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAProviderDialogViewControllerViewController.xib; sourceTree = "<group>"; };
+		84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAProviderDialogViewController.xib; sourceTree = "<group>"; };
 		84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogToolBar.swift; sourceTree = "<group>"; };
 		84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialogToolBar.xib; sourceTree = "<group>"; };
 		84CB0B3D1BA90563005F16D0 /* SevenSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
@@ -2038,7 +2038,7 @@
 			isa = PBXGroup;
 			children = (
 				84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */,
-				84C57E781CEAC6450034D6EB /* AAProviderDialogViewControllerViewController.xib */,
+				84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */,
 				84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */,
 				84C57E751CEAB8390034D6EB /* AACustomerDialogViewController.xib */,
 			);
@@ -3626,7 +3626,7 @@
 				93FA1DA81B9C2EAA009965C8 /* DSLCalendar-previousMonth@2x.png in Resources */,
 				84DDA95B1BEE11FB00CA5C83 /* BottomServiceContainer.xib in Resources */,
 				93FA1DDA1B9C3001009965C8 /* ContentsCellView.xib in Resources */,
-				84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewControllerViewController.xib in Resources */,
+				84C57E7A1CEAC6450034D6EB /* AAProviderDialogViewController.xib in Resources */,
 				120D68021C96D4D200E74D12 /* AIAssignServiceView.xib in Resources */,
 				93FA1E5E1B9C3E12009965C8 /* AITopMsgView.xib in Resources */,
 				12070ADE1BDA2F5E00ABAAF0 /* AIOrderCellEShopSubView.xib in Resources */,

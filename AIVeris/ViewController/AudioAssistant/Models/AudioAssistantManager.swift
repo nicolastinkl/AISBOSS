@@ -43,13 +43,13 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	/// 打电话
-	func callRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
+	func customerCallRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
 		type = .Caller
 		connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: sessionDidConnectHandler)
 	}
 	
 	/// 接电话
-	func answerRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
+	func providerAnswerRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
 		type = .Receiver
 		connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: sessionDidConnectHandler)
 	}
@@ -59,7 +59,7 @@ class AudioAssistantManager: NSObject {
 
 	 - parameter silence: 静音 Default is false , true 就不发挂断消息
 	 */
-	func calllerHangUpRoom(silence silence: Bool = false) {
+	func customerHangUpRoom(silence silence: Bool = false) {
 		if !silence {
 			sendString((AudioAssistantString.HangUp), type: .Message)
 		}
@@ -71,7 +71,7 @@ class AudioAssistantManager: NSObject {
 
 	 - parameter silence: 静音 Default is false , true 就不发挂断消息
 	 */
-	func receiverHangUpRoom(silence silence: Bool = false) {
+	func providerHangUpRoom(silence silence: Bool = false) {
 		sendString((AudioAssistantString.HangUp), type: .Message)
 		disconnectFromToAudioAssiastantRoom()
 	}

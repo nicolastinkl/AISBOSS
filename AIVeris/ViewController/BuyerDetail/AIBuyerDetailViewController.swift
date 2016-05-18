@@ -247,7 +247,7 @@ class AIBuyerDetailViewController : UIViewController {
      */
     @IBAction func startVideoAction(sender: AnyObject) {
         
-    let vc = AACustomerDialogViewController()
+    let vc = AACustomerDialogViewController.initFromNib()
     presentViewController(vc, animated: true, completion: nil)
         
 //        var jsonString = "{\"type\":\"Lock\", \"step\":\"after\", \"className\":\"AIBuerDetaiViewController\", \"selector\":\"getTask\"}"

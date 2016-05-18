@@ -9,18 +9,39 @@
 import UIKit
 
 class AAProviderDialogViewController: UIViewController {
-    
-    @IBOutlet weak var dialogToolBar: DialogToolBar!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dialogToolBar?.delegate = self
-    }
+	
+	var roomNumber: String!
+	@IBOutlet weak var dialogToolBar: DialogToolBar!
+	@IBOutlet weak var zoomButton: UIButton!
+	
+	var status: DialogToolBar.Status = DialogToolBar.Status.Received {
+		didSet {
+			dialogToolBar?.status = status
+			zoomButton.hidden = status == .Connected
+		}
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		dialogToolBar.status = .Received
+		dialogToolBar?.delegate = self
+	}
 
+	
+	@IBAction func zoomButtonPressed(sender: AnyObject) {
+	}
+	
 }
 
 extension AAProviderDialogViewController: DialogToolBarDelegate {
-    func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
+		AudioAssistantManager.sharedInstance.providerHangUpRoom()
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton) {
+		AudioAssistantManager.sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
+			self?.status = .Connected
+		})
+	}
 }

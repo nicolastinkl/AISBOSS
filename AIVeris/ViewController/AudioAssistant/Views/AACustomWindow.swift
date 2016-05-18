@@ -13,9 +13,9 @@ class AACustomWindow: UIWindow {
 		let view = super.hitTest(point, withEvent: event)
 		let isConnected = AudioAssistantManager.sharedInstance.isConnected
 		if let view = view {
-			if isConnected {
-				AAGesturesParser.sharedInstance.parseHitTest(view: view, location: point, event: event)
-			}
+//			if isConnected {
+//				AAGesturesParser.sharedInstance.parseHitTest(view: view, location: point, event: event)
+//			}
 		}
 		return view
 	}

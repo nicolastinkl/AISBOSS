@@ -40,7 +40,7 @@ class AADataReceiverParser: NSObject {
 	func parseCommand(command: String) {
         switch command {
         case AudioAssistantString.HangUp:
-            AudioAssistantManager.sharedInstance.receiverHangUpRoom(silence: true)
+            AudioAssistantManager.sharedInstance.providerHangUpRoom(silence: true)
         default:
             break
         }
