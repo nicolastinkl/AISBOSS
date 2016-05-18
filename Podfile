@@ -4,9 +4,11 @@ platform :ios, '8.0'
 
 inhibit_all_warnings!
 
+
+
+target 'AIVeris' do
 # SYSTEM OPATIONS
 use_frameworks!
-
 # HTTP-NET-ENGINE
 pod 'Alamofire', '~> 3.1.4'
 
@@ -32,3 +34,6 @@ pod 'AsyncDisplayKit', '~> 1.9.4'
 
 # iOS Debug
 
+pod 'Igor', '~> 0.5.0'
+
+end

@@ -28,12 +28,6 @@ struct AIAnchorType {
     static let allValues = [Touch, Normal, Lock]
 }
 
-class CustomWindow: UIWindow {
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, withEvent: event)
-        return view
-    }
-}
 
 struct AIAnchorKeys {
     static let Type = "Type"
@@ -80,6 +74,7 @@ class AIAnchor: NSObject {
     
     var type : String?                // 锚点类型
     var step : String?                // 锚点步骤
+    var viewQuery: String?
     var className : String?
     var selector : String?            // 方法名
     var parameters : [AnyObject]?     // 参数列表
@@ -179,6 +174,7 @@ class AIAnchor: NSObject {
                     anchor.type = model["type"] as? String
                     anchor.step = model["step"] as? String
                     anchor.className = model["className"] as? String
+                    anchor.viewQuery = model["viewQuery"] as? String
                     anchor.selector = model["selector"] as? String
                     anchor.parameters = model["parameters"] as? [AnyObject]
                 }
@@ -205,5 +201,11 @@ class AIAnchor: NSObject {
 
 extension AIAnchor : Reflectable {
     
+}
+
+extension AIAnchor {
+    func send() {
+        AudioAssistantManager.sharedInstance.sendAnchor(self)
+    }
 }
 
