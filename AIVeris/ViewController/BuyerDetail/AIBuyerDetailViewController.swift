@@ -489,7 +489,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.dataSource = responseData
                         
                         // initControl Data
-                        //viewController.initProderView()
+                        // viewController.initProderView()
                         viewController.initController()
                         viewController.tableView.reloadData()
                         
@@ -498,13 +498,8 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         viewController.tableView.headerEndRefreshing()
                         
-                        /**
-                        *  @author tinkl, 16-01-22 10:01:25
-                        *
-                        *  Display View some Icons.
-                        *
-                        *  @return none
-                        */
+                        //  Display View some Icons.
+ 
                         _ = viewController.navigationView.subviews.filter({(view:AnyObject)->Bool in
                             let someView = view as! UIView
                             if someView.tag == 10 {

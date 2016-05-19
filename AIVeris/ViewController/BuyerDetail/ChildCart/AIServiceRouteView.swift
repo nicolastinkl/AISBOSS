@@ -30,16 +30,14 @@ class AIServiceRouteView: UIView {
     
     private let tagMargin:CGFloat = 5
     
-    private var cityArray: [String]?
-    
     @IBOutlet weak var tagView: UIView!
     
     private let lineColor: String = "#D2D5E7"
     
+    var addressArray: [AIServiceRouteAddressModel]?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        cityArray = ["Beijing","Tianjin","Qingdao","Anhui","Wuhan","Qingdao"]
         
         self.userInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(AIServiceRouteView.selectCity))
@@ -61,46 +59,49 @@ class AIServiceRouteView: UIView {
         var x:CGFloat = tagMargin
         var y:CGFloat = 0
         var n = 0
-        
-        for city in cityArray! {
-            
-            let label = DesignableLabel()
-            label.font = AITools.myriadLightSemiCondensedWithSize(14)
-            label.text = city
-            label.textColor = UIColor.whiteColor()
-            label.borderColor = UIColor.whiteColor()
-            label.borderWidth = 0.5
-            label.cornerRadius = 4
-            label.textAlignment = .Center
-            label.alpha = 0
-            tagView.addSubview(label)
-            
-            let ramdWidthOLD = 45 + city.length * 6
-            let sizenew = city.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(35/2.5), forWidth: CGFloat(ramdWidthOLD))
-            let ramdWidth = sizenew.width  + 10
-            let ramdHeigth:CGFloat = 20
-            
-            if (x + CGFloat(ramdWidth) + tagMargin) > (tagView.width - tagMargin) {
-                n = 0
-                x = tagMargin
-                y += ramdHeigth + tagMargin
+        if let addressArray = addressArray {
+            for address in addressArray {
                 
-            } else {
-                if n > 0 {
-                    x = x + tagMargin
+                let city = address.sr_address_name
+                let label = DesignableLabel()
+                label.font = AITools.myriadLightSemiCondensedWithSize(14)
+                label.text = city
+                label.textColor = UIColor.whiteColor()
+                label.borderColor = UIColor.whiteColor()
+                label.borderWidth = 0.5
+                label.cornerRadius = 4
+                label.textAlignment = .Center
+                label.alpha = 0
+                tagView.addSubview(label)
+                
+                let ramdWidthOLD = 45 + city.length * 6
+                let sizenew = city.sizeWithFont(AITools.myriadLightSemiCondensedWithSize(35/2.5), forWidth: CGFloat(ramdWidthOLD))
+                let ramdWidth = sizenew.width  + 10
+                let ramdHeigth:CGFloat = 20
+                
+                if (x + CGFloat(ramdWidth) + tagMargin) > (tagView.width - tagMargin) {
+                    n = 0
+                    x = tagMargin
+                    y += ramdHeigth + tagMargin
+                    
+                } else {
+                    if n > 0 {
+                        x = x + tagMargin
+                    }
                 }
+                
+                label.setOrigin(CGPointMake(x, y))
+                
+                n = n + 1  //   Add 1
+                label.setSize(CGSize(width: CGFloat(ramdWidth), height: ramdHeigth))
+                
+                x = x + CGFloat(ramdWidth)
+                
+                SpringAnimation.springEaseIn(0.3, animations: { 
+                    label.alpha = 1
+                })
             }
-            
-            label.setOrigin(CGPointMake(x, y))
-            
-            n = n + 1  //   Add 1
-            label.setSize(CGSize(width: CGFloat(ramdWidth), height: ramdHeigth))
-            
-            x = x + CGFloat(ramdWidth)
-            
-            SpringAnimation.springEaseIn(0.3, animations: { 
-                label.alpha = 1
-            })
+
         }
         
     }

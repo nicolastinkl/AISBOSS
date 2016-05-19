@@ -40,6 +40,7 @@ struct AIAddressParse: JSONJoy {
     }
 }
 
+/// 在线位置搜索“百度Api”，根据搜索结果转化为pinyin
 class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     
     private var dataSource: [AIAddressParse]? {
@@ -185,8 +186,8 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             if let model = dataSource?[indexPath.row] {
                 
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
-                textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
-                textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                textTitle.text = model.name//?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                textDescription.text = model.address//?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
             }            
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)

@@ -25,6 +25,7 @@
 import Foundation
 import Spring
 
+/// 搜索头部View定制
 class AILocationSelectHeadView: UIView {
     
     @IBOutlet weak var nearView: UIView!
@@ -49,9 +50,7 @@ class AILocationSelectHeadView: UIView {
             label.font = AITools.myriadLightWithSize(14)
             label.textAlignment  = .Center
             imageView.image = UIImage(named: "icon-mia")
-        }
-        
-        
+        }        
     }
     
     

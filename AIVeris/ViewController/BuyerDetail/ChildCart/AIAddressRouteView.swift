@@ -1,5 +1,5 @@
 //
-//  AIEventCapacityView.swift
+//  AIAddressRouteView.swift
 //  AIVeris
 //
 // Copyright (c) 2016 ___ASIAINFO___
@@ -23,33 +23,34 @@
 // THE SOFTWARE.
 
 import Foundation
+import Spring
 
-import Cartography
-
-/// 输入时间和数字控件封装 Cell
-class AIEventCapacityView: UIView {
+/// 横向滚动路径规划视图
+class AIAddressRouteView: UIView {
     
-    @IBOutlet weak var eTitle: UILabel!
+    @IBOutlet weak var address: DesignableLabel!
     
-    @IBOutlet weak var eControlView: UIView!    
+    @IBOutlet weak var line: UIView!
+    
+    @IBOutlet weak var time: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        if let sview = AINumberCountControl.initFromNib() {
-            eControlView.addSubview(sview)
-            
-            constrain(sview) { (layout) in
-                
-                layout.right == layout.superview!.right
-                layout.top == layout.superview!.top
-                layout.height == 30
-                layout.width == 160
-            }
-            
-        }
-        
+        line.backgroundColor = UIColor(hexString: AIApplication.AIColor.MainSystemLineColor, alpha: 0.2)
     }
-
     
+    func fillData(model: AIServiceRouteAddressModel){
+        address.hidden = false
+        time.hidden = false
+        address.text = model.sr_address_name
+        time.text = "\(model.sr_address_hour) days"
+    }
+    
+    func clearText(){
+        address.hidden = true
+        time.hidden = true
+        line.hidden = true
+        address.text = ""
+        time.text = ""
+    }
 }

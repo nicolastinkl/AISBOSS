@@ -24,7 +24,7 @@
 
 import Foundation
 
-
+/// 确定订单确认视图Cell
 class AIConfirmOrderCellView: UIView {
     
     @IBOutlet weak var imageview: UIImageView!

@@ -24,7 +24,7 @@
 
 import Foundation
 
-
+/// 搜索界面 “搜索历史” “最热搜索” “最近搜索”
 class MICountry: NSObject {
     let name: String
     let code: String
@@ -198,7 +198,7 @@ extension AILocationSelectViewController {
         cell.textLabel?.font = AITools.myriadLightWithSize(14)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.textLabel?.text = country.name
-        cell.addBottomWholeSSBorderLine("#6441D9")
+        cell.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
         return cell
     }
     
