@@ -166,3 +166,15 @@ enum ServiceSelectType: Int {
     case Mutiple
 }
 
+
+struct AIServiceRouteAddressModel : JSONJoy {
+    var sr_id: Int?
+    var sr_address_name: String = ""
+    var sr_address_hour: Int = 0
+    
+    init(){}
+    init(_ decoder: JSONDecoder) {
+        
+    }
+    
+}

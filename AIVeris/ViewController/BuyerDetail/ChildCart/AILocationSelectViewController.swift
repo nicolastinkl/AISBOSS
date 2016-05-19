@@ -198,7 +198,7 @@ extension AILocationSelectViewController {
         cell.textLabel?.font = AITools.myriadLightWithSize(14)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.textLabel?.text = country.name
-        cell.addBottomWholeSSBorderLine("#6441D9")
+        cell.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
         return cell
     }
     
