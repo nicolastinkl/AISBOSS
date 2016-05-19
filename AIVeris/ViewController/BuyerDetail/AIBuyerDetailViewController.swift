@@ -833,3 +833,51 @@ extension AIBuyerDetailViewController {
 //        }
     }}
 
+
+
+extension AIBuyerDetailViewController : AnchorProcess {
+    func processAnchor(anchor : AIAnchor) {
+        switch anchor.type! {
+        case AIAnchorType.Lock:
+            
+            if anchor.step == AIAnchorStep.Lock {
+                self.view.showLoadingWithMessage("processing...")
+            }
+            else
+            {
+                self.view.dismissLoading()
+            }
+            
+            
+            
+            break
+  
+            
+            
+        case AIAnchorType.Normal:
+            
+            pricessNormalAnchor(anchor)
+            
+            
+            break
+            
+        case AIAnchorType.Touch:
+            
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    
+    func pricessNormalAnchor(anchor : AIAnchor) {
+        
+      
+        
+        
+    }
+    
+    
+}
+

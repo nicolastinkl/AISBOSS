@@ -55,8 +55,9 @@ class AINumberCountControl: UIView {
         
         if float == 1 {
             subtractButton.enabled = false
+            subtractButton.backgroundColor = UIColor(hex: "#7E7DB6")
         }
-    }
+    }     
     
     @IBAction func addAction(sender: AnyObject) {
         let text = textInput.text ?? ""
@@ -66,6 +67,7 @@ class AINumberCountControl: UIView {
         
         if float > 1 {
             subtractButton.enabled = true
+            subtractButton.backgroundColor = UIColor(hex: "#008BDF")
         }
     }
     

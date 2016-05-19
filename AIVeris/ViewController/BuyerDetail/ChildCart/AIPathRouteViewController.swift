@@ -49,9 +49,7 @@ class AIPathRouteViewController: UIViewController {
         footView.frame = CGRectMake(0, 0, self.view.width, 50)
         footView.setTitle("+", forState: UIControlState.Normal)
         footView.addBottomWholeSSBorderLine("#6441D9")
-        
-       
-        
+               
     }
     
 }

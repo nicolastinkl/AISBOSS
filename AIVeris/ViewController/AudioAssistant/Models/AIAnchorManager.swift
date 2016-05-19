@@ -16,8 +16,13 @@ struct AITopViewController {
 
 
 protocol AnchorProcess {
-    func aaaa()
+    func processAnchor(anchor : AIAnchor)
 }
+
+
+
+
+
 
 class AIAnchorManager: NSObject {
 
@@ -26,12 +31,14 @@ class AIAnchorManager: NSObject {
     
     //MARK: private Properties
     private var anchors : [AIAnchor] = [AIAnchor]()
-    private var topViewController : AnchorProcess?
+    private var topViewController : AITopViewController?
     
     func handleAnchor(anchor : AIAnchor) {
         anchors.append(anchor)
 
-        
+        if anchor.className == topViewController?.className {
+            topViewController?.controller?.processAnchor(anchor)
+        }
     }
     
     

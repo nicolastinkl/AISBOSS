@@ -48,20 +48,18 @@ protocol AILocationSelectDelegate: class {
     func countryPicker(picker: AILocationSelectViewController, didSelectCountryWithName name: String, code: String)
 }
 
-public class AILocationSelectViewController: UITableViewController {
+public class AILocationSelectViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     public var customCountriesCode: [String]?
-    
-    private var searchController: UISearchController!
     private var filteredList = [MICountry]()
     private var unsourtedCountries : [MICountry] {
-        let locale = NSLocale.currentLocale()
+//        let locale = NSLocale.currentLocale()
         var unsourtedCountries = [MICountry]()
-        let countriesCodes = customCountriesCode == nil ? NSLocale.ISOCountryCodes() : customCountriesCode!
+        let countriesCodes = customCountriesCode ?? [""]
         
         for countryCode in countriesCodes {
-            let displayName = locale.displayNameForKey(NSLocaleCountryCode, value: countryCode)
-            let country = MICountry(name: displayName!, code: countryCode)
+            let displayName = countryCode
+            let country = MICountry(name: displayName, code: countryCode)
             unsourtedCountries.append(country)
         }
         
@@ -112,8 +110,16 @@ public class AILocationSelectViewController: UITableViewController {
         self.didSelectCountryClosure = completionHandler
     }
     
+    private var tableView: UITableView =  UITableView()
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        tableView.frame = view.frame
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.delegate = self
+        tableView.dataSource = self
         
         tableView.separatorStyle = .None
         
@@ -121,23 +127,25 @@ public class AILocationSelectViewController: UITableViewController {
         createSearchBar()
         tableView.reloadData()
         
-        tableView.subviews.forEach { (sview) in
-            let name = NSStringFromClass(sview.classForCoder)//.componentsSeparatedByString(".").last
-            if name == "UITableViewIndex" {
-                //sview.performSelector(Selector("setIndexColor:"), withObject: UIColor.clearColor())
-            }
-            
-        }
+        tableView.sectionIndexColor = UIColor(hex: "#AB807E")
+        tableView.sectionIndexBackgroundColor = UIColor.clearColor()
+        tableView.sectionIndexTrackingBackgroundColor = UIColor.clearColor()
+        
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0)
+        
+    }
+    
+    func showSearchViewController(){
+        
+        let vc = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AILocationSearchViewController)
+        self.presentViewController(vc, animated: true, completion: nil)
+        
     }
     
     // MARK: Methods
     
     private func createSearchBar() {
         if self.tableView.tableHeaderView == nil {
-            searchController = UISearchController(searchResultsController: nil)
-            searchController.searchResultsUpdater = self
-            searchController.dimsBackgroundDuringPresentation = false
-            //tableView.tableHeaderView = searchController.searchBar
             
             if let head = AILocationSelectHeadView.initFromNib() {
                 tableView.tableHeaderView = head
@@ -166,21 +174,15 @@ public class AILocationSelectViewController: UITableViewController {
 
 extension AILocationSelectViewController {
     
-    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if searchController.searchBar.isFirstResponder() {
-            return 1
-        }
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sections.count
     }
     
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.searchBar.isFirstResponder() {
-            return filteredList.count
-        }
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].countries.count
     }
     
-    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var tempCell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("UITableViewCell")
         
@@ -190,29 +192,24 @@ extension AILocationSelectViewController {
         
         let cell: UITableViewCell! = tempCell
         
-        let country: MICountry!
-        if searchController.searchBar.isFirstResponder() {
-            country = filteredList[indexPath.row]
-        } else {
-            country = sections[indexPath.section].countries[indexPath.row]
-            
-        }
+        let country = sections[indexPath.section].countries[indexPath.row]
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.font = AITools.myriadLightWithSize(14)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.textLabel?.text = country.name
+        cell.addBottomWholeSSBorderLine("#6441D9")
         return cell
     }
     
-    override public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !sections[section].countries.isEmpty {
             return self.collation.sectionTitles[section] as String
         }
         return ""
     }
     
-    public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var title = ""
         if !sections[section].countries.isEmpty {
             title = self.collation.sectionTitles[section] as String
@@ -227,11 +224,11 @@ extension AILocationSelectViewController {
         return label
     }
     
-    override public func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    public func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return collation.sectionIndexTitles
     }
     
-    override public func tableView(tableView: UITableView,
+    public func tableView(tableView: UITableView,
                                    sectionForSectionIndexTitle title: String,
                                                                atIndex index: Int)
         -> Int {
@@ -243,27 +240,12 @@ extension AILocationSelectViewController {
 
 extension AILocationSelectViewController {
     
-    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let country: MICountry!
-        if searchController.searchBar.isFirstResponder() {
-            country = filteredList[indexPath.row]
-        } else {
-            country = sections[indexPath.section].countries[indexPath.row]
-        }
+        let country = sections[indexPath.section].countries[indexPath.row]
         delegate?.countryPicker(self, didSelectCountryWithName: country.name, code: country.code)
         didSelectCountryClosure?(country.name, country.code)
-        navigationController?.popToRootViewControllerAnimated(true)
+        //navigationController?.popToRootViewControllerAnimated(true)
     }
 }
-
-// MARK: - UISearchDisplayDelegate
-
-extension AILocationSelectViewController: UISearchResultsUpdating {
-    
-    public func updateSearchResultsForSearchController(searchController: UISearchController) {
-        filter(searchController.searchBar.text!)
-        tableView.reloadData()
-    }
-}
-
+ 

@@ -67,8 +67,7 @@ class AIShoppingListView: UIView,UITableViewDataSource,UITableViewDelegate {
         return 100
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! AIShoppingListViewCell
         let model = dataSource?[indexPath.row]
         if let model = model {
@@ -77,6 +76,15 @@ class AIShoppingListView: UIView,UITableViewDataSource,UITableViewDelegate {
         cell.backgroundColor = UIColor.clearColor()
         cell.addBottomWholeSSBorderLine("#6441D9")
         cell.selectionStyle = .None
+        
+        cell.subviews.forEach { (sview) in
+            let name = NSStringFromClass(sview.classForCoder)
+            if name == "UITableViewCellContentView" {
+                sview.hidden = true            
+            }
+            
+        }
+        
         return cell
     }
     
