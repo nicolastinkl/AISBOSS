@@ -717,8 +717,6 @@ internal class AIServiceContentViewController: UIViewController {
         
     }
     
-    
-    
     private func addBrandView()-> AIDropdownBrandView? {
         brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128",321)], selectedIndex: 0, frame: view.frame)
         addNewSubView(brandView!, preView: galleryView, color: UIColor.clearColor())

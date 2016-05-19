@@ -24,7 +24,7 @@
 
 import Foundation
 
-
+/// 搜索界面 “搜索历史” “最热搜索” “最近搜索”
 class MICountry: NSObject {
     let name: String
     let code: String

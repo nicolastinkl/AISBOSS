@@ -24,7 +24,7 @@
 
 import Foundation
 
-/// CanMoveRow Path Route
+/// CanMoveRow Path Route 重新规划规划位置界面
 class AIPathRouteViewController: UIViewController {
     
     private let tableview = UITableView()

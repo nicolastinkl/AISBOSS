@@ -25,6 +25,7 @@
 import Foundation
 import Spring
 
+/// 横向滚动路径规划视图
 class AIAddressRouteView: UIView {
     
     @IBOutlet weak var address: DesignableLabel!
@@ -35,6 +36,7 @@ class AIAddressRouteView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        line.backgroundColor = UIColor(hexString: AIApplication.AIColor.MainSystemLineColor, alpha: 0.2)
     }
     
     func fillData(model: AIServiceRouteAddressModel){

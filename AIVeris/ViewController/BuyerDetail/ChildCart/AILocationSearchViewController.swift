@@ -40,6 +40,7 @@ struct AIAddressParse: JSONJoy {
     }
 }
 
+/// 在线位置搜索“百度Api”，根据搜索结果转化为pinyin
 class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     
     private var dataSource: [AIAddressParse]? {

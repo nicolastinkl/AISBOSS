@@ -29,7 +29,8 @@ import Cartography
 import Spring
 import AIAlertView
 
-class  AIServiceRouteViewController: UIViewController {
+/// 路径规划界面 "Select"界面
+class AIServiceRouteViewController: UIViewController {
      
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -40,6 +41,7 @@ class  AIServiceRouteViewController: UIViewController {
     var addressArray: [AIServiceRouteAddressModel]?
     
     private var buttonSelected: UIButton = {
+        
         let button = UIButton(type: .Custom)
         button.titleLabel?.textColor = UIColor.whiteColor()
         button.titleLabel?.font = AITools.myriadSemiCondensedWithSize(15)

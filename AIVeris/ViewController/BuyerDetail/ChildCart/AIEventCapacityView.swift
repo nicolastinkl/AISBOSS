@@ -26,6 +26,7 @@ import Foundation
 
 import Cartography
 
+/// 输入时间和数字控件封装 Cell
 class AIEventCapacityView: UIView {
     
     @IBOutlet weak var eTitle: UILabel!
