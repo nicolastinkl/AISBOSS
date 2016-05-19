@@ -42,13 +42,9 @@ class AIServiceExecuteRequester: NSObject {
         let message = AIMessage()
         let body  = ["data" : ["order_id" : orderId, "service_id" : serviceId, "customer_id" : customerId], "desc":["data_mode" : "0", "digest" : ""]]
         
-        //        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
-        
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.grabOrder.description as String
-        
         weak var weakSelf = self
-        
         
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
             
@@ -70,6 +66,42 @@ class AIServiceExecuteRequester: NSObject {
     }
     
     func parseGrabOrderResultToViewModel(){
+        
+    }
+    
+    func queryGrabOrderDetail(orderId : String, success : (businessInfo : AIGrabOrderDetailModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
+        
+        let message = AIMessage()
+        let body  = ["data" : ["order_id" : orderId ], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        //        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.grabOrder.description as String
+        
+        weak var weakSelf = self
+        
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            
+            do {
+                let dic = response as! [NSObject : AnyObject]
+                let originalRequirements = try AIGrabOrderDetailModel(dictionary: dic)
+                
+                weakSelf!.parseGrabOrderDetailToViewModel(originalRequirements, success: success, fail: fail)
+                
+            } catch {
+                fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
+            }
+            
+            
+        }) { (error: AINetError, errorDes: String!) -> Void in
+            fail(errType: error, errDes: errorDes)
+        }
+        
+    }
+    
+    func parseGrabOrderDetailToViewModel(originalRequirements : AIGrabOrderDetailModel ,success : (businessInfo : AIGrabOrderDetailModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void){
         
     }
 
