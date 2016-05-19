@@ -77,6 +77,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rtss = RTSSNetworkChangeManager.sharedManager()
         rtss.setTokenType(0, token: "15281064177")
         rtss.setServerHost("60.194.3.167", serverPort: 1883)
+        rtss.appid = "407484c4-0ecc-404c-bf10-5d3f2d5eec8e"
+        // rtss appid 407484c4-0ecc-404c-bf10-5d3f2d5eec8e
+        // 2020实验室APP 的AppID：	4623d1ac-b802-4f0d-8a74-60aaa2a64b9c
+        
         rtss.startNotifierNetworkChange()
     }
     
