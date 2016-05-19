@@ -37,10 +37,9 @@ class AIServiceExecuteRequester: NSObject {
      proposalID      方案ID
      */
     
-    func grabOrder(orderId : String, serviceId : String, customerId : String, success : (businessInfo : AIBusinessInfoModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
-        
+    func grabOrder(serviceInstId serviceInstId : String, providerId : String, success : (businessInfo : AIGrabOrderSuccessViewModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         let message = AIMessage()
-        let body  = ["data" : ["order_id" : orderId, "service_id" : serviceId, "customer_id" : customerId], "desc":["data_mode" : "0", "digest" : ""]]
+        let body  = ["data" : ["service_inst_id" : serviceInstId, "provider_id" : providerId], "desc":["data_mode" : "0", "digest" : ""]]
         
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
         message.url = AIApplication.AIApplicationServerURL.grabOrder.description as String
@@ -50,9 +49,9 @@ class AIServiceExecuteRequester: NSObject {
             
             do {
                 let dic = response as! [NSObject : AnyObject]
-                let originalRequirements = try AIQueryBusinessInfos(dictionary: dic)
+                let originalRequirements = try AIGrabOrderResultModel(dictionary: dic)
                 
-                //weakSelf!.parseBusinessInfo(originalRequirements, success: success, fail: fail)
+                weakSelf!.parseGrabOrderResultToViewModel(originalRequirements, success: success, fail: fail)
                 
             } catch {
                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
@@ -65,44 +64,69 @@ class AIServiceExecuteRequester: NSObject {
         
     }
     
-    func parseGrabOrderResultToViewModel(){
-        
+    func parseGrabOrderResultToViewModel(originalRequirements : AIGrabOrderResultModel ,success : (businessInfo : AIGrabOrderSuccessViewModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void){
+        let businessInfo = AIGrabOrderSuccessViewModel()
+        businessInfo.setOrderInfoByJSONModel(originalRequirements)
+        success(businessInfo: businessInfo)
     }
     
-    func queryGrabOrderDetail(orderId : String, success : (businessInfo : AIGrabOrderDetailModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
-        
+    
+    //MARK: 查询带抢订单信息
+    /**
+     orderID 	    订单id
+     customID	    买家id
+     proposalID      方案ID
+     */
+    func queryGrabOrderDetail(serviceInstId : String, success : (businessInfo : AIGrabOrderDetailViewModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
         let message = AIMessage()
-        let body  = ["data" : ["order_id" : orderId ], "desc":["data_mode" : "0", "digest" : ""]]
-        
+        let body  = ["data" : ["service_inst_id" : serviceInstId ], "desc":["data_mode" : "0", "digest" : ""]]
         //        let body = ["data" : ["order_id" : "100000029231", "proposal_id" : "2043", "customer_id" : "100000002410"], "desc":["data_mode" : "0", "digest" : ""]]
         
         message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
-        message.url = AIApplication.AIApplicationServerURL.grabOrder.description as String
+        message.url = AIApplication.AIApplicationServerURL.queryGrabOrderDetail.description as String
         
         weak var weakSelf = self
-        
-        
         AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
-            
             do {
                 let dic = response as! [NSObject : AnyObject]
                 let originalRequirements = try AIGrabOrderDetailModel(dictionary: dic)
-                
                 weakSelf!.parseGrabOrderDetailToViewModel(originalRequirements, success: success, fail: fail)
-                
             } catch {
                 fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
             }
             
+        }) { (error: AINetError, errorDes: String!) -> Void in
+            fail(errType: error, errDes: errorDes)
+        }
+    }
+    
+    func parseGrabOrderDetailToViewModel(originalRequirements : AIGrabOrderDetailModel ,success : (businessInfo : AIGrabOrderDetailViewModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void){
+        let businessInfo = AIGrabOrderDetailViewModel.getInstanceByJSONModel(originalRequirements)
+        success(businessInfo: businessInfo)
+    }
+    
+    //MARK: 初始化任务实例
+    /**
+     serviceInstId 	    任务实例id
+     */
+    func initTask(serviceInstId : String, success : ()-> Void, fail : (errType: AINetError, errDes: String) -> Void)  {
+        let message = AIMessage()
+        let body  = ["data" : ["service_inst_id" : serviceInstId ], "desc":["data_mode" : "0", "digest" : ""]]
+        
+        message.body.addEntriesFromDictionary(body as [NSObject : AnyObject])
+        message.url = AIApplication.AIApplicationServerURL.grabOrder.description as String
+        
+        AINetEngine.defaultEngine().postMessage(message, success: { (response) -> Void in
+            do {
+                //let dic = response as! [NSObject : AnyObject]
+                success()
+            } catch {
+                fail(errType: AINetError.Format, errDes: AINetErrorDescription.FormatError)
+            }
             
         }) { (error: AINetError, errorDes: String!) -> Void in
             fail(errType: error, errDes: errorDes)
         }
-        
-    }
-    
-    func parseGrabOrderDetailToViewModel(originalRequirements : AIGrabOrderDetailModel ,success : (businessInfo : AIGrabOrderDetailModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void){
-        
     }
 
 }

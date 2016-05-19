@@ -25,30 +25,49 @@
 import Foundation
 import UIKit
 import Spring
+import AIAlertView
 
 class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     
     
-
+    // MARK: - IBOutlet
+    @IBOutlet weak var userPhoneNumberLabel: UILabel!
+    @IBOutlet weak var userLocationLabel: UILabel!
+    @IBOutlet weak var serviceNameLabel: UILabel!
+    @IBOutlet weak var serviceDescLabel: UILabel!
+    @IBOutlet weak var userIconImageView: DesignableImageView!
+    @IBOutlet weak var serviceIconImageView: DesignableImageView!
     @IBOutlet weak var customerDescView: UIView!
     @IBOutlet weak var timerControl: DDHTimerControl!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    
     
     var timerEndDate : NSDate!
     var timer : NSTimer?
     
+    var serviceInstId : String?
+    
     let TIMER_TEXT_FONT = AITools.myriadSemiCondensedWithSize(70 / 3)
     
+    
+    // MARK: - override
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initViews()
-    }
-    @IBAction func arvatarDidTapped(sender: AnyObject) {
-    }
-    @IBAction func backgroundDidTapped(sender: AnyObject) {
-        dismissPopupViewController(true, completion: nil)
+        //网络请求
+        requestDataInterface()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        customerDescView.setCornerOnTop()
+    }
+    
+    
+    // MARK: - IBAction
     @IBAction func answerAction(sender: AnyObject) {
         //AIApplication.showGladOrderView()
         //点抢单按钮后就不再倒计时
@@ -57,11 +76,17 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
             timer = nil
         }
         
-        
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
         self.navigationController?.pushViewController(viewController, animated: true)
         
+    }
+    
+    @IBAction func arvatarDidTapped(sender: AnyObject) {
+        
+    }
+    @IBAction func backgroundDidTapped(sender: AnyObject) {
+        dismissPopupViewController(true, completion: nil)
     }
     
     func initViews(){
@@ -93,11 +118,38 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
         }
     }
     
+    /**
+     数据请求
+     */
+    func requestDataInterface() {
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        customerDescView.setCornerOnTop()
+        AIServiceExecuteRequester.defaultHandler().queryGrabOrderDetail("1", success: { (businessInfo) in
+            self.loadData(businessInfo)
+            }) { (errType, errDes) in
+                AIAlertView().showError("error", subTitle: "网络请求失败")
+        }
     }
+    
+    func requestGrabOrderInterface(){
+        let userId = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
+        AIServiceExecuteRequester.defaultHandler().grabOrder(serviceInstId: serviceInstId!, providerId: userId, success: { (businessInfo) in
+            <#code#>
+            }) { (errType, errDes) in
+                AIAlertView().showError("error", subTitle: "网络请求失败")
+        }
+    }
+    
+    func loadData(viewModel : AIGrabOrderDetailViewModel){
+        userNameLabel.text = viewModel.customerName
+        userIconImageView.sd_setImageWithURL(NSURL(string: viewModel.customerIcon))
+        serviceNameLabel.text = viewModel.serviceName
+        serviceDescLabel.text = viewModel.serviceIntroContent
+        serviceIconImageView.sd_setImageWithURL(NSURL(string: viewModel.serviceThumbnailIcon))
+        //订单参数的赋值暂时写死取两个
+        userPhoneNumberLabel.text = viewModel.customerParamArray![0].labelText
+        userLocationLabel.text = viewModel.customerParamArray![1].labelText
+    }
+    
     
     //MARK: - delegate
     func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
