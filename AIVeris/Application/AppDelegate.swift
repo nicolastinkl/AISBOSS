@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        return true
         //AVOS
+        setupRTSS()
         configAVOSCloud()
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         AVAnalytics.setChannel("App Store")
@@ -72,13 +73,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
+    func setupRTSS() {
+        let rtss = RTSSNetworkChangeManager.sharedManager()
+        rtss.setTokenType(0, token: "123456")
+        rtss.setServerHost("60.194.3.167", serverPort: 1883)
+    }
+    
+    static var networkchanged = false
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         #if !DEBUG //debug 模式 才会启动
         if motion == .MotionShake {
+            if !AppDelegate.networkchanged {
+                AppDelegate.networkchanged = true
+                RTSSNetworkChangeManager.sharedManager().startNotifierNetworkChange()
+            } else {
+                AppDelegate.networkchanged = false
+                RTSSNetworkChangeManager.sharedManager().stopNotifierNetworkChange()
+            }
+            
 //            didReceiveRemoteNotificationUserInfo
-            var userInfo = [NSObject: AnyObject]()
-            userInfo["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: "9786521"]
-            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
+//            var userInfo = [NSObject: AnyObject]()
+//            userInfo["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: "9786521"]
+//            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
         }
         #endif
     }

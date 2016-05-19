@@ -1,0 +1,6 @@
+framework module MQTTMDK {
+  umbrella header "MQTTMDK.h"
+
+  export *
+  module * { export * }
+}

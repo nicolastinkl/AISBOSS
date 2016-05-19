@@ -26,11 +26,11 @@ pod 'SnapKit', '~> 0.18.0'
 
 pod 'AIAlertView', :git => 'https://github.com/asiainfomobile/AIAlertView.git'
 
-pod 'YYImage', '~> 1.0.1'
+pod 'YYImage'
 
 # iOS System Facebook
 
-pod 'AsyncDisplayKit', '~> 1.9.4'
+pod 'AsyncDisplayKit', :git => 'https://github.com/facebook/AsyncDisplayKit.git', :commit => '8f914f8430cb4d1a473d888f1db41708ccd0d5ae'
 
 # iOS Debug
 

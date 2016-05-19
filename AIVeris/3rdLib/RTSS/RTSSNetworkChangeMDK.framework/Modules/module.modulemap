@@ -1,0 +1,6 @@
+framework module RTSSNetworkChangeMDK {
+  umbrella header "RTSSNetworkChangeMDK.h"
+
+  export *
+  module * { export * }
+}

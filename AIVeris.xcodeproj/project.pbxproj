@@ -656,6 +656,8 @@
 		93FA1E661B9C3E12009965C8 /* UIHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */; };
 		93FA1E681B9C3E12009965C8 /* UITransViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E431B9C3E12009965C8 /* UITransViewController.swift */; };
 		93FA1E691B9C3E12009965C8 /* UITransViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */; };
+		C4A5FBDE1CED6C0300E9140F /* MQTTMDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A5FBDC1CED6C0300E9140F /* MQTTMDK.framework */; };
+		C4A5FBDF1CED6C0300E9140F /* RTSSNetworkChangeMDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A5FBDD1CED6C0300E9140F /* RTSSNetworkChangeMDK.framework */; };
 		DC58EE1F04D6139812355B50 /* Pods_AIVeris.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8735884D7A0B67325EDB70AC /* Pods_AIVeris.framework */; };
 /* End PBXBuildFile section */
 
@@ -1584,6 +1586,8 @@
 		93FA1E411B9C3E12009965C8 /* UIHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHomeViewController.swift; sourceTree = "<group>"; };
 		93FA1E431B9C3E12009965C8 /* UITransViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewController.swift; sourceTree = "<group>"; };
 		93FA1E441B9C3E12009965C8 /* UITransViewControllerExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITransViewControllerExtention.swift; sourceTree = "<group>"; };
+		C4A5FBDC1CED6C0300E9140F /* MQTTMDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MQTTMDK.framework; sourceTree = "<group>"; };
+		C4A5FBDD1CED6C0300E9140F /* RTSSNetworkChangeMDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RTSSNetworkChangeMDK.framework; sourceTree = "<group>"; };
 		F968A668E0CC6829EA8B698F /* Pods-AIVeris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIVeris.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AIVeris/Pods-AIVeris.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1615,7 +1619,9 @@
 				93B25AB41B9D7E9C00CD1FEB /* MobileCoreServices.framework in Frameworks */,
 				93B25AB01B9D7E5D00CD1FEB /* libicucore.A.dylib in Frameworks */,
 				93E890CA1BB92A5D00A7BBEF /* AVOSCloud.framework in Frameworks */,
+				C4A5FBDE1CED6C0300E9140F /* MQTTMDK.framework in Frameworks */,
 				93B25AB11B9D7E5D00CD1FEB /* libz.1.dylib in Frameworks */,
+				C4A5FBDF1CED6C0300E9140F /* RTSSNetworkChangeMDK.framework in Frameworks */,
 				93B25AB21B9D7E5D00CD1FEB /* libsqlite3.dylib in Frameworks */,
 				93B25AAA1B9D7B7D00CD1FEB /* ImageIO.framework in Frameworks */,
 				93C33F391B9C2825007BF506 /* SystemConfiguration.framework in Frameworks */,
@@ -3022,6 +3028,7 @@
 		93B25A641B9D7A6F00CD1FEB /* 3rdLib */ = {
 			isa = PBXGroup;
 			children = (
+				C4A5FBDB1CED6C0300E9140F /* RTSS */,
 				9356C98E1CEC65060069D047 /* Pinyin */,
 				120059471CE330B100029A66 /* DDHTimerControl */,
 				93B25A651B9D7A7B00CD1FEB /* AFNetworking */,
@@ -3435,6 +3442,15 @@
 				93EAC36E1BB2918C00483205 /* AISellserAnimationView.m */,
 			);
 			path = Seller;
+			sourceTree = "<group>";
+		};
+		C4A5FBDB1CED6C0300E9140F /* RTSS */ = {
+			isa = PBXGroup;
+			children = (
+				C4A5FBDC1CED6C0300E9140F /* MQTTMDK.framework */,
+				C4A5FBDD1CED6C0300E9140F /* RTSSNetworkChangeMDK.framework */,
+			);
+			path = RTSS;
 			sourceTree = "<group>";
 		};
 		DA9F72896661016CFF11C0E1 /* Pods */ = {
@@ -4403,6 +4419,7 @@
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/RTSS",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -4447,6 +4464,7 @@
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/RTSS",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

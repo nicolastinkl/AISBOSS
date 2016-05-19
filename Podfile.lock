@@ -1,32 +1,34 @@
 PODS:
   - AIAlertView (1.0.8)
-  - Alamofire (3.1.5)
-  - AsyncDisplayKit (1.9.5):
-    - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.5)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.5)
+  - Alamofire (3.1.4)
+  - AsyncDisplayKit (1.9.4):
+    - AsyncDisplayKit/ASDealloc2MainObject (= 1.9.4)
+  - AsyncDisplayKit/ASDealloc2MainObject (1.9.4)
   - Cartography (0.6.0)
   - Igor (0.5.0)
   - SnapKit (0.18.0)
   - Spring (1.0.3)
   - SwiftyJSON (2.3.2)
-  - YYImage (1.0.1):
-    - YYImage/Core (= 1.0.1)
-  - YYImage/Core (1.0.1)
+  - YYImage (0.9.2)
 
 DEPENDENCIES:
   - AIAlertView (from `https://github.com/asiainfomobile/AIAlertView.git`)
   - Alamofire (~> 3.1.4)
-  - AsyncDisplayKit (~> 1.9.4)
+  - AsyncDisplayKit (from `https://github.com/facebook/AsyncDisplayKit.git`, commit
+    `8f914f8430cb4d1a473d888f1db41708ccd0d5ae`)
   - Cartography (~> 0.6.0)
   - Igor (~> 0.5.0)
   - SnapKit (~> 0.18.0)
   - Spring (from `https://github.com/asiainfomobile/Spring.git`, branch `swift2`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
-  - YYImage (~> 1.0.1)
+  - YYImage
 
 EXTERNAL SOURCES:
   AIAlertView:
     :git: https://github.com/asiainfomobile/AIAlertView.git
+  AsyncDisplayKit:
+    :commit: 8f914f8430cb4d1a473d888f1db41708ccd0d5ae
+    :git: https://github.com/facebook/AsyncDisplayKit.git
   Spring:
     :branch: swift2
     :git: https://github.com/asiainfomobile/Spring.git
@@ -37,22 +39,25 @@ CHECKOUT OPTIONS:
   AIAlertView:
     :commit: 2de5b00cba21ea82c3c5af5fcde0a21fce5d82d3
     :git: https://github.com/asiainfomobile/AIAlertView.git
+  AsyncDisplayKit:
+    :commit: 8f914f8430cb4d1a473d888f1db41708ccd0d5ae
+    :git: https://github.com/facebook/AsyncDisplayKit.git
   Spring:
     :commit: 2e1d44fbd7b50298abfc2ff881f60268ac806757
     :git: https://github.com/asiainfomobile/Spring.git
   SwiftyJSON:
-    :commit: 929539eb6a3304eaa9153ca44041a78b85bf2ee5
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   AIAlertView: 9d17a80a22042548ee7888d7e645c84ccbfb1d53
-  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
-  AsyncDisplayKit: 9c55f1aadf4edc3eab9e27812171f500c13882c7
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  AsyncDisplayKit: 0932ff6f78364130a195039ab9a1c2ff63adc665
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Igor: 7661f105cbcc67579c5ebe1ca9ca83972d18bd20
   SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  YYImage: b41b45bc5f32bfcdf67bdfb9c09da9e9832357c0
+  YYImage: c66b043440e5d5899f7d926396ff3098ec809d9a
 
 COCOAPODS: 0.39.0
