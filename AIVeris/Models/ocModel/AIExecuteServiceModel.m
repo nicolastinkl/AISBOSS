@@ -16,3 +16,8 @@
 @implementation AIGrabOrderParamModel
 
 @end
+
+@implementation AIGrabOrderUserNeedsModel @end
+
+@implementation AIGrabOrderResultModel @end
+

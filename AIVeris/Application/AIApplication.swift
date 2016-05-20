@@ -357,6 +357,12 @@ struct AIApplication{
         //MARK: 提交抢单
         case grabOrder
         
+        //MARK: 查询待抢任务信息
+        case queryGrabOrderDetail
+        
+        //MARK: 初始化任务实例
+        case initTask
+        
         // 一键恢复订单
         var description: String {
             
@@ -404,6 +410,8 @@ struct AIApplication{
 
             //抢单接口
             case .grabOrder: return AIApplication.KURL_ReleaseURL + "/grabOrder"
+            case .queryGrabOrderDetail: return AIApplication.KURL_ReleaseURL + "/queryGrabOrderDetail"
+            case .initTask: return AIApplication.KURL_ReleaseURL + "/initTask"
             }
             
         }
