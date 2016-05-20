@@ -406,7 +406,6 @@
 		935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */; };
 		9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */; };
 		9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
-		9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
 		9356C9921CEC65100069D047 /* HanziPinyin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93642B3E1CD1A96F000338AB /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3D1CD1A96F000338AB /* loading.gif */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
@@ -1630,7 +1629,6 @@
 				93C33F311B9C25F8007BF506 /* Foundation.framework in Frameworks */,
 				93C33F2F1B9C25EC007BF506 /* UIKit.framework in Frameworks */,
 				844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */,
-				9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */,
 				9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */,
 				DC58EE1F04D6139812355B50 /* Pods_AIVeris.framework in Frameworks */,
 			);

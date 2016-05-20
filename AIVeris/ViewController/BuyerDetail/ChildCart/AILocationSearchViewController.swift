@@ -192,7 +192,6 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             textDescription.textColor = UIColor(hexString: "#9A99ED")
             if let model = dataSource?[indexPath.row] {
                 
-                
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
                 //textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
                 //textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
