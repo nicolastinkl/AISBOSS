@@ -65,7 +65,8 @@ class AIServiceExecuteRequester: NSObject {
     }
     
     func parseGrabOrderResultToViewModel(originalRequirements : AIGrabOrderResultModel ,success : (businessInfo : AIGrabOrderSuccessViewModel)-> Void, fail : (errType: AINetError, errDes: String) -> Void){
-        let businessInfo = AIGrabOrderSuccessViewModel()
+        let result = originalRequirements.result.integerValue
+        let businessInfo = AIGrabOrderSuccessViewModel(grabResult: result)
         businessInfo.setOrderInfoByJSONModel(originalRequirements)
         success(businessInfo: businessInfo)
     }

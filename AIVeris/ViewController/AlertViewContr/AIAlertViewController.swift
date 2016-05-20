@@ -58,7 +58,7 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
         
         initViews()
         //网络请求
-        requestDataInterface()
+        //requestDataInterface()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,10 +76,12 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
             timer = nil
         }
         
+        //TODO: 等BDK完成后调用
+        //requestGrabOrderInterface()
+        
         let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
         
         self.navigationController?.pushViewController(viewController, animated: true)
-        
     }
     
     @IBAction func arvatarDidTapped(sender: AnyObject) {
@@ -133,8 +135,17 @@ class AIAlertViewController: UIViewController,UINavigationControllerDelegate {
     func requestGrabOrderInterface(){
         let userId = NSUserDefaults.standardUserDefaults().objectForKey(kDefault_UserID) as! String
         AIServiceExecuteRequester.defaultHandler().grabOrder(serviceInstId: serviceInstId!, providerId: userId, success: { (businessInfo) in
-            <#code#>
-            }) { (errType, errDes) in
+            let result = businessInfo.grabResult
+            if result == GrabResultEnum.Success{
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIContestSuccessViewController) as! AIContestSuccessViewController
+                
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            else{
+                AIAlertView().showInfo("Sorry", subTitle: "You failed!")
+                self.dismissPopupViewController(true, completion: nil)
+            }
+        }) { (errType, errDes) in
                 AIAlertView().showError("error", subTitle: "网络请求失败")
         }
     }
