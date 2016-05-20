@@ -30,7 +30,7 @@ class AACustomerDialogViewController: UIViewController {
 		var roomNumber = random() % 9999
 		roomNumber = 9786521 // test
         
-        let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有一个新的订单！", AIRemoteNotificationKeys.ProposalID : String(format: "%d", proposalID), AIRemoteNotificationKeys.ProposalName : proposalName]
+        let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有一个新的订单！", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
         
         
 		AudioAssistantManager.sharedInstance.customerCallRoom(roomNumber: "\(roomNumber)") {

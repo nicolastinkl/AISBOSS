@@ -182,8 +182,8 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             if let model = dataSource?[indexPath.row] {
                 
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
-                textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
-                textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                //textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                //textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
             }            
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)

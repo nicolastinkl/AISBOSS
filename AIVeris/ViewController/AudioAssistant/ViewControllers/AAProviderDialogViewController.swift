@@ -27,11 +27,25 @@ class AAProviderDialogViewController: UIViewController {
 		super.viewDidLoad()
 		dialogToolBar.status = .Received
 		dialogToolBar?.delegate = self
+        
+        let tapLabel = UILabel(frame: CGRectMake(10, 10, 100, 40))
+        tapLabel.text = "点击消失"
+        tapLabel.textColor = UIColor.whiteColor()
+        tapLabel.backgroundColor = UIColor.clearColor()
+        tapLabel.userInteractionEnabled = true
+        self.view.addSubview(tapLabel)
+        
+        let gestrue = UITapGestureRecognizer(target: self, action: #selector(disppear))
+        tapLabel.addGestureRecognizer(gestrue)
 	}
 
 	
 	@IBAction func zoomButtonPressed(sender: AnyObject) {
 	}
+    
+    func disppear() {
+        self.view.removeFromSuperview()
+    }
 	
 }
 

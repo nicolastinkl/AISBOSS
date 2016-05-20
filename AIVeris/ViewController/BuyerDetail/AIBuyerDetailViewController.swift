@@ -154,13 +154,13 @@ class AIBuyerDetailViewController : UIViewController {
         
         if isLaunchForAssistant {
             let vc = AAProviderDialogViewController.initFromNib()
-            
+            vc.roomNumber = roomNumber
+            vc.proposalID = (bubbleModel?.proposal_id)!
+            vc.proposalName = (bubbleModel?.proposal_name)!
             
             self.addChildViewController(vc)
             vc.didMoveToParentViewController(self)
-            
-            self.transitionFromViewController(self, toViewController: vc, duration: 0, options: .CurveEaseInOut, animations: nil, completion: nil)
-
+            self.view.addSubview(vc.view)
         }
         
     }
