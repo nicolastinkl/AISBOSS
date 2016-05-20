@@ -13,7 +13,9 @@ class AAProviderDialogViewController: UIViewController {
 	var roomNumber: String!
 	@IBOutlet weak var dialogToolBar: DialogToolBar!
 	@IBOutlet weak var zoomButton: UIButton!
-	
+    var proposalID : Int = 1000
+    var proposalName : String = "Proposal"
+    
 	var status: DialogToolBar.Status = DialogToolBar.Status.Received {
 		didSet {
 			dialogToolBar?.status = status

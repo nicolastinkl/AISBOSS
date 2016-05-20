@@ -106,7 +106,7 @@ class SimpleServiceViewContainer: UIView {
         
         originalPrice.linePosition = .Middle
         
-        settingState.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "settingClickHandle:"))
+        settingState.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SimpleServiceViewContainer.settingClickHandle(_:))))
     }
     
     //加载数据

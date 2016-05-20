@@ -15,9 +15,7 @@ struct AITopViewController {
 }
 
 
-protocol AnchorProcess {
-    func processAnchor(anchor : AIAnchor)
-}
+
 
 
 

@@ -11,6 +11,9 @@ import UIKit
 class AACustomerDialogViewController: UIViewController {
 	@IBOutlet weak var dialogToolBar: DialogToolBar!
 	@IBOutlet weak var zoomButton: UIButton!
+    var proposalID : Int = 1000
+    var proposalName : String = "Proposal"
+    
 	var status: DialogToolBar.Status = DialogToolBar.Status.Received {
 		didSet {
 			dialogToolBar?.status = status
@@ -27,7 +30,7 @@ class AACustomerDialogViewController: UIViewController {
 		var roomNumber = random() % 9999
 		roomNumber = 9786521 // test
         
-        let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有一个新的订单！"]
+        let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有一个新的订单！", AIRemoteNotificationKeys.ProposalID : String(format: "%d", proposalID), AIRemoteNotificationKeys.ProposalName : proposalName]
         
         
 		AudioAssistantManager.sharedInstance.customerCallRoom(roomNumber: "\(roomNumber)") {

@@ -26,6 +26,7 @@ class AudioAssistantManager: NSObject {
 	var _publisher: OTPublisherKit?
 	var _subscriber: OTSubscriber?
 	
+    
 	/// 判断是否连接上了房间
 	var isConnected: Bool {
 		return _session?.connection != nil
@@ -42,6 +43,14 @@ class AudioAssistantManager: NSObject {
 		case Caller, Receiver
 	}
 	
+    
+    
+    
+    
+    
+    
+    
+    
 	/// 打电话
 	func customerCallRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
 		type = .Caller

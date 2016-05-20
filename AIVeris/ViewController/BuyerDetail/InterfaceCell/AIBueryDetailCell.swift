@@ -38,7 +38,7 @@ internal class AIBueryDetailCell : AISuperSwipeableCell {//
     
     internal var recordPosition:CGPoint?
     
-    internal var currentModel:AIProposalServiceModel?{
+    var currentModel:AIProposalServiceModel?{
         didSet{
             //TODO: Here is a holdPlace to show some value init.
             
