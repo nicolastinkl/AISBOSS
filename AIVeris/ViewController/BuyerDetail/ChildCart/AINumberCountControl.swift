@@ -36,8 +36,8 @@ class AINumberCountControl: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let keboard = PMCustomKeyboard()
-        keboard.textView = textInput
+//        let keboard = PMCustomKeyboard()
+//        keboard.textView = textInput
         
     }
     

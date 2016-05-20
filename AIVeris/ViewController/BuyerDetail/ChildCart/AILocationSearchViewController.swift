@@ -56,12 +56,19 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchFeild.placeholder = "Tap here to search your location"
+        searchFeild.attributedPlaceholder = NSAttributedString(string: "Tap here to search your location", attributes: [NSForegroundColorAttributeName:UIColor(hexString: AIApplication.AIColor.MainSystemLineColor, alpha: 0.5)])
         searchFeild.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 20, 0)
         doneButton.titleLabel?.font = AITools.myriadLightWithSize(15)
+
+//        let keboard = PMCustomKeyboard()
+//        keboard.textView = searchFeild
+        
+//        if let app = UIApplication.sharedApplication().delegate as? AppDelegate {
+//            app.window?.makeKeyAndVisible()
+//        }
         
         // Set Background Using Mask.
         let myLayer = CALayer()
@@ -185,10 +192,11 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             textDescription.textColor = UIColor(hexString: "#9A99ED")
             if let model = dataSource?[indexPath.row] {
                 
+                
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
-                textTitle.text = model.name//?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
-                textDescription.text = model.address//?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
-            }            
+                //textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+                //textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+            }
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
         return deCell!

@@ -95,8 +95,8 @@ class PriceAndStepperView: UIView {
 			stepper.tintColor = UIColor(red: 0.4745, green: 0.4627, blue: 0.5333, alpha: 1.0)
 			stepper.backgroundColor = UIColor.clearColor()
 			stepper.textField.textColor = UIColor.whiteColor()
-            stepper.textField.text = "\(defaultValue)"
-
+            stepper.textField.text = "\(defaultValue)"            
+            
 //			stepper.textField.delegate = self
             stepper.onValueChanged = { [weak self] sender in
                 self?.value = CGFloat(sender.value)

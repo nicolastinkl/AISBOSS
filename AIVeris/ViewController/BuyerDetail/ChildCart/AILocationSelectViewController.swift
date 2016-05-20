@@ -138,7 +138,9 @@ public class AILocationSelectViewController: UIViewController,UITableViewDataSou
     func showSearchViewController(){
         
         let vc = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AILocationSearchViewController)
-        self.presentViewController(vc, animated: true, completion: nil)
+        let navi = UINavigationController(rootViewController: vc)
+        navi.navigationBarHidden = true
+        self.presentViewController(navi, animated: true, completion: nil)
         
     }
     
