@@ -29,7 +29,8 @@ import Cartography
 import Spring
 import AIAlertView
 
-class  AIServiceRouteViewController: UIViewController {
+/// 路径规划界面 "Select"界面
+class AIServiceRouteViewController: UIViewController {
      
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -37,7 +38,10 @@ class  AIServiceRouteViewController: UIViewController {
     
     private var hasLoad: Bool = false
     
+    var addressArray: [AIServiceRouteAddressModel]?
+    
     private var buttonSelected: UIButton = {
+        
         let button = UIButton(type: .Custom)
         button.titleLabel?.textColor = UIColor.whiteColor()
         button.titleLabel?.font = AITools.myriadSemiCondensedWithSize(15)
@@ -49,7 +53,6 @@ class  AIServiceRouteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         scrollView.contentSize.height = 20
         
     }
@@ -66,11 +69,12 @@ class  AIServiceRouteViewController: UIViewController {
         if hasLoad == false {
             hasLoad = true
             
-            if let routeView = AIServiceRouteView.initFromNib() {                
+            if let routeView = AIServiceRouteView.initFromNib() as? AIServiceRouteView{
+                routeView.addressArray = self.addressArray
                 addNewSubView(routeView)
                 Async.main(after: 0.1, block: {
                     (routeView as! AIServiceRouteView).refereshCitys()
-                    routeView.addBottomWholeSSBorderLine("#6441D9")
+                    routeView.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
                 })
             }
             
@@ -78,19 +82,18 @@ class  AIServiceRouteViewController: UIViewController {
                 addNewSubView(sview)
                 
                 Async.main(after: 0.1, block: {
-                    sview.startCity.addBottomWholeSSBorderLine("#6441D9")
-                    sview.endCity.addBottomWholeSSBorderLine("#6441D9")
+                    sview.startCity.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
+                    sview.endCity.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
 
                 })
-                
             }
             
             if let sview = AIStartEndTimeView.initFromNib() as? AIStartEndTimeView{
                 addNewSubView(sview)
                 
                 Async.main(after: 0.1, block: {
-                    sview.startCity.addBottomWholeSSBorderLine("#6441D9")
-                    sview.endCity.addBottomWholeSSBorderLine("#6441D9")
+                    sview.startCity.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
+                    sview.endCity.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
                     
                 })
                 
@@ -98,7 +101,7 @@ class  AIServiceRouteViewController: UIViewController {
             
             if let sview = AIEventCapacityView.initFromNib() {
                 addNewSubView(sview)
-                sview.addBottomWholeSSBorderLine("#6441D9")
+                sview.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
             }
         }
         

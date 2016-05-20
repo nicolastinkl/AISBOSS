@@ -25,6 +25,7 @@
 import Foundation
 import Spring
 
+/// 输入时间和数字控件封装单独视图
 class AINumberCountControl: UIView {
     
     @IBOutlet weak var subtractButton: DesignableButton!
@@ -35,8 +36,8 @@ class AINumberCountControl: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let keboard = PMCustomKeyboard()
-        keboard.textView = textInput
+//        let keboard = PMCustomKeyboard()
+//        keboard.textView = textInput
         
     }
     

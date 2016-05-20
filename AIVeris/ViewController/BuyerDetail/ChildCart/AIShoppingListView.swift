@@ -24,6 +24,7 @@
 
 import Foundation
 
+/// 购物列表视图
 class AIShoppingListView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     var dataSource: [AIShoppingModel]? {

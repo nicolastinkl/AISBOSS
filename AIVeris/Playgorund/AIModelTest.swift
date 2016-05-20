@@ -26,6 +26,23 @@ import Foundation
 
 struct AIModelTest {
     
+    static func testRouteArrayModel() -> [AIServiceRouteAddressModel] {
+        var model1 = AIServiceRouteAddressModel()
+        model1.sr_address_hour = 1
+        model1.sr_address_name = "Hubei"
+        var model2 = AIServiceRouteAddressModel()
+        model2.sr_address_hour = 2
+        model2.sr_address_name = "Zhejiang"
+        var model3 = AIServiceRouteAddressModel()
+        model3.sr_address_hour = 4
+        model3.sr_address_name = "Beijing"
+        var model4 = AIServiceRouteAddressModel()
+        model4.sr_address_hour = 7
+        model4.sr_address_name = "Shanghai"
+        
+        return [model1,model2,model3,model4]
+    }
+    
     static func testShoppingListModel() -> [AIShoppingModel] {
         
         var model1 = AIShoppingModel()

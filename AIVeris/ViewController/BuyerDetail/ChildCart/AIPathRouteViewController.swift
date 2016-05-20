@@ -24,7 +24,7 @@
 
 import Foundation
 
-/// CanMoveRow Path Route
+/// CanMoveRow Path Route 重新规划规划位置界面
 class AIPathRouteViewController: UIViewController {
     
     private let tableview = UITableView()
@@ -48,7 +48,7 @@ class AIPathRouteViewController: UIViewController {
         tableview.tableFooterView = footView
         footView.frame = CGRectMake(0, 0, self.view.width, 50)
         footView.setTitle("+", forState: UIControlState.Normal)
-        footView.addBottomWholeSSBorderLine("#6441D9")
+        footView.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
                
     }
     
@@ -76,7 +76,7 @@ extension AIPathRouteViewController: UITableViewDataSource,UITableViewDelegate {
                 cell.addSubview(sview)
                 sview.frame = cell.frame
                 sview.backgroundColor = UIColor.clearColor()
-                cell.addBottomWholeSSBorderLine("#6441D9")                
+                cell.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
             }
             cell.backgroundColor = UIColor.clearColor()
             cell.selectionStyle = .None

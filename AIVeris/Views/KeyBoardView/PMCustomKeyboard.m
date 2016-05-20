@@ -48,6 +48,12 @@ enum {
 	return self;
 }
 
+- (void)dealloc
+{
+    self.textView = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)setTextView:(id<UITextInput>)textView {
 	if ([textView isKindOfClass:[UITextView class]]) {
         [(UITextView *)textView setInputView:self];

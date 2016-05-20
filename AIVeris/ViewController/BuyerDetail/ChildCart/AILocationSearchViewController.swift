@@ -40,6 +40,7 @@ struct AIAddressParse: JSONJoy {
     }
 }
 
+/// 在线位置搜索“百度Api”，根据搜索结果转化为pinyin
 class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     
     private var dataSource: [AIAddressParse]? {
@@ -55,11 +56,19 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchFeild.attributedPlaceholder = NSAttributedString(string: "Tap here to search your location", attributes: [NSForegroundColorAttributeName:UIColor(hexString: AIApplication.AIColor.MainSystemLineColor, alpha: 0.5)])
         searchFeild.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsetsMake(20, 0, 20, 0)
         doneButton.titleLabel?.font = AITools.myriadLightWithSize(15)
+
+//        let keboard = PMCustomKeyboard()
+//        keboard.textView = searchFeild
+        
+//        if let app = UIApplication.sharedApplication().delegate as? AppDelegate {
+//            app.window?.makeKeyAndVisible()
+//        }
         
         // Set Background Using Mask.
         let myLayer = CALayer()
@@ -75,18 +84,19 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
         
     }
     
-    /*override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if self.searchFeild.canBecomeFirstResponder() {
-//            self.searchFeild.becomeFirstResponder()
-        }
-    }*/
-    
-    deinit {
+    deinit{
+        debugPrint(self.classForCoder)
         self.searchFeild.delegate = nil
-        self.searchFeild.removeFromSuperview()
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil        
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.searchFeild.canBecomeFirstResponder() {
+            self.searchFeild.becomeFirstResponder()
+        }
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -102,6 +112,7 @@ class AILocationSearchViewController: UIViewController , UITextFieldDelegate {
     
     @IBAction func doneAction(sender: AnyObject) {
         searchFeild.resignFirstResponder()
+        
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
@@ -181,10 +192,12 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
             textDescription.textColor = UIColor(hexString: "#9A99ED")
             if let model = dataSource?[indexPath.row] {
                 
+                
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
                 //textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
                 //textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
-            }            
+
+            }
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)
         return deCell!

@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "AIExecuteServiceModel.h"
 
-@implementation AIGrabOrderInfoModel
+@implementation AIGrabOrderDetailModel
 
 @end
+
+@implementation AIGrabOrderParamModel
+
+@end
+
+@implementation AIGrabOrderUserNeedsModel @end
+
+@implementation AIGrabOrderResultModel @end
+

@@ -102,7 +102,7 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
                     self.recorder!.prepareToRecord()
                     self.recorder!.record()
                     
-                    self.timer = NSTimer(timeInterval: 1, target: self, selector: "levelTimer:", userInfo: nil, repeats: true)
+                    self.timer = NSTimer(timeInterval: 1, target: self, selector: #selector(AIAudioInputView.levelTimer(_:)), userInfo: nil, repeats: true)
                     NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSDefaultRunLoopMode)
                 })
             }

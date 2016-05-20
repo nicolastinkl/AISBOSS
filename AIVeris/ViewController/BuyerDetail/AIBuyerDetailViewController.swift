@@ -177,10 +177,8 @@ class AIBuyerDetailViewController : UIViewController {
             break
         case .Sender:  // 申请者
             break
-        case .None:
-            break
-        default:
-            break
+        case .None: break
+    
         }
     }
     
@@ -553,7 +551,7 @@ class AIBuyerDetailViewController : UIViewController {
                         viewController.dataSource = responseData
                         
                         // initControl Data
-                        //viewController.initProderView()
+                        // viewController.initProderView()
                         viewController.initController()
                         viewController.tableView.reloadData()
                         
@@ -562,13 +560,8 @@ class AIBuyerDetailViewController : UIViewController {
                         
                         viewController.tableView.headerEndRefreshing()
                         
-                        /**
-                        *  @author tinkl, 16-01-22 10:01:25
-                        *
-                        *  Display View some Icons.
-                        *
-                        *  @return none
-                        */
+                        //  Display View some Icons.
+ 
                         _ = viewController.navigationView.subviews.filter({(view:AnyObject)->Bool in
                             let someView = view as! UIView
                             if someView.tag == 10 {
@@ -783,43 +776,46 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       
-        if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
-            selectCount = 0
-            var serviceList: NSArray?
-            
-            if (tableView == deletedTableView) {
-                //需求说已删除的服务 不支持点击事件
-                return
-                //            serviceList = deleted_service_list
-            } else {
-                serviceList = current_service_list
+        if indexPath.row == 0 {
+            UIApplication.sharedApplication().openURL(NSURL(string: "hospital://asiainfo.com/open/123123")!)
+        }else{
+            if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
+                selectCount = 0
+                var serviceList: NSArray?
+                
+                if (tableView == deletedTableView) {
+                    //需求说已删除的服务 不支持点击事件
+                    return
+                    //            serviceList = deleted_service_list
+                } else {
+                    serviceList = current_service_list
+                }
+                
+                
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+                viewController.delegate = self
+                viewController.proposalId = dataSource.proposal_id
+                viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
+                viewController.selectCurrentIndex = indexPath.row
+                self.showViewController(viewController, sender: self)
+                
+                // Send Anchor
+                if audioAssistantModel != .None && isNowAssisting == false {
+                    let anchor = AIAnchor()
+                    anchor.type = AIAnchorType.Touch
+                    anchor.step = AIAnchorStep.After
+                    anchor.rootViewControllerName = self.instanceClassName()
+                    anchor.viewComponentName = tableView.instanceClassName()
+                    anchor.rowIndex = indexPath.row
+                    anchor.sectionIndex = indexPath.section
+                    anchor.selector = "didSelectRowAtIndexPath"
+                    AudioAssistantManager.sharedInstance.sendAnchor(anchor)
+                }
+                
             }
-             
-            
-            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-            viewController.delegate = self
-            viewController.proposalId = dataSource.proposal_id
-            viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
-            viewController.selectCurrentIndex = indexPath.row
-            self.showViewController(viewController, sender: self)
-            
-            // Send Anchor
-            if audioAssistantModel != .None && isNowAssisting == false {
-                let anchor = AIAnchor()
-                anchor.type = AIAnchorType.Touch
-                anchor.step = AIAnchorStep.After
-                anchor.rootViewControllerName = self.instanceClassName()
-                anchor.viewComponentName = tableView.instanceClassName()
-                anchor.rowIndex = indexPath.row
-                anchor.sectionIndex = indexPath.section
-                anchor.selector = "didSelectRowAtIndexPath"
-                AudioAssistantManager.sharedInstance.sendAnchor(anchor)
-            }
-            
-            
-            
-  
+
         }
+        
         
         selectCount  = selectCount + 1
     }
@@ -940,6 +936,7 @@ extension AIBuyerDetailViewController: SettingClickDelegate {
         parentView.isSetted = !parentView.isSetted
         
         if let model = parentView.dataModel {
+            
             let userId = NSUserDefaults.standardUserDefaults().objectForKey("Default_UserID") as? String
             
             let userIdInt = Int(userId!)!

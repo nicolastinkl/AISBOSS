@@ -621,7 +621,11 @@ internal class AIServiceContentViewController: UIViewController {
     }
     
     func clickRouteViewEvent(){
-        let vc = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceRouteViewController)
+        
+        //test data
+        
+        let vc = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.AIAlertStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIServiceRouteViewController) as! AIServiceRouteViewController
+        vc.addressArray = AIModelTest.testRouteArrayModel()
         let navigation = UINavigationController(rootViewController: vc)
         self.presentViewController(navigation, animated: true, completion: nil)
         vc.showMenuTitleViewController(navigation,title: "Select")
@@ -629,7 +633,6 @@ internal class AIServiceContentViewController: UIViewController {
     
     /**
       路径规划
-     
      */
     private func addRoutineView() -> UIView {
         
@@ -660,7 +663,6 @@ internal class AIServiceContentViewController: UIViewController {
             titleLayout.width == 100
         }
         
-        
         let indicator = UIImageView()
         routeView.addSubview(indicator)
         indicator.image = UIImage(named: "right_triangle")
@@ -671,11 +673,49 @@ internal class AIServiceContentViewController: UIViewController {
             indicatorlayout.width == 8
         }
         
+        // TODO: Path Track.
+        let scrollView = UIScrollView()
+        routeView.addSubview(scrollView)
+        scrollView.backgroundColor = UIColor.clearColor()
+        scrollView.showsHorizontalScrollIndicator = false
+        constrain(scrollView) { (indicatorlayout) in
+            indicatorlayout.right == indicatorlayout.superview!.right
+            indicatorlayout.left == indicatorlayout.superview!.left
+            indicatorlayout.top == indicatorlayout.superview!.top + 35
+            indicatorlayout.height == 60
+            
+        }
+        
+        let maxModel = AIModelTest.testRouteArrayModel().maxElement({ (model1, model2) -> Bool in
+            return  model1.sr_address_hour < model2.sr_address_hour
+        })
+        
+        let viewWidth : CGFloat = 120
+        let hour = maxModel?.sr_address_hour ?? 0
+        var leftMapping: CGFloat = 0
+        for indexHour in 0...hour {
+            if let address = AIAddressRouteView.initFromNib() as? AIAddressRouteView {
+                scrollView.addSubview(address)
+                if let model = AIModelTest.testRouteArrayModel().filter({ (model) -> Bool in
+                    return model.sr_address_hour == indexHour
+                }).first {
+                    address.fillData(model)
+                    //address.frame = CGRectMake(CGFloat(indexHour) * viewWidth, 0, viewWidth, 57)
+                    address.frame = CGRectMake(leftMapping, 0, viewWidth, 57)
+                    leftMapping += viewWidth
+                }else{
+                    address.clearText()
+                    address.frame = CGRectMake(leftMapping, 0, 0, 57)
+                    leftMapping += 0
+                }
+                address.clipsToBounds = true
+                //leftMapping = address.left
+            }
+        }
+        scrollView.contentSize = CGSizeMake(leftMapping, scrollView.height)
         return routeView
         
     }
-    
-    
     
     private func addBrandView()-> AIDropdownBrandView? {
         brandView = AIDropdownBrandView(brands: [("Amazon","http://www.easyicon.net/api/resizeApi.php?id=1095742&size=128",321)], selectedIndex: 0, frame: view.frame)

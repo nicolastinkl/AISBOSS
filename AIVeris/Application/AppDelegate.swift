@@ -76,9 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if !DEBUG //debug 模式 才会启动
         if motion == .MotionShake {
 //            didReceiveRemoteNotificationUserInfo
-            var userInfo = [NSObject: AnyObject]()
-            userInfo["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: "9786521"]
-            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
+            //var userInfo = [NSObject: AnyObject]()
+            //userInfo["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: "9786521"]
+            //AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
+            AIApplication.showAlertView()
         }
         #endif
     }
