@@ -134,8 +134,9 @@ struct AIRemoteNotificationParameters {
         
         //如果是抢单通知
         let key = AIRemoteNotificationKeys.NotificationType
-        print("\(userinfo)")
-        if let value : String = userinfo[key] as? String{
+        let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
+        print("\(msgDic)")
+        if let value : String = msgDic[key] as? String{
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
@@ -144,9 +145,9 @@ struct AIRemoteNotificationParameters {
                 let topVC = topViewController()
 
                 
-                let roomNumber = userinfo[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
-                let proposalID = userinfo[AIRemoteNotificationKeys.ProposalID] as! Int
-                let proposalName = userinfo[AIRemoteNotificationKeys.ProposalName] as! String
+                let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
+                let proposalID = msgDic[AIRemoteNotificationKeys.ProposalID] as! Int
+                let proposalName = msgDic[AIRemoteNotificationKeys.ProposalName] as! String
                 
                 
                 let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController

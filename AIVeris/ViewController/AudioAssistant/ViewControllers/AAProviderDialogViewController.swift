@@ -58,6 +58,7 @@ extension AAProviderDialogViewController: DialogToolBarDelegate {
 	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton) {
 		AudioAssistantManager.sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
 			self?.status = .Connected
+            AudioAssistantManager.sharedInstance.doPublishAudio()
 		})
 	}
 }
