@@ -53,6 +53,7 @@ protocol Reflectable {
     func propertys()->[String]
 }
 
+
 extension Reflectable
 {
     func propertys()->[String]{
@@ -70,6 +71,10 @@ extension Reflectable
 }
 
 
+protocol AnchorProcess {
+    func processAnchor(anchor : AIAnchor)
+}
+
 class AIAnchor: NSObject {
     
     var type : String?                // 锚点类型
@@ -80,6 +85,20 @@ class AIAnchor: NSObject {
     var parameters : [AnyObject]?     // 参数列表
     
     
+    //
+    var rootViewControllerName : String?
+    var viewComponentName : String?
+    var rowIndex : NSInteger?
+    var sectionIndex : NSInteger?
+    var pageIndex : NSInteger?
+    var locationX : CGFloat?
+    var locationY : CGFloat?
+    //
+    var logoIndex : NSInteger?
+    // 
+    var scrollOffsetX : CGFloat?
+    var scrollOffsetY : CGFloat?
+    var scrollTableName : String?
     
     class func lock() -> AIAnchor {
         let anchor = AIAnchor()

@@ -75,11 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         #if !DEBUG //debug 模式 才会启动
         if motion == .MotionShake {
-//            didReceiveRemoteNotificationUserInfo
-            //var userInfo = [NSObject: AnyObject]()
-            //userInfo["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: "9786521"]
-            //AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
-            AIApplication.showAlertView()
+            var notification = [NSObject: AnyObject]()
+            let proposalID : Int = 1000
+            let proposalName : String = "Proposal"
+            notification["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: 9786521, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
+            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(notification as [NSObject : AnyObject])
+//            AIApplication.showAlertView()
         }
         #endif
     }

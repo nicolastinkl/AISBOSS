@@ -26,6 +26,7 @@ class AudioAssistantManager: NSObject {
 	var _publisher: OTPublisherKit?
 	var _subscriber: OTSubscriber?
 	
+    
 	/// 判断是否连接上了房间
 	var isConnected: Bool {
 		return _session?.connection != nil
@@ -42,6 +43,14 @@ class AudioAssistantManager: NSObject {
 		case Caller, Receiver
 	}
 	
+    
+    
+    
+    
+    
+    
+    
+    
 	/// 打电话
 	func customerCallRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil) {
 		type = .Caller
@@ -84,7 +93,7 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	/// 发布屏幕流
-	func doPublish() {
+	func doPublishScreen() {
 		print(#function + " called")
 		_publisher = OTPublisherKit(delegate: self, name: UIDevice.currentDevice().name, audioTrack: true, videoTrack: true)
 		_publisher?.videoType = .Screen
@@ -95,8 +104,14 @@ class AudioAssistantManager: NSObject {
 		
 		_session?.publish(_publisher, error: nil)
 	}
+    
+    func doPublishAudio() {
+		_publisher = OTPublisherKit(delegate: self, name: UIDevice.currentDevice().name, audioTrack: true, videoTrack: false)
+        
+        _session?.publish(_publisher, error: nil)
+    }
 	
-	/// 订阅视频流
+	/// 订阅流
 	func doSubscribe(stream: OTStream) {
 		_subscriber = OTSubscriber(stream: stream, delegate: self)
 		_session?.subscribe(_subscriber, error: nil)
@@ -155,6 +170,9 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	private func disconnectFromToAudioAssiastantRoom() {
+        _roomNumber = nil
+        _session?.unpublish(_publisher, error: nil)
+        _publisher = nil
 		_session?.disconnect(nil)
 	}
 }

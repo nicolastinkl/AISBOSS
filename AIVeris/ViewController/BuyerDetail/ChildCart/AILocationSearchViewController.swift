@@ -195,6 +195,7 @@ extension AILocationSearchViewController: UITableViewDataSource,UITableViewDeleg
 //                let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
                 //textTitle.text = model.name?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
                 //textDescription.text = model.address?.toPinyin(withFormat: PinyinOutputFormat.defaultFormat, separator: " ")
+
             }
         }
         deCell?.addBottomWholeSSBorderLine(AIApplication.AIColor.MainSystemLineColor)

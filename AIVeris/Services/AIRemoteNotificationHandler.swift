@@ -17,6 +17,8 @@ struct AIRemoteNotificationKeys {
     static let ServiceOrderID = "ServiceOrderID"            // 待抢的服务单号
     static let Channels = "channels"                        // 频道字段，不能修改
     static let NotificationType = "NotificationType"                                // 通知类型
+    static let ProposalID = "ProposalID"
+    static let ProposalName = "ProposalName"
 }
 
 
@@ -132,25 +134,42 @@ struct AIRemoteNotificationParameters {
         
         //如果是抢单通知
         let key = AIRemoteNotificationKeys.NotificationType
-        print("\(userinfo)")
-        if let value : String = userinfo[key] as? String{
+        let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
+        print("\(msgDic)")
+        if let value : String = msgDic[key] as? String{
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
             else{
                 // 语音协助的 接受
                 let topVC = topViewController()
-                let buyerDetailVC = AIBuyerViewController.createBuyerDetailViewController()
-                let vc = AAProviderDialogViewController.initFromNib()
-                let roomNumber = userinfo[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
-                vc.roomNumber = String(format: "%d", roomNumber)
-                topVC.presentViewController(buyerDetailVC, animated: false, completion: {
-                    buyerDetailVC.presentViewController(vc, animated: true, completion: nil)
-                })
+
+                
+                let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
+                let proposalID = msgDic[AIRemoteNotificationKeys.ProposalID] as! Int
+                let proposalName = msgDic[AIRemoteNotificationKeys.ProposalName] as! String
+                
+                
+                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+                
+                let model = AIBuyerBubbleModel()
+                model.proposal_id = proposalID
+                model.proposal_name = proposalName
+                viewController.bubbleModel = model
+                viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+                viewController.isLaunchForAssistant = true
+                viewController.roomNumber = String(format: "%d", roomNumber)
+                
+                topVC.presentViewController(viewController, animated: true, completion: nil)
             }
         }
     }
     
+    
+    func showBuyerDetailViewController() {
+        
+    }
     
     //MARK: 设置推送可用
     
