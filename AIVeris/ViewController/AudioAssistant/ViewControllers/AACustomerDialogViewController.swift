@@ -8,41 +8,60 @@
 
 import UIKit
 
-class AACustomerDialogViewController: UIViewController {
-	@IBOutlet weak var dialogToolBar: DialogToolBar!
-	@IBOutlet weak var zoomButton: UIButton!
-    var proposalID : Int = 1000
-    var proposalName : String = "Proposal"
-    
-	var status: DialogToolBar.Status = DialogToolBar.Status.Received {
-		didSet {
-			dialogToolBar?.status = status
-			zoomButton.hidden = status == .Connected
-		}
-	}
+/// Customer 拨号界面
+class AACustomerDialogViewController: AADialogBaseViewController {
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		dialogToolBar?.delegate = self
-		dia()
+		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
+		if connectionStatus != .Connected && connectionStatus != .Dialing {
+			status = .Dialing
+			dia()
+		}
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		updateUI()
+	}
+	
+	override func updateConnectionStatus(notification: NSNotification) {
+		updateUI()
+	}
+	
+	func updateUI() {
+		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
+		switch connectionStatus {
+		case .Connected:
+			status = .Connected
+		case .NotConnected:
+			status = .NotConnected
+		case .Dialing:
+			status = .Dialing
+		case .Error:
+			status = .Error
+		}
 	}
 	
 	func dia() {
 		var roomNumber = random() % 9999
-		roomNumber = 9786521 // test
-        
-        let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
-        
-        
-		AudioAssistantManager.sharedInstance.customerCallRoom(roomNumber: "\(roomNumber)") {
-			AIRemoteNotificationHandler.defaultHandler().sendAudioAssistantNotification(notification as! [String : AnyObject], toUser: "200000002501")
-            AudioAssistantManager.sharedInstance.doPublishAudio()
-		}
+		roomNumber = AudioAssistantManager.fakeRoomNumber // test
+		
+		let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType: AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey: "您有远程协助请求", AIRemoteNotificationKeys.ProposalID: proposalID, AIRemoteNotificationKeys.ProposalName: proposalName]
+		
+		view.showLoading()
+		AudioAssistantManager.sharedInstance.customerCallRoom(roomNumber: "\(roomNumber)", sessionDidConnectHandler: { [weak self] in
+			AIRemoteNotificationHandler.defaultHandler().sendAudioAssistantNotification(notification as! [String: AnyObject], toUser: "200000002501")
+			AudioAssistantManager.sharedInstance.doPublishAudio()
+			self?.view.hideLoading()
+			}, didFailHandler: { [weak self] error in
+			self?.view.hideLoading()
+		})
 	}
-}
-
-extension AACustomerDialogViewController: DialogToolBarDelegate {
+	
 	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
 		AudioAssistantManager.sharedInstance.customerHangUpRoom()
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 }
+

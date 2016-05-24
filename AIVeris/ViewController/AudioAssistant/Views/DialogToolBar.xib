@@ -99,14 +99,14 @@
                             <rect key="frame" x="40" y="0.0" width="74" height="74"/>
                             <state key="normal" image="aa_silence"/>
                             <connections>
-                                <action selector="silenceButtonPressed:" destination="-1" eventType="touchUpInside" id="xR2-g6-dcB"/>
+                                <action selector="muteButtonPressed:" destination="-1" eventType="touchUpInside" id="0ye-Z9-9bd"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W77-fU-cSh">
                             <rect key="frame" x="431" y="0.0" width="74" height="74"/>
                             <state key="normal" image="aa_voice"/>
                             <connections>
-                                <action selector="voiceButtonPressed:" destination="-1" eventType="touchUpInside" id="Lvl-It-Qo4"/>
+                                <action selector="speakerButtonPressed:" destination="-1" eventType="touchUpInside" id="yKr-4O-FkC"/>
                             </connections>
                         </button>
                     </subviews>

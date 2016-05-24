@@ -202,6 +202,7 @@
 		84687EAC1CE188D700921C6A /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84687EAB1CE188D700921C6A /* JSONSerializer.swift */; };
 		84687EB21CE1B85B00921C6A /* TBScreenCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 84687EB11CE1B85B00921C6A /* TBScreenCapture.m */; };
 		8468E2651CA8E18B000C40B3 /* CustomPickerColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468E2641CA8E18B000C40B3 /* CustomPickerColumnView.swift */; };
+		846BC6781CF3F00E0016B1C5 /* AADialogBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
@@ -954,6 +955,7 @@
 		84687EB01CE1B85B00921C6A /* TBScreenCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBScreenCapture.h; sourceTree = "<group>"; };
 		84687EB11CE1B85B00921C6A /* TBScreenCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBScreenCapture.m; sourceTree = "<group>"; };
 		8468E2641CA8E18B000C40B3 /* CustomPickerColumnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerColumnView.swift; sourceTree = "<group>"; };
+		846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AADialogBaseViewController.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
@@ -2065,6 +2067,7 @@
 		84756B9C1CE337F900C2AC9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */,
 				84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */,
 				84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */,
 				84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */,
@@ -3837,6 +3840,7 @@
 				120D68091C98F15000E74D12 /* AILimitListView.swift in Sources */,
 				12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */,
 				843BAC291C17D598003E445E /* UIImage+Resize.m in Sources */,
+				846BC6781CF3F00E0016B1C5 /* AADialogBaseViewController.swift in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				81B5476F1C27D7460062CB55 /* AIWishMessageView.swift in Sources */,

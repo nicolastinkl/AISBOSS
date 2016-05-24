@@ -192,6 +192,9 @@ struct AIApplication{
         
         //更新查询需求分析数据的通知
         static let AIRequirementReloadDataNotificationName = "AIRequirementReloadDataNotificationName"
+        
+        // 远程协助状态更新
+        static let AIRemoteAssistantConnectionStatusChangeNotificationName = "AIRemoteAssistantNotificationName"
     }
     
     // MARK: System theme's color

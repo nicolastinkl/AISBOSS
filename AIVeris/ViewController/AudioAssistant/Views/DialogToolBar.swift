@@ -11,8 +11,8 @@ import UIKit
 @objc protocol DialogToolBarDelegate: NSObjectProtocol {
 	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton)
 	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton)
-	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickSilenceButton sender: UIButton)
-	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickVoiceButton sender: UIButton)
+	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickMuteButton sender: UIButton)
+	optional func dialogToolBar(dialogToolBar: DialogToolBar, clickSpeakerButton sender: UIButton)
 }
 
 class DialogToolBar: UIView {
@@ -21,14 +21,10 @@ class DialogToolBar: UIView {
 	
 	@IBOutlet var toolBarViews: [UIView]!
 	
-	var status: Status = .Dialing {
+	var status: AudioAssistantManagerConnectionStatus = .Dialing {
 		didSet {
 			updateUI()
 		}
-	}
-	
-	enum Status: Int {
-		case Dialing = 0, Received, Connected
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -51,10 +47,12 @@ class DialogToolBar: UIView {
 	@IBAction func pickUpButtonPressed(sender: UIButton) {
 		delegate?.dialogToolBar?(self, clickPickUpButton: sender)
 	}
-	@IBAction func voiceButtonPressed(sender: UIButton) {
-		delegate?.dialogToolBar?(self, clickVoiceButton: sender)
+    
+	@IBAction func speakerButtonPressed(sender: UIButton) {
+		delegate?.dialogToolBar?(self, clickSpeakerButton: sender)
 	}
-	@IBAction func silenceButtonPressed(sender: UIButton) {
-		delegate?.dialogToolBar?(self, clickSilenceButton: sender)
+	
+	@IBAction func muteButtonPressed(sender: UIButton) {
+		delegate?.dialogToolBar?(self, clickMuteButton: sender)
 	}
 }
