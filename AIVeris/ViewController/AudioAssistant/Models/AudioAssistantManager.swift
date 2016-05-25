@@ -7,16 +7,30 @@
 //
 
 struct AudioAssistantString {
+	// 挂断电话
 	static let HangUp = "HangUp"
+	// 已经接起电话
+	static let PickedUp = "PickedUp"
 }
 
-enum AudioAssistantStringType: String {
+class AudioAssistantMessage: NSObject {
+	var type: AudioAssistantMessageType
+	var content: String
+	
+	init(type: AudioAssistantMessageType, content: String) {
+		self.type = type
+		self.content = content
+		super.init()
+	}
+}
+
+enum AudioAssistantMessageType: String {
 	/// 普通消息
-	case Message
+	case NormalMessage = "NormalMessage"
 	/// 锚点
-	case Anchor
+	case Anchor = "Anchor"
 	/// 命令
-	case Command
+	case Command = "Command"
 }
 
 enum AudioAssistantManagerConnectionStatus: Int {
@@ -32,46 +46,31 @@ enum AudioAssistantManagerConnectionStatus: Int {
 }
 
 class AudioAssistantManager: NSObject {
+	
 	static let sharedInstance = AudioAssistantManager()
-	static let fakeRoomNumber = 97822321
+	static let fakeRoomNumber = "97822321"
 	
 	private var _session: OTSession?
 	private var _publisher: OTPublisherKit?
 	private var _subscriber: OTSubscriber?
+	private var _roomNumber: String?
+	private var _otherConnection: OTConnection?
+	private var _sessionDidConnectHandler: (() -> ())?
+	private var _didFailHandler: ((OTError) -> ())?
+	
 	var mute: Bool = false {
 		didSet {
 			_publisher?.publishAudio = mute
 		}
 	}
 	
-	/// 判断是否连接上了房间
-	var isConnected: Bool {
-		return _session?.connection != nil
-	}
-	
-	var connectionStatus: AudioAssistantManagerConnectionStatus {
-		var result = AudioAssistantManagerConnectionStatus.NotConnected
-		if let connectionStatus = _session?.sessionConnectionStatus {
-			switch connectionStatus {
-			case .Connected:
-				result = .Connected
-			case .NotConnected: fallthrough
-			case .Disconnecting: fallthrough
-			case .Reconnecting:
-				result = .NotConnected
-			case .Connecting:
-				result = .Dialing
-			case .Failed:
-				result = .Error
+	var connectionStatus = AudioAssistantManagerConnectionStatus.NotConnected {
+		didSet {
+			if connectionStatus != oldValue {
+				NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
 			}
 		}
-		return result
 	}
-	
-	private var _roomNumber: String?
-	private var _otherConnection: OTConnection?
-	private var _sessionDidConnectHandler: (() -> ())?
-	private var _didFailHandler: ((OTError) -> ())?
 	
 	var type: CallType = .Customer
 	
@@ -93,32 +92,33 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	/**
-	 拨打者挂断房间
-
-	 - parameter silence: 静音 Default is false , true 就不发挂断消息
+	 customer挂断房间
 	 */
-	func customerHangUpRoom(silence silence: Bool = false) {
-		if !silence {
-			sendString((AudioAssistantString.HangUp), type: .Message)
+	func customerHangUpRoom() {
+		if connectionStatus == .Connected {
+			sendCommand((AudioAssistantString.HangUp))
 		}
 		disconnectFromToAudioAssiastantRoom()
 	}
 	
 	/**
-	 接收者挂断房间
+	 provider挂断房间
 
 	 - parameter silence: 静音 Default is false , true 就不发挂断消息
 	 */
-	func providerHangUpRoom(silence silence: Bool = false) {
-		sendString((AudioAssistantString.HangUp), type: .Message)
-		disconnectFromToAudioAssiastantRoom()
-	}
-	
-	func hangUpFromRoom(roomNumber roomNumber: String) {
-		connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
-			self?.sendString(AudioAssistantString.HangUp, type: .Message)
-			self?.disconnectFromToAudioAssiastantRoom()
-		})
+	func providerHangUpRoom(roomNumber roomNumber: String?, silence: Bool = false) {
+		let rNumber = roomNumber ?? _roomNumber ?? ""
+		
+		if connectionStatus == .NotConnected {
+			connectionToAudioAssiastantRoom(roomNumber: rNumber, sessionDidConnectHandler: { [weak self] in
+				self?.disconnectFromToAudioAssiastantRoom()
+			})
+		} else {
+			if silence == false {
+				sendCommand((AudioAssistantString.HangUp))
+			}
+			disconnectFromToAudioAssiastantRoom()
+		}
 	}
 	
 	/// 发布屏幕
@@ -148,8 +148,8 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	/// 发送普通消息
-	func sendMessage(message: String) {
-		sendString(message, type: .Message)
+	func sendNormalMessage(message: String) {
+		sendString(message, type: .NormalMessage)
 	}
 	
 	/// 发送命令
@@ -163,7 +163,7 @@ class AudioAssistantManager: NSObject {
 	 - parameter string: 使用 AudioAssistantMessage
 	 - parameter type:   字符串类型
 	 */
-	func sendString(string: String, type: AudioAssistantStringType) {
+	func sendString(string: String, type: AudioAssistantMessageType) {
 		_session?.signalWithType(type.rawValue, string: string, connection: nil, error: nil)
 	}
 	
@@ -173,11 +173,12 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	private func connectionToAudioAssiastantRoom(roomNumber roomNumber: String, sessionDidConnectHandler: (() -> ())? = nil, didFailHandler: ((OTError) -> ())? = nil) {
+		connectionStatus = .NotConnected
 		_roomNumber = roomNumber
 		_didFailHandler = didFailHandler
 		_sessionDidConnectHandler = sessionDidConnectHandler
 		let roomURLString = String(format: "http://104.18.58.238/%@.json", roomNumber)
-        print(String("https://opentokrtc.com/%@.json", roomNumber))
+		print(String("https://opentokrtc.com/%@.json", roomNumber))
 		let roomURL = NSURL(string: roomURLString)!
 		let request = NSMutableURLRequest(URL: roomURL, cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
 		request.HTTPMethod = "GET"
@@ -201,13 +202,14 @@ class AudioAssistantManager: NSObject {
 		}
 	}
 	
-	private func disconnectFromToAudioAssiastantRoom() {
+	func disconnectFromToAudioAssiastantRoom() {
+		connectionStatus = .NotConnected
 		_roomNumber = nil
 		_otherConnection = nil
 		_publisher = nil
 		_session?.unpublish(_publisher, error: nil)
 		_session?.disconnect(nil)
-		NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: AudioAssistantString.HangUp)
 	}
 }
 
@@ -225,7 +227,6 @@ extension AudioAssistantManager: OTSessionDelegate {
 			_sessionDidConnectHandler = nil
 			sessionDidConnectHandler()
 		}
-		NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
 		print(#function + " called")
 	}
 	
@@ -239,7 +240,6 @@ extension AudioAssistantManager: OTSessionDelegate {
 		if let roomNumber = _roomNumber {
 			connectionToAudioAssiastantRoom(roomNumber: roomNumber, sessionDidConnectHandler: _sessionDidConnectHandler)
 		}
-		NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
 	}
 	
 	/**
@@ -259,7 +259,7 @@ extension AudioAssistantManager: OTSessionDelegate {
 		}
 		print(#function + " called")
 		print(error?.localizedDescription)
-		NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+		connectionStatus = .Error
 	}
 	
 	/** @name Monitoring streams in a session */
@@ -315,16 +315,6 @@ extension AudioAssistantManager: OTSessionDelegate {
 			}
 		}
 	}
-//
-//
-//    - (void)    session:(OTSession*) session
-//    connectionDestroyed:(OTConnection*) connection;
-//
-//
-//    - (void)   session:(OTSession*)session
-//    receivedSignalType:(NSString*)type
-//    fromConnection:(OTConnection*)connection
-//    withString:(NSString*)string;
 	
 	func session(session: OTSession!, receivedSignalType type: String!, fromConnection connection: OTConnection!, withString string: String!) {
 		if connection != _session?.connection {
@@ -332,20 +322,6 @@ extension AudioAssistantManager: OTSessionDelegate {
 			AADataReceiverParser.sharedInstance.parseString(string, type: type)
 		}
 	}
-//
-//
-//    - (void)     session:(OTSession*)session
-//    archiveStartedWithId:(NSString*)archiveId
-//    name:(NSString*)name;
-//
-//
-//    - (void)     session:(OTSession*)session
-//    archiveStoppedWithId:(NSString*)archiveId;
-//
-//
-//    - (void)sessionDidBeginReconnecting:(OTSession*)session;
-	
-//    - (void)sessionDidReconnect:(OTSession*)session;
 }
 
 extension AudioAssistantManager: OTPublisherKitDelegate {

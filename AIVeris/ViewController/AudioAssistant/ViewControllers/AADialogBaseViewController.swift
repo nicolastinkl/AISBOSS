@@ -18,31 +18,25 @@ class AADialogBaseViewController: UIViewController {
 	
 	var status: AudioAssistantManagerConnectionStatus = .NotConnected {
 		didSet {
-			dialogToolBar?.status = status
-			zoomButton.hidden = status == .Connected
+			if status != oldValue {
+				updateUI()
+			}
 		}
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		dialogToolBar.status = .Dialing
 		dialogToolBar?.delegate = self
-		
-		let tapLabel = UILabel(frame: CGRectMake(10, 10, 100, 40))
-		tapLabel.text = "点击消失"
-		tapLabel.textColor = UIColor.whiteColor()
-		tapLabel.backgroundColor = UIColor.clearColor()
-		tapLabel.userInteractionEnabled = true
-		view.addSubview(tapLabel)
-		
-		let gestrue = UITapGestureRecognizer(target: self, action: #selector(disppear))
-		tapLabel.addGestureRecognizer(gestrue)
-		
 		setupNotification()
 	}
 	
 	func setupNotification() {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AADialogBaseViewController.updateConnectionStatus(_:)), name: AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AADialogBaseViewController.handleCommand(_:)), name: AIApplication.Notification.AIRemoteAssistantManagerMessageReceivedNotificaitonName, object: nil)
+	}
+	
+	func handleCommand(notification: NSNotification) {
+		assertionFailure("subclass need override this function")
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -54,9 +48,9 @@ class AADialogBaseViewController: UIViewController {
 		updateUI()
 	}
 	
-    /**
-     每次 connectionstatus 变化 和 viewWillAppear 会调用
-     */
+	/**
+	 每次 connectionstatus 变化 和 viewWillAppear 会调用
+	 */
 	func updateUI() {
 		assertionFailure("subclass need override this function")
 	}
@@ -66,36 +60,32 @@ class AADialogBaseViewController: UIViewController {
 	}
 	
 	@IBAction func zoomButtonPressed(sender: AnyObject) {
-	}
-	
-	func disppear() {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
-	
 }
 
 // MARK: - DialogToolBarDelegate 静音 免提
 extension AADialogBaseViewController: DialogToolBarDelegate {
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickMuteButton sender: UIButton) {
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickMuteButton sender: UIButton?) {
 		let manager = AudioAssistantManager.sharedInstance
 		manager.mute = !manager.mute
-        dialogToolBar.mute = manager.mute
+		dialogToolBar.mute = manager.mute
 	}
 	
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickSpeakerButton sender: UIButton) {
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickSpeakerButton sender: UIButton?) {
 		let sharedInstance = AVAudioSession.sharedInstance()
 		if AVAudioSessionDefaultCategory == "" {
 			AVAudioSessionDefaultCategory = sharedInstance.category
 			do {
 				try sharedInstance.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DefaultToSpeaker)
-                dialogToolBar.speakderOn = false
+				dialogToolBar.speakderOn = false
 			} catch {
 				
 			}
 		} else {
 			do {
 				try sharedInstance.setCategory(AVAudioSessionDefaultCategory, withOptions: .DefaultToSpeaker)
-                dialogToolBar.speakderOn = true
+				dialogToolBar.speakderOn = true
 			} catch {
 				
 			}

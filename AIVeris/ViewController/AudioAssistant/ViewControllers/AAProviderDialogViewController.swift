@@ -14,8 +14,7 @@ class AAProviderDialogViewController: AADialogBaseViewController {
 	override func updateUI() {
 		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
 		status = connectionStatus
-		// 接通状态才显示zoomButton
-		zoomButton.hidden = connectionStatus != .Connected
+		zoomButton.hidden = status != .Connected
 		switch connectionStatus {
 		case .NotConnected:
 			dialogToolBar.status = .NotConnected
@@ -27,17 +26,35 @@ class AAProviderDialogViewController: AADialogBaseViewController {
 			dialogToolBar.status = .NotConnected
 		}
 	}
-	
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
-		AudioAssistantManager.sharedInstance.providerHangUpRoom()
-		dismissViewControllerAnimated(true, completion: nil)
+	override func handleCommand(notification: NSNotification) {
+		if let command = notification.object as? AudioAssistantMessage {
+			if command.type == .Command {
+				switch command.content {
+				case AudioAssistantString.HangUp:
+					dialogToolBar(dialogToolBar, clickHangUpButton: nil)
+				default:
+					break
+				}
+			}
+		}
+	}
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton?) {
+		let sharedInstance = AudioAssistantManager.sharedInstance
+		sharedInstance.providerHangUpRoom(roomNumber: roomNumber)
+		
+		let presentingViewController = self.presentingViewController
+		dismissViewControllerAnimated(false, completion: {
+			presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+		})
 	}
 	
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton) {
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton?) {
 		view.showLoading()
-		AudioAssistantManager.sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
-			self?.status = .Connected
-			AudioAssistantManager.sharedInstance.doPublishAudio()
+		let sharedInstance = AudioAssistantManager.sharedInstance
+		sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
+			sharedInstance.connectionStatus = .Connected
+			sharedInstance.doPublishAudio()
+			sharedInstance.sendNormalMessage(AudioAssistantString.PickedUp)
 			self?.view.hideLoading()
 			}, didFailHandler: { [weak self] error in
 			self?.view.hideLoading()
