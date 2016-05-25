@@ -10,11 +10,24 @@ import UIKit
 
 /// Provider 拨号界面
 class AAProviderDialogViewController: AADialogBaseViewController {
-    
-    override func updateConnectionStatus(notification: NSNotification) {
-        
-    }
-
+	
+	override func updateUI() {
+		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
+		status = connectionStatus
+		// 接通状态才显示zoomButton
+		zoomButton.hidden = connectionStatus != .Connected
+		switch connectionStatus {
+		case .NotConnected:
+			dialogToolBar.status = .NotConnected
+		case .Dialing:
+			dialogToolBar.status = .Dialing
+		case .Connected:
+			dialogToolBar.status = .Connected
+		case .Error:
+			dialogToolBar.status = .NotConnected
+		}
+	}
+	
 	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
 		AudioAssistantManager.sharedInstance.providerHangUpRoom()
 		dismissViewControllerAnimated(true, completion: nil)

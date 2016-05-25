@@ -177,6 +177,7 @@ class AudioAssistantManager: NSObject {
 		_didFailHandler = didFailHandler
 		_sessionDidConnectHandler = sessionDidConnectHandler
 		let roomURLString = String(format: "http://104.18.58.238/%@.json", roomNumber)
+        print(String("https://opentokrtc.com/%@.json", roomNumber))
 		let roomURL = NSURL(string: roomURLString)!
 		let request = NSMutableURLRequest(URL: roomURL, cachePolicy: .ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
 		request.HTTPMethod = "GET"

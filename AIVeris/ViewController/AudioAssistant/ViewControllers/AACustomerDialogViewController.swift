@@ -16,30 +16,23 @@ class AACustomerDialogViewController: AADialogBaseViewController {
 		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
 		if connectionStatus != .Connected && connectionStatus != .Dialing {
 			status = .Dialing
-			dia()
-		}
+			dia() }
 	}
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		updateUI()
-	}
-	
-	override func updateConnectionStatus(notification: NSNotification) {
-		updateUI()
-	}
-	
-	func updateUI() {
+	override func updateUI() {
 		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
+		status = connectionStatus
+		// 接通状态才显示zoomButton
+		zoomButton.hidden = connectionStatus != .Connected
 		switch connectionStatus {
-		case .Connected:
-			status = .Connected
 		case .NotConnected:
-			status = .NotConnected
+			dialogToolBar.status = .NotConnected
 		case .Dialing:
-			status = .Dialing
+			dialogToolBar.status = .Dialing
+		case .Connected:
+			dialogToolBar.status = .Connected
 		case .Error:
-			status = .Error
+			dialogToolBar.status = .NotConnected
 		}
 	}
 	
@@ -64,4 +57,3 @@ class AACustomerDialogViewController: AADialogBaseViewController {
 		dismissViewControllerAnimated(true, completion: nil)
 	}
 }
-

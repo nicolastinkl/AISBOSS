@@ -45,9 +45,20 @@ class AADialogBaseViewController: UIViewController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AADialogBaseViewController.updateConnectionStatus(_:)), name: AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
 	}
 	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		updateUI()
+	}
+	
 	func updateConnectionStatus(notification: NSNotification) {
-        assertionFailure("subclass need override this function")
-//		let status = AudioAssistantManager.sharedInstance.connectionStatus
+		updateUI()
+	}
+	
+    /**
+     每次 connectionstatus 变化 和 viewWillAppear 会调用
+     */
+	func updateUI() {
+		assertionFailure("subclass need override this function")
 	}
 	
 	deinit {
@@ -68,6 +79,7 @@ extension AADialogBaseViewController: DialogToolBarDelegate {
 	func dialogToolBar(dialogToolBar: DialogToolBar, clickMuteButton sender: UIButton) {
 		let manager = AudioAssistantManager.sharedInstance
 		manager.mute = !manager.mute
+        dialogToolBar.mute = manager.mute
 	}
 	
 	func dialogToolBar(dialogToolBar: DialogToolBar, clickSpeakerButton sender: UIButton) {
@@ -76,12 +88,14 @@ extension AADialogBaseViewController: DialogToolBarDelegate {
 			AVAudioSessionDefaultCategory = sharedInstance.category
 			do {
 				try sharedInstance.setCategory(AVAudioSessionCategoryPlayback, withOptions: .DefaultToSpeaker)
+                dialogToolBar.speakderOn = false
 			} catch {
 				
 			}
 		} else {
 			do {
 				try sharedInstance.setCategory(AVAudioSessionDefaultCategory, withOptions: .DefaultToSpeaker)
+                dialogToolBar.speakderOn = true
 			} catch {
 				
 			}

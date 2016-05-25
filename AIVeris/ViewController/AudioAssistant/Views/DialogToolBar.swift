@@ -20,6 +20,19 @@ class DialogToolBar: UIView {
 	weak var delegate: DialogToolBarDelegate?
 	
 	@IBOutlet var toolBarViews: [UIView]!
+    
+    @IBOutlet weak var speakerButton: UIButton!
+    @IBOutlet weak var muteButton: UIButton!
+    var mute: Bool = false {
+        didSet {
+            updateUI()
+        }
+    }
+    var speakderOn: Bool = true {
+        didSet {
+            updateUI()
+        }
+    }
 	
 	var status: AudioAssistantManagerConnectionStatus = .Dialing {
 		didSet {
@@ -33,11 +46,18 @@ class DialogToolBar: UIView {
 	}
 	
 	func updateUI() {
+        // update visible view
 		toolBarViews.forEach { (view) in
 			view.hidden = true
 		}
 		let currentView = toolBarViews[status.rawValue]
 		currentView.hidden = false
+        
+        
+        // update button status
+        muteButton.selected = mute
+        speakerButton.selected = !speakderOn
+        
 	}
 	
 	@IBAction func hangUpButtonPressed(sender: UIButton) {
