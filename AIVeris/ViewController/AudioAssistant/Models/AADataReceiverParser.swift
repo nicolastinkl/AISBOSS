@@ -14,18 +14,17 @@ class AADataReceiverParser: NSObject {
 	
 	func parseString(string: String, type: String) {
 		
-		let stringType = AudioAssistantStringType(rawValue: type)
+		let stringType = AudioAssistantMessageType(rawValue: type)
 		
 		if let stringType = stringType {
 			switch stringType {
-			case .Message:
+			case .NormalMessage:
 				parseMessage(string)
 			case .Command:
 				parseCommand(string)
 			case .Anchor:
 				parseAnchorString(string)
 			}
-			
 		}
 	}
 	
@@ -38,16 +37,24 @@ class AADataReceiverParser: NSObject {
 	}
 	
 	func parseCommand(command: String) {
-        switch command {
-        case AudioAssistantString.HangUp:
-            AudioAssistantManager.sharedInstance.providerHangUpRoom(silence: true)
-        default:
-            break
-        }
+		switch command {
+		case AudioAssistantString.HangUp:
+			let command = AudioAssistantMessage(type: .Command, content: command)
+			NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantManagerMessageReceivedNotificaitonName, object: command)
+		default:
+			break
+		}
 	}
 	
 	func parseMessage(message: String) {
-		// notify ui with message
+		switch message {
+		case AudioAssistantString.HangUp:
+			AudioAssistantManager.sharedInstance.connectionStatus = .NotConnected
+		case AudioAssistantString.PickedUp:
+			AudioAssistantManager.sharedInstance.connectionStatus = .Connected
+		default:
+			break
+		}
 	}
 	
 }

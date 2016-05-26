@@ -202,6 +202,7 @@
 		84687EAC1CE188D700921C6A /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84687EAB1CE188D700921C6A /* JSONSerializer.swift */; };
 		84687EB21CE1B85B00921C6A /* TBScreenCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 84687EB11CE1B85B00921C6A /* TBScreenCapture.m */; };
 		8468E2651CA8E18B000C40B3 /* CustomPickerColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8468E2641CA8E18B000C40B3 /* CustomPickerColumnView.swift */; };
+		846BC6781CF3F00E0016B1C5 /* AADialogBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */; };
 		846DAD961BD7253F0054F058 /* ProposalExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */; };
 		846DAD991BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
@@ -406,7 +407,6 @@
 		935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */; };
 		9355897A1CE46DBD00AF1E75 /* AILocationSelectHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589791CE46DBD00AF1E75 /* AILocationSelectHeadView.xib */; };
 		9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
-		9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; };
 		9356C9921CEC65100069D047 /* HanziPinyin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9356C98F1CEC65060069D047 /* HanziPinyin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93642B3E1CD1A96F000338AB /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93642B3D1CD1A96F000338AB /* loading.gif */; };
 		936A20241C1EE6D300295BC8 /* AIAudioInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936A20231C1EE6D300295BC8 /* AIAudioInputView.swift */; };
@@ -424,6 +424,8 @@
 		937EA3931C04076500AF776B /* AIAudioRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937EA3921C04076500AF776B /* AIAudioRecordView.xib */; };
 		937EA3951C04076D00AF776B /* AIAudioRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EA3941C04076D00AF776B /* AIAudioRecordView.swift */; };
 		937EF7941CDCA6CD006B98BE /* start.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 937EF7931CDCA6CD006B98BE /* start.mp4 */; };
+		938C37EF1CEF0B3C00545B69 /* CardDeepLinkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 938C37EE1CEF0B3C00545B69 /* CardDeepLinkKit.framework */; };
+		938C37F11CEF0B4300545B69 /* CardDeepLinkKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 938C37EE1CEF0B3C00545B69 /* CardDeepLinkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		938E507F1CE321B50019E3C1 /* AIServiceRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */; };
 		938E50811CE321C30019E3C1 /* AIServiceRouteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */; };
 		9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */ = {isa = PBXBuildFile; fileRef = 9394B2931C52188200F80344 /* AIEvent_Planning.json */; };
@@ -681,6 +683,7 @@
 				9324A4731CCF58EF00A0A397 /* AVOSCloudCrashReporting.framework in CopyFiles */,
 				9356C9921CEC65100069D047 /* HanziPinyin.framework in CopyFiles */,
 				9324A4741CCF58EF00A0A397 /* AVOSCloud.framework in CopyFiles */,
+				938C37F11CEF0B4300545B69 /* CardDeepLinkKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,6 +957,7 @@
 		84687EB01CE1B85B00921C6A /* TBScreenCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBScreenCapture.h; sourceTree = "<group>"; };
 		84687EB11CE1B85B00921C6A /* TBScreenCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBScreenCapture.m; sourceTree = "<group>"; };
 		8468E2641CA8E18B000C40B3 /* CustomPickerColumnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerColumnView.swift; sourceTree = "<group>"; };
+		846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AADialogBaseViewController.swift; sourceTree = "<group>"; };
 		846DAD951BD7253F0054F058 /* ProposalExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProposalExpandedView.swift; sourceTree = "<group>"; };
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
@@ -1264,6 +1268,7 @@
 		937EA3921C04076500AF776B /* AIAudioRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAudioRecordView.xib; sourceTree = "<group>"; };
 		937EA3941C04076D00AF776B /* AIAudioRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAudioRecordView.swift; sourceTree = "<group>"; };
 		937EF7931CDCA6CD006B98BE /* start.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.mp4; sourceTree = "<group>"; };
+		938C37EE1CEF0B3C00545B69 /* CardDeepLinkKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CardDeepLinkKit.framework; sourceTree = "<group>"; };
 		938E507E1CE321B40019E3C1 /* AIServiceRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceRouteView.swift; sourceTree = "<group>"; };
 		938E50801CE321C30019E3C1 /* AIServiceRouteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIServiceRouteView.xib; sourceTree = "<group>"; };
 		9394B2931C52188200F80344 /* AIEvent_Planning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AIEvent_Planning.json; sourceTree = "<group>"; };
@@ -1604,6 +1609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844AFA291CE1DAB200C58B1C /* VideoToolbox.framework in Frameworks */,
+				938C37EF1CEF0B3C00545B69 /* CardDeepLinkKit.framework in Frameworks */,
 				844AFA271CE1DA8B00C58B1C /* libc++.tbd in Frameworks */,
 				844AFA251CE1DA7300C58B1C /* GLKit.framework in Frameworks */,
 				844AFA231CE1DA6800C58B1C /* CoreVideo.framework in Frameworks */,
@@ -1630,7 +1636,6 @@
 				93C33F311B9C25F8007BF506 /* Foundation.framework in Frameworks */,
 				93C33F2F1B9C25EC007BF506 /* UIKit.framework in Frameworks */,
 				844AFA1D1CE1D6A900C58B1C /* OpenTok.framework in Frameworks */,
-				9356C9911CEC65100069D047 /* HanziPinyin.framework in Frameworks */,
 				9356C9901CEC65060069D047 /* HanziPinyin.framework in Frameworks */,
 				DC58EE1F04D6139812355B50 /* Pods_AIVeris.framework in Frameworks */,
 			);
@@ -2065,6 +2070,7 @@
 		84756B9C1CE337F900C2AC9D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				846BC6771CF3F00E0016B1C5 /* AADialogBaseViewController.swift */,
 				84C57E771CEAC6450034D6EB /* AAProviderDialogViewController.swift */,
 				84C57E781CEAC6450034D6EB /* AAProviderDialogViewController.xib */,
 				84C57E731CEAB72B0034D6EB /* AACustomerDialogViewController.swift */,
@@ -2693,6 +2699,14 @@
 			path = ocModel;
 			sourceTree = "<group>";
 		};
+		938C37ED1CEF0B3C00545B69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				938C37EE1CEF0B3C00545B69 /* CardDeepLinkKit.framework */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
 		9395FDAF1C57885600D95F54 /* ContentSubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3028,6 +3042,7 @@
 		93B25A641B9D7A6F00CD1FEB /* 3rdLib */ = {
 			isa = PBXGroup;
 			children = (
+				938C37ED1CEF0B3C00545B69 /* Products */,
 				9356C98E1CEC65060069D047 /* Pinyin */,
 				120059471CE330B100029A66 /* DDHTimerControl */,
 				93B25A651B9D7A7B00CD1FEB /* AFNetworking */,
@@ -3837,6 +3852,7 @@
 				120D68091C98F15000E74D12 /* AILimitListView.swift in Sources */,
 				12E0487E1BFB2F28001F1FCF /* ServiceCardDetailFlag.swift in Sources */,
 				843BAC291C17D598003E445E /* UIImage+Resize.m in Sources */,
+				846BC6781CF3F00E0016B1C5 /* AADialogBaseViewController.swift in Sources */,
 				93EAC36C1BB107FE00483205 /* AISchemeProtocol.swift in Sources */,
 				849D3EF21BE0632B0008949E /* ProposalEnum.swift in Sources */,
 				81B5476F1C27D7460062CB55 /* AIWishMessageView.swift in Sources */,
@@ -4411,6 +4427,7 @@
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/Products",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -4455,6 +4472,7 @@
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Frameworks",
 					"$(PROJECT_DIR)/AIVeris/Libs/OpenTok",
 					"$(PROJECT_DIR)/AIVeris/3rdLib/Pinyin",
+					"$(PROJECT_DIR)/AIVeris/3rdLib/Products",
 				);
 				INFOPLIST_FILE = AIVeris/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

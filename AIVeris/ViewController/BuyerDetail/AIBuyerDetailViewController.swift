@@ -12,6 +12,7 @@ import UIKit
 import Spring
 import Cartography
 import AIAlertView
+//import CardDeepLinkKit
 import SnapKit
 
 protocol AIBuyerDetailDelegate: class {
@@ -33,6 +34,8 @@ enum AudioAssiatantModel {
 class AIBuyerDetailViewController : UIViewController {
     
     //MARK: For AudioAssistant
+    var customerDialogViewController: AACustomerDialogViewController?
+    var providerDialogViewController: AAProviderDialogViewController?
     
     private var audioAssistantModel : AudioAssiatantModel = .None
     private var isNowAssisting : Bool = false
@@ -150,19 +153,19 @@ class AIBuyerDetailViewController : UIViewController {
         // Default request frist networking from asiainfo server.
         self.tableView.headerBeginRefreshing()
        
-        // make Assistant 
-        
-        if isLaunchForAssistant {
-            let vc = AAProviderDialogViewController.initFromNib()
-            vc.roomNumber = roomNumber
-            vc.proposalID = (bubbleModel?.proposal_id)!
-            vc.proposalName = (bubbleModel?.proposal_name)!
-            
-            self.addChildViewController(vc)
-            vc.didMoveToParentViewController(self)
-            self.view.addSubview(vc.view)
+        setupNotification()
+    }
+    
+    func setupNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateCustomerDialogViewControllerStatus(_:)), name: AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+    }
+    
+    func updateCustomerDialogViewControllerStatus(notification: NSNotification) {
+        if let object = notification.object as? String {
+            if object == AudioAssistantString.HangUp {
+//                customerDialogViewController?.status = .Dialing
+            }
         }
-        
     }
     
     
@@ -294,12 +297,17 @@ class AIBuyerDetailViewController : UIViewController {
      Video Button Click
      */
     @IBAction func startVideoAction(sender: AnyObject) {
-        
-    let vc = AACustomerDialogViewController.initFromNib()
-        vc.proposalID = (bubbleModel?.proposal_id)!
-        vc.proposalName = (bubbleModel?.proposal_name)!
-    presentViewController(vc, animated: true, completion: nil)
-  
+        if providerDialogViewController != nil {
+            presentViewController(providerDialogViewController!, animated: true, completion: nil)
+        } else {
+            if customerDialogViewController == nil {
+                let vc = AACustomerDialogViewController.initFromNib()
+                vc.proposalID = (bubbleModel?.proposal_id)!
+                vc.proposalName = (bubbleModel?.proposal_name)!
+                customerDialogViewController = vc
+            }
+            presentViewController(customerDialogViewController!, animated: true, completion: nil)
+        }
     }
     // MARK: 提交订单
     func addTapActionForView(view: UIView) {
@@ -777,7 +785,10 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       
         if indexPath.row == 0 {
-            UIApplication.sharedApplication().openURL(NSURL(string: "hospital://asiainfo.com/open/123123")!)
+//            UIApplication.sharedApplication().openURL(NSURL(string: "hospital://asiainfo.com/open/123123")!)
+            
+             //Card.sharedInstance.showInView(self.view, serviceId: "2")
+            
         }else{
             if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
                 selectCount = 0
