@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *AIUserTypeCustomer = @"101";
+static NSString *AIUserTypeProvider = @"101";
 
 @protocol AIOpeningViewDelegate <NSObject>
 

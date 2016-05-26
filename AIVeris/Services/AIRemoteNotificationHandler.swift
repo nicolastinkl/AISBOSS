@@ -140,35 +140,64 @@ struct AIRemoteNotificationParameters {
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
-            else{
+            else if value == AIRemoteNotificationParameters.AudioAssistantType {
                 // 语音协助的 接受
                 let topVC = topViewController()
 
-                
-                let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! Int
+                let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! String
                 let proposalID = msgDic[AIRemoteNotificationKeys.ProposalID] as! Int
                 let proposalName = msgDic[AIRemoteNotificationKeys.ProposalName] as! String
                 
+                AudioAssistantManager.sharedInstance.connectionStatus = .Dialing
                 
-                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+                let buyerDetailViewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
                 
                 let model = AIBuyerBubbleModel()
                 model.proposal_id = proposalID
                 model.proposal_name = proposalName
-                viewController.bubbleModel = model
-                viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-                viewController.isLaunchForAssistant = true
-                viewController.roomNumber = String(format: "%d", roomNumber)
+                buyerDetailViewController.bubbleModel = model
+                buyerDetailViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                buyerDetailViewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+                buyerDetailViewController.isLaunchForAssistant = true
+                buyerDetailViewController.roomNumber = String(format: "%d", roomNumber)
                 
-                topVC.presentViewController(viewController, animated: true, completion: nil)
+                topVC.presentViewController(buyerDetailViewController, animated: false, completion: {
+                    let vc = AAProviderDialogViewController.initFromNib()
+                    vc.roomNumber = roomNumber
+                    vc.proposalID = proposalID
+                    vc.proposalName = proposalName
+                    buyerDetailViewController.providerDialogViewController = vc
+                    buyerDetailViewController.presentViewController(vc, animated: true, completion: nil)
+                })
             }
         }
     }
     
     
-    func showBuyerDetailViewController() {
+    func showBuyerDetailViewController(model : AIBuyerBubbleModel) {
+        let topVC = topViewController()
         
+        
+        guard topVC.presentedViewController == nil else {
+            return
+        }
+        
+
+        
+        
+//        
+//        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+//        
+//        let model = AIBuyerBubbleModel()
+//        model.proposal_id = proposalID
+//        model.proposal_name = proposalName
+//        viewController.bubbleModel = model
+//        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+//        viewController.isLaunchForAssistant = true
+//        viewController.roomNumber = String(format: "%d", roomNumber)
+//        
+//        topVC.presentViewController(viewController, animated: true, completion: nil)
     }
     
     //MARK: 设置推送可用

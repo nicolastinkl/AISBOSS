@@ -8,57 +8,56 @@
 
 import UIKit
 
-class AAProviderDialogViewController: UIViewController {
+/// Provider 拨号界面
+class AAProviderDialogViewController: AADialogBaseViewController {
 	
-	var roomNumber: String!
-	@IBOutlet weak var dialogToolBar: DialogToolBar!
-	@IBOutlet weak var zoomButton: UIButton!
-    var proposalID : Int = 1000
-    var proposalName : String = "Proposal"
-    
-	var status: DialogToolBar.Status = DialogToolBar.Status.Received {
-		didSet {
-			dialogToolBar?.status = status
-			zoomButton.hidden = status == .Connected
+	override func updateUI() {
+		let connectionStatus = AudioAssistantManager.sharedInstance.connectionStatus
+		status = connectionStatus
+		zoomButton.hidden = status != .Connected
+		switch connectionStatus {
+		case .NotConnected:
+			dialogToolBar.status = .NotConnected
+		case .Dialing:
+			dialogToolBar.status = .Dialing
+		case .Connected:
+			dialogToolBar.status = .Connected
+		case .Error:
+			dialogToolBar.status = .NotConnected
 		}
 	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		dialogToolBar.status = .Received
-		dialogToolBar?.delegate = self
-        
-        let tapLabel = UILabel(frame: CGRectMake(10, 10, 100, 40))
-        tapLabel.text = "点击消失"
-        tapLabel.textColor = UIColor.whiteColor()
-        tapLabel.backgroundColor = UIColor.clearColor()
-        tapLabel.userInteractionEnabled = true
-        self.view.addSubview(tapLabel)
-        
-        let gestrue = UITapGestureRecognizer(target: self, action: #selector(disppear))
-        tapLabel.addGestureRecognizer(gestrue)
+	override func handleCommand(notification: NSNotification) {
+		if let command = notification.object as? AudioAssistantMessage {
+			if command.type == .Command {
+				switch command.content {
+				case AudioAssistantString.HangUp:
+					dialogToolBar(dialogToolBar, clickHangUpButton: nil)
+				default:
+					break
+				}
+			}
+		}
 	}
-
-	
-	@IBAction func zoomButtonPressed(sender: AnyObject) {
-	}
-    
-    func disppear() {
-        self.view.removeFromSuperview()
-    }
-	
-}
-
-extension AAProviderDialogViewController: DialogToolBarDelegate {
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton) {
-		AudioAssistantManager.sharedInstance.providerHangUpRoom()
-		dismissViewControllerAnimated(true, completion: nil)
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickHangUpButton sender: UIButton?) {
+		let sharedInstance = AudioAssistantManager.sharedInstance
+		sharedInstance.providerHangUpRoom(roomNumber: roomNumber)
+		
+		let presentingViewController = self.presentingViewController
+		dismissViewControllerAnimated(false, completion: {
+			presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+		})
 	}
 	
-	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton) {
-		AudioAssistantManager.sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
-			self?.status = .Connected
-            AudioAssistantManager.sharedInstance.doPublishAudio()
+	func dialogToolBar(dialogToolBar: DialogToolBar, clickPickUpButton sender: UIButton?) {
+		view.showLoading()
+		let sharedInstance = AudioAssistantManager.sharedInstance
+		sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
+			sharedInstance.connectionStatus = .Connected
+			sharedInstance.doPublishAudio()
+			sharedInstance.sendNormalMessage(AudioAssistantString.PickedUp)
+			self?.view.hideLoading()
+			}, didFailHandler: { [weak self] error in
+			self?.view.hideLoading()
 		})
 	}
 }

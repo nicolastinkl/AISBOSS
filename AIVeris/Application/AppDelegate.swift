@@ -68,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //AIApplication.showAlertView()
         }
         
+        // launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]
+        
         return true
 
     }
@@ -78,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var notification = [NSObject: AnyObject]()
             let proposalID : Int = 1000
             let proposalName : String = "Proposal"
-            notification["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: 9786521, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
+            notification["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: AudioAssistantManager.fakeRoomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
             AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(notification as [NSObject : AnyObject])
 //            AIApplication.showAlertView()
         }

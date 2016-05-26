@@ -311,10 +311,8 @@ class AIBuyerViewController: UIViewController, UITableViewDataSource, UITableVie
         bubbles.tag = bubblesTag
         bubbleViewContainer.addSubview(bubbles)
         
-        bubbles.addGestureBubbleAction  {  [weak self]   (bubbleModel, bubble) -> Void in
-            if let strongSelf = self {
-                strongSelf.showBuyerDetailWithBubble(bubble, model: bubbleModel)
-            }
+        bubbles.addGestureBubbleAction { [weak self] (bubbleModel, bubble) -> Void in
+            self?.showBuyerDetailWithBubble(bubble, model: bubbleModel)
         }
         
         return bubbles
