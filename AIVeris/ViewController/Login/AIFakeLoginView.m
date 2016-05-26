@@ -266,8 +266,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         NSString *query = [NSString stringWithFormat:@"0&0&%@&0", user.userID];
-        [[AINetEngine defaultEngine] removeCommonHeaders];
-        [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
+        [[AINetEngine defaultEngine] removeCommonHeaders];         [[AINetEngine defaultEngine] configureCommonHeaders:@{@"HttpQuery" : query}];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kShouldUpdataUserDataNotification object:nil];
     }

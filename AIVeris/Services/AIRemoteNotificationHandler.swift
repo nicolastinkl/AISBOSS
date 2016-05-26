@@ -139,7 +139,7 @@ struct AIRemoteNotificationParameters {
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
-            else{
+            else if value == AIRemoteNotificationParameters.AudioAssistantType {
                 // 语音协助的 接受
                 let topVC = topViewController()
 
@@ -166,8 +166,30 @@ struct AIRemoteNotificationParameters {
     }
     
     
-    func showBuyerDetailViewController() {
+    func showBuyerDetailViewController(model : AIBuyerBubbleModel) {
+        let topVC = topViewController()
         
+        
+        guard topVC.presentedViewController == nil else {
+            return
+        }
+        
+
+        
+        
+//        
+//        let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIBuyerDetailViewController) as! AIBuyerDetailViewController
+//        
+//        let model = AIBuyerBubbleModel()
+//        model.proposal_id = proposalID
+//        model.proposal_name = proposalName
+//        viewController.bubbleModel = model
+//        viewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+//        viewController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+//        viewController.isLaunchForAssistant = true
+//        viewController.roomNumber = String(format: "%d", roomNumber)
+//        
+//        topVC.presentViewController(viewController, animated: true, completion: nil)
     }
     
     //MARK: 设置推送可用
