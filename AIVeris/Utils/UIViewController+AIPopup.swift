@@ -102,7 +102,7 @@ extension UIViewController {
 	 - parameter completion:              completion handler 可空
 	 - parameter onClickCancelArea:       模糊区域点击 handler 可空
 	 */
-	func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, useBlurForPopup: Bool = false, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil) {
+    func presentPopupViewController(viewControllerToPresent: UIViewController, duration: Double = Constants.animationTime, useBlurForPopup: Bool = false, animated: Bool, completion: (() -> Void)? = nil, onClickCancelArea: (() -> Void)? = nil, audoAvoidKeyboard: Bool = true) {
 		if self is UINavigationController {
 		} else {
 			if let navigationController = navigationController {
@@ -176,7 +176,9 @@ extension UIViewController {
 				}
 			}
 			
-			NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+            if audoAvoidKeyboard {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillChangeFrame:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+            }
 		}
 	}
 	
