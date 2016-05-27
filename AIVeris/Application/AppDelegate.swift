@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        return true
         //AVOS
-        setupRTSS()
         configAVOSCloud()
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         AVAnalytics.setChannel("App Store")
@@ -65,22 +64,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //fetchPreSellerAndBuyerData()
         
-        Async.main(after: 2) { 
-            //AIApplication.showAlertView()
-        }
+        setupRTSS()
         
         return true
 
     }
     
     func setupRTSS() {
+        
+        /**
+         MARK: RTSS AppId
+         */
+        // Test :  407484c4-0ecc-404c-bf10-5d3f2d5eec8e
+        // 2020 Lab : 	4623d1ac-b802-4f0d-8a74-60aaa2a64b9c
+        
         let rtss = RTSSNetworkChangeManager.sharedManager()
         rtss.setTokenType(0, token: "15281064177")
         rtss.setServerHost("60.194.3.167", serverPort: 1883)
         rtss.appid = "407484c4-0ecc-404c-bf10-5d3f2d5eec8e"
-        // rtss appid 407484c4-0ecc-404c-bf10-5d3f2d5eec8e
-        // 2020实验室APP 的AppID：	4623d1ac-b802-4f0d-8a74-60aaa2a64b9c
-        
         rtss.startNotifierNetworkChange()
     }
     
