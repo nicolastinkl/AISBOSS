@@ -23,12 +23,28 @@ class AILoginViewController: UIViewController {
 
     
     @IBAction func loginAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       
+        setupViews()
+        setupNavigationBar()
+    }
+    
+    func setupNavigationBar(){
+        let navigationBar = self.navigationController!.navigationBar
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.backgroundColor = UIColor.clearColor()
+        navigationBar.translucent = true
+        self.navigationController?.navigationBarHidden = true
+    }
+    
+    func setupViews(){
         userIdTextField.delegate = self
         userIdTextField.keyboardType = UIKeyboardType.DecimalPad
         userIdTextField.returnKeyType = UIReturnKeyType.Done
@@ -37,8 +53,6 @@ class AILoginViewController: UIViewController {
         passwordTextField.returnKeyType = UIReturnKeyType.Go
         
         passwordTextField.addTarget(self, action: #selector(AILoginViewController.passwordInputAction(_:)), forControlEvents: UIControlEvents.EditingChanged)
-        
-        self.navigationController?.navigationBarHidden = true
     }
     
     func passwordInputAction(target : UITextField){
@@ -88,3 +102,8 @@ extension AILoginViewController : UITextFieldDelegate{
     
     
 }
+
+protocol AILoginViewControllerDelegate: class {
+    func loginViewControllerDidLogin(controller:AILoginViewController)
+}
+

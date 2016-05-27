@@ -28,6 +28,8 @@
 		120F21AD1CA1706600B7ED7E /* AIPopupChooseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */; };
 		121694521CEC639800A4B7C1 /* AIExecuteServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */; };
 		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; };
+		12453E641CF6F49800EC7B25 /* AILoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12453E631CF6F49800EC7B25 /* AILoginService.swift */; };
+		12453E661CF74ADB00EC7B25 /* AIRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */; };
 		1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6A1C925C1A00E72B41 /* AIModels.swift */; };
 		1261FF6F1C925C5F00E72B41 /* AIRequirmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */; };
 		1261FF711C92720300E72B41 /* AIBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF701C92720300E72B41 /* AIBaseModel.swift */; };
@@ -716,6 +718,8 @@
 		121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIExecuteServiceModel.m; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
 		12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceCellModel.h; sourceTree = "<group>"; };
+		12453E631CF6F49800EC7B25 /* AILoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILoginService.swift; sourceTree = "<group>"; };
+		12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRegistViewController.swift; sourceTree = "<group>"; };
 		1261FF6A1C925C1A00E72B41 /* AIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModels.swift; sourceTree = "<group>"; };
 		1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirmentModel.swift; sourceTree = "<group>"; };
 		1261FF701C92720300E72B41 /* AIBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBaseModel.swift; sourceTree = "<group>"; };
@@ -1761,11 +1765,13 @@
 		816E3B851C1ED62D00A061DD /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				12453E631CF6F49800EC7B25 /* AILoginService.swift */,
 				816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */,
 				816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */,
 				815EAD761C47817000D83780 /* AIFakeUser.h */,
 				815EAD771C47817000D83780 /* AIFakeUser.m */,
 				12FCA9041CF59C0B000F485A /* AILoginViewController.swift */,
+				12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -3800,6 +3806,7 @@
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
 				815EAD781C47817000D83780 /* AIFakeUser.m in Sources */,
 				93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */,
+				12453E641CF6F49800EC7B25 /* AILoginService.swift in Sources */,
 				846F74191C15A68100EDAE8D /* UIImage+ColorAtPixel.m in Sources */,
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
 				842B64481CE1E6D4007F2A91 /* TaskResultCommitViewController.swift in Sources */,
@@ -4227,6 +4234,7 @@
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				939B51631CE3388F00CF2FA1 /* AINumberCountControl.swift in Sources */,
 				1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */,
+				12453E661CF74ADB00EC7B25 /* AIRegistViewController.swift in Sources */,
 				93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,
