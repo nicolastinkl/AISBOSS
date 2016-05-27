@@ -75,6 +75,46 @@ protocol AnchorProcess {
     func processAnchor(anchor : AIAnchor)
 }
 
+class AIAnchorOperation: NSOperation {
+    var anchor: AIAnchor
+    
+    init(anchor: AIAnchor) {
+        self.anchor = anchor
+        super.init()
+        self.completionBlock = {
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+        }
+    }
+    var time: UInt32 = 0
+    private var _isFinished: Bool = false
+    
+    override var asynchronous: Bool {
+        return false
+    }
+    
+    override var finished: Bool {
+        get {
+            return cancelled ? true : _isFinished
+        }
+        set {
+            willChangeValueForKey("finished")
+            _isFinished = newValue
+            didChangeValueForKey("finished")
+        }
+    }
+    
+    // MARK: - NSOperation
+    override func main() {
+        if time > 0 {
+            let global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            dispatch_async(global, { [weak self] in
+                sleep((self?.time)!)
+                self?.finished = true
+            })
+        }
+    }
+}
+
 class AIAnchor: NSObject {
     
     var type : String?                // 锚点类型

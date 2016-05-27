@@ -154,6 +154,12 @@ class AIBuyerDetailViewController : UIViewController {
         self.tableView.headerBeginRefreshing()
        
         setupNotification()
+        setupAnchorManager()
+    }
+    func setupAnchorManager() {
+        AIAnchorManager.defaultManager.topViewController.controller = self
+        AIAnchorManager.defaultManager.topViewController.className = instanceClassName()
+        
     }
     
     func setupNotification() {
@@ -165,23 +171,6 @@ class AIBuyerDetailViewController : UIViewController {
             if object == AudioAssistantString.HangUp {
 //                customerDialogViewController?.status = .Dialing
             }
-        }
-    }
-    
-    
-    //MARK: For AudioAssistant
-    func setAudioAssistantModel(model : AudioAssiatantModel) {
-        audioAssistantModel = model
-        
-        switch model {
-        case .Receiver: // 协助者
-            
-            
-            break
-        case .Sender:  // 申请者
-            break
-        case .None: break
-    
         }
     }
     
@@ -1027,7 +1016,6 @@ extension AIBuyerDetailViewController : AIProposalDelegate {
 
 
 extension AIBuyerDetailViewController {
-    
 
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
 //        if let touch = touches.first {

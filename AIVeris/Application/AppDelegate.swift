@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Override point for customization after application launch.
-        self.window = AACustomWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         configDefaultUser()
         initNetEngine()
         
@@ -76,8 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if !DEBUG //debug 模式 才会启动
         if motion == .MotionShake {
             var notification = [NSObject: AnyObject]()
-            let proposalID : Int = 1000
-            let proposalName : String = "Proposal"
+            let proposalID : Int = 2692
+            let proposalName : String = "Event Planning"
             notification["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: AudioAssistantManager.fakeRoomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
             AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(notification as [NSObject : AnyObject])
 //            AIApplication.showAlertView()

@@ -53,7 +53,7 @@ class AAProviderDialogViewController: AADialogBaseViewController {
 		let sharedInstance = AudioAssistantManager.sharedInstance
 		sharedInstance.providerAnswerRoom(roomNumber: roomNumber, sessionDidConnectHandler: { [weak self] in
 			sharedInstance.connectionStatus = .Connected
-			sharedInstance.doPublishAudio()
+			sharedInstance.doPublishScreen()
 			sharedInstance.sendNormalMessage(AudioAssistantString.PickedUp)
 			self?.view.hideLoading()
 			}, didFailHandler: { [weak self] error in

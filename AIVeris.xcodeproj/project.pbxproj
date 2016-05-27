@@ -208,7 +208,6 @@
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; };
-		846E80D91CE99D55009E0B0F /* AACustomWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846E80D81CE99D55009E0B0F /* AACustomWindow.swift */; };
 		846E80DF1CE9A451009E0B0F /* IGViewQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DC1CE9A450009E0B0F /* IGViewQuery.m */; };
 		846E80E01CE9A451009E0B0F /* IGViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */; };
 		846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F74151C15A68100EDAE8D /* OBShapedButton.m */; };
@@ -222,7 +221,6 @@
 		84751CCE1CA0E183008A99CD /* AITaskDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */; };
 		84756B951CE337A300C2AC9D /* AIAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84756B941CE337A300C2AC9D /* AIAnchor.swift */; };
 		84756B991CE337C600C2AC9D /* AADataReceiverParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84756B961CE337C600C2AC9D /* AADataReceiverParser.swift */; };
-		84756B9A1CE337C600C2AC9D /* AAGesturesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84756B971CE337C600C2AC9D /* AAGesturesParser.swift */; };
 		84756B9B1CE337C600C2AC9D /* AudioAssistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84756B981CE337C600C2AC9D /* AudioAssistantManager.swift */; };
 		847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D93731BAF9438000FAE69 /* AirTicketView.xib */; };
 		847D93761BAF9488000FAE69 /* AirTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D93751BAF9488000FAE69 /* AirTicketView.swift */; };
@@ -962,7 +960,6 @@
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
 		846DAD9E1BD736F70054F058 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
-		846E80D81CE99D55009E0B0F /* AACustomWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AACustomWindow.swift; sourceTree = "<group>"; };
 		846E80DB1CE9A450009E0B0F /* IGViewQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewQuery.h; sourceTree = "<group>"; };
 		846E80DC1CE9A450009E0B0F /* IGViewQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewQuery.m; sourceTree = "<group>"; };
 		846E80DD1CE9A450009E0B0F /* IGViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewWrapper.h; sourceTree = "<group>"; };
@@ -979,7 +976,6 @@
 		84751CCD1CA0E183008A99CD /* AITaskDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AITaskDataModel.swift; sourceTree = "<group>"; };
 		84756B941CE337A300C2AC9D /* AIAnchor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAnchor.swift; sourceTree = "<group>"; };
 		84756B961CE337C600C2AC9D /* AADataReceiverParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AADataReceiverParser.swift; sourceTree = "<group>"; };
-		84756B971CE337C600C2AC9D /* AAGesturesParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAGesturesParser.swift; sourceTree = "<group>"; };
 		84756B981CE337C600C2AC9D /* AudioAssistantManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAssistantManager.swift; sourceTree = "<group>"; };
 		847D93731BAF9438000FAE69 /* AirTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AirTicketView.xib; sourceTree = "<group>"; };
 		847D93751BAF9488000FAE69 /* AirTicketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirTicketView.swift; sourceTree = "<group>"; };
@@ -2058,7 +2054,6 @@
 			isa = PBXGroup;
 			children = (
 				84756B961CE337C600C2AC9D /* AADataReceiverParser.swift */,
-				84756B971CE337C600C2AC9D /* AAGesturesParser.swift */,
 				84756B981CE337C600C2AC9D /* AudioAssistantManager.swift */,
 				84756B941CE337A300C2AC9D /* AIAnchor.swift */,
 				81E674251CE9AD6800AAEE77 /* AIAnchorManager.swift */,
@@ -2084,7 +2079,6 @@
 			children = (
 				84C57E7F1CEAEF6F0034D6EB /* DialogToolBar.swift */,
 				84C57E801CEAEF6F0034D6EB /* DialogToolBar.xib */,
-				846E80D81CE99D55009E0B0F /* AACustomWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4129,7 +4123,6 @@
 				84959F911C9ADBB4006AA36A /* RRTagCollectionViewCell.swift in Sources */,
 				934D475B1CEC0D77007809F7 /* AIModelTest.swift in Sources */,
 				937EA3891C030EAA00AF776B /* AITextMessageView.swift in Sources */,
-				846E80D91CE99D55009E0B0F /* AACustomWindow.swift in Sources */,
 				8120B78F1C51C42D001BB063 /* AIServiceDetailUIModel.m in Sources */,
 				93B25AA21B9D7A7B00CD1FEB /* NSArray+JSONModel.m in Sources */,
 				844FDD911BB920DB00915797 /* AISchemeDataObtainer.swift in Sources */,
@@ -4225,7 +4218,6 @@
 				844009181C166F6B0031E2F7 /* JSSAlertView.swift in Sources */,
 				849B4B391C0EDFE300BEC179 /* FLEXCookiesTableViewController.m in Sources */,
 				937EA3831C03097500AF776B /* AIAudioMessageView.swift in Sources */,
-				84756B9A1CE337C600C2AC9D /* AAGesturesParser.swift in Sources */,
 				93B25A9F1B9D7A7B00CD1FEB /* AFURLSessionManager.m in Sources */,
 				8454E6FA1BAFEA6D00016AB3 /* SwitchServiceView.swift in Sources */,
 				8442828D1C45EF95001C2DCB /* OAStackView+Hiding.m in Sources */,
