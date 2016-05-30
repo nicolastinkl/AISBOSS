@@ -28,6 +28,8 @@
 		120F21AD1CA1706600B7ED7E /* AIPopupChooseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F21AC1CA1706600B7ED7E /* AIPopupChooseBaseView.swift */; };
 		121694521CEC639800A4B7C1 /* AIExecuteServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */; };
 		12427FD71C04440400DB554A /* AIProposalServiceCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */; };
+		12453E641CF6F49800EC7B25 /* AILoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12453E631CF6F49800EC7B25 /* AILoginService.swift */; };
+		12453E661CF74ADB00EC7B25 /* AIRegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */; };
 		1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6A1C925C1A00E72B41 /* AIModels.swift */; };
 		1261FF6F1C925C5F00E72B41 /* AIRequirmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */; };
 		1261FF711C92720300E72B41 /* AIBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1261FF701C92720300E72B41 /* AIBaseModel.swift */; };
@@ -44,6 +46,8 @@
 		12E048801BFC2A39001F1FCF /* ServiceCardDetailIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */; };
 		12EE12231BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */; };
 		12EE12251BFF1B890072CD2A /* ServiceCardDetailShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */; };
+		12FCA9031CF59B36000F485A /* AILoginStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12FCA9021CF59B36000F485A /* AILoginStoryboard.storyboard */; };
+		12FCA9051CF59C0B000F485A /* AILoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FCA9041CF59C0B000F485A /* AILoginViewController.swift */; };
 		12FD041C1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FD041B1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift */; };
 		810746B41C97B7A8003926CB /* AIOrderManagementModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 810746B31C97B7A8003926CB /* AIOrderManagementModels.m */; };
 		810870191C5A43BE00077008 /* AIServiceParamBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 810870181C5A43BE00077008 /* AIServiceParamBaseView.m */; };
@@ -712,6 +716,8 @@
 		121694511CEC639800A4B7C1 /* AIExecuteServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIExecuteServiceModel.m; sourceTree = "<group>"; };
 		12427FD61C04440400DB554A /* AIProposalServiceCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIProposalServiceCellModel.m; sourceTree = "<group>"; };
 		12427FD81C04441200DB554A /* AIProposalServiceCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIProposalServiceCellModel.h; sourceTree = "<group>"; };
+		12453E631CF6F49800EC7B25 /* AILoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILoginService.swift; sourceTree = "<group>"; };
+		12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRegistViewController.swift; sourceTree = "<group>"; };
 		1261FF6A1C925C1A00E72B41 /* AIModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIModels.swift; sourceTree = "<group>"; };
 		1261FF6E1C925C5F00E72B41 /* AIRequirmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequirmentModel.swift; sourceTree = "<group>"; };
 		1261FF701C92720300E72B41 /* AIBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBaseModel.swift; sourceTree = "<group>"; };
@@ -730,6 +736,8 @@
 		12E0487F1BFC2A39001F1FCF /* ServiceCardDetailIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailIcon.swift; sourceTree = "<group>"; };
 		12EE12221BFEE0EC0072CD2A /* ServiceCardDetailIcon.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceCardDetailIcon.xib; sourceTree = "<group>"; };
 		12EE12241BFF1B890072CD2A /* ServiceCardDetailShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceCardDetailShopping.swift; sourceTree = "<group>"; };
+		12FCA9021CF59B36000F485A /* AILoginStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AILoginStoryboard.storyboard; sourceTree = "<group>"; };
+		12FCA9041CF59C0B000F485A /* AILoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILoginViewController.swift; sourceTree = "<group>"; };
 		12FD041B1CEBFFEB00CA744C /* AIServiceExecuteRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIServiceExecuteRequester.swift; sourceTree = "<group>"; };
 		12FD041D1CEC1DCC00CA744C /* AIExecuteServiceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIExecuteServiceModel.h; sourceTree = "<group>"; };
 		503E6327D0C6936333F981D4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1753,10 +1761,13 @@
 		816E3B851C1ED62D00A061DD /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				12453E631CF6F49800EC7B25 /* AILoginService.swift */,
 				816E3B861C1ED6C800A061DD /* AIFakeLoginView.h */,
 				816E3B871C1ED6C800A061DD /* AIFakeLoginView.m */,
 				815EAD761C47817000D83780 /* AIFakeUser.h */,
 				815EAD771C47817000D83780 /* AIFakeUser.m */,
+				12FCA9041CF59C0B000F485A /* AILoginViewController.swift */,
+				12453E651CF74ADB00EC7B25 /* AIRegistViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2847,6 +2858,7 @@
 				849B0BD21C202B61008C0A23 /* UITimeLineStoryboard.storyboard */,
 				93CD0D2B1C8E731C0047F4A7 /* UIRrequirementStoryboard.storyboard */,
 				9324DDD11CD30385007D3DBE /* AIAlertStoryboard.storyboard */,
+				12FCA9021CF59B36000F485A /* AILoginStoryboard.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -3665,6 +3677,7 @@
 				126B2A191BD7952200146BBE /* AIFoldedCellView.xib in Resources */,
 				8423E5621BB4E16B006DC73B /* sellerOrderList.json in Resources */,
 				8454E6FC1BAFEAAF00016AB3 /* SwitchServiceView.xib in Resources */,
+				12FCA9031CF59B36000F485A /* AILoginStoryboard.storyboard in Resources */,
 				93306BCD1BE85C3000F68FD8 /* UIBuyerStoryboard.storyboard in Resources */,
 				845320531C9A86C3003B984B /* AITaskInputViewController.xib in Resources */,
 				842B64351CE07B33007F2A91 /* IconLabel.xib in Resources */,
@@ -3787,6 +3800,7 @@
 				93C33EFB1B9BEA75007BF506 /* RegexKitLite.m in Sources */,
 				815EAD781C47817000D83780 /* AIFakeUser.m in Sources */,
 				93E7BFB21BFEBA3F00A6C906 /* AICustomView.swift in Sources */,
+				12453E641CF6F49800EC7B25 /* AILoginService.swift in Sources */,
 				846F74191C15A68100EDAE8D /* UIImage+ColorAtPixel.m in Sources */,
 				93B25A9A1B9D7A7B00CD1FEB /* AFNetworkReachabilityManager.m in Sources */,
 				842B64481CE1E6D4007F2A91 /* TaskResultCommitViewController.swift in Sources */,
@@ -4057,6 +4071,7 @@
 				93FA1DE11B9C302A009965C8 /* AIFavorServicesManager.swift in Sources */,
 				93FA1DE61B9C302A009965C8 /* AITransformManager.swift in Sources */,
 				93CA11D81C463475008B1EE1 /* AIServiceCatalogModel.swift in Sources */,
+				12FCA9051CF59C0B000F485A /* AILoginViewController.swift in Sources */,
 				93B25A971B9D7A7B00CD1FEB /* AFHTTPRequestOperation.m in Sources */,
 				81E674281CEB052200AAEE77 /* AIUtilityTools.swift in Sources */,
 				84756B9B1CE337C600C2AC9D /* AudioAssistantManager.swift in Sources */,
@@ -4212,6 +4227,7 @@
 				81C092821BAFAC0D003FFF35 /* NSData+ImageContentType.m in Sources */,
 				939B51631CE3388F00CF2FA1 /* AINumberCountControl.swift in Sources */,
 				1261FF6B1C925C1A00E72B41 /* AIModels.swift in Sources */,
+				12453E661CF74ADB00EC7B25 /* AIRegistViewController.swift in Sources */,
 				93441E9D1C50784E003F6833 /* YYFPSLabel.m in Sources */,
 				93B25A9E1B9D7A7B00CD1FEB /* AFURLResponseSerialization.m in Sources */,
 				81C0928F1BAFAC0D003FFF35 /* UIImageView+WebCache.m in Sources */,

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIViewController *downDirectionViewController;
 @property (nonatomic, strong) UIViewController *leftDirectionViewController;
 @property (nonatomic, strong) UIViewController *rightDirectionViewController;
+@property (nonatomic, strong) LoginAction *loginAction;
 
 @end
 
@@ -36,6 +37,8 @@
      */
     [self makeChildViewControllers];
     [self startOpenningAnimation];
+    
+    //[self handleLoginAction];
  
     /*
 #if DEBUG
@@ -177,6 +180,11 @@
     [AIOpeningView instance].centerTappedView = self.centerTapViewController.view;
     [[AIOpeningView instance] show];
     
+}
+
+- (void)handleLoginAction
+{
+    self.loginAction = [[LoginAction alloc] initWithViewController:self completion:nil];
 }
 
 
