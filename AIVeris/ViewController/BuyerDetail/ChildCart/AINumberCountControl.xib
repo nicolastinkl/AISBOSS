@@ -43,18 +43,17 @@
                         <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="PQu-hU-eXv"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hcf-ha-elj">
-                    <rect key="frame" x="33" y="1" width="45" height="30"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2f-on-hRC">
                     <rect key="frame" x="109" y="5" width="70" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="30" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lE1-AO-mcg">
+                    <rect key="frame" x="33" y="1" width="45" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -62,9 +61,9 @@
                 <outlet property="addButton" destination="ebX-EW-dm6" id="Qwy-tR-G7i"/>
                 <outlet property="label" destination="g2f-on-hRC" id="hcS-O1-eu5"/>
                 <outlet property="subtractButton" destination="Xat-mM-Bnh" id="Bd7-Tj-G1H"/>
-                <outlet property="textInput" destination="Hcf-ha-elj" id="zIg-r3-4Uh"/>
+                <outlet property="textFieldNumber" destination="lE1-AO-mcg" id="zCa-pb-ySt"/>
             </connections>
-            <point key="canvasLocation" x="-533.5" y="526"/>
+            <point key="canvasLocation" x="-951.5" y="781"/>
         </view>
     </objects>
 </document>

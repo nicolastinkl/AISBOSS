@@ -31,19 +31,15 @@ class AINumberCountControl: UIView {
     @IBOutlet weak var subtractButton: DesignableButton!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var addButton: DesignableButton!
-    @IBOutlet weak var textInput: UITextField!
+    @IBOutlet weak var textFieldNumber: UITextField!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        
-//        let keboard = PMCustomKeyboard()
-//        keboard.textView = textInput
-        
+        super.awakeFromNib()        
     }
     
     @IBAction func subStractAction(sender: AnyObject) {
         
-        let text = textInput.text ?? ""
+        let text = textFieldNumber.text ?? ""
         var float = Int(text) ?? 0
         if float == 1 {
             return
@@ -51,7 +47,7 @@ class AINumberCountControl: UIView {
         
         if float > 0 {
             float = float - 1
-            textInput.text = "\(float)"
+            textFieldNumber.text = "\(float)"
         }
         
         if float == 1 {
@@ -61,10 +57,10 @@ class AINumberCountControl: UIView {
     }     
     
     @IBAction func addAction(sender: AnyObject) {
-        let text = textInput.text ?? ""
+        let text = textFieldNumber.text ?? ""
         var float = Int(text) ?? 0
         float = float + 1
-        textInput.text = "\(float)"
+        textFieldNumber.text = "\(float)"
         
         if float > 1 {
             subtractButton.enabled = true
