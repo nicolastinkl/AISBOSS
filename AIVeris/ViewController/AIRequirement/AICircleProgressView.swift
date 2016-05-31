@@ -18,7 +18,6 @@ class AICircleProgressView: UIView {
     //取值为0-1
     var progress : CGFloat?
     var delegate : CircleProgressViewDelegate?
-    
     let backLayerColor = UIColor(hex: "#0b038")
 
     override init(frame: CGRect) {

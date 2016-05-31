@@ -12,7 +12,7 @@ import UIKit
 import Spring
 import Cartography
 import AIAlertView
-//import CardDeepLinkKit
+import CardDeepLinkKit
 import SnapKit
 
 protocol AIBuyerDetailDelegate: class {
@@ -786,8 +786,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
       
         if indexPath.row == 0 {
 //            UIApplication.sharedApplication().openURL(NSURL(string: "hospital://asiainfo.com/open/123123")!)
-            
-             //Card.sharedInstance.showInView(self.view, serviceId: "2")
+             Card.sharedInstance.showInView(self.view, serviceId: "2")
             
         }else{
             if (self.openCell == false) || (self.openCell == true  && selectCount == 1){

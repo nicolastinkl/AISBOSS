@@ -54,7 +54,7 @@ public class AIWebViewController: UIViewController,UIWebViewDelegate {
         
         if let url = currentUrl {
             self.webView.loadRequest(NSURLRequest(URL: url))
-            self.titleLabel.text = url.URLString ?? ""
+            self.titleLabel.text = url.absoluteString
         }
     }    
 
