@@ -406,8 +406,6 @@
 		9351B4901C8EC43E0062DA02 /* AIRequireContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */; };
 		935249121CED9A5000900EF3 /* AIAddressRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935249111CED9A5000900EF3 /* AIAddressRouteView.swift */; };
 		935249141CED9A5D00900EF3 /* AIAddressRouteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935249131CED9A5D00900EF3 /* AIAddressRouteView.xib */; };
-		935589711CE42F3B00AF1E75 /* PMCustomKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */; };
-		935589721CE42F3B00AF1E75 /* PMCustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */; };
 		935589741CE4363800AF1E75 /* AIPathRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */; };
 		935589761CE461EF00AF1E75 /* AILocationSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */; };
 		935589781CE46DAE00AF1E75 /* AILocationSelectHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */; };
@@ -1255,9 +1253,6 @@
 		9351B48F1C8EC43E0062DA02 /* AIRequireContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIRequireContentViewController.swift; sourceTree = "<group>"; };
 		935249111CED9A5000900EF3 /* AIAddressRouteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIAddressRouteView.swift; sourceTree = "<group>"; };
 		935249131CED9A5D00900EF3 /* AIAddressRouteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIAddressRouteView.xib; sourceTree = "<group>"; };
-		9355896E1CE42F3B00AF1E75 /* PMCustomKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCustomKeyboard.h; sourceTree = "<group>"; };
-		9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCustomKeyboard.m; sourceTree = "<group>"; };
-		935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMCustomKeyboard.xib; sourceTree = "<group>"; };
 		935589731CE4363800AF1E75 /* AIPathRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIPathRouteViewController.swift; sourceTree = "<group>"; };
 		935589751CE461EF00AF1E75 /* AILocationSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectViewController.swift; sourceTree = "<group>"; };
 		935589771CE46DAE00AF1E75 /* AILocationSelectHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AILocationSelectHeadView.swift; sourceTree = "<group>"; };
@@ -2635,16 +2630,6 @@
 			path = AIRoot;
 			sourceTree = "<group>";
 		};
-		9355896D1CE42F3B00AF1E75 /* KeyBoardView */ = {
-			isa = PBXGroup;
-			children = (
-				9355896E1CE42F3B00AF1E75 /* PMCustomKeyboard.h */,
-				9355896F1CE42F3B00AF1E75 /* PMCustomKeyboard.m */,
-				935589701CE42F3B00AF1E75 /* PMCustomKeyboard.xib */,
-			);
-			path = KeyBoardView;
-			sourceTree = "<group>";
-		};
 		9356C98E1CEC65060069D047 /* Pinyin */ = {
 			isa = PBXGroup;
 			children = (
@@ -2911,7 +2896,6 @@
 		93A5A59F1B9BD5E1001DE36D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9355896D1CE42F3B00AF1E75 /* KeyBoardView */,
 				842B64381CE0808B007F2A91 /* Barcode */,
 				93A91DB11C9AC61900F40A47 /* Sheriff */,
 				849300861C92B27C00547322 /* YLProgressBar */,
@@ -3647,7 +3631,6 @@
 				933077641C1133A200DD7FB4 /* AIBueryDetailCell.xib in Resources */,
 				9394B2941C52188200F80344 /* AIEvent_Planning.json in Resources */,
 				934772D01CE5860A00518333 /* AIConfirmOrderCellView.xib in Resources */,
-				935589721CE42F3B00AF1E75 /* PMCustomKeyboard.xib in Resources */,
 				93FA1E4D1B9C3E12009965C8 /* AICustomerSwipeView.xib in Resources */,
 				847D93741BAF9438000FAE69 /* AirTicketView.xib in Resources */,
 				93FA1E5C1B9C3E12009965C8 /* AITopInfoView.xib in Resources */,
@@ -4037,7 +4020,6 @@
 				849B4B401C0EDFE300BEC179 /* FLEXLiveObjectsTableViewController.m in Sources */,
 				81A5BE521BD87C1300019802 /* AIBuyerBubbleModel.m in Sources */,
 				842FC85C1BDA091B00A0517C /* ServiceOrderDetailModel.m in Sources */,
-				935589711CE42F3B00AF1E75 /* PMCustomKeyboard.m in Sources */,
 				93B25A5F1B9D7A1D00CD1FEB /* AIWeiboData.m in Sources */,
 				848690271C3BB1A600D177BC /* PKYStepper.m in Sources */,
 				849B4B231C0EDFE300BEC179 /* FLEXArgumentInputFontView.m in Sources */,

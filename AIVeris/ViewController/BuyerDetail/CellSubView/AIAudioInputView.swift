@@ -162,7 +162,6 @@ internal class AIAudioInputView:UIView,AVAudioRecorderDelegate{
         if let m = bgImage {
             changeButton.setImage(m, forState: UIControlState.Normal)
         }
-             
     }
     
     @IBAction func ChangeAction(sender: AnyObject) {

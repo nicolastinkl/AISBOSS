@@ -69,7 +69,7 @@ class AIShoppingListViewCell: UITableViewCell {
         price.text = model.shopping_price ?? ""
         
         if let sview = countView.subviews.first as? AINumberCountControl {
-            sview.textInput.text = "\(model.shopping_number ?? 0)"
+            sview.textFieldNumber.text = "\(model.shopping_number ?? 0)"
         }        
         
     }

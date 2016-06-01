@@ -34,8 +34,7 @@ struct AIApplication{
     }
     
     
-    
-    
+        
     // MARK JSON RESPONSE
     
     struct JSONREPONSE {
