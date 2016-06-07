@@ -14,14 +14,6 @@ struct AITopViewController {
     var className: String?
 }
 
-
-
-
-
-
-
-
-
 class AIAnchorManager: NSObject {
 
     //MARK: Public Properties
@@ -46,6 +38,8 @@ class AIAnchorManager: NSObject {
         if let excutingAnchorOperation = queue.operations.first as? AIAnchorOperation {
            let anchor = excutingAnchorOperation.anchor
             excuteAnchor(anchor)
+        } else {
+            excutingAnchor = nil
         }
     }
     
@@ -64,7 +58,6 @@ class AIAnchorManager: NSObject {
             topViewController.controller?.processAnchor(anchor)
         }
     }
-    
     
     
     func setTopViewController(vc: UIViewController) {

@@ -212,6 +212,13 @@
 
 - (void)makeStatusWithUserType:(FakeUserType)type
 {
+//    if (defaultUserType == "100") {
+//        AIRemoteNotificationHandler.defaultHandler().addNotificationForUser(defaultUserID)
+//    }
+//    else
+//    {
+//        AIRemoteNotificationHandler.defaultHandler().removeNotificationForUser(defaultUserID)
+//    }
     if (type == FakeUserBuyer) {
         _buyerTitleImageView.highlighted = YES;
         _sellerTitleImageView.highlighted = NO;
@@ -253,7 +260,7 @@
         }
         else
         {
-            [installation removeObjectForKey:@"ProviderIdentifier"];
+            [installation setObject:@"" forKey:@"ProviderIdentifier"];
             [installation removeObject:@"ProviderChannel" forKey:@"channels"];
             [[NSUserDefaults standardUserDefaults] setObject:@"101" forKey:kDefault_UserType];
         }

@@ -29,7 +29,7 @@ class AADataReceiverParser: NSObject {
 	}
 	
 	func parseAnchorString(anchorString: String) {
-		let anchor = AIAnchor.anchorFromJsonString(anchorString)
+		let anchor = AIAnchor.anchorFromJSONString(anchorString)
         AIAnchorManager.defaultManager.handleAnchor(anchor)
 	}
 	
