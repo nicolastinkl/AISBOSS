@@ -6,10 +6,79 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Select Region View Controller-->
+        <scene sceneID="9hX-a1-8Pc">
+            <objects>
+                <viewController storyboardIdentifier="AISelectRegionViewController" id="ksR-MF-jXC" customClass="AISelectRegionViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q9l-2d-7Bh"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jn6-eU-oja"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bjW-aU-1Ql">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="tfd-Ta-LSv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RegionSelectTableViewCell" textLabel="CMY-pg-BcG" detailTextLabel="BrO-OZ-hOa" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Bl4-Xu-Gar">
+                                        <rect key="frame" x="0.0" y="65" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bl4-Xu-Gar" id="QxL-df-kGf">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CMY-pg-BcG">
+                                                    <rect key="frame" x="15" y="12" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BrO-OZ-hOa">
+                                                    <rect key="frame" x="529" y="12" width="56" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.38094130158424377" green="0.33375316858291626" blue="0.48276537656784058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tfd-Ta-LSv" firstAttribute="leading" secondItem="bjW-aU-1Ql" secondAttribute="leading" id="8zh-FN-G75"/>
+                            <constraint firstAttribute="bottom" secondItem="tfd-Ta-LSv" secondAttribute="bottom" id="Ecq-AQ-xaB"/>
+                            <constraint firstItem="tfd-Ta-LSv" firstAttribute="top" secondItem="Q9l-2d-7Bh" secondAttribute="bottom" id="WSB-dP-b41"/>
+                            <constraint firstItem="tfd-Ta-LSv" firstAttribute="top" secondItem="bjW-aU-1Ql" secondAttribute="top" id="Zwu-vt-K0B"/>
+                            <constraint firstAttribute="trailing" secondItem="tfd-Ta-LSv" secondAttribute="trailing" id="juJ-dy-BEM"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Zwu-vt-K0B"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="tfd-Ta-LSv" id="XvK-Ye-BVi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1r-u0-MT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2041" y="1106"/>
+        </scene>
         <!--Regist View Controller-->
         <scene sceneID="Bpt-2S-sEZ">
             <objects>
-                <viewController id="p9W-4c-qCL" customClass="AIRegistViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AIRegistViewController" id="p9W-4c-qCL" customClass="AIRegistViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fFO-XD-ifa"/>
                         <viewControllerLayoutGuide type="bottom" id="2VI-CG-4gz"/>
@@ -28,6 +97,7 @@
                                         </state>
                                         <connections>
                                             <action selector="selectRegionAction:" destination="p9W-4c-qCL" eventType="touchUpInside" id="qdV-YE-9eg"/>
+                                            <segue destination="ksR-MF-jXC" kind="show" id="oMd-An-eNl"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Countries and Regions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5z-Wg-fqn">
@@ -98,6 +168,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVJ-lY-rBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1324" y="1106"/>
+        </scene>
+        <!--Validate Regist View Controller-->
+        <scene sceneID="KZJ-z2-zox">
+            <objects>
+                <viewController id="sHf-vu-pHC" customClass="AIValidateRegistViewController" customModule="Veris" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Fd-lu-tNo"/>
+                        <viewControllerLayoutGuide type="bottom" id="HeN-BS-tCo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bkJ-Ix-sXN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CxO-o8-ORy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="1806"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="SNV-Nf-AAZ">
@@ -202,11 +290,11 @@
                                         <state key="normal" image="icon-amazon"/>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFE-q3-Uje" userLabel="gapView3">
-                                        <rect key="frame" x="346" y="0.0" width="114" height="40"/>
+                                        <rect key="frame" x="346" y="0.0" width="113.5" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sgc-oV-eqv" userLabel="gapView1">
-                                        <rect key="frame" x="40" y="0.0" width="114" height="40"/>
+                                        <rect key="frame" x="40" y="0.0" width="113.5" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-hm-0aH" userLabel="gapView2">
@@ -250,7 +338,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNR-9y-FPi">
-                                <rect key="frame" x="220" y="560" width="161" height="30"/>
+                                <rect key="frame" x="219.5" y="560" width="161" height="30"/>
                                 <state key="normal" title="&lt; Register Veris Family!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -265,7 +353,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.054901960780000002" green="0.52549019610000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.38094130158424377" green="0.33375316858291626" blue="0.48276537656784058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="y5J-qP-eAp" firstAttribute="trailing" secondItem="9fh-2z-biJ" secondAttribute="trailing" id="1j3-AX-IQ0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="odU-Do-fdG" secondAttribute="trailing" constant="30" id="5Lz-dK-6VQ"/>
