@@ -129,6 +129,7 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit10CDDeepLink")
 /// A deep link URL for linking back to the source application.
 @property (nonatomic, readonly, strong) NSURL * _Nullable callbackURL;
 - (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url OBJC_DESIGNATED_INITIALIZER;
+- (NSURL * _Nullable)getURL;
 - (NSInteger)hashValue;
 @end
 
@@ -319,6 +320,7 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit8CardView")
 
 
 @interface CardView (SWIFT_EXTENSION(CardDeepLinkKit))
+- (void)setRequestServiceID:(NSString * _Nonnull)sid response:(void (^ _Nonnull)(id _Nonnull))response;
 @end
 
 
