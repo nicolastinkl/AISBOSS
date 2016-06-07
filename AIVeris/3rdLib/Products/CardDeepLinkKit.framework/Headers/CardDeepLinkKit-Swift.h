@@ -129,6 +129,7 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit10CDDeepLink")
 /// A deep link URL for linking back to the source application.
 @property (nonatomic, readonly, strong) NSURL * _Nullable callbackURL;
 - (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url OBJC_DESIGNATED_INITIALIZER;
+- (NSURL * _Nullable)getURL;
 - (NSInteger)hashValue;
 @end
 
@@ -303,12 +304,6 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit13CardAlertView")
 @interface CardAlertView : UIView
 + (CardAlertView * _Nonnull)createInstance;
 @property (nonatomic, copy) NSString * _Nonnull serviceId;
-
-/// Animation springEaseIn
-+ (void)springEaseIn:(NSTimeInterval)duration animations:(void (^ _Null_unspecified)(void))animations;
-+ (void)springEaseOut:(NSTimeInterval)duration animations:(void (^ _Null_unspecified)(void))animations completion:(void (^ _Null_unspecified)(void))completion;
-+ (void)spring:(NSTimeInterval)duration animations:(void (^ _Nonnull)(void))animations;
-+ (void)springWithCompletion:(NSTimeInterval)duration animations:(void (^ _Null_unspecified)(void))animations completion:(void (^ _Null_unspecified)(BOOL))completion;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -325,6 +320,7 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit8CardView")
 
 
 @interface CardView (SWIFT_EXTENSION(CardDeepLinkKit))
+- (void)setRequestServiceID:(NSString * _Nonnull)sid response:(void (^ _Nonnull)(id _Nonnull))response;
 @end
 
 
@@ -340,23 +336,18 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit12CardViewCell")
 
 
 @interface NSURL (SWIFT_EXTENSION(CardDeepLinkKit))
-@property (nonatomic, readonly, copy) NSString * _Nonnull URLString;
 @end
 
 
 @interface NSURLComponents (SWIFT_EXTENSION(CardDeepLinkKit))
-@property (nonatomic, readonly, copy) NSString * _Nonnull URLString;
-@end
-
-@class NSMutableURLRequest;
-
-@interface NSURLRequest (SWIFT_EXTENSION(CardDeepLinkKit))
-@property (nonatomic, readonly, strong) NSMutableURLRequest * _Nonnull URLRequest;
 @end
 
 
 @interface NSURLRequest (SWIFT_EXTENSION(CardDeepLinkKit))
-@property (nonatomic, readonly, copy) NSString * _Nonnull URLString;
+@end
+
+
+@interface NSURLRequest (SWIFT_EXTENSION(CardDeepLinkKit))
 @end
 
 
@@ -365,23 +356,10 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit12CardViewCell")
 
 
 @interface UIColor (SWIFT_EXTENSION(CardDeepLinkKit))
-- (nonnull instancetype)initWithHex:(NSString * _Nonnull)hex;
-@end
-
-
-SWIFT_CLASS("_TtC15CardDeepLinkKit13UILoadingView")
-@interface UILoadingView : UIView
-- (CGFloat)degreesToRadians:(CGFloat)degrees;
-@property (nonatomic, weak) IBOutlet UIView * _Null_unspecified indicatorView;
-- (void)awakeFromNib;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
 @interface UIView (SWIFT_EXTENSION(CardDeepLinkKit))
-- (void)showLoading;
-- (void)hideLoading;
 @end
 
 

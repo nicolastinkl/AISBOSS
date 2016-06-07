@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /**
-     config lean Cloud.
+     Config Lean Cloud.
      */
     func configAVOSCloud(){
         

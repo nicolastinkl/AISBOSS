@@ -246,3 +246,5 @@ ClassB(bigNum: false).numB
 
 
 
+let s = arc4random() % 5
+

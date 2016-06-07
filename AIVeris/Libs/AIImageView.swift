@@ -79,7 +79,7 @@ public class AIImageView: UIImageView {
     
     public func setURL(url: NSURL?, placeholderImage: UIImage?) {
         self.placeholderImage = placeholderImage
-        if url?.URLString.length > 10 {
+        if url?.absoluteString.length > 10 {
             self.url = url
         }else{
             self.alpha=0.2;

@@ -30,7 +30,11 @@ class AIRegistViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let selectRegionVC = segue.destinationViewController as? AISelectRegionViewController{
+            selectRegionVC.delegate = self
+        }
+    }
 
     @IBAction func selectRegionAction(sender: UIButton) {
     }
@@ -52,4 +56,17 @@ class AIRegistViewController: UIViewController {
         leftView.textColor = UIColor.whiteColor()
         phoneNumberTextField.leftView = leftView
     }
+    
+    
 }
+
+extension AIRegistViewController : AISelectRegionViewControllerDelegate{
+    func didSelectRegion(regionName: String, countryNumber: String) {
+        if let leftView = phoneNumberTextField.leftView as? UILabel{
+            leftView.text = countryNumber
+        }
+        regionSelectButton.titleLabel?.text = regionName
+    }
+}
+
+
