@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CardDeepLinkKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //
     
+    private lazy var router: CDDeepLinkRouter = CDDeepLinkRouter()
     var sellerData : NSDictionary?
     var buyerListData : ProposalOrderListModel?
     var buyerProposalData : AIProposalPopListModel?
@@ -69,6 +70,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]
+        
+        router.registerBlock({ (deeplink) in
+            debugPrint("deeplink1 \(deeplink.queryParameters)")
+            
+            // 1. Parser all the Property and unPackage.
+            // 2. Send Notification to do somethings with logic.
+            
+            if let query = deeplink.queryParameters {
+                let userId = query["userId"] as? String
+                let hospitalId = query["hospitalId"] as? String
+                let doctorId = query["doctorId"] as? String
+                let departmentId = query["departmentId"] as? String
+                
+                if let userId = userId,let hospitalId = hospitalId,let doctorId = doctorId, let departmentId = departmentId {
+                    
+                }
+            }
+            }, route: "cddpl://.*")
+        
         
         return true
 

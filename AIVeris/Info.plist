@@ -34,7 +34,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>io.cddpl</string>
+			<string>asiainfo.com</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>cddpl</string>

@@ -10,11 +10,11 @@
 		</data>
 		<key>CardDeepLinkKit.bundle/CardAlertView.nib</key>
 		<data>
-		cCy3YNirlDA97fnOLJ6EDdXYuH4=
+		Al8QDEKymFomrUpnCi6Abo5scrU=
 		</data>
 		<key>CardDeepLinkKit.bundle/LoadingView.nib</key>
 		<data>
-		HvrwnxURV3lo5jdrwXF9L5tbfek=
+		llq13Jm4MgngDzTs5qCaaOjHi6M=
 		</data>
 		<key>CardDeepLinkKit.bundle/bg.png</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/CardDeepLinkKit-Swift.h</key>
 		<data>
-		OIsA4K5O+hTfoAUFeMBDSYGK3mo=
+		ZR8y+sHzH8NDluiP1XJYrNLhQ/E=
 		</data>
 		<key>Headers/CardDeepLinkKit.h</key>
 		<data>
@@ -54,11 +54,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		klmna9OwnwKpZ40pJr0iEQgQ1rU=
+		X0khVw+KxX3DKrGq/mwKQ+qYlPM=
+		</data>
+		<key>Modules/CardDeepLinkKit.swiftmodule/arm.swiftdoc</key>
+		<data>
+		ATlpEKWFDiSSWotGy4t7uf9Fav0=
+		</data>
+		<key>Modules/CardDeepLinkKit.swiftmodule/arm.swiftmodule</key>
+		<data>
+		NXCyqTJBtFD4MvyHKdniDtNmGbY=
 		</data>
 		<key>Modules/CardDeepLinkKit.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		YJ6o+yWeG8zgTFKd0eMwQ2WA2qY=
+		KcDYZDjmbxMzN6KEodYJE8dQoKU=
 		</data>
 		<key>Modules/CardDeepLinkKit.swiftmodule/arm64.swiftmodule</key>
 		<data>
@@ -73,11 +81,11 @@
 	<dict>
 		<key>CardDeepLinkKit.bundle/CardAlertView.nib</key>
 		<data>
-		cCy3YNirlDA97fnOLJ6EDdXYuH4=
+		Al8QDEKymFomrUpnCi6Abo5scrU=
 		</data>
 		<key>CardDeepLinkKit.bundle/LoadingView.nib</key>
 		<data>
-		HvrwnxURV3lo5jdrwXF9L5tbfek=
+		llq13Jm4MgngDzTs5qCaaOjHi6M=
 		</data>
 		<key>CardDeepLinkKit.bundle/bg.png</key>
 		<data>
@@ -109,15 +117,23 @@
 		</data>
 		<key>Headers/CardDeepLinkKit-Swift.h</key>
 		<data>
-		OIsA4K5O+hTfoAUFeMBDSYGK3mo=
+		ZR8y+sHzH8NDluiP1XJYrNLhQ/E=
 		</data>
 		<key>Headers/CardDeepLinkKit.h</key>
 		<data>
 		ETHJYj/IJxdZiWMJ+CA1CkMLnTA=
 		</data>
+		<key>Modules/CardDeepLinkKit.swiftmodule/arm.swiftdoc</key>
+		<data>
+		ATlpEKWFDiSSWotGy4t7uf9Fav0=
+		</data>
+		<key>Modules/CardDeepLinkKit.swiftmodule/arm.swiftmodule</key>
+		<data>
+		NXCyqTJBtFD4MvyHKdniDtNmGbY=
+		</data>
 		<key>Modules/CardDeepLinkKit.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		YJ6o+yWeG8zgTFKd0eMwQ2WA2qY=
+		KcDYZDjmbxMzN6KEodYJE8dQoKU=
 		</data>
 		<key>Modules/CardDeepLinkKit.swiftmodule/arm64.swiftmodule</key>
 		<data>
