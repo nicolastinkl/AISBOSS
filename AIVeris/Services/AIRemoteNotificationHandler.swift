@@ -116,6 +116,7 @@ struct AIRemoteNotificationParameters {
         let push = AVPush()
         push.setQuery(pushQuery) // Set our Installation query
         push.setData(notification)
+        push.setChannels(["ProviderChannel"])
         push.sendPushInBackground()
         
         return true
@@ -136,7 +137,7 @@ struct AIRemoteNotificationParameters {
         let key = AIRemoteNotificationKeys.NotificationType
         let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
         print("\(msgDic)")
-        if let value : String = msgDic[key] as? String{
+        if let value : String = userinfo[key] as? String{
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
@@ -144,9 +145,9 @@ struct AIRemoteNotificationParameters {
                 // 语音协助的 接受
                 let topVC = topViewController()
 
-                let roomNumber = msgDic[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! String
-                let proposalID = msgDic[AIRemoteNotificationKeys.ProposalID] as! Int
-                let proposalName = msgDic[AIRemoteNotificationKeys.ProposalName] as! String
+                let roomNumber = userinfo[AIRemoteNotificationParameters.AudioAssistantRoomNumber] as! String
+                let proposalID = userinfo[AIRemoteNotificationKeys.ProposalID] as! Int
+                let proposalName = userinfo[AIRemoteNotificationKeys.ProposalName] as! String
                 
                 AudioAssistantManager.sharedInstance.connectionStatus = .Dialing
                 

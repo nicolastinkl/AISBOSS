@@ -48,7 +48,10 @@ enum AudioAssistantManagerConnectionStatus: Int {
 class AudioAssistantManager: NSObject {
 	
 	static let sharedInstance = AudioAssistantManager()
-	static let fakeRoomNumber = "97822321"
+	static let fakeRoomNumber = "89897384"
+    var connectionId: String? {
+       return _session?.connection.connectionId
+    }
 	
 	private var _session: OTSession?
 	private var _publisher: OTPublisherKit?
@@ -168,7 +171,8 @@ class AudioAssistantManager: NSObject {
 	}
 	
 	func sendAnchor(anchor: AIAnchor) {
-		let string = JSONSerializer.toJson(anchor)
+        anchor.connectionId = connectionId
+		let string = anchor.toJSONString()
 		sendString(string, type: .Anchor)
 	}
 	

@@ -1,21 +1,8 @@
 PODS:
   - AIAlertView (1.0.8)
   - Alamofire (3.1.5)
-  - AsyncDisplayKit (1.9.74):
-    - AsyncDisplayKit/PINRemoteImage (= 1.9.74)
-  - AsyncDisplayKit/ASDealloc2MainObject (1.9.74)
-  - AsyncDisplayKit/Core (1.9.74):
-    - AsyncDisplayKit/ASDealloc2MainObject
-  - AsyncDisplayKit/PINRemoteImage (1.9.74):
-    - AsyncDisplayKit/Core
-    - PINRemoteImage/iOS (>= 3.0.0-beta.2)
   - Cartography (0.6.0)
   - Igor (0.5.0)
-  - PINCache (2.2.2)
-  - PINRemoteImage/Core (3.0.0-beta.2):
-    - PINCache (>= 2.1)
-  - PINRemoteImage/iOS (3.0.0-beta.2):
-    - PINRemoteImage/Core
   - SnapKit (0.18.0)
   - Spring (1.0.3)
   - SwiftyJSON (2.3.2)
@@ -26,7 +13,6 @@ PODS:
 DEPENDENCIES:
   - AIAlertView (from `https://github.com/asiainfomobile/AIAlertView.git`)
   - Alamofire (~> 3.1.4)
-  - AsyncDisplayKit (~> 1.9.4)
   - Cartography (~> 0.6.0)
   - Igor (~> 0.5.0)
   - SnapKit (~> 0.18.0)
@@ -57,11 +43,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AIAlertView: 9d17a80a22042548ee7888d7e645c84ccbfb1d53
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
-  AsyncDisplayKit: cbd10f28030c0b904cef1bd8e7d96d775c5b0484
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Igor: 7661f105cbcc67579c5ebe1ca9ca83972d18bd20
-  PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
-  PINRemoteImage: 197554c5ba57a6ae90f5db441651180039fc9062
   SnapKit: e1f090a6d47b1dd4bd89b73f72b6746a7835ef3c
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

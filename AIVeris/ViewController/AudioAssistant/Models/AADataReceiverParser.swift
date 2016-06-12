@@ -29,11 +29,8 @@ class AADataReceiverParser: NSObject {
 	}
 	
 	func parseAnchorString(anchorString: String) {
-		let anchor = AIAnchor.anchorFromJsonString(anchorString)
-		print(anchor.viewQuery)
-		let window = UIApplication.sharedApplication().keyWindow
-		if let viewQuery = anchor.viewQuery {
-		}
+		let anchor = AIAnchor.anchorFromJSONString(anchorString)
+        AIAnchorManager.defaultManager.handleAnchor(anchor)
 	}
 	
 	func parseCommand(command: String) {

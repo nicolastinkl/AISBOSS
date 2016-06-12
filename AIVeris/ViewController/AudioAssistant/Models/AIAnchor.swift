@@ -75,14 +75,63 @@ protocol AnchorProcess {
     func processAnchor(anchor : AIAnchor)
 }
 
+class AIAnchorOperation: NSOperation {
+    var anchor: AIAnchor
+    
+    init(anchor: AIAnchor) {
+        self.anchor = anchor
+        super.init()
+        self.completionBlock = {
+            NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+        }
+    }
+    var time: UInt32 = 0
+    private var _isFinished: Bool = false
+    
+    override var asynchronous: Bool {
+        return false
+    }
+    
+    override var finished: Bool {
+        get {
+            return cancelled ? true : _isFinished
+        }
+        set {
+            willChangeValueForKey("finished")
+            _isFinished = newValue
+            didChangeValueForKey("finished")
+        }
+    }
+    
+    // MARK: - NSOperation
+    override func main() {
+        if time > 0 {
+            let global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            dispatch_async(global, { [weak self] in
+                sleep((self?.time)!)
+                self?.finished = true
+            })
+        }
+    }
+}
+
 class AIAnchor: NSObject {
     
-    var type : String?                // 锚点类型
-    var step : String?                // 锚点步骤
+    var type: String?                // 锚点类型
+    var step: String?                // 锚点步骤
     var viewQuery: String?
-    var className : String?
-    var selector : String?            // 方法名
-    var parameters : [AnyObject]?     // 参数列表
+    var className: String?
+    var selector: String?            // 方法名
+    var parameters: [AnyObject]?     // 参数列表
+    var connectionId: String!
+    /**
+     是否从自己发送
+     
+     - returns: true 是自己发送的
+     */
+    func sendFromSelf() -> Bool {
+        return connectionId == AudioAssistantManager.sharedInstance.connectionId
+    }
     
     
     //
@@ -95,10 +144,37 @@ class AIAnchor: NSObject {
     var locationY : CGFloat?
     //
     var logoIndex : NSInteger?
-    // 
+    //
     var scrollOffsetX : CGFloat?
     var scrollOffsetY : CGFloat?
     var scrollTableName : String?
+    class func anchorFromJSONString(jsonString : String) -> AIAnchor {
+        
+        let anchor = AIAnchor()
+        
+        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+            
+            do {
+                
+                let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                
+                if let model = jsonObject as? [String : AnyObject] {
+                    
+                    anchor.type = model["type"] as? String
+                    anchor.step = model["step"] as? String
+                    anchor.className = model["className"] as? String
+                    anchor.viewQuery = model["viewQuery"] as? String
+                    anchor.selector = model["selector"] as? String
+                    anchor.parameters = model["parameters"] as? [AnyObject]
+                }
+            }
+            catch let JSONError as NSError {
+                print("json parse error --" + "\(JSONError)")
+            }
+        }
+        
+        return anchor
+    }
     
     class func lock() -> AIAnchor {
         let anchor = AIAnchor()
@@ -178,49 +254,14 @@ class AIAnchor: NSObject {
     }
     
     
-    class func anchorFromJsonString(jsonString : String) -> AIAnchor {
-        
-        let anchor = AIAnchor()
-        
-        if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
 
-            do {
-                
-                let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                
-                if let model = jsonObject as? [String : AnyObject] {
-
-                    anchor.type = model["type"] as? String
-                    anchor.step = model["step"] as? String
-                    anchor.className = model["className"] as? String
-                    anchor.viewQuery = model["viewQuery"] as? String
-                    anchor.selector = model["selector"] as? String
-                    anchor.parameters = model["parameters"] as? [AnyObject]
-                }
-            }
-            catch let JSONError as NSError {
-                print("json parse error --" + "\(JSONError)")
-            }
-        }
-
-        return anchor
-    }
     
-    
-    func toJsonString() -> String {
+    func toJSONString() -> String {
         return JSONSerializer.toJson(self)
     }
-    
-    
-    
-    
-    
-    
 }
 
-extension AIAnchor : Reflectable {
-    
-}
+extension AIAnchor : Reflectable {}
 
 extension AIAnchor {
     func send() {

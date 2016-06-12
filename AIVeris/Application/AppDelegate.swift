@@ -34,12 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         AVAnalytics.setChannel("App Store")
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert,.Badge,.Sound], categories: nil))
-        application.registerForRemoteNotifications()
+//       https://leancloud.cn/docs/ios_push_guide.html#保存_Installation 
+//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert,.Badge,.Sound], categories: nil))
+//        application.registerForRemoteNotifications()
         
         
         // Override point for customization after application launch.
-        self.window = AACustomWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         configDefaultUser()
         initNetEngine()
         
@@ -97,12 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         #if !DEBUG //debug 模式 才会启动
         if motion == .MotionShake {
-            var notification = [NSObject: AnyObject]()
-            let proposalID : Int = 1000
-            let proposalName : String = "Proposal"
-            notification["aps"] = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: AudioAssistantManager.fakeRoomNumber, AIRemoteNotificationKeys.NotificationType : AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey : "您有远程协助请求", AIRemoteNotificationKeys.ProposalID : proposalID, AIRemoteNotificationKeys.ProposalName : proposalName]
-            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(notification as [NSObject : AnyObject])
-//            AIApplication.showAlertView()
+            var roomNumber = "\(random() % 9999)"
+            roomNumber = "\(AudioAssistantManager.fakeRoomNumber)" // test
+            
+            let notification = [AIRemoteNotificationParameters.AudioAssistantRoomNumber: roomNumber, AIRemoteNotificationKeys.NotificationType: AIRemoteNotificationParameters.AudioAssistantType, AIRemoteNotificationKeys.MessageKey: "您有远程协助请求", AIRemoteNotificationKeys.ProposalID: 2692, AIRemoteNotificationKeys.ProposalName: "Event Planning"]
+            var userInfo = [NSObject: AnyObject]()
+            userInfo["aps"] = notification
+            AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
         }
         #endif
     }
@@ -116,16 +118,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AVOSCloud.setApplicationId(AIApplication.AVOSCLOUDID,
                                    clientKey: AIApplication.AVOSCLOUDKEY)
-        
+        #if !DEBUG
+        // debug 模式 设置开发状态
+        AVPush.setProductionMode(false)
+        #endif
+ 
         
         AVOSCloud.registerForRemoteNotification()
-        
+
+
         AVAnalytics.setAnalyticsEnabled(true)
         
         
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+       
+        if UIDevice.currentDevice().deviceType == .Simulator {
+            let token = NSData(base64EncodedString: "simulatordevicetoken", options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+           AVOSCloud.handleRemoteNotificationsWithDeviceToken(token)
+        }
+
         logError("\(error.userInfo)")
     }
     
@@ -135,7 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
 
         AIRemoteNotificationHandler.defaultHandler().didReceiveRemoteNotificationUserInfo(userInfo)
-
         
     }
     
@@ -146,6 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
       
         AVOSCloud.handleRemoteNotificationsWithDeviceToken(deviceToken)
+
         logInfo("DeviceToken OK")
         
     }
