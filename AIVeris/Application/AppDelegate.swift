@@ -78,22 +78,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 1. Parser all the Property and unPackage.
             // 2. Send Notification to do somethings with logic.
             
-            if let query = deeplink.queryParameters {
-                let userId = query["userId"] as? String
-                let hospitalId = query["hospitalId"] as? String
-                let doctorId = query["doctorId"] as? String
-                let departmentId = query["departmentId"] as? String
-                
-                if let userId = userId,let hospitalId = hospitalId,let doctorId = doctorId, let departmentId = departmentId {
-                    
+                if let _ = deeplink.queryParameters {
+                    //DeepLink Network Requseting.
+                    NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: nil)
                 }
-            }
+            
             }, route: "cddpl://.*")
         
         
         return true
 
     }
+    
+    /*
+     @available(iOS, introduced=4.2, deprecated=9.0, message="Please use application:openURL:options:")
+     */
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        
+        router.handleURL(url) { (complte, error) in
+            print("info : \(complte) \(error) ")
+        }
+        
+        return true
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        router.handleURL(url) { (complte, error) in
+            print("info : \(complte) \(error) ")
+        }
+        
+        return true
+    }
+    
     
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         #if !DEBUG //debug 模式 才会启动
@@ -257,14 +274,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AINetEngine.defaultEngine().configureCommonHeaders(header)
     }
     
-    
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        let path = url.lastPathComponent
-        
-        print(path)
-        return true
-    }
-    
+     
     func showRootViewControllerReal() {
         //创建Root
         let root = AIRootViewController()

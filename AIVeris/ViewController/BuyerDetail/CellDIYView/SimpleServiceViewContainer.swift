@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import CardDeepLinkKit
 
 class SimpleServiceViewContainer: UIView {
     
@@ -232,6 +233,10 @@ class SimpleServiceViewContainer: UIView {
     private func isParamSetted() -> Bool {
         return dataModel!.param_setting_flag == ParamSettingFlag.Set.rawValue
     }
+    
+    func replaceDeepLink(sview: UIView?) {
+        
+    }
 
     private func createServiceView(models: [ServiceCellProductParamModel]?) -> View?{
 
@@ -246,12 +251,14 @@ class SimpleServiceViewContainer: UIView {
             }
             let viewTemplate = ProposalServiceViewTemplate(rawValue: Int(serCellModel.param_key)!)
             if let param = getViewTemplateView(viewTemplate!) {
+                
                 param.isFirstView(serCellModel == models?.first)
                 param.loadDataWithModelArray(serCellModel)
                 if let par = pareusView {
                     //上一个view
                     param.setTop(par.top + par.height)
                 }
+                
                 paramContainerView.addSubview(param)
                 
                 constrain(param, paramContainerView) {(view, container) ->() in
@@ -263,6 +270,13 @@ class SimpleServiceViewContainer: UIView {
                 
                 paramHeight += param.height
                 pareusView = param
+                
+                if dataModel?.service_id == 900001001002 {
+                    
+                }else{
+                    
+                }
+                
             }
         }
         

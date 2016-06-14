@@ -158,6 +158,7 @@ class AIBuyerDetailViewController : UIViewController {
        
         setupNotification()
         setupAnchorManager()
+        
     }
     func setupAnchorManager() {
         AIAnchorManager.defaultManager.topViewController.controller = self
@@ -166,7 +167,30 @@ class AIBuyerDetailViewController : UIViewController {
     }
     
     func setupNotification() {
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateCustomerDialogViewControllerStatus(_:)), name: AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateDeepLinkView), name: AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: nil)
+        
+    }
+    
+    /**
+     这里处理Deeplink回调时的界面刷新处理
+     */
+    func updateDeepLinkView(){
+        
+        view.showLoading()
+        
+        //CDSender.singalInstance().configureSenderID("900001003401")
+        
+//        CDSender.singalInstance().setServiceIDBlock(self.view) { (serviceView, error) in
+//            if let s = serviceView {
+//                self.view.addSubview(s)
+//            }
+//        }
+        
+        view.hideLoading()
+        
     }
     
     func updateCustomerDialogViewControllerStatus(notification: NSNotification) {
@@ -723,6 +747,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         cell.currentModel = serviceDataModel
         
         cell.removeDelegate = self
+
         cell.delegate = self
 
         serviceView.displayDeleteMode = (tableView == deletedTableView)
@@ -741,6 +766,7 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
         
         // Cache Cell.
         serviceDataModel.cell = cell;
+        
         return cell
         
     }
@@ -772,46 +798,47 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      
-        if indexPath.row == 0 {
-             Card.sharedInstance.showInView(self.view, serviceId: "2")
-        }else{
-            if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
-                selectCount = 0
-                var serviceList: NSArray?
-                
-                if (tableView == deletedTableView) {
-                    //需求说已删除的服务 不支持点击事件
-                    return
-                    //            serviceList = deleted_service_list
-                } else {
-                    serviceList = current_service_list
-                }
-                
-                let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
-                viewController.delegate = self
-                viewController.proposalId = dataSource.proposal_id
-                viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
-                viewController.selectCurrentIndex = indexPath.row
-                self.showViewController(viewController, sender: self)
-                
-                // Send Anchor
-                if isNowExcutingAnchor == false {
-                    let anchor = AIAnchor()
-                    anchor.type = AIAnchorType.Touch
-                    anchor.step = AIAnchorStep.After
-                    anchor.rootViewControllerName = self.instanceClassName()
-                    anchor.viewComponentName = tableView.instanceClassName()
-                    anchor.rowIndex = indexPath.row
-                    anchor.sectionIndex = indexPath.section
-                    anchor.selector = "didSelectRowAtIndexPath"
-                    AudioAssistantManager.sharedInstance.sendAnchor(anchor)
-                }
-                
-            }
-
-        }
         
+        if (self.openCell == false) || (self.openCell == true  && selectCount == 1){
+            selectCount = 0
+            var serviceList: NSArray?
+            
+            if (tableView == deletedTableView) {
+                //需求说已删除的服务 不支持点击事件
+                return
+                //            serviceList = deleted_service_list
+            } else {
+                serviceList = current_service_list
+            }
+            
+            if let model = current_service_list![indexPath.row] as? AIProposalServiceModel {
+                if model.service_id == 900001001002 {
+                    Card.sharedInstance.showInView(self.view, serviceId: "2", userInfo: ["title":model.service_desc,"name":"Hospital","url":"http://7xq9bx.com1.z0.glb.clouddn.com/dp_hospital.png"])
+                    return
+                }
+            }
+            
+            let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
+            viewController.delegate = self
+            viewController.proposalId = dataSource.proposal_id
+            viewController.bubbleModelArray = serviceList as? [AIProposalServiceModel]
+            viewController.selectCurrentIndex = indexPath.row
+            self.showViewController(viewController, sender: self)
+            
+            // Send Anchor
+            if isNowExcutingAnchor == false {
+                let anchor = AIAnchor()
+                anchor.type = AIAnchorType.Touch
+                anchor.step = AIAnchorStep.After
+                anchor.rootViewControllerName = self.instanceClassName()
+                anchor.viewComponentName = tableView.instanceClassName()
+                anchor.rowIndex = indexPath.row
+                anchor.sectionIndex = indexPath.section
+                anchor.selector = "didSelectRowAtIndexPath"
+                AudioAssistantManager.sharedInstance.sendAnchor(anchor)
+            }
+            
+        }
         
         selectCount  = selectCount + 1
     }
