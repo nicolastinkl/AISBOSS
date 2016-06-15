@@ -214,8 +214,6 @@
 		846DAD9A1BD72FEB0054F058 /* ViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD981BD72FEB0054F058 /* ViewProtocal.swift */; };
 		846DAD9C1BD7338B0054F058 /* PurchasedServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */; };
 		846DAD9F1BD736F70054F058 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846DAD9E1BD736F70054F058 /* ViewConstants.swift */; };
-		846E80DF1CE9A451009E0B0F /* IGViewQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DC1CE9A450009E0B0F /* IGViewQuery.m */; };
-		846E80E01CE9A451009E0B0F /* IGViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */; };
 		846F74181C15A68100EDAE8D /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F74151C15A68100EDAE8D /* OBShapedButton.m */; };
 		846F74191C15A68100EDAE8D /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F74171C15A68100EDAE8D /* UIImage+ColorAtPixel.m */; };
 		846F741C1C15A87D00EDAE8D /* OBShapedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F741B1C15A87D00EDAE8D /* OBShapedImageView.m */; };
@@ -970,10 +968,6 @@
 		846DAD981BD72FEB0054F058 /* ViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProtocal.swift; sourceTree = "<group>"; };
 		846DAD9B1BD7338B0054F058 /* PurchasedServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedServiceView.swift; sourceTree = "<group>"; };
 		846DAD9E1BD736F70054F058 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
-		846E80DB1CE9A450009E0B0F /* IGViewQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewQuery.h; sourceTree = "<group>"; };
-		846E80DC1CE9A450009E0B0F /* IGViewQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewQuery.m; sourceTree = "<group>"; };
-		846E80DD1CE9A450009E0B0F /* IGViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGViewWrapper.h; sourceTree = "<group>"; };
-		846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGViewWrapper.m; sourceTree = "<group>"; };
 		846F74141C15A68100EDAE8D /* OBShapedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShapedButton.h; sourceTree = "<group>"; };
 		846F74151C15A68100EDAE8D /* OBShapedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShapedButton.m; sourceTree = "<group>"; };
 		846F74161C15A68100EDAE8D /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
@@ -2028,17 +2022,6 @@
 			path = PurchasedService;
 			sourceTree = "<group>";
 		};
-		846E80DA1CE9A450009E0B0F /* IGViewQuery */ = {
-			isa = PBXGroup;
-			children = (
-				846E80DB1CE9A450009E0B0F /* IGViewQuery.h */,
-				846E80DC1CE9A450009E0B0F /* IGViewQuery.m */,
-				846E80DD1CE9A450009E0B0F /* IGViewWrapper.h */,
-				846E80DE1CE9A450009E0B0F /* IGViewWrapper.m */,
-			);
-			path = IGViewQuery;
-			sourceTree = "<group>";
-		};
 		846F74131C15A68100EDAE8D /* OBShapedButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -2754,7 +2737,6 @@
 		93A5A5971B9BD5E1001DE36D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				846E80DA1CE9A450009E0B0F /* IGViewQuery */,
 				84687EAF1CE1B85B00921C6A /* OpenTok */,
 				84687EAB1CE188D700921C6A /* JSONSerializer.swift */,
 				93C33EEA1B9BEA75007BF506 /* CoreText */,
@@ -3868,7 +3850,6 @@
 				845BE0101BE8CEC60001716A /* TransportService.swift in Sources */,
 				84F001511C3A43CB000C93AF /* FLEXTableContentCell.m in Sources */,
 				849B4B631C0EDFE300BEC179 /* FLEXImagePreviewViewController.m in Sources */,
-				846E80E01CE9A451009E0B0F /* IGViewWrapper.m in Sources */,
 				12D795001BA80B8100586011 /* CardCellView.swift in Sources */,
 				845320541C9A86C3003B984B /* AITaskTimeLineView.swift in Sources */,
 				93C33EE51B9BDF3D007BF506 /* AppDelegate.swift in Sources */,
@@ -4114,7 +4095,6 @@
 				9372C5341C23F0300097CC92 /* AIRemoteRequestQueue.swift in Sources */,
 				849B4B521C0EDFE300BEC179 /* FLEXGlobalsTableViewControllerEntry.m in Sources */,
 				81D83AED1BB29F7900BE2BA2 /* MJRefreshConst.m in Sources */,
-				846E80DF1CE9A451009E0B0F /* IGViewQuery.m in Sources */,
 				849EDFFD1CACFB8400700C8C /* UIView+Shake.swift in Sources */,
 				84F001501C3A43CB000C93AF /* FLEXTableColumnHeader.m in Sources */,
 				849B4B361C0EDFE300BEC179 /* FLEXToolbarItem.m in Sources */,

@@ -150,7 +150,3 @@
 #import "AIExecuteServiceModel.h"
 
 
-#define IG_VIEWQUERY_USE_SHORTHAND
-#import "IGViewQuery.h"
-#import "IGViewWrapper.h"
-

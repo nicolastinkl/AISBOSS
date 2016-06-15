@@ -115,39 +115,38 @@ class AIAnchorOperation: NSOperation {
     }
 }
 
+extension UIButton: AIAnchorProtocal {
+    func anchor() -> AIAnchor {
+        let result = AIAnchor()
+        result.className = "";
+        result.viewComponentName = superview?.instanceClassName()
+        return result
+    }
+}
+
+protocol AIAnchorProtocal {
+    func anchor() -> AIAnchor
+}
+
 class AIAnchor: NSObject {
     
-    var type: String?                // 锚点类型
-    var step: String?                // 锚点步骤
-    var viewQuery: String?
     var className: String?
-    var selector: String?            // 方法名
-    var parameters: [AnyObject]?     // 参数列表
     var connectionId: String!
-    /**
-     是否从自己发送
-     
-     - returns: true 是自己发送的
-     */
-    func sendFromSelf() -> Bool {
-        return connectionId == AudioAssistantManager.sharedInstance.connectionId
-    }
-    
-    
-    //
-    var rootViewControllerName : String?
-    var viewComponentName : String?
-    var rowIndex : NSInteger?
-    var sectionIndex : NSInteger?
-    var pageIndex : NSInteger?
     var locationX : CGFloat?
     var locationY : CGFloat?
-    //
     var logoIndex : NSInteger?
-    //
+    var pageIndex : NSInteger?
+    var parameters: [AnyObject]?     // 参数列表
+    var rootViewControllerName : String?
+    var rowIndex : NSInteger?
     var scrollOffsetX : CGFloat?
     var scrollOffsetY : CGFloat?
     var scrollTableName : String?
+    var sectionIndex : NSInteger?
+    var selector: String?            // 方法名
+    var step: String?                // 锚点步骤
+    var type: String?                // 锚点类型
+    var viewComponentName : String?
     class func anchorFromJSONString(jsonString : String) -> AIAnchor {
         
         let anchor = AIAnchor()
@@ -159,13 +158,23 @@ class AIAnchor: NSObject {
                 let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
                 
                 if let model = jsonObject as? [String : AnyObject] {
-                    
-                    anchor.type = model["type"] as? String
-                    anchor.step = model["step"] as? String
                     anchor.className = model["className"] as? String
-                    anchor.viewQuery = model["viewQuery"] as? String
-                    anchor.selector = model["selector"] as? String
+                    anchor.connectionId = model["connectionId"] as? String
+                    anchor.locationX  = model["locationX"] as? CGFloat
+                    anchor.locationY  = model["locationY"] as? CGFloat
+                    anchor.logoIndex  = model["logoIndex"] as? NSInteger
+                    anchor.pageIndex  = model["pageIndex"] as? NSInteger
                     anchor.parameters = model["parameters"] as? [AnyObject]
+                    anchor.rootViewControllerName = model["rootViewControllerName"] as? String
+                    anchor.rowIndex = model["rowIndex"] as? NSInteger
+                    anchor.scrollOffsetX  = model["scrollOffsetX"] as? CGFloat
+                    anchor.scrollOffsetY  = model["scrollOffsetY"] as? CGFloat
+                    anchor.scrollTableName  = model["scrollTableName"] as? String
+                    anchor.sectionIndex = model["sectionIndex"] as? NSInteger
+                    anchor.selector = model["selector"] as? String
+                    anchor.step = model["step"] as? String
+                    anchor.type = model["type"] as? String
+                    anchor.viewComponentName = model["viewComponentName"] as? String
                 }
             }
             catch let JSONError as NSError {
