@@ -11,7 +11,7 @@ import Foundation
 /**
  * AIApplicationObjc Class
  */
-@objc internal class AIApplicationObjc :NSObject {
+@objc internal class AIApplicationObjc: NSObject {
 
     static let sharedInstance = AIApplicationObjc()
     

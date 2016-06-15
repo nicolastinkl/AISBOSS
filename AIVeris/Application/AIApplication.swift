@@ -33,10 +33,7 @@ struct AIApplication{
         static let IS_IPHONE6PLUS = UIScreen.mainScreen().bounds.size.width > 375
     }
     
-    
-        
     // MARK JSON RESPONSE
-    
     struct JSONREPONSE {
         internal static let unassignedNum   =  "unassignedNum"  //未读执行条数
     }
@@ -127,28 +124,26 @@ struct AIApplication{
             
         }
         
-        /*!
-        *  @author tinkl, 15-09-09 15:09:44
-        *
+        /**
         *  DIY View ID
         */
         struct ViewIdentifiers {
             static let AIOrderBuyView           = "AIOrderBuyView"
             static let AILoginViewController    = "AILoginViewController"
             static let AIMessageUnReadView      = "AIMessageUnReadView"
-            static let AIHomeViewStyleMultiepleView = "AIHomeViewStyleMultiepleView"
-            static let AIHomeViewStyleTitleView = "AIHomeViewStyleTitleView"
-            static let AIHomeViewStyleTitleAndContentView = "AIHomeViewStyleTitleAndContentView"
-            static let AIServiceDetailsViewCotnroller = "AIServiceDetailsViewCotnroller"
-            static let AIErrorRetryView     = "AIErrorRetryView"
-            static let AIServerScopeView    = "AIServerScopeView"
-            static let AIServerTimeView     = "AIServerTimeView"
-            static let AIServerAddressView  = "AIServerAddressView"
+            static let AIErrorRetryView         = "AIErrorRetryView"
+            static let AIServerScopeView        = "AIServerScopeView"
+            static let AIServerTimeView         = "AIServerTimeView"
+            static let AIServerAddressView      = "AIServerAddressView"
             static let AITableViewInsetMakeView =   "AITableViewInsetMakeView"
-            static let AITabelViewMenuView  = "AITabelViewMenuView"
+            static let AITabelViewMenuView      = "AITabelViewMenuView"
             static let AICalendarViewController =   "AICalendarViewController"
-            static let AIScanViewController = "AIScanViewController"
+            static let AIScanViewController     = "AIScanViewController"
             
+            static let AIHomeViewStyleMultiepleView         = "AIHomeViewStyleMultiepleView"
+            static let AIHomeViewStyleTitleView             = "AIHomeViewStyleTitleView"
+            static let AIHomeViewStyleTitleAndContentView   = "AIHomeViewStyleTitleAndContentView"
+            static let AIServiceDetailsViewCotnroller       = "AIServiceDetailsViewCotnroller"
             
         }
     }
@@ -160,18 +155,18 @@ struct AIApplication{
         static let UIAIASINFOLoginNotification          = "UIAIASINFOLoginNotification"
         static let UIAIASINFOLogOutNotification         = "UIAIASINFOLogOutNotification"
         
-        static let UIAIASINFOOpenAddViewNotification         = "UIAIASINFOOpenAddViewNotification"
-        static let UIAIASINFOOpenRemoveViewNotification         = "UIAIASINFOOpenRemoveViewNotification"
-        static let UIAIASINFOChangeDateViewNotification         = "UIAIASINFOChangeDateViewNotification"
-        static let UIAIASINFOmotifyParamsNotification =     "UIAIASINFOmotifyParamsNotification"
+        static let UIAIASINFOOpenAddViewNotification    = "UIAIASINFOOpenAddViewNotification"
+        static let UIAIASINFOOpenRemoveViewNotification = "UIAIASINFOOpenRemoveViewNotification"
+        static let UIAIASINFOChangeDateViewNotification = "UIAIASINFOChangeDateViewNotification"
+        static let UIAIASINFOmotifyParamsNotification   =     "UIAIASINFOmotifyParamsNotification"
         // FIXME: 视频拍摄完成文件地址
         static let NSNotirydidFinishMergingVideosToOutPutFileAtURL  = "NSNotirydidFinishMergingVideosToOutPutFileAtURL"
         //一键清除订单
         static let UIAIASINFORecoverOrdersNotification = "UIAIASINFORecoverOrdersNotification"
 
         
-        static let AIDatePickerViewNotificationName  = "AIDatePickerViewNotificationName"
-        static let AISinglePickerViewNotificationName  = "AISinglePickerViewNotificationName"
+        static let AIDatePickerViewNotificationName     = "AIDatePickerViewNotificationName"
+        static let AISinglePickerViewNotificationName   = "AISinglePickerViewNotificationName"
         static let AIAIRequirementViewControllerNotificationName    = "AIAIRequirementViewControllerNotificationName"
         static let AIAIRequirementShowViewControllerNotificationName    = "AIAIRequirementShowViewControllerNotificationName"
         static let AIAIRequirementNotifyOperateCellNotificationName    = "AIAIRequirementNotifyOperateCellNotificationName"
@@ -196,6 +191,7 @@ struct AIApplication{
         static let AIRemoteAssistantConnectionStatusChangeNotificationName = "AIRemoteAssistantConnectionStatusChangeNotificationName"
         static let AIRemoteAssistantManagerMessageReceivedNotificaitonName = "AIRemoteAssistantManagerMessageReceivedNotificaitonName"
         static let AIRemoteAssistantAnchorOperationCompletedNotificationName = "AIRemoteAssistantAnchorOperationCompletedNotificationName"
+        static let AIDeepLinkupdateDeepLinkView = "AIDeepLinkupdateDeepLinkView"
     }
     
     // MARK: System theme's color

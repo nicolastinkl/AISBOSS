@@ -117,7 +117,11 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit10CDDeepLink")
 
 /// A dictionary of values keyed by their parameterized route component matched in the deep link URL path. @note Given a route alert/:title/:message' and a pathxxxx://alert/hello/world', the route parameters dictionary would be `@{ @"title": @"hello", @"message": @"world" }'.
 @property (nonatomic, strong) NSDictionary * _Nullable routeParameters;
+
+/// Public properties with AppLinks.
 @property (nonatomic, readonly, strong) NSDictionary * _Nullable appLinkData;
+
+/// AppLinkData's Dictionary's value.
 @property (nonatomic, readonly, strong) NSURL * _Nullable targetURL;
 @property (nonatomic, readonly, strong) NSDictionary * _Nullable extras;
 @property (nonatomic, readonly, copy) NSString * _Nullable version;
@@ -129,7 +133,11 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit10CDDeepLink")
 /// A deep link URL for linking back to the source application.
 @property (nonatomic, readonly, strong) NSURL * _Nullable callbackURL;
 - (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url OBJC_DESIGNATED_INITIALIZER;
+
+/// Get Deeplink's URL from queryParameters.
 - (NSURL * _Nullable)getURL;
+
+/// Hash Value.
 - (NSInteger)hashValue;
 @end
 
@@ -191,7 +199,17 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit10CDReceiver")
 @interface CDReceiver : NSObject
 
 /// 单例构造方法
-+ (CDReceiver * _Nonnull)singalInstance;
+///
+/// <code> swift_once_block_invoke -> Thread Safe and from apple document function.
+/// 
+/// </code>
++ (CDReceiver * _Nonnull)sharedInstance;
+
+/// 处理DeepLink链接参数 @url APP接收到的远程调用URL @reveivedParameters SDK解析出的远端参数，可能是nil，如果有值，receiver需要根据参数切换UI
+- (void)handleURL:(NSURL * _Nonnull)url reveivedParameters:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nullable))reveivedParameters;
+
+/// 处理完DeepLink，返回发送APP @parameters 需要返回给发送APP的参数列表，可以为nil
+- (void)callBackParameters:(NSDictionary<NSString *, id> * _Nullable)parameters;
 @end
 
 @class NSCoder;
@@ -229,12 +247,13 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit14CDRouteMatcher")
 @interface CDRouteMatcher : NSObject
 @end
 
+@class UIView;
 
 SWIFT_CLASS("_TtC15CardDeepLinkKit8CDSender")
 @interface CDSender : NSObject
 
 /// 单例构造方法
-+ (CDSender * _Nonnull)singalInstance;
++ (CDSender * _Nonnull)sharedInstance;
 
 /// 配置发送者ID
 ///
@@ -255,11 +274,28 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit8CDSender")
 /// </code>
 - (void)configureServiceParameters:(NSDictionary * _Nonnull (^ _Nonnull)(NSDictionary * _Nonnull))parameters;
 
+/// 打开其它app
+///
+/// \param url URL
+///
+/// \param parmeters Paremters
+- (void)openURL:(NSURL * _Nonnull)url parmeters:(NSDictionary * _Nonnull)parmeters;
+
 /// 判断是否有发送者ID
 - (BOOL)hasSenderID;
 
 /// 判断是否有设置发送者APP的scheme
 - (BOOL)hasCallbackScheme;
+
+/// 处理DeepLink事件
+- (void)setupCardService:(NSString * _Nonnull)serviceID;
+
+/// 显示卡片 @view 显示卡片的容器 @parameters 服务参数，至少包含serviceID
+- (void)showCardInView:(UIView * _Nonnull)view parameters:(NSDictionary<NSString *, id> * _Nonnull)parameters completion:(void (^ _Nonnull)(NSError * _Nonnull))completion;
+- (void)setServiceIDBlock:(UIView * _Nonnull)view reponse:(void (^ _Nonnull)(UIView * _Nullable, NSString * _Nullable))reponse;
+
+/// Remove Card.
+- (void)removeCard;
 @end
 
 @class NSBundle;
@@ -271,7 +307,6 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit16CDViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIView;
 
 SWIFT_CLASS("_TtC15CardDeepLinkKit4Card")
 @interface Card : NSObject
@@ -303,6 +338,7 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit4Card")
 SWIFT_CLASS("_TtC15CardDeepLinkKit13CardAlertView")
 @interface CardAlertView : UIView
 + (CardAlertView * _Nonnull)createInstance;
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> * _Nonnull extensionDictionary;
 @property (nonatomic, copy) NSString * _Nonnull serviceId;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
@@ -310,22 +346,9 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit13CardAlertView")
 
 
 
-/// CardView
+/// Diy your self's CardView with this Object.
 SWIFT_CLASS("_TtC15CardDeepLinkKit8CardView")
 @interface CardView : UIView
-@property (nonatomic, copy) NSString * _Nonnull serviceID;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-@interface CardView (SWIFT_EXTENSION(CardDeepLinkKit))
-- (void)setRequestServiceID:(NSString * _Nonnull)sid response:(void (^ _Nonnull)(id _Nonnull))response;
-@end
-
-
-SWIFT_CLASS("_TtC15CardDeepLinkKit12CardViewCell")
-@interface CardViewCell : UIView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -356,6 +379,10 @@ SWIFT_CLASS("_TtC15CardDeepLinkKit12CardViewCell")
 
 
 @interface UIColor (SWIFT_EXTENSION(CardDeepLinkKit))
+@end
+
+
+@interface UIImageView (SWIFT_EXTENSION(CardDeepLinkKit))
 @end
 
 
