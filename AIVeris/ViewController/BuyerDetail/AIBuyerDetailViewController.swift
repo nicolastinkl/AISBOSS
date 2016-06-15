@@ -94,6 +94,10 @@ class AIBuyerDetailViewController : UIViewController {
     
     var curretCell:AIBueryDetailCell?
     
+    var cacheIndex: Int = 0
+    var cacheCellModel: AIProposalServiceModel?
+    var selectIndexPath: NSIndexPath?
+    
     private var current_service_list: NSArray? {
         get {
             guard dataSource?.service_list == nil else {
@@ -170,26 +174,92 @@ class AIBuyerDetailViewController : UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateCustomerDialogViewControllerStatus(_:)), name: AIApplication.Notification.AIRemoteAssistantConnectionStatusChangeNotificationName, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateDeepLinkView), name: AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIBuyerDetailViewController.updateDeepLinkView(_:)), name: AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: nil)
         
     }
     
     /**
      这里处理Deeplink回调时的界面刷新处理
      */
-    func updateDeepLinkView(){
+    func updateDeepLinkView(notify: NSNotification){
         
-        view.showLoading()
+        if let object = notify.object {
+
+            var doctorName: String?
+            var departmentName: String?
+            var appointmentTime: String?
+            if let ob = object as? [String:String] {
+                doctorName = ob["doctorName"]
+                departmentName = ob["departmentName"]
+                appointmentTime = ob["appointmentTime"]
+            }
+            
+            // Get Cache Data from target Object.
+            if let model = cacheCellModel {
+                
+                let newModel = model
+                let ServiceCellProductParamModel1 = ServiceCellProductParamModel()
+                ServiceCellProductParamModel1.param_key = "4"
+                
+                let param1 = ServiceCellStadandParamModel()
+                param1.param_name = "科室:"
+                param1.param_value = departmentName ?? ""
+                param1.param_icon = "http://171.221.254.231:3000/upload/shoppingcart/LqB8JyHilA5yl.png"
+                param1.product_key = "112321"
+                
+                let param2 = ServiceCellStadandParamModel()
+                param2.param_name = "医生:"
+                param2.param_value = doctorName ?? ""
+                param2.param_icon = "http://171.221.254.231:3000/upload/shoppingcart/DQd6bsVqrsHg1.png"
+                param2.product_key = "123"
+                
+                let param3 = ServiceCellStadandParamModel()
+                param3.param_name = "时间:"
+                param3.param_value = appointmentTime ?? ""
+                param3.param_icon = "http://171.221.254.231:3000/upload/shoppingcart/DQd6bsVqrsHg1.png"
+                param3.product_key = "123"
+                
+                ServiceCellProductParamModel1.param_list = [param1,param2,param3]
+                
+                newModel.service_param = [ServiceCellProductParamModel1]
+                self.dataSource.service_list[cacheIndex] = newModel
+                
+                
+                Async.main({
+                    
+                    if let indexPath = self.selectIndexPath {
+                        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)) as! AIBueryDetailCell
+                        cell.currentModel = newModel
+                        
+                        if let serviceView = cell.contentHoldView.viewWithTag(self.SIMPLE_SERVICE_VIEW_CONTAINER_TAG) as? SimpleServiceViewContainer {
+                            serviceView.paramsView.subviews.forEach({ (suview) in
+                                if suview is AITitleAndIconTextView {
+                                    
+                                }
+                                suview.removeFromSuperview()
+                            })
+                            serviceView.loadData(newModel)
+                        }
+                    }
+                    self.tableView.reloadData()
+                    
+                })
+                
+            }
+            
+        }
         
         //CDSender.singalInstance().configureSenderID("900001003401")
+        
+        
+        
         
 //        CDSender.singalInstance().setServiceIDBlock(self.view) { (serviceView, error) in
 //            if let s = serviceView {
 //                self.view.addSubview(s)
 //            }
 //        }
-        
-        view.hideLoading()
+//        view.hideLoading()
         
     }
     
@@ -813,7 +883,17 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
             
             if let model = current_service_list![indexPath.row] as? AIProposalServiceModel {
                 if model.service_id == 900001001002 {
-                    Card.sharedInstance.showInView(self.view, serviceId: "2", userInfo: ["title":model.service_desc,"name":"Hospital","url":"http://7xq9bx.com1.z0.glb.clouddn.com/dp_hospital.png"])
+                    
+                    // Cache Current CellView.
+                    let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)) as! AIBueryDetailCell
+                    let modelCellM = cell.currentModel
+                    cacheIndex = indexPath.row
+                    cacheCellModel = modelCellM
+                    selectIndexPath = indexPath
+                    
+                    // Show View.
+                    Card.sharedInstance.showInView(self.view, serviceId: "2", userInfo: ["title":model.service_desc,"name":"Hospital","url":"\(model.service_thumbnail_icon)"])
+                    
                     return
                 }
             }

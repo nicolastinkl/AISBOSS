@@ -73,18 +73,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]
         
         router.registerBlock({ (deeplink) in
+            
             debugPrint("deeplink1 \(deeplink.queryParameters)")
             
             // 1. Parser all the Property and unPackage.
             // 2. Send Notification to do somethings with logic.
             
-                if let _ = deeplink.queryParameters {
-                    //DeepLink Network Requseting.
-                    NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: nil)
-                }
-            
-            }, route: "cddpl://.*")
-        
+            if let queryParameters = deeplink.queryParameters {
+                //DeepLink Network Requseting.
+                NSNotificationCenter.defaultCenter().postNotificationName(AIApplication.Notification.AIDeepLinkupdateDeepLinkView, object: queryParameters)
+            }
+        }, route: "cddpl://.*")
         
         return true
 
