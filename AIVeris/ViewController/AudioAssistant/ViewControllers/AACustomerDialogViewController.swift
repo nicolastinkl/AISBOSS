@@ -62,7 +62,7 @@ class AACustomerDialogViewController: AADialogBaseViewController {
 		view.showLoading()
 		AudioAssistantManager.sharedInstance.customerCallRoom(roomNumber: "\(roomNumber)", sessionDidConnectHandler: { [weak self] in
 			AIRemoteNotificationHandler.defaultHandler().sendAudioAssistantNotification(notification as! [String: AnyObject], toUser: "200000002501")
-			AudioAssistantManager.sharedInstance.doPublishAudio()
+            AudioAssistantManager.sharedInstance.doPublishAudio()
             self?.shouldDial = false
 			self?.view.hideLoading()
 			}, didFailHandler: { [weak self] error in

@@ -50,7 +50,7 @@ class AudioAssistantManager: NSObject {
 	static let sharedInstance = AudioAssistantManager()
 	static let fakeRoomNumber = "89897384"
     var connectionId: String? {
-       return _session?.connection.connectionId
+       return _session?.connection?.connectionId
     }
 	
 	private var _session: OTSession?

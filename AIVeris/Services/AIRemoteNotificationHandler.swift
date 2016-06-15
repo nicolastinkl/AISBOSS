@@ -137,7 +137,7 @@ struct AIRemoteNotificationParameters {
         let key = AIRemoteNotificationKeys.NotificationType
         let msgDic : Dictionary = userinfo["aps"] as! Dictionary<String , AnyObject>
         print("\(msgDic)")
-        if let value : String = userinfo[key] as? String{
+        if let value = userinfo[key] as? String{
             if value == AIRemoteNotificationParameters.GrabOrderType {
                 AIApplication.showAlertView()
             }
