@@ -355,7 +355,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
             var offsetHeight = 10-3
             for url in urlArray {
                 let urlImage = AIImageView()
-                urlImage.setURL(NSURL(string: "\(url)"), placeholderImage: nil)
+                urlImage.setAIURL(NSURL(string: "\(url)"), placeholderImage: nil)
                 urlImage.tag = 11
                 cell.contentView.addSubview(urlImage)
                 
@@ -513,7 +513,7 @@ extension AIRequireContentViewController: UITableViewDelegate, UITableViewDataSo
             
             for model in models {
                 let imageV = AIImageView()
-                imageV.setURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: smallPlace())
+                imageV.setAIURL(NSURL(string: model.iconUrl ?? ""), placeholderImage: smallPlace())
                 iconView.addSubview(imageV)
                 imageV.layer.borderColor = UIColor.whiteColor().CGColor
                 imageV.layer.borderWidth =  1

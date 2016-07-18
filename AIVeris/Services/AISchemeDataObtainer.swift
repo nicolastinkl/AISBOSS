@@ -17,8 +17,14 @@ class MockchemeDataObtainer: SchemeDataObtainer {
     func getServiceSchemes(sheme_id: Int, success: (responseData: AIServiceSchemeModel) -> Void, fail: (errType: AINetError, errDes: String) -> Void) {
         
         if let path = NSBundle.mainBundle().pathForResource("AIServiceSchemeModelTEST", ofType: "json") {
-            _ = NSData(contentsOfFile: path)
+            let response = NSData(contentsOfFile: path)
             
+            if let responseJSON: AnyObject = response {
+                let model =  AIServiceSchemeModel(JSONDecoder(responseJSON))
+                success(responseData: model)
+            }else{
+                fail(errType: AINetError.Format, errDes: "AIServiceSchemeModel JSON Parse error.")
+            }
         }
         
     }

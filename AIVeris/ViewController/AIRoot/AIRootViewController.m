@@ -38,7 +38,7 @@
     [self makeChildViewControllers];
     [self startOpenningAnimation];
     
-    [self handleLoginAction];
+    //[self handleLoginAction];
  
     /*
 #if DEBUG

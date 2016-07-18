@@ -906,6 +906,13 @@ extension AIBuyerDetailViewController: UITableViewDataSource, UITableViewDelegat
                     return
                 }
                 
+                if model.service_id == 900001001007 {
+                    
+                    // Show View.
+                    Card.sharedInstance.showInView(self.view, serviceId: "1", userInfo: ["title":model.service_desc,"name":"Uber","url":"\(model.service_thumbnail_icon)"])
+                    return
+                }
+                
                 let viewController = UIStoryboard(name: AIApplication.MainStoryboard.MainStoryboardIdentifiers.UIBuyerStoryboard, bundle: nil).instantiateViewControllerWithIdentifier(AIApplication.MainStoryboard.ViewControllerIdentifiers.AIPageBueryViewController) as! AIPageBueryViewController
                 viewController.delegate = self
                 viewController.proposalId = dataSource.proposal_id

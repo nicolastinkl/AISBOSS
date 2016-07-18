@@ -986,7 +986,7 @@ extension UITransViewController: UITableViewDelegate, UITableViewDataSource {
                 model.favoriteAvator = "http://7xq9bx.com1.z0.glb.clouddn.com/13245ythgfdskhaj.jpg"
             }
             
-            mediaView.Image_Media.setURL(NSURL(string: model.favoriteAvator!), placeholderImage: smallPlace())
+            mediaView.Image_Media.setAIURL(NSURL(string: model.favoriteAvator!), placeholderImage: smallPlace())
         }else{
             mediaView.Image_Media.image = smallPlace()
         }
