@@ -63,7 +63,7 @@ class AIShoppingListViewCell: UITableViewCell {
     
     func fillDataWithModel(model: AIShoppingModel){
         let url = NSURL(string: model.shopping_image_url ?? "")!
-        iconImageView.setURL(url, placeholderImage: smallPlace())
+        iconImageView.setAIURL(url, placeholderImage: smallPlace())
         
         title.text = model.shopping_title ?? ""
         price.text = model.shopping_price ?? ""

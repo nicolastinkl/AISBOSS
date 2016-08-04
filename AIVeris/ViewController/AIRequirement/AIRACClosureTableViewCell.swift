@@ -107,7 +107,7 @@ class AIRACClosureTableViewCell: UITableViewCell {
 
         if  "\(model.provider_portrait_url)".length > 10 {
             
-            self.iconImage.setURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: smallPlace())
+            self.iconImage.setAIURL(NSURL(string: "\(model.provider_portrait_url)"), placeholderImage: smallPlace())
         }else{
             self.iconImage.image = smallPlace()
         }
