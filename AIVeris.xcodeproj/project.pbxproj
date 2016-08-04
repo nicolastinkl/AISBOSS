@@ -4423,7 +4423,7 @@
 					"-licucore",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
+				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss.provider;
 				PRODUCT_NAME = Veris;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AIVeris/Application/AIVeris-Bridging-Header.h";
@@ -4468,7 +4468,7 @@
 					"-licucore",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss;
+				PRODUCT_BUNDLE_IDENTIFIER = asiainfo.aicd2020.sboss.provider;
 				PRODUCT_NAME = Veris;
 				PROVISIONING_PROFILE = "de524d1c-17d1-4632-bf2f-c8d6cd756eed";
 				SWIFT_OBJC_BRIDGING_HEADER = "AIVeris/Application/AIVeris-Bridging-Header.h";

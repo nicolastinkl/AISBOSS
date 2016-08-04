@@ -6,10 +6,12 @@
 	<string>MyriadProRegular.ttf</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Veris Provider</string>
 	<key>CFBundleExecutable</key>
 	<string>Veris</string>
 	<key>CFBundleIdentifier</key>
-	<string>asiainfo.aicd2020.sboss</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -37,7 +39,7 @@
 			<string>asiainfo.com</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>cddpl</string>
+				<string>cddplProvider</string>
 			</array>
 		</dict>
 	</array>

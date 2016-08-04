@@ -84,7 +84,7 @@ class AIServerDetailViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AIServerDetailViewController.changeDateViewNotification), name: AIApplication.Notification.UIAIASINFOChangeDateViewNotification, object: nil)
     
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "motifyParamsNotification:", name: AIApplication.Notification.UIAIASINFOmotifyParamsNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("motifyParamsNotification:"), name: AIApplication.Notification.UIAIASINFOmotifyParamsNotification, object: nil)
         
     }
     
@@ -143,7 +143,7 @@ class AIServerDetailViewController: UIViewController {
         
         self.view.showProgressViewLoading()
         Async.userInitiated {
-            let dataObtainer: SchemeDataObtainer = BDKSchemeDataObtainer()
+            let dataObtainer: SchemeDataObtainer = MockchemeDataObtainer() //BDKSchemeDataObtainer()
             dataObtainer.getServiceSchemes(223, success: { (responseData) -> Void in
                 
                 self.view.hideProgressViewLoading()
